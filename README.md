@@ -1,2 +1,2 @@
 # Element
-UI framework for OSX
+GUI framework for OSX

@@ -64,7 +64,7 @@
 - HorizontalRuler
 - VerticalRuler
 
-Todo:
+**Todo:**
 - [ ] Add support for targting 1th, 2nd child etc in css
 - [ ] Support for dotted and dashed lines (you have code on how to do this)
 - [ ] create date picker/calender (requires date classes)

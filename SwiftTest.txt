@@ -1,2 +1,8 @@
 var someString:String = "some text"
-someText += " more text"
+someText += " more text"//string or text
+
+var someInt:int = 5;
+:Float//32 bit number
+Duoble//64 bit num
+someCharacter:char// single character type
+:Bool// boolean teue or false

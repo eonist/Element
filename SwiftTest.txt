@@ -1,0 +1,2 @@
+var someString:String = "some text"
+someText += " more text"

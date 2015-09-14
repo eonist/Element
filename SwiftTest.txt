@@ -7,4 +7,4 @@ Duoble//64 bit num
 someCharacter:char// single character type
 :Bool// boolean teue or false
 
-let SOME_STATIC_VARIABLE:String = "some name";//static constant variable
+let SOME_STATIC_VARIABLE:String = "some name";// constant variable, sort of like immutableNSarray and mutableNSarray work

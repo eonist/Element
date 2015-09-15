@@ -8,3 +8,5 @@ someCharacter:char// single character type
 :Bool// boolean teue or false
 
 let SOME_STATIC_VARIABLE:String = "some name";// constant variable, this is also a way to enable the obj-c style: immutableNSarray and mutableNSarray and comparable classes
+
+println()//is the log or trace in swift

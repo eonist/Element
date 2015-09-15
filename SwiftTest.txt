@@ -70,3 +70,9 @@ do{
 	//change condition
 	//always executed once
 }while condition
+
+//methods
+
+func someFunction(){
+	//doSomething
+}

@@ -14,4 +14,3 @@ println("hello world");//is the log or trace in swift
 var someText:String = "and";
 var newText:String = "the town is light \(someText) the city is bright" //string interpolation, you can also do math: \(someVarA * someVarB)
 println(newText);
-

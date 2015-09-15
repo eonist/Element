@@ -53,6 +53,10 @@ for someItem in allItems{
 	//do something eith someItem
 }
 
-for var i = 0; i < 5;i++;(
+for var i = 0; i < 5;i++(
 
 )
+
+for index in 1...9{
+	//do something with index
+}

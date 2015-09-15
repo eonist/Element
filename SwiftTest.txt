@@ -73,7 +73,7 @@ do{
 
 //methods
 
-//TODO: can params have default values?
+
 func someFunction(name:String,var key:String)->String{//params are constant by default, to make the mutable add the var infront of the param
 	//doSomething
 	key = key + "c"
@@ -81,3 +81,10 @@ func someFunction(name:String,var key:String)->String{//params are constant by d
 	return key;
 }
 someFunction("test","ab")
+
+//NOTE: can params have default values? yes but you must name them
+some()
+some(data:"testing")
+func some(data:String = "test"){
+
+}

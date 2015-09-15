@@ -20,4 +20,6 @@ Double(someInt) * bigNum//you must wrap ints in double if you want to use differ
 
 if true { //parenthesies are optional in swift
 	//do something
+}else if false{
+	//do something else
 }

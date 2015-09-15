@@ -18,6 +18,8 @@ println(newText);
 
 Double(someInt) * bigNum//you must wrap ints in double if you want to use different number types together
 
+//if conditions must be true or false, 0 or 1 does not work
+//operators: <,>,=,!= 
 if true { //parenthesies are optional in swift
 	//do something
 }else if false{

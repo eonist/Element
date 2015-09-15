@@ -28,3 +28,5 @@ if true { //parenthesies are optional in swift
 }else if false{
 	//do something else
 }
+
+//swift does not support fallthrough switch statement

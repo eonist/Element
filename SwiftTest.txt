@@ -73,8 +73,11 @@ do{
 
 //methods
 
-func someFunction(name:String){
+//TODO: can params have default values?
+func someFunction(name:String,var key:String)->String{//params are constant by default, to make the mutable add the var infront of the param
 	//doSomething
+	key = key + "c"
 	println("hello, \(someText)")
+	return key;
 }
-someFunction("test")
+someFunction("test","ab")

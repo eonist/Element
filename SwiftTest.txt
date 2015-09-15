@@ -73,6 +73,8 @@ do{
 
 //methods
 
-func someFunction(){
+func someFunction(name:String){
 	//doSomething
+	println("hello, \(someText)")
 }
+someFunction("test")

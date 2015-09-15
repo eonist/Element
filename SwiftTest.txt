@@ -57,6 +57,6 @@ for var i = 0; i < 5;i++(
 
 )
 
-for index in 1...9{
+for index in 1...9{//0...someVal will also work, or ...5 
 	//do something with index
 }

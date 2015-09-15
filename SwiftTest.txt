@@ -9,4 +9,4 @@ someCharacter:char// single character type
 
 let SOME_STATIC_VARIABLE:String = "some name";// constant variable, this is also a way to enable the obj-c style: immutableNSarray and mutableNSarray and comparable classes
 
-println()//is the log or trace in swift
+println("hello world")//is the log or trace in swift

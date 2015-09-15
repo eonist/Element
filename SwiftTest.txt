@@ -49,7 +49,7 @@ switch someVal{
 
 //for loops:
 
-for someItem in allItems{
+for someItem in allItems{//can also work with strings printing out single chars, like in applescript
 	//do something eith someItem
 }
 

@@ -17,3 +17,7 @@ println(newText);
 
 
 Double(someInt) * bigNum//you must wrap ints in double if you want to use different number types together
+
+if true { //parenthesies are optional in swift
+	//do something
+}

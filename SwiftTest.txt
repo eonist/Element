@@ -2,10 +2,10 @@ var someString:String = "some text";
 someText += " more text"//string or text;
 
 var someInt:Int = 5;
-:Float//32 bit number
-Duoble//64 bit num
-someCharacter:char// single character type
-:Bool// boolean teue or false
+var smallNum:Float = 7473947492947;//32 bit number
+var bigNum:Duoble = 13242415553626262;//64 bit num
+var someCharacter:Char = "g"// single character type
+var trueOrFalse:Bool// boolean true or false
 
 let SOME_STATIC_VARIABLE:String = "some name";// constant variable, this is also a way to enable the obj-c style: immutableNSarray and mutableNSarray and comparable classes
 
@@ -14,3 +14,4 @@ println("hello world");//is the log or trace in swift
 var someText:String = "and";
 var newText:String = "the town is light \(someText) the city is bright" //string interpolation, you can also do math: \(someVarA * someVarB)
 println(newText);
+

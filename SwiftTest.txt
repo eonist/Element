@@ -1,3 +1,7 @@
+//Note: swift is very inspired by AppleScript!
+//Todo: other people must have writtem swift gotchas / guides, find them
+
+
 var someString:String = "some text";
 someText += " more text"//string or text;
 
@@ -30,3 +34,25 @@ if true { //parenthesies are optional in swift
 }
 
 //swift does not support fallthrough switch statement
+
+//if a case is empty then add a break in it, else dont use break
+//you can use ranges in cases like: 3...8 which will evalute a range from 3 to 8
+
+switch someVal{
+	case 1
+		println("one")
+	case 3...8
+		println("range from 3 to 8")
+	default
+		break;
+}
+
+//for loops:
+
+for someItem in allItems{
+	//do something eith someItem
+}
+
+for var i = 0; i < 5;i++;(
+
+)

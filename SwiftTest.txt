@@ -16,4 +16,4 @@ var newText:String = "the town is light \(someText) the city is bright" //string
 println(newText);
 
 
-someInt * 
+Double(someInt) * bigNum//you must wrap ints in double if you want to use different number types together

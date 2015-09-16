@@ -119,5 +119,8 @@ theDict["color"] = "red"//change values
 .updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
 theDict["material"] = "plastic"//add new key value pairs
 theDict["color"] = nil//removes the value key pair
+for (key,value) in theDict{
+	Println("your value: \(value) and key: \(key)")
+}
 var anotherDict : [String]
 anotherDict

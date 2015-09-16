@@ -201,3 +201,4 @@ func anotherMethod( theMethod : ()->() ){
 	}
 }
 anotherMethod(someMethod)
+anotherMethod({Println("hello")})//hello 5 times

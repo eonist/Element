@@ -100,3 +100,4 @@ Println("your value: \(anotherArray[0])")//"abc"
 //adding items
 anotherArray.append("test")
 anotherArray += ["test"]
+anotherArray.insert("hello",atIndex:2)

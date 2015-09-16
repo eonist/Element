@@ -116,7 +116,7 @@ for theItem in anotherArray{
 var theDict=["color":"blue","type":"car"]
 Println("your value: \(theDict["type"])")//"car"
 theDict["color"] = "red"//change values
-.updateValue("orange",forKey:"color")//change value, the long hand version 
+.updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
 theDict["material"] = "plastic"//add new key value pairs
 var anotherDict : [String]
 anotherDict

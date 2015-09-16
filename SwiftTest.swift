@@ -114,5 +114,6 @@ for theItem in anotherArray{
 }
 //dictionaries aka associative arrays
 var theDict=["color":"blue","type":"car"]
+Println("your value: \(theDict["type"])")//"car"
 var anotherDict : [String]
-anotherDict =
+anotherDict

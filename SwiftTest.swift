@@ -140,3 +140,6 @@ func testingTuples2()->(name:String,num:Int){
 var res2 = testingTuples2()
 Println("your value: \(res.name) and \(res.num)")
 
+//you cant use values that arent set
+var someVal:Int
+Println("your value: \(someVal)")//throws error

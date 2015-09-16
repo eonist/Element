@@ -146,6 +146,7 @@ Println("your value: \(someVal)")//throws error
 var someVal2:Int?//optional value the same as assigning = nil
 Println("your value: \(someVal2)")//nil
 
+//the code bellow is a way swift can do if res != nil etc
 if var res : String = theDict["someKeyNameThatDoesNotExist"] {
-	Println("your value: \(the)")
+	Println("your value: \(res)")
 }

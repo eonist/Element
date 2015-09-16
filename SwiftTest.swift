@@ -182,9 +182,9 @@ switch johnLikes{
 	case .Sedan
 		Println("he likes sedan")
 	case .Sports
-		Println("he likes sedan")
+		Println("he likes sport cars")
 	case .Tractor
-		Println("he likes sedan")
+		Println("he likes tractors")
 	default
 		break;
 }

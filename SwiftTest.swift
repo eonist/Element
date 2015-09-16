@@ -143,3 +143,4 @@ Println("your value: \(res.name) and \(res.num)")
 //you cant use values that arent set
 var someVal:Int
 Println("your value: \(someVal)")//throws error
+var someVal:Int

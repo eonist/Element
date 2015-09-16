@@ -208,3 +208,8 @@ func lowestToHighest(a:Int,b:Int)->Bool{
 	return a < b;
 }
 //convert this to a clouser method:
+}(a:Int,b:Int)->Bool in
+	return a < b;
+}
+
+var someInts = [500,63,99,23]

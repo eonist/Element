@@ -143,7 +143,9 @@ Println("your value: \(res.name) and \(res.num)")
 //you cant use values that arent set
 var someVal:Int
 Println("your value: \(someVal)")//throws error
-var someVal2:Int?
+var someVal2:Int?//optional value the same as assigning = nil
 Println("your value: \(someVal2)")//nil
 
-if var res : 
+if var res : String = theDict["someKeyNameThatDoesNotExist"] {
+	Println("your value: \(the)")
+}

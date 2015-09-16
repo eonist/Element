@@ -106,3 +106,5 @@ anotherArray.insert("hello",atIndex:2)
 .removeLast()
 //find array length
 .count
+//.count = 0 can be written as:
+.isEmpty

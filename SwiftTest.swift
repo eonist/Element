@@ -87,8 +87,8 @@ someFunction("test","ab")
 //NOTE: can params have default values? yes but you must name them
 some()
 some(data:"testing")
-func some(data:String = "test"){
-
+func testingTuples()->(String,Int){
+	return ("test",55)
 }
 
 //array

@@ -87,9 +87,7 @@ someFunction("test","ab")
 //NOTE: can params have default values? yes but you must name them
 some()
 some(data:"testing")
-func testingTuples()->(String,Int){
-	return ("test",55)
-}
+
 
 //array
 var someArray = [1,2,3]//mutable
@@ -127,3 +125,15 @@ anotherDict
 
 //tuples almost like objects
 var someTuple = ("test",22,10.2,"abc")
+func testingTuples()->(String,Int){
+	return ("test",55)
+}
+var res = testingTuples()
+Println("your value: \(res.0) and \(res.1)")
+//named tuples. aka decomposing
+func testingTuples2()->(name:String,num:Int){
+	return ("test",55)
+}
+
+var res2 = testingTuples2()
+Println("your value: \(res.name) and \(res.num)")

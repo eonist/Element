@@ -167,9 +167,12 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 
 //enums
 
-enum CarsTypes{
+enum CarsType{
 	case Tractor
 	case Sports
 	case Sedan
 	//or case Tractor, Sports,Sedan
 }
+
+var john:CarType
+john = CarType.Sedan

@@ -189,4 +189,15 @@ switch johnLikes{
 		break;
 }
 
-//
+//execute a method via a parameter
+
+let someMethod = {
+	Println("your value: something")
+}
+
+func anotherMethod( theMethod : ()->() ){
+	for i in 0...5 {
+		theMethod()//performs this method 5 times
+	}
+}
+anotherMethod(someMethod)

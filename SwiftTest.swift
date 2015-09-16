@@ -130,6 +130,8 @@ func testingTuples()->(String,Int){
 }
 var res = testingTuples()
 Println("your value: \(res.0) and \(res.1)")
+var (name,num) = testingTuples()
+Println("your value: \(name) and \(num)")
 //named tuples. aka decomposing
 func testingTuples2()->(name:String,num:Int){
 	return ("test",55)
@@ -137,3 +139,4 @@ func testingTuples2()->(name:String,num:Int){
 
 var res2 = testingTuples2()
 Println("your value: \(res.name) and \(res.num)")
+

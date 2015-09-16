@@ -124,3 +124,6 @@ for (theKey,theValue) in theDict{
 }
 var anotherDict : [String]
 anotherDict
+
+//tuples almost like objects
+var someTuple = ("test",22,10.2,"abc")

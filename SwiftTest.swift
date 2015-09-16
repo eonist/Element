@@ -101,3 +101,8 @@ Println("your value: \(anotherArray[0])")//"abc"
 anotherArray.append("test")
 anotherArray += ["test"]
 anotherArray.insert("hello",atIndex:2)
+//remove
+.removeAt(2)
+.removeLast()
+//find array length
+.count()

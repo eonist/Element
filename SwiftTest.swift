@@ -108,3 +108,7 @@ anotherArray.insert("hello",atIndex:2)
 .count
 //.count = 0 can be written as:
 .isEmpty
+//
+for theItem in anotherArray{
+	Println("your value: \(theItem)")
+}

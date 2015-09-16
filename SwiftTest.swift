@@ -202,3 +202,6 @@ func anotherMethod( theMethod : ()->() ){
 }
 anotherMethod(someMethod)
 anotherMethod({Println("hello")})//hello 5 times
+
+//closure method passed to the sort method of swift:
+func lowestToHighest()

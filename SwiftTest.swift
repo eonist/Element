@@ -96,3 +96,4 @@ var someArray = [1,2,3]//mutable
 let stringArray = ["a","some","this"]//immutable
 var anotherArray:[String]
 anotherArray = ["abc","123"]
+

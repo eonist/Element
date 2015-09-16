@@ -97,3 +97,6 @@ let stringArray = ["a","some","this"]//immutable
 var anotherArray:[String]
 anotherArray = ["abc","123"]
 Println("your value: \(anotherArray[0])")//"abc"
+//adding items
+anotherArray.append("test")
+anotherArray += ["test"]

@@ -146,7 +146,18 @@ Println("your value: \(someVal)")//throws error
 var someVal2:Int?//optional value the same as assigning = nil
 Println("your value: \(someVal2)")//nil
 
-//the code bellow is a way swift can do if res != nil etc
+/**
+ * //the code bellow is a way swift can do basically this:
+ * var res = theDict["someKeyNameThatDoesNotExist"] 
+ * if res != nil {
+ *		print the res
+ * }else{
+ * 	Println("your value: \("no val found for that key")")
+ * }
+ */
+
 if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 	Println("your value: \(res)")
+}else{
+	Println("your value: \("no val found for that key")")
 }

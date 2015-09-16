@@ -164,8 +164,8 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 }else{
 	Println("your value: \("no val found for that key")")
 }
-
-//enums
+//enumerations:
+//enums are simple classes that can be used like this:
 
 enum CarsType{
 	case Tractor

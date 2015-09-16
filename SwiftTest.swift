@@ -168,5 +168,8 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 //enums
 
 enum CarsTypes{
-	case
+	case Tractor
+	case Sports
+	case Sedan
+	//or case Tractor, Sports,Sedan
 }

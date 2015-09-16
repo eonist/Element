@@ -89,3 +89,7 @@ some(data:"testing")
 func some(data:String = "test"){
 
 }
+
+//array
+var someArray = [1,2,3]//mutable
+let stringArray = ["a","some","this"]//immutable

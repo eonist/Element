@@ -105,4 +105,4 @@ anotherArray.insert("hello",atIndex:2)
 .removeAt(2)
 .removeLast()
 //find array length
-.count()
+.count

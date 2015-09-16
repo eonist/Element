@@ -174,5 +174,6 @@ enum CarsType{
 	//or case Tractor, Sports,Sedan
 }
 
-var john:CarType
-john = CarType.Sedan
+var johnLikes:CarType
+johnLikes = CarType.Sedan
+johnLikes = .Sedan

@@ -145,3 +145,5 @@ var someVal:Int
 Println("your value: \(someVal)")//throws error
 var someVal2:Int?
 Println("your value: \(someVal2)")//nil
+
+if var res : 

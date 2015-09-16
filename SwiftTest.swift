@@ -164,3 +164,9 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 }else{
 	Println("your value: \("no val found for that key")")
 }
+
+//enums
+
+enum CarsTypes{
+	case
+}

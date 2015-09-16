@@ -177,3 +177,14 @@ enum CarsType{
 var johnLikes:CarType
 johnLikes = CarType.Sedan
 johnLikes = .Sedan
+
+switch johnLikes{
+	case .Sedan
+		Println("he likes sedan")
+	case .Sports
+		Println("he likes sedan")
+	case .Tractor
+		Println("he likes sedan")
+	default
+		break;
+}

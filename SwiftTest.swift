@@ -204,4 +204,7 @@ anotherMethod(someMethod)
 anotherMethod({Println("hello")})//hello 5 times
 
 //closure method passed to the sort method of swift:
-func lowestToHighest()
+func lowestToHighest(a:Int,b:Int)->Bool{
+	return a < b;
+}
+//convert this to a clouser method:

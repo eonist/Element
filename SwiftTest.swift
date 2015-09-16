@@ -112,3 +112,7 @@ anotherArray.insert("hello",atIndex:2)
 for theItem in anotherArray{
 	Println("your value: \(theItem)")
 }
+//dictionaries aka associative arrays
+var theDict=["color":"blue","type":"car"]
+var anotherDict : [String]
+anotherDict =

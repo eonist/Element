@@ -422,3 +422,15 @@ someDate == thirdDate//true
 
 //in other languages you could do:
 var someVal : String = someURL != nil ? someURL : defaultURL
+
+//in swift you would do:
+//I Playground - Nil Coalescing speratur
+var personalSite : String?
+let defaultSite = "http:ffwww.lynda.com"
+//If ... Later ...
+var website : String
+if persanalsite != nil {
+	website = personalSite!//unwrap the variable
+} else {
+	website = defaultSite
+}

@@ -220,6 +220,9 @@ class Person{
 	//properties accessabøe outside a class:
 	var name:String = "Paul"//values must be set if you use a class aka initialized
 	let age:Int = 77;
+	/**
+ 	 * NOTE: initializers are optional you can still use this object without passing params
+	 */
 	func init(name:String,age:Int){//class initializer w/ params
 		self.name = name;//self refers to properties outside the method bit inside the class, aka this in other languages
 		self.age = age;
@@ -230,7 +233,7 @@ class Person{
 	}
 }
 
-var newPerson : Person = Person("Louie",73)
+var newPerson : Person = Person(name:"Louie",age:73)
 newPerson.name = "Pete"
 newPerson.age = 25
 Println("your value: \(newPerson.desc())")

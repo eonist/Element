@@ -353,7 +353,7 @@ function, a reference to the original object is passed
 */
 
 // Playground - Pass By Reference
-class SimpleClass {
+class SimpleClass {//replacing the class with struct makes this a struct which behave like a copy not a reference
 	var value : Int = 99
 }
 // Simple function that changes an object

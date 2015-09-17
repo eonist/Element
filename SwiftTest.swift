@@ -370,3 +370,4 @@ changeobject(myobject)
 myobject.value//1099
 
 
+NOTE: 

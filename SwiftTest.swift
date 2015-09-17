@@ -214,3 +214,8 @@ let lowToHig{(a:Int,b:Int)->Bool in
 
 var someInts:[Int] = [500,63,99,23]
 var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
+
+//classes:
+class Testing{
+	
+}

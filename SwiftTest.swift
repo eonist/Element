@@ -375,10 +375,9 @@ myobject.value//1099
 /*
 
 - Structures vs. Classes in Swift
- Structures - value types
- Classes - reference types
- String, Array
-. Didionary - implemented as structure
- Structures are still intended for simpler situations
+- Structures - value types
+- Classes - reference types
+- String, Array, Dictionary - implemented as structure
+- Structures are still intended for simpler situations
  
  */

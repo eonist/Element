@@ -421,4 +421,4 @@ someDate == thirdDate//true
 //nil coalecing
 
 //in other languages you could do:
-var someVal : String = someURL : defaultURL ? SOMEURL != nil
+var someVal : String = someURL != nil ? someURL : defaultURL

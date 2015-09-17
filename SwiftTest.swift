@@ -221,7 +221,7 @@ class Person{
 	var name:String = "Paul"//values must be set if you use a class aka initialized
 	let age:Int = 77;
 	func init(name:String,age:Int){//class initializer w/ params
-		self.name = name;
+		self.name = name;//self refers to properties outside the method bit inside the class
 		self.age = age;
 	}
 	//methods accessable outside a class:
@@ -230,7 +230,7 @@ class Person{
 	}
 }
 
-var newPerson : Person = Person()
+var newPerson : Person = Person("Louie",73)
 newPerson.name = "Pete"
 newPerson.age = 25
 Println("your value: \(newPerson.desc())")

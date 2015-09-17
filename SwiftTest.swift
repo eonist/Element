@@ -437,3 +437,7 @@ if persanalsite != nil {//unwrap the variable
 
 //shorthand way of doing it, similar to if else shorthand in other languages:
 var website = personalSite ?? defaultSite
+
+
+//modulo 
+//NOTE: modulo works with floats and negative numbers in swift

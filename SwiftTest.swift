@@ -286,14 +286,11 @@ Println("your value: \(newPerson.desc())")
  Println("your value: \(sammy.fullName)")
  
  class StringUtil{
- 	
+ 	class var STRING_UTIL_NAME = "string_util"//this is what is typically refered to as a public staic constant in other languages and is accessible from the class it self, not instances of it
  	/**
  	 * Returns a list of text items by splitting a text at every delimiter
 	 */
-	class func split(the_text, delimiter)->String{
-		set text item delimiters to delimiter
-		set ret_val to every text item of the_text
-		set text item delimiters to "," --reset applescript delimiter to default
-		return ret_val
+	class func split(string, delimiter)->String{
+		return string.componentsSeperatedByString(delimiter)
 	}
  }

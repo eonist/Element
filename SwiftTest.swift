@@ -218,7 +218,7 @@ var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
 //classes:
 class Testing{
 	//properties accessabøe outside a class:
-	var someName:String = "Paul"//values must be set if you use a class
+	var someName:String = "Paul"//values must be set if you use a class aka initialized
 	let someInt:Int = 77;
 	//methods accessable outside a class:
 	func doSomething(someVal:Int)->String{

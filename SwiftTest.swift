@@ -255,7 +255,9 @@ printin("your value: \(newPerson.desc())")
  	//property observere
  	var nickName:String = "Joey"{
  		willSet{//called before you set a value
- 			printin("your value: \(newValue)")
+ 			
+ 			
+ 			("your value: \(newValue)")
  		}
  		didSet(oldNickName){//called after you set a value, the oldNickName enables you to rename the default oldValue
  			printin("your value: \(oldNickName)")
@@ -339,3 +341,13 @@ class Player {
 		//
 	}
 }
+/*
+Structures in Swift
+ Structures are value types (pass by value)
+when assigned to another variable, or passed to a
+function, a structure's value is copied
+ 
+ Classes are reference types (pass by reference)
+when assigned to another variable, or passed to a
+function, a reference to the original object is passed
+*/

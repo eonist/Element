@@ -216,7 +216,7 @@ var someInts:[Int] = [500,63,99,23]
 var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
 
 //classes:
-class Testing{
+class Person{
 	//properties accessabøe outside a class:
 	var someName:String = "Paul"//values must be set if you use a class aka initialized
 	let someInt:Int = 77;
@@ -225,3 +225,5 @@ class Testing{
 		return "something"
 	}
 }
+
+var newPerson : Person = Person()

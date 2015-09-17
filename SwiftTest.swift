@@ -318,3 +318,8 @@ Println("your value: \(newPerson.desc())")
  }
 StringUtil.name//string util
 StringUtil.split("abc 123"," ")[0]//"123"
+
+//Access levels in Swift 
+//private only accessible from within the same source code file 
+//internal This is the default accessible across multiple code files, but must be compiled together into the same module 
+//public accessible from any module that has imported yours 

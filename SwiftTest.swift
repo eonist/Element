@@ -248,8 +248,12 @@ Println("your value: \(newPerson.desc())")
  */
  class Employee:Person{
  	var sallary:Int
- 	overide init(){
- 	
+ 	overide init(sallery:Int){
+ 		self.sallery = sallery;
+ 		super.init()
+ 	}
+ 	overide func desc()->String{
+ 		return super.description + " " + sallery
  	}
  	func sallery()->Int{
 		return sallary
@@ -257,7 +261,7 @@ Println("your value: \(newPerson.desc())")
  }
  var sammy:Employee = Employee(name:"Sammy")
  Println("your value: \(sammy.sallery)")
- 
+ Println("your value: \(sammy.desc)")
  
  
  

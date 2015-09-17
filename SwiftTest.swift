@@ -264,6 +264,13 @@ Println("your value: \(newPerson.desc())")
  Println("your value: \(sammy.sallery)")
  Println("your value: \(sammy.desc)")
  
+ /**
+ * computed properties
+ */
  
- 
- 
+ var fullName:String {
+ 	get{
+		 return firstName + " " + lastName 	
+ 	}
+
+ }

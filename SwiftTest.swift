@@ -303,5 +303,5 @@ Println("your value: \(newPerson.desc())")
 		return STRING_UTIL_NAME
 	}
  }
-StringUtil.name()//string util
+StringUtil.name//string util
 StringUtil.split("abc 123"," ")[0]//"123"

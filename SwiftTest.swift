@@ -218,12 +218,15 @@ var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
 //classes:
 class Person{
 	//properties accessabøe outside a class:
-	var someName:String = "Paul"//values must be set if you use a class aka initialized
-	let someInt:Int = 77;
+	var name:String = "Paul"//values must be set if you use a class aka initialized
+	let age:Int = 77;
 	//methods accessable outside a class:
-	func doSomething(someVal:Int)->String{
-		return "something"
+	func desc()->String{
+		return name + ", " + age
 	}
 }
 
 var newPerson : Person = Person()
+newPerson.name = "Pete"
+newPerson.age = 25
+Println("your value: \(newPerson.desc())")

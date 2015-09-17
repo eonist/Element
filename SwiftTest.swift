@@ -247,8 +247,12 @@ Println("your value: \(newPerson.desc())")
  * class inheritance: super class and sub class
  */
  class Employee:Person{
+ 	var sallary:Int
+ 	overide init(){
+ 	
+ 	}
  	func sallery()->Int{
-		return 5500
+		return sallary
 	}
  }
  var sammy:Employee = Employee(name:"Sammy")

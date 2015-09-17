@@ -287,4 +287,13 @@ Println("your value: \(newPerson.desc())")
  
  class StringUtil{
  	class func 
+ 	(*
+
+ *)
+on split(the_text, delimiter)
+	set text item delimiters to delimiter
+	set ret_val to every text item of the_text
+	set text item delimiters to "," --reset applescript delimiter to default
+	return ret_val
+end split
  }

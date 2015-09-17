@@ -252,7 +252,15 @@ Println("your value: \(newPerson.desc())")
  	var firstName:String = "Jo"
  	var lastName:String = "Socrates"
  	lazy var bonus : Int = calcBonus()//lazy makes the prop not init it self before something tries to access it. think of it almost as a method with a return var, his is just a handy way of doing things, nothing revolutionary
- 	
+ 	//property observere
+ 	var nickName:String = "Joey"{
+ 		willSet{//called before you set a value
+ 			Println("your value: \(newValue)")
+ 		}
+ 		didSet{//called after you set a value
+ 			Println("your value: \(oldValue)")
+ 		}
+ 	}
  	overide init(sallery:Int){
  		self.sallery = sallery;
  		

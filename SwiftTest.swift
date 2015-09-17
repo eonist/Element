@@ -350,6 +350,8 @@ function, a structure's value is copied
  Classes are reference types (pass by reference)
 when assigned to another variable, or passed to a
 function, a reference to the original object is passed
+
+//NOTE: structs does not support heritance
 */
 
 // Playground - Pass By Reference
@@ -370,4 +372,13 @@ changeobject(myobject)
 myobject.value//1099
 
 
-//NOTE: structs does not support heritance
+/*
+
+- Structures vs. Classes in Swift
+ Structures - value types
+ Classes - reference types
+ String, Array
+. Didionary - implemented as structure
+ Structures are still intended for simpler situations
+ 
+ */

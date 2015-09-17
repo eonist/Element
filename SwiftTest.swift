@@ -365,7 +365,8 @@ object.value += 1000
 var myobject = SimpleClass()
 // pass the object into the function - Pass by Reference
 changeobject(myobject)
+
 // the original object has been changed.
-myobject.value//
+myobject.value//1099
 
 

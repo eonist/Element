@@ -271,7 +271,9 @@ Println("your value: \(newPerson.desc())")
 			 return firstName + " " + lastName 	
 	 	}
 		set{
-			 
+			 var fullNameArray = newValue.componentsSeperatedBy(" ")//newValue is the value you resive from the setter
+			 firstName = fullNameArray[0]
+			 lastName = fullNameArray[1]
 	 	}
 	 }
  }

@@ -370,4 +370,4 @@ changeobject(myobject)
 myobject.value//1099
 
 
-NOTE: 
+//NOTE: structs does not support heritance

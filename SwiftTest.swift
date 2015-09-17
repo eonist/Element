@@ -245,6 +245,7 @@ Println("your value: \(newPerson.desc())")
 //
 /**
  * class inheritance: super class and sub class
+ * NOTE: if you mark a class final like:"final class Employee" then it cant be overriden by inheritance
  */
  class Employee:Person{
  	var sallary:Int
@@ -255,7 +256,7 @@ Println("your value: \(newPerson.desc())")
  	overide func desc()->String{
  		return super.description + " " + sallery
  	}
- 	func sallery()->Int{
+ 	final func sallery()->Int{//final methods cant be overridden, but are still accesible from outside the class
 		return sallary
 	}
  }

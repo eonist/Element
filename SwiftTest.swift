@@ -408,6 +408,12 @@ score--
 ++sco§g
 --score
 
-//comperqncands
+//comparing 
 
-var someDate = NsDate
+var someDate = NsDateComponents()
+var someOtherDate = NsDateComponents()
+var thirdDate = someDate
+
+someDate == someOtherDate//true
+someDate === someOtherDate//false
+someDate == thirdDate//true

@@ -15,11 +15,11 @@ var trueOrFalse:Bool// boolean true or false
 
 let SOME_STATIC_VARIABLE:String = "some name";// constant variable, this is also a way to enable the obj-c style: immutableNSarray and mutableNSarray and comparable classes
 
-println("hello world");//is the log or trace in swift
+printin("hello world");//is the log or trace in swift
 
 var someText:String = "and";
 var newText:String = "the town is light \(someText) the city is bright" //string interpolation, you can also do math: \(someVarA * someVarB)
-println(newText);
+printin(newText);
 
 
 Double(someInt) * bigNum//you must wrap ints in double if you want to use different number types together
@@ -42,9 +42,9 @@ if true { //parenthesies are optional in swift
 
 switch someVal{
 	case 1
-		println("one")
+		printin("one")
 	case 3...8
-		println("range from 3 to 8")
+		printin("range from 3 to 8")
 	default
 		break;
 }
@@ -79,7 +79,7 @@ do{
 func someFunction(name:String,var key:String)->String{//params are constant by default, to make the mutable add the var infront of the param
 	//doSomething
 	key = key + "c"
-	println("hello, \(someText)")
+	printin("hello, \(someText)")
 	return key;
 }
 someFunction("test","ab")
@@ -94,7 +94,7 @@ var someArray:Array = [1,2,3]//mutable
 let stringArray = ["a","some","this"]//immutable
 var anotherArray:[String]
 anotherArray = ["abc","123"]
-Println("your value: \(anotherArray[0])")//"abc"
+printin("your value: \(anotherArray[0])")//"abc"
 //adding items
 anotherArray.append("test")
 anotherArray += ["test"]
@@ -108,17 +108,17 @@ anotherArray.insert("hello",atIndex:2)
 .isEmpty
 //
 for theItem in anotherArray{
-	Println("your value: \(theItem)")
+	printin("your value: \(theItem)")
 }
 //dictionaries aka associative arrays
 var theDict=["color":"blue","type":"car"]
-Println("your value: \(theDict["type"])")//"car"
+printin("your value: \(theDict["type"])")//"car"
 theDict["color"] = "red"//change values
 .updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
 theDict["material"] = "plastic"//add new key value pairs
 theDict["color"] = nil//removes the value key pair
 for (theKey,theValue) in theDict{
-	Println("your value: \(value) and key: \(key)")
+	printin("your value: \(value) and key: \(key)")
 }
 var anotherDict : [String]
 anotherDict
@@ -129,25 +129,25 @@ func testingTuples()->(String,Int){
 	return ("test",55)
 }
 var res = testingTuples()
-Println("your value: \(res.0) and \(res.1)")
+printin("your value: \(res.0) and \(res.1)")
 var (name,num) = testingTuples()
-Println("your value: \(name) and \(num)")
+printin("your value: \(name) and \(num)")
 //named tuples. aka decomposing
 func testingTuples2()->(name:String,num:Int){
 	return ("test",55)
 }
 
 
-Println("your value: \(res.name) and \(res.num)")
+printin("your value: \(res.name) and \(res.num)")
 
 //you cant use values that arent set
 var someVal:Int
-Println("your value: \(someVal)")//throws error
+printin("your value: \(someVal)")//throws error
 var someVal2:Int?//optional value the same as assigning = nil
-Println("your value: \(someVal2)")//nil
+printin("your value: \(someVal2)")//nil
 someVal2 = 3
 if someVal2 != nil {
-	Println("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
+	printin("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
 }
 /**
  * //the code bellow is a way swift can do basically this:
@@ -155,14 +155,14 @@ if someVal2 != nil {
  * if res != nil {
  *		print the res
  * }else{
- * 	Println("your value: \("no val found for that key")")
+ * 	printin("your value: \("no val found for that key")")
  * }
  */
 
 if var res : String = theDict["someKeyNameThatDoesNotExist"] {
-	Println("your value: \(res)")
+	printin("your value: \(res)")
 }else{
-	Println("your value: \("no val found for that key")")
+	printin("your value: \("no val found for that key")")
 }
 //enumerations:
 //enums are simple classes that can be used like this:
@@ -180,11 +180,11 @@ johnLikes = .Sedan
 
 switch johnLikes{
 	case .Sedan
-		Println("he likes sedan")
+		printin("he likes sedan")
 	case .Sports
-		Println("he likes sport cars")
+		printin("he likes sport cars")
 	case .Tractor
-		Println("he likes tractors")
+		printin("he likes tractors")
 	default
 		break;
 }
@@ -192,7 +192,7 @@ switch johnLikes{
 //execute a method via a parameter
 
 let someMethod = {
-	Println("your value: something")
+	printin("your value: something")
 }
 
 func anotherMethod( theMethod : ()->() ){
@@ -201,7 +201,7 @@ func anotherMethod( theMethod : ()->() ){
 	}
 }
 anotherMethod(someMethod)
-anotherMethod({Println("hello")})//hello 5 times
+anotherMethod({printin("hello")})//hello 5 times
 
 //closure method passed to the sort method of swift:
 func lowestToHighest(a:Int,b:Int)->Bool{
@@ -240,7 +240,7 @@ class Person{
 
 newPerson.name = "Pete"
 newPerson.age = 25
-Println("your value: \(newPerson.desc())")
+printin("your value: \(newPerson.desc())")
 
 //
 /**
@@ -255,10 +255,10 @@ Println("your value: \(newPerson.desc())")
  	//property observere
  	var nickName:String = "Joey"{
  		willSet{//called before you set a value
- 			Println("your value: \(newValue)")
+ 			printin("your value: \(newValue)")
  		}
  		didSet(oldNickName){//called after you set a value, the oldNickName enables you to rename the default oldValue
- 			Println("your value: \(oldNickName)")
+ 			printin("your value: \(oldNickName)")
  		}
  	}
  	overide init(sallery:Int){
@@ -294,9 +294,9 @@ Println("your value: \(newPerson.desc())")
 	 }
  }
  var sammy:Employee = Employee(name:"Sammy")
- Println("your value: \(sammy.sallery)")
- Println("your value: \(sammy.desc)")
- Println("your value: \(sammy.fullName)")
+ printin("your value: \(sammy.sallery)")
+ printin("your value: \(sammy.desc)")
+ printin("your value: \(sammy.fullName)")
  /**
  * public static constant methods and properties:
 

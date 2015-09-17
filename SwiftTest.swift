@@ -217,5 +217,7 @@ var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
 
 //classes:
 class Testing{
-	
+	//properties accessabøe outside a class:
+	var someName:String = "Paul"
+	let somInt:Int = 77;
 }

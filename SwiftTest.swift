@@ -326,17 +326,16 @@ StringUtil.split("abc 123"," ")[0]//"123"
 
 //Changing access levels public 
 class Player {
-//properties no modifier, will default to internal 
-var name: String 
-var score Int 
-//public methods 
-public func description {
-	printin ("Player V (name) has a score of V (score)") 
-
-}
-	private methods 
+	//properties no modifier, will default to internal 
+	var name: String 
+	var score Int 
+	//public methods 
+	public func description {
+		printin ("Player V (name) has a score of V (score)") 
+	
+	}
+	//private methods 
 	private func calculateBonus {
-	
+		//
 	}
-	
-	}
+}

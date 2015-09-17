@@ -247,6 +247,14 @@ Println("your value: \(newPerson.desc())")
  * class inheritance: super class and sub class
  */
  class Employee:Person{
- 	
+ 	func sallery()->Int{
+		return 5500
+	}
  }
  var sammy:Employee = Employee(name:"Sammy")
+ Println("your value: \(sammy.sallery)")
+ 
+ 
+ 
+ 
+ 

@@ -286,14 +286,14 @@ Println("your value: \(newPerson.desc())")
  Println("your value: \(sammy.fullName)")
  
  class StringUtil{
- 	class func 
- 	(*
-
- *)
-on split(the_text, delimiter)
-	set text item delimiters to delimiter
-	set ret_val to every text item of the_text
-	set text item delimiters to "," --reset applescript delimiter to default
-	return ret_val
-end split
+ 	
+ 	/**
+ 	 * Returns a list of text items by splitting a text at every delimiter
+	 */
+	class func split(the_text, delimiter)->String{
+		set text item delimiters to delimiter
+		set ret_val to every text item of the_text
+		set text item delimiters to "," --reset applescript delimiter to default
+		return ret_val
+	}
  }

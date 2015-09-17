@@ -249,4 +249,4 @@ Println("your value: \(newPerson.desc())")
  class Employee:Person{
  	
  }
- var sammy:Employee = Employee()
+ var sammy:Employee = Employee(name:"Sammy")

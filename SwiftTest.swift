@@ -220,6 +220,10 @@ class Person{
 	//properties accessabøe outside a class:
 	var name:String = "Paul"//values must be set if you use a class aka initialized
 	let age:Int = 77;
+	func init(name:String,age:Int){//class initializer w/ params
+		self.name = name;
+		self.age = age;
+	}
 	//methods accessable outside a class:
 	func desc()->String{
 		return name + ", " + age

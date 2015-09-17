@@ -259,18 +259,10 @@ Println("your value: \(newPerson.desc())")
  	final func sallery()->Int{//final methods cant be overridden, but are still accesible from outside the class
 		return sallary
 	}
+	
  }
  var sammy:Employee = Employee(name:"Sammy")
  Println("your value: \(sammy.sallery)")
  Println("your value: \(sammy.desc)")
  
- /**
- * computed properties
- */
  
- var fullName:String {
- 	get{
-		 return firstName + " " + lastName 	
- 	}
-
- }

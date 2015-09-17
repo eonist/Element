@@ -284,7 +284,10 @@ Println("your value: \(newPerson.desc())")
  Println("your value: \(sammy.sallery)")
  Println("your value: \(sammy.desc)")
  Println("your value: \(sammy.fullName)")
- 
+ /**
+ * public static constant methods and properties:
+
+ */
  class StringUtil{
  	class var STRING_UTIL_NAME = "string_util"//this is what is typically refered to as a public staic constant in other languages and is accessible from the class it self, not instances of it
  	/**
@@ -292,5 +295,11 @@ Println("your value: \(newPerson.desc())")
 	 */
 	class func split(string, delimiter)->String{
 		return string.componentsSeperatedByString(delimiter)
+	}
+	/**
+ 	* NOTE: you cant access instance level variables when using public static constants
+	 */
+	 func name(){
+		return STRING_UTIL_NAME
 	}
  }

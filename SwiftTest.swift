@@ -249,8 +249,11 @@ Println("your value: \(newPerson.desc())")
  */
  class Employee:Person{
  	var sallary:Int
+ 	var firstName:String = "Jo"
+ 	var lastName:String = "Socrates"
  	overide init(sallery:Int){
  		self.sallery = sallery;
+ 		
  		super.init()
  	}
  	overide func desc()->String{
@@ -259,10 +262,22 @@ Println("your value: \(newPerson.desc())")
  	final func sallery()->Int{//final methods cant be overridden, but are still accesible from outside the class
 		return sallary
 	}
-	
+	/**
+	 * computed properties, aka getters and setters?
+ 	 */
+ 
+ 	var fullName:String {
+	 	get{
+			 return firstName + " " + lastName 	
+	 	}
+		set{
+			 
+	 	}
+	 }
  }
  var sammy:Employee = Employee(name:"Sammy")
  Println("your value: \(sammy.sallery)")
  Println("your value: \(sammy.desc)")
+ Println("your value: \(sammy.fullName)")
  
  

@@ -246,3 +246,7 @@ Println("your value: \(newPerson.desc())")
 /**
  * class inheritance: super class and sub class
  */
+ class Employee:Person{
+ 	
+ }
+ var sammy:Employee = Employee()

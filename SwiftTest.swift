@@ -251,11 +251,15 @@ Println("your value: \(newPerson.desc())")
  	var sallary:Int
  	var firstName:String = "Jo"
  	var lastName:String = "Socrates"
+ 	lazy var bonus : Int = calcBonus()//lazy makes the prop not init it self before something tries to access it. think of it almost as a method with a return var
  	overide init(sallery:Int){
  		self.sallery = sallery;
  		
  		super.init()
  	}
+ 	func calcBonus()->Int{
+		return 5+2
+	}		
  	overide func desc()->String{
  		return super.description + " " + sallery
  	}

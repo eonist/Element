@@ -417,3 +417,7 @@ var thirdDate = someDate
 someDate == someOtherDate//true
 someDate === someOtherDate//false
 someDate == thirdDate//true
+
+//nil coalecing
+
+//in other languages you could do:

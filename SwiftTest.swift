@@ -357,7 +357,7 @@ class SimpleClass {
 	var value : Int = 99
 }
 // Simple function that changes an object
-func changeObject(var object : SimpleClas){
+func changeObject(var object : SimpleClas5) -> Int {
 object.value += 1000
 	return obj ect.value
 }
@@ -367,5 +367,5 @@ var myobject = SimpleClass()
 changeobject(myobject)
 // the original object has been changed.
 myobject.value//
-5) -> Int {
-as By
+
+

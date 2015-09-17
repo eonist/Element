@@ -251,7 +251,7 @@ Println("your value: \(newPerson.desc())")
  	var sallary:Int
  	var firstName:String = "Jo"
  	var lastName:String = "Socrates"
- 	lazy var bonus : Int = calcBonus()//lazy makes the prop not init it self before something tries to access it. think of it almost as a method with a return var
+ 	lazy var bonus : Int = calcBonus()//lazy makes the prop not init it self before something tries to access it. think of it almost as a method with a return var, his is just a handy way of doing things, nothing revolutionary
  	overide init(sallery:Int){
  		self.sallery = sallery;
  		

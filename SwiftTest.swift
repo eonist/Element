@@ -429,8 +429,11 @@ var personalSite : String?
 let defaultSite = "http:ffwww.lynda.com"
 //If ... Later ...
 var website : String
-if persanalsite != nil {
-	website = personalSite!//unwrap the variable
+if persanalsite != nil {//unwrap the variable
+	website = personalSite!
 } else {
 	website = defaultSite
 }
+
+//shorthand way of doing it, similar to if else shorthand in other languages:
+var website = personalSite ?? defaultSite

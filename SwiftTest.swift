@@ -351,7 +351,9 @@ function, a structure's value is copied
 when assigned to another variable, or passed to a
 function, a reference to the original object is passed
 
-//NOTE: structs does not support heritance
+NOTE: structs does not support heritance
+NOTE: you get automated param suggestions for variables when using structs
+NOTE: structs are great as dataContainers that wont be needing heritance
 */
 
 // Playground - Pass By Reference

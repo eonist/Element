@@ -237,7 +237,12 @@ class Person{
 	}
 }
 
-var newPerson : Person = Person(name:"Louie",age:73)
+
 newPerson.name = "Pete"
 newPerson.age = 25
 Println("your value: \(newPerson.desc())")
+
+//
+/**
+ * class inheritance: super class and sub class
+ */

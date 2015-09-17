@@ -285,4 +285,6 @@ Println("your value: \(newPerson.desc())")
  Println("your value: \(sammy.desc)")
  Println("your value: \(sammy.fullName)")
  
- 
+ class StringUtil{
+ 	class func 
+ }

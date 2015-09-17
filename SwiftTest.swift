@@ -421,3 +421,4 @@ someDate == thirdDate//true
 //nil coalecing
 
 //in other languages you could do:
+var someVal : String someURL : 

@@ -257,8 +257,8 @@ Println("your value: \(newPerson.desc())")
  		willSet{//called before you set a value
  			Println("your value: \(newValue)")
  		}
- 		didSet{//called after you set a value
- 			Println("your value: \(oldValue)")
+ 		didSet(oldNickName){//called after you set a value, the oldNickName enables you to rename the default oldValue
+ 			Println("your value: \(oldNickName)")
  		}
  	}
  	overide init(sallery:Int){

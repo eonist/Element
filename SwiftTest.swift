@@ -293,13 +293,15 @@ Println("your value: \(newPerson.desc())")
  	/**
  	 * Returns a list of text items by splitting a text at every delimiter
 	 */
-	class func split(string, delimiter)->String{
+	class func split(string, delimiter)->Array{
 		return string.componentsSeperatedByString(delimiter)
 	}
 	/**
  	* NOTE: you cant access instance level variables when using public static constants
 	 */
-	 func name(){
+	class func name(){
 		return STRING_UTIL_NAME
 	}
  }
+StringUtil.name()
+StringUtil.split("abc 123"," ")

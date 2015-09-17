@@ -231,6 +231,10 @@ class Person{
 	func desc()->String{
 		return name + ", " + age
 	}
+	func deinit(){//system calls this method when an object is not used anymor
+		//usefull if you need to close a connection to a database at the end of a lifetime of the ojb etc
+		//needs more research
+	}
 }
 
 var newPerson : Person = Person(name:"Louie",age:73)

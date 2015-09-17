@@ -90,7 +90,7 @@ some(data:"testing")
 
 
 //array
-var someArray = [1,2,3]//mutable
+var someArray:Array = [1,2,3]//mutable
 let stringArray = ["a","some","this"]//immutable
 var anotherArray:[String]
 anotherArray = ["abc","123"]
@@ -289,7 +289,7 @@ Println("your value: \(newPerson.desc())")
 
  */
  class StringUtil{
- 	class var STRING_UTIL_NAME = "string_util"//this is what is typically refered to as a public staic constant in other languages and is accessible from the class it self, not instances of it
+ 	class var STRING_UTIL_NAME = "string util"//this is what is typically refered to as a public staic constant in other languages and is accessible from the class it self, not instances of it
  	/**
  	 * Returns a list of text items by splitting a text at every delimiter
 	 */
@@ -303,5 +303,5 @@ Println("your value: \(newPerson.desc())")
 		return STRING_UTIL_NAME
 	}
  }
-StringUtil.name()
-StringUtil.split("abc 123"," ")
+StringUtil.name()//string util
+StringUtil.split("abc 123"," ")[0]//"123"

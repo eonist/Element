@@ -267,14 +267,17 @@ Println("your value: \(newPerson.desc())")
  	 */
  
  	var fullName:String {
-	 	get{
+	 	get{//getter
 			 return firstName + " " + lastName 	
 	 	}
-		set{
+		set{//setter
 			 var fullNameArray = newValue.componentsSeperatedByString(" ")//newValue is the value you resive from the setter
 			 firstName = fullNameArray[0]
 			 lastName = fullNameArray[1]
 	 	}
+	 }
+	 var occupation:String{//same as getter just "shorthand"
+	 	return = "Quant"
 	 }
  }
  var sammy:Employee = Employee(name:"Sammy")

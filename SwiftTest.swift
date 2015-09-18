@@ -555,3 +555,22 @@ extension String {
 }
 var message = "I want to reverse all the words in this string"
 message.reversewords()
+
+//
+
+class SimpleC1ass {
+	var singleProperty : String = "A string"
+}
+let mylnts  = [123,456,789,345,678,234]
+let myStrings = ["red","green","blue"]
+let myobjects = [SimpleClass(),SimpleClass(),SimpleClass()]
+func displayArray<T>(theArray : [T]) -> T {
+	println(Printing the array:)
+	for eachitem in theArray {
+		print(eachitem)
+		print("  :  ")
+	}
+	println()
+	let finalElement : T = theArray[theArray.count-1]
+	return finalElement
+}

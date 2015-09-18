@@ -485,3 +485,7 @@ for item in controls {
 		picker.datePickerMode = UIDatePickerMode.CountDownTimer
 	}                                      I
 }
+
+//shorthand in swift:
+let x = 10, y = 20;
+let max = (x < y) ? y : x ; // So max = 20

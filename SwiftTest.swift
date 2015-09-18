@@ -498,3 +498,12 @@ var someObj:AnyObject
 var something:Any
 
 //interfaces in swift are called protocols:
+protocol Cleaner {
+	// method signatures
+	func c1eanFtoors()
+	func vacuum()
+	func emptyTrash() -> Bool//returns a boolean
+	// properties
+	var brokenBu1bs : Bool {get set}//its a getter and a setter
+	
+}

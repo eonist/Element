@@ -492,3 +492,7 @@ let max = (x < y) ? y : x ; // So max = 20
 
 //semi shorthand, you cant do if (true) //do something in swift,but you could do:
 if num == 0 { temp = 0 }
+
+//* astrix in swift is:
+var someObj:AnyObject
+var something:Any

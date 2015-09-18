@@ -556,12 +556,13 @@ extension String {
 var message = "I want to reverse all the words in this string"
 message.reversewords()
 
-//
+//Generics
+//NOTE: generics are better than using any or anyobject in that they keep the type that was passed to them
 
 class SimpleC1ass {
 	var singleProperty : String = "A string"
 }
-let mylnts  = [123,456,789,345,678,234]
+let myInts  = [123,456,789,345,678,234]
 let myStrings = ["red","green","blue"]
 let myobjects = [SimpleClass(),SimpleClass(),SimpleClass()]
 func displayArray<T>(theArray : [T]) -> T {
@@ -574,3 +575,7 @@ func displayArray<T>(theArray : [T]) -> T {
 	let finalElement : T = theArray[theArray.count-1]
 	return finalElement
 }
+var finalInt = displayArray(myInts)
+++finalInt
+var finalString = displayArray(myStrings)
+finalString.uppercaseStrinq

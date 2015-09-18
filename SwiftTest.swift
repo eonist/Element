@@ -487,7 +487,7 @@ for item in controls {
 }
 
 //shorthand in swift:
-let x = 10, y = 20;
+let x = 10, y = 20; 
 let max = (x < y) ? y : x ; // So max = 20
 
 //semi shorthand, you cant do if (true) //do something in swift,but you could do:
@@ -505,5 +505,4 @@ protocol Cleaner {
 	func emptyTrash() -> Bool//returns a boolean
 	// properties
 	var brokenBu1bs : Bool {get set}//its a getter and a setter
-	
 }

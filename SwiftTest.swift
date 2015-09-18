@@ -481,7 +481,7 @@ for item in controls {
 		picker!.datePickerMode = UIDatePickerMode.CountDownTimer
 	}
 	// option 3 - combine
-	if let picker = item as? UIDatePicker {
+	if let picker = item as? UIDatePicker {//this is like doing: var picker = picker is UIDatePicker ? picker as UIDatePicker : picker; in another language
 		picker.datePickerMode = UIDatePickerMode.CountDownTimer
 	}                                      I
 }

@@ -531,3 +531,10 @@ class MyClass : ExampleProtocol {
 		return 59
 	}
 }
+
+/*
+Extensions in Swift
+ Add methods and properties to existing types
+ Doesn't require source code for the type
+' Can be added to classes, structures and enumerations
+*/

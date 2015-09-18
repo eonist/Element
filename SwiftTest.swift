@@ -511,3 +511,4 @@ protocol Cleaner {
 	// properties
 	var brokenBu1bs : Bool {get set}//its a getter and a setter
 }
+//NOTE: in xcode if you have protocols you can make the methods in the class by starting to write the method name and then hit enter and the entire method will auto complete

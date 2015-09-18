@@ -497,6 +497,11 @@ if num == 0 { temp = 0 }
 var someObj:AnyObject
 var something:Any
 
+//and for array:
+var arrayofobjects : [Anyobject]
+var arrayofAnything : [Any]
+
+
 //interfaces in swift are called protocols:
 protocol Cleaner {
 	// method signatures

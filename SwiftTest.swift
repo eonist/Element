@@ -496,3 +496,5 @@ if num == 0 { temp = 0 }
 //* astrix in swift is:
 var someObj:AnyObject
 var something:Any
+
+//interfaces in swift are called protocols:

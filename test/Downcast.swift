@@ -1,3 +1,9 @@
+let myButton    = UIButton()
+let myS1ider    = UISlider()
+let myTextFie1d = UITextFie1d()
+let myDatePicker = UIDatePicker()
+let controls = [myButton, mySlider, myTextField, myDatePicker]
+
 //type casting
 for item in controls {
 	// option 1: check type with "is"

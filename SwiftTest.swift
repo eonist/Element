@@ -629,6 +629,13 @@ nc.postNotification(notification)//this will not yield anything
 
 /**
  * Polymorphism in swift:
+ Polymorphic Operators
+- is checks for protocol conformance or type
+For protocol conformance or super-class
+- as? conditionally downcasts
+Like optional unwrapping
+-as forces downcasts
+You better know what you're doing
  */
 
 @objc protocol MediaType {//prefix the protocol with @objc to make is asserting work

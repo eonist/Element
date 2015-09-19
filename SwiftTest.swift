@@ -123,31 +123,33 @@ for (theKey,theValue) in theDict{
 var anotherDict : [String]
 anotherDict
 
-//tuples almost like objects
-var someTuple = ("test",22,10.2,"abc")
-func testingTuples()->(String,Int){
-	return ("test",55)
-}
-var res = testingTuples()
-printin("your value: \(res.0) and \(res.1)")
-var (name,num) = testingTuples()
-printin("your value: \(name) and \(num)")
-//named tuples. aka decomposing
-func testingTuples2()->(name:String,num:Int){
-	return ("test",55)
-}
-
-
-printin("your value: \(res.name) and \(res.num)")
-
-//you cant use values that arent set
-var someVal:Int
-printin("your value: \(someVal)")//throws error
-var someVal2:Int?//optional value the same as assigning = nil
-printin("your value: \(someVal2)")//nil
-someVal2 = 3
-if someVal2 != nil {
-	printin("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
+class TuppleTest{
+	//tuples almost like objects
+	var someTuple = ("test",22,10.2,"abc")
+	func testingTuples()->(String,Int){
+		return ("test",55)
+	}
+	var res = testingTuples()
+	printin("your value: \(res.0) and \(res.1)")
+	var (name,num) = testingTuples()
+	printin("your value: \(name) and \(num)")
+	//named tuples. aka decomposing
+	func testingTuples2()->(name:String,num:Int){
+		return ("test",55)
+	}
+	
+	
+	printin("your value: \(res.name) and \(res.num)")
+	
+	//you cant use values that arent set
+	var someVal:Int
+	printin("your value: \(someVal)")//throws error
+	var someVal2:Int?//optional value the same as assigning = nil
+	printin("your value: \(someVal2)")//nil
+	someVal2 = 3
+	if someVal2 != nil {
+		printin("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
+	}
 }
 /**
  * //the code bellow is a way swift can do basically this:
@@ -164,51 +166,50 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 }else{
 	printin("your value: \("no val found for that key")")
 }
-//enumerations:
-//enums are simple classes that can be used like this:
-
-enum CarsType{
-	case Tractor
-	case Sports
-	case Sedan
-	//or case Tractor, Sports,Sedan
-}
-
-var johnLikes:CarType
-johnLikes = CarType.Sedan
-johnLikes = .Sedan
-
-switch johnLikes{
-	case .Sedan
-		printin("he likes sedan")
-	case .Sports
-		printin("he likes sport cars")
-	case .Tractor
-		printin("he likes tractors")
-	default
-		break;
-}
-
-//execute a method via a parameter
-
-let someMethod = {
-	printin("your value: something")
-}
-
-func anotherMethod( theMethod : ()->() ){
-	for i in 0...5 {
-		theMethod()//performs this method 5 times
+class EnumTest{//enumerations:
+	//enums are simple classes that can be used like this:
+	enum CarsType{
+		case Tractor
+		case Sports
+		case Sedan
+		//or case Tractor, Sports,Sedan
+	}
+	
+	var johnLikes:CarType
+	johnLikes = CarType.Sedan
+	johnLikes = .Sedan
+	
+	switch johnLikes{
+		case .Sedan
+			printin("he likes sedan")
+		case .Sports
+			printin("he likes sport cars")
+		case .Tractor
+			printin("he likes tractors")
+		default
+			break;
 	}
 }
-anotherMethod(someMethod)
-anotherMethod({printin("hello")})//hello 5 times
+class MethodTest{//execute a method via a parameter
+	let someMethod = {
+		printin("your value: something")
+	}
+	
+	func anotherMethod( theMethod : ()->() ){
+		for i in 0...5 {
+			theMethod()//performs this method 5 times
+		}
+	}
+	anotherMethod(someMethod)
+	anotherMethod({printin("hello")})//hello 5 times
+}
 
 //closure method passed to the sort method of swift:
 func lowestToHighest(a:Int,b:Int)->Bool{
 	return a < b;
 }
-//convert this to a clouser method:
-let lowToHig{(a:Int,b:Int)->Bool in
+//Nd then we convert this to a clouser method:
+let lowToHigh{(a:Int,b:Int)->Bool in
 	return a < b;
 }
 
@@ -223,7 +224,7 @@ class Person{
 	/**
  	 * NOTE: initializers are optional you can still use this object without passing params
 	 */
-	func init(name:String,age:Int){//class initializer w/ params
+	func init(name:String = "jo",age:Int = 22){//class initializer w/ params
 		self.name = name;//self refers to properties outside the method bit inside the class, aka this in other languages
 		self.age = age;
 	}
@@ -246,6 +247,7 @@ printin("your value: \(newPerson.desc())")
 /**
  * class inheritance: super class and sub class
  * NOTE: if you mark a class final like:"final class Employee" then it cant be overriden by inheritance
+ * NOTE: you may also overide variable setters and getters in swift simply, with the overide key infront of it
  */
  class Employee:Person{
  	var sallary:Int
@@ -263,11 +265,28 @@ printin("your value: \(newPerson.desc())")
  			printin("your value: \(oldNickName)")
  		}
  	}
+ 	/**
+ 	 * NOTE: any overide of init must call the designated init method of the superclass
+ 	 * NOTE: you can also have many designated initializers
+ 	 * NOTE: you can create a class without initializers, if all public properties are set
+ 	 * NOTE: designated initiaizers are inherited if the class doesnt provide any of its own
+ 	 * NOTE: convenince initializers are inherited if the subclass has all of the superclasses designated initializers
+ 	 */
  	overide init(sallery:Int){
  		self.sallery = sallery;
- 		
- 		super.init()
+ 		super.init()//we always call the super init last in the method, unlike obj-c
  	}
+ 	/**
+	 * convenince initializers are a way to have many inits that can have different ways of initing your class
+	 * NOTE: the convenince initializer must call the designated initializer at somepoint. 
+	 */
+	convenience init(fullName:String){
+		self.init()//when using a convenince initializer you must call the designated initializer before setting any properties
+		var fullNameArray = newValue.componentsSeperatedByString(" ")//newValue is the value you resive from the setter
+		self.firstName = fullNameArray[0]
+		self.lastName = fullNameArray[1]
+		
+	}
  	func calcBonus()->Int{
 		return 5+2
 	}		
@@ -578,4 +597,93 @@ func displayArray<T>(theArray : [T]) -> T {
 var finalInt = displayArray(myInts)
 ++finalInt
 var finalString = displayArray(myStrings)
-finalString.uppercaseStrinq
+finalString.uppercaseString
+
+//observers are like eventListeners in other languages
+
+class Observer: Object {
+	deinit {
+		println("So long!")
+		let nc = NSNotificationCenter.defaultCenter()
+		nc.removeobserver(self, name: "TheBigEvent", object: nil)
+	}
+	override init() {
+		super.init()
+		let nc = NSNotificationCenter.defaultCenter()
+		nc.addobserver(self, selector: "processBigEvent:", name: TheBigObject: nil)
+	}
+	fund processBigEvent(notification: NSNotification) {
+		println("Whoa! Looks like a Big Event has occurred")
+	}	
+}
+//then manipulate the observers a little:
+let notification = NSNotification(name: "TheBigEvent", object: nil)
+let nc = NSNotificationCenter.defaultCenter()
+nc.postNotification(notification)
+var observers = [observer()]//init an instance of the observer
+nc.postNotification(notification)// this will print the whoa!...
+observers.removeAll()//removes reference in the array, and subsequentally the deinit is called and "so long!" is printed, this only works in a project though, playground wont show this
+nc.postNotification(notification)//this will not yield anything
+
+//NOTE: to dealloc a swift obj instance you can do: someObj = nil
+
+/**
+ * Polymorphism in swift:
+ */
+
+@objc protocol MediaType {//prefix the protocol with @objc to make is asserting work
+	var contentType: String { get }
+}
+class Movie {
+	enum Resolution: String {
+		case TenEightyProgressive = "1080p"
+		case SevenTwentyProgressive - "720p"
+		case TenEightylnterlaced = "1080i"
+	}
+	var resolution: Resolution
+	init(resolution: Resolution) {
+		self.resolution = resolution
+	}
+}
+class MPEG4Movie: Movie, MediaType {
+	var contentType: String { return "video/mp4" }
+}
+class 0uicktimeMovie: Movie, MediaType {
+	var contentType: String { return "video/quicktime" }
+}
+
+class Audio {
+	var bitRate: Int
+	init(bitRate: Int) {
+		self.bitRate = bitRate
+	}
+}
+class MP3: Audio, MediaType { 
+	var contentType: String {return "audio/mpeg" }
+}
+class Ogg: Audio, MediaType {
+	var contentType: String {return "audio/ogg" }
+}
+
+let m1   = MPEG4Movie(resolution .TenEightyProgressive)
+let m2   = 0uicktimeMovie(resolutin: .SevenTwentyProgressive)
+let m3  = 0uicktimeMovie(resolutin: .TenEightylnterlaced)
+let al  = MP3(bitRate: 128)
+let a2  = 0gg(bitRate: 128)
+let a3  = MP3(bitRate: 256)
+let stuff = [m1, a3, m2, a2, m3, a1, "Foobar", 123, false]
+for thing in stuff {
+	if thing is MediaType {
+		let media = thing as MediaType
+		println("Media found:\(media.contentType)")
+		print("     ")
+		if let movie = thing as? Movie {
+			println("Movie resolution is \(movie.resolution.toRaw())")
+		}else if let sound = thing as? Audio {
+			println("Audio bit rate is \(sound.bitRat) kbps")
+		}
+	}
+	else {
+		println("Unknown media: \(thing)")
+	}
+}

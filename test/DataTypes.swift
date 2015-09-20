@@ -1,8 +1,5 @@
 /**
- * TODO: add the wiki of this project to GitSync ICloud integration
- * TODO: mostly this project will consist off research post in wiki and issues, about regexp, super class tests, database integration, svg drawing, graphics drawing etc, to see if Element is even viable to be made for swift.
  * Note: swift is very inspired by AppleScript!
- * Todo: other people must have writtem swift gotchas / guides, find them
  */
 var someString:String = "some text";
 someText += " more text"//string or text;

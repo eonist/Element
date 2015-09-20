@@ -1,3 +1,15 @@
+func someFunction(name:String,var key:String)->String{//params are constant by default, to make the mutable add the var infront of the param
+	//doSomething
+	key = key + "c"
+	printin("hello, \(someText)")
+	return key;
+}
+someFunction("test","ab")
+
+//NOTE: can params have default values? yes but you must name them
+some()
+some(data:"testing")
+
 class MethodTest{//pass a method via a para and execute it 
 	let someMethod = {
 		printin("your value: something")

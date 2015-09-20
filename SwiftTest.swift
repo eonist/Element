@@ -301,7 +301,7 @@ var score : 99
 score++
 score--
 // PREfiX
-++sco§g
+++score
 --score
 
 
@@ -312,12 +312,7 @@ score--
 
 
 
-//shorthand in swift:
-let x = 10, y = 20; 
-let max = (x < y) ? y : x ; // So max = 20
 
-//semi shorthand, you cant do if (true) //do something in swift,but you could do:
-if num == 0 { temp = 0 }
 
 //* astrix in swift is:
 var someObj:AnyObject

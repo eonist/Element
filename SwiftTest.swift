@@ -219,26 +219,7 @@ var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
 
 
 
-//Access levels in Swift 
-//private only accessible from within the same source code file 
-//internal This is the default accessible across multiple code files, but must be compiled together into the same module 
-//public accessible from any module that has imported yours 
 
-//Changing access levels public 
-class Player {
-	//properties no modifier, will default to internal 
-	var name: String 
-	var score Int 
-	//public methods 
-	public func description {
-		printin ("Player V (name) has a score of V (score)") 
-	
-	}
-	//private methods 
-	private func calculateBonus {
-		//
-	}
-}
 /*
  * Structures in Swift
  * Structures are value types (pass by value)
@@ -258,7 +239,7 @@ class SimpleClass {//replacing the class with struct makes this a struct which b
 }
 // Simple function that changes an object
 func changeObject(var object : SimpleClas5) -> Int {
-object.value += 1000
+	object.value += 1000
 	return obj ect.value
 }
 // create a new instance (reference type)

@@ -1,3 +1,24 @@
+//Access levels in Swift 
+//NOTE: private only accessible from within the same source code file 
+//NOTE: internal This is the default accessible across multiple code files, but must be compiled together into the same module 
+//NOTE: public accessible from any module that has imported yours 
+
+//Changing access levels public 
+class Player {
+	//properties no modifier, will default to internal 
+	var name: String 
+	var score Int 
+	//public methods 
+	public func description {
+		printin ("Player V (name) has a score of V (score)") 
+	
+	}
+	//private methods 
+	private func calculateBonus {
+		//
+	}
+}
+
 //classes:
 class Person{
 	//properties accessabøe outside a class:

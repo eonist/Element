@@ -110,59 +110,8 @@ anotherArray.insert("hello",atIndex:2)
 for theItem in anotherArray{
 	printin("your value: \(theItem)")
 }
-//dictionaries aka associative arrays
-var theDict=["color":"blue","type":"car"]
-printin("your value: \(theDict["type"])")//"car"
-theDict["color"] = "red"//change values
-.updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
-theDict["material"] = "plastic"//add new key value pairs
-theDict["color"] = nil//removes the value key pair
-for (theKey,theValue) in theDict{
-	printin("your value: \(value) and key: \(key)")
-}
-var anotherDict : [String]
-anotherDict
 
 
-/**
- * //the code bellow is a way swift can do basically this:
- * var res = theDict["someKeyNameThatDoesNotExist"] 
- * if res != nil {
- *		print the res
- * }else{
- * 	printin("your value: \("no val found for that key")")
- * }
- */
-
-if var res : String = theDict["someKeyNameThatDoesNotExist"] {
-	printin("your value: \(res)")
-}else{
-	printin("your value: \("no val found for that key")")
-}
-class EnumTest{//enumerations:
-	//enums are simple classes that can be used like this:
-	enum CarsType{
-		case Tractor
-		case Sports
-		case Sedan
-		//or case Tractor, Sports,Sedan
-	}
-	
-	var johnLikes:CarType
-	johnLikes = CarType.Sedan
-	johnLikes = .Sedan
-	
-	switch johnLikes{
-		case .Sedan
-			printin("he likes sedan")
-		case .Sports
-			printin("he likes sport cars")
-		case .Tractor
-			printin("he likes tractors")
-		default
-			break;
-	}
-}
 
 
 

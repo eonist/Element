@@ -123,34 +123,7 @@ for (theKey,theValue) in theDict{
 var anotherDict : [String]
 anotherDict
 
-class TuppleTest{
-	//tuples almost like objects
-	var someTuple = ("test",22,10.2,"abc")
-	func testingTuples()->(String,Int){
-		return ("test",55)
-	}
-	var res = testingTuples()
-	printin("your value: \(res.0) and \(res.1)")
-	var (name,num) = testingTuples()
-	printin("your value: \(name) and \(num)")
-	//named tuples. aka decomposing
-	func testingTuples2()->(name:String,num:Int){
-		return ("test",55)
-	}
-	
-	
-	printin("your value: \(res.name) and \(res.num)")
-	
-	//you cant use values that arent set
-	var someVal:Int
-	printin("your value: \(someVal)")//throws error
-	var someVal2:Int?//optional value the same as assigning = nil
-	printin("your value: \(someVal2)")//nil
-	someVal2 = 3
-	if someVal2 != nil {
-		printin("your value: \(someVal2!)")//forced unwrapping with !, you do this if you know the value isnt nil, even though it isnt assigned on init of the var
-	}
-}
+
 /**
  * //the code bellow is a way swift can do basically this:
  * var res = theDict["someKeyNameThatDoesNotExist"] 
@@ -190,32 +163,6 @@ class EnumTest{//enumerations:
 			break;
 	}
 }
-class MethodTest{//execute a method via a parameter
-	let someMethod = {
-		printin("your value: something")
-	}
-	
-	func anotherMethod( theMethod : ()->() ){
-		for i in 0...5 {
-			theMethod()//performs this method 5 times
-		}
-	}
-	anotherMethod(someMethod)
-	anotherMethod({printin("hello")})//hello 5 times
-}
-
-//closure method passed to the sort method of swift:
-func lowestToHighest(a:Int,b:Int)->Bool{
-	return a < b;
-}
-//Nd then we convert this to a clouser method:
-let lowToHigh{(a:Int,b:Int)->Bool in
-	return a < b;
-}
-
-var someInts:[Int] = [500,63,99,23]
-var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
-
 
 
 

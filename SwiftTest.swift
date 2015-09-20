@@ -240,19 +240,17 @@ class Player {
 	}
 }
 /*
-Structures in Swift
- Structures are value types (pass by value)
-when assigned to another variable, or passed to a
-function, a structure's value is copied
- 
- Classes are reference types (pass by reference)
-when assigned to another variable, or passed to a
-function, a reference to the original object is passed
-
-NOTE: structs does not support heritance
-NOTE: you get automated param suggestions for variables when using structs
-NOTE: structs are great as dataContainers that wont be needing heritance
-*/
+ * Structures in Swift
+ * Structures are value types (pass by value)
+ * when assigned to another variable, or passed to a
+ * function, a structure's value is copied
+ * Classes are reference types (pass by reference)
+ * when assigned to another variable, or passed to a
+ * function, a reference to the original object is passed
+ * NOTE: structs does not support heritance
+ * NOTE: you get automated param suggestions for variables when using structs
+ * NOTE: structs are great as dataContainers that wont be needing heritance
+ */
 
 // Playground - Pass By Reference
 class SimpleClass {//replacing the class with struct makes this a struct which behave like a copy not a reference
@@ -306,35 +304,6 @@ score--
 ++sco§g
 --score
 
-//comparing 
-
-var someDate = NsDateComponents()
-var someOtherDate = NsDateComponents()
-var thirdDate = someDate
-
-someDate == someOtherDate//true
-someDate === someOtherDate//false
-someDate == thirdDate//true
-
-//nil coalecing
-
-//in other languages you could do:
-var someVal : String = someURL != nil ? someURL : defaultURL
-
-//in swift you would do:
-//I Playground - Nil Coalescing speratur
-var personalSite : String?
-let defaultSite = "http:ffwww.lynda.com"
-//If ... Later ...
-var website : String
-if persanalsite != nil {//unwrap the variable
-	website = personalSite!
-} else {
-	website = defaultSite
-}
-
-//shorthand way of doing it, similar to if else shorthand in other languages:
-var website = personalSite ?? defaultSite
 
 
 //modulo 

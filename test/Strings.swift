@@ -16,3 +16,9 @@ thirdStr += "abc"//concat the string
 var theChar:Character = "a"
 var theChar2:Character = "b"
 theChar + theChar2//yields a string containing "ab", 
+
+//comparing strings
+"a" == "b"//false
+"a" != "b"//true
+//the bang operator:
+!("a" == "b"//true)

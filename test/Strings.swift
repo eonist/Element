@@ -22,4 +22,4 @@ theChar + theChar2//yields a string containing "ab",
 "a" != "b"//true
 //the bang operator:
 !("a" == "b"//true)
-"a" < "b"//true. a is lexically less than b, there is no greater than operator
+"a" < "b"//true. a is lexically less than b, there is no greater than operator, use the bang operator for this support

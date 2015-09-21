@@ -14,6 +14,9 @@ anotherArray += ["test"]
 anotherArray.insert("hello",atIndex:2)
 //remove at index
 .removeAt(2)
+.removeRange(1...2)
+.removeAll()//clears out the array
+.capacity//how much memory allocated to the array
 .removeLast()
 //find array length
 .count
@@ -26,7 +29,7 @@ for theItem in anotherArray{
 //half closed range operator
 someArray[1..<3]//2,3
 //
-someArray[1..2]//2,3
+someArray[1...2]//2,3
 
 someArray.insert(4,atIndex:2)
 someArray.[2] = 8//this replaces the item at index 2

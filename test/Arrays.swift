@@ -36,4 +36,5 @@ someArray.[2] = 8//this replaces the item at index 2
 
 //extend
 someArray.removeAll(keepCapacity:true)
-someArray.extend
+someArray.capacity//3
+someArray.extend([4,5,6])//repopulate the array

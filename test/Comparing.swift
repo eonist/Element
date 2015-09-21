@@ -25,7 +25,7 @@ if persanalsite != nil {//unwrap the variable
 	website = defaultSite
 }
 
-//shorthand way of doing it, similar to if else shorthand in other languages:
+//shorthand way of doing it, almost like to if else shorthand in other languages:
 var website = personalSite ?? defaultSite
 
 //shorthand in swift:

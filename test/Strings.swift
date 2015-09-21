@@ -11,3 +11,8 @@ var theInt = anotherInt.toInt() ?? 0//whoch would set the theInt to 0 of the ano
 
 var thirdStr = "test"
 thirdStr += "abc"//concat the string
+
+//NOTE: you can concat a vhar and a string
+var theChar:Character = "a"
+var theChar2:Character = "b"
+theChar + theChar2//yields a string containing "ab", 

@@ -40,3 +40,11 @@ someArray.capacity//3
 someArray.count//0
 someArray.extend([4,5,6])//repopulate the array
 someArray.reserveCapacity(10)//adds more capacity
+
+//sorting
+let sortedCo1ors = colors.sorted() { $0 < $1 }//returns but does not change the original array
+sortedCo1ors//has new order
+colors//remains the same order
+colors.sort() { $0 < $1 }//changes the original array
+colors//has new order
+

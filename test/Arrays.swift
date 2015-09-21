@@ -65,7 +65,7 @@ var tota1Count = 0
 	for length in colorLengths {
 	totalCount += length
 }
-totalCount
+totalCount//num of chars of all items in array
 //fast map reduce:
 let totalLength = colorLengths.reduce(0) { $0 + $1 }
 totalLength//num of chars of all items in array

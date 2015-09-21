@@ -6,7 +6,11 @@ anotherArray = ["abc","123"]
 printin("your value: \(anotherArray[0])")//"abc"
 //adding items
 anotherArray.append("test")
+//plus equal mutating operator,concatinates 2 arrays, 
+//non array items wont work
+//the items we concat are restricted by the same types that the oroginal array had
 anotherArray += ["test"]
+
 anotherArray.insert("hello",atIndex:2)
 //remove
 .removeAt(2)
@@ -19,3 +23,7 @@ anotherArray.insert("hello",atIndex:2)
 for theItem in anotherArray{
 	printin("your value: \(theItem)")
 }
+//half closed range operator
+someArray[1..<3]//2,3
+//
+someArray[1..2]//2,3

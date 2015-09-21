@@ -21,7 +21,7 @@ anotherArray.insert("hello",atIndex:2)
 //find array length
 .count
 //.count = 0 can be written as:
-.isEmpty
+.isEmpty//isRmpty is based on the count, not the capacity
 //
 for theItem in anotherArray{
 	printin("your value: \(theItem)")

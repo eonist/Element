@@ -56,4 +56,16 @@ longColors //returns all colors longer than 3 letters                           
 
 
 
-//map
+//map and reduce
+
+let colorLengths = co1ors.map() { $0.1engthofBytesUsingEncoding(NSUTFBStringEncoding) }
+colorLengths//num of chars in every color name as an aaray
+//slow mapreduce:
+var tota1Count = 0
+	for length in colorLengths {
+	totalCount += length
+}
+totalCount
+//fast map reduce:
+let totalLength = colorLengths.reduce(0) { $0 + $1 }
+totalLength//num of chars of all items in array

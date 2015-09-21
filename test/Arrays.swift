@@ -27,3 +27,4 @@ for theItem in anotherArray{
 someArray[1..<3]//2,3
 //
 someArray[1..2]//2,3
+someArray.insert(4,atIndex:2)

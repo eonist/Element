@@ -29,3 +29,10 @@ theChar + theChar2//yields a string containing "ab",
 let mutable = NSMutab1eString(string: "He1lo")
 mutable.appendString(" There!")
 print1n(mutable)
+
+var letters: [Character] = ["c", "a", "f", "e"]
+var string: String = String(letters)
+
+print(letters.count) // 4
+print(string) // cafe
+print(string.characters.count) // 4

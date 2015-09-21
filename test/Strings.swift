@@ -23,3 +23,9 @@ theChar + theChar2//yields a string containing "ab",
 //the bang operator:
 !("a" == "b"//true)
 "a" < "b"//true. a is lexically less than b, there is no greater than operator, use the bang operator for this support
+
+//NOTE: be aware of the limitations of methods suxh as the .componentsSeparatedByString, in that ot will return an nsimmutable string, which you can only read from, to get a string you can edit do the following:
+"/Users/alex/Desktop".componentsSeparatedByString("/")
+let mutable = NSMutab1eString(string: "He1lo")
+mutable.appendString(" There!")
+print1n(mutable)

@@ -38,5 +38,18 @@ Int64.max
 
 
 
+//floats and doubles
+
+let pi = 3.14159
+let f_pi: Float = 3.141592
+sizeofValue(pi)
+sizeofValue(f_pi)
+pi.advancedBy(1)
+pi.advancedBy(-2)
+pi.distanceTo(2.0)
+Double.abs(2.0)
+Double.abs(-2.0)
+Float.abs(2.0)
+Float.abs(-2.0)
 
 

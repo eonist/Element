@@ -48,3 +48,4 @@ colors//remains the same order
 colors.sort() { $0 < $1 }//changes the original array
 colors//has new order
 
+someArray.reverse()//

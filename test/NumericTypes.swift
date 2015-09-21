@@ -1,3 +1,4 @@
+//ints
 var someInt:Int = 33
 someInt.predessor()//32
 someInt.successor()//34

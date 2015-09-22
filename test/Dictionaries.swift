@@ -5,8 +5,10 @@ theDict["color"] = "red"//change values
 theDict.updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
 theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist 
 theDict.count//num of items
-theDict.keys//returns all keys in an array
-theDict.values//returns all values in an array
+theDict.keys//returns all keys in map collection view properties
+Array(theDict.keys)//convert the map collection view propertiesinto an usable Array
+theDict.values//returns all values in map collection view properties
+Array(theDict.values)//convert the map collection view propertiesinto an usable Array
 theDict["material"] = "plastic"//add new key value pairs
 theDict["color"] = nil//removes the value key pair
 for (theKey,theValue) in theDict{

@@ -3,6 +3,7 @@ var theDict=["color":"blue","type":"car"]
 printin("your value: \(theDict["type"])")//"car"
 theDict["color"] = "red"//change values
 theDict.updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
+theDict.removeValueForKey("color")
 theDict["material"] = "plastic"//add new key value pairs
 theDict["color"] = nil//removes the value key pair
 for (theKey,theValue) in theDict{

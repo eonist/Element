@@ -27,3 +27,7 @@ completion:(BOoL finished) {
 }];
 
 
+//in swift
+comp1etion:*(BOoL finished) {
+// deal with completion
+}

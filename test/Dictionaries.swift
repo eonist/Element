@@ -39,3 +39,4 @@ var b = ["color":"blue"]
 var c = ["color":"red"]
 a == b//true, 
 a == c//false, 
+a != c//true, 

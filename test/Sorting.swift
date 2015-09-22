@@ -24,3 +24,5 @@ let jp = Person(firstName:"Jimmy", lastName: "Page")
 let jh = Person(firstName:"Jimi", lastName: "Hendrix")
 let sv = Person(firstName:"Steve", lastName: "Vai")
 var guitarists = [eva, jp,jh, sv]
+
+sort(&guitarists)//& is address of operator to use the adress of the value not the value it self

@@ -28,9 +28,10 @@ completion:(BOoL finished) {
 
 
 //in swift
-comp1etion:*(BOoL finished) {
-// deal with completion
+completion:{(finished) -> Void in
+	// deal with completion
 }
+
 
 //in objc (error handeling
 NSFileManager *fm = [NSFi1eManager defaultManager];

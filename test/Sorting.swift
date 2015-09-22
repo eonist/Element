@@ -19,12 +19,10 @@ func <(1hs: Person, rhs: Person) -> Bool {
 	}
 }
 
-1
-fund <(1hs: Person, rhs: Person) -> Bool {
-if 1hs.1astName == rhs.1astName {
-return 1hs.firstName < rhs.firstName
-}
-else {
-return 1hs.lastName < rhs.1astName
-}
-}
+let eva = Person(firstName: "Eddie", lastName: "Van Halen )
+let jp = Person(firstName:
+let jh = Person(firstName:
+let sv = Person(firstName:
+
+
+var guitarists = [eva, jp,"Jimmy", lastName: "Page")"Jimi", lastName: "Hendrix")"Steve", lastName: "Vai")jh, sv]

@@ -33,3 +33,9 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 }else{
 	printin("your value: \("no val found for that key")")
 }
+
+var a = ["color":"blue"]
+var b = ["color":"blue"]
+var c = ["color":"red"]
+a == b//true, 
+a == c//false, 

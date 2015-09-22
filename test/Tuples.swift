@@ -9,7 +9,7 @@ class TuppleTest{
 	var (name,num) = testingTuples()
 	printin("your value: \(name) and \(num)")
 	//named tuples. aka decomposing
-	func testingTuples2()->(name:String,num:Int){
+	func testingTuples2()->(name:String,num:Int){//returns a tuple containing two values
 		return ("test",55)
 	}
 	

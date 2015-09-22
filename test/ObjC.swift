@@ -17,3 +17,13 @@ UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom]
 //in swift
 let button = UIButton.buttonWithType(.Custom)
 button.addTarget(self,action: "didPressButton:",forContro1Events: .AllEditingEvents)
+
+//in objc
+[UIView animitewithDuration:0.25 animations:{
+	// do animations
+}
+completion:(BOoL finished) {
+	// deal with completion
+}];
+
+

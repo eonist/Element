@@ -19,10 +19,8 @@ func <(1hs: Person, rhs: Person) -> Bool {
 	}
 }
 
-let eva = Person(firstName: "Eddie", lastName: "Van Halen )
-let jp = Person(firstName:
-let jh = Person(firstName:
-let sv = Person(firstName:
-
-
-var guitarists = [eva, jp,"Jimmy", lastName: "Page")"Jimi", lastName: "Hendrix")"Steve", lastName: "Vai")jh, sv]
+let eva = Person(firstName: "Eddie", lastName: "Van Halen" )
+let jp = Person(firstName:"Jimmy", lastName: "Page")
+let jh = Person(firstName:"Jimi", lastName: "Hendrix")
+let sv = Person(firstName:"Steve", lastName: "Vai")
+var guitarists = [eva, jp,jh, sv]

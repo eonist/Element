@@ -29,3 +29,4 @@ sort(&guitarists)//& is address of operator to use the adress of the value not t
 sort(&guitarists) {$0.firstName < $1.firstName}//comparable protocol
 guitarists.reverse()
 var sortedGuitarists = sorted(guitarists)
+sorted(&guitarists) {$0.firstName < $1.firstName}//comparable protocol

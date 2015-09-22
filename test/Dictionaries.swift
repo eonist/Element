@@ -6,7 +6,7 @@ theDict.updateValue("orange",forKey:"color")//change value, the long hand versio
 theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist 
 theDict.count//num of items
 theDict.keys//returns all keys in an array
-
+theDict.values//returns all values in an array
 theDict["material"] = "plastic"//add new key value pairs
 theDict["color"] = nil//removes the value key pair
 for (theKey,theValue) in theDict{

@@ -1,14 +1,6 @@
 
 
-
-
-
-
-//Alternatively in function that is itself marked with throws keyword like this
-
-throws {
-    try rideTheDragon(quest.dragon)
-} 
+//NOTE: Syntax is a bit different: do-catch + try + defer vs traditional try-catch-finally syntax.
 
 //this line should normally be present do-catch block like this
 
@@ -23,6 +15,17 @@ do {
 } catch {
     // Catch all error-handling
 }
+
+
+
+//Alternatively in function that is itself marked with throws keyword like this
+
+throws {
+    try rideTheDragon(quest.dragon)
+} 
+
+
+
 
 
 //In order to throw an error you use throw keyword like this

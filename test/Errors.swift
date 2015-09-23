@@ -55,3 +55,10 @@ do {
 } catch let error as NSError {
     print ("Error: \(error.domain)")
 }
+
+//Throwing an Error:
+//objc
+*errorPtr = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCannotOpenFile userInfo: nil]
+Will be automatically propagated to the caller:
+//swift
+throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotOpenFile, userInfo: nil)

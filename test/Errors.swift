@@ -2,6 +2,7 @@
 
 //NOTE: Syntax is a bit different: do-catch + try + defer vs traditional try-catch-finally syntax.
 //NOTE: Swift exceptions are not compatible with ObjC exceptions. Your do-catch block will not catch any NSException, and vice versa, for that you must use ObjC.
+//NOTE: guard statement (using guard keyword) which let you write little less if/else code than in normal error checking/signaling code.
 //this line should normally be present do-catch block like this
 
 
@@ -16,8 +17,6 @@ do {
     // Catch all error-handling
 }
 
-
-
 //Alternatively in function that is itself marked with throws keyword like this
 
 throws {
@@ -25,11 +24,7 @@ throws {
 } 
 
 
-
-
-
 //In order to throw an error you use throw keyword like this
-
 
 throw DragonError.DragonIsMissing
 
@@ -37,4 +32,26 @@ enum DragonError: ErrorType {
     case DragonIsMissing
     case NotEnoughMana(manaRequired: Int)
     ...
+}
+
+//Excerpt From: Apple Inc. “Using Swift with Cocoa and Objective-C (Swift 2 Prerelease).” iBooks.
+//Example: (from the book)
+
+NSFileManager *fileManager = [NSFileManager defaultManager];
+NSURL *URL = [NSURL fileURLWithPath:@"/path/to/file"];
+NSError *error = nil;
+BOOL success = [fileManager removeItemAtURL:URL error:&error];
+if (!success && error){
+    NSLog(@"Error: %@", error.domain);
+}
+
+
+//The equivalent in swift will be:
+
+let fileManager = NSFileManager.defaultManager()
+let URL = NSURL.fileURLWithPath("path/to/file")
+do {
+    try fileManager.removeItemAtURL(URL)
+} catch let error as NSError {
+    print ("Error: \(error.domain)")
 }

@@ -96,3 +96,17 @@ if !written {
         println("write failure: \(error.localizedDescription)")
     }
 }
+
+
+//In development, you can use assert to catch any errors which might appear, and need to be fixed before going to production.
+//The classic NSError approach isn't altered, you send an NSErrorPointer, which gets populated.
+//Brief example:
+
+var error: NSError?
+var contents = NSFileManager.defaultManager().contentsOfDirectoryAtPath("/Users/leandros", error: &error)
+if let error = error {
+    println("An error occurred \(error)")
+} else {
+    println("Contents: \(contents)")
+}
+

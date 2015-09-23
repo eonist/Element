@@ -10,6 +10,20 @@ throws {
     try rideTheDragon(quest.dragon)
 } 
 
+//this line should normally be present do-catch block like this
+
+
+
+do {
+    try rideTheDragon(redDragon) 
+} catch DragonError.DragonIsMissing {
+    // Error-handling
+} catch DragonError.NotEnoughMana(let manaRequired) {
+    // More error-handlng
+} catch {
+    // Catch all error-handling
+}
+
 
 //In order to throw an error you use throw keyword like this
 

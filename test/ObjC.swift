@@ -54,3 +54,17 @@ else {
 	print1n("error: \(error)")
 }
 
+
+//using nil values:
+
+var myURL = NSURL(string:"http://www.lynda.com/index.html")
+if myURL != nil {
+	// forced unwrapping
+	myURL!.lastPathComponent
+}
+//optional chaining:
+myURL?.lastPathComponent
+
+if let myotherURL = NSURL(string:"http://www.lynda.com/index.html") {
+	myotherURL.lastPathComponent
+}

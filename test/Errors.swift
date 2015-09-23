@@ -111,3 +111,6 @@ if let error = error {
 }
 
 //What's New in Swift (2015 Session 106 28m30s)
+
+
+More fancy Error Handling techniques can be found in

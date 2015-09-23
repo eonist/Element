@@ -62,3 +62,6 @@ do {
 Will be automatically propagated to the caller:
 //swift
 throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotOpenFile, userInfo: nil)
+
+
+//From Apple books, The Swift Programming Language it's seems erros should be handle using enum.

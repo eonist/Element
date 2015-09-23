@@ -55,16 +55,19 @@ else {
 }
 
 
-//using nil values:
+//dealing with  nil values returned from objc methods:
 
 var myURL = NSURL(string:"http://www.lynda.com/index.html")
+//1. asserting with an if statment
 if myURL != nil {
 	// forced unwrapping
 	myURL!.lastPathComponent
 }
-//optional chaining:
+//2. optional chaining:
 myURL?.lastPathComponent
-
+//3. using an if statment in conjunction wih the variable
 if let myotherURL = NSURL(string:"http://www.lynda.com/index.html") {
 	myotherURL.lastPathComponent
 }
+//4. forcefully unwrapping (if your sure it will work, you will get a runtime error if it fails)
+var myURL2 = NSURL(string:"http://www.lynda.com/index.html")!//<-- the trailing ! character

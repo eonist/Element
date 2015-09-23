@@ -80,3 +80,19 @@ case let .Error(error):
     let serverResponse = "Failure...  \(error)"
 }
 
+
+
+//Excerpt From: Apple Inc. “Using Swift with Cocoa and Objective-C.” iBooks. https://itun.es/br/1u3-0.l
+
+//And the books also encourage you to use cocoa error pattern from Objective-C (NSError Object)
+
+Error reporting in Swift follows the same pattern it does in Objective-C, with the added benefit of offering optional return values. In the simplest case, you return a Bool value from the function to indicate whether or not it succeeded. When you need to report the reason for the error, you can add to the function an NSError out parameter of type NSErrorPointer. This type is roughly equivalent to Objective-C’s NSError **, with additional memory safety and optional typing. You can use the prefix & operator to pass in a reference to an optional NSError type as an NSErrorPointer object, as shown in the code listing below.
+var writeError : NSError?
+let written = myString.writeToFile(path, atomically: false,
+    encoding: NSUTF8StringEncoding,
+    error: &writeError)
+if !written {
+    if let error = writeError {
+        println("write failure: \(error.localizedDescription)")
+    }
+}

@@ -110,7 +110,6 @@ if let error = error {
     println("Contents: \(contents)")
 }
 
-//What's New in Swift (2015 Session 106 28m30s)
+//More fancy Error Handling techniques can be found in: What's New in Swift (2015 Session 106 28m30s)
 
-
-More fancy Error Handling techniques can be found in
+//Error handling model: The new error handling model in Swift 2.0 will instantly feel natural, with familiar try, throw, and catch keywords. Best of all, it was designed to work perfectly with the Apple SDKs and NSError. In fact, NSError conforms to a Swift’s ErrorType. You’ll definitely want to watch the WWDC session on What’s New in Swift to hear more about it.

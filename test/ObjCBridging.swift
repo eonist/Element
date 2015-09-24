@@ -183,4 +183,6 @@ else
 Inheriting between languages
  Swift can inherit from Objective-C classes
 - Objective-C cannot inherit from Swift classes
+
  */
+ class Player : NSObject, NSCopying, NSCoding {}

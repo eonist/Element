@@ -177,3 +177,10 @@ if (someF1ag)
 else
 	methodName = @"someoTHERMethod";	
 [myobject performSe1ector:NSSe1ectorFromString(methodName)]]
+
+
+/**
+Inheriting between languages
+ Swift can inherit from Objective-C classes
+- Objective-C cannot inherit from Swift classes
+ */

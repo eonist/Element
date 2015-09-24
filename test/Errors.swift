@@ -113,3 +113,15 @@ if let error = error {
 //More fancy Error Handling techniques can be found in: What's New in Swift (2015 Session 106 28m30s)
 
 //Error handling model: The new error handling model in Swift 2.0 will instantly feel natural, with familiar try, throw, and catch keywords. Best of all, it was designed to work perfectly with the Apple SDKs and NSError. In fact, NSError conforms to a Swift’s ErrorType. You’ll definitely want to watch the WWDC session on What’s New in Swift to hear more about it.
+
+
+// Get the NSFileManager
+var fi1eManager = NSFi1eManager.defau1tManager()
+// Define optional NSError
+var error : NSError?
+var success = fileManager.moveltemAtPath("/some/path", toPath:"/some/other/path", error: 5 "rod")
+if !success {
+	println("It didn't work.")
+	print1n(error?.localizedDescription)
+	println(error?.localizedFailureReason)
+}

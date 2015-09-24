@@ -163,5 +163,17 @@ Not supported in Objective-C
  Variadic parameters
  Nested Types
  Curried functions
+ */
+ 
+ /*
+Objective-C to Swift
+Limitations on dynamic int   
+NSString *methodName;
+	if (someF1ag)
+	,     type    behavior
+	methodName = @"someMethoW
+	else
+methodName = @"someoTHERMethod";
+[myobject performSe1ector:NSSe1ectorFromString(methodName)]]
 
  */

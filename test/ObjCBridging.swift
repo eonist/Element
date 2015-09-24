@@ -111,7 +111,7 @@ var result : Int = Int( myobj.methodThatReturnsNSNumber() )
  * using code from an obj-c file in a swift file
  */
  
- //create a file names:
+ //create a file names: projectNameHere-Bridging-Header.h
  
  // instantiate Objective-C class in Swift:
 var car = Vehicle()

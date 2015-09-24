@@ -37,3 +37,16 @@ var someInts:[Int] = [500,63,99,23]
 var sortedInts:[Int] = sorted(lowToHig)//sorts the ints
 
 //method overloading:
+// square function with Int argument
+func square(value: Int) -> Int{
+	println("Called square with Int argument: \(value)")
+	return value * value
+}
+// square function with Double argument
+func square(value: Double) -> Double{
+	println("Called square with Double argument: \(value)")
+	return value * value
+}
+// test overloaded square functions
+println("Square of Int 7 is \(square(7))\n")
+println("Square of Double 7.5 is \(square(7.5)))

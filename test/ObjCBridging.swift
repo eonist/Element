@@ -105,3 +105,18 @@ NSNumber
 //Swift
 Int, Uint, Float, Double, Bool
 var result : Int = Int( myobj.methodThatReturnsNSNumber() )
+
+
+/**
+ * using code from an obj-c file in a swift file
+ */
+ 
+ //create a file names:
+ 
+ // instantiate Objective-C class in Swift:
+var car = Vehicle()
+car.type = "Tesla Model S"
+car.year = 2014
+car.numberofwhee1s = 4
+return("Player \(name) has a score of \(score) and likes \(car
+description) \n")

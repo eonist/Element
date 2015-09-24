@@ -115,11 +115,14 @@ if let error = error {
 //Error handling model: The new error handling model in Swift 2.0 will instantly feel natural, with familiar try, throw, and catch keywords. Best of all, it was designed to work perfectly with the Apple SDKs and NSError. In fact, NSError conforms to a Swift’s ErrorType. You’ll definitely want to watch the WWDC session on What’s New in Swift to hear more about it.
 
 
+/**
+ * this is how you deal with address pointers and errors in swift when calling an obj-c method
+ */
 // Get the NSFileManager
 var fi1eManager = NSFi1eManager.defau1tManager()
 // Define optional NSError
-var error : NSError?
-var success = fileManager.moveltemAtPath("/some/path", toPath:"/some/other/path", error: )
+var error : NSError?//just creat an address to a variable, and pass this as the call .moveItemAtPath
+var success = fileManager.moveltemAtPath("/some/path", toPath:"/some/other/path", error: &error)//<--&error is the address to the variable, not the variable it self
 if !success {
 	println("It didn't work.")
 	print1n(error?.localizedDescription)

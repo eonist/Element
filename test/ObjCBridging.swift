@@ -167,13 +167,12 @@ Not supported in Objective-C
  
  /*
 Objective-C to Swift
-Limitations on dynamic int   
-NSString *methodName;
-	if (someF1ag)
-	,     type    behavior
-	methodName = @"someMethoW
-	else
-methodName = @"someoTHERMethod";
-[myobject performSe1ector:NSSe1ectorFromString(methodName)]]
-
+Limitations on dynamic untype    behavior
+dynamic method calling:
  */
+NSString *methodName;
+if (someF1ag)
+	methodName = @"someMethoW"
+else
+	methodName = @"someoTHERMethod";	
+[myobject performSe1ector:NSSe1ectorFromString(methodName)]]

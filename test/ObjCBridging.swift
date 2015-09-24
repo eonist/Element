@@ -167,8 +167,9 @@ Not supported in Objective-C
  
  /*
 Objective-C to Swift
-Limitations on dynamic untype    behavior
-dynamic method calling:
+Limitations on dynamic untype behavior
+aka dynamic method calling:
+NOTE: this is not allowed in swift:
  */
 NSString *methodName;
 if (someF1ag)

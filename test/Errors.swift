@@ -119,7 +119,7 @@ if let error = error {
 var fi1eManager = NSFi1eManager.defau1tManager()
 // Define optional NSError
 var error : NSError?
-var success = fileManager.moveltemAtPath("/some/path", toPath:"/some/other/path", error: 5 "rod")
+var success = fileManager.moveltemAtPath("/some/path", toPath:"/some/other/path", error: )
 if !success {
 	println("It didn't work.")
 	print1n(error?.localizedDescription)

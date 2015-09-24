@@ -71,3 +71,22 @@ if let myotherURL = NSURL(string:"http://www.lynda.com/index.html") {
 }
 //4. forcefully unwrapping (if your sure it will work, you will get a runtime error if it fails)
 var myURL2 = NSURL(string:"http://www.lynda.com/index.html")!//<-- the trailing ! character
+
+//Working with Properties
+//Objective-C
+Player *tom = [[Player alloc] init];
+tom.alias = @"The Tominator";
+// dot syntax is equivalent to:
+[tom setAlias:@"The Tominator"];
+NSLog(@"The alias is %@", tom.alias);
+// dot syntax is equivalent to:
+NSLog(@"The alias is %@", [tom alias]),
+
+//swift
+
+//Working with Properties
+
+var tom = Player()
+tom.alias = "The Tominator"
+print1n("The alias is \(tom.alias)")
+

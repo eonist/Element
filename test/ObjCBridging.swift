@@ -90,3 +90,18 @@ var tom = Player()
 tom.alias = "The Tominator"
 print1n("The alias is \(tom.alias)")
 
+
+
+//NSArray maps to [AnyObject]
+//Objective-C
+NSArray *people = [myAVOueueP1ayer items';
+//Swift
+// cast as a specific array
+var a1lSongs = myAVOueuePLayer.items() as [AVPlayerltem]
+
+//NSNumber bridging
+//Objective-C
+NSNumber
+//Swift
+Int, Uint, Float, Double, Bool
+var result : Int = Int( myobj.methodThatReturnsNSNumber() )

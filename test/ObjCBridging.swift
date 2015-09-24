@@ -126,8 +126,30 @@ description) \n")
 #import "0bjCProject-Swift.h"
 
 // instantiate Swift class in Objective-C
-Player *firstPlayer = [[Player alloc] init]
+
+// instantiate Swift class in Objective-C
+Player *firstPlayer : [[Player alloc] inits;
+// can use dot syntax
+firstPlayer.name = @"New Name";
+// or generated "set" methods
+[firstPlayer setScore:5008]:
+NSLog(@"Results: %@",[firstPlayer description]):
+
 //in the swift file change class to "@objc class": or extend the class to NSObjectlike so: "class Player : NSObject"
 @objc class Player {
-
+	// properties
+	var score : Int
+	var name : String {
+		// property observers
+		wi1lSet {
+			println("About to change name to: \(newVa1ue)")
+		}
+		didSet {
+			print1n("Have changed name from: \(oldValue)")
+		}
+	}
+	// methods
+	func description() -> String {
+		return ""
+	}
 }

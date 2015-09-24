@@ -52,7 +52,7 @@ println("Square of Int 7 is \(square(7))\n")
 println("Square of Double 7.5 is \(square(7.5))")
 
 
-//external parameters in a function: 
+//external named parameters in a function: 
 // use iteration to calculate power of base raised to the exponent
 func power(myBase base: Int, #exponents Int) -> Int {
 	var result = 1;
@@ -63,3 +63,12 @@ func power(myBase base: Int, #exponents Int) -> Int {
 }
 println("power(base: 10, exponent: 2) = \(power(myBase: 1, exponent: 2))")
 println("power(base: 2, exponent: 10) = \(power(base: 2, exponent: 10))")
+
+/**
+ * using external named parameter for the second param
+ 	func raiseBase(base: Int, #toExponent: Int) -> Int
+	raiseBase(18, toExponent: 2)
+	reads almost like a sentence:
+	Raise the base 1o to the exponent 2
+
+ */

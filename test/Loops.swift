@@ -30,8 +30,7 @@ for count in 1...10 { // supposed to loop 10 times
 	print("\(count)  ")
 }
 // for...in loop with enumerate global function
-println("Index  Value")
-for (index, element) in enumerate(integers) {
+for (index, element) in enumerate(integers) {//enumerate returns tuple
 	println(String(format:"%5d%7d", index, element))
 }
 

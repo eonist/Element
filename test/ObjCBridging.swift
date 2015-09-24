@@ -120,3 +120,10 @@ car.year = 2014
 car.numberofwhee1s = 4
 return("Player \(name) has a score of \(score) and likes \(car
 description) \n")
+
+
+//init an instance inside an obj-c file from a swift file:
+#import "0bjCProject-Swift.h"
+
+// instantiate Swift class in Objective-C
+Player *firstPlayer = [[Player alloc] init]

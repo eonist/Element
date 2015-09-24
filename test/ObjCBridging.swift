@@ -127,3 +127,7 @@ description) \n")
 
 // instantiate Swift class in Objective-C
 Player *firstPlayer = [[Player alloc] init]
+//in the swift file change class to "@objc class": or extend the class to NSObjectlike so: "class Player : NSObject"
+@objc class Player {
+
+}

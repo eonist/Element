@@ -29,6 +29,11 @@ for count in 1...10 { // supposed to loop 10 times
 	}
 	print("\(count)  ")
 }
+// for...in loop with enumerate global function
+println("Index  Value")
+for (index, element) in enumerate(integers) {
+	println(String(format:"%5d%7d", index, element))
+}
 
 
 

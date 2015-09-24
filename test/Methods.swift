@@ -49,20 +49,17 @@ func square(value: Double) -> Double{
 }
 // test overloaded square functions
 println("Square of Int 7 is \(square(7))\n")
-println("Square of Double 7.5 is \(square(7.5)))
+println("Square of Double 7.5 is \(square(7.5))")
 
 
-
-//// square function with Int argument
-func square(value: Int) -> Int{
-	println("Called square with Int argument: \(value)")
-	return value * value
+//external parameters in a function:
+// use iteration to calculate power of base raised to the exponent
+func power(myBase base: Int, #exponents Int) -> Int {
+	var result = 1;
+	for i in 1...exponent {
+		result *= base
+	}
+	return result
 }
-// square function with Double argument
-func square(value: Double) -> Double{
-println("Called square with Double argument: \(value)")
-return value * value
-}
-// test overloaded square functions
-println("Square of Int 7 is \(square(7))\n")
-println("Square of Double 7.5 is \(square(7.5)))
+println("power(base: 10, exponent: 2) = \(power(myBase: 1, exponent: 2))")
+println("power(base: 2, exponent: 10) = \(power(base: 2, exponent: 10))")

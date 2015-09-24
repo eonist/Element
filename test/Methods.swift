@@ -52,7 +52,7 @@ println("Square of Int 7 is \(square(7))\n")
 println("Square of Double 7.5 is \(square(7.5))")
 
 
-//external parameters in a function:
+//external parameters in a function: 
 // use iteration to calculate power of base raised to the exponent
 func power(myBase base: Int, #exponents Int) -> Int {
 	var result = 1;

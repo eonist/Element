@@ -153,3 +153,15 @@ NSLog(@"Results: %@",[firstPlayer description]):
 		return ""
 	}
 }
+
+/*
+Swift-specific language features
+Not supported in Objective-C
+- Generics and Tuples
+- Swift-defined Enumerations and Structures
+- Swift-defined top-level functions, global variables and type aliases
+ Variadic parameters
+ Nested Types
+ Curried functions
+
+ */

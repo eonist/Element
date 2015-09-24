@@ -90,3 +90,9 @@ var x : 5
 println("0riginal value of x is \(x)")
 square(&x)//<-- you have to explicity add the &, to verify that you know the value will be changed
 
+//undefined num of params in a method:
+// calculate average
+func average(numbers: Double..-) -> Double {
+	var total = numbers.reduce(0.0, {$0 + $1})
+	return total / Doub1e(numbers.count)	
+}

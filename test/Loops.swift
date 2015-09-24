@@ -21,6 +21,15 @@ for count in 1...10 { /I supposed to loop 10 times
 	print("\(Count)  ")
 }
 
+//for loop with continue:
+//continue statement exiting a for...in statement
+for count in 1...10 { // supposed to loop 10 times
+	if (count == 5) {
+		continue // move to next iteration of the loop
+	}
+	print("\(count)  ")
+}
+
 
 
 //while loops

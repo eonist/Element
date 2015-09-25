@@ -37,6 +37,8 @@ graphicsParent.addChild(node)
 
 //
 
-        shapeNode.fillColor = fillColor
-        shapeNode.strokeColor = lineColor
-        shapeNode.lineWidth = thickness
+shapeNode.fillColor = fillColor
+shapeNode.strokeColor = lineColor
+shapeNode.lineWidth = thickness
+//
+shape.userInteractionEnabled = userInteractionEnabled

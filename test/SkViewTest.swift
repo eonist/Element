@@ -49,10 +49,7 @@ shape.userInteractionEnabled = userInteractionEnabled
 
 
 
-//multiple shapes in an skshape:
-
-
-
+//multiple shapes in an skshape: (obj-c)
 SKShapeNode  *shape = [[SKShapeNode alloc] init];
 CGMutablePathRef myPath = CGPathCreateMutable();
 CGPathAddArc(myPath, NULL, 0,0, 15, 0, M_PI*2, YES);
@@ -67,7 +64,4 @@ CGPathAddPath(myPath, NULL, pathThree);
 
 shape.path = myPath;
 
-[effectNode addChild:shape];
-[self addChild:effectNode];
-
-effectNode.shouldRasterize = YES;  // if you don't rasterize it's horrifically slow.
+[self addChild:shape];

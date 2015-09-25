@@ -16,18 +16,18 @@ self.numChildren
 
 //SKShapeNode:
 //circle
-let shapeNode = GraphicsNode(circleOfRadius: radius)
+let shapeNode = SKShapeNode(circleOfRadius: radius)
 //ellipse
-let shapeNode = GraphicsNode(ellipseOfSize: CGSize(width: width, height: height))
+let shapeNode = SKShapeNode(ellipseOfSize: CGSize(width: width, height: height))
 //rect
-let shapeNode = GraphicsNode(rect: CGRect(x: x, y: Stage.size.height - (y + height), width: width, height: height))
+let shapeNode = SKShapeNode(rect: CGRect(x: x, y: Stage.size.height - (y + height), width: width, height: height))
 //triangle
 let path = CGPathCreateMutable()//path
 CGPathMoveToPoint(path, nil, x1, Stage.size.height - y1)
 CGPathAddLineToPoint(path, nil, x2, Stage.size.height - y2)
 CGPathAddLineToPoint(path, nil, x3, Stage.size.height - y3)
 CGPathCloseSubpath(path)
-let shapeNode = GraphicsNode(path: path)
+let shapeNode = SKShapeNode(path: path)
 //adding to view
 self.node.addChild(shapeNode)
 //clearing all shape nodes

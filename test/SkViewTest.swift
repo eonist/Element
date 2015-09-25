@@ -6,8 +6,6 @@ private let skView:SKView = self.view as! SKView)
 
 //width and height
 var size = CGSize(width: self.skView.bounds.width, height: self.skView.bounds.height)
-        
-        
 
 child.node.parent 
 self.node.removeChildrenInArray([child.node])
@@ -32,4 +30,13 @@ CGPathCloseSubpath(path)
 let shapeNode = GraphicsNode(path: path)
 //adding to view
 self.node.addChild(shapeNode)
+//clearing all shape nodes
 node.removeFromParent()
+node = SKNode()
+graphicsParent.addChild(node)
+
+//
+
+        shapeNode.fillColor = fillColor
+        shapeNode.strokeColor = lineColor
+        shapeNode.lineWidth = thickness

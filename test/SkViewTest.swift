@@ -14,6 +14,7 @@ self.node.insertChild(child.node, atIndex: Int(index))
 self.numChildren
 
 //SpriteKit:
+//NOTE: you can also use:CAShapeLayer
 
 //SKShapeNode:
 //circle

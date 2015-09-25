@@ -32,3 +32,4 @@ CGPathCloseSubpath(path)
 let shapeNode = GraphicsNode(path: path)
 //adding to view
 self.node.addChild(shapeNode)
+node.removeFromParent()

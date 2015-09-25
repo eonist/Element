@@ -44,3 +44,30 @@ shapeNode.strokeColor = lineColor
 shapeNode.lineWidth = thickness
 //
 shape.userInteractionEnabled = userInteractionEnabled
+
+
+
+
+
+//multiple shapes in an skshape:
+
+
+
+SKShapeNode  *shape = [[SKShapeNode alloc] init];
+CGMutablePathRef myPath = CGPathCreateMutable();
+CGPathAddArc(myPath, NULL, 0,0, 15, 0, M_PI*2, YES);
+
+CGMutablePathRef pathTwo = CGPathCreateMutable();
+CGPathAddArc(pathTwo, NULL, 50,0, 15, 0, M_PI*2, YES);     
+CGPathAddPath(myPath, NULL, pathTwo);
+
+CGMutablePathRef pathThree = CGPathCreateMutable();
+CGPathAddArc(pathThree, NULL, 100,0, 15, 0, M_PI*2, YES);
+CGPathAddPath(myPath, NULL, pathThree);
+
+shape.path = myPath;
+
+[effectNode addChild:shape];
+[self addChild:effectNode];
+
+effectNode.shouldRasterize = YES;  // if you don't rasterize it's horrifically slow.

@@ -15,4 +15,11 @@ self.node.removeChildrenInArray([child.node])
 self.node.insertChild(child.node, atIndex: Int(index))
 self.numChildren
 
+
 //SKShapeNode
+//circle
+let shapeNode = GraphicsNode(circleOfRadius: radius)
+//ellipse
+let shapeNode = GraphicsNode(ellipseOfSize: CGSize(width: width, height: height))
+//rect
+let shapeNode = GraphicsNode(rect: CGRect(x: x, y: Stage.size.height - (y + height), width: width, height: height))

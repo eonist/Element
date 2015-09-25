@@ -9,4 +9,6 @@ var size = CGSize(width: self.skView.bounds.width, height: self.skView.bounds.he
         
         
 
-        
+child.node.parent 
+self.node.removeChildrenInArray([child.node])
+

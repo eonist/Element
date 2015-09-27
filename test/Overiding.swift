@@ -1,3 +1,4 @@
+//inheritance info: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203
 //Access levels in Swift 
 //NOTE: private only accessible from within the same source code file 
 //NOTE: internal This is the default accessible across multiple code files, but must be compiled together into the same module 

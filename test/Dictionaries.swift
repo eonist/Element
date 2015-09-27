@@ -63,3 +63,10 @@ let piePrice:[String:Double] = ["Apple":3.99,"Raspberry":3.35]
 There are times you need an empty dictionary. In those cases, call the dictionary initializer, which for a dictionary is the key:value pair enclosed in square brackets:
 //var pizzaSizes = Dictionary<Int, String>()
 var pieToppings = [String:Double]()
+
+for myValue  in toppings.values{
+    print ("Value =  \(myValue)")
+}
+for (myKey,myValue) in toppings {
+    print("\(myKey) \t \(myValue)")
+}

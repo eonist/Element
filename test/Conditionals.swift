@@ -1,3 +1,5 @@
+//optionals:http://makeapppie.com/2014/07/30/the-swift-swift-tutorial-ten-points-for-using-optionals/
+
 //if conditions must be true or false, 0 or 1 does not work
 //operators: <,>,==,!= 
 //operators: AND, &&, OR,||

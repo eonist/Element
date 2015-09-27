@@ -28,12 +28,21 @@ anotherDict
  * }
  */
 
+
 if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 	printin("your value: \(res)")
 }else{
 	printin("your value: \("no val found for that key")")
 }
-//optional chaining
+/**
+ * If your dictionary is a constant, you know exactly what’s there. In that case, a forced unwrap like above is fine. If you have a dictionary where you may add or delete elements from the dictionary, make sure you check for nil.
+ */
+if piePrice["Apple"] != nil {
+    let extPrice = piePrice["Apple"]! * slices
+    print("\(slices) slices of Apple Pie is \(extPrice)")
+}
+
+//or more compactly with optional chaining
 if let price = piePrice["Apple"]{
     let extPrice = price * slices
     print("\(slices) slices of Apple Pie is \(extPrice)")

@@ -25,3 +25,9 @@ switch someVal{
 		break;
 }
 
+if let johnsStreet = john.residence?.address?.street {
+    print("John's street name is \(johnsStreet).")
+} else {
+    print("Unable to retrieve the address.")
+}
+// prints "Unable to retrieve the address."

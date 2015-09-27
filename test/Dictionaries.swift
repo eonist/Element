@@ -84,4 +84,16 @@ var valuesArray = [Double](toppings.values)
 
 
 //set
+var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
+You can add a new item into a set by calling the set’s insert(_:) method:
+
+favoriteGenres.insert("Jazz")
+// favoriteGenres now contains 4 items
 Array(theDict.keys)//convert the map collection view propertiesinto an usable Array
+
+/**
+ Use the intersect(_:) method to create a new set with only the values common to both sets.
+Use the exclusiveOr(_:) method to create a new set with values in either set, but not both.
+Use the union(_:) method to create a new set with all of the values in both sets.
+Use the subtract(_:) method to create a new
+ */

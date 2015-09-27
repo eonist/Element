@@ -2,7 +2,9 @@
 var theDict=["color":"blue","type":"car"]
 printin("your value: \(theDict["type"])")//"car"
 theDict["color"] = "red"//change values
+var namesOfIntegers = [Int: String]()
 namesOfIntegers[16] = "sixteen"
+namesOfIntegers = [:]// namesOfIntegers is once again an empty dictionary of type [Int: String]
 theDict.updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
 theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist 
 theDict.count//num of items

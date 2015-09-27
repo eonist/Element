@@ -6,6 +6,7 @@ theDict.updateValue("orange",forKey:"color")//change value, the long hand versio
 theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist 
 theDict.count//num of items
 theDict.keys//returns all keys in map collection view properties
+favoriteGenres.contains("Funk") 
 Array(theDict.keys)//convert the map collection view propertiesinto an usable Array
 theDict.values//returns all values in map collection view properties
 Array(theDict.values)//convert the map collection view propertiesinto an usable Array

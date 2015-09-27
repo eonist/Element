@@ -70,3 +70,13 @@ for myValue  in toppings.values{
 for (myKey,myValue) in toppings {
     print("\(myKey) \t \(myValue)")
 }
+//make a 10% price increase
+for myKey  in toppings.keys{
+    toppings[myKey] = toppings[myKey]! * 1.10
+}
+
+
+/**
+ * Sometimes we need an array of the keys or values, since a particular API requires an array. We can use the .keys or .values to create an array:
+ */
+var valuesArray = [Double](toppings.values)

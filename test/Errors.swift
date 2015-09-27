@@ -1,5 +1,5 @@
 
-
+//https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ErrorHandling.html#//apple_ref/doc/uid/TP40014097-CH42-ID508
 //NOTE: Syntax is a bit different: do-catch + try + defer vs traditional try-catch-finally syntax.
 //NOTE: Swift exceptions are not compatible with ObjC exceptions. Your do-catch block will not catch any NSException, and vice versa, for that you must use ObjC.
 //NOTE: guard statement (using guard keyword) which let you write little less if/else code than in normal error checking/signaling code.

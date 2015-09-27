@@ -36,3 +36,5 @@ if let johnsStreet = john.residence?.address?.street {
     print("Unable to retrieve the address.")
 }
 // prints "John's street name is Laurel Street."
+
+john.residence?.address?.buildingIdentifier()?.hasPrefix("The") 

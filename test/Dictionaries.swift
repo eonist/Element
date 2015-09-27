@@ -40,3 +40,16 @@ var c = ["color":"red"]
 a == b//true, 
 a == c//false, 
 a != c//true, 
+
+You can explicitly type your of key:value pairs. The preferred way to do this is:
+
+let piePrice:[String:Double] = [
+
+
+You can explicitly type your of key:value pairs. The preferred way to do this is:
+
+
+There are times you need an empty dictionary. In those cases, call the dictionary initializer, which for a dictionary is the key:value pair enclosed in square brackets:
+
+
+var pieToppings = [String:Double]()

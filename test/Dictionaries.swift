@@ -33,6 +33,11 @@ if var res : String = theDict["someKeyNameThatDoesNotExist"] {
 }else{
 	printin("your value: \("no val found for that key")")
 }
+//optional chaining
+if let price = piePrice["Apple"]{
+    let extPrice = price * slices
+    print("\(slices) slices of Apple Pie is \(extPrice)")
+}
 
 var a = ["color":"blue"]
 var b = ["color":"blue"]

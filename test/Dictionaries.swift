@@ -2,6 +2,7 @@
 var theDict=["color":"blue","type":"car"]
 printin("your value: \(theDict["type"])")//"car"
 theDict["color"] = "red"//change values
+namesOfIntegers[16] = "sixteen"
 theDict.updateValue("orange",forKey:"color")//change value, the long hand version, returns the old value,nil if key didnt exist 
 theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist 
 theDict.count//num of items
@@ -96,4 +97,12 @@ Array(theDict.keys)//convert the map collection view propertiesinto an usable Ar
 Use the exclusiveOr(_:) method to create a new set with values in either set, but not both.
 Use the union(_:) method to create a new set with all of the values in both sets.
 Use the subtract(_:) method to create a new
+ */
+ 
+ /**
+ Use the “is equal” operator (==) to determine whether two sets contain all of the same values.
+Use the isSubsetOf(_:) method to determine whether all of the values of a set are contained in the specified set.
+Use the isSupersetOf(_:) method to determine whether a set contains all of the values in a specified set.
+Use the isStrictSubsetOf(_:) or isStrictSupersetOf(_:) methods to determine whether a set is a subset or superset, but not equal to, a specified set.
+Use the isDisjointWith(_:) method to determine whether two sets have any values in common.
  */

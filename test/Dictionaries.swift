@@ -6,8 +6,7 @@ theDict.updateValue("orange",forKey:"color")//change value, the long hand versio
 theDict.removeValueForKey("color")//returns the old value,nil if key didnt exist 
 theDict.count//num of items
 theDict.keys//returns all keys in map collection view properties
-favoriteGenres.contains("Funk") 
-Array(theDict.keys)//convert the map collection view propertiesinto an usable Array
+favoriteGenres.contains("Funk") //To check whether a set contains a particular item, use the contains(_:) method.
 theDict.values//returns all values in map collection view properties
 Array(theDict.values)//convert the map collection view propertiesinto an usable Array
 theDict["material"] = "plastic"//add new key value pairs
@@ -81,3 +80,8 @@ for myKey  in toppings.keys{
  * Sometimes we need an array of the keys or values, since a particular API requires an array. We can use the .keys or .values to create an array:
  */
 var valuesArray = [Double](toppings.values)
+
+
+
+//set
+Array(theDict.keys)//convert the map collection view propertiesinto an usable Array

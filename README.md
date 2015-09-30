@@ -1,9 +1,9 @@
 ```swift
 StyleManager.getInstance().addStylesByURL(File.applicationDirectory.url + "assets/css/general.css");
 			
-var button:Button = Button(width:96,height:24,self);
-addChild(Button)
-button.addTarget(self,, action:"onbuttonDown:",event:.TouchUpInside);
+var button:Button = Button(width:96,height:24,self);//Create the button
+addChild(Button)//add the button to the view
+button.addTarget(self,, action:"onbuttonDown:",event:.TouchUpInside);//add an event handler
 		
 func pressedAction(sender: Button!){
 	print("sender.target: " + sender.target);

@@ -4,10 +4,7 @@ addChild(Button)
 button.addEventListener(ButtonEvent.DOWN, onbuttonDown);
 		
 func onbuttonDown(event:ButtonEvent){
-	trace("event.target: " + event.target);
-	var startTime:int = getTimer();
-	StyleResolver.style(event.target as Button);
-	trace("selectRow-duration: " + (getTimer() - startTime));
+	print("event.target: " + event.target);
 }
 ```
 

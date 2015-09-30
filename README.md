@@ -1,10 +1,12 @@
 ```swift
+StyleManager.getInstance().addStylesByURL(File.applicationDirectory.url + "assets/css/general.css");
+			
 var button:Button = Button(width:96,height:24,self);
 addChild(Button)
-button.addTarget(self,.TouchUpInside, action:"onbuttonDown");
+button.addTarget(self,, action:"onbuttonDown:",event:.TouchUpInside);
 		
-func onbuttonDown(event:ButtonEvent){
-	print("event.target: " + event.target);
+func pressedAction(sender: Button!){
+	print("sender.target: " + sender.target);
 }
 ```
 

@@ -1,7 +1,7 @@
 ```swift
 var button:Button = Button(width:96,height:24,self);
 addChild(Button)
-button.addEventListener(ButtonEvent.DOWN, onbuttonDown);
+button.addTarget(self,.TouchUpInside, action:"onbuttonDown");
 		
 func onbuttonDown(event:ButtonEvent){
 	print("event.target: " + event.target);

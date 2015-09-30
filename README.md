@@ -10,7 +10,7 @@ func pressedAction(sender: Button!){
 }
 ```
 
-**Example css:**
+**Example css: (OSX style button)**
 
 ```css
 Button{

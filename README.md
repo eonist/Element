@@ -3,7 +3,7 @@ StyleManager.getInstance().addStylesByURL(File.applicationDirectory.url + "asset
 			
 var button = Button(width:96,height:24,self);//Create the button
 addChild(button)//add the button to the view
-button.addTarget(self,, action:"onbuttonDown:",event:.TouchUpInside)//add an event handler
+button.addTarget(self, action:"onbuttonDown:",event:.TouchUpInside)//add an event handler
 		
 func pressedAction(sender: Button!){
 	print(sender.target)
@@ -25,7 +25,6 @@ Button:down{
 	drop-shadow:drop-shadow:drop-shadow(0px 0 #002D4E 0.8 1.6 1.6 2 2 false);/*same as SubtleShadow but with a blue tint*/
 }
 ```
-
 
 ###Goals
 - Element supports basic needs, extention and decoration is encouraged for advance use

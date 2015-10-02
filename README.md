@@ -1,3 +1,5 @@
+**Example swift:**
+
 ```swift
 StyleManager.getInstance().addStylesByURL(File.applicationDirectory.url + "assets/css/general.css");
 			

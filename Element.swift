@@ -13,5 +13,5 @@ getClassType()
 //getters and setters for all variables
 //implicit getters and setters for some of the variables
 
-//research into how swift handles parent of objects, super.parent etc
+//research how swift handles parent of objects, super.parent etc
 //research why you need skinstate in the element class, test with a simple button

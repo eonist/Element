@@ -1,7 +1,7 @@
 **Example swift:**
 
 ```swift
-StyleManager.getInstance().addStylesByURL(File.applicationDirectory.url + "assets/css/general.css");//call this one time to install all styles
+StyleManager.getInstance().addStyles(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
 var button = Button(width:96,height:24,self);//Create the button
 addChild(button)//add the button to the view

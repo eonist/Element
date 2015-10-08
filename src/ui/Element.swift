@@ -7,7 +7,7 @@ class Element{
 	var id : String;/*css selector id*/
 	var classId : String;/*css selector class identifier*/
 	/**
-	 * 
+	 * This class serves as a base class for the Element GUI framework
 	 */
 	public func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
 		self.width = width;
@@ -18,7 +18,8 @@ class Element{
 		resolveSkin();
 	}
 	/**
-	 * 
+	 * Resolves the skin that the this or the sub-class will use
+	 * @Note resolveSkin sounds like a well-ballanced name, you could consider createContent or createSkin but these doesnt quite describe the action since the skin is resolved not created per se 
 	 */
 	public func resolveSkin(){/*protected*/
 		

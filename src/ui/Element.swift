@@ -2,7 +2,7 @@ class Element{
 	/**
 	 * 
 	 */
-	func init(width:Number = NaN, height:Number = NaN, parent:IElement = null, id:String = null, classId:String = null){
+	func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
 	
 	}
 }

@@ -14,7 +14,7 @@ class Element{
 	/**
 	 * 
 	 */
-	func aetSize(){
+	func setSize(width:Number, height:Number){
 		
 	}
 }

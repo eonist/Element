@@ -10,7 +10,12 @@ class Element{
 	 * 
 	 */
 	public func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
-	
+		self.width = width;
+		self.height = height;
+		self.parent = parent;
+		self.id = id;
+		self.classId = classId;
+		resolveSkin();
 	}
 	/**
 	 * 
@@ -19,9 +24,9 @@ class Element{
 		
 	}
 	/**
-	 * 
+	 * Sets the width and height of the skin and this instance.
 	 */
-	func setSize(width:Number, height:Number){
+	public func setSize(width:Number, height:Number){
 		width = width;
 		self.height = height;
 		self.skin.setSize(width, height);

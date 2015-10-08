@@ -1,14 +1,21 @@
 class Element{
+	var _skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
+	var _skin:Skin;
+	var _width:Number;
+	var _height:Number;
+	var _parent : IElement;
+	var _id : String;/*css selector id*/
+	var _classId : String;/*css selector class identifier*/
 	/**
 	 * 
 	 */
-	func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
+	public func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
 	
 	}
 	/**
 	 * 
 	 */
-	func resolveSkin(){
+	public func resolveSkin(){/*protected*/
 		
 	}
 	/**

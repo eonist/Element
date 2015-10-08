@@ -5,6 +5,12 @@ class Element{
 	func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
 	
 	}
+	/**
+	 * 
+	 */
+	func resolve(){
+
+}
 }
 
 //stub code for the Element class

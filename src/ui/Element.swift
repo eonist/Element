@@ -15,7 +15,9 @@ class Element{
 	 * 
 	 */
 	func setSize(width:Number, height:Number){
-		
+		width = width;
+		self.height = height;
+		self.skin.setSize(width, height);
 	}
 }
 

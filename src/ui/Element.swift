@@ -1,4 +1,4 @@
-class Element{
+class Element:NSView{
 	var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
 	var skin:Skin?
 	var width:Number?
@@ -24,7 +24,7 @@ class Element{
 	 * @Note resolveSkin sounds like a well-ballanced name, you could consider createContent or createSkin but these doesnt quite describe the action since the skin is resolved not created per se 
 	 */
 	public func resolveSkin(){/*protected*/
-		
+		_skin = addSubView(SkinResolver.skin(self)) as Skin;
 	}
 	/**
 	 * Sets the width and height of the skin and this instance.

@@ -8,9 +8,15 @@ class Element{
 	/**
 	 * 
 	 */
-	func resolve(){
-
-}
+	func resolveSkin(){
+		
+	}
+	/**
+	 * 
+	 */
+	func aetSize(){
+		
+	}
 }
 
 //stub code for the Element class

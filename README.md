@@ -1,9 +1,11 @@
+**Example swift:**
+
 ```swift
-StyleManager.getInstance().addStylesByURL(File.applicationDirectory.url + "assets/css/general.css");
+StyleManager.sharedInstance().addStyles(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
-var button = Button(width:96,height:24,self);//Create the button
+var button = Button(96,24,self);//Create the button
 addChild(button)//add the button to the view
-button.addTarget(self, action:"onbuttonDown:",event:.TouchUpInside)//add an event handler
+button.addTarget(self, action:"pressedAction:",event:.TouchUpInside)//add an event handler
 		
 func pressedAction(sender: Button!){
 	print(sender.target)

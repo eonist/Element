@@ -1,3 +1,12 @@
+class Element{
+	/**
+	 * 
+	 */
+	func init(width:Number = NaN, height:Number = NaN, parent:IElement = null, id:String = null, classId:String = null){
+	
+	}
+}
+
 //stub code for the Element class
 
 /*

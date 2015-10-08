@@ -8,6 +8,8 @@ class Element{
 	var classId : String;/*css selector class identifier*/
 	/**
 	 * This class serves as a base class for the Element GUI framework
+	 * TODO: any method that doesnt rely on internal variables should be moved to an external utility class in order to keep this class as simple as possible
+	 * NOTE: subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
 	 */
 	public func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
 		self.width = width;

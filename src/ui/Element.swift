@@ -1,11 +1,11 @@
 class Element{
-	var _skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
-	var _skin:Skin;
-	var _width:Number;
-	var _height:Number;
-	var _parent : IElement;
-	var _id : String;/*css selector id*/
-	var _classId : String;/*css selector class identifier*/
+	var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
+	var skin:Skin?
+	var width:Number?
+	var height:Number?
+	var parent : IElement?
+	var id : String;/*css selector id*/
+	var classId : String;/*css selector class identifier*/
 	/**
 	 * 
 	 */

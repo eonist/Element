@@ -24,13 +24,13 @@ class Element:NSView{
 	 * @Note resolveSkin sounds like a well-ballanced name, you could consider createContent or createSkin but these doesnt quite describe the action since the skin is resolved not created per se 
 	 */
 	public func resolveSkin(){/*protected*/
-		_skin = addSubView(SkinResolver.skin(self)) as Skin;
+		self.skin = addSubView(SkinResolver.skin(self)) as Skin;
 	}
 	/**
 	 * Sets the width and height of the skin and this instance.
 	 */
 	public func setSize(width:Number, height:Number){
-		width = width;
+		self.width = width;
 		self.height = height;
 		self.skin.setSize(width, height);
 	}

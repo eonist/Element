@@ -3,7 +3,7 @@
 ```swift
 StyleManager.getInstance().addStyles(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
-var button = Button(width:96,height:24,self);//Create the button
+var button = Button(96,24,self);//Create the button
 addChild(button)//add the button to the view
 button.addTarget(self, action:"pressedAction:",event:.TouchUpInside)//add an event handler
 		

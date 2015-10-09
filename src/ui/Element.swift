@@ -3,8 +3,8 @@ class Element:NSView{
 	private var skin:Skin?
 	private var width:Number?
 	private var height:Number?
-	private var var parent : IElement?
-	public var var id : String;/*css selector id, Sets the id, Returns the id (equivalent to id in html)*/
+	privatevar var parent : IElement?
+	privatevar var id : String;/*css selector id*/
 	private var classId : String;/*css selector class identifier*/
 	/**
 	 * This class serves as a base class for the Element GUI framework
@@ -50,7 +50,7 @@ class Element:NSView{
 		skin.setState(state)
 	}
 	/**
-	 * Sets the id, Returns the id (equivalent to id in html)
+	 * Sets the id
 	 */
 	public func setId(id : String) {
 		self.id = id;
@@ -105,7 +105,7 @@ class Element:NSView{
 		return self.parent == null ? super.parent:self.parent as NSView;
 	}
 	/**
-	 * 
+	 * Returns the id (equivalent to id in html)
 	 */
 	public func get id():String {
 		return _id;

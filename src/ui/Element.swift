@@ -1,4 +1,5 @@
 class Element:NSView{
+	//TODO: add an implicit setter mehod for skinState since swift doesnt have protected values
 	private var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
 	private var skin:Skin?
 	private var width:Number?
@@ -102,7 +103,7 @@ class Element:NSView{
 	 */
 	override public func get parent():NSView {
 //			trace("_parent is DisplayObjectContainer" + Boolean(_parent is DisplayObjectContainer));
-		return self.parent == nil ? super.parent:self.parent as NSView;
+		return parent == nil ? super.parent:parent as NSView;
 	}
 	/**
 	 * Returns the id (equivalent to id in html)

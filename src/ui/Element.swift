@@ -1,11 +1,11 @@
 class Element:NSView{
 	private var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
-	var skin:Skin?
-	var width:Number?
-	var height:Number?
-	var parent : IElement?
-	var id : String;/*css selector id*/
-	var classId : String;/*css selector class identifier*/
+	private var skin:Skin?
+	private var width:Number?
+	private var height:Number?
+	privatevar var parent : IElement?
+	privatevar var id : String;/*css selector id*/
+	private var classId : String;/*css selector class identifier*/
 	/**
 	 * This class serves as a base class for the Element GUI framework
 	 * TODO: research why you need skinstate in the element class, test with a simple button

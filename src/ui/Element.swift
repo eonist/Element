@@ -79,6 +79,61 @@ class Element:NSView{
 		if(isAbsoltuteParent) return parent is Window ? (parent as Window).view/*<-may need to be superview*/ : parent;
 		return parent;// == null || isAbsoltuteParent ? (_parent as Window).stage || super.parent:_parent;
 	}
+	/**
+	 * Returns the class type of the Class instance 
+	 * @Note if a class subclasses Element that sub-class will be the class type
+	 * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
+	 */
+	public func getClassType():String{
+		return ClassParser.className(this);
+	}
+	public func getWidth():Number{
+		return skin != null ? skin.getWidth() : NaN;
+	}
+	public func getHeight():Number{
+		return skin != null ? skin.getHeight() : NaN;
+	}
+	//----------------------------------
+	//  getters / setters
+	//----------------------------------
+	/**
+	 * Returns an assigned _parent of type iElement, or its original parent if it has one.
+	 * // :TODO: this should be renamed to getParent, or elementParent, do futher investigation!
+	 */
+	override public func get parent():DisplayObjectContainer {
+//			trace("_parent is DisplayObjectContainer" + Boolean(_parent is DisplayObjectContainer));
+		return _parent == null ? super.parent:_parent as DisplayObjectContainer;
+	}
+	/**
+	 * Returns the id (equivalent to id in html)
+	 */
+	public func get id():String {
+		return _id;
+	}
+	/**
+	 * Returns the id (equivalent to class in html)
+	 */
+	public func get classId() : String {
+		return _classId;
+	}
+	/**
+	 * Returns the width
+	 */
+	override public func get width():Number {
+		return _width;
+	}
+	/**
+	 * Returns the height
+	 */
+	override public func get height():Number {
+		return _height;
+	}
+	/**
+	 * Returns ISkin
+	 */
+	public func get skin():Skin {
+		return skin;
+	}
 }
 
 //stub code for the Element class

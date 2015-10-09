@@ -3,8 +3,8 @@ class Element:NSView{
 	private var skin:Skin?
 	private var width:Number?
 	private var height:Number?
-	privatevar var parent : IElement?
-	privatevar var id : String;/*css selector id*/
+	private var var parent : IElement?
+	private var var id : String;/*css selector id*/
 	private var classId : String;/*css selector class identifier*/
 	/**
 	 * This class serves as a base class for the Element GUI framework
@@ -88,10 +88,10 @@ class Element:NSView{
 		return ClassParser.className(self);
 	}
 	public func getWidth():Number{
-		return skin != null ? skin.getWidth() : NaN;
+		return skin != nil ? skin.getWidth() : NaN;
 	}
 	public func getHeight():Number{
-		return skin != null ? skin.getHeight() : NaN;
+		return skin != nil ? skin.getHeight() : NaN;
 	}
 	//----------------------------------
 	//  getters / setters
@@ -102,31 +102,31 @@ class Element:NSView{
 	 */
 	override public func get parent():NSView {
 //			trace("_parent is DisplayObjectContainer" + Boolean(_parent is DisplayObjectContainer));
-		return self.parent == null ? super.parent:self.parent as NSView;
+		return self.parent == nil ? super.parent:self.parent as NSView;
 	}
 	/**
 	 * Returns the id (equivalent to id in html)
 	 */
 	public func get id():String {
-		return _id;
+		return id;
 	}
 	/**
 	 * Returns the id (equivalent to class in html)
 	 */
 	public func get classId() : String {
-		return _classId;
+		return classId;
 	}
 	/**
 	 * Returns the width
 	 */
 	override public func get width():Number {
-		return _width;
+		return width;
 	}
 	/**
 	 * Returns the height
 	 */
 	override public func get height():Number {
-		return _height;
+		return height;
 	}
 	/**
 	 * Returns ISkin

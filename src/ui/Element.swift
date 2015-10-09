@@ -41,6 +41,27 @@ class Element:NSView{
 		x = point.x;
 		y = point.y;
 	}
+	/**
+		 * Sets the current state of the button, which determins the current drawing of the skin
+		 * TODO: this can be moved to an util class
+		 */
+		public func setSkinState(state:String) {
+			_skin.setState(state)
+		}
+		/**
+		 * Sets the id
+		 */
+		public func setId(id : String) {
+			_id = id;
+		}
+		/**
+		 * Applies a style to the skin
+		 * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
+		 * // :TODO: this method may be unessacary since all changing a style really needs is a call to setSkinState("refresh")
+		 */
+		public func setStyle(style:IStyle) {// :TODO: remove definitly, make a Utils class if you must have it
+			_skin.setStyle(style);
+		}
 }
 
 //stub code for the Element class

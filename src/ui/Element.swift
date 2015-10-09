@@ -1,5 +1,5 @@
 class Element:NSView{
-	var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
+	private var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
 	var skin:Skin?
 	var width:Number?
 	var height:Number?

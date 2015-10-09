@@ -34,6 +34,13 @@ class Element:NSView{
 		self.height = height;
 		self.skin.setSize(width, height);
 	}
+	/**
+	 * Positions the Element instance to @param point
+	 */
+	public func setPosition(point:Point){
+		x = point.x;
+		y = point.y;
+	}
 }
 
 //stub code for the Element class

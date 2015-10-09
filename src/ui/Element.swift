@@ -1,5 +1,16 @@
 class Element:NSView{
+
+	
+	//continue here
+
+
 	//TODO: add an implicit setter mehod for skinState since swift doesnt have protected values
+	
+	
+	
+	
+	
+	
 	private var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
 	private var skin:Skin?
 	private var width:Number?

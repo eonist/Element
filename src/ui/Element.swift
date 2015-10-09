@@ -76,7 +76,7 @@ class Element:NSView{
 	 */
 	public func getParent(isAbsoltuteParent:Boolean = false):AnyObject?{// :TODO: beta
 //		trace("_parent: " + _parent);
-		if(isAbsoltuteParent) return parent is Window ? (parent as Window).stage : parent;
+		if(isAbsoltuteParent) return parent is Window ? (parent as Window).view/*<-may need to be superview*/ : parent;
 		return parent;// == null || isAbsoltuteParent ? (_parent as Window).stage || super.parent:_parent;
 	}
 }

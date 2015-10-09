@@ -47,21 +47,21 @@ class Element:NSView{
 	 * TODO: this can be moved to an util class
 	 */
 	public func setSkinState(state:String) {
-		_skin.setState(state)
+		self.skin.setState(state)
 	}
 	/**
 	 * Sets the id
 	 */
 	public func setId(id : String) {
-		_id = id;
+		self.id = id;
 	}
 	/**
 	 * Applies a style to the skin
 	 * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
 	 * // :TODO: this method may be unessacary since all changing a style really needs is a call to setSkinState("refresh")
 	 */
-	public func setStyle(style:IStyle) {// :TODO: remove definitly, make a Utils class if you must have it
-		_skin.setStyle(style);
+	public func setStyle(style:IStyle) {// :TODO: remove definitly, make an Utils class if you must have it
+		self.skin.setStyle(style);
 	}
 }
 
@@ -80,4 +80,3 @@ getClassType()
 //getters and setters for all variables
 //implicit getters and setters for some of the variables
 
-//research how swift handles parent of objects, super.parent etc

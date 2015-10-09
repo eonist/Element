@@ -1,17 +1,5 @@
 class Element:NSView{
-
-	
-	//continue here
-
-
-	//TODO: add an implicit setter mehod for skinState since swift doesnt have protected values
-	
-	
-	
-	
-	
-	
-	private var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
+	public var skinState:String = "";/*protected*//*This is protected so that sub-classes can access it when setting the initial state*/
 	private var skin:Skin?
 	private var width:Number?
 	private var height:Number?
@@ -24,7 +12,7 @@ class Element:NSView{
 	 * TODO: any method that doesnt rely on internal variables should be moved to an external utility class in order to keep this class as simple as possible
 	 * NOTE: subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
 	 */
-	public func init(width:Number = NaN, height:Number = NaN, parent:IElement = nil, id:String = nil, classId:String = nil){
+	public func init(_ width:Number = NaN, _ height:Number = NaN, _ parent:IElement = nil, _ id:String = nil, _ classId:String = nil){
 		self.width = width;
 		self.height = height;
 		self.parent = parent;
@@ -147,19 +135,4 @@ class Element:NSView{
 		return skin;
 	}
 }
-
-//stub code for the Element class
-
-/*
-width
-height
-id
-classId
-skin
-resolveSkin()//Resolves the skin that the this or the sub-class will use
-getClassType()
-*/
-
-//getters and setters for all variables
-//implicit getters and setters for some of the variables
 

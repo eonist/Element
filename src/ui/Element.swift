@@ -25,7 +25,7 @@ class Element:NSView{
 	 * @Note resolveSkin sounds like a well-ballanced name, you could consider createContent or createSkin but these doesnt quite describe the action since the skin is resolved not created per se 
 	 */
 	public func resolveSkin(){/*protected*/
-		self.skin = addSubView(SkinResolver.skin(self)) as Skin;
+		skin = addSubView(SkinResolver.skin(self)) as Skin;
 	}
 	/**
 	 * Sets the width and height of the skin and this instance.
@@ -33,7 +33,7 @@ class Element:NSView{
 	public func setSize(width:Number, height:Number){
 		self.width = width;
 		self.height = height;
-		self.skin.setSize(width, height);
+		skin.setSize(width, height);
 	}
 	/**
 	 * Positions the Element instance to @param point
@@ -47,7 +47,7 @@ class Element:NSView{
 	 * TODO: this can be moved to an util class
 	 */
 	public func setSkinState(state:String) {
-		self.skin.setState(state)
+		skin.setState(state)
 	}
 	/**
 	 * Sets the id
@@ -61,7 +61,23 @@ class Element:NSView{
 	 * // :TODO: this method may be unessacary since all changing a style really needs is a call to setSkinState("refresh")
 	 */
 	public func setStyle(style:IStyle) {// :TODO: remove definitly, make an Utils class if you must have it
-		self.skin.setStyle(style);
+		skin.setStyle(style);
+	}
+	/**
+	 * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
+	 * TODO: explain the logic of havong this var in this class and also in the skin class, i think its because you need to access the skinstate before the skin is created or initiated in the element.
+	 */
+	public func getSkinState() : String {// :TODO: the skin should have this state not the element object!!!===???
+		return skinState;
+	}
+	/**
+	 * @Note this function is needed say if a Window is the parent of an Element instance, since Window does not inherit from DisplayObjectContainer we cant use the parent
+	 * @param isAbsoltuteParent (if you want to get hold of the stage in Window instances use this flag)
+	 */
+	public func getParent(isAbsoltuteParent:Boolean = false):AnyObject?{// :TODO: beta
+//		trace("_parent: " + _parent);
+		if(isAbsoltuteParent) return parent is Window ? (parent as Window).stage : parent;
+		return parent;// == null || isAbsoltuteParent ? (_parent as Window).stage || super.parent:_parent;
 	}
 }
 

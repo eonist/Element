@@ -85,7 +85,7 @@ class Element:NSView{
 	 * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
 	 */
 	public func getClassType():String{
-		return ClassParser.className(this);
+		return ClassParser.className(self);
 	}
 	public func getWidth():Number{
 		return skin != null ? skin.getWidth() : NaN;
@@ -100,9 +100,9 @@ class Element:NSView{
 	 * Returns an assigned _parent of type iElement, or its original parent if it has one.
 	 * // :TODO: this should be renamed to getParent, or elementParent, do futher investigation!
 	 */
-	override public func get parent():DisplayObjectContainer {
+	override public func get parent():NSView {
 //			trace("_parent is DisplayObjectContainer" + Boolean(_parent is DisplayObjectContainer));
-		return _parent == null ? super.parent:_parent as DisplayObjectContainer;
+		return self.parent == null ? super.parent:self.parent as NSView;
 	}
 	/**
 	 * Returns the id (equivalent to id in html)

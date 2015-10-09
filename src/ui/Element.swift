@@ -8,6 +8,7 @@ class Element:NSView{
 	var classId : String;/*css selector class identifier*/
 	/**
 	 * This class serves as a base class for the Element GUI framework
+	 * TODO: research why you need skinstate in the element class, test with a simple button
 	 * TODO: any method that doesnt rely on internal variables should be moved to an external utility class in order to keep this class as simple as possible
 	 * NOTE: subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
 	 */
@@ -42,26 +43,26 @@ class Element:NSView{
 		y = point.y;
 	}
 	/**
-		 * Sets the current state of the button, which determins the current drawing of the skin
-		 * TODO: this can be moved to an util class
-		 */
-		public func setSkinState(state:String) {
-			_skin.setState(state)
-		}
-		/**
-		 * Sets the id
-		 */
-		public func setId(id : String) {
-			_id = id;
-		}
-		/**
-		 * Applies a style to the skin
-		 * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
-		 * // :TODO: this method may be unessacary since all changing a style really needs is a call to setSkinState("refresh")
-		 */
-		public func setStyle(style:IStyle) {// :TODO: remove definitly, make a Utils class if you must have it
-			_skin.setStyle(style);
-		}
+	 * Sets the current state of the button, which determins the current drawing of the skin
+	 * TODO: this can be moved to an util class
+	 */
+	public func setSkinState(state:String) {
+		_skin.setState(state)
+	}
+	/**
+	 * Sets the id
+	 */
+	public func setId(id : String) {
+		_id = id;
+	}
+	/**
+	 * Applies a style to the skin
+	 * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
+	 * // :TODO: this method may be unessacary since all changing a style really needs is a call to setSkinState("refresh")
+	 */
+	public func setStyle(style:IStyle) {// :TODO: remove definitly, make a Utils class if you must have it
+		_skin.setStyle(style);
+	}
 }
 
 //stub code for the Element class
@@ -80,4 +81,3 @@ getClassType()
 //implicit getters and setters for some of the variables
 
 //research how swift handles parent of objects, super.parent etc
-//research why you need skinstate in the element class, test with a simple button

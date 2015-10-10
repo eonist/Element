@@ -28,6 +28,22 @@ Button:down{
 }
 ```
 
+**Example App (Regular style)**  
+![regular](https://cloud.githubusercontent.com/assets/11816788/10409978/73830764-6f33-11e5-9123-fc01cb294feb.png) 
+
+**Same code, different .css files)**
+(same code, different .css files)  
+![different](https://cloud.githubusercontent.com/assets/11816788/10409979/738342f6-6f33-11e5-9910-536762c9669c.png) 
+
+**Basic Elements:**
+![Basic](https://cloud.githubusercontent.com/assets/11816788/10409976/737fe1b0-6f33-11e5-9f27-e787669d9cc1.png) 
+
+**Advance Elements:**
+![Advance](https://cloud.githubusercontent.com/assets/11816788/10409977/7380294a-6f33-11e5-9aca-ffa48a5e46b6.png) 
+
+**Other Elements**  
+![Other](https://cloud.githubusercontent.com/assets/11816788/10409980/73849778-6f33-11e5-8c35-6d4ac668667f.png) 
+
 ###Goals
 - Element supports basic needs, extention and decoration is encouraged for advance use
 - Centralised styling via css (server side or embedded)

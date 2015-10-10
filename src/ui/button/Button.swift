@@ -14,7 +14,7 @@ class Button:Element{
 	}
 	override public function resolveSkin() : void {
 		super.resolveSkin();/*draws the button skin*/
-		self.userInteractionEnabled = skin.userInteractionEnabled = true;/*enables the interactivity and hand cursor on mouse-over*/
+		self.userInteractionEnabled = skin.userInteractionEnabled, self.mouseHovering = true;/*enables the interactivity and hand cursor on mouse-over*/
 	}
 	/**
 	 * Handles actions and drawing states for the down event.
@@ -63,7 +63,14 @@ class Button:Element{
 	
 	//continue here - do more research around how swift handles events. https://github.com/Megatron1000/MKBOSXCloseButton
 	
+	//
 	
+	/*
+    * NSTRAcking area in obj-c: http://stackoverflow.com/questions/8979639/mouseexited-isnt-called-when-mouse-leaves-trackingarea-while-scrolling
+	 * func mouseEntered(event: NSEvent)
+	 * func mouseExited(theEvent: NSEvent)
+	 * NSTrackingArea* trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds] options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways) owner:self userInfo:nil];
+    */
 	
 	
 }

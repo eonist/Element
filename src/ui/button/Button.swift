@@ -67,6 +67,7 @@ class Button:Element{
 	
 	/*
     * NSTRAcking area in obj-c: http://stackoverflow.com/questions/8979639/mouseexited-isnt-called-when-mouse-leaves-trackingarea-while-scrolling
+	 * Apple docs: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/TrackingAreaObjects/TrackingAreaObjects.html
 	 * func mouseEntered(event: NSEvent)
 	 * func mouseExited(theEvent: NSEvent)
 	 * NSTrackingArea* trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds] options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways) owner:self userInfo:nil];

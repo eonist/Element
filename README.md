@@ -9,7 +9,7 @@ StyleManager.addStyle("Button{fill:blue;} Button:down{fill:red;}")//add a style 
 addSubview(Button(self));//add button to view
 ```
 
-**Add new native swift functionality**:
+**Add custom functionality**:
 
 ```swift 
 addSubview(CustomButton(self));//add button to view

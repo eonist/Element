@@ -1,7 +1,33 @@
+Element enables you to separate code and design, but maintains the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere. Alas you get code spaghetti, that discourages rapid evolving and simple one line updates to the UI. Element uses the CSS3 syntax with some sass like features, so that you dont have to repeat your self. The soul purpouse of Element is to make it easy to create custom UI components. That works and looks the way you need. Alignment of UI elements is achived through css properties like. float:left, clear:left etc. So if you know CSS3 then you know how to get UI components to align to the screen properly. 
+
+**Inline CSS:**:
+
+```swift 
+StyleManager.addStyle("Button{fill:blue;} Button:down{fill:red;}")//add a style to the StyleManager
+addSubview(Button(self));//add button to view
+```
+
+**Add new native swift functionality:**:
+
+```swift 
+addSubview(CustomButton(self));//add button to view
+
+class CustomButton:Button{//create a new class with your custom functionality
+	overide func down{
+		print("Now i have new functionality")
+	}
+}
+```
+**Lets style CustomButton**:
+
+```swift 
+StyleManager.addStyle("CustomButton{fill:yellow;} CustomButton:down{fill:green;}")
+```
+
 **Example swift:**
 
 ```swift
-StyleManager.sharedInstance().addStyles(File.resources.url + "assets/css/general.css");//call this one time to install all styles
+StyleManager.addStyle(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
 var button = Button(96,24,self);//Create the button
 addSubview(button)//add the button to the view
@@ -27,6 +53,7 @@ Button:down{
 	drop-shadow:drop-shadow:drop-shadow(0px 0 #002D4E 0.8 1.6 1.6 2 2 false);/*same as SubtleShadow but with a blue tint*/
 }
 ```
+
 
 **Example App:**  
 

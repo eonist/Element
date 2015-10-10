@@ -1,6 +1,6 @@
 **Element**
 
-Element enables you to separate code and design, but maintains the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, alas you get code spaghetti, that discourages rapid evolving and simple updates to the UI. Element uses the CSS3 syntax with some sass like features, so that you dont have to repeat your self. The soul purpouse of Element is to make it easy to create custom UI components. That works and looks the way you need. Alignment of UI elements is achived through css properties like. float:left, clear:left etc. So if you know CSS3 then you know how to get UI components to align to the screen properly. 
+Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 syntax and SASS. Alignment of UI elements is achived through CSS properties like; float:left, clear:left etc. Its also possible to programatically overide the CSS alignement scheme for elements you need more control over, like a slider element. 
 
 **Inline CSS**
 

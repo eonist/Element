@@ -56,20 +56,20 @@ Button:down{
 }
 ```
 
-**Example App:**  
+**Example App (with default styles)**  
 
 ![regular](https://cloud.githubusercontent.com/assets/11816788/10409978/73830764-6f33-11e5-9123-fc01cb294feb.png) 
 
-**Different CSS file:**
+**Different CSS file**
 
 (same code, different .css files)  
 ![different](https://cloud.githubusercontent.com/assets/11816788/10409979/738342f6-6f33-11e5-9910-536762c9669c.png) 
 
-**Basic Elements:**
+**Basic Elements**
 
 ![Basic](https://cloud.githubusercontent.com/assets/11816788/10409976/737fe1b0-6f33-11e5-9f27-e787669d9cc1.png) 
 
-**Advance Elements:**
+**Advance Elements**
 
 ![Advance](https://cloud.githubusercontent.com/assets/11816788/10409977/7380294a-6f33-11e5-9aca-ffa48a5e46b6.png) 
 

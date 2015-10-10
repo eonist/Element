@@ -1,4 +1,4 @@
-**Element OSX UI Framwork Written in swift**
+**Element** (OSX UI Framework)
 
 Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 and SASS. Alignment of UI elements is achived through CSS: float:left, clear:left etc. Its also possible to programatically overide the CSS alignement scheme for elements you need more control over, like a slider element. 
 
@@ -40,7 +40,7 @@ func pressedAction(sender: Button!){//event handler
 }
 ```
 
-**Example CSS (OSX style button)**
+**Example CSS** (OSX style button)
 
 ```css
 Button{
@@ -56,7 +56,7 @@ Button:down{
 }
 ```
 
-**Example App (with default styles)**  
+**Example App** (with default styles)  
 
 ![regular](https://cloud.githubusercontent.com/assets/11816788/10409978/73830764-6f33-11e5-9123-fc01cb294feb.png) 
 

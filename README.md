@@ -1,4 +1,4 @@
-**Element**
+**The pitch**
 
 Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 syntax and SASS. Alignment of UI elements is achived through CSS properties like; float:left, clear:left etc. Its also possible to programatically overide the CSS alignement scheme for elements you need more control over, like a slider element. 
 

@@ -1,6 +1,6 @@
 **Element** (OSX UI Framework)
 
-Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 and SASS. Alignment of UI elements is achived through CSS: float:left, clear:left etc. Its also possible to programatically overide the CSS alignement scheme for elements you need more control over, like a slider element. Add your own iconography through .svg vector graphic files from Adobe Illustrator etc. Element uses a custom built SVG drawing engine to achive infinite graphics, so your apps will look stellar at any resolution.
+Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style a NSButton from apple you usually end up with more code than its worth. Styling an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 and SASS. Alignment of UI elements is achived through CSS: float:left, clear:left etc. Its also possible to programatically overide the CSS alignement scheme for elements you need more control over, like a slider element. Add your own iconography through .svg vector graphic files from Adobe Illustrator etc. Element uses a custom built SVG drawing engine to achieve infinite graphics, so your apps will look stellar at any resolution. Further more Element is a self contained framework that doesnt rely on other third party frameworks to work. Add Element to your project and your good to go.
 
 **Inline CSS**
 
@@ -90,7 +90,7 @@ Button:down{
 - Demo apps
 
 ###Notes:
-- Element is curently implimenting support for the OSX swift language
+- **Element is curently implimenting support for the OSX swift language**
 - Element includes a custom built SVG engine, css engine, and vector draw engine.
 - All code included is custom written for the Element project to avoid copyright conflicts
 - Element is improved on a regular basis 

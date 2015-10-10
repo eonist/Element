@@ -4,10 +4,10 @@
 StyleManager.sharedInstance().addStyles(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
 var button = Button(96,24,self);//Create the button
-addChild(button)//add the button to the view
-button.addTarget(self, action:"pressedAction:",event:.TouchUpInside)//add an event handler
+addSubview(button)//add the button to the view
+button.addTarget(self, action:"pressedAction:",event:.TouchUpInside)//add an event listener
 		
-func pressedAction(sender: Button!){
+func pressedAction(sender: Button!){//event handler
 	print(sender.target)
 }
 ```

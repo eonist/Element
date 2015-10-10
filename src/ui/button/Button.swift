@@ -61,9 +61,7 @@ class Button:Element{
 	
 	
 	
-	//continue here - do more research around how swift handles events. https://github.com/Megatron1000/MKBOSXCloseButton
-	
-	//
+	//continue here - do more research around how swift handles events. This url should help with the research: https://www.cocoacontrols.com/controls?language=2-swift&platform_id=mac-os-x
 	
 	/*
     * NSTRAcking area in obj-c: http://stackoverflow.com/questions/8979639/mouseexited-isnt-called-when-mouse-leaves-trackingarea-while-scrolling

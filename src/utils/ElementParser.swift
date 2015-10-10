@@ -10,7 +10,7 @@ class ElementParser{
 	 * @Note to get the stackString use: trace(SelectorUtils.toString(StyleResolver.stack(checkButton)));
 	 */
 	func selectors(element:IElement){
-
+		//continue here
 	}
 	/**
 	 * Returns a String instance of Selectors from @param element (i.e: "Window Button#first Text#input")

@@ -18,7 +18,7 @@ addSubview(CustomButton(self));//add button to view
 
 class CustomButton:Button{//create a new class with your custom functionality
 	overide func down{
-		print("Now i have new functionality")
+		print("Down from CustomButton")
 	}
 }
 ```

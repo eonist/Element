@@ -33,7 +33,7 @@ StyleManager.addStyle("CustomButton{fill:yellow;} CustomButton:down{fill:green;}
 ```swift
 StyleManager.addStyle(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
-var button = Button(96,24,self);//Create the button
+var button = Button(self,96,24);//Create the button
 addSubview(button)//add the button to the view
 button.addTarget(self, action:"pressedAction:",event:.TouchUpInside)//add an event listener
 		

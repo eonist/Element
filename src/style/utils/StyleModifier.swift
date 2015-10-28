@@ -39,19 +39,21 @@ class StyleModifier {
         for (var e:Int=0; e < bLength; e++) {
             let stylePropB : IStyleProperty = b.styleProperties[e]
             
+            
+            if(exist(a, stylePropB)){
+                a.styleProperties[e] = stylePropB
+            }else{
+                StyleModifier.append(&a,stylePropB)
+            }
             for (var i:Int=0; i < aLength; i++) {
                 let stylePropA : IStyleProperty = a.styleProperties[i]
-                if(stylePropA.name == stylePropB.name){
-                    a.styleProperties[i] = stylePropB
-                }else{
-                    StyleModifier.append(&a,stylePropB)
-                }
+                
             }
             
             
         }
         
-        func exist(style:IStyle,styleProperty:IStyleProperty)->Bool{
+        func exist(style:IStyle, _ styleProperty:IStyleProperty)->Bool{
             for styleProp in style.styleProperties{
                 if(styleProperty.name == styleProp.name){
                     return true

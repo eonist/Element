@@ -4,9 +4,11 @@ class Style:IStyle{
     static var clear:IStyle = Style("clear",[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])
     var name:String;
     var styleProperties:Array<IStyleProperty>
-    init(_ name:String, _ styleProperties:Array<IStyleProperty> = []){
+    var selector:ISelector
+    init(_ name:String, _ styleProperties:Array<IStyleProperty> = [],_ selector:ISelector){
         self.name = name
         self.styleProperties = styleProperties
+        self.selector = selector
     }
     /**
     * Add styleProperty

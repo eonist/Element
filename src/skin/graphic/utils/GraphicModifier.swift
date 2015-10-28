@@ -2,7 +2,7 @@ import Cocoa
 
 class GraphicModifier {
     /**
-    *
+    * TODO: fill and linestyle should be graphic spessific see original code
     */
     class func applyProperties(path:NSBezierPath,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> NSBezierPath {
        

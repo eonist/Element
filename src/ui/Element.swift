@@ -59,16 +59,13 @@ extension IElement {
         Swift.print("styleComposition")
         Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
-            
             //Swift.print("style.selector.element: " + style.selector.element)
             if(style.selector.element == classType){ //if style.selector == classType
                 Swift.print("  element match found")
                 for state in style.selector.states{//loop style.selector.states
-                    
                     if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
                         Swift.print("    state match found")
-                        //gracefully append this style to styleComposition, forced overwrite
-                        StyleModifier.combine(&styleComposition, style)
+                        StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
                     }
                 }
             }
@@ -100,13 +97,13 @@ extension IElement {
         
         
         
-        /*
+        
         let pathRect = NSInsetRect((self as! NSView).bounds, 22, 21);
         let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)//draw graphic
         //let path = GraphicsModifier.drawRect(pathRect)
         GraphicModifier.applyProperties(path, style, style,skinState)//apply style
         GraphicModifier.stylize(path)//realize style on the graphic
-        */
+
     
         
     }

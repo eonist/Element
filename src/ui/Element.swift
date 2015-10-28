@@ -57,7 +57,12 @@ extension IElement {
         Swift.print("classType: " + classType)
         setStyle(StyleManager.getStyle(classType)!)
        
-        
+        //loop through styles
+            //if style.selector == classType
+                //loop style.selector.states
+                    //if state == currentState
+                        //figure out how the statemaschine works and impliment that
+                        //
         
         
         //TODO: toggle between rect and roundRect based on the style

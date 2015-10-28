@@ -101,7 +101,7 @@ extension IElement {
         let pathRect = NSInsetRect((self as! NSView).bounds, 22, 21);
         let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)//draw graphic
         //let path = GraphicsModifier.drawRect(pathRect)
-        GraphicModifier.applyProperties(path, style, style,skinState)//apply style
+        GraphicModifier.applyProperties(path, styleComposition, styleComposition,skinState)//apply style
         GraphicModifier.stylize(path)//realize style on the graphic
 
     

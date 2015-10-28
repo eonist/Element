@@ -36,17 +36,20 @@ class StyleModifier {
         Swift.print("combining initiated")
         let aLength:Int = a.styleProperties.count
         let bLength:Int = b.styleProperties.count
-        for (var i:Int=0; i < aLength; i++) {
-            let stylePropA : IStyleProperty = a.styleProperties[i]
-            for (var e:Int=0; e < bLength; e++) {
-                let stylePropB : IStyleProperty = b.styleProperties[e]
+        for (var e:Int=0; e < bLength; e++) {
+            let stylePropB : IStyleProperty = b.styleProperties[e]
+            for (var i:Int=0; i < aLength; i++) {
+                let stylePropA : IStyleProperty = a.styleProperties[i]
                 if(stylePropA.name == stylePropB.name){
                     a.styleProperties[i] = stylePropB
                 }else{
                     StyleModifier.append(&a,stylePropB)
                 }
             }
+            
+            
         }
+        
     }
     /**
     *

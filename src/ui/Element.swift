@@ -62,11 +62,11 @@ extension IElement {
             
             //Swift.print("style.selector.element: " + style.selector.element)
             if(style.selector.element == classType){ //if style.selector == classType
-                Swift.print("element match found")
+                Swift.print("  element match found")
                 for state in style.selector.states{//loop style.selector.states
                     
                     if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                        Swift.print("state match found")
+                        Swift.print("    state match found")
                         //gracefully append this style to styleComposition, forced overwrite
                         StyleModifier.combine(&styleComposition, style)
                     }

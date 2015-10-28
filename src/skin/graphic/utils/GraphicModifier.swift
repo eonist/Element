@@ -4,7 +4,7 @@ class GraphicModifier {
     /**
     *
     */
-    class func applyProperties(path:NSPath,fillStyle:IFillStyle,lineStyle:ILineStyle) -> NSPath {
+    class func applyProperties(path:NSBezierPath,fillStyle:IFill,lineStyle:IStroke) -> NSBezierPath {
         path
         decoratable.graphic.fillStyle = fillStyle;
         decoratable.graphic.lineStyle = lineStyle;

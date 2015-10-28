@@ -30,8 +30,12 @@ class StyleModifier {
     * Combines @param a and @param b
     * @Note: if similar styleProperties are found @param b takes precedence
     */
-    class func combine(){
-        
+    class func combine(a:IStyle,b:IStyle){
+        for stylePropA : IStyleProperty in a.styleProperties {
+            for stylePropB : IStyleProperty in b.styleProperties {
+                
+            }
+        }
     }
 }
 

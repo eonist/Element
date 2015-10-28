@@ -34,7 +34,7 @@ class StyleModifier {
         for stylePropA : IStyleProperty in a.styleProperties {
             for stylePropB : IStyleProperty in b.styleProperties {
                 if(stylePropA.name == stylePropB.name){
-                    
+                    overrideStyleProperty(&a, stylePropA)
                 }
             }
         }

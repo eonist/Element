@@ -11,15 +11,17 @@ class Element: FlippedView,IElement {
     /*
     * Called on init if wantsUpdateLayer is true
     */
+    /*
     override func updateLayer() {
         resolveSkin()//extension method that draws the graphics
     }
+    */
     /*
     * Note: if you overide drawRect then update layers wont work
     */
     override func drawRect(rect: NSRect) {
         super.drawRect(rect)
-       
+       resolveSkin()
     }
     /*
     * Temp until you can access syle from an extension
@@ -74,6 +76,15 @@ extension IElement {
         
         let nsFillColor = ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
         let nsLineColor = ColorParser.nsColor(lineColor, Float(lineAlpha))//line
-        ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)
+        //ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)
+        
+        
+        //continue here: add gradient, shape etc
+        
+        
+        NSColor.greenColor().setFill()
+        
+        let path = NSBezierPath(rect: (self as! NSView).bounds)
+        path.fill()
     }
 }

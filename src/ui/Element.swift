@@ -14,11 +14,12 @@ class Element: FlippedView,IElement {
     override func updateLayer() {
         resolveSkin()//extension method that draws the graphics
     }
+    /*
+    * Note: if you overide drawRect then update layers wont work
+    */
     override func drawRect(rect: NSRect) {
-        NSColor.greenColor().setFill()
-        
-        let path = NSBezierPath(rect: self.bounds)
-        path.fill()
+        super.drawRect(rect)
+       
     }
     /*
     * Temp until you can access syle from an extension

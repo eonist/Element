@@ -1,6 +1,6 @@
 import Foundation
 
-class Selector {// :TODO: impliment a ISelector interface, you should probably use a struct instead of class in the future
+class Selector:ISelector{// :TODO: impliment a ISelector interface, you should probably use a struct instead of class in the future
     var element:String
     var classIds:Array<String>
     var id:String

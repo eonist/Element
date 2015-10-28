@@ -79,7 +79,16 @@ extension IElement {
         //ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)
         
         
+        
+        
+        
+        
+        
         //continue here: add gradient, shape etc
+        
+        
+        
+        
         
         
         NSColor.greenColor().setFill()

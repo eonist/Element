@@ -34,25 +34,6 @@ class StyleModifier {
     */
     class func combine(inout a:IStyle,_ b:IStyle){
         Swift.print("combining initiated")
-        let aLength:Int = a.styleProperties.count
-        let bLength:Int = b.styleProperties.count
-        for (var e:Int=0; e < bLength; e++) {
-            let stylePropB : IStyleProperty = b.styleProperties[e]
-            
-            let matchIndex = matchAt(a, stylePropB)
-            if(matchIndex != -1){
-                a.styleProperties[e] = stylePropB
-            }else{
-                StyleModifier.append(&a,stylePropB)
-            }
-            for (var i:Int=0; i < aLength; i++) {
-                let stylePropA : IStyleProperty = a.styleProperties[i]
-                
-            }
-            
-            
-        }
-        
         func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
             let len = style.styleProperties.count
             for (var i:Int=0; i < len; i++) {
@@ -62,6 +43,16 @@ class StyleModifier {
                 }
             }
             return -1
+        }
+        let bLength:Int = b.styleProperties.count
+        for (var e:Int=0; e < bLength; e++) {
+            let stylePropB : IStyleProperty = b.styleProperties[e]
+            let matchIndex = matchAt(a, stylePropB)
+            if(matchIndex != -1){
+                a.styleProperties[matchIndex] = stylePropB//styleProperty already exist so overide it
+            }else{
+                StyleModifier.append(&a,stylePropB)//doesnt exist so just add the style prop
+            }
         }
     }
     /**

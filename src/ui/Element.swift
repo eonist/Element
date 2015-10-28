@@ -84,10 +84,10 @@ extension IElement {
         
         path.lineWidth = 4
         
-        GraphicModifier.applyProperties(path, style.fill, style.line)
+        GraphicModifier.applyProperties(path, style, style,skinState)
         
-        nsFillColor.setFill();
-        nsLineColor.setStroke();
+        //nsFillColor.setFill();
+        //nsLineColor.setStroke();
         
         path.fill()
         path.stroke()

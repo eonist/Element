@@ -56,6 +56,8 @@ extension IElement {
         
         var styleComposition:IStyle = Style()
         
+        styleComposition
+        
         for style in StyleManager.styles{//loop through styles
             if(style.selector.element == classType){ //if style.selector == classType
                 for state in style.selector.states{//loop style.selector.states
@@ -67,6 +69,10 @@ extension IElement {
             }
         }
         
+        
+        StyleParser.describe(styleComposition)
+        
+        Swift.print("end of call")
         //TODO: get the describe style method from your old code and test it out
         
         

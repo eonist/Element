@@ -33,7 +33,9 @@ class StyleModifier {
     class func combine(a:IStyle,b:IStyle){
         for stylePropA : IStyleProperty in a.styleProperties {
             for stylePropB : IStyleProperty in b.styleProperties {
-                
+                if(stylePropA.name == stylePropB.name){
+                    
+                }
             }
         }
     }

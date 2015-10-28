@@ -58,7 +58,9 @@ extension IElement {
         
         for style in StyleManager.styles{
             if(style.selector.element == classType){
-                
+                for state in style.selector.states{
+                    
+                }
             }
         }
         //loop through styles

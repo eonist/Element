@@ -31,10 +31,15 @@ class StyleModifier {
     * @Note: if similar styleProperties are found @param b takes precedence
     */
     class func combine(inout a:IStyle,b:IStyle){
+        let aLength:Int = style.styleProperties.count;
+        let bLength:Int = style.styleProperties.count;
+        for (var i:Int=0; i<stylePropertiesLength; i++) {
+            
+        }
         for stylePropA : IStyleProperty in a.styleProperties {
             for stylePropB : IStyleProperty in b.styleProperties {
                 if(stylePropA.name == stylePropB.name){
-                    overrideStyleProperty(&a, stylePropA)
+                    a.styleProperties[]
                 }
             }
         }

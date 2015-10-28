@@ -57,6 +57,15 @@ extension IElement {
         Swift.print("classType: " + classType)
         setStyle(StyleManager.getStyle(classType)!)
        
+        
+        
+        
+        //TODO: toggle between rect and roundRect based on the style
+        //TODO: add gradient to the mix see book
+        
+        
+        
+        
         let pathRect = NSInsetRect((self as! NSView).bounds, 22, 21);
         let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)//draw graphic
         //let path = GraphicsModifier.drawRect(pathRect)

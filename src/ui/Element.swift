@@ -60,9 +60,11 @@ extension IElement {
         Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
             
-            Swift.print("style.selector.element: " + style.selector.element)
+            //Swift.print("style.selector.element: " + style.selector.element)
             if(style.selector.element == classType){ //if style.selector == classType
+                Swift.print("element match found")
                 for state in style.selector.states{//loop style.selector.states
+                    Swift.print("state match found")
                     if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
                         //gracefully append this style to styleComposition, forced overwrite
                         StyleModifier.combine(&styleComposition, style)
@@ -72,7 +74,7 @@ extension IElement {
         }
         
         
-        StyleParser.describe(styleComposition)
+        StyleParser.describe("styleComposition.styleProperties.count: "+styleComposition.styleProperties.count)
         
         Swift.print("end of call")
         //TODO: get the describe style method from your old code and test it out

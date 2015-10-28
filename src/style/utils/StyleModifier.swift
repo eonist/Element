@@ -30,7 +30,7 @@ class StyleModifier {
     * Combines @param a and @param b
     * @Note: if similar styleProperties are found @param b takes precedence
     */
-    class func combine(a:IStyle,b:IStyle){
+    class func combine(inout a:IStyle,b:IStyle){
         for stylePropA : IStyleProperty in a.styleProperties {
             for stylePropB : IStyleProperty in b.styleProperties {
                 if(stylePropA.name == stylePropB.name){
@@ -43,13 +43,13 @@ class StyleModifier {
     * Adds @param styleProperty to the end of the @param style.styleProperties array
     * @Note will throw an error if a styleProperty with the same name is allready added
     */
-    class func append(style:IStyle,styleProperty:IStyleProperty){
+    class func append(inout style:IStyle,styleProperty:IStyleProperty){
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name) {
                 Swift.print(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
             }
         }
-        style.styleProperties.append(styleProperty);
+        style.styleProperties.append(styleProperty)
     }
 }
 

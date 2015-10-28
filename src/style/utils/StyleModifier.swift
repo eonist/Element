@@ -34,17 +34,7 @@ class StyleModifier {
     */
     class func combine(inout a:IStyle,_ b:IStyle){
         Swift.print("combining initiated")
-        func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
-            let len = style.styleProperties.count
-            for (var i:Int=0; i < len; i++) {
-                let styleProp:IStyleProperty = style.styleProperties[i]
-                if(styleProperty.name == styleProp.name){
-                    return i
-                }
-            }
-            return -1
-        }
-        let bLength:Int = b.styleProperties.count
+                let bLength:Int = b.styleProperties.count
         for (var e:Int=0; e < bLength; e++) {
             let stylePropB : IStyleProperty = b.styleProperties[e]
             let matchIndex = matchAt(a, stylePropB)
@@ -55,6 +45,18 @@ class StyleModifier {
             }
         }
     }
+    
+    private class func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
+        let len = style.styleProperties.count
+        for (var i:Int=0; i < len; i++) {
+            let styleProp:IStyleProperty = style.styleProperties[i]
+            if(styleProperty.name == styleProp.name){
+                return i
+            }
+        }
+        return -1
+    }
+
     /**
     *
     */

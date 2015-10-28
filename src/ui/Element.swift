@@ -23,12 +23,6 @@ class Element: FlippedView,IElement {
         super.drawRect(rect)
        resolveSkin()
     }
-    /*
-    * Temp until you can access syle from an extension
-    */
-    func setStyle(style:IStyle){
-        self.style = style
-    }
     /**
     * Returns the class type of the Class instance
     * @Note if a class subclasses Element that sub-class will be the class type
@@ -53,12 +47,9 @@ extension IElement {
     */
     func resolveSkin() {
         Swift.print("resolveSkin: " + "\(String(self))")
-        let classType:String = getClassType()
-        Swift.print("classType: " + classType)
-        setStyle(StyleManager.getStyle(classType)!)
-       
-        
-        
+        let classType:String = getClassType()//gets the classtype from the component
+        //Swift.print("classType: " + classType)
+        style = StyleManager.getStyle(classType)!//sets the style to the element
         
         
         

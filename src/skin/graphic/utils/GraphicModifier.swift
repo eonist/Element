@@ -24,4 +24,5 @@ class GraphicModifier {
         
         return path;
     }
+    
 }

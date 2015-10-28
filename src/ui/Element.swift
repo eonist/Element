@@ -79,7 +79,7 @@ extension IElement {
         
         let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
         
-        path.lineWidth = 4
+        
         
         GraphicModifier.applyProperties(path, style, style,skinState)
         GraphicModifier.stylize(path)

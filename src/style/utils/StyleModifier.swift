@@ -30,6 +30,7 @@ class StyleModifier {
     * Combines @param a and @param b
     * @Note: if similar styleProperties are found @param b takes precedence
     * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
+    * TODO: maybe use map or filter to speed this up?
     */
     class func combine(inout a:IStyle,b:IStyle){
         let aLength:Int = a.styleProperties.count
@@ -41,7 +42,7 @@ class StyleModifier {
                 if(stylePropA.name == stylePropB.name){
                     a.styleProperties[i] = stylePropB
                 }else{
-                    
+                    StyleModifier.append(&a,stylePropB)
                 }
             }
         }

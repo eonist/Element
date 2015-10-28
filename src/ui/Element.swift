@@ -57,8 +57,9 @@ extension IElement {
         Swift.print("classType: " + classType)
         setStyle(StyleManager.getStyle(classType)!)
        
-        let pathRect = NSInsetRect((self as! NSView).bounds, 2, 21);
-        let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
+        //let pathRect = NSInsetRect((self as! NSView).bounds, 2, 21);
+        //let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
+        let path = GraphicsModifier.drawRect((self as! NSView).bounds)
         GraphicModifier.applyProperties(path, style, style,skinState)
         GraphicModifier.stylize(path)
     

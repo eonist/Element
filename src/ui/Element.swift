@@ -68,8 +68,9 @@ extension IElement {
         }
         
         
-        
-        
+        //this is how you seperate the states with a space. 
+        //basicalley create an array of states from  a space seperated string
+        //selector.states = (e.skin != null ? e.skin.state : e.getSkinState()).match(/\b\w+\b/g);/*Matches words with spaces between them*/
         
         
         //styleComposition is now the style that should be applied to this element

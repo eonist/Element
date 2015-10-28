@@ -14,6 +14,12 @@ class Element: FlippedView,IElement {
     override func updateLayer() {
         resolveSkin()//extension method that draws the graphics
     }
+    override func drawRect(rect: NSRect) {
+        NSColor.greenColor().setFill()
+        
+        let path = NSBezierPath(rect: self.bounds)
+        path.fill()
+    }
     /*
     * Temp until you can access syle from an extension
     */

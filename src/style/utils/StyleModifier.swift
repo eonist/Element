@@ -38,6 +38,7 @@ class StyleModifier {
         let bLength:Int = b.styleProperties.count
         for (var e:Int=0; e < bLength; e++) {
             let stylePropB : IStyleProperty = b.styleProperties[e]
+            
             for (var i:Int=0; i < aLength; i++) {
                 let stylePropA : IStyleProperty = a.styleProperties[i]
                 if(stylePropA.name == stylePropB.name){
@@ -50,6 +51,14 @@ class StyleModifier {
             
         }
         
+        func exist(style:IStyle,styleProperty:IStyleProperty)->Bool{
+            for styleProp in style.styleProperties{
+                if(styleProperty.name == styleProp.name){
+                    return true
+                }
+            }
+            return false
+        }
     }
     /**
     *

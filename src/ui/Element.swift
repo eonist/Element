@@ -82,18 +82,27 @@ extension IElement {
         
         
         
-        
-        
         //continue here: add gradient, shape etc
         
         
         
+        var pathRect = NSInsetRect((self as! NSView).bounds, 1, 1);
         
+        var path = NSBezierPath(roundedRect:pathRect, xRadius:10, yRadius:10);
         
+        path.lineWidth = 4
         
+        NSColor.greenColor().setFill();
+        NSColor.blackColor().setStroke();
+        path.fill()
+        path.stroke()
+        
+        /*
         NSColor.greenColor().setFill()
         
         let path = NSBezierPath(rect: (self as! NSView).bounds)
         path.fill()
+        
+        */
     }
 }

@@ -24,5 +24,11 @@ class GraphicModifier {
         
         return path;
     }
-    
+    /**
+    * New
+    */
+    class func stylize(path:NSBezierPath){
+        path.fill()
+        path.stroke()
+    }
 }

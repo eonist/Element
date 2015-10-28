@@ -82,12 +82,12 @@ extension IElement {
         path.lineWidth = 4
         
         GraphicModifier.applyProperties(path, style, style,skinState)
+        GraphicModifier.stylize(path)
         
         //nsFillColor.setFill();
         //nsLineColor.setStroke();
         
-        path.fill()
-        path.stroke()
+        
         
         /*
         NSColor.greenColor().setFill()

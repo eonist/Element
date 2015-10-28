@@ -33,6 +33,7 @@ class StyleModifier {
     * TODO: maybe use map or filter to speed this up?
     */
     class func combine(inout a:IStyle,_ b:IStyle){
+        Swift.print("combining initiated")
         let aLength:Int = a.styleProperties.count
         let bLength:Int = b.styleProperties.count
         for (var i:Int=0; i < aLength; i++) {
@@ -58,6 +59,7 @@ class StyleModifier {
     * @Note will throw an error if a styleProperty with the same name is allready added
     */
     class func append(inout style:IStyle,_ styleProperty:IStyleProperty){
+        Swift.print("append happended")
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name) {
                 Swift.print(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list

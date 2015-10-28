@@ -39,5 +39,17 @@ class StyleModifier {
             }
         }
     }
+    /**
+    * Adds @param styleProperty to the end of the @param style.styleProperties array
+    * @Note will throw an error if a styleProperty with the same name is allready added
+    */
+    class func append(style:IStyle,styleProperty:IStyleProperty){
+        for styleProp:IStyleProperty in style.styleProperties{
+            if(styleProp.name == styleProperty.name) {
+                Swift.print(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
+            }
+        }
+        style.styleProperties.append(styleProperty);
+    }
 }
 

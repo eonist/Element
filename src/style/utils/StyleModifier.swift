@@ -38,16 +38,13 @@ class StyleModifier {
         for (var i:Int=0; i < len; i++) {
             let stylePropB : IStyleProperty = b.styleProperties[i]
             let matchIndex = Utils.matchAt(a, stylePropB)
-            if(matchIndex != -1){
+            if(matchIndex != -1){//asserts true if styleProperty exist in both styles
                 a.styleProperties[matchIndex] = stylePropB//styleProperty already exist so overide it
             }else{
                 StyleModifier.append(&a,stylePropB)//doesnt exist so just add the style prop
             }
         }
     }
-    
-    
-
     /**
     *
     */

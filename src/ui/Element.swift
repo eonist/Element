@@ -79,7 +79,7 @@ extension IElement {
         //ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)
         
         
-        
+       
         
         
         //continue here: add gradient, shape etc
@@ -91,6 +91,8 @@ extension IElement {
         let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
         
         path.lineWidth = 4
+        
+        GraphicModifier.applyProperties(<#T##path: NSBezierPath##NSBezierPath#>, fillStyle: <#T##IFill#>, lineStyle: <#T##IStroke#>)
         
         nsFillColor.setFill();
         nsLineColor.setStroke();

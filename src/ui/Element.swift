@@ -57,15 +57,27 @@ extension IElement {
         Swift.print("classType: " + classType)
         setStyle(StyleManager.getStyle(classType)!)
        
+        
+        
+        
+        //Continue here tomorrow (also finish tomorrow)
+        
+        
+        
+        
+         //TODO: toggle between rect and roundRect based on the style
+        
+        //let styleComposition = Style()
         //loop through styles
             //if style.selector == classType
                 //loop style.selector.states
                     //if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                        
-                        //
+                        //gracefully append this style to styleComposition, forced overwrite
+        
+        //styleComposition is now the style that should be applied to this element
         
         
-        //TODO: toggle between rect and roundRect based on the style
+       
         
         
         

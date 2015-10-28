@@ -56,18 +56,21 @@ extension IElement {
         
         let styleComposition = Style()
         
-        for style in StyleManager.styles{
-            if(style.selector.element == classType){
-                for state in style.selector.states{
-                    
+        for style in StyleManager.styles{//loop through styles
+            if(style.selector.element == classType){ //if style.selector == classType
+                for state in style.selector.states{//loop style.selector.states
+                    if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
+                        //gracefully append this style to styleComposition, forced overwrite
+                        styleComposition
+                    }
                 }
             }
         }
-        //loop through styles
-            //if style.selector == classType
-                //loop style.selector.states
-                    //if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                        //gracefully append this style to styleComposition, forced overwrite
+        
+        
+        
+        
+        
         
         //styleComposition is now the style that should be applied to this element
         

@@ -86,7 +86,7 @@ extension IElement {
         
         
         
-        let pathRect = NSInsetRect((self as! NSView).bounds, 1, 1);
+        let pathRect = NSInsetRect((self as! NSView).bounds, 2, 21);
         
         var path = NSBezierPath(roundedRect:pathRect, xRadius:10, yRadius:10);
         

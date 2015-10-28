@@ -59,7 +59,7 @@ class StyleModifier {
         Swift.print("append happended")
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name) {
-                Swift.print(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
+                fatalError(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
             }
         }
         style.styleProperties.append(styleProperty)

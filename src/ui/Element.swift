@@ -88,12 +88,13 @@ extension IElement {
         
         let pathRect = NSInsetRect((self as! NSView).bounds, 2, 21);
         
-        var path = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
+        let path = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
         
         path.lineWidth = 4
         
-        NSColor.greenColor().setFill();
-        NSColor.blackColor().setStroke();
+        nsFillColor.setFill();
+        nsLineColor.setStroke();
+        
         path.fill()
         path.stroke()
         

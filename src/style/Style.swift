@@ -5,7 +5,7 @@ class Style:IStyle{
     var name:String;
     var styleProperties:Array<IStyleProperty>
     var selector:ISelector
-    init(_ name:String, _ styleProperties:Array<IStyleProperty> = [],_ selector:ISelector = Selector()){
+    init(_ name:String = "", _ styleProperties:Array<IStyleProperty> = [],_ selector:ISelector = Selector()){
         self.name = name
         self.styleProperties = styleProperties
         self.selector = selector

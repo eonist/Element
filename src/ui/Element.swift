@@ -48,16 +48,22 @@ class Element: FlippedView,IElement {
 extension IElement {
     /*
     * Draws the graphics
+    * TODO: does nsview have a protocol which IElement then can use
     * NOTE: this method is embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
     */
     func resolveSkin() {
         Swift.print("resolveSkin: " + "\(String(self))")
-        //print("Obj name: " + "\((self as! NSObject).className)")
-        //print("Obj name: " + "\(String(self))")
         let classType:String = getClassType()
         Swift.print("classType: " + classType)
         setStyle(StyleManager.getStyle(classType)!)
        
+        let pathRect = NSInsetRect((self as! NSView).bounds, 2, 21);
+        let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
+        GraphicModifier.applyProperties(path, style, style,skinState)
+        GraphicModifier.stylize(path)
+    
+
+        
         /*
         switch skinState{
             case SkinStates.none:
@@ -69,32 +75,5 @@ extension IElement {
         }
         */
         
-        
-        
-        //continue here: add gradient, shape etc
-        
-        
-        
-        let pathRect = NSInsetRect((self as! NSView).bounds, 2, 21);
-        
-        let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)
-        
-        
-        
-        GraphicModifier.applyProperties(path, style, style,skinState)
-        GraphicModifier.stylize(path)
-        
-        //nsFillColor.setFill();
-        //nsLineColor.setStroke();
-        
-        
-        
-        /*
-        NSColor.greenColor().setFill()
-        
-        let path = NSBezierPath(rect: (self as! NSView).bounds)
-        path.fill()
-        
-        */
     }
 }

@@ -32,7 +32,7 @@ class StyleModifier {
     * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
     * TODO: maybe use map or filter to speed this up?
     */
-    class func combine(inout a:IStyle,b:IStyle){
+    class func combine(inout a:IStyle,_ b:IStyle){
         let aLength:Int = a.styleProperties.count
         let bLength:Int = b.styleProperties.count
         for (var i:Int=0; i < aLength; i++) {
@@ -48,10 +48,16 @@ class StyleModifier {
         }
     }
     /**
+    *
+    */
+    class func merge(){
+        //see old code
+    }
+    /**
     * Adds @param styleProperty to the end of the @param style.styleProperties array
     * @Note will throw an error if a styleProperty with the same name is allready added
     */
-    class func append(inout style:IStyle,styleProperty:IStyleProperty){
+    class func append(inout style:IStyle,_ styleProperty:IStyleProperty){
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name) {
                 Swift.print(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list

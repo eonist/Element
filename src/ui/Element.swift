@@ -48,15 +48,15 @@ extension IElement {
     func resolveSkin() {
         Swift.print("resolveSkin: " + "\(String(self))")
         let classType:String = getClassType()//gets the classtype from the component
-        //Swift.print("classType: " + classType)
+        Swift.print("classType: " + classType)
        // style = StyleManager.getStyle(classType)!//sets the style to the element
         
 
          //TODO: toggle between rect and roundRect based on the style
         
-        var styleComposition:IStyle = Style()
+        var styleComposition:IStyle = Style("styleComp")
         
-        styleComposition
+        Swift.print("styleComposition")
         
         for style in StyleManager.styles{//loop through styles
             if(style.selector.element == classType){ //if style.selector == classType

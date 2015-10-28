@@ -60,8 +60,8 @@ extension IElement {
         //loop through styles
             //if style.selector == classType
                 //loop style.selector.states
-                    //if state == currentState
-                        //figure out how the statemaschine works and impliment that
+                    //if state == any of the current states TODO: figure out how the statemaschine works and impliment that
+                        
                         //
         
         

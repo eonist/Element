@@ -63,6 +63,8 @@ extension IElement {
         //TODO: toggle between rect and roundRect based on the style
         //TODO: add gradient to the mix see book
         
+        //use this: StylePropertyAsserter.hasGradient
+        //if(StylePropertyAsserter.hasFillet(skin, depth))
         
         
         

@@ -63,18 +63,6 @@ extension IElement {
         GraphicModifier.applyProperties(path, style, style,skinState)
         GraphicModifier.stylize(path)
     
-
-        
-        /*
-        switch skinState{
-            case SkinStates.none:
-                Swift.print("none")
-            case SkinStates.down:
-                Swift.print("down")
-            default:
-                break;
-        }
-        */
         
     }
 }

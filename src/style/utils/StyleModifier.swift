@@ -34,10 +34,9 @@ class StyleModifier {
         let aLength:Int = style.styleProperties.count;
         let bLength:Int = style.styleProperties.count;
         for (var i:Int=0; i<stylePropertiesLength; i++) {
-            
-        }
-        for stylePropA : IStyleProperty in a.styleProperties {
-            for stylePropB : IStyleProperty in b.styleProperties {
+            let stylePropA : IStyleProperty = a.styleProperties[i]
+            for (var e:Int=0; e<stylePropertiesLength; e++) {
+                let stylePropB : IStyleProperty = b.styleProperties[e]
                 if(stylePropA.name == stylePropB.name){
                     a.styleProperties[]
                 }

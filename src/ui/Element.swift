@@ -88,9 +88,9 @@ extension IElement {
         
         var pathRect = NSInsetRect((self as! NSView).bounds, 1, 1);
         
-        var path = NSBezierPath(roundedRect:pathRect, xRadius:100, yRadius:100);
+        var path = NSBezierPath(roundedRect:pathRect, xRadius:10, yRadius:10);
         
-        path.lineWidth = 15
+        path.lineWidth = 4
         
         NSColor.greenColor().setFill();
         NSColor.blackColor().setStroke();

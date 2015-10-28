@@ -54,18 +54,20 @@ extension IElement {
 
          //TODO: toggle between rect and roundRect based on the style
         
-        let styleComposition = Style()
+        var styleComposition:IStyle = Style()
         
         for style in StyleManager.styles{//loop through styles
             if(style.selector.element == classType){ //if style.selector == classType
                 for state in style.selector.states{//loop style.selector.states
                     if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
                         //gracefully append this style to styleComposition, forced overwrite
-                        styleComposition
+                        StyleModifier.combine(&styleComposition, style)
                     }
                 }
             }
         }
+        
+        //TODO: get the describe style method from your old code and test it out
         
         
         //this is how you seperate the states with a space. 

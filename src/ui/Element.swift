@@ -8,13 +8,13 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         
-        self.layer = CALayer() // Set view to be layer-hosting:
-        self.wantsLayer = true//need for the updateLayer method to be called internally
+        //self.layer = CALayer() // Set view to be layer-hosting:
+        //self.wantsLayer = true//need for the updateLayer method to be called internally
         //needsDisplay = true
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
         //layerWithColor()
         //test()
-        layerWithGradient()
+        //layerWithGradient()
         
         
         
@@ -173,12 +173,36 @@ class Element: FlippedView,IElement {
     * Note: if you overide drawRect then update layers wont work
     */
     
-    /*
+    
     override func drawRect(rect: NSRect) {
-    super.drawRect(rect)
-    resolveSkin()
+        Swift.print("drawRect")
+        super.drawRect(rect)
+        
+        
+        // Defining the shape
+        let drawingRect = CGRectInset(rect,
+            rect.size.width * 0.1,
+            rect.size.height * 0.1);
+        
+        let cornerRadius : CGFloat = 20
+        
+        let bezierPath = NSBezierPath(roundedRect: drawingRect,
+            xRadius: cornerRadius,
+            yRadius: cornerRadius)
+        
+        // Define the gradient
+        let startColor = NSColor.blackColor()
+        let endColor = NSColor.whiteColor()
+        
+        let gradient = NSGradient(startingColor:startColor, endingColor:endColor)
+        
+        // Draw the gradient in the path
+        gradient!.drawInBezierPath(bezierPath, angle: 90)
+        
+        
+        //resolveSkin()
     }
-    */
+   
     
     /**
     * Returns the class type of the Class instance

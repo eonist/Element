@@ -1,4 +1,5 @@
 import Cocoa
+import AppKit
 
 class Element: FlippedView,IElement {
     var style:IStyle = Style.clear
@@ -41,6 +42,7 @@ class Element: FlippedView,IElement {
         linePath.moveToPoint(a)
         linePath.lineToPoint(b)
         
+        UILine
         
         //line.path = linePath
         /*

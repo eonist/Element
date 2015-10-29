@@ -10,8 +10,13 @@ class Button: NSButton,IElement{
         self.wantsLayer = true//need for the updateLayer method to be called internally
         addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
-    
+    /*
     override func updateLayer() {//called on init if wantsUpdateLayer is true
+    
+    }
+    */
+    override func drawRect(rect: NSRect) {
+        super.drawRect(rect)
         Swift.print("redraw: ")
         if(self.cell!.highlighted){
             Swift.print("pressed state")
@@ -33,11 +38,6 @@ class Button: NSButton,IElement{
             
         }
         resolveSkin()//extension method that draws the graphics
-    }
-    
-    override func drawRect(rect: NSRect) {
-        super.drawRect(rect)
-        
     }
     func getClassType()->String{
         return String(Button)

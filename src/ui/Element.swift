@@ -12,7 +12,15 @@ class Element: FlippedView,IElement {
         self.wantsLayer = true//need for the updateLayer method to be called internally
         //needsDisplay = true
         //layerWithColor()
-        layerWithGradient()
+        //layerWithGradient()
+        
+        
+        //continue here
+        //TODO: Back track with the CAGradientLayer etc, use NSBEzier and NSGradient instead, CAGradient seems not to work and is a bit limited. 
+        //TODO: finish the research on CAGRadient
+        //TODO: impliement The NSBEzier and NSGradient example form the Orielly book
+        
+        
     }
     /*
     * Called on init if wantsUpdateLayer is true

@@ -8,8 +8,9 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         
-        //self.layer = CALayer() // Set view to be layer-hosting:
         //self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
+        //self.layer = CALayer() // Set view to be layer-hosting:
+        
         //needsDisplay = true
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
         //layerWithColor()

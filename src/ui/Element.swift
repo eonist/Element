@@ -145,9 +145,10 @@ class Element: FlippedView,IElement {
         sublayer.frame = CGRectMake(30, 30, 128, 192);
         layer!.addSublayer(sublayer)
     }
-    
+    /*
+    * CAShapeLayer doesnt supoprt gradient, but might do with: CGContextDrawRadialGradient
+    */
     func makeLineLayer(layer:CALayer,_ a:CGPoint,_ b:CGPoint){
-        //CAShapeLayer doesnt supoprt gradient
         let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
         let linePath = NSBezierPath()
         linePath.moveToPoint(a)
@@ -186,7 +187,7 @@ class Element: FlippedView,IElement {
     }
     
     /**
-    *
+    * Todo try to style two things above the other. If this isnt possible pursue the Layer idea
     */
     func drawGradientRect(rect: NSRect){
         // Defining the shape

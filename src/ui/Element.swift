@@ -9,7 +9,15 @@ class Element: FlippedView,IElement {
         //theLayer = CALayer()
         super.init(frame: frame)
         
+        //self.wantsLayer = true//need for the updateLayer method to be called internally
+    }
+    override init(frame frameRect: NSRect) {
+        Swift.print("init frame")
+        super.init(frame: frameRect)
+        // Set view to be layer-hosting:
+        self.layer = CALayer()
         self.wantsLayer = true//need for the updateLayer method to be called internally
+        layerWithColor()
     }
     /*
     * Called on init if wantsUpdateLayer is true
@@ -20,7 +28,7 @@ class Element: FlippedView,IElement {
     override func updateLayer() {
         
         //layerWithColor()
-        layerWithGradient()
+        //layerWithGradient()
         //makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
         //addSubLayer()
         //resolveSkin()//extension method that draws the graphics

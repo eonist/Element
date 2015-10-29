@@ -36,23 +36,25 @@ class Element: FlippedView,IElement {
         //resolveSkin()//extension method that draws the graphics
     }
     func makeLineLayer(layer:CGLayer,a:CGPoint,b:CGPoint){
-        var line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
-        var linePath = NSBezierPath()
+        let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
+        let linePath = NSBezierPath()
         linePath.moveToPoint(a)
         linePath.lineToPoint(b)
         
-        
-        
-        
         line.path = NSBezierPathParser.cgPath(linePath)
+        
+        line.fillColor = nil;
+        line.opacity = 1.0;
+        line.strokeColor = NSColor.redColor().CGColor
+        
+        self.layer?.addSublayer(line)
+        
+        
         /*
         [linePath moveToPoint: pointA];
         [linePath addLineToPoint:pointB];
         
-        line.fillColor = nil;
-        line.opacity = 1.0;
-        line.strokeColor = [UIColor redColor].CGColor;
-        [layer addSublayer:line];
+        
         */
     }
     

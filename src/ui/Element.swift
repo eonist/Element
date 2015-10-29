@@ -26,8 +26,8 @@ class Element: FlippedView,IElement {
         
         //ok your kinda stuck, lets complete alot of research, books, websites etc. 
         //TODO: To figure out how t do line gradient. Make sure you actually need this. check your prev Element lib
-        //TODO: quartz, nsbezierpath or layers? do alot of cross research, write stuff down etc. 
-        
+        //TODO: quartz, nsbezierpath or layers? do alot of cross research, write stuff down etc.
+        //has  chapter on nsview drawing: Learn Cocoa on the Mac (Learn Series) (Paperback) by Jack Nutting, Dave Mark **(may have some nstableview stuff, also some nsview drawing)**
         
         
         

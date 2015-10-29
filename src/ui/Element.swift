@@ -32,10 +32,10 @@ class Element: FlippedView,IElement {
         l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
         l.shadowOpacity = 0.8;
         
-        
+        makeLineLayer(l,CGPoint(10,10),CGPoint(100,100))
         //resolveSkin()//extension method that draws the graphics
     }
-    func makeLineLayer(layer:CGLayer,a:CGPoint,b:CGPoint){
+    func makeLineLayer(layer:CGLayer,_ a:CGPoint,_ b:CGPoint){
         let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
         let linePath = NSBezierPath()
         linePath.moveToPoint(a)

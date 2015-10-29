@@ -1,6 +1,7 @@
 import Cocoa
 import AppKit
 
+
 class Element: FlippedView,IElement {
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
@@ -42,6 +43,7 @@ class Element: FlippedView,IElement {
         linePath.moveToPoint(a)
         linePath.lineToPoint(b)
         
+        UIColor.
         
         
         //line.path = linePath

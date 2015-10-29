@@ -41,10 +41,10 @@ class Element: FlippedView,IElement {
         linePath.moveToPoint(a)
         linePath.lineToPoint(b)
         
-        UIColor.
         
         
-        //line.path = linePath
+        
+        line.path = NSBezierPathParser.cgPath(linePath)
         /*
         [linePath moveToPoint: pointA];
         [linePath addLineToPoint:pointB];

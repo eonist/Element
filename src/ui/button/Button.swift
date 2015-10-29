@@ -7,7 +7,7 @@ class Button: NSButton,IElement{
     init(_ width: Int = 100, _ height: Int = 40) {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
-        self.wantsLayer = true//need for the updateLayer method to be called internally
+        //self.wantsLayer = true//need for the updateLayer method to be called internally
         addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
     /*
@@ -38,7 +38,7 @@ class Button: NSButton,IElement{
             
         }
         resolveSkin()//extension method that draws the graphics
-        layer
+        
     }
     func getClassType()->String{
         return String(Button)

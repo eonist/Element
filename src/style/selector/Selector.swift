@@ -5,7 +5,7 @@ class Selector:ISelector{// :TODO: impliment a ISelector interface, you should p
     var classIds:Array<String>
     var id:String
     var states:Array<String>
-    init(_ element:String = "",_ classIds:Array<String> = [],_ id:String = "",_ states:Array<String> = []) {
+    init(_ element:String = "",_ classIds:Array<String> = [],_ id:String = "",_ states:Array<String> = [""]) {
         self.element = element;
         self.classIds = classIds;
         self.id = id;

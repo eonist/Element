@@ -10,6 +10,7 @@ class Element: FlippedView,IElement {
         
         self.layer = CALayer() // Set view to be layer-hosting:
         self.wantsLayer = true//need for the updateLayer method to be called internally
+        needsDisplay = true
         //layerWithColor()
         layerWithGradient()
     }

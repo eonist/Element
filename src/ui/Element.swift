@@ -23,10 +23,14 @@ class Element: FlippedView,IElement {
         
         
         //continue here
+        
+        //0. TODO: actually try this tutorial with a fresh Playground page: http://www.cocoawithlove.com/2011/01/advanced-drawing-using-appkit.html to better understand how drawing in xcode works, also see PaintCode examples
         //1. TODO: impliement The NSBEzier and NSGradient example form the Orielly book (you may be able to put them into a calayer anyway)
         //2. TODO: subclass CALayer and use this: CGContextDrawRadialGradient
         //3. TODO: Back track with the CAGradientLayer etc, use NSBEzier and NSGradient instead, CAGradient seems not to work and is a bit limited.
         //4. TODO: finish the research on CAGRadient
+        
+        
         
         
         

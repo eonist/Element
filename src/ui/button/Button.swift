@@ -16,6 +16,8 @@ class Button: NSButton,IElement{
         l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
         //l.backgroundColor = UIColor.blueColor().CGColor
         l.borderWidth = 4
+        l.cornerRadius = 8
+        
         l.borderColor = NSColorParser.cgColor(NSColor.redColor())
             
         //l.borderColor = UIColor.redColor().CGColor

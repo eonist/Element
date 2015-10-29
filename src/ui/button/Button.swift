@@ -38,6 +38,7 @@ class Button: NSButton,IElement{
             
         }
         resolveSkin()//extension method that draws the graphics
+        layer
     }
     func getClassType()->String{
         return String(Button)

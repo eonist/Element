@@ -222,7 +222,7 @@ class Element: FlippedView,IElement {
     */
     func drawRadialGradient(rect:CGRect){
        
-            CGContextRef context = UIGraphicsGetCurrentContext();
+            //CGContextRef context = UIGraphicsGetCurrentContext();
             
         /*
         size_t gradLocationsNum = 2;

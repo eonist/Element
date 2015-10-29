@@ -24,7 +24,7 @@ class Element: FlippedView,IElement {
         
         //continue here
         
-        //0. this has all you need via dirtyRect: http://www.knowstack.com/cocoa_drawing/
+        //0. this has all you need via dirtyRect: http://www.knowstack.com/cocoa_drawing/ (make sure you also can draw lines with gradient, that ray guy had an example with this see your side research)
         //1. It seems dirtyRect is just a way to get info about the current rect etc. you dont need it to draw
         //2. do more research into COcoa drawing books
         

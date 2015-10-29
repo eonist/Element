@@ -42,7 +42,7 @@ class Element: FlippedView,IElement {
         linePath.moveToPoint(a)
         linePath.lineToPoint(b)
         
-        UILine
+        
         
         //line.path = linePath
         /*

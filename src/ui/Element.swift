@@ -236,9 +236,31 @@ class Element: FlippedView,IElement {
         gradient!.drawInBezierPath(bezierPath, angle: 90)
     }
     /**
+    *
+    */
+    func drawRadialGradientCircle(rect:NSRect){
+        let bound = self.bounds
+        let aGradient:NSGradient = NSGradient(startingColor: NSColor.yellowColor(), endingColor: NSColor.redColor())!
+        
+        let centerPoint:NSPoint = NSMakePoint(NSMidX(bounds), NSMidY(bounds))
+        /*
+        
+        NSPoint centerPoint =
+        NSPoint otherPoint = NSMakePoint(centerPoint.x + 60.0, centerPoint.y + 60.0);
+        CGFloat firstRadius = MIN( ((bounds.size.width/2.0) - 2.0),
+        ((bounds.size.height/2.0) -2.0) );
+        [aGradient drawFromCenter:centerPoint radius:firstRadius
+        toCenter:otherPoint radius:2.0
+        options:0];
+        */
+        
+        
+    }
+    
+    /**
     * for caLayers i think
     */
-    func drawRadialGradient(rect:CGRect){
+    func layerWidthRadialGradient(rect:CGRect){
        
             //CGContextRef context = UIGraphicsGetCurrentContext();
             

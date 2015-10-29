@@ -11,18 +11,40 @@ class Element: FlippedView,IElement {
     /*
     * Called on init if wantsUpdateLayer is true
     */
-    /*
+    
     override func updateLayer() {
-        resolveSkin()//extension method that draws the graphics
+        let l:CALayer = layer!
+        //layer!.frame = CGRectInset(l.frame, 5, 5);
+        l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
+        //l.backgroundColor = UIColor.blueColor().CGColor
+        l.borderWidth = 4
+        l.cornerRadius = 8
+        
+        l.borderColor = NSColorParser.cgColor(NSColor.redColor())
+        
+        //l.borderColor = UIColor.redColor().CGColor
+        
+        l.shadowOpacity = 0.7
+        l.shadowOffset = CGSizeMake(0, 3);
+        l.shadowRadius = 5.0;
+        l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
+        l.shadowOpacity = 0.8;
+        
+        
+        //resolveSkin()//extension method that draws the graphics
     }
-    */
+    
     /*
     * Note: if you overide drawRect then update layers wont work
     */
+    
+    /*
     override func drawRect(rect: NSRect) {
-        super.drawRect(rect)
-       resolveSkin()
+    super.drawRect(rect)
+    resolveSkin()
     }
+    */
+    
     /**
     * Returns the class type of the Class instance
     * @Note if a class subclasses Element that sub-class will be the class type
@@ -74,8 +96,6 @@ extension IElement {
         Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")
         StyleParser.describe(styleComposition)
         
-        Swift.print("end of call")
-        //TODO: get the describe style method from your old code and test it out
         
         
         //this is how you seperate the states with a space. 
@@ -85,18 +105,7 @@ extension IElement {
         //from here: ElementParser.selectors(element):
             //selector.states = (e.skin != null ? e.skin.state : e.getSkinState()).match(/\b\w+\b/g);/*Matches words with spaces between them*/
         
-        
-        //styleComposition is now the style that should be applied to this element
-        
-        
-       
-        
-        
-        
-        //TODO: add gradient to the mix see book
-        
-        
-        
+  
         
         let pathRect = NSInsetRect((self as! NSView).bounds, 22, 21);
         let path:NSBezierPath = GraphicsModifier.drawRoundRect(pathRect, 10, 10)//draw graphic
@@ -104,7 +113,7 @@ extension IElement {
         GraphicModifier.applyProperties(path, styleComposition, styleComposition,skinState)//apply style
         GraphicModifier.stylize(path)//realize style on the graphic
 
-    
+        Swift.print("end of call")
         
     }
 }

@@ -193,8 +193,8 @@ class Element: FlippedView,IElement {
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
-       //drawGradientRect(rect)
-        drawShapes(rect)
+        drawGradientRect(rect)
+        //drawShapes(rect)
         
         //resolveSkin()
     }
@@ -225,30 +225,18 @@ class Element: FlippedView,IElement {
     */
     func drawGradientRect(rect: NSRect){
         // Defining the shape
-        let drawingRect = CGRectInset(rect,
-            rect.size.width * 0.1,
-            rect.size.height * 0.1);
-        
+        let drawingRect = CGRectInset(rect,rect.size.width * 0.1,rect.size.height * 0.1);
         let cornerRadius : CGFloat = 20
-        
-        let bezierPath = NSBezierPath(roundedRect: drawingRect,
-            xRadius: cornerRadius,
-            yRadius: cornerRadius)
-        
+        let bezierPath = NSBezierPath(roundedRect: drawingRect,xRadius: cornerRadius,yRadius: cornerRadius)
         // Define the gradient
         let startColor = NSColor.blackColor()
         let endColor = NSColor.whiteColor()
-        
         let gradient = NSGradient(startingColor:startColor, endingColor:endColor)
-        
         // Draw the gradient in the path
         gradient!.drawInBezierPath(bezierPath, angle: 90)
-        
-        
     }
-    
     /**
-    *
+    * for caLayers i think
     */
     func drawRadialGradient(rect:CGRect){
        

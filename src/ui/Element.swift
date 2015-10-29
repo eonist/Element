@@ -145,7 +145,9 @@ class Element: FlippedView,IElement {
         sublayer.frame = CGRectMake(30, 30, 128, 192);
         layer!.addSublayer(sublayer)
     }
+    
     func makeLineLayer(layer:CALayer,_ a:CGPoint,_ b:CGPoint){
+        //CAShapeLayer doesnt supoprt gradient
         let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
         let linePath = NSBezierPath()
         linePath.moveToPoint(a)

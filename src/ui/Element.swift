@@ -48,8 +48,9 @@ class Element: FlippedView,IElement {
     */
     func layerWithGradient(){
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.frame.bounds
-        gradientLayer.colors = [cgColorForRed(209.0, green: 0.0, blue: 0.0),
+        gradientLayer.frame = self.frame
+        gradientLayer.colors = [
+            cgColorForRed(209.0, green: 0.0, blue: 0.0),
             cgColorForRed(255.0, green: 102.0, blue: 34.0),
             cgColorForRed(255.0, green: 218.0, blue: 33.0),
             cgColorForRed(51.0, green: 221.0, blue: 0.0),
@@ -60,8 +61,9 @@ class Element: FlippedView,IElement {
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         someView.layer.addSublayer(gradientLayer)
         
-        func cgColorForRed(red: CGFloat, green: CGFloat, blue: CGFloat) -> AnyObject {
-            return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).CGColor as AnyObject
+        func cgColorForRed(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGColor {
+            //return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).CGColor as AnyObject
+            return NSColor(calibratedRed: red, green: green, blue: blue, alpha: 1).CGColor
         }
     }
     /**

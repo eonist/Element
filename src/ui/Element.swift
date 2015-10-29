@@ -58,6 +58,36 @@ class Element: FlippedView,IElement {
         l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
         l.shadowOpacity = 0.8;
     }
+    
+    
+    //the colors for the gradient.  highColor is at the top, lowColor as at the bottom
+    UIColor * highColor = [UIColor colorWithWhite:1.000 alpha:1.000];
+    UIColor * lowColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.867 alpha:1.000];
+    
+    //The gradient, simply enough.  It is a rectangle
+    CAGradientLayer * gradient = [CAGradientLayer layer];
+    [gradient setFrame:[self bounds]];
+    [gradient setColors:[NSArray arrayWithObjects:(id)[highColor CGColor], (id)[lowColor CGColor], nil]];
+    
+    //the rounded rect, with a corner radius of 6 points.
+    //this *does* maskToBounds so that any sublayers are masked
+    //this allows the gradient to appear to have rounded corners
+    
+    
+    //add the rounded rect layer underneath all other layers of the view
+    [[self layer] insertSublayer:roundRect atIndex:0];
+    /**
+    *
+    */
+    func test(){
+        let roundRect = CALayer()
+        
+        roundRect.frame = self.bounds
+        roundRect.cornerRadius = 6.0
+        roundRect.masksToBounds = true
+        roundRect.addSublayer(gradient)
+       
+    }
     /**
     *
     */

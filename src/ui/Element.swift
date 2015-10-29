@@ -92,21 +92,24 @@ class Element: FlippedView,IElement {
         Swift.print(self.bounds)
         gradientLayer.frame = CGRect(x: 64, y: 64, width: 160, height: 160)
         //gradientLayer.frame = self.bounds
-        /*
+        
         gradientLayer.colors = [
-        ColorParser.nsColor(209.0, 0.0,  0.0),
-        ColorParser.nsColor(255.0,  102.0,  34.0),
-        ColorParser.nsColor(255.0, 218.0,  33.0),
-        ColorParser.nsColor(51.0, 221.0,  0.0),
-        ColorParser.nsColor(17.0,  51.0,  204.0),
-        ColorParser.nsColor(34.0,  0.0,  102.0),
-        ColorParser.nsColor(51.0,  0.0,  68.0)]
-        */
-        gradientLayer.colors = [NSColor.redColor().CGColor,NSColor.greenColor().CGColor]
-        //gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        //gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        ColorParser.nsColor(209.0, 0.0,  0.0).CGColor,
+        ColorParser.nsColor(255.0,  102.0,  34.0).CGColor,
+        ColorParser.nsColor(255.0, 218.0,  33.0).CGColor,
+        ColorParser.nsColor(51.0, 221.0,  0.0).CGColor,
+        ColorParser.nsColor(17.0,  51.0,  204.0).CGColor,
+        ColorParser.nsColor(34.0,  0.0,  102.0).CGColor,
+        ColorParser.nsColor(51.0,  0.0,  68.0).CGColor]
+
+        //gradientLayer.colors = [NSColor.redColor().CGColor,NSColor.greenColor().CGColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        /*
         gradientLayer.startPoint = CGPointZero;
         gradientLayer.endPoint = CGPointMake(1, 1);
+        
+        */
         //gradientLayer.locations = [NSNumber(double: 0.0),NSNumber(double: 0.7)]
         
         

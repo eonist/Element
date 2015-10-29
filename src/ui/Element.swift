@@ -193,7 +193,8 @@ class Element: FlippedView,IElement {
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
-        drawGradientRect(rect)
+        //drawGradientRect(rect)
+        drawRadialGradientCircle(rect)
         //drawShapes(rect)
         
         //resolveSkin()

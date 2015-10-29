@@ -13,9 +13,12 @@ class Button: NSButton,IElement{
     
     override func updateLayer() {//called on init if wantsUpdateLayer is true
         let l:CALayer = layer!
-        l.backgroundColor = UIColor.blueColor().CGColor
-        l.borderWidth = 100.0
-        l.borderColor = UIColor.redColor().CGColor
+        l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
+        //l.backgroundColor = UIColor.blueColor().CGColor
+        l.borderWidth = 4
+        l.borderColor = NSColorParser.cgColor(NSColor.redColor())
+            
+        //l.borderColor = UIColor.redColor().CGColor
         l.shadowOpacity = 0.7
         l.shadowRadius = 10.0
     }

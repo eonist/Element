@@ -14,7 +14,7 @@ class Element: FlippedView,IElement {
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
         //layerWithColor()
         //test()
-        //layerWithGradient()
+        layerWithGradient()
         
         
         
@@ -177,8 +177,16 @@ class Element: FlippedView,IElement {
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
+       drawGradientRect(rect)
         
         
+        //resolveSkin()
+    }
+    
+    /**
+    *
+    */
+    func drawGradientRect(rect: NSRect){
         // Defining the shape
         let drawingRect = CGRectInset(rect,
             rect.size.width * 0.1,
@@ -198,9 +206,6 @@ class Element: FlippedView,IElement {
         
         // Draw the gradient in the path
         gradient!.drawInBezierPath(bezierPath, angle: 90)
-        
-        
-        //resolveSkin()
     }
    
     

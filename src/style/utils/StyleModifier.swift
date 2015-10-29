@@ -51,7 +51,7 @@ class StyleModifier {
     * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
     * TODO: maybe use map or filter to speed this up?
     */
-    class func merge(inout a:IStyle,b:IStyle){
+    class func merge(inout a:IStyle,_ b:IStyle){
         for stylePropB : IStyleProperty in b.styleProperties {
             var hasStyleProperty:Bool = false;
             for stylePropA : IStyleProperty in a.styleProperties {

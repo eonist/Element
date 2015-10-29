@@ -13,7 +13,7 @@ class Button: NSButton,IElement{
     
     override func updateLayer() {//called on init if wantsUpdateLayer is true
         let l:CALayer = layer!
-        layer!.frame = CGRectInset(l.frame, 5, 5);
+        //layer!.frame = CGRectInset(l.frame, 5, 5);
         l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
         //l.backgroundColor = UIColor.blueColor().CGColor
         l.borderWidth = 4
@@ -24,6 +24,10 @@ class Button: NSButton,IElement{
         //l.borderColor = UIColor.redColor().CGColor
         l.shadowOpacity = 0.7
         l.shadowRadius = 10.0
+        l.shadowOffset = CGSizeMake(0, 3);
+        l.shadowRadius = 5.0;
+        l.shadowColor = 
+        l.shadowOpacity = 0.8;
         
     }
     

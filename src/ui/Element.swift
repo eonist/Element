@@ -243,12 +243,14 @@ class Element: FlippedView,IElement {
         let aGradient:NSGradient = NSGradient(startingColor: NSColor.yellowColor(), endingColor: NSColor.redColor())!
         
         let centerPoint:NSPoint = NSMakePoint(NSMidX(bounds), NSMidY(bounds))
+        let otherPoint:NSPoint = NSMakePoint(centerPoint.x + 60.0, centerPoint.y + 60.0)
+        let firstRadius:CGFloat = MIN( ((bounds.size.width/2.0) - 2.0),((bounds.size.height/2.0) -2.0) )
         /*
         
         NSPoint centerPoint =
-        NSPoint otherPoint = NSMakePoint(centerPoint.x + 60.0, centerPoint.y + 60.0);
-        CGFloat firstRadius = MIN( ((bounds.size.width/2.0) - 2.0),
-        ((bounds.size.height/2.0) -2.0) );
+        NSPoint otherPoint = ;
+        
+        ;
         [aGradient drawFromCenter:centerPoint radius:firstRadius
         toCenter:otherPoint radius:2.0
         options:0];

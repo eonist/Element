@@ -49,7 +49,7 @@ class StyleModifier {
     * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
     * @Note the prepend method is used because the styleProps that has priority should come later in the array)
     */
-    class func merge(a:IStyle,b:IStyle){
+    class func merge(inout a:IStyle,b:IStyle){
         for stylePropB : IStyleProperty in b.styleProperties {
             var hasStyleProperty:Bool = false;
             for stylePropA : IStyleProperty in a.styleProperties {
@@ -59,7 +59,7 @@ class StyleModifier {
                 }
             }
             if(!hasStyleProperty) {
-                StyleModifier.prepend(a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
+                StyleModifier.prepend(&a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
             }
         }
     }
@@ -73,7 +73,7 @@ class StyleModifier {
         Swift.print("append happended")
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name) {
-                fatalError(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
+                
             }
         }
         style.styleProperties.append(styleProperty)
@@ -83,7 +83,9 @@ class StyleModifier {
     */
     class func prepend(inout style:IStyle,_ styleProperty:IStyleProperty){
         for styleProp:IStyleProperty in style.styleProperties{
-            if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) throw new IllegalOperationError(style+" STYLE PROPERTY BY THE NAME OF "+styleProperty.name+" IS ALREADY IN THE _styleProperties ARRAY: "+styleProperty.name);/*checks if there is no duplicates in the list*/
+            if(styleProp.name == styleProperty.name/* && styleProp.depth == styleProperty.depth*/) {
+                fatalError(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
+            }
         }
         ArrayModifier.unshift(&style.styleProperties, styleProperty)
     }

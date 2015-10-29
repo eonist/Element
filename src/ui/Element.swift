@@ -89,7 +89,7 @@ class Element: FlippedView,IElement {
         
         
         
-        layer!.addSublayer(l)
+        layer!.addSublayer(gradientLayer)
     }
     /**
     *

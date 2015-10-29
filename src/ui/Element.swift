@@ -24,9 +24,10 @@ class Element: FlippedView,IElement {
         
         //continue here
         
+        //0. this has all you need via dirtyRect: http://www.knowstack.com/cocoa_drawing/
         //1. It seems dirtyRect is just a way to get info about the current rect etc. you dont need it to draw
         //2. do more research into COcoa drawing books
-        //3. see this link for layering shapes via drityRect: http://www.knowstack.com/cocoa_drawing/
+        
         
         //0. TODO: actually try this tutorial with a fresh Playground page: http://www.cocoawithlove.com/2011/01/advanced-drawing-using-appkit.html to better understand how drawing in xcode works, also see PaintCode examples
         //1. TODO: impliement The NSBEzier and NSGradient example form the Orielly book (you may be able to put them into a calayer anyway)

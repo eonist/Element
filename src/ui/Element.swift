@@ -58,7 +58,8 @@ class Element: FlippedView,IElement {
         //let l:CALayer = CALayer()
         
         let gradientLayer = CAGradientLayer()
-        layer!.addSublayer(gradientLayer)
+        //layer!.addSublayer(gradientLayer)
+        layer!.insertSublayer(gradientLayer, atIndex: 0)
         //self.sendSubviewToBack(gradientLayer)
         Swift.print("self.bounds")
         Swift.print(self.bounds)

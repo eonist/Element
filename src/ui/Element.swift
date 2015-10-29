@@ -59,12 +59,13 @@ class Element: FlippedView,IElement {
             ColorParser.nsColor(51.0,  0.0,  68.0)]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        someView.layer.addSublayer(gradientLayer)
         
-        func cgColorForRed(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGColor {
-            //return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).CGColor as AnyObject
-            return ColorParser.nsColor(red,green,blue).CGColor
-        }
+        
+        //continue here, something is missing
+        
+        
+        
+        layer!.addSublayer(gradientLayer)
     }
     /**
     *

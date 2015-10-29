@@ -3,9 +3,12 @@ import Cocoa
 class Element: FlippedView,IElement {
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
+    let theLayer:CALayer
     init(_ width: Int = 100, _ height: Int = 40){
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
+        theLayer = CALayer()
         super.init(frame: frame)
+        
         self.wantsLayer = true//need for the updateLayer method to be called internally
     }
     /*
@@ -26,7 +29,7 @@ class Element: FlippedView,IElement {
     *
     */
     func layerWithColor(){
-        let l:CALayer = layer!
+        let l:CALayer = theLayer
         //layer!.frame = CGRectInset(l.frame, 5, 5);
         l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
         //l.backgroundColor = UIColor.blueColor().CGColor

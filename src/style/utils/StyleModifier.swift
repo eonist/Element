@@ -48,6 +48,8 @@ class StyleModifier {
     /**
     * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
     * @Note the prepend method is used because the styleProps that has priority should come later in the array)
+    * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
+    * TODO: maybe use map or filter to speed this up?
     */
     class func merge(inout a:IStyle,b:IStyle){
         for stylePropB : IStyleProperty in b.styleProperties {
@@ -63,11 +65,10 @@ class StyleModifier {
             }
         }
     }
-    
-    
     /**
     * Adds @param styleProperty to the end of the @param style.styleProperties array
     * @Note will throw an error if a styleProperty with the same name is allready added
+    * //TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
     */
     class func append(inout style:IStyle,_ styleProperty:IStyleProperty){
         Swift.print("append happended")
@@ -80,8 +81,10 @@ class StyleModifier {
     }
     /*
     * Adds @param styleProperty to the start of the @param style.styleProperties array
+    * //TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
     */
     class func prepend(inout style:IStyle,_ styleProperty:IStyleProperty){
+        Swift.print("prepend happended")
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name/* && styleProp.depth == styleProperty.depth*/) {
                 fatalError(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list

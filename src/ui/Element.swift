@@ -296,6 +296,7 @@ class GradientCALAyer:CALayer{
     var radius: CGFloat?
     var locations: [CGFloat]?
     var colors: [CGColor]?
+    
     override func drawInContext(ctx: CGContext) {
         super.drawInContext(ctx)
         if let colors = self.colors {

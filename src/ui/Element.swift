@@ -32,8 +32,22 @@ class Element: FlippedView,IElement {
         l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
         l.shadowOpacity = 0.8;
         
-        makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
+        //makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
+        //addSubLayer()
         //resolveSkin()//extension method that draws the graphics
+    }
+    /**
+    *
+    */
+    func addSubLayer(){
+        let sublayer = CALayer()
+        sublayer.backgroundColor = NSColor.orangeColor().CGColor
+        sublayer.shadowOffset = CGSizeMake(0, 3);
+        sublayer.shadowRadius = 5.0;
+        sublayer.shadowColor = NSColor.blackColor().CGColor
+        sublayer.shadowOpacity = 0.8
+        sublayer.frame = CGRectMake(30, 30, 128, 192);
+        layer!.addSublayer(sublayer)
     }
     func makeLineLayer(layer:CALayer,_ a:CGPoint,_ b:CGPoint){
         let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];

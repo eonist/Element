@@ -46,25 +46,22 @@ class StyleModifier {
         }
     }
     /**
-    *
+    * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
+    * @Note the prepend method is used because the styleProps that has priority should come later in the array)
     */
     class func merge(a:IStyle,b:IStyle){
-        for  (var stylePropB : IStyleProperty in b.styleProperties) {
-            var hasStyleProperty:Boolean = false;
-            for each (var stylePropA : IStyleProperty in a.styleProperties) {
-                if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
+        for stylePropB : IStyleProperty in b.styleProperties {
+            var hasStyleProperty:Bool = false;
+            for stylePropA : IStyleProperty in a.styleProperties {
+                if(stylePropB.name == stylePropA.name/* && stylePropB.depth == stylePropA.depth*/){
                     hasStyleProperty = true;
                     break;
                 }
             }
             if(!hasStyleProperty) StyleModifier.prepend(a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
         }
-
     }
-    /**
-    * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
-    * @Note the prepend method is used because the styleProps that has priority should come later in the array)
-    */
+    
     
     /**
     * Adds @param styleProperty to the end of the @param style.styleProperties array
@@ -78,6 +75,13 @@ class StyleModifier {
             }
         }
         style.styleProperties.append(styleProperty)
+    }
+    /*
+    * Adds @param styleProperty to the start of the @param style.styleProperties array
+    */
+    class func prepend(inout style:IStyle,_ styleProperty:IStyleProperty){
+        for each (var styleProp:IStyleProperty in style.styleProperties) if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) throw new IllegalOperationError(style+" STYLE PROPERTY BY THE NAME OF "+styleProperty.name+" IS ALREADY IN THE _styleProperties ARRAY: "+styleProperty.name);/*checks if there is no duplicates in the list*/
+        style.styleProperties.unshift(styleProperty);
     }
 }
 

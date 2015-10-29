@@ -69,7 +69,8 @@ class Element: FlippedView,IElement {
         gradientLayer.colors = [NSColor.redColor(),NSColor.greenColor()]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.locations = 
+        gradientLayer.locations = [NSNumber(double: 0.0),NSNumber(double: 0.7)]
+        
         
         
         //continue here, something is missing

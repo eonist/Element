@@ -57,6 +57,8 @@ class Element: FlippedView,IElement {
         //let l:CALayer = CALayer()
         
         let gradientLayer = CAGradientLayer()
+        layer!.addSublayer(gradientLayer)
+        //self.sendSubviewToBack(gradientLayer)
         Swift.print("self.bounds")
         Swift.print(self.bounds)
         gradientLayer.frame = self.bounds
@@ -73,7 +75,9 @@ class Element: FlippedView,IElement {
         gradientLayer.colors = [NSColor.redColor(),NSColor.greenColor()]
         //gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         //gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.locations = [NSNumber(double: 0.0),NSNumber(double: 0.7)]
+        gradientLayer.startPoint = CGPointZero;
+        gradientLayer.endPoint = CGPointMake(1, 1);
+        //gradientLayer.locations = [NSNumber(double: 0.0),NSNumber(double: 0.7)]
         
         
         
@@ -81,7 +85,7 @@ class Element: FlippedView,IElement {
         
         
         
-        layer!.addSublayer(gradientLayer)
+        
         //layer!.addSublayer(l)
     }
     /**

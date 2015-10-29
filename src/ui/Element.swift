@@ -28,7 +28,7 @@ class Element: FlippedView,IElement {
         //TODO: To figure out how t do line gradient. Make sure you actually need this. check your prev Element lib
         //TODO: quartz, nsbezierpath or layers? do alot of cross research, write stuff down etc.
         //has  chapter on nsview drawing: Learn Cocoa on the Mac (Learn Series) (Paperback) by Jack Nutting, Dave Mark **(may have some nstableview stuff, also some nsview drawing)**
-        
+        //dl paintcode and see about that gradient line. or email them
         
         
         //0. this has all you need via dirtyRect: http://www.knowstack.com/cocoa_drawing/ (make sure you also can draw lines with gradient, that ray guy had an example with this see your side research)

@@ -24,6 +24,8 @@ class Element: FlippedView,IElement {
         
         //continue here
         
+        
+        //read chap 10 here:(this may also be in ed.4 you have) http://www.amazon.com/Cocoa-Objective-C-Running-Scott-Stevenson/dp/0596804792
         //ok your kinda stuck, lets complete alot of research, books, websites etc. 
         //TODO: To figure out how t do line gradient. Make sure you actually need this. check your prev Element lib
         //TODO: quartz, nsbezierpath or layers? do alot of cross research, write stuff down etc.

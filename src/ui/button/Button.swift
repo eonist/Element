@@ -22,11 +22,11 @@ class Button: NSButton,IElement{
         l.borderColor = NSColorParser.cgColor(NSColor.redColor())
             
         //l.borderColor = UIColor.redColor().CGColor
+        
         l.shadowOpacity = 0.7
-        l.shadowRadius = 10.0
         l.shadowOffset = CGSizeMake(0, 3);
         l.shadowRadius = 5.0;
-        l.shadowColor = 
+        l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
         l.shadowOpacity = 0.8;
         
     }

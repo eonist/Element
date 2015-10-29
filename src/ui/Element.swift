@@ -9,12 +9,12 @@ class Element: FlippedView,IElement {
         super.init(frame: frame)
         
         //self.layer = CALayer() // Set view to be layer-hosting:
-        self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
+        //self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
         //needsDisplay = true
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
         //layerWithColor()
         //test()
-        layerWithGradient()
+        //layerWithGradient()
         
         
         
@@ -208,6 +208,8 @@ class Element: FlippedView,IElement {
         
         // Draw the gradient in the path
         gradient!.drawInBezierPath(bezierPath, angle: 90)
+        
+        
     }
    
     

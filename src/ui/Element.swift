@@ -1,6 +1,4 @@
 import Cocoa
-import AppKit
-
 
 class Element: FlippedView,IElement {
     var style:IStyle = Style.clear

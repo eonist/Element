@@ -58,7 +58,7 @@ class StyleModifier {
                     break;
                 }
             }
-            if(!hasStyleProperty) {
+            if(!hasStyleProperty) {//asserts true if the style from b doest exist in a
                 StyleModifier.prepend(&a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
             }
         }
@@ -73,7 +73,7 @@ class StyleModifier {
         Swift.print("append happended")
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name) {
-                
+                fatalError(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
             }
         }
         style.styleProperties.append(styleProperty)

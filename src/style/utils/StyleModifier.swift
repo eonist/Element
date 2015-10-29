@@ -58,7 +58,9 @@ class StyleModifier {
                     break;
                 }
             }
-            if(!hasStyleProperty) StyleModifier.prepend(a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
+            if(!hasStyleProperty) {
+                StyleModifier.prepend(a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
+            }
         }
     }
     
@@ -80,8 +82,10 @@ class StyleModifier {
     * Adds @param styleProperty to the start of the @param style.styleProperties array
     */
     class func prepend(inout style:IStyle,_ styleProperty:IStyleProperty){
-        for each (var styleProp:IStyleProperty in style.styleProperties) if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) throw new IllegalOperationError(style+" STYLE PROPERTY BY THE NAME OF "+styleProperty.name+" IS ALREADY IN THE _styleProperties ARRAY: "+styleProperty.name);/*checks if there is no duplicates in the list*/
-        style.styleProperties.unshift(styleProperty);
+        for styleProp:IStyleProperty in style.styleProperties{
+            if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) throw new IllegalOperationError(style+" STYLE PROPERTY BY THE NAME OF "+styleProperty.name+" IS ALREADY IN THE _styleProperties ARRAY: "+styleProperty.name);/*checks if there is no duplicates in the list*/
+        }
+        ArrayModifier.unshift(&style.styleProperties, styleProperty)
     }
 }
 

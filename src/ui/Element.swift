@@ -199,12 +199,12 @@ class Element: FlippedView,IElement {
         //resolveSkin()
     }
     /**
-    *
+    * draws many shapes (works)
     */
     func drawShapes(dirtyRect: NSRect){
-        print(String(dirtyRect))
-        var bPath:NSBezierPath = NSBezierPath(rect: dirtyRect)
-        print(bPath)
+        Swift.print(String(dirtyRect))
+        let bPath:NSBezierPath = NSBezierPath(rect: dirtyRect)
+        Swift.print(bPath)
         let fillColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
         fillColor.set()
         bPath.fill()
@@ -215,8 +215,8 @@ class Element: FlippedView,IElement {
         bPath.stroke()
         
         let circleFillColor = NSColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
-        var circleRect = NSMakeRect(dirtyRect.size.width/4, dirtyRect.size.height/4, dirtyRect.size.width/2, dirtyRect.size.height/2)
-        var cPath: NSBezierPath = NSBezierPath(ovalInRect: circleRect)
+        let circleRect = NSMakeRect(dirtyRect.size.width/4, dirtyRect.size.height/4, dirtyRect.size.width/2, dirtyRect.size.height/2)
+        let cPath: NSBezierPath = NSBezierPath(ovalInRect: circleRect)
         circleFillColor.set()
         cPath.fill()
     }

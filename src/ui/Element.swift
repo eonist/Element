@@ -63,7 +63,7 @@ class Element: FlippedView,IElement {
         
         func cgColorForRed(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGColor {
             //return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).CGColor as AnyObject
-            return NSColor(calibratedRed: red, green: green, blue: blue, alpha: 1).CGColor
+            return ColorParser.nsColor(<#T##r: CGFloat##CGFloat#>, g: <#T##CGFloat#>, b: <#T##CGFloat#>, a: <#T##CGFloat#>).CGColor
         }
     }
     /**

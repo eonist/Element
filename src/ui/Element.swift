@@ -31,7 +31,8 @@ class Element: FlippedView,IElement {
     func layerWithColor(){
         let l:CALayer = layer!
         //layer!.frame = CGRectInset(l.frame, 5, 5);
-        l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
+        //l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
+        layer!.backgroundColor = CGColorCreateGenericRGB(1.0, 0.0, 0.0, 1.0)
         //l.backgroundColor = UIColor.blueColor().CGColor
         l.borderWidth = 4
         l.cornerRadius = 8

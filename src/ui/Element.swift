@@ -8,13 +8,13 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         
-        self.layer = CALayer() // Set view to be layer-hosting:
-        self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
+        //self.layer = CALayer() // Set view to be layer-hosting:
+        //self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
         //needsDisplay = true
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
         //layerWithColor()
         //test()
-        layerWithGradient()
+        //layerWithGradient()
         
         
         
@@ -193,12 +193,33 @@ class Element: FlippedView,IElement {
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
-       drawGradientRect(rect)
-        
+       //drawGradientRect(rect)
+        drawShapes(rect)
         
         //resolveSkin()
     }
-    
+    /**
+    *
+    */
+    func drawShapes(dirtyRect: NSRect){
+        print(String(dirtyRect))
+        var bPath:NSBezierPath = NSBezierPath(rect: dirtyRect)
+        print(bPath)
+        let fillColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
+        fillColor.set()
+        bPath.fill()
+        
+        let borderColor = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        borderColor.set()
+        bPath.lineWidth = 12.0
+        bPath.stroke()
+        
+        let circleFillColor = NSColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        var circleRect = NSMakeRect(dirtyRect.size.width/4, dirtyRect.size.height/4, dirtyRect.size.width/2, dirtyRect.size.height/2)
+        var cPath: NSBezierPath = NSBezierPath(ovalInRect: circleRect)
+        circleFillColor.set()
+        cPath.fill()
+    }
     /**
     * Todo try to style two things above the other. If this isnt possible pursue the Layer idea
     */

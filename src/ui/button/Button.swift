@@ -10,7 +10,13 @@ class Button: NSButton,IElement{
         self.wantsLayer = true//need for the updateLayer method to be called internally
         addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
+    /*
     override func updateLayer() {//called on init if wantsUpdateLayer is true
+    
+    }
+    */
+    override func drawRect(rect: NSRect) {
+        super.drawRect(rect)
         Swift.print("redraw: ")
         if(self.cell!.highlighted){
             Swift.print("pressed state")
@@ -21,20 +27,17 @@ class Button: NSButton,IElement{
         }
         /*These states can be used for toggle buttons*/
         switch self.state {
-            case NSOnState :// Draw on state
-                Swift.print("on")
-            case NSMixedState :// Draw mixed state
-                Swift.print("mixed")
-            case NSOffState :
-                Swift.print("off")
-            default:
-                break;
-        
+        case NSOnState :// Draw on state
+            Swift.print("on")
+        case NSMixedState :// Draw mixed state
+            Swift.print("mixed")
+        case NSOffState :
+            Swift.print("off")
+        default:
+            break;
+            
         }
         resolveSkin()//extension method that draws the graphics
-    }
-    func setStyle(style:IStyle){
-        self.style = style
     }
     func getClassType()->String{
         return String(Button)

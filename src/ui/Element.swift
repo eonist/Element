@@ -10,7 +10,7 @@ class Element: FlippedView,IElement {
         
         self.layer = CALayer() // Set view to be layer-hosting:
         self.wantsLayer = true//need for the updateLayer method to be called internally
-        needsDisplay = true
+        //needsDisplay = true
         //layerWithColor()
         layerWithGradient()
     }
@@ -59,11 +59,12 @@ class Element: FlippedView,IElement {
         
         let gradientLayer = CAGradientLayer()
         //layer!.addSublayer(gradientLayer)
-        layer!.insertSublayer(gradientLayer, atIndex: 0)
+        //layer!.insertSublayer(gradientLayer, atIndex: 0)
         //self.sendSubviewToBack(gradientLayer)
         Swift.print("self.bounds")
         Swift.print(self.bounds)
-        gradientLayer.frame = self.bounds
+        gradientLayer.frame = CGRect(x: 64, y: 64, width: 160, height: 160)
+        //gradientLayer.frame = self.bounds
         /*
         gradientLayer.colors = [
         ColorParser.nsColor(209.0, 0.0,  0.0),
@@ -88,7 +89,7 @@ class Element: FlippedView,IElement {
         
         
         
-        //layer!.addSublayer(l)
+        layer!.addSublayer(l)
     }
     /**
     *

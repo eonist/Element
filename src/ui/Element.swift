@@ -6,6 +6,9 @@ class Element: FlippedView,IElement {
     init(_ width: Int = 100, _ height: Int = 40){
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
+        /*
+        To do that, create a CALayer and call the view's setLayer: method. Afterwards, call setWantsLayer:. The order is important, if you'd call setWantsLayer: first, you'd actually create a layer-backed view.
+        */
         self.wantsLayer = true//need for the updateLayer method to be called internally
     }
     /*

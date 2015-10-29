@@ -56,16 +56,20 @@ class Element: FlippedView,IElement {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.frame
+        /*
         gradientLayer.colors = [
-            ColorParser.nsColor(209.0, 0.0,  0.0),
-            ColorParser.nsColor(255.0,  102.0,  34.0),
-            ColorParser.nsColor(255.0, 218.0,  33.0),
-            ColorParser.nsColor(51.0, 221.0,  0.0),
-            ColorParser.nsColor(17.0,  51.0,  204.0),
-            ColorParser.nsColor(34.0,  0.0,  102.0),
-            ColorParser.nsColor(51.0,  0.0,  68.0)]
+        ColorParser.nsColor(209.0, 0.0,  0.0),
+        ColorParser.nsColor(255.0,  102.0,  34.0),
+        ColorParser.nsColor(255.0, 218.0,  33.0),
+        ColorParser.nsColor(51.0, 221.0,  0.0),
+        ColorParser.nsColor(17.0,  51.0,  204.0),
+        ColorParser.nsColor(34.0,  0.0,  102.0),
+        ColorParser.nsColor(51.0,  0.0,  68.0)]
+        */
+        gradientLayer.colors = [NSColor.redColor(),NSColor.greenColor()]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.locations = 
         
         
         //continue here, something is missing

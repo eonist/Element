@@ -53,7 +53,6 @@ class Element: FlippedView,IElement {
         [layer addSublayer:line];
         */
     }
-    }
     
     
     /*

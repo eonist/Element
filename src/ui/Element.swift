@@ -6,18 +6,12 @@ class Element: FlippedView,IElement {
     //let theLayer:CALayer
     init(_ width: Int = 100, _ height: Int = 40){
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
-        //theLayer = CALayer()
         super.init(frame: frame)
         
-        //self.wantsLayer = true//need for the updateLayer method to be called internally
-    }
-    override init(frame frameRect: NSRect) {
-        Swift.print("init frame")
-        super.init(frame: frameRect)
-        // Set view to be layer-hosting:
-        self.layer = CALayer()
+        self.layer = CALayer() // Set view to be layer-hosting:
         self.wantsLayer = true//need for the updateLayer method to be called internally
-        layerWithColor()
+        //layerWithColor()
+        layerWithGradient()
     }
     /*
     * Called on init if wantsUpdateLayer is true

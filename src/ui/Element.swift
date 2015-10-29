@@ -11,7 +11,9 @@ class Element: FlippedView,IElement {
     /*
     * Called on init if wantsUpdateLayer is true
     */
-    
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        <#code#>
+    }
     override func updateLayer() {
         let l:CALayer = layer!
         //layer!.frame = CGRectInset(l.frame, 5, 5);

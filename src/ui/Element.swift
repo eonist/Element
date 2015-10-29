@@ -15,6 +15,16 @@ class Element: FlippedView,IElement {
         Swift.print("drawLayer")
     }
     override func updateLayer() {
+        
+        
+        //makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
+        //addSubLayer()
+        //resolveSkin()//extension method that draws the graphics
+    }
+    /**
+    *
+    */
+    func layerWithColor(){
         let l:CALayer = layer!
         //layer!.frame = CGRectInset(l.frame, 5, 5);
         l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
@@ -31,10 +41,27 @@ class Element: FlippedView,IElement {
         l.shadowRadius = 5.0;
         l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
         l.shadowOpacity = 0.8;
+    }
+    /**
+    *
+    */
+    func layerWithGradient(){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = someView.bounds
+        gradientLayer.colors = [cgColorForRed(209.0, green: 0.0, blue: 0.0),
+            cgColorForRed(255.0, green: 102.0, blue: 34.0),
+            cgColorForRed(255.0, green: 218.0, blue: 33.0),
+            cgColorForRed(51.0, green: 221.0, blue: 0.0),
+            cgColorForRed(17.0, green: 51.0, blue: 204.0),
+            cgColorForRed(34.0, green: 0.0, blue: 102.0),
+            cgColorForRed(51.0, green: 0.0, blue: 68.0)]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        someView.layer.addSublayer(gradientLayer)
         
-        //makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
-        //addSubLayer()
-        //resolveSkin()//extension method that draws the graphics
+        func cgColorForRed(red: CGFloat, green: CGFloat, blue: CGFloat) -> AnyObject {
+            return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).CGColor as AnyObject
+        }
     }
     /**
     *

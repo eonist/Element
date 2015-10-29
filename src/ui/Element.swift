@@ -16,8 +16,8 @@ class Element: FlippedView,IElement {
     }
     override func updateLayer() {
         
-        //layerWithColor()
-        layerWithGradient()
+        layerWithColor()
+        //layerWithGradient()
         //makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
         //addSubLayer()
         //resolveSkin()//extension method that draws the graphics
@@ -47,6 +47,9 @@ class Element: FlippedView,IElement {
     *
     */
     func layerWithGradient(){
+        Swift.print("layerWithGradient")
+        let l:CALayer = layer!
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.frame
         gradientLayer.colors = [
@@ -65,7 +68,7 @@ class Element: FlippedView,IElement {
         
         
         
-        layer!.addSublayer(gradientLayer)
+        l.addSublayer(gradientLayer)
     }
     /**
     *

@@ -50,20 +50,20 @@ class Element: FlippedView,IElement {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.frame
         gradientLayer.colors = [
-            cgColorForRed(209.0, green: 0.0, blue: 0.0),
-            cgColorForRed(255.0, green: 102.0, blue: 34.0),
-            cgColorForRed(255.0, green: 218.0, blue: 33.0),
-            cgColorForRed(51.0, green: 221.0, blue: 0.0),
-            cgColorForRed(17.0, green: 51.0, blue: 204.0),
-            cgColorForRed(34.0, green: 0.0, blue: 102.0),
-            cgColorForRed(51.0, green: 0.0, blue: 68.0)]
+            ColorParser.nsColor(209.0, 0.0,  0.0),
+            ColorParser.nsColor(255.0,  102.0,  34.0),
+            ColorParser.nsColor(255.0, 218.0,  33.0),
+            ColorParser.nsColor(51.0, 221.0,  0.0),
+            ColorParser.nsColor(17.0,  51.0,  204.0),
+            ColorParser.nsColor(34.0,  0.0,  102.0),
+            ColorParser.nsColor(51.0,  0.0,  68.0)]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         someView.layer.addSublayer(gradientLayer)
         
         func cgColorForRed(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGColor {
             //return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0).CGColor as AnyObject
-            return ColorParser.nsColor(<#T##r: CGFloat##CGFloat#>, g: <#T##CGFloat#>, b: <#T##CGFloat#>, a: <#T##CGFloat#>).CGColor
+            return ColorParser.nsColor(red,green,blue).CGColor
         }
     }
     /**

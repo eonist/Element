@@ -11,8 +11,9 @@ class Element: FlippedView,IElement {
         self.layer = CALayer() // Set view to be layer-hosting:
         self.wantsLayer = true//need for the updateLayer method to be called internally
         //needsDisplay = true
-        layerWithColor()
-        //layerWithGradient()
+        //layerWithColor()
+        //test()
+        layerWithGradient()
         
         
         //continue here
@@ -59,33 +60,21 @@ class Element: FlippedView,IElement {
         l.shadowOpacity = 0.8;
     }
     
-    
-    //the colors for the gradient.  highColor is at the top, lowColor as at the bottom
-    UIColor * highColor = [UIColor colorWithWhite:1.000 alpha:1.000];
-    UIColor * lowColor = [UIColor colorWithRed:0.851 green:0.859 blue:0.867 alpha:1.000];
-    
-    //The gradient, simply enough.  It is a rectangle
-    CAGradientLayer * gradient = [CAGradientLayer layer];
-    [gradient setFrame:[self bounds]];
-    [gradient setColors:[NSArray arrayWithObjects:(id)[highColor CGColor], (id)[lowColor CGColor], nil]];
-    
-    //the rounded rect, with a corner radius of 6 points.
-    //this *does* maskToBounds so that any sublayers are masked
-    //this allows the gradient to appear to have rounded corners
-    
-    
-    //add the rounded rect layer underneath all other layers of the view
-    [[self layer] insertSublayer:roundRect atIndex:0];
     /**
     *
     */
     func test(){
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+      
         let roundRect = CALayer()
+        gradient.colors = [NSColor.redColor().CGColor,NSColor.greenColor().CGColor]
         
         roundRect.frame = self.bounds
         roundRect.cornerRadius = 6.0
         roundRect.masksToBounds = true
         roundRect.addSublayer(gradient)
+        self.layer!.insertSublayer(roundRect,atIndex:0)
        
     }
     /**
@@ -113,7 +102,7 @@ class Element: FlippedView,IElement {
         ColorParser.nsColor(34.0,  0.0,  102.0),
         ColorParser.nsColor(51.0,  0.0,  68.0)]
         */
-        gradientLayer.colors = [NSColor.redColor(),NSColor.greenColor()]
+        gradientLayer.colors = [NSColor.redColor().CGColor,NSColor.greenColor().CGColor]
         //gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         //gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.startPoint = CGPointZero;

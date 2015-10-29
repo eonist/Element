@@ -17,10 +17,21 @@ class Element: FlippedView,IElement {
         layerWithGradient()
         
         
+        
+        
+        
+        
+        
         //continue here
         //TODO: Back track with the CAGradientLayer etc, use NSBEzier and NSGradient instead, CAGradient seems not to work and is a bit limited. 
         //TODO: finish the research on CAGRadient
-        //TODO: impliement The NSBEzier and NSGradient example form the Orielly book
+        //TODO: impliement The NSBEzier and NSGradient example form the Orielly book (you may be able to put them into a calayer anyway)
+        // :TODO: 
+        
+        
+        
+        
+        
         
         
     }

@@ -48,9 +48,24 @@ class StyleModifier {
     /**
     *
     */
-    class func merge(){
-        //see old code
+    class func merge(a:IStyle,b:IStyle){
+        for  (var stylePropB : IStyleProperty in b.styleProperties) {
+            var hasStyleProperty:Boolean = false;
+            for each (var stylePropA : IStyleProperty in a.styleProperties) {
+                if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
+                    hasStyleProperty = true;
+                    break;
+                }
+            }
+            if(!hasStyleProperty) StyleModifier.prepend(a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
+        }
+
     }
+    /**
+    * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
+    * @Note the prepend method is used because the styleProps that has priority should come later in the array)
+    */
+    
     /**
     * Adds @param styleProperty to the end of the @param style.styleProperties array
     * @Note will throw an error if a styleProperty with the same name is allready added

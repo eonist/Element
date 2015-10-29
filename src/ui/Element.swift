@@ -39,11 +39,14 @@ class Element: FlippedView,IElement {
         var line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
         var linePath = NSBezierPath()
         linePath.moveToPoint(a)
-        linePath
+        linePath.lineToPoint(b)
+        
+        
+        line.path = linePath
         /*
         [linePath moveToPoint: pointA];
         [linePath addLineToPoint:pointB];
-        line.path=linePath.CGPath;
+        
         line.fillColor = nil;
         line.opacity = 1.0;
         line.strokeColor = [UIColor redColor].CGColor;

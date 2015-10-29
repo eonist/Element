@@ -35,6 +35,23 @@ class Element: FlippedView,IElement {
         
         //resolveSkin()//extension method that draws the graphics
     }
+    func makeLineLayer(layer:CGLayer,a:CGPoint,b:CGPoint){
+        var line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
+        var linePath = NSBezierPath()
+        linePath.moveToPoint(a)
+        linePath
+        /*
+        [linePath moveToPoint: pointA];
+        [linePath addLineToPoint:pointB];
+        line.path=linePath.CGPath;
+        line.fillColor = nil;
+        line.opacity = 1.0;
+        line.strokeColor = [UIColor redColor].CGColor;
+        [layer addSublayer:line];
+        */
+    }
+    }
+    
     
     /*
     * Note: if you overide drawRect then update layers wont work

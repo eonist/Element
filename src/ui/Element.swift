@@ -379,7 +379,7 @@ class GradientCALAyer:CALayer{
                                 colorSpace = CGColorGetColorSpace(colorRef)
                             }
                             for j in 0 ..< numComponents {
-                                let componentIndex: Int = numComponents * i + j
+                                //let componentIndex: Int = numComponents * i + j
                                 let component = colorComponents[j]
                                 components.append(component)
                             }

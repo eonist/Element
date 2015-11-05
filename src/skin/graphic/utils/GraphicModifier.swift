@@ -9,7 +9,7 @@ class GraphicModifier {
         let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
         let fillAlpha:Double = fillStyle.getStyleProperty("fillAlpha")!.value as! Double
         */
-        let fillGradientType:String = fillStyle.getStyleProperty("fillGradientType")!.value as! String
+        //let fillGradientType:String = fillStyle.getStyleProperty("fillGradientType")!.value as! String
         
         let fillGradientColorA:String = fillStyle.getStyleProperty("fillGradientColorA")!.value as! String
         let fillGradientColorB:String = fillStyle.getStyleProperty("fillGradientColorB")!.value as! String

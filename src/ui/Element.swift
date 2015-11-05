@@ -83,8 +83,8 @@ extension IElement {
   
         
         let graphics:Graphics = Graphics()
-        self.bounds
-        var path:CGPath = CGPathParser.rect(200,200)//Shapes
+        
+        let path:CGPath = CGPathParser.rect(bounds.width,bounds.height)//Shapes
         //CGPathModifier.translate(&path,20,20)//Transformations
         
         //let path = GraphicsModifier.drawRect(pathRect)

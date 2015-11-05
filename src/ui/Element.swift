@@ -3,14 +3,9 @@ import Cocoa
 class Element: FlippedView,IElement {
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
-    //let theLayer:CALayer
     init(_ width: Int = 100, _ height: Int = 40){
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
-        //self.layer = CALayer() // Set view to be layer-hosting:
-        //self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
-        //needsDisplay = true
-        //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
     }
     /*
     * Called on init if wantsUpdateLayer is true
@@ -18,11 +13,6 @@ class Element: FlippedView,IElement {
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("drawLayer")
     }
-    override func updateLayer() {
-        Swift.print("updateLayer")
-        //resolveSkin()//extension method that draws the graphics
-    }
- 
     /*
      * Note: if you overide drawRect then update layers wont work
      */
@@ -102,3 +92,16 @@ extension IElement {
     }
 }
 
+
+/*
+override func updateLayer() {
+Swift.print("updateLayer")
+//resolveSkin()//extension method that draws the graphics
+}
+*/
+//self.layer = CALayer() // Set view to be layer-hosting:
+//self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
+//needsDisplay = true
+//layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
+
+//let theLayer:CALayer

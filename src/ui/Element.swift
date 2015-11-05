@@ -16,14 +16,6 @@ class Element: FlippedView,IElement {
         //test()
         //layerWithGradient()
         
-        
-        
-        
-        
-        
-       
-        
-        
     }
     /*
     * Called on init if wantsUpdateLayer is true

@@ -31,12 +31,12 @@ class GraphicModifier {
         //nsLineColor.setStroke();
         
         
-        let nsFillGradientColorA = ColorParser.nsColor(fillGradientColorA, Float(fillAlpha))//fill
-        let nsFillGradientColorB = ColorParser.nsColor(fillGradientColorB, Float(fillAlpha))//fill
+        let nsFillGradientColorA = ColorParser.nsColor(fillGradientColorA, Float(1))
+        let nsFillGradientColorB = ColorParser.nsColor(fillGradientColorB, Float(1))
         graphics.line(CGFloat(lineWidth),nsLineColor)//Stylize the line
         //graphics.fill(nsFillColor)//Stylize the fill
-        let gradient:Gradient = Gradient([]
-        graphics.gradientFill()
+        let gradient:Gradient = Gradient([nsFillGradientColorA.CGColor,nsFillGradientColorB.CGColor])
+        graphics.gradientFill(gradient)
         
         
         return path;

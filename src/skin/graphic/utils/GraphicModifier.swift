@@ -4,7 +4,7 @@ class GraphicModifier {
     /**
     * TODO: fill and linestyle should be graphic spessific see original code
     */
-    class func applyProperties(aPath:NSBezierPath,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> NSBezierPath {
+    class func applyProperties(_ path:CGPath, _ graphics:Graphics,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> CGPath {
         let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
         let fillAlpha:Double = fillStyle.getStyleProperty("fillAlpha")!.value as! Double
         let lineColor:String = lineStyle.getStyleProperty("lineColor")!.value as! String
@@ -21,15 +21,13 @@ class GraphicModifier {
         //nsLineColor.setStroke();
         
         
-        let graphics:Graphics = Graphics()
-        var path:CGPath = CGPathParser.rect(200,200)//Shapes
-        CGPathModifier.translate(&path,20,20)//Transformations
+        
         graphics.line(12)//Stylize the line
         graphics.fill(NSColor.blueColor())//Stylize the fill
         graphics.draw(path)//draw everything
         
         
-        return aPath;
+        return path;
         
         
         

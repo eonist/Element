@@ -95,8 +95,8 @@ class StyleModifier {
 }
 
 
-class Utils{
-    private class func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
+private class Utils{
+    class func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
         let len = style.styleProperties.count
         for (var i:Int=0; i < len; i++) {
             let styleProp:IStyleProperty = style.styleProperties[i]

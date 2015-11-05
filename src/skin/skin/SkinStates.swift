@@ -11,3 +11,10 @@ class SkinStates {
     static var focused:String = "focused";
     static var disabled:String = "disabled";
 }
+
+/*
+enum SkinStates:String
+    case None = ""
+    case Over = "over"
+    //etc
+*/

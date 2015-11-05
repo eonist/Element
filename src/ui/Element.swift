@@ -7,15 +7,10 @@ class Element: FlippedView,IElement {
     init(_ width: Int = 100, _ height: Int = 40){
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
-        
         //self.layer = CALayer() // Set view to be layer-hosting:
         //self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
         //needsDisplay = true
         //layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
-        //layerWithColor()
-        //test()
-        //layerWithGradient()
-        
     }
     /*
     * Called on init if wantsUpdateLayer is true
@@ -24,11 +19,7 @@ class Element: FlippedView,IElement {
         Swift.print("drawLayer")
     }
     override func updateLayer() {
-        
-        //layerWithColor()
-        //layerWithGradient()
-        //makeLineLayer(l,CGPoint(x: 10,y: 10),CGPoint(x: 100,y: 100))
-        //addSubLayer()
+        Swift.print("updateLayer")
         //resolveSkin()//extension method that draws the graphics
     }
  
@@ -38,7 +29,7 @@ class Element: FlippedView,IElement {
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
-        //resolveSkin()
+        resolveSkin()
     }
     /**
      * Returns the class type of the Class instance

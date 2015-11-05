@@ -20,6 +20,7 @@ class Element: FlippedView,IElement {
         Swift.print("drawRect")
         super.drawRect(rect)
         resolveSkin()
+        
     }
     /**
      * Returns the class type of the Class instance

@@ -17,13 +17,21 @@ class GraphicModifier {
         
         path.lineWidth = CGFloat(lineWidth)
         
-        nsFillColor.setFill();
-        nsLineColor.setStroke();
+        //nsFillColor.setFill();
+        //nsLineColor.setStroke();
+        
+        
+        let graphics:Graphics = Graphics()
+        var path:CGPath = CGPathParser.rect(200,200)//Shapes
+        CGPathModifier.translate(&path,20,20)//Transformations
+        graphics.line(12)//Stylize the line
+        graphics.fill(NSColor.blueColor())//Stylize the fill
+        graphics.draw(path)//draw everything
         
         
         return path;
         
-        //let graphics:Graphics = Graphics()
+        
         
     }
     /**

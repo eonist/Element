@@ -87,8 +87,8 @@ extension IElement {
         CGPathModifier.translate(&path,20,20)//Transformations
         
         //let path = GraphicsModifier.drawRect(pathRect)
-        GraphicModifier.applyProperties(path, styleComposition, styleComposition,skinState)//apply style
-        GraphicModifier.stylize(path)//realize style on the graphic
+        GraphicModifier.applyProperties(path, graphics, styleComposition, styleComposition,skinState)//apply style
+        GraphicModifier.stylize(path,graphics)//realize style on the graphic
 
         Swift.print("end of call")
         

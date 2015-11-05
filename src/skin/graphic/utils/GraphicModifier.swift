@@ -5,8 +5,6 @@ class GraphicModifier {
     * TODO: fill and linestyle should be graphic spessific see original code
     */
     class func applyProperties(path:NSBezierPath,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> NSBezierPath {
-       
-        
         let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
         let fillAlpha:Double = fillStyle.getStyleProperty("fillAlpha")!.value as! Double
         let lineColor:String = lineStyle.getStyleProperty("lineColor")!.value as! String

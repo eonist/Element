@@ -22,6 +22,9 @@ class GraphicModifier {
         
         
         return path;
+        
+        //let graphics:Graphics = Graphics()
+        
     }
     /**
     * New - it finalizes the style to the path, before it was all budnled together in the size method, now its move here

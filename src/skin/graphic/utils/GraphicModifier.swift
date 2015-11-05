@@ -11,6 +11,9 @@ class GraphicModifier {
         let lineAlpha:Double = lineStyle.getStyleProperty("lineAlpha")!.value as! Double
         let lineWidth:Int = lineStyle.getStyleProperty("lineWidth")!.value as! Int
         
+        //Conitnue here replace some of these for the gradient ones
+        
+        
         let nsFillColor = ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
         let nsLineColor = ColorParser.nsColor(lineColor, Float(lineAlpha))//line
         //ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)

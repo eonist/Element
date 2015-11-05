@@ -84,7 +84,7 @@ extension IElement {
         
         let graphics:Graphics = Graphics()
         var path:CGPath = CGPathParser.rect(200,200)//Shapes
-        CGPathModifier.translate(&path,20,20)//Transformations
+        //CGPathModifier.translate(&path,20,20)//Transformations
         
         //let path = GraphicsModifier.drawRect(pathRect)
         GraphicModifier.applyProperties(path, graphics, styleComposition, styleComposition,skinState)//apply style

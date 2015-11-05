@@ -31,161 +31,26 @@ class Element: FlippedView,IElement {
         //addSubLayer()
         //resolveSkin()//extension method that draws the graphics
     }
-    /**
-    *
-    */
-    func layerWithColor(){
-        let l:CALayer = layer!
-        //layer!.frame = CGRectInset(l.frame, 5, 5);
-        //l.backgroundColor = NSColorParser.cgColor(NSColor.greenColor())
-        layer!.backgroundColor = CGColorCreateGenericRGB(1.0, 0.0, 0.0, 1.0)
-        //l.backgroundColor = UIColor.blueColor().CGColor
-        l.borderWidth = 4
-        l.cornerRadius = 8
-        
-        l.borderColor = NSColorParser.cgColor(NSColor.redColor())
-        
-        //l.borderColor = UIColor.redColor().CGColor
-        
-        l.shadowOpacity = 0.7
-        l.shadowOffset = CGSizeMake(0, 3);
-        l.shadowRadius = 5.0;
-        l.shadowColor = NSColorParser.cgColor(NSColor.grayColor())
-        l.shadowOpacity = 0.8;
-    }
-    
-    /**
-    *
-    */
-    func test(){
-        let gradient = CAGradientLayer()
-        gradient.frame = self.bounds
-      
-        let roundRect = CALayer()
-        gradient.colors = [NSColor.redColor().CGColor,NSColor.greenColor().CGColor]
-        
-        roundRect.frame = self.bounds
-        roundRect.cornerRadius = 6.0
-        roundRect.masksToBounds = true
-        roundRect.addSublayer(gradient)
-        self.layer!.insertSublayer(roundRect,atIndex:0)
-       
-    }
-    /**
-    *
-    */
-    func layerWithGradient(){
-        Swift.print("layerWithGradient")
-        //let l:CALayer = CALayer()
-        
-        let gradientLayer = CAGradientLayer()
-        //layer!.addSublayer(gradientLayer)
-        //layer!.insertSublayer(gradientLayer, atIndex: 0)
-        //self.sendSubviewToBack(gradientLayer)
-        Swift.print("self.bounds")
-        Swift.print(self.bounds)
-        gradientLayer.frame = CGRect(x: 64, y: 64, width: 160, height: 160)
-        //gradientLayer.frame = self.bounds
-        
-        gradientLayer.colors = [
-        ColorParser.nsColor(209.0, 0.0,  0.0).CGColor,
-        ColorParser.nsColor(255.0,  102.0,  34.0).CGColor,
-        ColorParser.nsColor(255.0, 218.0,  33.0).CGColor,
-        ColorParser.nsColor(51.0, 221.0,  0.0).CGColor,
-        ColorParser.nsColor(17.0,  51.0,  204.0).CGColor,
-        ColorParser.nsColor(34.0,  0.0,  102.0).CGColor,
-        ColorParser.nsColor(51.0,  0.0,  68.0).CGColor]
-
-        //gradientLayer.colors = [NSColor.redColor().CGColor,NSColor.greenColor().CGColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        /*
-        gradientLayer.startPoint = CGPointZero;
-        gradientLayer.endPoint = CGPointMake(1, 1);
-        
-        */
-        //gradientLayer.locations = [NSNumber(double: 0.0),NSNumber(double: 0.7)]
-        
-        
-        
-        //continue here, something is missing
-        
-        
-        
-        
-        layer!.addSublayer(gradientLayer)
-    }
-    
-   
-    
-    
-    /**
-    *
-    */
-    func addSubLayer(){
-        let sublayer = CALayer()
-        sublayer.backgroundColor = NSColor.orangeColor().CGColor
-        sublayer.shadowOffset = CGSizeMake(0, 3);
-        sublayer.shadowRadius = 5.0;
-        sublayer.shadowColor = NSColor.blackColor().CGColor
-        sublayer.shadowOpacity = 0.8
-        sublayer.frame = CGRectMake(30, 30, 128, 192);
-        layer!.addSublayer(sublayer)
-    }
+ 
     /*
-    * CAShapeLayer doesnt supoprt gradient, but might do with: CGContextDrawRadialGradient
-    */
-    func makeLineLayer(layer:CALayer,_ a:CGPoint,_ b:CGPoint){
-        let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];
-        let linePath = NSBezierPath()
-        linePath.moveToPoint(a)
-        linePath.lineToPoint(b)
-        
-        line.path = NSBezierPathParser.cgPath(linePath)
-        
-        line.fillColor = nil;
-        line.opacity = 1.0;
-        line.strokeColor = NSColor.redColor().CGColor
-        
-        layer.addSublayer(line)
-        
-        
-        /*
-        [linePath moveToPoint: pointA];
-        [linePath addLineToPoint:pointB];
-        
-        
-        */
-    }
-    
-    
-    /*
-    * Note: if you overide drawRect then update layers wont work
-    */
-    
-    
+     * Note: if you overide drawRect then update layers wont work
+     */
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
-        //drawGradientRect(rect)
-        drawRadialGradientCircle(rect)
-        //drawShapes(rect)
-        
         //resolveSkin()
     }
-
-    
     /**
-    * Returns the class type of the Class instance
-    * @Note if a class subclasses Element that sub-class will be the class type
-    * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
-    */
+     * Returns the class type of the Class instance
+     * @Note if a class subclasses Element that sub-class will be the class type
+     * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
+     */
     func getClassType()->String{
         return String(Element)
     }
     /*
-    * Required by NSView
-    */
+     * Required by NSView
+     */
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -13,9 +13,6 @@ class GraphicModifier {
         
         let fillGradientColorA:String = fillStyle.getStyleProperty("fillGradientColorA")!.value as! String
         let fillGradientColorB:String = fillStyle.getStyleProperty("fillGradientColorB")!.value as! String
-        idleStyle2.addStyleProperty(StyleProperty("fillGradientColorA", Colors.lightGray))
-        idleStyle2.addStyleProperty(StyleProperty("fillGradientColorB", Colors.purple))
-        
         
         let lineColor:String = lineStyle.getStyleProperty("lineColor")!.value as! String
         let lineAlpha:Double = lineStyle.getStyleProperty("lineAlpha")!.value as! Double
@@ -24,7 +21,7 @@ class GraphicModifier {
         //Conitnue here replace some of these for the gradient ones
         
         
-        let nsFillColor = ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
+        //let nsFillColor = ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
         let nsLineColor = ColorParser.nsColor(lineColor, Float(lineAlpha))//line
         //ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)
         
@@ -34,10 +31,12 @@ class GraphicModifier {
         //nsLineColor.setStroke();
         
         
-        
+        let nsFillGradientColorA = ColorParser.nsColor(fillGradientColorA, Float(fillAlpha))//fill
+        let nsFillGradientColorB = ColorParser.nsColor(fillGradientColorB, Float(fillAlpha))//fill
         graphics.line(CGFloat(lineWidth),nsLineColor)//Stylize the line
-        graphics.fill(nsFillColor)//Stylize the fill
-        
+        //graphics.fill(nsFillColor)//Stylize the fill
+        let gradient:Gradient = Gradient([]
+        graphics.gradientFill()
         
         
         return path;

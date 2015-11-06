@@ -14,7 +14,6 @@ class StyleManager{
     class func addStyle(styles:Array<IStyle>){
         self.styles += styles;
     }
-    
     /**
     * Locates and returns a Style by the @param name.
     * @return a Style

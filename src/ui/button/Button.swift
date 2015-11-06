@@ -68,6 +68,7 @@ class Button: NSButton,IElement{
     override func mouseEntered( event: NSEvent){
         Swift.print("entered" + "\(self.state)")
         super.mouseEntered(event)
+        skinState = SkinStates.over
     }
     override func mouseExited(event: NSEvent){
         Swift.print("exited: " + "\(self.state)")

@@ -81,5 +81,6 @@ class Button: NSButton,IElement{
     override func mouseUp(theEvent: NSEvent) {
         Swift.print("mouseUpEvent")
         super.mouseDown(theEvent)
+        skinState = SkinStates.none
     }
 }

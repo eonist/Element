@@ -32,8 +32,8 @@ class StyleManager{
      * Adds styles by parsing @param string (the string must comply to the Element css syntax)
      * // :TODO: add support for css import statement in the @param string
      */
-    class func addStylesByCSS(string:String){
-        //string = CSSLinkResolver.resolveLinks(string);
+    class func addStylesByCSS(var string:String){
+        string = CSSLinkResolver.resolveLinks(string);
         //string = StringModifier.removeComments(string);
         //addStyles(CSSParser.styleCollection(string).styles);
     }

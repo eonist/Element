@@ -3,16 +3,17 @@ import Foundation
 class SelectorParser{
     //TODO: this could probably be re-written by using backreferensing and if they are valid then ...
     //TODO: research backreferencing
-    static var elementGroup:String = "^([\\w\\d]+?)?"//0 or 1 times.
-    static var subsededWith1:String = "(?=\\#|\\:|\\.|\040|$)"//must appear and is not included in the match
-    static var classIdsGroup:String = "(?:\\.([\\w\\d]+?))?"
-    static var subsededWith2:String = "(?=\\#|\\:|\040|$)"//must appear and is not included in the match
-    static var idsGroup:String = "(?:\\#([\\w\\d]+?))?"
-    static var subsededWith3:String = "(?=\\:|\040|$)"//must appear and is not included in the match
-    static var statesGroup:String = "(?:\\:([\\w\\d\\:]+?))?"
-    static var end:String = "(?=$)"//must appear and is not included in the match
-    static var pattern:String = elementGroup + subsededWith1 + classIdsGroup + subsededWith2 + idsGroup + subsededWith3 + statesGroup + end
     
+    
+    /**
+     * Returns an array of Selector instances from @param string (which is usually from the CSSParser.style function)
+     */
+    class func selectors(string:String)->Array<ISelector>! {
+        let selectorNames:Array<String> = StringAsserter.contains(string, " ") ? StringModifier.split(string," ") : [string]
+        var styleSelectors:Array<ISelector> = [];
+        for selectorName  in selectorNames{ styleSelectors.append(selector(selectorName)) }
+        return styleSelectors
+    }
     /**
      * Returns a Selector instance from @param string (string is usually a style name)
      * NOTE: a Selector is a data container that contains element,classIds,ids and states
@@ -20,7 +21,7 @@ class SelectorParser{
      */
     class func selector(string:String)->ISelector {
         var selector:ISelector = Selector();
-        let matches = RegExp.matches(string, pattern)
+        let matches = RegExp.matches(string, SelectorPattern.pattern)
         for match:NSTextCheckingResult in matches {
             selector.element = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
             if match.rangeAtIndex(2).location != NSNotFound {
@@ -39,4 +40,18 @@ class SelectorParser{
         }
         return selector
     }
+}
+/*
+* RegExp pattern for the SelectorParser.selector() method
+*/
+class SelectorPattern {
+    static var elementGroup:String = "^([\\w\\d]+?)?"//0 or 1 times.
+    static var subsededWith1:String = "(?=\\#|\\:|\\.|\040|$)"//must appear and is not included in the match
+    static var classIdsGroup:String = "(?:\\.([\\w\\d]+?))?"
+    static var subsededWith2:String = "(?=\\#|\\:|\040|$)"//must appear and is not included in the match
+    static var idsGroup:String = "(?:\\#([\\w\\d]+?))?"
+    static var subsededWith3:String = "(?=\\:|\040|$)"//must appear and is not included in the match
+    static var statesGroup:String = "(?:\\:([\\w\\d\\:]+?))?"
+    static var end:String = "(?=$)"//must appear and is not included in the match
+    static var pattern:String = elementGroup + subsededWith1 + classIdsGroup + subsededWith2 + idsGroup + subsededWith3 + statesGroup + end
 }

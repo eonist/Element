@@ -12,6 +12,7 @@ class CSSParser{
      * @Note: We cant sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     class func styleCollection(cssString:String){
+        var styleCollection:IStyleCollection = StyleCollection();
         //Swift.print(CSSElementPattern)
         let matches = RegExp.matches(cssString, CSSElementPattern)
         //Swift.print(matches.count)

@@ -7,4 +7,5 @@ protocol IStyle {
     func getStyleProperty(name:String)->IStyleProperty?
     func addStyleProperty(styleProperty:IStyleProperty)
     func addStyleProperty(styleProperties:Array<IStyleProperty>)
+    func addStyleProperties(styleProperties:Array<IStyleProperty>)
 }

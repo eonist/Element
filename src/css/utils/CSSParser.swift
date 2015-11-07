@@ -46,6 +46,11 @@ class CSSParser{
         Swift.print("style()")
         name = RegExpModifier.removeWrappingWhitespace(name);/*removes space from left and right*/
         var selectors:Array = SelectorParser.selectors(name);
+        
+        
+        //continue here: make the SelectorParser class
+        //or fill in the rest of the code ?
+        
         var style:IStyle = new Style(name,selectors, []);
         var pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)

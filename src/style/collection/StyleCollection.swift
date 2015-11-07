@@ -23,8 +23,15 @@ class StyleCollection:IStyleCollection{
         }
         styles.append(style);
     }
-    func removeStyle(name:String)->IStyle{
-        
+    func removeStyle(name:String)->IStyle?{
+        var numOfStyles:Int = styles.count;
+        for (var i : Int = 0; i < numOfStyles; i++) {
+            if((styles[i] as IStyle).name == name){
+                ArrayModifier.splice(&styles, i, 1)
+                return styles.splice (i,1)
+            }
+        }
+        return nil//could also return the index i guess -1 instead of nil, do we need to return anything ?
     }
     func getStyle(name:String)->IStyle{
         

@@ -27,8 +27,11 @@ class StyleCollection:IStyleCollection{
         var numOfStyles:Int = styles.count;
         for (var i : Int = 0; i < numOfStyles; i++) {
             if((styles[i] as IStyle).name == name){
-                ArrayModifier.splice(&styles, i, 1)
-                return styles.splice (i,1)
+                var tempArray:Array<IStyle> = []
+                
+                //ArrayModifier.splice(&tempArray, i, 1)
+                ArrayModifier.splice(&tempArray,0,1)
+                //return styles.splice (i,1)
             }
         }
         return nil//could also return the index i guess -1 instead of nil, do we need to return anything ?

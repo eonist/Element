@@ -14,10 +14,10 @@ class CSSParser{
     class func styleCollection(cssString:String){
         var styleCollection:IStyleCollection = StyleCollection();
         //Swift.print(CSSElementPattern)
-        let matches = RegExp.matches(cssString, CSSElementPattern)
+        let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         //Swift.print(matches.count)
         
-        for match:NSTextCheckingResult in matches {
+        for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print( match.numberOfRanges)
             var styleName:String = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//name
             //Swift.print("styleName: " + styleName)
@@ -26,7 +26,8 @@ class CSSParser{
             
             
             if(StringAsserter.contains(styleName, ",") == false){
-                style(styleName,value)
+                let style:IStyle = style(styleName,value)
+                styleCollection.addStyle(style);/*If the styleName has 1 name*/
             }
             else{
                 Utils.siblingStyles(styleName, value)

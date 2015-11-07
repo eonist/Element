@@ -26,11 +26,19 @@ class CSSParser{
             
             
             if(StringAsserter.contains(styleName, ",") == false){
-                let style:IStyle = style(styleName,value)
+                let style:IStyle = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style);/*If the styleName has 1 name*/
             }
             else{
-                Utils.siblingStyles(styleName, value)
+                let siblingStyles:Array<String> = Utils.siblingStyles(styleName, value)
+                styleCollection.addStyles(siblingStyles);/*If the styleName has multiple comma-seperated names*/
+                
+                
+                
+                //continue here siblingStyles should return array of IStyles not string
+                
+                
+                
             }
             
             //continue here, add the sibling code

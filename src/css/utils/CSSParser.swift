@@ -58,7 +58,8 @@ class CSSParser{
         
     }
     /**
-     *
+     * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
+     * @Note now supports StyleProperty2 that can have many property values
      */
     class func styleProperties(propertyName:String, _ propertyValue:String){
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
@@ -80,12 +81,21 @@ private class Utils{
     static var prefixGroup:String = "([\\w\\d\\s\\:\\#]*?)?"
     static var group:String = "(\\[[\\w\\s\\,\\.\\#\\:]*?\\])?"
     static var suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
-    static var siblingPattern:String = precedingWith + prefixGroup + group + suffix
+    static var siblingPattern:String = precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
+    /**
+     * Returns an array of style instances derived from @param style (that has a name with 1 or more comma signs, or in combination with a group [])
+     * @param style: style.name has 1 or more comma seperated words
+     * // :TODO: write a better description
+     * // :TODO: optimize this function, we probably need to ousource the second loop in this function
+     * // :TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
+     * // :TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
+     */
     class func siblingStyles(styleName:String,_ value:String)->Array<String> {
         Swift.print("siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         let sibblingStyles:Array<String> = []
-        let matches = RegExp.matches(styleName,siblingPattern)
+        var let style:IStyle = style("", value)/*creates an empty style i guess?*/
+        let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         Swift.print("matches: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {
             Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")

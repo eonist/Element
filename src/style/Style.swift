@@ -11,7 +11,7 @@ class Style:IStyle{
         self.styleProperties = styleProperties
     }
     func addStyleProperties(styleProperties:Array<IStyleProperty>){
-        for styleProperty in styleProperties) addStyleProperty(styleProperty)
+        for styleProperty in styleProperties { addStyleProperty(styleProperty) }
     }
     /**
     * Add styleProperty

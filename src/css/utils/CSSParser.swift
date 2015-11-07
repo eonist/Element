@@ -69,15 +69,15 @@ class CSSParser{
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name);
-            var valExp:String = "\\w\\.\\-%#\\040<>\\/";/*expression for a single value*/
-            var pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"
+            let valExp:String = "\\w\\.\\-%#\\040<>\\/";/*expression for a single value*/
+            let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"
             var values:Array<String> = RegExp.match(propertyValue,pattern)
             for (var i : Int = 0; i < values.count; i++) {
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
                 Swift.print(" value: " + value)
                 //value = CSSPropertyParser.property(value)
-                let styleProperty:IStyleProperty = StyleProperty(name,value)
+                let styleProperty:IStyleProperty = StyleProperty(name,value)//<--dont forget to add depth here
                 styleProperties.append(styleProperty)
             }
         }

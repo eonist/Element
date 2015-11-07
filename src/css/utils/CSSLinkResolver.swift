@@ -20,7 +20,7 @@ class CSSLinkResolver {
      * NOTE: you could also do a forward for loop and then offset the range as your traverse the matches
      */
     class func resolveLinks(var string:String)->String{
-        let matches = RegExpParser.matches(string, linkPropertyPattern)
+        let matches = RegExp.matches(string, linkPropertyPattern)
         matches.count
         for var i = matches.count-1; i > -1; --i{
             
@@ -51,7 +51,7 @@ private class Utils {
      */
     class func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{
         //Swift.print("replaceLinks.string: " + string);
-        let matches = RegExpParser.matches(string, CSSLinkResolver.sansBracketPattern)
+        let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         Swift.print(matches.count)
         
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
@@ -105,7 +105,7 @@ private class Utils {
     class func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
         //print("pattern: " + pattern);
-        var match:Array = RegExpParser.match(string, pattern)
+        var match:Array = RegExp.match(string, pattern)
         //print("value.match: " + match[0]);
         if(match.count > 0){/*this try catch method is here so its easier to debug which linkName threw */
             let matchString:String =  match[0]
@@ -123,7 +123,7 @@ private class Utils {
      */
     class func value(string:String,_ propName:String)->String{
         let pattern:String = "(?<=" + propName + "\\:).+?(?=\\;)"
-        var match:Array = RegExpParser.match(string, pattern)
+        var match:Array = RegExp.match(string, pattern)
         if(match.count > 0){/*this try catch method is here so its easier to debug which propName threw an error*/
             return match[0];
         }else{

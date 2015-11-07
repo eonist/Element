@@ -40,9 +40,9 @@ class CSSParser{
      */
     class func style(var name:String,_ value:String){
         Swift.print("style()")
-        name = Utils.removeWrappingWhitespace(name);/*removes space from left and right*/
+        name = RegExpModifier.removeWrappingWhitespace(name);/*removes space from left and right*/
         var pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
-        let matches = RegExpParser.matches(value, pattern)
+        let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
             Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             var propertyName:String = (value as NSString).substringWithRange(match.rangeAtIndex(1))//name
@@ -57,15 +57,15 @@ class CSSParser{
      *
      */
     class func styleProperties(propertyName:String, _ propertyValue:String){
-        let names = StringAsserter.contains(propertyName,",") ? Utils.split(propertyName, propertyValue) : [propertyName]
+        let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
         for var name in names {
-            name = Utils.removeWrappingWhitespace(name);
+            name = RegExpModifier.removeWrappingWhitespace(name);
             var valExp:String = "\\w\\.\\-%#\\040<>\\/";/*expression for a single value*/
             var pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"
-            var values:Array<String> = RegExpParser.match(propertyValue,pattern)
+            var values:Array<String> = RegExp.match(propertyValue,pattern)
             for (var i : Int = 0; i < values.count; i++) {
                 var value = values[i]
-                value = Utils.removeWrappingWhitespace(value)
+                value = RegExpModifier.removeWrappingWhitespace(value)
                 Swift.print(" value: " + value)
             }
         }

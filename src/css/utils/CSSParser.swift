@@ -45,7 +45,7 @@ class CSSParser{
     class func style(var name:String,_ value:String)->IStyle!{
         Swift.print("style()")
         name = RegExpModifier.removeWrappingWhitespace(name);/*removes space from left and right*/
-        //var selectors:Array = SelectorParser.selectors(name);
+        var selectors:Array = SelectorParser.selectors(name);
         
         
         

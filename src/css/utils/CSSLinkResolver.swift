@@ -42,7 +42,7 @@ class CSSLinkResolver {
         return string
     }
 }
-class Utils {
+private class Utils {
     /**
      * Replaces the value with the value from the key pointer
      * // :TODO: write an example

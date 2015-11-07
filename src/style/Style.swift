@@ -1,14 +1,14 @@
 import Foundation
 
 class Style:IStyle{
-    static var clear:IStyle = Style("clear",[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])
+    //static var clear:IStyle = Style("clear",[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])
     var name:String;
     var styleProperties:Array<IStyleProperty>
-    var selector:ISelector
-    init(_ name:String = "", _ styleProperties:Array<IStyleProperty> = [],_ selector:ISelector = Selector()){
+    var selectors:Array<ISelector>
+    init(_ name:String = "",_ selectors:Array<ISelector> = [], _ styleProperties:Array<IStyleProperty> = []){
         self.name = name
+        self.selectors = selectors
         self.styleProperties = styleProperties
-        self.selector = selector
     }
     /**
     * Add styleProperty

@@ -10,8 +10,18 @@ class StyleCollection:IStyleCollection{
     func addStyles(styles:Array<IStyle>){
         for style in styles{ addStyle(style) }
     }
+    /**
+     * Adds a style to the StyleCollection instance
+     * @param style: IStyle
+     */
     func addStyle(style:IStyle){
-        
+        for (var i : Int = 0; i < styles.count; i++) {
+            if(IStyle(_styles[i]).name == style.name) {/*if there are duplicates merge them*/
+                StyleModifier.merge(_styles[i], style);
+                return;
+            }
+        }
+        _styles.push(style);
     }
     func removeStyle(name:String)->IStyle{
         

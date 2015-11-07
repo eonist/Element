@@ -1,20 +1,14 @@
 import Foundation
-
+/*
+* @Note: a datastorage class ("bean") parsing should be done elsewhere!
+* // :TODO: get rid of name?!?
+*/
 class StyleCollection:IStyleCollection{
-    /*
-    var styles:Array<IStyle> {get}
-    func addStyle(style:IStyle)
-    func addStyles(styles:Array<IStyle>)
-    func removeStyle(name:String)->IStyle
-    func getStyle(name:String)->IStyle
-    func getStyleAt(index:Int)->IStyle
-    */
     var styles:Array<IStyle> = []//use obj instead?
-    
     /**
-    * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
-    * @Note the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
-    */
+     * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
+     * @Note the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
+     */
     func addStyles(styles:Array<IStyle>){
         for style in styles{ addStyle(style) }
     }
@@ -31,7 +25,7 @@ class StyleCollection:IStyleCollection{
         }
         styles.append(style);
     }
-    /*
+    /**
      * TODO: One Could change this to return nothing
      */
     func removeStyle(name:String)->IStyle?{
@@ -43,7 +37,7 @@ class StyleCollection:IStyleCollection{
         }
         return nil//could also return the index i guess -1 instead of nil, do we need to return anything ?
     }
-    /*
+    /**
      * TODO: One could use a for each loop instead
      */
     func getStyle(name:String)->IStyle?{
@@ -55,10 +49,10 @@ class StyleCollection:IStyleCollection{
         }
         return nil;
     }
-    /*
+    /**
      *
      */
-    func getStyleAt(index:Int)->IStyle{
-        return styles[index];
+    func getStyleAt(index:Int)->IStyle?{
+        return styles[index]
     }
 }

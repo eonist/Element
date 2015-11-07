@@ -30,7 +30,8 @@ class StyleCollection:IStyleCollection{
                 var tempArray:Array<IStyle> = []
                 
                 //ArrayModifier.splice(&tempArray, i, 1)
-                ArrayModifier.splice(&tempArray,1,2)
+                let startI:Int = 1
+                ArrayModifier.splice(&styles,1,4)
                 
                 //return styles.splice (i,1)
             }

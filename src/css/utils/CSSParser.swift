@@ -56,7 +56,8 @@ class CSSParser{
             Swift.print("propertyName: "+propertyName)
             var propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
             Swift.print("propertyValue: "+propertyValue)
-            
+            var styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
+            style.addStyleProperties(styleProperties);
         }
         return style
     }
@@ -64,7 +65,7 @@ class CSSParser{
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
      * @Note now supports StyleProperty2 that can have many property values
      */
-    class func styleProperties(propertyName:String, _ propertyValue:String){
+    class func styleProperties(propertyName:String, _ propertyValue:String)->Array<IStyleProperty>{
         var styleProperties:Array<IStyleProperty> = []
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
         for var name in names {
@@ -81,6 +82,7 @@ class CSSParser{
                 styleProperties.append(styleProperty)
             }
         }
+        return styleProperties
     }
 }
 private class Utils{

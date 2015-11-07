@@ -3,11 +3,13 @@ class CSSParser{
     static var precedingWith:String = "(?<=^|\\})"
     static var nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
     static var valueGroup:String = "((?:.|\\n)*?)"
-    static var CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"
-    
+    static var CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
     enum CSSElementType:Int{ case name = 1, value}
     /**
-     *
+     * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
+     * @param cssString: a string comprised by css data h1{color:blue;} etc
+     * @return StyleCollection populated with Styles
+     * @Note: We cant sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     class func styleCollection(cssString:String){
         //Swift.print(CSSElementPattern)
@@ -29,14 +31,16 @@ class CSSParser{
                 Utils.siblingStyles(styleName, value)
             }
             
-            
             //continue here, add the sibling code
         }
         
         
     }
     /**
-     *
+     * Converts cssStyleString to a Style instance
+     * Also transforms the values so that : (with Flash readable values, colors: become hex colors, boolean strings becomes real booleans etc)
+     * @param name: the name of the style
+     * @param value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
     class func style(var name:String,_ value:String){
         Swift.print("style()")

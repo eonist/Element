@@ -1,7 +1,7 @@
 import Foundation
 
 class StyleCollection:IStyleCollection{
-    var styles:Array<IStyle> = [];//use obj instead?
+    var styles:Array<IStyle> = []//use obj instead?
     
     /**
     * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
@@ -35,11 +35,22 @@ class StyleCollection:IStyleCollection{
         }
         return nil//could also return the index i guess -1 instead of nil, do we need to return anything ?
     }
-    
-    func getStyle(name:String)->IStyle{
-        
+    /*
+     * TODO: One could use a for each loop instead
+     */
+    func getStyle(name:String)->IStyle?{
+        let numOfStyles:Int = styles.count;
+        for(var i:Int = 0;i < numOfStyles;i++) {
+            if((styles[i] as IStyle).name == name) {
+                return  styles[i];
+            }
+        }
+        return nil;
     }
+    /*
+     *
+     */
     func getStyleAt(index:Int)->IStyle{
-        
+        return styles[index];
     }
 }

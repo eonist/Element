@@ -42,9 +42,11 @@ class CSSParser{
      * @param name: the name of the style
      * @param value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
-    class func style(var name:String,_ value:String){
+    class func style(var name:String,_ value:String)->IStyle!{
         Swift.print("style()")
         name = RegExpModifier.removeWrappingWhitespace(name);/*removes space from left and right*/
+        var selectors:Array = SelectorParser.selectors(name);
+        var style:IStyle = new Style(name,selectors, []);
         var pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
@@ -55,7 +57,7 @@ class CSSParser{
             Swift.print("propertyValue: "+propertyValue)
             
         }
-        
+        return nil
     }
     /**
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
@@ -94,7 +96,7 @@ private class Utils{
         Swift.print("siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         let sibblingStyles:Array<String> = []
-        var let style:IStyle = style("", value)/*creates an empty style i guess?*/
+        let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         Swift.print("matches: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {

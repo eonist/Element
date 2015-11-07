@@ -58,13 +58,14 @@ class CSSParser{
             Swift.print("propertyValue: "+propertyValue)
             
         }
-        return nil
+        return style
     }
     /**
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
      * @Note now supports StyleProperty2 that can have many property values
      */
     class func styleProperties(propertyName:String, _ propertyValue:String){
+        var styleProperties:Array<IStyleProperty> = []
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name);

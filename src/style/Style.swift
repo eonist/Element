@@ -10,6 +10,9 @@ class Style:IStyle{
         self.selectors = selectors
         self.styleProperties = styleProperties
     }
+    func addStyleProperties(styleProperties:Array<IStyleProperty>){
+        for styleProperty in styleProperties) addStyleProperty(styleProperty)
+    }
     /**
     * Add styleProperty
     * @Note will throw an error if a styleProperty with the same name is allready added

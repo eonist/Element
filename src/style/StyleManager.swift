@@ -33,7 +33,7 @@ class StyleManager{
      */
     class func addStylesByCSS(var string:String){
         string = CSSLinkResolver.resolveLinks(string);
-        string = AdvanceStringModifier.removeComments(string);
+        string = RegExpModifier.removeComments(string);
         //addStyles(CSSParser.styleCollection(string).styles);
     }
 }

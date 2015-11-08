@@ -1,9 +1,14 @@
 import Cocoa
 
 class Element: FlippedView,IElement {
+    private var width:Int?
+    private var height:Int?
+    private var parent : IElement?
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
-    init(_ width: Int = 100, _ height: Int = 40){
+    
+    init(_ width: Int = 100, _ height: Int = 40 _ parent:IElement){
+        
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
     }

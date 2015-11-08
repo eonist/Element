@@ -1,9 +1,16 @@
 import Foundation
 
 class SelectorParser{
-    //TODO: this could probably be re-written by using backreferensing and if they are valid then ...
-    //TODO: research backreferencing
-    
+   
+    /**
+    * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
+    * @Note this method can also be used for debuging purposes
+    */
+    public static function string(selectors:Array):String{// :TODO: rename to selectorsString
+    var string:String = "";
+    for (var i : int = 0; i < selectors.length; i++) string += selectorToString(selectors[i]) + (i < selectors.length-1 ? " ":"");
+    return string;
+    }
     
     /**
      * Returns an array of Selector instances from @param string (which is usually from the CSSParser.style function)
@@ -43,6 +50,8 @@ class SelectorParser{
 }
 /*
 * RegExp pattern for the SelectorParser.selector() method
+* //TODO: this could probably be re-written by using backreferensing and if they are valid then ...
+* //TODO: research backreferencing
 */
 class SelectorPattern {
     static var elementGroup:String = "^([\\w\\d]+?)?"//0 or 1 times.

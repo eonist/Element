@@ -1,4 +1,8 @@
 import Foundation
+/*
+* // :TODO: if you strip the inital css data for spaces then you wont need to removeWrappingWhiteSpace all the time
+* // :TODO: use Vector<String> for speed etc, vector is faster for array yes but not for associate object array?
+*/
 class CSSParser{
     static var precedingWith:String = "(?<=^|\\})"
     static var nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
@@ -23,23 +27,15 @@ class CSSParser{
             //Swift.print("styleName: " + styleName)
             var value:String =  (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//value
             //Swift.print("value: " + value)
-            
-            
             if(StringAsserter.contains(styleName, ",") == false){
                 let style:IStyle = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style);/*If the styleName has 1 name*/
             }
             else{
-                let siblingStyles:Array<String> = Utils.siblingStyles(styleName, value)
+                let siblingStyles:Array<IStyle> = Utils.siblingStyles(styleName, value)
                 styleCollection.addStyles(siblingStyles);/*If the styleName has multiple comma-seperated names*/
-                
-                
             }
-            
-            //continue here, add the sibling code
         }
-        
-        
     }
     /**
      * Converts cssStyleString to a Style instance

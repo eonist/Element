@@ -6,10 +6,12 @@ class SelectorParser{
     * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
     * @Note this method can also be used for debuging purposes
     */
-    public static function string(selectors:Array):String{// :TODO: rename to selectorsString
-    var string:String = "";
-    for (var i : int = 0; i < selectors.length; i++) string += selectorToString(selectors[i]) + (i < selectors.length-1 ? " ":"");
-    return string;
+    class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
+        var string:String = "";
+        for (var i : Int = 0; i < selectors.count; i++) {
+            string += selectorToString(selectors[i]) + (i < selectors.length-1 ? " ":"");
+        }
+        return string;
     }
     
     /**
@@ -49,10 +51,10 @@ class SelectorParser{
     }
 }
 /*
-* RegExp pattern for the SelectorParser.selector() method
-* //TODO: this could probably be re-written by using backreferensing and if they are valid then ...
-* //TODO: research backreferencing
-*/
+ * RegExp pattern for the SelectorParser.selector() method
+ * //TODO: this could probably be re-written by using backreferensing and if they are valid then ...
+ * //TODO: research backreferencing
+ */
 class SelectorPattern {
     static var elementGroup:String = "^([\\w\\d]+?)?"//0 or 1 times.
     static var subsededWith1:String = "(?=\\#|\\:|\\.|\040|$)"//must appear and is not included in the match

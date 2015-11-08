@@ -16,16 +16,16 @@ class CSSParser{
      * @Note: We cant sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     class func styleCollection(cssString:String){
-        var styleCollection:IStyleCollection = StyleCollection();
+        let styleCollection:IStyleCollection = StyleCollection();
         //Swift.print(CSSElementPattern)
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         //Swift.print(matches.count)
         
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print( match.numberOfRanges)
-            var styleName:String = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//name
+            let styleName:String = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//name
             //Swift.print("styleName: " + styleName)
-            var value:String =  (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//value
+            let value:String =  (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//value
             //Swift.print("value: " + value)
             if(StringAsserter.contains(styleName, ",") == false){
                 let style:IStyle = CSSParser.style(styleName,value)
@@ -46,18 +46,18 @@ class CSSParser{
     class func style(var name:String,_ value:String)->IStyle!{
         Swift.print("style()")
         name = RegExpModifier.removeWrappingWhitespace(name);/*removes space from left and right*/
-        var selectors:Array<ISelector> = SelectorParser.selectors(name);
+        let selectors:Array<ISelector> = SelectorParser.selectors(name);
     
-        var style:IStyle = Style(name,selectors, []);
-        var pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
+        let style:IStyle = Style(name,selectors, []);
+        let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
             Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-            var propertyName:String = (value as NSString).substringWithRange(match.rangeAtIndex(1))//name
+            let propertyName:String = (value as NSString).substringWithRange(match.rangeAtIndex(1))//name
             Swift.print("propertyName: "+propertyName)
-            var propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
+            let propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
             Swift.print("propertyValue: "+propertyValue)
-            var styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
+            let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
             style.addStyleProperties(styleProperties);
         }
         return style

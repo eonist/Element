@@ -59,15 +59,18 @@ extension IElement {
         Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
             //Swift.print("style.selector.element: " + style.selector.element)
-            if(style.selector.element == classType){ //if style.selector == classType
-                Swift.print("  element match found")
-                for state in style.selector.states{//loop style.selector.states
-                    if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                        Swift.print("    state match found")
-                        StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
+            for selector in style.selectors{
+                if(selector.element == classType){ //if style.selector == classType
+                    Swift.print("  element match found")
+                    for state in selector.states{//loop style.selector.states
+                        if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
+                            Swift.print("    state match found")
+                            StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
+                        }
                     }
                 }
             }
+            
         }
         
         Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")

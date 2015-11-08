@@ -13,7 +13,19 @@ class SelectorParser{
         }
         return string;
     }
-    
+    /**
+    * Returns a single selector (ie: Button#first:over)
+    */
+    class func selectorToString(selector:Selector)->String{// :TODO: rename to selectorString
+        var string:String = "";
+        if(selector.element != "") { string += selector.element }
+        for classId:String in selector.classIds {
+            string += ("."+classId);
+        }
+        if(selector.id != null) string += "#"+selector.id;
+        for each (var state:String in selector.states) string += (":"+state);
+        return string;
+    }
     /**
      * Returns an array of Selector instances from @param string (which is usually from the CSSParser.style function)
      */

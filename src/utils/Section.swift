@@ -1,5 +1,5 @@
 import Foundation
-class Section:FlippedView/*:Element*/ {//Unlike Container, section can have a style applied
+class Section:Element {//Unlike Container, section can have a style applied
     init(_ width:Int = 100, _ height:Int = 100) {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)

@@ -44,10 +44,22 @@ class Style:IStyle{
         return nil;
     }
     /**
+    * @Note a benefit of having this method is that when used you can use the interface of the return type instantly
+    */
+    func getStylePropertyAt(index:Int)->IStyleProperty{
+        return styleProperties[index]
+    }
+    /**
     * @Note this function is not redundant, its usefull for qucik access in some methods
     */
-    func getValue(name:String, depth:uint = 0)->Any?{
+    func getValue(name:String)->Any?{
         var styleProperty:IStyleProperty? = getStyleProperty(name);
         return styleProperty != nil ? styleProperty?.value : nil;
+    }
+    /**
+    * @Note this method is here for convenience (methods that should be contained in an Utils class are thous that are seldom used)
+    */
+    func getValueAt(index:Int)->Any{
+        return getStylePropertyAt(index).value;
     }
 }

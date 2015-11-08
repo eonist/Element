@@ -8,4 +8,7 @@ protocol IStyle {
     func addStyleProperty(styleProperty:IStyleProperty)
     func addStyleProperty(styleProperties:Array<IStyleProperty>)
     func addStyleProperties(styleProperties:Array<IStyleProperty>)
+    func getValueAt(index:Int)->Any
+    func getValue(name:String)->Any?
+    func getStylePropertyAt(index:Int)->IStyleProperty
 }

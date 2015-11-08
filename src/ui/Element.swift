@@ -24,6 +24,7 @@ class Element: FlippedView,IElement {
     }
     /**
      * Note: if you overide drawRect then update layers wont work
+     * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")

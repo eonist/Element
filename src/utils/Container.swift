@@ -7,8 +7,8 @@ class Container:FlippedView{
         super.init(frame: frame)
     }
     /*
-    * Required by super class
-    */
+     * Required by super class
+     */
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -17,6 +17,6 @@ class Container:FlippedView{
      * @Note This function is used to find the correct class type when synthezing the element cascade
      */
     func getClassType()->String{
-        return String(Element)
+        return String(Container)
     }
 }

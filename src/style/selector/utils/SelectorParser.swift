@@ -9,20 +9,20 @@ class SelectorParser{
     class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
         var string:String = "";
         for (var i : Int = 0; i < selectors.count; i++) {
-            string += selectorToString(selectors[i]) + (i < selectors.length-1 ? " ":"");
+            string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"");
         }
         return string;
     }
     /**
     * Returns a single selector (ie: Button#first:over)
     */
-    class func selectorToString(selector:Selector)->String{// :TODO: rename to selectorString
+    class func selectorToString(selector:ISelector)->String{// :TODO: rename to selectorString
         var string:String = "";
         if(selector.element != "") { string += selector.element }
         for classId:String in selector.classIds {
             string += ("."+classId);
         }
-        if(selector.id != null) string += "#"+selector.id;
+        if(selector.id != nil) string += "#"+selector.id;
         for each (var state:String in selector.states) string += (":"+state);
         return string;
     }

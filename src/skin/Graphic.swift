@@ -15,7 +15,7 @@ class Graphic:IGraphic{//this will extend Graphics in the future
     func setPosition(position:CGPoint){
         //TODO:translate the graphics to position
     }
-    func setProperties(fillStyle:IFillStyle = null, lineStyle:ILineStyle = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
+    func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;
         self.lineStyle = lineStyle;
     }

@@ -34,7 +34,7 @@ class StyleResolver{
             
         }
         
-        Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")
+        //Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")
         StyleParser.describe(styleComposition)
         return styleComposition
     }

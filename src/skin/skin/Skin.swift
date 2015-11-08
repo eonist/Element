@@ -1,5 +1,10 @@
 import Foundation
-
+/*
+* @Note  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
+* TODO: possibly add setPosition();
+* TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
+* TODO: look to cssedit which takes priority the htm set width or the css set width?
+*/
 class Skin:ISkin{
     var style:IStyle?
     var state:String

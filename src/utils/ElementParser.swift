@@ -7,15 +7,10 @@ class ElementParser{
      * @Note to get the stackString use: trace(SelectorUtils.toString(StyleResolver.stack(checkButton)));
      */
     class func selectors(element:IElement)->Array<ISelector>{
-        
-        
-        //continue here
-        
-        
-        var elements:Array<IElement> = parents(element).append(element)
-        var selectors:Array = [];
-        for each (var e : IElement in elements) {
-            var selector:Selector = new Selector();
+        var elements:Array<IElement> = ArrayModifier.append(parents(element),element)
+        var selectors:Array<ISelector> = []
+        for  e : IElement in elements {
+            var selector:Selector = Selector();
             selector.element = e.getClassType();
             if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId];
             selector.id = e.id;

@@ -7,7 +7,7 @@ class StyleCollectionParser {
      */
     class func describe(styleCollection:IStyleCollection) {
         func printStyleProperties(style:IStyle) {
-            Swift.print("printStyleProperties:")
+            //Swift.print("printStyleProperties:")
             Swift.print("<style.name>:"+style.name);
             var propertyNames:Array = StyleParser.stylePropertyNames(style);
             let propertyLength:Int = style.styleProperties.count;

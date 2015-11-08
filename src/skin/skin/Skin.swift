@@ -6,6 +6,7 @@ import Foundation
 * TODO: look to cssedit which takes priority the htm set width or the css set width?
 */
 class Skin:ISkin{
+    var decoratable:IDecoratable?
     var style:IStyle?
     var state:String
     var element:IElement?

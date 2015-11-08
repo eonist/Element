@@ -14,9 +14,9 @@ class StyleCollectionDescriber {
         func printStyleProperties(style:IStyle) {
             Swift.print("printStyleProperties <style.name>:"+style.name);
             var propertyNames:Array = StyleParser.stylePropertyNames(style);
-            var propertyLength:int = style.styleProperties.length;
-            for (var e : int = 0; e < propertyLength; e++) {
-                var property:* = style.getValueAt(e);
+            var propertyLength:Int = style.styleProperties.count;
+            for (var e : Int = 0; e < propertyLength; e++) {
+                var property:Any = style.getValueAt(e);
                 var name:String = propertyNames[e];
                 trace("name:" + name + ", property: " +  property);
             }

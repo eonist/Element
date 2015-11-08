@@ -1,1 +1,6 @@
 import Foundation
+
+
+protocol ISkin{
+    
+}

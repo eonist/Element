@@ -132,8 +132,8 @@ private class Utils{
                 suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix;
                 
                 if(group == "") {
-                    
-                    sibblingStyles.append()
+                    let tempStyle:IStyle = StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix))
+                    sibblingStyles.append(tempStyle)
                 }else{
                     let precedingWith:String = "(?<=\\[)"
                     let endingWith:String = "(?=\\])"

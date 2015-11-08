@@ -1,6 +1,5 @@
 import Foundation
 
-
 class Skin:ISkin{
     var style:IStyle?
     var state:String
@@ -37,7 +36,7 @@ class Skin:ISkin{
     func setState(state:String){
         hasStateChanged = true;
         self.state = state;
-        style = StyleResolver.style(element);/*looping through the entire styleManager isnt a good idea for just a state change*/
+        style = StyleResolver.style(element!)/*looping through the entire styleManager isnt a good idea for just a state change*/
         draw();
     }
     /**
@@ -45,6 +44,6 @@ class Skin:ISkin{
      * @Note similar to setStyle, this does not querry the styleManger when called
      */
     func setSize(width:Int, height:Int){
-        
+        fatalError("not implemented yet")
     }
 }

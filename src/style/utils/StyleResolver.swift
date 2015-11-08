@@ -11,7 +11,7 @@ class StyleResolver{
         let classType:String = element.getClassType()//gets the classtype from the component
 
         Swift.print("styleComposition")
-        Swift.print(StyleManager.styles.count)
+        //Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
             //Swift.print("style.selector.element: " + style.selector.element)
             for selector in style.selectors{

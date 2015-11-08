@@ -6,7 +6,8 @@ class StyleModifier {
      * // :TODO: explain what newSelectors does
      */
     class func clone(style:IStyle, _ newName:String? = nil, newSelectors:Array<IStyle>? = nil)->IStyle{
-        let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[]);
+        let tempArray:Array<ISelector> = newSelectors != nil ?  newSelectors : style.selectors
+        let returnStyle:IStyle = Style(newName ?? style.name, [],[]);
         for styleProperty : IStyleProperty in style.styleProperties{
             returnStyle.addStyleProperty(StyleProperty(styleProperty.name, styleProperty.value));
         }

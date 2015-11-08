@@ -7,20 +7,19 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
     }
-    /*
-    * Called on init if wantsUpdateLayer is true
-    */
+    /**
+     * Called on init if wantsUpdateLayer is true
+     */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("drawLayer")
     }
-    /*
+    /**
      * Note: if you overide drawRect then update layers wont work
      */
     override func drawRect(rect: NSRect) {
         Swift.print("drawRect")
         super.drawRect(rect)
         resolveSkin()
-        
     }
     /**
      * Returns the class type of the Class instance
@@ -30,7 +29,7 @@ class Element: FlippedView,IElement {
     func getClassType()->String{
         return String(Element)
     }
-    /*
+    /**
      * Required by NSView
      */
     required init?(coder: NSCoder) {
@@ -39,11 +38,11 @@ class Element: FlippedView,IElement {
 }
 
 extension IElement {
-    /*
-    * Draws the graphics
-    * TODO: does nsview have a protocol which IElement then can use
-    * NOTE: this method is embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
-    */
+    /**
+     * Draws the graphics
+     * TODO: does nsview have a protocol which IElement then can use
+     * NOTE: this method is embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
+     */
     func resolveSkin() {
         Swift.print("resolveSkin: " + "\(String(self))")
         let classType:String = getClassType()//gets the classtype from the component
@@ -58,28 +57,7 @@ extension IElement {
         //the bellow code is basically a lite version of StyleResolver.style()
         
         
-        var styleComposition:IStyle = Style("styleComp")
-        
-        Swift.print("styleComposition")
-        Swift.print(StyleManager.styles.count)
-        for style in StyleManager.styles{//loop through styles
-            //Swift.print("style.selector.element: " + style.selector.element)
-            for selector in style.selectors{
-                if(selector.element == classType){ //if style.selector == classType
-                    Swift.print("  element match found")
-                    for state in selector.states{//loop style.selector.states
-                        if(state == skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                            Swift.print("    state match found")
-                            StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
-                        }
-                    }
-                }
-            }
-            
-        }
-        
-        Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")
-        StyleParser.describe(styleComposition)
+        let styleComposition = StyleResolver.style(self)
         
         
         

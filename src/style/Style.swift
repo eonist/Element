@@ -43,4 +43,11 @@ class Style:IStyle{
         }
         return nil;
     }
+    /**
+    * @Note this function is not redundant, its usefull for qucik access in some methods
+    */
+    func getValue(name:String, depth:uint = 0)->Any?{
+        var styleProperty:IStyleProperty? = getStyleProperty(name);
+        return styleProperty != nil ? styleProperty?.value : nil;
+    }
 }

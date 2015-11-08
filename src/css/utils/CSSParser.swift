@@ -16,6 +16,7 @@ class CSSParser{
      * @Note: We cant sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     class func styleCollection(cssString:String)->IStyleCollection{
+        Swift.print("CSSParser.styleCollection()")
         let styleCollection:IStyleCollection = StyleCollection();
         //Swift.print(CSSElementPattern)
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;        
@@ -101,7 +102,7 @@ private class Utils{
      * // :TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
     class func siblingStyles(styleName:String,_ value:String)->Array<IStyle> {
-        Swift.print("siblingStyles(): " + "styleName: " + styleName)
+        Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:Array<IStyle> = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/

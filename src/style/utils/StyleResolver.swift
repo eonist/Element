@@ -17,13 +17,17 @@ class StyleResolver{
             for selector in style.selectors{
                 if(selector.element == classType){ //if style.selector == classType
                     Swift.print("  element match found")
-                    for state in selector.states{//loop style.selector.states
-                        Swift.print("state: " + state)
-                        Swift.print("element.skinState: " + element.skinState)
-                        if(state == element.skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                            Swift.print("    state match found")
-                            StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
+                    if(selector.states.count > 0){
+                        for state in selector.states{//loop style.selector.states
+                            Swift.print("state: " + state)
+                            Swift.print("element.skinState: " + element.skinState)
+                            if(state == element.skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
+                                Swift.print("    state match found")
+                                StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
+                            }
                         }
+                    }else{
+                        
                     }
                 }
             }

@@ -26,8 +26,8 @@ class StyleResolver{
                                 StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
                             }
                         }
-                    }else{
-                        
+                    }else{//temp solution
+                        StyleModifier.combine(&styleComposition, style)
                     }
                 }
             }

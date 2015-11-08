@@ -5,8 +5,9 @@ class GraphicModifier {
     * TODO: fill and linestyle should be graphic spessific see original code
     */
     class func applyProperties(path:CGPath, _ graphics:Graphics,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> CGPath {
-        let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
-        let fillAlpha:Double = fillStyle.getStyleProperty("fillAlpha")!.value as! Double
+        let fillColor:String = String(fillStyle.getStyleProperty("fillColor")!.value)
+        let fillAlpha:Double = Double(fillStyle.getStyleProperty("fillAlpha")!.value)
+        
         /*
         
         

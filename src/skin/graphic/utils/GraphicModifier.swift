@@ -6,7 +6,7 @@ class GraphicModifier {
     */
     class func applyProperties(path:CGPath, _ graphics:Graphics,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> CGPath {
         let fillColor:String = String(fillStyle.getStyleProperty("fillColor")!.value)
-        let fillAlpha:Double = Float(fillStyle.getStyleProperty("fillAlpha")!.value) as! Double
+        let fillAlpha:Double = Double(String(fillStyle.getStyleProperty("fillAlpha")!.value))!
         
         /*
         

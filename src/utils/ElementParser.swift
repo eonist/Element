@@ -12,7 +12,7 @@ class ElementParser{
         //continue here
         
         
-        var elements:Array<IElement> = parents(element) += [element]
+        var elements:Array<IElement> = parents(element).append(element)
         var selectors:Array = [];
         for each (var e : IElement in elements) {
             var selector:Selector = new Selector();

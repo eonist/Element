@@ -34,11 +34,6 @@ class CSSParser{
                 styleCollection.addStyles(siblingStyles);/*If the styleName has multiple comma-seperated names*/
                 
                 
-                
-                //continue here siblingStyles should return array of IStyles not string
-                
-                
-                
             }
             
             //continue here, add the sibling code

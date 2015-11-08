@@ -18,8 +18,7 @@ class CSSParser{
     class func styleCollection(cssString:String)->IStyleCollection{
         let styleCollection:IStyleCollection = StyleCollection();
         //Swift.print(CSSElementPattern)
-        let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
-        
+        let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;        
         //Swift.print(matches.count)
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print( match.numberOfRanges)

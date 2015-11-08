@@ -1,7 +1,7 @@
 import Foundation
 
 protocol IDecoratable{
-    func getGraphic()-> Graphic
+    var decoratable:IDecoratable{get}
     func fill()
     func line()
     func drawFill()
@@ -11,4 +11,6 @@ protocol IDecoratable{
     func beginFill()
     func applyLineStyle(graphics:Graphics,lineStyle:ILineStyle)
     func endFill()
+    func getGraphic()-> Graphic/*Dont revert to IGraphic here*/
+
 }

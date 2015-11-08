@@ -7,8 +7,10 @@ class Element: FlippedView,IElement {
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
     
-    init(_ width: Int = 100, _ height: Int = 40 _ parent:IElement){
-        
+    init(_ width: Int = 100, _ height: Int = 40, _ parent:IElement? = nil){
+        self.width = width;
+        self.height = height;
+        self.parent = parent;
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
     }
@@ -26,7 +28,7 @@ class Element: FlippedView,IElement {
         super.drawRect(rect)
         resolveSkin()
     }
-    func getParent()->IElement {// :TODO: beta
+    func getParent()->IElement? {// :TODO: beta
         //Swift.print("_parent: " + _parent);
         return self.parent;
     }

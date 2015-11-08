@@ -3,8 +3,8 @@ import Foundation
 class Style:IStyle{
     //static var clear:IStyle = Style("clear",[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])
     var name:String;
-    var styleProperties:Array<IStyleProperty> = []
-    var selectors:Array<ISelector> = []
+    var styleProperties:Array<IStyleProperty>
+    var selectors:Array<ISelector>
     init(_ name:String = "",_ selectors:Array<ISelector> = [], _ styleProperties:Array<IStyleProperty> = []){
         self.name = name
         self.selectors = selectors

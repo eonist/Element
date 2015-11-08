@@ -5,9 +5,8 @@ class StyleModifier {
      * CSSParser.as, StyleHeritageResolver.as uses this function
      * // :TODO: explain what newSelectors does
      */
-    class func clone(style:IStyle, _ newName:String? = nil, newSelectors:Array<IStyle>? = nil)->IStyle{
-        let tempArray:Array<ISelector> = newSelectors != nil ?  newSelectors : style.selectors
-        let returnStyle:IStyle = Style(newName ?? style.name, [],[]);
+    class func clone(style:IStyle, _ newName:String? = nil, newSelectors:Array<ISelector>? = nil)->IStyle{
+        let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[]);
         for styleProperty : IStyleProperty in style.styleProperties{
             returnStyle.addStyleProperty(StyleProperty(styleProperty.name, styleProperty.value));
         }

@@ -12,7 +12,7 @@ class Skin:ISkin{
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;
     var hasSizeChanged:Bool = false;
-    init(style:IStyle? = nil, state:String = "", element:IElement? = nil){
+    init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         self.style = style;
         self.state = state;
         self.element = element;

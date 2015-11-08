@@ -15,12 +15,12 @@ class CSSParser{
      * @return StyleCollection populated with Styles
      * @Note: We cant sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
-    class func styleCollection(cssString:String){
+    class func styleCollection(cssString:String)->IStyleCollection{
         let styleCollection:IStyleCollection = StyleCollection();
         //Swift.print(CSSElementPattern)
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
-        //Swift.print(matches.count)
         
+        //Swift.print(matches.count)
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print( match.numberOfRanges)
             let styleName:String = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//name
@@ -36,6 +36,7 @@ class CSSParser{
                 styleCollection.addStyles(siblingStyles);/*If the styleName has multiple comma-seperated names*/
             }
         }
+        return styleCollection
     }
     /**
      * Converts cssStyleString to a Style instance

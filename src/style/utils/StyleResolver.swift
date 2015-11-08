@@ -5,7 +5,7 @@ class StyleResolver{
      *
      */
     class func style(element:IElement)->IStyle{
-        let querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
+        //let querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
         //Swift.print("STACK: " + SelectorParser.string(querrySelectors));
         var styleComposition:IStyle = Style("styleComp")
         let classType:String = element.getClassType()//gets the classtype from the component

@@ -2,7 +2,7 @@ import Cocoa
 
 class Element: FlippedView,IElement {
     var skinState:String = SkinStates.none
-    private var _skin:Skin;
+    var skin:Skin?
     private var width:Int?
     private var height:Int?
     var parent : IElement?

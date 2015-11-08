@@ -4,7 +4,9 @@ import Cocoa
 class Button: NSButton,IElement{
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
-    init(_ width: Int = 100, _ height: Int = 40) {
+    var parent : IElement?
+    init(_ width: Int = 100, _ height: Int = 40,parent:IElement? = nil) {
+        self.parent = parent;
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         self.wantsLayer = false//need for the updateLayer method to be called internally

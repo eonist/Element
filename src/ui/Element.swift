@@ -3,7 +3,7 @@ import Cocoa
 class Element: FlippedView,IElement {
     private var width:Int?
     private var height:Int?
-    private var parent : IElement?
+    var parent : IElement?
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
     
@@ -28,7 +28,6 @@ class Element: FlippedView,IElement {
         super.drawRect(rect)
         resolveSkin()
     }
-    
     /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type

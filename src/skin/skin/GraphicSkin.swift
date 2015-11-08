@@ -1,8 +1,8 @@
 import Foundation
 
 
-class GraphicSkin{
-    init(style:IStyle, state:String = "",element:IElement? = nil){
-        super(style, state, element);
+class GraphicSkin:Skin{
+    override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
+        super.init(style, state, element)
     }
 }

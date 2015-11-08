@@ -107,7 +107,7 @@ private class Utils{
     class func siblingStyles(styleName:String,_ value:String)->Array<String> {
         Swift.print("siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
-        let sibblingStyles:Array<IStyle> = []
+        var sibblingStyles:Array<IStyle> = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         Swift.print("matches: " + "\(matches.count)")
@@ -132,7 +132,8 @@ private class Utils{
                 suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix;
                 
                 if(group == "") {
-                    let tempStyle:IStyle = StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix))
+                    let tempSelectors = SelectorParser.selectors(suffix)
+                    let tempStyle:IStyle = StyleModifier.clone(style, suffix, tempSelectors)
                     sibblingStyles.append(tempStyle)
                 }else{
                     let precedingWith:String = "(?<=\\[)"

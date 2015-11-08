@@ -1,8 +1,7 @@
 import Foundation
 class Section:Element {//Unlike Container, section can have a style applied
-    init(_ width:Int = 100, _ height:Int = 100) {
-        let frame = NSRect(x: 0, y: 0, width: width, height: height)
-        super.init(frame: frame)
+    init(_ width:Int = 100, _ height:Int = 100, parent:IElement? = nil) {
+        super.init(width,height,parent)
     }
     /*
     * Required by super class

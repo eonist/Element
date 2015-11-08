@@ -28,10 +28,7 @@ class Element: FlippedView,IElement {
         super.drawRect(rect)
         resolveSkin()
     }
-    func getParent()->IElement? {// :TODO: beta
-        //Swift.print("_parent: " + _parent);
-        return self.parent;
-    }
+    
     /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
@@ -90,6 +87,10 @@ extension IElement {
 
         Swift.print("end of call")
         
+    }
+    func getParent()->IElement? {// :TODO: beta
+        //Swift.print("_parent: " + _parent);
+        return self.parent;
     }
 }
 

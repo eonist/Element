@@ -104,7 +104,7 @@ private class Utils{
      * // :TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
      * // :TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
-    class func siblingStyles(styleName:String,_ value:String)->Array<String> {
+    class func siblingStyles(styleName:String,_ value:String)->Array<IStyle> {
         Swift.print("siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:Array<IStyle> = []
@@ -132,9 +132,7 @@ private class Utils{
                 suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix;
                 
                 if(group == "") {
-                    let tempSelectors = SelectorParser.selectors(suffix)
-                    let tempStyle:IStyle = StyleModifier.clone(style, suffix, tempSelectors)
-                    sibblingStyles.append(tempStyle)
+                    sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{
                     let precedingWith:String = "(?<=\\[)"
                     let endingWith:String = "(?=\\])"
@@ -146,6 +144,7 @@ private class Utils{
                         let conditionalSuffix:String = suffix != "" ? " " + suffix : "";
                         let fullName:String =  condiditonalPrefix + name + conditionalSuffix;
                         Swift.print("fullName: " + fullName)
+                        sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)));
                     }
                 }
                 /**/

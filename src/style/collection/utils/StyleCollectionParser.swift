@@ -8,7 +8,7 @@ class StyleCollectionDescriber {
     class func describe(styleCollection:IStyleCollection) {
         var stylesLength:Int = styleCollection.styles.count;
         for (var i : Int = 0; i < stylesLength; i++) {
-            var style:IStyle = styleCollection.getStyleAt(i);
+            var style:IStyle = styleCollection.styles[i];
             printStyleProperties(style);
         }
         func printStyleProperties(style:IStyle) {

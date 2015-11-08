@@ -53,6 +53,11 @@ extension IElement {
 
          //TODO: toggle between rect and roundRect based on the style
         
+        
+        //continue here: make the styleresolver and start testing with skins etc. 
+        //the bellow code is basically a lite version of StyleResolver.style()
+        
+        
         var styleComposition:IStyle = Style("styleComp")
         
         Swift.print("styleComposition")

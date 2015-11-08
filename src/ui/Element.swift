@@ -8,11 +8,13 @@ class Element: FlippedView,IElement {
     var skinState:String = SkinStates.none
     
     init(_ width: Int = 100, _ height: Int = 40, _ parent:IElement? = nil){
+        Swift.print("Element.init")
         self.width = width;
         self.height = height;
         self.parent = parent;
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
+        self.wantsLayer = false
     }
     /**
      * Called on init if wantsUpdateLayer is true

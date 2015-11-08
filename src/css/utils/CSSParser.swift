@@ -107,7 +107,7 @@ private class Utils{
     class func siblingStyles(styleName:String,_ value:String)->Array<String> {
         Swift.print("siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
-        let sibblingStyles:Array<String> = []
+        let sibblingStyles:Array<IStyle> = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         Swift.print("matches: " + "\(matches.count)")
@@ -133,6 +133,7 @@ private class Utils{
                 
                 if(group == "") {
                     
+                    sibblingStyles.append()
                 }else{
                     let precedingWith:String = "(?<=\\[)"
                     let endingWith:String = "(?=\\])"

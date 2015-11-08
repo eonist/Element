@@ -1,11 +1,13 @@
 import Cocoa
 
 class Element: FlippedView,IElement {
+    var skinState:String = SkinStates.none
+    private var _skin:Skin;
     private var width:Int?
     private var height:Int?
     var parent : IElement?
     var style:IStyle = Style.clear
-    var skinState:String = SkinStates.none
+    
     
     init(_ width: Int = 100, _ height: Int = 40, _ parent:IElement? = nil){
         Swift.print("Element.init")

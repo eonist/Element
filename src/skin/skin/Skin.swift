@@ -5,10 +5,21 @@ class Skin:ISkin{
     var style:IStyle?
     var state:String
     var element:IElement?
+    var hasStyleChanged:Bool = false;
+    var hasStateChanged:Bool = false;
+    var hasSizeChanged:Bool = false;
     init(style:IStyle? = nil, state:String = "", element:IElement? = nil){
         self.style = style;
         self.state = state;
         self.element = element;
+    }
+    /**
+    * Resets skinState
+    */
+    func draw(){
+        hasStyleChanged = false;
+        hasSizeChanged = false;
+        hasStateChanged = false;
     }
     /**
      * Sets the style instance to apply to the skin also forces a redraw.

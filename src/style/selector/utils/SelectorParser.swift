@@ -19,11 +19,9 @@ class SelectorParser{
     class func selectorToString(selector:ISelector)->String{// :TODO: rename to selectorString
         var string:String = "";
         if(selector.element != "") { string += selector.element }
-        for classId:String in selector.classIds {
-            string += ("."+classId);
-        }
-        if(selector.id != nil) string += "#"+selector.id;
-        for each (var state:String in selector.states) string += (":"+state);
+        for classId:String in selector.classIds { string += ("."+classId) }
+        if(selector.id != "") { string += "#"+selector.id }
+        for state:String in selector.states { string += (":"+state) }
         return string;
     }
     /**

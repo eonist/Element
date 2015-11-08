@@ -5,7 +5,7 @@ class GraphicModifier {
     * TODO: fill and linestyle should be graphic spessific see original code
     */
     class func applyProperties(path:CGPath, _ graphics:Graphics,_ fillStyle:IStyle,_ lineStyle:IStyle, _ skinState:String) -> CGPath {
-        Swift.print(fillStyle.getStyleProperty("fillColor")!.value)
+        Swift.print("GraphicModifier.applyProperties() " + String(fillStyle.getStyleProperty("fillColor")!.value))
         let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
         let fillAlpha:Double = Double(String(fillStyle.getStyleProperty("fillAlpha")!.value))!
         /*
@@ -26,6 +26,7 @@ class GraphicModifier {
         
         
         let nsFillColor = ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
+        Swift.print(nsFillColor)
         //let nsLineColor = ColorParser.nsColor(lineColor, Float(lineAlpha))//line
         //ViewModifier.applyColor(self as! NSView, nsFillColor, nsLineColor, lineWidth)
         

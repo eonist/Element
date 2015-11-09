@@ -9,8 +9,8 @@ class Skin:ISkin{
     var decoratable:IDecoratable?
     var style:IStyle?
     var state:String
-    var width:Int;
-    var height:Int;
+    var width:Int?;
+    var height:Int?;
     var element:IElement?
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;
@@ -19,8 +19,8 @@ class Skin:ISkin{
         self.style = style;
         self.state = state;
         self.element = element;
-        width = element!.width!;// :TODO: is this necassary?
-        height = element!.height!;// :TODO: is this necassary?
+        width = element!.width;// :TODO: is this necassary?
+        height = element!.height;// :TODO: is this necassary?
     }
     /**
     * Resets skinState

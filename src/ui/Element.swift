@@ -58,11 +58,12 @@ extension IElement {
     func resolveSkin() {
         Swift.print("resolveSkin: " + "\(String(self))")
         
-        
-        
         self.skin = SkinResolver.skin(self)
         
         
+        
+        
+        /*
         
         
         let classType:String = getClassType()//gets the classtype from the component
@@ -99,6 +100,8 @@ extension IElement {
 
         Swift.print("end of call")
         
+
+        */
     }
     /**
      * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances

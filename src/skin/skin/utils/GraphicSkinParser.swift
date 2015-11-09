@@ -10,7 +10,7 @@ class GraphicSkinParser{
     /**
     * Returns a Decoratable instance based on what stylePropertyValues is found in @param skin at @param depth
     */
-    func configure(skin:ISkin)->IDecoratable {
+    class func configure(skin:ISkin)->IDecoratable {
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         let decoratable:IDecoratable = Utils.rect(skin,fillStyle);
         return decoratable

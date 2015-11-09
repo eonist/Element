@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*
  * // :TODO: impliment margin padding ?!? maybe not
  * // :TODO: Try to impliment Rect3 into Element2 and do tests
@@ -12,20 +12,19 @@ class Rect : Graphic{
         self.width = width;
         self.height = height;
         fill();
-        line();
+        //line();
     }
     func fill() {
       beginFill();
       drawFill();
-      endFill();
     }
     func line(){
-      clearLine();
-      applyLineStyle(lineShape.graphics,lineStyle);
-      drawLine();
+        fatalError("NOT IMPLEMENTED YET")
+        //applyLineStyle(self,lineStyle);
+        //drawLine();
     }
     func beginFill() {
-      if(fillStyle != nil && fillStyle.color != NSColor.clearColor() {
+      if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
          //beginFill drawing;/*Updates only if fillStyle is of class FillStyle*/
       }
     }
@@ -33,9 +32,11 @@ class Rect : Graphic{
      * // :TODO: does this function need arguments?
      */
     func applyLineStyle(graphics:Graphics,lineStyle:ILineStyle) {
+      /*
       if(lineStyle != nil) {
          //apply lineStyle here /*updates only if lineStyle of class LineStyle*/
       }
+      */
     }
     func drawFill() {
       //do fill drawing here
@@ -45,11 +46,7 @@ class Rect : Graphic{
           //do line drawing here, keep in mind line mask
       }
     }
-    func endFill(){
-      //print("Rect3.endFill");
-      fillShape.graphics.endFill();
-    }
-    func setSize(width:Number,height:Number) {
+    func setSize(width:Int,height:Int) {
       self.width = width;
       self.height = height;
       fill();

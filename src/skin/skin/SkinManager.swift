@@ -5,11 +5,6 @@ class SkinManager{
      */
     class func getSkinInstance(skinName:String,_ element:IElement, _ style:IStyle)->ISkin?{
         switch skinName{
-            
-            
-            //continue here: need to find state
-            
-            
             case SkinFactory.graphicsSkin : return GraphicSkin(style, element.skin!.state, element)
             case SkinFactory.textSkin : fatalError("NOT IMPLEMENTED YET")
             default: fatalError("NOT IMPLEMENTED YET")

@@ -10,7 +10,7 @@ class SkinFactory{
     static var graphicsSkin:String = "graphicSkin";
     static var textSkin:String = "textSkin";
     class func graphicSkin(element:IElement,style:IStyle)->ISkin {
-        return GraphicSkin(style, element.getSkinState(),element);
+        return GraphicSkin(style, element.getSkinState(), element);
     }
     class func textSkin(element:IElement,style:IStyle)->ISkin {
         fatalError("NOT IMPLEMENTED YET")

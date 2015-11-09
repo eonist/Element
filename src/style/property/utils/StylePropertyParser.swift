@@ -7,6 +7,7 @@ class StylePropertyParser{
      * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{
+        Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
         Swift.print("value: " + "\(value!)")
         return value;
@@ -21,6 +22,8 @@ class StylePropertyParser{
         print("StylePropertyParser.colorFillStyle()")
         let colorValue:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
         print("colorValue: " + colorValue);
+        let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
+        print("alpha: " + alpha)
         //print(String(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
         
 

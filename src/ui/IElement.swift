@@ -3,7 +3,7 @@ protocol IElement:class, IView{
     var parent:IElement?{get}
     var skinState:String{get}
     var style:IStyle{get set}
-    var skin:Skin?{get}
+    var skin:ISkin?{get set}
     var width:Int?{get}
     var height:Int?{get}
     func resolveSkin()

@@ -2,7 +2,7 @@ import Cocoa
 
 class Element: FlippedView,IElement {
     var skinState:String = SkinStates.none
-    var skin:Skin?
+    var skin:ISkin?
     var width:Int?
     var height:Int?
     var parent : IElement?
@@ -57,6 +57,14 @@ extension IElement {
      */
     func resolveSkin() {
         Swift.print("resolveSkin: " + "\(String(self))")
+        
+        
+        
+        self.skin = SkinResolver.skin(self)
+        
+        
+        
+        
         let classType:String = getClassType()//gets the classtype from the component
         Swift.print("classType: " + classType)
        // style = StyleManager.getStyle(classType)!//sets the style to the element

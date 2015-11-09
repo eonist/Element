@@ -34,11 +34,17 @@ class StylePropertyParser{
      *
      */
     class func width(skin:ISkin) -> Int {
-        return Int(metric(skin,CSSConstants.width));
+        return Int(metric(skin,CSSConstants.width))
     }
     /**
-    * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
-    */
+     *
+     */
+    class func height(skin:ISkin) -> Int {
+        return Int(metric(skin,CSSConstants.height))
+    }
+    /**
+     * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
+     */
     class func metric(skin:ISkin,_ propertyName:String)->Double {
         let value:Any = StylePropertyParser.value(skin,propertyName);
         return Utils.metric(value,skin);

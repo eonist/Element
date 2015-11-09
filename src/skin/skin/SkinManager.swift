@@ -1,4 +1,4 @@
 import Foundation
 class SkinManager{
-    static var _skinClasses:Dictionary = {};
+    static var skinClasses:Dictionary<String,String> = Dictionary<String,String>();
 }

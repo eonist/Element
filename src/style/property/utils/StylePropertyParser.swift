@@ -8,6 +8,7 @@ class StylePropertyParser{
      */
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any{
         let value:Any = skin.style!.getValue(propertyName);
+        Swift.print("value: " + "\(value)")
         return value;
     }
     class func fillStyle(skin:ISkin)->IFillStyle {
@@ -17,7 +18,7 @@ class StylePropertyParser{
      * Returns a FillStyle instance
      */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
-        let value:String = StylePropertyParser.value(skin, CSSConstants.fill) as! String;
+        let value:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
         //print("value: " + value);
         let alpha:String = StylePropertyParser.value(skin, CSSConstants.fillAlpha) as! String;
         let color:NSColor = value == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(value, Float(alpha)!)//fill

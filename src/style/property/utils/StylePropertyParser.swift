@@ -28,6 +28,7 @@ class StylePropertyParser{
     * Returns a GradientFillStyle
     */
     class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
+        fatalError("NOT IMPLEMENTED YET")
         return GradientFillStyle(Gradient(),NSColor.clearColor())
     }
 }

@@ -6,7 +6,7 @@ class StylePropertyParser{
      * @Note the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
      * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
-    class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{
+    class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any?{
         let value:Any = skin.style!.getValue(propertyName);
         Swift.print("value: " + "\(value)")
         return value;
@@ -20,8 +20,11 @@ class StylePropertyParser{
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         let colorValue:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
         print("colorValue: " + colorValue);
+        let temp:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha)!
+        print(temp!)
+        
         let alpha:String? = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha)) as String;
-        print(alpha!)
+        //print(alpha!)
         //print("fillAlpha: " + fillAlpha)
         print("alpha: " + alpha!)
         let alphaVal:Double = Double(alpha!)!

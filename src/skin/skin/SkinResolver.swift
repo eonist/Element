@@ -18,6 +18,16 @@ class SkinResolver{
         
         return nil
     }
+    /**
+     * Throws an error message if a skin cant be resolved (with usefull information for debugging)
+     */
+    private static function resolveError(style:IStyle,element:IElement):* {// :FIXME: argument type should be IAurora2
+    trace("with parent: " + (element.parent || ""));
+    trace("with skin: "+element.skin || "");
+    trace("with style.selector: "+style.name || "");//could have to be altred
+    throw new Error( "SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: "+element.id);
+    return null;
+    }
 }
 
 private class Utils{

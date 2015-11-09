@@ -26,6 +26,5 @@ private class Utils{
         let width:Int = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Int = (StylePropertyParser.height(skin) ?? skin.height!);
         return Rect(width,height,fillStyle);
-        return Decoratable()
     }
 }

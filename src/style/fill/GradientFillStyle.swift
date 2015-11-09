@@ -7,6 +7,3 @@ class GradientFillStyle:FillStyle{
         self.gradient = gradient;
     }
 }
-
-
-//continue here

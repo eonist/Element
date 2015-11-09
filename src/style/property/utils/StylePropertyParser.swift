@@ -12,7 +12,7 @@ class StylePropertyParser{
         Swift.print("value: " + "\(value!)")
         
         
-        //continue here, you need to 
+        //continue here, you need to get width from the element if style doesnt have width
         
         
         return value;

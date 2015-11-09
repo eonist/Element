@@ -14,7 +14,7 @@ class SkinResolver{
         //			trace("style: " + style);
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element);
         Swift.print(skinName)
-        //return SkinManager.getInstance().getSkinInstance(skinName,element,style) || resolveError(style,element);
+        return SkinManager.getSkinInstance(skinName,element,style) || resolveError(style,element);
         
         return nil
     }

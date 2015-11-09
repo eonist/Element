@@ -16,6 +16,10 @@ class StylePropertyParser{
     * Returns a FillStyle instance
     */
     class func colorFillStyle(skin:ISkin)->IFillStyle? {
+        var value:* = StylePropertyParser.value(skin, CSSConstants.FILL,depth);
+        //print("value: " + value);
+        var color:NSColor = value[1] == CSSConstants.NONE ? NaN : StringParser.color(value[1]);
+        
         return nil
     }
     /**

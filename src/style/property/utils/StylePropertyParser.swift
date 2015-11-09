@@ -18,10 +18,11 @@ class StylePropertyParser{
      * Returns a FillStyle instance
      */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
-        let value:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
-        //print("value: " + value);
-        let alpha:String = StylePropertyParser.value(skin, CSSConstants.fillAlpha) as! String;
-        let color:NSColor = value == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(value, Float(alpha)!)//fill
+        let colorValue:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
+        print("colorValue: " + colorValue);
+        let alpha:String = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha));
+        print("alpha: " + alpha)
+        let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, Float(alpha)!)//fill
         
         return FillStyle(color)
     }

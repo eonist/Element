@@ -12,4 +12,10 @@ class StylePropertyParser{
     class func fillStyle(skin:ISkin):IFillStyle {
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin, depth):colorFillStyle(skin, depth);
     }
+    /**
+    * Returns a GradientFillStyle
+    */
+    class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
+        
+    }
 }

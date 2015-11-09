@@ -22,14 +22,16 @@ class StylePropertyParser{
         print("colorValue: " + colorValue);
         //print(String(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
         
-        let alpha:Any = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha));
+
         //print(alpha!)
         //print("fillAlpha: " + fillAlpha)
         //print("alpha: " + alpha)
-        print(ClassParser.getClass(alpha))
-        let alphaVal:Double = Double(String(alpha))!
-        print("alphaVal: " + "\(alphaVal)")
-        let alphaValue:Float = Float(alphaVal)
+        print(String(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
+        print(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!)
+        print(ClassParser.getClass(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
+        //let alphaVal:Double = Double(String(alpha))!
+        //print("alphaVal: " + "\(alphaVal)")
+        let alphaValue:Float = 1.0
         
         let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, alphaValue)//fill
         

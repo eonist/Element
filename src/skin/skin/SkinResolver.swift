@@ -13,13 +13,13 @@ class SkinResolver{
         let style:IStyle = StyleResolver.style(element);
         //			trace("style: " + style);
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element);
-        Swift.print(skinName)
-        return SkinManager.getSkinInstance(skinName,element,style) || resolveError(style,element);
+        Swift.print("SkinResolver.skin() skinName: " + skinName)
+        return SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element);
     }
     /**
      * Throws an error message if a skin cant be resolved (with usefull information for debugging)
      */
-    class func resolveError(style:IStyle, _ element:IElement)->Void {// :FIXME: argument type should be IAurora2
+    class func resolveError(style:IStyle, _ element:IElement)->ISkin {// :FIXME: argument type should be IAurora2
         //print("with parent: " + (element.parent || ""));
         //print("with skin: "+element.skin || "");
         //print("with style.selector: "+style.name || "");//could have to be altred

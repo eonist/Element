@@ -6,6 +6,7 @@ protocol IElement:class, IView{
     var width:Int?{get}
     var height:Int?{get}
     func resolveSkin()
+    func getSkinState() -> String
     func getParent()->IElement?//TODO: maybe use weak?
     func getClassType()->String
     

@@ -92,6 +92,13 @@ extension IElement {
         Swift.print("end of call")
         
     }
+    /**
+     * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
+     * TODO: explain the logic of havong this var in this class and also in the skin class, i think its because you need to access the skinstate before the skin is created or initiated in the element.
+     */
+    func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
+        return skinState;
+    }
     func getParent()->IElement? {// :TODO: beta
         //Swift.print("_parent: " + _parent);
         return self.parent;

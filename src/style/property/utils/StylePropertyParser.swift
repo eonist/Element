@@ -6,10 +6,10 @@ class StylePropertyParser{
      * @Note the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
      * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
-    class func value(skin:ISkin, propertyName:String/*, depth:int = 0*/){
-        
+    class func value(skin:ISkin, propertyName:String/*, depth:int = 0*/)->Any?{
+        return nil
     }
-    class func fillStyle(skin:ISkin/*,depth:int = 0*/):IFillStyle {
-        return value(skin,CSSConstants.FILL,depth) is IGradient ? gradientFillStyle(skin, depth):colorFillStyle(skin, depth);
+    class func fillStyle(skin:ISkin):IFillStyle {
+        return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin, depth):colorFillStyle(skin, depth);
     }
 }

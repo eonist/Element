@@ -22,7 +22,7 @@ class StylePropertyParser{
         print("colorValue: " + colorValue);
         let alpha:String = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha));
         print("alpha: " + alpha)
-        let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, Float(alpha)!)//fill
+        let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, Float(Double(alpha)!))//fill
         
         return FillStyle(color)
     }

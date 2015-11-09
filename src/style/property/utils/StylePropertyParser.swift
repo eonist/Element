@@ -40,7 +40,7 @@ class StylePropertyParser{
     * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
     */
     class func metric(skin:ISkin,_ propertyName:String)->Double {
-        var value:Any = StylePropertyParser.value(skin,propertyName);
+        let value:Any = StylePropertyParser.value(skin,propertyName);
         return Utils.metric(value,skin);
     }
 }
@@ -49,6 +49,9 @@ private class Utils{
     * // :TODO: explain what this method is doing
     */
     class func metric(value:Any,_ skin:ISkin)->Double {
-        if(value is Number) return value;
+        if(value is Int){ return Double(value as! Int)
+        }else{
+            fatalError("NOT IMPLEMENTED YET")
+        }
     }
 }

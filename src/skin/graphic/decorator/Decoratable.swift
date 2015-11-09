@@ -11,12 +11,6 @@ class Decoratable:IDecoratable{
     func line(){
         decoratable.line();
     }
-    func clear(){
-        decoratable.clear();
-    }
-    func clearLine(){
-        decoratable.clearLine();
-    }
     func drawFill() {
         decoratable.drawFill();
     }
@@ -29,9 +23,6 @@ class Decoratable:IDecoratable{
     func applyLineStyle(graphics:Graphics,_ lineStyle:ILineStyle) {// :TODO: rename to applyLine?
         fatalError("NOT IMPLEMENTED YET")
         //decoratable.applyLineStyle(self,lineStyle);
-    }
-    func endFill(){
-        decoratable.endFill();
     }
     /**
      * Returns _decoratable.graphic

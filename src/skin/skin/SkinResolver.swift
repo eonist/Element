@@ -20,7 +20,7 @@ class SkinResolver{
     }
 }
 
-class Utils{
+private class Utils{
     /**
     * Returns a skin name based on what class type the element parent is
     */

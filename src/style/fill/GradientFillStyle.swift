@@ -1,5 +1,8 @@
-import Foundation
+import Cocoa
 
-class GradientFillStyle {
-    
+class GradientFillStyle:FillStyle{
+    var gradient:IGradient;
+    init(gradient:IGradient = nil, color:NSColor){
+        
+    }
 }

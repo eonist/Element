@@ -2,8 +2,11 @@ import Cocoa
 
 class GradientFillStyle:FillStyle{
     var gradient:IGradient;
-    init(gradient:IGradient = nil, color:NSColor){
-        super.init(color,alpha);
-        _gradient = gradient;
+    init(gradient:IGradient, color:NSColor){
+        super.init(color);
+        self.gradient = gradient;
     }
 }
+
+
+//continue here

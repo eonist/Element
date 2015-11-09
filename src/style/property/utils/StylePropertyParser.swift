@@ -10,6 +10,11 @@ class StylePropertyParser{
         Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
         Swift.print("value: " + "\(value!)")
+        
+        
+        //continue here, you need to 
+        
+        
         return value;
     }
     class func fillStyle(skin:ISkin)->IFillStyle {
@@ -24,19 +29,8 @@ class StylePropertyParser{
         print("colorValue: " + colorValue);
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
         print("alpha: " + alpha)
-        //print(String(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
-        
-
-        //print(alpha!)
-        //print("fillAlpha: " + fillAlpha)
-        //print("alpha: " + alpha)
-        //print(String(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
-        //print(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!)
-        //print(ClassParser.getClass(StylePropertyParser.value(skin, CSSConstants.fillAlpha)!))
-        //let alphaVal:Double = Double(String(alpha))!
-        //print("alphaVal: " + "\(alphaVal)")
-        let alphaValue:Float = 1.0
-        
+        let alphaValue:Float = Float(Double(alpha)!)
+        Swift.print("alphaValue: " + "\(alphaValue)")
         let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, alphaValue)//fill
         
         return FillStyle(color)

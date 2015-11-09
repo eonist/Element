@@ -60,14 +60,7 @@ extension IElement {
         
         self.skin = SkinResolver.skin(self)
         
-        
-        
-        
-        
-        //continue here: Try to apply the skin to the Element...alot of bug fixing ahead
-        
-        
-        
+                
         
         
         

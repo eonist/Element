@@ -8,7 +8,7 @@ class Graphic:IGraphic{//this will extend Graphics in the future
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     //var lineOffsetType:OffsetType
-    init(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil/*, lineOffsetType:OffsetType = OffsetType()*/){
+    init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/){
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/

@@ -4,7 +4,7 @@ import Cocoa
  * // :TODO: Try to impliment Rect3 into Element2 and do tests
  * // :TODO: add example in the javadoc
  */
-class Rect : Graphic{
+class Rect : Graphic,IDecoratable{
     var width:Int;
     var height:Int;
     init(_ width:Int = 100, _ height:Int = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
@@ -31,7 +31,7 @@ class Rect : Graphic{
     /**
      * // :TODO: does this function need arguments?
      */
-    func applyLineStyle(graphics:Graphics,lineStyle:ILineStyle) {
+    func applyLineStyle(graphics:Graphics,_ lineStyle:ILineStyle) {
       /*
       if(lineStyle != nil) {
          //apply lineStyle here /*updates only if lineStyle of class LineStyle*/

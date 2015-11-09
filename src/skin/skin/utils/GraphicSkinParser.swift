@@ -10,7 +10,7 @@ class GraphicSkinParser{
     /**
     * Returns a Decoratable instance based on what stylePropertyValues is found in @param skin at @param depth
     */
-    public static function configure(skin:ISkin,depth:int):IDecoratable3 {
+    public static function configure(skin:ISkin,depth:int):IDecoratable {
     
     }
 }

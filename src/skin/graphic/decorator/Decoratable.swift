@@ -6,31 +6,32 @@ class Decoratable:IDecoratable{
         self.decoratable = decoratable;
     }
     func fill(){
-        fatalError("must be overriden in subclass");
+        decoratable.fill();
     }
     func line(){
-        fatalError("must be overriden in subclass");
+        decoratable.line();
     }
     func clear(){
-        fatalError("must be overriden in subclass");
+        decoratable.clear();
     }
     func clearLine(){
-        fatalError("must be overriden in subclass");
+        decoratable.clearLine();
     }
     func drawFill() {
-        fatalError("must be overriden in subclass");
+        decoratable.drawFill();
     }
     func drawLine() {
-        fatalError("must be overriden in subclass");
+        decoratable.drawLine();
     }
     func beginFill() {// :TODO: rename to applyFill? its more consistent with applyLine
-        fatalError("must be overriden in subclass");
+        decoratable.beginFill();
     }
-    func applyLineStyle(graphics:Graphics,lineStyle:ILineStyle) {// :TODO: rename to applyLine?
-        fatalError("must be overriden in subclass");
+    func applyLineStyle(graphics:Graphics,_ lineStyle:ILineStyle) {// :TODO: rename to applyLine?
+        fatalError("NOT IMPLEMENTED YET")
+        //decoratable.applyLineStyle(self,lineStyle);
     }
     func endFill(){
-        fatalError("must be overriden in subclass");
+        decoratable.endFill();
     }
     /**
      * Returns _decoratable.graphic

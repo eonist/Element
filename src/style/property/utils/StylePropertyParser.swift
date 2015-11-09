@@ -28,7 +28,19 @@ class StylePropertyParser{
     * Returns a GradientFillStyle
     */
     class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
-        Swift.print("StylePropertyParser.gradientFillStyle NOT IMPLEMENTED YET")
-        return GradientFillStyle(Gradient(),NSColor.clearColor())
+        fatalError("NOT IMPLEMENTED YET")
+    }
+    /**
+     *
+     */
+    class func width(skin:ISkin) -> Int {
+        return metric(skin,CSSConstants.WIDTH,depth);
+    }
+    /**
+    * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
+    */
+    class func metric(skin:ISkin,propertyName:String,depth:int):Number {
+        var value:* = StylePropertyParser.value(skin,propertyName,depth);
+        return Utils.metric(value,skin);
     }
 }

@@ -14,8 +14,8 @@ class StylePropertyParser{
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
     /**
-    * Returns a FillStyle instance
-    */
+     * Returns a FillStyle instance
+     */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         let value:String = StylePropertyParser.value(skin, CSSConstants.fill) as! String;
         //print("value: " + value);
@@ -25,8 +25,8 @@ class StylePropertyParser{
         return FillStyle(color)
     }
     /**
-    * Returns a GradientFillStyle
-    */
+     * Returns a GradientFillStyle
+     */
     class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
         fatalError("NOT IMPLEMENTED YET")
     }

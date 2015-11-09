@@ -23,7 +23,8 @@ private class Utils{
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
     class func rect(skin:ISkin,_ fillStyle:IFillStyle)->IDecoratable {
-        var padding:Padding = StylePropertyParser.padding(skin,depth);
+        var width:Int = (StylePropertyParser.width(skin) ?? skin.width);
+        var height:Int = (StylePropertyParser.height(skin) ?? skin.height);
         
         return Decoratable()
     }

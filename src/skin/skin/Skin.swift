@@ -9,6 +9,8 @@ class Skin:ISkin{
     var decoratable:IDecoratable?
     var style:IStyle?
     var state:String
+    var width:Int;
+    var height:Int;
     var element:IElement?
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;

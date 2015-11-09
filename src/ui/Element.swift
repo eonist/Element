@@ -3,8 +3,8 @@ import Cocoa
 class Element: FlippedView,IElement {
     var skinState:String = SkinStates.none
     var skin:Skin?
-    private var width:Int?
-    private var height:Int?
+    var width:Int?
+    var height:Int?
     var parent : IElement?
     var style:IStyle = Style.clear
     

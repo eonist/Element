@@ -15,12 +15,13 @@ class StylePropertyParser{
     /**
     * Returns a FillStyle instance
     */
-    class func colorFillStyle(skin:ISkin)->IFillStyle? {
+    class func colorFillStyle(skin:ISkin)->IFillStyle {
         var value:String = StylePropertyParser.value(skin, CSSConstants.fill);
         //print("value: " + value);
-        var color:NSColor = value == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
+        var alpha:String = StylePropertyParser.value(skin, CSSConstants.fillAlpha);
+        var color:NSColor = value == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(fillColor, Float(alpha))//fill
         
-        return nil
+        return FillStyle(color)
     }
     /**
     * Returns a GradientFillStyle

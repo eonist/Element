@@ -1,7 +1,7 @@
 
 import Cocoa
 
-class FillStyle {
+class FillStyle:IFillStyle {
     
     var color:NSColor
     /**

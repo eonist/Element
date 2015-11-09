@@ -9,16 +9,16 @@ class StylePropertyParser{
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any?{
         return nil
     }
-    class func fillStyle(skin:ISkin):IFillStyle {
+    class func fillStyle(skin:ISkin)->IFillStyle {
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
     /**
     * Returns a FillStyle instance
     */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
-        let value:String = StylePropertyParser.value(skin, CSSConstants.fill);
+        let value:String = StylePropertyParser.value(skin, CSSConstants.fill) as! String;
         //print("value: " + value);
-        let alpha:String = StylePropertyParser.value(skin, CSSConstants.fillAlpha);
+        let alpha:String = StylePropertyParser.value(skin, CSSConstants.fillAlpha) as! String;
         let color:NSColor = value == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(value, Float(alpha)!)//fill
         
         return FillStyle(color)
@@ -26,7 +26,7 @@ class StylePropertyParser{
     /**
     * Returns a GradientFillStyle
     */
-    class func gradientFillStyle(skin:ISkin) -> GradientFillStyle? {
-        return nil
+    class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
+        return GradientFillStyle()
     }
 }

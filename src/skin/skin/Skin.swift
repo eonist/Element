@@ -19,6 +19,8 @@ class Skin:ISkin{
         self.style = style;
         self.state = state;
         self.element = element;
+        width = element.width;// :TODO: is this necassary?
+        height = element.height;// :TODO: is this necassary?
     }
     /**
     * Resets skinState

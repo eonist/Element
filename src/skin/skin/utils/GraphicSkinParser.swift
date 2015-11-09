@@ -10,19 +10,21 @@ class GraphicSkinParser{
     /**
     * Returns a Decoratable instance based on what stylePropertyValues is found in @param skin at @param depth
     */
-    func configure(skin:ISkin)->IDecoratable? {
+    func configure(skin:ISkin)->IDecoratable {
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        var decoratable:IDecoratable = Utils.rect(skin,fillStyle);
-        return nil
+        let decoratable:IDecoratable = Utils.rect(skin,fillStyle);
+        return decoratable
     }
     
 }
-class Utils{
+private class Utils{
     /**
      * Returns a "Rect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rect(skin:ISkin,fillStyle:IFillStyle)->IDecoratable {
+    class func rect(skin:ISkin,_ fillStyle:IFillStyle)->IDecoratable {
+        var padding:Padding2 = StylePropertyParser.padding(skin,depth);
         
+        return Decoratable()
     }
 }

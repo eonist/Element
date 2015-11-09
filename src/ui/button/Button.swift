@@ -1,6 +1,7 @@
 import Cocoa
 //can you overide functionality with extension? if so you may be able to do the updateLayer another place for all similar graphic elements
 //research the above
+/*
 class Button: NSButton,IElement{
     var style:IStyle = Style.clear
     var skinState:String = SkinStates.none
@@ -86,3 +87,4 @@ class Button: NSButton,IElement{
         skinState = SkinStates.none
     }
 }
+*/

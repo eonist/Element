@@ -1,4 +1,5 @@
 import Foundation
+/*
 class Section:Element {//Unlike Container, section can have a style applied
     override init(_ width:Int = 100, _ height:Int = 100, _ parent:IElement? = nil) {
         super.init(width,height,parent)
@@ -18,3 +19,4 @@ class Section:Element {//Unlike Container, section can have a style applied
         return String(Section)
     }
 }
+*/

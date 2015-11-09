@@ -7,7 +7,7 @@ import Foundation
 class Rect : Graphic{
     var width:Int;
     var height:Int;
-    override init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
+    init(_ width:Int = 100, _ height:Int = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
         super.init(fillStyle, lineStyle )
         self.width = width;
         self.height = height;
@@ -18,6 +18,11 @@ class Rect : Graphic{
       beginFill();
       drawFill();
       endFill();
+    }
+    func line(){
+      clearLine();
+      applyLineStyle(lineShape.graphics,lineStyle);
+      drawLine();
     }
     func beginFill() {
       if(fillStyle != nil && fillStyle.color != NSColor.clearColor() {

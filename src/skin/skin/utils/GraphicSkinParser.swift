@@ -25,7 +25,7 @@ private class Utils{
     class func rect(skin:ISkin,_ fillStyle:IFillStyle)->IDecoratable {
         var width:Int = (StylePropertyParser.width(skin) ?? skin.width!);
         var height:Int = (StylePropertyParser.height(skin) ?? skin.height!);
-        return new Rect3(width,height,fillStyle, lineStyle, lineOffset);
+        return Rect(width,height,fillStyle, lineStyle, lineOffset);
         return Decoratable()
     }
 }

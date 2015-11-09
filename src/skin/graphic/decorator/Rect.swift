@@ -8,15 +8,15 @@ class Rect : Graphic{
     var width:Int;
     var height:Int;
     init(_ width:Int = 100, _ height:Int = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
-        super.init(fillStyle, lineStyle )
         self.width = width;
         self.height = height;
+        super.init(fillStyle, lineStyle )
         fill();
         //line();
     }
     func fill() {
-      beginFill();
-      drawFill();
+        beginFill();
+        drawFill();
     }
     func line(){
         fatalError("NOT IMPLEMENTED YET")

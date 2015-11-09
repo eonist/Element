@@ -7,6 +7,7 @@ import Cocoa
 class Rect : Graphic,IDecoratable{
     var width:Int;
     var height:Int;
+    var decoratable:IDecoratable{return self}
     init(_ width:Int = 100, _ height:Int = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
         self.width = width;
         self.height = height;

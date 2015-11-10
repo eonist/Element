@@ -27,7 +27,7 @@ class GraphicRect : Graphic,IDecoratable{
     }
     func beginFill() {
       if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-        GraphicModifier.applyProperties(graphics, fillStyle!, lineStyle!)//apply style
+        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
       }
     }
     /**

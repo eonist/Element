@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     var fillet:Fillet;

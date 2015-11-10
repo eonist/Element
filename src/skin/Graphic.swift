@@ -9,7 +9,7 @@ class Graphic:IGraphic{//this will extend Graphics in the future or just have it
     var lineStyle:ILineStyle?
     var graphics:Graphics
     var fillPath:CGPath = CGPathCreateMutable()
-    var linePath:CGPath = CGPathCreateMutable()
+    //var linePath:CGPath = CGPathCreateMutable()
     //var lineOffsetType:OffsetType
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/){
         self.fillStyle = fillStyle
@@ -19,6 +19,7 @@ class Graphic:IGraphic{//this will extend Graphics in the future or just have it
     }
     func setPosition(position:CGPoint){
         //TODO:translate the graphics to position
+        CGPathModifier.translate(&fillPath,position.x,position.y)//Transformations
     }
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;

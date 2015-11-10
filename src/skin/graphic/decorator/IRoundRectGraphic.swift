@@ -1,6 +1,5 @@
 import Foundation
 
-class IRoundRectGraphic {
-    function get fillet():Fillet;
-    function set fillet(fillet : Fillet) : void
+protocol IRoundRectGraphic:IDecoratable {
+    var fillet:Fillet {get set}
 }

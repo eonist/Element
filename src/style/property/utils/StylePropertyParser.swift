@@ -9,7 +9,7 @@ class StylePropertyParser{
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{
         Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
-        Swift.print("value: " + "\(value!)")
+        Swift.print("value: " + "\(value)")
         
         
         //continue here, you need to get width from the element if style doesnt have width
@@ -68,7 +68,8 @@ private class Utils{
     class func metric(value:Any,_ skin:ISkin)->Double {
         if(value is Int){ return Double(value as! Int)
         }else{
-            fatalError("NOT IMPLEMENTED YET")
+            return 0
+            //fatalError("NOT IMPLEMENTED YET")
         }
     }
 }

@@ -16,7 +16,7 @@ class GraphicRect : Graphic,IDecoratable{
         //line();
     }
     func fill() {
-        let path:CGPath = CGPathParser.rect(bounds.width,bounds.height)//Shapes
+        super.fillPath = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
         //CGPathModifier.translate(&path,20,20)//Transformations
         
         //let path = GraphicsModifier.drawRect(pathRect)

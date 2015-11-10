@@ -8,6 +8,12 @@ class GraphicSkin:Skin{
         
     }
     override func draw(){
-        
+        //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
+        if(hasStateChanged || hasSizeChanged || hasStyleChanged){
+            
+        }
+    }
+    func applyProperties(decoratable:IDecoratable){
+        //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")
     }
 }

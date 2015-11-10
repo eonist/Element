@@ -8,4 +8,13 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         fill();
         line();
     }
+    override func fill() {
+        beginFill();
+        drawFill();
+    }
+    override func line() {
+        clearLine();
+        applyLineStyle(graphic.graphics, graphic.lineStyle);
+        drawLine();
+    }
 }

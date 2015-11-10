@@ -13,7 +13,6 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         drawFill();
     }
     override func line() {
-        clearLine();
         applyLineStyle(graphic.graphics, graphic.lineStyle);
         drawLine();
     }

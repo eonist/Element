@@ -26,4 +26,11 @@ private class Utils{
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
         return RectGraphic(width,height,fillStyle);
     }
+    /**
+     * Returns a "RoundDecorator instance" wrapped around a Rect instance
+     * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
+     */
+    class func fillet(decoratable:IDecoratable,fillet:Fillet = null)->IDecoratable {
+        return new RoundRectGraphic(decoratable, fillet);
+    }
 }

@@ -1,8 +1,9 @@
 import Foundation
 
-class RoundRectGraphic {
-    var fillet:Fillet = Fillet();
-    init(decoratable:IDecoratable, fillet:Fillet = nil){
-        
+class RoundRectGraphic:Decoratable3,IDecoratable{
+    var fillet:Fillet;
+    init(decoratable:IDecoratable, fillet:Fillet? = nil){
+        self.fillet = fillet ?? Fillet();
+        super(decoratable);
     }
 }

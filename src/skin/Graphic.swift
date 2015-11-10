@@ -7,7 +7,7 @@ import Foundation
 class Graphic:IGraphic{//this will extend Graphics in the future or just have it
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
-    let graphics:Graphics
+    var graphics:Graphics
     //var lineOffsetType:OffsetType
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/){
         self.fillStyle = fillStyle

@@ -16,6 +16,15 @@ class GraphicRect : Graphic,IDecoratable{
         //line();
     }
     func fill() {
+        let path:CGPath = CGPathParser.rect(bounds.width,bounds.height)//Shapes
+        //CGPathModifier.translate(&path,20,20)//Transformations
+        
+        //let path = GraphicsModifier.drawRect(pathRect)
+        GraphicModifier.applyProperties(path, graphics, styleComposition, styleComposition, skinState)//apply style
+        GraphicModifier.stylize(path,graphics)//realize style on the graphic
+        
+        
+        
         beginFill();
         drawFill();
     }

@@ -25,13 +25,12 @@ class StylePropertyParser{
      */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         print("StylePropertyParser.colorFillStyle()")
-        let colorValue:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
-        print("colorValue: " + colorValue);
+        let colorValue:UInt  = StylePropertyParser.value(skin, CSSConstants.fill) as! UInt;
+        print("colorValue: " + "\(colorValue)");
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
         print("alpha: " + alpha)
         let alphaValue:Float = Float(Double(alpha)!)
         Swift.print("alphaValue: " + "\(alphaValue)")
-        print("colorValue: " + colorValue);
         let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, alphaValue)//fill
         
         return FillStyle(color)

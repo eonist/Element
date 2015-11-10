@@ -19,12 +19,12 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
      * Draws the fill
      */
     override func drawFill(){
+      
         
-        _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
+        //_fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
+        //x, y, graphic.width, graphic.height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
         
-        
-        
-        path = CGPathParser.roundRect(CGFloat(width), CGFloat(height))//Shapes
+        path = CGPathParser.roundRect(0,0,CGFloat(width), CGFloat(height))//Shapes
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
         
         

@@ -8,6 +8,8 @@ class Graphic:IGraphic{//this will extend Graphics in the future or just have it
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var graphics:Graphics
+    var fillPath:CGPath = CGPathCreateMutable()
+    var linePath:CGPath = CGPathCreateMutable()
     //var lineOffsetType:OffsetType
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/){
         self.fillStyle = fillStyle

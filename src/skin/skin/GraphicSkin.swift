@@ -7,4 +7,7 @@ class GraphicSkin:Skin{
         super.decoratable = GraphicSkinParser.configure(self);
         
     }
+    override func draw(){
+        
+    }
 }

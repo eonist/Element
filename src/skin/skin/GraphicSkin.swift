@@ -6,12 +6,5 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         super.decoratable = GraphicSkinParser.configure(self);
         
-        
-        //fatalError("implement the GraphicSkinParser.configure method")
-        
-        
-        
-        
-        
     }
 }

@@ -15,7 +15,6 @@ class GraphicSkinParser{
         let decoratable:IDecoratable = Utils.rect(skin,fillStyle);
         return decoratable
     }
-    
 }
 private class Utils{
     /**

@@ -4,7 +4,7 @@ class GraphicModifier {
     /**
     * TODO: fill and linestyle should be graphic spessific see original code
     */
-    class func applyProperties(path:CGPath, _ graphics:Graphics,_ fillStyle:IFillStyle,_ lineStyle:ILineStyle/*, _ skinState:String*/) -> CGPath {
+    class func applyProperties(_ graphics:Graphics,_ fillStyle:IFillStyle,_ lineStyle:ILineStyle/*, _ skinState:String*/){
         //Swift.print("GraphicModifier.applyProperties() " + String(fillStyle.getStyleProperty("fillColor")!.value))
         //let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
         //let fillAlpha:Double = Double(String(fillStyle.getStyleProperty("fillAlpha")!.value))!
@@ -45,7 +45,6 @@ class GraphicModifier {
         graphics.gradientFill(gradient)
         */
         graphics.fill(fillStyle.color)//Stylize the fill
-        return path;
         
         
         

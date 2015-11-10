@@ -23,8 +23,9 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         
         //_fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
         //x, y, graphic.width, graphic.height, _fillet.topLeft, _fillet.topRight, _fillet.bottomLeft, _fillet.bottomRight
-        
-        path = CGPathParser.roundRect(0,0,CGFloat(width), CGFloat(height))//Shapes
+        let w:Double = (decoratable as! RectGraphic).width
+        let h:Double = (decoratable as! RectGraphic).height
+        path = CGPathParser.roundRect(0,0,CGFloat(w), CGFloat(h))//Shapes
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
         
         

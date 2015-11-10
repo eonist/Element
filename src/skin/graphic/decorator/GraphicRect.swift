@@ -16,7 +16,7 @@ class GraphicRect : Graphic,IDecoratable{
         //line();
     }
     func fill() {
-        super.fillPath = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
+        path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
         beginFill();
         drawFill();
     }
@@ -27,7 +27,7 @@ class GraphicRect : Graphic,IDecoratable{
     }
     func beginFill() {
       if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-        GraphicModifier.applyProperties(fillPath, graphics, styleComposition, styleComposition, skinState)//apply style
+        GraphicModifier.applyProperties(path, graphics, fillStyle, lineStyle, skinState)//apply style
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
         
         

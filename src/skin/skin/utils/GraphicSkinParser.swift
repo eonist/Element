@@ -12,7 +12,7 @@ class GraphicSkinParser{
     */
     class func configure(skin:ISkin)->IDecoratable {
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        let decoratable:IDecoratable = Utils.graphicRect(skin,fillStyle);
+        let decoratable:IDecoratable = Utils.rectGraphic(skin,fillStyle);
         return decoratable
     }
 }
@@ -21,9 +21,9 @@ private class Utils{
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func graphicRect(skin:ISkin,_ fillStyle:IFillStyle)->IDecoratable {
+    class func rectGraphic(skin:ISkin,_ fillStyle:IFillStyle)->IDecoratable {
         let width:Double = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
-        return GraphicRect(width,height,fillStyle);
+        return RectGraphic(width,height,fillStyle);
     }
 }

@@ -4,7 +4,7 @@ import Cocoa
  * // :TODO: Try to impliment Rect3 into Element2 and do tests
  * // :TODO: add example in the javadoc
  */
-class GraphicRect : Graphic,IDecoratable{
+class RectGraphic : Graphic,IDecoratable{
     var width:Double;
     var height:Double;
     var decoratable:IDecoratable{return self}

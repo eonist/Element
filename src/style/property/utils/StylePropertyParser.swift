@@ -44,19 +44,19 @@ class StylePropertyParser{
     /**
      *
      */
-    class func width(skin:ISkin) -> Int {
-        return Int(metric(skin,CSSConstants.width))
+    class func width(skin:ISkin) -> Double? {
+        return metric(skin,CSSConstants.width)
     }
     /**
      *
      */
-    class func height(skin:ISkin) -> Int {
-        return Int(metric(skin,CSSConstants.height))
+    class func height(skin:ISkin) -> Double? {
+        return metric(skin,CSSConstants.height)
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
      */
-    class func metric(skin:ISkin,_ propertyName:String)->Double {
+    class func metric(skin:ISkin,_ propertyName:String)->Double? {
         let value:Any = StylePropertyParser.value(skin,propertyName);
         return Utils.metric(value,skin);
     }
@@ -65,10 +65,10 @@ private class Utils{
     /**
     * // :TODO: explain what this method is doing
     */
-    class func metric(value:Any,_ skin:ISkin)->Double {
+    class func metric(value:Any,_ skin:ISkin)->Double? {
         if(value is Int){ return Double(value as! Int)
         }else{
-            return 0
+            return nil
             //fatalError("NOT IMPLEMENTED YET")
         }
     }

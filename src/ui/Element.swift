@@ -3,13 +3,13 @@ import Cocoa
 class Element: FlippedView,IElement {
     var skinState:String = SkinStates.none
     var skin:ISkin?
-    var width:Int?
-    var height:Int?
+    var width:Double?
+    var height:Double?
     var parent : IElement?
     var style:IStyle = Style.clear
     
     
-    init(_ width: Int = 100, _ height: Int = 40, _ parent:IElement? = nil){
+    init(_ width: Double = 100, _ height: Double = 40, _ parent:IElement? = nil){
         Swift.print("Element.init")
         self.width = width;
         self.height = height;

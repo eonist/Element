@@ -5,10 +5,10 @@ import Cocoa
  * // :TODO: add example in the javadoc
  */
 class Rect : Graphic,IDecoratable{//TODO:rename to GraphicRect, GraphicEllipse etc or RectGraphic, EllipseGraphic?..the first two
-    var width:Int;
-    var height:Int;
+    var width:Double;
+    var height:Double;
     var decoratable:IDecoratable{return self}
-    init(_ width:Int = 100, _ height:Int = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
+    init(_ width:Double = 100, _ height:Double = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
         self.width = width;
         self.height = height;
         super.init(fillStyle, lineStyle )
@@ -47,7 +47,7 @@ class Rect : Graphic,IDecoratable{//TODO:rename to GraphicRect, GraphicEllipse e
           //do line drawing here, keep in mind line mask
       }
     }
-    func setSize(width:Int,height:Int) {
+    func setSize(width:Double,height:Double) {
       self.width = width;
       self.height = height;
       fill();

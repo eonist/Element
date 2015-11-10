@@ -2,7 +2,7 @@ import Foundation
 
 class Decoratable:IDecoratable{
     var decoratable:IDecoratable
-    init(decoratable:IDecoratable){
+    init(_ decoratable:IDecoratable){
         self.decoratable = decoratable;
     }
     func fill(){

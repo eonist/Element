@@ -25,8 +25,8 @@ class StylePropertyParser{
      */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         print("StylePropertyParser.colorFillStyle()")
-        let colorValue:String = String(StylePropertyParser.value(skin, CSSConstants.fill));
-        print("colorValue: " + colorValue);
+        let colorValue:UInt = StylePropertyParser.value(skin, CSSConstants.fill) as! UInt;
+        print("colorValue: " + "\(colorValue)");
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
         print("alpha: " + alpha)
         let alphaValue:Float = Float(Double(alpha)!)

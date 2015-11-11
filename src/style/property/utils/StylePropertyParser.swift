@@ -27,19 +27,21 @@ class StylePropertyParser{
         print("StylePropertyParser.colorFillStyle()")
         let colorValue = StylePropertyParser.value(skin, CSSConstants.fill);
         print("colorValue: " + "\(colorValue)");
-        var color:UInt;
-        if(value is Array<UInt>) {
+        var color:Double?;
+        if(colorValue is Array<UInt>) {
             fatalError("NOT IMPLEMENTED YET")
-        }else if(value == null) color = NaN
-        
+        }else if(colorValue == nil){
+            color = Double.NaN
+        }else{
+            
         }
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
         print("alpha: " + alpha)
         let alphaValue:Float = Float(Double(alpha)!)
         Swift.print("alphaValue: " + "\(alphaValue)")
-        let color:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, alphaValue)//fill
+        let nsColor:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, alphaValue)//fill
         
-        return FillStyle(color)
+        return FillStyle(nsColor)
     }
     /**
      * Returns a GradientFillStyle

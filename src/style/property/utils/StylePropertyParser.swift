@@ -29,8 +29,8 @@ class StylePropertyParser{
         print("colorValue: " + "\(colorValue)");
         var color:UInt;
         if(value is Array<UInt>) {
-        
-        }else if(value == null) color = IsNaN();
+            fatalError("NOT IMPLEMENTED YET")
+        }else if(value == null) color = NaN
         
         }
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))

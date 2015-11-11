@@ -33,7 +33,7 @@ class StylePropertyParser{
         }else if(colorValue == nil){
             color = Double.NaN
         }else{
-            
+            color = Double(value);
         }
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
         print("alpha: " + alpha)

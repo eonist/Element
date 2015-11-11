@@ -79,8 +79,9 @@ class CSSParser{
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
                 Swift.print(" value: " + value)
-                //value = CSSPropertyParser.property(value)
-                let styleProperty:IStyleProperty = StyleProperty(name,value)//<--dont forget to add depth here
+                let propertyValue:Any = CSSPropertyParser.property(value)
+                Swift.print("propertyValue: " + "\(propertyValue)")
+                let styleProperty:IStyleProperty = StyleProperty(name,propertyValue)//<--dont forget to add depth here
                 styleProperties.append(styleProperty)
             }
         }

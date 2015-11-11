@@ -27,7 +27,7 @@ class StylePropertyParser{
         print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
         print("colorValue: " + "\(colorValue)");
-        var color:Double?;
+        var color:Double;
         if(colorValue is Array<UInt>) {
             fatalError("NOT IMPLEMENTED YET")
         }else if(colorValue == nil){
@@ -39,12 +39,7 @@ class StylePropertyParser{
         print("alpha: " + "\(alpha)")
         let alphaValue:Double = alpha == nil ? Double.NaN : alpha as! Double
         Swift.print("alphaValue: " + "\(alphaValue)")
-        
-        let alphaValue:Float = Float(Double(alpha)!)
-        
-        Swift.print("alphaValue: " + "\(alphaValue)")
-        let nsColor:NSColor = colorValue == CSSConstants.none ? NSColor.clearColor() : ColorParser.nsColor(colorValue, alphaValue)//fill
-        
+        let nsColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))//fill
         return FillStyle(nsColor)
     }
     /**

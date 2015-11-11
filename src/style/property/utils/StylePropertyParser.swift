@@ -30,7 +30,7 @@ class StylePropertyParser{
         var color:UInt;
         if(value is Array<UInt>) {
         
-        }else if(value == null) color = NaN;
+        }else if(value == null) color = IsNaN();
         
         }
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))

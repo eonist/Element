@@ -32,8 +32,8 @@ class StylePropertyParser{
             fatalError("NOT IMPLEMENTED YET")
         }else if(colorValue == nil){
             color = Double.NaN
-        }else{
-            color = Double(value);
+        }else if colorValue is UInt{
+            color = Double(value as! UInt);
         }
         let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
         print("alpha: " + alpha)

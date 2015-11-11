@@ -40,6 +40,7 @@ class StylePropertyParser{
         let alphaValue:Double = alpha == nil ? Double.NaN : alpha as! Double
         Swift.print("alphaValue: " + "\(alphaValue)")
         let nsColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))//fill
+        //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line
         return FillStyle(nsColor)
     }
     /**

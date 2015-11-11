@@ -35,9 +35,11 @@ class StylePropertyParser{
         }else {/*colorValue is UInt*/
             color = Double(colorValue as! UInt);
         }
-        let alpha = String(StylePropertyParser.value(skin, CSSConstants.fillAlpha))
-        if(alpha == nil) alpha = Float.NaN;
-        print("alpha: " + alpha)
+        let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha)
+        print("alpha: " + "\(alpha)")
+        let alphaValue:Double = alpha == nil ? Double.NaN : alpha as! Double
+        Swift.print("alphaValue: " + "\(alphaValue)")
+        
         let alphaValue:Float = Float(Double(alpha)!)
         
         Swift.print("alphaValue: " + "\(alphaValue)")

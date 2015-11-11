@@ -27,6 +27,7 @@ class StylePropertyParser{
         print("StylePropertyParser.colorFillStyle()")
         let colorValue = StylePropertyParser.value(skin, CSSConstants.fill);
         print("colorValue: " + "\(colorValue)");
+        var color:UInt;
         if(value is Array<UInt>) {
         
         }else if(value == null) color = NaN;

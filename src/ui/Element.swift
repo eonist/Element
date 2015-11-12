@@ -29,7 +29,7 @@ class Element: FlippedView,IElement {
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
     override func drawRect(rect: NSRect) {
-        Swift.print("drawRect")
+        Swift.print("Element.drawRect()")
         super.drawRect(rect)
         resolveSkin()
     }

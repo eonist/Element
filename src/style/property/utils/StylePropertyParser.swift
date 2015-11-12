@@ -54,10 +54,10 @@ class StylePropertyParser{
             fillet = LayoutUtils.instance(val, Fillet.self) as! Fillet
         };
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style, CSSConstants.cornerRadius_top_left,depth) > cornerRadiusIndex) fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left", depth);
-        if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_TOP_RIGHT,depth) > cornerRadiusIndex) fillet.topRight = StylePropertyParser.value(skin, "corner-radius-top-right", depth);
-        if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_BOTTOM_LEFT,depth) > cornerRadiusIndex) fillet.bottomLeft = StylePropertyParser.value(skin, "corner-radius-bottom-left", depth);
-        if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_BOTTOM_RIGHT,depth) > cornerRadiusIndex) fillet.bottomRight = StylePropertyParser.value(skin, "corner-radius-bottom-right", depth);
+        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left");
+        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) fillet.topRight = StylePropertyParser.value(skin, "corner-radius-top-right");
+        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) fillet.bottomLeft = StylePropertyParser.value(skin, "corner-radius-bottom-left");
+        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) fillet.bottomRight = StylePropertyParser.value(skin, "corner-radius-bottom-right");
         return fillet;
     }
     /**

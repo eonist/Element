@@ -14,7 +14,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         drawFill();
     }
     
-    //continue here: you need to clear
+    //continue here: you need to clear Graphics for this to work, google it, look trhough your notes, books, or create the decoratable differently, with a dedicated init method
     
     override func line() {
         

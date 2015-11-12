@@ -18,12 +18,14 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
      *
      */
     func clear(){
+        /*
         let w:CGFloat = CGFloat((decoratable as! RectGraphic).width/2)
         let h:CGFloat = CGFloat((decoratable as! RectGraphic).height/2)
         CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
        
         CGContextFlush(getGraphic().graphics.context)
-        
+        */
+        CGContextRestoreGState(getGraphic().graphics.context);
     }
     //continue here: you need to clear Graphics for this to work, google it, look trhough your notes, books, or create the decoratable differently, with a dedicated init method
     

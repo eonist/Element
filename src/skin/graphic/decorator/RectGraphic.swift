@@ -16,8 +16,10 @@ class RectGraphic : Graphic,IDecoratable{
         //line();
     }
     func fill() {
+        //CGContextSaveGState(graphics.context);
         beginFill();
         drawFill();
+        //CGContextRestoreGState(graphics.context);
     }
     func line(){
         fatalError("NOT IMPLEMENTED YET")

@@ -16,7 +16,7 @@ class Graphic:IGraphic{//this will extend Graphics in the future or just have it
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
         graphics = Graphics()
-        CGContextSaveGState(graphics.context);
+        
     }
     func setPosition(position:CGPoint){
         //TODO:translate the graphics to position

@@ -45,7 +45,7 @@ class CSSParser{
      * @param value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
     class func style(var name:String,_ value:String)->IStyle!{
-        Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
+        //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:Array<ISelector> = SelectorParser.selectors(name);
     
@@ -53,11 +53,11 @@ class CSSParser{
         let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
-            Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             let propertyName:String = (value as NSString).substringWithRange(match.rangeAtIndex(1))//name
-            Swift.print("propertyName: "+propertyName)
+            //Swift.print("propertyName: "+propertyName)
             let propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
-            Swift.print("propertyValue: "+propertyValue)
+            //Swift.print("propertyValue: "+propertyValue)
             let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
             style.addStyleProperties(styleProperties);
         }
@@ -78,9 +78,9 @@ class CSSParser{
             for (var i : Int = 0; i < values.count; i++) {
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
-                Swift.print(" value: " + value)
+                //Swift.print(" value: " + value)
                 let propertyValue:Any = CSSPropertyParser.property(value)
-                Swift.print("propertyValue: " + "\(propertyValue)")
+                //Swift.print("propertyValue: " + "\(propertyValue)")
                 let styleProperty:IStyleProperty = StyleProperty(name,propertyValue)//<--dont forget to add depth here
                 styleProperties.append(styleProperty)
             }
@@ -103,29 +103,29 @@ private class Utils{
      * // :TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
     class func siblingStyles(styleName:String,_ value:String)->Array<IStyle> {
-        Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
+        //Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:Array<IStyle> = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
-        Swift.print("matches: " + "\(matches.count)")
+        //Swift.print("matches: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {
-            Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             if(match.numberOfRanges > 0){
                 //var theMatchString = (styleName as NSString).substringWithRange(match.rangeAtIndex(0))
                 //Swift.print("theMatchString: " + theMatchString)
                 var prefix:String = (styleName as NSString).substringWithRange(match.rangeAtIndex(1))
-                Swift.print("prefix: " + prefix)
+                //Swift.print("prefix: " + prefix)
                 prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix) : prefix;
                 
                 
                 let group:String =  (styleName as NSString).substringWithRange(match.rangeAtIndex(2))
-                Swift.print("group: " + group)
+                //Swift.print("group: " + group)
                 
-                Swift.print("match.rangeAtIndex(3): " + "\(match.rangeAtIndex(3))")
+                //Swift.print("match.rangeAtIndex(3): " + "\(match.rangeAtIndex(3))")
                 
                 var suffix:String = (styleName as NSString).substringWithRange(match.rangeAtIndex(3))
-                Swift.print("suffix: " + suffix)
+                //Swift.print("suffix: " + suffix)
                 
                 suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix;
                 

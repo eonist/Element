@@ -17,6 +17,7 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         self.wantsLayer = false
+        
     }
     /**
      * Called on init if wantsUpdateLayer is true

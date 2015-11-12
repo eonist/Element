@@ -14,6 +14,11 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
        // beginFill();
         //drawFill();
     }
+    func beginFill() {
+        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
+            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+        }
+    }
     /**
      *
      */

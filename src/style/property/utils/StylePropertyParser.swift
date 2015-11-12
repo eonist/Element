@@ -54,10 +54,10 @@ class StylePropertyParser{
             fillet = LayoutUtils.instance(val, Fillet.self) as! Fillet
         };
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left");
-        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) fillet.topRight = StylePropertyParser.value(skin, "corner-radius-top-right");
-        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) fillet.bottomLeft = StylePropertyParser.value(skin, "corner-radius-bottom-left");
-        if(StyleParser.index(skin.style, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) fillet.bottomRight = StylePropertyParser.value(skin, "corner-radius-bottom-right");
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.value(skin, "corner-radius-top-right") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.value(skin, "corner-radius-bottom-left") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.value(skin, "corner-radius-bottom-right") }
         return fillet;
     }
     /**
@@ -96,5 +96,13 @@ private class Utils{
             return nil
             //fatalError("NOT IMPLEMENTED YET")
         }
+    }
+}
+extension StylePropertyParser{
+    /*
+     * Convenince method for deriving Double values
+     */
+    class func double(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
+        return Double(String(value(skin, propertyName)))!
     }
 }

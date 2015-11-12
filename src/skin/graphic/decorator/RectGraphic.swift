@@ -57,7 +57,7 @@ class RectGraphic : Graphic,IDecoratable{
       line();
     }
     func getGraphic()-> Graphic{/*Dont revert to IGraphic here*/
-        fatalError("NOT IMPLEMENTED YET")
-        //return self
+        //fatalError("NOT IMPLEMENTED YET")
+        return self
     }
 }

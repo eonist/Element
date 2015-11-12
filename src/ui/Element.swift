@@ -28,74 +28,10 @@ class Element: FlippedView,IElement {
      * Note: if you overide drawRect then update layers wont work
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
-    
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-        
-        
-        //NSColor.greenColor()
-        /*
-        let r:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let g:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        let b:CGFloat  = CGFloat(rand() % 255) / 255.0;
-        */
-        
-        //let color:CGColorRef  = CGColorCreateGenericRGB(r, g, b, 1.0);
-        //let nsColor:NSColor = NSColor(calibratedRed: r, green: g, blue: b, alpha: 1)
-        //Swift.print(nsColor)
-        //nsColor.setFill()
-        //NSRectFill(dirtyRect)
-        
-        /*
-        layer?.backgroundColor = color//CGColorCreateGenericRGB(1, 0, 1, 1)
-        layer?.borderColor = CGColorCreateGenericRGB(0, 1, 0, 1)
-        layer?.borderWidth = 0
-        */
-        
-        
-        let path:CGMutablePathRef  = CGPathCreateMutable();
-        /* Here are our rectangle boundaries */
-        let rectangle:CGRect = CGRectMake(10.0, 10.0,200.0, 200.0);
-        //let circle:CGEl
-        /* Add the rectangle to the path */
-        CGPathAddRect(path,nil, rectangle);
-        /* Get the handle to the current context */
-        /*
-        */
-        
-        let nsctx:NSGraphicsContext/**/ = NSGraphicsContext.currentContext()!
-        let context/**/  = nsctx.CGContext//was graphicsPort
-        
-        //CGContextAddPath(context,CircleParser.circlePath(0,0,100))
-        
-        
-        //CGContextAddArc(context, circleCenter.x, circleCenter.y, circleRadius,startingAngle, endingAngle, 0);
-        
-        CGContextDrawPath(context, CGPathDrawingMode.Fill);
-        
-        
-        
-        
-        CGContextAddPath(context,path)
-        //CGContextSetRGBFillColor(
-        //CGContextStrokePath(context)
-        CGContextSetFillColorWithColor(context,NSColor.greenColor().CGColor)
-        CGContextSetStrokeColorWithColor(context, NSColor.redColor().CGColor)
-        //set the stroke width!
-        CGContextSetLineWidth(context, 5.0)
-        
-        CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
-        
-        /*
-        
-        CGContextSetLineWidth(context, 5.0);
-        */
-        
-        //CGContextSetBlendMode(context,CGBlendMode.Clear);//
-        
-        //CGContextModifier.clear(context,)
-        CGContextClearRect(context, NSMakeRect(0, 0, 100, 100))
-        
+    override func drawRect(rect: NSRect) {
+        Swift.print("Element.drawRect()")
+        super.drawRect(rect)
+        resolveSkin()
     }
     /**
      * Returns the class type of the Class instance

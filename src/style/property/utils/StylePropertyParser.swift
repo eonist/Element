@@ -48,7 +48,7 @@ class StylePropertyParser{
     * // :TODO: probably upgrade to TRBL
     */
     class func fillet(skin:ISkin) -> Fillet {
-        var val = value(skin, CSSConstants.cornerRadius);
+        let val:Any! = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
         if((val is Double) || (val is Array<Double>)) {//(val is String) ||
             fillet = LayoutUtils.instance(val, Fillet.self) as! Fillet
@@ -102,7 +102,7 @@ extension StylePropertyParser{
     /*
      * Convenince method for deriving Double values
      */
-    class func double(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
+    class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
         return Double(String(value(skin, propertyName)))!
     }
 }

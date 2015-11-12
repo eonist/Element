@@ -28,4 +28,15 @@ class StyleParser {
         for styleProperty : IStyleProperty in style.styleProperties{ propertyNames.append(styleProperty.name) }
         return propertyNames;
     }
+    /**
+    * @param name the propertyname
+    */
+    class func index(style:IStyle, _ name:String) -> Int {
+        let len:Int = style.styleProperties.count;
+        for (var i : Int = 0; i < len; i++) {
+            let styleProperty : IStyleProperty  = style.styleProperties[i];
+            if(styleProperty.name == name){ return i }
+        }
+        return -1;
+    }
 }

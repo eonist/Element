@@ -9,6 +9,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         //line();
     }
     override func fill() {
+        Swift.print("RoundRectGraphic.fill() ")
         beginFill();
         drawFill();
     }

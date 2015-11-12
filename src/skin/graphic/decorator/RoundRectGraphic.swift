@@ -13,10 +13,9 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         beginFill();
         drawFill();
     }
-    override func beginFill() {
-        Swift.print("RoundRectGraphic.beginFill() ")
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.clearColor())/*, lineStyle*/)//apply style
-    }
+    
+    //continue here: you need to clear
+    
     override func line() {
         
     }

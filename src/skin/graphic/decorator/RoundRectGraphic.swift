@@ -21,7 +21,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
      */
     override func drawFill(){
         Swift.print("RoundRectGraphic.drawFill() ")
-        let w:Double = 300//(decoratable as! RectGraphic).width
+        let w:Double = (decoratable as! RectGraphic).width
         Swift.print("w: " + "\(w)")
         let h:Double = (decoratable as! RectGraphic).height
         Swift.print("h: " + "\(h)")

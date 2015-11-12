@@ -16,7 +16,6 @@ class RectGraphic : Graphic,IDecoratable{
         //line();
     }
     func fill() {
-        
         beginFill();
         drawFill();
     }
@@ -41,6 +40,7 @@ class RectGraphic : Graphic,IDecoratable{
       */
     }
     func drawFill() {
+        Swift.print("RectGraphic.drawFill()")
         //do fill drawing here
         path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
         GraphicModifier.stylize(path,graphics)//realize style on the graphic

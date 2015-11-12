@@ -26,10 +26,10 @@ class CSSConstants{
     static var paddingTop:String = "padding-top";
     static var paddingBottom:String = "padding-bottom";
     static var cornerRadius:String = "corner-radius";
-    static var cornerRadius_top_left:String = "corner-radius-top-left";
-    static var cornerRadius_top_right:String = "corner-radius-top-right";
-    static var cornerRadius_bottom_left:String = "corner-radius-bottom-left";
-    static var cornerRadius_bottom_right:String = "corner-radius-bottom-right";
+    static var cornerRadiusTopLeft:String = "corner-radius-top-left";
+    static var cornerRadiusTopRight:String = "corner-radius-top-right";
+    static var cornerRadiusBottomLeft:String = "corner-radius-bottom-left";
+    static var cornerRadiusBottomRight:String = "corner-radius-bottom-right";
     static var lineOffsetType:String = "line-offset-type";
     static var lineOffsetTypeLeft:String = "line-offset-type-left";
     static var lineOffsetTypeRight:String = "line-offset-type-right";

@@ -50,8 +50,8 @@ class StylePropertyParser{
     class func fillet(skin:ISkin) -> Fillet {
         var val = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
-        if((val is Double) || (val is String) || (val is Array<Double>)) {
-            fillet = LayoutUtils.instance(val, Fillet)
+        if((val is Double) || (val is Array<Double>)) {//(val is String) ||
+            fillet = LayoutUtils.instance(val, Fillet.self)
         };
         var cornerRadiusIndex:Int = StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS,depth);
         if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_TOP_LEFT,depth) > cornerRadiusIndex) fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left", depth);

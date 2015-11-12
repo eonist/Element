@@ -24,6 +24,11 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         let w:CGFloat = CGFloat((decoratable as! RectGraphic).width/2)
         let h:CGFloat = CGFloat((decoratable as! RectGraphic).height/2)
         CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
+        
+        //CGContextRef cgref = UIGraphicsGetCurrentContext();
+        
+        CGContextSetBlendMode(getGraphic().graphics.context, CGBlendModeClear);
+        //CGContextSetBlendMode(cgref, kCGBlendModeNormal);
         /*
         
        

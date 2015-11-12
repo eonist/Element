@@ -20,8 +20,12 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
      * Draws the fill
      */
     override func drawFill(){
+        Swift.print("RoundRectGraphic.drawFill() ")
         let w:Double = (decoratable as! RectGraphic).width
+        Swift.print("w: " + "\(w)")
         let h:Double = (decoratable as! RectGraphic).height
+        Swift.print("w: " + "\(h)")
+        
         getGraphic().path = CGPathParser.roundRect(0,0,CGFloat(w), CGFloat(h),CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))//Shapes
         GraphicModifier.stylize(getGraphic().path,getGraphic().graphics)//realize style on the graphic
     }

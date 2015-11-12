@@ -56,7 +56,7 @@ extension IElement {
      * NOTE: this method is embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
      */
     func resolveSkin() {
-        Swift.print("resolveSkin: " + "\(String(self))")
+        //Swift.print("resolveSkin: " + "\(String(self))")
         
         self.skin = SkinResolver.skin(self)
         

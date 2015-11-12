@@ -21,6 +21,8 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         let w:CGFloat = CGFloat((decoratable as! RectGraphic).width)
         let h:CGFloat = CGFloat((decoratable as! RectGraphic).height)
         CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
+        getGraphic().graphics.context
+        CGContextFlush(c: CGContext?)
         CGTextDrawingMode.Invisible
        // _ Note: there is also: CGTextDrawingMode.Invisible
     }

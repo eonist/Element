@@ -11,8 +11,8 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")
         clear()
-        beginFill();
-        drawFill();
+        //beginFill();
+        //drawFill();
     }
     override func beginFill() {
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.greenColor()))
@@ -23,11 +23,11 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     func clear(){
         let w:CGFloat = CGFloat((decoratable as! RectGraphic).width/2)
         let h:CGFloat = CGFloat((decoratable as! RectGraphic).height/2)
-        CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
+        //CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
         
         //CGContextRef cgref = UIGraphicsGetCurrentContext();
         
-        CGContextSetBlendMode(getGraphic().graphics.context, CGBlendModeClear);
+        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Clear);//
         //CGContextSetBlendMode(cgref, kCGBlendModeNormal);
         /*
         

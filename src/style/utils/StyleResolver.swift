@@ -10,19 +10,19 @@ class StyleResolver{
         var styleComposition:IStyle = Style("styleComp")
         let classType:String = element.getClassType()//gets the classtype from the component
 
-        Swift.print("styleComposition")
+        //Swift.print("styleComposition")
         //Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
             //Swift.print("style.selector.element: " + style.selector.element)
             for selector in style.selectors{
                 if(selector.element == classType){ //if style.selector == classType
-                    Swift.print("  element match found")
+                    //Swift.print("  element match found")
                     if(selector.states.count > 0){
                         for state in selector.states{//loop style.selector.states
-                            Swift.print("state: " + state)
-                            Swift.print("element.skinState: " + element.skinState)
+                            //Swift.print("state: " + state)
+                            //Swift.print("element.skinState: " + element.skinState)
                             if(state == element.skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                                Swift.print("    state match found")
+                                //Swift.print("    state match found")
                                 StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
                             }
                         }

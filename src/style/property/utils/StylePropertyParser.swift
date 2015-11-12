@@ -7,9 +7,9 @@ class StylePropertyParser{
      * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{//TODO: <- try to remove the ! char here
-        Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
+        //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
-        Swift.print("value: " + "\(value)")
+        //Swift.print("value: " + "\(value)")
         
         
         //continue here, you need to get width from the element if style doesnt have width
@@ -24,9 +24,9 @@ class StylePropertyParser{
      * Returns a FillStyle instance
      */
     class func colorFillStyle(skin:ISkin)->IFillStyle {
-        print("StylePropertyParser.colorFillStyle()")
+        //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
-        print("colorValue: " + "\(colorValue)");
+        //print("colorValue: " + "\(colorValue)");
         var color:Double;
         if(colorValue is Array<UInt>) {
             fatalError("NOT IMPLEMENTED YET")
@@ -36,9 +36,9 @@ class StylePropertyParser{
             color = Double(colorValue as! UInt);
         }
         let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha)
-        print("alpha: " + "\(alpha)")
+        //print("alpha: " + "\(alpha)")
         let alphaValue:Double = alpha == nil ? Double.NaN : alpha as! Double
-        Swift.print("alphaValue: " + "\(alphaValue)")
+        //Swift.print("alphaValue: " + "\(alphaValue)")
         let nsColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))//fill
         //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line because checking for NaN is essential when setting or not setting things?, you can revert to pure NSColor and clearStyle later anyway
         return FillStyle(nsColor)

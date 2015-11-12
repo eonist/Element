@@ -53,7 +53,7 @@ class StylePropertyParser{
         if((val is Double) || (val is Array<Double>)) {//(val is String) ||
             fillet = LayoutUtils.instance(val, Fillet.self) as! Fillet
         };
-        var cornerRadiusIndex:Int = StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS,depth);
+        var cornerRadiusIndex:Int = StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS,depth);//returns -1 if it doesnt exist
         if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_TOP_LEFT,depth) > cornerRadiusIndex) fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left", depth);
         if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_TOP_RIGHT,depth) > cornerRadiusIndex) fillet.topRight = StylePropertyParser.value(skin, "corner-radius-top-right", depth);
         if(StyleParser.index(skin.style, CSSConstants.CORNER_RADIUS_BOTTOM_LEFT,depth) > cornerRadiusIndex) fillet.bottomLeft = StylePropertyParser.value(skin, "corner-radius-bottom-left", depth);

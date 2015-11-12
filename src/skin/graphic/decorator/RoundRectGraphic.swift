@@ -10,10 +10,17 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     }
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")
+        clear()
         beginFill();
         drawFill();
     }
-    
+    /**
+     *
+     */
+    func clear(){
+        CGContextModifier.clear(getGraphic().graphics.context,getGraphic().context.bounds)
+        _ Note: there is also: CGTextDrawingMode.Invisible
+    }
     //continue here: you need to clear Graphics for this to work, google it, look trhough your notes, books, or create the decoratable differently, with a dedicated init method
     
     override func line() {

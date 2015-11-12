@@ -8,7 +8,7 @@ class StylePropertyParser{
      */
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any{
         Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
-        let value:Any? = skin.style!.getValue(propertyName);
+        let value:Any = skin.style!.getValue(propertyName);
         Swift.print("value: " + "\(value)")
         
         
@@ -48,16 +48,16 @@ class StylePropertyParser{
     * // :TODO: probably upgrade to TRBL
     */
     class func fillet(skin:ISkin) -> Fillet {
-        let val = value(skin, CSSConstants.cornerRadius);
+        let val:Any = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
         if((val is Double) || (val is Array<Double>)) {//(val is String) ||
             fillet = LayoutUtils.instance(val, Fillet.self) as! Fillet
         };
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.value(skin, "corner-radius-top-left") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.value(skin, "corner-radius-top-right") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.value(skin, "corner-radius-bottom-left") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.value(skin, "corner-radius-bottom-right") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.double(skin, "corner-radius-top-left") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.double(skin, "corner-radius-top-right") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.double(skin, "corner-radius-bottom-left") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.double(skin, "corner-radius-bottom-right") }
         return fillet;
     }
     /**
@@ -102,7 +102,7 @@ extension StylePropertyParser{
     /*
      * Convenince method for deriving Double values
      */
-    class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
+    class func double(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
         return Double(String(value(skin, propertyName)))!
     }
 }

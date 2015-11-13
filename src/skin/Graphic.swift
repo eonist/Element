@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*
 * The graphic class is an Element DataObject class that holds the lineshape, lineStyle and fillStyle
 * // :TODO: possibly get rid of the setters for the fillStyle and Line style and use implicit setFillStyle and setLineStyle?
@@ -17,7 +17,7 @@ import Foundation
 
 
 
-class Graphic:IGraphic{//this will extend Graphics in the future or just have it
+class Graphic:IGraphic,IDecoratable{//this will extend Graphics in the future or just have it
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var graphics:Graphics
@@ -30,6 +30,49 @@ class Graphic:IGraphic{//this will extend Graphics in the future or just have it
         /*self.lineOffsetType = lineOffsetType*/
         graphics = Graphics()
         
+    }
+    func initialize(){
+        fill();
+        //line();
+    }
+    func fill() {
+        //CGContextSaveGState(graphics.context);
+        beginFill();
+        drawFill();
+        //CGContextRestoreGState(graphics.context);
+    }
+    func line(){
+        fatalError("NOT IMPLEMENTED YET")
+        //applyLineStyle(self,lineStyle);
+        //drawLine();
+    }
+    func beginFill() {
+        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
+            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+        }
+    }
+    /**
+     * // :TODO: does this function need arguments?
+     */
+    func applyLineStyle(graphics:Graphics,_ lineStyle:ILineStyle) {
+        /*
+        if(lineStyle != nil) {
+        //apply lineStyle here /*updates only if lineStyle of class LineStyle*/
+        }
+        */
+    }
+    func drawFill() {
+        Swift.print("Graphic.drawFill()")
+        GraphicModifier.stylize(path,graphics)//realize style on the graphic
+    }
+    func drawLine() {
+        if(lineStyle != nil){
+            //do line drawing here, keep in mind line mask
+        }
+    }
+    func getGraphic()-> Graphic{/*Dont revert to IGraphic here*/
+        //fatalError("NOT IMPLEMENTED YET")
+        return self
     }
     func setPosition(position:CGPoint){
         //TODO:translate the graphics to position

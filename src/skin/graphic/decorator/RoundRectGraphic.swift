@@ -14,12 +14,12 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         beginFill();
         drawFill();
     }
-    /*
+    
     
     override func beginFill() {
-    GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.greenColor()))
+        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.purpleColor()))
     }
-    */
+    
     
     /**
      *

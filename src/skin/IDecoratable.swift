@@ -2,6 +2,7 @@ import Foundation
 
 protocol IDecoratable{
     var decoratable:IDecoratable{get}
+    func initialize()
     func fill()
     func line()
     func drawFill()

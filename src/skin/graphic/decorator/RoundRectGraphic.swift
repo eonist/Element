@@ -13,7 +13,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         
         
         
-        //createblueBox()
+        createblueBox()
         clear()
         //beginFill();
         //drawFill();

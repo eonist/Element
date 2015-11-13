@@ -9,7 +9,7 @@ class Element: FlippedView,IElement {
     var style:IStyle = Style.clear
     
     
-    init(_ width: Double = 100, _ height: Double = 40, _ parent:IElement? = nil,_ id:String = ""){
+    init(_ width: Double = 100, _ height: Double = 40, _ parent:IElement? = nil,_ id:String? = nil){
         Swift.print("Element.init")
         self.width = width;
         self.height = height;

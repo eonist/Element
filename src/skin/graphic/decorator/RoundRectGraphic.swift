@@ -10,68 +10,9 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     }
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")
-        
-        
-        
-        createblueBox()
-        clear()
-        //beginFill();
-        //drawFill();
-        //CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
-        //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.SourceIn);
+        beginFill();
+        drawFill();
     }
-    
-    /**
-     *
-     */
-    func createblueBox(){
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.blueColor()))
-        let path:CGPath = CGPathParser.rect(200, 100, 0, 0)
-        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
-    }
-    /*
-    override func beginFill() {
-        //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Screen);
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
-        
-    }
-    */
-    /**
-    *
-    */
-    func createWhiteBox(){
-        let w:CGFloat = CGFloat((decoratable as! RectGraphic).width)
-        let h:CGFloat = CGFloat((decoratable as! RectGraphic).height)
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
-        let path:CGPath = CGPathParser.rect(w, h, 0, 0)
-        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
-    }
-    /**
-     *
-     */
-    func clear(){
-       
-        
-        CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
-        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.DestinationOut);
-        createWhiteBox()
-        //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal)
-        //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Clear);//
-        //CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
-        
-        //CGContextRef cgref = UIGraphicsGetCurrentContext();
-        
-
-        //CGContextSetBlendMode(cgref, kCGBlendModeNormal);
-        /*
-        
-       
-        CGContextFlush(getGraphic().graphics.context)
-        */
-        //CGContextRestoreGState(getGraphic().graphics.context);
-    }
-    //continue here: you need to clear Graphics for this to work, google it, look trhough your notes, books, or create the decoratable differently, with a dedicated init method
-    
     override func line() {
         
     }

@@ -20,16 +20,18 @@ class Element: FlippedView,IElement {
         super.init(frame: frame)
         self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
         
-        let graphicsContext = NSGraphicsContext.currentContext()!
-        let context = graphicsContext.CGContext
-        Swift.print("Contet: " + context)
+        
     }
     /**
      * Note: if you overide drawRect then update layers wont work
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
     override func drawRect(rect: NSRect) {
+        
         Swift.print("Element.drawRect()")
+        let graphicsContext = NSGraphicsContext.currentContext()!
+        let context = graphicsContext.CGContext
+        Swift.print("Context: " + String(context))
         super.drawRect(rect)
         resolveSkin()
     }

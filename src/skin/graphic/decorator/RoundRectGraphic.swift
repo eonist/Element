@@ -20,7 +20,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     override func beginFill() {
         CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Screen);
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
-        
+        CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
     }
     
     

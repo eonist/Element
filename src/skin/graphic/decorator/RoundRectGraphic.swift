@@ -5,15 +5,16 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     init(_ decoratable:IDecoratable, _ fillet:Fillet? = nil){
         self.fillet = fillet ?? Fillet();
         super.init(decoratable);
-        fill();
+        //fill();
         //line();
     }
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")
-        clear()
-        //beginFill();
-        //drawFill();
+        //clear()
+        beginFill();
+        drawFill();
     }
+    
     override func beginFill() {
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.greenColor()))
     }

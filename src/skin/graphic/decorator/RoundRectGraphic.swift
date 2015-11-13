@@ -13,7 +13,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         
         
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.blueColor()))
-        let path:CGPath = CGPathParser.rect(300, 150, 0, 0)
+        let path:CGPath = CGPathParser.rect(200, 100, 0, 0)
         GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
         
         clear()
@@ -41,7 +41,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
         let path:CGPath = CGPathParser.rect(w, h, 0, 0)
         GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
-        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal)
+        //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal)
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Clear);//
         //CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
         

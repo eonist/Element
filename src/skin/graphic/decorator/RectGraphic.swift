@@ -12,6 +12,12 @@ class RectGraphic : Decoratable{
         self.height = height;
         super.init(decoratable);
     }
+    override func fill() {
+        Swift.print("RectGraphic.fill() ")
+        //clear()
+        beginFill();
+        drawFill();
+    }
     override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here

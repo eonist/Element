@@ -19,8 +19,10 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
-        let context : NSGraphicsContext = NSGraphicsContext.currentContext()
-        context.
+        
+        let graphicsContext = NSGraphicsContext.currentContext()!
+        let context = graphicsContext.CGContext
+        Swift.print("Contet: " + context)
     }
     /**
      * Note: if you overide drawRect then update layers wont work

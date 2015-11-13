@@ -13,14 +13,15 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         //clear()
         beginFill();
         drawFill();
-        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal);
+        CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
+        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.SourceIn);
     }
     
     
     override func beginFill() {
         CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Screen);
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
-        CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
+        
     }
     
     

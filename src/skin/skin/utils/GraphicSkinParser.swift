@@ -12,7 +12,8 @@ class GraphicSkinParser{
     */
     class func configure(skin:ISkin)->IDecoratable {
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        var decoratable:IDecoratable = Utils.rectGraphic(skin,fillStyle);
+        var decoratable:IDecoratable = Utils.graphic(fillStyle)
+        decoratable = Utils.rectGraphic(decoratable,skin);
         if(StylePropertyAsserter.hasFillet(skin)) {
             Swift.print("hasFillet")
             decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin));
@@ -23,13 +24,19 @@ class GraphicSkinParser{
 }
 private class Utils{
     /**
+     *
+     */
+    class func graphic(fillStyle:IFillStyle)->IDecoratable {
+        return Graphic(fillStyle)
+    }
+    /**
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rectGraphic(skin:ISkin,_ fillStyle:IFillStyle)->IDecoratable {
+    class func rectGraphic(decoratable:IDecoratable,_ skin:ISkin)->IDecoratable {
         let width:Double = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
-        return RectGraphic(width,height,fillStyle);
+        return RectGraphic(decoratable,width,height);
     }
     /**
      * Returns a "RoundDecorator instance" wrapped around a Rect instance

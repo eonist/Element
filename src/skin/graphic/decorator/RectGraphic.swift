@@ -4,50 +4,20 @@ import Cocoa
  * // :TODO: Try to impliment Rect3 into Element2 and do tests
  * // :TODO: add example in the javadoc
  */
-class RectGraphic : Graphic,IDecoratable{
+class RectGraphic : Decoratable{
     var width:Double;
     var height:Double;
-    var decoratable:IDecoratable{return self}
-    init(_ width:Double = 100, _ height:Double = 100, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
+    init(_ width:Double = 100, _ height:Double = 100){
         self.width = width;
         self.height = height;
-        super.init(fillStyle, lineStyle )
+        super.init(decoratable);
     }
-    func initialize(){
-        fill();
-        //line();
-    }
-    func fill() {
-        //CGContextSaveGState(graphics.context);
-        beginFill();
-        drawFill();
-        //CGContextRestoreGState(graphics.context);
-    }
-    func line(){
-        fatalError("NOT IMPLEMENTED YET")
-        //applyLineStyle(self,lineStyle);
-        //drawLine();
-    }
-    func beginFill() {
-      if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
-      }
-    }
-    /**
-     * // :TODO: does this function need arguments?
-     */
-    func applyLineStyle(graphics:Graphics,_ lineStyle:ILineStyle) {
-      /*
-      if(lineStyle != nil) {
-         //apply lineStyle here /*updates only if lineStyle of class LineStyle*/
-      }
-      */
-    }
-    func drawFill() {
+    
+    override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here
-        path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
-        GraphicModifier.stylize(path,graphics)//realize style on the graphic
+        getGraphic().path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
+        super.drawFill()
     }
     func drawLine() {
       if(lineStyle != nil){
@@ -60,8 +30,5 @@ class RectGraphic : Graphic,IDecoratable{
       fill();
       line();
     }
-    func getGraphic()-> Graphic{/*Dont revert to IGraphic here*/
-        //fatalError("NOT IMPLEMENTED YET")
-        return self
-    }
+    
 }

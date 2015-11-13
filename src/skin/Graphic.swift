@@ -10,6 +10,9 @@ import Foundation
 
 //continue here: extend IDecoratable
 //and rectGraphic should extend Decoratable
+//move all code in RectGraphic to Graphic that has to do with drawing and styling etc. 
+//RectGraphic should only consern it self with making a square path this way you can have CircleGraphic EllipseGraphic etc.
+//That are also only concerning themselfs with just making the path etc. less code!
 
 
 

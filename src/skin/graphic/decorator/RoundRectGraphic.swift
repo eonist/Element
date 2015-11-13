@@ -10,9 +10,15 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     }
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")
+        
+        
+        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.blueColor()))
+        let path:CGPath = CGPathParser.rect(300, 150, 0, 0)
+        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
+        
         clear()
-        beginFill();
-        drawFill();
+        //beginFill();
+        //drawFill();
         //CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.SourceIn);
     }

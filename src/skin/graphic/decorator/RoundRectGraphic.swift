@@ -11,11 +11,11 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")
         clear()
-        //beginFill();
-        //drawFill();
+        beginFill();
+        drawFill();
     }
     override func beginFill() {
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.greenColor()))
+        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.clearColor()))
     }
     /**
      *

@@ -17,6 +17,7 @@ class GraphicSkinParser{
             Swift.print("hasFillet")
             decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin));
         }
+        decoratable.initialize()//new
         return decoratable
     }
 }

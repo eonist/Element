@@ -48,7 +48,7 @@ class StylePropertyParser{
     * // :TODO: probably upgrade to TRBL
     */
     class func fillet(skin:ISkin) -> Fillet {
-        let val:Any = value(skin, CSSConstants.cornerRadius);
+        let val:Any? = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
         if((val is Double) || (val is Array<Double>)) {//(val is String) ||
             fillet = LayoutUtils.instance(val, Fillet.self) as! Fillet

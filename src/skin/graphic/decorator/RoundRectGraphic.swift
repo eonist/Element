@@ -17,7 +17,8 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     
     
     override func beginFill() {
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.purpleColor()))
+        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
+        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.DestinationAtop);
     }
     
     

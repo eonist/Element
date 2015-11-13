@@ -6,6 +6,7 @@ class Element: FlippedView,IElement {
     var width:Double?
     var height:Double?
     var parent : IElement?
+    var id : String?;/*css selector id*/
     var style:IStyle = Style.clear
     
     
@@ -14,16 +15,11 @@ class Element: FlippedView,IElement {
         self.width = width;
         self.height = height;
         self.parent = parent;
+        self.id = id;
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
-        self.wantsLayer = false
+        self.wantsLayer = false//this avoids calling drawLayer()
         
-    }
-    /**
-     * Called on init if wantsUpdateLayer is true
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("drawLayer")
     }
     /**
      * Note: if you overide drawRect then update layers wont work

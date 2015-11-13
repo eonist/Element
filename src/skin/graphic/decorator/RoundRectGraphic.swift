@@ -17,13 +17,13 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.SourceIn);
     }
     
-    
+    /*
     override func beginFill() {
-        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Screen);
+        //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Screen);
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
         
     }
-    
+    */
     
     /**
      *
@@ -35,7 +35,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
         let path:CGPath = CGPathParser.rect(w, h, 0, 0)
         GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
-        
+        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal)
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Clear);//
         //CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))
         

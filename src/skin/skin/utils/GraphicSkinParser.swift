@@ -14,10 +14,7 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         var decoratable:IDecoratable = Utils.graphic(fillStyle)
         decoratable = Utils.rectGraphic(decoratable,skin);
-        if(StylePropertyAsserter.hasFillet(skin)) {
-            Swift.print("hasFillet")
-            decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin));
-        }
+        if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
         decoratable.initialize()//new
         return decoratable
     }

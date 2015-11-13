@@ -12,10 +12,8 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         Swift.print("RoundRectGraphic.fill() ")
         
         
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.blueColor()))
-        let path:CGPath = CGPathParser.rect(200, 100, 0, 0)
-        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
         
+        createblueBox()
         clear()
         //beginFill();
         //drawFill();
@@ -23,6 +21,14 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.SourceIn);
     }
     
+    /**
+     *
+     */
+    func createblueBox(){
+        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.blueColor()))
+        let path:CGPath = CGPathParser.rect(200, 100, 0, 0)
+        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
+    }
     /*
     override func beginFill() {
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Screen);
@@ -37,6 +43,8 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     func clear(){
         let w:CGFloat = CGFloat((decoratable as! RectGraphic).width)
         let h:CGFloat = CGFloat((decoratable as! RectGraphic).height)
+        
+        CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
         CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Multiply);
         GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
         let path:CGPath = CGPathParser.rect(w, h, 0, 0)

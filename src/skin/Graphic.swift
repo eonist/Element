@@ -22,6 +22,7 @@ class Graphic:IGraphic,IDecoratable{//this will extend Graphics in the future or
     var lineStyle:ILineStyle?
     var graphics:Graphics
     var path:CGPath = CGPathCreateMutable()
+    var decoratable:IDecoratable{return self}
     //var linePath:CGPath = CGPathCreateMutable()
     //var lineOffsetType:OffsetType
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/){
@@ -29,17 +30,14 @@ class Graphic:IGraphic,IDecoratable{//this will extend Graphics in the future or
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
         graphics = Graphics()
-        
     }
     func initialize(){
         fill();
-        //line();
+        line();
     }
     func fill() {
-        //CGContextSaveGState(graphics.context);
         beginFill();
         drawFill();
-        //CGContextRestoreGState(graphics.context);
     }
     func line(){
         fatalError("NOT IMPLEMENTED YET")

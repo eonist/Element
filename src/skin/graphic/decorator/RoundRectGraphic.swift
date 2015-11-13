@@ -36,19 +36,25 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         
     }
     */
-    
+    /**
+    *
+    */
+    func createWhiteBox(){
+        let w:CGFloat = CGFloat((decoratable as! RectGraphic).width)
+        let h:CGFloat = CGFloat((decoratable as! RectGraphic).height)
+        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
+        let path:CGPath = CGPathParser.rect(w, h, 0, 0)
+        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
+    }
     /**
      *
      */
     func clear(){
-        let w:CGFloat = CGFloat((decoratable as! RectGraphic).width)
-        let h:CGFloat = CGFloat((decoratable as! RectGraphic).height)
+       
         
         CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
         CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Multiply);
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.whiteColor()))
-        let path:CGPath = CGPathParser.rect(w, h, 0, 0)
-        GraphicModifier.stylize(path, getGraphic().graphics)//realize style on the graphic
+        createWhiteBox()
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal)
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Clear);//
         //CGContextModifier.clear(getGraphic().graphics.context,NSMakeRect(0, 0, w, h))

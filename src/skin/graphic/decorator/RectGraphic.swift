@@ -12,6 +12,8 @@ class RectGraphic : Graphic,IDecoratable{
         self.width = width;
         self.height = height;
         super.init(fillStyle, lineStyle )
+    }
+    func initialize(){
         fill();
         //line();
     }

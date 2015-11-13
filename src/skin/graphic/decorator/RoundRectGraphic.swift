@@ -53,7 +53,7 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
        
         
         CGContextClearRect(getGraphic().graphics.context, NSMakeRect(0, 0, 100, 100))
-        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Multiply);
+        CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.DestinationOut);
         createWhiteBox()
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Normal)
         //CGContextSetBlendMode(getGraphic().graphics.context,CGBlendMode.Clear);//

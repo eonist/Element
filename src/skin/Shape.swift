@@ -34,7 +34,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         GraphicModifier.applyProperties(graphics, fillStyle/*, lineStyle*/)//apply style
         */
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
-        super.drawRect(dirtyRect)
+        //super.drawRect(dirtyRect)
         //fill();
         //line();
     }
@@ -46,7 +46,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     }
     func fill() {
         beginFill();
-        drawFill();
+        //drawFill();
     }
     /**
      *
@@ -71,6 +71,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         Swift.print("Shape.beginFill()")
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
             let randomColor:NSColor = ColorUtils.randomColor()
+            Swift.print("randomColor: " + String(randomColor))
             let fillStyle = FillStyle(randomColor)
             GraphicModifier.applyProperties(graphics, fillStyle/*, lineStyle*/)//apply style
         }

@@ -61,7 +61,7 @@ extension IElement {
         //Swift.print("resolveSkin: " + "\(String(self))")
         
         self.skin = SkinResolver.skin(self)
-        
+        self.addSubview(self.skin)
                 
         
         

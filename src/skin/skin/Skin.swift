@@ -5,7 +5,7 @@ import Foundation
 * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
 * TODO: look to cssedit which takes priority the htm set width or the css set width?
 */
-class Skin:ISkin{
+class Skin:FlippedView,ISkin{
     var decoratable:IDecoratable?
     var style:IStyle?
     var state:String
@@ -21,6 +21,12 @@ class Skin:ISkin{
         self.element = element;
         width = element!.width;// :TODO: is this necassary?
         height = element!.height;// :TODO: is this necassary?
+    }
+    /**
+     * Required by super class
+     */
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     /**
     * Resets skinState

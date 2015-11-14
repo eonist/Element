@@ -8,6 +8,7 @@ class RectGraphic : Decoratable{
     var width:Double;
     var height:Double;
     init(_ decoratable:IDecoratable, _ width:Double = 100, _ height:Double = 100){
+        Swift.print("RectGraphic: w: " + "\(width)" + "h: " + "\(height)")
         self.width = width;
         self.height = height;
         super.init(decoratable);

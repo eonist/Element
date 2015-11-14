@@ -7,10 +7,9 @@ import Cocoa
 
 //rename to shape, extend graphic, that extends nsview, to clear simply use needsDisplay and everything will be drawn again,
 
-class Shape:IShape,IDecoratable{//this will extend Graphics in the future or just have it
+class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the future or just have it
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
-    var graphics:Graphics
     var path:CGPath = CGPathCreateMutable()
     var decoratable:IDecoratable{return self}
     //var linePath:CGPath = CGPathCreateMutable()
@@ -19,11 +18,15 @@ class Shape:IShape,IDecoratable{//this will extend Graphics in the future or jus
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
-        graphics = Graphics()
-    }
-    func initialize(){
+        super.init()
         fill();
         line();
+    }
+    /**
+     * Required by super class
+     */
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     func fill() {
         beginFill();

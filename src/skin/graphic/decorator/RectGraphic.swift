@@ -18,6 +18,12 @@ class RectGraphic : Decoratable{
         beginFill();
         drawFill();
     }
+    /**
+     *
+     */
+    func clear(){
+        getShape().needsDisplay = true//calls drawRect
+    }
     override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here

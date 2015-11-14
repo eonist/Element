@@ -41,6 +41,7 @@ class Element: FlippedView,IElement {
      */
     func clear(hasClear:Bool){
         Swift.print("Element.clear()")
+        
         self.hasClear = hasClear
         needsDisplay = true
         //drawRect(NSMakeRect(0, 0, 100, 100))

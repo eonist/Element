@@ -19,6 +19,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
+        fill()
     }
     /**
      *
@@ -86,7 +87,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     }
     func drawFill() {
         Swift.print("Shape.drawFill()")
-        GraphicModifier.stylize(path,graphics)//realize style on the graphic
+        //GraphicModifier.stylize(path,graphics)//realize style on the graphic
     }
     func drawLine() {
         if(lineStyle != nil){

@@ -5,8 +5,8 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
     init(_ decoratable:IDecoratable, _ fillet:Fillet? = nil){
         self.fillet = fillet ?? Fillet();
         super.init(decoratable);
-        //fill();
-        //line();
+        fill();
+        line();
     }
     override func fill() {
         Swift.print("RoundRectGraphic.fill() ")

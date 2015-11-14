@@ -5,9 +5,6 @@ class Decoratable:IDecoratable{
     init(_ decoratable:IDecoratable){
         self.decoratable = decoratable;
     }
-    func initialize(){
-        fill()
-    }
     func fill(){
         decoratable.fill();
     }

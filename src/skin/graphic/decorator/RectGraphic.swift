@@ -21,11 +21,11 @@ class RectGraphic : Decoratable{
     override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here
-        getGraphic().path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
+        getShape().path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
         super.drawFill()
     }
     override func drawLine() {
-      if(getGraphic().lineStyle != nil){
+      if(getShape().lineStyle != nil){
           //do line drawing here, keep in mind line mask
       }
       super.drawLine()

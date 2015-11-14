@@ -5,16 +5,6 @@ import Cocoa
 * NOTE: We dont need a line mask, just subclass the Graphics class so it supports masking of the line aswell (will require some effort)
 */
 
-
-
-
-//continue here: extend IDecoratable
-//and rectGraphic should extend Decoratable
-//move all code in RectGraphic to Graphic that has to do with drawing and styling etc. 
-//RectGraphic should only consern it self with making a square path this way you can have CircleGraphic EllipseGraphic etc.
-//That are also only concerning themselfs with just making the path etc. less code!
-
-
 //rename to shape, extend graphic, that extends nsview, to clear simply use needsDisplay and everything will be drawn again,
 
 class Shape:IShape,IDecoratable{//this will extend Graphics in the future or just have it

@@ -14,6 +14,7 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         var decoratable:IDecoratable = Utils.shape(fillStyle)
         decoratable = Utils.rectGraphic(decoratable,skin);
+        decoratable.getShape().clear()
         if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
         return decoratable
     }

@@ -36,6 +36,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
      *
      */
     func clear(){
+        Swift.print("Shape.clear()")
         self.needsDisplay = true//initiates a call to drawRect()
     }
     /*

@@ -21,6 +21,7 @@ class Skin:FlippedView,ISkin{
         self.element = element;
         width = element!.width;// :TODO: is this necassary?
         height = element!.height;// :TODO: is this necassary?
+        super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
     }
     /**
      * Required by super class
@@ -49,7 +50,7 @@ class Skin:FlippedView,ISkin{
      * sets the skin state and forces a redraw
      * @Note forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
      */
-    func setState(state:String){
+    func setSkinState(state:String){
         hasStateChanged = true;
         self.state = state;
         style = StyleResolver.style(element!)/*looping through the entire styleManager isnt a good idea for just a state change*/

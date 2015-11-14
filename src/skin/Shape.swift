@@ -29,7 +29,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
      */
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("Shape.drawRect() ")
-        //path = CGPathParser.rect(CGFloat(100), CGFloat(50))//Shapes
+        path = CGPathParser.rect(CGFloat(100), CGFloat(50))//Shapes
         
         /*
         

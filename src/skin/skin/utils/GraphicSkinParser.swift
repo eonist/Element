@@ -12,7 +12,7 @@ class GraphicSkinParser{
     */
     class func configure(skin:ISkin)->IDecoratable {
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        var decoratable:IDecoratable = Utils.graphic(fillStyle)
+        var decoratable:IDecoratable = Utils.shape(fillStyle)
         decoratable = Utils.rectGraphic(decoratable,skin);
         if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
         decoratable.initialize()//new
@@ -23,8 +23,8 @@ private class Utils{
     /**
      *
      */
-    class func graphic(fillStyle:IFillStyle)->IDecoratable {
-        return Graphic(fillStyle)
+    class func shape(fillStyle:IFillStyle)->IDecoratable {
+        return Shape(fillStyle)
     }
     /**
      * Returns a "GraphicRect instance"

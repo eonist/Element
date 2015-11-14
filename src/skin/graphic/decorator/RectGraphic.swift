@@ -24,7 +24,9 @@ class RectGraphic : Decoratable{
     override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here
-        getShape().path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
+        Swift.print("RectGraphic.drawFill: w: " + "\(width)" + "h: " + "\(height)")
+        getShape().path = CGPathParser.rect(CGFloat(150), CGFloat(height))//Shapes
+        
         //super.drawFill()
     }
     override func drawLine() {

@@ -26,10 +26,13 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
      *
      */
     override func drawRect(dirtyRect: NSRect) {
-        Swift.print("Shape.drawRect() ")
-        
+        Swift.print("Shape.drawRect() "+String(fillStyle!.color))
+        Swift.print("path: " + String(path))
+        //path = CGPathParser.rect(CGFloat(100), CGFloat(50))//Shapes
 
-        GraphicModifier.applyProperties(graphics, self.fillStyle!/*, lineStyle*/)//apply style
+        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
+            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+        }
         /*
         
         */
@@ -69,9 +72,11 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     }
     func beginFill() {
         Swift.print("Shape.beginFill()")
+        /*
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
         }
+        */
     }
     /**
      * // :TODO: does this function need arguments?

@@ -8,5 +8,5 @@ protocol IDecoratable{
     func drawLine()
     func beginFill()
     func applyLineStyle(graphics:Graphics,_ lineStyle:ILineStyle)
-    func getGraphic()-> Shape/*Dont revert to IGraphic here*/
+    func getShape()-> Shape/*Dont revert to IGraphic here*/
 }

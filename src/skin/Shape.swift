@@ -51,7 +51,9 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     }
     func beginFill() {
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+            let randomColor:NSColor = ColorUtils.randomColor()
+            let fillStyle = FillStyle(randomColor)
+            GraphicModifier.applyProperties(graphics, fillStyle/*, lineStyle*/)//apply style
         }
     }
     /**

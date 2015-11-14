@@ -19,9 +19,17 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
+        
+    }
+    /**
+     *
+     */
+    override func drawRect(dirtyRect: NSRect) {
+        Swift.print("Shape.drawRect() ")
         fill();
         //line();
     }
+    
     /**
      * Required by super class
      */
@@ -51,7 +59,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     }
     func beginFill() {
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            let randomColor:NSColor = ColorUtils.randomColor()
+            //let randomColor:NSColor = ColorUtils.randomColor()
             let fillStyle = FillStyle(randomColor)
             GraphicModifier.applyProperties(graphics, fillStyle/*, lineStyle*/)//apply style
         }

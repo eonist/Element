@@ -19,7 +19,6 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
-        
     }
     /**
      *
@@ -29,7 +28,6 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         //fill();
         //line();
     }
-    
     /**
      * Required by super class
      */
@@ -44,10 +42,12 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
      *
      */
     func clear(){
+        /*
         Swift.print("Shape.clear()")
         self.needsDisplay = true//initiates a call to drawRect()
         //drawRect(NSMakeRect(0, 0, 100, 100))
         Swift.print("Shape.clear() post needsDisplay")
+        */
     }
     /*
      *

@@ -16,15 +16,15 @@ class RectGraphic : Decoratable{
     }
     override func fill() {
         Swift.print("RectGraphic.fill() ")
-        clear()//forces a redraw of the graphics
-        beginFill();
+        //clear()//forces a redraw of the graphics
+        //beginFill();
         drawFill();
     }
     override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here
         getShape().path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
-        super.drawFill()
+        //super.drawFill()
     }
     override func drawLine() {
       if(getShape().lineStyle != nil){

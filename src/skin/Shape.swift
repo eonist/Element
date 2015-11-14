@@ -26,7 +26,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
      */
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("Shape.drawRect() ")
-        //fill();
+        fill();
         //line();
     }
     

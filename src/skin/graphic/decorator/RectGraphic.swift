@@ -14,7 +14,7 @@ class RectGraphic : Decoratable{
     }
     override func fill() {
         Swift.print("RectGraphic.fill() ")
-        //clear()
+        clear()
         beginFill();
         drawFill();
     }

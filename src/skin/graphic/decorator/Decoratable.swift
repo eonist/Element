@@ -11,6 +11,12 @@ class Decoratable:IDecoratable{
     func fill(){
         decoratable.fill();
     }
+    /*
+     * Forces a redraw of the graphics
+     */
+    func clear(){
+        decoratable.clear();
+    }
     func line(){
         decoratable.line();
     }

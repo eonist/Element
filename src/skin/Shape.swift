@@ -25,6 +25,11 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
      */
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("Shape.drawRect() ")
+        path = CGPathParser.rect(CGFloat(100), CGFloat(50))//Shapes
+        
+        let randomColor:NSColor = ColorUtils.randomColor()
+        let fillStyle = FillStyle(randomColor)
+        GraphicModifier.applyProperties(graphics, fillStyle/*, lineStyle*/)//apply style
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
         super.drawRect(dirtyRect)
         //fill();

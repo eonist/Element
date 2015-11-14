@@ -20,7 +20,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
         //fill()
-        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+        
     }
     /**
      *
@@ -31,7 +31,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         
 
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            
+            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
         }
         /*
         

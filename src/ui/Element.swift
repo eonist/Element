@@ -19,8 +19,6 @@ class Element: FlippedView,IElement {
         let frame = NSRect(x: 0, y: 0, width: width, height: height)
         super.init(frame: frame)
         self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
-        
-        
     }
     /**
      * Note: if you overide drawRect then update layers wont work

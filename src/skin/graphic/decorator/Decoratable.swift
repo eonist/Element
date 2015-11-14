@@ -31,7 +31,7 @@ class Decoratable:IDecoratable{
      * Returns _decoratable.graphic
      * @Note: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.
      */
-    func getGraphic()-> Graphic {
-        return decoratable.getGraphic();
+    func getShape()-> Shape {
+        return decoratable.getShape();
     }
 }

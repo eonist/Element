@@ -68,7 +68,7 @@ class Shape:IShape,IDecoratable{//this will extend Graphics in the future or jus
             //do line drawing here, keep in mind line mask
         }
     }
-    func getGraphic()-> Graphic{/*Dont revert to IGraphic here*/
+    func getShape()-> Shape{/*Dont revert to IGraphic here*/
         //fatalError("NOT IMPLEMENTED YET")
         return self
     }

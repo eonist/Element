@@ -15,7 +15,7 @@ import Cocoa
 //That are also only concerning themselfs with just making the path etc. less code!
 
 
-//extend nsview,
+//rename to shape, extend graphic, that extends nsview, to clear simply use needsDisplay
 
 class Graphic:IGraphic,IDecoratable{//this will extend Graphics in the future or just have it
     var fillStyle:IFillStyle?

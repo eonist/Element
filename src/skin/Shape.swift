@@ -38,6 +38,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     func clear(){
         Swift.print("Shape.clear()")
         self.needsDisplay = true//initiates a call to drawRect()
+        drawRect(NSMakeRect(0, 0, 100, 100))
         Swift.print("Shape.clear() post needsDisplay")
     }
     /*
@@ -64,7 +65,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         */
     }
     func drawFill() {
-        Swift.print("Graphic.drawFill()")
+        Swift.print("Shape.drawFill()")
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
     }
     func drawLine() {

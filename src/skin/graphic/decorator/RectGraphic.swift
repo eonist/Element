@@ -12,7 +12,7 @@ class RectGraphic : Decoratable{
         self.width = width;
         self.height = height;
         super.init(decoratable);
-        fill()
+        //fill()
         //line()
     }
     override func fill() {

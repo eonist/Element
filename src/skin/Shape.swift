@@ -19,7 +19,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         self.lineStyle = lineStyle
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
-        //fill()
+        fill()
         
     }
     /**
@@ -30,9 +30,11 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         Swift.print("path: " + String(path))
         
 
+        /*
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
         }
+        */
         /*
         
         */
@@ -72,11 +74,11 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     }
     func beginFill() {
         Swift.print("Shape.beginFill()")
-        /*
+        
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
         }
-        */
+        
     }
     /**
      * // :TODO: does this function need arguments?

@@ -13,6 +13,21 @@ class RoundRectGraphic:Decoratable,IRoundRectGraphic{
         //clear();
         beginFill();
         drawFill();
+        
+        
+        
+        //continue here
+        
+        /**
+        The thing is that you need to delay commiting path and fills to the CGContext, until graphics.drawRect() is called. 
+        The reason for this is so that you dont keep adding graphics to CGContext on top of eachother. 
+        
+
+
+        */
+        
+        
+        
     }
     override func line() {
         

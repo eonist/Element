@@ -20,7 +20,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
         fill();
-        line();
+        //line();
     }
     /**
      * Required by super class

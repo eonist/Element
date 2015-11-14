@@ -32,6 +32,15 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         beginFill();
         drawFill();
     }
+    /**
+     *
+     */
+    func clear(){
+        self.needsDisplay = true//initiates a call to drawRect()
+    }
+    /*
+     *
+     */
     func line(){
         fatalError("NOT IMPLEMENTED YET")
         //applyLineStyle(self,lineStyle);

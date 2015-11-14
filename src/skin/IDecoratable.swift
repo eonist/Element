@@ -4,6 +4,7 @@ protocol IDecoratable{
     var decoratable:IDecoratable{get}
     func fill()
     func line()
+    func clear()
     func drawFill()
     func drawLine()
     func beginFill()

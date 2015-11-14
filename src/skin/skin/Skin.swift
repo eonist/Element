@@ -15,6 +15,7 @@ class Skin:FlippedView,ISkin{
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;
     var hasSizeChanged:Bool = false;
+    override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         self.style = style;
         self.state = state;

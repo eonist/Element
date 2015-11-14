@@ -13,9 +13,7 @@ class GraphicSkinParser{
     class func configure(skin:ISkin)->IDecoratable {
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         var decoratable:IDecoratable = Utils.shape(fillStyle)
-        decoratable = Utils.rectGraphic(decoratable,skin);
-        //decoratable.getShape().path = CGPathParser.rect(CGFloat(250), CGFloat(250))//Shapes
-        //decoratable.getShape().clear()
+        decoratable = Utils.rectGraphic(decoratable,skin)
         if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
         return decoratable
     }

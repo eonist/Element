@@ -25,7 +25,7 @@ class RectGraphic : Decoratable{
         Swift.print("RectGraphic.drawFill()")
         //do fill drawing here
         Swift.print("RectGraphic.drawFill: w: " + "\(width)" + "h: " + "\(height)")
-        getShape().path = CGPathParser.rect(CGFloat(150), CGFloat(50))//Shapes
+        getShape().path = CGPathParser.rect(CGFloat(width), CGFloat(height))//Shapes
         
         //super.drawFill()
     }

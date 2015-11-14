@@ -7,6 +7,12 @@ class GraphicSkin:Skin{
         super.decoratable = GraphicSkinParser.configure(self);
         
     }
+    /**
+     * Required by super class
+     */
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func draw(){
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){

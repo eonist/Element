@@ -20,7 +20,7 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
         /*self.lineOffsetType = lineOffsetType*/
         super.init()
         //fill()
-        
+        GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
     }
     /**
      *
@@ -28,10 +28,10 @@ class Shape:Graphic,IShape,IDecoratable{//this will extend Graphics in the futur
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("Shape.drawRect() "+String(fillStyle!.color))
         Swift.print("path: " + String(path))
-        //path = CGPathParser.rect(CGFloat(100), CGFloat(50))//Shapes
+        
 
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            GraphicModifier.applyProperties(graphics, fillStyle!/*, lineStyle*/)//apply style
+            
         }
         /*
         

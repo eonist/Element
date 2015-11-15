@@ -50,12 +50,12 @@ class CSSPropertyParser {
 class Utils{
     class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
         var rotation:Double;
-        var directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?
+        let directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?
         if(RegExp.test(rotationMatch,"^\\d+?deg|\\d+$")) {
             rotation = Double(RegExp.match(rotationMatch, "^\\d+?$|^\\d+?(?=deg$)")[0])!
         }
         else if(RegExp.test(rotationMatch,directionPattern)){
-            var angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
+            let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
             rotation = Trig.angleType(angleType)+180;// :TODO: Create support for top left and other corners
         }
         //		trace("rotation: " + rotation);

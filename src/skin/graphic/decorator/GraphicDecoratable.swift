@@ -22,6 +22,10 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func stylizeFill(){
         decoratable.stylizeFill()
     }
+    /**
+     * Returns _decoratable.graphic
+     * @Note: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.
+     */
     override func getGraphic() -> BaseGraphic{
         return self.decoratable.getGraphic()
     }

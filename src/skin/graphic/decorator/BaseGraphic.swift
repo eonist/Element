@@ -1,6 +1,8 @@
 import Cocoa
 
 class BaseGraphic :AbstractGraphicDecoratable{
+    var fillStyle:IFillStyle?
+    var lineStyle:ILineStyle?
     lazy var graphics:Graphics = Graphics()
     var path:CGPath = CGPathCreateMutable()
     

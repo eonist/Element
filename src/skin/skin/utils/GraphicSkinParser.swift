@@ -54,9 +54,7 @@ private class Utils{
      * Returns a "RoundDecorator instance" wrapped around a Rect instance
      * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
-    /*
     class func fillet(decoratable:IGraphicDecorator,_ fillet:Fillet? = nil)->IDecoratable {
-    return RoundRectGraphic2(decoratable, fillet)
+        return RoundRectGraphic2(decoratable, fillet)
     }
-    */
 }

@@ -59,8 +59,15 @@ class Utils{
             var property:String = properties[i];
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
             
-            RegExp
-            
+            let matches = RegExpParser.matches(property, pattern)
+            for match:NSTextCheckingResult in matches {
+                match.numberOfRanges
+                let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+                let color = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let alpha = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let ratio = RegExp.value(<#T##str: String##String#>, <#T##result: NSTextCheckingResult##NSTextCheckingResult#>, <#T##key: Int##Int#>)
+            }
+            /*
             var matches:Array = property.match();
                 gradient.colors.push(StringParser.color(matches["color"]));
                 gradient.alphas.push(Utils.alpha(matches["alpha"]));
@@ -69,6 +76,8 @@ class Utils{
                 gradient.ratios.push(ratioValue);
                 }
                 return gradient;
+            */
+        }
     }
     class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
         var rotation:Double;

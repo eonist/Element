@@ -14,7 +14,9 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         self.lineStyle = lineStyle
     }
     override func beginFill(){
-        GraphicModifier.applyProperties(getGraphic().graphics, fillStyle!/*, lineStyle*/)//apply style, FillStyle(NSColor.purpleColor()
+        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
+            GraphicModifier.applyProperties(getGraphic().graphics, fillStyle!/*, lineStyle*/)//apply style
+        }
     }
     override func stylizeFill(){
         GraphicModifier.stylize(getGraphic().path,getGraphic().graphics)//realize style on the graphic

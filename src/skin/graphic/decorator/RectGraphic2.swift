@@ -11,4 +11,8 @@ class RectGraphic2:GraphicDecoratable{
     override func drawFill() {
         getGraphic().path = CGPathParser.rect(CGFloat(width), CGFloat(height))
     }
+    func setSize(width:Double,height:Double) {
+        self.width = width;
+        self.height = height;
+    }
 }

@@ -38,7 +38,7 @@ private class Utils{
         return RectGraphic(decoratable,width,height);
     }
     /**
-     * Returns a "RoundDecorator instance" wrapped around a Rect instance
+     * Returns a "RoundRectGraphic instance" wrapped around a Rect instance
      * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
     class func fillet(decoratable:IGraphicDecoratable,_ fillet:Fillet)->IGraphicDecoratable {

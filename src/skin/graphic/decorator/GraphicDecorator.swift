@@ -1,6 +1,6 @@
 import Foundation
 
-class GraphicDecorator {
+class GraphicDecorator:AbstractGraphicDecorator {
     var decoratable:IGraphicDecorator
     init(_ decoratable:IGraphicDecorator){
         self.decoratable = decoratable

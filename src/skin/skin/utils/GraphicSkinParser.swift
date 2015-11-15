@@ -17,6 +17,17 @@ class GraphicSkinParser{
         if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
         return decoratable
     }
+    /**
+     *
+     */
+    class func config(skin:ISkin){
+        var graphic:IGraphicDecorator = BaseGraphic()
+        graphic = RectGraphic2(graphic)
+        //graphic = RoundRectGrapix(graphic)
+        //graphic = GradientGrapix(graphic)
+        //grapix = CircleGrapix(graphic)
+        graphic.initialize()//runs trough all the different calls and makes the graphic in one go.
+    }
 }
 private class Utils{
     /**

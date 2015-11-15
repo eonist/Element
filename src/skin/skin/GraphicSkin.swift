@@ -20,7 +20,7 @@ class GraphicSkin:Skin{
             
         }
     }
-    func applyProperties(decoratable:IDecoratable){
+    func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")
     }
 }

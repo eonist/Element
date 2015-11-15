@@ -6,7 +6,7 @@ import Foundation
 * TODO: look to cssedit which takes priority the htm set width or the css set width?
 */
 class Skin:FlippedView,ISkin{
-    var decoratable:IDecoratable!
+    var decoratable:IGraphicDecoratable!
     var style:IStyle?
     var state:String
     var width:Double?;

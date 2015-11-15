@@ -10,13 +10,16 @@ class GraphicSkinParser{
     /**
     * Returns a Decoratable instance based on what stylePropertyValues is found in @param skin at @param depth
     */
+    /*
     class func configure(skin:ISkin)->IDecoratable {
+        
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        var decoratable:IDecoratable = Utils.shape(fillStyle)
-        decoratable = Utils.rectGraphic(decoratable,skin)
-        if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
+        let decoratable:IDecoratable = Utils.shape(fillStyle)
+        //decoratable = Utils.rectGraphic(decoratable,skin)
+        //if(StylePropertyAsserter.hasFillet(skin)) { decoratable = Utils.fillet(decoratable, StylePropertyParser.fillet(skin)) }
         return decoratable
     }
+     */
     /**
      *
      */
@@ -33,17 +36,17 @@ private class Utils{
     /**
      *
      */
-    class func shape(fillStyle:IFillStyle)->IDecoratable {
-        return Shape(fillStyle)
+    class func baseGraphic(fillStyle:IFillStyle)->IGraphicDecorator {
+        return BaseGraphic()//fillStyle
     }
     /**
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rectGraphic(decoratable:IDecoratable,_ skin:ISkin)->IDecoratable {
+    class func rectGraphic(decoratable:IGraphicDecorator,_ skin:ISkin)->IGraphicDecorator {
         let width:Double = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
-        return RectGraphic(decoratable,width,height);
+        return RectGraphic2(decoratable,width,height);
     }
     /**
      * Returns a "RoundDecorator instance" wrapped around a Rect instance

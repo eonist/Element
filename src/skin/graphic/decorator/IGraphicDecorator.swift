@@ -1,6 +1,6 @@
 import Foundation
 
-protocol IBaseGraphic {
+protocol IGraphicDecorator {
     func getGraphic() -> BaseGraphic
     func fill()
     func beginFill()

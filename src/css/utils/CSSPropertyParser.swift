@@ -27,9 +27,10 @@ class CSSPropertyParser {
     * @Note setting the gradientType isnt necessary since its the default setting
     */
     class func linearGradient(string:String)->IGradient{
-        var propertyString:String = string.match(/(?<=linear-gradient\().+?(?=\);?)/).toString();
-        var properties:Array = propertyString.split(",");
-        var rotation:Number = Utils.rotation(properties.shift());/*the first item is always the rotation, top or left or top left etc*/
+        
+        var propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
+        var properties:Array<String> = StringModifier.split(propertyString, ",")
+        var rotation:Double = Utils.rotation(properties.shift());/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
         gradient.rotation = rotation*Trig.RAD;// :TODO: rotations should be applied in the matrix
         return gradient;

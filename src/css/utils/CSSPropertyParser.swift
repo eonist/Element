@@ -62,11 +62,13 @@ class Utils{
             let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
             for match:NSTextCheckingResult in matches {
                 match.numberOfRanges
-                let content = RegExp.value(property, match, 0)//the entire match
+                //let content = RegExp.value(property, match, 0)//the entire match
                 let color = RegExp.value(property, match, 1)
-                
-                gradient.colors.append(StringParser.color(color))
+                gradient.colors.append(ColorParser.cgColor(StringParser.color(color)))
                 let alpha = RegExp.value(property, match, 2)
+                
+                //continue here
+                
                 let ratio = RegExp.value(property, match, 3)
             }
             /*

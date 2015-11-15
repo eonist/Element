@@ -52,8 +52,19 @@ class Utils{
     * Returns a Gradient instance derived from @param properties
     * @Note adds colors, opacities and ratios
     */
-    class func gradient(properties:Array):IGradient {
-        
+    class func gradient(properties:Array<String>)->IGradient {
+        print("properties: " + String(properties));
+        var gradient:Gradient = Gradient();
+        for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
+            var property:String = properties[i];
+            var matches:Array = property.match("^\\s?(?P<color>[a-zA-z0-9#]*)\s?(?P<alpha>[0-9%\.]*)?\s?(?P<ratio>[0-9%\.]*)?$");
+                gradient.colors.push(StringParser.color(matches["color"]));
+                gradient.alphas.push(Utils.alpha(matches["alpha"]));
+                var ratioValue:Number = Utils.ratio(matches["ratio"]);
+                if(isNaN(ratioValue)) ratioValue = (i / (properties.length-1))*255;/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
+                gradient.ratios.push(ratioValue);
+                }
+                return gradient;
     }
     class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
         var rotation:Double;

@@ -27,8 +27,8 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         var graphic:IGraphicDecorator = Utils.baseGraphic(fillStyle)
         graphic = Utils.rectGraphic(graphic, skin)
-        if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
-        //graphic = RoundRectGrapix(graphic)
+        //if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
+        graphic = RoundRectGraphic2(graphic)
         //graphic = GradientGrapix(graphic)
         //grapix = CircleGrapix(graphic)
         graphic.initialize()//runs trough all the different calls and makes the graphic in one go.
@@ -54,7 +54,9 @@ private class Utils{
      * Returns a "RoundDecorator instance" wrapped around a Rect instance
      * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
+    /*
     class func fillet(decoratable:IGraphicDecorator,_ fillet:Fillet? = nil)->IDecoratable {
-        return RoundRectGraphic2(decoratable, fillet)
+    return RoundRectGraphic2(decoratable, fillet)
     }
+    */
 }

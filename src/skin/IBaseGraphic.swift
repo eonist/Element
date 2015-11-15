@@ -1,5 +1,8 @@
+
 import Foundation
 
-class IBaseGraphic {
-
+protocol IBaseGraphic {
+    var lineStyle:ILineStyle?{get}
+    var fillStyle:IFillStyle?{get}
+    /*var lineOffsetType:OffsetType{get set}*/
 }

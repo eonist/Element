@@ -59,13 +59,13 @@ class Utils{
             var property:String = properties[i];
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
             
-            let matches = RegExpParser.matches(property, pattern)
+            let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
             for match:NSTextCheckingResult in matches {
                 match.numberOfRanges
-                let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-                let color = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                let alpha = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                let ratio = RegExp.value(<#T##str: String##String#>, <#T##result: NSTextCheckingResult##NSTextCheckingResult#>, <#T##key: Int##Int#>)
+                let content = RegExp.value(property, match, 0)//the entire match
+                let color = RegExp.value(property, match, 1)
+                let alpha = RegExp.value(property, match, 2)
+                let ratio = RegExp.value(property, match, 3)
             }
             /*
             var matches:Array = property.match();

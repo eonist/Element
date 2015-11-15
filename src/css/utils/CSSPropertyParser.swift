@@ -47,3 +47,16 @@ class CSSPropertyParser {
         return array;
     }
 }
+class Utils{
+    class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
+        var rotation:Number;
+        var directionPattern:RegExp = /left|right|top|bottom|top left|top right|bottom right|bottom left/;// :TODO: support for tl tr br bk l r t b?
+        if(RegExp(/^\d+?deg|\d+$/).test(rotationMatch)) rotation = Number(rotationMatch.match(/^\d+?$|^\d+?(?=deg$)/));
+        else if(directionPattern.test(rotationMatch)){
+            var angleType:String = rotationMatch.match(directionPattern).toString();
+            rotation = Trig.angleType(angleType)+180;// :TODO: Create support for top left and other corners
+        }
+        //		trace("rotation: " + rotation);
+        return rotation;
+    }
+}

@@ -64,6 +64,8 @@ class Utils{
                 match.numberOfRanges
                 let content = RegExp.value(property, match, 0)//the entire match
                 let color = RegExp.value(property, match, 1)
+                
+                gradient.colors.append(StringParser.color(color))
                 let alpha = RegExp.value(property, match, 2)
                 let ratio = RegExp.value(property, match, 3)
             }

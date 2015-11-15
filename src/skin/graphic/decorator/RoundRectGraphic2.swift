@@ -7,7 +7,12 @@ class RoundRectGraphic2:GraphicDecoratable{//adds round-rectangular path
         super.init(decoratable)
     }
     override func drawFill() {
-        //let fillet:Fillet = Fillet(20)
-        getGraphic().path = CGPathParser.roundRect(0,0,CGFloat(200), CGFloat(200),CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))//Shapes
+        //Swift.print("RoundRectGraphic2.drawFill() ")
+        let w:Double = (decoratable as! RectGraphic2).width
+        //Swift.print("w: " + "\(w)")
+        let h:Double = (decoratable as! RectGraphic2).height
+        //Swift.print("h: " + "\(h)")
+        //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
+        getGraphic().path = CGPathParser.roundRect(0,0,CGFloat(w), CGFloat(h),CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))//Shapes
     }
 }

@@ -70,6 +70,7 @@ class Utils{
                 //continue here
                 
                 let ratio = RegExp.value(property, match, 3)
+                gradient.locations.append(<#T##newElement: CGFloat##CGFloat#>)
             }
             /*
             var matches:Array = property.match();

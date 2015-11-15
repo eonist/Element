@@ -35,13 +35,13 @@ private class Utils{
     class func rectGraphic(decoratable:IGraphicDecoratable,_ skin:ISkin)->IGraphicDecoratable {
         let width:Double = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
-        return RectGraphic2(decoratable,width,height);
+        return RectGraphic(decoratable,width,height);
     }
     /**
      * Returns a "RoundDecorator instance" wrapped around a Rect instance
      * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
     class func fillet(decoratable:IGraphicDecoratable,_ fillet:Fillet)->IGraphicDecoratable {
-        return RoundRectGraphic2(decoratable, fillet)
+        return RoundRectGraphic(decoratable, fillet)
     }
 }

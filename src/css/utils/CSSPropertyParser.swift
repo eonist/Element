@@ -57,7 +57,11 @@ class Utils{
         var gradient:Gradient = Gradient();
         for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
             var property:String = properties[i];
-            var matches:Array = property.match("^\\s?(?P<color>[a-zA-z0-9#]*)\s?(?P<alpha>[0-9%\.]*)?\s?(?P<ratio>[0-9%\.]*)?$");
+            let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
+            
+            RegExp
+            
+            var matches:Array = property.match();
                 gradient.colors.push(StringParser.color(matches["color"]));
                 gradient.alphas.push(Utils.alpha(matches["alpha"]));
                 var ratioValue:Number = Utils.ratio(matches["ratio"]);

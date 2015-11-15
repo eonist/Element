@@ -1,9 +1,9 @@
 import Foundation
 
-class RectGraphic2:GraphicDecorator{
+class RectGraphic2:GraphicDecoratable{
     var width:Double;
     var height:Double;
-    init(_ decoratable: IGraphicDecorator, _ width:Double = 100, _ height:Double = 100) {
+    init(_ decoratable: IGraphicDecoratable, _ width:Double = 100, _ height:Double = 100) {
         self.width = width;
         self.height = height;
         super.init(decoratable)

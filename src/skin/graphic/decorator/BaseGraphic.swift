@@ -1,6 +1,6 @@
 import Cocoa
 
-class BaseGraphic :AbstractGraphicDecorator{
+class BaseGraphic :AbstractGraphicDecoratable{
     lazy var graphics:Graphics = Graphics()
     var path:CGPath = CGPathCreateMutable()
     

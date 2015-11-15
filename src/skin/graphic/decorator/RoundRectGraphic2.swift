@@ -1,8 +1,8 @@
 import Foundation
 
-class RoundRectGraphic2:GraphicDecorator{//adds round-rectangular path
+class RoundRectGraphic2:GraphicDecoratable{//adds round-rectangular path
     var fillet:Fillet;
-    init(_ decoratable: IGraphicDecorator,  _ fillet:Fillet) {
+    init(_ decoratable: IGraphicDecoratable,  _ fillet:Fillet) {
         self.fillet = fillet
         super.init(decoratable)
     }

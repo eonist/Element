@@ -26,7 +26,7 @@ private class Utils{
      *
      */
     class func baseGraphic(fillStyle:IFillStyle)->IGraphicDecoratable {
-        return BaseGraphic()//fillStyle
+        return BaseGraphic(fillStyle)
     }
     /**
      * Returns a "GraphicRect instance"

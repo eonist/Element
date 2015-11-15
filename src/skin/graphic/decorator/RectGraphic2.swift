@@ -9,6 +9,6 @@ class RectGraphic2:GraphicDecorator{
         super.init(decoratable)
     }
     override func drawFill() {
-        getGraphic().path = CGPathParser.rect(CGFloat(100), CGFloat(100))//Shapes
+        getGraphic().path = CGPathParser.rect(CGFloat(width), CGFloat(height))
     }
 }

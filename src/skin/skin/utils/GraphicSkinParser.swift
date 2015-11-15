@@ -24,7 +24,8 @@ class GraphicSkinParser{
      *
      */
     class func config(skin:ISkin){
-        var graphic:IGraphicDecorator = BaseGraphic()
+        let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
+        var graphic:IGraphicDecorator = Utils.baseGraphic(fillStyle)
         graphic = RectGraphic2(graphic)
         //graphic = RoundRectGrapix(graphic)
         //graphic = GradientGrapix(graphic)

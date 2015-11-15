@@ -1,7 +1,7 @@
 import Foundation
 
 protocol IGraphicDecoratable {
-    func getGraphic() -> BaseGraphic
+    func getGraphic() -> BaseGraphic/*Dont revert this variable to a protocol*/
     func fill()
     func beginFill()
     func drawFill()

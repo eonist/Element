@@ -10,7 +10,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         self.lineStyle = lineStyle
     }
     override func beginFill(){
-        GraphicModifier.applyProperties(getGraphic().graphics, FillStyle(NSColor.purpleColor())/*, lineStyle*/)//apply style
+        GraphicModifier.applyProperties(getGraphic().graphics, fillStyle!/*, lineStyle*/)//apply style, FillStyle(NSColor.purpleColor()
     }
     override func stylizeFill(){
         GraphicModifier.stylize(getGraphic().path,getGraphic().graphics)//realize style on the graphic

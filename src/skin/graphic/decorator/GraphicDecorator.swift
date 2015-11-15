@@ -1,8 +1,8 @@
 import Foundation
 
-class GraphicDecorator:AbstractGraphicDecorator {
-    var decoratable:IGraphicDecorator
-    init(_ decoratable:IGraphicDecorator){
+class GraphicDecoratable:AbstractGraphicDecoratable {
+    var decoratable:IGraphicDecoratable
+    init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
     }
     override func initialize(){

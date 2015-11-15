@@ -2,7 +2,7 @@ import Foundation
 /*
 * The AbstractDecorator has all the decorator methods
 */
-class AbstractGraphicDecorator:IGraphicDecorator{
+class AbstractGraphicDecoratable:IGraphicDecoratable{
     func initialize(){
     }
     func fill(){

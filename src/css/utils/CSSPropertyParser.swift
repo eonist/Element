@@ -30,7 +30,7 @@ class CSSPropertyParser {
         
         var propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
-        var rotation:Double = Utils.rotation(properties.shift());/*the first item is always the rotation, top or left or top left etc*/
+        var rotation:Double = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
         gradient.rotation = rotation*Trig.RAD;// :TODO: rotations should be applied in the matrix
         return gradient;
@@ -48,6 +48,13 @@ class CSSPropertyParser {
     }
 }
 class Utils{
+    /**
+    * Returns a Gradient instance derived from @param properties
+    * @Note adds colors, opacities and ratios
+    */
+    class func gradient(properties:Array):IGradient {
+        
+    }
     class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
         var rotation:Double;
         let directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?

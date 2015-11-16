@@ -71,7 +71,7 @@ class Utils{
                 
                 let ratio:String = RegExp.value(property, match, 3)
                 var ratioValue:Double = Utils.ratio(ratio)
-                if(isNaN(ratioValue)) { ratioValue = (i / (properties.length-1)) * 255 }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
+                if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) * 255.0 }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 gradient.locations.append(CGFloat(Float(ratioValue)))
             }
             /*

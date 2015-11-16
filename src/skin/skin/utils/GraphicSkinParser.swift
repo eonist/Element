@@ -55,7 +55,7 @@ private class Utils{
      * @Note: doesnt drawLine by default, pass a Gradient instance with @param lineGradient to draw a gradientLine
      * // :TODO: support for GradientLineStyle, GradientFillStyle
      */
-    class func gradient(decoratable:IGraphicDecoratable,_ fillStyle:IFillStyle)->IGraphicDecoratable{
-        return GradientGraphic(decoratable, fillStyle);
+    class func gradient(decoratable:IGraphicDecoratable)->IGraphicDecoratable{
+        return GradientGraphic(decoratable);
     }
 }

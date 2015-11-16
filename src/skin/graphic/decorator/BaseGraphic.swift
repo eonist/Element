@@ -13,8 +13,11 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
     }
+    /**
+     * TODO:color cant be uint since uint cant be NaN, use Double
+     */
     override func beginFill(){
-        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
+        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
             getGraphic().graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }

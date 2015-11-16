@@ -9,21 +9,10 @@ class GraphicModifier {
         //let fillColor:String = fillStyle.getStyleProperty("fillColor")!.value as! String
         //let fillAlpha:Double = Double(String(fillStyle.getStyleProperty("fillAlpha")!.value))!
         /*
-        
-        
-        */
-        
-        
-        /*
-        
-        
-        
         let lineColor:String = lineStyle.getStyleProperty("lineColor")!.value as! String
         let lineAlpha:Double = lineStyle.getStyleProperty("lineAlpha")!.value as! Double
         let lineWidth:Int = lineStyle.getStyleProperty("lineWidth")!.value as! Int
         */
-        
-        
         
         //let nsFillColor = ColorParser.nsColor(fillColor, Float(fillAlpha))//fill
         //Swift.print(nsFillColor)
@@ -38,13 +27,10 @@ class GraphicModifier {
         
 
         graphics.fill(fillStyle.color)//Stylize the fill
-        
-        
-        
     }
     /**
-    * New - it finalizes the style to the path, before it was all budnled together in the size method, now its move here
-    */
+     * New - it finalizes the style to the path, before it was all budnled together in the size method, now its move here
+     */
     class func stylize(path:CGPath, _ graphics:Graphics){
         //path.fill()
         //path.stroke()

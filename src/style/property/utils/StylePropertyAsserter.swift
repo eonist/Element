@@ -6,10 +6,11 @@ class StylePropertyAsserter {
         return !(fillet.topLeft == 0 && fillet.topRight == 0 && fillet.bottomLeft == 0 && fillet.bottomRight == 0);
     }
     class func hasGradient(skin:ISkin)->Bool {
-        /*
-        return StylePropertyParser.value(skin, CSSConstants.FILL, depth) is Gradient || StylePropertyParser.value(skin, "line", depth) is Gradient;
-        */
-        return false
+        let value = StylePropertyParser.value(skin, CSSConstants.fill)
+        let hasGradient = value is Gradient
+        return hasGradient /*|| StylePropertyParser.value(skin, "line", depth) is Gradient*/;
+        /**/
+        //return false
     }
     class func hasAsset(skin:ISkin)->Bool {
         /*

@@ -7,6 +7,7 @@ class StylePropertyAsserter {
     }
     class func hasGradient(skin:ISkin)->Bool {
         let value = StylePropertyParser.value(skin, CSSConstants.fill)
+        //you may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type
         let hasGradient = value is Gradient
         return hasGradient /*|| StylePropertyParser.value(skin, "line", depth) is Gradient*/;
         /**/

@@ -2,8 +2,7 @@ import Cocoa
 
 class GradientGraphic:GraphicDecoratable {
     override func beginFill(){
-        if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
-            getGraphic().graphics.fill(fillStyle!.color)//Stylize the fill
-        }
+        
+        ObjectAsserter.ofClass(graphic.fillStyle, GradientFillStyle) ? FillStyleModifier.beginGradientFill(graphic.fillShape.graphics, GradientFillStyle(graphic.fillStyle).gradient) : decoratable.beginFill();/*If there is no GradienFillStyle then beginFill with with whatever is in the decoratable*/;
     }
 }

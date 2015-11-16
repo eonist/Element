@@ -52,7 +52,7 @@ private class Utils{
      * @Note adds colors, opacities and ratios
      */
     class func gradient(properties:Array<String>)->IGradient {
-        print("properties: " + String(properties));
+        print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));
         let gradient:Gradient = Gradient();
         for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
             let property:String = properties[i];
@@ -63,12 +63,17 @@ private class Utils{
                 match.numberOfRanges
                 //let content = RegExp.value(property, match, 0)//the entire match
                 let color:String = RegExp.value(property, match, 1)
+                Swift.print("color: " + color)
                 
                 let alpha:String = RegExp.value(property, match, 2)
+                Swift.print("alpha: " + alpha)
+                
                 let alphaVal:Float = Float(Utils.alpha(alpha))
                 gradient.colors.append(ColorParser.cgColor(StringParser.color(color,alphaVal)))
                 
                 let ratio:String = RegExp.value(property, match, 3)
+                Swift.print("ratio: " + ratio)
+                
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) * 255.0 }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 gradient.locations.append(CGFloat(Float(ratioValue)))

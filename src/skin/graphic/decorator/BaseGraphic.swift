@@ -15,7 +15,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     }
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {
-            GraphicModifier.applyProperties(getGraphic().graphics, fillStyle!/*, lineStyle*/)//apply style
+            getGraphic().graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
     override func stylizeFill(){

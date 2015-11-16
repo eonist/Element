@@ -35,15 +35,6 @@ class GraphicModifier {
         //nsFillColor.setFill();
         //nsLineColor.setStroke();
         
-        /*
-        let nsFillGradientColorA = ColorParser.nsColor("FF0000"/*fillGradientColorA*/, Float(1))
-        let nsFillGradientColorB = ColorParser.nsColor("0000FF"/*fillGradientColorB*/, Float(1))
-        //graphics.line(CGFloat(lineWidth),nsLineColor)//Stylize the line
-
-        
-        let gradient:Gradient = Gradient([nsFillGradientColorA.CGColor,nsFillGradientColorB.CGColor])
-        graphics.gradientFill(gradient)
-*/
         graphics.fill(fillStyle.color)//Stylize the fill
         
         

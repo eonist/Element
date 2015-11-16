@@ -64,21 +64,11 @@ class StylePropertyParser{
      * Returns a GradientFillStyle
      */
     class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
-        var newGradient:IGradient = value(skin, "fill") as! IGradient//GradientParser.clone();
-        var size:CG = Point(skin.getWidth(),skin.getHeight());
-        var gradientBox:Matrix = MatrixParser.gradientBox(0, 0, size.x, size.y,newGradient.type == GradientType.LINEAR ? newGradient.rotation : 0);
-        if(newGradient.matrix != null){/*apply the matrix provided on to the matrix representing the dimensions of the skin*/
-            var matrixObj:Object = newGradient.matrix;
-            var center:Point = new Point(size.x/2,size.y/2);
-            if(matrixObj["xScale"] != 1 && matrixObj["yScale"] != 1) MatrixModifier.scale(gradientBox, center, new Point(matrixObj["xScale"],matrixObj["yScale"]));
-            if(matrixObj["rotation"] != 0) MatrixModifier.rotateAroundExternalPoint(gradientBox, center, matrixObj["rotation"]);
-            if(matrixObj["x"] != 1 && matrixObj["y"] != 1){
-                var offset:Point = new Point(size.x*matrixObj["x"],size.y*matrixObj["y"]);
-                gradientBox.translate(offset.x-center.x,offset.y-center.y);
-            }
-        }
-        newGradient.matrix = gradientBox;
-        return new GradientFillStyle(newGradient);
+        let newGradient:IGradient = value(skin, "fill") as! IGradient//GradientParser.clone();
+        let sizeWidth:Double = skin.width!
+        let sizeHeight:Double = skin.height!
+        
+        return GradientFillStyle(newGradient,NSColor.clearColor());
     }
     /**
      *

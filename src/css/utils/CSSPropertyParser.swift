@@ -27,6 +27,7 @@ class CSSPropertyParser {
     * @Note setting the gradientType isnt necessary since its the default setting
     */
     class func linearGradient(string:String)->IGradient{
+        Swift.print("CSSPropertyparser.linearGradient")
         let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let rotation:Double = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
@@ -59,8 +60,9 @@ private class Utils{
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
             
             let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
+            Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
-                match.numberOfRanges
+                Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
                 //let content = RegExp.value(property, match, 0)//the entire match
                 let color:String = RegExp.value(property, match, 1)
                 Swift.print("color: " + color)

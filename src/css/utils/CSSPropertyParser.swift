@@ -88,7 +88,7 @@ class Utils{
         else if(RegExp.test(rotationMatch,directionPattern)){
             let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
             rotation = Trig.angleType(angleType)+180;// :TODO: Create support for top left and other corners
-        }
+        }else{fatalError("Error")}
         //		trace("rotation: " + rotation);
         return rotation;
     }

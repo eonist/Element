@@ -49,4 +49,13 @@ private class Utils{
     class func fillet(decoratable:IGraphicDecoratable,_ fillet:Fillet)->IGraphicDecoratable {
         return RoundRectGraphic(decoratable, fillet)
     }
+    /**
+     * Returns a "GradientDecorator instance" wrapped around a @param decoratable
+     * @Note: to use a custom matrix, pass a matrix with the @param gradient or @param lineGradient
+     * @Note: doesnt drawLine by default, pass a Gradient instance with @param lineGradient to draw a gradientLine
+     * // :TODO: support for GradientLineStyle, GradientFillStyle
+     */
+    class func gradient(decoratable:IGraphicDecoratable,_ fillStyle:IFillStyle)->IGraphicDecoratable{
+        return GradientGraphic(decoratable, fillStyle);
+    }
 }

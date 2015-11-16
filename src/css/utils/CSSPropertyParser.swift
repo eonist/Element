@@ -67,10 +67,9 @@ class Utils{
                 
                 let alpha:String = RegExp.value(property, match, 2)
                 gradient.colors.append(ColorParser.cgColor(StringParser.color(color,Float(alpha)!)))
-                //continue here
                 
                 let ratio:String = RegExp.value(property, match, 3)
-                gradient.locations.append(CGFloat(Float(ratio)))
+                gradient.locations.append(CGFloat(Float(ratio)!))
             }
             /*
             var matches:Array = property.match();

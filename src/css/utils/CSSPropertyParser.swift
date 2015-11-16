@@ -96,13 +96,16 @@ class Utils{
         //		trace("rotation: " + rotation);
         return rotation;
     }
+    /**
+     *
+     */
     class func alpha(var alpha:String)->Double{
-        var alphaValue:Double = 1;
-        if(RegExp.test(alpha,"\\d{1,3}%"){//i.e: 100%
+        var alphaValue:Double = 1
+        if(RegExp.test(alpha,"\\d{1,3}%")){//i.e: 100%
             alpha = RegExp.match(alpha,"\\d{1,3}")[0];
-            alphaValue = Number(alpha)/100;
-        }else if(RegExp(/\d\.\d{1,3}|\d/).test(alpha)) alphaValue = Number(alpha);//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
-        else if(RegExp(/^$/).test(alpha)) alphaValue = 1;//no value present
+            alphaValue = Double(alpha)!/100
+        }else if(RegExp.test(alpha,"\\d\\.\\d{1,3}|\\d")) {alphaValue = Double(alpha)!}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+        else if(RegExp.test(alpha,"^$")) {alphaValue = 1}//no value present
         return alphaValue;
     }
 }

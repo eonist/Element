@@ -32,7 +32,7 @@ class CSSPropertyParser {
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         var rotation:Double = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
-        gradient.rotation = rotation*Trig.RAD;// :TODO: rotations should be applied in the matrix
+        gradient.rotation = rotation * Trig.RAD;// :TODO: rotations should be applied in the matrix
         return gradient;
     }
     /**
@@ -74,16 +74,6 @@ class Utils{
                 if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) * 255.0 }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 gradient.locations.append(CGFloat(Float(ratioValue)))
             }
-            /*
-            var matches:Array = property.match();
-                gradient.colors.push(StringParser.color(matches["color"]));
-                gradient.alphas.push(Utils.alpha(matches["alpha"]));
-                var ratioValue:Number = Utils.ratio(matches["ratio"]);
-                if(isNaN(ratioValue)) ratioValue = (i / (properties.length-1))*255;/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                gradient.ratios.push(ratioValue);
-                }
-                return gradient;
-            */
         }
         return gradient
     }

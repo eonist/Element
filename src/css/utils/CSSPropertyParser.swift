@@ -54,9 +54,9 @@ class Utils{
     */
     class func gradient(properties:Array<String>)->IGradient {
         print("properties: " + String(properties));
-        var gradient:Gradient = Gradient();
+        let gradient:Gradient = Gradient();
         for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
-            var property:String = properties[i];
+            let property:String = properties[i];
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
             
             let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
@@ -70,8 +70,9 @@ class Utils{
                 gradient.colors.append(ColorParser.cgColor(StringParser.color(color,alphaVal)))
                 
                 let ratio:String = RegExp.value(property, match, 3)
-                let ratioVal:Double = 
-                gradient.locations.append(CGFloat(Float(ratio)!))
+                let ratioVal:CGFloat = CGFloat(Float(Utils.ratio(ratio)))
+                if(isNaN(ratioValue)) ratioValue = (i / (properties.length-1))*255;/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
+                gradient.locations.append(ratioVal)
             }
             /*
             var matches:Array = property.match();
@@ -84,6 +85,7 @@ class Utils{
                 return gradient;
             */
         }
+        return gradient
     }
     class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
         var rotation:Double;

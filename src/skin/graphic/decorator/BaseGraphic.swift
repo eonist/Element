@@ -8,7 +8,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     lazy var graphics:Graphics = Graphics()
-    var path:CGPath = CGPathCreateMutable()
+    var path:CGMutablePath = CGPathCreateMutable()
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/) {
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle

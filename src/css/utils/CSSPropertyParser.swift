@@ -46,7 +46,7 @@ class CSSPropertyParser {
         return array;
     }
 }
-class Utils{
+private class Utils{
     /**
      * Returns a Gradient instance derived from @param properties
      * @Note adds colors, opacities and ratios

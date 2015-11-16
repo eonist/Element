@@ -12,11 +12,11 @@ class GraphicModifier {
         
         
         */
-        //let fillGradientType:String = fillStyle.getStyleProperty("fillGradientType")!.value as! String
+        
         
         /*
-        let fillGradientColorA:String = fillStyle.getStyleProperty("fillGradientColorA")!.value as! String
-        let fillGradientColorB:String = fillStyle.getStyleProperty("fillGradientColorB")!.value as! String
+        
+        
         
         let lineColor:String = lineStyle.getStyleProperty("lineColor")!.value as! String
         let lineAlpha:Double = lineStyle.getStyleProperty("lineAlpha")!.value as! Double
@@ -34,7 +34,9 @@ class GraphicModifier {
         
         //nsFillColor.setFill();
         //nsLineColor.setStroke();
+        ////graphics.line(CGFloat(lineWidth),nsLineColor)//Stylize the line
         
+
         graphics.fill(fillStyle.color)//Stylize the fill
         
         

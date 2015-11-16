@@ -70,9 +70,9 @@ class Utils{
                 gradient.colors.append(ColorParser.cgColor(StringParser.color(color,alphaVal)))
                 
                 let ratio:String = RegExp.value(property, match, 3)
-                let ratioVal:CGFloat = CGFloat(Float(Utils.ratio(ratio)))
-                if(isNaN(ratioValue)) ratioValue = (i / (properties.length-1))*255;/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                gradient.locations.append(ratioVal)
+                var ratioValue:Double = Utils.ratio(ratio)
+                if(isNaN(ratioValue)) { ratioValue = (i / (properties.length-1)) * 255 }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
+                gradient.locations.append(CGFloat(Float(ratioValue)))
             }
             /*
             var matches:Array = property.match();

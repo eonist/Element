@@ -15,6 +15,10 @@ class GraphicSkinParser{
         var graphic:IGraphicDecoratable = Utils.baseGraphic(fillStyle)
         graphic = Utils.rectGraphic(graphic, skin)
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
+        
+        //continue here, add a check for the gradient
+        
+        
         //graphic = RoundRectGraphic2(graphic)
         //graphic = GradientGrapix(graphic)
         //grapix = CircleGrapix(graphic)

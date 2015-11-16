@@ -64,8 +64,8 @@ class StylePropertyParser{
      * Returns a GradientFillStyle
      */
     class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
-        var newGradient:IGradient = GradientParser.clone(value(skin, "fill", depth));
-        var size:Point = new Point(skin.getWidth(),skin.getHeight());
+        var newGradient:IGradient = value(skin, "fill") as! IGradient//GradientParser.clone();
+        var size:CG = Point(skin.getWidth(),skin.getHeight());
         var gradientBox:Matrix = MatrixParser.gradientBox(0, 0, size.x, size.y,newGradient.type == GradientType.LINEAR ? newGradient.rotation : 0);
         if(newGradient.matrix != null){/*apply the matrix provided on to the matrix representing the dimensions of the skin*/
             var matrixObj:Object = newGradient.matrix;

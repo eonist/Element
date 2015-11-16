@@ -48,9 +48,9 @@ class CSSPropertyParser {
 }
 class Utils{
     /**
-    * Returns a Gradient instance derived from @param properties
-    * @Note adds colors, opacities and ratios
-    */
+     * Returns a Gradient instance derived from @param properties
+     * @Note adds colors, opacities and ratios
+     */
     class func gradient(properties:Array<String>)->IGradient {
         print("properties: " + String(properties));
         let gradient:Gradient = Gradient();
@@ -76,6 +76,9 @@ class Utils{
         }
         return gradient
     }
+    /**
+     *
+     */
     class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
         var rotation:Double;
         let directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?
@@ -90,8 +93,8 @@ class Utils{
         return rotation;
     }
     /**
-    * // :TODO: add support for auto ratio values if they are not defined, you have implimented this functionality somewhere, so find this code
-    */
+     * // :TODO: add support for auto ratio values if they are not defined, you have implimented this functionality somewhere, so find this code
+     */
     class func ratio(var ratio:String)->Double{
         var ratioValue:Double = Double.NaN
         if(RegExp.test(ratio,"\\d{1,3}%")){//i.e: 100%
@@ -113,3 +116,20 @@ class Utils{
         return alphaValue;
     }
 }
+/*
+// :TODO: Maybe support for color values like: 0x00ff00 and 00ff00
+// :TODO: maybe support for rotation values in radiens? and scalar?
+// :TODO: radial-gradient support
+linear-gradient(90deg|90|left|right|top|bottom|, #B1D0DE 0.5|50%| 0.2|20%|, #F3F8F9 0.3|30%| 0.1|10%|);//rotation,firstStop(color,ratio,alpha),secondStop(color,ratio,alpha),and so on
+
+// :TODO: write similar syntax:
+<linear-gradient> = linear-gradient(
+[
+[ [top | bottom] || [left | right] ]
+|
+<angle>
+,]?
+<color-stop>[, <color-stop>]+
+);
+
+*/

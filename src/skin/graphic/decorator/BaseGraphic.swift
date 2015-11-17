@@ -22,7 +22,8 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         self.lineOffsetType = lineOffsetType
     }
     /**
-     * TODO:color cant be uint since uint cant be NaN, use Double
+     * TODO: color cant be uint since uint cant be NaN, use Double, 
+     * TODO:  check if cgfloat can be NaN?
      */
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/

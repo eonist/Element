@@ -12,6 +12,6 @@ class RectGraphic:GraphicDecoratable{
      */
     func drawLine(){
         
-        var maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, getGraphic().width,getGraphic().height), getGraphic().lineStyle!, getGraphic().lineOffsetType);
+        let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, getGraphic().width,getGraphic().height), getGraphic().lineStyle!, getGraphic().lineOffsetType!);
     }
 }

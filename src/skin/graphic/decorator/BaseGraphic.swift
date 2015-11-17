@@ -9,14 +9,15 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     var height:Double;
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
+    var lineOffsetType:OffsetType?
     lazy var graphics:Graphics = Graphics()
     var path:CGMutablePath = CGPathCreateMutable()
-    init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil/*, _ lineOffsetType:OffsetType = OffsetType()*/) {
+    init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()) {
         self.width = width;
         self.height = height;
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
-        
+        self.lineOffsetType = lineOffsetType
     }
     /**
      * TODO:color cant be uint since uint cant be NaN, use Double

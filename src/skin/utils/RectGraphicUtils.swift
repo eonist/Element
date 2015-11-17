@@ -1,6 +1,13 @@
 import Foundation
 
 class RectGraphicUtils {
+    class func maskRect(rect:Rectangle,lineStyle:ILineStyle, offsetType:OffsetType):Rectangle {
+    if(offsetType.left == OffsetType.OUTSIDE) rect.width += lineStyle.thickness;
+    if(offsetType.right == OffsetType.OUTSIDE) rect.width += lineStyle.thickness;
+    if(offsetType.top == OffsetType.OUTSIDE) rect.height += lineStyle.thickness;
+    if(offsetType.bottom == OffsetType.OUTSIDE) rect.height += lineStyle.thickness;
+    return rect;
+    }
     /**
      * Returns a Rect by offsetting @param primitiveRect @param primitiveRect with @param lineOffset
      */

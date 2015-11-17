@@ -14,13 +14,8 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(fillStyle)
         graphic = Utils.rectGraphic(graphic, skin)
-        if(StylePropertyAsserter.hasGradient(skin)) {
-            graphic = Utils.gradient(graphic)
-        }else{
-            fatalError("NO GRADIENT")
-        }
+        if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
-       
         graphic.initialize()//runs trough all the different calls and makes the graphic in one go.
     }
 }

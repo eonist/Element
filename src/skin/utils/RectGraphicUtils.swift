@@ -28,10 +28,13 @@ private class Utils{
     */
     class func corner(rect:CGRect,_ lineStyle:ILineStyle,_ cornerType:String,_ offsetType:OffsetType)->CGPoint{
         var rectangle:CGRect = rect.clone()
-        /*
-        
         rectangle.x = lineStyle.thickness/2;
         rectangle.y = lineStyle.thickness/2;
+        
+        /*
+        
+        
+        
         if(offsetType.right == OffsetType.OUTSIDE) rectangle.width = rectangle.width + lineStyle.thickness;
         else if(offsetType.left == OffsetType.OUTSIDE) rectangle.width = rectangle.width + lineStyle.thickness;
         if(offsetType.bottom == OffsetType.OUTSIDE) rectangle.height += lineStyle.thickness;

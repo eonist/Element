@@ -2,29 +2,25 @@ import Foundation
 
 class RectGraphicUtils {
     /**
-    * Returns a Rect by offsetting @param primitiveRect @param primitiveRect with @param lineOffset
-    */
+     * Returns a Rect by offsetting @param primitiveRect @param primitiveRect with @param lineOffset
+     */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
         let topLeft:CGPoint = Utils.corner(rect, lineStyle, Alignment.topLeft,offsetType);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
         //print("topLeft: " + topLeft);
-        var bottomRight:Point = corner(rect, lineStyle, Alignment.BOTTOM_RIGHT,offsetType);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
-         /*
-        //			print("bottomRight: " + bottomRight);
-        var x:Number = topLeft.x;
-        var y:Number = topLeft.y;
-        var width:Number = bottomRight.x - topLeft.x;
-        var height:Number = bottomRight.y - topLeft.y;
-        return new Rectangle(x, y, width, height);
-        */
-        return CGRect()
+        let bottomRight:CGPoint = Utils.corner(rect, lineStyle, Alignment.bottomRight,offsetType);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
+        //print("bottomRight: " + bottomRight);
+        let x:CGFloat = topLeft.x;
+        let y:CGFloat = topLeft.y;
+        let width:CGFloat = bottomRight.x - topLeft.x;
+        let height:CGFloat = bottomRight.y - topLeft.y;
+        return CGRect(x, y, width, height);
     }
-    
 }
 private class Utils{
     /**
-    * Returns a corner point
-    * // :TODO: refactor
-    */
+     * Returns a corner point
+     * // :TODO: refactor
+     */
     class func corner(rect:CGRect,_ lineStyle:ILineStyle,_ cornerType:String,_ offsetType:OffsetType)->CGPoint{
         var rectangle:CGRect = rect.clone()
         rectangle.x = lineStyle.thickness/2;

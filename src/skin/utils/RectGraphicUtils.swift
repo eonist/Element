@@ -5,12 +5,11 @@ class RectGraphicUtils {
     * Returns a Rect by offsetting @param primitiveRect @param primitiveRect with @param lineOffset
     */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
-        
         let topLeft:CGPoint = Utils.corner(rect, lineStyle, Alignment.topLeft,offsetType);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
-        /*
-        //			print("topLeft: " + topLeft);
+        //print("topLeft: " + topLeft);
         var bottomRight:Point = corner(rect, lineStyle, Alignment.BOTTOM_RIGHT,offsetType);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
-        //			trace("bottomRight: " + bottomRight);
+         /*
+        //			print("bottomRight: " + bottomRight);
         var x:Number = topLeft.x;
         var y:Number = topLeft.y;
         var width:Number = bottomRight.x - topLeft.x;

@@ -12,7 +12,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     var lineOffsetType:OffsetType?
     lazy var graphics:Graphics = Graphics()
     var path:CGMutablePath = CGPathCreateMutable()
-    var graphic:BaseGraphic {get{return self}}
+    override var graphic:IBaseGraphic {get{return self}}
     init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()) {
         self.width = width;
         self.height = height;

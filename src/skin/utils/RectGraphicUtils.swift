@@ -37,16 +37,7 @@ private class Utils{
         if(offsetType.right == OffsetType.inside && offsetType.left == OffsetType.inside) { rectangle.width = rectangle.width + lineStyle.thickness }
         if(offsetType.top == OffsetType.inside) { rectangle.y = -lineStyle.thickness/2 }
         if(offsetType.bottom == OffsetType.inside) { rectangle.height = rectangle.height + lineStyle.thickness }
-        /*
         
-        
-        
-        
-        
-        
-        */
-        //return rectangle[cornerType];
-        
-        return CGPoint()
+        return rectangle[cornerType];
     }
 }

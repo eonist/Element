@@ -33,7 +33,7 @@ private class Utils{
         if(offsetType.right == OffsetType.outside) { rectangle.width = rectangle.width + lineStyle.thickness }
         else if(offsetType.left == OffsetType.outside) { rectangle.width = rectangle.width + lineStyle.thickness }
         if(offsetType.bottom == OffsetType.outside) { rectangle.height += lineStyle.thickness }
-        if(offsetType.left == OffsetType.INSIDE) rectangle.x = -lineStyle.thickness/2;
+        if(offsetType.left == OffsetType.inside) rectangle.x = -lineStyle.thickness/2;
         /*
         
         

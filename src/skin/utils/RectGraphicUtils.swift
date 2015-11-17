@@ -34,15 +34,19 @@ private class Utils{
         else if(offsetType.left == OffsetType.outside) { rectangle.width = rectangle.width + lineStyle.thickness }
         if(offsetType.bottom == OffsetType.outside) { rectangle.height += lineStyle.thickness }
         if(offsetType.left == OffsetType.inside) { rectangle.x = -lineStyle.thickness/2 }
-        if(offsetType.right == OffsetType.inside && offsetType.left == OffsetType.INSIDE) rectangle.width = rectangle.width + lineStyle.thickness;
+        if(offsetType.right == OffsetType.inside && offsetType.left == OffsetType.inside) { rectangle.width = rectangle.width + lineStyle.thickness }
+        if(offsetType.top == OffsetType.inside) { rectangle.y = -lineStyle.thickness/2 }
+        if(offsetType.bottom == OffsetType.inside) { rectangle.height = rectangle.height + lineStyle.thickness }
         /*
         
         
         
-        if(offsetType.top == OffsetType.INSIDE) rectangle.y = -lineStyle.thickness/2;
-        if(offsetType.bottom == OffsetType.INSIDE) rectangle.height = rectangle.height + lineStyle.thickness;
-        return rectangle[cornerType];
+        
+        
+        
         */
+        //return rectangle[cornerType];
+        
         return CGPoint()
     }
 }

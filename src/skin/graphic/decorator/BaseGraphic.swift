@@ -14,7 +14,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     var lineOffsetType:OffsetType?
     var path:CGMutablePath = CGPathCreateMutable()
     
-    init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()) {
+    init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
         self.width = width;
         self.height = height;
         self.fillStyle = fillStyle

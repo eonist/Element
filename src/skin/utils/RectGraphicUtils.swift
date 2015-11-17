@@ -1,11 +1,14 @@
 import Foundation
 
 class RectGraphicUtils {
-    class func maskRect(rect:CGRect,_ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
-        if(offsetType.left == OffsetType.outside) { rect.width += lineStyle.thickness };
-        if(offsetType.right == OffsetType.outside) rect.width += lineStyle.thickness;
-        if(offsetType.top == OffsetType.outside) rect.height += lineStyle.thickness;
-        if(offsetType.bottom == OffsetType.outside) rect.height += lineStyle.thickness;
+    /**
+     *
+     */
+    class func maskRect(var rect:CGRect,_ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
+        if(offsetType.left == OffsetType.outside) { rect.width += lineStyle.thickness }
+        if(offsetType.right == OffsetType.outside) {rect.width += lineStyle.thickness}
+        if(offsetType.top == OffsetType.outside) {rect.height += lineStyle.thickness}
+        if(offsetType.bottom == OffsetType.outside) {rect.height += lineStyle.thickness}
         return rect;
     }
     /**

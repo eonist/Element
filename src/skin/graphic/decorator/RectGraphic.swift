@@ -4,8 +4,7 @@ class RectGraphic:GraphicDecoratable{
     var width:Double;
     var height:Double;
     init(_ decoratable: IGraphicDecoratable, _ width:Double = 100, _ height:Double = 100) {
-        self.width = width;
-        self.height = height;
+        
         super.init(decoratable)
     }
     override func drawFill() {

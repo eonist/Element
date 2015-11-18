@@ -18,7 +18,7 @@ class Element: FlippedView,IElement {
         self.height = height;
         self.parent = parent;
         self.id = id;
-        let frame = NSRect(x: 0, y: 0, width: width, height: height)
+        let frame = NSRect(x: 50, y: 50, width: width, height: height)
         super.init(frame: frame)
         self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
     }

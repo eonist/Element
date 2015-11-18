@@ -9,8 +9,8 @@ class Skin:FlippedView,ISkin{
     var decoratable:IGraphicDecoratable!
     var style:IStyle?
     var state:String
-    var width:Double?;
-    var height:Double?;
+    var width:CGFloat?;
+    var height:CGFloat?;
     var element:IElement?
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;

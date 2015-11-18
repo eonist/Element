@@ -8,7 +8,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     override func initialize(){
         
-        //fill()
+        fill()
         line()
         
     }

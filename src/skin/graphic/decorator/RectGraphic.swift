@@ -30,6 +30,8 @@ class RectGraphic:GraphicDecoratable{
             
             //implement masking or clipping of the line
             
+            //find the test shapes from before
+            
             
             
             //drawLine

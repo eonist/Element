@@ -61,8 +61,8 @@ class StylePropertyParser{
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
     class func color(skin:ISkin, propertyName:String) -> Double {
-        var color:Any? = value(skin, propertyName);
-        return (color == CSSConstants.none || color == nil) ? Double.NaN : color;
+        let color:Any? = value(skin, propertyName);
+        return (String(color) == CSSConstants.none || color == nil) ? Double.NaN : Double(color as! UInt);
     }
     /**
      * Returns a Fillet instance

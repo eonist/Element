@@ -26,11 +26,19 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.stylizeFill()
     }
     override func line(){
-        
+        applyLineStyle()
+        drawLine()
+        stylizeLine()
     }
-    override func applyLineStyle(){}
-    override func drawLine(){}
-    override func stylizeLine(){}
+    override func applyLineStyle(){
+        decoratable.applyLineStyle()
+    }
+    override func drawLine(){
+        decoratable.drawLine()
+    }
+    override func stylizeLine(){
+        decoratable.stylizeLine()
+    }
     /**
      * Returns _decoratable.graphic
      * @Note: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.

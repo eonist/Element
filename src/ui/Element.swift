@@ -3,6 +3,8 @@ import Cocoa
 class Element: FlippedView,IElement {
     var skinState:String = SkinStates.none
     var skin:ISkin?
+    var x:CGFloat = 0;
+    var y:CGFloat = 0;
     var width:Double?
     var height:Double?
     var parent : IElement?
@@ -117,6 +119,14 @@ extension IElement {
     func getParent()->IElement? {// :TODO: beta
         //Swift.print("_parent: " + _parent);
         return self.parent;
+    }
+    /**
+     * Positions the Element instance to @param point,
+     * TODO: this could also be move to an utils class
+     */
+    func setPosition(point:CGPoint){
+        self.x = point.x;
+        self.y = point.y;
     }
 }
 

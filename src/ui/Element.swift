@@ -11,7 +11,7 @@ class Element: FlippedView,IElement {
     var hasClear:Bool = false
     
     init(_ width: Double = 100, _ height: Double = 40, _ parent:IElement? = nil,_ id:String? = nil){
-        Swift.print("Element.init")
+        //Swift.print("Element.init")
         self.width = width;
         self.height = height;
         self.parent = parent;
@@ -25,12 +25,12 @@ class Element: FlippedView,IElement {
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
     override func drawRect(rect: NSRect) {
-        Swift.print("Element.drawRect()  " + "\(hasClear)")
+        //Swift.print("Element.drawRect()  " + "\(hasClear)")
         if(!hasClear){
             
-            let graphicsContext = NSGraphicsContext.currentContext()!
-            let context = graphicsContext.CGContext
-            Swift.print("Context: " + String(context))
+            //let graphicsContext = NSGraphicsContext.currentContext()!
+            //let context = graphicsContext.CGContext
+            //Swift.print("Context: " + String(context))
             super.drawRect(rect)
             resolveSkin()
         }

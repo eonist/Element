@@ -7,3 +7,8 @@ class GradientLineStyle:LineStyle {
         super.init(thickness, color, lineCap, lineJoin, miterLimit)
     }
 }
+extension GradientLineStyle{
+    func gradientLineStyle(gradient:IGradient,lineStyle:ILineStyle)->GradientLineStyle {
+        return new GradientLineStyle(gradient,lineStyle.thickness,lineStyle.color,lineStyle.alpha,lineStyle.pixelHinting, lineStyle.lineScaleMode,lineStyle.capStyle,lineStyle.jointStyle, lineStyle.miterLimit);
+    }
+}

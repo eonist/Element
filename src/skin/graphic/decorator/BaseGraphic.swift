@@ -39,11 +39,13 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
      *
      */
     override func applyLineStyle() {
+        Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
             graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
     override func stylizeLine(){
+        Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylize(linePath,graphics)//realize style on the graphic
     }
     func setPosition(position:CGPoint){

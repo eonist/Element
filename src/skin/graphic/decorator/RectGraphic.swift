@@ -12,7 +12,7 @@ class RectGraphic:GraphicDecoratable{
     /**
      *
      */
-    func drawLine(){
+    override func drawLine(){
         Swift.print("RectGraphic.drawLine()")
         if(getGraphic().lineStyle != nil){
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);

@@ -1,6 +1,6 @@
 import Cocoa
 
-class Element: FlippedView,IElement {
+class Element: View,IElement {
     var skinState:String = SkinStates.none
     var skin:ISkin?
     /*
@@ -14,7 +14,7 @@ class Element: FlippedView,IElement {
     var id : String?;/*css selector id*/
     var style:IStyle = Style.clear
     var hasClear:Bool = false
-    override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
+    
     init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ parent:IElement? = nil,_ id:String? = nil){
         //Swift.print("Element.init")
         /*
@@ -23,9 +23,10 @@ class Element: FlippedView,IElement {
         */
         self.parent = parent;
         self.id = id;
-        let frame = NSRect(x: 0, y: 0, width: width, height: height)
-        super.init(frame: frame)
-        self.wantsLayer = false//this avoids calling drawLayer() and enables drawingRect()
+        super.init(frame: NSRect(0,0,width,height))
+    }
+    convenience init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ x:CGFloat, _ y:CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
+        self.init(width,height,parent,id)
     }
     /**
      * Note: if you overide drawRect then update layers wont work
@@ -59,6 +60,7 @@ class Element: FlippedView,IElement {
 }
 
 extension IElement {
+    
     /**
      * Draws the graphics
      * TODO: does nsview have a protocol which IElement then can use
@@ -130,8 +132,10 @@ extension IElement {
      * TODO: this could also be move to an utils class
      */
     func setPosition(point:CGPoint){
+        /*
         self.x = point.x;
         self.y = point.y;
+        */
     }
 }
 

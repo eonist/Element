@@ -55,7 +55,7 @@ class StylePropertyParser{
         var lineColorValue:Double = color(skin, CSSConstants.line);
         var lineThickness:Double = value(skin, CSSConstants.lineThickness) as! Double;
         var lineAlpha:Double = value(skin, CSSConstants.lineAlpha) as? Double ?? Double.NaN;
-        var lineColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))
+        var lineColor:NSColor = ColorParser.nsColor(UInt(color), Float(lineAlpha))
         return new LineStyle(lineThickness, lineColor, lineAlpha);
     }
     /**

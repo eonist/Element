@@ -7,7 +7,7 @@ class RectGraphic:GraphicDecoratable{
     override func drawFill() {
         let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         let y:CGFloat = graphic.lineOffsetType!.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        getGraphic().path = CGPathParser.rect(CGFloat(getGraphic().width), CGFloat(getGraphic().height),x,y)
+        getGraphic().path = CGRect(x,y,graphic.width, graphic.height).path
     }
     /**
      *

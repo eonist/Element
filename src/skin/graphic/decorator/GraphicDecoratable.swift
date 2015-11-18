@@ -26,6 +26,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.stylizeFill()
     }
     override func line(){
+        Swift.print("GraphicDecoratable.line()")
         applyLineStyle()
         drawLine()
         stylizeLine()

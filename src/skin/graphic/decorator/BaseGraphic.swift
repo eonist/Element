@@ -27,11 +27,11 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
      */
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
-            getGraphic().graphics.fill(fillStyle!.color)//Stylize the fill
+            graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
     override func stylizeFill(){
-        GraphicModifier.stylize(getGraphic().path,getGraphic().graphics)//realize style on the graphic
+        GraphicModifier.stylize(path,graphics)//realize style on the graphic
     }
     func setPosition(position:CGPoint){
         CGPathModifier.translate(&path,position.x,position.y)//Transformations

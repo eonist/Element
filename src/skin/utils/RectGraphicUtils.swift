@@ -16,9 +16,15 @@ class RectGraphicUtils {
      */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
         let topLeft:CGPoint = Utils.corner(rect, lineStyle, Alignment.topLeft,offsetType);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
-        //print("topLeft: " + topLeft);
+        print("topLeft: " + String(topLeft));
         let bottomRight:CGPoint = Utils.corner(rect, lineStyle, Alignment.bottomRight,offsetType);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
-        //print("bottomRight: " + bottomRight);
+        print("bottomRight: " + String(bottomRight));
+        
+        
+        //continue here: try to make this method work by printing its values, figure out whats wrong
+        
+        
+        
         let x:CGFloat = topLeft.x;
         let y:CGFloat = topLeft.y;
         let width:CGFloat = bottomRight.x - topLeft.x;

@@ -21,7 +21,7 @@ class RectGraphic:GraphicDecoratable{
             
             //Swift.print("graphicRect: " + String(graphicRect))
             let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType!);
-            //Swift.print("rect: " + String(rect))
+            Swift.print("rect: " + String(rect))
             
       
             

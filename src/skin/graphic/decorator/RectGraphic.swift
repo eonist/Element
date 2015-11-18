@@ -23,6 +23,11 @@ class RectGraphic:GraphicDecoratable{
             let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType!);
             Swift.print("rect: " + String(rect))
             
+            
+            //continue here: take a look at your old renders. see what its all about
+            
+            
+            
             //drawLine
             /*
             let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;

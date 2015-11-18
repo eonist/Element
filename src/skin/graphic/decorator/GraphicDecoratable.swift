@@ -7,10 +7,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         self.decoratable = decoratable
     }
     override func initialize(){
-        
         fill()
         line()
-        
     }
     override func fill(){
         beginFill()
@@ -28,7 +26,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.stylizeFill()
     }
     override func line(){
-        Swift.print("GraphicDecoratable.line()")
+        //Swift.print("GraphicDecoratable.line()")
         applyLineStyle()
         drawLine()
         stylizeLine()

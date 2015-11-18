@@ -15,16 +15,13 @@ class Element: View,IElement {
     var style:IStyle = Style.clear
     var hasClear:Bool = false
     
-    init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ parent:IElement? = nil,_ id:String? = nil){
-        //Swift.print("Element.init")
-        /*
-        self.width = width;
-        self.height = height;
-        */
+    init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ x:CGFloat, _ y:CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        super.init(frame: NSRect(0,0,width,height))
+        
+        super.init(frame: NSRect(x,y,width,height))
     }
+
     /**
      * Note: if you overide drawRect then update layers wont work
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
@@ -137,10 +134,12 @@ extension IElement {
 }
 
 extension Element{
-    convenience init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ x:CGFloat, _ y:CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
-        self.parent = parent;
-        self.id = id;
-        self.init(frame: NSRect(0,0,width,height))
+    /**
+     *
+     */
+    convenience init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ parent:IElement? = nil,_ id:String? = nil){
+        self.init(width,height,0,0,parent,id)
+        
     }
 }
 /*

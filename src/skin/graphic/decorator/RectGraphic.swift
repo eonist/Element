@@ -22,10 +22,12 @@ class RectGraphic:GraphicDecoratable{
             Swift.print("rect: " + String(rect))
             
             //drawLine
+            /*
             let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
             let y:CGFloat = graphic.lineOffsetType!.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
             graphic.linePath = CGRect(x,y,graphic.width, graphic.height).path
-            //graphic.linePath = rect.path
+            */
+            graphic.linePath = rect.path
             
             
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);

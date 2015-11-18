@@ -53,8 +53,8 @@ class StylePropertyParser{
     */
     class func colorLineStyle(skin:ISkin) -> ILineStyle {
         var lineColorValue:Double = color(skin, CSSConstants.line);
-        var lineThickness:Double = Double(value(skin, CSSConstants.lineThickness));
-        var lineAlpha:Number = value(skin, CSSConstants.LINE_ALPHA, depth) || NaN;
+        var lineThickness:Double = value(skin, CSSConstants.lineThickness) as! Double;
+        var lineAlpha:Double = value(skin, CSSConstants.lineAlpha) as? Double ?? Double.NaN;
         var lineColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))
         return new LineStyle(lineThickness, lineColor, lineAlpha);
     }

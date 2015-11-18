@@ -53,7 +53,8 @@ class Element: View,IElement {
 }
 
 extension IElement {
-    var width:CGFloat {get{self.frame.width}set(self.frame.width = newValue)}
+    var width:CGFloat {get{self.frame.width}}
+    var height:CGFloat {get{self.frame.height}}
     /**
      * Draws the graphics
      * TODO: does nsview have a protocol which IElement then can use

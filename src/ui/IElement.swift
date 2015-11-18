@@ -6,8 +6,8 @@ protocol IElement:class, IView{
     var skin:ISkin?{get set}
     //var x:CGFloat{get set}
     //var y:CGFloat{get set}
-    var width:CGFloat?{get set}
-    var height:CGFloat?{get set}
+    var width:CGFloat?{get }
+    var height:CGFloat?{get }
     func resolveSkin()
     func getSkinState() -> String
     func getParent()->IElement?//TODO: maybe use weak?

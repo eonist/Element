@@ -50,6 +50,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     }
     func setPosition(position:CGPoint){
         CGPathModifier.translate(&path,position.x,position.y)//Transformations
+        //TODO:also translate the linePath here
     }
     func setSize(width:Double,height:Double) {
         self.width = width;

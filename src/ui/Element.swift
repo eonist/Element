@@ -15,7 +15,7 @@ class Element: View,IElement {
     var style:IStyle = Style.clear
     var hasClear:Bool = false
     
-    init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ x:CGFloat = 0, _ y:CGFloat = 0, _ parent:IElement? = nil,_ id:String? = nil){
+    init(_ width: CGFloat, _ height: CGFloat, _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
         super.init(frame: NSRect(x,y,width,height))
@@ -136,7 +136,7 @@ extension Element{
     /**
      *
      */
-    convenience init(_ width: CGFloat = 100, _ height: CGFloat = 40, _ parent:IElement? = nil,_ id:String? = nil){
+    convenience init(_ width: CGFloat , _ height: CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
         self.init(width,height,0,0,parent,id)
         
     }

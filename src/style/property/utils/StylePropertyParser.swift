@@ -52,7 +52,7 @@ class StylePropertyParser{
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
     class func colorLineStyle(skin:ISkin) -> ILineStyle {
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as! CGFloat
+        let lineThickness:CGFloat = CGFloat(value(skin, CSSConstants.lineThickness) as! Double)
         let lineColorValue:Double = color(skin, CSSConstants.line)
         let lineAlpha:Double = value(skin, CSSConstants.lineAlpha) as? Double ?? Double.NaN
         let lineColor:NSColor = ColorParser.nsColor(UInt(lineColorValue), Float(lineAlpha))

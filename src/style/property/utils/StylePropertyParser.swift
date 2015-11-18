@@ -58,6 +58,13 @@ class StylePropertyParser{
         return new LineStyle(lineThickness, lineColor, lineAlpha);
     }
     /**
+     * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
+     */
+    class func color(skin:ISkin, propertyName:String) -> Double {
+        var color:* = value(skin, propertyName, depth);
+        return (color == CSSConstants.none || color == null) ? Double.NaN : color;
+    }
+    /**
      * Returns a Fillet instance
      * // :TODO: probably upgrade to TRBL
      */

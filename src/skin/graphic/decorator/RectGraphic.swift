@@ -7,14 +7,14 @@ class RectGraphic:GraphicDecoratable{
     override func drawFill() {
         let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         let y:CGFloat = graphic.lineOffsetType!.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        getGraphic().path = CGRect(x,y,graphic.width, graphic.height).path
+        graphic.path = CGRect(x,y,graphic.width, graphic.height).path
     }
     /**
      *
      */
     override func drawLine(){
         Swift.print("RectGraphic.drawLine()")
-        if(getGraphic().lineStyle != nil){
+        if(graphic.lineStyle != nil){
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
             //drawLine
             graphic.linePath = rect.path

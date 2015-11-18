@@ -8,15 +8,14 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     override func initialize(){
         fill()
+        line()
     }
     override func fill(){
         beginFill()
         drawFill()
         stylizeFill()
     }
-    override func line(){
-        
-    }
+    
     override func beginFill(){
         decoratable.beginFill()
     }
@@ -26,6 +25,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func stylizeFill(){
         decoratable.stylizeFill()
     }
+    override func line(){
+        
+    }
+    override func applyLineStyle(){}
+    override func drawLine(){}
+    override func stylizeLine(){}
     /**
      * Returns _decoratable.graphic
      * @Note: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.

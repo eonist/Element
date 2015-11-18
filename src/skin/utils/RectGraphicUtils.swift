@@ -21,10 +21,6 @@ class RectGraphicUtils {
         print("bottomRight: " + String(bottomRight));
         
         
-        //continue here: try to make this method work by printing its values, figure out whats wrong
-        
-        
-        
         let x:CGFloat = topLeft.x;
         let y:CGFloat = topLeft.y;
         let width:CGFloat = bottomRight.x - topLeft.x;

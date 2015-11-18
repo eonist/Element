@@ -3,7 +3,7 @@ import Foundation
  * The AbstractDecorator has all the decorator methods
  */
 class AbstractGraphicDecoratable:IGraphicDecoratable{
-    var graphic:IBaseGraphic {get {fatalError("Must be overridden in subClass")} set{fatalError("Must be overridden in subClass")}}
+    var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic
     func getGraphic() -> BaseGraphic{fatalError("Must be overridden in subClass")}
     func initialize(){}
     /*Fill*/

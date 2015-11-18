@@ -19,7 +19,7 @@ class RectGraphic:GraphicDecoratable{
             //drawLine
             graphic.linePath = rect.path
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
-            let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, graphic.width,graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
+            //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, graphic.width,graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
             //draw the mask line
             //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height);
         }

@@ -14,6 +14,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         drawFill()
         stylizeFill()
     }
+    override func line(){
+        
+    }
     override func beginFill(){
         decoratable.beginFill()
     }

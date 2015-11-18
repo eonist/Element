@@ -30,6 +30,14 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
             graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
+    /**
+    * // :TODO: does this function need arguments?
+    */
+    override func applyLineStyle() {
+        if(lineStyle != nil) {
+            LineStyleUtils.applyLineStyle(graphics,lineStyle);/*updates only if lineStyle of class LineStyle*/
+        }
+    }
     override func stylizeFill(){
         GraphicModifier.stylize(path,graphics)//realize style on the graphic
     }

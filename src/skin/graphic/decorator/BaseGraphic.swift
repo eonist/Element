@@ -34,8 +34,8 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     * // :TODO: does this function need arguments?
     */
     override func applyLineStyle() {
-        if(lineStyle != nil) {
-            LineStyleUtils.applyLineStyle(graphics,lineStyle);/*updates only if lineStyle of class LineStyle*/
+        if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
+            graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
     override func stylizeFill(){

@@ -79,7 +79,7 @@ class StylePropertyParser{
     */
     class func gradientLineStyle(skin:ISkin) -> GradientLineStyle {
         var gradient:IGradient = value(skin, CSSConstants.LINE, depth);
-        gradient.rotation *= Trig.RAD;
+        gradient.rotation *= Trig.rad;
         gradient.matrix = MatrixParser.gradientBox(0, 0, skin.width, skin.height,  gradient.rotation * Trig.RAD);
         return GradientLineStyleParser.gradientLineStyle(gradient, colorLineStyle(skin,depth));
     }

@@ -17,6 +17,7 @@ class RectGraphic:GraphicDecoratable{
         if(getGraphic().lineStyle != nil){
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
             //drawLine
+            graphic.linePath = rect.path
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
             let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, graphic.width,graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
             //draw the mask line

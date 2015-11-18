@@ -26,7 +26,7 @@ class RectGraphic:GraphicDecoratable{
             
             //continue here: take a look at your old renders. see what its all about
             
-            
+            //implement x and y values, these should not be connected to the Element view 
             
             //drawLine
             /*

@@ -26,7 +26,7 @@ private class Utils{
     class func baseGraphic(fillStyle:IFillStyle,_ skin:ISkin)->IGraphicDecoratable {
         let width:Double = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
-        return BaseGraphic(width,height,fillStyle)
+        return BaseGraphic(width,height,fillStyle,nil,OffsetType())
     }
     /**
      * Returns a "GraphicRect instance"

@@ -35,5 +35,6 @@ class GraphicModifier {
         //path.fill()
         //path.stroke()
         graphics.draw(path)//draw everything
+        graphics.stopFill()
     }
 }

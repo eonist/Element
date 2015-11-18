@@ -20,6 +20,9 @@ class StylePropertyParser{
     class func fillStyle(skin:ISkin)->IFillStyle {
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
+    class func lineStyle(skin:ISkin)->ILineStyle {
+        return value(skin,CSSConstants.line) is IGradient ? gradientLineStyle(skin) : colorLineStyle(skin);
+    }
     /**
      * Returns a FillStyle instance
      */
@@ -68,6 +71,17 @@ class StylePropertyParser{
         //let sizeWidth:Double = skin.width!
         //let sizeHeight:Double = skin.height!
         return GradientFillStyle(newGradient,NSColor.clearColor());
+    }
+    /**
+    * Returns a GradientLineStyle
+    * // :TODO: does this work? where is the creation of line-thickness etc
+    * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
+    */
+    class func gradientLineStyle(skin:ISkin) -> GradientLineStyle {
+        var gradient:IGradient = value(skin, CSSConstants.LINE, depth);
+        gradient.rotation *= Trig.RAD;
+        gradient.matrix = MatrixParser.gradientBox(0, 0, skin.width, skin.height,  gradient.rotation * Trig.RAD);
+        return GradientLineStyleParser.gradientLineStyle(gradient, colorLineStyle(skin,depth));
     }
     /**
      *

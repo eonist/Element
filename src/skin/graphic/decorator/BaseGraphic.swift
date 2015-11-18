@@ -28,6 +28,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
      */
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
+            //Swift.print("BaseGraphic.beginFill() fillStyle!.color: " + String(fillStyle!.color))
             graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }

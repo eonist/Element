@@ -24,9 +24,13 @@ class RectGraphic:GraphicDecoratable{
             Swift.print("rect: " + String(rect))
             
             
-            //continue here: take a look at your old renders. see what its all about
+            //continue here:
             
-            //implement x and y values, these should not be connected to the Element view 
+            //implement x and y values, these should not be connected to the Element view (so you can see the line alignment better)
+            
+            //implement masking or clipping of the line
+            
+            
             
             //drawLine
             /*

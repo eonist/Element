@@ -7,15 +7,15 @@ import Cocoa
 class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     lazy var graphics:Graphics = Graphics()
     override var graphic:BaseGraphic {return self}
-    var width:Double;
-    var height:Double;
+    var width:CGFloat;
+    var height:CGFloat;
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType?
     var path:CGMutablePath = CGPathCreateMutable()
     var linePath:CGMutablePath = CGPathCreateMutable()
     
-    init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
+    init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
         self.width = width;
         self.height = height;
         self.fillStyle = fillStyle
@@ -52,7 +52,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         CGPathModifier.translate(&path,position.x,position.y)//Transformations
         //TODO:also translate the linePath here
     }
-    func setSize(width:Double,height:Double) {
+    func setSize(width:CGFloat,height:CGFloat) {
         self.width = width;
         self.height = height;
     }

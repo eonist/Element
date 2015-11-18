@@ -2,8 +2,8 @@
 import Foundation
 
 protocol IBaseGraphic {
-    var width:Double{get}
-    var height:Double{get}
+    var width:CGFloat{get}
+    var height:CGFloat{get}
     var lineStyle:ILineStyle?{get}
     var fillStyle:IFillStyle?{get}
     func setProperties(fillStyle:IFillStyle?, lineStyle:ILineStyle?)

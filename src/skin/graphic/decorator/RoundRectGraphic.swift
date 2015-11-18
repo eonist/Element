@@ -8,9 +8,9 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
     }
     override func drawFill() {
         //Swift.print("RoundRectGraphic2.drawFill() ")
-        let w:Double = getGraphic().width
+        let w:CGFloat = getGraphic().width
         //Swift.print("w: " + "\(w)")
-        let h:Double = getGraphic().height
+        let h:CGFloat = getGraphic().height
         //Swift.print("h: " + "\(h)")
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
         getGraphic().path = CGPathParser.roundRect(0,0,CGFloat(w), CGFloat(h),CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))//Shapes

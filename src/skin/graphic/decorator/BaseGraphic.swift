@@ -13,6 +13,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType?
     var path:CGMutablePath = CGPathCreateMutable()
+    var linePath:CGMutablePath = CGPathCreateMutable()
     
     init(_ width:Double = 100, _ height:Double = 100,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
         self.width = width;
@@ -41,7 +42,9 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
             graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
-    
+    override func stylizeLine(){
+        GraphicModifier.stylize(linePath,graphics)//realize style on the graphic
+    }
     func setPosition(position:CGPoint){
         CGPathModifier.translate(&path,position.x,position.y)//Transformations
     }

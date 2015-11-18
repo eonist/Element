@@ -32,6 +32,8 @@ class RectGraphic:GraphicDecoratable{
             
             //find the test shapes from before
             
+            // try to implement the fillet classes with alignment, maybe they work better
+            
             
             
             //drawLine

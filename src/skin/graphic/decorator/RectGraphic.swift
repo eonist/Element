@@ -15,7 +15,8 @@ class RectGraphic:GraphicDecoratable{
     override func drawLine(){
         Swift.print("RectGraphic.drawLine()")
         if(graphic.lineStyle != nil){
-            //let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
+            let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
+            Swift.print("rect: " + String(rect))
             //drawLine
             let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
             let y:CGFloat = graphic.lineOffsetType!.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;

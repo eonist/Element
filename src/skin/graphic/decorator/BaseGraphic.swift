@@ -30,17 +30,18 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
             graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
+    override func stylizeFill(){
+        GraphicModifier.stylize(path,graphics)//realize style on the graphic
+    }
     /**
-    * // :TODO: does this function need arguments?
-    */
+     *
+     */
     override func applyLineStyle() {
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
             graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
-    override func stylizeFill(){
-        GraphicModifier.stylize(path,graphics)//realize style on the graphic
-    }
+    
     func setPosition(position:CGPoint){
         CGPathModifier.translate(&path,position.x,position.y)//Transformations
     }

@@ -7,7 +7,9 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     func initialize(){}
     func fill(){}
     func line(){}
-    func applyLineStyle() {}
+    func applyLineStyle(){}
+    func drawLine(){}
+    func stylizeLine(){}
     func beginFill(){}
     func drawFill(){}
     func stylizeFill(){}

@@ -10,5 +10,9 @@ protocol IGraphicDecoratable {
     func beginFill()
     func drawFill()
     func stylizeFill()
+    func line()
+    func applyLineStyle()
+    func drawLine()
+    func stylizeLine()
     func initialize()
 }

@@ -24,17 +24,6 @@ class RectGraphic:GraphicDecoratable{
             Swift.print("rect: " + String(rect))
             
             
-            //continue here:
-            
-            //implement x and y values, these should not be connected to the Element view (so you can see the line alignment better)
-            
-            //implement masking or clipping of the line
-            
-            //find the test shapes from before
-            
-            // try to implement the fillet classes with alignment, maybe they work better
-            
-            
             
             //drawLine
             /*

@@ -34,20 +34,7 @@ class Element: FlippedView,IElement {
             super.drawRect(rect)
             resolveSkin()
         }
-        
     }
-    /**
-     *
-     */
-     /*
-     func clear(hasClear:Bool){
-     Swift.print("Element.clear()")
-     
-     self.hasClear = hasClear
-     needsDisplay = true
-     //drawRect(NSMakeRect(0, 0, 100, 100))
-     }
-     */
     /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type

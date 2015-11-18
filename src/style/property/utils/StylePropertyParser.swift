@@ -47,9 +47,20 @@ class StylePropertyParser{
         return FillStyle(nsColor)
     }
     /**
-    * Returns a Fillet instance
-    * // :TODO: probably upgrade to TRBL
+    * Returns a LineStyle instance
+    * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
+    * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
+    class func colorLineStyle(skin:ISkin) -> ILineStyle {
+        var lineColor:Number = color(skin, CSSConstants.LINE, depth);
+        var lineThickness:Number = value(skin, CSSConstants.LINE_THICKNESS, depth);
+        var lineAlpha:Number = value(skin, CSSConstants.LINE_ALPHA, depth) || NaN;
+        return new LineStyle(lineThickness, lineColor, lineAlpha);
+    }
+    /**
+     * Returns a Fillet instance
+     * // :TODO: probably upgrade to TRBL
+     */
     class func fillet(skin:ISkin) -> Fillet {
         let val:Any? = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();

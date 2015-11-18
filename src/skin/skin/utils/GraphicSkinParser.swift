@@ -12,7 +12,8 @@ class GraphicSkinParser{
      */
     class func configure(skin:ISkin){
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        var graphic:IGraphicDecoratable = Utils.baseGraphic(fillStyle,skin)
+        let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin);
+        var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
         graphic = Utils.rectGraphic(graphic)
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
@@ -23,7 +24,7 @@ private class Utils{
     /**
      *
      */
-    class func baseGraphic(fillStyle:IFillStyle,_ skin:ISkin)->IGraphicDecoratable {
+    class func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle)->IGraphicDecoratable {
         let width:Double = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:Double = (StylePropertyParser.height(skin) ?? skin.height!);
         return BaseGraphic(width,height,fillStyle,nil,OffsetType())

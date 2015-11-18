@@ -4,14 +4,10 @@ protocol IElement:class, IView{
     var skinState:String{get}
     var style:IStyle{get set}
     var skin:ISkin?{get set}
-    /*
-    var x:CGFloat{get set}
-    var y:CGFloat{get set}
-
-    
-    */
-    var width:Double?{get set}
-    var height:Double?{get set}
+    //var x:CGFloat{get set}
+    //var y:CGFloat{get set}
+    var width:CGFloat?{get set}
+    var height:CGFloat?{get set}
     func resolveSkin()
     func getSkinState() -> String
     func getParent()->IElement?//TODO: maybe use weak?

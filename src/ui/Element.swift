@@ -9,7 +9,7 @@ class Element: FlippedView,IElement {
     var id : String?;/*css selector id*/
     var style:IStyle = Style.clear
     var hasClear:Bool = false
-    
+    override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     init(_ width: Double = 100, _ height: Double = 40, _ parent:IElement? = nil,_ id:String? = nil){
         //Swift.print("Element.init")
         self.width = width;

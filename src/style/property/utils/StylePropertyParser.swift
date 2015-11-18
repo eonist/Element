@@ -52,15 +52,16 @@ class StylePropertyParser{
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
     class func colorLineStyle(skin:ISkin) -> ILineStyle {
-        var lineColor:Number = color(skin, CSSConstants.LINE, depth);
-        var lineThickness:Number = value(skin, CSSConstants.LINE_THICKNESS, depth);
+        var lineColorValue:Double = color(skin, CSSConstants.line);
+        var lineThickness:Double = Double(value(skin, CSSConstants.lineThickness));
         var lineAlpha:Number = value(skin, CSSConstants.LINE_ALPHA, depth) || NaN;
+        var lineColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))
         return new LineStyle(lineThickness, lineColor, lineAlpha);
     }
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    class func color(skin:ISkin, propertyName:String) -> Double {
+    class func color(skin:ISkin, _ propertyName:String) -> Double {
         let color:Any? = value(skin, propertyName);
         return (String(color) == CSSConstants.none || color == nil) ? Double.NaN : Double(color as! UInt);
     }

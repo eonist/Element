@@ -70,9 +70,10 @@ class StylePropertyParser{
      * // :TODO: probably upgrade to TRBL
      */
     class func lineOffsetType(skin:ISkin) -> OffsetType {
+        Swift.print("StylePropertyparser.lineOffsetType()")
         let val:Any? = value(skin, CSSConstants.lineOffsetType);
         var offsetType:OffsetType = OffsetType();
-        if((val is Double) || (val is Array<Double>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val, OffsetType.self) as! OffsetType}
+        if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val, OffsetType.self) as! OffsetType}
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right")}

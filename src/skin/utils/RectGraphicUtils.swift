@@ -42,6 +42,9 @@ private class Utils{
         if((offsetType.right == OffsetType.inside) && (offsetType.left == OffsetType.inside)) { rectangle.width = rectangle.width + lineStyle.thickness }
         if(offsetType.top == OffsetType.inside) { rectangle.y = -lineStyle.thickness/2 }
         if(offsetType.bottom == OffsetType.inside) { rectangle.height = rectangle.height + lineStyle.thickness }
+        //temp fix, needs more research
+        if(offsetType.left == OffsetType.center){rectangle.x = 0;rectangle.y = 0;}
+        //temp fix, needs more research
         return rectangle[cornerType];
     }
 }

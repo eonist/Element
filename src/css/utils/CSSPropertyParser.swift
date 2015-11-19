@@ -11,7 +11,7 @@ class CSSPropertyParser {
     class func property(string:String) -> Any{//:TODO: Long switch statments can be replaced by polymorphism?!?
         switch(true) {
             case StringAsserter.digit(string):return StringParser.digit(string);/*40 or -1 or 1.002 or 12px or 20% or .02px*/
-            case StringAsserter.metric(string):return string;
+            case StringAsserter.metric(string):return string;//ems|%
             case StringAsserter.boolean(string):return StringParser.boolean(string);/*true or false*/
             case StringAsserter.color(string):return StringParser.color(string);/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.color(string);/*green red etc*/

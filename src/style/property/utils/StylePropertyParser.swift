@@ -74,7 +74,7 @@ class StylePropertyParser{
         var offsetType:OffsetType = OffsetType();
         if((val is Double) || (val is Array<Double>)) {/*(val is String) || */
             
-            offsetType = LayoutUtils.instance(val, OffsetType.self)
+            offsetType = LayoutUtils.instance(val, OffsetType.self) as! OffsetType
             
         }
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);

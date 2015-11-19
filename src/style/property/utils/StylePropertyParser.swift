@@ -40,7 +40,7 @@ class StylePropertyParser{
         }
         let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha)
         //print("alpha: " + "\(alpha)")
-        let alphaValue:Double = alpha == nil ? Double.NaN : alpha as! Double
+        let alphaValue:CGFloat = alpha == nil ? CGFloat.NaN : alpha as! CGFloat
         //Swift.print("alphaValue: " + "\(alphaValue)")
         let nsColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))//fill
         //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line because checking for NaN is essential when setting or not setting things?, you can revert to pure NSColor and clearStyle later anyway
@@ -52,7 +52,7 @@ class StylePropertyParser{
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
     class func colorLineStyle(skin:ISkin) -> ILineStyle {
-        let lineThickness:CGFloat = CGFloat(value(skin, CSSConstants.lineThickness) as! Double)
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as! CGFloat
         let lineColorValue:Double = color(skin, CSSConstants.line)
         let lineAlpha:Double = value(skin, CSSConstants.lineAlpha) as? Double ?? Double.NaN
         let lineColor:NSColor = ColorParser.nsColor(UInt(lineColorValue), Float(lineAlpha))

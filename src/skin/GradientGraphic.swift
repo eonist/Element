@@ -11,17 +11,16 @@ class GradientGraphic:GraphicDecoratable {
         Swift.print("GradientGraphic.beginFill()")
         if(getGraphic().fillStyle!.dynamicType is GradientFillStyle.Type){
             FillStyleModifier.beginGradientFill(getGraphic().graphics, (getGraphic().fillStyle as! GradientFillStyle).gradient)
-        }else{
-            Swift.print(String(getGraphic().fillStyle))
-            fatalError("NOT CORRECT fillStyle")
-        }
+        }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
+            
+        
     }
     /**
      * // :TODO: could possibly be renamed to applyGradientLinestyle
      */
     override func applyLineStyle() {
         Swift.print("GradientGraphic.applyLineStyle()")
-        decoratable.applyLineStyle()//call the BaseGraphic to set the stroke-width, cap, joint etc
+        super.applyLineStyle()//call the BaseGraphic to set the stroke-width, cap, joint etc
         if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){
             Swift.print("lineStyle is GradientLineStyle")
             LineStyleModifier.lineGradientStyle(graphic.graphics, (graphic.lineStyle as! GradientLineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)

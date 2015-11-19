@@ -157,6 +157,9 @@ extension StylePropertyParser{
      * Convenince method for deriving Double values
      */
     class func double(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
-        return Double(String(value(skin, propertyName)))!
+        return Double(string(skin, propertyName))!
+    }
+    class func string(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->String{
+        return String(value(skin, propertyName))
     }
 }

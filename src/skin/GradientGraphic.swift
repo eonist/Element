@@ -15,21 +15,13 @@ class GradientGraphic:GraphicDecoratable {
     /**
      * // :TODO: could possibly be renamed to applyGradientLinestyle
      */
-
     override func applyLineStyle() {
-        
-        /*
-        if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
-            graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
-        }
-        */
-        
+        decoratable.applyLineStyle()//call the BaseGraphic to set the stroke-width, cap, joint etc
         if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){
             LineStyleModifier.lineGradientStyle(graphic.graphics, (graphic.lineStyle as! GradientLineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)
         }else{
-            Swift.print(String(getGraphic().fillStyle))
+            Swift.print(String(getGraphic().lineStyle))
             fatalError("NOT CORRECT lineStyle")
         }
-        
     }
 }

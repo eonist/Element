@@ -27,9 +27,11 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
      *
      */
     override func drawLine(){
+        Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType!;
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
+            Swift.print(rect)
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
             CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
             /*mask*/

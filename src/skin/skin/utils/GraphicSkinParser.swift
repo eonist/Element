@@ -28,7 +28,7 @@ private class Utils{
         let width:CGFloat = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:CGFloat = (StylePropertyParser.height(skin) ?? skin.height!);
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
-        Swift.print("lineOffsetType: " + String(lineOffsetType))
+        Swift.print("lineOffsetType: top:" + lineOffsetType.top + "  left:" + lineOffsetType.left + " bottom: " + lineOffsetType.bottom + " right: "+lineOffsetType.right)
         return BaseGraphic(width,height,fillStyle,lineStyle,lineOffsetType)
     }
     /**

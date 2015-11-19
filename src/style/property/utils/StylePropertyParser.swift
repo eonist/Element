@@ -89,10 +89,10 @@ class StylePropertyParser{
         var fillet:Fillet = Fillet();
         if((val is Double) || (val is Array<Double>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.double(skin, "corner-radius-top-left") }//TODO: replace this with the constant: cornerRadiusIndex
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.double(skin, "corner-radius-top-right") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.double(skin, "corner-radius-bottom-left") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.double(skin, "corner-radius-bottom-right") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, "corner-radius-top-left") }//TODO: replace this with the constant: cornerRadiusIndex
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, "corner-radius-top-right") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, "corner-radius-bottom-left") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right") }
         return fillet;
     }
     /**
@@ -148,10 +148,10 @@ private class Utils{
 }
 extension StylePropertyParser{
     /*
-     * Convenince method for deriving Double values
+     * Convenince method for deriving CGFloat values
      */
-    class func double(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
-        return Double(string(skin, propertyName))!
+    class func number(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->CGFloat{
+        return CGFloat(Double(string(skin, propertyName))!)
     }
     /*
     * Convenince method for deriving String values

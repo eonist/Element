@@ -27,12 +27,9 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
         
-            //continue here
+            //continue here...
         }
         /*
-        
-        
-        
         
         
         graphic.lineShape.graphics.drawRoundRectComplex(rect.x,rect.y,rect.width,rect.height, fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight);

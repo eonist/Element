@@ -26,15 +26,15 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
             let lineOffsetType:OffsetType = graphic.lineOffsetType!;
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
-            
-           
             CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
+            /*mask*/
+            let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0,graphic.width,graphic.height), graphic.lineStyle!, lineOffsetType);
         }
         /*
         
         
         
-        var maskRect:Rectangle = Rect3Utils.maskRect(new Rectangle(0,0,Rect3(graphic).width,Rect3(graphic).height), graphic.lineStyle, lineOffsetType);
+        
         graphic.lineMask.graphics.beginFill(Color.GREEN,0.5);
         var maskFillet:Fillet = Rect3Utils.configMaskFillet(_fillet, lineOffsetType, graphic.lineStyle);
         graphic.lineMask.graphics.drawRoundRectComplex(maskRect.x, maskRect.y, maskRect.width, maskRect.height, maskFillet.topLeft, maskFillet.topRight, maskFillet.bottomLeft, maskFillet.bottomRight);

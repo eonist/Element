@@ -9,4 +9,7 @@ class GradientGraphic:GraphicDecoratable {
             fatalError("NOT CORRECT fillStyle")
         }
     }
+    override func applyLineStyle() {
+        
+    }
 }

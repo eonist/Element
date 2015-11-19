@@ -1,5 +1,11 @@
 import Foundation
-
+/*
+* // :TODO: the mask doesnt have an exact fitting fillet (figure out how to solve this)
+* // :TODO: impliment elliptical round corners corner-radius:50/25; creates an elliptical roundcornered rect
+* @Note we might need to create a method named drawAdvanceRoundRect, which would draw a round rect with individual corners that also could have 2 radiuses ech so you would have elliptical corners,
+* google for Drawing Circles with Rational Quadratic Bezier Curves.pdf or use a value named kappa which is basically kappa = 4 * (sqrt(2) - 1) / 3
+* NOTE: CGRect has a roundRect method with eliptical corners. You have this code in your research folder
+*/
 class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
     var fillet:Fillet;
     init(_ decoratable: IGraphicDecoratable,  _ fillet:Fillet) {

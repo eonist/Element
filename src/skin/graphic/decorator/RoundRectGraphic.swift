@@ -25,7 +25,7 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType!;
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
-            var fillet:Fillet = FilletParser.config(_fillet, lineOffsetType, graphic.lineStyle);
+            let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
         
             //continue here
         }

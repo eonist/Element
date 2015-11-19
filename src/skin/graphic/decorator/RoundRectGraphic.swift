@@ -7,6 +7,8 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         super.init(decoratable)
     }
     override func drawFill() {
+        var x:Number = graphic.lineOffsetType.left == OffsetType.OUTSIDE ? graphic.lineStyle.thickness : 0;
+        var y:Number = graphic.lineOffsetType.top == OffsetType.OUTSIDE ? graphic.lineStyle.thickness : 0;
         //Swift.print("RoundRectGraphic2.drawFill() ")
         let w:CGFloat = getGraphic().width
         //Swift.print("w: " + "\(w)")

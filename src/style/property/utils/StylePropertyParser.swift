@@ -75,11 +75,11 @@ class StylePropertyParser{
         if((val is Double) || (val is Array<Double>)) {/*(val is String) || */
             offsetType = LayoutUtils.instance(val, OffsetType.self)
         }
-        var lineOffsetTypeIndex:int = StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE,depth);
-        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_LEFT,depth) > lineOffsetTypeIndex) offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left", depth);
-        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_RIGHT,depth) > lineOffsetTypeIndex) offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right", depth);
-        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_TOP,depth) > lineOffsetTypeIndex) offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top", depth);
-        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_BOTTOM,depth) > lineOffsetTypeIndex) offsetType.bottom = StylePropertyParser.value(skin, "line-offset-type-bottom", depth);
+        var lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex) offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left", depth);
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex) offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right", depth);
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex) offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top", depth);
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeBottom) > lineOffsetTypeIndex) offsetType.bottom = StylePropertyParser.value(skin, "line-offset-type-bottom", depth);
         return offsetType;
     }
     /**

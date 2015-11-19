@@ -15,7 +15,7 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         let h:CGFloat = getGraphic().height
         //Swift.print("h: " + "\(h)")
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
-        getGraphic().path = CGPathParser.roundRect(x,y,w, h,CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))//Shapes
+        getGraphic().path = CGPathParser.roundRect(x,y,w, h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
     }
     /**
      *
@@ -27,13 +27,13 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
             
-            //continue here...
-             CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))
+           
+            CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
         }
         /*
         
         
-        graphic.lineShape.graphics.drawRoundRectComplex(rect.x,rect.y,rect.width,rect.height, fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight);
+        
         var maskRect:Rectangle = Rect3Utils.maskRect(new Rectangle(0,0,Rect3(graphic).width,Rect3(graphic).height), graphic.lineStyle, lineOffsetType);
         graphic.lineMask.graphics.beginFill(Color.GREEN,0.5);
         var maskFillet:Fillet = Rect3Utils.configMaskFillet(_fillet, lineOffsetType, graphic.lineStyle);

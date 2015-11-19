@@ -112,7 +112,8 @@ class StylePropertyParser{
     class func gradientLineStyle(skin:ISkin) -> GradientLineStyle {
         var gradient:IGradient = value(skin, CSSConstants.line) as! IGradient
         gradient.rotation *= ㎭
-        return GradientLineStyle(gradient, colorLineStyle(skin));
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as! CGFloat
+        return GradientLineStyle(gradient, lineThickness, NSColor.clearColor()/*colorLineStyle(skin)*/);
     }
     /**
      *

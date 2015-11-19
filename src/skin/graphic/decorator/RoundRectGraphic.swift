@@ -26,8 +26,9 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
             let lineOffsetType:OffsetType = graphic.lineOffsetType!;
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
-        
+            
             //continue here...
+             CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))
         }
         /*
         

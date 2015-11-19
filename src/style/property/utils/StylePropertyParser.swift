@@ -66,6 +66,23 @@ class StylePropertyParser{
         return (String(color) == CSSConstants.none || color == nil) ? Double.NaN : Double(color as! UInt);
     }
     /**
+     * Returns an Offset instance
+     * // :TODO: probably upgrade to TRBL
+     */
+    class func lineOffsetType(skin:ISkin) -> OffsetType {
+        let val:Any? = value(skin, CSSConstants.lineOffsetType);
+        var offsetType:OffsetType = OffsetType();
+        if((val is Double) || (val is Array<Double>)) {/*(val is String) || */
+            offsetType = LayoutUtils.instance(val, OffsetType.self)
+        }
+        var lineOffsetTypeIndex:int = StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE,depth);
+        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_LEFT,depth) > lineOffsetTypeIndex) offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left", depth);
+        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_RIGHT,depth) > lineOffsetTypeIndex) offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right", depth);
+        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_TOP,depth) > lineOffsetTypeIndex) offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top", depth);
+        if(StyleParser.index(skin.style, CSSConstants.LINE_OFFSET_TYPE_BOTTOM,depth) > lineOffsetTypeIndex) offsetType.bottom = StylePropertyParser.value(skin, "line-offset-type-bottom", depth);
+        return offsetType;
+    }
+    /**
      * Returns a Fillet instance
      * // :TODO: probably upgrade to TRBL
      */

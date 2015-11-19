@@ -12,7 +12,25 @@ class GradientGraphic:GraphicDecoratable {
             fatalError("NOT CORRECT fillStyle")
         }
     }
+    /**
+     * // :TODO: could possibly be renamed to applyGradientLinestyle
+     */
+
     override func applyLineStyle() {
+        
+        /*
+        if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
+            graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+        }
+        */
+        
+        if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){
+            LineStyleUtils.lineGradientStyle(graphic.graphics, GradientLineStyle(lineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)
+            
+        }else{
+            Swift.print(String(getGraphic().fillStyle))
+            fatalError("NOT CORRECT lineStyle")
+        }
         
     }
 }

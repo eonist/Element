@@ -72,11 +72,7 @@ class StylePropertyParser{
     class func lineOffsetType(skin:ISkin) -> OffsetType {
         let val:Any? = value(skin, CSSConstants.lineOffsetType);
         var offsetType:OffsetType = OffsetType();
-        if((val is Double) || (val is Array<Double>)) {/*(val is String) || */
-            
-            offsetType = LayoutUtils.instance(val, OffsetType.self) as! OffsetType
-            
-        }
+        if((val is Double) || (val is Array<Double>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val, OffsetType.self) as! OffsetType}
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right")}
@@ -91,9 +87,7 @@ class StylePropertyParser{
     class func fillet(skin:ISkin) -> Fillet {
         let val:Any? = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
-        if((val is Double) || (val is Array<Double>)) {//(val is String) ||
-            fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet
-        }
+        if((val is Double) || (val is Array<Double>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.double(skin, "corner-radius-top-left") }//TODO: replace this with the constant: cornerRadiusIndex
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.double(skin, "corner-radius-top-right") }

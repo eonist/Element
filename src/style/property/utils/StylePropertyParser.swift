@@ -78,10 +78,10 @@ class StylePropertyParser{
             
         }
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex) offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left", depth);
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex) offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right", depth);
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex) offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top", depth);
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeBottom) > lineOffsetTypeIndex) offsetType.bottom = StylePropertyParser.value(skin, "line-offset-type-bottom", depth);
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left")}
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right")}
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top")}
+        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeBottom) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.value(skin, "line-offset-type-bottom")}
         return offsetType;
     }
     /**

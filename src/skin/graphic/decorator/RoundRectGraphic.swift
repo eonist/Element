@@ -17,4 +17,10 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
         getGraphic().path = CGPathParser.roundRect(x,y,w, h,CGFloat(fillet.topLeft), CGFloat(fillet.topRight), CGFloat(fillet.bottomLeft), CGFloat(fillet.bottomRight))//Shapes
     }
+    /**
+     *
+     */
+    override func drawLine(){
+        
+    }
 }

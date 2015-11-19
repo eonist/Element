@@ -73,9 +73,11 @@ class StylePropertyParser{
         let val:Any? = value(skin, CSSConstants.lineOffsetType);
         var offsetType:OffsetType = OffsetType();
         if((val is Double) || (val is Array<Double>)) {/*(val is String) || */
+            
             offsetType = LayoutUtils.instance(val, OffsetType.self)
+            
         }
-        var lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
+        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
         if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex) offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left", depth);
         if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex) offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right", depth);
         if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex) offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top", depth);
@@ -93,7 +95,7 @@ class StylePropertyParser{
             fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet
         }
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.double(skin, "corner-radius-top-left") }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.double(skin, "corner-radius-top-left") }//TODO: replace this with the constant: cornerRadiusIndex
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.double(skin, "corner-radius-top-right") }
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.double(skin, "corner-radius-bottom-left") }
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.double(skin, "corner-radius-bottom-right") }

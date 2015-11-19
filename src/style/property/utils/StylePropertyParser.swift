@@ -78,10 +78,10 @@ class StylePropertyParser{
             
         }
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.value(skin, "line-offset-type-left")}
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.value(skin, "line-offset-type-right")}
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.value(skin, "line-offset-type-top")}
-        if(StyleParser.index(skin.style, CSSConstants.lineOffsetTypeBottom) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.value(skin, "line-offset-type-bottom")}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right")}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, "line-offset-type-top")}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, "line-offset-type-bottom")}
         return offsetType;
     }
     /**
@@ -159,6 +159,9 @@ extension StylePropertyParser{
     class func double(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Double{
         return Double(string(skin, propertyName))!
     }
+    /*
+    * Convenince method for deriving String values
+    */
     class func string(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->String{
         return String(value(skin, propertyName))
     }

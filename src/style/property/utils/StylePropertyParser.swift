@@ -137,7 +137,7 @@ class StylePropertyParser{
                     }
                 }
                 if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
-                textFormat[textFormatKey] = value;
+                textFormat[textFormatKey] = value!;
             }
         }
         return textFormat;

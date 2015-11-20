@@ -13,17 +13,18 @@ class Text:Element,IText {
     /**
      * Sets text to the textfield, remember to set textformat after
      * @Note: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
+     * NOTE: Apperently setText() is occupied by obj-c, use var text {get set} in the future
      */
-    func setText(text:String){
+    func setTextString(text:String){
         (skin as! TextSkin).setText(text)
     }
     /**
      * Returns the textField text and 
      */
-    func getText():String{
+    func getText()->String{
         return getTextField().text;
     }
-    func getTextField():TextField{
+    func getTextField()->NSText{
         return ITextSkin(skin).textField;
     }
     /**

@@ -76,6 +76,7 @@ class CSSPropertyParser {
                 else if(String(value) == "true") {value = true }
                 else if(String(value) == "false") {value = false }
                 //else {StringParser.boolean(String(value))}
+                Swift.print("CSSPropertyParser.textFormat() value: " + "\(value)")
                 textFormat[name] = value;
             }
         }

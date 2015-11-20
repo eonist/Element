@@ -57,8 +57,9 @@ class CSSPropertyParser {
     */
     class func textFormat(input : String) -> Dictionary<String,String> {
         var textFormat:Dictionary<String,String> = Dictionary<String,String>();
-        var propertyString:String = input.match(/(?<=textFormat\().+?(?=\);?)/).toString();
-        var properties:Array = propertyString.split(",");
+        let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
+        var propertyString:String = RegExp.match(input,pattern)[0]
+        var properties:Array = StringParser.split(propertyString, ",")
         for (var i : int = 0; i < properties.length; i++) {
             var property:String = properties[i];
             var matches:Array = property.match(/^(?P<name>\w+?)\:(?P<value>.+?)$/);

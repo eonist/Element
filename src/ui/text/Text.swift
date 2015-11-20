@@ -22,10 +22,10 @@ class Text:Element,IText {
      * Returns the textField text and 
      */
     func getText()->String{
-        return getTextField().text;
+        return getTextField().string!;
     }
     func getTextField()->NSText{
-        return ITextSkin(skin).textField;
+        return (skin as! ITextSkin).textField;
     }
     /**
      * Returns "Text"

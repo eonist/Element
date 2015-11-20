@@ -2,7 +2,7 @@ import Foundation
 
 class CSSConstants{
     /*Font*/
-    static var emsFontSize:Int = 16;
+    static var emsFontSize:CGFloat = 16;
     static var ems:String = "ems";
     /*layout*/
     static var display:String = "display";

@@ -127,10 +127,18 @@ class StylePropertyParser{
             //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
             if(value != nil) {
                 if(StringAsserter.metric(value as! String)){
-                    var match:Object = String(value).match(/^(?P<value>\-?\d*?\.?\d*?)(?P<suffix>(%|ems)|$)/);
-                    if(match["suffix"] == CSSConstants.EMS) value = match["value"] * CSSConstants.EMS_FONT_SIZE;
+                    let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+                    let stringValue:String = String(value)
+                    let matches = stringValue.matches(pattern)
+                    for match:NSTextCheckingResult in matches {
+                        var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                        let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
+                        if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
+                    }
                 }
-                if(value is Array) value = (value as Array).join(" ");/*Some fonts are seperated by a space and thus are converted to an array*/
+                if(value is Array<String>) {
+                    value = (value as Array).join(" ");/*Some fonts are seperated by a space and thus are converted to an array*/
+                }
                 textFormat[textFormatKey] = value;
             }
         }

@@ -122,12 +122,11 @@ class StylePropertyParser{
      */
     class func textFormat(skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat();
-        TextFormatConstants
-        for var textFormatKey : String in TextFormatConstants {
-            var value:* = StylePropertyParser.value(skin,textFormatKey);
+        for var textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
+            var value:Any? = StylePropertyParser.value(skin,textFormatKey);
             //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
-            if(value != null) {
-                if(StringAsserter.metric(value)){
+            if(value != nil) {
+                if(StringAsserter.metric(value as! String)){
                     var match:Object = String(value).match(/^(?P<value>\-?\d*?\.?\d*?)(?P<suffix>(%|ems)|$)/);
                     if(match["suffix"] == CSSConstants.EMS) value = match["value"] * CSSConstants.EMS_FONT_SIZE;
                 }

@@ -20,7 +20,7 @@ class Text:Element,IText {
     /**
      * Returns the textField text and 
      */
-    func (){
+    func getText():String{
         return getTextField().text;
     }
     func getTextField():TextField{

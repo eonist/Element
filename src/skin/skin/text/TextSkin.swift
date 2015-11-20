@@ -19,6 +19,7 @@ class TextSkin:Skin,ITextSkin{
         let height:CGFloat = StylePropertyParser.height(self)!
         textField.frame.width = width
         textField.frame.height = height
-        //textField.setTextFormat(StylePropertyParser.textFormat(this));
+        let textFormat:TextFormat = StylePropertyParser.textFormat(self)
+        TextFieldModifier.applyTextFormat(textField,textFormat);
     }
 }

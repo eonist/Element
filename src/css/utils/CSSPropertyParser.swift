@@ -55,20 +55,19 @@ class CSSPropertyParser {
     * TextFormat
     * // :TODO: should possibly return a TextFormat class instance or alike
     */
-    class func textFormat(input : String) -> Dictionary<String,String> {
-        var textFormat:Dictionary<String,String> = Dictionary<String,String>();
+    class func textFormat(input : String) -> Dictionary<String,Any> {
+        var textFormat:Dictionary<String,Any> = Dictionary<String,String>();
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
-        var propertyString:String = RegExp.match(input,pattern)[0]
-        var properties:Array<String> = StringParser.split(propertyString, ",")
-        for (var i : Int = 0; i < properties.count; i++) {
-            var property:String = properties[i];
-            var matches:Array<NSTextCheckingResult> = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
+        let propertyString:String = RegExp.match(input,pattern)[0]
+        let properties:Array<String> = StringParser.split(propertyString, ",")
+        for property:String in properties{
+            let matches:Array<NSTextCheckingResult> = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
             for match:NSTextCheckingResult in matches{
                 let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                var value = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
-                if(name == "color") { value = StringParser.color(value) }
-                else if(value == "true") {value = true }
-                else if(value == "false") {value = false }
+                var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+                if(name  == "color") { value = StringParser.color(value as! String) }
+                else if(value as! String == "true") {value = true }
+                else if(value as! String == "false") {value = false }
                 textFormat[name] = value;
             }
             

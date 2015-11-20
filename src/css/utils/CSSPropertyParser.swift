@@ -19,13 +19,37 @@ class CSSPropertyParser {
             
         
             case RegExp.test(string,"^textFormat\\b"):return textFormat(string);
-            //case RegExp(/^textField\b/).test(string):return textField(string);
+            case RegExp.test(string,"^textField\\b"):return textField(string);
+            
+            
+            
+            //continue here, add the above textField
         
             case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.]+?\\\040)+?(\\b|\\B|$)"):return array(string);/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional?
             case RegExp.test(string,"(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED");
         }
     }
+    /**
+    * Textfield
+    * // :TODO: should possibly return a TextField class instance or alike
+    */
+    class func textField(input:String)->Dictionary<String,Any>{
+        var textField:Dictionary<String,Any> = Dictionary<String,Any>();
+        var propertyString:String = input.match(//).toString();
+        var properties:Array = propertyString.split(",");
+        for (var i : int = 0; i < properties.length; i++) {
+            var property:String = properties[i];
+            var matches:Array = property.match(/^(?P<name>\w+?)\:(?P<value>.+?)$/);
+            var name:String = matches["name"];
+            var value:* = matches["value"];
+            if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") value = StringParser.color(value);
+            else if(value == "true") value = Boolean(true);
+            else if(value == "false") value = Boolean(false);
+            textField[name] = value;
+        }
+        return textField;
+    };
     /**
     * // :TODO: possibly use the RegExp.exec to loop the properties!!
     * @param string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient

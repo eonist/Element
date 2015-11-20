@@ -136,7 +136,7 @@ class StylePropertyParser{
                         if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
                     }
                 }
-                if(value is Array<String>) {value = (value as! Array<String>).join(" ") }/*Some fonts are seperated by a space and thus are converted to an array*/
+                if(value is Array<String>) {value = (value as! Array<String>).join(" ") }/*Some fonts are seperated by a space and thus are converted to an array*/ 
                 textFormat[textFormatKey] = value;
             }
         }

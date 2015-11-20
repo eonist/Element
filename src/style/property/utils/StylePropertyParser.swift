@@ -128,9 +128,12 @@ class StylePropertyParser{
                 if(StringAsserter.metric(value as! String)){
                     //TODO:you may need to set one of the inner groups to be non-catachple
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//?P<value>\ //?P<suffix>
-                    for match:NSTextCheckingResult in matches {
                     var matches = String(value).matches(pattern)
-                    if(match["suffix"] == CSSConstants.EMS) value = match["value"] * CSSConstants.EMS_FONT_SIZE;
+                    for match:NSTextCheckingResult in matches {
+                        
+                    }
+                    
+                    if(match["suffix"] == CSSConstants.EMS) {value = match["value"] * CSSConstants.EMS_FONT_SIZE};
                 }
                 skin.textField[textFieldKey] = value;
             }

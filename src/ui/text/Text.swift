@@ -11,6 +11,13 @@ class Text:Element,IText {
     var initText:String{get{return initText}}
     init(width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         initText = text
-        super.init(width, height, 0, 0, <#T##parent: IElement?##IElement?#>, <#T##id: String?##String?#>)
+        super.init(width, height,0,0, parent, id)
+    }
+    /**
+     * Returns "Text"
+     * @Note This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
+     */
+    override func getClassType() -> String {
+        return String(Text);
     }
 }

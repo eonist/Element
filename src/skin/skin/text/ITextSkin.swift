@@ -1,5 +1,5 @@
 import Foundation
 
-protocol ITextSkin {
+protocol ITextSkin:ISkin {
 
 }

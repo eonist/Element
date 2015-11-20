@@ -122,8 +122,8 @@ class StylePropertyParser{
     * // :TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
     */
     class func textField(skin:TextSkin) {
-        for var textFieldKey : String in TextFieldConstants.TEXT_FIELD_PROPERTY_NAMES {
-            var value:* = StylePropertyParser.value(skin,textFieldKey);
+        for var textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
+            var value:Any? = StylePropertyParser.value(skin,textFieldKey);
             if(value != nil) {
                 if(StringAsserter.metric(value)){
                     var match:Object = String(value).match(/^(?P<value>\-?\d*?\.?\d*?)(?P<suffix>(%|ems)|$)/);

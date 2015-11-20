@@ -101,7 +101,7 @@ class CSSPropertyParser {
             }
         }
         return textField;
-    };
+    }
 }
 private class Utils{
     /**

@@ -7,6 +7,7 @@ class TextSkin:Skin,ITextSkin{
     init(style:IStyle, text:String, state:String = SkinStates.none, element:IElement? = nil){
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))//set w and h to 0
         textField.string = text;
+        applyProperties(textField);
         super.init(style, state, element)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -14,7 +15,7 @@ class TextSkin:Skin,ITextSkin{
         //do aligning here
         super.draw()
     }
-    public function applyProperties(textField:TextField):void{
+    func applyProperties(textField:NSText){
     
     }
 }

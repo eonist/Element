@@ -125,8 +125,9 @@ class StylePropertyParser{
         for var textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
             var value:Any? = StylePropertyParser.value(skin,textFieldKey);
             if(value != nil) {
-                if(StringAsserter.metric(value)){
-                    var match:Object = String(value).match(/^(?P<value>\-?\d*?\.?\d*?)(?P<suffix>(%|ems)|$)/);
+                if(StringAsserter.metric(value as! String)){
+                    let pattern:String = "^(-?\\d*?\.?\\d*?)((%|ems)|$)"//?P<value>\ //?P<suffix>
+                    var match:Object = String(value).matches(//);
                     if(match["suffix"] == CSSConstants.EMS) value = match["value"] * CSSConstants.EMS_FONT_SIZE;
                 }
                 skin.textField[textFieldKey] = value;

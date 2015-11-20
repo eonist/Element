@@ -121,15 +121,15 @@ class StylePropertyParser{
     * @Note this is really a modifier method
     * // :TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
     */
-    class func textField(var skin:TextSkin) {
-        for var textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
-            var value:Any? = StylePropertyParser.value(skin,textFieldKey);
+    class func textField(skin:TextSkin) {
+        for textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
+            let value:Any? = StylePropertyParser.value(skin,textFieldKey);
             if(value != nil) {
                 if(StringAsserter.metric(value as! String)){
                     //TODO:you may need to set one of the inner groups to be non-catachple
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
                     let stringValue:String = String(value)
-                    var matches = stringValue.matches(pattern)
+                    let matches = stringValue.matches(pattern)
                     for match:NSTextCheckingResult in matches {
                         var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                         let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
@@ -137,13 +137,11 @@ class StylePropertyParser{
                     }
                 }
                 //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently
-                
-                skin.textField[textFieldKey] = value;
+                fatalError("Not implemented yet")
+                //skin.textField[textFieldKey] = value;
             }
         }
     }
-    
-    
     /*
     * let matches = RegExpParser.matches("abc def ghij", "\\w{3}")
     * for match:NSTextCheckingResult in matches {

@@ -51,6 +51,26 @@ class CSSPropertyParser {
         for str : String in matches { array.append(StringAsserter.digit(str) ? StringParser.digit(str) : str) }
         return array;
     }
+    /**
+    * TextFormat
+    * // :TODO: should possibly return a TextFormat class instance or alike
+    */
+    class func textFormat(input : String) -> Dictionary<String,String> {
+        var textFormat:Dictionary<String,String> = Dictionary<String,String>();
+        var propertyString:String = input.match(/(?<=textFormat\().+?(?=\);?)/).toString();
+        var properties:Array = propertyString.split(",");
+        for (var i : int = 0; i < properties.length; i++) {
+            var property:String = properties[i];
+            var matches:Array = property.match(/^(?P<name>\w+?)\:(?P<value>.+?)$/);
+            var name:String = matches["name"];
+            var value:* = matches["value"];
+            if(name == "color") value = StringParser.color(value);
+            else if(value == "true") value = Boolean(true);
+            else if(value == "false") value = Boolean(false);
+            textFormat[name] = value;
+        }
+        return textFormat;
+    }
 }
 private class Utils{
     /**

@@ -1,6 +1,5 @@
 import Cocoa
 
-
 class TextSkin:Skin,ITextSkin{
     var textField:NSText;
     //func setText(text:String)

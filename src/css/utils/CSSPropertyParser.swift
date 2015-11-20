@@ -30,40 +30,6 @@ class CSSPropertyParser {
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED");
         }
     }
-    /**
-    * Textfield
-    * // :TODO: should possibly return a TextField class instance or alike
-    */
-    class func textField(input:String)->Dictionary<String,Any>{
-        var textField:Dictionary<String,Any> = Dictionary<String,Any>();
-        var propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
-        var properties:Array = propertyString.split(",")
-        for (var i : Int = 0; i < properties.count; i++) {
-            var property:String = properties[i];
-            var matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$");
-            for match:NSTextCheckingResult in matches {
-                let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                let value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
-                if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") {value = StringParser.color(value)};
-                else if(value == "true") {value = Boolean(true)};
-                else if(value == "false") {value = Boolean(false)};
-                textField[name] = value;
-            }
-           
-            
-        }
-        return textField;
-    };
-    
-    
-    /*
-    for match:NSTextCheckingResult in matches {
-    *    match.numberOfRanges
-    *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-    *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-    *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-    * }
-    */
     
     
     
@@ -114,6 +80,30 @@ class CSSPropertyParser {
         }
         return textFormat;
     }
+    /**
+     * Textfield
+     * // :TODO: should possibly return a TextField class instance or alike
+     */
+    class func textField(input:String)->Dictionary<String,Any>{
+        var textField:Dictionary<String,Any> = Dictionary<String,Any>();
+        let propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
+        var properties:Array = propertyString.split(",")
+        for (var i : Int = 0; i < properties.count; i++) {
+            let property:String = properties[i];
+            let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$");
+            for match:NSTextCheckingResult in matches {
+                let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+                if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.color(value as! String)};
+                else if(value as! String == "true") {value = true};
+                else if(value as! String == "false") {value = false};
+                textField[name] = value;
+            }
+            
+            
+        }
+        return textField;
+    };
 }
 private class Utils{
     /**

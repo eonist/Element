@@ -6,6 +6,6 @@ class Text:Element,IText {
     * @Note: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
     */
     var textField:NSText{get{return (skin as! ITextSkin).textField}}
-    var text:String{get{return textField.string}set{ITextSkin(skin).text = newValue}}
+    var text:String{get{return textField.string!}set{(skin as! ITextSkin).text = newValue}}
 
 }

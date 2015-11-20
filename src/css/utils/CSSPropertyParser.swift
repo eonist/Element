@@ -63,7 +63,7 @@ class CSSPropertyParser {
     * // :TODO: should possibly return a TextFormat class instance or alike
     */
     class func textFormat(input : String) -> Dictionary<String,Any> {
-        var textFormat:Dictionary<String,Any> = Dictionary<String,String>();
+        var textFormat:Dictionary<String,Any> = Dictionary<String,Any>();
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
         let propertyString:String = RegExp.match(input,pattern)[0]
         let properties:Array<String> = StringParser.split(propertyString, ",")
@@ -73,8 +73,8 @@ class CSSPropertyParser {
                 let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
                 if(name  == "color") { value = StringParser.color(value as! String) }
-                else if(value as! String == "true") {value = true }
-                else if(value as! String == "false") {value = false }
+                else if((value as! String) == "true") {value = true }
+                else if((value as! String) == "false") {value = false }
                 textFormat[name] = value;
             }
         }

@@ -18,8 +18,11 @@ class TextSkin:Skin,ITextSkin{
         super.draw()
     }
     func applyProperties(textField:NSText){
-        let width:CGFloat = StylePropertyParser.width(self)!
-        let height:CGFloat = StylePropertyParser.height(self)!
+        
+        //Continue here, bug here cant get width
+        
+        let width:CGFloat = StylePropertyParser.width(self) ?? super.width!
+        let height:CGFloat = StylePropertyParser.height(self) ?? super.height!
         textField.frame.width = width
         textField.frame.height = height
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)

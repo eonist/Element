@@ -2,6 +2,8 @@ import Cocoa
 
 class TextSkin:Skin,ITextSkin{
     var textField:NSText;
+    //the bellow variable is a little more complex in the original code
+    override var width:CGFloat? {get{return textField.frame.width} set{textField.frame.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
     init(style:IStyle, text:String, state:String = SkinStates.none, element:IElement? = nil){
@@ -32,4 +34,7 @@ class TextSkin:Skin,ITextSkin{
         hasTextChanged = true;
         draw();
     }
+    
+    
+    
 }

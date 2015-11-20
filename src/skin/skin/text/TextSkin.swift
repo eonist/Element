@@ -2,6 +2,7 @@ import Cocoa
 
 class TextSkin:Skin,ITextSkin{
     var textField:NSText;
+    private var _hasTextChanged:Boolean = true;
     //func setText(text:String)
     init(style:IStyle, text:String, state:String = SkinStates.none, element:IElement? = nil){
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))//set w and h to 0
@@ -21,5 +22,14 @@ class TextSkin:Skin,ITextSkin{
         textField.frame.height = height
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
         TextFieldFormatModifier.applyTextFormat(textField,textFormat);
+    }
+    /**
+     * Set the text and updates the skin
+     * // :TODO: add more advance setText features like start and end etc
+     */
+    func setText(text:String):void{
+        textField.string = text;
+        hasTextChanged = true;
+        draw();
     }
 }

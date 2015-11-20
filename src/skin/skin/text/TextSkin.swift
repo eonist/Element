@@ -33,8 +33,5 @@ class TextSkin:Skin,ITextSkin{
         textField.string = text;
         hasTextChanged = true;
         draw();
-    }
-    
-    
-    
+    }  
 }

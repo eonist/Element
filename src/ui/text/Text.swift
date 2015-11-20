@@ -7,7 +7,7 @@ class Text:Element,IText {
      * Returns the textField text and Sets text to the textfield, remember to set textformat after
      * @Note: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
      */
-    var text:String{get{return textField.string!} set{(skin as! ITextSkin).text = newValue}}
+    var text:String{get{return textField.string!} set{(skin as! TextSkin).text = newValue}}
     init(width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         initText = text
         super.init(width, height,0,0, parent, id)

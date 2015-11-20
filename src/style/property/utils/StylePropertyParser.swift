@@ -136,6 +136,7 @@ class StylePropertyParser{
                         if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
                     }
                 }
+                //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently
                 skin.textField[textFieldKey] = value;
             }
         }

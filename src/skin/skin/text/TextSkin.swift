@@ -14,5 +14,7 @@ class TextSkin:Skin,ITextSkin{
         //do aligning here
         super.draw()
     }
-
+    public function applyProperties(textField:TextField):void{
+    
+    }
 }

@@ -126,14 +126,29 @@ class StylePropertyParser{
             var value:Any? = StylePropertyParser.value(skin,textFieldKey);
             if(value != nil) {
                 if(StringAsserter.metric(value as! String)){
+                    //TODO:you may need to set one of the inner groups to be non-catachple
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//?P<value>\ //?P<suffix>
-                    var match:Object = String(value).matches(pattern)
+                    for match:NSTextCheckingResult in matches {
+                    var matches = String(value).matches(pattern)
                     if(match["suffix"] == CSSConstants.EMS) value = match["value"] * CSSConstants.EMS_FONT_SIZE;
                 }
                 skin.textField[textFieldKey] = value;
             }
         }
     }
+    
+    
+    /*
+    * let matches = RegExpParser.matches("abc def ghij", "\\w{3}")
+    * for match:NSTextCheckingResult in matches {
+    *    match.numberOfRanges
+    *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+    *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+    *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+    * }
+    */
+    
+    
     /**
      *
      */

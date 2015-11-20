@@ -36,9 +36,9 @@ class CSSPropertyParser {
     */
     class func textField(input:String)->Dictionary<String,Any>{
         var textField:Dictionary<String,Any> = Dictionary<String,Any>();
-        var propertyString:String = input.match(//).toString();
-        var properties:Array = propertyString.split(",");
-        for (var i : int = 0; i < properties.length; i++) {
+        var propertyString:String = RegExp.match(input,"(?<=textField\\().+?(?=\\);?)")[0]
+        var properties:Array = StringParser.split(propertyString, ",")
+        for (var i : Int = 0; i < properties.count; i++) {
             var property:String = properties[i];
             var matches:Array = property.match(/^(?P<name>\w+?)\:(?P<value>.+?)$/);
             var name:String = matches["name"];

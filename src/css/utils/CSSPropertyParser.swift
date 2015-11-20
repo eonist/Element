@@ -70,24 +70,9 @@ class CSSPropertyParser {
                 else if(value as! String == "false") {value = false }
                 textFormat[name] = value;
             }
-            
         }
         return textFormat;
     }
-    
-    
-    /*
-    * let matches = RegExpParser.matches("abc def ghij", "\\w{3}")
-    * for match:NSTextCheckingResult in matches {
-    *    match.numberOfRanges
-    *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-    *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-    *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-    * }
-    
-    
-    
-    */
 }
 private class Utils{
     /**

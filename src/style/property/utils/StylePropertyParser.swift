@@ -130,10 +130,10 @@ class StylePropertyParser{
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//?P<value>\ //?P<suffix>
                     var matches = String(value).matches(pattern)
                     for match:NSTextCheckingResult in matches {
-                        
+                        let value = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                        let properties = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                        if(match["suffix"] == CSSConstants.EMS) {value = match["value"] * CSSConstants.EMS_FONT_SIZE};
                     }
-                    
-                    if(match["suffix"] == CSSConstants.EMS) {value = match["value"] * CSSConstants.EMS_FONT_SIZE};
                 }
                 skin.textField[textFieldKey] = value;
             }

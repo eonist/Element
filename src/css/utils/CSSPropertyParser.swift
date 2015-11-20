@@ -73,8 +73,9 @@ class CSSPropertyParser {
                 let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
                 if(name  == "color") { value = StringParser.color(value as! String) }
-                else if((value as! String) == "true") {value = true }
-                else if((value as! String) == "false") {value = false }
+                else if(String(value) == "true") {value = true }
+                else if(String(value) == "false") {value = false }
+                //else {StringParser.boolean(String(value))}
                 textFormat[name] = value;
             }
         }

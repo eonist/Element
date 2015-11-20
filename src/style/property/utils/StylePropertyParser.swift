@@ -121,8 +121,8 @@ class StylePropertyParser{
      *
      */
     class func textFormat(skin:TextSkin)->TextFormat {
-        var textFormat:TextFormat = TextFormat();
-        for var textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
+        let textFormat:TextFormat = TextFormat();
+        for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin,textFormatKey);
             //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
             if(value != nil) {
@@ -136,9 +136,7 @@ class StylePropertyParser{
                         if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
                     }
                 }
-                if(value is Array<String>) {
-                    value = Array.join(value as! Array<String>, " ")
-                }/*Some fonts are seperated by a space and thus are converted to an array*/
+                if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
                 textFormat[textFormatKey] = value;
             }
         }

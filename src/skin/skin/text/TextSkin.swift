@@ -6,7 +6,7 @@ class TextSkin:Skin,ITextSkin{
     override var width:CGFloat? {get{return textField.frame.width} set{textField.frame.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
-    init(style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
+    init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))//set w and h to 0
         textField.string = text;
         super.init(style, state, element)

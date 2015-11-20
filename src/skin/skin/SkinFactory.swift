@@ -13,7 +13,7 @@ class SkinFactory{
         return GraphicSkin(style, element.getSkinState(), element);
     }
     class func textSkin(element:IElement,style:IStyle)->ISkin {
-        fatalError("NOT IMPLEMENTED YET")
-        //return TextSkin(style,IText(element).initText, element.getSkinState(),element);
+        //fatalError("NOT IMPLEMENTED YET")
+        return TextSkin(style,(element as! IText).initText, element.getSkinState(),element);
     }
 }

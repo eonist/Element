@@ -2,9 +2,14 @@ import Cocoa
 
 
 class TextSkin:Skin,ITextSkin{
-    var textField:NSTextField;
+    var textField:NSText;
     //func setText(text:String)
-    init(){
-        
+    init(style:IStyle, text:String, state:String = SkinStates.none, element:IElement? = nil){
+        textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
+        super.init(style, state, element)
     }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }

@@ -64,15 +64,14 @@ class CSSPropertyParser {
             var property:String = properties[i];
             var matches:Array<NSTextCheckingResult> = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
             for match:NSTextCheckingResult in matches{
-                let name = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 let properties = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+                if(name == "color") { value = StringParser.color(value) }
+                else if(value == "true") value = Boolean(true);
+                else if(value == "false") value = Boolean(false);
+                textFormat[name] = value;
             }
-            var name:String = matches["name"];
-            var value:* = matches["value"];
-            if(name == "color") value = StringParser.color(value);
-            else if(value == "true") value = Boolean(true);
-            else if(value == "false") value = Boolean(false);
-            textFormat[name] = value;
+            
         }
         return textFormat;
     }

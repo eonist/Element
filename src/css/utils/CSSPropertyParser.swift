@@ -16,6 +16,11 @@ class CSSPropertyParser {
             case StringAsserter.color(string):return StringParser.color(string);/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.color(string);/*green red etc*/
             case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string);/*linear-gradient*/// :TODO: create a more complte exprrison for this test
+            
+        
+            case RegExp.test(string,"^textFormat\\b"):return textFormat(string);
+            //case RegExp(/^textField\b/).test(string):return textField(string);
+        
             case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.]+?\\\040)+?(\\b|\\B|$)"):return array(string);/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional?
             case RegExp.test(string,"(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED");

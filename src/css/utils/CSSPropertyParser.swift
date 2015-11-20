@@ -59,10 +59,14 @@ class CSSPropertyParser {
         var textFormat:Dictionary<String,String> = Dictionary<String,String>();
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
         var propertyString:String = RegExp.match(input,pattern)[0]
-        var properties:Array = StringParser.split(propertyString, ",")
-        for (var i : int = 0; i < properties.length; i++) {
+        var properties:Array<String> = StringParser.split(propertyString, ",")
+        for (var i : Int = 0; i < properties.count; i++) {
             var property:String = properties[i];
-            var matches:Array = property.match(/^(?P<name>\w+?)\:(?P<value>.+?)$/);
+            var matches:Array<NSTextCheckingResult> = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
+            for match:NSTextCheckingResult in matches{
+                let name = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let properties = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            }
             var name:String = matches["name"];
             var value:* = matches["value"];
             if(name == "color") value = StringParser.color(value);
@@ -72,6 +76,20 @@ class CSSPropertyParser {
         }
         return textFormat;
     }
+    
+    
+    /*
+    * let matches = RegExpParser.matches("abc def ghij", "\\w{3}")
+    * for match:NSTextCheckingResult in matches {
+    *    match.numberOfRanges
+    *    let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+    *    let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+    *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+    * }
+    
+    
+    
+    */
 }
 private class Utils{
     /**

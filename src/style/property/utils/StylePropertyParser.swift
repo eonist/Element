@@ -133,7 +133,7 @@ class StylePropertyParser{
                     for match:NSTextCheckingResult in matches {
                         let value = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                         let suffix = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
-                        if(match["suffix"] == CSSConstants.EMS) {value = match["value"] * CSSConstants.EMS_FONT_SIZE};
+                        if(match["suffix"] == CSSConstants.ems) {value = match["value"] * CSSConstants.EMS_FONT_SIZE};
                     }
                 }
                 skin.textField[textFieldKey] = value;

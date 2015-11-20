@@ -137,6 +137,7 @@ class StylePropertyParser{
                     }
                 }
                 if(value is Array<String>) {
+                    StringParser
                     value = (value as Array).join(" ");/*Some fonts are seperated by a space and thus are converted to an array*/
                 }
                 textFormat[textFormatKey] = value;

@@ -1,7 +1,7 @@
 import Cocoa
 
 class Text:Element,IText {
-    private var initText:String;
+    var initText:String;
     var textField:NSText{get{return (skin as! ITextSkin).textField}}
     /**
      * Sets text to the textfield, remember to set textformat after
@@ -10,6 +10,7 @@ class Text:Element,IText {
     var text:String{get{return textField.string!} set{(skin as! ITextSkin).text = newValue}}
     var initText:String{get{return initText}}
     init(width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
-        self.initText = text
+        initText = text
+        super.init(width, height, 0, 0, <#T##parent: IElement?##IElement?#>, <#T##id: String?##String?#>)
     }
 }

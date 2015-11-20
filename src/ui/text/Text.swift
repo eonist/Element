@@ -9,7 +9,7 @@ class Text:Element,IText {
      */
     var text:String{get{return textField.string!} set{(skin as! ITextSkin).text = newValue}}
     var initText:String{get{return initText}}
-    init(width:Number, height:Number, text:String = "dafaultText", parent:IElement? = nil, id:String? = nil){
-        
+    init(width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
+        self.initText = text
     }
 }

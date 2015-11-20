@@ -42,16 +42,15 @@ class CSSPropertyParser {
             var property:String = properties[i];
             var matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$");
             for match:NSTextCheckingResult in matches {
-                let name = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                let value = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
-                
+                let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+                if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") {value = StringParser.color(value)};
+                else if(value == "true") {value = Boolean(true)};
+                else if(value == "false") {value = Boolean(false)};
+                textField[name] = value;
             }
-            var name:String = matches["name"];
-            var value:* = matches["value"];
-            if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") value = StringParser.color(value);
-            else if(value == "true") value = Boolean(true);
-            else if(value == "false") value = Boolean(false);
-            textField[name] = value;
+           
+            
         }
         return textField;
     };

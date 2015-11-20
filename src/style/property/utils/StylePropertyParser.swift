@@ -123,10 +123,11 @@ class StylePropertyParser{
     class func textFormat(skin:TextSkin)->TextFormat {
         let textFormat:TextFormat = TextFormat();
         for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
-            var value:Any? = StylePropertyParser.value(skin,textFormatKey);
+            var value:Any? = StylePropertyParser.value(skin, textFormatKey);
+            value
             //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
             if(value != nil) {
-                if(StringAsserter.metric(value as! String)){
+                if(StringAsserter.metric(String(value))){
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
                     let stringValue:String = String(value)
                     let matches = stringValue.matches(pattern)

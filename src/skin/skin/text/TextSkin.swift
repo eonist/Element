@@ -1,7 +1,10 @@
-import Foundation
+import Cocoa
 
 
 class TextSkin:Skin,ITextSkin{
-    var textField():NSTextField;
+    var textField:NSTextField;
     //func setText(text:String)
+    init(){
+        
+    }
 }

@@ -118,9 +118,29 @@ class StylePropertyParser{
         return GradientLineStyle(gradient, lineThickness, NSColor.clearColor()/*colorLineStyle(skin)*/);
     }
     /**
-    * @Note this is really a modifier method
-    * // :TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
-    */
+     *
+     */
+    class func textFormat(skin:TextSkin)->TextFormat {
+        var textFormat:TextFormat = TextFormat();
+        TextFormatConstants
+        for var textFormatKey : String in TextFormatConstants {
+            var value:* = StylePropertyParser.value(skin,textFormatKey);
+            //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
+            if(value != null) {
+                if(StringAsserter.metric(value)){
+                    var match:Object = String(value).match(/^(?P<value>\-?\d*?\.?\d*?)(?P<suffix>(%|ems)|$)/);
+                    if(match["suffix"] == CSSConstants.EMS) value = match["value"] * CSSConstants.EMS_FONT_SIZE;
+                }
+                if(value is Array) value = (value as Array).join(" ");/*Some fonts are seperated by a space and thus are converted to an array*/
+                textFormat[textFormatKey] = value;
+            }
+        }
+        return textFormat;
+    }
+    /**
+     * @Note this is really a modifier method
+     * // :TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
+     */
     class func textField(skin:TextSkin) {
         for textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
             let value:Any? = StylePropertyParser.value(skin,textFieldKey);

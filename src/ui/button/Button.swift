@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class Button:Element {
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
@@ -8,5 +8,23 @@ class Button:Element {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func getClassType()->String{
         return String(Button)
+    }
+    override func mouseEntered( event: NSEvent){
+        Swift.print("entered" + "\(super.skinState)")
+        super.mouseEntered(event)
+        skinState = SkinStates.over
+    }
+    override func mouseExited(event: NSEvent){
+        Swift.print("exited: " + "\(self.skinState)")
+        super.mouseExited(event)
+    }
+    override func mouseDown(theEvent: NSEvent) {
+        Swift.print("mouseDownEvent: " + "\(self.skinState)")
+        super.mouseDown(theEvent)
+    }
+    override func mouseUp(theEvent: NSEvent) {
+        Swift.print("mouseUpEvent: " + "\(self.skinState)")
+        super.mouseDown(theEvent)
+        skinState = SkinStates.none
     }
 }

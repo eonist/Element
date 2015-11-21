@@ -15,7 +15,7 @@ class Button:Element {
     }
     override func mouseEntered( event: NSEvent){
         Swift.print("IS WITHIN: " + "\(self.isWithin)")
-        if(!isWithin){
+        if(isWithin == false){
             self.isWithin = true
             skinState = SkinStates.over
             Swift.print("mouseEntered: " + "\(super.skinState)")

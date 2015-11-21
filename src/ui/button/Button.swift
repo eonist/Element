@@ -29,6 +29,7 @@ class Button:Element {
     override func mouseExited(event: NSEvent){
         //isWithin = false
         skinState = SkinStates.none
+        setSkinState(getSkinState());
         Swift.print("mouseExited: " + "\(self.skinState)")
         //super.mouseExited(event)
     }
@@ -37,6 +38,7 @@ class Button:Element {
      */
     override func mouseDown(theEvent: NSEvent) {
         skinState = SkinStates.down+" "+SkinStates.over;
+        setSkinState(getSkinState());
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         //super.mouseDown(theEvent)
     }
@@ -46,6 +48,7 @@ class Button:Element {
      */
     func mouseUpInside(theEvent: NSEvent){
         skinState = SkinStates.over;// :TODO: why in two lines like this?
+        setSkinState(getSkinState());
         Swift.print("mouseUpInside: " + "\(self.skinState)")
     }
     /**
@@ -54,25 +57,25 @@ class Button:Element {
      */
     func mouseUpOutside(theEvent: NSEvent){
         skinState = SkinStates.none
+        setSkinState(getSkinState());
         Swift.print("mouseUpOutside: " + "\(self.skinState)")
     }
     override func mouseUp(theEvent: NSEvent) {
-        
-        let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
-        Swift.print("mousePos: " + String(mousePos))
-        let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
-        Swift.print("hitTestPoint: " + String(hitTestPoint))
+        //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
+        //Swift.print("mousePos: " + String(mousePos))
+        //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
+        //Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         
         self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         
-        skinState = SkinStates.none
+        //skinState = SkinStates.none
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
         
         //super.mouseDown(theEvent)
         
         
-        //continue here, implement states for the upInside and upOutside and continue with the stateMaschine
+        
         
     }
     

@@ -141,7 +141,7 @@ class StylePropertyParser{
                 else if(value is UInt) {
                     
                     value = ColorParser.nsColor(value as! UInt,1)
-                    Swift.print("FOUND A COLOR: " + "\(value)")
+                    Swift.print("FOUND A COLOR: " + textFormatKey + " : " + "\(value)")
                 }//<--set the alpha in css aswell backgroundAlpha?
                 textFormat[textFormatKey] = value!;
             }

@@ -14,9 +14,6 @@ class Button:Element {
     override func getClassType()->String{
         return String(Button)
     }
-    override func hitTest(aPoint:NSPoint)-> NSView?{
-        return nil
-    }
     override func mouseEntered( event: NSEvent){
         removeTrackingRect(trackingRectTag!)
         

@@ -32,7 +32,7 @@ class Button:Element {
         
     }
     override func mouseDown(theEvent: NSEvent) {
-        skinState = SkinStates.down
+        skinState = SkinStates.down+" "+SkinStates.over;
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         //super.mouseDown(theEvent)
     }

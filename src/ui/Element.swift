@@ -130,6 +130,8 @@ extension IElement {
         self.x = point.x;
         self.y = point.y;
         */
+        self.frame.x = point.x
+        self.frame.y = point.y
     }
 }
 
@@ -137,8 +139,8 @@ extension Element{
     /**
      *
      */
-    convenience init(_ width: CGFloat , _ height: CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
-        self.init(width,height,0,0,parent,id)
+    convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
+        self.init(width,height,parent,id)
         
     }
 }

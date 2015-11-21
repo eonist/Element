@@ -28,7 +28,7 @@ class TextSkin:Skin,ITextSkin{
         textField.frame.width = width
         textField.frame.height = height
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
-        TextFieldFormatModifier.applyTextFormat(textField,textFormat);
+        TextFieldModifier.applyTextFormat(textField,textFormat);
     }
     /**
      * Set the text and updates the skin

@@ -9,7 +9,7 @@ class TextSkin:Skin,ITextSkin{
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         Swift.print("TextSkin.init()")
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//set w and h to 0
-        textField.sizeToFit()
+        //textField.sizeToFit()
         
         textField.string = text;
         super.init(style, state, element)
@@ -31,6 +31,8 @@ class TextSkin:Skin,ITextSkin{
         Swift.print("height: " + "\(height)")
         textField.frame.width = width
         textField.frame.height = height
+        super.frame.width = width//quick fix
+        super.frame.height = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
         TextFieldModifier.applyTextFormat(textField,textFormat);
     }

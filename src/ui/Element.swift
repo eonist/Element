@@ -111,7 +111,7 @@ extension IElement {
      * TODO: this can be moved to an util class
      */
     func setSkinState(state:String) {
-        skin.setState(state);
+        skin!.setSkinState(state);
     }
     /**
      * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances

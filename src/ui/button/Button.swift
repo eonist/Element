@@ -8,11 +8,6 @@ class Button:Element {
         //acceptsTouchEvents = false//only for swipes,pinch etc
         
         addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
-        //
-        
-        
-        //The problem is that you create the Items in superviews drawrect method. move the interface creation to didLoadWin or alike
-        //remove swift prints in the current implementation
         
         
     }
@@ -21,18 +16,19 @@ class Button:Element {
         return String(Button)
     }
     override func mouseEntered( event: NSEvent){
-            
         
         
-            skinState = SkinStates.over
-            Swift.print("mouseEntered: " + "\(super.skinState)")
+        
+        skinState = SkinStates.over
+        Swift.print("mouseEntered: " + "\(super.skinState)")
             
-            //super.mouseEntered(event)
-            needsDisplay = true;
+        //super.mouseEntered(event)
+        needsDisplay = true;
         
     }
     override func mouseExited(event: NSEvent){
         //isWithin = false
+        skinState = SkinStates.none
         Swift.print("mouseExited: " + "\(self.skinState)")
         //super.mouseExited(event)
         

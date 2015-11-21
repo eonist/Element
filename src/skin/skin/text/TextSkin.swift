@@ -8,7 +8,7 @@ class TextSkin:Skin,ITextSkin{
     //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         Swift.print("TextSkin.init()")
-        textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))//set w and h to 0
+        textField = NSText(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//set w and h to 0
         textField.string = text;
         super.init(style, state, element)
         addSubview(textField)
@@ -24,7 +24,9 @@ class TextSkin:Skin,ITextSkin{
         //Continue here, bug here cant get width
         
         let width:CGFloat = StylePropertyParser.width(self) ?? super.width!
+        Swift.print("width: " + "\(width)")
         let height:CGFloat = StylePropertyParser.height(self) ?? super.height!
+        Swift.print("height: " + "\(height)")
         textField.frame.width = width
         textField.frame.height = height
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)

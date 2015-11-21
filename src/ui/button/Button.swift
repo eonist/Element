@@ -1,12 +1,13 @@
 import Cocoa
 
 class Button:Element {
+    var trackingRectTag:NSTrackingRectTag? = nil
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
         super.init(width, height, parent, id)
         //acceptsTouchEvents = false//only for swipes,pinch etc
         
-        let trackingRectTag = addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
-        removeTrackingRect(trackingRectTag)
+        trackingRectTag = addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
+        
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func getClassType()->String{
@@ -16,7 +17,7 @@ class Button:Element {
         skinState = SkinStates.over
         Swift.print("mouseEntered: " + "\(super.skinState)")
         super.mouseEntered(event)
-        
+        removeTrackingRect(trackingRectTag!)
         needsDisplay = true;
     }
     override func mouseExited(event: NSEvent){

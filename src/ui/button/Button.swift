@@ -13,12 +13,12 @@ class Button:Element {
         skinState = SkinStates.over
         Swift.print("mouseEntered: " + "\(super.skinState)")
         super.mouseEntered(event)
-        
+        drawRect(frame)
     }
     override func mouseExited(event: NSEvent){
         Swift.print("mouseExited: " + "\(self.skinState)")
         super.mouseExited(event)
-        needsDisplay = true;
+        
     }
     override func mouseDown(theEvent: NSEvent) {
         skinState = SkinStates.down

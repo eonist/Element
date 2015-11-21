@@ -26,7 +26,7 @@ class Element: View,IElement {
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
     override func drawRect(rect: NSRect) {
-        Swift.print("Element.drawRect()  ")
+        //Swift.print("Element.drawRect()  ")
         
             
             //let graphicsContext = NSGraphicsContext.currentContext()!

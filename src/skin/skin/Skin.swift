@@ -38,6 +38,8 @@ class Skin:FlippedView,ISkin{
         hasStyleChanged = false;
         hasSizeChanged = false;
         hasStateChanged = false;
+        Swift.print("Skin.draw() refresh the graphics")
+        needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
     }
     /**
      * Sets the style instance to apply to the skin also forces a redraw.

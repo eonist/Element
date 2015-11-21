@@ -1,7 +1,6 @@
 import Cocoa
 
 class Button:Element {
-    
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
         //Swift.print("Button.init()")
         super.init(width, height, parent, id)
@@ -32,8 +31,6 @@ class Button:Element {
         skinState = SkinStates.none
         Swift.print("mouseExited: " + "\(self.skinState)")
         //super.mouseExited(event)
-        
-        
     }
     /**
      * Handles actions and drawing states for the down event.

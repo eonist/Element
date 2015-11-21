@@ -7,7 +7,9 @@ class TextSkin:Skin,ITextSkin{
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
+        Swift.print("TextSkin.init()")
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))//set w and h to 0
+        addSubview(textField)
         textField.string = text;
         super.init(style, state, element)
         applyProperties(textField);

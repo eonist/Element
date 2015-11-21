@@ -9,12 +9,7 @@ class Button:Element {
         
         addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
-    override func resetCursorRects() {
-        let aCursor:NSCursor = NSCursor.pointingHandCursor()
-        addCursorRect(frame, cursor: aCursor)
-        aCursor.setOnMouseEntered(true)
-        //aCursor.setOnMouseExited(false)
-    }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func getClassType()->String{
         return String(Button)

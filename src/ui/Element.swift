@@ -15,10 +15,10 @@ class Element: View,IElement {
     var style:IStyle = Style.clear
     var hasClear:Bool = false
     
-    init(_ width: CGFloat, _ height: CGFloat, _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
+    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        super.init(frame: NSRect(x,y,width,height))
+        super.init(frame: NSRect(0,0,width,height))
     }
 
     /**

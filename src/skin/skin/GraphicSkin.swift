@@ -17,6 +17,7 @@ class GraphicSkin:Skin{
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             
         }
+        super.draw();
     }
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")

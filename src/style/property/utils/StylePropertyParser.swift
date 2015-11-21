@@ -40,7 +40,7 @@ class StylePropertyParser{
         }
         let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha)
         //print("alpha: " + "\(alpha)")
-        let alphaValue:CGFloat = alpha == nil ? CGFloat.NaN : alpha as! CGFloat
+        let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         //Swift.print("alphaValue: " + "\(alphaValue)")
         let nsColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))//fill
         //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line because checking for NaN is essential when setting or not setting things?, you can revert to pure NSColor and clearStyle later anyway

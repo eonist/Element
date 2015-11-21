@@ -15,13 +15,13 @@ class RectGraphic:GraphicDecoratable{
      *
      */
     override func drawLine(){
-        Swift.print("RectGraphic.drawLine()")
+        //Swift.print("RectGraphic.drawLine()")
         if(graphic.lineStyle != nil){
             let graphicRect:CGRect = CGRect(0, 0, graphic.width, graphic.height)
             
-            Swift.print("graphicRect: " + String(graphicRect))
+            //Swift.print("graphicRect: " + String(graphicRect))
             let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType!);
-            Swift.print("rect: " + String(rect))
+            //Swift.print("rect: " + String(rect))
             
             
             

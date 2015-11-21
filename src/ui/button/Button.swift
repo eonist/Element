@@ -10,21 +10,23 @@ class Button:Element {
         return String(Button)
     }
     override func mouseEntered( event: NSEvent){
+        skinState = SkinStates.over
         Swift.print("entered" + "\(super.skinState)")
         super.mouseEntered(event)
-        skinState = SkinStates.over
     }
     override func mouseExited(event: NSEvent){
         Swift.print("exited: " + "\(self.skinState)")
         super.mouseExited(event)
     }
     override func mouseDown(theEvent: NSEvent) {
+        skinState = SkinStates.down
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         super.mouseDown(theEvent)
     }
     override func mouseUp(theEvent: NSEvent) {
+        skinState = SkinStates.none
         Swift.print("mouseUpEvent: " + "\(self.skinState)")
         super.mouseDown(theEvent)
-        skinState = SkinStates.none
+        
     }
 }

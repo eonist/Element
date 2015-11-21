@@ -37,10 +37,14 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(theEvent: NSEvent) {
-        skinState = SkinStates.down//+" "+SkinStates.over;
+        skinState = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         //super.mouseDown(theEvent)
+        
+        
+         //continue here: implement proper support for combined skin states, see the code above
+        
     }
     /**
      * Handles actions and drawing states for the release event.

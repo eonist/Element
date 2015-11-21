@@ -1,9 +1,9 @@
 import Cocoa
 
 class Button:Element {
-    var isWithin:Bool = false
+    
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
-        Swift.print("Button.init()")
+        //Swift.print("Button.init()")
         super.init(width, height, parent, id)
         //acceptsTouchEvents = false//only for swipes,pinch etc
         
@@ -21,9 +21,9 @@ class Button:Element {
         return String(Button)
     }
     override func mouseEntered( event: NSEvent){
-        Swift.print("IS WITHIN: " + "\(self.isWithin)")
         
-            self.isWithin = true
+        
+        
             skinState = SkinStates.over
             Swift.print("mouseEntered: " + "\(super.skinState)")
             

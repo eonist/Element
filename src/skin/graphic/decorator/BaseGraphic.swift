@@ -39,8 +39,8 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
      *
      */
     override func applyLineStyle() {
-        Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
-        Swift.print("lineStyle!.color: " + String(lineStyle!.color))
+        //Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
+        //Swift.print("lineStyle!.color: " + String(lineStyle!.color))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
             graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }

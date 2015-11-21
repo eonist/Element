@@ -9,9 +9,9 @@ class TextSkin:Skin,ITextSkin{
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         Swift.print("TextSkin.init()")
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 100, height: 100))//set w and h to 0
-        addSubview(textField)
         textField.string = text;
         super.init(style, state, element)
+        addSubview(textField)
         applyProperties(textField);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

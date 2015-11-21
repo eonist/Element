@@ -37,7 +37,9 @@ class Button:Element {
         //super.mouseDown(theEvent)
     }
     override func mouseUp(theEvent: NSEvent) {
-        theEvent.
+        
+        let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
+        //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         hitTest(<#T##aPoint: NSPoint##NSPoint#>)
         skinState = SkinStates.none
         Swift.print("mouseUpEvent: " + "\(self.skinState)")

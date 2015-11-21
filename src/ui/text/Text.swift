@@ -6,7 +6,7 @@ class Text:Element,IText {
     var text:String{get{return textField.string!} set{}}
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         initText = text
-        super.init(width, height,0,0, parent, id)
+        super.init(width, height, parent, id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**

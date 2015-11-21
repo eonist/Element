@@ -5,4 +5,7 @@ class Button:Element {
         super.init(width, height, parent, id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    override func getClassType()->String{
+        return String(Button)
+    }
 }

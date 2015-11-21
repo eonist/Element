@@ -59,8 +59,9 @@ class StylePropertyParser{
         let lineColor:NSColor = ColorParser.nsColor(UInt(lineColorValue), Float(lineAlpha))
         return LineStyle(lineThickness, lineColor);
     }
-    class func nsColor(skin:ISkin, _ propertyName:String){
-        let colorValue:Double = color(skin, CSSConstants.line)
+    class func nsColor(color:Double,_ alpha:CGFloat){
+        let nsColor = color.isNaN ? NSColor.clearColor() : ColorParser.nsColor(UInt(color), Float(alpha))
+        
     }
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)

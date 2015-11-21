@@ -52,7 +52,7 @@ class Button:Element {
         //super.mouseDown(theEvent)
         
         
-        //continue here
+        //continue here, implement states for the upInside and upOutside and continue with the stateMaschine
         
     }
     func mouseUpInside(theEvent: NSEvent){

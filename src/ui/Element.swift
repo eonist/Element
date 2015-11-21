@@ -142,7 +142,7 @@ extension Element{
      */
     convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
         self.init(width,height,parent,id)
-        
+        setPosition(CGPoint(x,y))
     }
 }
 /*

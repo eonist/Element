@@ -124,7 +124,7 @@ class StylePropertyParser{
         let textFormat:TextFormat = TextFormat();
         for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey);
-            Swift.print("StylePropertypParser.textFormat() value: " + "\(value.dynamicType)")
+            //Swift.print("StylePropertypParser.textFormat() value: " + "\(value.dynamicType)")
             //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
             if(value != nil) {
                 if(StringAsserter.metric(String(value))){

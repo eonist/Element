@@ -47,9 +47,12 @@ class Button:Element {
         self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);
         
         skinState = SkinStates.none
-        Swift.print("mouseUpEvent: " + "\(self.skinState)")
+        //Swift.print("mouseUpEvent: " + "\(self.skinState)")
         
         //super.mouseDown(theEvent)
+        
+        
+        //continue here
         
     }
     func mouseUpInside(theEvent: NSEvent){

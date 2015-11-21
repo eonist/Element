@@ -120,6 +120,9 @@ extension IElement {
     func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
         return skinState;
     }
+    /**
+     *
+     */
     func getParent()->IElement? {// :TODO: beta
         //Swift.print("_parent: " + _parent);
         return self.parent;

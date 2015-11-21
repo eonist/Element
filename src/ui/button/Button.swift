@@ -3,6 +3,7 @@ import Cocoa
 class Button:Element {
     var isWithin:Bool = false
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
+        Swift.print("Button.init()")
         super.init(width, height, parent, id)
         //acceptsTouchEvents = false//only for swipes,pinch etc
         

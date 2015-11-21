@@ -44,10 +44,15 @@ class Button:Element {
         Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         
+        //this.hitTestPoint(mouseEvent.stageX, mouseEvent.stageY) ? releaseInside():releaseOutside();
+        
         skinState = SkinStates.none
         Swift.print("mouseUpEvent: " + "\(self.skinState)")
         
         //super.mouseDown(theEvent)
+        
+    }
+    func mouseUpOutside(theEvent: NSEvent){
         
     }
 }

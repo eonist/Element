@@ -124,7 +124,7 @@ class StylePropertyParser{
         let textFormat:TextFormat = TextFormat();
         for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey);
-            Swift.print("StylePropertypParser.textFormat() value: " + "\(value!.dynamicType)")
+            Swift.print("StylePropertypParser.textFormat() value: " + "\(value.dynamicType)")
             //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
             if(value != nil) {
                 if(StringAsserter.metric(String(value))){
@@ -138,6 +138,7 @@ class StylePropertyParser{
                     }
                 }
                 if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
+                else if(value is UInt) {value = ColorParser.nsColor(value as! UInt,1)}//<--set the alpha in css aswell backgroundAlpha?
                 textFormat[textFormatKey] = value!;
             }
         }

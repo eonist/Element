@@ -13,7 +13,7 @@ class Element: View,IElement {
     var parent : IElement?
     var id : String?;/*css selector id*/
     var style:IStyle = Style.clear
-    var hasClear:Bool = false
+    
     
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
@@ -26,15 +26,15 @@ class Element: View,IElement {
      * NOTE: it seems NSViews arent drawn until they are added to a subview. 
      */
     override func drawRect(rect: NSRect) {
-        //Swift.print("Element.drawRect()  " + "\(hasClear)")
-        if(!hasClear){
+        Swift.print("Element.drawRect()  ")
+        
             
             //let graphicsContext = NSGraphicsContext.currentContext()!
             //let context = graphicsContext.CGContext
             //Swift.print("Context: " + String(context))
             super.drawRect(rect)
             resolveSkin()
-        }
+        
     }
     /**
      * Returns the class type of the Class instance

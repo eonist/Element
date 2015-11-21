@@ -14,6 +14,9 @@ class Button:Element {
     override func getClassType()->String{
         return String(Button)
     }
+    /**
+     * Handles actions and drawing states for the mouseEntered event.
+     */
     override func mouseEntered( event: NSEvent){
         
         skinState = SkinStates.over
@@ -23,6 +26,9 @@ class Button:Element {
         needsDisplay = true;
         
     }
+    /**
+     * Handles actions and drawing states for the mouseExited event.
+     */
     override func mouseExited(event: NSEvent){
         //isWithin = false
         skinState = SkinStates.none
@@ -58,6 +64,10 @@ class Button:Element {
     func mouseUpInside(theEvent: NSEvent){
         Swift.print("mouseUpInside: " + "\(self.skinState)")
     }
+    /**
+     * Handles actions and drawing states for the mouseUpOutside event.
+     * @Note: bubbling= true was added to make Stepper class dragable
+     */
     func mouseUpOutside(theEvent: NSEvent){
         Swift.print("mouseUpOutside: " + "\(self.skinState)")
     }

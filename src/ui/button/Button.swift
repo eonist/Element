@@ -17,6 +17,7 @@ class Button:Element {
     override func mouseEntered( event: NSEvent){
         
         skinState = SkinStates.over
+        setSkinState(getSkinState());
         Swift.print("mouseEntered: " + "\(super.skinState)")
             
         //super.mouseEntered(event)

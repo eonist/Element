@@ -65,7 +65,7 @@ extension IElement {
         
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
-                
+        
         
         
         
@@ -130,8 +130,9 @@ extension IElement {
         self.x = point.x;
         self.y = point.y;
         */
-        self.frame.x = point.x
-        self.frame.y = point.y
+        
+        frame.x = point.x
+        frame.y = point.y
     }
 }
 

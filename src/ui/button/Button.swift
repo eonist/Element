@@ -37,10 +37,27 @@ class Button:Element {
         
         
     }
+    /**
+     * Handles actions and drawing states for the down event.
+     */
     override func mouseDown(theEvent: NSEvent) {
         skinState = SkinStates.down+" "+SkinStates.over;
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         //super.mouseDown(theEvent)
+    }
+    /**
+     * Handles actions and drawing states for the release event.
+     * @Note: bubbling= true was added to make Stepper class dragable
+     */
+    func mouseUpInside(theEvent: NSEvent){
+        Swift.print("mouseUpInside: " + "\(self.skinState)")
+    }
+    /**
+     * Handles actions and drawing states for the mouseUpOutside event.
+     * @Note: bubbling = true was added to make Stepper class dragable
+     */
+    func mouseUpOutside(theEvent: NSEvent){
+        Swift.print("mouseUpOutside: " + "\(self.skinState)")
     }
     override func mouseUp(theEvent: NSEvent) {
         
@@ -61,14 +78,5 @@ class Button:Element {
         //continue here, implement states for the upInside and upOutside and continue with the stateMaschine
         
     }
-    func mouseUpInside(theEvent: NSEvent){
-        Swift.print("mouseUpInside: " + "\(self.skinState)")
-    }
-    /**
-     * Handles actions and drawing states for the mouseUpOutside event.
-     * @Note: bubbling= true was added to make Stepper class dragable
-     */
-    func mouseUpOutside(theEvent: NSEvent){
-        Swift.print("mouseUpOutside: " + "\(self.skinState)")
-    }
+    
 }

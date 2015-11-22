@@ -55,7 +55,7 @@ class Skin:FlippedView,ISkin{
      * @Note forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
      */
     func applySkinState(state:String){/*Preferably we would use setState here, you can name it setState, as long as you set state to private*/
-        Swift.print("Skin.setSkinState")
+        Swift.print("Skin.applySkinState")
         hasStateChanged = true;
         self.state = state;
         style = StyleResolver.style(element!)/*looping through the entire styleManager isnt a good idea for just a state change*/

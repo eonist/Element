@@ -3,7 +3,7 @@ import Cocoa
  * NOTE: it seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
  */
 class Element: View,IElement {
-    private var skinState:String = SkinStates.none
+    var skinState:String = SkinStates.none
     var skin:ISkin?
     /*
     var x:CGFloat = 0;
@@ -40,8 +40,9 @@ class Element: View,IElement {
     /**
      * Sets the current state of the button, which determins the current drawing of the skin
      * TODO: this can be moved to an util class
+     * NOTE: you cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
      */
-    func setSkinState(state:String) {
+    func applySkinState(state:String) {
         skin!.setSkinState(state);
     }
     

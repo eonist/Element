@@ -24,6 +24,7 @@ class TextButton:Button {
     }
     override func mouseUp(theEvent: NSEvent) {
         applyText(textString)
+        super.mouseUp(theEvent)
     }
     /**
      * Returns the text in the _text.textField.text

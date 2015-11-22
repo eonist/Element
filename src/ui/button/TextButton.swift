@@ -16,6 +16,6 @@ class TextButton:Button {
     }
     override func setSkinState(skinState:String) {
         super.setSkinState(skinState);
-        text!.skin.setState(skinState);
+        text!.skin.applyState(skinState);
     }
 }

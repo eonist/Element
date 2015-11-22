@@ -19,7 +19,11 @@ class TextButton:Button {
         text!.skin!.applySkinState(skinState);
     }
     override func mouseDown(theEvent: NSEvent) {
+        applyText("Mouse down")
         super.mouseDown(theEvent)
+    }
+    override func mouseUp(theEvent: NSEvent) {
+        applyText(textString)
     }
     /**
      * Returns the text in the _text.textField.text

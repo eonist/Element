@@ -31,6 +31,20 @@ class Element: View,IElement {
         self.addSubview(self.skin as! NSView)
     }
     /**
+     * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
+     * TODO: explain the logic of havong this var in this class and also in the skin class, i think its because you need to access the skinstate before the skin is created or initiated in the element.
+     */
+    func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
+        return skinState;
+    }
+    /**
+     * Sets the current state of the button, which determins the current drawing of the skin
+     * TODO: this can be moved to an util class
+     */
+    func setSkinState(state:String) {
+        skin!.setSkinState(state);
+    }
+    /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
      * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
@@ -49,20 +63,8 @@ class Element: View,IElement {
 extension IElement {
     var width:CGFloat {return self.frame.width}
     var height:CGFloat {return self.frame.height}
-    /**
-     * Sets the current state of the button, which determins the current drawing of the skin
-     * TODO: this can be moved to an util class
-     */
-    func setSkinState(state:String) {
-        skin!.setSkinState(state);
-    }
-    /**
-     * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
-     * TODO: explain the logic of havong this var in this class and also in the skin class, i think its because you need to access the skinstate before the skin is created or initiated in the element.
-     */
-    func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
-        return skinState;
-    }
+    
+    
     /**
      *
      */

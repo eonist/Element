@@ -25,12 +25,12 @@ class TextButton:Button {
      * Returns the text in the _text.textField.text
      */
     func getText()->String{
-        return text.getText();
+        return text!.getText();
     }
     /**
     * Sets the text in the _text instance
     */
     func applyText(text:String){
-        //text.applyText(text);
+        self.text!.applyText(text);
     }
 }

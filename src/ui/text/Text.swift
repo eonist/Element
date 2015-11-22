@@ -14,7 +14,7 @@ class Text:Element,IText {
      * @Note: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
      * NOTE: Apperently setText() is occupied by obj-c, use var text {get set} in the future
      */
-    func setTextString(text:String){
+    func applyText(text:String){
         (skin as! TextSkin).setText(text)
     }
     /**

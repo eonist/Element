@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class TextButton:Button {
     var text:Text? = nil;
@@ -19,6 +19,18 @@ class TextButton:Button {
         text!.skin!.applySkinState(skinState);
     }
     override func mouseDown(theEvent: NSEvent) {
-        <#code#>
+        super.mouseDown(theEvent)
+    }
+    /**
+     * Returns the text in the _text.textField.text
+     */
+    func getText()->String{
+        return text.getText();
+    }
+    /**
+    * Sets the text in the _text instance
+    */
+    func applyText(text:String){
+        //text.applyText(text);
     }
 }

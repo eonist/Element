@@ -1,7 +1,7 @@
 import Cocoa
 
 protocol IText:IElement {
-    func setTextString(text:String)
+    func applyText(text:String)
     func getTextField()->NSText
     var initText:String{get}
 }

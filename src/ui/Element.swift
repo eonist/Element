@@ -33,7 +33,7 @@ class Element: View,IElement {
             //let context = graphicsContext.CGContext
             //Swift.print("Context: " + String(context))
             super.drawRect(rect)
-            resolveSkin()//maybe move this to init?
+            resolveSkin()/*This cant be moved to init because the CGContext cant be found*/
         
     }
     /**

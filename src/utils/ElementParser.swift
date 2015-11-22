@@ -22,7 +22,7 @@ class ElementParser{
         let selector:Selector = Selector();
         selector.element = element.getClassType();
         //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId];
-        //selector.id = element.id;
+        selector.id = element.id;
         selector.states = (element.skin != nil ? element.skin!.state : element.getSkinState()).match("\\b\\w+\\b");/*Matches words with spaces between them*/
         return selector
     }

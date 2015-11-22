@@ -3,7 +3,7 @@ import Cocoa
  * NOTE: it seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
  */
 class Element: View,IElement {
-    var skinState:String = SkinStates.none
+    var skinState2:String = SkinStates.none
     var skin:ISkin?
     /*
     var x:CGFloat = 0;
@@ -44,6 +44,7 @@ class Element: View,IElement {
     func setSkinState(state:String) {
         skin!.setSkinState(state);
     }
+    
     /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
@@ -63,8 +64,6 @@ class Element: View,IElement {
 extension IElement {
     var width:CGFloat {return self.frame.width}
     var height:CGFloat {return self.frame.height}
-    
-    
     /**
      *
      */

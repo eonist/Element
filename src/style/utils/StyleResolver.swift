@@ -9,14 +9,14 @@ class StyleResolver{
         //Swift.print("STACK: " + SelectorParser.string(querrySelectors));
         var styleComposition:IStyle = Style("styleComp")
         //let classType:String = element.getClassType()//gets the classtype from the component
-        let querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
+        let querrySelector:ISelector = ElementParser.selector(element);// :TODO: possibly move up in scope for optimizing
 
         //Swift.print("styleComposition")
         //Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
             //Swift.print("style.selector.element: " + style.selector.element)
             for selector in style.selectors{
-                if(selector.element == querrySelectors.classType){ //if style.selector == classType
+                if(selector.element == querrySelector.element){ //if style.selector == classType
                     //Swift.print("  element match found")
                     if(selector.states.count > 0){
                         for state in selector.states{//loop style.selector.states

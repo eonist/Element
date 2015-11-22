@@ -1,9 +1,9 @@
 import Cocoa
 
 class Text:Element,IText {
-    var initText:String;
+    var initText:String;//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
     var textField:NSText{get{return (skin as! ITextSkin).textField}}
-    var text:String{get{return textField.string!} set{fatalError("NOT SUPPORTED YET")}}
+    var text:String//{get{return textField.string!} set{fatalError("NOT SUPPORTED YET")}}
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         initText = text
         super.init(width, height, parent, id)
@@ -25,12 +25,5 @@ class Text:Element,IText {
     }
     func getTextField()->NSText{
         return (skin as! ITextSkin).textField;
-    }
-    /**
-     * Returns "Text"
-     * @Note This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
-     */
-    override func getClassType() -> String {
-        return String(Text);
     }
 }

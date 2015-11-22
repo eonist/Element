@@ -5,6 +5,9 @@ class Text:Element,IText {
     var textField:NSText{get{return (skin as! ITextSkin).textField}}
     var text:String{get{return textField.string!} set{}}
     //override var wantsDefaultClipping:Bool{return true}//avoids clipping the view
+    override func hitTest(aPoint: NSPoint) -> NSView? {return nil}//avoids 
+        
+    
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         initText = text
         super.init(width, height, parent, id)

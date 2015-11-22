@@ -44,7 +44,7 @@ class Button:Element {
     func mouseUpInside(theEvent: NSEvent){
         Swift.print("mouseUpInside: ")
         skinState = SkinStates.over;// :TODO: why in two lines like this?
-        //applySkinState(getSkinState());
+        applySkinState(getSkinState());
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
@@ -53,7 +53,7 @@ class Button:Element {
     func mouseUpOutside(theEvent: NSEvent){
         Swift.print("mouseUpOutside: ")
         skinState = SkinStates.none
-        //applySkinState(getSkinState());
+        applySkinState(getSkinState());
     }
     override func mouseUp(theEvent: NSEvent) {
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)

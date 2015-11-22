@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * NOTE: it seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
+ */
 class Element: View,IElement {
     var skinState:String = SkinStates.none
     var skin:ISkin?
@@ -20,22 +22,6 @@ class Element: View,IElement {
         self.id = id;
         super.init(frame: NSRect(0,0,width,height))
         resolveSkin()/*This cant be moved to init because the CGContext cant be found*/
-    }
-
-    /**
-     * Note: if you overide drawRect then update layers wont work
-     * NOTE: it seems NSViews arent drawn until they are added to a subview. 
-     */
-    override func drawRect(rect: NSRect) {
-        //Swift.print("Element.drawRect()  ")
-        
-            
-            //let graphicsContext = NSGraphicsContext.currentContext()!
-            //let context = graphicsContext.CGContext
-            //Swift.print("Context: " + String(context))
-            super.drawRect(rect)
-        
-        
     }
     /**
      * Returns the class type of the Class instance

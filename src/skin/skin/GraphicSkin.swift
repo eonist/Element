@@ -4,10 +4,9 @@ import Foundation
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
-        
     }
     override func drawRect(dirtyRect: NSRect) {
-        GraphicSkinParser.configure(self)
+        GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
     }
     /**
      * Required by super class

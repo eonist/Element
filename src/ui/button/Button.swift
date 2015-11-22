@@ -1,5 +1,8 @@
 import Cocoa
-
+/*
+ * // :TODO: it could be possible to merge the two skin lines in every event handler somehow
+ * // :TODO: impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesnt hold, if you want a simpler button you can just make an alternate Button class
+ */
 class Button:Element {
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
         //Swift.print("Button.init()")

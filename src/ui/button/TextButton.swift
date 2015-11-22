@@ -14,8 +14,8 @@ class TextButton:Button {
         addSubview(text!)
         //text.mouseChildren = text.mouseEnabled = text.buttonMode = false;
     }
-    override func setSkinState(skinState:String) {
-        super.setSkinState(skinState);
-        text!.skin.applyState(skinState);
+    override func applySkinState(skinState:String) {
+        super.applySkinState(skinState);
+        text!.skin!.applySkinState(skinState);
     }
 }

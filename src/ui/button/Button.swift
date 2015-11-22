@@ -15,7 +15,7 @@ class Button:Element {
      */
     override func mouseEntered( event: NSEvent){
         skinState = SkinStates.over
-        setSkinState(getSkinState());
+        applySkinState(getSkinState());
         Swift.print("mouseEntered: " + "\(super.skinState)")
         //super.mouseEntered(event)
         //needsDisplay = true;
@@ -26,7 +26,7 @@ class Button:Element {
     override func mouseExited(event: NSEvent){
         //isWithin = false
         skinState = SkinStates.none
-        setSkinState(getSkinState());
+        applySkinState(getSkinState());
         Swift.print("mouseExited: " + "\(self.skinState)")
         //super.mouseExited(event)
     }
@@ -35,7 +35,7 @@ class Button:Element {
      */
     override func mouseDown(theEvent: NSEvent) {
         skinState = SkinStates.down+" "+SkinStates.over;
-        setSkinState(getSkinState());
+        applySkinState(getSkinState());
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         //super.mouseDown(theEvent)
     }
@@ -45,7 +45,7 @@ class Button:Element {
      */
     func mouseUpInside(theEvent: NSEvent){
         skinState = SkinStates.over;// :TODO: why in two lines like this?
-        setSkinState(getSkinState());
+        applySkinState(getSkinState());
         Swift.print("mouseUpInside: " + "\(self.skinState)")
     }
     /**
@@ -54,7 +54,7 @@ class Button:Element {
      */
     func mouseUpOutside(theEvent: NSEvent){
         skinState = SkinStates.none
-        setSkinState(getSkinState());
+        applySkinState(getSkinState());
         Swift.print("mouseUpOutside: " + "\(self.skinState)")
     }
     override func mouseUp(theEvent: NSEvent) {

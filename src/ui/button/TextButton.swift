@@ -18,4 +18,7 @@ class TextButton:Button {
         super.applySkinState(skinState);
         text!.skin!.applySkinState(skinState);
     }
+    override func mouseDown(theEvent: NSEvent) {
+        <#code#>
+    }
 }

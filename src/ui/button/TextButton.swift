@@ -8,6 +8,9 @@ class TextButton:Button {
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-        
-    
+    override func resolveSkin():void {
+        super.resolveSkin();
+        text = addChild(new Text(width,height,_textString,this)) as Text;
+        text.mouseChildren = _text.mouseEnabled = _text.buttonMode = false;
+    }
 }

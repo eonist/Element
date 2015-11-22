@@ -17,18 +17,16 @@ class Button:Element {
         Swift.print("mouseEntered: ")
         skinState = SkinStates.over
         applySkinState(getSkinState());
-        super.mouseEntered(event)
-        //needsDisplay = true;
+        //super.mouseEntered(event)
     }
     /**
      * Handles actions and drawing states for the mouseExited event.
      */
     override func mouseExited(event: NSEvent){
         Swift.print("mouseExited: ")
-        //isWithin = false
         skinState = SkinStates.none
         applySkinState(getSkinState());
-        super.mouseExited(event)
+        //super.mouseExited(event)
     }
     /**
      * Handles actions and drawing states for the down event.
@@ -37,7 +35,7 @@ class Button:Element {
         Swift.print("mouseDownEvent: ")
         skinState = SkinStates.down+" "+SkinStates.over;
         applySkinState(getSkinState());
-        super.mouseDown(theEvent)
+        //super.mouseDown(theEvent)
     }
     /**
      * Handles actions and drawing states for the release event.
@@ -46,7 +44,7 @@ class Button:Element {
     func mouseUpInside(theEvent: NSEvent){
         Swift.print("mouseUpInside: ")
         skinState = SkinStates.over;// :TODO: why in two lines like this?
-        applySkinState(getSkinState());
+        //applySkinState(getSkinState());
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
@@ -55,7 +53,7 @@ class Button:Element {
     func mouseUpOutside(theEvent: NSEvent){
         Swift.print("mouseUpOutside: ")
         skinState = SkinStates.none
-        applySkinState(getSkinState());
+        //applySkinState(getSkinState());
     }
     override func mouseUp(theEvent: NSEvent) {
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
@@ -65,6 +63,6 @@ class Button:Element {
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
-        super.mouseUp(theEvent)
+        //super.mouseUp(theEvent)
     }
 }

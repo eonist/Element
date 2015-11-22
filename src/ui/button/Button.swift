@@ -7,21 +7,15 @@ class Button:Element {
         addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    override func getClassType()->String{
-        return String(Button)
-    }
     /**
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseEntered( event: NSEvent){
-        
         skinState = SkinStates.over
         setSkinState(getSkinState());
         Swift.print("mouseEntered: " + "\(super.skinState)")
-            
         //super.mouseEntered(event)
         //needsDisplay = true;
-        
     }
     /**
      * Handles actions and drawing states for the mouseExited event.
@@ -41,10 +35,6 @@ class Button:Element {
         setSkinState(getSkinState());
         Swift.print("mouseDownEvent: " + "\(self.skinState)")
         //super.mouseDown(theEvent)
-        
-        
-         //continue here: implement proper support for combined skin states, see the code above
-        
     }
     /**
      * Handles actions and drawing states for the release event.
@@ -70,17 +60,8 @@ class Button:Element {
         //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
         //Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        
         self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        
-        //skinState = SkinStates.none
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
-        
         //super.mouseDown(theEvent)
-        
-        
-        
-        
     }
-    
 }

@@ -1,12 +1,10 @@
 import Foundation
-/*
+
 class TextButton:Button {
-    init(_ title:String = "",_ width: Int = 100, _ height: Int = 40, _ style:IGraphicStyle = GraphicStyle.clear) {
-        super.init(width, height, style)
-        self.title = title
+    init(_ title:String = "", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
+        super.init(width, height, parent)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-*/

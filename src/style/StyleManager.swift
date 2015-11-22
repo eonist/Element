@@ -9,12 +9,6 @@ class StyleManager{
         styles.append(style);
     }
     /**
-    * Adds every style in a styleCollection to the stylemanager
-    */
-    class func addStyle(styles:Array<IStyle>){
-        self.styles += styles;
-    }
-    /**
     * Locates and returns a Style by the @param name.
     * @return a Style
     */
@@ -26,6 +20,16 @@ class StyleManager{
             }
         }
         return nil;
+    }
+    
+}
+//convenince methods
+extension StyleManager{
+    /**
+     * Adds every style in a styleCollection to the stylemanager
+     */
+    class func addStyle(styles:Array<IStyle>){
+        self.styles += styles;
     }
     /**
      * Adds styles by parsing @param string (the string must comply to the Element css syntax)

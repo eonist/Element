@@ -1,6 +1,7 @@
 import Foundation
 
 class TextButton:Button {
+    var text:Text? = nil;
     var textString:String;
     init(text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
         textString = text;
@@ -8,9 +9,10 @@ class TextButton:Button {
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    override func resolveSkin():void {
+    override func resolveSkin() {
         super.resolveSkin();
-        text = addChild(new Text(width,height,_textString,this)) as Text;
-        text.mouseChildren = _text.mouseEnabled = _text.buttonMode = false;
+        text = Text(width,height,textString,self)
+        addSubview(text!)
+        //text.mouseChildren = text.mouseEnabled = text.buttonMode = false;
     }
 }

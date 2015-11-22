@@ -35,9 +35,16 @@ extension StyleManager{
      * Adds styles by parsing @param string (the string must comply to the Element css syntax)
      * // :TODO: add support for css import statement in the @param string
      */
-    class func addStylesByCSS(var string:String){
-        string = CSSLinkResolver.resolveLinks(string);
-        string = RegExpModifier.removeComments(string);
-        //addStyles(CSSParser.styleCollection(string).styles);
+    class func addStyle(var cssString:String){
+        cssString = CSSLinkResolver.resolveLinks(cssString);
+        cssString = RegExpModifier.removeComments(cssString);
+        addStyle(CSSParser.styleCollection(cssString).styles);
+    }
+    /**
+     * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
+     * @Note to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
+     */
+    class func addStylesByURL(url:String) {
+    
     }
 }

@@ -3,7 +3,7 @@ import Cocoa
  * NOTE: it seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
  */
 class Element: View,IElement {
-    var skinState2:String = SkinStates.none
+    private var skinState:String = SkinStates.none
     var skin:ISkin?
     /*
     var x:CGFloat = 0;

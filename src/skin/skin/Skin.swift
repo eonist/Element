@@ -54,6 +54,11 @@ class Skin:FlippedView,ISkin{
      * sets the skin state and forces a redraw
      * @Note forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
      */
+    
+    
+    //TODO: you can name it setState, as long as you set state to private
+    
+    
     func setSkinState(state:String){/*Preferably we would use setState here, but that name is occupied by obj-c*/
         Swift.print("Skin.setSkinState")
         hasStateChanged = true;

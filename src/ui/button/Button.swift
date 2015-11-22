@@ -14,21 +14,21 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseEntered( event: NSEvent){
+        Swift.print("mouseEntered: ")
         skinState = SkinStates.over
         applySkinState(getSkinState());
-        Swift.print("mouseEntered: " + "\(super.skinState)")
-        //super.mouseEntered(event)
+        super.mouseEntered(event)
         //needsDisplay = true;
     }
     /**
      * Handles actions and drawing states for the mouseExited event.
      */
     override func mouseExited(event: NSEvent){
+        Swift.print("mouseExited: ")
         //isWithin = false
         skinState = SkinStates.none
         applySkinState(getSkinState());
-        Swift.print("mouseExited: " + "\(self.skinState)")
-        //super.mouseExited(event)
+        super.mouseExited(event)
     }
     /**
      * Handles actions and drawing states for the down event.
@@ -65,6 +65,6 @@ class Button:Element {
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
-        //super.mouseDown(theEvent)
+        super.mouseUp(theEvent)
     }
 }

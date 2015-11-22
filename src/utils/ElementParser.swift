@@ -11,14 +11,20 @@ class ElementParser{
         let elements:Array<IElement> = ArrayModifier.append(parents(element),element)
         var selectors:Array<ISelector> = []
         for  e : IElement in elements {
-            let selector:Selector = Selector();
-            selector.element = e.getClassType();
-            //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId];
-            //selector.id = e.id;
-            selector.states = (e.skin != nil ? e.skin!.state : e.getSkinState()).match("\\b\\w+\\b");/*Matches words with spaces between them*/
-            selectors.append(selector);
+            
         }
         return selectors;
+    }
+    /**
+     *
+     */
+    class func selector(element:IElement)->ISelector{
+        let selector:Selector = Selector();
+        selector.element = e.getClassType();
+        //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId];
+        //selector.id = e.id;
+        selector.states = (e.skin != nil ? e.skin!.state : e.getSkinState()).match("\\b\\w+\\b");/*Matches words with spaces between them*/
+        selectors.append(selector);
     }
     /**
      * Returns an array populated with IElement parents of the target (Basically the ancestry)

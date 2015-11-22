@@ -36,14 +36,7 @@ class Element: View,IElement {
             resolveSkin()
         
     }
-    /**
-     * Returns the class type of the Class instance
-     * @Note if a class subclasses Element that sub-class will be the class type
-     * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
-     */
-    func getClassType()->String{
-        return String(Element)
-    }
+    
     /**
      * Required by NSView
      */
@@ -139,6 +132,14 @@ extension IElement {
         
         frame.x = point.x
         frame.y = point.y
+    }
+    /**
+     * Returns the class type of the Class instance
+     * @Note if a class subclasses Element that sub-class will be the class type
+     * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
+     */
+    func getClassType()->String{
+        return String(self.dynamicType)
     }
 }
 

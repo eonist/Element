@@ -3,7 +3,7 @@ import Foundation
 class TextButton:Button {
     var text:Text? = nil;
     var textString:String;
-    init(text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
+    init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
         textString = text;
         super.init(width, height, parent, id)
         

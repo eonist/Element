@@ -19,6 +19,7 @@ class TextSkin:Skin,ITextSkin{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func draw() {
         //do aligning here
+        applyProperties(textField);
         super.draw()
     }
     func applyProperties(textField:NSText){
@@ -34,6 +35,7 @@ class TextSkin:Skin,ITextSkin{
         super.frame.width = width//quick fix
         super.frame.height = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
+        Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat);
     }
     /**

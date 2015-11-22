@@ -22,9 +22,11 @@ class StyleResolver{
                         for state in selector.states{//loop style.selector.states
                             //Swift.print("state: " + state)
                             //Swift.print("element.skinState: " + element.skinState)
-                            if(state == querrySelector.skinState){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                                //Swift.print("    state match found")
-                                StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
+                            for s in querrySelector.states{
+                                if(state == s){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
+                                    //Swift.print("    state match found")
+                                    StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
+                                }
                             }
                         }
                     }else{//temp solution

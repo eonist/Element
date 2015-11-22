@@ -27,15 +27,15 @@ class TextSkin:Skin,ITextSkin{
         //Continue here, bug here cant get width
         
         let width:CGFloat = StylePropertyParser.width(self) ?? super.width!
-        Swift.print("width: " + "\(width)")
+        //Swift.print("width: " + "\(width)")
         let height:CGFloat = StylePropertyParser.height(self) ?? super.height!
-        Swift.print("height: " + "\(height)")
+        //Swift.print("height: " + "\(height)")
         textField.frame.width = width
         textField.frame.height = height
         super.frame.width = width//quick fix
         super.frame.height = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
-        Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
+        //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat);
     }
     /**

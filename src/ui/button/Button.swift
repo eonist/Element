@@ -17,6 +17,7 @@ class Button:Element {
         Swift.print("mouseEntered: ")
         skinState = SkinStates.over
         applySkinState(getSkinState());
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
         //super.mouseEntered(event)
     }
     /**
@@ -26,6 +27,7 @@ class Button:Element {
         Swift.print("mouseExited: ")
         skinState = SkinStates.none
         applySkinState(getSkinState());
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
         //super.mouseExited(event)
     }
     /**
@@ -46,6 +48,7 @@ class Button:Element {
         Swift.print("mouseUpInside: ")
         skinState = SkinStates.over;// :TODO: why in two lines like this?
         applySkinState(getSkinState());
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
@@ -55,6 +58,7 @@ class Button:Element {
         Swift.print("mouseUpOutside: ")
         skinState = SkinStates.none
         applySkinState(getSkinState());
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
     }
     override func mouseUp(theEvent: NSEvent) {
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)

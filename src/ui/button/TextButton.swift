@@ -20,7 +20,6 @@ class TextButton:Button {
     }
     override func mouseDown(theEvent: NSEvent) {
         applyText("Mouse down")
-        
         super.mouseDown(theEvent)
     }
     override func mouseUp(theEvent: NSEvent) {

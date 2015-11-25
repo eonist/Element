@@ -4,7 +4,7 @@ class FillStyleModifier {
     /**
      * Applies @param gradient on to @param graphics
      */
-    class func beginGradientFill(graphics:Graphics,_ gradient:IGradient) {
+    class func beginGradientFill(graphics:Graphics,_ gradient:Gradient/*IGradient*/) {
         /*
         let nsFillGradientColorA = ColorParser.nsColor("FF0000"/*fillGradientColorA*/, Float(1))
         let nsFillGradientColorB = ColorParser.nsColor("0000FF"/*fillGradientColorB*/, Float(1))

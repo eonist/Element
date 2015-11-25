@@ -32,7 +32,7 @@ class CSSPropertyParser {
     * @Note setting the gradientType isnt necessary since its the default setting
     */
     class func linearGradient(string:String)->IGradient{
-        Swift.print("CSSPropertyparser.linearGradient")
+        //Swift.print("CSSPropertyparser.linearGradient")
         let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let rotation:Double = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
@@ -104,34 +104,34 @@ private class Utils{
      * @Note adds colors, opacities and ratios
      */
     class func gradient(properties:Array<String>)->IGradient {
-        print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));
+        //print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));
         let gradient:Gradient = Gradient();
         for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
             let property:String = properties[i];
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
             
             let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
-            Swift.print("matches.count: " + "\(matches.count)")
+            //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
-                Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+                //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
                 //let content = RegExp.value(property, match, 0)//the entire match
                 let color:String = RegExp.value(property, match, 1)
-                Swift.print("color: " + color)
+                //Swift.print("color: " + color)
                 
                 let alpha:String = RegExp.value(property, match, 2)
-                Swift.print("alpha: " + alpha)
+                //Swift.print("alpha: " + alpha)
                 
                 let alphaVal:Float = Float(Utils.alpha(alpha))
                 gradient.colors.append(ColorParser.cgColor(StringParser.color(color,alphaVal)))//append color
                 
                 let ratio:String = RegExp.value(property, match, 3)
-                Swift.print("ratio: " + ratio)
+                //Swift.print("ratio: " + ratio)
                 
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) * 255.0 }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 //Swift.print("gradient.locations start: " + "\(gradient.locations.count)")
                 gradient.locations.append(CGFloat(Float(ratioValue)))//append ratioValue
-                Swift.print("gradient.locations end: " + "\(gradient.locations.count)")
+                //Swift.print("gradient.locations end: " + "\(gradient.locations.count)")
             }
         }
         return gradient

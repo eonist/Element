@@ -108,7 +108,7 @@ class StylePropertyParser{
      * Returns a GradientFillStyle
      */
     class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
-        let newGradient:IGradient = value(skin, "fill") as! IGradient//GradientParser.clone();
+        let newGradient:Gradient/*IGradient*/ = value(skin, "fill") as! Gradient/*IGradient*///GradientParser.clone();
         //let sizeWidth:Double = skin.width!
         //let sizeHeight:Double = skin.height!
         return GradientFillStyle(newGradient,NSColor.clearColor());

@@ -18,7 +18,7 @@ class Button:Element {
         skinState = SkinStates.over
         applySkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-        //super.mouseEntered(event)
+        super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * Handles actions and drawing states for the mouseExited event.
@@ -28,7 +28,7 @@ class Button:Element {
         skinState = SkinStates.none
         applySkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
-        //super.mouseExited(event)
+        super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * Handles actions and drawing states for the down event.
@@ -38,7 +38,7 @@ class Button:Element {
         skinState = SkinStates.down+" "+SkinStates.over;
         applySkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
-        super.mouseDown(theEvent)
+        super.mouseDown(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * Handles actions and drawing states for the release event.
@@ -68,6 +68,6 @@ class Button:Element {
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
         self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
-        //super.mouseUp(theEvent)
+        super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
 }

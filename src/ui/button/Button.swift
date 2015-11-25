@@ -38,7 +38,7 @@ class Button:Element {
         skinState = SkinStates.down+" "+SkinStates.over;
         applySkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
-        //super.mouseDown(theEvent)
+        super.mouseDown(theEvent)
     }
     /**
      * Handles actions and drawing states for the release event.

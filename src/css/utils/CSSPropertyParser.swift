@@ -128,7 +128,7 @@ private class Utils{
                 //Swift.print("ratio: " + ratio)
                 
                 var ratioValue:Double = Utils.ratio(ratio)
-                if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) * 1.0/*255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
+                if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 //Swift.print("gradient.locations start: " + "\(gradient.locations.count)")
                 gradient.locations.append(CGFloat(Float(ratioValue)))//append ratioValue
                 //Swift.print("gradient.locations end: " + "\(gradient.locations.count)")
@@ -159,8 +159,8 @@ private class Utils{
         var ratioValue:Double = Double.NaN
         if(RegExp.test(ratio,"\\d{1,3}%")){//i.e: 100%
             ratio = RegExp.match(ratio,"\\d{1,3}")[0]
-            ratioValue = Double(ratio)! / 100 * 255
-        }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = Double(ratio)! * 255 } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+            ratioValue = Double(ratio)! / 100 /** 255*/
+        }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = Double(ratio)! /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         return ratioValue;
     }
     /**

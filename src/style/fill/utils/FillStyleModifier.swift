@@ -19,7 +19,7 @@ class FillStyleModifier {
         Swift.print("___")
         */
         //Swift.print(gradient.locations.count)
-        let gradient:Gradient = Gradient([gradient.colors[0]/*nsFillGradientColorA.CGColor*/,gradient.colors[1]/*nsFillGradientColorB.CGColor*/])
+        //let gradient:Gradient = Gradient([gradient.colors[0]/*nsFillGradientColorA.CGColor*/,gradient.colors[1]/*nsFillGradientColorB.CGColor*/])
          /**/
         graphics.gradientFill(gradient)
     }

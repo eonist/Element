@@ -10,7 +10,7 @@ class GradientGraphic:GraphicDecoratable {
     override func beginFill(){
         Swift.print("GradientGraphic.beginFill()")
         if(getGraphic().fillStyle!.dynamicType is GradientFillStyle.Type){
-            FillStyleModifier.beginGradientFill(getGraphic().graphics, (getGraphic().fillStyle as! GradientFillStyle).gradient)
+            getGraphic().graphics.gradientFill((getGraphic().fillStyle as! GradientFillStyle).gradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
             
         

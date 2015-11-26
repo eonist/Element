@@ -14,8 +14,10 @@ class FillStyleModifier {
         let nsFillGradientColorB = ColorParser.nsColor("0000FF"/*fillGradientColorB*/, Float(1))
         Swift.print("___")
         Swift.print(gradient.colors[1])
+        Swift.print(gradient.locations[1])
         Swift.print("___")
-        //let gradient:Gradient = Gradient([gradient.colors[0]/*nsFillGradientColorA.CGColor*/,gradient.colors[1]/*nsFillGradientColorB.CGColor*/])
+        Swift.print(gradient.locations.count)
+        let gradient:Gradient = Gradient([gradient.colors[0]/*nsFillGradientColorA.CGColor*/,gradient.colors[1]/*nsFillGradientColorB.CGColor*/])
          /**/
         graphics.gradientFill(gradient)
     }

@@ -22,7 +22,6 @@ class CircleGraphic:BaseGraphic {
         drawLine()
         stylizeLine()
     }
-
     override func drawFill() {
         Swift.print("drawFill()")
         getGraphic().path = CGPathParser.circle(radius!, 0, 0)

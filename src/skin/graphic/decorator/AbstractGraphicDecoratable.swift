@@ -5,14 +5,25 @@ import Foundation
 class AbstractGraphicDecoratable:IGraphicDecoratable{
     var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic
     func getGraphic() -> BaseGraphic{fatalError("Must be overridden in subClass")}
-    func initialize(){}
+    func initialize(){
+        if(getGraphic().fillStyle != nil){fill()}
+        if(getGraphic().lineStyle != nil){line()}
+    }
     /*Fill*/
-    func fill(){}
+    func fill(){
+        beginFill()
+        drawFill()
+        stylizeFill()
+    }
     func beginFill(){fatalError("Must be overridden in subClass")}
     func drawFill(){fatalError("Must be overridden in subClass")}
     func stylizeFill(){fatalError("Must be overridden in subClass")}
     /*Line*/
-    func line(){}
+    func line(){
+        applyLineStyle()
+        drawLine()
+        stylizeLine()
+    }
     func applyLineStyle(){fatalError("Must be overridden in subClass")}
     func drawLine(){fatalError("Must be overridden in subClass")}
     func stylizeLine(){fatalError("Must be overridden in subClass")}

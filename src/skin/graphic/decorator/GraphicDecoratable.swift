@@ -6,15 +6,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
     }
-    override func initialize(){
-        if(getGraphic().fillStyle != nil){fill()}
-        if(getGraphic().lineStyle != nil){line()}
-    }
-    override func fill(){
-        beginFill()
-        drawFill()
-        stylizeFill()
-    }
     override func beginFill(){
         decoratable.beginFill()
     }
@@ -24,12 +15,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func stylizeFill(){
         decoratable.stylizeFill()
     }
-    override func line(){
-        //Swift.print("GraphicDecoratable.line()")
-        applyLineStyle()
-        drawLine()
-        stylizeLine()
-    }
+    
     override func applyLineStyle(){
         decoratable.applyLineStyle()
     }

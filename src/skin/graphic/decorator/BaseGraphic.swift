@@ -50,10 +50,6 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         CGPathModifier.translate(&path,position.x,position.y)//Transformations
         //TODO:also translate the linePath here
     }
-    func setSize(width:CGFloat,height:CGFloat) {
-        self.width = width;
-        self.height = height;
-    }
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;
         self.lineStyle = lineStyle;

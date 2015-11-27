@@ -43,3 +43,13 @@ class RectGraphic:GraphicDecoratable{
         }
     }
 }
+
+
+/*
+
+func setSize(width:CGFloat,height:CGFloat) {
+self.width = width;
+self.height = height;
+}
+
+*/

@@ -29,6 +29,8 @@ class GraphicSkin:Skin{
         
         
         
+        
+        
         GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
     }
     /**

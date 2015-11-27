@@ -1,7 +1,8 @@
 import Foundation
 
 class CircleGraphic:BaseGraphic {
-    init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable) {
+    var radius:CGFloat?
+    init(_ radius:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
         self.radius = radius
         super.init(decoratable)
     }

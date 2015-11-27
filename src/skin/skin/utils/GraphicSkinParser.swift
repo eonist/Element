@@ -33,7 +33,7 @@ private class Utils{
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rectGraphic(skin:ISkin)->IGraphicDecoratable {
+    class func rectGraphic(skin:ISkin,_ fillStyle:IFillStyle,_ lineStyle:ILineStyle)->IGraphicDecoratable {
         let width:CGFloat = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:CGFloat = (StylePropertyParser.height(skin) ?? skin.height!);
         return RectGraphic(width,height);

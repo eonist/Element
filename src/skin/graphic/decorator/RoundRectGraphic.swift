@@ -16,9 +16,9 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         let y:CGFloat = graphic.lineOffsetType!.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         //Swift.print("RoundRectGraphic2.drawFill() ")
-        let w:CGFloat = getGraphic().width
+        let w:CGFloat = (decoratable as! RectGraphic).width
         //Swift.print("w: " + "\(w)")
-        let h:CGFloat = getGraphic().height
+        let h:CGFloat = (decoratable as! RectGraphic).height
         //Swift.print("h: " + "\(h)")
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
         getGraphic().path = CGPathParser.roundRect(x,y,w, h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
@@ -30,7 +30,7 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType!;
-            let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, graphic.width, graphic.height), graphic.lineStyle!, lineOffsetType);
+            let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, (decoratable as! RectGraphic).width, (decoratable as! RectGraphic).height), graphic.lineStyle!, lineOffsetType);
             Swift.print(rect)
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
             graphic.linePath = CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)

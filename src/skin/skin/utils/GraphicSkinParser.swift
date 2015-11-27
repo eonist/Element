@@ -17,7 +17,6 @@ class GraphicSkinParser{
         graphic = Utils.rectGraphic(skin,graphic)
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
-        
         graphic.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
 }

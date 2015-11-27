@@ -21,6 +21,9 @@ class GraphicSkin:Skin{
         
             //reorganize the code to reflect this new scheme
         
+        //Actually all graphics data needs to be read from simple variables 
+        
+            //And if a 
         
         
         

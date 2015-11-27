@@ -48,7 +48,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     }
     func setPosition(position:CGPoint){
         CGPathModifier.translate(&path,position.x,position.y)//Transformations
-        //TODO:also translate the linePath here
+        CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
     }
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;

@@ -48,7 +48,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         //Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(linePath,graphics)//realize style on the graphic
     }
-    func setPosition(position:CGPoint){
+    override func setPosition(position:CGPoint){
         x = position.x
         y = position.y
         //path = CGPathModifier.translate(&path,position.x,position.y)//Transformations

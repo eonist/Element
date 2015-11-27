@@ -21,7 +21,7 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         let h:CGFloat = (decoratable as! RectGraphic).height
         //Swift.print("h: " + "\(h)")
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
-        getGraphic().path = CGPathParser.roundRect(x,y,w, h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
+        getGraphic().path = CGPathParser.roundRect(x,y,w,h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
     }
     /**
      *

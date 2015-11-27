@@ -1,11 +1,11 @@
 import Foundation
 
-class CircleGraphic:BaseGraphic {
+class CircleGraphic:GraphicDecoratable {
     var radius:CGFloat?
-    init(_ radius:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
+    init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable) {
         Swift.print("CircleGraphic.init()")
         self.radius = radius
-        super.init(fillStyle, lineStyle, lineOffsetType)
+        super.init(decoratable)
     }
     override func drawFill() {
         Swift.print("drawFill()")

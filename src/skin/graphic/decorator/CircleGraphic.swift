@@ -3,6 +3,7 @@ import Foundation
 class CircleGraphic:BaseGraphic {
     var radius:CGFloat?
     init(_ radius:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
+        Swift.print("CircleGraphic.init()")
         self.radius = radius
         super.init(fillStyle, lineStyle, lineOffsetType)
     }

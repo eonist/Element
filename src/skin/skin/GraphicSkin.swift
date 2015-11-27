@@ -27,7 +27,11 @@ class GraphicSkin:Skin{
         
             //a hasStyleChanged Boolean will be set to true if graphic style has changed
         
-            //a hasPathDataChanged Boolean will be set to true if path data has been changed -> then 
+                //-> then the cached style data will be updated
+        
+            //a hasPathDataChanged Boolean will be set to true if path data has been changed
+        
+                //-> then the cached pathdata will be updated
         
         //todo: test what happends if you set a if flag in the drawRect method, will the graphics be deleted?
         

@@ -14,7 +14,7 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
-        graphic = Utils.rectGraphic(graphic)
+        graphic = Utils.rectGraphic(skin,graphic)
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
         graphic.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
@@ -25,8 +25,6 @@ private class Utils{
      *
      */
     class func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle)->IGraphicDecoratable {
-        let width:CGFloat = (StylePropertyParser.width(skin) ?? skin.width!);
-        let height:CGFloat = (StylePropertyParser.height(skin) ?? skin.height!);
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
         //Swift.print("lineOffsetType: top:" + lineOffsetType.top + "  left:" + lineOffsetType.left + " bottom: " + lineOffsetType.bottom + " right: "+lineOffsetType.right)
         return BaseGraphic(fillStyle,lineStyle,lineOffsetType)
@@ -35,8 +33,10 @@ private class Utils{
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rectGraphic(decoratable:IGraphicDecoratable)->IGraphicDecoratable {
-        return RectGraphic(decoratable);
+    class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable)->IGraphicDecoratable {
+        let width:CGFloat = (StylePropertyParser.width(skin) ?? skin.width!);
+        let height:CGFloat = (StylePropertyParser.height(skin) ?? skin.height!);
+        return RectGraphic(width,height,decoratable);
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance

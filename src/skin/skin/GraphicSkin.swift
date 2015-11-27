@@ -23,7 +23,9 @@ class GraphicSkin:Skin{
         
         //Actually all graphics data needs to be read from simple variables 
         
-            //And if a graphics needs to change, then only this graphics will change, and not all graphics in all NSViews. 
+            //And if a graphics needs to change, then only this graphics will change, and not all graphics in all NSViews.
+        
+            //
         
         //todo: test what happends if you set a if flag in the drawRect method, will the graphics be deleted?
         

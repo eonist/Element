@@ -8,11 +8,11 @@ class CircleGraphic:GraphicDecoratable {
         super.init(decoratable)
     }
     override func drawFill() {
-        Swift.print("drawFill()")
-        getGraphic().path = CGPathParser.circle(radius!, x, y)
+        Swift.print("CircleGraphic.drawFill()")
+        getGraphic().path = CGPathParser.circle(radius!, getGraphic().x, getGraphic().y)
     }
     override func drawLine() {
-        Swift.print("drawLine()")
-        graphic.linePath = CGPathParser.circle(radius!, x, y)
+        Swift.print("CircleGraphic.drawLine()")
+        graphic.linePath = CGPathParser.circle(radius!, getGraphic().x, getGraphic().y)
     }
 }

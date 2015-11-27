@@ -29,6 +29,7 @@ class LineGraphic:GraphicDecoratable {
      * NOTE: sets p2 to the relative position of p1 to p2
      */
     override func setPosition(position:CGPoint){
-        CGPathModifier.translate(&graphic.linePath,position.x,position.y)//Transformations
+        fatalError("NOT IMPLEMENTED YET")
+        //CGPathModifier.translate(&graphic.linePath,position.x,position.y)//Transformations
     }
 }

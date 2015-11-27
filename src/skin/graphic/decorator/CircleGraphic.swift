@@ -6,12 +6,10 @@ class CircleGraphic:BaseGraphic {
         self.radius = radius
         super.init(fillStyle, lineStyle, lineOffsetType)
     }
-
     override func drawFill() {
-        CGPathParser.circle(radius!, 0, 0)
+        getGraphic().path = CGPathParser.circle(radius!, 0, 0)
     }
     override func drawLine() {
-        //needs code
-        
+        graphic.linePath = CGPathParser.circle(radius!, 0, 0)
     }
 }

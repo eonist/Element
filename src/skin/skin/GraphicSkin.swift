@@ -7,6 +7,9 @@ class GraphicSkin:Skin{
     }
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("GraphicSkin.drawRect()")
+        
+        //
+        
         GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
     }
     /**

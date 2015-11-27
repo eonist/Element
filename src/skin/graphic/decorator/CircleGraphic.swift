@@ -9,7 +9,7 @@ class CircleGraphic:BaseGraphic {
     }
     override func initialize(){
         fill()
-        line()
+        //line()
     }
     override func fill(){
         beginFill()

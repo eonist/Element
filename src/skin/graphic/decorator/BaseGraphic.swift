@@ -11,11 +11,11 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     var y:CGFloat = 0
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
-    var lineOffsetType:OffsetType?
+    var lineOffsetType:OffsetType
     var path:CGMutablePath = CGPathCreateMutable()
     var linePath:CGMutablePath = CGPathCreateMutable()
     
-    init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType? = nil) {
+    init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()) {
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType

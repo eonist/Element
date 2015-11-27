@@ -7,7 +7,8 @@ import Cocoa
 class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     lazy var graphics:Graphics = Graphics()
     override var graphic:BaseGraphic {return self}
-    
+    var x:CGFloat = 0
+    var y:CGFloat = 0
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType?
@@ -47,8 +48,10 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         GraphicModifier.stylizeLine(linePath,graphics)//realize style on the graphic
     }
     func setPosition(position:CGPoint){
-        path = CGPathModifier.translate(&path,position.x,position.y)//Transformations
-        linePath = CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
+        x = position.x
+        y = position.y
+        //path = CGPathModifier.translate(&path,position.x,position.y)//Transformations
+        //linePath = CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
     }
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;

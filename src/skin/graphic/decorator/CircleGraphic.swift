@@ -24,10 +24,10 @@ class CircleGraphic:BaseGraphic {
     }
     override func drawFill() {
         Swift.print("drawFill()")
-        getGraphic().path = CGPathParser.circle(radius!, 0, 0)
+        getGraphic().path = CGPathParser.circle(radius!, x, y)
     }
     override func drawLine() {
         Swift.print("drawLine()")
-        graphic.linePath = CGPathParser.circle(radius!, 0, 0)
+        graphic.linePath = CGPathParser.circle(radius!, x, y)
     }
 }

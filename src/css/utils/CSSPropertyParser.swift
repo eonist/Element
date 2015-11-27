@@ -37,7 +37,7 @@ class CSSPropertyParser {
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let rotation:Double = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
-        gradient.rotation = rotation * Trig.rad;// :TODO: rotations should be applied in the matrix
+        gradient.rotation = CGFloat(rotation) * ㎭;// :TODO: rotations should be applied in the matrix
         return gradient;
     }
     /**

@@ -8,9 +8,11 @@ class CircleGraphic:BaseGraphic {
         super.init(fillStyle, lineStyle, lineOffsetType)
     }
     override func drawFill() {
+        Swift.print("drawFill()")
         getGraphic().path = CGPathParser.circle(radius!, 0, 0)
     }
     override func drawLine() {
+        Swift.print("drawLine()")
         graphic.linePath = CGPathParser.circle(radius!, 0, 0)
     }
 }

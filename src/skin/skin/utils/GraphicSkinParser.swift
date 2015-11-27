@@ -14,7 +14,7 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
-        graphic = Utils.rectGraphic(skin,graphic)
+        graphic = Utils.rectGraphic(skin)
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
         graphic.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
@@ -33,10 +33,10 @@ private class Utils{
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable)->IGraphicDecoratable {
+    class func rectGraphic(skin:ISkin)->IGraphicDecoratable {
         let width:CGFloat = (StylePropertyParser.width(skin) ?? skin.width!);
         let height:CGFloat = (StylePropertyParser.height(skin) ?? skin.height!);
-        return RectGraphic(width,height,decoratable);
+        return RectGraphic(width,height);
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance

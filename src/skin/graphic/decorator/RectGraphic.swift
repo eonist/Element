@@ -1,12 +1,11 @@
 import Foundation
 
-class RectGraphic:GraphicDecoratable{
+class RectGraphic:BaseGraphic{
     var width:CGFloat;
     var height:CGFloat;
-    init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable) {
+    init(_ width:CGFloat = 100,_ height:CGFloat = 100) {
         self.width = width
         self.height = height
-        super.init(decoratable)
     }
     /**
      *

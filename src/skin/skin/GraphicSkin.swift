@@ -11,7 +11,10 @@ class GraphicSkin:Skin{
         
         
         
-        //Continue here:
+        //Continue here: Read about NSView optimization!!!!!!
+        
+        
+        
         
         //move configure to its original place, and add initialize here
         

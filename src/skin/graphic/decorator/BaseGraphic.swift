@@ -48,6 +48,9 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         //Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(linePath,graphics)//realize style on the graphic
     }
+    /**
+     * TODO: remove the x and y values from this class, some graphics may not have a natural x and y pos like LineGraphic or PathGraphic
+     */
     override func setPosition(position:CGPoint){
         x = position.x
         y = position.y

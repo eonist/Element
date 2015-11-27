@@ -6,6 +6,7 @@ class RectGraphic:GraphicDecoratable{
     init(_ width:CGFloat,_ height:CGFloat,_ decoratable: IGraphicDecoratable) {
         self.width = width
         self.height = height
+        super.init(decoratable)
     }
     /**
      *
@@ -13,8 +14,7 @@ class RectGraphic:GraphicDecoratable{
     override func drawFill() {
         let x:CGFloat = graphic.lineOffsetType!.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         let y:CGFloat = graphic.lineOffsetType!.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        let rect:CGRect = CGRect(x,y,graphic.width, graphic.height)
-        
+        let rect:CGRect = CGRect(x,y,width, height)
         graphic.path = rect.path
     }
     /**
@@ -23,7 +23,7 @@ class RectGraphic:GraphicDecoratable{
     override func drawLine(){
         //Swift.print("RectGraphic.drawLine()")
         if(graphic.lineStyle != nil){
-            let graphicRect:CGRect = CGRect(0, 0, graphic.width, graphic.height)
+            let graphicRect:CGRect = CGRect(0, 0, width, height)
             
             //Swift.print("graphicRect: " + String(graphicRect))
             let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType!);

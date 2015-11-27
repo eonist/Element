@@ -7,15 +7,14 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         self.decoratable = decoratable
     }
     override func initialize(){
-        if(fillStyle != nil){fill()}
-        if(lineStyle != nil){line()}
+        if(getGraphic().fillStyle != nil){fill()}
+        if(getGraphic().lineStyle != nil){line()}
     }
     override func fill(){
         beginFill()
         drawFill()
         stylizeFill()
     }
-    
     override func beginFill(){
         decoratable.beginFill()
     }

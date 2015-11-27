@@ -47,8 +47,8 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         GraphicModifier.stylizeLine(linePath,graphics)//realize style on the graphic
     }
     func setPosition(position:CGPoint){
-        CGPathModifier.translate(&path,position.x,position.y)//Transformations
-        CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
+        path = CGPathModifier.translate(&path,position.x,position.y)//Transformations
+        linePath = CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
     }
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;

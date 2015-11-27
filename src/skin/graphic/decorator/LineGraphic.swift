@@ -24,8 +24,11 @@ class LineGraphic:GraphicDecoratable {
         self.p1 = p1;
         self.p2 = p2;
     }
+    /**
+     * NOTE: sets p1 to the position
+     * NOTE: sets p2 to the relative position of p1 to p2
+     */
     override func setPosition(position:CGPoint){
-        //set p1 to the position
-        //set p2 to the relative position of p1 to p2
+        CGPathModifier.translate(&graphic.linePath,position.x,position.y)//Transformations
     }
 }

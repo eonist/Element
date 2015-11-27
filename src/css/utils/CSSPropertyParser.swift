@@ -35,7 +35,7 @@ class CSSPropertyParser {
         //Swift.print("CSSPropertyparser.linearGradient")
         let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
-        let rotation:Double = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
+        let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
         gradient.rotation = CGFloat(rotation) * ㎭;// :TODO: rotations should be applied in the matrix
         return gradient;
@@ -139,15 +139,15 @@ private class Utils{
     /**
      *
      */
-    class func rotation(rotationMatch:String)->Double{//td move to internal utils class?or maybe not?
-        var rotation:Double;
+    class func rotation(rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
+        var rotation:CGFloat;
         let directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?
         if(RegExp.test(rotationMatch,"^\\d+?deg|\\d+$")) {
-            rotation = Double(RegExp.match(rotationMatch, "^\\d+?$|^\\d+?(?=deg$)")[0])!
+            rotation = CGFloat(Double(RegExp.match(rotationMatch, "^\\d+?$|^\\d+?(?=deg$)")[0])!)
         }
         else if(RegExp.test(rotationMatch,directionPattern)){
             let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
-            rotation = Trig.angleType(angleType)+180;// :TODO: Create support for top left and other corners
+            rotation = Trig.angleType(angleType)+180.0;// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}
         //		trace("rotation: " + rotation);
         return rotation;

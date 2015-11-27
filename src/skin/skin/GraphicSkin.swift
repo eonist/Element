@@ -12,6 +12,8 @@ class GraphicSkin:Skin{
         
             //the path creation should not update when the drawRect is called
         
+            //the path creation should happen on init and when a update method is excplicitly called
+        
             //
         
         GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/

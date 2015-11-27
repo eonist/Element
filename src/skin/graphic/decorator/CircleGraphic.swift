@@ -8,8 +8,8 @@ class CircleGraphic:BaseGraphic {
         super.init(fillStyle, lineStyle, lineOffsetType)
     }
     override func initialize(){
-        fill()
-        //line()
+        if(fillStyle != nil){fill()}
+        if(lineStyle != nil){line()}
     }
     override func fill(){
         beginFill()

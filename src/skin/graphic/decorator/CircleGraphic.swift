@@ -7,6 +7,22 @@ class CircleGraphic:BaseGraphic {
         self.radius = radius
         super.init(fillStyle, lineStyle, lineOffsetType)
     }
+    override func initialize(){
+        fill()
+        line()
+    }
+    override func fill(){
+        beginFill()
+        drawFill()
+        stylizeFill()
+    }
+    override func line(){
+        //Swift.print("GraphicDecoratable.line()")
+        applyLineStyle()
+        drawLine()
+        stylizeLine()
+    }
+
     override func drawFill() {
         Swift.print("drawFill()")
         getGraphic().path = CGPathParser.circle(radius!, 0, 0)

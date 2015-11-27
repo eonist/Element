@@ -25,7 +25,9 @@ class GraphicSkin:Skin{
         
             //And if a graphics needs to change, then only this graphics will change, and not all graphics in all NSViews.
         
-            //
+            //a hasStyleChanged Boolean will be set to true if graphic style has changed
+        
+            //a hasPathDataChanged Boolean will be set to true if path data has been changed -> then 
         
         //todo: test what happends if you set a if flag in the drawRect method, will the graphics be deleted?
         

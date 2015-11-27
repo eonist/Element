@@ -8,13 +8,21 @@ class GraphicSkin:Skin{
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("GraphicSkin.drawRect()")
         
+        
+        
+        
+        //Continue here:
+        
         //move configure to its original place, and add initialize here
         
             //the path creation should not update when the drawRect is called
         
             //the path creation should happen on init and when a update method is excplicitly called
         
-            //
+            //reorganize the code to reflect this new scheme
+        
+        
+        
         
         GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
     }

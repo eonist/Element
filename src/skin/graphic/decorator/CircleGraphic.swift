@@ -1,8 +1,8 @@
-import Foundation
+import Cocoa
 
 class CircleGraphic:GraphicDecoratable {
     var radius:CGFloat?
-    init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable) {
+    init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         Swift.print("CircleGraphic.init()")
         self.radius = radius
         super.init(decoratable)

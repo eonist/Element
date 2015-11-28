@@ -1,8 +1,7 @@
 import Foundation
 
-protocol IPositionalGraphic:IGraphicDecoratable {/*We need the getGraphic() from IGraphicDecoratable*/
-    var x:CGFloat{get set}
-    var y:CGFloat{get set}
+protocol IPositionalGraphic:IPositionable,IGraphicDecoratable {/*We need the getGraphic() from IGraphicDecoratable*/
+    //the IPositionable and IGraphicDecoratable provides the properties needed
 }
 extension IPositionalGraphic{
     var x:CGFloat{get{return getGraphic().x}set{getGraphic().x = newValue}}

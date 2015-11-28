@@ -47,4 +47,5 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func getGraphic() -> BaseGraphic{
         return self.decoratable.getGraphic()
     }
+    
 }

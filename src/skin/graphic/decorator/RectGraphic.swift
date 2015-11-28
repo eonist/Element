@@ -1,14 +1,6 @@
 import Cocoa
 
 class RectGraphic:SizeableGraphic{
-    
-    //TODO: add x and y to the init bellow
-    
-    init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
-        self.width = width
-        self.height = height
-        super.init(decoratable)
-    }
     /**
      *
      */

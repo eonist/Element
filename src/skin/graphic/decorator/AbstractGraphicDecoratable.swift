@@ -3,7 +3,7 @@ import Foundation
  * The AbstractDecorator has all the decorator methods
  */
 class AbstractGraphicDecoratable:IGraphicDecoratable{
-    var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic
+    var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic, also this is only a getter since you cant override variable setters
     func getGraphic() -> BaseGraphic{fatalError("Must be overridden in subClass")}
     func getPositionalGraphic()-> IPositionalGraphic{fatalError("Must be overridden in subClass")}
     func getSizeableGraphic()-> ISizeableGraphic{fatalError("Must be overridden in subClass")}
@@ -19,6 +19,6 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     func drawLine(){fatalError("Must be overridden in subClass")}
     func stylizeLine(){fatalError("Must be overridden in subClass")}
     /**/
-    var size:CGSize{get{fatalError("Must be overridden in subClass")}}
-    var position:CGPoint = {get{fatalError("Must be overridden in subClass")}}
+    var size:CGSize{fatalError("Must be overridden in subClass")}//this is only a getter since you cant override variable setters
+    var position:CGPoint{fatalError("Must be overridden in subClass")}//this is only a getter since you cant override variable setters
 }

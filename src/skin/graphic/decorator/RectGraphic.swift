@@ -1,6 +1,8 @@
 import Cocoa
 
 class RectGraphic:GraphicDecoratable,IPositionalGraphic{
+    var x:CGFloat = 0
+    var y:CGFloat = 0
     var width:CGFloat;
     var height:CGFloat;
     

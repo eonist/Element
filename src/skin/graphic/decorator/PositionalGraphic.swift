@@ -1,11 +1,10 @@
 import Foundation
 
 class PositionalGraphic:GraphicDecoratable,IPositionalGraphic {
-    var x:CGFloat
+    var position:CGPoint
     var y:CGFloat
-    init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ decoratable: IGraphicDecoratable) {
-        self.x = x
-        self.y = y
+    init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
+        self.position = position
         super.init(decoratable)
     }
     override func getPositionalGraphic() -> IPositionalGraphic {

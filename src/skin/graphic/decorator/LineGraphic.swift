@@ -32,7 +32,7 @@ class LineGraphic:GraphicDecoratable {
         return CGSize(relativeDifference.x,relativeDifference.y)
         //min x and y
         //max x and y
-        fatalError("Not implemented yet")
+        //fatalError("Not implemented yet")
     }
     /**
      * Returns the boundingBox topLeft corner
@@ -40,7 +40,7 @@ class LineGraphic:GraphicDecoratable {
     override func getPosition() -> CGPoint {
         //min x and y
         return CGPoint(min(p1.x,p2.x),min(p1.y,p2.y))//topLeft
-        fatalError("Not implemented yet")
+        //fatalError("Not implemented yet")
     }
 }
 /**

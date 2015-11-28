@@ -9,6 +9,10 @@ extension IPositionalGraphic{
     func setPosition(position:CGPoint){
         getGraphic().setPosition(position)
     }
+    func setPosition(x:CGFloat,y:CGFloat){
+        getGraphic().x = x
+        getGraphic().y = y
+    }
     func getPosition()->CGPoint{
         return CGPoint(getGraphic().x,getGraphic().y)
     }

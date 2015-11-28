@@ -25,3 +25,15 @@ class LineGraphic:GraphicDecoratable {
         self.p2 = p2;
     }
 }
+/**
+* NOTE: sets p1 to the position
+* NOTE: sets p2 to the relative position of p1 to p2
+*/
+/*
+override func setPosition(position:CGPoint){
+p2.x = position.x + NumberParser.relativeDifference(p1.x, p2.x)
+p2.y = position.y + NumberParser.relativeDifference(p1.y, p2.y)
+p1.x = position.x
+p1.y = position.y
+}
+*/

@@ -1,5 +1,7 @@
 import Foundation
-
+/*
+ * All SizableGraphics are also positionable
+ */
 class SizeableGraphic:PositionalGraphic,ISizeableGraphic {
     var width:CGFloat;
     var height:CGFloat;

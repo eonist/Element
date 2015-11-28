@@ -28,6 +28,12 @@ class LineGraphic:GraphicDecoratable {
      *
      */
     override func getSize()->CGSize{
+        //min x and y
+        //max x and y
+        fatalError("Not implemented yet")
+    }
+    override func getPosition() -> CGPoint {
+        //min x and y
         fatalError("Not implemented yet")
     }
 }

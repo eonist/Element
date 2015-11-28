@@ -17,6 +17,6 @@ protocol IGraphicDecoratable {
     func drawLine()
     func stylizeLine()
     func initialize()
-    var size:CGFloat{get}
+    var size:CGSize{get}
     var position:CGPoint{get}
 }

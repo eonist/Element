@@ -2,9 +2,7 @@ import Cocoa
 
 class CircleGraphic:PositionalGraphic{
     var radius:CGFloat
-    override func getSize() -> CGSize {
-        return CGSize(radius,radius)
-    }
+    
     //var width:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
     //var height:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
     init(_ radius:CGFloat = 50,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
@@ -20,5 +18,7 @@ class CircleGraphic:PositionalGraphic{
         //Swift.print("CircleGraphic.drawLine()")
         graphic.linePath = CGPathParser.circle(radius, x, y)
     }
-    
+    override func getSize() -> CGSize {
+        return CGSize(radius,radius)
+    }
 }

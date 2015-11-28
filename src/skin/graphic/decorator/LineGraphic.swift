@@ -24,6 +24,12 @@ class LineGraphic:GraphicDecoratable {
         self.p1 = p1;
         self.p2 = p2;
     }
+    /**
+     *
+     */
+    override func getSize()->CGSize{
+        fatalError("Not implemented yet")
+    }
 }
 /**
 * NOTE: sets p1 to the position

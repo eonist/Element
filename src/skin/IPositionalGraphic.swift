@@ -4,6 +4,10 @@ protocol IPositionalGraphic:IPositionable {/*We need the getGraphic() from IGrap
     //the IPositionable and IGraphicDecoratable provides the properties needed
 }
 extension IPositionalGraphic{
+    mutating func setPosition(position:CGPoint){
+        self.position.x = position.x
+        self.position.y = position.y
+    }
     mutating func setPosition(x:CGFloat,y:CGFloat){
         self.position.x = x
         self.position.y = y

@@ -44,7 +44,7 @@ private class Utils{
         if(offsetType.bottom == OffsetType.inside) { rectangle.height = rectangle.height + lineStyle.thickness }
         //temp fix, needs more research
         if(offsetType.left == OffsetType.center){rectangle.x = 0;rectangle.y = 0;}
-        //temp fix, needs more research
+        //temp fix, needs more researchcg
         return rectangle[cornerType];
     }
 }

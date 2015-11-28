@@ -16,5 +16,4 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     func applyLineStyle(){fatalError("Must be overridden in subClass")}
     func drawLine(){fatalError("Must be overridden in subClass")}
     func stylizeLine(){fatalError("Must be overridden in subClass")}
-    func setPosition(position:CGPoint){fatalError("Must be overridden in subClass")}
 }

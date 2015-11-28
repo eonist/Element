@@ -6,4 +6,10 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         self.position = position
         super.init(decoratable)
     }
+    override func setPosition(position: CGPoint) {
+        self.position = position
+    }
+    override func getPosition() -> CGPoint {
+        return position
+    }
 }

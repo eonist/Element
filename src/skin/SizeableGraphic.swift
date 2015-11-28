@@ -6,7 +6,7 @@ class SizeableGraphic:PositionalGraphic,ISizeableGraphic {
     var width:CGFloat;
     var height:CGFloat;
     
-    
+    //continue here:
     //use cgsize and cgpoint as the variables and then provide convenince init for the width,height,x,y props
     //implement size and point variables for easy access aswell that can set and get
     

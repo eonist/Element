@@ -11,7 +11,7 @@ class GraphicSkin:Skin{
         
         
         
-        //Continue here: Read about NSView optimization!!!!!!
+        //Continue here:
         
         
         

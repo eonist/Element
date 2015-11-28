@@ -2,6 +2,8 @@ import Cocoa
 
 class CircleGraphic:GraphicDecoratable,IPositionalGraphic,ISizeable {
     var radius:CGFloat?
+    var x:CGFloat = 0
+    var y:CGFloat = 0
     var width:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
     var height:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
     init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {

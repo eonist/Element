@@ -1,6 +1,6 @@
 import Cocoa
 
-class CircleGraphic:GraphicDecoratable,IPositionalGraphic,ISizeable {
+class CircleGraphic:GraphicDecoratable,IPositionalGraphic {
     var radius:CGFloat?
     init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         //Swift.print("CircleGraphic.init()")

@@ -56,4 +56,10 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     override func getGraphic()->BaseGraphic{
         return self
     }
+    func setPosition(position:CGPoint){
+        self.x = position.x
+        self.y = position.y
+        //path = CGPathModifier.translate(&path,position.x,position.y)//Transformations
+        //linePath = CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
+    }
 }

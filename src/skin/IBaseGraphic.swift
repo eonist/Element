@@ -1,7 +1,7 @@
 
 import Foundation
 
-protocol IBaseGraphic:IPositionalGraphic{
+protocol IBaseGraphic{
     /*
     var width:CGFloat{get}
     var height:CGFloat{get}

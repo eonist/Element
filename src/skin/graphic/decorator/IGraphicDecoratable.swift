@@ -6,6 +6,8 @@ import Foundation
 protocol IGraphicDecoratable {
     var graphic:BaseGraphic{get}
     func getGraphic() -> BaseGraphic/*Dont revert this variable to a protocol*/
+    func getPositionalGraphic()-> IPositionalGraphic
+    func getSizeableGraphic()-> ISizeableGraphic
     func fill()
     func beginFill()
     func drawFill()

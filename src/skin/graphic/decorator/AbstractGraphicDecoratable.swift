@@ -6,6 +6,7 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic
     func getGraphic() -> BaseGraphic{fatalError("Must be overridden in subClass")}
     func getPositionalGraphic()-> IPositionalGraphic{fatalError("Must be overridden in subClass")}
+    func getSizeableGraphic()-> ISizeableGraphic{fatalError("Must be overridden in subClass")}
     func initialize(){}
     /*Fill*/
     func fill(){}

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol IPositionalGraphic:IPositionable,IGraphicDecoratable {/*We need the getGraphic() from IGraphicDecoratable*/
+protocol IPositionalGraphic:IPositionable {/*We need the getGraphic() from IGraphicDecoratable*/
     //the IPositionable and IGraphicDecoratable provides the properties needed
 }
 extension IPositionalGraphic{

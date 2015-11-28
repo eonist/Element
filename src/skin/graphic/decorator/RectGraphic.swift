@@ -3,6 +3,8 @@ import Cocoa
 class RectGraphic:GraphicDecoratable{
     var width:CGFloat;
     var height:CGFloat;
+    var x:CGFloat = 0
+    var y:CGFloat = 0
     init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         self.width = width
         self.height = height

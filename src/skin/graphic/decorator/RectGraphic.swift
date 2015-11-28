@@ -1,10 +1,6 @@
 import Cocoa
 
-class RectGraphic:GraphicDecoratable,IPositionalGraphic{
-    var x:CGFloat = 0
-    var y:CGFloat = 0
-    var width:CGFloat;
-    var height:CGFloat;
+class RectGraphic:SizeableGraphic{
     
     //TODO: add x and y to the init bellow
     

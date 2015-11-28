@@ -1,6 +1,6 @@
 import Cocoa
 
-class CircleGraphic:GraphicDecoratable,IPositionalGraphic,ISizeable {
+class CircleGraphic:GraphicDecoratable,IPositionalGraphic,ISizeableGraphic {
     var radius:CGFloat?
     var x:CGFloat = 0
     var y:CGFloat = 0

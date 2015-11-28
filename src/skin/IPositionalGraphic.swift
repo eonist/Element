@@ -1,8 +1,7 @@
 import Foundation
 
 protocol IPositionalGraphic {
-    var x:CGFloat{get set}
-    var y:CGFloat{get set}
+    
 }
 extension IPositionalGraphic{
     /**

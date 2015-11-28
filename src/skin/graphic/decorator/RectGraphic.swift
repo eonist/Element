@@ -3,8 +3,6 @@ import Cocoa
 class RectGraphic:GraphicDecoratable{
     var width:CGFloat;
     var height:CGFloat;
-    var x:CGFloat = 0
-    var y:CGFloat = 0
     init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         self.width = width
         self.height = height
@@ -43,15 +41,6 @@ class RectGraphic:GraphicDecoratable{
             //draw the mask line
             //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height);
         }
-    }
-    /**
-     * 
-     */
-    override func setPosition(position:CGPoint){
-        x = position.x
-        y = position.y
-        //path = CGPathModifier.translate(&path,position.x,position.y)//Transformations
-        //linePath = CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
     }
 }
 

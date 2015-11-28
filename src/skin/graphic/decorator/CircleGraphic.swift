@@ -9,10 +9,10 @@ class CircleGraphic:GraphicDecoratable {
     }
     override func drawFill() {
         Swift.print("CircleGraphic.drawFill()")
-        getGraphic().path = CGPathParser.circle(radius!, x, y)
+        getGraphic().path = CGPathParser.circle(radius!, getGraphic().x, getGraphic().y)
     }
     override func drawLine() {
         Swift.print("CircleGraphic.drawLine()")
-        graphic.linePath = CGPathParser.circle(radius!, x, y)
+        graphic.linePath = CGPathParser.circle(radius!, getGraphic().x, getGraphic().y)
     }
 }

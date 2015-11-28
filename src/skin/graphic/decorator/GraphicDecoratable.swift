@@ -47,8 +47,4 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func getGraphic() -> BaseGraphic{
         return self.decoratable.getGraphic()
     }
-    override func setPosition(position:CGPoint){
-        getGraphic().x = position.x
-        getGraphic().y = position.y
-    }
 }

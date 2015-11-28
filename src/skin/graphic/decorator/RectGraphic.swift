@@ -6,7 +6,7 @@ class RectGraphic:PositionalGraphic{
     
     //TODO: add x and y to the init bellow
     
-    init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
+    override init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         self.width = width
         self.height = height
         super.init(0,0,decoratable)

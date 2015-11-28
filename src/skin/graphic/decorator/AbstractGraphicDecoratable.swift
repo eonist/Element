@@ -23,4 +23,5 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     var size:CGSize{fatalError(errMsg)}//this is only a getter since you cant override variable setters
     var position:CGPoint{fatalError(errMsg)}//this is only a getter since you cant override variable setters
     func setSize(size:CGSize){fatalError(errMsg)}
+    func setPosition(position:CGPoint){fatalError(errMsg)}
 }

@@ -28,12 +28,15 @@ class LineGraphic:GraphicDecoratable {
      *
      */
     override func getSize()->CGSize{
-        PointParser.relativeDifference(getPosition(), CGPoint(max(p1.x,p2.x),max(p1.y,p2.y)))
-        return CGSize()
+        let relativeDifference = PointParser.relativeDifference(getPosition(), CGPoint(max(p1.x,p2.x),max(p1.y,p2.y)))
+        return CGSize(relativeDifference.x,relativeDifference.y)
         //min x and y
         //max x and y
         fatalError("Not implemented yet")
     }
+    /**
+     * Returns the boundingBox topLeft corner
+     */
     override func getPosition() -> CGPoint {
         //min x and y
         return CGPoint(min(p1.x,p2.x),min(p1.y,p2.y))//topLeft

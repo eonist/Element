@@ -4,10 +4,8 @@ import Foundation
  */
 class AbstractGraphicDecoratable:IGraphicDecoratable{
     let errMsg:String = "Must be overridden in subClass"
-    var graphic:BaseGraphic {fatalError(errMsg)}//dont revert to IBaseGraphic, also this is only a getter since you cant override variable setters
+    var graphic:BaseGraphic {fatalError(errMsg)}//dont revert to IBaseGraphic
     func getGraphic() -> BaseGraphic{fatalError(errMsg)}
-    func getPositionalGraphic()-> IPositionalGraphic{fatalError(errMsg)}
-    func getSizeableGraphic()-> ISizeableGraphic{fatalError(errMsg)}
     func initialize(){}
     /*Fill*/
     func fill(){}

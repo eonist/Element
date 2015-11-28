@@ -3,6 +3,11 @@ import Foundation
 class PositionalGraphic:GraphicDecoratable {
     var x:CGFloat = 0
     var y:CGFloat = 0
+    init(_ x:CGFloat = 0,_ y:CGFloat = 0,_ decoratable: IGraphicDecoratable) {
+        self.x = x
+        self.y = y
+        super.init(decoratable)
+    }
     /**
      *
      */

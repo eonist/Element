@@ -21,4 +21,5 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     /**/
     var size:CGSize{fatalError("Must be overridden in subClass")}//this is only a getter since you cant override variable setters
     var position:CGPoint{fatalError("Must be overridden in subClass")}//this is only a getter since you cant override variable setters
+    func setSize(size:CGSize){}
 }

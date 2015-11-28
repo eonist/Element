@@ -3,23 +3,24 @@ import Foundation
  * The AbstractDecorator has all the decorator methods
  */
 class AbstractGraphicDecoratable:IGraphicDecoratable{
-    var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic, also this is only a getter since you cant override variable setters
-    func getGraphic() -> BaseGraphic{fatalError("Must be overridden in subClass")}
-    func getPositionalGraphic()-> IPositionalGraphic{fatalError("Must be overridden in subClass")}
-    func getSizeableGraphic()-> ISizeableGraphic{fatalError("Must be overridden in subClass")}
+    let errMsg:String = "Must be overridden in subClass"
+    var graphic:BaseGraphic {fatalError(errMsg)}//dont revert to IBaseGraphic, also this is only a getter since you cant override variable setters
+    func getGraphic() -> BaseGraphic{fatalError(errMsg)}
+    func getPositionalGraphic()-> IPositionalGraphic{fatalError(errMsg)}
+    func getSizeableGraphic()-> ISizeableGraphic{fatalError(errMsg)}
     func initialize(){}
     /*Fill*/
     func fill(){}
-    func beginFill(){fatalError("Must be overridden in subClass")}
-    func drawFill(){fatalError("Must be overridden in subClass")}
-    func stylizeFill(){fatalError("Must be overridden in subClass")}
+    func beginFill(){fatalError(errMsg)}
+    func drawFill(){fatalError(errMsg)}
+    func stylizeFill(){fatalError(errMsg)}
     /*Line*/
     func line(){}
-    func applyLineStyle(){fatalError("Must be overridden in subClass")}
-    func drawLine(){fatalError("Must be overridden in subClass")}
-    func stylizeLine(){fatalError("Must be overridden in subClass")}
+    func applyLineStyle(){fatalError(errMsg)}
+    func drawLine(){fatalError(errMsg)}
+    func stylizeLine(){fatalError(errMsg)}
     /**/
-    var size:CGSize{fatalError("Must be overridden in subClass")}//this is only a getter since you cant override variable setters
-    var position:CGPoint{fatalError("Must be overridden in subClass")}//this is only a getter since you cant override variable setters
-    func setSize(size:CGSize){}
+    var size:CGSize{fatalError(errMsg)}//this is only a getter since you cant override variable setters
+    var position:CGPoint{fatalError(errMsg)}//this is only a getter since you cant override variable setters
+    func setSize(size:CGSize){fatalError(errMsg)}
 }

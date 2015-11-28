@@ -11,7 +11,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().lineStyle != nil){line()}
     }
     override func fill(){
-        Swift.print("GraphicDecoratable.fill()")
+        //Swift.print("GraphicDecoratable.fill()")
         beginFill()
         drawFill()
         stylizeFill()
@@ -26,7 +26,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.stylizeFill()
     }
     override func line(){
-        Swift.print("GraphicDecoratable.line()")
+        //Swift.print("GraphicDecoratable.line()")
         applyLineStyle()
         drawLine()
         stylizeLine()

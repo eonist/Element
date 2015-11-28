@@ -7,7 +7,7 @@ class GraphicSkin:Skin{
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
     }
     override func drawRect(dirtyRect: NSRect) {
-        Swift.print("GraphicSkin.drawRect()")
+        //Swift.print("GraphicSkin.drawRect()")
         decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
     /**

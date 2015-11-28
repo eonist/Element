@@ -3,7 +3,7 @@ import Cocoa
 class CircleGraphic:PositionalGraphic{
     var radius:CGFloat
     override func getSize() -> CGSize {
-        return radius
+        return CGSize(radius,radius)
     }
     //var width:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
     //var height:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}

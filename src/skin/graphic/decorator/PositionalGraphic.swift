@@ -1,6 +1,6 @@
 import Foundation
 
-class PositionalGraphic:GraphicDecoratable,IPositionalGraphic {
+class PositionalGraphic:GraphicDecoratable,IPositional {
     var position:CGPoint
     init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
         self.position = position

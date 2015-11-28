@@ -12,7 +12,7 @@ class SizeableGraphic:PositionalGraphic,ISizeableGraphic {
     
     //Do the bellow!!!!
     //actually you could solve all this Sizable and positionable nonsence by adding everything to BaseGraphic again and just set it getters for classes that cant be set and setters and getters for all others
-    
+    //remove the getPositional etc
     
     init(_ x:CGFloat = 0, _ y:CGFloat = 0, _ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable) {
         self.width = width

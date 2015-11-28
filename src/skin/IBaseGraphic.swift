@@ -13,4 +13,5 @@ protocol IBaseGraphic{
     var lineOffsetType:OffsetType{get set}
     var path:CGMutablePath{get set}
     var linePath:CGMutablePath{get set}
+
 }

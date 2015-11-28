@@ -7,14 +7,14 @@ class CircleGraphic:PositionalGraphic{
     init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         //Swift.print("CircleGraphic.init()")
         self.radius = radius
-        super.init(decoratable)
+        super.init(0,0,decoratable)
     }
     override func drawFill() {
         //Swift.print("CircleGraphic.drawFill()")
-        getGraphic().path = CGPathParser.circle(radius!, getGraphic().x, getGraphic().y)
+        getGraphic().path = CGPathParser.circle(radius!, x, y)
     }
     override func drawLine() {
         //Swift.print("CircleGraphic.drawLine()")
-        graphic.linePath = CGPathParser.circle(radius!, getGraphic().x, getGraphic().y)
+        graphic.linePath = CGPathParser.circle(radius!, x, y)
     }
 }

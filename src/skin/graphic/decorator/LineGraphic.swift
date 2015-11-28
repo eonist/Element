@@ -25,7 +25,7 @@ class LineGraphic:GraphicDecoratable {
         self.p2 = p2;
     }
     /**
-     *
+     * Untested
      */
     override func getSize()->CGSize{
         let relativeDifference = PointParser.relativeDifference(getPosition(), CGPoint(max(p1.x,p2.x),max(p1.y,p2.y)))
@@ -36,6 +36,7 @@ class LineGraphic:GraphicDecoratable {
     }
     /**
      * Returns the boundingBox topLeft corner
+     * Untested
      */
     override func getPosition() -> CGPoint {
         //min x and y

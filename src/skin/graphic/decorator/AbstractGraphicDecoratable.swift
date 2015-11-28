@@ -5,7 +5,7 @@ import Foundation
 class AbstractGraphicDecoratable:IGraphicDecoratable{
     var graphic:BaseGraphic {fatalError("Must be overridden in subClass")}//dont revert to IBaseGraphic
     func getGraphic() -> BaseGraphic{fatalError("Must be overridden in subClass")}
-    func get
+    func getPositionalGraphic()-> IPositionalGraphic{fatalError("Must be overridden in subClass")}
     func initialize(){}
     /*Fill*/
     func fill(){}

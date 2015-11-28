@@ -44,6 +44,15 @@ class RectGraphic:GraphicDecoratable{
             //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height);
         }
     }
+    /**
+     * 
+     */
+    override func setPosition(position:CGPoint){
+        x = position.x
+        y = position.y
+        //path = CGPathModifier.translate(&path,position.x,position.y)//Transformations
+        //linePath = CGPathModifier.translate(&linePath,position.x,position.y)//Transformations
+    }
 }
 
 

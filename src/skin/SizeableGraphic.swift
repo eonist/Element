@@ -4,11 +4,11 @@ import Cocoa
  */
 class SizeableGraphic:PositionalGraphic,ISizeable {
     var size:CGSize
-    init(position:CGPoint, size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
+    init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
         self.size = size
         super.init(position,decoratable)
     }
-    init(){
-        
+    convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100){
+        self.init(CGPoint(0,0),CGSize(width,height))
     }
 }

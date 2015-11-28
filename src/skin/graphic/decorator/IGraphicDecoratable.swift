@@ -19,4 +19,6 @@ protocol IGraphicDecoratable {
     func initialize()
     var size:CGSize{get}
     var position:CGPoint{get}
+    func setSize(size:CGSize)
+    func setPosition(position:CGPoint)
 }

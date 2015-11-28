@@ -28,6 +28,7 @@ class LineGraphic:GraphicDecoratable {
      *
      */
     override func getSize()->CGSize{
+        PointParser.relativeDifference(getPosition(), CGPoint(max(p1.x,p2.x),max(p1.y,p2.y)))
         return CGSize()
         //min x and y
         //max x and y

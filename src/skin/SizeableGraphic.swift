@@ -8,4 +8,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         self.size = size
         super.init(position,decoratable)
     }
+    init(){
+        
+    }
 }

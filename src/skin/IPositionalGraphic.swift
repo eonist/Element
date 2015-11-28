@@ -1,5 +1,8 @@
 import Foundation
 
-class IPositionalGraphic {
+protocol IPositionalGraphic {
 
+}
+extension IPositionalGraphic{
+    
 }

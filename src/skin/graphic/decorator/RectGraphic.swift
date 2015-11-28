@@ -1,15 +1,15 @@
 import Cocoa
 
-class RectGraphic:PositionalGraphic{
+class RectGraphic:GraphicDecoratable{
     var width:CGFloat;
     var height:CGFloat;
     
     //TODO: add x and y to the init bellow
     
-    override init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
+    init(_ width:CGFloat = 100,_ height:CGFloat = 100,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         self.width = width
         self.height = height
-        super.init(0,0,decoratable)
+        super.init(decoratable)
     }
     /**
      *

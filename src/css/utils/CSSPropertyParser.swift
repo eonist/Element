@@ -38,6 +38,7 @@ class CSSPropertyParser {
         let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
         gradient.rotation = Trig.normalize2(rotation * ㎭);// :TODO: rotations should be applied in the matrix
+        Swift.print("gradient.rotation: " + "\(gradient.rotation)")
         return gradient;
     }
     /**
@@ -147,7 +148,7 @@ private class Utils{
         }
         else if(RegExp.test(rotationMatch,directionPattern)){
             let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
-            rotation = Trig.angleType(angleType)+180.0;// :TODO: Create support for top left and other corners
+            rotation = Trig.angleType(angleType)/*+180.0*/;// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}
         //		trace("rotation: " + rotation);
         return rotation;

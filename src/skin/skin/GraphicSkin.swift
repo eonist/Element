@@ -31,7 +31,7 @@ class GraphicSkin:Skin{
         
     }
     func applyProperties(decoratable:IGraphicDecoratable){
-        //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")
-        decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
+        //Swift.print("GraphicSkin.applyProperties()")
+        self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
     }
 }

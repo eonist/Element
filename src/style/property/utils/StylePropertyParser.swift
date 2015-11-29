@@ -193,14 +193,14 @@ class StylePropertyParser{
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     class func margin(skin:ISkin)->Margin {
-        var value:Any = StylePropertyParser.value(skin, CSSConstants.margin);
-        var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
-        var margin:Margin = Margin(array);
-        var marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
-        margin.left = StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = StyleParser.index(skin.style!, CSSConstants.marginRight) > marginIndex ? metric(skin, CSSConstants.marginRight) : Utils.metric(margin.right, skin);
-        margin.top = StyleParser.index(skin.style!, CSSConstants.marginTop) > marginIndex ? metric(skin, CSSConstants.marginTop) : Utils.metric(margin.top, skin);
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.MARGIN_BOTTOM) > marginIndex ? metric(skin, CSSConstants.MARGIN_BOTTOM) : Utils.metric(margin.bottom, skin);
+        let value:Any = StylePropertyParser.value(skin, CSSConstants.margin);
+        let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
+        let margin:Margin = Margin(array);
+        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
+        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight) > marginIndex ? metric(skin, CSSConstants.marginRight) : Utils.metric(margin.right, skin))!;
+        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop) > marginIndex ? metric(skin, CSSConstants.marginTop) : Utils.metric(margin.top, skin))!;
+        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom) > marginIndex ? metric(skin, CSSConstants.marginBottom)! : Utils.metric(margin.bottom, skin)!;
         return margin;
     }
     /**

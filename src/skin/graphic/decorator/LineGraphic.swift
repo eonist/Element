@@ -14,7 +14,7 @@ class LineGraphic:GraphicDecoratable {
      *
      */
     override func drawLine() {
-        Swift.print("LineGraphic.drawLine()")
+        //Swift.print("LineGraphic.drawLine()")
         graphic.linePath = CGPathParser.line(p1, p2)
     }
     /**

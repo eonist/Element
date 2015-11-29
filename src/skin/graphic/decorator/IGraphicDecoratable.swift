@@ -4,7 +4,7 @@ import Foundation
  * Differs from IBaseGraphic in that IBaseGraphic has some variables that the decoratables isnt dependent on when it comes to the creation procedure
  */
 protocol IGraphicDecoratable {
-    var graphic:BaseGraphic{get}
+    var graphic:BaseGraphic{get set}
     func getGraphic() -> BaseGraphic/*Dont revert this variable to a protocol*/
     /*Design*/
     func fill()

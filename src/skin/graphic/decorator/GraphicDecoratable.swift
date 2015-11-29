@@ -2,7 +2,7 @@ import Foundation
 
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
-    override var graphic:BaseGraphic {return decoratable.graphic}
+    override var graphic:BaseGraphic {get{return decoratable.graphic}set{decoratable.graphic = newValue}}
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
     }

@@ -180,11 +180,14 @@ class StylePropertyParser{
             }
         }
     }
+    
+    //continue here: impliment this, then continue with the align method and test it with top-margin of the textButton
+    
     /**
      * // :TODO: should this have a failsafe if there is no Margin property in the style?
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
-    class func margin(skin:ISkin):Margin2 {
+    class func margin(skin:ISkin)->Margin {
         var value:Any = StylePropertyParser.value(skin, CSSConstants.MARGIN);
         var array:Array = value is Array ? value : [value];
         var margin:Margin = Margin(array);

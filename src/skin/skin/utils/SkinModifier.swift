@@ -6,7 +6,7 @@ class SkinModifier {
     /**
      * Aligns @param view
      */
-    class func align(skin:ISkin, inout _ graphic:IBaseGraphic) {
+    class func align(skin:ISkin, inout _ graphic:BaseGraphic) {
         //var offset:CGPoint = StylePropertyParser.offset(skin,depth);
         //var padding:Padding2 = StylePropertyParser.padding(skin,depth);
         let margin:Margin = StylePropertyParser.margin(skin);
@@ -14,6 +14,6 @@ class SkinModifier {
         //if(floatType == CSSConstants.LEFT || floatType == "" || floatType == null) DisplayObjectModifier.position(displayObject, new Point(margin.left + offset.x, margin.top + offset.y));
         //else if(floatType == CSSConstants.RIGHT) DisplayObjectModifier.position(displayObject, new Point(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y));
         //else /*floatType == CSSConstants.NONE*/
-        (graphic).setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
+        graphic.setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
     }
 }

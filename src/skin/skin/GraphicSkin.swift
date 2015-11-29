@@ -25,7 +25,7 @@ class GraphicSkin:Skin{
         
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            
+            applyProperties(&decoratable);
         }
         super.draw();
         

@@ -181,6 +181,21 @@ class StylePropertyParser{
         }
     }
     /**
+     * // :TODO: should this have a failsafe if there is no Margin property in the style?
+     * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
+     */
+    class func margin(skin:ISkin):Margin2 {
+        var value:Any = StylePropertyParser.value(skin, CSSConstants.MARGIN);
+        var array:Array = value is Array ? value : [value];
+        var margin:Margin = Margin(array);
+        var marginIndex:Int = StyleParser.index(skin.style, CSSConstants.MARGIN);
+        margin.left = StyleParser.index(skin.style, CSSConstants.MARGIN_LEFT) > marginIndex ? metric(skin, CSSConstants.MARGIN_LEFT) : Utils.metric(margin.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = StyleParser.index(skin.style, CSSConstants.MARGIN_RIGHT) > marginIndex ? metric(skin, CSSConstants.MARGIN_RIGHT) : Utils.metric(margin.right, skin);
+        margin.top = StyleParser.index(skin.style, CSSConstants.MARGIN_TOP) > marginIndex ? metric(skin, CSSConstants.MARGIN_TOP) : Utils.metric(margin.top, skin);
+        margin.bottom = StyleParser.index(skin.style, CSSConstants.MARGIN_BOTTOM) > marginIndex ? metric(skin, CSSConstants.MARGIN_BOTTOM) : Utils.metric(margin.bottom, skin);
+        return margin;
+    }
+    /**
      *
      */
     class func width(skin:ISkin) -> CGFloat? {

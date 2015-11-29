@@ -20,6 +20,7 @@ class GraphicSkin:Skin{
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
+            SkinModifier.align(self,IDecoratable3(decoratables[depth]).graphic,depth);
         }
         super.draw();
     }

@@ -22,3 +22,9 @@ class CircleGraphic:PositionalGraphic{
         return CGSize(radius,radius)
     }
 }
+extension CircleGraphic{
+    convenience init(_ radius:CGFloat = 50,_ fillColor:NSColor){
+        let decoratable:IGraphicDecoratable
+        self.initialize(radius,)
+    }
+}

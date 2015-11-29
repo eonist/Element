@@ -37,7 +37,7 @@ class CSSPropertyParser {
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
-        gradient.rotation = CGFloat(rotation) * ㎭;// :TODO: rotations should be applied in the matrix
+        gradient.rotation = Trig.normalize2(rotation * ㎭);// :TODO: rotations should be applied in the matrix
         return gradient;
     }
     /**
@@ -147,7 +147,7 @@ private class Utils{
         }
         else if(RegExp.test(rotationMatch,directionPattern)){
             let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
-            rotation = Trig.angleType(angleType)//+180.0;// :TODO: Create support for top left and other corners
+            rotation = Trig.angleType(angleType)+180.0;// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}
         //		trace("rotation: " + rotation);
         return rotation;

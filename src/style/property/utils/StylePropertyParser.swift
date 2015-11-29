@@ -194,9 +194,9 @@ class StylePropertyParser{
      */
     class func margin(skin:ISkin)->Margin {
         var value:Any = StylePropertyParser.value(skin, CSSConstants.margin);
-        var array:Array = value is Array ? value : [value];
+        var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         var margin:Margin = Margin(array);
-        var marginIndex:Int = StyleParser.index(skin.style, CSSConstants.margin);
+        var marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
         margin.left = StyleParser.index(skin.style, CSSConstants.MARGIN_LEFT) > marginIndex ? metric(skin, CSSConstants.MARGIN_LEFT) : Utils.metric(margin.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/
         margin.right = StyleParser.index(skin.style, CSSConstants.MARGIN_RIGHT) > marginIndex ? metric(skin, CSSConstants.MARGIN_RIGHT) : Utils.metric(margin.right, skin);
         margin.top = StyleParser.index(skin.style, CSSConstants.MARGIN_TOP) > marginIndex ? metric(skin, CSSConstants.MARGIN_TOP) : Utils.metric(margin.top, skin);

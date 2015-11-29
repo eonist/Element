@@ -181,7 +181,12 @@ class StylePropertyParser{
         }
     }
     
+    
+    
     //continue here: impliment this, then continue with the align method and test it with top-margin of the textButton
+    
+    
+    
     
     /**
      * // :TODO: should this have a failsafe if there is no Margin property in the style?

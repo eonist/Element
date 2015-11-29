@@ -17,7 +17,7 @@ class GraphicSkin:Skin{
         fatalError("init(coder:) has not been implemented")
     }
     override func draw(){
-        //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
+        //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
             SkinModifier.align(self,decoratable.graphic);

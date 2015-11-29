@@ -7,7 +7,7 @@ import Cocoa
 class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     lazy var graphics:Graphics = Graphics()
     
-    override var graphic:BaseGraphic {get{return self}set{fatalError("NOT possible")}}
+    override var graphic:BaseGraphic {return self}
     var fillStyle:IFillStyle?
     var lineStyle:ILineStyle?
     var lineOffsetType:OffsetType

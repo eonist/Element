@@ -17,12 +17,6 @@ class GraphicSkin:Skin{
         fatalError("init(coder:) has not been implemented")
     }
     override func draw(){
-        
-        
-        //continue here, you need to figure out how to apply the new style to the current decoratable, look at the old code
-        //you need to assert which decoratable it has etc
-
-        
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
@@ -33,5 +27,6 @@ class GraphicSkin:Skin{
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties()")
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
+        
     }
 }

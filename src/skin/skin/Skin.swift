@@ -20,6 +20,7 @@ class Skin:FlippedView,ISkin{
         self.style = style;
         self.state = state;
         self.element = element;
+        
         width = element!.width;// :TODO: is this necassary?
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necassary?
@@ -35,10 +36,11 @@ class Skin:FlippedView,ISkin{
     * Resets skinState
     */
     func draw(){
+        Swift.print("Skin.draw() refresh the graphics")
         hasStyleChanged = false;
         hasSizeChanged = false;
         hasStateChanged = false;
-        //Swift.print("Skin.draw() refresh the graphics")
+        
         needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
     }
     /**

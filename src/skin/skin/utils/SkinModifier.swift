@@ -6,7 +6,7 @@ class SkinModifier {
     /**
      * Aligns @param view
      */
-    class func align(skin:ISkin, inout _ graphic:IPositional) {
+    class func align(skin:ISkin, inout _ graphic:BaseGraphic) {
         //var offset:CGPoint = StylePropertyParser.offset(skin,depth);
         //var padding:Padding2 = StylePropertyParser.padding(skin,depth);
         let margin:Margin = StylePropertyParser.margin(skin);

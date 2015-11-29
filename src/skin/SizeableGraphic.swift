@@ -14,4 +14,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100){
         self.init(CGPoint(0,0),CGSize(width,height))
     }
+    override func getSize() -> CGSize {
+        return size
+    }
 }

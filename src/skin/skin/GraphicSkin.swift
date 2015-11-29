@@ -25,12 +25,12 @@ class GraphicSkin:Skin{
         
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            
+            fatalError("works")
         }
         super.draw();
     }
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")
-        GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(this,depth), StylePropertyParser.lineStyle(this,depth), StylePropertyParser.lineOffsetType(this,depth));/*color or gradient*/ 
+        GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
     }
 }

@@ -18,3 +18,8 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         return size
     }
 }
+extension SizeableGraphic{
+    convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
+        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
+    }
+}

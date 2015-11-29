@@ -19,7 +19,7 @@ class TextButton:Button {
         text!.skin!.applySkinState(skinState);/*why is this set directly to the skin and not to the element?*/
     }
     override func mouseDown(theEvent: NSEvent) {
-        applyText("Mouse down")
+        //applyText("Mouse down")
         super.mouseDown(theEvent)
     }
     override func mouseUp(theEvent: NSEvent) {

@@ -197,9 +197,9 @@ class StylePropertyParser{
         var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         var margin:Margin = Margin(array);
         var marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
-        margin.left = StyleParser.index(skin.style!, CSSConstants.MARGIN_LEFT) > marginIndex ? metric(skin, CSSConstants.MARGIN_LEFT) : Utils.metric(margin.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = StyleParser.index(skin.style!, CSSConstants.MARGIN_RIGHT) > marginIndex ? metric(skin, CSSConstants.MARGIN_RIGHT) : Utils.metric(margin.right, skin);
-        margin.top = StyleParser.index(skin.style!, CSSConstants.MARGIN_TOP) > marginIndex ? metric(skin, CSSConstants.MARGIN_TOP) : Utils.metric(margin.top, skin);
+        margin.left = StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = StyleParser.index(skin.style!, CSSConstants.marginRight) > marginIndex ? metric(skin, CSSConstants.marginRight) : Utils.metric(margin.right, skin);
+        margin.top = StyleParser.index(skin.style!, CSSConstants.marginTop) > marginIndex ? metric(skin, CSSConstants.marginTop) : Utils.metric(margin.top, skin);
         margin.bottom = StyleParser.index(skin.style!, CSSConstants.MARGIN_BOTTOM) > marginIndex ? metric(skin, CSSConstants.MARGIN_BOTTOM) : Utils.metric(margin.bottom, skin);
         return margin;
     }

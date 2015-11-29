@@ -18,7 +18,7 @@ class Element:View,IElement {
         self.parent = parent;
         self.id = id;
         super.init(frame: NSRect(0,0,width,height))
-        resolveSkin()/*This cant be moved to init because the CGContext cant be found*/
+        resolveSkin()
     }
     /**
      * Draws the graphics

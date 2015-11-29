@@ -25,9 +25,9 @@ class GraphicSkin:Skin{
         
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            fatalError("works")
+            super.draw();
         }
-        super.draw();
+        
     }
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")

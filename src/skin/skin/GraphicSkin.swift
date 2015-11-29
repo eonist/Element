@@ -20,7 +20,7 @@ class GraphicSkin:Skin{
         
         
         //continue here, you need to figure out how to apply the new style to the current decoratable, look at the old code
-        
+        //you need to assert which decoratable it has etc
         
         //Swift.print("GraphicSkin.draw() NOT IMPLEMENTED YET")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){

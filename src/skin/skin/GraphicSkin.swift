@@ -22,11 +22,9 @@ class GraphicSkin:Skin{
             applyProperties(decoratable);
         }
         super.draw();
-        
     }
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties()")
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
-        
     }
 }

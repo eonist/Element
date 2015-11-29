@@ -16,6 +16,7 @@ class Button:Element {
     override func mouseEntered( event: NSEvent){
         Swift.print("mouseEntered: ")
         skinState = SkinStates.over
+        Swift.print("skinstate: " + getSkinState())
         applySkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
         super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/

@@ -24,6 +24,6 @@ class GraphicSkin:Skin{
         super.draw();
     }
     func applyProperties(decoratable:IGraphicDecoratable){
-        //Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")
+        Swift.print("GraphicSkin.applyProperties() NOT IMPLEMENTED YET")
     }
 }

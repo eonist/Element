@@ -3,7 +3,6 @@ import Foundation
  * The AbstractDecorator has all the decorator methods
  */
 class AbstractGraphicDecoratable:IGraphicDecoratable{
-    var position:CGPoint{get{fatalError(errMsg)}set{fatalError(errMsg)}}
     let errMsg:String = "Must be overridden in subClass"
     var graphic:BaseGraphic {fatalError(errMsg)}//dont revert to IBaseGraphic
     func getGraphic() -> BaseGraphic{fatalError(errMsg)}

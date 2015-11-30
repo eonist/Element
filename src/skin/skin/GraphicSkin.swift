@@ -5,6 +5,7 @@ class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
+        SkinModifier.align(self,decoratable.graphic);
     }
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("GraphicSkin.drawRect()")
@@ -17,7 +18,7 @@ class GraphicSkin:Skin{
         fatalError("init(coder:) has not been implemented")
     }
     override func draw(){
-        //Swift.print("GraphicSkin.draw()")
+        Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
             SkinModifier.align(self,decoratable.graphic);

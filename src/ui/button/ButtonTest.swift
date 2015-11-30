@@ -1,5 +1,7 @@
-import Foundation
+import Cocoa
 
-class ButtonTest {
-
+extension NSButton:IElement{
+    public override func drawRect(dirtyRect: NSRect) {
+        //do something
+    }
 }

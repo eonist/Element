@@ -226,8 +226,9 @@ private class Utils{
     class func metric(value:Any?,_ skin:ISkin)->CGFloat? {
         if(value is Int){ return CGFloat(value as! Int)
         }else{
-            return nil
             //fatalError("NOT IMPLEMENTED YET")
+            return nil
+            
         }
     }
 }

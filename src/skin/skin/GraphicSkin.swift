@@ -5,10 +5,7 @@ class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
-        
         decoratable = SkinModifier.align(self,decoratable as! IPositional) as! IGraphicDecoratable;
-        
-        //continue here investigat ewhy you cant use inout with protocols in playground, try struct if classes wont work
     }
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("GraphicSkin.drawRect()")

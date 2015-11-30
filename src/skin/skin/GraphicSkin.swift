@@ -8,7 +8,7 @@ class GraphicSkin:Skin{
         
         decoratable = SkinModifier.align(self,decoratable as! IPositional) as! IGraphicDecoratable;
         
-        //continue here investigat ewhy you cant use inout with protocols in playground
+        //continue here investigat ewhy you cant use inout with protocols in playground, try struct if classes wont work
     }
     override func drawRect(dirtyRect: NSRect) {
         Swift.print("GraphicSkin.drawRect()")

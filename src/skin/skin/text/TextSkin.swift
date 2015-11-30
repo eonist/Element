@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * The skin 
+ * TODO: For the sake of optiomization, TextSkin should not extend Skin, but rather extend NSText. Less views means better speed
  */
 class TextSkin:Skin,ITextSkin{
     var textField:NSText;

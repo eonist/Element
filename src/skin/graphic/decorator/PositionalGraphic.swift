@@ -7,6 +7,7 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         super.init(decoratable)
     }
     override func setPosition(position: CGPoint) {
+        Swift.print("PositionalGraphic.setPosition()")
         self.position = position
     }
     override func getPosition() -> CGPoint {

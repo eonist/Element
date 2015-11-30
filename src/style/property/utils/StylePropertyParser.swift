@@ -9,7 +9,7 @@ class StylePropertyParser{
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
-        Swift.print("value: " + "\(value)")
+        //Swift.print("value: " + "\(value)")
         
         return value;
     }
@@ -190,13 +190,11 @@ class StylePropertyParser{
      */
     class func margin(skin:ISkin)->Margin {
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
-        var margin:Margin = Margin(0);
+        var margin:Margin = Margin();
         if((value is CGFloat) || (value is Array<CGFloat>)) {
             let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
             margin = Margin(array);
         }
-        
-        
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
         margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
         margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight) > marginIndex ? metric(skin, CSSConstants.marginRight) : Utils.metric(margin.right, skin))!;

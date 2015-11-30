@@ -190,7 +190,7 @@ class StylePropertyParser{
      */
     class func margin(skin:ISkin)->Margin {
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
-        var margin:Margin = Margin();
+        var margin:Margin = Margin(0);
         if((value is CGFloat) || (value is Array<CGFloat>)) {
             let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
             margin = Margin(array);

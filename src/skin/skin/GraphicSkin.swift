@@ -6,7 +6,7 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
         
-        SkinModifier.align(self,&decoratable.positional);
+        SkinModifier.align(self);
         
         //continue here investigat ewhy you cant use inout with protocols in playground, try struct if classes wont work
     }

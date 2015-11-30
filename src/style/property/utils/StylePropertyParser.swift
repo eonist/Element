@@ -190,7 +190,8 @@ class StylePropertyParser{
      */
     class func margin(skin:ISkin)->Margin {
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
-        let margin:Margin = value != nil ? Margin(value is CGFloat ? value : value as! Array<CGFloat>) : Margin();
+        
+        let margin:Margin = value != nil ? Margin(value) : Margin();
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
         Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
         margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/

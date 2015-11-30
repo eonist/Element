@@ -9,11 +9,7 @@ class StylePropertyParser{
     class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
-        //Swift.print("value: " + "\(value)")
-        
-        
-        //continue here, you need to get width from the element if style doesnt have width
-        
+        Swift.print("value: " + "\(value)")
         
         return value;
     }
@@ -193,7 +189,7 @@ class StylePropertyParser{
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     class func margin(skin:ISkin)->Margin {
-        let value:Any = StylePropertyParser.value(skin, CSSConstants.margin);
+        let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
         let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         let margin:Margin = Margin(array);
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);

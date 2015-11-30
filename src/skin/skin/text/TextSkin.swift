@@ -17,7 +17,7 @@ class TextSkin:Skin,ITextSkin{
         super.init(style, state, element)
         addSubview(textField)
         applyProperties(textField);
-        
+        SkinModifier.align(self, textField)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func draw() {

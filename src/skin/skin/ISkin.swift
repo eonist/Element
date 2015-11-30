@@ -1,6 +1,7 @@
 import Foundation
 
 protocol ISkin{
+    var decoratable:IGraphicDecoratable!{get set}
     var style:IStyle?{get}
     var state:String{get set}
     var element:IElement?{get}/*We use IElement here instead of Element because sometimes we need to use Window which is not an Element but impliments IElement*/

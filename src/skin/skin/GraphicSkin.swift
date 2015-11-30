@@ -6,7 +6,7 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
         
-        SkinModifier.align(self);
+        decoratable = SkinModifier.align(self,decoratable as! IPositional) as! IGraphicDecoratable;
         
         //continue here investigat ewhy you cant use inout with protocols in playground, try struct if classes wont work
     }
@@ -24,7 +24,7 @@ class GraphicSkin:Skin{
         Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
-            SkinModifier.align(self,decoratable);
+            decoratable = SkinModifier.align(self,decoratable as! IPositional) as! IGraphicDecoratable;
         }
         super.draw();
     }

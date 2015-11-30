@@ -1,6 +1,6 @@
 import Cocoa
 
 protocol ITextSkin:ISkin {
-    var textField:NSText{get};
+    var textField:TextField{get};
     func applyText(text:String)
 }

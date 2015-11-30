@@ -6,7 +6,7 @@ class SkinModifier {
     /**
      * Aligns @param view
      */
-    class func align(skin:ISkin, inout _ obj:IPositional) {
+    class func align(skin:ISkin, inout _ obj:IPositional)->IPositional {
         Swift.print("SkinModifier.align()")
         //var offset:CGPoint = StylePropertyParser.offset(skin,depth);
         //var padding:Padding2 = StylePropertyParser.padding(skin,depth);
@@ -16,5 +16,6 @@ class SkinModifier {
         //else if(floatType == CSSConstants.RIGHT) DisplayObjectModifier.position(displayObject, new Point(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y));
         //else /*floatType == CSSConstants.NONE*/
         obj.setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
+        return obj
     }
 }

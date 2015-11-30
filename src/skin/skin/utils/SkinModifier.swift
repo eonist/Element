@@ -6,7 +6,7 @@ class SkinModifier {
     /**
      * Aligns @param view
      */
-    class func align(skin:ISkin, _ obj:Any) {
+    class func align(skin:ISkin, inout _ obj:IPositional) {
         Swift.print("SkinModifier.align()")
         //var offset:CGPoint = StylePropertyParser.offset(skin,depth);
         //var padding:Padding2 = StylePropertyParser.padding(skin,depth);

@@ -228,6 +228,11 @@ private class Utils{
         else if(value is CGFloat){ return value as? CGFloat}
         else{
             //fatalError("NOT IMPLEMENTED YET")
+            
+            
+            //be warned this method is far from complete
+            
+            
             return nil
             
         }

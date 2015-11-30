@@ -190,6 +190,8 @@ class StylePropertyParser{
      */
     class func margin(skin:ISkin)->Margin {
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
+        if((value is CGFloat) || (value is Array<CGFloat>)) {
+            
         let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         let margin:Margin = Margin(array);
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);

@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * The skin 
+ */
 class TextSkin:Skin,ITextSkin{
     var textField:NSText;
     //the bellow variable is a little more complex in the original code

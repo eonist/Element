@@ -221,8 +221,8 @@ class StylePropertyParser{
 }
 private class Utils{
     /**
-    * // :TODO: explain what this method is doing
-    */
+     * // :TODO: explain what this method is doing
+     */
     class func metric(value:Any?,_ skin:ISkin)->CGFloat? {
         if(value is Int){ return CGFloat(value as! Int)
         }else{

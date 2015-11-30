@@ -18,8 +18,8 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     func drawLine(){fatalError(errMsg)}
     func stylizeLine(){fatalError(errMsg)}
     /**/
-    func getSize()->CGSize {fatalError(errMsg)}//this is only a getter since you cant override variable setters
-    func getPosition()->CGPoint{fatalError(errMsg)}//this is only a getter since you cant override variable setters
+    func getSize()->CGSize {fatalError(errMsg)}
+    func getPosition()->CGPoint{fatalError(errMsg)}
     func setSize(size:CGSize){fatalError(errMsg)}
     func setPosition(position:CGPoint){fatalError(errMsg)}
 }

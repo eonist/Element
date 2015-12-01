@@ -1,5 +1,5 @@
 import Foundation
-protocol IElement:class, IView{
+protocol IElement:/*class,*/ IView{
     var parent:IElement?{get}
     var skinState:String{get set}
     var style:IStyle{get set}

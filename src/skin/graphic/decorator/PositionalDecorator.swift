@@ -14,6 +14,9 @@ class PositionalDecorator:GraphicDecoratable,IPositional{
             else{fatalError("Must subclass PositionalGraphic")}
         }
     }
+    /**
+     * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
+     */
     func getPosition() -> CGPoint {
         return position
     }

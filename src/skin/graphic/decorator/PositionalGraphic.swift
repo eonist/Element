@@ -1,7 +1,7 @@
 import Foundation
 
 class PositionalGraphic:GraphicDecoratable {
-    /*var position:CGPoint*/
+    var position:CGPoint
     init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
         super.init(decoratable)
         super.position = position
@@ -20,8 +20,8 @@ class PositionalDecorator:GraphicDecoratable,IPositional{
     //var position:CGPoint{get{(decoratable as! IPositional).position} set{(decoratable as! IPositional).position = newValue}}
     
     func test(){
-        if (decoratable is IPositional){
-            (decoratable as! IPositional).setPosition(CGPoint())
+        if (decoratable is PositionalGraphic){
+            (decoratable as! PositionalGraphic).position = CGPoint()
         }
     }
 }

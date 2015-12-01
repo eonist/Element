@@ -27,4 +27,7 @@ class PositionalDecorator:GraphicDecoratable,IPositional{
             }
         }
     }
+    func getPosition() -> CGPoint {
+        return position
+    }
 }

@@ -4,7 +4,7 @@ import Foundation
  */
 
 
-class LineGraphic:SizableDecorator {
+class LineGraphic:SizeableDecorator {
     var p1:CGPoint;
     var p2:CGPoint;
     init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {

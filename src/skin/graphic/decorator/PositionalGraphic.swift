@@ -7,6 +7,9 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         super.init(decoratable)
     }
 }
+/**
+ * Shorten the bellow code with if shorthand
+ */
 class PositionalDecorator:GraphicDecoratable,IPositional{
     var position:CGPoint{
         get{

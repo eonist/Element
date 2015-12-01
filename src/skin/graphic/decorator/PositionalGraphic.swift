@@ -12,4 +12,7 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
     func getPosition() -> CGPoint {
         return position
     }
+    func setPosition(position: CGPoint) {
+        self.position = position
+    }
 }

@@ -1,11 +1,14 @@
 import Foundation
-
-class GraphicDecoratable:AbstractGraphicDecoratable,IPositional,ISizeable {
+/**
+ * Manifesto:
+ * 1. This class should only provide access to the graphic instance
+ * 2. Contain all the instructions to draw on the graphic
+ * NOTE: it should not contain style, size or position
+ */
+class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
     override var graphic:BaseGraphic {return decoratable.graphic}
-    var size:CGSize = CGSize()
-    var position:CGPoint = CGPoint()
-    //var position:CGPoint{get set}
+
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
     }

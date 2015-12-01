@@ -14,11 +14,17 @@ class SelectButton:Button,ISelectable {
         super.mouseUpInside(theEvent)
         NSNotificationCenter.defaultCenter().postNotificationName(SelectEvent.select, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
     }
-    
+    /**
+     * @Note: do not add a dispatch event here, that is the responsibilyy of the caller
+     */
     func setSelected(isSelected:Bool){
         self.isSelected = isSelected
+        setSkinState(getSkinState());
     }
     func selected()->Bool{
         return isSelected
+    }
+    override func getSkinState() -> String {
+        return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState();
     }
 }

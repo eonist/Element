@@ -19,7 +19,6 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
     }
-    
     /**
      * TODO: color cant be uint since uint cant be NaN, use Double, 
      * TODO:  check if cgfloat can be NaN?
@@ -47,7 +46,6 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         //Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(linePath,graphics)//realize style on the graphic
     }
-   
     func setProperties(fillStyle:IFillStyle? = nil, lineStyle:ILineStyle? = nil){// :TODO: remove this and replace with setLineStyle and setFillStyle ?
         self.fillStyle = fillStyle;
         self.lineStyle = lineStyle;

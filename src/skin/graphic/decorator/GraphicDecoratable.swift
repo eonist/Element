@@ -3,6 +3,8 @@ import Foundation
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
     override var graphic:BaseGraphic {return decoratable.graphic}
+    
+    //var position:CGPoint{get set}
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
     }

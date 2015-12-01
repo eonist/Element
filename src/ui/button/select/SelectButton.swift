@@ -12,10 +12,7 @@ class SelectButton:Button,ISelectable {
     override func mouseUpInside(theEvent: NSEvent) {
         isSelected = true
         super.mouseUpInside(theEvent)
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
-        
-        
-        dispatchEvent(new SelectEvent(SelectEvent.SELECT,_isSelected,true,true));/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
+        NSNotificationCenter.defaultCenter().postNotificationName(SelectEvent.select, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
     }
     
     func setSelected(isSelected:Bool){

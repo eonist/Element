@@ -1,5 +1,6 @@
 import Foundation
 
 class SelectEvent {
-    static var down:String = "buttonEventDown"
+    static var select:String = "select"
+    static var deSelect:String = "deSelect"
 }

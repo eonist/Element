@@ -1,7 +1,7 @@
 import Foundation
 
-class PositionalGraphic:GraphicDecoratable,IPositional {
-    var position:CGPoint
+class PositionalGraphic:GraphicDecoratable {
+    /*var position:CGPoint*/
     init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
         self.position = position
         super.init(decoratable)
@@ -16,6 +16,6 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
 }
 
 
-class PositionalDecorator:GraphicDecoratable,IPositional{
-    var position:CGPoint{get{decoratable}set{}}
-}
+/*class PositionalDecorator:GraphicDecoratable,IPositional{
+var position:CGPoint{get{decoratable}set{}}
+}*/

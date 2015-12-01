@@ -45,9 +45,11 @@ class Element:View,IElement {
     func applySkinState(state:String) {
         skin!.applySkinState(state);
     }
+    /*
     func setSkinState(skinState:String){
         self.skinState = skinState
     }
+    */
     /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type

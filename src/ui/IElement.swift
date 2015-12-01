@@ -11,7 +11,7 @@ protocol IElement:/*class,*/ IView{
     var height:CGFloat{get}
     func resolveSkin()
     func getSkinState() -> String
-    func setSkinState(skinState:String)
+    /*func setSkinState(skinState:String)*/
     func getParent()->IElement?//TODO: maybe use weak?
     func getClassType()->String
     

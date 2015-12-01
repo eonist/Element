@@ -1,41 +1,27 @@
 import Foundation
 
-class PositionalGraphic:GraphicDecoratable {
+class PositionalGraphic:GraphicDecoratable,IPositional {
     var position:CGPoint
     init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
-        super.init(decoratable)
-        super.position = position
-    }
-    override func setPosition(position: CGPoint) {
-        //Swift.print("PositionalGraphic.setPosition()")
         self.position = position
-    }
-    override func getPosition() -> CGPoint {
-        return position
+        super.init(decoratable)
     }
 }
-
-
 class PositionalDecorator:GraphicDecoratable,IPositional{
     var position:CGPoint{
         get{
             if(decoratable is PositionalGraphic){
                return (decoratable as! PositionalGraphic).position
             }else{
-                fatalError("")
+                fatalError("Must subclass PositionalGraphic")
             }
-            
         }
         set{
-            (decoratable as! PositionalGraphic).position = newValue
+            if(decoratable is PositionalGraphic){
+                (decoratable as! PositionalGraphic).position = newValue
+            }else{
+                fatalError("Must subclass PositionalGraphic")
+            }
         }
     }
-    
-    /*
-    func test(){
-        if (decoratable is PositionalGraphic){
-            (decoratable as! PositionalGraphic).position = CGPoint()
-        }
-    }
-    */
 }

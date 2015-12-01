@@ -1,7 +1,7 @@
 import Foundation
 protocol IElement:class, IView{
     var parent:IElement?{get}
-    var skinState:String{get}
+    var skinState:String{get set}
     var style:IStyle{get set}
     var skin:ISkin?{get set}
     var id : String?{get};
@@ -11,6 +11,7 @@ protocol IElement:class, IView{
     var height:CGFloat{get}
     func resolveSkin()
     func getSkinState() -> String
+    func setSkinState(skinState:String)
     func getParent()->IElement?//TODO: maybe use weak?
     func getClassType()->String
     

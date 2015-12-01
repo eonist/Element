@@ -14,3 +14,8 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         return position
     }
 }
+
+
+class PositionalDecorator:GraphicDecoratable,IPositional{
+    var position:CGPoint{get{decoratable}set{}}
+}

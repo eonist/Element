@@ -1,6 +1,6 @@
 import Foundation
 /**
- * 
+ * The responsibility of this class is to provide access to the position of the SizeableGraphic
  */
 class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{

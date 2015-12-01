@@ -45,4 +45,7 @@ class SizableDecorator:PositionalDecorator,ISizeable{
             }
         }
     }
+    func getSize() -> CGSize {
+        return size
+    }
 }

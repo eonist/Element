@@ -18,8 +18,7 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     func drawLine(){fatalError(errMsg)}
     func stylizeLine(){fatalError(errMsg)}
     /*Position and size*/
-    var size:CGSize{get{fatalError(errMsg)}set{fatalError(errMsg)}}
-    var position:CGPoint{get{fatalError(errMsg)}set{fatalError(errMsg)}}
+    
     func getSize()->CGSize {fatalError(errMsg)}//all shapes has a size
     func getPosition()->CGPoint{fatalError(errMsg)}//all shapes has a position
     func setSize(size:CGSize){fatalError(errMsg)}//not all shapes has sizes that can be set

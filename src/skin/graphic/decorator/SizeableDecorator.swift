@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO: Shorten the bellow code with if shorthand
  */
-class SizeableDecorator {
+class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
         get{
             if(decoratable is SizeableGraphic){

@@ -10,9 +10,8 @@ class PositionalDecorator:GraphicDecoratable,IPositional{
             else{fatalError("Must subclass PositionalGraphic")}
         }
         set{
-            fatalError("You cant set position only get")
-            //if(decoratable is PositionalGraphic){(decoratable as! PositionalGraphic).position = newValue}
-            //else{fatalError("Must subclass PositionalGraphic")}
+            if(decoratable is PositionalGraphic){(decoratable as! PositionalGraphic).position = newValue}
+            else{fatalError("Must subclass PositionalGraphic")}
         }
     }
     /**

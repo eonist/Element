@@ -6,7 +6,7 @@ import Foundation
 * google for Drawing Circles with Rational Quadratic Bezier Curves.pdf or use a value named kappa which is basically kappa = 4 * (sqrt(2) - 1) / 3
 * NOTE: CGRect has a roundRect method with eliptical corners. You have this code in your research folder
 */
-class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
+class RoundRectGraphic:SizableDecorator{//adds round-rectangular path
     var fillet:Fillet;
     init(_ decoratable: IGraphicDecoratable,  _ fillet:Fillet) {
         self.fillet = fillet
@@ -30,7 +30,7 @@ class RoundRectGraphic:GraphicDecoratable{//adds round-rectangular path
         Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType;
-            let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, decoratable.getSize().width, decoratable.getSize().height), graphic.lineStyle!, lineOffsetType);
+            let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, /*decoratable.*/getSize().width, /*decoratable.*/getSize().height), graphic.lineStyle!, lineOffsetType);
             //Swift.print(rect)
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
             graphic.linePath = CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)

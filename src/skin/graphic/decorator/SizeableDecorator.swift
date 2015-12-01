@@ -5,11 +5,8 @@ import Foundation
 class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
         get{
-            if(decoratable is SizeableGraphic){
-                return (decoratable as! SizeableGraphic).size
-            }else{
-                fatalError("Must subclass SizeableGraphic")
-            }
+           return decoratable is SizeableGraphic ?  (decoratable as! SizeableGraphic).size : fatalError("Must subclass SizeableGraphic")
+            
         }
         set{
             if(decoratable is SizeableGraphic){

@@ -1,7 +1,7 @@
 import Foundation
 protocol IElement:class, IView{
     var parent:IElement?{get}
-    var skinState:String{get}
+    var skinState:String{get set}
     var style:IStyle{get set}
     var skin:ISkin?{get set}
     var id : String?{get};

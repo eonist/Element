@@ -8,6 +8,9 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         self.size = size
         super.init(position,decoratable)
     }
+    /**
+     * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
+     */
     func getSize() -> CGSize {
         return size
     }

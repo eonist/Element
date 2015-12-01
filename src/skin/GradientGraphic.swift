@@ -5,10 +5,10 @@ import Cocoa
 */
 
 
-//continue here look into making ISIzeableGraohic and IPOsitionalGraphic again that extends the functionality you need but doesnt have the init stuff
+//Continue here look into making ISIzeableGraohic and IPositionalGraphic again that extends the functionality you need but doesnt have the init stuff
 
 
-class GradientGraphic:GraphicDecoratable {
+class GradientGraphic:PositionalDecorator {
     /**
      *
      */
@@ -17,8 +17,6 @@ class GradientGraphic:GraphicDecoratable {
         if(getGraphic().fillStyle!.dynamicType is GradientFillStyle.Type){
             getGraphic().graphics.gradientFill((getGraphic().fillStyle as! GradientFillStyle).gradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
-            
-        
     }
     /**
      * // :TODO: could possibly be renamed to applyGradientLinestyle

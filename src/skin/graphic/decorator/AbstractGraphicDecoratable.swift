@@ -4,7 +4,7 @@ import Foundation
  */
 class AbstractGraphicDecoratable:IGraphicDecoratable{
     let errMsg:String = "Must be overridden in subClass"
-    var graphic:BaseGraphic {fatalError(errMsg)}//dont revert to IBaseGraphic
+    var graphic:BaseGraphic {fatalError(errMsg)}/*This is only a getter, for now, and dont revert to IBaseGraphic*/
     func getGraphic() -> BaseGraphic{fatalError(errMsg)}
     func initialize(){}
     /*Fill*/
@@ -17,7 +17,9 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     func applyLineStyle(){fatalError(errMsg)}
     func drawLine(){fatalError(errMsg)}
     func stylizeLine(){fatalError(errMsg)}
-    /**/
+    /*Position and size*/
+    var size:CGSize{get{fatalError(errMsg)}set{fatalError(errMsg)}}
+    var position:CGPoint{get{fatalError(errMsg)}set{fatalError(errMsg)}}
     func getSize()->CGSize {fatalError(errMsg)}//all shapes has a size
     func getPosition()->CGPoint{fatalError(errMsg)}//all shapes has a position
     func setSize(size:CGSize){fatalError(errMsg)}//not all shapes has sizes that can be set

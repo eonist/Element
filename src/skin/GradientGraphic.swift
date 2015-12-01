@@ -3,7 +3,12 @@ import Cocoa
 * @Note: Use FillStyleUtils.beginGradientFill(_gradientRect.graphic.graphics, _gradient); if you need to modifiy
 * @Note there may not be a need to include a getter function for the fillStyle, since if this instance is edited with a Utility class the new fillstyle is applied but not stored in _fillStyle, same goes for lineStyle
 */
-class GradientGraphic:SizeableGraphic {
+
+
+//continue here look into making ISIzeableGraohic and IPOsitionalGraphic again that extends the functionality you need but doesnt have the init stuff
+
+
+class GradientGraphic:GraphicDecoratable {
     /**
      *
      */

@@ -52,6 +52,6 @@ private class Utils{
      * // :TODO: support for GradientLineStyle, GradientFillStyle
      */
     class func gradient(decoratable:IGraphicDecoratable)->IGraphicDecoratable{
-        return GradientGraphic(decoratable) as! IGraphicDecoratable;
+        return GradientGraphic(decoratable);
     }
 }

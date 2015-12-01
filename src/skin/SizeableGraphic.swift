@@ -23,3 +23,10 @@ extension SizeableGraphic{
         self.init(CGPoint(0,0),CGSize(width,height))
     }
 }
+
+protocol ISizeableGraphic{
+    
+}
+extension SizeableGraphic:ISizeableGraphic{
+    
+}

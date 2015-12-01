@@ -2,7 +2,7 @@ import Foundation
 /**
  * The responsibility of this class is to provide access to the position of the SizeableGraphic
  */
-class SizeableDecorator:PositionalDecorator,ISizeable {
+class SizeableDecorator:PositionalDecorator,ISizeableGraphic {
     var size:CGSize{
         get{
             if(decoratable is ISizeable){return (decoratable as! ISizeable).size}

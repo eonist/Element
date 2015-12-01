@@ -5,8 +5,8 @@ import Cocoa
 class SizeableGraphic:PositionalGraphic {
     /*var size:CGSize*/
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
-        self.size = size
         super.init(position,decoratable)
+        super.size = size
     }
     override func getSize() -> CGSize {
         return size

@@ -8,7 +8,9 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         self.size = size
         super.init(position,decoratable)
     }
-    
+    override func getSize() -> CGSize {
+        return size
+    }
 }
 extension SizeableGraphic{
     convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
@@ -20,11 +22,4 @@ extension SizeableGraphic{
     convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100){
         self.init(CGPoint(0,0),CGSize(width,height))
     }
-}
-
-protocol ISizeableGraphic{
-    
-}
-extension SizeableGraphic:ISizeableGraphic{
-    
 }

@@ -4,6 +4,7 @@ import Foundation
  * 1. This class should only provide access to the graphic instance
  * 2. Contain all the instructions to draw on the graphic
  * NOTE: it should not contain style, size or position
+ * TODO: Remove the getGraphics
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable

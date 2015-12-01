@@ -17,11 +17,25 @@ class PositionalGraphic:GraphicDecoratable {
 
 
 class PositionalDecorator:GraphicDecoratable,IPositional{
-    //var position:CGPoint{get{(decoratable as! IPositional).position} set{(decoratable as! IPositional).position = newValue}}
+    var position:CGPoint{
+        get{
+            if(decoratable is PositionalGraphic){
+               return (decoratable as! PositionalGraphic).position
+            }else{
+                fatalError("")
+            }
+            
+        }
+        set{
+            (decoratable as! PositionalGraphic).position = newValue
+        }
+    }
     
+    /*
     func test(){
         if (decoratable is PositionalGraphic){
             (decoratable as! PositionalGraphic).position = CGPoint()
         }
     }
+    */
 }

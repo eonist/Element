@@ -23,3 +23,26 @@ extension SizeableGraphic{
         self.init(CGPoint(0,0),CGSize(width,height))
     }
 }
+
+
+/**
+ * Shorten the bellow code with if shorthand
+ */
+class SizableDecorator:PositionalDecorator,ISizeable{
+    var size:CGSize{
+        get{
+            if(decoratable is SizeableGraphic){
+                return (decoratable as! SizeableGraphic).size
+            }else{
+                fatalError("Must subclass SizeableGraphic")
+            }
+        }
+        set{
+            if(decoratable is SizeableGraphic){
+                (decoratable as! SizeableGraphic).size = newValue
+            }else{
+                fatalError("Must subclass SizeableGraphic")
+            }
+        }
+    }
+}

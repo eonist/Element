@@ -2,7 +2,7 @@ import Cocoa
 /*
  * All SizableGraphics are also positionable
  */
-class SizeableGraphic:PositionalGraphic,ISizeable {
+class SizeableGraphic:PositionalGraphic,ISizeableGraphic {
     var size:CGSize
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {
         self.size = size

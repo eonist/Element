@@ -16,6 +16,6 @@ class PositionalGraphic:GraphicDecoratable {
 }
 
 
-/*class PositionalDecorator:GraphicDecoratable,IPositional{
-var position:CGPoint{get{decoratable}set{}}
-}*/
+class PositionalDecorator:GraphicDecoratable,IPositional{
+    var position:CGPoint{get{(decoratable as! IPositional).position}}
+}

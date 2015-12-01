@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO: you should also probably create a class named PathGraphic
  */
-class LineGraphic:GraphicDecoratable {
+class LineGraphic:SizeableGraphic {
     var p1:CGPoint;
     var p2:CGPoint;
     init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {

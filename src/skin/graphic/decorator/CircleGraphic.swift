@@ -2,7 +2,6 @@ import Cocoa
 
 class CircleGraphic:SizeableGraphic{
     var radius:CGFloat
-    override var size:CGFloat {get{return CGSize(radisu,radius)}}
     
     //var width:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
     //var height:CGFloat {get{return radius!}set{fatalError("NOT SUPPORTED")}}
@@ -19,8 +18,9 @@ class CircleGraphic:SizeableGraphic{
         //Swift.print("CircleGraphic.drawLine()")
         graphic.linePath = CGPathParser.circle(radius, x, y)
     }
-    
-    
+    override func getSize() -> CGSize {
+        return CGSize(radius,radius)
+    }
 }
 extension CircleGraphic{
     convenience init(_ radius:CGFloat,_ fillColor:NSColor){

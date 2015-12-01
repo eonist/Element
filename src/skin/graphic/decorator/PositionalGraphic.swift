@@ -17,5 +17,11 @@ class PositionalGraphic:GraphicDecoratable {
 
 
 class PositionalDecorator:GraphicDecoratable,IPositional{
-    var position:CGPoint{get{(decoratable as! IPositional).position} set{(decoratable as! IPositional).position = newValue}}
+    //var position:CGPoint{get{(decoratable as! IPositional).position} set{(decoratable as! IPositional).position = newValue}}
+    
+    func test(){
+        if let decoratable as IPositional{
+            decoratable.position = CGPoint()
+        }
+    }
 }

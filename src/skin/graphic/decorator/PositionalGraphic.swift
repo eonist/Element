@@ -1,7 +1,7 @@
 import Foundation
 
-class PositionalGraphic:GraphicDecoratable,IPositional {
-    var position:CGPoint
+class PositionalGraphic:PositionalDecorator {
+    override var position:CGPoint
     init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
         self.position = position
         super.init(decoratable)
@@ -9,7 +9,7 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */
-    func getPosition() -> CGPoint {
-        return position
-    }
+    /*func getPosition() -> CGPoint {
+    return position
+    }*/
 }

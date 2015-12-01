@@ -16,9 +16,9 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         let x:CGFloat = graphic.lineOffsetType.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         let y:CGFloat = graphic.lineOffsetType.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         //Swift.print("RoundRectGraphic2.drawFill() ")
-        let w:CGFloat = (decoratable as! RectGraphic).width
+        let w:CGFloat = self.width
         //Swift.print("w: " + "\(w)")
-        let h:CGFloat = (decoratable as! RectGraphic).height
+        let h:CGFloat = self.height
         //Swift.print("h: " + "\(h)")
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
         getGraphic().path = CGPathParser.roundRect(x,y,w,h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes

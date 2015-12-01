@@ -1,5 +1,6 @@
 import Foundation
 
-class ISelectable {
-
+protocol ISelectable{
+    func setSelected(isSelected:Bool)
+    func selected()->Bool
 }

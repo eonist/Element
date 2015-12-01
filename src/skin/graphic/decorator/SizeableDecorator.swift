@@ -2,7 +2,7 @@ import Foundation
 /**
  * The responsibility of this class is to provide access to the position of the SizeableGraphic
  */
-class SizeableDecorator:PositionalDecorator,ISizeableGraphic {
+class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
         get{
             if(decoratable is ISizeable){return (decoratable as! ISizeable).size}
@@ -19,5 +19,8 @@ class SizeableDecorator:PositionalDecorator,ISizeableGraphic {
      */
     func getSize() -> CGSize {
         return size
+    }
+    func setSize(size: CGSize) {
+        self.size = size
     }
 }

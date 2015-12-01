@@ -1,5 +1,5 @@
 import Foundation
-
+/*
 protocol IPositionalGraphic {
     var position:CGPoint{get set}
     func getPosition() -> CGPoint
@@ -20,3 +20,4 @@ extension IPositionalGraphic{
         self.position.y = position.y
     }
 }
+*/

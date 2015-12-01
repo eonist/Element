@@ -1,5 +1,5 @@
 import Foundation
-
+/*
 protocol ISizeableGraphic {
     var size:CGSize {get set}
     func getSize() -> CGSize
@@ -17,3 +17,4 @@ extension ISizeableGraphic{
         self.height = size.height
     }
 }
+*/

@@ -7,6 +7,7 @@ class PositionalDecorator:GraphicDecoratable,IPositional{
     var position:CGPoint{
         get{
             if(decoratable is PositionalGraphic){return (decoratable as! PositionalGraphic).position}
+            else if(decoratable is PositionalDecorator){return (decoratable as! PositionalDecorator).position}
             else{fatalError("Must subclass PositionalGraphic")}
         }
         set{

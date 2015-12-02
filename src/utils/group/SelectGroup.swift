@@ -5,12 +5,13 @@ import Cocoa
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
-class SelectGroup{
+class SelectGroup:NSView{
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
-        addSelectables(selectables);
         self.selected = selected
+        super.init(frame: NSRect(0,0,100,100))
+        addSelectables(selectables);
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -29,7 +30,7 @@ class SelectGroup{
         
         //Continue here: try to send Notifications from one class to another in playground. make an example
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as! SelectButton)
         selectables.append(selectable);
     }

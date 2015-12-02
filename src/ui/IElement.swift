@@ -2,7 +2,7 @@ import Foundation
 
 protocol IElement:class,/*<-Notice this*/ IView{
     var parent:IElement?{get}
-    var skinState:String{get set}
+    var state:String{get set}/*skinState is renamed to state because objc wont allow implicit setter with the same name*/
     var style:IStyle{get set}
     var skin:ISkin?{get set}
     var id : String?{get};

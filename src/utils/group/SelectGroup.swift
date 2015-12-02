@@ -2,9 +2,8 @@ import Foundation
 /**
  * EXAMPLE:
  * let radioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
- * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectEvent.select, object: radioButtonGroup)
- *
- * func onSelect(sender: AnyObject) { Swift.print("Event: " + RadioButtonGroup(event.currentTarget).checkedRadioButton);}
+ * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
+ * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
 class SelectGroup {
     private var selectables:Array<ISelectable> = [];

@@ -30,17 +30,17 @@ class SelectGroup{
         //Continue here: try to send Notifications from one class to another in playground. make an example
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as! SelectButton)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as! SelectButton)
         selectables.append(selectable);
     }
-    func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
+    @objc func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
         Swift.print("SelectGroup.onSelect(): " + String(sender))
         NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:selected)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
         selected = (sender as! NSNotification).object as? ISelectable
         SelectModifier.unSelectAllExcept(selected!, selectables);
         NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:selected)
     }
-    func onButtonDown(sender: AnyObject) {
+    @objc func onButtonDown(sender: AnyObject) {
         Swift.print("SelectGroup.onButtonDown() ")
         //let textButton:TextButton = (sender as! NSNotification).object as! TextButton
         /*if(textButton === self.textButton!){

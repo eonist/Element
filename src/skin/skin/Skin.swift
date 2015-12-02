@@ -36,7 +36,7 @@ class Skin:FlippedView,ISkin{
     * Resets skinState
     */
     func draw(){
-        Swift.print("Skin.draw() refresh the graphics")
+        //Swift.print("Skin.draw() refresh the graphics")
         hasStyleChanged = false;
         hasSizeChanged = false;
         hasStateChanged = false;

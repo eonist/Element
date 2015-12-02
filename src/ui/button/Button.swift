@@ -14,7 +14,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseEntered( event: NSEvent){
-        Swift.print("mouseEntered: ")
+        Swift.print("Button.mouseEntered: ")
         state = SkinStates.over
         Swift.print("skinstate: " + getSkinState())
         setSkinState(getSkinState());
@@ -25,7 +25,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseExited event.
      */
     override func mouseExited(event: NSEvent){
-        Swift.print("mouseExited: ")
+        Swift.print("Button.mouseExited: ")
         state = SkinStates.none
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
@@ -35,10 +35,10 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(theEvent: NSEvent) {
-        Swift.print("mouseDownEvent: ")
+        Swift.print("Button.mouseDownEvent: ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
+        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
         //super.mouseDown(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
@@ -46,7 +46,7 @@ class Button:Element {
      * @Note: bubbling= true was added to make Stepper class dragable
      */
     func mouseUpInside(theEvent: NSEvent){
-        Swift.print("mouseUpInside: ")
+        Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
@@ -56,7 +56,7 @@ class Button:Element {
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(theEvent: NSEvent){
-        Swift.print("mouseUpOutside: ")
+        Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)

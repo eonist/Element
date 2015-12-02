@@ -5,7 +5,7 @@ import Foundation
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
-class SelectGroup {
+class SelectGroup : NSView{
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
@@ -19,8 +19,8 @@ class SelectGroup {
      * @Note useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
-        let anyObj:AnyObject = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: anyObj)
+        let anyObj:AnyObject = selectable
+        NSNotificationCenter.defaultCenter().addObserver(anyObj, selector: "onSelect:", name: SelectEvent.select, object: nil)
         selectables.append(selectable);
     }
     func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc

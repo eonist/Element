@@ -62,7 +62,7 @@ class Skin:FlippedView,ISkin{
     //TODO:rename to set_skinState() and blame swift for the underscore
     
     
-    func setSkinState(state:String){/*Preferably we would use setState here, you can name it setState, as long as you set state to private*/
+    func setSkinState(state:String){
         //Swift.print("Skin.applySkinState")
         hasStateChanged = true;
         self.state = state;

@@ -43,7 +43,7 @@ class Element:View,IElement {
      * NOTE: you cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
      */
     func setSkinState(state:String) {
-        skin!.applySkinState(state);
+        skin!.setSkinState(state);
     }
     /*
     func setSkinState(skinState:String){

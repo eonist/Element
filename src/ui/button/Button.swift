@@ -72,6 +72,11 @@ class Button:Element {
         //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
         //Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        Swift.print("Button.hitTestToView() " + String(hitTestFromView(theEvent.locationInWindow)))
+        
+        //continue here
+        
+        
         self.hitTestFromView(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/

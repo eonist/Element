@@ -38,8 +38,8 @@ class Button:Element {
         Swift.print("Button.mouseDownEvent: ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
-        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
-        //super.mouseDown(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
+        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
+        super.mouseDown(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * Handles actions and drawing states for the release event.

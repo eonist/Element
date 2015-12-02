@@ -10,5 +10,5 @@ protocol ISkin{
     var hasStyleChanged:Bool{get}
     var hasStateChanged:Bool{get}
     var hasSizeChanged:Bool{get}
-    func applySkinState(state:String)
+    func setSkinState(state:String)
 }

@@ -1,6 +1,6 @@
 import Cocoa
 
-
+//
 class SelectButton:Button,ISelectable {
     var isSelected:Bool
     init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: IElement?, _ id: String?) {

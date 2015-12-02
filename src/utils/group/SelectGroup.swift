@@ -1,5 +1,10 @@
 import Foundation
-
+/**
+ * EXAMPLE:
+ * var radioButtonGroup:RadioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
+ * radioButtonGroup.addEventListener(Event.CHANGE, onChange);
+ * function onChange(event:Event):void { trace("event"+RadioButtonGroup(event.currentTarget).checkedRadioButton);}
+ */
 class SelectGroup {
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;

@@ -35,6 +35,10 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(theEvent: NSEvent) {
+        //continue here: try getting the location in the event and pass it to eigther of the bellow classes, the add this method to view instead
+        hitTestPoint(<#T##locationInWindow: NSPoint##NSPoint#>)
+        hitTest(<#T##aPoint: NSPoint##NSPoint#>)
+        
         Swift.print("Button.mouseDownEvent: ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());

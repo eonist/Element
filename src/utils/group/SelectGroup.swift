@@ -39,7 +39,7 @@ class SelectGroup:NSView{
         NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:selected)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
         selected = (sender as! NSNotification).object as? ISelectable
         SelectModifier.unSelectAllExcept(selected!, selectables);
-        NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:selected)
+        NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:self)
     }
     @objc func onButtonDown(sender: AnyObject) {
         Swift.print("SelectGroup.onButtonDown() ")

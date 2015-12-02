@@ -8,7 +8,7 @@ class GraphicSkin:Skin{
         /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);
     }
     override func drawRect(dirtyRect: NSRect) {
-        Swift.print("GraphicSkin.drawRect()")
+        //Swift.print("GraphicSkin.drawRect()")
         decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
     /**
@@ -18,7 +18,7 @@ class GraphicSkin:Skin{
         fatalError("init(coder:) has not been implemented")
     }
     override func draw(){
-        Swift.print("GraphicSkin.draw()")
+        //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
             /*decoratable = */SkinModifier.align(self,decoratable as! IPositional)/* as! IGraphicDecoratable;*/

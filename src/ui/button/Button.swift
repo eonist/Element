@@ -40,7 +40,7 @@ class Button:Element {
         //hitTest(theEvent.locationInWindow)//returns nsview
         
         Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
-        //Swift.print("Button.hitTestPoint() " + String(hitTestPoint(theEvent.locationInWindow)))
+        Swift.print("Button.hitTestPoint() " + String(hitTestPoint(theEvent.locationInWindow)))
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)

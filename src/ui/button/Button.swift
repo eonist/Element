@@ -40,7 +40,7 @@ class Button:Element {
         //hitTest(theEvent.locationInWindow)//returns nsview
         //Swift.print("theEvent.mouseLocation: " + String(mouseLocation))
         //Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
-        hitTestFromView(theEvent.locationInWindow)
+        Swift.print("hitTestFromViewWithFrameOffset: " + String(hitTestFromViewWithFrameOffset(theEvent.locationInWindow)))
         //hitTestToView(theEvent.locationInWindow)
         //Swift.print("Button.hitTestToView() " + String(hitTestToView(theEvent.locationInWindow)))
         state = SkinStates.down+" "+SkinStates.over;

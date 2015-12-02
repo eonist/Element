@@ -1,5 +1,5 @@
 import Foundation
 
-class radio {
-
+class RadioBullet:SelectButton {
+    //
 }

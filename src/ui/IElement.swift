@@ -1,6 +1,6 @@
 import Foundation
 
-protocol IElement:class,/*<-Notice this*/ IView{
+protocol IElement:class,IView{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol*/
     var parent:IElement?{get}
     var state:String{get set}/*skinState is renamed to state because objc wont allow implicit setter with the same name*/
     var style:IStyle{get set}

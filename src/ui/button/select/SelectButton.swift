@@ -1,6 +1,7 @@
 import Cocoa
 
-//
+//continue here: create a select group and try to toggle 2 select buttons
+
 class SelectButton:Button,ISelectable {
     var isSelected:Bool
     init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: IElement?, _ id: String?) {

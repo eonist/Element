@@ -1,9 +1,5 @@
 import Foundation
 
-//Continue here: maybe that :class thing will solve the problem with using protocols and casting?
-//try to make a variable that is explicit and implicit in Element , like var tempName setTempName etc. 
-//naming implicit setters applySkinState is not an option. As a last restor name the variable to skinStateValue
-
 protocol IElement:class,/*<-Notice this*/ IView{
     var parent:IElement?{get}
     var skinState:String{get set}

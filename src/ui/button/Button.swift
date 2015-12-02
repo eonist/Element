@@ -39,7 +39,7 @@ class Button:Element {
         
         //hitTest(theEvent.locationInWindow)//returns nsview
         
-        Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
+        //Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
         Swift.print("Button.hitTestToView() " + String(hitTestToView(theEvent.locationInWindow)))
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());

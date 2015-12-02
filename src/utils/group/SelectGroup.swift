@@ -23,13 +23,13 @@ class SelectGroup : NSView{
      * @Note useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
-        let anyObj:AnyObject = selectable
+        //let anyObj:AnyObject = selectable
         
         
         //Continue here: try to send Notifications from one class to another in playground. make an example
         
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: anyObj)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as! SelectButton)
         selectables.append(selectable);
     }
     func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
@@ -38,5 +38,18 @@ class SelectGroup : NSView{
         selected = (sender as! NSNotification).object as? ISelectable
         SelectModifier.unSelectAllExcept(selected!, selectables);
         NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:selected)
+    }
+    func onButtonDown(sender: AnyObject) {
+        Swift.print("SelectGroup.onButtonDown() ")
+        //let textButton:TextButton = (sender as! NSNotification).object as! TextButton
+        /*if(textButton === self.textButton!){
+        Swift.print("sender.object === self.textButton")
+        }*/
+        
+        
+        Swift.print("object: " + String((sender as! NSNotification).object))
+        Swift.print("name: " + String((sender as! NSNotification).name))//buttonEventDown
+        Swift.print("userInfo: " + String((sender as! NSNotification).userInfo))//nil
+        //Swift.print("WinView.onButtonDown() Sender: " + String(sender))
     }
 }

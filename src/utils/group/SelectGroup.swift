@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * EXAMPLE:
  * let radioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
@@ -9,8 +9,12 @@ class SelectGroup : NSView{
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
-        addSelectables(selectables);
         self.selected = selected
+        super.init(frame: NSRect(0,0,100,100))
+        addSelectables(selectables);
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     func addSelectables(selectables:Array<ISelectable>){
         for item : ISelectable in selectables {addSelectable(item)}

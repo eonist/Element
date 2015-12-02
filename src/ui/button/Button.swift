@@ -40,7 +40,7 @@ class Button:Element {
         //hitTest(theEvent.locationInWindow)//returns nsview
         //Swift.print("theEvent.mouseLocation: " + String(mouseLocation))
         //Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
-        Swift.print("hitTestFromViewWithFrameOffset: " + String(hitTestFromViewWithFrameOffset(theEvent.locationInWindow)))
+        //Swift.print("hitTestFromViewRelativeToFrame: " + String(hitTestFromViewRelativeToFrame(theEvent.locationInWindow)))
         //hitTestToView(theEvent.locationInWindow)
         //Swift.print("Button.hitTestToView() " + String(hitTestToView(theEvent.locationInWindow)))
         state = SkinStates.down+" "+SkinStates.over;
@@ -70,16 +70,12 @@ class Button:Element {
     }
     override func mouseUp(theEvent: NSEvent) {
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
-        Swift.print("mousePos: " + String(theEvent.locationInWindow))
+        //Swift.print("mousePos: " + String(theEvent.locationInWindow))
         //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
         //Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        Swift.print("Button.hitTestToView() " + String(hitTestFromView(theEvent.locationInWindow)))
-        
-        //continue here
-        
-        
-        self.hitTestFromView(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
+        //Swift.print("Button.hitTestToView() " + String(hitTestFromView(theEvent.locationInWindow)))
+        self.hitTestFromViewRelativeToFrame(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }

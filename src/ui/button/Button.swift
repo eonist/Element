@@ -40,7 +40,7 @@ class Button:Element {
         //hitTest(theEvent.locationInWindow)//returns nsview
         
         Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
-        Swift.print("Button.hitTestPoint() " + String(hitTestPoint(theEvent.locationInWindow)))
+        Swift.print("Button.hitTestToView() " + String(hitTestToView(theEvent.locationInWindow)))
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
@@ -72,7 +72,7 @@ class Button:Element {
         //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
         //Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        self.hitTestPoint(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
+        self.hitTestFromView(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
         //Swift.print("mouseUpEvent: " + "\(self.skinState)")
         super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }

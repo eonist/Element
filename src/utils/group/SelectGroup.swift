@@ -14,8 +14,8 @@ class SelectGroup {
      * @Note useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: self)
-        IEventDispatcher(selectable).addEventListener(SelectEvent.select, onSelect,false,0,true);
+        NSNotificationCenter.defaultCenter().addObserver(selectable, selector: "onSelect:", name: SelectEvent.select, object: selectable)
+        //IEventDispatcher(selectable).addEventListener(SelectEvent.select, onSelect,false,0,true);
         _selectables.push(selectable);
     }
 }

@@ -10,10 +10,6 @@ protocol IElement:class,/*<-Notice this*/ IView{
     var style:IStyle{get set}
     var skin:ISkin?{get set}
     var id : String?{get};
-    var name:String{get set}
-    func setName(name:String)
-    func getName()->String
-
     //var x:CGFloat{get set}
     //var y:CGFloat{get set}
     var width:CGFloat{get}

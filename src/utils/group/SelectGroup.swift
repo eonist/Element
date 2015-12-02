@@ -1,10 +1,10 @@
 import Foundation
 /**
  * EXAMPLE:
- * var radioButtonGroup:RadioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
- * NSNotificationCenter.defaultCenter().addObserver(anyObj, selector: "onSelect:", name: SelectEvent.select, object: anyObj)
- * radioButtonGroup.addEventListener(Event.CHANGE, onChange);
- * function onChange(event:Event):void { trace("event"+RadioButtonGroup(event.currentTarget).checkedRadioButton);}
+ * let radioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
+ * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectEvent.select, object: radioButtonGroup)
+ *
+ * func onSelect(sender: AnyObject) { Swift.print("Event: " + RadioButtonGroup(event.currentTarget).checkedRadioButton);}
  */
 class SelectGroup {
     private var selectables:Array<ISelectable> = [];
@@ -22,7 +22,6 @@ class SelectGroup {
     func addSelectable(selectable:ISelectable) {
         let anyObj:AnyObject = selectable
         NSNotificationCenter.defaultCenter().addObserver(anyObj, selector: "onSelect:", name: SelectEvent.select, object: anyObj)
-        NSNotificationCenter.defaultCenter().addObserver(anyObj, selector: "onSelect:", name: SelectEvent.deSelect, object: anyObj)
         selectables.append(selectable);
     }
     func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc

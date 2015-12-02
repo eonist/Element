@@ -38,9 +38,9 @@ class Button:Element {
         //continue here: try getting the location in the event and pass it to eigther of the bellow classes, the add this method to view instead
         
         //hitTest(theEvent.locationInWindow)//returns nsview
-        
+        Swift.print("theEvent.mouseLocation: " + String(theEvent.mouseLocation))
         //Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
-        hitTestFromView(theEvent.locationInWindow,self)
+        hitTestFromView(theEvent.locationInWindow)
         //Swift.print("Button.hitTestToView() " + String(hitTestToView(theEvent.locationInWindow)))
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());

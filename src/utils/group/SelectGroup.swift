@@ -2,6 +2,7 @@ import Foundation
 /**
  * EXAMPLE:
  * var radioButtonGroup:RadioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
+ * NSNotificationCenter.defaultCenter().addObserver(anyObj, selector: "onSelect:", name: SelectEvent.select, object: anyObj)
  * radioButtonGroup.addEventListener(Event.CHANGE, onChange);
  * function onChange(event:Event):void { trace("event"+RadioButtonGroup(event.currentTarget).checkedRadioButton);}
  */

@@ -5,31 +5,32 @@ import Cocoa
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
-class SelectGroup : NSView{
+class SelectGroup{
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
-        self.selected = selected
-        super.init(frame: NSRect(0,0,100,100))
         addSelectables(selectables);
+        self.selected = selected
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func addSelectables(selectables:Array<ISelectable>){
+        Swift.print("SelectGroup.addSelectables()")
         for item : ISelectable in selectables {addSelectable(item)}
     }
     /**
      * @Note useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
+        Swift.print("SelectGroup.addSelectable()")
         //let anyObj:AnyObject = selectable
         
         
         //Continue here: try to send Notifications from one class to another in playground. make an example
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as! SelectButton)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as! SelectButton)
         selectables.append(selectable);
     }
     func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc

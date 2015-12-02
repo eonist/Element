@@ -8,7 +8,7 @@ import Foundation
 class SelectGroup {
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;
-    init(selectables:Array<ISelectable>, selected:ISelectable? = nil){
+    init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
         addSelectables(selectables);
         self.selected = selected
     }

@@ -17,10 +17,9 @@ class SelectGroup {
         NSNotificationCenter.defaultCenter().addObserver((selectable as? AnyObject)!, selector: "onSelect:", name: SelectEvent.select, object: (selectable as? AnyObject)!)
         selectables.append(selectable);
     }
-    func onSelect(event:Event):void {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
-        dispatchEvent(new SelectGroupEvent(SelectGroupEvent.SELECT_GROUP_SELECT,_selected));
-        NSNotificationCenter.defaultCenter().postNotificationName(SelectEvent.select, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
-        _selected = event.currentTarget as ISelectable;
+    func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
+        NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.selectGroupSelect, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
+        selected = event.currentTarget as ISelectable;
         SelectModifier.unSelectAllExcept(_selected, _selectables);
         dispatchEvent(new SelectGroupEvent(SelectGroupEvent.SELECT_GROUP_CHANGE,_selected));
     }

@@ -68,7 +68,7 @@ class Button:Element {
     }
     override func mouseUp(theEvent: NSEvent) {
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
-        //Swift.print("mousePos: " + String(mousePos))
+        Swift.print("mousePos: " + String(theEvent.locationInWindow))
         //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
         //Swift.print("hitTestPoint: " + String(hitTestPoint))
         //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];

@@ -38,11 +38,6 @@ class Button:Element {
         Swift.print("mouseDownEvent: ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
-        
-        
-        //continue here: add userInfo to the postNotificationName
-        
-        
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
         super.mouseDown(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
     }

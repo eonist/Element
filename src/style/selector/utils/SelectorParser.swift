@@ -3,7 +3,7 @@ import Foundation
  * @Note we could move this into an internal utils class of StyleResolver but since Selector class is a public class we might aswell keep this class as a public class aswell
  */
 class SelectorParser{
-    static var cursor:UInt = 0;// :TODO: temp solution, must be fixed, eigther by Creating a class that can hold the cursor, test this first, or by creatin ga method within a method and then reffing cursor
+    static var cursor:Int = 0;// :TODO: temp solution, must be fixed, eigther by Creating a class that can hold the cursor, test this first, or by creatin ga method within a method and then reffing cursor
     /**
      * Returns a weight value based on where aSelector is locaeted on the @param b array (higher values means higher priotiy)
      * @param style: originally from the styleManager
@@ -85,7 +85,17 @@ class Utils{
      * @param styleSel an Selector instance from styleSelectors
      * @param querrySelectors: an array comprised of Selectors (from the element stack)
      */
-     
+    class func selectorWeight(styleSel:Selector,querrySelectors:Array<ISelector>)->SelectorWeight{
+        for (var i : Int = SelectorParser.cursor; i < querrySelectors.count; i++) {/*loops through each selector in the stack*///Item Container Item Container Button Text
+            var querrySelector:ISelector = querrySelectors[i];
+            if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){
+                var selectorWeight:SelectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1);
+                SelectorParser.cursor = i+1;// :TODO: this could possibly also be solved by looping the style inside the stack, but this was a faster fix
+                return selectorWeight;
+            }
+        }
+        return null;/*if a selectors array in the style has an individual selector that doesnt have anything in common with none of the selector sin the cascade then return false*/
+    }
      
 }
 /**

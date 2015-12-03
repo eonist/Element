@@ -90,7 +90,7 @@ class SelectorParser{
     class func compileSelectorWeight(styleSel:Selector,querrySelector:Selector,weight:Int)->SelectorWeight{
         var hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector);
         var hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector);
-        var numOfSimilarClassIds:UInt = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);
+        var numOfSimilarClassIds:Int = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);
         var hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel,querrySelector);
         var hasClassId:Bool = hasBothSelectorsClassIds && numOfSimilarClassIds > 0 ? ArrayAsserter.contains(styleSel.classIds,querrySelector.classIds,true) : false;
         var hasBothSelectorsStates:Bool = SelectorAsserter.hasBothSelectorsStates(styleSel,querrySelector) ;
@@ -115,6 +115,14 @@ private class Utils{
             }
         }
         return nil;/*if a selectors array in the style has an individual selector that doesnt have anything in common with none of the selector sin the cascade then return false*/
+    }
+    /**
+     * @Note lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
+     */
+    class func stateWeight(a:Array,b:Array)->UInt{
+        var weight:uint = 0;
+        for each (var state:String in a) weight += b.length - b.indexOf(state);
+        return weight;
     }
      
 }

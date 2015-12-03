@@ -4,7 +4,7 @@ class SelectorAsserter {
     /**
      * Asserts if @param a has a similar element,id,classId or state as @param b
      */
-    class func hasSimilarity(a:Selector,_ b:Selector)->Bool {
+    class func hasSimilarity(a:ISelector,_ b:ISelector)->Bool {
         return hasMatchingElement(a,b) || (hasBothSelectorsIds(a, b) && hasMatchingId(a,b)) || (hasBothSelectorsClassIds(a, b) && hasMatchingClassIds(a, b)) || hasSimilarState(a,b);
     }
     /**

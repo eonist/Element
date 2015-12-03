@@ -9,67 +9,70 @@ class WeightedStyleAsserter {
     * TODO: You could just do specificity how w3c does it. with assigning points to the different types. 10,100,1000,10000 etc. it works for them, it can work for you
     */
     class func priority(a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
-    //var temp:String = "Window";//Box#tabBarBox SelectTextButton Text
-    var priority:Bool = false;
-    var elementPriority:Bool = a.styleWeight.elementWeight >= b.styleWeight.elementWeight;
-    //if(a.name == temp) trace("elementPriority: " + elementPriority);
-    var elementCountPriority:Bool = elementCount(a.selectors) > elementCount(b.selectors);
-    //if(a.name == temp) trace("elementCountPriority: " + elementCountPriority);
-    var classPriority:Bool = a.styleWeight.classWeight > b.styleWeight.classWeight;
-    //if(a.name == temp) trace("classPriority: " + classPriority);
-    var idPriority:Bool = a.styleWeight.idWeight >= b.styleWeight.idWeight;
-    //if(a.name == temp) trace("idPriority: " + idPriority);
-    var statePriority:Bool = a.styleWeight.stateWeight > b.styleWeight.stateWeight;
-    //if(a.name == temp) trace("statePriority: " + statePriority);
-    var hasSelectorPriority:Bool = (idPriority && elementCountPriority) || (classPriority && b.styleWeight.idWeight == 0) || (elementPriority && idPriority/*&& b.styleWeight.idWeight == 0 && b.styleWeight.classWeight == 0*/);
-    //if(a.name == temp)trace("hasSelectorPriority: " + hasSelectorPriority);
-    //print("b.styleWeight.idWeight: " + b.styleWeight.idWeight);
-    //print("b.styleWeight.classWeight: " + b.styleWeight.classWeight);
-    var hasSelector:Bool = a.styleWeight.elementWeight > 0 || a.styleWeight.classWeight > 0 || a.styleWeight.idWeight > 0;
-    var hasState:Bool = a.styleWeight.stateWeight > 0;
-    var hasEqualStateWeight:Bool = a.styleWeight.stateWeight == b.styleWeight.stateWeight;
-    //print("a.styleWeight.stateWeight: " + a.styleWeight.stateWeight);
-    //print("b.styleWeight.stateWeight: " + b.styleWeight.stateWeight);
-    //print(a.name+ " hasSelector: " + hasSelector);
-    if(hasSelectorPriority && a.styleWeight.stateWeight == 0 && b.styleWeight.stateWeight == 0){/*both have no stateWeight*/
-    priority = true;
-    //if(a.name == temp) trace("BLOCK - 0: "+priority);
+        //var temp:String = "Window";//Box#tabBarBox SelectTextButton Text
+        var priority:Bool = false;
+        var elementPriority:Bool = a.styleWeight.elementWeight >= b.styleWeight.elementWeight;
+        //if(a.name == temp) trace("elementPriority: " + elementPriority);
+        var elementCountPriority:Bool = WeightedStyleAsserter.elementCount(a.selectors) > elementCount(b.selectors);
+        //if(a.name == temp) trace("elementCountPriority: " + elementCountPriority);
+        var classPriority:Bool = a.styleWeight.classWeight > b.styleWeight.classWeight;
+        //if(a.name == temp) trace("classPriority: " + classPriority);
+        var idPriority:Bool = a.styleWeight.idWeight >= b.styleWeight.idWeight;
+        //if(a.name == temp) trace("idPriority: " + idPriority);
+        var statePriority:Bool = a.styleWeight.stateWeight > b.styleWeight.stateWeight;
+        //if(a.name == temp) trace("statePriority: " + statePriority);
+        var hasSelectorPriority:Bool = (idPriority && elementCountPriority) || (classPriority && b.styleWeight.idWeight == 0) || (elementPriority && idPriority/*&& b.styleWeight.idWeight == 0 && b.styleWeight.classWeight == 0*/);
+        //if(a.name == temp)trace("hasSelectorPriority: " + hasSelectorPriority);
+        //print("b.styleWeight.idWeight: " + b.styleWeight.idWeight);
+        //print("b.styleWeight.classWeight: " + b.styleWeight.classWeight);
+        var hasSelector:Bool = a.styleWeight.elementWeight > 0 || a.styleWeight.classWeight > 0 || a.styleWeight.idWeight > 0;
+        var hasState:Bool = a.styleWeight.stateWeight > 0;
+        var hasEqualStateWeight:Bool = a.styleWeight.stateWeight == b.styleWeight.stateWeight;
+        //print("a.styleWeight.stateWeight: " + a.styleWeight.stateWeight);
+        //print("b.styleWeight.stateWeight: " + b.styleWeight.stateWeight);
+        //print(a.name+ " hasSelector: " + hasSelector);
+        if(hasSelectorPriority && a.styleWeight.stateWeight == 0 && b.styleWeight.stateWeight == 0){/*both have no stateWeight*/
+            priority = true;
+            //if(a.name == temp) trace("BLOCK - 0: "+priority);
+        }
+        else if(hasSelectorPriority && hasEqualStateWeight) {
+            priority = assertStateWeight(a, b);
+            //if(a.name == temp) trace("BLOCK - 1: "+priority);
+        }
+        else if(hasState && statePriority) {
+            //if(a.name == temp) trace("BLOCK - 2");
+            priority = true;
+        }
+        else if(hasSelector && statePriority) {
+            //			if(a.name == temp) trace("BLOCK - 3");
+            priority = true;
+        }
+        else if(hasSelector && hasEqualStateWeight) {
+            //print("a.name: " + a.name);
+            //print("b.name: " + b.name);
+            //print("a.styleWeight.elementWeight: " + a.styleWeight.elementWeight);
+            //print("b.styleWeight.elementWeight: " + b.styleWeight.elementWeight);
+            //print("a.styleWeight.stateWeight: " + a.styleWeight.stateWeight);
+            //print("b.styleWeight.stateWeight: " + b.styleWeight.stateWeight);
+            priority = a.styleWeight.stateWeight == 0 && b.styleWeight.stateWeight == 0 ? false:assertStateWeight(a, b);/*temp fix*/// :TODO: the problem here is that you need to also have a boolean if both states are 0?!?
+            //if(a.name == temp) trace("BLOCK - 4: "+priority);
+        }
+        else if(hasState && hasEqualStateWeight){
+            priority = assertStateWeight(a, b);
+            //if(a.name == temp) trace("BLOCK - 5: "+priority);
+        }
+        //if(a.name == temp) trace(a.name +" HAS PRIORITY OVER: " + b.name+ " == " + priority);
+        return priority;
     }
-    else if(hasSelectorPriority && hasEqualStateWeight) {
-    priority = assertStateWeight(a, b);
-    //if(a.name == temp) trace("BLOCK - 1: "+priority);
-    }
-    else if(hasState && statePriority) {
-    //if(a.name == temp) trace("BLOCK - 2");
-    priority = true;
-    }
-    else if(hasSelector && statePriority) {
-    //			if(a.name == temp) trace("BLOCK - 3");
-    priority = true;
-    }
-    else if(hasSelector && hasEqualStateWeight) {
-    //print("a.name: " + a.name);
-    //print("b.name: " + b.name);
-    //print("a.styleWeight.elementWeight: " + a.styleWeight.elementWeight);
-    //print("b.styleWeight.elementWeight: " + b.styleWeight.elementWeight);
-    //print("a.styleWeight.stateWeight: " + a.styleWeight.stateWeight);
-    //print("b.styleWeight.stateWeight: " + b.styleWeight.stateWeight);
-    priority = a.styleWeight.stateWeight == 0 && b.styleWeight.stateWeight == 0 ? false:assertStateWeight(a, b);/*temp fix*/// :TODO: the problem here is that you need to also have a boolean if both states are 0?!?
-    //if(a.name == temp) trace("BLOCK - 4: "+priority);
-    }
-    else if(hasState && hasEqualStateWeight){
-    priority = assertStateWeight(a, b);
-    //if(a.name == temp) trace("BLOCK - 5: "+priority);
-    }
-    //if(a.name == temp) trace(a.name +" HAS PRIORITY OVER: " + b.name+ " == " + priority);
-    return priority;
-    }
-    private static function elementCount(selectors:Array):int{
-    var elementCount:int = 0;
-    for (var i : int = 0; i < selectors.length; i++) {
-    if((selectors[i] as Selector).element != null) elementCount++;
-    }
-    return elementCount;
+    /**
+     *
+     */
+    private class func elementCount(selectors:Array<ISelector>)->Int{
+        var elementCount:Int = 0;
+        for (var i : Int = 0; i < selectors.count; i++) {
+            if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount++}
+        }
+        return elementCount;
     }
     /**
      * Asserts that a "selector.stateWeight" in "a.styleWeight.selectorWeights" has a higher value than a "selector.stateWeight" in "b.styleWeight.selectorWeights"  (the style.weight.stateweight are equal)

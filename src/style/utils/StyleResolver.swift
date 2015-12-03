@@ -10,6 +10,7 @@ class StyleResolver{
      */
     class func style2(element:IElement)->IStyle{
         var querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
+        var weightedStyles:Array<IStyle> = [];
         let finalStyle:IStyle = Style()
         return finalStyle
     }

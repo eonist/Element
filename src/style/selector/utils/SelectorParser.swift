@@ -84,6 +84,20 @@ class SelectorParser{
     class func numOfSimilarClassIds(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsClassIds(a, b) ? ArrayParser.similar(a.classIds, b.classIds).count : 0;
     }
+    /**
+     * Returns a Selector instance
+     */
+    class func compileSelectorWeight(styleSel:Selector,querrySelector:Selector,weight:int)->SelectorWeight{
+        var hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector);
+        var hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector);
+        var numOfSimilarClassIds:UInt = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);
+        var hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel,querrySelector);
+        var hasClassId:Bool = hasBothSelectorsClassIds && numOfSimilarClassIds > 0 ? ArrayAsserter.contains(styleSel.classIds,querrySelector.classIds,true) : false;
+        var hasBothSelectorsStates:Bool = SelectorAsserter.hasBothSelectorsStates(styleSel,querrySelector) ;
+        var stateWeight:UInt = hasBothSelectorsStates ? Utils.stateWeight(styleSel.states,querrySelector.states) : 0;
+        var hasStateWeight:Bool = hasBothSelectorsStates && stateWeight > 0;
+        return SelectorWeight(weight, hasId, hasElement, hasClassId, hasStateWeight, numOfSimilarClassIds, stateWeight);
+    }
 }
 private class Utils{
     /**

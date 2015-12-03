@@ -3,8 +3,15 @@ import Foundation
 //Continue here: to bring id into the fold you need to bring in the origional code, atleast take a look
 
 class StyleResolver{
+    /**
+     * Returns a style comprised of all the styleProperties element inherit from
+     * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
+     * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
+     */
     class func style2(element:IElement)->IStyle{
-        return 
+        var querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
+        let finalStyle:IStyle = Style()
+        return finalStyle
     }
     /**
      *

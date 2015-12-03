@@ -1,5 +1,7 @@
 import Foundation
 
+//Continue here: to bring id into the fold you need to bring in the origional code, atleast take a look
+
 class StyleResolver{
     /**
      *

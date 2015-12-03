@@ -79,7 +79,7 @@ class SelectorParser{
         return selector
     }
 }
-class Utils{
+private class Utils{
     /**
      * Returns a SelectorWeight instance (Asserts if a SelectorWeight should be created, if not it returns null)
      * @param styleSel an Selector instance from styleSelectors

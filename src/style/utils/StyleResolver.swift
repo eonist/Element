@@ -3,6 +3,9 @@ import Foundation
 //Continue here: to bring id into the fold you need to bring in the origional code, atleast take a look
 
 class StyleResolver{
+    class func style2(element:IElement)->IStyle{
+        return 
+    }
     /**
      *
      */

@@ -8,7 +8,7 @@ class StyleWeight {
     var elementWeight:UInt = 0;
     var classWeight:UInt = 0;
     var stateWeight:UInt = 0;
-    init(selectorWeights:Array<SelectorWeight>) {
+    init(_ selectorWeights:Array<SelectorWeight>) {
        self.selectorWeights = selectorWeights;
        for selectorItemWeight : SelectorWeight in selectorWeights {
           self.elementWeight += selectorItemWeight.hasElement ? selectorItemWeight.weight : 0;

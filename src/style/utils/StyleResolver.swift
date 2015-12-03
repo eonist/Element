@@ -8,15 +8,12 @@ class StyleResolver{
      */
     class func style2(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
-        let weightedStyles:Array<IStyle> = [];
+        var weightedStyles:Array<IStyle> = [];
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that dont apply to the elements cascade*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //print("style: " + style.name);
-            
-            //continue here: add the selectorWeight class
-            
             let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors);
-            if(selectorWeights != nil) {weightedStyles.push(WeightedStyle(style, StyleWeight(selectorWeights)))}
+            if(selectorWeights != nil) {weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))}
         }
         let finalStyle:IStyle = Style()
         return finalStyle

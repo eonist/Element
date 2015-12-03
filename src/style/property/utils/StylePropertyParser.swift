@@ -193,7 +193,7 @@ class StylePropertyParser{
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
-        Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
+        //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
         margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
         margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight) > marginIndex ? metric(skin, CSSConstants.marginRight) : Utils.metric(margin.right, skin))!;
         margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop) > marginIndex ? metric(skin, CSSConstants.marginTop) : Utils.metric(margin.top, skin))!;

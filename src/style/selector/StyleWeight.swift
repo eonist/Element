@@ -4,10 +4,10 @@ import Foundation
  */
 class StyleWeight {
     var selectorWeights:Array<SelectorWeight>;
-    var idWeight:UInt = 0;
-    var elementWeight:UInt = 0;
-    var classWeight:UInt = 0;
-    var stateWeight:UInt = 0;
+    var idWeight:Int = 0;
+    var elementWeight:Int = 0;
+    var classWeight:Int = 0;
+    var stateWeight:Int = 0;
     init(_ selectorWeights:Array<SelectorWeight>) {
        self.selectorWeights = selectorWeights;
        for selectorItemWeight : SelectorWeight in selectorWeights {

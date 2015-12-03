@@ -6,7 +6,7 @@ class StyleResolver{
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
      * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
      */
-    class func style2(element:IElement)->IStyle{
+    class func style(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
         var weightedStyles:Array<WeightedStyle> = [];
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that dont apply to the elements cascade*/
@@ -30,7 +30,7 @@ class StyleResolver{
     /**
      *
      */
-    class func style(element:IElement)->IStyle{
+    class func temp_style(element:IElement)->IStyle{
         //let querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
         //Swift.print("STACK: " + SelectorParser.string(querrySelectors));
         var styleComposition:IStyle = Style("styleComp")

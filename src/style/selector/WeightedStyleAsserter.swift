@@ -95,12 +95,12 @@ class WeightedStyleAsserter {
         //loop through a and calc the total stateWeight
         //loop through b and cal the total stateweight
         /*new code start*/// :TODO: nor sure if Things like Button:over Text{fill:blue;} works yet
-        var aTotStateWeight:UInt = 0;
+        var aTotStateWeight:Int = 0;
         for aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights {
             aTotStateWeight += aSelectorWeight.stateWeight;
         }
         //print("aTotStateWeight: " + aTotStateWeight);
-        var bTotStateWeight:UInt = 0;
+        var bTotStateWeight:Int = 0;
         for bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights {
             bTotStateWeight += bSelectorWeight.stateWeight;
         }

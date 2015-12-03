@@ -78,10 +78,10 @@ class SelectorParser{
         }
         return selector
     }
-    class func numOfSimilarStates(a:Selector,_ b:Selector)->Int {
+    class func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0;
     }
-    class func numOfSimilarClassIds(a:Selector,_ b:Selector)->Int {
+    class func numOfSimilarClassIds(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsClassIds(a, b) ? ArrayParser.similar(a.classIds, b.classIds).count : 0;
     }
 }

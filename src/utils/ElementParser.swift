@@ -12,6 +12,7 @@ class ElementParser{
         var selectors:Array<ISelector> = []
         for  e : IElement in elements {
             selectors.append(selector(e));
+            selector.element = e.getClassType();
         }
         return selectors;
     }

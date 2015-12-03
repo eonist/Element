@@ -9,7 +9,7 @@ class StyleResolver{
      * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
      */
     class func style2(element:IElement)->IStyle{
-        var querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
+        var querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
         let finalStyle:IStyle = Style()
         return finalStyle
     }

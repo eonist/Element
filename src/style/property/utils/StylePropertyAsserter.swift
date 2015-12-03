@@ -2,8 +2,9 @@ import Foundation
 
 class StylePropertyAsserter {
     class func hasFillet(skin:ISkin)->Bool {
-        Swift.print("StylePropertyAsserter.hasFillet()")
+        
         let fillet:Fillet = StylePropertyParser.fillet(skin);
+        Swift.print("StylePropertyAsserter.hasFillet() " + String(fillet))
         return !(fillet.topLeft == 0 && fillet.topRight == 0 && fillet.bottomLeft == 0 && fillet.bottomRight == 0);
     }
     class func hasGradient(skin:ISkin)->Bool {

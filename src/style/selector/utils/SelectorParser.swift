@@ -11,13 +11,13 @@ class SelectorParser{
      * // :TODO: this the sub method of this class could still need some refactoring, and clearafication
      * // :TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */
-    class func selectorWeights(style:IStyle,querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
+    class func selectorWeights(style:IStyle,_ querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
         var selectorWeights:Array<SelectorWeight> = [];
         cursor = 0;/*so that we skip testing the same selector again*/
         for styleSel : ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
-            var selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors);
-            if(selectorWeight == nil) {return nil};
-            else {selectorWeights.append(selectorWeight)}
+            let selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors);
+            if(selectorWeight == nil) {return nil}
+            else {selectorWeights.append(selectorWeight!)}
         }
         return selectorWeights;
     }

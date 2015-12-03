@@ -88,14 +88,14 @@ class SelectorParser{
      * Returns a Selector instance
      */
     class func compileSelectorWeight(styleSel:Selector,querrySelector:Selector,weight:Int)->SelectorWeight{
-        var hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector);
-        var hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector);
-        var numOfSimilarClassIds:Int = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);
-        var hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel,querrySelector);
-        var hasClassId:Bool = hasBothSelectorsClassIds && numOfSimilarClassIds > 0 ? ArrayAsserter.contains(styleSel.classIds,querrySelector.classIds,true) : false;
-        var hasBothSelectorsStates:Bool = SelectorAsserter.hasBothSelectorsStates(styleSel,querrySelector) ;
-        var stateWeight:UInt = hasBothSelectorsStates ? Utils.stateWeight(styleSel.states,querrySelector.states) : 0;
-        var hasStateWeight:Bool = hasBothSelectorsStates && stateWeight > 0;
+        let hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector);
+        let hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector);
+        let numOfSimilarClassIds:Int = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);
+        let hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel,querrySelector);
+        let hasClassId:Bool = hasBothSelectorsClassIds && numOfSimilarClassIds > 0 ? ArrayAsserter.contains(styleSel.classIds,querrySelector.classIds,true) : false;
+        let hasBothSelectorsStates:Bool = SelectorAsserter.hasBothSelectorsStates(styleSel,querrySelector) ;
+        let stateWeight:UInt = hasBothSelectorsStates ? Utils.stateWeight(styleSel.states,querrySelector.states) : 0;
+        let hasStateWeight:Bool = hasBothSelectorsStates && stateWeight > 0;
         return SelectorWeight(weight, hasId, hasElement, hasClassId, hasStateWeight, numOfSimilarClassIds, stateWeight);
     }
 }
@@ -119,9 +119,9 @@ private class Utils{
     /**
      * @Note lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
      */
-    class func stateWeight(a:Array<String>,b:Array<String>)->UInt{
-        var weight:UInt = 0;
-        for state:String in a {weight += b.count - b.indexOf(state)}
+    class func stateWeight(a:Array<String>,_ b:Array<String>)->Int{
+        var weight:Int = 0;
+        for state:String in a {weight += b.count - b.indexOf(state)!/*<-is this really wise? what if it is -1 aka doesnt exist*/}
         return weight;
     }
      

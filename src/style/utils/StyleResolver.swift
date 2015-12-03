@@ -8,7 +8,7 @@ class StyleResolver{
      */
     class func style2(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
-        var weightedStyles:Array<IStyle> = [];
+        var weightedStyles:Array<WeightedStyle> = [];
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that dont apply to the elements cascade*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //print("style: " + style.name);
@@ -20,8 +20,10 @@ class StyleResolver{
         if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
         var styleName:String = SelectorParser.string(querrySelectors);
-        var finalStyle:IStyle = StyleManager.getInstance().getStyle(styleName) || new Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
-        for each (var weightStyle:WeightedStyle in weightedStyles) StyleModifier.merge(finalStyle, StyleAsserter.direct(querrySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.TEXT_PROPERTY_NAMES));/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+        var finalStyle:IStyle = StyleManager.getStyle(styleName) ??/*||*/ Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
+        for weightStyle:WeightedStyle in weightedStyles{
+            StyleModifier.merge(finalStyle, StyleAsserter.direct(querrySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.TEXT_PROPERTY_NAMES))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+        }
         return finalStyle;
     }
     /**

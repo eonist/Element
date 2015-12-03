@@ -2,12 +2,12 @@ import Foundation
 
 class WeightedStyleAsserter {
     /**
-    * Asserts if @param a has priority over @param b (by looking at the variouse weight variables in the WheightStyles mentioned)
-    * // :TODO: an idea could be to assign 3 values to elementPriority, classPriority and the other priortity values, 0 for no priority, 1 for equal weight and 2 for priority (this could greatly simplify and speed up this method)
-    * // :TODO: this method must be simplified
-    * // :TODO: this method must be test with all possible combinations and rethought
-    * TODO: You could just do specificity how w3c does it. with assigning points to the different types. 10,100,1000,10000 etc. it works for them, it can work for you
-    */
+     * Asserts if @param a has priority over @param b (by looking at the variouse weight variables in the WheightStyles mentioned)
+     * // :TODO: an idea could be to assign 3 values to elementPriority, classPriority and the other priortity values, 0 for no priority, 1 for equal weight and 2 for priority (this could greatly simplify and speed up this method)
+     * // :TODO: this method must be simplified
+     * // :TODO: this method must be test with all possible combinations and rethought
+     * TODO: You could just do specificity how w3c does it. with assigning points to the different types. 10,100,1000,10000 etc. it works for them, it can work for you
+     */
     class func priority(a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
         //var temp:String = "Window";//Box#tabBarBox SelectTextButton Text
         var priority:Bool = false;

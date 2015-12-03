@@ -1,7 +1,25 @@
 import Foundation
-
+/**
+ * @Note we could move this into an internal utils class of StyleResolver but since Selector class is a public class we might aswell keep this class as a public class aswell
+ */
 class SelectorParser{
-   
+    /**
+     * Returns a weight value based on where aSelector is locaeted on the @param b array (higher values means higher priotiy)
+     * @param style: originally from the styleManager
+     * @param querrySelectors: an array comprised of Selectors (from the element stack)
+     * // :TODO: this the sub method of this class could still need some refactoring, and clearafication
+     * // :TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
+     */
+    class func selectorWeights(style:IStyle,querrySelectors:Array)->Array<SelectorWeight> {//
+    var selectorWeights:Array = [];
+    CURSOR = 0;/*so that we skip testing the same selector again*/
+    for each (var styleSel : Selector in style.selectors){/*loops through each selector in the style*///Item Item Item Button Text
+				var selectorWeight:SelectorWeight = Utils.selectorWeight(styleSel,querrySelectors);
+				if(selectorWeight == null) return null;
+				else selectorWeights.push(selectorWeight);
+    }
+    return selectorWeights;
+    }
     /**
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
      * @Note this method can also be used for debuging purposes

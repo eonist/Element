@@ -48,7 +48,7 @@ class CSSPropertyParser {
      * EXAMPLE: a corner-radius "10 20 10 20"
      */
     class func array(string:String)->Array<Any>{
-        Swift.print("CSSPropertyParser.array()")
+        //Swift.print("CSSPropertyParser.array()")
         let matches:Array<String> = StringModifier.split(string, " ")
         var array:Array<Any> = [];
         for str : String in matches { array.append(StringAsserter.digit(str) ? StringParser.digit(str) : str) }

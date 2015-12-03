@@ -94,7 +94,7 @@ class SelectorParser{
         let hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel,querrySelector);
         let hasClassId:Bool = hasBothSelectorsClassIds && numOfSimilarClassIds > 0 ? ArrayAsserter.contains(styleSel.classIds,querrySelector.classIds,true) : false;
         let hasBothSelectorsStates:Bool = SelectorAsserter.hasBothSelectorsStates(styleSel,querrySelector) ;
-        let stateWeight:UInt = hasBothSelectorsStates ? Utils.stateWeight(styleSel.states,querrySelector.states) : 0;
+        let stateWeight:Int = hasBothSelectorsStates ? Utils.stateWeight(styleSel.states,querrySelector.states) : 0;
         let hasStateWeight:Bool = hasBothSelectorsStates && stateWeight > 0;
         return SelectorWeight(weight, hasId, hasElement, hasClassId, hasStateWeight, numOfSimilarClassIds, stateWeight);
     }

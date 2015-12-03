@@ -119,9 +119,9 @@ private class Utils{
     /**
      * @Note lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
      */
-    class func stateWeight(a:Array,b:Array)->UInt{
-        var weight:uint = 0;
-        for each (var state:String in a) weight += b.length - b.indexOf(state);
+    class func stateWeight(a:Array<String>,b:Array)->UInt{
+        var weight:UInt = 0;
+        for state:String in a {weight += b.length - b.indexOf(state)}
         return weight;
     }
      

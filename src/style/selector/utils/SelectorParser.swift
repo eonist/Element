@@ -91,7 +91,7 @@ private class Utils{
      * @param styleSel an Selector instance from styleSelectors
      * @param querrySelectors: an array comprised of Selectors (from the element stack)
      */
-    class func selectorWeight(styleSel:Selector,querrySelectors:Array<ISelector>)->SelectorWeight{
+    class func selectorWeight(styleSel:ISelector,querrySelectors:Array<ISelector>)->SelectorWeight{
         for (var i : Int = SelectorParser.cursor; i < querrySelectors.count; i++) {/*loops through each selector in the stack*///Item Container Item Container Button Text
             var querrySelector:ISelector = querrySelectors[i];
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){

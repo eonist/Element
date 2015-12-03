@@ -10,7 +10,7 @@ class SelectorAsserter {
     /**
      *
      */
-    class func hasCommonality(styleSel:Selector,querrySelector:Selector)->Bool {
+    class func hasCommonality(styleSel:ISelector,querrySelector:ISelector)->Bool {
        let hasMatchingId:Bool = SelectorAsserter.hasMatchingId(styleSel, querrySelector);
        let hasMatchingElement:Bool = SelectorAsserter.hasMatchingElement(styleSel, querrySelector);
        let hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel, querrySelector);
@@ -27,31 +27,31 @@ class SelectorAsserter {
     class func hasMatchingElement(a:Selector,_ b:Selector)->Bool {
       return a.element == b.element;
     }
-    class func hasMatchingId(a:Selector,_ b:Selector)->Bool {
+    class func hasMatchingId(a:ISelector,_ b:ISelector)->Bool {
       return a.id == b.id;
     }
-    class func hasMatchingClassIds(a:Selector,_ b:Selector)->Bool {
+    class func hasMatchingClassIds(a:ISelector,_ b:ISelector)->Bool {
       return ArrayAsserter.contains(a.classIds, b.classIds, true);//<----this may be wrong as it compares if the instance has the same variables, but the original code compared reference, which seemed wrong to me
     }
-    class func hasBothSelectorsIds(a:Selector,_ b:Selector)->Bool {
-      return a.id != nil && b.id != nil;
+    class func hasBothSelectorsIds(a:ISelector,_ b:ISelector)->Bool {
+      return a.id != ""/*nil*/ && b.id != ""/*nil*/;
     }
-    class func hasBothSelectorsClassIds(a:Selector,_ b:Selector)->Bool {
+    class func hasBothSelectorsClassIds(a:ISelector,_ b:ISelector)->Bool {
       return a.classIds != nil && b.classIds != nil;
     }
-    class func hasBothSelectorsStates(a:Selector,_ b:Selector)->Bool {
+    class func hasBothSelectorsStates(a:ISelector,_ b:ISelector)->Bool {
       return a.states != nil && b.states != nil;
     }
-    class func hasSimilarState(a:Selector,_ b:Selector)->Bool {
+    class func hasSimilarState(a:ISelector,_ b:ISelector)->Bool {
       return SelectorParser.numOfSimilarStates(a, b) > 0;
     }
-    class func hasStates(selector:Selector)->Bool {
+    class func hasStates(selector:ISelector)->Bool {
       return selector.states != nil;
     }
-    class func hasElement(selector:Selector)->Bool {
+    class func hasElement(selector:ISelector)->Bool {
       return selector.element != nil;
     }
-    class func hasId(selector:Selector)->Bool {
+    class func hasId(selector:ISelector)->Bool {
       return selector.id != nil;
     }
 }

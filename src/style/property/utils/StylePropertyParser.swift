@@ -93,6 +93,7 @@ class StylePropertyParser{
     class func fillet(skin:ISkin) -> Fillet {
         let val:Any? = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
+        Swift.print(val!)
         if((val is CGFloat) || (val is Array<CGFloat>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
         Swift.print("StylePropertyParser.fillet: " + String(ClassParser.classType(val!)))
         Swift.print(fillet.topRight)

@@ -133,7 +133,7 @@
 func drawShapes(dirtyRect: NSRect){
     Swift.print(String(dirtyRect))
     let bPath:NSBezierPath = NSBezierPath(rect: dirtyRect)
-    Swift.print(bPath)
+    Swift.print("bPath: " + String(bPath))
     let fillColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
     fillColor.set()
     bPath.fill()

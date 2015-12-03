@@ -9,6 +9,7 @@ class CSSPropertyParser {
      * Retuns a css property to a property that can be read by the flash api
      */
     class func property(string:String) -> Any{//:TODO: Long switch statments can be replaced by polymorphism?!?
+        Swift.print("CSSPropertyParser.property()")
         switch(true) {
             case StringAsserter.digit(string):return StringParser.digit(string);/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):return string;//ems|%

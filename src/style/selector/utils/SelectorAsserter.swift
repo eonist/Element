@@ -18,7 +18,7 @@ class SelectorAsserter {
        let numOfMatchingStates:Int = SelectorParser.numOfSimilarStates(styleSel, querrySelector);
        let hasSimilarState:Bool = SelectorAsserter.hasSimilarState(styleSel, querrySelector);
        let hasStyleSelStates:Bool = SelectorAsserter.hasStates(styleSel);
-    let a:Bool = (hasMatchingId || styleSel.id == ""/*nil*/);
+       let a:Bool = (hasMatchingId || styleSel.id == ""/*nil*/);
        let b:Bool = hasMatchingElement || styleSel.element == ""/*nil*/;
        let c:Bool = (hasMatchingClassIds || !hasBothSelectorsClassIds);
        let d:Bool = (!hasStyleSelStates || (hasSimilarState && numOfMatchingStates <= querrySelector.states.count));

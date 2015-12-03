@@ -11,17 +11,17 @@ class SelectorAsserter {
      *
      */
     class func hasCommonality(styleSel:Selector,querrySelector:Selector)->Bool {
-       var hasMatchingId:Bool = SelectorAsserter.hasMatchingId(styleSel, querrySelector);
-       var hasMatchingElement:Bool = SelectorAsserter.hasMatchingElement(styleSel, querrySelector);
-       var hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel, querrySelector);
-       var hasMatchingClassIds:Bool = hasBothSelectorsClassIds && SelectorAsserter.hasMatchingClassIds(styleSel, querrySelector);/*all styleSel classIds are present in stackSel classIds*/
-       var numOfMatchingStates:uint = SelectorParser.numOfSimilarStates(styleSel, querrySelector);
-       var hasSimilarState:Bool = SelectorAsserter.hasSimilarState(styleSel, querrySelector);
-       var hasStyleSelStates:Bool = SelectorAsserter.hasStates(styleSel);
-       var a:Bool = (hasMatchingId || styleSel.id == ""/*nil*/);
-       var b:Bool = hasMatchingElement || styleSel.element == ""/*nil*/;
-       var c:Bool = (hasMatchingClassIds || !hasBothSelectorsClassIds);
-       var d:Bool = (!hasStyleSelStates || (hasSimilarState && numOfMatchingStates <= querrySelector.states.count));
+       let hasMatchingId:Bool = SelectorAsserter.hasMatchingId(styleSel, querrySelector);
+       let hasMatchingElement:Bool = SelectorAsserter.hasMatchingElement(styleSel, querrySelector);
+       let hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel, querrySelector);
+       let hasMatchingClassIds:Bool = hasBothSelectorsClassIds && SelectorAsserter.hasMatchingClassIds(styleSel, querrySelector);/*all styleSel classIds are present in stackSel classIds*/
+       let numOfMatchingStates:Int = SelectorParser.numOfSimilarStates(styleSel, querrySelector);
+       let hasSimilarState:Bool = SelectorAsserter.hasSimilarState(styleSel, querrySelector);
+       let hasStyleSelStates:Bool = SelectorAsserter.hasStates(styleSel);
+    let a:Bool = (hasMatchingId || styleSel.id == ""/*nil*/);
+       let b:Bool = hasMatchingElement || styleSel.element == ""/*nil*/;
+       let c:Bool = (hasMatchingClassIds || !hasBothSelectorsClassIds);
+       let d:Bool = (!hasStyleSelStates || (hasSimilarState && numOfMatchingStates <= querrySelector.states.count));
        return a && b && c && d;
     }
     class func hasMatchingElement(a:Selector,_ b:Selector)->Bool {

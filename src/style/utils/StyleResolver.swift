@@ -1,7 +1,5 @@
 import Foundation
 
-//Continue here: to bring id into the fold you need to bring in the origional code, atleast take a look
-
 class StyleResolver{
     /**
      * Returns a style comprised of all the styleProperties element inherit from
@@ -14,8 +12,11 @@ class StyleResolver{
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that dont apply to the elements cascade*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //print("style: " + style.name);
-            var selectorWeights:Array = SelectorParser.selectorWeights(style,querrySelectors);
-            if(selectorWeights != null) weightedStyles.push(new WeightedStyle(style, new StyleWeight(selectorWeights)));
+            
+            //continue here: add the selectorWeight class
+            
+            //var selectorWeights:Array<SelectorWeight> = SelectorParser.selectorWeights(style,querrySelectors);
+            //if(selectorWeights != null) weightedStyles.push(new WeightedStyle(style, new StyleWeight(selectorWeights)));
         }
         let finalStyle:IStyle = Style()
         return finalStyle

@@ -76,34 +76,34 @@ class WeightedStyleAsserter {
      * // :TODO: this may be wrong, what if a.selectorWights.length is more than b.selectorWeights.length????
      * // :TODO: obviously this StyleResolver class is due for renovation so alot of trace code and debug code is left in
      */
-    private class func assertStateWeight(a:WeightedStyle,_ b:WeightedStyle)->Boolean{// :TODO: could use a better name
-    //if(a.styleWeight.selectorWeights.length != b.styleWeight.selectorWeights.length) return false;/*<--new code*/
-    //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length);
-    //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length);
-    //if(a.styleWeight.selectorWeights.length > b.styleWeight.selectorWeights.length) return false;/*<--new code 2,caution this may present unknown problems, this code snippet was added to support styles that the parent has a state ie when you want a text tp react to a Button state*/
-    //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length);
-    //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length);
-    //for (var i : int = 0; i < a.styleWeight.selectorWeights.length; i++) {
-    //	var aSelectorWeight:SelectorWeight = a.styleWeight.selectorWeights[i];
-    //	var bSelectorWeight:SelectorWeight = b.styleWeight.selectorWeights[i];
-    //	if(aSelectorWeight.stateWeight > bSelectorWeight.stateWeight) return true;
-    //	if(aSelectorWeight.stateWeight < bSelectorWeight.stateWeight) return false;
-    //}
-    //loop through a and calc the total stateWeight
-    //loop through b and cal the total stateweight
-    /*new code start*/// :TODO: nor sure if Things like Button:over Text{fill:blue;} works yet
-    var aTotStateWeight:Int = 0;
-    for aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights {
-        aTotStateWeight += aSelectorWeight.stateWeight;
-    }
-    //print("aTotStateWeight: " + aTotStateWeight);
-    var bTotStateWeight:Int = 0;
-    for bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights {
-        bTotStateWeight += bSelectorWeight.stateWeight;
-    }
-    //print("bTotStateWeight: " + bTotStateWeight);
-    return aTotStateWeight >= bTotStateWeight;
-    /*new code end*/
-    //return true;/*if none of the selector.stateWeigh`s were stronger or weaker then they are all equal*/
+    private class func assertStateWeight(a:WeightedStyle,_ b:WeightedStyle)->Bool{// :TODO: could use a better name
+        //if(a.styleWeight.selectorWeights.length != b.styleWeight.selectorWeights.length) return false;/*<--new code*/
+        //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length);
+        //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length);
+        //if(a.styleWeight.selectorWeights.length > b.styleWeight.selectorWeights.length) return false;/*<--new code 2,caution this may present unknown problems, this code snippet was added to support styles that the parent has a state ie when you want a text tp react to a Button state*/
+        //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length);
+        //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length);
+        //for (var i : int = 0; i < a.styleWeight.selectorWeights.length; i++) {
+        //	var aSelectorWeight:SelectorWeight = a.styleWeight.selectorWeights[i];
+        //	var bSelectorWeight:SelectorWeight = b.styleWeight.selectorWeights[i];
+        //	if(aSelectorWeight.stateWeight > bSelectorWeight.stateWeight) return true;
+        //	if(aSelectorWeight.stateWeight < bSelectorWeight.stateWeight) return false;
+        //}
+        //loop through a and calc the total stateWeight
+        //loop through b and cal the total stateweight
+        /*new code start*/// :TODO: nor sure if Things like Button:over Text{fill:blue;} works yet
+        var aTotStateWeight:UInt = 0;
+        for aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights {
+            aTotStateWeight += aSelectorWeight.stateWeight;
+        }
+        //print("aTotStateWeight: " + aTotStateWeight);
+        var bTotStateWeight:UInt = 0;
+        for bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights {
+            bTotStateWeight += bSelectorWeight.stateWeight;
+        }
+        //print("bTotStateWeight: " + bTotStateWeight);
+        return aTotStateWeight >= bTotStateWeight;
+        /*new code end*/
+        //return true;/*if none of the selector.stateWeigh`s were stronger or weaker then they are all equal*/
     }
 }

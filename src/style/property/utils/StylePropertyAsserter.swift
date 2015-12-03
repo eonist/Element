@@ -5,6 +5,8 @@ class StylePropertyAsserter {
         
         let fillet:Fillet = StylePropertyParser.fillet(skin);
         Swift.print("StylePropertyAsserter.hasFillet() " + String(fillet))
+        Swift.print(fillet.topLeft)
+        Swift.print(fillet.topRight)
         return !(fillet.topLeft == 0 && fillet.topRight == 0 && fillet.bottomLeft == 0 && fillet.bottomRight == 0);
     }
     class func hasGradient(skin:ISkin)->Bool {

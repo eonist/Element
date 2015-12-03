@@ -15,7 +15,7 @@ class StyleResolver{
             
             //continue here: add the selectorWeight class
             
-            //var selectorWeights:Array<SelectorWeight> = SelectorParser.selectorWeights(style,querrySelectors);
+            var selectorWeights:Array<SelectorWeight> = SelectorParser.selectorWeights(style,querrySelectors);
             //if(selectorWeights != null) weightedStyles.push(new WeightedStyle(style, new StyleWeight(selectorWeights)));
         }
         let finalStyle:IStyle = Style()

@@ -7,3 +7,12 @@ class WeightedStyle:Style,Comparable{// :TODO: move into its own class?
         super.init(style.name,style.selectors,style.styleProperties);
     }
 }
+/*
+func < (lhs: WeightedStyle, rhs: WeightedStyle) -> Bool {
+    return lhs.someNumber < rhs.someNumber
+}
+
+func == (lhs: WeightedStyle, rhs: WeightedStyle) -> Bool {
+    return lhs.someNumber == rhs.someNumber
+}
+*/

@@ -27,7 +27,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
      *
      */
     override func drawLine(){
-        Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
+        //Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType;
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, /*decoratable.*/getSize().width, /*decoratable.*/getSize().height), graphic.lineStyle!, lineOffsetType);

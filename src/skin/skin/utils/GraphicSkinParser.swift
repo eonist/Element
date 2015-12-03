@@ -43,7 +43,7 @@ private class Utils{
      * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
     class func fillet(decoratable:IGraphicDecoratable,_ fillet:Fillet)->IGraphicDecoratable {
-        Swift.print("GraphicSkinParser.fillet()")
+        //Swift.print("GraphicSkinParser.fillet()")
         return RoundRectGraphic(decoratable, fillet)
     }
     /**

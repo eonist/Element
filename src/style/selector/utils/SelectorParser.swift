@@ -11,11 +11,11 @@ class SelectorParser{
      * // :TODO: this the sub method of this class could still need some refactoring, and clearafication
      * // :TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */
-    class func selectorWeights(style:IStyle,querrySelectors:Array<ISelector>)->Array<SelectorWeight> {//
+    class func selectorWeights(style:IStyle,querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
         var selectorWeights:Array<SelectorWeight> = [];
         cursor = 0;/*so that we skip testing the same selector again*/
         for styleSel : ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
-            var selectorWeight:SelectorWeight = Utils.selectorWeight(styleSel,querrySelectors);
+            var selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors);
             if(selectorWeight == nil) {return nil};
             else {selectorWeights.append(selectorWeight)}
         }
@@ -91,7 +91,7 @@ private class Utils{
      * @param styleSel an Selector instance from styleSelectors
      * @param querrySelectors: an array comprised of Selectors (from the element stack)
      */
-    class func selectorWeight(styleSel:ISelector,querrySelectors:Array<ISelector>)->SelectorWeight{
+    class func selectorWeight(styleSel:ISelector,_ querrySelectors:Array<ISelector>)->SelectorWeight?{
         for (var i : Int = SelectorParser.cursor; i < querrySelectors.count; i++) {/*loops through each selector in the stack*///Item Container Item Container Button Text
             var querrySelector:ISelector = querrySelectors[i];
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){
@@ -100,7 +100,7 @@ private class Utils{
                 return selectorWeight;
             }
         }
-        return null;/*if a selectors array in the style has an individual selector that doesnt have anything in common with none of the selector sin the cascade then return false*/
+        return nil;/*if a selectors array in the style has an individual selector that doesnt have anything in common with none of the selector sin the cascade then return false*/
     }
      
 }

@@ -36,7 +36,7 @@ class CSSLinkResolver {
             //Swift.print("Result: " + replacementString)
             
             let range:NSRange = match.rangeAtIndex(2)//the range of the value
-            Swift.print(range)
+            Swift.print("CSSLinkResolver.resolveLinks() range: " + String(range))
             string = (string as NSString).stringByReplacingCharactersInRange(range, withString: replacementString)
         }
         return string

@@ -11,23 +11,23 @@ class WeightedStyleAsserter {
     class func priority(a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
         //var temp:String = "Window";//Box#tabBarBox SelectTextButton Text
         var priority:Bool = false;
-        var elementPriority:Bool = a.styleWeight.elementWeight >= b.styleWeight.elementWeight;
+        let elementPriority:Bool = a.styleWeight.elementWeight >= b.styleWeight.elementWeight;
         //if(a.name == temp) trace("elementPriority: " + elementPriority);
-        var elementCountPriority:Bool = WeightedStyleAsserter.elementCount(a.selectors) > elementCount(b.selectors);
+        let elementCountPriority:Bool = elementCount(a.selectors) > elementCount(b.selectors);
         //if(a.name == temp) trace("elementCountPriority: " + elementCountPriority);
-        var classPriority:Bool = a.styleWeight.classWeight > b.styleWeight.classWeight;
+        let classPriority:Bool = a.styleWeight.classWeight > b.styleWeight.classWeight;
         //if(a.name == temp) trace("classPriority: " + classPriority);
-        var idPriority:Bool = a.styleWeight.idWeight >= b.styleWeight.idWeight;
+        let idPriority:Bool = a.styleWeight.idWeight >= b.styleWeight.idWeight;
         //if(a.name == temp) trace("idPriority: " + idPriority);
-        var statePriority:Bool = a.styleWeight.stateWeight > b.styleWeight.stateWeight;
+        let statePriority:Bool = a.styleWeight.stateWeight > b.styleWeight.stateWeight;
         //if(a.name == temp) trace("statePriority: " + statePriority);
-        var hasSelectorPriority:Bool = (idPriority && elementCountPriority) || (classPriority && b.styleWeight.idWeight == 0) || (elementPriority && idPriority/*&& b.styleWeight.idWeight == 0 && b.styleWeight.classWeight == 0*/);
+        let hasSelectorPriority:Bool = (idPriority && elementCountPriority) || (classPriority && b.styleWeight.idWeight == 0) || (elementPriority && idPriority/*&& b.styleWeight.idWeight == 0 && b.styleWeight.classWeight == 0*/);
         //if(a.name == temp)trace("hasSelectorPriority: " + hasSelectorPriority);
         //print("b.styleWeight.idWeight: " + b.styleWeight.idWeight);
         //print("b.styleWeight.classWeight: " + b.styleWeight.classWeight);
-        var hasSelector:Bool = a.styleWeight.elementWeight > 0 || a.styleWeight.classWeight > 0 || a.styleWeight.idWeight > 0;
-        var hasState:Bool = a.styleWeight.stateWeight > 0;
-        var hasEqualStateWeight:Bool = a.styleWeight.stateWeight == b.styleWeight.stateWeight;
+        let hasSelector:Bool = a.styleWeight.elementWeight > 0 || a.styleWeight.classWeight > 0 || a.styleWeight.idWeight > 0;
+        let hasState:Bool = a.styleWeight.stateWeight > 0;
+        let hasEqualStateWeight:Bool = a.styleWeight.stateWeight == b.styleWeight.stateWeight;
         //print("a.styleWeight.stateWeight: " + a.styleWeight.stateWeight);
         //print("b.styleWeight.stateWeight: " + b.styleWeight.stateWeight);
         //print(a.name+ " hasSelector: " + hasSelector);

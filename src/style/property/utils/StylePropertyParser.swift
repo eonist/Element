@@ -91,10 +91,11 @@ class StylePropertyParser{
      * // :TODO: probably upgrade to TRBL
      */
     class func fillet(skin:ISkin) -> Fillet {
-        let val:Any? = value(skin, CSSConstants.cornerRadius);
+        let val:Any! = value(skin, CSSConstants.cornerRadius)!;
         var fillet:Fillet = Fillet();
-        Swift.print(val!)
-        if((val is CGFloat) || (val! is Array<CGFloat>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
+        Swift.print(val)
+        if((val is CGFloat) || (val is Array<CGFloat>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
+        else{Swift.print("StylePropertyParser.fillet Fillet is not the correct type")}
         Swift.print("StylePropertyParser.fillet: " + String(ClassParser.classType(val!)))
         //Swift.print(fillet.topRight)
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist

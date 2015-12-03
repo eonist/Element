@@ -76,7 +76,7 @@ class WeightedStyleAsserter {
      * // :TODO: this may be wrong, what if a.selectorWights.length is more than b.selectorWeights.length????
      * // :TODO: obviously this StyleResolver class is due for renovation so alot of trace code and debug code is left in
      */
-    private static function assertStateWeight(a:WeightedStyle,b:WeightedStyle):Boolean{// :TODO: could use a better name
+    private class func assertStateWeight(a:WeightedStyle,_ b:WeightedStyle)->Boolean{// :TODO: could use a better name
     //if(a.styleWeight.selectorWeights.length != b.styleWeight.selectorWeights.length) return false;/*<--new code*/
     //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length);
     //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length);
@@ -92,14 +92,14 @@ class WeightedStyleAsserter {
     //loop through a and calc the total stateWeight
     //loop through b and cal the total stateweight
     /*new code start*/// :TODO: nor sure if Things like Button:over Text{fill:blue;} works yet
-    var aTotStateWeight:int = 0;
-    for each (var aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights) {
-    aTotStateWeight += aSelectorWeight.stateWeight;
+    var aTotStateWeight:Int = 0;
+    for aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights {
+        aTotStateWeight += aSelectorWeight.stateWeight;
     }
     //print("aTotStateWeight: " + aTotStateWeight);
-    var bTotStateWeight:int = 0;
-    for each (var bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights) {
-    bTotStateWeight += bSelectorWeight.stateWeight;
+    var bTotStateWeight:Int = 0;
+    for bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights {
+        bTotStateWeight += bSelectorWeight.stateWeight;
     }
     //print("bTotStateWeight: " + bTotStateWeight);
     return aTotStateWeight >= bTotStateWeight;

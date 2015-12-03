@@ -79,6 +79,15 @@ class SelectorParser{
         return selector
     }
 }
+class Utils{
+    /**
+     * Returns a SelectorWeight instance (Asserts if a SelectorWeight should be created, if not it returns null)
+     * @param styleSel an Selector instance from styleSelectors
+     * @param querrySelectors: an array comprised of Selectors (from the element stack)
+     */
+     
+     
+}
 /**
  * RegExp pattern for the SelectorParser.selector() method
  * //TODO: this could probably be re-written by using backreferensing and if they are valid then ...

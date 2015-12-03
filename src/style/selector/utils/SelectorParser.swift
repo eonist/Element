@@ -87,7 +87,7 @@ class SelectorParser{
     /**
      * Returns a Selector instance
      */
-    class func compileSelectorWeight(styleSel:Selector,querrySelector:Selector,weight:Int)->SelectorWeight{
+    class func compileSelectorWeight(styleSel:ISelector,_ querrySelector:ISelector,_ weight:Int)->SelectorWeight{
         let hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector);
         let hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector);
         let numOfSimilarClassIds:Int = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);
@@ -107,9 +107,9 @@ private class Utils{
      */
     class func selectorWeight(styleSel:ISelector,_ querrySelectors:Array<ISelector>)->SelectorWeight?{
         for (var i : Int = SelectorParser.cursor; i < querrySelectors.count; i++) {/*loops through each selector in the stack*///Item Container Item Container Button Text
-            var querrySelector:ISelector = querrySelectors[i];
+            let querrySelector:ISelector = querrySelectors[i];
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){
-                var selectorWeight:SelectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1);
+                let selectorWeight:SelectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1);
                 SelectorParser.cursor = i+1;// :TODO: this could possibly also be solved by looping the style inside the stack, but this was a faster fix
                 return selectorWeight;
             }

@@ -3,6 +3,7 @@ import Foundation
  * @Note we could move this into an internal utils class of StyleResolver but since Selector class is a public class we might aswell keep this class as a public class aswell
  */
 class SelectorParser{
+    static var cursor:UInt = 0;// :TODO: temp solution, must be fixed, eigther by Creating a class that can hold the cursor, test this first, or by creatin ga method within a method and then reffing cursor
     /**
      * Returns a weight value based on where aSelector is locaeted on the @param b array (higher values means higher priotiy)
      * @param style: originally from the styleManager
@@ -11,9 +12,9 @@ class SelectorParser{
      * // :TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */
     class func selectorWeights(style:IStyle,querrySelectors:Array<ISelector>)->Array<SelectorWeight> {//
-        var selectorWeights:Array = [];
-        CURSOR = 0;/*so that we skip testing the same selector again*/
-        for each (var styleSel : Selector in style.selectors){/*loops through each selector in the style*///Item Item Item Button Text
+        var selectorWeights:Array<SelectorWeight> = [];
+        cursor = 0;/*so that we skip testing the same selector again*/
+        for styleSel : ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
             var selectorWeight:SelectorWeight = Utils.selectorWeight(styleSel,querrySelectors);
             if(selectorWeight == null) return null;
             else selectorWeights.push(selectorWeight);

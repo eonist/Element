@@ -10,7 +10,7 @@ class SelectorAsserter {
     /**
      *
      */
-    class func hasCommonality(styleSel:ISelector,querrySelector:ISelector)->Bool {
+    class func hasCommonality(styleSel:ISelector,_ querrySelector:ISelector)->Bool {
        let hasMatchingId:Bool = SelectorAsserter.hasMatchingId(styleSel, querrySelector);
        let hasMatchingElement:Bool = SelectorAsserter.hasMatchingElement(styleSel, querrySelector);
        let hasBothSelectorsClassIds:Bool = SelectorAsserter.hasBothSelectorsClassIds(styleSel, querrySelector);

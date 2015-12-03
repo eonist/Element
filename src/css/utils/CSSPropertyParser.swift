@@ -9,7 +9,7 @@ class CSSPropertyParser {
      * Retuns a css property to a property that can be read by the flash api
      */
     class func property(string:String) -> Any{//:TODO: Long switch statments can be replaced by polymorphism?!?
-        Swift.print("CSSPropertyParser.property() string: " + string)
+        Swift.print("CSSPropertyParser.property() string: >" + string + "<")
         switch(true) {
             case StringAsserter.digit(string):Swift.print("isDigit");return StringParser.digit(string);/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):Swift.print("isMetric");return string;//ems|%
@@ -19,7 +19,8 @@ class CSSPropertyParser {
             case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string);/*linear-gradient*/// :TODO: create a more complte exprrison for this test
             case RegExp.test(string,"^textFormat\\b"):return textFormat(string);
             case RegExp.test(string,"^textField\\b"):return textField(string);
-            case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.]+?\\\040)+?(\\b|\\B|$)"):Swift.print("isArray");return array(string);/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional?
+            case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.]+?\\s)+?(\\b|\\B|$)"):Swift.print("isArray");return array(string);/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional?
+                                    //^([\w\d\/\%\-\.]+?\040)+?(\b|\B|$)/
             case RegExp.test(string,"(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):Swift.print("isString");return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED");
         }

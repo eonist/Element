@@ -69,14 +69,14 @@ class StyleModifier {
      * Returns @param style that has its styleProperties filtered by @param filter (removed any styleProperty by a name that is not in the filter array)
      * @Note this method works fast than ArrayModifier.removeTheseByKey
      */
-    class func filter(style:IStyle,_ filter:Array)->IStyle {
-        var styleProperties:Array = [];
-        for (var i : Int = 0; i < style.styleProperties.length; i++) {
+    class func filter(style:IStyle,_ filter:Array<String>)->IStyle {
+        var styleProperties:Array<IStyleProperty> = []
+        for (var i : Int = 0; i < style.styleProperties.count; i++) {
             if(filter.indexOf((style.styleProperties[i] as IStyleProperty).name) != -1) {
-               styleProperties.append((style.styleProperties[i] as IStyleProperty));
+               styleProperties.append((style.styleProperties[i] as IStyleProperty))
             }
         }
-        return new Style(style.name,style.selectors,styleProperties);
+        return Style(style.name,style.selectors,styleProperties);
     }
     /**
      * Adds @param styleProperty to the end of the @param style.styleProperties array

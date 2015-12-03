@@ -18,15 +18,12 @@ class StyleResolver{
         //print("weightedStyles: " + weightedStyles.length);
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);
         
-        
-        //Continue here, do some playground tests of using a method as a sort parameter. make some examples and post a progress post about it
-        
         if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
-        var styleName:String = SelectorParser.string(querrySelectors);
+        let styleName:String = SelectorParser.string(querrySelectors);
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ??/*||*/ Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
         for weightStyle:WeightedStyle in weightedStyles{
-            StyleModifier.merge(&finalStyle, StyleAsserter.direct(querrySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.TEXT_PROPERTY_NAMES))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+            StyleModifier.merge(&finalStyle, StyleAsserter.direct(querrySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle;
     }

@@ -87,7 +87,7 @@ class SelectorParser{
     /**
      * Returns a Selector instance
      */
-    class func compileSelectorWeight(styleSel:Selector,querrySelector:Selector,weight:int)->SelectorWeight{
+    class func compileSelectorWeight(styleSel:Selector,querrySelector:Selector,weight:Int)->SelectorWeight{
         var hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector);
         var hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector);
         var numOfSimilarClassIds:UInt = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector);

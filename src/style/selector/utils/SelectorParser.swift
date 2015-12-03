@@ -3,9 +3,9 @@ import Foundation
 class SelectorParser{
    
     /**
-    * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
-    * @Note this method can also be used for debuging purposes
-    */
+     * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
+     * @Note this method can also be used for debuging purposes
+     */
     class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
         var string:String = "";
         for (var i : Int = 0; i < selectors.count; i++) {
@@ -14,8 +14,8 @@ class SelectorParser{
         return string;
     }
     /**
-    * Returns a single selector (ie: Button#first:over)
-    */
+     * Returns a single selector (ie: Button#first:over)
+     */
     class func selectorToString(selector:ISelector)->String{// :TODO: rename to selectorString
         var string:String = "";
         if(selector.element != "") { string += selector.element }
@@ -60,7 +60,7 @@ class SelectorParser{
         return selector
     }
 }
-/*
+/**
  * RegExp pattern for the SelectorParser.selector() method
  * //TODO: this could probably be re-written by using backreferensing and if they are valid then ...
  * //TODO: research backreferencing

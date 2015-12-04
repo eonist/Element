@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * NOTE: Maybe the selectable 
+ * NOTE: Maybe the methods relating to ISelectable could be moved to an extension (Maybe not, since you need access to super, test this idea in playground)
  */
 class SelectTextButton:TextButton,ISelectable {
     var isSelected:Bool;

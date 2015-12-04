@@ -27,9 +27,6 @@ class SelectGroup:NSView{
         Swift.print("SelectGroup.addSelectable()")
         //let anyObj:AnyObject = selectable
         
-        
-        //Continue here: try to send Notifications from one class to another in playground. make an example
-        
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as AnyObject)
         selectables.append(selectable);

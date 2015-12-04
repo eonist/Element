@@ -17,6 +17,11 @@ class Skin:FlippedView,ISkin{
     var hasSizeChanged:Bool = false;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override var wantsUpdateLayer:Bool{return false;}
+    
+    
+    //continue here: try this: addSubview:positioned:relativeTo:
+    
+    
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         
         self.style = style;

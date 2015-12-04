@@ -26,7 +26,7 @@ class Skin:FlippedView,ISkin{
         width = element!.width;// :TODO: is this necassary?
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necassary?
-        super.init(frame: NSRect(x: 0, y: 0, width: 50, height: 50))
+        super.init(frame: NSRect(x: 0, y: 0, width: 150, height: 150))
         self.wantsLayer = true
     }
     /**

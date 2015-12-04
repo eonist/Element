@@ -7,7 +7,7 @@ class ElementParser{
      * @Note to get the stackString use: trace(SelectorUtils.toString(StyleResolver.stack(checkButton)));
      */
     class func selectors(element:IElement)->Array<ISelector>{
-        Swift.print("ElementParser.selectors()")
+        //Swift.print("ElementParser.selectors()")
         let elements:Array<IElement> = ArrayModifier.append(parents(element),element)
         var selectors:Array<ISelector> = []
         for  e : IElement in elements {

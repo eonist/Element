@@ -18,6 +18,7 @@ class Skin:FlippedView,ISkin{
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     override var wantsUpdateLayer:Bool{return false;}
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
+        
         self.style = style;
         self.state = state;
         self.element = element;
@@ -26,6 +27,7 @@ class Skin:FlippedView,ISkin{
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necassary?
         super.init(frame: NSRect(x: 0, y: 0, width: 50, height: 50))
+        self.wantsLayer = true
     }
     /**
      * Required by super class

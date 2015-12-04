@@ -8,7 +8,7 @@ class GraphicSkin:Skin{
         /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);
     }
     override func drawRect(dirtyRect: NSRect) {
-        //Swift.print("GraphicSkin.drawRect()")
+        Swift.print("GraphicSkin.drawRect()")
         decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
     /**

@@ -40,7 +40,6 @@ class Skin:FlippedView,ISkin{
         hasStyleChanged = false;
         hasSizeChanged = false;
         hasStateChanged = false;
-        
         needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
     }
     /**

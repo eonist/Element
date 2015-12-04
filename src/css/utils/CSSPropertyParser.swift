@@ -28,10 +28,10 @@ class CSSPropertyParser {
     
     
     /**
-    * // :TODO: possibly use the RegExp.exec to loop the properties!!
-    * @param string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
-    * @Note setting the gradientType isnt necessary since its the default setting
-    */
+     * // :TODO: possibly use the RegExp.exec to loop the properties!!
+     * @param string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
+     * @Note setting the gradientType isnt necessary since its the default setting
+     */
     class func linearGradient(string:String)->IGradient{
         //Swift.print("CSSPropertyparser.linearGradient")
         let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]

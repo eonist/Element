@@ -16,7 +16,7 @@ class Skin:FlippedView,ISkin{
     var hasStateChanged:Bool = false;
     var hasSizeChanged:Bool = false;
     override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    override var wantsUpdateLayer:Bool{return false;}
+    //override var wantsUpdateLayer:Bool{return false;}
     
     
     //continue here: try this: addSubview:positioned:relativeTo:
@@ -32,7 +32,7 @@ class Skin:FlippedView,ISkin{
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necassary?
         super.init(frame: NSRect(x: 0, y: 0, width: 150, height: 150))
-        self.wantsLayer = true
+        //self.wantsLayer = true
     }
     /**
      * Required by super class

@@ -1,6 +1,6 @@
 import Cocoa
 
-class SelectTextButton:TextButton {
+class SelectTextButton:TextButton,ISelectable {
     var isSelected:Bool;
     init(_ text : String = "defaultText", _ width : CGFloat, _ height : CGFloat, _ isSelected : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
         self.isSelected = isSelected;

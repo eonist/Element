@@ -33,8 +33,8 @@ class Skin:FlippedView,ISkin{
         fatalError("init(coder:) has not been implemented")
     }
     /**
-    * Resets skinState
-    */
+     * Resets skinState
+     */
     func draw(){
         //Swift.print("Skin.draw() refresh the graphics")
         hasStyleChanged = false;

@@ -15,18 +15,20 @@ class Button:Element {
      */
     override func mouseEntered( event: NSEvent){
         //Swift.print("Button.mouseEntered: ")
-        state = SkinStates.over
-        //Swift.print("skinstate: " + getSkinState())
-        setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-        super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
+        if(NSEvent.pressedMouseButtons() == 1){/*Left mouse down*/
+            state = SkinStates.over
+            //Swift.print("skinstate: " + getSkinState())
+            setSkinState(getSkinState());
+            NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
+            super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
+        }
     }
     /**
      * Handles actions and drawing states for the mouseExited event.
      */
     override func mouseExited(event: NSEvent){
         Swift.print("Button.mouseExited:")
-        Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
+        //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 1){/*Left mouse down*/
             state = SkinStates.none
             setSkinState(getSkinState());

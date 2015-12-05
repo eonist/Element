@@ -17,7 +17,7 @@ class Element:View,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        super.init(frame: NSRect(0,0,width+20.0,height+20.0))
+        super.init(frame: NSRect(0,0,width+2.0,height+2.0))
         resolveSkin()
     }
     /**
@@ -67,8 +67,8 @@ class Element:View,IElement {
 }
 
 extension IElement {
-    var width:CGFloat {return self.frame.width}
-    var height:CGFloat {return self.frame.height}
+    var width:CGFloat {return self.frame.width-2.0}
+    var height:CGFloat {return self.frame.height-2.0}
     /**
      *
      */

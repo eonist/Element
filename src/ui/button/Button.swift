@@ -14,8 +14,8 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseEntered( event: NSEvent){
-        //Swift.print("Button.mouseEntered: ")
-        if(NSEvent.pressedMouseButtons() == 1){/*Left mouse down*/
+        Swift.print("Button.mouseEntered: ")
+        if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
@@ -29,7 +29,7 @@ class Button:Element {
     override func mouseExited(event: NSEvent){
         Swift.print("Button.mouseExited:")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
-        if(NSEvent.pressedMouseButtons() == 1){/*Left mouse down*/
+        if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
             setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)

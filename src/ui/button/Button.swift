@@ -27,7 +27,9 @@ class Button:Element {
     override func mouseExited(event: NSEvent){
         Swift.print("Button.mouseExited:")
         Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
-        
+        if(NSEvent.pressedMouseButtons() == 1){/*Left mouse down*/
+            
+        }
         state = SkinStates.none
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)

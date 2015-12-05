@@ -17,7 +17,7 @@ class Element:View,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        super.init(frame: NSRect(0,0,width,height))
+        super.init(frame: NSRect(0,0,width+20.0,height+20.0))
         resolveSkin()
     }
     /**

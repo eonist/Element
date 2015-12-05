@@ -28,12 +28,11 @@ class Button:Element {
         Swift.print("Button.mouseExited:")
         Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 1){/*Left mouse down*/
-            
+            state = SkinStates.none
+            setSkinState(getSkinState());
+            NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
+            super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
         }
-        state = SkinStates.none
-        setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
-        super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     /**
      * Handles actions and drawing states for the down event.

@@ -59,7 +59,7 @@ class Button:Element {
      * @Note: bubbling= true was added to make Stepper class dragable
      */
     func mouseUpInside(theEvent: NSEvent){
-        //Swift.print("Button.mouseUpInside: ")
+        Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
@@ -69,7 +69,7 @@ class Button:Element {
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     func mouseUpOutside(theEvent: NSEvent){
-        //Swift.print("Button.mouseUpOutside: ")
+        Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)

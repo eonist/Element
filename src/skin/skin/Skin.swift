@@ -32,7 +32,7 @@ class Skin:FlippedView,ISkin{
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necassary?
         super.init(frame: NSRect(x: 0, y: 0, width: 50, height: 50))
-        self.wantsLayer = true
+        //self.wantsLayer = true
     }
     /**
      * Required by super class

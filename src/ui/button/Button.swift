@@ -75,6 +75,7 @@ class Button:Element {
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
     }
     override func mouseUp(theEvent: NSEvent) {
+        Swift.print("Button.mouseUp")
         //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
         //Swift.print("mousePos: " + String(theEvent.locationInWindow))
         //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)

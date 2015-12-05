@@ -17,14 +17,14 @@ class SelectGroup:NSView{
         fatalError("init(coder:) has not been implemented")
     }
     func addSelectables(selectables:Array<ISelectable>){
-        Swift.print("SelectGroup.addSelectables()")
+        //Swift.print("SelectGroup.addSelectables()")
         for item : ISelectable in selectables {addSelectable(item)}
     }
     /**
      * @Note useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
-        Swift.print("SelectGroup.addSelectable()")
+        //Swift.print("SelectGroup.addSelectable()")
         //let anyObj:AnyObject = selectable
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
@@ -32,23 +32,24 @@ class SelectGroup:NSView{
         selectables.append(selectable);
     }
     @objc func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
-        Swift.print("SelectGroup.onSelect(): " + String(sender))
+        //Swift.print("SelectGroup.onSelect(): " + String(sender))
         NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
         selected = (sender as! NSNotification).object as? ISelectable
         SelectModifier.unSelectAllExcept(selected!, selectables);
         NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:self)
     }
     @objc func onButtonDown(sender: AnyObject) {
-        Swift.print("SelectGroup.onButtonDown() ")
+        //Swift.print("SelectGroup.onButtonDown() ")
         //let textButton:TextButton = (sender as! NSNotification).object as! TextButton
         /*if(textButton === self.textButton!){
         Swift.print("sender.object === self.textButton")
         }*/
         
-        
+        /*
         Swift.print("object: " + String((sender as! NSNotification).object))
         Swift.print("name: " + String((sender as! NSNotification).name))//buttonEventDown
         Swift.print("userInfo: " + String((sender as! NSNotification).userInfo))//nil
+        */
         //Swift.print("WinView.onButtonDown() Sender: " + String(sender))
     }
 }

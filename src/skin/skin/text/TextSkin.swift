@@ -9,7 +9,7 @@ class TextSkin:Skin,ITextSkin{
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
-        Swift.print("TextSkin.init()")
+        //Swift.print("TextSkin.init()")
         textField = NSText(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//set w and h to 0
         //textField.sizeToFit()
         

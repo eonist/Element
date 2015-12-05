@@ -25,8 +25,10 @@ class Button:Element {
      * Handles actions and drawing states for the mouseExited event.
      */
     override func mouseExited(event: NSEvent){
-        Swift.print("Button.mouseExited: event.pressedMouseButtons(): " )
-        event.pressedMouseButtons()
+        Swift.print("Button.mouseExited: event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))
+
+        //NSEvent.mouseLocation
+        
         state = SkinStates.none
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)

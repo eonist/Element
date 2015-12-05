@@ -10,7 +10,7 @@ class SelectGroup:NSView{
     private var selected:ISelectable?;
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
         self.selected = selected
-        super.init(frame: NSRect(0,0,0,0))
+        super.init(frame: NSRect(0,0,0,0))/*if this has a size, makesure to invalidate its hitarea to not confuse overlaying UI elements*/
         addSelectables(selectables);
     }
     required init?(coder: NSCoder) {

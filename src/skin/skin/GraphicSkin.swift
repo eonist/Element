@@ -5,6 +5,9 @@ class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
+        
+        //CAUTION: does the bellow really work? isnt the reference lost if you dont set decoratable?
+        
         /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);
     }
     override func drawRect(dirtyRect: NSRect) {

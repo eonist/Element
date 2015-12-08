@@ -227,8 +227,8 @@ class StylePropertyParser{
      *
      */
     class func dropShadow(skin:ISkin)->DropShadow? {
-        var dropShadow:Any? = value(skin, CSSConstants.drop_shadow);
-        return (dropShadow == CSSConstants.none || dropShadow == nil) ? nil : dropShadow;
+        let dropShadow:Any? = value(skin, CSSConstants.drop_shadow);
+        return (dropShadow == nil || dropShadow as! String == CSSConstants.none) ? nil : dropShadow as? DropShadow;
     }
 }
 private class Utils{

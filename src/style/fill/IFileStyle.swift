@@ -7,5 +7,5 @@ protocol IFillStyle{
 * Convenience method for the Graphics class
 */
 extension IFillStyle {
-    var cgColor: CGColor {return NSColorParser.cgColor(color)}
+    var cgColor: CGColor {return CGColorParser.cgColor(color)}
 }

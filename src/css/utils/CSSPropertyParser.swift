@@ -115,7 +115,7 @@ class CSSPropertyParser {
         //let strength:CGFloat = StringParser.digit(properties[6]);
         //let quality:CGFloat = StringParser.digit(properties[7]);
         let inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
-        let color:NSColor = ColorParser.nsColor(colorValue, alpha)
+        let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let angleInRadians = Trig.radians(angle)
         let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
@@ -150,7 +150,7 @@ private class Utils{
                 //Swift.print("alpha: " + alpha)
                 
                 let alphaVal:Float = Float(Utils.alpha(alpha))
-                gradient.colors.append(ColorParser.cgColor(StringParser.color(color,alphaVal)))//append color
+                gradient.colors.append(NSColorParser.cgColor(StringParser.color(color,alphaVal)))//append color
                 
                 let ratio:String = RegExp.value(property, match, 3)
                 //Swift.print("ratio: " + ratio)

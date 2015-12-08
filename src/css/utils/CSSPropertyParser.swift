@@ -107,15 +107,15 @@ class CSSPropertyParser {
         //print("propertyString: " + propertyString);
         var properties:Array = propertyString.split(" ");
         //print("properties: " + properties);
-        var distance:CGFloat = StringParser.digit(properties[0]);
-        var angle:CGFloat = StringParser.digit(properties[1]);
-        var colorValue:UInt = StringParser.color(properties[2]);/*hex color*/
-        var alpha:CGFloat = StringParser.digit(properties[3]);
-        var blurX:CGFloat = StringParser.digit(properties[4]);
-        var blurY:CGFloat = StringParser.digit(properties[5]);
-        var strength:CGFloat = StringParser.digit(properties[6]);
-        var quality:CGFloat = StringParser.digit(properties[7]);
-        var inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
+        let distance:CGFloat = StringParser.digit(properties[0]);
+        let angle:CGFloat = StringParser.digit(properties[1]);
+        let colorValue:UInt = StringParser.color(properties[2]);/*hex color*/
+        let alpha:CGFloat = StringParser.digit(properties[3]);
+        let blurX:CGFloat = StringParser.digit(properties[4]);
+        let blurY:CGFloat = StringParser.digit(properties[5]);
+        //let strength:CGFloat = StringParser.digit(properties[6]);
+        //let quality:CGFloat = StringParser.digit(properties[7]);
+        let inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
         let color:NSColor = ColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let offsetX:CGFloat = 0

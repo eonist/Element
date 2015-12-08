@@ -223,6 +223,13 @@ class StylePropertyParser{
         let value = StylePropertyParser.value(skin,propertyName);
         return Utils.metric(value,skin);
     }
+    /**
+     *
+     */
+    class func dropShadow(skin:ISkin)->DropShadow? {
+        var dropShadow:Any? = value(skin, CSSConstants.drop_shadow);
+        return (dropShadow == CSSConstants.none || dropShadow == nil) ? nil : dropShadow;
+    }
 }
 private class Utils{
     /**

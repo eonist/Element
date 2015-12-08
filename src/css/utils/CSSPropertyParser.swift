@@ -109,14 +109,14 @@ class CSSPropertyParser {
         //print("properties: " + properties);
         var distance:CGFloat = StringParser.digit(properties[0]);
         var angle:CGFloat = StringParser.digit(properties[1]);
-        var color:UInt = StringParser.color(properties[2]);
+        var colorValue:UInt = StringParser.color(properties[2]);/*hex color*/
         var alpha:CGFloat = StringParser.digit(properties[3]);
         var blurX:CGFloat = StringParser.digit(properties[4]);
         var blurY:CGFloat = StringParser.digit(properties[5]);
         var strength:CGFloat = StringParser.digit(properties[6]);
         var quality:CGFloat = StringParser.digit(properties[7]);
         var inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
-        var nsColor:NSColor = ColorParser.nsColor(color, alpha)
+        let color:NSColor = ColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let offsetX:CGFloat = 0
         let offsetY:CGFloat = 0

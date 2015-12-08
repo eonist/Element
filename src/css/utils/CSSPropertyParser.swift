@@ -118,6 +118,7 @@ class CSSPropertyParser {
         let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let angleInRadians = Trig.radians(angle)
+        Swift.print("angleInRadians: " + "\(angleInRadians)")
         let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
         let offsetX:CGFloat = polarPoint.x
         let offsetY:CGFloat = polarPoint.y

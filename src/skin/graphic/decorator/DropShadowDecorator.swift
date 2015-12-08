@@ -10,6 +10,8 @@ class DropShadowDecorator:PositionalDecorator{
     }
     override func fill() {
         Swift.print("DropShadowDecorator.fill()")
+        graphic.graphics.dropShadow = dropShadow;
+        Swift.print(graphic.graphics.dropShadow)
         super.fill()
     }
 }

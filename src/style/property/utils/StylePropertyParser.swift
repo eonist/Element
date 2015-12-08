@@ -224,7 +224,7 @@ class StylePropertyParser{
         return Utils.metric(value,skin);
     }
     /**
-     *
+     * TODO: this method is asserted before its used, so you may ommit the optionality
      */
     class func dropShadow(skin:ISkin)->DropShadow? {
         let dropShadow:Any? = value(skin, CSSConstants.drop_shadow);

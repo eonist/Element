@@ -38,7 +38,7 @@ class StylePropertyParser{
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         //Swift.print("alphaValue: " + "\(alphaValue)")
-        let nsColor:NSColor = ColorParser.nsColor(UInt(color), Float(alphaValue))//fill
+        let nsColor:NSColor = ColorParser.nsColor(UInt(color), alphaValue)//fill
         //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line because checking for NaN is essential when setting or not setting things?, you can revert to pure NSColor and clearStyle later anyway
         return FillStyle(nsColor)
     }
@@ -60,7 +60,7 @@ class StylePropertyParser{
      * new
      */
     class func nsColor(color:Double,_ alpha:CGFloat)->NSColor{
-        let nsColor = color.isNaN ? NSColor.clearColor() : ColorParser.nsColor(UInt(color), Float(alpha))
+        let nsColor = color.isNaN ? NSColor.clearColor() : ColorParser.nsColor(UInt(color), alpha)
         return nsColor
     }
     /**

@@ -103,12 +103,11 @@ class CSSPropertyParser {
     */
     class func dropShadow(string:String)->DropShadow {
         let propertyString:String = string.match("(?<=drop-shadow\\().+?(?=\\);?)")[0]
-        
         //print("propertyString: " + propertyString);
         var properties:Array = propertyString.split(" ");
         //print("properties: " + properties);
         let distance:CGFloat = StringParser.digit(properties[0]);
-        let angle:CGFloat = StringParser.digit(properties[1]);
+        let angle:CGFloat = StringParser.digit(properties[1]);/*In degrees*/
         let colorValue:UInt = StringParser.color(properties[2]);/*hex color*/
         let alpha:CGFloat = StringParser.digit(properties[3]);
         let blurX:CGFloat = StringParser.digit(properties[4]);
@@ -118,10 +117,12 @@ class CSSPropertyParser {
         let inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
         let color:NSColor = ColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
-        let offsetX:CGFloat = 0
-        let offsetY:CGFloat = 0
+        let angleInRadians = Trig.radians(angle)
+        let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)
+        let offsetX:CGFloat = polarPoint.x
+        let offsetY:CGFloat = polarPoint.y
         let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
-        //			trace("dropshadowfilter: " + dropshadowfilter);
+        //print("dropshadowfilter: " + dropshadowfilter);
         return dropShadow;
     }
 }

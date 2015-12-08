@@ -57,4 +57,10 @@ private class Utils{
     class func gradient(decoratable:IGraphicDecoratable)->IGraphicDecoratable{
         return GradientGraphic(decoratable);
     }
+    /**
+     * Wraps a DropShadowDecorator instance on @param decoratable
+     */
+    class func dropShadow(decoratable:IGraphicDecoratable, dropShadow:DropShadow)->IGraphicDecoratable {
+        return DropShadowDecorator(decoratable,dropShadow);
+    }
 }

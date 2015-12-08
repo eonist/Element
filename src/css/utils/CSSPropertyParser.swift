@@ -115,8 +115,11 @@ class CSSPropertyParser {
         var blurY:CGFloat = StringParser.digit(properties[5]);
         var strength:CGFloat = StringParser.digit(properties[6]);
         var quality:CGFloat = StringParser.digit(properties[7]);
-        var inner:Bool = StringParser.boolean(properties[8]);
-        var dropshadowfilter:DropShadow = DropShadow(distance, angle, color, alpha, blurX, blurY, strength, quality, inner, false, false);
+        var inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
+        let blurValue:CGFloat = max(blurX,blurY)
+        let offsetX:CGFloat = 0
+        let offsetY:CGFloat = 0
+        var dropshadowfilter:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
         //			trace("dropshadowfilter: " + dropshadowfilter);
         return dropshadowfilter;
     }

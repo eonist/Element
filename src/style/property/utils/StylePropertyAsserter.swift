@@ -23,9 +23,9 @@ class StylePropertyAsserter {
         return false
     }
     class func hasDropShadow(skin:ISkin)->Bool {
-        /*
-        return StylePropertyParser.value(skin, CSSConstants.DROP_SHADOW, depth) is DropShadowFilter;
-        */
-        return false
+        let value = StylePropertyParser.value(skin, CSSConstants.fill)
+        //you may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type
+        let hasDropShadow = value is DropShadow
+        return hasDropShadow
     }
 }

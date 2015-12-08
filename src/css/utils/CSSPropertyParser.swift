@@ -116,7 +116,7 @@ class CSSPropertyParser {
         var strength:CGFloat = StringParser.digit(properties[6]);
         var quality:CGFloat = StringParser.digit(properties[7]);
         var inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
-        var nsColor:NSColor = NSColor(color,alpha)
+        var nsColor:NSColor = ColorParser.nsColor(color, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let offsetX:CGFloat = 0
         let offsetY:CGFloat = 0

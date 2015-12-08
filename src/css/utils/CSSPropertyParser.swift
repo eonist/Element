@@ -99,8 +99,8 @@ class CSSPropertyParser {
         return textField;
     }
     /**
-    * Returns a DropShadowFilter instance
-    */
+     * Returns a DropShadowFilter instance
+     */
     class func dropShadow(string:String)->DropShadow {
         let propertyString:String = string.match("(?<=drop-shadow\\().+?(?=\\);?)")[0]
         //print("propertyString: " + propertyString);
@@ -118,7 +118,7 @@ class CSSPropertyParser {
         let color:NSColor = ColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let angleInRadians = Trig.radians(angle)
-        let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)
+        let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
         let offsetX:CGFloat = polarPoint.x
         let offsetY:CGFloat = polarPoint.y
         let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)

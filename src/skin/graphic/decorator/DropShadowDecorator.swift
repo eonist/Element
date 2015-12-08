@@ -1,5 +1,5 @@
 import Foundation
 
-class DropShadowDecorator {
-
+class DropShadowDecorator:GraphicDecoratable{
+    
 }

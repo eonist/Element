@@ -6,4 +6,8 @@ class DropShadowDecorator:GraphicDecoratable{
         self.dropShadow = dropShadow
         super.init(decoratable)
     }
+    override func fill() {
+        Swift.print("DropShadowDecorator.fill()")
+        super.fill()
+    }
 }

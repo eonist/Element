@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  *  // :TODO: Add support for bottom top left right values in normal css values
  *  // :TODO: support for radialGradient: css w3c
@@ -116,12 +116,13 @@ class CSSPropertyParser {
         var strength:CGFloat = StringParser.digit(properties[6]);
         var quality:CGFloat = StringParser.digit(properties[7]);
         var inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
-        let blurValue:CGFloat = max(blurX,blurY)
+        var nsColor:NSColor = NSColor(color,alpha)
+        let blur:CGFloat = max(blurX,blurY)
         let offsetX:CGFloat = 0
         let offsetY:CGFloat = 0
-        var dropshadowfilter:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
+        let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
         //			trace("dropshadowfilter: " + dropshadowfilter);
-        return dropshadowfilter;
+        return dropShadow;
     }
 }
 private class Utils{

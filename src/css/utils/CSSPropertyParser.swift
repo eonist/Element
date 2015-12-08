@@ -17,7 +17,7 @@ class CSSPropertyParser {
             case StringAsserter.color(string):return StringParser.color(string);/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.color(string);/*green red etc*/
             case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string);/*linear-gradient*/// :TODO: create a more complte exprrison for this test
-            case RegExp(/^drop-shadow\b/).test(string):return dropShadow(string);/*drop-shadow*/
+            case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string);/*drop-shadow*/
             case RegExp.test(string,"^textFormat\\b"):return textFormat(string);
             case RegExp.test(string,"^textField\\b"):return textField(string);
             case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.]+?\\040)+?(\\b|\\B|$)"):/*Swift.print("isArray");*/return array(string);/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional?
@@ -101,21 +101,22 @@ class CSSPropertyParser {
     /**
     * Returns a DropShadowFilter instance
     */
-    class func dropShadow(string:String)->DropShadowFilter {
-        var propertyString:String = string.match(/(?<=drop-shadow\().+?(?=\);?)/).toString();
-        //			trace("propertyString: " + propertyString);
+    class func dropShadow(string:String)->DropShadow {
+        let propertyString:String = string.match("(?<=drop-shadow\\().+?(?=\\);?)")[0]
+        
+        //print("propertyString: " + propertyString);
         var properties:Array = propertyString.split(" ");
-        //			trace("properties: " + properties);
-        var distance:CGFLoat = StringParser.digit(properties[0]);
-        var angle:Number = StringParser.digit(properties[1]);
-        var color:uint = StringParser.color(properties[2]);
-        var alpha:Number = StringParser.digit(properties[3]);
-        var blurX:Number = StringParser.digit(properties[4]);
-        var blurY:Number = StringParser.digit(properties[5]);
-        var strength:Number = StringParser.digit(properties[6]);
-        var quality:Number = StringParser.digit(properties[7]);
-        var inner:Boolean = StringParser.boolean(properties[8]);
-        var dropshadowfilter:DropShadowFilter = DropShadowFilter(distance, angle, color, alpha, blurX, blurY, strength, quality, inner, false, false);
+        //print("properties: " + properties);
+        var distance:CGFloat = StringParser.digit(properties[0]);
+        var angle:CGFloat = StringParser.digit(properties[1]);
+        var color:UInt = StringParser.color(properties[2]);
+        var alpha:CGFloat = StringParser.digit(properties[3]);
+        var blurX:CGFloat = StringParser.digit(properties[4]);
+        var blurY:CGFloat = StringParser.digit(properties[5]);
+        var strength:CGFloat = StringParser.digit(properties[6]);
+        var quality:CGFloat = StringParser.digit(properties[7]);
+        var inner:Bool = StringParser.boolean(properties[8]);
+        var dropshadowfilter:DropShadow = DropShadow(distance, angle, color, alpha, blurX, blurY, strength, quality, inner, false, false);
         //			trace("dropshadowfilter: " + dropshadowfilter);
         return dropshadowfilter;
     }

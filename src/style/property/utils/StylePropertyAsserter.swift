@@ -26,6 +26,7 @@ class StylePropertyAsserter {
         let value = StylePropertyParser.value(skin, CSSConstants.fill)
         //you may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type
         let hasDropShadow = value is DropShadow
+        Swift.print("hasDropShadow: " + "\(hasDropShadow)")
         return hasDropShadow
     }
 }

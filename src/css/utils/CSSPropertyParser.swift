@@ -24,9 +24,6 @@ class CSSPropertyParser {
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED");
         }
     }
-    
-    
-    
     /**
      * // :TODO: possibly use the RegExp.exec to loop the properties!!
      * @param string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient

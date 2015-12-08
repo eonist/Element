@@ -97,6 +97,27 @@ class CSSPropertyParser {
         }
         return textField;
     }
+    /**
+    * Returns a DropShadowFilter instance
+    */
+    class func dropShadow(string:String)->DropShadowFilter {
+        var propertyString:String = string.match(/(?<=drop-shadow\().+?(?=\);?)/).toString();
+        //			trace("propertyString: " + propertyString);
+        var properties:Array = propertyString.split(" ");
+        //			trace("properties: " + properties);
+        var distance:CGFLoat = StringParser.digit(properties[0]);
+        var angle:Number = StringParser.digit(properties[1]);
+        var color:uint = StringParser.color(properties[2]);
+        var alpha:Number = StringParser.digit(properties[3]);
+        var blurX:Number = StringParser.digit(properties[4]);
+        var blurY:Number = StringParser.digit(properties[5]);
+        var strength:Number = StringParser.digit(properties[6]);
+        var quality:Number = StringParser.digit(properties[7]);
+        var inner:Boolean = StringParser.boolean(properties[8]);
+        var dropshadowfilter:DropShadowFilter = DropShadowFilter(distance, angle, color, alpha, blurX, blurY, strength, quality, inner, false, false);
+        //			trace("dropshadowfilter: " + dropshadowfilter);
+        return dropshadowfilter;
+    }
 }
 private class Utils{
     /**

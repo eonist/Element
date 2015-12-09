@@ -18,7 +18,12 @@ class GraphicSkinParser{
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
-        if(StylePropertyAsserter.hasDropShadow(skin)) { graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin)!) }
+        if(StylePropertyAsserter.hasDropShadow(skin)) {
+            Swift.print("Add DropShadow Decorator")
+            graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin)!)
+        }else{
+            Swift.print("Dont Add DropShadow Decorator")
+        }
         return graphic
     }
 }

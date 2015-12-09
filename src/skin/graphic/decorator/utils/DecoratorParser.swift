@@ -28,8 +28,9 @@ private class Utils{
      * NOTE: However this method supports
      */
     class func isInstanceOfClass(instanceType:IGraphicDecoratable,_ theClassType:AnyClass)->Bool{
-        Swift.print(String(theClassType.dynamicType))
-        Swift.print(String(instanceType))
-        return String(theClassType.dynamicType) == String(instanceType)
+        
+        Swift.print(String(instanceType.dynamicType))
+        Swift.print(String(theClassType))
+        return String(theClassType) == String(instanceType.dynamicType)
     }
 }

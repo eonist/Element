@@ -28,7 +28,10 @@ class GraphicSkin:Skin{
         Swift.print("GraphicSkin.applyProperties()")
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {
-            fatalError("it works!!!")
+            //fatalError("it works!!!")
+            
+            //continue testing further later, it works!!!
+            
             let dropShadowDecorator:DropShadowDecorator = DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator
             dropShadowDecorator.dropShadow = StylePropertyParser.dropShadow(self)!
         }/*dropshadow*/

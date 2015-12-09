@@ -11,7 +11,7 @@ class DecoratorParser {
         }
         var current:IGraphicDecoratable = decoratable;
         while(current.getDecoratable() !== current) {
-            if(Utils.isInstanceOfClass(decoratable, theClassType)) {
+            if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {
                 return current.getDecoratable();
             }
             current = current.getDecoratable();

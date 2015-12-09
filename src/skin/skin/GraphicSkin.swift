@@ -33,7 +33,8 @@ class GraphicSkin:Skin{
             //continue testing further later, it works!!!
             
             let dropShadowDecorator:DropShadowDecorator = DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator
-            dropShadowDecorator.dropShadow = StylePropertyParser.dropShadow(self)!
+            Swift.print(dropShadowDecorator)
+            dropShadowDecorator.dropShadow = StylePropertyParser.dropShadow(self)
         }/*dropshadow*/
         else{
            fatalError("it doesnt works!!!")

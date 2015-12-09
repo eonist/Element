@@ -9,11 +9,11 @@ class DecoratorParser {
             return decoratable;
         }
         var current:IGraphicDecoratable = decoratable;
-        while(current.decoratable === current) {
+        while(current.getDecoratable() === current) {
             if(Utils.isInstanceOfClass(decoratable, theClassType)) {
-                return current.decoratable;
+                return current.getDecoratable();
             }
-            current = current.decoratable;
+            current = current.getDecoratable();
         }
         return nil;
     }

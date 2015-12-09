@@ -1,6 +1,6 @@
 import Foundation
 
-class GraphicDecoratorAsserter {
+class DecoratorAsserter {
         /**
          * Asserts if @param decoratable has a Decorator instance of "Class type" @param classType
          */

@@ -29,7 +29,7 @@ class GraphicSkin:Skin{
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
     
         
-        //this is what is wrong, you need to add the other 
+        //Continue here: this is what is wrong, you need to add the other setters aswell, for fillet, for shadow and for asset!!!! this is good news though, only the clipping stuff left and we are in clear waters
     
     
     }

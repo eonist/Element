@@ -21,7 +21,7 @@ class GraphicSkinParser{
         if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasDropShadow(skin)) {
             Swift.print("Add DropShadow Decorator")
-            graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin)!)
+            graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin))
         }else{
             Swift.print("Dont Add DropShadow Decorator")
         }

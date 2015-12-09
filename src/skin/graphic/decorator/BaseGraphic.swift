@@ -53,4 +53,5 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     override func getGraphic()->BaseGraphic{
         return self
     }
+    override func getDecoratable()->IGraphicDecoratable{return self}/*new*/
 }

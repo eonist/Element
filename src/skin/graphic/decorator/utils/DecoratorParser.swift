@@ -6,13 +6,13 @@ class DecoratorParser {
      */
     class func decoratable(decoratable:IGraphicDecoratable,_ theClassType:AnyClass)->IGraphicDecoratable? {
         Swift.print("DecoratorParser.decoratable() theClassType: " + String(theClassType))
-        Swift.print(String(decoratable))
+        Swift.print(String(decoratable.dynamicType))
         if(Utils.isInstanceOfClass(decoratable, theClassType)) {
             return decoratable;
         }
         var current:IGraphicDecoratable = decoratable;
         while(current.getDecoratable() !== current) {
-            Swift.print(String(current.getDecoratable()))
+            Swift.print(String(current.getDecoratable().dynamicType))
             if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {
                 return current.getDecoratable();
             }

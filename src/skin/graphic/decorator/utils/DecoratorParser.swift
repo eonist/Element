@@ -5,12 +5,14 @@ class DecoratorParser {
      * Returns a Decorator instance from @param decoratable by Class type @param classType if it exists, if it doesnt it returns null
      */
     class func decoratable(decoratable:IGraphicDecoratable,_ theClassType:AnyClass)->IGraphicDecoratable? {
-        Swift.print("DecoratorParser.decoratable()")
+        Swift.print("DecoratorParser.decoratable() theClassType: " + String(theClassType))
+        Swift.print(String(decoratable))
         if(Utils.isInstanceOfClass(decoratable, theClassType)) {
             return decoratable;
         }
         var current:IGraphicDecoratable = decoratable;
         while(current.getDecoratable() !== current) {
+            Swift.print(String(current.getDecoratable()))
             if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {
                 return current.getDecoratable();
             }

@@ -26,8 +26,8 @@ class StylePropertyAsserter {
         let value = StylePropertyParser.value(skin, CSSConstants.drop_shadow)
         Swift.print("StylePropertyAsserter.hasDropShadow() value: " + String(value))
         //you may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type
-        let hasDropShadow = value != nil
-        Swift.print("hasDropShadow: " + "\(hasDropShadow)")
+        let hasDropShadow = value != nil/*this differes slightly from the original code, but was needed to support "none" as a dropshadow param in css*/
+        //Swift.print("hasDropShadow: " + "\(hasDropShadow)")
         return hasDropShadow
     }
 }

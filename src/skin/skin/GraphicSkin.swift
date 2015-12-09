@@ -24,6 +24,9 @@ class GraphicSkin:Skin{
         }
         super.draw();
     }
+    /**
+     * TODO: Dont forget to add fillet, and asset here to , see old code
+     */
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties()")
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/

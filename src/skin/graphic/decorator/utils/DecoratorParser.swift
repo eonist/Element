@@ -6,13 +6,13 @@ class DecoratorParser {
      */
     class func decoratable(decoratable:IGraphicDecoratable,_ theClassType:AnyClass)->IGraphicDecoratable? {
         Swift.print("DecoratorParser.decoratable() theClassType: " + String(theClassType))
-        Swift.print(String(decoratable.dynamicType))
+        //Swift.print(String(decoratable.dynamicType))
         if(Utils.isInstanceOfClass(decoratable, theClassType)) {
             return decoratable;
         }
         var current:IGraphicDecoratable = decoratable;
         while(current.getDecoratable() !== current) {
-            Swift.print(String(current.getDecoratable().dynamicType))
+            //Swift.print(String(current.getDecoratable().dynamicType))
             if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {
                 return current.getDecoratable();
             }
@@ -28,6 +28,8 @@ private class Utils{
      * NOTE: However this method supports
      */
     class func isInstanceOfClass(instanceType:IGraphicDecoratable,_ theClassType:AnyClass)->Bool{
-        return String(theClassType) == String(instanceType)
+        Swift.print(String(theClassType.dynamicType))
+        Swift.print(String(instanceType))
+        return String(theClassType.dynamicType) == String(instanceType)
     }
 }

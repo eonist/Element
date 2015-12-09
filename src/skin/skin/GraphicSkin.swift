@@ -27,5 +27,10 @@ class GraphicSkin:Skin{
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties()")
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
+    
+        
+        //this is what is wrong, you need to add the other 
+    
+    
     }
 }

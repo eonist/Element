@@ -4,7 +4,7 @@ import Foundation
  */
 class DropShadowDecorator:PositionalDecorator{
     var dropShadow:DropShadow?
-    init(_ decoratable: IGraphicDecoratable,_ dropShadow:DropShadow) {
+    init(_ decoratable: IGraphicDecoratable,_ dropShadow:DropShadow?) {
         self.dropShadow = dropShadow
         super.init(decoratable)
     }

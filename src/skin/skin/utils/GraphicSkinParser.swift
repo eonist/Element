@@ -66,7 +66,7 @@ private class Utils{
     /**
      * Wraps a DropShadowDecorator instance on @param decoratable
      */
-    class func dropShadow(decoratable:IGraphicDecoratable, _ dropShadow:DropShadow)->IGraphicDecoratable {
+    class func dropShadow(decoratable:IGraphicDecoratable, _ dropShadow:DropShadow?)->IGraphicDecoratable {
         return DropShadowDecorator(decoratable,dropShadow);
     }
 }

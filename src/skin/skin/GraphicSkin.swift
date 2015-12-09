@@ -27,7 +27,9 @@ class GraphicSkin:Skin{
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties()")
         self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
-    
+        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator)) {
+            DropShadowDecorator(DecoratorParser.decoratable(decoratable, DropShadowDecorator)).dropShadow = StylePropertyParser.dropShadow(self)
+        }/*dropshadow*/
         
         //Continue here: this is what is wrong, you need to add the other setters aswell, for fillet, for shadow and for asset!!!! this is good news though, only the clipping stuff left and we are in clear waters
     

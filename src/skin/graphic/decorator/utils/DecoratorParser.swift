@@ -4,11 +4,11 @@ class DecoratorParser {
     /**
      * Returns a Decorator instance from @param decoratable by Class type @param classType if it exists, if it doesnt it returns null
      */
-    class func decoratable(decoratable:IGraphicDecoratable,_ classType:Any)->IGraphicDecoratable {
+    class func decoratable(decoratable:IGraphicDecoratable,_ theClassType:AnyClass)->IGraphicDecoratable {
         
         //continue here, assert a decoratable with you class assertion code
         
-        if(decoratable is classType) {
+        if(ClassAsserter.isOfClassType(decoratable, theClassType)) {
             return decoratable;
         }
         var current:IGraphicDecoratable = decoratable;

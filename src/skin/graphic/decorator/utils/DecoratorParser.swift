@@ -12,9 +12,6 @@ class DecoratorParser {
         }
         var current:IGraphicDecoratable = decoratable;
         
-        
-        //continue here, figure out how you can check equality between 2 protocol references or make the IGraphicDecoratable equatable on an instance level or alike. 
-        
         while(current.decoratable === current) {
             if(Utils.isInstanceOfClass(decoratable, theClassType)) {
                 return current.decoratable;

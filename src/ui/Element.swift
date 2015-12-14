@@ -12,7 +12,7 @@ class Element:View,IElement {
     var height:Double?
     */
     var parent : IElement?
-    var id : String?;/*css selector id*/
+    var id : String?/*css selector id*/
     var style:IStyle = Style.clear
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;

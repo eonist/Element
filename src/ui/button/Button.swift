@@ -20,7 +20,7 @@ class Button:Element {
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-            //super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
+            super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
         }
     }
     /**
@@ -33,7 +33,7 @@ class Button:Element {
             state = SkinStates.none
             setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
-            //super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
+            super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
         }
     }
     /**

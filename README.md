@@ -1,4 +1,5 @@
-[Follow the Progress here](https://github.com/eonist/Element/wiki/Progress)  
+[Follow the Progress here 2](https://github.com/eonist/Element/wiki/Progress2)
+[Follow the Progress here 1](https://github.com/eonist/Element/wiki/Progress)  
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/logo-01_239238.png">  
 **Element** (OSX UI Framework)
 

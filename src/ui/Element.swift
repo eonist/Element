@@ -2,7 +2,7 @@ import Cocoa
 /**
  * NOTE: it seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
  */
-class Element:View,IElement {
+class Element:InteractiveView,IElement {
     var state:String = SkinStates.none
     var skin:ISkin?
     /*

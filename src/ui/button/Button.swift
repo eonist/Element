@@ -13,42 +13,32 @@ class Button:Element {
     /**
      * Handles actions and drawing states for the mouseEntered event.
      */
-    override func mouseEntered( event: NSEvent){
-        Swift.print("Button.mouseEntered: ")
+    override func mouseOver() {
+        Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-            super.mouseEntered(event)/*passes on the event to the nextResponder, NSView parents etc*/
         }
     }
     /**
-     * Handles actions and drawing states for the mouseExited event.
+     * Handles actions and drawing states for the mouseOut action.
      */
-    override func mouseExited(event: NSEvent){
-        Swift.print("Button.mouseExited:")
+    override func mouseOut() {
+        Swift.print("Button.mouseOut() ")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
             setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
-            super.mouseExited(event)/*passes on the event to the nextResponder, NSView parents etc*/
         }
     }
     /**
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(theEvent: NSEvent) {
-        Swift.print("Button.mouseDown()")
-        //continue here: try getting the location in the event and pass it to eigther of the bellow classes, the add this method to view instead
-        
-        //hitTest(theEvent.locationInWindow)//returns nsview
-        //Swift.print("theEvent.mouseLocation: " + String(mouseLocation))
-        //Swift.print("Button.mouseDownEvent: " + String(theEvent.locationInWindow))
-        //Swift.print("hitTestFromViewRelativeToFrame: " + String(hitTestFromViewRelativeToFrame(theEvent.locationInWindow)))
-        //hitTestToView(theEvent.locationInWindow)
-        //Swift.print("Button.hitTestToView() " + String(hitTestToView(theEvent.locationInWindow)))
+        Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
@@ -74,16 +64,5 @@ class Button:Element {
         setSkinState(getSkinState());
         NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
     }
-    override func mouseUp(theEvent: NSEvent) {
-        Swift.print("Button.mouseUp")
-        //let mousePos:NSPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
-        //Swift.print("mousePos: " + String(theEvent.locationInWindow))
-        //let hitTestPoint:Bool = NSPointInRect(mousePos, frame)
-        //Swift.print("hitTestPoint: " + String(hitTestPoint))
-        //NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-        //Swift.print("Button.hitTestToView() " + String(hitTestFromView(theEvent.locationInWindow)))
-        self.hitTestFromViewRelativeToFrame(theEvent.locationInWindow) ? mouseUpInside(theEvent) : mouseUpOutside(theEvent);/*if the event was on this button call triggerRelease, else triggerReleaseOutside*/
-        //Swift.print("mouseUpEvent: " + "\(self.skinState)")
-        super.mouseUp(theEvent)/*passes on the event to the nextResponder, NSView parents etc*/
-    }
+    
 }

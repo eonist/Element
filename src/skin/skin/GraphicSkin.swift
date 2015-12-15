@@ -15,7 +15,7 @@ class GraphicSkin:Skin{
         
         let layerD = CustomLayer(NSColor.blueColor())
         layerD.frame = CGRect(120,120,50,50);
-        //layerD.display()
+        
         //layerD.masksToBounds = false
         layer!.addSublayer(layerD)
     }

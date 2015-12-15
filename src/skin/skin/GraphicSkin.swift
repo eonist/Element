@@ -8,6 +8,7 @@ class GraphicSkin:Skin{
     }
     override func layout() {
         Swift.print("GraphicSkin.layout()")
+        //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
     /*
     override func drawRect(dirtyRect: NSRect) {

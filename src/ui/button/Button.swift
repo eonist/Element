@@ -58,7 +58,7 @@ class Button:Element {
      * Handles actions and drawing states for the release event.
      * @Note: bubbling= true was added to make Stepper class dragable
      */
-    func mouseUpInside(theEvent: NSEvent){
+    override func mouseUpInside(theEvent: NSEvent){
         Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState());

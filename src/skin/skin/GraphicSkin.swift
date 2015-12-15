@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
@@ -8,6 +8,12 @@ class GraphicSkin:Skin{
     }
     override func layout() {
         Swift.print("GraphicSkin.layout()")
+        let layerA = CALayer()
+        layerA.frame = CGRectMake(20, 20, 100, 100);
+        layerA.masksToBounds = false//finally it works
+        //layerA.position = CGPointMake(10, 10);
+        layerA.backgroundColor = NSColor.greenColor().CGColor
+        layer!.addSublayer(layerA)
         //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
     /*

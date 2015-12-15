@@ -68,7 +68,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseUpOutside event.
      * @Note: bubbling = true was added to make Stepper class dragable
      */
-    func mouseUpOutside(theEvent: NSEvent){
+    override func mouseUpOutside(theEvent: NSEvent){
         Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());

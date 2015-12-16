@@ -13,13 +13,14 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     //var lineOffsetType:OffsetType
     //var path:CGMutablePath = CGPathCreateMutable()
     //var linePath:CGMutablePath = CGPathCreateMutable()
-    
+    /*
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()) {
         //self.fillStyle = fillStyle
         //self.lineStyle = lineStyle
         //self.lineOffsetType = lineOffsetType
         super.init()
     }
+    */
     /**
      * TODO: color cant be uint since uint cant be NaN, use Double, 
      * TODO:  check if cgfloat can be NaN?
@@ -27,11 +28,11 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
             //Swift.print("BaseGraphic.beginFill() fillStyle!.color: " + String(fillStyle!.color))
-            graphics.fill(fillStyle!.color)//Stylize the fill
+            fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
     override func stylizeFill(){
-        GraphicModifier.stylize(path,graphics)//realize style on the graphic
+        GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
     /**
      *
@@ -40,7 +41,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         //Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
         //Swift.print("lineStyle!.color: " + String(lineStyle!.color))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
-            graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
     override func stylizeLine(){

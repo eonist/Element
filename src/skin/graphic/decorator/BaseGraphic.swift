@@ -5,19 +5,19 @@ import Cocoa
 * NOTE: We dont need a line mask, just subclass the Graphics class so it supports masking of the line aswell (will require some effort)
 */
 class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
-    lazy var graphics:Graphics = Graphics()
+    //lazy var graphics:Graphics = Graphics()
     
     override var graphic:BaseGraphic {return self}
-    var fillStyle:IFillStyle?
-    var lineStyle:ILineStyle?
-    var lineOffsetType:OffsetType
-    var path:CGMutablePath = CGPathCreateMutable()
-    var linePath:CGMutablePath = CGPathCreateMutable()
+    //var fillStyle:IFillStyle?
+    //var lineStyle:ILineStyle?
+    //var lineOffsetType:OffsetType
+    //var path:CGMutablePath = CGPathCreateMutable()
+    //var linePath:CGMutablePath = CGPathCreateMutable()
     
     init(_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffsetType:OffsetType = OffsetType()) {
-        self.fillStyle = fillStyle
-        self.lineStyle = lineStyle
-        self.lineOffsetType = lineOffsetType
+        //self.fillStyle = fillStyle
+        //self.lineStyle = lineStyle
+        //self.lineOffsetType = lineOffsetType
         super.init()
     }
     /**

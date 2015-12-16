@@ -4,8 +4,10 @@ class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
-        /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/        
+        addSubview(decoratable.graphic)
+        /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
         
+        /*
         let layerA = CALayer()
         layerA.frame = CGRectMake(20, 20, 100, 100);
         layerA.masksToBounds = false//finally it works
@@ -18,9 +20,11 @@ class GraphicSkin:Skin{
         layerD.display()
         //layerD.masksToBounds = false
         layer!.addSublayer(layerD)
+        */
+        
     }
     override func layout() {
-        Swift.print("GraphicSkin.layout()")
+        //Swift.print("GraphicSkin.layout()")
         
         //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }

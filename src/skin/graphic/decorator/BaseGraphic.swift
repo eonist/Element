@@ -6,7 +6,7 @@ import Cocoa
 */
 class BaseGraphic :AbstractGraphicDecoratable{
     //lazy var graphics:Graphics = Graphics()
-    
+    var graphic:Graphic = Graphic()
     override var graphic:BaseGraphic {return self}
     //var fillStyle:IFillStyle?
     //var lineStyle:ILineStyle?

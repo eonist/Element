@@ -14,8 +14,8 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     func getSize() -> CGSize {
         return size
     }
-    func setSize(theSize: CGSize) {
-        self.size = theSize
+    func setSizeValue(size: CGSize) {/*<- was named setSize, but objc doesnt allow it*/
+        self.size = size
     }
 }
 extension SizeableGraphic{

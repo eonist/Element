@@ -12,11 +12,11 @@ class CircleGraphic:SizeableGraphic{
     }
     override func drawFill() {
         //Swift.print("CircleGraphic.drawFill()")
-        getGraphic().path = CGPathParser.circle(radius, x, y)
+        getGraphic().fillShape.path = CGPathParser.circle(radius, x, y)
     }
     override func drawLine() {
         //Swift.print("CircleGraphic.drawLine()")
-        graphic.linePath = CGPathParser.circle(radius, x, y)
+        graphic.lineShape.path = CGPathParser.circle(radius, x, y)
     }
     override func getSize() -> CGSize {
         return CGSize(radius,radius)

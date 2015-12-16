@@ -10,7 +10,7 @@ class RectGraphic:SizeableGraphic{
         x += self.x
         y += self.y
         let rect:CGRect = CGRect(x,y,width, height)
-        fillShape.path = rect.path
+        graphic.fillShape.path = rect.path
     }
     /**
      *
@@ -25,7 +25,7 @@ class RectGraphic:SizeableGraphic{
             //Swift.print("rect: " + String(rect))
 
             
-            lineShape.path = rect.path
+            graphic.lineShape.path = rect.path
             
             
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);

@@ -8,6 +8,7 @@ class DropShadowDecorator:PositionalDecorator{
         self.dropShadow = dropShadow
         super.init(decoratable)
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func fill() {
         //Swift.print("DropShadowDecorator.fill()")
         graphic.fillShape.graphics.dropShadow = dropShadow;

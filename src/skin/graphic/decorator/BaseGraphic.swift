@@ -4,10 +4,10 @@ import Cocoa
 * // :TODO: possibly get rid of the setters for the fillStyle and Line style and use implicit setFillStyle and setLineStyle?
 * NOTE: We dont need a line mask, just subclass the Graphics class so it supports masking of the line aswell (will require some effort)
 */
-class BaseGraphic :AbstractGraphicDecoratable{
+class BaseGraphic :Graphic,IGraphicDecoratable{/*was extending AbstractGraphicDecoratable*/
     //lazy var graphics:Graphics = Graphics()
-    var graphic:Graphic = Graphic()
-    override var graphic:BaseGraphic {return self}
+    
+    var graphic:BaseGraphic {return self}
     //var fillStyle:IFillStyle?
     //var lineStyle:ILineStyle?
     //var lineOffsetType:OffsetType
@@ -21,36 +21,37 @@ class BaseGraphic :AbstractGraphicDecoratable{
         super.init()
     }
     */
+    
     /**
      * TODO: color cant be uint since uint cant be NaN, use Double, 
      * TODO:  check if cgfloat can be NaN?
      */
-    override func beginFill(){
+    func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
             //Swift.print("BaseGraphic.beginFill() fillStyle!.color: " + String(fillStyle!.color))
             fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
-    override func stylizeFill(){
+    func stylizeFill(){
         GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
     }
     /**
      *
      */
-    override func applyLineStyle() {
+    func applyLineStyle() {
         //Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
         //Swift.print("lineStyle!.color: " + String(lineStyle!.color))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
             lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
-    override func stylizeLine(){
+    func stylizeLine(){
         //Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
     }
     
-    override func getGraphic()->BaseGraphic{
+    func getGraphic()->BaseGraphic{
         return self
     }
-    override func getDecoratable()->IGraphicDecoratable{return self}/*new*/
+    func getDecoratable()->IGraphicDecoratable{return self}/*new*/
 }

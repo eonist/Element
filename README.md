@@ -1,6 +1,9 @@
-[Follow the Progress here 2](https://github.com/eonist/Element/wiki/Progress2)
-[Follow the Progress here 1](https://github.com/eonist/Element/wiki/Progress)  
+[Follow the Progress here part 2](https://github.com/eonist/Element/wiki/Progress2)  
+[Follow the Progress here part 1](https://github.com/eonist/Element/wiki/Progress)  
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/logo-01_239238.png">  
+
+<img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/3wfe32fewfw.gif">  
+ 
 **Element** (OSX UI Framework)
 
 Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style an NSButton programmatically, you usually end up with more code than its worth. Style an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 and SASS. Alignment of UI elements is achieved through a custom **positioning alogorithm** that adheres to syntax such as "float:left" "clear:left" etc. Its also possible to programmatically override the CSS alignment scheme for elements you need more control over, like a slider element. Add your own iconography through .svg vector files from Adobe Illustrator etc. Element uses a custom built SVG drawing engine to achieve **infinitely scaleable graphic**s, so your apps will look great at any resolution. Further more Element is a self contained framework that doesn't rely on other third party libraries to work, other than swift it self. **Element 1.0** is already up and running, but it is currently being implemented in swift here on GitHub. 

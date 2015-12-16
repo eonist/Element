@@ -2,8 +2,6 @@ import Foundation
 /**
  * TODO: you should also probably create a class named PathGraphic
  */
-
-
 class LineGraphic:SizeableDecorator {
     var p1:CGPoint;
     var p2:CGPoint;

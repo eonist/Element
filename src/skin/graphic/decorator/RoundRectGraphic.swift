@@ -12,6 +12,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         self.fillet = fillet
         super.init(decoratable)
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
         let x:CGFloat = graphic.lineOffsetType.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         let y:CGFloat = graphic.lineOffsetType.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;

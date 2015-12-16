@@ -20,7 +20,7 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
     func getSize() -> CGSize {
         return size
     }
-    func setSize(size: CGSize) {
+    func setSizeValue(size: CGSize) {
         self.size = size
     }
 }

@@ -10,6 +10,9 @@ class CircleGraphic:SizeableGraphic{
         self.radius = radius
         super.init(CGPoint(0,0),CGSize(radius,radius),decoratable)
     }
+    convenience init(_ test:String){
+        self.init(radius,BaseGraphic(FillStyle(fillColor)))
+    }
     override func drawFill() {
         //Swift.print("CircleGraphic.drawFill()")
         getGraphic().fillShape.path = CGPathParser.circle(radius, x, y)
@@ -23,7 +26,5 @@ class CircleGraphic:SizeableGraphic{
     }
 }
 extension CircleGraphic{
-    convenience init(_ radius:CGFloat,_ fillColor:NSColor){
-        self.init(radius,BaseGraphic(FillStyle(fillColor)))
-    }
+    
 }

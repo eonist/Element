@@ -48,6 +48,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         //Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
     }
+    
     override func getGraphic()->BaseGraphic{
         return self
     }

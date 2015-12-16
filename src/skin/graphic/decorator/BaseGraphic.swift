@@ -18,6 +18,7 @@ class BaseGraphic :AbstractGraphicDecoratable,IBaseGraphic{
         self.fillStyle = fillStyle
         self.lineStyle = lineStyle
         self.lineOffsetType = lineOffsetType
+        super.init()
     }
     /**
      * TODO: color cant be uint since uint cant be NaN, use Double, 

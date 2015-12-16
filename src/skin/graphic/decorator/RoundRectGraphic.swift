@@ -21,7 +21,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         let h:CGFloat = self.height
         //Swift.print("h: " + "\(h)")
         //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
-        getGraphic().path = CGPathParser.roundRect(x,y,w,h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
+        getGraphic().fillShape.path = CGPathParser.roundRect(x,y,w,h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
     }
     /**
      *
@@ -33,7 +33,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
             let rect:CGRect = RectGraphicUtils.offsetRect(CGRect(0, 0, /*decoratable.*/getSize().width, /*decoratable.*/getSize().height), graphic.lineStyle!, lineOffsetType);
             //Swift.print(rect)
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
-            graphic.linePath = CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
+            graphic.lineShape.path = CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
             /*mask*/
             //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0,graphic.width,graphic.height), graphic.lineStyle!, lineOffsetType);
         }

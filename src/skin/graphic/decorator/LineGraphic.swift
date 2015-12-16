@@ -17,7 +17,7 @@ class LineGraphic:SizeableDecorator {
      */
     override func drawLine() {
         //Swift.print("LineGraphic.drawLine()")
-        graphic.linePath = CGPathParser.line(p1, p2)
+        graphic.lineShape.path = CGPathParser.line(p1, p2)
     }
     /**
      *

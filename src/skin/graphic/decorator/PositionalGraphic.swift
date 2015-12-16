@@ -6,6 +6,10 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
         self.pos = position
         super.init(decoratable)
     }
+
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+        
+    
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */

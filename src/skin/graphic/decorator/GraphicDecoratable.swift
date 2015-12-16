@@ -13,6 +13,10 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
     }
+
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+        
+    
     override func initialize(){
         if(getGraphic().fillStyle != nil){fill()}
         if(getGraphic().lineStyle != nil){line()}

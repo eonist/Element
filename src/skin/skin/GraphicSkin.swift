@@ -28,12 +28,12 @@ class GraphicSkin:Skin{
         
         //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
-    /*
+    
     override func drawRect(dirtyRect: NSRect) {
         //Swift.print("GraphicSkin.drawRect() " + element!.id!)
         decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
-    */
+    /**/
     /**
      * Required by super class
      */

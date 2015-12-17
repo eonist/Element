@@ -18,14 +18,14 @@ class RectGraphic:SizeableGraphic{
     override func drawLine(){
         //Swift.print("RectGraphic.drawLine()")
         if(graphic.lineStyle != nil){
-            let graphicRect:CGRect = CGRect(0, 0, width, height)
+            //let graphicRect:CGRect = CGRect(0, 0, width, height)
             
             //Swift.print("graphicRect: " + String(graphicRect))
-            let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
+            //let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
             //Swift.print("rect: " + String(rect))
-            let offsetRects = RectGraphicUtil.offsetRect(fillShape.frame, lineShape.lineStyle!, lineOffsetType)
-            
-            graphic.lineShape.path = rect.path
+            let offsetRects = RectGraphicUtil.offsetRect(graphic.fillShape.frame, graphic.lineShape.lineStyle!, graphic.lineOffsetType)
+            graphic.lineShape.frame = offsetRects.frameRect
+            graphic.lineShape.path = offsetRects.lineRect.path//rect.path
             
             
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);

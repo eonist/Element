@@ -5,12 +5,17 @@ class RectGraphic:SizeableGraphic{
      *
      */
     override func drawFill() {
+        /*
         var x:CGFloat = graphic.lineOffsetType.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         var y:CGFloat = graphic.lineOffsetType.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         x += self.x
         y += self.y
         let rect:CGRect = CGRect(x,y,width, height)
         graphic.fillShape.path = rect.path
+        */
+        
+        graphic.fillShape.path = CGRect(0,0,graphic.fillShape.frame.width,graphic.fillShape.frame.height).path/*Draws in the local coordinate space of the shape*/
+        //graphic.fillShape.frame = rect/*,position and set the size of the frame*/
     }
     /**
      *

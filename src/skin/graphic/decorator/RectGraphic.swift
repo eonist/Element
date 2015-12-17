@@ -21,7 +21,7 @@ class RectGraphic:SizeableGraphic{
             let graphicRect:CGRect = CGRect(0, 0, width, height)
             
             //Swift.print("graphicRect: " + String(graphicRect))
-            let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
+            let rect:CGRect = RectGraphicUtil.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
             //Swift.print("rect: " + String(rect))
 
             

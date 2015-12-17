@@ -14,8 +14,8 @@ class RectGraphic:SizeableGraphic{
         graphic.fillShape.path = rect.path
         */
         
-        graphic.fillShape.path = CGRect(0,0,graphic.fillShape.frame.width,graphic.fillShape.frame.height).path/*Draws in the local coordinate space of the shape*/
-        //graphic.fillShape.frame = rect/*,position and set the size of the frame*/
+        graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
+        graphic.fillShape.frame = CGRect(x,y,width,height)/*,position and set the size of the frame*/
     }
     /**
      *

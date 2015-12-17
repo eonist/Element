@@ -33,7 +33,7 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
         }
     }
     override func stylizeFill(){
-        Swift.print("BaseGraphic.stylizeFill()")
+        //Swift.print("BaseGraphic.stylizeFill()")
         //GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
         fillShape.display()/*draw the fileShape*/
     }

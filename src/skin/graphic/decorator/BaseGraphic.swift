@@ -36,12 +36,6 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
         //GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
         fillShape.display()/*draw the fileShape*/
     }
-    
-    
-    //continue here: think of a way to inject all your drawing code into lineShape and fillShape
-    //also figure out whats wrong with the current clipping stuff, just render and you shall see
-    
-    
     /**
      *
      */

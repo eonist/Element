@@ -16,6 +16,7 @@ class RectGraphic:SizeableGraphic{
         
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
         graphic.fillShape.frame = CGRect(x,y,width,height)/*,position and set the size of the frame*/
+        Swift.print("graphic.fillShape.frame: " + "\(graphic.fillShape.frame)")
     }
     /**
      *

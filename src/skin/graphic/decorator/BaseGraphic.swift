@@ -29,13 +29,19 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
             //Swift.print("BaseGraphic.beginFill() fillStyle!.color: " + String(fillStyle!.color))
-            fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
+            //fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
     override func stylizeFill(){
-        GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
+        //GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
         fillShape.display()/*draw the fileShape*/
     }
+    
+    
+    //continue here: think of a way to inject all your drawing code into lineShape and fillShape
+    //also figure out whats wrong with the current clipping stuff, just render and you shall see
+    
+    
     /**
      *
      */
@@ -43,7 +49,7 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
         //Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
         //Swift.print("lineStyle!.color: " + String(lineStyle!.color))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
-            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            //lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
     override func stylizeLine(){

@@ -1,5 +1,5 @@
 import Cocoa
-
+//there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there.
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
@@ -23,16 +23,19 @@ class GraphicSkin:Skin{
         */
         
     }
+    /*
     override func layout() {
-        //Swift.print("GraphicSkin.layout()")
-        
-        //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
+    //Swift.print("GraphicSkin.layout()")
+    //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
     }
+    */
     
+    /*
     override func drawRect(dirtyRect: NSRect) {
-        //Swift.print("GraphicSkin.drawRect() " + element!.id!)
-        
+    //Swift.print("GraphicSkin.drawRect() " + element!.id!)
+    
     }
+    */
     /**/
     /**
      * Required by super class

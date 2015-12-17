@@ -30,8 +30,11 @@ class RectGraphic:SizeableGraphic{
             //let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
             //Swift.print("rect: " + String(rect))
             let offsetRects = RectGraphicUtil.offsetRect(graphic.fillShape.frame.copy(), graphic.lineShape.lineStyle!, graphic.lineOffsetType)
-            Swift.print("graphic.lineShape.frame: " + "\(graphic.lineShape.frame)")
+            
             graphic.lineShape.frame = offsetRects.frameRect
+            Swift.print("graphic.lineShape.frame: " + "\(graphic.lineShape.frame)")
+            
+            Swift.print("offsetRects.lineRect: " + "\(offsetRects.lineRect)")
             graphic.lineShape.path = offsetRects.lineRect.path//rect.path
             
             

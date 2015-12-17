@@ -34,6 +34,7 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
     }
     override func stylizeFill(){
         GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
+        fillShape.display()/*draw the fileShape*/
     }
     /**
      *
@@ -47,7 +48,8 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
     }
     override func stylizeLine(){
         //Swift.print("BaseGraphic.stylizeLine()")
-        GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
+        //GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
+        lineShape.display()/*draw the lineShape*/
     }
     
     override func getGraphic()->BaseGraphic{

@@ -11,6 +11,7 @@ class RectGraphicUtil {
             //expand the lineFrameRect from its pivot w/ the thichness x2
             let lineFrameRect:CGRect = rect.expand(lineStyle.thickness * 2, dy: lineStyle.thickness * 2);
             //offset the lineRect with half its border thickness in x & y dir
+            let lineRect:CGRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2)
             //for the frameRect (Skin and Element frame) expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
         
         //inside

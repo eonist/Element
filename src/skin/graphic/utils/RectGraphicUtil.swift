@@ -7,17 +7,22 @@ class RectGraphicUtil {
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
     class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
-        //outside
+        if(offsetType == OffsetType(OffsetType.outside)){
             //expand the lineFrameRect from its pivot w/ the thichness x2
             let lineFrameRect:CGRect = rect.expand(lineStyle.thickness * 2, dy: lineStyle.thickness * 2);
             //offset the lineRect with half its border thickness in x & y dir
             let lineRect:CGRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2)
             //for the frameRect (Skin and Element frame) expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
-        
-        //inside
+            let frameRect = 
+
+        }else{//inside
             //dont do anything to the lineFrameRect
             //uniformally outset the lineRect by half the border thickness
             //for the frameRect (Skin and Element frame) return the original rect
+        }
+        //outside
+                    //inside
+        
         return CGRect()
     }
     /**

@@ -12,8 +12,8 @@ class RectGraphicUtil {
             //offset the lineRect with half its borer thickness in x & y dir
         
         //inside
-            //
-        
+            //uniformally outset the lineFrameRect by half the border thickness
+            
         
         return CGRect()
     }
@@ -25,7 +25,7 @@ class RectGraphicUtil {
             //offset the fillRect with the thickness of the border in x & y dir
         
         //inside
-        
+            //dont do anything
         
         return CGRect()
     }

@@ -9,6 +9,7 @@ class RectGraphicUtil {
     class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         //outside
             //expand the lineFrameRect from its pivot w/ the thichness x2
+            
             //offset the lineRect with half its borer thickness in x & y dir
             //for the frameRect (Skin and Element frame) expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
         

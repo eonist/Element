@@ -6,28 +6,16 @@ class RectGraphicUtil {
      * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
-    class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect, lineRect:CGRect){
+    class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         var lineFrameRect:CGRect
-        var lineRect:CGRect
-        if(offsetType == OffsetType(OffsetType.outside)){
+        if(offsetType == OffsetType(OffsetType.outside)){//outside
             //uniformally inset the lineFrameRect by half the thickness
             lineFrameRect = rect.inset(lineStyle.thickness / 2, lineStyle.thickness / 2)
-            //lineRect should be the same as rect
-            lineRect = rect.copy()
-            //for the frameRect (Skin and Element frame) expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
-            frameRect = lineFrameRect.copy()
         }else{//inside
-            //dont do anything to the lineFrameRect
-            lineFrameRect = CGRect()
-            //uniformally outset the lineRect by half the border thickness
-            lineRect = CGRect()
-            //for the frameRect (Skin and Element frame) return the original rect
-            frameRect = CGRect()
+            //uniformally outset the lineFrameRect by half the border thickness
+            lineFrameRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
         }
-        //outside
-                    //inside
-        
-        return (lineFrameRect,lineRect)
+        return lineFrameRect
     }
     /**
      * New

@@ -11,13 +11,12 @@ class RectGraphicUtil {
         var lineRect:CGRect
         var frameRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){
-            //expand the lineFrameRect from its pivot w/ the thichness x2
-            lineFrameRect = rect.expand(lineStyle.thickness * 2, dy: lineStyle.thickness * 2);
+            //uniformally inset the lineFrameRect by half the thickness
+            lineFrameRect = rect.inset(lineStyle.thickness / 2, lineStyle.thickness / 2)
             //offset the lineRect with half its border thickness in x & y dir
             lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2)
             //for the frameRect (Skin and Element frame) expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
             frameRect = lineFrameRect.copy()
-
         }else{//inside
             //dont do anything to the lineFrameRect
             lineFrameRect = CGRect()

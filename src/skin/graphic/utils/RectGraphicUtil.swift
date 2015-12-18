@@ -3,14 +3,21 @@ import Foundation
 class RectGraphicUtil {
     /**
      * New
+     * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
      */
-    class func lineFrameOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+    class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        //outside
+            //expand the rect from its pivot
+        //inside
+            //
+        
+        
         return CGRect()
     }
     /**
      * New
      */
-    class func fillFrameOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+    class func fillOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         return CGRect()
     }
     /**

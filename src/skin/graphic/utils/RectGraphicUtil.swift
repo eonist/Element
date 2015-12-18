@@ -20,11 +20,11 @@ class RectGraphicUtil {
 
         }else{//inside
             //dont do anything to the lineFrameRect
-            lineFrameRect
+            lineFrameRect = CGRect()
             //uniformally outset the lineRect by half the border thickness
-            lineRect
+            lineRect = CGRect()
             //for the frameRect (Skin and Element frame) return the original rect
-            frameRect
+            frameRect = CGRect()
         }
         //outside
                     //inside

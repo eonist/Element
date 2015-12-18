@@ -7,27 +7,29 @@ class RectGraphicUtil {
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
     class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
-        var lineFrameRect:CGRect
+        var lineRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //uniformally inset the lineFrameRect by half the thickness
-            lineFrameRect = rect.inset(lineStyle.thickness / 2, lineStyle.thickness / 2)
+            lineRect = rect.inset(lineStyle.thickness / 2, lineStyle.thickness / 2)
         }else{//inside
             //uniformally outset the lineFrameRect by half the border thickness
-            lineFrameRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
+            lineRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
         }
-        return lineFrameRect
+        return lineRect
     }
     /**
      * New
      */
     class func fillOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
-        //outside
+        var fillRect:CGRect
+        if(offsetType == OffsetType(OffsetType.outside)){//outside
             //offset the fillRect with the thickness of the border in x & y dir
-        
-        //inside
+            fillRect = rect.inset(lineStyle.thickness , lineStyle.thickness )
+        }else{//inside
             //dont do anything
-        
-        return CGRect()
+            fillRect = rect.copy()
+        }
+        return fillRect
     }
     /**
      * Returns a Tuple with "frame and line rects" by offsetting @param rect with @param lineOffset

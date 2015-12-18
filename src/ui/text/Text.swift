@@ -18,6 +18,12 @@ class Text:Element,IText {
         (skin as! TextSkin).applyText(text)
     }
     /**
+     *
+     */
+    func setText(txt:String){
+        
+    }
+    /**
      * Returns the textField text and 
      */
     func getText()->String{

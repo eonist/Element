@@ -23,7 +23,7 @@ class RectGraphicUtil {
     class func fillOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         //outside
             //offset the fillRect with the thickness of the border in x & y dir
-            
+        
         //inside
         
         

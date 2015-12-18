@@ -7,7 +7,8 @@ class RectGraphicUtil {
      */
     class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         //outside
-            //expand the rect from its pivot
+            //expand the lineFrameRect from its pivot w/ the thichness x2
+            //uniformally inset the lineRect by the half thickness, then expand it from the pivot with 4x the border thickness
         //inside
             //
         

@@ -6,7 +6,7 @@ class RectGraphicUtil {
      * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
-    class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+    class func lineOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         var lineRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //uniformally inset the lineFrameRect by half the thickness
@@ -20,7 +20,7 @@ class RectGraphicUtil {
     /**
      * New
      */
-    class func fillOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+    class func fillOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         var fillRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //offset the fillRect with the thickness of the border in x & y dir

@@ -18,7 +18,7 @@ class Element:InteractiveView,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        super.init(frame: NSRect(0,0,width+2.0,height+2.0))/*<- this is a temp bug fix*/
+        super.init(frame: NSRect(0,0,width/*+2.0*/,height/*+2.0*/))/*<- this is a temp bug fix*/
         resolveSkin()
     }
     /**

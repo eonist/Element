@@ -10,12 +10,12 @@ class RectGraphicUtil {
         //outside
             //expand the lineFrameRect from its pivot w/ the thichness x2
             //offset the lineRect with half its borer thickness in x & y dir
-            //expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
+            //for the frameRect (Skin and Element frame) expand the rect from its pivot with thickness of x2 (same as lineFrameRect)
         
         //inside
             //dont do anything to the lineFrameRect
             //uniformally outset the lineRect by half the border thickness
-            //
+            //for the frameRect (Skin and Element frame) return the original rect
         return CGRect()
     }
     /**

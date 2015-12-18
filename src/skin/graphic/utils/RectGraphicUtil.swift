@@ -4,6 +4,7 @@ class RectGraphicUtil {
     /**
      * New
      * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
+     * NOTE: you also need to return a CGRect for the frame of the 
      */
     class func lineOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         //outside

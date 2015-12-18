@@ -2,6 +2,18 @@ import Foundation
 
 class RectGraphicUtil {
     /**
+     * New
+     */
+    class func lineFrameOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        return CGRect()
+    }
+    /**
+     * New
+     */
+    class func fillFrameOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        return CGRect()
+    }
+    /**
      * Returns a Tuple with "frame and line rects" by offsetting @param rect with @param lineOffset
      * NOTE: works with different side offsetType (left,right,top,bottom)
      * NOTE: inset = hidden, center = visible, outside = visible

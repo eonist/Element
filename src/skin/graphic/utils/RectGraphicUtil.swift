@@ -10,7 +10,7 @@ class RectGraphicUtil {
         //outside
             //expand the lineFrameRect from its pivot w/ the thichness x2
             //offset the lineRect with half its borer thickness in x & y dir
-            //offset the 
+        
         //inside
             //
         
@@ -21,6 +21,12 @@ class RectGraphicUtil {
      * New
      */
     class func fillOffset(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        //outside
+            //offset the fillRect with the thickness of the border in x & y dir
+            
+        //inside
+        
+        
         return CGRect()
     }
     /**

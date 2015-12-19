@@ -8,12 +8,15 @@ class RectGraphicUtils2 {
      */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
         var lineFrameRect:CGRect = rect.copy()
-        var lineRect:CGRect
-        var fillOffsetRect:CGRect
+        var lineRect:CGRect = rect.copy()
+        var fillRect:CGRect = rect.copy()
         //Expand by 2x the thickness of the border
         
         if(offsetType.left == OffsetType.outside){
             lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            fillRect = rect.offset(lineStyle.thickness, lineStyle.thickness)
+        }else if(offsetType.left == OffsetType.inside){
+            
         }
         if(offsetType.right == OffsetType.outside){
             lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
@@ -21,7 +24,7 @@ class RectGraphicUtils2 {
         //offset by half of thickness in x & y, then you expand it 1x the thickness
         lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
         //offset the fillRect with the thickness of the border in x & y dir
-        fillOffsetRect = rect.offset(lineStyle.thickness, lineStyle.thickness)
+        
 
         if(offsetType == OffsetType(OffsetType.outside)){//outside
         }else if(offsetType == OffsetType(OffsetType.inside)){//inside
@@ -30,8 +33,8 @@ class RectGraphicUtils2 {
             //uniformally outset the lineFrameRect by half the border thickness
             lineRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
             //dont do anything
-            fillOffsetRect = rect.copy()
+            
         }
-        return (lineFrameRect,lineRect, fillOffsetRect)
+        return (lineFrameRect,lineRect, fillRect)
     }
 }

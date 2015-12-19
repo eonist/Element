@@ -11,6 +11,8 @@ class RectGraphicUtils2 {
         let bottomRight = Utils.corner(rect, lineStyle,offsetType,Alignment.bottomRight);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
         //print("bottomRight.frame: " + String(bottomRight.frame));
         //print("bottomRight.line: " + String(bottomRight.line));
+        Swift.print("topLeft.lineFrame: " + "\(topLeft.lineFrame)")
+        Swift.print("bottomRight.lineFrame: " + "\(bottomRight.lineFrame)")
         let lineFrameRect:CGRect = Converter.convert(topLeft.lineFrame,bottomRight.lineFrame)
         let lineRect:CGRect = Converter.convert(topLeft.line,bottomRight.line)
         let fillRect:CGRect = Converter.convert(topLeft.fill,bottomRight.fill)

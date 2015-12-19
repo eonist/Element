@@ -1,7 +1,10 @@
 import Foundation
 
 class RectGraphicUtils2 {
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect, fillRect:CGRect) {
+    /**
+     *
+     */
+    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, lineFrameRect:CGRect, fillRect:CGRect) {
         let topLeft = Utils.corner(rect, lineStyle,offsetType,Alignment.topLeft);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
         //print("topLeft.frame: " + String(topLeft.frame));
         //print("topLeft.line: " + String(topLeft.line));

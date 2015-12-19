@@ -9,16 +9,16 @@ class RectGraphicUtils2 {
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
         var lineFrameRect:CGRect = CGRect()
         var lineRect:CGRect = CGRect()
-        var fillRect:CGRect = CGRect()
+        var fillRect:CGRect = rect
         
         
         /*Left*/
         if(offsetType.left == OffsetType.outside){
             //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
             //lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
-            fillRect = rect.offset(lineStyle.thickness, lineStyle.thickness)
+            fillRect = fillRect.offset(lineStyle.thickness, 0)
         }else { //inside
-            fillRect = rect.copy()
+            
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
@@ -28,7 +28,7 @@ class RectGraphicUtils2 {
         }
         /*Top*/
         if(offsetType.top == OffsetType.outside){
-            
+            fillRect = fillRect.offset(0,lineStyle.thickness)
         }else{
             
         }

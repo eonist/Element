@@ -11,7 +11,7 @@ class RectGraphicUtils2 {
         var lineRect:CGRect = rect.copy()
         var fillRect:CGRect = rect.copy()
         
-        Swift.print("lineRect: " + "\(lineRect)")
+        //Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/
         if(offsetType.left == OffsetType.outside){
             lineFrameRect = lineFrameRect.expand(lineStyle.thickness, 0)

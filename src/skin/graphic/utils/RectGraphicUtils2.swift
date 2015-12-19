@@ -11,20 +11,20 @@ class RectGraphicUtils2 {
         let bottomRight = Utils.corner(rect, lineStyle,offsetType,Alignment.bottomRight);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
         //print("bottomRight.frame: " + String(bottomRight.frame));
         //print("bottomRight.line: " + String(bottomRight.line));
-        let frameRect:CGRect = Converter.convert(topLeft.frame,bottomRight.frame)
+        let lineFrameRect:CGRect = Converter.convert(topLeft.lineFrame,bottomRight.frame)
         let lineRect:CGRect = Converter.convert(topLeft.line,bottomRight.line)
         let fillRect:CGRect = Converter.convert(topLeft.fill,bottomRight.fill)
-        let convertedTopLeftPoint = Converter.pointToSpace(topLeft.line,lineRect,frameRect)
+        let convertedTopLeftPoint = Converter.pointToSpace(topLeft.line,lineRect,lineFrameRect)
         //Swift.print("convertedTopLeftPoint: " + "\(convertedTopLeftPoint)")
         /*convert the point to the correct point space*/
-        let convertedBottomRightPoint = Converter.pointToSpace(bottomRight.line,lineRect,frameRect)
+        let convertedBottomRightPoint = Converter.pointToSpace(bottomRight.line,lineRect,lineFrameRect)
         //Swift.print("convertedBottomRightPoint: " + "\(convertedBottomRightPoint)")
         var convertedLineRect:CGRect = Converter.convert(convertedTopLeftPoint,convertedBottomRightPoint)
         //Swift.print("lineRect: before" + "\(convertedLineRect)")
         /*convert to 0,0 pointspace*/
         convertedLineRect -= topLeft.line
         //Swift.print("lineRect: after" + "\(convertedLineRect)")
-        return (convertedLineRect,frameRect, fillRect)
+        return (convertedLineRect,lineFrameRect, fillRect)
     }
 }
 private class Utils{
@@ -32,15 +32,15 @@ private class Utils{
      * NOTE: only supports topLeft and bottomRight
      * TODO: This code isnt Optimized, to optimize see the old code. (Requires individual side calculation and also some sides use the same math so some sides can be squasehd etc. Also reuse similar math etc) you can optimize by storing halfsizes etc
      */
-    class func corner(rect:CGRect,_ lineStyle:ILineStyle,_ offsetType:OffsetType,_ cornerType:String)->(line:CGPoint,frame:CGPoint,fill:CGPoint){
+    class func corner(rect:CGRect,_ lineStyle:ILineStyle,_ offsetType:OffsetType,_ cornerType:String)->(line:CGPoint,lineFrame:CGPoint,fill:CGPoint){
         if(cornerType == Alignment.topLeft){
             let topOffsetRect = offsetRect(rect, lineStyle, OffsetType(offsetType.top))
             let leftOffsetRect = offsetRect(rect, lineStyle, OffsetType(offsetType.left))
-            return (CGPoint(leftOffsetRect.lineRect.x,topOffsetRect.lineRect.y), CGPoint(leftOffsetRect.frameRect.x,topOffsetRect.frameRect.y),CGPoint(leftOffsetRect.fillRect.x,topOffsetRect.fillRect.y))
+            return (CGPoint(leftOffsetRect.lineRect.x,topOffsetRect.lineRect.y), CGPoint(leftOffsetRect.lineFrameRect.x,topOffsetRect.lineFrameRect.y),CGPoint(leftOffsetRect.fillRect.x,topOffsetRect.fillRect.y))
         }else{/*bottomRight*/
             let bottomOffsetRect = offsetRect(rect, lineStyle, OffsetType(offsetType.bottom))
             let rightOffsetRect = offsetRect(rect, lineStyle, OffsetType(offsetType.right))
-            return (CGPoint(rightOffsetRect.lineRect.bottomRight.x,bottomOffsetRect.lineRect.bottomRight.y), CGPoint(rightOffsetRect.frameRect.bottomRight.x,bottomOffsetRect.frameRect.bottomRight.y),CGPoint(rightOffsetRect.fillRect.bottomRight.x,bottomOffsetRect.fillRect.bottomRight.y))
+            return (CGPoint(rightOffsetRect.lineRect.bottomRight.x,bottomOffsetRect.lineRect.bottomRight.y), CGPoint(rightOffsetRect.lineFrameRect.bottomRight.x,bottomOffsetRect.lineFrameRect.bottomRight.y),CGPoint(rightOffsetRect.fillRect.bottomRight.x,bottomOffsetRect.fillRect.bottomRight.y))
         }
     }
     /**
@@ -48,7 +48,7 @@ private class Utils{
      * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(frameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
+    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
         var lineFrameRect:CGRect
         var lineRect:CGRect
         var fillOffsetRect:CGRect

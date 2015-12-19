@@ -7,6 +7,7 @@ class RectGraphicUtil {
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
     class func lineOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        var lineFrameRect:CGRect
         var lineRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //uniformally inset the lineFrameRect by half the thickness

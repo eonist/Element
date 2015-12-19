@@ -7,17 +7,17 @@ class RectGraphicUtils2 {
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
-        var lineFrameRect:CGRect
-        var lineRect:CGRect
-        var fillRect:CGRect
-        //Expand by 2x the thickness of the border
+        var lineFrameRect:CGRect = CGRect()
+        var lineRect:CGRect = CGRect()
+        var fillRect:CGRect = CGRect()
+        
         
         /*Left*/
         if(offsetType.left == OffsetType.outside){
             lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
             fillRect = rect.offset(lineStyle.thickness, lineStyle.thickness)
         }else { //inside
-            fillRect.copy()
+            fillRect = rect.copy()
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
@@ -26,9 +26,17 @@ class RectGraphicUtils2 {
             
         }
         /*Top*/
-        
+        if(offsetType.top == OffsetType.outside){
+            
+        }else{
+            
+        }
         /*Bottom*/
-        
+        if(offsetType.bottom == OffsetType.outside){
+            
+        }else{
+            
+        }
         //offset by half of thickness in x & y, then you expand it 1x the thickness
         lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
         //offset the fillRect with the thickness of the border in x & y dir

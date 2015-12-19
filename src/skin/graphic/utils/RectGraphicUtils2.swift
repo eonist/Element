@@ -2,9 +2,7 @@ import Foundation
 
 class RectGraphicUtils2 {
     /**
-     * New
-     * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
-     * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
+     * 
      */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
         var lineFrameRect:CGRect = rect.copy()
@@ -43,10 +41,6 @@ class RectGraphicUtils2 {
         }else{//inside
             lineRect = lineRect.expand(0,lineStyle.thickness)
         }
-        //offset by half of thickness in x & y, then you expand it 1x the thickness
-        
-        //offset the fillRect with the thickness of the border in x & y dir
-        
         return (lineFrameRect,lineRect, fillRect)
     }
 }

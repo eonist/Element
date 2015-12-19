@@ -8,7 +8,7 @@ class RectGraphicUtils2 {
      */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
         var lineFrameRect:CGRect = CGRect()
-        var lineRect:CGRect = CGRect()
+        var lineRect:CGRect = rect
         var fillRect:CGRect = rect
         
         
@@ -33,13 +33,13 @@ class RectGraphicUtils2 {
             fillRect = fillRect.offset(0,lineStyle.thickness)
             
         }else{//inside
-            lineRect = lineRect.offset(0, lineStyle.thickness/2).expand(0,-lineStyle.thickness/2)
+            lineRect = lineRect.offset(0, -lineStyle.thickness/2).expand(0,+lineStyle.thickness/2)
         }
         /*Bottom*/
         if(offsetType.bottom == OffsetType.outside){//outside
-            
+            lineRect = lineRect.expand(0,-lineStyle.thickness/2)
         }else{//inside
-            
+            lineRect = lineRect.expand(0,+lineStyle.thickness/2)
         }
         //offset by half of thickness in x & y, then you expand it 1x the thickness
         

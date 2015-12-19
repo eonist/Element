@@ -37,7 +37,7 @@ class RectGraphicUtils2 {
         }
         /*Bottom*/
         if(offsetType.bottom == OffsetType.outside){//outside
-            lineRect = lineRect.expand(0,-lineStyle.thickness/2)
+            lineRect = lineRect.expand(0,lineStyle.thickness)
         }else{//inside
             lineRect = lineRect.expand(0,+lineStyle.thickness/2)
         }

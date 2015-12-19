@@ -14,7 +14,7 @@ class RectGraphicUtils2 {
         Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/
         if(offsetType.left == OffsetType.outside){
-            //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            lineFrameRect = lineFrameRect.expand(lineStyle.thickness, 0)
             lineRect = lineRect.offset(lineStyle.thickness / 2, 0)//.expand(-lineStyle.thickness/2, 0)
             fillRect = fillRect.offset(lineStyle.thickness, 0)
         }else { //inside
@@ -22,7 +22,7 @@ class RectGraphicUtils2 {
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
-            //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
             lineRect = lineRect.expand(lineStyle.thickness , 0)
         }else{//inside
             lineRect = lineRect.expand(lineStyle.thickness , 0)

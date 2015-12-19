@@ -24,7 +24,7 @@ class RectGraphicUtils2 {
         return (convertedLineRect,frameRect, fillRect)
     }
 }
-class Utils{
+private class Utils{
     /**
      * NOTE: only supports topLeft and bottomRight
      * TODO: This code isnt Optimized, to optimize see the old code. (Requires individual side calculation and also some sides use the same math so some sides can be squasehd etc. Also reuse similar math etc) you can optimize by storing halfsizes etc

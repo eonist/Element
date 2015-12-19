@@ -18,13 +18,14 @@ class RectGraphicUtils2 {
             lineRect = lineRect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness/2, lineStyle.thickness/2)
             fillRect = fillRect.offset(lineStyle.thickness, 0)
         }else { //inside
-            
+            lineRect = lineRect.offset(-lineStyle.thickness/2, 0).expand(lineStyle.thickness/2 , 0)
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
             //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            lineRect = lineRect.expand(lineStyle.thickness/2 , 0)
         }else{//inside
-            
+            lineRect = lineRect.expand(lineStyle.thickness/2 , 0)
         }
         /*Top*/
         if(offsetType.top == OffsetType.outside){

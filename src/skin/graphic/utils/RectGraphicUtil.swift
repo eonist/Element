@@ -26,16 +26,15 @@ class RectGraphicUtil {
      * New
      */
     class func fillOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
-        var fillFrameRect:CGRect
-        var fillRect:CGRect
+        var fillOffsetRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //offset the fillRect with the thickness of the border in x & y dir
-            fillRect = rect.inset(lineStyle.thickness , lineStyle.thickness )
+            fillOffsetRect = rect.offset(lineStyle.thickness, lineStyle.thickness)
         }else{//inside
             //dont do anything
-            fillRect = rect.copy()
+            fillOffsetRect = rect.copy()
         }
-        return fillRect
+        return fillOffsetRect
     }
     /**
      * Returns a Tuple with "frame and line rects" by offsetting @param rect with @param lineOffset

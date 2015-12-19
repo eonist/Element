@@ -10,10 +10,10 @@ class RectGraphicUtil {
         var lineFrameRect:CGRect
         var lineRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
-            //uniformally inset the lineFrameRect by half the thickness
-            lineRect = rect.inset(lineStyle.thickness / 2, lineStyle.thickness / 2)
+            //offset by half of thickness in x & y, then you expand it 1x the thickness
+            lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
         }else{//inside
-            //uniformally outset the lineFrameRect by half the border thickness
+            //
             lineRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
         }
         return lineRect

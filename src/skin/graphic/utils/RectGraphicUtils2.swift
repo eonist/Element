@@ -1,7 +1,7 @@
 import Foundation
 
 class RectGraphicUtils2 {
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect) {
+    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect, fillRect:CGRect) {
         let topLeft = Utils.corner(rect, lineStyle,offsetType,Alignment.topLeft);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
         //print("topLeft.frame: " + String(topLeft.frame));
         //print("topLeft.line: " + String(topLeft.line));
@@ -10,6 +10,7 @@ class RectGraphicUtils2 {
         //print("bottomRight.line: " + String(bottomRight.line));
         let frameRect:CGRect = Converter.convert(topLeft.frame,bottomRight.frame)
         let lineRect:CGRect = Converter.convert(topLeft.line,bottomRight.line)
+        let fillRect:CGRect = Converter.convert(topLeft.fill,bottomRight.fill)
         let convertedTopLeftPoint = Converter.pointToSpace(topLeft.line,lineRect,frameRect)
         //Swift.print("convertedTopLeftPoint: " + "\(convertedTopLeftPoint)")
         /*convert the point to the correct point space*/
@@ -20,9 +21,8 @@ class RectGraphicUtils2 {
         /*convert to 0,0 pointspace*/
         convertedLineRect -= topLeft.line
         //Swift.print("lineRect: after" + "\(convertedLineRect)")
-        return (convertedLineRect,frameRect)
+        return (convertedLineRect,frameRect, fillRect)
     }
-    
 }
 class Utils{
     /**
@@ -45,7 +45,7 @@ class Utils{
      * NOTE: you actually need two CGRects returned, one is for the stroke rect, and one is for framing the stroke rect
      * NOTE: you also need to return a CGRect for the frame of the skin and the frame of the Element aswell. (same frame)
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(frameRect:CGRect,lineRect:CGRect,fill:CGRect){
+    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(frameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
         var lineFrameRect:CGRect
         var lineRect:CGRect
         var fillOffsetRect:CGRect

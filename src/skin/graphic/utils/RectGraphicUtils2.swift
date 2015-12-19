@@ -30,6 +30,7 @@ class RectGraphicUtils2 {
         /*Top*/
         if(offsetType.top == OffsetType.outside){
             fillRect = fillRect.offset(0,lineStyle.thickness)
+            lineRect = lineRect.offset(0, lineStyle.thickness/2).expand(0,-lineStyle.thickness/2)
         }else{
             
         }

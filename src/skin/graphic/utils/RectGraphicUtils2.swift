@@ -23,7 +23,7 @@ class RectGraphicUtils2 {
         /*Right*/
         if(offsetType.right == OffsetType.outside){
             //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
-            lineRect = lineRect.expand(lineStyle.thickness/2 , 0)
+            lineRect = lineRect.expand(-lineStyle.thickness/2 , 0)
         }else{//inside
             lineRect = lineRect.expand(lineStyle.thickness/2 , 0)
         }
@@ -32,13 +32,13 @@ class RectGraphicUtils2 {
             lineRect = lineRect.offset(0, lineStyle.thickness/2).expand(0,-lineStyle.thickness/2)
             fillRect = fillRect.offset(0,lineStyle.thickness)
             
-        }else{
-            
+        }else{//inside
+            lineRect = lineRect.offset(0, lineStyle.thickness/2).expand(0,-lineStyle.thickness/2)
         }
         /*Bottom*/
-        if(offsetType.bottom == OffsetType.outside){
+        if(offsetType.bottom == OffsetType.outside){//outside
             
-        }else{
+        }else{//inside
             
         }
         //offset by half of thickness in x & y, then you expand it 1x the thickness

@@ -11,7 +11,7 @@ class RectGraphicUtils2 {
         let bottomRight = Utils.corner(rect, lineStyle,offsetType,Alignment.bottomRight);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
         //print("bottomRight.frame: " + String(bottomRight.frame));
         //print("bottomRight.line: " + String(bottomRight.line));
-        let lineFrameRect:CGRect = Converter.convert(topLeft.lineFrame,bottomRight.frame)
+        let lineFrameRect:CGRect = Converter.convert(topLeft.lineFrame,bottomRight.lineFrame)
         let lineRect:CGRect = Converter.convert(topLeft.line,bottomRight.line)
         let fillRect:CGRect = Converter.convert(topLeft.fill,bottomRight.fill)
         let convertedTopLeftPoint = Converter.pointToSpace(topLeft.line,lineRect,lineFrameRect)

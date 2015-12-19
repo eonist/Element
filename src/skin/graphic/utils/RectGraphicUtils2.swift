@@ -22,7 +22,7 @@ class RectGraphicUtils2 {
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
-            lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            lineFrameRect = rect.expand(lineStyle.thickness, 0)
             lineRect = lineRect.expand(lineStyle.thickness , 0)
         }else{//inside
             lineRect = lineRect.expand(lineStyle.thickness , 0)

@@ -29,7 +29,9 @@ class RectGraphicUtils2 {
         }
         /*Top*/
         if(offsetType.top == OffsetType.outside){
+            Swift.print("lineRect: " + "\(lineRect)")
             lineRect = lineRect.offset(0, lineStyle.thickness/2).expand(0,-lineStyle.thickness/2)
+            
             fillRect = fillRect.offset(0,lineStyle.thickness)
             
         }else{//inside
@@ -45,16 +47,6 @@ class RectGraphicUtils2 {
         
         //offset the fillRect with the thickness of the border in x & y dir
         
-
-        if(offsetType == OffsetType(OffsetType.outside)){//outside
-        }else if(offsetType == OffsetType(OffsetType.inside)){//inside
-            //leave it as is
-            //lineFrameRect = rect.copy()
-            //uniformally outset the lineFrameRect by half the border thickness
-            //lineRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
-            //dont do anything
-            
-        }
         return (lineFrameRect,lineRect, fillRect)
     }
 }

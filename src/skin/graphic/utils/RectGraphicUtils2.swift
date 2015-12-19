@@ -14,14 +14,15 @@ class RectGraphicUtils2 {
         
         /*Left*/
         if(offsetType.left == OffsetType.outside){
-            lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            //lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
             fillRect = rect.offset(lineStyle.thickness, lineStyle.thickness)
         }else { //inside
             fillRect = rect.copy()
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
-            lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
         }else{//inside
             
         }
@@ -38,16 +39,16 @@ class RectGraphicUtils2 {
             
         }
         //offset by half of thickness in x & y, then you expand it 1x the thickness
-        lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
+        
         //offset the fillRect with the thickness of the border in x & y dir
         
 
         if(offsetType == OffsetType(OffsetType.outside)){//outside
         }else if(offsetType == OffsetType(OffsetType.inside)){//inside
             //leave it as is
-            lineFrameRect = rect.copy()
+            //lineFrameRect = rect.copy()
             //uniformally outset the lineFrameRect by half the border thickness
-            lineRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
+            //lineRect = rect.outset(lineStyle.thickness / 2, lineStyle.thickness / 2)
             //dont do anything
             
         }

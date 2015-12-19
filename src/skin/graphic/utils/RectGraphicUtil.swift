@@ -26,6 +26,7 @@ class RectGraphicUtil {
      * New
      */
     class func fillOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        var fillFrameRect:CGRect
         var fillRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //offset the fillRect with the thickness of the border in x & y dir

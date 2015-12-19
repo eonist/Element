@@ -12,7 +12,13 @@ class RectGraphicUtils2 {
         var fillOffsetRect:CGRect
         if(offsetType == OffsetType(OffsetType.outside)){//outside
             //Expand by 2x the thickness of the border
-            lineFrameRect = rect.expand(lineStyle.thickness * 2, lineStyle.thickness * 2)
+            
+            if(offsetType.left == OffsetType.outside){
+                lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            }
+            if(offsetType.right == OffsetType.outside){
+                lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
+            }
             //offset by half of thickness in x & y, then you expand it 1x the thickness
             lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
             //offset the fillRect with the thickness of the border in x & y dir

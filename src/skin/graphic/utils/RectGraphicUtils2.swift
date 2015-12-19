@@ -15,7 +15,7 @@ class RectGraphicUtils2 {
         /*Left*/
         if(offsetType.left == OffsetType.outside){
             //lineFrameRect = rect.expand(lineStyle.thickness, lineStyle.thickness)
-            //lineRect = rect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness, lineStyle.thickness)
+            lineRect = lineRect.offset(lineStyle.thickness / 2, lineStyle.thickness / 2).expand(lineStyle.thickness/2, lineStyle.thickness/2)
             fillRect = fillRect.offset(lineStyle.thickness, 0)
         }else { //inside
             

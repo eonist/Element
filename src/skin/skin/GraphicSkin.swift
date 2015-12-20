@@ -7,6 +7,8 @@ class GraphicSkin:Skin{
         addSubview(decoratable.graphic)
         /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
         decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
+        decoratable.graphic.fillShape.delegate = self
+        decoratable.graphic.lineShape.delegate = self
         /*
         let layerA = CALayer()
         layerA.frame = CGRectMake(20, 20, 100, 100);
@@ -30,7 +32,7 @@ class GraphicSkin:Skin{
         Swift.print("Graphic.drawLayer(layer,inContext)")
         if(layer === fillShape){
             Swift.print("fillShape")
-            fillShape.graphics.context = ctx
+            decoratable.graphic.fillShape.graphics.context = ctx
             
             //TODO:you only need to call the draw method from here, the fill setting etc can be done in the decoratable classes
             

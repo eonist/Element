@@ -9,11 +9,7 @@ import Cocoa
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
     override var graphic:BaseGraphic {return decoratable.graphic}
-    init(_ decoratable:IGraphicDecoratable){
-        self.decoratable = decoratable
-        
-    }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    
     override func initialize(){
         if(getGraphic().fillStyle != nil){fill()}
         if(getGraphic().lineStyle != nil){line()}

@@ -14,7 +14,7 @@ class GraphicSkin:Skin{
         decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
     }
     override func draw(){
-        //Swift.print("GraphicSkin.draw()")
+        Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
             /*decoratable = */SkinModifier.align(self,decoratable as! IPositional)/* as! IGraphicDecoratable;*/

@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*
 * @Note  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
 * TODO: possibly add setPosition();

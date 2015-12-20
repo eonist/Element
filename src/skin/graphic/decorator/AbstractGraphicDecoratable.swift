@@ -8,7 +8,6 @@ class AbstractGraphicDecoratable:NSObject/**/,/**/IGraphicDecoratable{
     func getDecoratable()->IGraphicDecoratable{fatalError(errMsg)}/*news*/
     var graphic:BaseGraphic {fatalError(errMsg)}/*This is only a getter, for now, and dont revert to IBaseGraphic*/
     func getGraphic() -> BaseGraphic{fatalError(errMsg)}
-    func initialize(){}
     func draw(){}
     func initFill(){}
     func initLine(){}

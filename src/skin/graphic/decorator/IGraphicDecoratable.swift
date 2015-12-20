@@ -16,7 +16,6 @@ protocol IGraphicDecoratable:class{
     func applyLineStyle()
     func drawLine()
     func stylizeLine()
-    func initialize()
     func draw()
     /*Size & position*/
     /*

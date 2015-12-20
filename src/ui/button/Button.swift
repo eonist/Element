@@ -16,9 +16,9 @@ class Button:Element {
     override func mouseOver() {
         Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
-            state = SkinStates.over
+            //state = SkinStates.over
             Swift.print("skinstate: " + getSkinState())
-            setSkinState(getSkinState());
+            //setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
         }
     }

@@ -37,7 +37,7 @@ class CSSPropertyParser {
         let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
         gradient.rotation = Trig.normalize2(rotation * ㎭);/*should pin the angle between -π and +π*/// :TODO: rotations should be applied in the matrix
-        Swift.print("CSSPropertyParser.linearGradient.rotation: " + "\(gradient.rotation)")
+        //Swift.print("CSSPropertyParser.linearGradient.rotation: " + "\(gradient.rotation)")
         return gradient;
     }
     /**

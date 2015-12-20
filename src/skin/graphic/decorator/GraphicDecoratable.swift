@@ -15,6 +15,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
         graphic.setDelegate(self)
     }
+    /**
+     * Setup the geometry and init the display process of fill and line
+     */
     override func draw() {//new
         Swift.print("GraphicDecoratable.draw()")
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.display();}/*setup the fill geometry*//*draw the fileShape*/

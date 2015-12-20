@@ -35,7 +35,7 @@ class GraphicSkin:Skin{
     }
     /**
      * This is a delegate handler method
-     * NOTE: using the other delegate method that doesnt pass in the context, for simpler code!?!
+     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("GraphicSkin.drawLayer(layer,inContext)")

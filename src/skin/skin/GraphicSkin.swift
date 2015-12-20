@@ -9,8 +9,8 @@ class GraphicSkin:Skin{
         //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
         decoratable.graphic.fillShape.delegate = self
         decoratable.graphic.lineShape.delegate = self
-        decoratable.graphic.fillShape.display()/*draw the fileShape*/
-        decoratable.graphic.lineShape.display()/*draw the lineShape*/
+        //decoratable.graphic.fillShape.display()/*draw the fileShape*/
+        //decoratable.graphic.lineShape.display()/*draw the lineShape*/
         /*
         let layerA = CALayer()
         layerA.frame = CGRectMake(20, 20, 100, 100);

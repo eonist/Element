@@ -20,13 +20,30 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     override func draw() {//new
         Swift.print("GraphicDecoratable.draw()")
-        /*
+        
         getGraphic().fillShape.delegate = self
         getGraphic().lineShape.delegate = self
-        */
+        /**/
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.display();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
         
+    }
+    /**
+     * This is a delegate handler method
+     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
+     */
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        
+        Swift.print("GraphicSkin.drawLayer(layer,inContext)")
+        if(layer === decoratable.graphic.fillShape){
+            Swift.print("fillShape")
+            decoratable.graphic.fillShape.graphics.context = ctx
+            if(decoratable.getGraphic().fillStyle != nil){decoratable.fill()}
+        }else if(layer === decoratable.graphic.lineShape){
+            Swift.print("lineShape")
+            decoratable.graphic.lineShape.graphics.context = ctx
+            if(decoratable.getGraphic().lineStyle != nil){decoratable.line()}
+        }
     }
     /*
     func displayLayer(layer: CALayer){

@@ -13,8 +13,10 @@ class GraphicSkin:Skin{
         
         decoratable.draw()
         
+        /*
         decoratable.graphic.fillShape.delegate = self
         decoratable.graphic.lineShape.delegate = self
+        */
         
         //decoratable.graphic.lineShape.display()/*draw the lineShape*/
         /*
@@ -33,22 +35,7 @@ class GraphicSkin:Skin{
         */
         
     }
-    /**
-     * This is a delegate handler method
-     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("GraphicSkin.drawLayer(layer,inContext)")
-        if(layer === decoratable.graphic.fillShape){
-            Swift.print("fillShape")
-            decoratable.graphic.fillShape.graphics.context = ctx
-            if(decoratable.getGraphic().fillStyle != nil){decoratable.fill()}
-        }else if(layer === decoratable.graphic.lineShape){
-            Swift.print("lineShape")
-            decoratable.graphic.lineShape.graphics.context = ctx
-            if(decoratable.getGraphic().lineStyle != nil){decoratable.line()}
-        }
-    }
+    
     /*
     override func layout() {
     //Swift.print("GraphicSkin.layout()")

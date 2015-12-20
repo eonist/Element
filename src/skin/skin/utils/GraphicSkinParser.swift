@@ -11,7 +11,7 @@ class GraphicSkinParser{
      * Configures a GraphicDecoratable instance based on what stylePropertyValues is found in @param skin at @param depth
      */
     class func configure(skin:ISkin)->IGraphicDecoratable{
-        Swift.print("GraphicSkinParser.configure")
+        //Swift.print("GraphicSkinParser.configure")
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
         let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)

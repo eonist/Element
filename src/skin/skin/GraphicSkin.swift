@@ -11,8 +11,8 @@ class GraphicSkin:Skin{
         /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
         //decoratable.initialize()//runs trough all the different calls and makes the graphic in one go. (optimization)
         
-        if(decoratable.getGraphic().fillStyle != nil){decoratable.drawFill()}
-        if(decoratable.getGraphic().lineStyle != nil){decoratable.drawLine()}
+        if(decoratable.getGraphic().fillStyle != nil){decoratable.drawFill()}/*setup the fill geometry*/
+        if(decoratable.getGraphic().lineStyle != nil){decoratable.drawLine()}/*setup the line geometry*/
         
         decoratable.graphic.fillShape.display()/*draw the fileShape*/
         decoratable.graphic.lineShape.display()/*draw the fileShape*/

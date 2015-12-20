@@ -37,7 +37,7 @@ class GraphicSkin:Skin{
      * TODO: use the other delegate method that doesnt pass in the context, for simpler code!?!
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("Graphic.drawLayer(layer,inContext)")
+        Swift.print("GraphicSkin.drawLayer(layer,inContext)")
         if(layer === decoratable.graphic.fillShape){
             Swift.print("fillShape")
             decoratable.graphic.fillShape.graphics.context = ctx

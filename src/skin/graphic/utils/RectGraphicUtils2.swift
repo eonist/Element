@@ -4,17 +4,17 @@ class RectGraphicUtils2 {
     /**
      * 
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
+    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillFrameRect:CGRect){
         var lineFrameRect:CGRect = rect.copy()
         var lineRect:CGRect = CGRect(0,0,rect.width,rect.height)
-        var fillRect:CGRect = rect.copy()
+        var fillFrameRect:CGRect = rect.copy()
         
         //Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/
         if(offsetType.left == OffsetType.outside){
             lineFrameRect = lineFrameRect.expand(lineStyle.thickness, 0)
             lineRect = lineRect.offset(lineStyle.thickness / 2, 0)//.expand(-lineStyle.thickness/2, 0)
-            fillRect = fillRect.offset(lineStyle.thickness, 0)
+            fillFrameRect = fillFrameRect.offset(lineStyle.thickness, 0)
         }else { //inside
             lineRect = lineRect.offset(-lineStyle.thickness/2, 0)//.expand(lineStyle.thickness/2 , 0)
         }
@@ -29,7 +29,7 @@ class RectGraphicUtils2 {
         if(offsetType.top == OffsetType.outside){
             lineFrameRect = lineFrameRect.expand(0,lineStyle.thickness)
             lineRect = lineRect.offset(0, lineStyle.thickness/2)//.expand(0,-lineStyle.thickness/2)
-            fillRect = fillRect.offset(0,lineStyle.thickness)
+            fillFrameRect = fillFrameRect.offset(0,lineStyle.thickness)
             
         }else{//inside
             lineRect = lineRect.offset(0, -lineStyle.thickness/2)//.expand(0,+lineStyle.thickness/2)
@@ -41,6 +41,6 @@ class RectGraphicUtils2 {
         }else{//inside
             lineRect = lineRect.expand(0,lineStyle.thickness)
         }
-        return (lineFrameRect,lineRect, fillRect)
+        return (lineFrameRect,lineRect, fillFrameRect)
     }
 }

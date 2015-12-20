@@ -3,6 +3,12 @@ import Cocoa
  * The AbstractDecorator has all the decorator methods
  */
 class AbstractGraphicDecoratable:NSView,IGraphicDecoratable{
+    /**
+     *
+     */
+    override func init(){
+        super.init()
+    }
     let errMsg:String = "Must be overridden in subClass"
     func getDecoratable()->IGraphicDecoratable{fatalError(errMsg)}/*news*/
     var graphic:BaseGraphic {fatalError(errMsg)}/*This is only a getter, for now, and dont revert to IBaseGraphic*/

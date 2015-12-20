@@ -49,10 +49,7 @@ class StylePropertyParser{
     */
     class func colorLineStyle(skin:ISkin) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
-        let val = //temp fix
-        if(value(skin, CSSConstants.line) == nil){return nil }
-            
-        
+        if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as? CGFloat ?? CGFloat.NaN
         let lineColorValue:Double = color(skin, CSSConstants.line)
         //Swift.print("StylePropertyParser.colorLineStyle() " + String(value(skin, CSSConstants.lineAlpha)))

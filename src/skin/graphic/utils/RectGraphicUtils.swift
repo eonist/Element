@@ -4,7 +4,7 @@ class RectGraphicUtils2 {
     /**
      *
      */
-    class func fillFrameRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+    class func fillFrame(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         var fillFrameRect:CGRect = rect.copy()
         //Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/

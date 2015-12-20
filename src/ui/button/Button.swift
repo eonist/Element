@@ -20,9 +20,13 @@ class Button:Element {
             //Swift.print("skinstate: " + getSkinState())
             //setSkinState(getSkinState());
             
+            
+            
             //continue here tomorrow. test the INteractiveElement for bugs. esp the mouse enter method
             //remove all the prints from this class, then move on to the INteractiveElement to test it. 
             //the bug is probably that the skin skin isnt set to return nil on hittest, which it should inorner to get the roll over roll out scheme to work
+            //fix the gradientline bug, its not being called somewhere. 
+            
             
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
         }

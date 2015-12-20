@@ -13,7 +13,7 @@ class GraphicSkinParser{
     class func configure(skin:ISkin)->IGraphicDecoratable{
         //Swift.print("GraphicSkinParser.configure")
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);
-        let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin);
+        let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
         graphic = Utils.rectGraphic(skin,graphic)
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
@@ -27,7 +27,7 @@ private class Utils{
     /**
      *
      */
-    class func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle)->IGraphicDecoratable {
+    class func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle?)->IGraphicDecoratable {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
         //Swift.print("lineOffsetType: top:" + lineOffsetType.top + "  left:" + lineOffsetType.left + " bottom: " + lineOffsetType.bottom + " right: "+lineOffsetType.right)
         return BaseGraphic(fillStyle,lineStyle,lineOffsetType)

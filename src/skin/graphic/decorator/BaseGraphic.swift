@@ -28,12 +28,12 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
      */
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
-            Swift.print("BaseGraphic.beginFill()" )//  " fillStyle!.color:"  + String(fillStyle!.color)
+            //Swift.print("BaseGraphic.beginFill()" )//  " fillStyle!.color:"  + String(fillStyle!.color)
             fillShape.graphics.fill(fillStyle!.color)//Stylize the fill
         }
     }
     override func stylizeFill(){
-        Swift.print("BaseGraphic.stylizeFill()")
+        //Swift.print("BaseGraphic.stylizeFill()")
         GraphicModifier.stylize(fillShape.path,fillShape.graphics)//realize style on the graphic
         //fillShape.display()/*draw the fileShape*/<--temp
     }
@@ -41,14 +41,14 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
      *
      */
     override func applyLineStyle() {
-        Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
+        //Swift.print("BaseGraphic.applyLineStyle() " + String(lineStyle != nil))
         //Swift.print("lineStyle!.color: " + String(lineStyle!.color))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
             lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
         }
     }
     override func stylizeLine(){
-        Swift.print("BaseGraphic.stylizeLine()")
+        //Swift.print("BaseGraphic.stylizeLine()")
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
         //lineShape.display()/*draw the lineShape*/
     }

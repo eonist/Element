@@ -16,7 +16,7 @@ class Skin:FlippedView,ISkin{
     var hasStateChanged:Bool = false;
     var hasSizeChanged:Bool = false;
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    //override var wantsUpdateLayer:Bool {return true}
+    override var wantsUpdateLayer:Bool {return true}
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         
         self.style = style;
@@ -30,6 +30,7 @@ class Skin:FlippedView,ISkin{
         super.init(frame: NSRect(x: 0, y: 0, width: element!.width/*+2.0*/, height: element!.height/*+2.0*/))/*this used to be a generic size, but since wants deault clipping doesnt work anymore we have to set this size to something as big as the skin needs to be*/
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+        layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay//this is new, but apple recomends it, more about it here: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/SettingUpLayerObjects/SettingUpLayerObjects.html#//apple_ref/doc/uid/TP40004514-CH13-SW4
         layer!.masksToBounds = false//this is needed!!!
     }
     /**

@@ -5,7 +5,7 @@ class RectGraphicUtils2 {
      * 
      */
     class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillRect:CGRect){
-        var lineFrameRect:CGRect = rect.copy()
+        var lineFrameRect:CGRect = CGRect(0,0,rect.width,rect.height)
         var lineRect:CGRect = rect.copy()
         var fillRect:CGRect = rect.copy()
         

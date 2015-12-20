@@ -17,6 +17,7 @@ protocol IGraphicDecoratable:class{
     func drawLine()
     func stylizeLine()
     func initialize()
+    func draw()
     /*Size & position*/
     /*
     func getSize()->CGSize

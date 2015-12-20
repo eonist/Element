@@ -8,6 +8,9 @@ class AbstractGraphicDecoratable:IGraphicDecoratable{
     var graphic:BaseGraphic {fatalError(errMsg)}/*This is only a getter, for now, and dont revert to IBaseGraphic*/
     func getGraphic() -> BaseGraphic{fatalError(errMsg)}
     func initialize(){}
+    func draw(){}
+    func initFill(){}
+    func initLine(){}
     /*Fill*/
     func fill(){}
     func beginFill(){fatalError(errMsg)}

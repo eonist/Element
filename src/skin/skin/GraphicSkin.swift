@@ -16,7 +16,8 @@ class GraphicSkin:Skin{
     
         
         //continue here, try to update the layer on button interaction, maybe make a simple example and work from there
-        
+        //try to call the update twice. or from aother place.
+        //or see history, it seemd to work before
         
         
     }

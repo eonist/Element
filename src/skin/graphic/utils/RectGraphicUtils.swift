@@ -8,11 +8,11 @@ class RectGraphicUtils2 {
         var fillFrameRect:CGRect = rect.copy()
         //Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/
-        if(lineStyle.thickness.isNaN && offsetType.left == OffsetType.outside){
+        if(!lineStyle.thickness.isNaN && offsetType.left == OffsetType.outside){
             fillFrameRect = fillFrameRect.offset(lineStyle.thickness, 0)
         }
         /*Top*/
-        if(offsetType.top == OffsetType.outside){
+        if(!lineStyle.thickness.isNaN && offsetType.top == OffsetType.outside){
             fillFrameRect = fillFrameRect.offset(0,lineStyle.thickness)
         }
         return fillFrameRect

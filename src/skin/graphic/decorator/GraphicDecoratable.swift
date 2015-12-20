@@ -26,7 +26,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
         
     }
-    
+    func displayLayer(layer: CALayer){
+        Swift.print("displayLayer")
+    }
     /**
      * This is a delegate handler method
      * TODO: use the other delegate method that doesnt pass in the context, for simpler code!?!

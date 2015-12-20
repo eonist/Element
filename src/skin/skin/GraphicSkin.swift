@@ -20,6 +20,8 @@ class GraphicSkin:Skin{
         decoratable.graphic.fillShape.delegate = self
         decoratable.graphic.lineShape.delegate = self
         
+        //continue here: one draw call in graphic decoratable and two initializeFill and initializeLine calls
+        
         
         //decoratable.graphic.lineShape.display()/*draw the lineShape*/
         /*

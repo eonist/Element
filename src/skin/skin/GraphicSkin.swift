@@ -35,6 +35,9 @@ class GraphicSkin:Skin{
         */
         
     }
+    func inititialize(){
+        
+    }
     /**
      * This is a delegate handler method
      * TODO: use the other delegate method that doesnt pass in the context, for simpler code!?!

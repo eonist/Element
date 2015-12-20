@@ -1,10 +1,17 @@
 import Foundation
 
 class RectGraphicUtils2 {
+    
     /**
-     * 
+     *
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect,fillFrameRect:CGRect){
+    class func fillOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+        
+    }
+    /**
+     *
+     */
+    class func lineOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect){
         var lineFrameRect:CGRect = rect.copy()
         var lineRect:CGRect = CGRect(0,0,rect.width,rect.height)
         var fillFrameRect:CGRect = rect.copy()

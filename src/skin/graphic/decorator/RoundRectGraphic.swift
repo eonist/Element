@@ -14,15 +14,11 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
-        let x:CGFloat = graphic.lineOffsetType.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        let y:CGFloat = graphic.lineOffsetType.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        //Swift.print("RoundRectGraphic2.drawFill() ")
-        let w:CGFloat = self.width
-        //Swift.print("w: " + "\(w)")
-        let h:CGFloat = self.height
-        //Swift.print("h: " + "\(h)")
-        //Swift.print("fillet.topLeft: " + "\(fillet.topLeft)")
-        getGraphic().fillShape.path = CGPathParser.roundRect(x,y,w,h,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes
+        //Swift.print("RoundRectGraphic.drawFill() ")
+        let fillOffsetRect = RectGraphicUtils2.fillOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType)
+        getGraphic().fillShape.frame = fillOffsetRect/*,position and set the size of the frame*/
+        getGraphic().fillShape.path = CGPathParser.roundRect(0,0,width,height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
+    
     }
     /**
      *

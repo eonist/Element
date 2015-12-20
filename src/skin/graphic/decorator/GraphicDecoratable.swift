@@ -55,6 +55,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.beginFill()
     }
     override func drawFill(){
+        Swift.print("GraphicDecoratable.drawFill()")
         decoratable.drawFill()
     }
     override func stylizeFill(){

@@ -1,7 +1,7 @@
 import Cocoa
 //there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there.
 /**
- * 
+ * TODO: you cant set the frame after you have called the display call on a layer. so you have to set it before.
  */
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){

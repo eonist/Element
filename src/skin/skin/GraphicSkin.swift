@@ -33,23 +33,27 @@ class GraphicSkin:Skin{
         */
         
     }
-    
+    override func displayLayer(layer: CALayer) {
+        Swift.print("GraphicSkin.drawLayer(layer,inContext)")
+        if(layer === decoratable.graphic.fillShape){
+            Swift.print("fillShape")
+            //decoratable.graphic.fillShape.graphics.context = ctx
+            if(decoratable.getGraphic().fillStyle != nil){decoratable.fill()}
+        }else if(layer === decoratable.graphic.lineShape){
+            Swift.print("lineShape")
+            //decoratable.graphic.lineShape.graphics.context = ctx
+            if(decoratable.getGraphic().lineStyle != nil){decoratable.line()}
+        }
+    }
     /**
      * This is a delegate handler method
      * TODO: use the other delegate method that doesnt pass in the context, for simpler code!?!
      */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("GraphicSkin.drawLayer(layer,inContext)")
-        if(layer === decoratable.graphic.fillShape){
-            Swift.print("fillShape")
-            decoratable.graphic.fillShape.graphics.context = ctx
-            if(decoratable.getGraphic().fillStyle != nil){decoratable.fill()}
-        }else if(layer === decoratable.graphic.lineShape){
-            Swift.print("lineShape")
-            decoratable.graphic.lineShape.graphics.context = ctx
-            if(decoratable.getGraphic().lineStyle != nil){decoratable.line()}
-        }
-    }
+     /*
+     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+     
+     }
+     */
     /*
     override func layout() {
     //Swift.print("GraphicSkin.layout()")

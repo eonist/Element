@@ -19,8 +19,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().lineStyle != nil){line()}
     }
     override func draw() {//new
-        if(getGraphic().fillStyle != nil){drawFill()}/*setup the fill geometry*/
-        if(getGraphic().lineStyle != nil){drawLine()}/*setup the line geometry*/
+        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.display();}/*setup the fill geometry*//*draw the fileShape*/
+        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
     }
     override func fill(){
         //Swift.print("GraphicDecoratable.fill()")

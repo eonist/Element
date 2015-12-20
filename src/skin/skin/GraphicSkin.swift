@@ -14,8 +14,7 @@ class GraphicSkin:Skin{
         decoratable.draw()
         
         //try to figure out a way to
-        decoratable.graphic.fillShape.display()/*draw the fileShape*/
-        decoratable.graphic.lineShape.display()/*draw the fileShape*/
+        
         
         decoratable.graphic.fillShape.delegate = self
         decoratable.graphic.lineShape.delegate = self

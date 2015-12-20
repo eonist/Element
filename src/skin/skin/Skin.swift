@@ -28,9 +28,8 @@ class Skin:FlippedView,ISkin{
         height = element!.height;// :TODO: is this necassary?
         //Swift.print("element!.width: " + "\(element!.width)")
         super.init(frame: NSRect(x: 0, y: 0, width: element!.width/*+2.0*/, height: element!.height/*+2.0*/))/*this used to be a generic size, but since wants deault clipping doesnt work anymore we have to set this size to something as big as the skin needs to be*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         self.wantsLayer = true/*if true then view is layer backed*/
-        
+        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!
     }
     /**

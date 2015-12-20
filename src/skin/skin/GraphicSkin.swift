@@ -23,7 +23,6 @@ class GraphicSkin:Skin{
     }
     override func draw(){
         Swift.print("GraphicSkin.draw()")
-        decoratable.draw()
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             applyProperties(decoratable);
             /*decoratable = */SkinModifier.align(self,decoratable as! IPositional)/* as! IGraphicDecoratable;*/

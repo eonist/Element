@@ -5,6 +5,7 @@ class RectGraphic:SizeableGraphic{
      *
      */
     override func drawFill() {
+        Swift.print("RectGraphic.drawFill()")
         /*
         var x:CGFloat = graphic.lineOffsetType.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
         var y:CGFloat = graphic.lineOffsetType.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;

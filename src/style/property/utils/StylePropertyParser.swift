@@ -17,7 +17,7 @@ class StylePropertyParser{
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
     class func lineStyle(skin:ISkin)->ILineStyle? {
-        return !(value(skin,CSSConstants.line) is IGradient) ? colorLineStyle(skin) : gradientLineStyle(skin);
+        return value(skin,CSSConstants.line) is IGradient ? gradientLineStyle(skin) : colorLineStyle(skin) ;
     }
     /**
      * Returns a FillStyle instance

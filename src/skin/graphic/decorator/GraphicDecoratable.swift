@@ -35,14 +35,14 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         
         Swift.print("GraphicSkin.drawLayer(layer,inContext)")
-        if(layer === decoratable.graphic.fillShape){
-            Swift.print("fillShape")
-            decoratable.graphic.fillShape.graphics.context = ctx
-            if(decoratable.getGraphic().fillStyle != nil){decoratable.fill()}
-        }else if(layer === decoratable.graphic.lineShape){
+        if(layer === graphic.fillShape){
+            Swift.print("fillShape: ")
+            graphic.fillShape.graphics.context = ctx
+            if(getGraphic().fillStyle != nil){fill()}
+        }else if(layer === graphic.lineShape){
             Swift.print("lineShape")
-            decoratable.graphic.lineShape.graphics.context = ctx
-            if(decoratable.getGraphic().lineStyle != nil){decoratable.line()}
+            graphic.lineShape.graphics.context = ctx
+            if(getGraphic().lineStyle != nil){line()}
         }
     }
     /*

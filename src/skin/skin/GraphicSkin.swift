@@ -27,7 +27,7 @@ class GraphicSkin:Skin{
     }
     /**
      * This is a delegate handler method
-     * TODO: use the other delegate method that doesnt pass in the context, for simpler code?
+     * TODO: use the other delegate method that doesnt pass in the context, for simpler code!?!
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("Graphic.drawLayer(layer,inContext)")

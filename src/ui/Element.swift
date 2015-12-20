@@ -68,8 +68,8 @@ class Element:InteractiveView,IElement {
 }
 
 extension IElement {
-    var width:CGFloat {return self.frame.width-2.0}
-    var height:CGFloat {return self.frame.height-2.0}
+    var width:CGFloat {return self.frame.width}
+    var height:CGFloat {return self.frame.height}
     /**
      *
      */

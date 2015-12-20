@@ -15,7 +15,8 @@ class RectGraphic:SizeableGraphic{
         graphic.fillShape.path = rect.path
         */
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
-        let fillOffsetRect = graphic.lineStyle != nil ? RectGraphicUtils2.fillOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
+        let fillOffsetRect = CGRect(x,y,width,height)
+        if(graphic.lineStyle != nil) { RectGraphicUtils2.fillOffsetRect(fillOffsetRect, graphic.lineStyle!, graphic.lineOffsetType)}
         graphic.fillShape.frame = fillOffsetRect/*,position and set the size of the frame*/
         Swift.print("graphic.fillShape.frame: " + "\(graphic.fillShape.frame)")
     }

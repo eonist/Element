@@ -2,23 +2,14 @@ import Cocoa
 
 class RectGraphic:SizeableGraphic{
     /**
-     *
+     * TODO: make the CGRect(x,y,width,height) into a variable on the Graphic class
      */
     override func drawFill() {
         Swift.print("RectGraphic.drawFill()")
-        /*
-        var x:CGFloat = graphic.lineOffsetType.left == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        var y:CGFloat = graphic.lineOffsetType.top == OffsetType.outside ? graphic.lineStyle!.thickness : 0;
-        x += self.x
-        y += self.y
-        let rect:CGRect = CGRect(x,y,width, height)
-        graphic.fillShape.path = rect.path
-        */
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
-        let fillOffsetRect = CGRect(x,y,width,height)
-        if(graphic.lineStyle != nil) { RectGraphicUtils2.fillOffsetRect(fillOffsetRect, graphic.lineStyle!, graphic.lineOffsetType)}
-        graphic.fillShape.frame = fillOffsetRect/*,position and set the size of the frame*/
-        Swift.print("graphic.fillShape.frame: " + "\(graphic.fillShape.frame)")
+        let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils2.fillFrameRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
+        graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
+        //Swift.print("graphic.fillShape.frame: " + "\(graphic.fillShape.frame)")
     }
     /**
      *

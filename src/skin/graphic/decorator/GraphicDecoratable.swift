@@ -20,7 +20,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {//new
         Swift.print("GraphicDecoratable.draw()")
-        graphic.setDelegate(self)
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.display();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
     }

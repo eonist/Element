@@ -27,14 +27,24 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         //Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType;
-            
-            let rect:CGRect = CGRect()//RectGraphicUtils.offsetRect(CGRect(0, 0, /*decoratable.*/getSize().width, /*decoratable.*/getSize().height), graphic.lineStyle!, lineOffsetType);
+            let lineOffsetRect = RectGraphicUtils2.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, lineOffsetType)
+            //let rect:CGRect = CGRect()//RectGraphicUtils.offsetRect(CGRect(0, 0, /*decoratable.*/getSize().width, /*decoratable.*/getSize().height), graphic.lineStyle!, lineOffsetType);
             //Swift.print(rect)
             let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
             graphic.lineShape.path = CGPathParser.roundRect(rect.x,rect.y,rect.width,rect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
+            
+            
+            //let lineFillet:Fillet = FilletParser.config(fillet, lineOffsetType, lineStyle);
+            let linePath = CGPathParser.roundRect(lineOffsetRect.lineRect.x,lineOffsetRect.lineRect.y,lineOffsetRect.lineRect.width,lineOffsetRect.lineRect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)
+            
+            graphic.lineShape.frame = lineOffsetRect.lineFrameRect
+            graphic.lineShape.path = linePath//lineOffsetRect.lineRect.path
+            
+            
+            
             /*mask*/
             //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0,graphic.width,graphic.height), graphic.lineStyle!, lineOffsetType);
-            fatalError("the above lines needs to be updated, RectGraphicUtils.offsetRect etc")
+            //fatalError("the above lines needs to be updated, RectGraphicUtils.offsetRect etc")
         }
     }
 }

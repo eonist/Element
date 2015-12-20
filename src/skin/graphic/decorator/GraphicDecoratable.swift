@@ -21,7 +21,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func fill(){
         //Swift.print("GraphicDecoratable.fill()")
         beginFill()
-        drawFill()/*this method can be called before beginFill*/
+        //drawFill()/*this method can be called before beginFill*/
         stylizeFill()
     }
     override func beginFill(){
@@ -36,7 +36,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func line(){
         //Swift.print("GraphicDecoratable.line()")
         applyLineStyle()
-        drawLine()
+        //drawLine()/*this method can be called before beginFill*/
         stylizeLine()
     }
     override func applyLineStyle(){

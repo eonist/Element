@@ -26,14 +26,16 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
         
     }
+    /*
     func displayLayer(layer: CALayer){
-        Swift.print("displayLayer")
+    Swift.print("displayLayer")
     }
+    */
     /**
      * This is a delegate handler method
      * TODO: use the other delegate method that doesnt pass in the context, for simpler code!?!
      */
-    func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("GraphicSkin.drawLayer(layer,inContext)")
         if(layer === decoratable.graphic.fillShape){
             Swift.print("fillShape")

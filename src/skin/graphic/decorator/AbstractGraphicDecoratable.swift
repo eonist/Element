@@ -1,8 +1,8 @@
-import Foundation
+import Cocoa
 /*
  * The AbstractDecorator has all the decorator methods
  */
-class AbstractGraphicDecoratable:IGraphicDecoratable{
+class AbstractGraphicDecoratable:NSView,IGraphicDecoratable{
     let errMsg:String = "Must be overridden in subClass"
     func getDecoratable()->IGraphicDecoratable{fatalError(errMsg)}/*news*/
     var graphic:BaseGraphic {fatalError(errMsg)}/*This is only a getter, for now, and dont revert to IBaseGraphic*/

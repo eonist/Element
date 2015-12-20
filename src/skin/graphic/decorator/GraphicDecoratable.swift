@@ -22,7 +22,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         //Swift.print("GraphicDecoratable.draw()")
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.display();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
-        
     }
     /**
      * This is a delegate handler method

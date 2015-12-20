@@ -14,7 +14,11 @@ class GraphicSkin:Skin{
         decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
     
     
+        
         //continue here, try to update the layer on button interaction, maybe make a simple example and work from there
+        
+        
+        
     }
     override func draw(){
         Swift.print("GraphicSkin.draw()")

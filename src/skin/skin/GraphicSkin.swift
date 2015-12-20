@@ -1,5 +1,8 @@
 import Cocoa
 //there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there.
+/**
+ * 
+ */
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)

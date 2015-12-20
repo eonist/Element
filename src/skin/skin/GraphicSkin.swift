@@ -12,6 +12,9 @@ class GraphicSkin:Skin{
         addSubview(decoratable.graphic)
         /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
         decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
+    
+    
+        //continue here, try to update the layer on button interaction, maybe make a simple example and work from there
     }
     override func draw(){
         Swift.print("GraphicSkin.draw()")

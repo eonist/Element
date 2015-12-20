@@ -47,11 +47,11 @@ class StylePropertyParser{
     * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
-    class func colorLineStyle(skin:ISkin) -> ILineStyle {
+    class func colorLineStyle(skin:ISkin) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
-        let val? = value(skin, CSSConstants.line)
+        let val = value(skin, CSSConstants.line)//temp fix
         if(val == nil){
-            
+            return nil
         }
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as? CGFloat ?? CGFloat.NaN
         let lineColorValue:Double = color(skin, CSSConstants.line)

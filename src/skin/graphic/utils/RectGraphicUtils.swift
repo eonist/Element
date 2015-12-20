@@ -18,7 +18,7 @@ class RectGraphicUtils2 {
         return fillFrameRect
     }
     /**
-     *
+     * 
      */
     class func lineOffsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineFrameRect:CGRect,lineRect:CGRect){
         var lineFrameRect:CGRect = rect.copy()

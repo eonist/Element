@@ -13,8 +13,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
-        getGraphic().fillShape.delegate = self
-        getGraphic().lineShape.delegate = self
+        graphic.setDelegate(self)
     }
     
     override func initialize(){//TODO:get rid of this

@@ -29,7 +29,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        //Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
+        Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx

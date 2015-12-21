@@ -58,6 +58,10 @@ class CSSPropertyParser {
      * NOTE: somehow also add support for: reflect and repeat
      * NOTE: the reason we do it this way is that this approach can make any 2 point radial gradient. some scaling may be needed
      * IMPORTANT
+     
+     * //SpreadMethod.REFLECT
+     //SpreadMethod.REPEAT
+     //SpreadMethod.PAD for the spread
      *
      * // :TODO: create a small app that generates the radial-gradient from an svg
      * // :TODO: possibly use the RegExp.exec to loop the properties!!
@@ -66,6 +70,7 @@ class CSSPropertyParser {
         
         //implement here
         
+       
         return Gradient()
      }
     

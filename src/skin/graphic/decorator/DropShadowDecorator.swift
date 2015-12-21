@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * NOTE: It isnt ideal that you have to extend PositionalDecorator instead of simply GraphicDecorable, but in the spirit of moving on we keep it as is
  */
@@ -11,8 +11,15 @@ class DropShadowDecorator:PositionalDecorator{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func fill() {
         //Swift.print("DropShadowDecorator.fill()")
-        graphic.fillShape.graphics.dropShadow = dropShadow;
-        graphic
+        if(dropShadow!.inner){
+            graphic.fillShape.graphics.dropShadow = dropShadow;
+        }else{
+            graphic.layer!.shadowColor = NSColor.blackColor().CGColor;
+            graphic.layer!.shadowOpacity = 1.0;
+            graphic.layer!.shadowRadius = 5.0;
+            graphic.layer!.shadowOffset = CGSizeMake(0, 3);
+        }
+        
         //Swift.print(graphic.graphics.dropShadow)
         super.fill()
     }

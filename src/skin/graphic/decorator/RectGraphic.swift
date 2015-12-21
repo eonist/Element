@@ -7,7 +7,7 @@ class RectGraphic:SizeableGraphic{
     override func drawFill() {
         //Swift.print("RectGraphic.drawFill()")
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
-        let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils2.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
+        let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
         //Swift.print("graphic.fillShape.frame: " + "\(graphic.fillShape.frame)")
     }
@@ -22,7 +22,7 @@ class RectGraphic:SizeableGraphic{
             //Swift.print("graphicRect: " + String(graphicRect))
             //let rect:CGRect = RectGraphicUtils.offsetRect(graphicRect, graphic.lineStyle!, graphic.lineOffsetType);
             //Swift.print("rect: " + String(rect))
-            let lineOffsetRect = RectGraphicUtils2.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType)
+            let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType)
             //let offsetRects = RectGraphicUtil.offsetRect(graphic.fillShape.frame.copy(), graphic.lineStyle!, graphic.lineOffsetType)
             
             //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")

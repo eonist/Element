@@ -1,6 +1,6 @@
 import Foundation
 
-class RectGraphicUtils2 {
+class RectGraphicUtils {
     /**
      *
      */

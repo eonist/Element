@@ -40,6 +40,11 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
             if(getGraphic().lineStyle != nil){line()}
         }
     }
+    /**
+     * Stops implicit animation from happening
+     * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.
+     * NOTE: this is a delegate method for the shapes in Graphic
+     */
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
         Swift.print("actionForLayer")
         return NSNull()

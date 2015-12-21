@@ -42,7 +42,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
         Swift.print("actionForLayer")
-        return nil
+        return NSNull()
     }
     /*
     func displayLayer(layer: CALayer){

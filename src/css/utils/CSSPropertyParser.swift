@@ -17,6 +17,7 @@ class CSSPropertyParser {
             case StringAsserter.color(string):return StringParser.color(string);/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.color(string);/*green red etc*/
             case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string);/*linear-gradient*/// :TODO: create a more complte exprrison for this test
+            case RegExp.test(string,"^radial-gradient\\b"):return radialGradient(string);/*radial-gradient*/// :TODO: create a more complte exprrison for this test
             case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string);/*drop-shadow*/
             case RegExp.test(string,"^textFormat\\b"):return textFormat(string);
             case RegExp.test(string,"^textField\\b"):return textField(string);
@@ -62,6 +63,8 @@ class CSSPropertyParser {
      * // :TODO: possibly use the RegExp.exec to loop the properties!!
      */
      class func radialGradient(string:String)->IGradient{
+        
+        //implement here
         
         return Gradient()
      }

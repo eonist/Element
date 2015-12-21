@@ -81,10 +81,4 @@ class Skin:FlippedView,ISkin{
     func setSize(width:Int, height:Int){
         fatalError("not implemented yet")
     }
-    /**
-     *
-     */
-    override func hitTest(aPoint: NSPoint) -> NSView? {
-        return nil
-    }
 }

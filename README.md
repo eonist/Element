@@ -3,7 +3,7 @@
 [Element news on twitter](https://twitter.com/ElementLib)  <---1.0 Release announcement circa New Years eve  
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/logo-01_239238.png">  
 
-<img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/2f289u9384f34.gif">
+<img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/2f289u9384f34.gif">  
 Read more about the TabBar case [here](https://github.com/eonist/Element/wiki/Progress#tabbar)   
 
 **Element** (OSX UI Framework)

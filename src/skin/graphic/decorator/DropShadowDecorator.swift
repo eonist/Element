@@ -14,11 +14,12 @@ class DropShadowDecorator:PositionalDecorator{
         if(dropShadow != nil && dropShadow!.inner){
             graphic.fillShape.graphics.dropShadow = dropShadow;
         }else if(dropShadow != nil && !dropShadow!.inner){
-            graphic.layer!.shadowColor = NSColor.blackColor().CGColor;
+            graphic.layer!.shadowColor = NSColor.blackColor().CGColor;//dont forget about the graphic.layer!.shadowPath
             graphic.layer!.shadowOpacity = 1.0;
             graphic.layer!.shadowRadius = 5.0;
             graphic.layer!.shadowOffset = CGSizeMake(0, 3);
         }else{
+            graphic.fillShape.graphics.dropShadow = nil
             graphic.layer!.shadowColor = NSColor.clearColor().CGColor;
             graphic.layer!.shadowOpacity = 0.0;
             graphic.layer!.shadowRadius = 0.0;

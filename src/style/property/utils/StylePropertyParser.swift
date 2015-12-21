@@ -121,8 +121,9 @@ class StylePropertyParser{
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
     class func gradientLineStyle(skin:ISkin) -> GradientLineStyle? {
+        Swift.print("StylePropertParser.gradientLineStyle()")
         let gradient = value(skin, CSSConstants.line)
-        if(gradient is IGradient){return nil}
+        if(!(gradient is IGradient)){return nil}//<--temp fix
         //gradient.rotation *= ㎭
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as! CGFloat
         return GradientLineStyle(gradient as! IGradient, lineThickness, NSColor.clearColor()/*colorLineStyle(skin)*/);

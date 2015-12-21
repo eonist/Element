@@ -31,16 +31,17 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
         if(layer === graphic.fillShape){
-            Swift.print("fillShape: ")
+            //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
             if(getGraphic().fillStyle != nil){fill()}
         }else if(layer === graphic.lineShape){
-            Swift.print("lineShape")
+            //Swift.print("lineShape")
             graphic.lineShape.graphics.context = ctx
             if(getGraphic().lineStyle != nil){line()}
         }
     }
     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
+        Swift.print("actionForLayer")
         return nil
     }
     /*

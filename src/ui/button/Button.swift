@@ -18,16 +18,7 @@ class Button:Element {
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
-            //setSkinState(getSkinState());
-            
-            
-            
-            //continue here tomorrow. test the InteractiveElement for bugs. esp the mouse enter method
-            //remove all the prints from this class, then move on to the INteractiveElement to test it. 
-            //the bug is probably that the skin skin isnt set to return nil on hittest, which it should inorner to get the roll over roll out scheme to work
-            //fix the gradientline bug, its not being called somewhere.
-            
-            
+            setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
         }
     }
@@ -39,7 +30,7 @@ class Button:Element {
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
-            //setSkinState(getSkinState());
+            setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
         }
     }

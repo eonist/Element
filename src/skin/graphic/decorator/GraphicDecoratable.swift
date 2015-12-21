@@ -19,7 +19,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * Setup the geometry and init the display process of fill and line
      */
     override func draw() {//new
-        Swift.print("GraphicDecoratable.draw()")
+        //Swift.print("GraphicDecoratable.draw()")
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
     }
@@ -29,7 +29,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: this is a delegate method for the shapes in Graphic
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
+        //Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
@@ -46,10 +46,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: this is a delegate method for the shapes in Graphic
      * NOTE: this method is also called on every frame of the animation it seems
      */
-    override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-        //Swift.print("actionForLayer")
-        return NSNull()
-    }
+     /*
+     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
+     //Swift.print("actionForLayer")
+     return NSNull()
+     }
+     */
     /*
     func displayLayer(layer: CALayer){
     Swift.print("displayLayer")

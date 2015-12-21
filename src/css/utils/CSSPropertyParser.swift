@@ -40,6 +40,33 @@ class CSSPropertyParser {
         //Swift.print("CSSPropertyParser.linearGradient.rotation: " + "\(gradient.rotation)")
         return gradient;
     }
+    
+    /**
+     * @param string radial-gradient(50% 50% 100% 100% 1,blue 1 0,red 1 1);//2 color radial-gradient, with focalPointRatio and with percentage of x,y,width and height
+     * NOTE: color: color,alpha,gradiant-ratio (aka gradient-location)
+     * NOTE: The first and second % variables makes out the location of the radial gradient
+     * NOTE: the third and fourth % variables makes out the width and the height of the radial gradient
+     * NOTE: the variable after the % variables makes out the rotation in degrees (0,90,180 etc) (similar to linear gradient)
+     * NOTE: the variable after the rotation variables makes out the focal ratio (-1 to +1)
+     * NOTE: The location of the focal point is defined as a scalar position from p1 to p2.
+     * NOTE: p1 is defined by the negative direction of the rotation value (5th var) from the center pos (defined by the 1st and 2nd % vars)  until it hits an edge of the gradientBox (a bounding box that garantues to cover the entire boundingbox of a path)
+     * NOTE: p2 is the same as p1 but in the direction of the rotation.
+     * NOTE: The only thing you cant adjust is the width and height of the startingPoint of the radialgradient (you can simulate this by increasing the entire size of the shape, and similarly decreaseing the size of the endPoint) TODO: can this be done better in css? sure it can. but this works for now.
+     * NOTE: CSS3 has this code to semi support 2 point radial gradients. background: radial-gradient(1 20px 40px, 2 farthest-side, 3 white 20%, 4 magenta) I suppose you may be able to achive any 2 point radial gradient this way but its difficult to say
+     * NOTE: A better css syntax would be: radial-gradient(x1 y1 w1 h1 x2 y2 w2 h2,color alpha ratio) and if supply only the first 4 % variables then the center and the focal point is the same and you get an "uniform spread"
+     * NOTE: somehow also add support for: reflect and repeat
+     * NOTE: the reason we do it this way is that this approach can make any 2 point radial gradient. some scaling may be needed
+     * IMPORTANT
+     *
+     * // :TODO: create a small app that generates the radial-gradient from an svg
+     * // :TODO: possibly use the RegExp.exec to loop the properties!!
+     */
+     class func radialGradient(string:String)->IGradient{
+        
+        return Gradient()
+     }
+    
+     
     /**
      * Returns an array comprised of values if the individual value is a digit then it is processed as a digit if its not a digit then its just processed as a string
      * // :TODO: does this support comma delimited lists?

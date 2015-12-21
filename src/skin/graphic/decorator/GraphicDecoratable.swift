@@ -26,6 +26,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     /**
      * This is a delegate handler method
      * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
+     * NOTE: this is a delegate method for the shapes in Graphic
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
@@ -38,6 +39,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
             graphic.lineShape.graphics.context = ctx
             if(getGraphic().lineStyle != nil){line()}
         }
+    }
+    override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
+        return nil
     }
     /*
     func displayLayer(layer: CALayer){

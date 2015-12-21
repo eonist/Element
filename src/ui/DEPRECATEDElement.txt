@@ -102,7 +102,7 @@
      layer!.addSublayer(sublayer)
  }
  /*
- * CAShapeLayer doesnt supoprt gradient, but might do with: CGContextDrawRadialGradient
+ * CAShapeLayer doesnt supoprt gradient, but might do with: CGContextDrawRadialGradient, no it doesnt
  */
  func makeLineLayer(layer:CALayer,_ a:CGPoint,_ b:CGPoint){
      let line = CAShapeLayer(layer: layer)//CAShapeLayer *line = [CAShapeLayer layer];

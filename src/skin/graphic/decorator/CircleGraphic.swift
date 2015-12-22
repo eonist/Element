@@ -22,7 +22,7 @@ class CircleGraphic:SizeableGraphic{
         graphic.lineShape.path = CGPathParser.circ(radius, x, y)
     }
     override func getSize() -> CGSize {
-        return CGSize(radius,radius)
+        return CGSize(radius*2,radius*2)
     }
 }
 extension CircleGraphic{

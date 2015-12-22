@@ -11,11 +11,11 @@ class CircleGraphic:SizeableGraphic{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
-        //Swift.print("CircleGraphic.drawFill()")
+        Swift.print("CircleGraphic.drawFill()")
         getGraphic().fillShape.path = CGPathParser.circle(radius, x, y)
     }
     override func drawLine() {
-        //Swift.print("CircleGraphic.drawLine()")
+        Swift.print("CircleGraphic.drawLine()")
         graphic.lineShape.path = CGPathParser.circle(radius, x, y)
     }
     override func getSize() -> CGSize {

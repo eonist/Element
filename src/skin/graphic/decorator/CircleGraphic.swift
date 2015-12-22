@@ -39,7 +39,10 @@ extension CircleGraphic{
     convenience init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))){
         self.init(0,0,radius,decoratable)
     }
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:FillStyle){
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle){
         self.init(x,y,radius,BaseGraphic(fillStyle))
+    }
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle){
+        self.init(x,y,radius,BaseGraphic(fillStyle,lineStyle))
     }
 }

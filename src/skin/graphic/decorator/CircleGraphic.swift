@@ -15,11 +15,11 @@ class CircleGraphic:SizeableGraphic{
         Swift.print("CircleGraphic.drawFill()")
         let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
-        getGraphic().fillShape.path = CGPathParser.circle(radius, x, y)
+        getGraphic().fillShape.path = CGPathParser.circ(radius, x, y)
     }
     override func drawLine() {
         Swift.print("CircleGraphic.drawLine()")
-        graphic.lineShape.path = CGPathParser.circle(radius, x, y)
+        graphic.lineShape.path = CGPathParser.circ(radius, x, y)
     }
     override func getSize() -> CGSize {
         return CGSize(radius,radius)

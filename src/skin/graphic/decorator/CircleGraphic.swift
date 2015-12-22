@@ -2,13 +2,13 @@ import Cocoa
 
 class CircleGraphic:SizeableGraphic{
     var radius:CGFloat
-
+    //TODO: possibly add a diameter var
     //TODO: should have x and y, for the simpler line bellow use extension
     
     init(_ radius:CGFloat = 50,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
         Swift.print("CircleGraphic.init()")
         self.radius = radius
-        super.init(CGPoint(0,0),CGSize(radius,radius),decoratable)
+        super.init(CGPoint(0,0),CGSize(radius*2,radius*2),decoratable)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
@@ -27,7 +27,6 @@ class CircleGraphic:SizeableGraphic{
 }
 extension CircleGraphic{
     //does not work anymore, works or?
-    
     convenience init(_ radius:CGFloat,_ fillColor:NSColor){
         self.init(radius,BaseGraphic(FillStyle(fillColor)))
     }

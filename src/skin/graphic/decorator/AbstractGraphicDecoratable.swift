@@ -3,7 +3,7 @@ import Cocoa
  * The AbstractDecorator has all the decorator methods
  * NOTE: extending NSObject is needed in order to get respondToSelector to work when using the delegate method for the CALayers etc
  */
-class AbstractGraphicDecoratable:NSObject/**/,/**/IGraphicDecoratable{
+class AbstractGraphicDecoratable:IGraphicDecoratable{
     let errMsg:String = "Must be overridden in subClass"
     func getDecoratable()->IGraphicDecoratable{fatalError(errMsg)}/*news*/
     var graphic:BaseGraphic {fatalError(errMsg)}/*This is only a getter, for now, and dont revert to IBaseGraphic*/

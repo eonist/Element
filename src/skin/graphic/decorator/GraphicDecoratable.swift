@@ -8,6 +8,8 @@ import Cocoa
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
+    var selector: ((sender: CALayer, context:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
+    
     override var graphic:BaseGraphic {return decoratable.graphic}
     
     init(_ decoratable:IGraphicDecoratable){

@@ -19,6 +19,9 @@ class CircleGraphic:SizeableGraphic{
     }
     override func drawLine() {
         Swift.print("CircleGraphic.drawLine()")
+        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType)
+        graphic.lineShape.frame = lineOffsetRect.lineFrameRect
+        graphic.lineShape.path = lineOffsetRect.lineRect.path//rect.path
         graphic.lineShape.path = CGPathParser.circ(radius, x, y)
     }
     override func getSize() -> CGSize {

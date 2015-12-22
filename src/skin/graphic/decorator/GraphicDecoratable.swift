@@ -8,14 +8,14 @@ import Cocoa
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
-    var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
+    
     
     override var graphic:BaseGraphic {return decoratable.graphic}
     
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
-        selector = self.handleSelector
+        graphic.selector = self.handleSelector
         
     }
     /**
@@ -38,16 +38,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
             if(getGraphic().lineStyle != nil){line()}
         }
     }
-    /**
-     * This is a delegate handler method
-     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
-     * NOTE: this is a delegate method for the shapes in Graphic
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
-        selector!(layer: layer,ctx: ctx)/*call the selector*/
-        
-    }
+    
     /**
      * Stops implicit animation from happening
      * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.

@@ -3,7 +3,7 @@ import Cocoa
 class CircleGraphic:SizeableGraphic{
     var radius:CGFloat
 
-    //TODO:should have x and y, for the simpler line bellow use extension
+    //TODO: should have x and y, for the simpler line bellow use extension
     
     init(_ radius:CGFloat = 50,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
         Swift.print("CircleGraphic.init()")

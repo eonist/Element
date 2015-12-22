@@ -23,7 +23,7 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
     */
     /**
      * TODO: color cant be uint since uint cant be NaN, use Double, 
-     * TODO:  check if cgfloat can be NaN?
+     * TODO:  check if cgfloat can be NaN? it can
      */
     override func beginFill(){
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/

@@ -14,9 +14,6 @@ class GraphicSkinParser{
         //Swift.print("GraphicSkinParser.configure")
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);//<-----TODO:this should be optional like lineStyle
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin);
-        
-        Swift.print("lineStyle: " + "\(lineStyle)")
-        
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
         graphic = Utils.rectGraphic(skin,graphic)
         if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }

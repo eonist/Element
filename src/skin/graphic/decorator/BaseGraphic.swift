@@ -21,7 +21,6 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
         super.init()
     }
     */
-    
     /**
      * TODO: color cant be uint since uint cant be NaN, use Double, 
      * TODO:  check if cgfloat can be NaN?
@@ -52,7 +51,6 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
         GraphicModifier.stylizeLine(lineShape.path,lineShape.graphics)//realize style on the graphic
         //lineShape.display()/*draw the lineShape*/
     }
-    
     override func getGraphic()->BaseGraphic{
         return self
     }

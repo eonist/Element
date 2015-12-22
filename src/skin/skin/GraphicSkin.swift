@@ -6,12 +6,14 @@ import Cocoa
  * TODO: Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol. 
  */
 
-class TempGraphix:FlippedView{
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!
+class GraphicSkin:Skin{
+    override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
+        super.init(style, state, element)
+        decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
+        addSubview(decoratable.graphic)
+        /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+        decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
+        
         
         
         let fillStyle = FillStyle(NSColor.yellowColor().alpha(0.5))
@@ -30,26 +32,10 @@ class TempGraphix:FlippedView{
         //baseGraphic.lineShape.delegate = self
         baseGraphic.fillShape.delegate = rectGraphic
         //baseGraphic.layer!.delegate = self
-        rectGraphic.draw()
+        
         addSubview(baseGraphic)
+        rectGraphic.draw()
         
-        
-    }
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("TempGraphix.drawLayer")
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-class GraphicSkin:Skin{
-    override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
-        super.init(style, state, element)
-        decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
-        addSubview(decoratable.graphic)
-        /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-        decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
-        addSubview(TempGraphix(frame: NSRect(10,10,400,400)))
     }
     override func draw(){
         //Swift.print("GraphicSkin.draw()")

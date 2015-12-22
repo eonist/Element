@@ -32,8 +32,8 @@ extension SizeableGraphic{
     convenience init(_ rect:NSRect, _ decoratable: IGraphicDecoratable){
         self.init(rect.origin,rect.size,decoratable)
     }
-    convenience init(_ rect:NSRect, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
-        self.init(rect.origin,rect.size,BaseGraphic(fillStyle,lineStyle))
+    convenience init(_ width:CGFloat, _ height:CGFloat, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
+        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
     }
 }
 

@@ -27,13 +27,16 @@ class CircleGraphic:SizeableGraphic{
 }
 extension CircleGraphic{
     //does not work anymore, works or?
+    convenience init(_ radius:CGFloat){
+        self.init(0,0,radius,BaseGraphic(FillStyle(NSColor.redColor())))
+    }
     convenience init(_ radius:CGFloat,_ fillColor:NSColor){
         self.init(0,0,radius,BaseGraphic(FillStyle(fillColor)))
     }
     convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillColor:NSColor){
         self.init(0,0,radius,BaseGraphic(FillStyle(fillColor)))
     }
-    convenience init(_ radius:CGFloat = 50,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))){
+    convenience init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))){
         self.init(0,0,radius,decoratable)
     }
 }

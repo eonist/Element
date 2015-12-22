@@ -24,9 +24,9 @@ class CircleGraphic:SizeableGraphic{
 }
 extension CircleGraphic{
     //does not work anymore
-    /*
+    
     convenience init(_ radius:CGFloat,_ fillColor:NSColor){
         self.init(radius,BaseGraphic(FillStyle(fillColor)))
     }
-    */
+    
 }

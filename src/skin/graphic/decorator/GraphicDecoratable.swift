@@ -16,7 +16,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         self.decoratable = decoratable
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
         selector = self.handleSelector
-        graphic.setDelegate(self)/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
+        
     }
     /**
      * Setup the geometry and init the display process of fill and line

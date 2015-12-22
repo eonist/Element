@@ -7,6 +7,7 @@ import Cocoa
  */
 
 class GraphicSkin:Skin{
+    var rectGraphic:RectGraphic?
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
@@ -28,13 +29,13 @@ class GraphicSkin:Skin{
         
         //test how easy it is to create a rectGraphic etc
         let baseGraphic:BaseGraphic = BaseGraphic(fillStyle,nil,OffsetType(OffsetType.outside))
-        let rectGraphic:RectGraphic = RectGraphic(200,200,baseGraphic)
+        rectGraphic = RectGraphic(200,200,baseGraphic)
         //baseGraphic.lineShape.delegate = self
         baseGraphic.fillShape.delegate = rectGraphic
         //baseGraphic.layer!.delegate = self
         
         addSubview(baseGraphic)
-        rectGraphic.draw()
+        rectGraphic!.draw()
         
     }
     override func draw(){

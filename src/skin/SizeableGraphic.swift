@@ -29,8 +29,8 @@ extension SizeableGraphic{
     convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100){
         self.init(CGPoint(0,0),CGSize(width,height))
     }
-    convenience init(_ rect:NSRect){
-        self.init(rect.origin,rect.size)
+    convenience init(_ rect:NSRect, _ decoratable: IGraphicDecoratable){
+        self.init(rect.origin,rect.size,decoratable)
     }
 }
 

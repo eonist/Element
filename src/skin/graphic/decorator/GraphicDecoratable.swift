@@ -8,7 +8,7 @@ import Cocoa
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
-    var selector: ((sender: CALayer, context:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
+    var selector: ((layer: CALayer, context:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
     
     override var graphic:BaseGraphic {return decoratable.graphic}
     
@@ -32,6 +32,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
+        selector!(layer: layer,context: ctx)/*call the selector*/
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx

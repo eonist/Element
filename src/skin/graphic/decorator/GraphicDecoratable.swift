@@ -8,13 +8,14 @@ import Cocoa
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
-    var selector: ((layer: CALayer, context:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
+    var selector: ((layer: CALayer, ctx:CGContext) -> ())?/*this holds any method assigned to it that has its type signature*/
     
     override var graphic:BaseGraphic {return decoratable.graphic}
     
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
+        selector = self.handleSelector
         graphic.setDelegate(self)/*this is needed in order to be able to retrive the context and use it whithin the decoratable methods, or else the context would reside isolated inside the Graphic.fillShape, and Graphic.lineShape*/
     }
     /**
@@ -25,14 +26,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
     }
-    /**
-     * This is a delegate handler method
-     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
-     * NOTE: this is a delegate method for the shapes in Graphic
-     */
-    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
-        Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
-        selector!(layer: layer,context: ctx)/*call the selector*/
+    func handleSelector(layer: CALayer,ctx:CGContext) {
+        Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
@@ -42,6 +37,16 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
             graphic.lineShape.graphics.context = ctx
             if(getGraphic().lineStyle != nil){line()}
         }
+    }
+    /**
+     * This is a delegate handler method
+     * NOTE: using the other delegate method "displayLayer" does not provide the context to work with. Trying to get context other ways also fail. This is the only method that works with layer contexts
+     * NOTE: this is a delegate method for the shapes in Graphic
+     */
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
+        Swift.print("GraphicDecoratable.drawLayer(layer,inContext)")
+        selector!(layer: layer,ctx: ctx)/*call the selector*/
+        
     }
     /**
      * Stops implicit animation from happening

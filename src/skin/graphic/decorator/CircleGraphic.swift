@@ -43,6 +43,6 @@ extension CircleGraphic{
         self.init(x,y,radius,BaseGraphic(fillStyle))
     }
     convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.outside)){
-        self.init(x,y,radius,BaseGraphic(fillStyle,lineStyle,offsetType))
+        self.init(x,y,radius,BaseGraphic(fillStyle,lineStyle,lineOffset))
     }
 }

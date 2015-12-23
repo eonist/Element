@@ -8,7 +8,7 @@ import Cocoa
 */
 class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     var fillet:Fillet;
-    init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
+    init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ decoratable: IGraphicDecoratable) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         self.fillet = fillet
         super.init(decoratable)
     }
@@ -42,7 +42,7 @@ extension RoundRectGraphic{
     /**
      *
      */
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ fillet:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         self.init(x,y,fillet,BaseGraphic(fillStyle,lineStyle,lineOffset))
     }
 }

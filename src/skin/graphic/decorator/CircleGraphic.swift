@@ -5,7 +5,7 @@ class CircleGraphic:SizeableGraphic{
     //TODO: possibly add a diameter var
     //TODO: should have x and y, for the simpler line bellow use extension
     
-    init(_ x:CGFloat, _ y:CGFloat, _ radius:CGFloat ,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
+    init(_ x:CGFloat, _ y:CGFloat, _ radius:CGFloat ,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))/*<--this shoul d be provided through an extension not here*/) {
         Swift.print("CircleGraphic.init()")
         self.radius = radius
         super.init(CGPoint(x,y),CGSize(radius*2,radius*2),decoratable)

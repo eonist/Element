@@ -24,11 +24,12 @@ class LineGraphic:SizeableDecorator {
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, graphic.lineStyle!, graphic.lineOffsetType)
         graphic.lineShape.frame = lineOffsetRect.lineFrameRect
         //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
-        graphic.lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)
+
         //Swift.print("lineOffsetRect.lineRect: " + "\(lineOffsetRect.lineRect)")
         
-        
-        graphic.lineShape.path = CGPathParser.line(p1-pos, p2-pos)//<--p1,p2 is now in 0,0 coordinate space. Since the frame should only cover the actual path
+        let a:CGPoint = lineOffsetRect.lineRect.topLeft + p1-pos//<--p1,p2 is now in 0,0 coordinate space. Since the frame should only cover the actual path. We also offset the points to support the lineoffset
+        let b:CGPoint = lineOffsetRect.lineRect.topLeft + p2-pos
+        graphic.lineShape.path = CGPathParser.line(a, b)
     }
     /**
      *

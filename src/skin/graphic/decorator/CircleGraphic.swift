@@ -42,7 +42,7 @@ extension CircleGraphic{
     convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle){
         self.init(x,y,radius,BaseGraphic(fillStyle))
     }
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.outside)){
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         self.init(x,y,radius,BaseGraphic(fillStyle,lineStyle,lineOffset))
     }
 }

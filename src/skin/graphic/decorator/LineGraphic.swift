@@ -59,6 +59,11 @@ class LineGraphic:SizeableDecorator {
         //fatalError("Not implemented yet")
     }
 }
+extension LineGraphic{
+    convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {
+        self.init(p1,p2, BaseGraphic(nil,lineStyle))
+    }
+}
 /**
 * NOTE: sets p1 to the position
 * NOTE: sets p2 to the relative position of p1 to p2

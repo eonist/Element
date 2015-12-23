@@ -60,6 +60,9 @@ class LineGraphic:SizeableDecorator {
     }
 }
 extension LineGraphic{
+    convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle, _ lineOffsetType:OffsetType) {
+        self.init(p1,p2, BaseGraphic(nil,lineStyle))
+    }
     convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {
         self.init(p1,p2, BaseGraphic(nil,lineStyle))
     }

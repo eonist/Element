@@ -20,8 +20,11 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
 }
 extension SizeableGraphic{
+    convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
+        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
+    }
     convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
-        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
+        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }
     convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))

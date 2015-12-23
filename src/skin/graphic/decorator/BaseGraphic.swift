@@ -26,6 +26,7 @@ class BaseGraphic :AbstractGraphic,IGraphicDecoratable{/*was extending AbstractG
      * TODO:  check if cgfloat can be NaN? it can
      */
     override func beginFill(){
+        Swift.print("BaseGraphic.beginFill")
         if(fillStyle != nil && fillStyle!.color != NSColor.clearColor() ) {/*Updates only if fillStyle is of class FillStyle*/
             //Swift.print("BaseGraphic.beginFill()" )//  " fillStyle!.color:"  + String(fillStyle!.color)
             fillShape.graphics.fill(fillStyle!.color)//Stylize the fill

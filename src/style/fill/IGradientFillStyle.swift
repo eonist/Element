@@ -1,5 +1,5 @@
 import Foundation
 
-protocol IGradientFillStyle {
-
+protocol IGradientFillStyle :IFillStyle{
+    var gradient:Gradient {get set}
 }

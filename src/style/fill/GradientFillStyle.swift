@@ -1,6 +1,6 @@
 import Cocoa
 
-class GradientFillStyle:FillStyle{
+class GradientFillStyle:FillStyle,IGradientFillStyle{
     var gradient:Gradient/*IGradient*/;//TODO:change to IGradient
     init(_ gradient:Gradient/*IGradient*/, _ color:NSColor){
         self.gradient = gradient;

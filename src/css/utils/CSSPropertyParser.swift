@@ -67,7 +67,8 @@ class CSSPropertyParser {
      * // :TODO: possibly use the RegExp.exec to loop the properties!!
      */
      class func radialGradient(string:String)->IGradient{
-        
+        let propertyString:String = RegExp.match(string, "(?<=radial-gradient\\().+?(?=\\);?)")[0]
+        var properties:Array<String> = StringModifier.split(propertyString, ",")
         //implement here
         
        

@@ -81,6 +81,7 @@ class CSSPropertyParser {
         
         gradient.gradientType = GradientType.Radial;
         gradient.relativeStartCenter = CGPoint(x,y)
+        gradient.relativeStartRadius = CGPoint(x,y)
         gradient.relativeEndCenter /*<-focalPointRatio*/ = CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
         
         return Gradient()

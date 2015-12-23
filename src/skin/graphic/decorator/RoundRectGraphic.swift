@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /*
 * TODO: the mask doesnt have an exact fitting fillet (figure out how to solve this)
 * TODO: impliment elliptical round corners corner-radius:50/25; creates an elliptical roundcornered rect
@@ -8,7 +8,7 @@ import Foundation
 */
 class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     var fillet:Fillet;
-    init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ decoratable: IGraphicDecoratable) {
+    init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))) {
         self.fillet = fillet
         super.init(decoratable)
     }

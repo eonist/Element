@@ -8,7 +8,7 @@ import Foundation
 */
 class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     var fillet:Fillet;
-    init(_ decoratable: IGraphicDecoratable,  _ fillet:Fillet) {
+    init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ decoratable: IGraphicDecoratable) {
         self.fillet = fillet
         super.init(decoratable)
     }
@@ -39,5 +39,10 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     }
 }
 extension RoundRectGraphic{
-    
+    /**
+     *
+     */
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ fillet:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+        self.init(x,y,fillet,BaseGraphic(fillStyle,lineStyle,lineOffset))
+    }
 }

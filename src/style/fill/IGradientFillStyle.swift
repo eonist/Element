@@ -1,5 +1,5 @@
 import Foundation
 
-class IGradientFillStyle {
+protocol IGradientFillStyle {
 
 }

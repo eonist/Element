@@ -8,15 +8,11 @@ import Cocoa
  */
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
-    
-    
     override var graphic:BaseGraphic {return decoratable.graphic}
-    
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
         graphic.selector = self.handleSelector
-        
     }
     /**
      * Setup the geometry and init the display process of fill and line
@@ -29,13 +25,13 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     func handleSelector(layer: CALayer,ctx:CGContext) {
         Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
-            //Swift.print("fillShape: ")
+            Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
-            if(getGraphic().fillStyle != nil){fill()}
+            if(graphic.fillStyle != nil){fill()}
         }else if(layer === graphic.lineShape){
             //Swift.print("lineShape")
             graphic.lineShape.graphics.context = ctx
-            if(getGraphic().lineStyle != nil){line()}
+            if(graphic.lineStyle != nil){line()}
         }
     }
     
@@ -58,7 +54,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     */
     
     override func fill(){
-        //Swift.print("GraphicDecoratable.fill()")
+        Swift.print("GraphicDecoratable.fill()")
         beginFill()
         //drawFill()/*this method can be called before beginFill*/
         stylizeFill()

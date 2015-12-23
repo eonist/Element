@@ -13,9 +13,9 @@ class GradientGraphic:PositionalDecorator {//TODO: probably should extend Sizeab
      *
      */
     override func beginFill(){
-        //Swift.print("GradientGraphic.beginFill()")
-        if(getGraphic().fillStyle!.dynamicType is GradientFillStyle.Type){
-            getGraphic().fillShape.graphics.gradientFill((getGraphic().fillStyle as! GradientFillStyle).gradient)
+        Swift.print("GradientGraphic.beginFill()")
+        if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
+            graphic.fillShape.graphics.gradientFill((graphic.fillStyle as! GradientFillStyle).gradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
     }
     /**

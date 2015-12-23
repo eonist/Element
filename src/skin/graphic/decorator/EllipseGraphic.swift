@@ -1,20 +1,12 @@
 import Cocoa
 
-//TODO: fix this class
 /**
  * NOTE: Dont create a circle class, ellipse will do the same as a circle
+ * //TODO: possibly add a diameter var
  */
 
 class EllipseGraphic:SizeableGraphic{
-    //TODO: possibly add a diameter var
-    //TODO: should have x and y, for the simpler line bellow use extension
     
-    /*
-    init(_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))/*<--this shoul d be provided through an extension not here, maybe not*/) {
-        Swift.print("EllipseGraphic.init()")
-        super.init(decoratable)
-    }
-    */
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
         Swift.print("EllipseGraphic.drawFill()")
@@ -31,23 +23,6 @@ class EllipseGraphic:SizeableGraphic{
         Swift.print("lineOffsetRect.lineRect: " + "\(lineOffsetRect.lineRect)")
     }
 }
-extension EllipseGraphic{
-    //does not work anymore, works or?
-    /*
-    convenience init(_ radius:CGFloat,_ fillColor:NSColor){
-        self.init(0,0,radius,BaseGraphic(FillStyle(fillColor)))
-    }
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillColor:NSColor){
-        self.init(x,y,radius,BaseGraphic(FillStyle(fillColor)))
-    }
-    convenience init(_ radius:CGFloat,_ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.greenColor()))){
-        self.init(0,0,radius,decoratable)
-    }
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle){
-        self.init(x,y,radius,BaseGraphic(fillStyle))
-    }
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-        self.init(x,y,radius,BaseGraphic(fillStyle,lineStyle,lineOffset))
-    }
-    */
-}
+//extension EllipseGraphic{
+    //use sizableGraphic extension instead
+//}

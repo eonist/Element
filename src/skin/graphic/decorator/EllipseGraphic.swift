@@ -1,6 +1,6 @@
 import Cocoa
 
-class CircleGraphic:SizeableGraphic{
+class EllipseGraphic:SizeableGraphic{
     var radius:CGFloat
     //TODO: possibly add a diameter var
     //TODO: should have x and y, for the simpler line bellow use extension

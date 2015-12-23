@@ -20,6 +20,9 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
 }
 extension SizeableGraphic{
+    convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
+        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
+    }
     convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }

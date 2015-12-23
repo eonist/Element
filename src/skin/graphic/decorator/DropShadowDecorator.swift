@@ -2,7 +2,7 @@ import Cocoa
 /**
  * NOTE: It isnt ideal that you have to extend PositionalDecorator instead of simply GraphicDecorable, but in the spirit of moving on we keep it as is
  */
-class DropShadowDecorator:PositionalDecorator{
+class DropShadowDecorator:PositionalDecorator{//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure 
     var dropShadow:DropShadow?
     init(_ decoratable: IGraphicDecoratable,_ dropShadow:DropShadow?) {
         self.dropShadow = dropShadow

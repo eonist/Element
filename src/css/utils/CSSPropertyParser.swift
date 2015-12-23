@@ -74,9 +74,9 @@ class CSSPropertyParser {
         let setup:Array<String> = setupString.split(" ");/*the gradient settings*/
         let x:CGFloat = StringParser.percentage(setup[0])/100;/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
         let y:CGFloat = StringParser.percentage(setup[1])/100;/*percentage wise*/
-        var xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1;
-        var yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1;
-        var rotation:CGFloat = setup.count > 4 ? CGFloat(setup[4])*Trig.RAD : 0;/*from rotation in degrees*/
+        let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1;
+        let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1;
+        let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
         //implement here
         
        

@@ -31,7 +31,7 @@ class RectGraphicUtils {
         }else if(offsetType.left == OffsetType.inside){ //inside
             lineRect = lineRect.offset(-lineStyle.thickness/2, 0)//.expand(lineStyle.thickness/2 , 0)
         }else{//center
-            lineFrameRect = lineFrameRect.offset(-lineStyle.thickness/2, -lineStyle.thickness/2)
+            lineFrameRect = lineFrameRect.offset(-lineStyle.thickness/2, 0).expand(lineStyle.thickness/2, 0)
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
@@ -40,7 +40,7 @@ class RectGraphicUtils {
         }else if(offsetType.left == OffsetType.inside){//inside
             lineRect = lineRect.expand(lineStyle.thickness , 0)
         }else{//center
-            lineFrameRect = lineFrameRect.expand(-lineStyle.thickness/2, -lineStyle.thickness/2)
+            lineFrameRect = lineFrameRect.expand(lineStyle.thickness/2, 0)
         }
         /*Top*/
         if(offsetType.top == OffsetType.outside){
@@ -49,7 +49,7 @@ class RectGraphicUtils {
         }else if(offsetType.left == OffsetType.inside){//inside
             lineRect = lineRect.offset(0, -lineStyle.thickness/2)//.expand(0,+lineStyle.thickness/2)
         }else{//center
-            
+            lineFrameRect = lineFrameRect.offset(0,-lineStyle.thickness/2).expand(0,lineStyle.thickness/2)
         }
         /*Bottom*/
         if(offsetType.bottom == OffsetType.outside){//outside
@@ -58,7 +58,7 @@ class RectGraphicUtils {
         }else if(offsetType.left == OffsetType.inside){//inside
             lineRect = lineRect.expand(0,lineStyle.thickness)
         }else{//center
-            
+            lineFrameRect = lineFrameRect.expand(0,lineStyle.thickness/2)
         }
         return (lineFrameRect,lineRect)
     }

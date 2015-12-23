@@ -18,7 +18,6 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
         getGraphic().fillShape.frame = fillFrame/*,position and set the size of the frame*/
         getGraphic().fillShape.path = CGPathParser.roundRect(0,0,width,height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
-    
     }
     /**
      *
@@ -42,9 +41,8 @@ extension RoundRectGraphic{
     /**
      *
      */
-    
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-        self.init(BaseGraphic(fillStyle,lineStyle,lineOffset),fillet)
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat,_ height:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+        self.init(RectGraphic(x,y,width,height,fillStyle,lineStyle,lineOffset),fillet)
     }
     /**/
 }

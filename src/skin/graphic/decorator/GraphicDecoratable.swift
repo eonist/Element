@@ -18,14 +18,14 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * Setup the geometry and init the display process of fill and line
      */
     override func draw() {//new
-        Swift.print("GraphicDecoratable.draw()" )
+        //Swift.print("GraphicDecoratable.draw()" )
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
     }
     func handleSelector(layer: CALayer,ctx:CGContext) {
-        Swift.print("GraphicDecoratable.handleSelector()")
+        //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
-            Swift.print("fillShape: ")
+            //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
             if(graphic.fillStyle != nil){fill()}
         }else if(layer === graphic.lineShape){
@@ -54,17 +54,17 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     */
     
     override func fill(){
-        Swift.print("GraphicDecoratable.fill()")
+        //Swift.print("GraphicDecoratable.fill()")
         beginFill()
         //drawFill()/*this method can be called before beginFill*/
         stylizeFill()
     }
     override func beginFill(){
-        Swift.print("GraphicDecoratable.beginFill()")
+        //Swift.print("GraphicDecoratable.beginFill()")
         decoratable.beginFill()
     }
     override func drawFill(){
-        Swift.print("GraphicDecoratable.drawFill()")
+        //Swift.print("GraphicDecoratable.drawFill()")
         decoratable.drawFill()
     }
     override func stylizeFill(){

@@ -69,11 +69,14 @@ class CSSPropertyParser {
      class func radialGradient(string:String)->IGradient{
         let propertyString:String = RegExp.match(string, "(?<=radial-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
-        var setupString:String = properties.shift()
-        var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
-        var setup:Array<String> = setupString.split(" ");/*the gradient settings*/
-        var x:CGFloat = StringParser.percentage(setup[0])/100;/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
-        var y:CGFloat = StringParser.percentage(setup[1])/100;/*percentage wise*/
+        let setupString:String = properties.shift()
+        let gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
+        let setup:Array<String> = setupString.split(" ");/*the gradient settings*/
+        let x:CGFloat = StringParser.percentage(setup[0])/100;/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
+        let y:CGFloat = StringParser.percentage(setup[1])/100;/*percentage wise*/
+        var xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1;
+        var yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1;
+        var rotation:CGFloat = setup.count > 4 ? CGFloat(setup[4])*Trig.RAD : 0;/*from rotation in degrees*/
         //implement here
         
        

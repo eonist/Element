@@ -20,32 +20,12 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
 }
 extension SizeableGraphic{
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle,lineOffset))
-    }
-    convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
-        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
-    }
-    convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
-        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
-    }
-    convenience init(_ width:CGFloat, _ height:CGFloat, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
-        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
-    }
-    convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ decoratable: IGraphicDecoratable){
-        self.init(CGPoint(0,0),CGSize(width,height),decoratable)
-    }
     
-    convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
-        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
-    }
-    
-    convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100){
-        self.init(CGPoint(0,0),CGSize(width,height))
-    }
     convenience init(_ rect:NSRect, _ decoratable: IGraphicDecoratable){
         self.init(rect.origin,rect.size,decoratable)
     }
-    
+    convenience init(_ width:CGFloat,_ height:CGFloat){
+        self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(NSColor.redColor())))
+    }
 }
 

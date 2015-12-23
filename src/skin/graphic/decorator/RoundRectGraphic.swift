@@ -38,3 +38,6 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         }
     }
 }
+extension RoundRectGraphic{
+    
+}

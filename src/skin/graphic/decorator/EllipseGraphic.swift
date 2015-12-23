@@ -1,5 +1,7 @@
 import Cocoa
 
+//TODO: fix this class
+
 class EllipseGraphic:SizeableGraphic{
     var radius:CGFloat
     //TODO: possibly add a diameter var
@@ -29,7 +31,7 @@ class EllipseGraphic:SizeableGraphic{
         return CGSize(radius*2,radius*2)
     }
 }
-extension CircleGraphic{
+extension EllipseGraphic{
     //does not work anymore, works or?
     convenience init(_ radius:CGFloat,_ fillColor:NSColor){
         self.init(0,0,radius,BaseGraphic(FillStyle(fillColor)))

@@ -20,7 +20,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
 }
 extension SizeableGraphic{
-    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:GradientFillStyle, _ lineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:GradientFillStyle, _ lineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
         self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset)))
     }
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){

@@ -2,7 +2,7 @@ import Foundation
 
 class RectGraphicUtils {
     /**
-     *
+     * NOTE: Only outside is different, Center and Inside are the same
      */
     class func fillFrame(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
         var fillFrameRect:CGRect = rect.copy()
@@ -30,6 +30,8 @@ class RectGraphicUtils {
             lineRect = lineRect.offset(lineStyle.thickness / 2, 0)//.expand(-lineStyle.thickness/2, 0)
         }else if(offsetType.left == OffsetType.inside){ //inside
             lineRect = lineRect.offset(-lineStyle.thickness/2, 0)//.expand(lineStyle.thickness/2 , 0)
+        }else{//center
+            lineFrameRect = lineFrameRect.outset(lineStyle.thickness/2, lineStyle.thickness/2)
         }
         /*Right*/
         if(offsetType.right == OffsetType.outside){
@@ -37,7 +39,7 @@ class RectGraphicUtils {
             lineRect = lineRect.expand(lineStyle.thickness , 0)
         }else if(offsetType.left == OffsetType.inside){//inside
             lineRect = lineRect.expand(lineStyle.thickness , 0)
-        }else{
+        }else{//center
             
         }
         /*Top*/
@@ -46,6 +48,8 @@ class RectGraphicUtils {
             lineRect = lineRect.offset(0, lineStyle.thickness/2)//.expand(0,-lineStyle.thickness/2)
         }else if(offsetType.left == OffsetType.inside){//inside
             lineRect = lineRect.offset(0, -lineStyle.thickness/2)//.expand(0,+lineStyle.thickness/2)
+        }else{//center
+            
         }
         /*Bottom*/
         if(offsetType.bottom == OffsetType.outside){//outside
@@ -53,6 +57,8 @@ class RectGraphicUtils {
             lineRect = lineRect.expand(0,lineStyle.thickness)
         }else if(offsetType.left == OffsetType.inside){//inside
             lineRect = lineRect.expand(0,lineStyle.thickness)
+        }else{//center
+            
         }
         return (lineFrameRect,lineRect)
     }

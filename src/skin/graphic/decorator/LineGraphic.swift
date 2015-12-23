@@ -17,8 +17,11 @@ class LineGraphic:SizeableDecorator {
     override func drawLine() {
         //Swift.print("LineGraphic.drawLine()")
         
+        
+        let pos:CGPoint = getPosition()
         let size:CGSize = getSize()
-        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType)
+        let rect:CGRect = CGRect(origin: pos,size: size)
+        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, graphic.lineStyle!, graphic.lineOffsetType)
         graphic.lineShape.frame = lineOffsetRect.lineFrameRect
         //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
         graphic.lineShape.path = CGPathParser.ellipse(lineOffsetRect.lineRect)

@@ -70,7 +70,8 @@ class CSSPropertyParser {
         let propertyString:String = RegExp.match(string, "(?<=radial-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         var setupString:String = properties.shift()
-        
+        let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties));/*the first item is always the rotation, top or left or top left etc*/
+        var gradient:IGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
         
         //implement here
         

@@ -42,9 +42,9 @@ extension RoundRectGraphic{
     /**
      *
      */
-    /*
+    
     convenience init(_ x:CGFloat,_ y:CGFloat,_ fillet:Fillet,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-    self.init(x,y,fillet,BaseGraphic(fillStyle,lineStyle,lineOffset))
+        self.init(BaseGraphic(fillStyle,lineStyle,lineOffset),fillet)
     }
-    */
+    /**/
 }

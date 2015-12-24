@@ -9,7 +9,7 @@ import Cocoa
 class GraphicDecoratable:AbstractGraphicDecoratable {
     var decoratable:IGraphicDecoratable
     override var graphic:BaseGraphic {return decoratable.graphic}
-    init(_ decoratable:IGraphicDecoratable){
+    init(_ decoratable:IGraphicDecoratable){"test"
         self.decoratable = decoratable
         super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
         graphic.selector = self.handleSelector

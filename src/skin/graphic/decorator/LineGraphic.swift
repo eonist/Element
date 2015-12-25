@@ -65,7 +65,7 @@ extension LineGraphic{
         self.init(p1,p2, BaseGraphic(nil,lineStyle))
     }
     convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ gradientlineStyle:GradientLineStyle) {
-        self.init(p1,p2, BaseGraphic(nil,gradientlineStyle))
+        self.init(p1,p2, GradientGraphic(BaseGraphic(nil,gradientlineStyle)))
     }
 }
 /**

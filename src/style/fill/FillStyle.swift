@@ -15,17 +15,21 @@ class FillStyle:ConcreteCopyable,IFillStyle {
 protocol Copyable{
     init(_ instance:Copyable)
     func copy()->Copyable
+    func setProp(copyable:Copyable)
 }
-class ConcreteCopyable:Copyable{
+class ConcreteCopyable{
     required init(_ instance: Copyable) {
-       self 
+       self
     }
     func copy() -> Copyable {
         return FillStyle(self)
     }
+    
 }
 extension FillStyle:Copyable{
-    
+    func setProp(copyable: Copyable) {
+        //must be overriden in
+    }
     func clone()->Copyable{
          return FillStyle(color)
     }

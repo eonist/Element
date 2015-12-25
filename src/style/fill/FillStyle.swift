@@ -10,20 +10,20 @@ class FillStyle:IFillStyle {
     init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
     }
-    func copy() -> ICopyable {
+    func copy() -> ICopyable2 {
         return FillStyle(self)
     }
 }
 
-extension FillStyle:ICopyable{
+extension FillStyle:ICopyable2{
     convenience init(_ fillStyle:FillStyle){
         self.init(fillStyle.color)
     }
     
 }
 
-class Copyable:ICopyable{
-    func copy()->ICopyable{
-        
-    }
+
+protocol ICopyable2{
+    func copy()->ICopyable2
 }
+

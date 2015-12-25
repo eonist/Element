@@ -17,3 +17,7 @@ extension FillStyle{
         self.init(fillStyle.color)
     }
 }
+protocol Copyable{
+    func copy->Copyable
+    
+}

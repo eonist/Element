@@ -17,7 +17,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
         Swift.print("RoundRectGraphic.drawFill() ")
         let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
         getGraphic().fillShape.frame = fillFrame/*,position and set the size of the frame*/
-        getGraphic().fillShape.path = CGPathParser.roundRect(0,0,width,height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
+        getGraphic().fillShape.path = CGPathParser.roundRect(0,0,width,height,50, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
     }
     /**
      *

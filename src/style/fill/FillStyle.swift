@@ -10,6 +10,10 @@ class FillStyle:ConcreteCopyable,IFillStyle {
     init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
     }
+
+    required init(_ instance: Copyable) {
+        fatalError("init has not been implemented")
+    }
     
 }
 protocol Copyable{
@@ -21,9 +25,7 @@ class ConcreteCopyable{
     required init(_ instance: Copyable) {
        self
     }
-    func copy() -> Copyable {
-        return FillStyle(self)
-    }
+    
     
 }
 extension FillStyle:Copyable{
@@ -32,6 +34,9 @@ extension FillStyle:Copyable{
     }
     func clone()->Copyable{
          return FillStyle(color)
+    }
+    func copy() -> Copyable {
+        return FillStyle(color)
     }
 }
 

@@ -18,6 +18,11 @@ class FillStyle:ConcreteCopyable,IFillStyle {
     
     
 }
+
+
+//continue with the idea that you can add 
+
+
 protocol Copyable{
     init(_ instance:Copyable)
     func copy()->Copyable

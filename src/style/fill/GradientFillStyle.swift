@@ -6,13 +6,14 @@ class GradientFillStyle:FillStyle{
         self.gradient = gradient;
         super.init(color);
     }
+    
 }
 extension GradientFillStyle{
     convenience init(_ gradientFillStyle:GradientFillStyle){
         self.init(gradientFillStyle.gradient,gradientFillStyle.color)
     }
-    
-    func copy() -> Copyable {
+    override func copy() -> Copyable {
         return GradientFillStyle(self)
     }
+    
 }

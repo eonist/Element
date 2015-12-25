@@ -18,7 +18,7 @@ protocol Copyable{
 }
 class ConcreteCopyable:Copyable{
     required init(_ instance: Copyable) {
-       
+       self 
     }
     func copy() -> Copyable {
         return FillStyle(self)

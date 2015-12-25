@@ -14,9 +14,6 @@ class FillStyle:IFillStyle {
 
 extension FillStyle{
     convenience init(fillStyle:FillStyle){
-        self.init()
-        self.color = fillStyle.color
-        
+        self.init(fillStyle.color)
     }
-    
 }

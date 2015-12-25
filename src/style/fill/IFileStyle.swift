@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol IFillStyle{
+protocol IFillStyle:Copyable{
     var color: NSColor { get set }
 }
 /*

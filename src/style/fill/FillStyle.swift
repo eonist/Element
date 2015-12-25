@@ -9,12 +9,13 @@ class FillStyle:ConcreteCopyable,IFillStyle {
      */
     init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
-        
+        super.init()
     }
 
-    required init(_ instance: Copyable) {
+    required init(_ instance: Copyable?) {
         fatalError("init has not been implemented")
     }
+    
     
 }
 protocol Copyable{
@@ -27,7 +28,7 @@ class ConcreteCopyable{
        //fatalError("must be overriden in subclass")
     }
 }
-extension FillStyle:Copyable{
+extension IFillStyle{
     func setProps(copyable: Copyable) {
         //must be overriden in
     }

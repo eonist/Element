@@ -20,8 +20,11 @@ protocol Copyable{
 }
 
 extension FillStyle:Copyable{
-    init(_ instance:Copyable){
+    required convenience init(_ instance:Copyable){
         self.init((instance as! FillStyle).color)
+    }
+    func clone(){
+        
     }
 }
 

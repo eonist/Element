@@ -1,7 +1,7 @@
 
 import Cocoa
 
-class FillStyle:IFillStyle,Copyable {
+class FillStyle:IFillStyle {
     
     var color:NSColor
     /**
@@ -10,10 +10,9 @@ class FillStyle:IFillStyle,Copyable {
     init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
     }
-    
 }
 
-extension FillStyle{
+extension FillStyle:Copyable{
     convenience init(_ fillStyle:FillStyle){
         self.init(fillStyle.color)
     }

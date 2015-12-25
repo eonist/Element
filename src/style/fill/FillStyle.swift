@@ -28,7 +28,7 @@ class ConcreteCopyable{
        //fatalError("must be overriden in subclass")
     }
 }
-extension IFillStyle{
+extension IFillStyle:Copyable{
     func setProps(copyable: Copyable) {
         //must be overriden in
     }

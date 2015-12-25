@@ -14,13 +14,14 @@ class FillStyle:IFillStyle {
         return FillStyle(self)
     }
 }
+protocol Copyable{
+    func copy()->Copyable
+}
+
 extension FillStyle:Copyable{
     convenience init(_ fillStyle:FillStyle){
         self.init(fillStyle.color)
     }
 }
 
-protocol Copyable{
-    func copy()->Copyable
-}
 

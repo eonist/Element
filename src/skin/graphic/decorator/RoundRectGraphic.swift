@@ -43,10 +43,7 @@ extension RoundRectGraphic{
      */
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillet:Fillet, _ gradientFillStyle:GradientFillStyle, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
         //Swift.print("Init with gradientFill")
-        let b = BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)
-        let r = RectGraphic(CGPoint(x,y),CGSize(width,height),b)
-        let g = GradientGraphic(r)
-        self.init(g,fillet)
+        self.init(RectGraphic(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset))),fillet)
     }
     /**
      *

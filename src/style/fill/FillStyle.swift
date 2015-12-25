@@ -7,10 +7,9 @@ class FillStyle:ConcreteCopyable,IFillStyle {
     /**
      *
      */
-    convenience init(_ color:NSColor = NSColor.clearColor()){
-        
+    init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
-        self.init(self)
+        
     }
 
     required init(_ instance: Copyable) {
@@ -24,8 +23,8 @@ protocol Copyable{
     func setProps(copyable:Copyable)
 }
 class ConcreteCopyable{
-    required init(_ instance: Copyable) {
-       fatalError("must be overriden in subclass")
+    required init(_ instance: Copyable? = nil) {
+       //fatalError("must be overriden in subclass")
     }
 }
 extension FillStyle:Copyable{

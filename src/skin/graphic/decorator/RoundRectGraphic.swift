@@ -14,7 +14,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func drawFill() {
-        Swift.print("RoundRectGraphic.drawFill() ")
+        //Swift.print("RoundRectGraphic.drawFill() ")
         let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
         graphic.fillShape.path = CGPathParser.roundRect(0,0,width,height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//Shapes/*Draws in the local coordinate space of the shape*/
@@ -23,7 +23,7 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
      *
      */
     override func drawLine(){
-        Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
+        //Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
             let lineOffsetType:OffsetType = graphic.lineOffsetType;
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!, lineOffsetType)
@@ -42,7 +42,7 @@ extension RoundRectGraphic{
      *
      */
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillet:Fillet, _ gradientFillStyle:GradientFillStyle, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
-        Swift.print("Init with gradientFill")
+        //Swift.print("Init with gradientFill")
         let b = BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)
         let r = RectGraphic(CGPoint(x,y),CGSize(width,height),b)
         let g = GradientGraphic(r)

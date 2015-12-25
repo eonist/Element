@@ -12,3 +12,9 @@ class FillStyle:IFillStyle {
     }
 }
 
+extension FillStyle{
+    init(filleStyle:FillStyle){
+        self.color = fillStyle.color
+    }
+    
+}

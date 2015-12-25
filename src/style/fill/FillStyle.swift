@@ -20,7 +20,7 @@ class FillStyle:ConcreteCopyable,IFillStyle {
 }
 
 
-//continue with the idea that you can add 
+//continue with the idea that you can add functionality on a protocol that then is extended onto a class, think of the way you did it in the begining with NSButton and IElement etc. 
 
 
 protocol Copyable{

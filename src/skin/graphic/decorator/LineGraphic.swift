@@ -60,6 +60,9 @@ class LineGraphic:SizeableDecorator {
     }
 }
 extension LineGraphic{
+    
+    //continue here: create a gradient fill and line initializer
+    
     convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {
         self.init(p1,p2, BaseGraphic(nil,lineStyle))
     }

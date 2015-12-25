@@ -7,8 +7,10 @@ class FillStyle:ConcreteCopyable,IFillStyle {
     /**
      *
      */
-    init(_ color:NSColor = NSColor.clearColor()){
+    convenience init(_ color:NSColor = NSColor.clearColor()){
+        
         self.color = color
+        self.init(self)
     }
 
     required init(_ instance: Copyable) {

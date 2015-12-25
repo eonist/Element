@@ -1,7 +1,7 @@
 
 import Cocoa
 
-class FillStyle:IFillStyle {
+class FillStyle:IFillStyle,Copyable {
     
     var color:NSColor
     /**
@@ -10,14 +10,17 @@ class FillStyle:IFillStyle {
     init(_ color:NSColor = NSColor.clearColor()){
         self.color = color
     }
+    
 }
 
 extension FillStyle{
-    convenience init(fillStyle:FillStyle){
+    convenience init(_ fillStyle:FillStyle){
         self.init(fillStyle.color)
+    }
+    func copy() -> Copyable {
+        return FillStyle(self)
     }
 }
 protocol Copyable{
-    func copy->Copyable
-    
+    func copy()->Copyable
 }

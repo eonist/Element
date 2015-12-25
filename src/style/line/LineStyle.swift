@@ -12,5 +12,8 @@ class LineStyle:ILineStyle {
         self.lineCap = lineCap
         self.lineJoin = lineJoin
         self.miterLimit = miterLimit
+        
+        
+        //see if you have some method in the old project for copying linestyles
     }
 }

@@ -8,7 +8,7 @@ import Cocoa
 //TODO: look into making ISIzeableGraohic and IPositionalGraphic again that extends the functionality you need but doesnt have the init stuff
 
 
-class GradientGraphic:PositionalDecorator {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
+class GradientGraphic:SizeableDecorator {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
     /**
      *
      */

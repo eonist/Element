@@ -19,8 +19,8 @@ protocol Copyable{
 }
 
 extension FillStyle:Copyable{
-    convenience init(_ fillStyle:FillStyle){
-        self.init(fillStyle.color)
+    convenience init(_ instance:Copyable){
+        self.init((instance as! FillStyle).color)
     }
 }
 

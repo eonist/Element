@@ -10,20 +10,5 @@ class GradientFillStyle:FillStyle{
         super.init(color);
     }
 
-    required init(_ instance: Copyable) {
-        fatalError("init has not been implemented")
-    }
-    
-}
-extension IGradientFillStyle:Copyable{
-    
-    /*
-    convenience init(_ gradientFillStyle:GradientFillStyle){
-    self.init(gradientFillStyle.gradient,gradientFillStyle.color)
-    }
-    func copy() -> Copyable {
-    return FillStyle(self)
-    }
-    */
     
 }

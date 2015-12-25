@@ -16,8 +16,6 @@ class LineGraphic:SizeableDecorator {
      */
     override func drawLine() {
         //Swift.print("LineGraphic.drawLine()")
-        
-        
         let pos:CGPoint = getPosition()
         let size:CGSize = getSize()
         let rect:CGRect = CGRect(pos,size)

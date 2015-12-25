@@ -19,21 +19,16 @@ class FillStyle:ConcreteCopyable,IFillStyle {
 protocol Copyable{
     init(_ instance:Copyable)
     func copy()->Copyable
-    func setProp(copyable:Copyable)
+    func setProps(copyable:Copyable)
 }
 class ConcreteCopyable{
     required init(_ instance: Copyable) {
-       self
+       fatalError("must be overriden in subclass")
     }
-    
-    
 }
 extension FillStyle:Copyable{
-    func setProp(copyable: Copyable) {
+    func setProps(copyable: Copyable) {
         //must be overriden in
-    }
-    func clone()->Copyable{
-         return FillStyle(color)
     }
     func copy() -> Copyable {
         return FillStyle(color)

@@ -7,3 +7,10 @@ extension IGradientFillStyle{
         return GradientFillStyle(self.gradient.copy(),(self).color)
     }
 }
+extension IGradientFillStyle{
+    func mix(colors:Array<CGColor>)->GradientFillStyle{
+        let c = copy()
+        c.gradient.colors = colors
+        return c
+    }
+}

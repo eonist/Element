@@ -7,8 +7,3 @@ class FillStyle:IFillStyle {
         self.color = color
     }
 }
-extension IFillStyle{
-    func copy() -> IFillStyle {
-        return FillStyle(self.color)
-    }
-}

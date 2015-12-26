@@ -9,8 +9,3 @@ class GradientFillStyle:FillStyle,IGradientFillStyle{
         super.init(color);
     }
 }
-extension IGradientFillStyle{
-    func copy() -> IGradientFillStyle {
-        return GradientFillStyle(self.gradient,(self as! IFillStyle).color)
-    }
-}

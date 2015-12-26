@@ -1,5 +1,5 @@
 import Foundation
 
-class IGradientLineStyle {
-
+protocol IGradientLineStyle:ILineStyle {
+    var gradient:IGradient{get set}
 }

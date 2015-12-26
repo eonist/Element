@@ -1,8 +1,8 @@
 import Cocoa
 
 class GradientFillStyle:FillStyle,IGradientFillStyle{
-    var gradient:Gradient/*IGradient*/;//TODO:change to IGradient
-    init(_ gradient:Gradient/*IGradient*/, _ color:NSColor){
+    var gradient:IGradient/*IGradient*/;//TODO:change to IGradient
+    init(_ gradient:IGradient/*IGradient*/, _ color:NSColor){
         self.gradient = gradient;
         super.init(color);
     }

@@ -1,8 +1,6 @@
 import Cocoa
 
-protocol IGradientFillStyle{
-    var gradient:Gradient{get set}
-}
+
 
 class GradientFillStyle:FillStyle,IGradientFillStyle{
     var gradient:Gradient/*IGradient*/;//TODO:change to IGradient

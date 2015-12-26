@@ -1,9 +1,9 @@
 import Foundation
-protocol IGradientFillStyle{
+protocol IGradientFillStyle:IFillStyle{
     var gradient:IGradient{get set}
 }
 extension IGradientFillStyle{
-    func copy() -> GradientFillStyle {
-        return GradientFillStyle(self.gradient.copy(),(self as! IFillStyle).color)
+    func copy() -> IGradientFillStyle {
+        return GradientFillStyle(self.gradient.copy(),(self as IFillStyle).color)
     }
 }

@@ -7,3 +7,8 @@ protocol ILineStyle{
     var lineJoin: CGLineJoin { get set }//TODO: rename to jointStyle
     var miterLimit: CGFloat { get set }
 }
+extension ILineStyle{
+    func copy() -> ILineStyle {
+        return LineStyle(thickness,color,lineCap,lineJoin,miterLimit)
+    }
+}

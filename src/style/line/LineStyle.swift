@@ -16,4 +16,5 @@ class LineStyle:ILineStyle {
         
         //see if you have some method in the old project for copying linestyles
     }
+    
 }

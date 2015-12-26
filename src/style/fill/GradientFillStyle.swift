@@ -13,6 +13,6 @@ class GradientFillStyle:FillStyle,IGradientFillStyle{
 }
 extension IGradientFillStyle{
     func copy() -> IGradientFillStyle {
-        return GradientFillStyle(self.color)
+        return GradientFillStyle(self.gradient,(self as! IFillStyle).color)
     }
 }

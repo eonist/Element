@@ -1,14 +1,15 @@
 import Cocoa
 
-protocol IGradientFillStyle{
-    
-}
-class GradientFillStyle:FillStyle{
+
+class GradientFillStyle:FillStyle:IGradientFillStyle{
     var gradient:Gradient/*IGradient*/;//TODO:change to IGradient
     init(_ gradient:Gradient/*IGradient*/, _ color:NSColor){
         self.gradient = gradient;
         super.init(color);
     }
-
-    
+}
+extension IFillStyle{
+    func copy() -> IFillStyle {
+        return FillStyle(self.color)
+    }
 }

@@ -1,7 +1,10 @@
 [Follow the Progress here part 2](https://github.com/eonist/Element/wiki/Progress2)  
 [Follow the Progress here part 1](https://github.com/eonist/Element/wiki/Progress)  
-[Element news on twitter](https://twitter.com/ElementLib)  <---1.0 Release announcement circa New Years eve  
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/logo-01_239238.png">  
+[Element news on twitter](https://twitter.com/stylekit_org)  <---1.0 Release announcement circa New Years eve  
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">
+
+**Drawing in OSX:**  
+<img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">  
 
 <img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/2f289u9384f34.gif">  
 Read more about the TabBar case [here](https://github.com/eonist/Element/wiki/Progress#tabbar)   

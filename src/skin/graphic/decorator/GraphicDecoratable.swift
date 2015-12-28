@@ -63,6 +63,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     /**
      * This method results in the setting of filling type to the graphics instance
+     * NOTE: Conceptually this is equvielnt to the applyLineStyle call
      */
     override func beginFill(){
         //Swift.print("GraphicDecoratable.beginFill()")
@@ -90,6 +91,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         //drawLine()/*this method can be called before beginFill*/
         stylizeLine()
     }
+    /**
+     * NOTE: Conceptually this is equvielnt to the beginFill call
+     */
     override func applyLineStyle(){
         decoratable.applyLineStyle()
     }

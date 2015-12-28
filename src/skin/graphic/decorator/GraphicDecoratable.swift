@@ -56,7 +56,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     */
     /**
-     * This method results in the actual drawing to the context
+     * This method results in the actual drawing of the fill to the context
+     * NOTE:Conceptually this is equvielnt to the line call
      */
     override func fill(){
         //Swift.print("GraphicDecoratable.fill()")
@@ -86,7 +87,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.stylizeFill()
     }
     /**
-     * 
+     * This method results in the actual drawing of the stroke to the context
+     * NOTE: Conceptually this is equvielnt to the fill call
      */
     override func line(){
         //Swift.print("GraphicDecoratable.line()")
@@ -115,6 +117,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     /**
      * Returns _decoratable.graphic
      * @Note: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.
+     * TODO: remove this if applicaple
      */
     override func getGraphic() -> BaseGraphic{
         return self.decoratable.getGraphic()

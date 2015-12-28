@@ -22,6 +22,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
     }
+    /**
+     * NOTE: THis method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape
+     */
     func handleSelector(layer: CALayer,ctx:CGContext) {
         //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
@@ -70,7 +73,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.beginFill()
     }
     /**
-     * This method results in the setting of the path to the graphics instance
+     * This method results in the setting of the "fill-path" to the graphics instance
      */
     override func drawFill(){
         //Swift.print("GraphicDecoratable.drawFill()")
@@ -83,7 +86,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         decoratable.stylizeFill()
     }
     /**
-     * This method results the actual drawing of the stroke to the context (based on what is attached on the graphics instance at the moment)
+     * 
      */
     override func line(){
         //Swift.print("GraphicDecoratable.line()")
@@ -97,9 +100,15 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func applyLineStyle(){
         decoratable.applyLineStyle()
     }
+    /**
+     * This method results in the setting of the "line-path" to the graphics instance
+     */
     override func drawLine(){
         decoratable.drawLine()
     }
+    /**
+     * This method results the actual drawing of the stroke to the context (based on what is attached on the graphics instance at the moment)
+     */
     override func stylizeLine(){
         decoratable.stylizeLine()
     }

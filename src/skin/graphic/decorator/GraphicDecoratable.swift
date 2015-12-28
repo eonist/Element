@@ -23,6 +23,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
     }
     /**
+     * This method starts the actual drawing of the path and style to the context (for fill and stroke)
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     func handleSelector(layer: CALayer,ctx:CGContext) {
@@ -37,7 +38,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
             if(graphic.lineStyle != nil){line()}
         }
     }
-    
     /**
      * Stops implicit animation from happening
      * NOTE: Remember to set the delegate of your CALayer instance to an instance of a class that at least extends NSObject. In this example we extend NSView.

@@ -52,24 +52,38 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     Swift.print("displayLayer")
     }
     */
-    
+    /**
+     * This method results in the actual drawing to the context
+     */
     override func fill(){
         //Swift.print("GraphicDecoratable.fill()")
         beginFill()
         //drawFill()/*this method can be called before beginFill*/
         stylizeFill()
     }
+    /**
+     * This method results in the setting of filling type to the graphics instance
+     */
     override func beginFill(){
         //Swift.print("GraphicDecoratable.beginFill()")
         decoratable.beginFill()
     }
+    /**
+     * This method results in the setting of the path to the graphics instance
+     */
     override func drawFill(){
         //Swift.print("GraphicDecoratable.drawFill()")
         decoratable.drawFill()
     }
+    /**
+     * This method results the actual drawing of the fill to the context (based on what is attached on the graphics instance at the moment)
+     */
     override func stylizeFill(){
         decoratable.stylizeFill()
     }
+    /**
+     * This method results the actual drawing of the stroke to the context (based on what is attached on the graphics instance at the moment)
+     */
     override func line(){
         //Swift.print("GraphicDecoratable.line()")
         applyLineStyle()

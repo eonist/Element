@@ -1,6 +1,6 @@
 [Follow the Progress here part 2](https://github.com/eonist/Element/wiki/Progress2)  
 [Follow the Progress here part 1](https://github.com/eonist/Element/wiki/Progress)  
-[Element news on twitter](https://twitter.com/stylekit_org)  <---1.0 Release announcement circa New Years eve  
+[Element news on twitter](https://twitter.com/stylekit_org)
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">
 
 **Graphics Drawing in OSX:**  

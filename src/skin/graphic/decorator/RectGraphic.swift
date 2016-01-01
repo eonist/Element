@@ -5,7 +5,7 @@ class RectGraphic:SizeableGraphic{
      * TODO: make the CGRect(x,y,width,height) into a variable on the Graphic class
      */
     override func drawFill() {
-        Swift.print("RectGraphic.drawFill()")
+        //Swift.print("RectGraphic.drawFill()")
         graphic.fillShape.path = CGRect(0,0,width,height).path/*Draws in the local coordinate space of the shape*/
         let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!, graphic.lineOffsetType) : CGRect(x,y,width,height)
         graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
@@ -15,7 +15,7 @@ class RectGraphic:SizeableGraphic{
      *
      */
     override func drawLine(){
-        Swift.print("RectGraphic.drawLine()")
+        //Swift.print("RectGraphic.drawLine()")
         if(graphic.lineStyle != nil){
             //let graphicRect:CGRect = CGRect(0, 0, width, height)
             

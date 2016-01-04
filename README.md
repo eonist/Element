@@ -104,7 +104,7 @@ Button:down{
 
 ###Notes:
 - **Element is curently implimenting support for the OSX swift language**
-- Element includes a custom built SVG engine, css engine, and vector draw engine.
+- Element includes a custom built SVG engine, css engine, and vector draw engine  
 - All code included is custom written for the Element project to avoid copyright conflicts
 - Element is improved on a regular basis 
 

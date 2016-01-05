@@ -168,4 +168,4 @@ Button:down{
 - [ ] Optimize the css retrival system with inspiration from this book: quicksort, heapsort, hasing etc, better algos to find styles Cormen T.H., Leiserson C.E., Rivest R.L., Stein C. Introduction to Algorithms (3ed., MIT, 2009)(ISBN 262033845)
 
 
-[License](http://opensource.org/licenses/MIT) 
+[MIT License](http://opensource.org/licenses/MIT) 

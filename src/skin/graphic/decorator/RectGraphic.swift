@@ -16,7 +16,7 @@ class RectGraphic:SizeableGraphic{
      */
     override func drawLine(){
         //Swift.print("RectGraphic.drawLine()")
-        if(graphic.lineStyle != nil){
+        if(graphic.lineStyle != nil){/*<---TODO: I dont think this check is needed, as this check is already done in the GraphicDecoratable class, so remove it when your working with this again*/
             //let graphicRect:CGRect = CGRect(0, 0, width, height)
             
             //Swift.print("graphicRect: " + String(graphicRect))

@@ -19,6 +19,9 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         self.size = size
     }
 }
+/**
+ * Convenience init methods
+ */
 extension SizeableGraphic{
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle/*?*/, _ gradientLineStyle:GradientLineStyle/*?*/, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
         Swift.print("Init with gradientFill")

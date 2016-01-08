@@ -19,7 +19,7 @@ class LineGraphic:SizeableDecorator {
         let pos:CGPoint = getPosition()
         let size:CGSize = getSize()
         let rect:CGRect = CGRect(pos,size)
-        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, graphic.lineStyle!, graphic.lineOffsetType)
+        let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, graphic.lineStyle!.thickness, graphic.lineOffsetType)
         graphic.lineShape.frame = lineOffsetRect.lineFrameRect
         //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
 

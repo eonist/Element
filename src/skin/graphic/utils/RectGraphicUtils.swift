@@ -4,16 +4,16 @@ class RectGraphicUtils {
     /**
      * NOTE: Only outside is different, Center and Inside are the same
      */
-    class func fillFrame(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect{
+    class func fillFrame(rect:CGRect, _ lineThickness:CGFloat, _ offsetType:OffsetType)->CGRect{
         var fillFrameRect:CGRect = rect.copy()
         //Swift.print("lineRect: " + "\(lineRect)")
         /*Left*/
-        if(!lineStyle.thickness.isNaN && offsetType.left == OffsetType.outside){
-            fillFrameRect = fillFrameRect.offset(lineStyle.thickness, 0)
+        if(!lineThickness.isNaN && offsetType.left == OffsetType.outside){
+            fillFrameRect = fillFrameRect.offset(lineThickness, 0)
         }
         /*Top*/
-        if(!lineStyle.thickness.isNaN && offsetType.top == OffsetType.outside){
-            fillFrameRect = fillFrameRect.offset(0,lineStyle.thickness)
+        if(!lineThickness.isNaN && offsetType.top == OffsetType.outside){
+            fillFrameRect = fillFrameRect.offset(0,lineThickness)
         }
         return fillFrameRect
     }

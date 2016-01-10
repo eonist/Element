@@ -15,7 +15,7 @@ class GraphicModifier {
      * NOTE: before it was all bundeled together in the size method, now its move here
      */
     class func stylize(path:CGPath, _ graphics:Graphics){
-        Swift.print("GraphicModifier.stylize()")
+        //Swift.print("GraphicModifier.stylize()")
         //path.fill()
         //path.stroke()
         graphics.draw(path)//draw everything

@@ -4,9 +4,7 @@ import Cocoa
  * @Note there may not be a need to include a getter function for the fillStyle, since if this instance is edited with a Utility class the new fillstyle is applied but not stored in _fillStyle, same goes for lineStyle
  */
 
-
 //TODO: look into making ISIzeableGraohic and IPositionalGraphic again that extends the functionality you need but doesnt have the init stuff
-
 
 class GradientGraphic:GraphicDecoratable {//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure
     /**
@@ -23,8 +21,8 @@ class GradientGraphic:GraphicDecoratable {//TODO: probably should extend Sizeabl
      */
     override func applyLineStyle() {
         Swift.print("GradientGraphic.applyLineStyle()")
-        super.applyLineStyle()//call the BaseGraphic to set the stroke-width, cap, joint etc
-        if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){
+        super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
+        if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed
             Swift.print("lineStyle is GradientLineStyle")
             LineStyleModifier.lineGradientStyle(graphic.lineShape.graphics, (graphic.lineStyle as! GradientLineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)
         }//else{fatalError("NOT CORRECT lineStyle")}

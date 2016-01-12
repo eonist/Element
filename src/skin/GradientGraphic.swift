@@ -17,7 +17,7 @@ class GradientGraphic:GraphicDecoratable {//TODO: probably should extend Sizeabl
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
     }
     /**
-     * // :TODO: could possibly be renamed to applyGradientLinestyle
+     * // :TODO: could possibly be renamed to applyGradientLinestyle, as it needs to override it cant be renamed
      */
     override func applyLineStyle() {
         Swift.print("GradientGraphic.applyLineStyle()")

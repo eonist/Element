@@ -2,8 +2,8 @@ import Cocoa
 
 class LineStyleModifier {
     /**
-    *
-    */
+     * TODO: Remove this class it doesnt do anythin usefull
+     */
     class func lineGradientStyle(graphics:Graphics,_ gradient:IGradient) {
         //let nsFillGradientColorA:NSColor = NSColor.magentaColor()
         //let nsFillGradientColorB:NSColor = NSColor.cyanColor()

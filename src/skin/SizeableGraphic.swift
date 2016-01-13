@@ -23,10 +23,15 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
  * Convenience init methods
  */
 extension SizeableGraphic{
+    /*Gradient fill initializers*/
+    convenience init(){
+        
+    }
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle/*?*/, _ gradientLineStyle:GradientLineStyle/*?*/, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
         Swift.print("Init with gradientFill")
         self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
     }
+    /*Color fill initializers*/
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         Swift.print("Init with Fill")
         self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle,lineOffset))
@@ -40,10 +45,9 @@ extension SizeableGraphic{
     convenience init(_ width:CGFloat, _ height:CGFloat, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ decoratable: IGraphicDecoratable){
+    convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ decoratable:IGraphicDecoratable){
         self.init(CGPoint(0,0),CGSize(width,height),decoratable)
     }
-    
     convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }
@@ -53,6 +57,4 @@ extension SizeableGraphic{
     convenience init(_ rect:NSRect, _ decoratable: IGraphicDecoratable){
         self.init(rect.origin,rect.size,decoratable)
     }
-    
 }
-

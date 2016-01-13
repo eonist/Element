@@ -24,11 +24,12 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
  */
 extension SizeableGraphic{
     /*Gradient fill initializers*/
-    convenience init(){
-        
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle/*?*/, _ lineStyle:ILineStyle/*?*/, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+        Swift.print("Init with gradientFill and lineStyle")
+        self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,lineStyle,lineOffset)))
     }
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle/*?*/, _ gradientLineStyle:GradientLineStyle/*?*/, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and stroke*/
-        Swift.print("Init with gradientFill")
+        Swift.print("Init with gradientFill and gradientLineStyle")
         self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
     }
     /*Color fill initializers*/

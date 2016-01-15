@@ -15,8 +15,7 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
-            let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
-            let graphicsGradient:LinearGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
+            
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
     }
@@ -30,18 +29,24 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
             var boundingBox:CGRect = CGPathGetBoundingBox(graphic.lineShape.path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/
-            if(gradient is LinearGradient){
-                //graphic.lineShape.graphics.gradientLine(LinearGraphicsGradient())
-            }else if(gradient is RadialGradient){
-                let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
-                //Swift.print("lineStyle is GradientLineStyle")
-                graphic.lineShape.graphics.gradientLine(RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius))
-            }else{
-                
-            }
-            
-            
-            
+            let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(, )
+            graphic.lineShape.graphics.gradientLine()
         }//else{fatalError("NOT CORRECT lineStyle")}
+    }
+}
+private class Utils{
+    /**
+     *
+     */
+    class func graphicsGradient(boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
+        if(gradient is LinearGradient){
+            let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
+            return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
+        }else if(gradient is RadialGradient){
+            let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
+            return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
+        }else{
+            fatalError("this type is not supported")
+        }
     }
 }

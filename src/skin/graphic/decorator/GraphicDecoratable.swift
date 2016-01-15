@@ -27,13 +27,13 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     func handleSelector(layer: CALayer,ctx:CGContext) {
-        Swift.print("GraphicDecoratable.handleSelector()")
+        //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
-            Swift.print("fillShape: ")
+            //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
             if(graphic.fillStyle != nil){fill()}
         }else if(layer === graphic.lineShape){
-            Swift.print("lineShape")
+            //Swift.print("lineShape")
             graphic.lineShape.graphics.context = ctx
             if(graphic.lineStyle != nil){line()}
         }

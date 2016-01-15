@@ -31,15 +31,16 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
             var boundingBox:CGRect = CGPathGetBoundingBox(graphic.lineShape.path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/
             if(gradient is LinearGradient){
-                
+                //graphic.lineShape.graphics.gradientLine(LinearGraphicsGradient())
             }else if(gradient is RadialGradient){
-                
+                let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
+                //Swift.print("lineStyle is GradientLineStyle")
+                graphic.lineShape.graphics.gradientLine(RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius))
             }else{
                 
             }
-            let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
-            //Swift.print("lineStyle is GradientLineStyle")
-            graphics.gradientLine(LinearGraphicsGradient())
+            
+            
             
         }//else{fatalError("NOT CORRECT lineStyle")}
     }

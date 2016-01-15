@@ -14,8 +14,10 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
         Swift.print("GradientGraphic.beginFill()")
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
+            let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
             let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
-            graphic.fillShape.graphics.gradientFill(gradient)
+            let graphicsGradient:LinearGraphicsGradient = LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
+            graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
     }
     /**

@@ -15,7 +15,7 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
-            
+            let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
     }
@@ -29,8 +29,8 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
             var boundingBox:CGRect = CGPathGetBoundingBox(graphic.lineShape.path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/
-            let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(, )
-            graphic.lineShape.graphics.gradientLine()
+            let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
+            graphic.lineShape.graphics.gradientLine(graphicsGradient)
         }//else{fatalError("NOT CORRECT lineStyle")}
     }
 }

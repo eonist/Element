@@ -13,7 +13,9 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
     override func beginFill(){
         Swift.print("GradientGraphic.beginFill()")
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
-            graphic.fillShape.graphics.gradientFill((graphic.fillStyle as! GradientFillStyle).gradient)
+            let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
+            let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
+            graphic.fillShape.graphics.gradientFill(gradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
     }
     /**

@@ -41,7 +41,6 @@ class CSSPropertyParser {
         //Swift.print("CSSPropertyParser.linearGradient.rotation: " + "\(gradient.rotation)")
         return gradient;
     }
-    
     /**
      * @param string radial-gradient(50% 50% 100% 100% 1,blue 1 0,red 1 1);//2 color radial-gradient, with focalPointRatio and with percentage of x,y,width and height
      * NOTE: color: color,alpha,gradiant-ratio (aka gradient-location)

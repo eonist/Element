@@ -27,6 +27,8 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
         //Swift.print("GradientGraphic.applyLineStyle()")
         super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed
+            let gradient = (graphic.lineStyle as! GradientLineStyle).gradient
+            let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
             //Swift.print("lineStyle is GradientLineStyle")
             LineStyleModifier.lineGradientStyle(graphic.lineShape.graphics, (graphic.lineStyle as! GradientLineStyle).gradient);//Updates only if _lineGradient is not null, and _lineGradient.colors[0] and (_lineGradient.colors[1] are valid colors)
         }//else{fatalError("NOT CORRECT lineStyle")}

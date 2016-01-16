@@ -29,6 +29,9 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
             var boundingBox:CGRect = CGPathGetBoundingBox(graphic.lineShape.path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/
+            
+            //TODO: the above isnt correct, use the outlinestroke method and then get the boundingbox from that
+            
             let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
             graphic.lineShape.graphics.gradientLine(graphicsGradient)
         }//else{fatalError("NOT CORRECT lineStyle")}

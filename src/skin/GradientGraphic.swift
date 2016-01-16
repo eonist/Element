@@ -23,7 +23,7 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
      * // :TODO: could possibly be renamed to applyGradientLinestyle, as it needs to override it cant be renamed
      */
     override func applyLineStyle() {
-        //Swift.print("GradientGraphic.applyLineStyle()")
+        Swift.print("GradientGraphic.applyLineStyle()")
         super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
@@ -46,6 +46,7 @@ private class Utils{
             let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
             return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
         }else if(gradient is RadialGradient){
+            Swift.print("radial")
             let rg = RadialGradientUtils.radialGradient(boundingBox,gradient as! RadialGradient)/*Creates and configs the radial gradient*/
             return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
         }else{/*future support for Canonical gradient*/

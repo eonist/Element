@@ -70,7 +70,7 @@ class CSSPropertyParser {
         let propertyString:String = string.match("(?<=radial-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let setupString:String = properties.shift()
-        var gradient:RadialGradient = Utils.gradient(properties);/*add colors, opacities and ratios*/
+        let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         let setup:Array<String> = setupString.split(" ");/*the gradient settings*/
         let x:CGFloat = StringParser.percentage(setup[0])/100;/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
         let y:CGFloat = StringParser.percentage(setup[1])/100;/*percentage wise*/
@@ -79,7 +79,6 @@ class CSSPropertyParser {
         let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
         
         gradient.rotation = rotation
-        gradient.gradientType = GradientType.Radial;
         gradient.startCenter = CGPoint(x,y)
         gradient.startRadius = CGSize(xScale,yScale)
         gradient.endCenter /*<-focalPointRatio*/ = CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/

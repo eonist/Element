@@ -39,11 +39,11 @@ private class Utils{
      *
      */
     class func graphicsGradient(boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
-        if(gradient.gradientType == GradientType.Linear /*is LinearGradient*/){
+        if(gradient is LinearGradient){
             let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
             return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
-        }else if(gradient.gradientType  == GradientType.Radial /*is RadialGradient*/){
-            let rg = RadialGradientUtils.radialGradient(boundingBox,gradient)/*Creates and configs the radial gradient*/
+        }else if(gradient is RadialGradient){
+            let rg = RadialGradientUtils.radialGradient(boundingBox,gradient as! RadialGradient)/*Creates and configs the radial gradient*/
             return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
         }else{
             fatalError("this type is not supported: " + "\(gradient)")

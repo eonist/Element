@@ -3,20 +3,21 @@ import Foundation
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
  */
 class SVGAsset:FlippedView {
-    var svg:SVG;
+    var svg:SVG
     init(_ path:String) {
         Swift.print("SVGAsset.init()")
         //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
         let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
+        svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
-        svg = addSubView(SVGParser.svg(rootElement)) as! SVG
+        addSubview(svg)
     }
     /**
      *
      */
-    func draw(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) {
+    func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
         Swift.print("SVGAsset.drawFill()")
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
         SVGModifier.scale(svg, CGPoint(x,y), scale);
@@ -24,7 +25,7 @@ class SVGAsset:FlippedView {
     /**
      *
      */
-    func applyStyle(fillStyle:IFillStyle?,lineStyle:ILineStyle?){
+    func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         if(fillStyle != nil && lineStyle != nil){
             Swift.print("SVGAsset.fill()")
             //Swift.print("lineStyle: " + "\(lineStyle)")

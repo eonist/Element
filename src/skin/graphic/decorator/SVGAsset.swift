@@ -1,6 +1,7 @@
 import Foundation
 /**
- * Remember to 
+ * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
+ * TODO: maybe add an addSubView
  */
 class SVGAsset:FlippedView {
     var svg:SVG;

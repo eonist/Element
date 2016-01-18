@@ -13,6 +13,9 @@ class AssetDecorator:SizeableDecorator{
     override func drawFill() {
         <#code#>
     }
+    func beginFill() {
+        <#code#>
+    }
     override func drawLine() {
         /*this method must be overridden*/
     }

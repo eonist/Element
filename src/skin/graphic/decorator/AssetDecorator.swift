@@ -11,7 +11,9 @@ class AssetDecorator:SizeableDecorator{
         super.init(decoratable)
     }
     override func drawFill() {
-        <#code#>
+        if(_asset != nil) {graphic.addSubview(self)};/*temp solution*/
+        _asset = graphic.addChild(new SVGAsset(assetURL) as Sprite) as SVGAsset;
+        if(!isNaN(graphic.fillStyle.color)) _asset.applyStyle(graphic.fillStyle,graphic.lineStyle);
     }
     func beginFill() {
         asset.draw()//0, 0, graphic.width, graphic.height

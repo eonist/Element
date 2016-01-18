@@ -7,11 +7,11 @@ class AssetDecorator:SizeableDecorator{
     var asset : SVGAsset;
     var assetURL : String;
     init(_ decoratable: IGraphicDecoratable,_ iconURL:String) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
-        _assetURL = iconURL;
+        assetURL = iconURL;
         super.init(decoratable)
     }
     override func drawFill() {
-        if(_asset != nil) {graphic.addSubview(self)};/*temp solution*/
+        if(asset != nil) {graphic.addSubview(self)};/*temp solution*/
         _asset = graphic.addChild(new SVGAsset(assetURL) as Sprite) as SVGAsset;
         if(!isNaN(graphic.fillStyle.color)) _asset.applyStyle(graphic.fillStyle,graphic.lineStyle);
     }

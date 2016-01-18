@@ -16,7 +16,7 @@ class LineStyleParser {
     /**
      *
      */
-    class func lineCapType(lineJoin:CGLineJoin)->String{
+    class func lineJoinType(lineJoin:CGLineJoin)->String{
         if(lineJoin == CGLineJoin.Miter){
             return "miter"
         }else if(lineJoin == CGLineJoin.Round){

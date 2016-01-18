@@ -1,7 +1,7 @@
 import Foundation
 /**
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
- * TODO: maybe add an addSubView
+ * TODO: maybe add an addSubView method that returns the instance, add it via extensions
  */
 class SVGAsset:FlippedView {
     var svg:SVG;
@@ -31,11 +31,11 @@ class SVGAsset:FlippedView {
         
         //CGRect(0,0,width,height)
     }
-    override func drawLine() {
-        //nothing
-    }
-    override func fill() {
-        if(graphic.fillStyle != nil && graphic.lineStyle != nil){
+    function
+    
+    
+    func applyStyle(fillStyle:IFillStyle,lineStyle:ILineStyle){
+        if(fillStyle != nil && lineStyle != nil){
             Swift.print("SVGAsset.fill()")
             //Swift.print("lineStyle: " + "\(lineStyle)")
             //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
@@ -46,14 +46,11 @@ class SVGAsset:FlippedView {
             //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
             //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
             //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
-            let fillStyle:IFillStyle = graphic.fillStyle!
-            let lineStyle:ILineStyle = graphic.lineStyle!
+            let fillStyle:IFillStyle = fillStyle!
+            let lineStyle:ILineStyle = lineStyle!
             let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
             SVGModifier.style(svg, svgStyle)
         }
-    }
-    override func line() {
-        //nothing
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

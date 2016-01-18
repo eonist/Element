@@ -4,7 +4,7 @@ class LineStyleParser {
     /**
      *
      */
-    class func lineCapType(lineCap:CGLineCap){
-        if()
+    class func lineCapType(lineCap:CGLineCap)->String{
+        return lineCap.rawValue
     }
 }

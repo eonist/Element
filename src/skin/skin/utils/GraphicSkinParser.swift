@@ -42,6 +42,14 @@ private class Utils{
         return RectGraphic(width,height,decoratable);
     }
     /**
+    * Beta
+    * @Note asset is svg for now but in the future it should support png
+    * // :TODO: this solution isnt perfect but it works for now
+    */
+    class func asset(decoratable:IGraphicDecoratable,asset:String)->IGraphicDecoratable {
+        return AssetDecorator(decoratable, asset);
+    }
+    /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance
      * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */

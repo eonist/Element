@@ -16,7 +16,7 @@ protocol IGraphicDecoratable:class{/*<--explain why this extends class*/
     func applyLineStyle()
     func drawLine()
     func stylizeLine()
-    func draw()
+    func draw()/*Setup the geometry and init the display process of fill and line*/
     /*Size & position*/
     /*
     func getSize()->CGSize

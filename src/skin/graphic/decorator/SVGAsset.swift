@@ -5,10 +5,8 @@ import Foundation
  */
 class SVGAsset:FlippedView {
     var svg:SVG;
-
     init(_ path:String) {
         Swift.print("SVGAsset.init()")
-  
         //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
         let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
@@ -22,19 +20,13 @@ class SVGAsset:FlippedView {
      */
     func draw(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) {
         Swift.print("SVGAsset.drawFill()")
-        
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
         SVGModifier.scale(svg, CGPoint(x,y), scale);
-        
-        
-        //CGRect(x,y,width,height)
-        
-        //CGRect(0,0,width,height)
     }
-    function
-    
-    
-    func applyStyle(fillStyle:IFillStyle,lineStyle:ILineStyle){
+    /**
+     *
+     */
+    func applyStyle(fillStyle:IFillStyle?,lineStyle:ILineStyle?){
         if(fillStyle != nil && lineStyle != nil){
             Swift.print("SVGAsset.fill()")
             //Swift.print("lineStyle: " + "\(lineStyle)")
@@ -52,8 +44,5 @@ class SVGAsset:FlippedView {
             SVGModifier.style(svg, svgStyle)
         }
     }
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-        
-    
 }

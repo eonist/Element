@@ -6,8 +6,14 @@ import Foundation
 class AssetDecorator:SizeableDecorator{
     var asset : SVGAsset;
     var assetURL : String;
-    override init(_ decoratable: IGraphicDecoratable) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
-        
+    init(_ decoratable: IGraphicDecoratable,_ iconURL:String) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
+        _assetURL = iconURL;
         super.init(decoratable)
+    }
+    override func drawFill() {
+        <#code#>
+    }
+    override func drawLine() {
+        /*this method must be overridden*/
     }
 }

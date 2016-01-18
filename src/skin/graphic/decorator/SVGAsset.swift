@@ -1,7 +1,6 @@
 import Foundation
 /**
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
- * TODO: maybe add an addSubView method that returns the instance, add it via extensions
  */
 class SVGAsset:FlippedView {
     var svg:SVG;
@@ -11,8 +10,7 @@ class SVGAsset:FlippedView {
         let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
-        svg = SVGParser.svg(rootElement);
-        addSubview(svg)
+        svg = addSubView(SVGParser.svg(rootElement)) as! SVG
     }
     /**
      *

@@ -6,7 +6,7 @@ class SVGAsset:BaseGraphic {
     var height:CGFloat
     var x:CGFloat
     var y:CGFloat
-    init(_ path:String, _ position: CGPoint, _ size: CGSize, _ decoratable: IGraphicDecoratable) {
+    init(_ path:String, _ position: CGPoint, _ size: CGSize) {
         Swift.print("SVGAsset.init()")
         width = size.width
         height = size.height

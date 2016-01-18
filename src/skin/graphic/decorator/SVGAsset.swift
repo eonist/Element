@@ -11,7 +11,6 @@ class SVGAsset:SizeableGraphic {
         super.init(position, size, decoratable)
         graphic.addSubview(svg)
     }
- 
     override func drawFill() {
         //Swift.print("SVGAsset.drawFill()")
         
@@ -30,7 +29,7 @@ class SVGAsset:SizeableGraphic {
         if(graphic.fillStyle != nil && graphic.lineStyle != nil){
             let fillStyle:IFillStyle = graphic.fillStyle!
             let lineStyle:ILineStyle = graphic.lineStyle!
-            let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit)
+            let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
             SVGModifier.style(svg, svgStyle)
         }
     }

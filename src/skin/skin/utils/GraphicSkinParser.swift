@@ -46,7 +46,7 @@ private class Utils{
     * @Note asset is svg for now but in the future it should support png
     * // :TODO: this solution isnt perfect but it works for now
     */
-    class func asset(decoratable:IGraphicDecoratable,asset:String)->IGraphicDecoratable {
+    class func asset(decoratable:IGraphicDecoratable,_ asset:String)->IGraphicDecoratable {
         return AssetDecorator(decoratable, asset);
     }
     /**

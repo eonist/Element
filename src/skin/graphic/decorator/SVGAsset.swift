@@ -30,11 +30,9 @@ class SVGAsset:SizeableGraphic {
         if(graphic.fillStyle != nil && graphic.lineStyle != nil){
             let fillStyle:IFillStyle = graphic.fillStyle!
             let lineStyle:ILineStyle = graphic.lineStyle!
+            let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,lineStyle.lineCap,lineStyle.lineJoin,lineStyle.miterLimit)
+            SVGModifier.style(svg, svgStyle)
         }
-        
-        
-        let svgStyle = SVGStyle(fillStyle.color,nil,lineStyle.thickness,lineStyle.color,lineStyle.alpha,lineStyle.capStyle,lineStyle.jointStyle,lineStyle.miterLimit)
-        SVGModifier.style(svg, svgStyle)
     }
     override func line() {
         //nothing

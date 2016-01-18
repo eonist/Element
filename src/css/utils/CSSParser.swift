@@ -134,7 +134,7 @@ private class Utils{
                 }else{
                     let precedingWith:String = "(?<=\\[)"
                     let endingWith:String = "(?=\\])"
-                    let bracketPattern:String = precedingWith + "[\\w\\s\\,\\.\\#\\:~]*?" + endingWith
+                    let bracketPattern:String = precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
                     let namesInsideBrackets:String = RegExp.match(group, bracketPattern)[0]
                     let names:Array<String> = StringModifier.split(namesInsideBrackets, ",")
                     for name in names {

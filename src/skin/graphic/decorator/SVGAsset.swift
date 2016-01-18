@@ -9,7 +9,7 @@ class SVGAsset:BaseGraphic {
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement);
-        super.init(position, size, decoratable)
+        super.init()
         graphic.addSubview(svg)
     }
     override func drawFill() {

@@ -72,7 +72,7 @@ class CSSParser{
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name);
-            let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug*/
+            let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"
             var values:Array<String> = RegExp.match(propertyValue,pattern)
             for (var i : Int = 0; i < values.count; i++) {

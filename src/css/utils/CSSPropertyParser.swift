@@ -79,10 +79,10 @@ class CSSPropertyParser {
         let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
         
         gradient.rotation = rotation
-        gradient.startCenter = CGPoint(x,y)
-        gradient.startRadius = CGSize(xScale,yScale)
-        gradient.endCenter /*<-focalPointRatio*/ = CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
-        //gradient.endRadius = CGSize(1,1)
+        gradient.startCenter = /*<-focalPointRatio*/ CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
+        gradient.startRadius = CGSize(0,0)
+        gradient.endCenter = CGPoint(x,y)
+        gradient.endRadius = CGSize(xScale,yScale)
         return gradient
      }
     

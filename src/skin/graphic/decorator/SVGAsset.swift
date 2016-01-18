@@ -11,16 +11,17 @@ class SVGAsset:SizeableGraphic {
         super.init(position, size, decoratable)
         graphic.addSubview(svg)
     }
-    public function draw(x : Number, y : Number, width : Number, height : Number) : void {
-        var scale:Point = new Point(width/_svg.width,height/_svg.height);
-        SVGModifier.scale(_svg, new Point(x,y), scale);
-    }
-    
+ 
     override func drawFill() {
-        //Swift.print("EllipseGraphic.drawFill()")
-        let fillFrame = graphic.lineStyle != nil ?  RectGraphicUtils.fillFrame(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType) : CGRect(x,y,width,height)
-        graphic.fillShape.frame = fillFrame/*,position and set the size of the frame*/
-        graphic.fillShape.path = CGPathParser.ellipse(CGRect(0,0,width,height))
+        //Swift.print("SVGAsset.drawFill()")
+        
+        let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
+        SVGModifier.scale(svg, CGPoint(x,y), scale);
+        
+        
+        //CGRect(x,y,width,height)
+        
+        //CGRect(0,0,width,height)
     }
     
     

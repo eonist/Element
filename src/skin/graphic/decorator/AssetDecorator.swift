@@ -11,6 +11,7 @@ class AssetDecorator:SizeableDecorator{
         super.init(decoratable)
     }
     override func drawFill() {
+        super.beginFill()
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution*/
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
         if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}

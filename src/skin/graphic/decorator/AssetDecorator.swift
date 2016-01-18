@@ -14,7 +14,7 @@ class AssetDecorator:SizeableDecorator{
         <#code#>
     }
     func beginFill() {
-        asset.draw(0, 0, graphic.width, graphic.height);
+        asset.draw()//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {
         /*this method must be overridden*/

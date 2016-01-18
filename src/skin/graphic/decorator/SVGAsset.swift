@@ -20,7 +20,10 @@ class SVGAsset:BaseGraphic {
         super.init()
         graphic.addSubview(svg)
     }
-    override func drawFill() {
+    /**
+     *
+     */
+    func draw(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) {
         Swift.print("SVGAsset.drawFill()")
         
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);

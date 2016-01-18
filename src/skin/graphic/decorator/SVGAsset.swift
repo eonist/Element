@@ -23,8 +23,15 @@ class SVGAsset:SizeableGraphic {
         
         //CGRect(0,0,width,height)
     }
-    func beginFill() {
-        <#code#>
+    override func drawLine() {
+        //nothing
+    }
+    override func fill() {
+        let svgStyle = SVGStyle()
+        SVGModifier.style(svg, <#T##style: SVGStyle##SVGStyle#>)
+    }
+    func line() {
+        //nothing
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

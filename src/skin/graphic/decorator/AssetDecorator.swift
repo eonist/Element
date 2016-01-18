@@ -12,7 +12,8 @@ class AssetDecorator:SizeableDecorator{
     }
     override func drawFill() {
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution*/
-        asset = graphic.addChild(SVGAsset(assetURL))
+        asset = SVGAsset(assetURL)
+        graphic.addSubview(asset)
         if(!isNaN(graphic.fillStyle.color)) _asset.applyStyle(graphic.fillStyle,graphic.lineStyle);
     }
     func beginFill() {

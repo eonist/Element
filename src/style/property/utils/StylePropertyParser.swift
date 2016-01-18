@@ -228,6 +228,12 @@ class StylePropertyParser{
         return Utils.metric(value,skin);
     }
     /**
+     * Beta
+     */
+    class func asset(skin:ISkin)-> String {
+        return (value(skin, CSSConstants.fill) as! Array<String>)[0];
+    }
+    /**
      * TODO: this method is asserted before its used, so you may ommit the optionality
      */
     class func dropShadow(skin:ISkin)->DropShadow? {

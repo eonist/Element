@@ -14,10 +14,10 @@ class AssetDecorator:SizeableDecorator{
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution*/
         
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
-        if((graphic.fillStyle!.color is Double && !(graphic.fillStyle!.color as! Double).isNaN)) {asset.applyStyle(graphic.fillStyle,graphic.lineStyle)}
+        if((graphic.fillStyle!.color is Double && !(graphic.fillStyle!.color as! Double).isNaN)) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}
     }
-    func beginFill() {
-        asset.draw(0, 0, width, height)//0, 0, graphic.width, graphic.height
+    override func beginFill() {
+        asset!.draw(0, 0, width, height)//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {
         /*this method must be overridden*/

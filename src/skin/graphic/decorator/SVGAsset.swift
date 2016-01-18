@@ -2,8 +2,16 @@ import Foundation
 
 class SVGAsset:BaseGraphic {
     var svg:SVG;
+    var width:CGFloat
+    var height:CGFloat
+    var x:CGFloat
+    var y:CGFloat
     init(_ path:String, _ position: CGPoint, _ size: CGSize, _ decoratable: IGraphicDecoratable) {
         Swift.print("SVGAsset.init()")
+        width = size.width
+        height = size.height
+        x = position.x
+        y = position.y
         //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
         let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)

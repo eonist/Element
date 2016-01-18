@@ -3,6 +3,7 @@ import Foundation
 class SVGAsset:SizeableGraphic {
     var svg:SVG;
     init(_ path:String, _ position: CGPoint, _ size: CGSize, _ decoratable: IGraphicDecoratable) {
+        Swift.print("SVGAsset.init()")
         //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
         let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
@@ -12,7 +13,7 @@ class SVGAsset:SizeableGraphic {
         graphic.addSubview(svg)
     }
     override func drawFill() {
-        //Swift.print("SVGAsset.drawFill()")
+        Swift.print("SVGAsset.drawFill()")
         
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
         SVGModifier.scale(svg, CGPoint(x,y), scale);

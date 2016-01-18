@@ -50,7 +50,7 @@ class CSSParser{
         let selectors:Array<ISelector> = SelectorParser.selectors(name);
     
         let style:IStyle = Style(name,selectors, []);
-        let pattern:String = "([\\w\\s\\,\\-~]*?)\\:(.*?)\\;"
+        let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
             //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
@@ -72,7 +72,7 @@ class CSSParser{
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name);
-            let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value*/
+            let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"
             var values:Array<String> = RegExp.match(propertyValue,pattern)
             for (var i : Int = 0; i < values.count; i++) {

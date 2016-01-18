@@ -12,7 +12,6 @@ class SVGAsset:FlippedView {
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement);
-        
         addSubview(svg)
     }
     /**

@@ -1,6 +1,6 @@
 import Foundation
 
-class SVGAsset:SizeableGraphic {
+class SVGAsset:BaseGraphic {
     var svg:SVG;
     init(_ path:String, _ position: CGPoint, _ size: CGSize, _ decoratable: IGraphicDecoratable) {
         Swift.print("SVGAsset.init()")

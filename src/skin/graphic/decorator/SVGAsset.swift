@@ -27,6 +27,16 @@ class SVGAsset:SizeableGraphic {
     }
     override func fill() {
         if(graphic.fillStyle != nil && graphic.lineStyle != nil){
+            Swift.print("SVGAsset.fill()")
+            //Swift.print("lineStyle: " + "\(lineStyle)")
+            //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
+            //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
+            //Swift.print("lineStyle.color: " + "\(lineStyle.color)")
+            //Swift.print("lineStyle.alpha: " + "\(lineStyle.alpha)")
+            //Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
+            //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
+            //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
+            //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
             let fillStyle:IFillStyle = graphic.fillStyle!
             let lineStyle:ILineStyle = graphic.lineStyle!
             let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)

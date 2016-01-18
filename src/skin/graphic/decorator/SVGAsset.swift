@@ -27,8 +27,10 @@ class SVGAsset:SizeableGraphic {
         //nothing
     }
     override func fill() {
+        
+        graphic.lineStyle
         let svgStyle = SVGStyle()
-        SVGModifier.style(svg, <#T##style: SVGStyle##SVGStyle#>)
+        SVGModifier.style(svg, svgStyle)
     }
     func line() {
         //nothing

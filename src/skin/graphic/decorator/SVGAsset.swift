@@ -1,5 +1,5 @@
 import Foundation
 
-class SVGAsset {
-
+class SVGAsset:SizeableGraphic {
+    
 }

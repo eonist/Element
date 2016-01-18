@@ -1,6 +1,8 @@
 import Foundation
-
-class SVGAsset:BaseGraphic {
+/**
+ * Remember to 
+ */
+class SVGAsset:FlippedView {
     var svg:SVG;
 
     init(_ path:String) {
@@ -11,8 +13,8 @@ class SVGAsset:BaseGraphic {
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement);
-        super.init()
-        graphic.addSubview(svg)
+        
+        addSubview(svg)
     }
     /**
      *

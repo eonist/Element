@@ -2,8 +2,9 @@ import Foundation
 
 class SVGAsset:SizeableGraphic {
     var svg:SVG;
-    override init(_ position: CGPoint, _ size: CGSize, _ decoratable: IGraphicDecoratable) {
-        var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
+    override init(_ path:String, _ position: CGPoint, _ size: CGSize, _ decoratable: IGraphicDecoratable) {
+        //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
+        let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
 

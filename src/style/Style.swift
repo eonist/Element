@@ -51,7 +51,11 @@ class Style:IStyle{
      */
     func getStyleProperties(name:String)->Array<IStyleProperty>{
         var styleProperties:Array<IStyleProperty> = []
-        for styleProperty : IStyleProperty in styleProperties{ if(styleProperty.name == name) {styleProperties.append(styleProperty)}}
+        for styleProperty : IStyleProperty in styleProperties{
+            if(styleProperty.name == name) {
+                styleProperties.append(styleProperty)
+            }
+        }
         return styleProperties;
     }
     /**

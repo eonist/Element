@@ -25,7 +25,7 @@ class StylePropertyParser{
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
-        //print("colorValue: " + "\(colorValue)");
+        print("colorValue: " + "\(colorValue)");
         var color:Double;
         if(colorValue is Array<UInt>) {
             fatalError("NOT IMPLEMENTED YET")

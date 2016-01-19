@@ -11,6 +11,7 @@ class AssetDecorator:SizeableDecorator{
         Swift.print("AssetDecorator.init() ")
         Swift.print("assetURL: " + "\(assetURL)")
         super.init(decoratable)
+        asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
     }
     override func beginFill() {
         Swift.print("beginFill()")

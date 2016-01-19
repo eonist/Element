@@ -10,21 +10,22 @@ class AssetDecorator:SizeableDecorator{
         assetURL = iconURL;
         Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
-        asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
     }
     override func beginFill() {
         Swift.print("AssetDecorator.beginFill()")
         //super.beginFill()
-        if(asset != nil) {asset!.removeFromSuperview()};/*temp solution, find a more elegant solution than removing*/
-        asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset/*temp solution*/
-        if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}
+        
     }
     override func fill() {
         Swift.print("AssetDecorator.fill() ")
         super.fill()
     }
-    override func draw() {/*<-- was beginFill, but that method isnt called unless you use fillShape etc*/
+    override func draw() {
         Swift.print("AssetDecorator.draw() ")
+        
+        if(asset != nil) {asset!.removeFromSuperview()};/*temp solution, find a more elegant solution than removing*/
+        asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset/*temp solution*/
+        if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}
         super.draw()
     }
     override func drawFill() {

@@ -7,7 +7,7 @@ class StyleProperty:IStyleProperty {
     /**
     *
     */
-    init(_ name:String,_ value:Any,_ depth:Int){
+    init(_ name:String,_ value:Any,_ depth:Int = 0){
         self.name = name
         self.value = value
         self.depth = depth

@@ -11,8 +11,8 @@ protocol IStyle {
     func addStyleProperties(styleProperties:Array<IStyleProperty>)
     /*implicit getters / setters*/
     func getStyleProperty(name:String,_ depth:Int)->IStyleProperty?
-    func getValueAt(index:Int,_ depth:Int)->Any
-    func getValue(name:String)->Any?
+    func getValueAt(index:Int)->Any
+    func getValue(name:String,_ depth:Int)->Any?
     func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty
 }

@@ -21,7 +21,7 @@ class SVGAsset:FlippedView {
      *
      */
     func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
-        Swift.print("SVGAsset.drawFill()")
+        Swift.print("SVGAsset.drawFill() width: " + "\(width)" + " height: " + "\(height)")
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
         SVGModifier.scale(svg, CGPoint(x,y), scale);
     }

@@ -46,6 +46,11 @@ class Style:IStyle{
         }
         return nil;
     }
+    func getStyleProperties(name:String)->Array<IStyleProperty>{
+        var styleProperties:Array<IStyleProperty> = []
+        for styleProperty : IStyleProperty in styleProperties{ if(styleProperty.name == name) {styleProperties.append(styleProperty)}}
+        return styleProperties;
+    }
     /**
     * @Note a benefit of having this method is that when used you can use the interface of the return type instantly
     */

@@ -8,7 +8,7 @@ class StylePropertyParser{
      */
     class func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
-        let value:Any? = skin.style!.getValue(propertyName);
+        let value:Any? = skin.style!.getValue(propertyName,depth);
         //Swift.print("value: " + "\(value)")
         return value;
     }

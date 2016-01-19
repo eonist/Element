@@ -25,4 +25,11 @@ extension IStyle{
     func getStyleProperty(name:String)->IStyleProperty?{
         return getStyleProperty(name, 0)
     }
+    /**
+     * Convenience method since apple doesnt support default values in protocols
+     * NOTE: Default argument not permitted in a protocol method
+     */
+    func getValue(name:String)->Any?{
+        return getValue(name, 0)
+    }
 }

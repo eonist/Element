@@ -32,7 +32,8 @@ class StylePropertyParser{
         var color:Double;
         
         if(colorValue! is Array<Any>) {
-            fatalError("NOT IMPLEMENTED YET")
+            Swift.print("value is array");
+            color = value[1] == CSSConstants.none ? Double.NaN : StringParser.color(value[1]);
         }else if(colorValue == nil){
             color = Double.NaN
         }else {/*colorValue is UInt*/

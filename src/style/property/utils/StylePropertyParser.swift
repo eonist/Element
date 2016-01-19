@@ -81,7 +81,7 @@ class StylePropertyParser{
      */
     class func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
         //Swift.print("StylePropertyparser.lineOffsetType()")
-        let val:Any? = value(skin, CSSConstants.lineOffsetType);
+        let val:Any? = value(skin, CSSConstants.lineOffsetType,depth);
         var offsetType:OffsetType = OffsetType();
         if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
@@ -97,7 +97,7 @@ class StylePropertyParser{
      * // :TODO: probably upgrade to TRBL
      */
     class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
-        let val:Any? = value(skin, CSSConstants.cornerRadius);
+        let val:Any? = value(skin, CSSConstants.cornerRadius,depth);
         var fillet:Fillet = Fillet();
         //Swift.print(val)
         if((val is CGFloat) || (val is Array<Any>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
@@ -115,7 +115,7 @@ class StylePropertyParser{
      * Returns a GradientFillStyle
      */
     class func gradientFillStyle(skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
-        let newGradient:Gradient/*IGradient*/ = value(skin, "fill") as! Gradient/*IGradient*///GradientParser.clone();
+        let newGradient:Gradient/*IGradient*/ = value(skin, CSSConstants.fill, depth) as! Gradient/*IGradient*///GradientParser.clone();
         //let sizeWidth:Double = skin.width!
         //let sizeHeight:Double = skin.height!
         return GradientFillStyle(newGradient,NSColor.clearColor());

@@ -42,6 +42,7 @@ class Style:IStyle{
     func getStyleProperty(name:String,_ depth:Int = 0)->IStyleProperty?{
         Swift.print("styleProperties.count: " + "\(styleProperties.count)")
         for styleProperty : IStyleProperty in styleProperties {
+            Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
             if(styleProperty.name == name && styleProperty.depth == depth){
                 return styleProperty;
             }

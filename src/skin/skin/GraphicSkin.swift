@@ -9,16 +9,16 @@ import Cocoa
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
-        decoratable = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
-        addSubview(decoratable.graphic)
-        /*decoratable = */SkinModifier.align(self,decoratable as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-        decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
+        decoratables[0] = GraphicSkinParser.configure(self)/*this call is here because CGContext is only accessible after drawRect is called*/
+        addSubview(decoratables[0].graphic)
+        /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+        decoratables[0].draw()/*Setup the geometry and init the display process of fill and line*/
     }
     override func draw(){
         //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            applyProperties(decoratable);
-            /*decoratable = */SkinModifier.align(self,decoratable as! IPositional)/* as! IGraphicDecoratable;*/
+            applyProperties(decoratables[0]);
+            /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional)/* as! IGraphicDecoratable;*/
         }
         super.draw();
     }
@@ -27,7 +27,7 @@ class GraphicSkin:Skin{
      */
     func applyProperties(decoratable:IGraphicDecoratable){
         //Swift.print("GraphicSkin.applyProperties()")
-        self.decoratable = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
+        self.decoratables[0] = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self)}/*dropshadow*/
         decoratable.draw()
     }

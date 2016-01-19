@@ -183,14 +183,6 @@ class StylePropertyParser{
             }
         }
     }
-    
-    
-    
-    //continue here: impliment this, then continue with the align method and test it with top-margin of the textButton
-    
-    
-    
-    
     /**
      * // :TODO: should this have a failsafe if there is no Margin property in the style?
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
@@ -221,14 +213,14 @@ class StylePropertyParser{
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
      */
-    class func metric(skin:ISkin,_ propertyName:String)->CGFloat? {
+    class func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName);
         return Utils.metric(value,skin);
     }
     /**
      * Beta
      */
-    class func asset(skin:ISkin)-> String {
+    class func asset(skin:ISkin, _ depth:Int = 0)-> String {
         return (value(skin, CSSConstants.fill) as! Array<Any>)[0] as! String;
     }
     /**

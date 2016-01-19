@@ -16,3 +16,9 @@ protocol IStyle {
     func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty
 }
+
+extension IStyle{
+    func getStyleProperty(name:String)->IStyleProperty?{
+        return getStyleProperty(name, 0)
+    }
+}

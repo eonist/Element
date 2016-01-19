@@ -17,10 +17,10 @@ class GraphicSkinParser{
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
         graphic = Utils.rectGraphic(skin,graphic)
-        if(StylePropertyAsserter.hasFillet(skin)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin)) }
-        if(StylePropertyAsserter.hasGradient(skin)) { graphic = Utils.gradient(graphic) }
-        if(StylePropertyAsserter.hasAsset(skin)) { graphic = Utils.asset(graphic, StylePropertyParser.asset(skin)) }
-        if(StylePropertyAsserter.hasDropShadow(skin)) {graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin))}
+        if(StylePropertyAsserter.hasFillet(skin,depth)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin,depth)) }
+        if(StylePropertyAsserter.hasGradient(skin,depth)) { graphic = Utils.gradient(graphic) }
+        if(StylePropertyAsserter.hasAsset(skin,depth)) { graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }
+        if(StylePropertyAsserter.hasDropShadow(skin,depth)) {graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin,depth))}
         return graphic
     }
 }
@@ -38,8 +38,8 @@ private class Utils{
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
     class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable)->IGraphicDecoratable {
-        let width:CGFloat = (StylePropertyParser.width(skin) ?? skin.width!);
-        let height:CGFloat = (StylePropertyParser.height(skin) ?? skin.height!);
+        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!);
+        let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!);
         return RectGraphic(width,height,decoratable);
     }
     /**

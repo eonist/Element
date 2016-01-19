@@ -12,9 +12,15 @@ class StylePropertyParser{
         //Swift.print("value: " + "\(value)")
         return value;
     }
+    /**
+     *
+     */
     class func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
+    /**
+     *
+     */
     class func lineStyle(skin:ISkin, _ depth:Int = 0)->ILineStyle? {
         return value(skin,CSSConstants.line) is IGradient ? gradientLineStyle(skin) : colorLineStyle(skin) ;
     }
@@ -226,7 +232,7 @@ class StylePropertyParser{
     /**
      * TODO: this method is asserted before its used, so you may ommit the optionality
      */
-    class func dropShadow(skin:ISkin)->DropShadow? {
+    class func dropShadow(skin:ISkin, _ depth:Int = 0)->DropShadow? {
         let dropShadow:Any? = value(skin, CSSConstants.drop_shadow);
         return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow;
     }

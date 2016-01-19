@@ -10,10 +10,10 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     /**
      * // :TODO: depthCount should probably be set when you are creating the Style instance
      */
-    class func depthCount(style:IStyle)->UInt{
+    class func depthCount(style:IStyle)->Int{
         var propertyNames:Array = stylePropertyNames(style);
-        var fillCount:UInt = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").length : 0;
-        var lineCount:UInt = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").length : 0;
+        var fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0;
+        var lineCount:Int = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").count : 0;
     
         return max(fillCount,lineCount);
     }

@@ -10,5 +10,6 @@ protocol IStyle {
     func addStyleProperties(styleProperties:Array<IStyleProperty>)
     func getValueAt(index:Int)->Any
     func getValue(name:String)->Any?
+    func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty
 }

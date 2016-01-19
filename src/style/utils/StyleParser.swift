@@ -8,7 +8,7 @@ import Foundation
  */
 class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a normal parser class not all the functions here!?!?
     /**
-     * // :TODO: depthCount should probably be set when you are creating the Style instance
+     * // :TODO: depthCount should probably be set when you are creating the Style instance, depthcount may change depending on the usage, think love preview or animation
      */
     class func depthCount(style:IStyle)->Int{
         let propertyNames:Array = stylePropertyNames(style);
@@ -16,7 +16,6 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         let lineCount:Int = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").count : 0;
         return max(fillCount,lineCount);
     }
-    
     /**
      * // :TODO: write java doc
      */

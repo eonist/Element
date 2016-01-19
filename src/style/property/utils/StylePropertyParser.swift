@@ -58,20 +58,14 @@ class StylePropertyParser{
         let lineColorValue:Double = color(skin, CSSConstants.line)
         //Swift.print("StylePropertyParser.colorLineStyle() " + String(value(skin, CSSConstants.lineAlpha)))
         let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha) as? CGFloat ?? 1
-        let lineColor:NSColor = nsColor(lineColorValue, lineAlpha)
+        let lineColor:NSColor = Utils.nsColor(lineColorValue, lineAlpha)
         return LineStyle(lineThickness, lineColor);
     }
-    /**
-     * new
-     */
-    class func nsColor(color:Double,_ alpha:CGFloat)->NSColor{
-        let nsColor = color.isNaN ? NSColor.clearColor() : NSColorParser.nsColor(UInt(color), alpha)
-        return nsColor
-    }
+    
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    class func color(skin:ISkin, _ propertyName:String) -> Double {
+    class func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
         let color:Any? = value(skin, propertyName);
         return (String(color) == CSSConstants.none || color == nil) ? Double.NaN : Double(color as! UInt);
     }
@@ -254,14 +248,17 @@ private class Utils{
         else if(value is CGFloat){ return value as? CGFloat}
         else{
             //fatalError("NOT IMPLEMENTED YET")
-            
-            
             //be warned this method is far from complete
-            
-            
             return nil
             
         }
+    }
+    /**
+     * new
+     */
+    class func nsColor(color:Double,_ alpha:CGFloat)->NSColor{
+        let nsColor = color.isNaN ? NSColor.clearColor() : NSColorParser.nsColor(UInt(color), alpha)
+        return nsColor
     }
 }
 extension StylePropertyParser{

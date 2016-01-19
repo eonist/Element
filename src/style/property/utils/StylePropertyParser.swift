@@ -25,14 +25,14 @@ class StylePropertyParser{
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
-        Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
+        //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         
-        print("colorValue: " + "\(colorValue)");
+        //print("colorValue: " + "\(colorValue)");
         
         var color:Double;
         
         if(colorValue! is Array<Any>) {
-            Swift.print("value is array");
+            //Swift.print("value is array");
             color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
         }else if(colorValue == nil){
             color = Double.NaN

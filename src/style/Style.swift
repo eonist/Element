@@ -46,6 +46,9 @@ class Style:IStyle{
         }
         return nil;
     }
+    /**
+     * NOTE: StyleParser.depthCount() uses this method
+     */
     func getStyleProperties(name:String)->Array<IStyleProperty>{
         var styleProperties:Array<IStyleProperty> = []
         for styleProperty : IStyleProperty in styleProperties{ if(styleProperty.name == name) {styleProperties.append(styleProperty)}}

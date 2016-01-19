@@ -18,11 +18,9 @@ class Skin:FlippedView,ISkin{
     //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
     //override var wantsUpdateLayer:Bool {return true}
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
-        
         self.style = style;
         self.state = state;
         self.element = element;
-        
         width = element!.width;// :TODO: is this necassary?
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necassary?

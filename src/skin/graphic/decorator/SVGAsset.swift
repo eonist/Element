@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
  */
@@ -12,6 +12,9 @@ class SVGAsset:FlippedView {
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
+        self.wantsLayer = true/*if true then view is layer backed*/
+        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+        layer!.masksToBounds = false//this is needed!!!
         addSubview(svg)
     }
     /**

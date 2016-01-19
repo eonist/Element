@@ -12,7 +12,7 @@ protocol IStyle {
     /*implicit getters / setters*/
     func getStyleProperty(name:String,_ depth:Int)->IStyleProperty?
     func getValueAt(index:Int)->Any
-    func getValue(name:String,_ depth:Int = 0)->Any?
+    func getValue(name:String,_ depth:Int)->Any?
     func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty
 }

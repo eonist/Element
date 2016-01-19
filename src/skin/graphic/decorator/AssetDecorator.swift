@@ -12,6 +12,13 @@ class AssetDecorator:SizeableDecorator{
         super.init(decoratable)
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
     }
+    override func beginFill() {
+        Swift.print("AssetDecorator.beginFill()")
+    }
+    override func fill() {
+        Swift.print("AssetDecorator.fill() ")
+        super.fill()
+    }
     override func draw() {/*<-- was beginFill, but that method isnt called unless you use fillShape etc*/
         Swift.print("AssetDecorator.draw() ")
         super.draw()
@@ -23,7 +30,8 @@ class AssetDecorator:SizeableDecorator{
     }
     override func drawFill() {
         Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
-        asset!.draw(0, 0, width, height)//0, 0, graphic.width, graphic.height
+        super.drawFill()
+        //asset!.draw(0, 0, width, height)//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {
         /*this method must be overridden*/

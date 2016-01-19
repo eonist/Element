@@ -14,7 +14,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         let propertyNames:Array = stylePropertyNames(style);
         //Swift.print("propertyNames: " + "\(propertyNames)")
         let fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0;
-        Swift.print(style.getStyleProperties("fill"))
+        //Swift.print(style.getStyleProperties("fill"))
         //Swift.print("fillCount: " + "\(fillCount)")
         let lineCount:Int = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").count : 0;
         return max(fillCount,lineCount);

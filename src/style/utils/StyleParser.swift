@@ -2,8 +2,11 @@ import Foundation
 
 /**
  *
+ * @Note: One could use  Vector<String> for speed etc, but that would make the framework less readable for now
+ * @Note if you ever need to find the absolute herarchy path to an instance use this: StyleParser.hierarchicalStyleName(someInstance);//SomeClass someInstance AnotherClass anotherInstance etc
+ * // :TODO: make support for int and uint values for styles that are not numbers
  */
-class StyleParser {
+class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a normal parser class not all the functions here!?!?
     /**
      * // :TODO: write java doc
      */

@@ -16,20 +16,20 @@ class StylePropertyParser{
      *
      */
     class func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
-        return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
+        return value(skin,CSSConstants.fill,depth) is IGradient ? gradientFillStyle(skin,depth):colorFillStyle(skin,depth);
     }
     /**
      *
      */
     class func lineStyle(skin:ISkin, _ depth:Int = 0)->ILineStyle? {
-        return value(skin,CSSConstants.line) is IGradient ? gradientLineStyle(skin) : colorLineStyle(skin) ;
+        return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth) ;
     }
     /**
      * Returns a FillStyle instance
      */
     class func colorFillStyle(skin:ISkin, _ depth:Int = 0)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
-        let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
+        let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth);
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         
         //print("colorValue: " + "\(colorValue)");
@@ -44,7 +44,7 @@ class StylePropertyParser{
         }else {/*colorValue is UInt*/
             color = Double(colorValue as! UInt);
         }
-        let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha)
+        let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha,depth)
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         //Swift.print("alphaValue: " + "\(alphaValue)")
@@ -60,8 +60,8 @@ class StylePropertyParser{
     class func colorLineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as? CGFloat ?? CGFloat.NaN
-        let lineColorValue:Double = color(skin, CSSConstants.line)
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.NaN
+        let lineColorValue:Double = color(skin, CSSConstants.line,depth)
         //Swift.print("StylePropertyParser.colorLineStyle() " + String(value(skin, CSSConstants.lineAlpha)))
         let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha) as? CGFloat ?? 1
         let lineColor:NSColor = Utils.nsColor(lineColorValue, lineAlpha)
@@ -72,7 +72,7 @@ class StylePropertyParser{
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
     class func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
-        let color:Any? = value(skin, propertyName);
+        let color:Any? = value(skin, propertyName,depth);
         return (String(color) == CSSConstants.none || color == nil) ? Double.NaN : Double(color as! UInt);
     }
     /**

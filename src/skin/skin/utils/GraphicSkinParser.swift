@@ -15,8 +15,8 @@ class GraphicSkinParser{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin,depth);//<-----TODO:this should be optional like lineStyle
         Swift.print("fillStyle.color: " + "\(fillStyle.color)")
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth);
-        var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
-        graphic = Utils.rectGraphic(skin,graphic)
+        var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
+        graphic = Utils.rectGraphic(skin,graphic,depth)
         if(StylePropertyAsserter.hasFillet(skin,depth)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin,depth)) }
         if(StylePropertyAsserter.hasGradient(skin,depth)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasAsset(skin,depth)) { graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }
@@ -38,6 +38,9 @@ private class Utils{
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
     class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
+        
+        //TODO: add padding here, see old code
+        
         let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!);
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!);
         return RectGraphic(width,height,decoratable);

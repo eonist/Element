@@ -38,7 +38,7 @@ class Style:IStyle{
      * @return a style property by the name given
      * @Note returning null is fine, no need to make a EmptyStyleProperty class, or is there?
      */
-    func getStyleProperty(name:String,depth:Int = 0)->IStyleProperty?{
+    func getStyleProperty(name:String,_ depth:Int = 0)->IStyleProperty?{
         for styleProperty : IStyleProperty in styleProperties {
             if(styleProperty.name == name && styleProperty.depth == depth){
                 return styleProperty;
@@ -63,8 +63,8 @@ class Style:IStyle{
     /**
     * @Note this function is not redundant, its usefull for qucik access in some methods
     */
-    func getValue(name:String,depth:Int = 0)->Any?{
-        var styleProperty:IStyleProperty? = getStyleProperty(name);
+    func getValue(name:String,_ depth:Int = 0)->Any?{
+        var styleProperty:IStyleProperty? = getStyleProperty(name,depth);
         return styleProperty != nil ? styleProperty?.value : nil;
     }
     /**

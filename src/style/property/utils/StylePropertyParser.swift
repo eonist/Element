@@ -127,7 +127,7 @@ class StylePropertyParser{
     */
     class func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         Swift.print("StylePropertParser.gradientLineStyle()")
-        let gradient = value(skin, CSSConstants.line)
+        let gradient = value(skin, CSSConstants.line,depth)
         if(!(gradient is IGradient)){return nil}//<--temp fix
         //gradient.rotation *= ㎭
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as! CGFloat
@@ -194,7 +194,7 @@ class StylePropertyParser{
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     class func margin(skin:ISkin, _ depth:Int = 0)->Margin {
-        let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
+        let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin,depth);
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
         //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
@@ -208,32 +208,32 @@ class StylePropertyParser{
      *
      */
     class func width(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.width)
+        return metric(skin,CSSConstants.width,depth)
     }
     /**
      *
      */
     class func height(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.height)
+        return metric(skin,CSSConstants.height,depth)
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
      */
     class func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
-        let value = StylePropertyParser.value(skin,propertyName);
+        let value = StylePropertyParser.value(skin,propertyName,depth);
         return Utils.metric(value,skin);
     }
     /**
      * Beta
      */
     class func asset(skin:ISkin, _ depth:Int = 0)-> String {
-        return (value(skin, CSSConstants.fill) as! Array<Any>)[0] as! String;
+        return (value(skin, CSSConstants.fill,depth) as! Array<Any>)[0] as! String;
     }
     /**
      * TODO: this method is asserted before its used, so you may ommit the optionality
      */
     class func dropShadow(skin:ISkin, _ depth:Int = 0)->DropShadow? {
-        let dropShadow:Any? = value(skin, CSSConstants.drop_shadow);
+        let dropShadow:Any? = value(skin, CSSConstants.drop_shadow,depth);
         return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow;
     }
 }

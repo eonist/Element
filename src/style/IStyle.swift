@@ -12,12 +12,16 @@ protocol IStyle {
     /*implicit getters / setters*/
     func getStyleProperty(name:String,_ depth:Int)->IStyleProperty?
     func getValueAt(index:Int)->Any
-    func getValue(name:String,_ depth:Int)->Any?
+    func getValue(name:String,_ depth:Int = 0)->Any?
     func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty
 }
 
 extension IStyle{
+    /**
+     * Convenince method since apple doesnt support default values in protocols
+     * NOTE: Default argument not permitted in a protocol method
+     */
     func getStyleProperty(name:String)->IStyleProperty?{
         return getStyleProperty(name, 0)
     }

@@ -14,7 +14,6 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         let propertyNames:Array = stylePropertyNames(style);
         let fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0;
         let lineCount:Int = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").count : 0;
-    
         return max(fillCount,lineCount);
     }
     

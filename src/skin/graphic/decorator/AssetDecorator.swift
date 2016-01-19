@@ -26,13 +26,10 @@ class AssetDecorator:SizeableDecorator{
     override func draw() {/*<-- was beginFill, but that method isnt called unless you use fillShape etc*/
         Swift.print("AssetDecorator.draw() ")
         super.draw()
-        /*
-        
-        */
     }
     override func drawFill() {
         Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
-        super.drawFill()
+        //super.drawFill()
         asset!.draw(0, 0, width, height)//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {

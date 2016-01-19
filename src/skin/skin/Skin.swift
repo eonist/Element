@@ -1,12 +1,13 @@
 import Cocoa
 /*
-* @Note  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
-* TODO: possibly add setPosition();
-* TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
-* TODO: look to cssedit which takes priority the htm set width or the css set width?
-*/
+ * @Note  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
+ * TODO: possibly add setPosition();
+ * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
+ * TODO: look to cssedit which takes priority the htm set width or the css set width?
+ */
 class Skin:FlippedView,ISkin{
-    var decoratable:IGraphicDecoratable!
+    var decoratables:Array<IGraphicDecoratable> = [];
+    //var decoratable:IGraphicDecoratable!
     var style:IStyle?
     var state:String
     var width:CGFloat?;

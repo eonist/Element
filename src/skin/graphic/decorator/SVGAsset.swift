@@ -29,6 +29,7 @@ class SVGAsset:FlippedView {
      *
      */
     func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
+        Swift.print("SVGAsset.applyStyle()")
         if(fillStyle != nil && lineStyle != nil){
             Swift.print("SVGAsset.fill()")
             //Swift.print("lineStyle: " + "\(lineStyle)")

@@ -40,9 +40,9 @@ class Style:IStyle{
      * @Note returning null is fine, no need to make a EmptyStyleProperty class, or is there?
      */
     func getStyleProperty(name:String,_ depth:Int = 0)->IStyleProperty?{
-        Swift.print("styleProperties.count: " + "\(styleProperties.count)")
+        //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
         for styleProperty : IStyleProperty in styleProperties {
-            Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
+            //Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
             if(styleProperty.name == name && styleProperty.depth == depth){
                 return styleProperty;
             }

@@ -7,9 +7,9 @@ class StylePropertyParser{
      * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
     class func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
-        Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
+        //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName,depth);
-        Swift.print("value: " + "\(value)")
+        //Swift.print("value: " + "\(value)")
         return value;
     }
     /**
@@ -32,7 +32,7 @@ class StylePropertyParser{
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth);
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         
-        Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
+        //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         
         var color:Double;
         

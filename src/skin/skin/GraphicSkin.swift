@@ -10,7 +10,7 @@ class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         let depthCount:Int = StyleParser.depthCount(style!)
-        Swift.print("depthCount: " + "\(depthCount)")
+        //Swift.print("depthCount: " + "\(depthCount)")
         for (var depth : Int = 0; depth < depthCount; depth++) {
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)

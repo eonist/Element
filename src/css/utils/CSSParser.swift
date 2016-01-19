@@ -81,7 +81,7 @@ class CSSParser{
                 //Swift.print(" value: " + value)
                 let propertyValue:Any = CSSPropertyParser.property(value)
                 //Swift.print("propertyValue: " + "\(propertyValue)")
-                let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)//<--dont forget to add depth here
+                let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/
                 styleProperties.append(styleProperty)
             }
         }

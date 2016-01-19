@@ -33,7 +33,7 @@ class StylePropertyParser{
         
         if(colorValue! is Array<Any>) {
             Swift.print("value is array");
-            color = value[1] == CSSConstants.none ? Double.NaN : StringParser.color(value[1]);
+            color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
         }else if(colorValue == nil){
             color = Double.NaN
         }else {/*colorValue is UInt*/

@@ -1,26 +1,26 @@
 import Foundation
 
 class StylePropertyAsserter {
-    class func hasFillet(skin:ISkin)->Bool {
-        let fillet:Fillet = StylePropertyParser.fillet(skin);
+    class func hasFillet(skin:ISkin,_ depth:Int = 0)->Bool {
+        let fillet:Fillet = StylePropertyParser.fillet(skin,depth);
         //Swift.print("StylePropertyAsserter.hasFillet() " + String(fillet))
         //Swift.print(fillet.topLeft)
         //Swift.print(fillet.topRight)
         return !(fillet.topLeft == 0 && fillet.topRight == 0 && fillet.bottomLeft == 0 && fillet.bottomRight == 0);
     }
-    class func hasGradient(skin:ISkin)->Bool {
-        let value = StylePropertyParser.value(skin, CSSConstants.fill)
+    class func hasGradient(skin:ISkin,_ depth:Int = 0)->Bool {
+        let value = StylePropertyParser.value(skin, CSSConstants.fill,depth)
         //you may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type
         let hasGradient = value is Gradient
         return hasGradient /*|| StylePropertyParser.value(skin, "line", depth) is Gradient*/;
         /**/
         //return false
     }
-    class func hasAsset(skin:ISkin)->Bool {
-        return StylePropertyParser.value(skin, CSSConstants.fill) is Array<Any>;
+    class func hasAsset(skin:ISkin,_ depth:Int = 0)->Bool {
+        return StylePropertyParser.value(skin, CSSConstants.fill,depth) is Array<Any>;
     }
-    class func hasDropShadow(skin:ISkin)->Bool {
-        let value = StylePropertyParser.value(skin, CSSConstants.drop_shadow)
+    class func hasDropShadow(skin:ISkin,_ depth:Int = 0)->Bool {
+        let value = StylePropertyParser.value(skin, CSSConstants.drop_shadow,depth)
         //Swift.print("StylePropertyAsserter.hasDropShadow() value: " + String(value))
         //you may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type
         let hasDropShadow = value != nil/*this differes slightly from the original code, but was needed to support "none" as a dropshadow param in css*/

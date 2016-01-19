@@ -6,7 +6,7 @@ class StylePropertyParser{
      * @Note the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
      * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
-    class func value(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->Any!{//TODO: <- try to remove the ! char here
+    class func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName);
         //Swift.print("value: " + "\(value)")
@@ -15,13 +15,13 @@ class StylePropertyParser{
     class func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
-    class func lineStyle(skin:ISkin)->ILineStyle? {
+    class func lineStyle(skin:ISkin, _ depth:Int = 0)->ILineStyle? {
         return value(skin,CSSConstants.line) is IGradient ? gradientLineStyle(skin) : colorLineStyle(skin) ;
     }
     /**
      * Returns a FillStyle instance
      */
-    class func colorFillStyle(skin:ISkin)->IFillStyle {
+    class func colorFillStyle(skin:ISkin, _ depth:Int = 0)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
@@ -51,7 +51,7 @@ class StylePropertyParser{
     * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
-    class func colorLineStyle(skin:ISkin) -> ILineStyle? {
+    class func colorLineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as? CGFloat ?? CGFloat.NaN

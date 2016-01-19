@@ -19,7 +19,7 @@ protocol IStyle {
 
 extension IStyle{
     /**
-     * Convenince method since apple doesnt support default values in protocols
+     * Convenience method since apple doesnt support default values in protocols
      * NOTE: Default argument not permitted in a protocol method
      */
     func getStyleProperty(name:String)->IStyleProperty?{

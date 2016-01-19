@@ -13,7 +13,7 @@ class StylePropertyParser{
         
         return value;
     }
-    class func fillStyle(skin:ISkin)->IFillStyle {
+    class func fillStyle(skin:ISkin,_ depth:int = 0)->IFillStyle {
         return value(skin,CSSConstants.fill) is IGradient ? gradientFillStyle(skin):colorFillStyle(skin);
     }
     class func lineStyle(skin:ISkin)->ILineStyle? {

@@ -28,8 +28,8 @@ private class Utils{
     /**
      *
      */
-    class func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle?)->IGraphicDecoratable {
-        let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
+    class func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle?,_ depth:Int = 0)->IGraphicDecoratable {
+        let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);
         //Swift.print("lineOffsetType: top:" + lineOffsetType.top + "  left:" + lineOffsetType.left + " bottom: " + lineOffsetType.bottom + " right: "+lineOffsetType.right)
         return BaseGraphic(fillStyle,lineStyle,lineOffsetType)
     }
@@ -37,7 +37,7 @@ private class Utils{
      * Returns a "GraphicRect instance"
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
-    class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable)->IGraphicDecoratable {
+    class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!);
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!);
         return RectGraphic(width,height,decoratable);

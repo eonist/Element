@@ -25,6 +25,8 @@ class StylePropertyParser{
     class func colorFillStyle(skin:ISkin)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
+        Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
+        
         print("colorValue: " + "\(colorValue)");
         var color:Double;
         if(colorValue! is Array<String>) {

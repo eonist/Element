@@ -8,6 +8,8 @@ class AssetDecorator:SizeableDecorator{
     var assetURL : String;
     init(_ decoratable: IGraphicDecoratable,_ iconURL:String) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         assetURL = iconURL;
+        Swift.print("AssetDecorator.init() ")
+        Swift.print("assetURL: " + "\(assetURL)")
         super.init(decoratable)
     }
     override func beginFill() {

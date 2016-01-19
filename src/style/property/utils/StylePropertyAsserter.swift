@@ -17,10 +17,7 @@ class StylePropertyAsserter {
         //return false
     }
     class func hasAsset(skin:ISkin)->Bool {
-        /*
-        return StylePropertyParser.value(skin, CSSConstants.FILL, depth) is Array;
-        */
-        return false
+        return StylePropertyParser.value(skin, CSSConstants.fill) is Array<Any>;
     }
     class func hasDropShadow(skin:ISkin)->Bool {
         let value = StylePropertyParser.value(skin, CSSConstants.drop_shadow)

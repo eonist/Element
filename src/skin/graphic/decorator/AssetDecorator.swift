@@ -13,12 +13,14 @@ class AssetDecorator:SizeableDecorator{
         super.init(decoratable)
     }
     override func beginFill() {
+        Swift.print("beginFill()")
         super.beginFill()
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution*/
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
         if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}
     }
     override func drawFill() {
+        Swift.print("drawFill()")
         asset!.draw(0, 0, width, height)//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {

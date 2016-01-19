@@ -236,7 +236,7 @@ class StylePropertyParser{
      * Beta
      */
     class func asset(skin:ISkin)-> String {
-        return (value(skin, CSSConstants.fill) as! Array<String>)[0];
+        return (value(skin, CSSConstants.fill) as! Array<Any>)[0] as! String;
     }
     /**
      * TODO: this method is asserted before its used, so you may ommit the optionality

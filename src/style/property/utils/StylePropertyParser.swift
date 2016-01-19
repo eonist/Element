@@ -28,8 +28,10 @@ class StylePropertyParser{
         Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         
         print("colorValue: " + "\(colorValue)");
+        
         var color:Double;
-        if(colorValue! is Array<String>) {
+        
+        if(colorValue! is Array<Any>) {
             fatalError("NOT IMPLEMENTED YET")
         }else if(colorValue == nil){
             color = Double.NaN

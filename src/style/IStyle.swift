@@ -10,8 +10,8 @@ protocol IStyle {
     func addStyleProperty(styleProperties:Array<IStyleProperty>)
     func addStyleProperties(styleProperties:Array<IStyleProperty>)
     /*implicit getters / setters*/
-    func getStyleProperty(name:String,depth:Int)->IStyleProperty?
-    func getValueAt(index:Int,depth:Int)->Any
+    func getStyleProperty(name:String,_ depth:Int)->IStyleProperty?
+    func getValueAt(index:Int,_ depth:Int)->Any
     func getValue(name:String)->Any?
     func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty

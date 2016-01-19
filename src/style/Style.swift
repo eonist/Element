@@ -4,7 +4,7 @@ import Foundation
  * // :TODO: I think you need to move some of these methods into parsers and modifiers, this class is cognativly heavy to look at
  */
 class Style:IStyle{
-    static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this wont work since it doesnt have any selectors
+    //static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this wont work since it doesnt have any selectors
     var name:String;
     var styleProperties:Array<IStyleProperty>
     var selectors:Array<ISelector>

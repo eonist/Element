@@ -23,6 +23,7 @@ class GraphicSkin:Skin{
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!);
             for (var depth : Int = 0; depth < depthCount; depth++) {
+                /*if(hasSizeChanged){}*///do sizing of the sizable here
                 /*if(hasStateChanged || hasStyleChanged) */applyProperties(decoratables[0]);
                 /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional)/* as! IGraphicDecoratable;*/
             }

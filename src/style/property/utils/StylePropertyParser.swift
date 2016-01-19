@@ -27,7 +27,7 @@ class StylePropertyParser{
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill);
         print("colorValue: " + "\(colorValue)");
         var color:Double;
-        if(colorValue is Array<String>) {
+        if(colorValue! is Array<String>) {
             fatalError("NOT IMPLEMENTED YET")
         }else if(colorValue == nil){
             color = Double.NaN

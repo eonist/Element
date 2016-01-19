@@ -13,6 +13,7 @@ class GraphicSkinParser{
     class func configure(skin:ISkin,_ depth:Int)->IGraphicDecoratable{
         //Swift.print("GraphicSkinParser.configure")
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin);//<-----TODO:this should be optional like lineStyle
+        Swift.print("fillStyle: " + "\(fillStyle.color!)")
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle)
         graphic = Utils.rectGraphic(skin,graphic)

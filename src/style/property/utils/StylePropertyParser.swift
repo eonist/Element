@@ -73,7 +73,7 @@ class StylePropertyParser{
      * Returns an Offset instance
      * // :TODO: probably upgrade to TRBL
      */
-    class func lineOffsetType(skin:ISkin) -> OffsetType {
+    class func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
         //Swift.print("StylePropertyparser.lineOffsetType()")
         let val:Any? = value(skin, CSSConstants.lineOffsetType);
         var offsetType:OffsetType = OffsetType();
@@ -90,7 +90,7 @@ class StylePropertyParser{
      * Returns a Fillet instance
      * // :TODO: probably upgrade to TRBL
      */
-    class func fillet(skin:ISkin) -> Fillet {
+    class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
         let val:Any? = value(skin, CSSConstants.cornerRadius);
         var fillet:Fillet = Fillet();
         //Swift.print(val)
@@ -108,7 +108,7 @@ class StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    class func gradientFillStyle(skin:ISkin) -> GradientFillStyle {
+    class func gradientFillStyle(skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
         let newGradient:Gradient/*IGradient*/ = value(skin, "fill") as! Gradient/*IGradient*///GradientParser.clone();
         //let sizeWidth:Double = skin.width!
         //let sizeHeight:Double = skin.height!
@@ -119,7 +119,7 @@ class StylePropertyParser{
     * // :TODO: does this work? where is the creation of line-thickness etc
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
-    class func gradientLineStyle(skin:ISkin) -> GradientLineStyle? {
+    class func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         Swift.print("StylePropertParser.gradientLineStyle()")
         let gradient = value(skin, CSSConstants.line)
         if(!(gradient is IGradient)){return nil}//<--temp fix
@@ -195,7 +195,7 @@ class StylePropertyParser{
      * // :TODO: should this have a failsafe if there is no Margin property in the style?
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
-    class func margin(skin:ISkin)->Margin {
+    class func margin(skin:ISkin, _ depth:Int = 0)->Margin {
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin);
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);
@@ -209,13 +209,13 @@ class StylePropertyParser{
     /**
      *
      */
-    class func width(skin:ISkin) -> CGFloat? {
+    class func width(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.width)
     }
     /**
      *
      */
-    class func height(skin:ISkin) -> CGFloat? {
+    class func height(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height)
     }
     /**

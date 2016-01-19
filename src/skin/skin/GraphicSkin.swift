@@ -21,8 +21,12 @@ class GraphicSkin:Skin{
     override func draw(){
         //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            applyProperties(decoratables[0]);
-            /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional)/* as! IGraphicDecoratable;*/
+            let depthCount:Int = StyleParser.depthCount(style!);
+            for (var depth : Int = 0; depth < depthCount; depth++) {
+                /*if(hasStateChanged || hasStyleChanged) */applyProperties(decoratables[0]);
+                /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional)/* as! IGraphicDecoratable;*/
+            }
+            
         }
         super.draw();
     }

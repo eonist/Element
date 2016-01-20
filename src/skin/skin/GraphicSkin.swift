@@ -23,8 +23,8 @@ class GraphicSkin:Skin{
             let depthCount:Int = StyleParser.depthCount(style!);
             for (var depth : Int = 0; depth < depthCount; depth++) {
                 /*if(hasSizeChanged){}*///do sizing of the sizable here
-                /*if(hasStateChanged || hasStyleChanged) */applyProperties(decoratables[0]);
-                /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional)/* as! IGraphicDecoratable;*/
+                /*if(hasStateChanged || hasStyleChanged) */applyProperties(decoratables[0],depth);
+                /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional,depth)/* as! IGraphicDecoratable;*/
             }
             
         }
@@ -33,7 +33,7 @@ class GraphicSkin:Skin{
     /**
      * TODO: Dont forget to add fillet, and asset here to , see old code
      */
-    func applyProperties(decoratable:IGraphicDecoratable){
+    func applyProperties(decoratable:IGraphicDecoratable,_ depth:Int){
         //Swift.print("GraphicSkin.applyProperties()")
         self.decoratables[0] = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
         //if(DecoratorAsserter.hasDecoratable(decoratable, RoundRect3)) RoundRect3(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth);/*fillet*/

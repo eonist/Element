@@ -17,6 +17,10 @@ class SVGAsset:FlippedView {
         layer!.masksToBounds = false//this is needed!!!
         addSubview(svg)
     }
+    
+    
+    //continue here: try to use the offset feature that the svg 
+    
     /**
      *
      */

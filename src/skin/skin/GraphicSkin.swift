@@ -5,9 +5,6 @@ import Cocoa
  * TODO: See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
  * TODO: Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol. 
  */
-
-//continue here: hunt down why SVGAsset isnt working with margin
-
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)

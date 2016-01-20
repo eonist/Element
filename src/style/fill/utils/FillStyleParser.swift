@@ -6,7 +6,7 @@ class FillStyleParser {
      */
     class func describe(fillStyle:IFillStyle){
         Swift.print("FillStyleParser.describe()")
-        Swift.print("fillStyle.color: " + "\(fillStyle.color)")
+        Swift.print("fillStyle.color.hex: " + "\(fillStyle.color.hex)")
         Swift.print("fillStyle.color.alphaComponent: " + "\(fillStyle.color.alphaComponent)")
     }
 }

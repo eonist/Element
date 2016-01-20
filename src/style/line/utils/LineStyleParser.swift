@@ -7,7 +7,7 @@ class LineStyleParser {
     class func describe(lineStyle:ILineStyle){
         Swift.print("LineStyleParser.describe()")
         Swift.print("lineStyle: " + "\(lineStyle)")
-        Swift.print("lineStyle.color: " + "\(lineStyle.color)")
+        Swift.print("lineStyle.color.hex: " + "\(lineStyle.color.hex)")
         Swift.print("lineStyle.color.alphaComponent: " + "\(lineStyle.color.alphaComponent)")
         Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
         Swift.print("lineStyle.lineCap: " + "\(lineStyle.lineCap)")

@@ -4,6 +4,18 @@ class LineStyleParser {
     /**
      *
      */
+    class func describe(lineStyle:ILineStyle){
+        Swift.print("lineStyle: " + "\(lineStyle)")
+        Swift.print("lineStyle.color: " + "\(lineStyle.color)")
+        Swift.print("lineStyle.color.alphaComponent: " + "\(lineStyle.color.alphaComponent)")
+        Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
+        Swift.print("lineStyle.lineCap: " + "\(lineStyle.lineCap)")
+        Swift.print("lineStyle.lineJoin: " + "\(lineStyle.lineJoin)")
+        Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
+    }
+    /**
+     *
+     */
     class func lineCapType(lineCap:CGLineCap)->String{
         if(lineCap == CGLineCap.Butt){
             return "butt"

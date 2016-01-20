@@ -39,13 +39,7 @@ class SVGAsset:FlippedView {
         }
         if(lineStyle != nil){
             LineStyleParser
-            //Swift.print("lineStyle: " + "\(lineStyle)")
-            //Swift.print("lineStyle.color: " + "\(lineStyle.color)")
-            //Swift.print("lineStyle.alpha: " + "\(lineStyle.alpha)")
-            //Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
-            //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
-            //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
-            //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
+            
         }
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
         SVGModifier.style(svg, svgStyle)

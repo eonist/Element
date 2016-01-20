@@ -47,7 +47,7 @@ private class Utils{
      * @NOTE: why the long method call? I feel the arguments are so simple that it can be done this way. You can debug by describing the SVGStyle or the Style with the describe methods etc
      */
     class func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
-        return SVGStyle(fillStyle != nil ? Double(fillStyle!.color.hex) : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
+        return SVGStyle(fillStyle != nil && fillStyle?.color != nil ? Double(fillStyle!.color.hex) : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
     }
 }
 

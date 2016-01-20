@@ -1,6 +1,5 @@
 import Foundation
 
-
 class GraphicSkinParser{
    static var rect:String = "rect";
    static var gradient:String = "gradient";

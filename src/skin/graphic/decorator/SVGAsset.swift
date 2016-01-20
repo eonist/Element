@@ -5,7 +5,7 @@ import Cocoa
 class SVGAsset:FlippedView {
     var svg:SVG
     init(_ path:String) {
-        Swift.print("SVGAsset.init()")
+        //Swift.print("SVGAsset.init()")
         //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
         let content = FileParser.content(path.tildePath)
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
@@ -21,11 +21,11 @@ class SVGAsset:FlippedView {
      *
      */
     func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
-        Swift.print("SVGAsset.drawFill() width: " + "\(width)" + " height: " + "\(height)" + " x: " + "\(x)" + " y: " + "\(y)")
+        Swift.print("SVGAsset.drawFill() width: " + String(width) + " height: " + String(height) + " x: " + String(x) + " y: " + String(y))
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
-        Swift.print("svg.width: " + "\(svg.width)")
-        Swift.print("svg.height: " + "\(svg.height)")
-        Swift.print("scale: " + "\(scale)")
+        //Swift.print("svg.width: " + "\(svg.width)")
+        //Swift.print("svg.height: " + "\(svg.height)")
+        //Swift.print("scale: " + "\(scale)")
         SVGModifier.scale(svg, CGPoint(x,y), scale);
     }
     /**

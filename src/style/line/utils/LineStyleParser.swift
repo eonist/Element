@@ -5,6 +5,7 @@ class LineStyleParser {
      * NOTE: You could also add this as a Descrieable extension on the ILineStyle protocol but, its convenient enough to have it here. 
      */
     class func describe(lineStyle:ILineStyle){
+        Swift.print("LineStyleParser.describe()")
         Swift.print("lineStyle: " + "\(lineStyle)")
         Swift.print("lineStyle.color: " + "\(lineStyle.color)")
         Swift.print("lineStyle.color.alphaComponent: " + "\(lineStyle.color.alphaComponent)")

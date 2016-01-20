@@ -49,7 +49,7 @@ class StylePropertyParser{
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         //Swift.print("alphaValue: " + "\(alphaValue)")
-        let nsColor:NSColor = !color.isNaN ? NSColorParser.nsColor(UInt(color), alphaValue) : NSColor.clearColor()/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil? */
+        let nsColor:NSColor = !color.isNaN ? NSColorParser.nsColor(UInt(color), alphaValue) : NSColor.clearColor()/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
         //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line because checking for NaN is essential when setting or not setting things?, you can revert to pure NSColor and clearStyle later anyway
         return FillStyle(nsColor)
     }

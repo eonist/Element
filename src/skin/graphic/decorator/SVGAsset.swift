@@ -60,6 +60,6 @@ private class Utils{
         //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
         //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
         //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
-        return SVGStyle(fillStyle != nil ? Double(fillStyle!.color.hex) : nil, fillStyle != nil ? fillStyle.color.alphaComponent : nil, nil,lineStyle != lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
+        return SVGStyle(fillStyle != nil ? Double(fillStyle!.color.hex) : nil, fillStyle != nil ? fillStyle!.color.alphaComponent : nil, nil,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle.color : nil,lineStyle != nil ? lineStyle.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle.lineCap) : nil , lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle.lineJoin): nil,lineStyle != nil ? lineStyle.miterLimit : nil)
     }
 }

@@ -18,9 +18,6 @@ class SVGAsset:FlippedView {
         addSubview(svg)
     }
     
-    
-    //continue here: try to use the offset feature that the svg 
-    
     /**
      *
      */
@@ -30,7 +27,8 @@ class SVGAsset:FlippedView {
         //Swift.print("svg.width: " + "\(svg.width)")
         //Swift.print("svg.height: " + "\(svg.height)")
         //Swift.print("scale: " + "\(scale)")
-        SVGModifier.scale(svg, CGPoint(x,y), scale);
+        svg.
+        SVGModifier.scale(svg, CGPoint(0,0), scale);
     }
     /**
      *

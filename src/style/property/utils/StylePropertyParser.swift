@@ -195,7 +195,6 @@ class StylePropertyParser{
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     class func margin(skin:ISkin, _ depth:Int = 0)->Margin {
-        fatalError("test")
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin,depth);
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin);

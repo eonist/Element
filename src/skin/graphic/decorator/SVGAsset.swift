@@ -38,6 +38,7 @@ class SVGAsset:FlippedView {
             //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
         }
         if(lineStyle != nil){
+            LineStyleParser
             //Swift.print("lineStyle: " + "\(lineStyle)")
             //Swift.print("lineStyle.color: " + "\(lineStyle.color)")
             //Swift.print("lineStyle.alpha: " + "\(lineStyle.alpha)")

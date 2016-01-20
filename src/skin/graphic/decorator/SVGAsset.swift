@@ -26,7 +26,7 @@ class SVGAsset:FlippedView {
         Swift.print("svg.width: " + "\(svg.width)")
         Swift.print("svg.height: " + "\(svg.height)")
         Swift.print("scale: " + "\(scale)")
-        SVGModifier.scale(svg, CGPoint(x,y), CGPoint(4,4));
+        SVGModifier.scale(svg, CGPoint(x,y), scale);
     }
     /**
      *

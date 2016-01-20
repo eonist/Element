@@ -34,13 +34,21 @@ class SVGAsset:FlippedView {
     func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         Swift.print("SVGAsset.applyStyle()")
         
-        if(fillStyle != nil && lineStyle != nil){
-            Swift.print("SVGAsset.fill()")
-            let fillStyle:IFillStyle = fillStyle!
-            let lineStyle:ILineStyle = lineStyle!
-            let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
-            SVGModifier.style(svg, svgStyle)
+        if(fillStyle != nil){
+            //Swift.print("lineStyle: " + "\(lineStyle)")
+            //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
+            //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
         }
+        if(lineStyle != nil){
+            //Swift.print("lineStyle.color: " + "\(lineStyle.color)")
+            //Swift.print("lineStyle.alpha: " + "\(lineStyle.alpha)")
+            //Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
+            //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
+            //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
+            //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
+        }
+        let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
+        SVGModifier.style(svg, svgStyle)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
@@ -51,15 +59,7 @@ private class Utils{
      */
     class func svgStyle(fillStyle:IFillStyle?,lineStyle:ILineStyle?)->SVGStyle{
         
-        //Swift.print("lineStyle: " + "\(lineStyle)")
-        //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
-        //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
-        //Swift.print("lineStyle.color: " + "\(lineStyle.color)")
-        //Swift.print("lineStyle.alpha: " + "\(lineStyle.alpha)")
-        //Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
-        //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
-        //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
-        //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
+        
         return SVGStyle(fillStyle != nil ? Double(fillStyle!.color.hex) : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
     }
 }

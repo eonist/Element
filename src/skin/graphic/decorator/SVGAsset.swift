@@ -53,4 +53,6 @@ class SVGAsset:FlippedView {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-private class 
+private class Utils{
+    //continue here: find the FillStyle and LinStyle to SVGStyle converter or make a new one then add it to the applyStyle method, look in your drawlab project .
+}

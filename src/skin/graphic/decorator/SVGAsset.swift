@@ -49,13 +49,8 @@ private class Utils{
     /**
      * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of theme uses either of them. Think coupling etc
      */
-    class func svgStyle(fillStyle:IFillStyle,lineStyle:ILineStyle){
-        let fillColor
-        let fillAlpha
-        let lineColor
-        let lineAlpha
-        let lineThinckness
-        let 
+    class func svgStyle(fillStyle:IFillStyle?,lineStyle:ILineStyle?){
+        
         //Swift.print("lineStyle: " + "\(lineStyle)")
         //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
         //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
@@ -65,5 +60,6 @@ private class Utils{
         //Swift.print("lineStyle.capStyle: " + "\(lineStyle.capStyle)")
         //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
         //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
+        return SVGStyle(fillStyle != nil ? Double(fillStyle!.color.hex) : , fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
     }
 }

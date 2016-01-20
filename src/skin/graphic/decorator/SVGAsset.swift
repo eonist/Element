@@ -50,6 +50,12 @@ private class Utils{
      * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of theme uses either of them. Think coupling etc
      */
     class func svgStyle(fillStyle:IFillStyle,lineStyle:ILineStyle){
+        let fillColor
+        let fillAlpha
+        let lineColor
+        let lineAlpha
+        let lineThinckness
+        let 
         //Swift.print("lineStyle: " + "\(lineStyle)")
         //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
         //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")

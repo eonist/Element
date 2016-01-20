@@ -2,7 +2,7 @@ import Foundation
 
 class LineStyleParser {
     /**
-     *
+     * NOTE: You could also add this as a Descrieable extension on the ILineStyle protocol but, its convenient enough to have it here. 
      */
     class func describe(lineStyle:ILineStyle){
         Swift.print("lineStyle: " + "\(lineStyle)")

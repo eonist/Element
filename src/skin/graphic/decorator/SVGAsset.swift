@@ -21,7 +21,7 @@ class SVGAsset:FlippedView {
      *
      */
     func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
-        Swift.print("SVGAsset.drawFill() width: " + "\(width)" + " height: " + "\(height)")
+        Swift.print("SVGAsset.drawFill() width: " + "\(width)" + " height: " + "\(height)" + " x: " + "\(x)" + " y: " + "\(y)")
         let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
         Swift.print("svg.width: " + "\(svg.width)")
         Swift.print("svg.height: " + "\(svg.height)")
@@ -32,7 +32,7 @@ class SVGAsset:FlippedView {
      *
      */
     func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
-        Swift.print("SVGAsset.applyStyle()")
+        //Swift.print("SVGAsset.applyStyle()")
         if(fillStyle != nil){FillStyleParser.describe(fillStyle!)}
         if(lineStyle != nil){LineStyleParser.describe(lineStyle!)}
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)

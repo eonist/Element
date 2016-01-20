@@ -54,11 +54,11 @@ class SVGAsset:FlippedView {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
-    //continue here: find the FillStyle and LinStyle to SVGStyle converter or make a new one then add it to the applyStyle method, look in your drawlab project .
+    
     /**
-    *
-    */
-    class func svgStyle(){
+     * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of theme uses either of them. Think coupling etc
+     */
+    class func svgStyle(fillStyle:IFillStyle,lineStyle:ILineStyle){
         
     }
 }

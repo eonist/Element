@@ -32,7 +32,7 @@ class StylePropertyParser{
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth);
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         
-        //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
+        Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         
         var color:Double;
         
@@ -44,6 +44,7 @@ class StylePropertyParser{
         }else {/*colorValue is UInt*/
             color = Double(colorValue as! UInt);
         }
+        Swift.print("color: " + "\(color)")
         let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha,depth)
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1

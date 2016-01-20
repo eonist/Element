@@ -55,4 +55,10 @@ class SVGAsset:FlippedView {
 }
 private class Utils{
     //continue here: find the FillStyle and LinStyle to SVGStyle converter or make a new one then add it to the applyStyle method, look in your drawlab project .
+    /**
+    *
+    */
+    class func svgStyle(){
+        
+    }
 }

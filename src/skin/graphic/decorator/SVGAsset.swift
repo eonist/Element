@@ -33,14 +33,8 @@ class SVGAsset:FlippedView {
      */
     func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         Swift.print("SVGAsset.applyStyle()")
-        if(fillStyle != nil){
-            //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
-            //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
-        }
-        if(lineStyle != nil){
-            LineStyleParser
-            
-        }
+        if(fillStyle != nil){FillStyleParser.describe(fillStyle!)}
+        if(lineStyle != nil){LineStyleParser.describe(lineStyle!)}
         let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
         SVGModifier.style(svg, svgStyle)
     }

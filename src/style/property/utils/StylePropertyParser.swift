@@ -196,10 +196,10 @@ class StylePropertyParser{
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth);
         //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft) > marginIndex ? metric(skin, CSSConstants.marginLeft) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight) > marginIndex ? metric(skin, CSSConstants.marginRight) : Utils.metric(margin.right, skin))!;
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop) > marginIndex ? metric(skin, CSSConstants.marginTop) : Utils.metric(margin.top, skin))!;
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom) > marginIndex ? metric(skin, CSSConstants.marginBottom)! : Utils.metric(margin.bottom, skin)!;
+        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight,depth) > marginIndex ? metric(skin, CSSConstants.marginRight,depth) : Utils.metric(margin.right, skin))!;
+        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop,depth) > marginIndex ? metric(skin, CSSConstants.marginTop,depth) : Utils.metric(margin.top, skin))!;
+        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom,depth)! : Utils.metric(margin.bottom, skin)!;
         return margin;
     }
     /**

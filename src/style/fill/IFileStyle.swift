@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol IFillStyle:CustomStringConvertible{
+protocol IFillStyle{
     var color: NSColor { get set }
 }
 /*
@@ -13,7 +13,4 @@ extension IFillStyle{
     func copy() -> IFillStyle {
         return FillStyle(self.color)
     }
-}
-extension IFillStyle{
-    var description: String { get{return String(someNumber)} }
 }

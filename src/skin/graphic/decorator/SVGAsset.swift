@@ -33,13 +33,12 @@ class SVGAsset:FlippedView {
      */
     func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         Swift.print("SVGAsset.applyStyle()")
-        
         if(fillStyle != nil){
-            //Swift.print("lineStyle: " + "\(lineStyle)")
             //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
             //Swift.print("fillStyle.alpha: " + "\(fillStyle.alpha)")
         }
         if(lineStyle != nil){
+            //Swift.print("lineStyle: " + "\(lineStyle)")
             //Swift.print("lineStyle.color: " + "\(lineStyle.color)")
             //Swift.print("lineStyle.alpha: " + "\(lineStyle.alpha)")
             //Swift.print("lineStyle.thickness: " + "\(lineStyle.thickness)")
@@ -47,19 +46,17 @@ class SVGAsset:FlippedView {
             //Swift.print("lineStyle.jointStyle: " + "\(lineStyle.jointStyle)")
             //Swift.print("lineStyle.miterLimit: " + "\(lineStyle.miterLimit)")
         }
-        let svgStyle = SVGStyle(fillStyle.color,fillStyle.color.alphaComponent,nil,lineStyle.thickness,lineStyle.color,lineStyle.color.alphaComponent,LineStyleParser.lineCapType(lineStyle.lineCap),LineStyleParser.lineJoinType(lineStyle.lineJoin),lineStyle.miterLimit)
+        let svgStyle = Utils.svgStyle(fillStyle, lineStyle)
         SVGModifier.style(svg, svgStyle)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
-    
     /**
      * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of theme uses either of them. Think coupling etc
+     * @NOTE: why the long method call? I feel the arguments are so simple that it can be done this way. You can debug by describing the SVGStyle or the Style with the describe methods etc
      */
-    class func svgStyle(fillStyle:IFillStyle?,lineStyle:ILineStyle?)->SVGStyle{
-        
-        
+    class func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
         return SVGStyle(fillStyle != nil ? Double(fillStyle!.color.hex) : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
     }
 }

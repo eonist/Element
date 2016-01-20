@@ -49,14 +49,14 @@ private class Utils{
     class func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
         Swift.print("fillStyle!.color: " + "\(fillStyle!.color)")
         Swift.print("fillStyle!.color.hex: " + "\(fillStyle!.color.hex)")
-        Swift.print("Double(fillStyle!.color.hex): " + "\(Double("0x"+fillStyle!.color.hex))")
-        let color = fillStyle != nil ? Double("0x" + fillStyle!.color.hex) : nil
+        Swift.print("fillStyle!.color.rgb: " + "\(fillStyle!.color.rgb)")
+        let color = fillStyle != nil ? fillStyle!.color.rgb : nil
         Swift.print("color: " + "\(color)")
         return SVGStyle(color,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
     }
 }
 
 
-//continue here. figure out why svgstyle.fill is nil when fill isnt. something is wrong in the conversion
+//continue here. test if fillStyle!.color.rgb works
 
 

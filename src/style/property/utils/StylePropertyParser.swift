@@ -31,11 +31,8 @@ class StylePropertyParser{
         //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth);
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
-        
-        Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
-        
+        //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         var color:Double;
-        
         if(colorValue! is Array<Any>) {
             //Swift.print("value is array");
             color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
@@ -44,7 +41,7 @@ class StylePropertyParser{
         }else {/*colorValue is UInt*/
             color = Double(colorValue as! UInt);
         }
-        Swift.print("color: " + "\(color)")
+        //Swift.print("color: " + "\(color)")
         let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha,depth)
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
@@ -127,7 +124,7 @@ class StylePropertyParser{
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
     class func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
-        Swift.print("StylePropertParser.gradientLineStyle()")
+        //Swift.print("StylePropertParser.gradientLineStyle()")
         let gradient = value(skin, CSSConstants.line,depth)
         if(!(gradient is IGradient)){return nil}//<--temp fix
         //gradient.rotation *= ㎭

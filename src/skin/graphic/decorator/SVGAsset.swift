@@ -33,6 +33,7 @@ class SVGAsset:FlippedView {
      */
     func applyStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?){
         Swift.print("SVGAsset.applyStyle()")
+        
         if(fillStyle != nil && lineStyle != nil){
             Swift.print("SVGAsset.fill()")
             //Swift.print("lineStyle: " + "\(lineStyle)")
@@ -52,3 +53,4 @@ class SVGAsset:FlippedView {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+private class 

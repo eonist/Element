@@ -93,7 +93,7 @@ class StylePropertyParser{
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom,depth)}
         //if(offsetType.top == OffsetType.center || offsetType.bottom == OffsetType.center || offsetType.left == OffsetType.center || offsetType.right == OffsetType.center){fatalError("lineOffsetType:center is not supported yet")}//<--temp fix, implement center as a way of alignment or remove it from parsing or?
         //Swift.print("------after-------")
-        LayoutUtils.describe(offsetType)
+        //LayoutUtils.describe(offsetType)
         return offsetType;
     }
     /**

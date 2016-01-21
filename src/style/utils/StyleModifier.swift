@@ -52,11 +52,11 @@ class StyleModifier {
      * TODO: maybe use map or filter to speed this up?
      */
     class func merge(inout a:IStyle,_ b:IStyle){
-        Swift.print("-----start---")
+        /*Swift.print("-----start---")
         StyleParser.describe(a)
         Swift.print("--------")
         StyleParser.describe(b)
-        Swift.print("----end----")
+        Swift.print("----end----")*/
         for stylePropB : IStyleProperty in b.styleProperties {
             var hasStyleProperty:Bool = false;
             for stylePropA : IStyleProperty in a.styleProperties {

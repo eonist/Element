@@ -61,7 +61,7 @@ class StyleModifier {
                 }
             }
             if(!hasStyleProperty) {//asserts true if the style from b doest exist in a
-                StyleModifier.prepend(&a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
+                StyleModifier.append(&a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
             }
         }
     }

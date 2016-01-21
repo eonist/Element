@@ -99,8 +99,6 @@ class StylePropertyParser{
      */
     class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
         
-        Swift.print("StylePropertyParser.fillet() needs depth")
-        
         let val:Any? = value(skin, CSSConstants.cornerRadius,depth);
         var fillet:Fillet = Fillet();
         //Swift.print(val)
@@ -108,11 +106,11 @@ class StylePropertyParser{
         
         //Swift.print("StylePropertyParser.fillet: " + String(ClassParser.classType(val!)))
         //Swift.print(fillet.topRight)
-        let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, "corner-radius-top-left") }//TODO: replace this with the constant: cornerRadiusIndex
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, "corner-radius-top-right") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, "corner-radius-bottom-left") }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right") }
+        let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius, depth);//returns -1 if it doesnt exist
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, "corner-radius-top-left", depth) }//TODO: replace this with the constant: cornerRadiusIndex
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, "corner-radius-top-right", depth) }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, "corner-radius-bottom-left", depth) }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right", depth) }
         return fillet;
     }
     /**

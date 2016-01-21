@@ -86,10 +86,10 @@ class StylePropertyParser{
         LayoutUtils.describe(offsetType)
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth);
         Swift.print("lineOffsetTypeIndex: " + "\(lineOffsetTypeIndex)")
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right",depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, "line-offset-type-top",depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, "line-offset-type-bottom",depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom,depth)}
         //if(offsetType.top == OffsetType.center || offsetType.bottom == OffsetType.center || offsetType.left == OffsetType.center || offsetType.right == OffsetType.center){fatalError("lineOffsetType:center is not supported yet")}//<--temp fix, implement center as a way of alignment or remove it from parsing or?
         Swift.print("------after-------")
         LayoutUtils.describe(offsetType)

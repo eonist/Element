@@ -72,7 +72,7 @@ class StylePropertyParser{
     class func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
         let color:Any? = value(skin, propertyName,depth);
         Swift.print("color: " + "\(color)")
-        return (String(color) == CSSConstants.none || color == nil) ? Double.NaN : Double(color as! UInt);
+        return color == nil || String(color!) == CSSConstants.none ? Double.NaN : Double(color as! UInt);
     }
     /**
      * Returns an Offset instance

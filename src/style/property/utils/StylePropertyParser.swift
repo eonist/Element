@@ -84,7 +84,7 @@ class StylePropertyParser{
         var offsetType:OffsetType = OffsetType();
         if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left",depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right",depth)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, "line-offset-type-top",depth)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, "line-offset-type-bottom",depth)}
@@ -262,13 +262,13 @@ extension StylePropertyParser{
     /*
      * Convenince method for deriving CGFloat values
      */
-    class func number(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->CGFloat{
-        return CGFloat(Double(string(skin, propertyName))!)
+    class func number(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->CGFloat{
+        return CGFloat(Double(string(skin, propertyName,depth))!)
     }
     /*
     * Convenince method for deriving String values
     */
-    class func string(skin:ISkin, _ propertyName:String/*, depth:int = 0*/)->String{
-        return String(value(skin, propertyName))
+    class func string(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
+        return String(value(skin, propertyName,depth))
     }
 }

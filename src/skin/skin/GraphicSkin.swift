@@ -41,7 +41,7 @@ class GraphicSkin:Skin{
      */
     func applyProperties(decoratable:IGraphicDecoratable,_ depth:Int){
         Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
-        self.decoratables[0] = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self), StylePropertyParser.lineStyle(self), StylePropertyParser.lineOffsetType(self));/*color or gradient*/
+        self.decoratables[depth] = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         //if(DecoratorAsserter.hasDecoratable(decoratable, RoundRect3)) RoundRect3(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth);/*fillet*/
         if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {
             (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth);/*Svg*/

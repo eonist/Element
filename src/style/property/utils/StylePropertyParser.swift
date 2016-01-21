@@ -77,6 +77,7 @@ class StylePropertyParser{
     /**
      * Returns an Offset instance
      * // :TODO: probably upgrade to TRBL
+     * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
     class func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
         //Swift.print("StylePropertyparser.lineOffsetType()")

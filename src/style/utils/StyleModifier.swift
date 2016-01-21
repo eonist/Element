@@ -62,6 +62,9 @@ class StyleModifier {
             }
             if(!hasStyleProperty) {//asserts true if the style from b doest exist in a
                 StyleModifier.append(&a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
+            
+                //to fix a big the prepend was replaced by append. May impact in other areas. But prepending makes the the style upsode down in terms of the original indices of styleProperties. 
+            
             }
         }
     }

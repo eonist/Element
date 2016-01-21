@@ -22,14 +22,14 @@ extension IStyle{
      * Convenience method since apple doesnt support default values in protocols
      * NOTE: Default argument not permitted in a protocol method
      */
-    func getStyleProperty(name:String)->IStyleProperty?{
-        return getStyleProperty(name, 0)
+    func getStyleProperty(name:String,_ depth:Int = 0)->IStyleProperty?{
+        return getStyleProperty(name, depth)
     }
     /**
      * Convenience method since apple doesnt support default values in protocols
      * NOTE: Default argument not permitted in a protocol method
      */
-    func getValue(name:String)->Any?{
-        return getValue(name, 0)
+    func getValue(name:String,_ depth:Int = 0)->Any?{
+        return getValue(name, depth)
     }
 }

@@ -41,12 +41,12 @@ class GraphicSkin:Skin{
      */
     func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
         Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
-        GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
+        //GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         //if(DecoratorAsserter.hasDecoratable(decoratable, RoundRect3)) RoundRect3(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth);/*fillet*/
         if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {
             (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth);/*Svg*/
         }
-        //if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
+        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
         decoratable.draw()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/

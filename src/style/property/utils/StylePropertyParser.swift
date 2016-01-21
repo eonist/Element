@@ -83,7 +83,7 @@ class StylePropertyParser{
         let val:Any? = value(skin, CSSConstants.lineOffsetType,depth);
         var offsetType:OffsetType = OffsetType();
         if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
-        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
+        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth);
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right",depth)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, "line-offset-type-top",depth)}

@@ -8,20 +8,20 @@ class AssetDecorator:SizeableDecorator{
     var assetURL : String;
     init(_ decoratable: IGraphicDecoratable,_ iconURL:String) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         assetURL = iconURL;
-        Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
+        //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
     }
     override func draw() {
-        Swift.print("AssetDecorator.draw() ")
+        //Swift.print("AssetDecorator.draw() ")
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution, find a more elegant solution than removing*/
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset/*temp solution*/
-        Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
+        //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
         if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}
         super.draw()
     }
     override func drawFill() {
-        Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
+        //Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
         //super.drawFill()
         asset!.draw(x, y, width, height)//0, 0, graphic.width, graphic.height
     }

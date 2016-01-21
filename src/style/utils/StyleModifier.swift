@@ -55,7 +55,7 @@ class StyleModifier {
         for stylePropB : IStyleProperty in b.styleProperties {
             var hasStyleProperty:Bool = false;
             for stylePropA : IStyleProperty in a.styleProperties {
-                if(stylePropB.name == stylePropA.name/* && stylePropB.depth == stylePropA.depth*/){
+                if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
                     hasStyleProperty = true;
                     break;
                 }
@@ -99,7 +99,7 @@ class StyleModifier {
     class func prepend(inout style:IStyle,_ styleProperty:IStyleProperty){
         //Swift.print("prepend happended")
         for styleProp:IStyleProperty in style.styleProperties{
-            if(styleProp.name == styleProperty.name/* && styleProp.depth == styleProperty.depth*/) {
+            if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) {
                 fatalError(String(style) + " STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)//checks if there is no duplicates in the list
             }
         }

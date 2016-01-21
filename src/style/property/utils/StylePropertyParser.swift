@@ -84,10 +84,10 @@ class StylePropertyParser{
         var offsetType:OffsetType = OffsetType();
         if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType);
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left")}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right")}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, "line-offset-type-top")}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, "line-offset-type-bottom")}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, "line-offset-type-left",depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, "line-offset-type-right",depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, "line-offset-type-top",depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, "line-offset-type-bottom",depth)}
         //if(offsetType.top == OffsetType.center || offsetType.bottom == OffsetType.center || offsetType.left == OffsetType.center || offsetType.right == OffsetType.center){fatalError("lineOffsetType:center is not supported yet")}//<--temp fix, implement center as a way of alignment or remove it from parsing or?
         return offsetType;
     }

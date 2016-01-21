@@ -29,7 +29,7 @@ class GraphicSkin:Skin{
             Swift.print("depthCount: " + "\(depthCount)")
             for (var depth : Int = 0; depth < depthCount; depth++) {
                 /*if(hasSizeChanged){}*///do sizing of the sizable here
-                /*if(hasStateChanged || hasStyleChanged) */applyProperties(decoratables[0],depth);
+                /*if(hasStateChanged || hasStyleChanged) */applyProperties(&decoratables[0],depth);
                 /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional,depth)/* as! IGraphicDecoratable;*/
             }
             
@@ -39,14 +39,14 @@ class GraphicSkin:Skin{
     /**
      * TODO: Dont forget to add fillet, and asset here to , see old code
      */
-    func applyProperties(decoratable:IGraphicDecoratable,_ depth:Int){
+    func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
         Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
-        self.decoratables[depth] = GraphicModifier.applyProperties(decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
+        GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         //if(DecoratorAsserter.hasDecoratable(decoratable, RoundRect3)) RoundRect3(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth);/*fillet*/
         if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {
             (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth);/*Svg*/
         }
-        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
+        //if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
         decoratable.draw()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/

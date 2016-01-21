@@ -33,11 +33,11 @@ class StylePropertyParser{
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         var color:Double;
-        if(colorValue! is Array<Any>) {
+        if(colorValue == nil){
+            color = Double.NaN
+        }else if(colorValue! is Array<Any>) {
             //Swift.print("value is array");
             color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
-        }else if(colorValue == nil){
-            color = Double.NaN
         }else {/*colorValue is UInt*/
             color = Double(colorValue as! UInt);
         }

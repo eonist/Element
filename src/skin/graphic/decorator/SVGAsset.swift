@@ -50,7 +50,12 @@ private class Utils{
      * @NOTE: why the long method call? I feel the arguments are so simple that it can be done this way. You can debug by describing the SVGStyle or the Style with the describe methods etc
      */
     class func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
-        return SVGStyle(fillStyle != nil ? fillStyle!.color.rgb : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil/*<-fillRule*/,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
+        
+        
+        //TODO: the bellow line is now so complex that you should explode it, difficult to debug!
+        
+        
+        return SVGStyle(fillStyle != nil ? fillStyle!.color.rgb : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil/*<-fillRule*/,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil && lineStyle?.color != NSColor.clearColor()/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
     }
 }
 

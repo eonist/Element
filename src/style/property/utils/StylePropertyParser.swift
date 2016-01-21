@@ -98,6 +98,9 @@ class StylePropertyParser{
      * // :TODO: probably upgrade to TRBL
      */
     class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
+        
+        Swift.print("StylePropertyParser.fillet() needs depth")
+        
         let val:Any? = value(skin, CSSConstants.cornerRadius,depth);
         var fillet:Fillet = Fillet();
         //Swift.print(val)
@@ -131,7 +134,7 @@ class StylePropertyParser{
         let gradient = value(skin, CSSConstants.line,depth)
         if(!(gradient is IGradient)){return nil}//<--temp fix
         //gradient.rotation *= ㎭
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness) as! CGFloat
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
         return GradientLineStyle(gradient as! IGradient, lineThickness, NSColor.clearColor()/*colorLineStyle(skin)*/);
     }
     /**

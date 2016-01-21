@@ -77,7 +77,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * This method results in the setting of the "fill-path" to the graphics instance
      */
     override func drawFill(){
-        //Swift.print("GraphicDecoratable.drawFill()")
+        Swift.print("GraphicDecoratable.drawFill() decoratable: " + "\(decoratable)")
         decoratable.drawFill()
     }
     /**

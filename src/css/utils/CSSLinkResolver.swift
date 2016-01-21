@@ -52,7 +52,7 @@ private class Utils {
     class func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{
         //Swift.print("replaceLinks.string: " + string);
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
-        Swift.print("replaceLinks()" + String(matches.count))
+        //Swift.print("replaceLinks()" + String(matches.count))
         
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print(match.numberOfRanges)

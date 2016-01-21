@@ -17,6 +17,11 @@ class GraphicSkin:Skin{
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
         }
     }
+    
+    
+    //continue here: figure out why asset decoror doesnt get the update call
+    
+    
     override func draw(){
         //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){

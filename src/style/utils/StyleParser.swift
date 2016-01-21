@@ -45,9 +45,6 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         return propertyNames;
     }
     
-    //Continue here: the problem is ofcourse how the StyleResolver generates the style for the over state. 
-    //It probably doesnt add the styleProps in the correct order. verify this with a test
-    
     /**
      * @param name the propertyname
      */

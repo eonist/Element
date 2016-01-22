@@ -99,6 +99,7 @@ class StylePropertyParser{
     /**
      * Returns a Fillet instance
      * // :TODO: probably upgrade to TRBL
+     * TODO: needs to return nil aswell. 
      */
     class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
         

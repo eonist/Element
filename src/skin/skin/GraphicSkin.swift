@@ -51,6 +51,7 @@ class GraphicSkin:Skin{
             (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)
         }
         if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {/*dropshadow*/
+            Swift.print("dropshadow")
             (DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)
         }
         decoratable.draw()

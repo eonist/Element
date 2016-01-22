@@ -44,7 +44,9 @@ class GraphicSkin:Skin{
         Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
         
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
-        
+        if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self){
+            Swift.print("has RectGraphic")
+        }
         if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {/*fillet*/
             (DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)
         }

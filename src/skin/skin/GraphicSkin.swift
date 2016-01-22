@@ -22,10 +22,14 @@ class GraphicSkin:Skin{
     override func draw(){
         Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
+            Swift.print("hasStateChanged: " + "\(hasStateChanged)")
+            Swift.print("hasSizeChanged: " + "\(hasSizeChanged)")
+            Swift.print("hasStyleChanged: " + "\(hasStyleChanged)")
             let depthCount:Int = StyleParser.depthCount(style!);
             //Swift.print("depthCount: " + "\(depthCount)")
             for (var depth : Int = 0; depth < depthCount; depth++) {
                 /*if(hasSizeChanged){}*///do sizing of the sizable here
+                //Rect3Modifier.size(decoratables[depth], width + padding.left + padding.right, height + padding.top + padding.bottom);// :TODO: width and height here is prob wrong
                 /*if(hasStateChanged || hasStyleChanged) */applyProperties(&decoratables[0],depth);
                 /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional,depth)/* as! IGraphicDecoratable;*/
             }

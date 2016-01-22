@@ -1,6 +1,9 @@
 import Foundation
 
 class StylePropertyAsserter {
+    /**
+     * Test if fillet is nil instead, 0 should return true actually. Think over state vs idle state etc
+     */
     class func hasFillet(skin:ISkin,_ depth:Int = 0)->Bool {
         let fillet:Fillet = StylePropertyParser.fillet(skin,depth);
         //Swift.print("StylePropertyAsserter.hasFillet() " + String(fillet))

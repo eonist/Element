@@ -1,19 +1,21 @@
-[Follow the Progress here](http://www.stylekit.org)  
-[twitter](https://twitter.com/stylekit_org)
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  
+[Follow the Progress here](http://www.stylekit.org)   
+[DM me on twitter for questions](https://twitter.com/stylekit_org)  
 
-**Icon bar**
+### Icon bar:  
+
 <img width="474" alt="task-bar-animation" src="https://dl.dropboxusercontent.com/u/2559476/the_icon_bar_anim_x2p.gif">
 [A case study of the icon bar](http://stylekit.org/blog/2016/01/22/The-Icon-Bar/) 
  
-**OSX TitleBar Buttons:** (pre Yosemite)  
+### TitleBar:
 <img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/titlebar_buttons_anim.gif">
+[Case study](http://stylekit.org/blog/2016/01/20/Layered-Graphics/) 
 
-**TabBar:**    
+### TabBar:
 <img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/2f289u9384f34.gif">  
 Read more about the TabBar case [here](https://github.com/eonist/Element/wiki/Progress#tabbar)   
 
-**Graphics Drawing in OSX:**  
+### Graphics Drawing: 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">  
 Read more about the above Graphics framework case [here](https://github.com/eonist/Element/wiki/Progress2#ui-graphic-framework-for-osx)  
 

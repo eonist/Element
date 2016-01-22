@@ -43,11 +43,8 @@ class GraphicSkin:Skin{
         Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
         
         
-        //Continue here: Make a simple test: first a button with hove color change, then add shadow, then gradient, then layers, then fillet. Fix this method
-        
-        
-        //GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
-        //if(DecoratorAsserter.hasDecoratable(decoratable, RoundRect3)) RoundRect3(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth);/*fillet*/
+        GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
+        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic)) {(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth)};/*fillet*/
         if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {
             (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth);/*Svg*/
         }

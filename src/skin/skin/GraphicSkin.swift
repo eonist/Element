@@ -52,6 +52,7 @@ class GraphicSkin:Skin{
         }
         if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {/*dropshadow*/
             let dropShadow = StylePropertyParser.dropShadow(self,depth)
+            StyleParser.describe(self.style!)
             Swift.print("dropShadow?.color.alphaComponent: " + "\(dropShadow?.color.alphaComponent)")
             (DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = dropShadow
         }

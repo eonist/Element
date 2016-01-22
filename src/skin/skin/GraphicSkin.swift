@@ -28,7 +28,7 @@ class GraphicSkin:Skin{
             let depthCount:Int = StyleParser.depthCount(style!);
             //Swift.print("depthCount: " + "\(depthCount)")
             for (var depth : Int = 0; depth < depthCount; depth++) {
-                /*if(hasSizeChanged){}*///do sizing of the sizable here
+                if(hasSizeChanged){}//do sizing of the sizable here
                 //Rect3Modifier.size(decoratables[depth], width + padding.left + padding.right, height + padding.top + padding.bottom);// :TODO: width and height here is prob wrong
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[0],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[0] as! IPositional,depth)/* as! IGraphicDecoratable;*/
@@ -46,8 +46,7 @@ class GraphicSkin:Skin{
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             Swift.print("has RectGraphic")
-            
-            (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
+            (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(Utils.size(self,depth))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
         if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {/*fillet*/
             (DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)
@@ -69,5 +68,12 @@ class GraphicSkin:Skin{
  *
  */
 private class Utils{
-    
+    /**
+     *
+     */
+    class func size(skin:ISkin,_ depth:Int = 0)->CGSize{
+        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!) /*+ padding.left + padding.right*/// :TODO: only querry this if the size has changed?
+        let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) /*+ padding.top + padding.bottom*/// :TODO: only querry this if the size has changed?
+        return CGSize(width,height)
+    }
 }

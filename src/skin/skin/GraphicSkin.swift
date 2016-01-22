@@ -44,11 +44,16 @@ class GraphicSkin:Skin{
         
         
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
-        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic)) {(DecoratorParser.decoratable(decoratable, RoundRect3)).fillet = StylePropertyParser.fillet(this,depth)};/*fillet*/
-        if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {
-            (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth);/*Svg*/
+        
+        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {/*fillet*/
+            (DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)
         }
-        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
+        if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {/*Svg*/
+            (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)
+        }
+        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {/*dropshadow*/
+            (DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)
+        }
         decoratable.draw()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/

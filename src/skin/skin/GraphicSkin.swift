@@ -44,8 +44,11 @@ class GraphicSkin:Skin{
         Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
         
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
-        if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self){
+        if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             Swift.print("has RectGraphic")
+            var width:CGFloat = (StylePropertyParser.width(this,depth) || super.width) + padding.left + padding.right;// :TODO: only querry this if the size has changed?
+            var height:CGFloat = (StylePropertyParser.height(this,depth) || super.height) + padding.top + padding.bottom;// :TODO: only querry this if the size has changed?
+            Rect3Modifier.size(decoratables[depth], width, height);/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
         if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {/*fillet*/
             (DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)

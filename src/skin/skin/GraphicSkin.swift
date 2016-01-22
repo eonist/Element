@@ -26,7 +26,7 @@ class GraphicSkin:Skin{
         Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!);
-            Swift.print("depthCount: " + "\(depthCount)")
+            //Swift.print("depthCount: " + "\(depthCount)")
             for (var depth : Int = 0; depth < depthCount; depth++) {
                 /*if(hasSizeChanged){}*///do sizing of the sizable here
                 /*if(hasStateChanged || hasStyleChanged) */applyProperties(&decoratables[0],depth);

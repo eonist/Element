@@ -6,19 +6,19 @@
 
 <img width="474" alt="task-bar-animation" src="https://dl.dropboxusercontent.com/u/2559476/the_icon_bar_anim_x2p.gif">
 
-[Case study](http://stylekit.org/blog/2016/01/22/The-Icon-Bar/)   
+ [Case study](http://stylekit.org/blog/2016/01/22/The-Icon-Bar/)   
  
 ### TitleBar:  
 
 <img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/titlebar_buttons_anim.gif">  
 
-[Case study](http://stylekit.org/blog/2016/01/20/Layered-Graphics/)   
+ [Case study](http://stylekit.org/blog/2016/01/20/Layered-Graphics/)   
 
 ### TabBar:  
   
 <img width="240" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/2f289u9384f34.gif">  
   
-[Case study](https://github.com/eonist/Element/wiki/Progress#tabbar)     
+ [Case study](https://github.com/eonist/Element/wiki/Progress#tabbar)     
 
 ### Graphics Drawing: 
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">  

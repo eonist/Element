@@ -20,12 +20,12 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        createContent()
+        resolveSkin()
     }
     /**
-     *
+     * We use the resolveSkin method since this is the common way to implement functionality in this framework
      */
-    func createContent(){
+    func resolveSkin(){
         self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
     }
     /**
@@ -38,7 +38,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by the NSWindow*/
 }
 class TestWin:Window{
-    override func createContent() {
+    override func resolveSkin() {
         self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
     }
 }
@@ -54,7 +54,6 @@ class TestWinView:WindowView{
         //addSubview(button)
     }
 }
-
 /**
  * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
  */
@@ -96,7 +95,7 @@ class WindowView:FlippedView,IElement{
      * Returns the class type of the Class instance
      */
     func getClassType()->String{
-        return String(Window)//Window can be targeted via the id 
+        return String(Window)//Window can be targeted via the id so we use Window for all Window subclasses, although this can be overriden in said subclasses
     }
 }
 

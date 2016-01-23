@@ -12,18 +12,16 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     override var canBecomeMainWindow:Bool{return true}
     override var canBecomeKeyWindow:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
     override var acceptsFirstResponder:Bool{return true}
-    
     /**
      *
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400,_ id:String? = nil){
-        let styleMask:Int = NSBorderlessWindowMask
+        let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
-        //self.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)
         self.id = id
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.contentView!.wantsLayer = true;
-        self.backgroundColor = NSColorParser.nsColor("#")/*Sets the window background color*/
+        self.backgroundColor = NSColorParser.nsColor("#4CD964")/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/

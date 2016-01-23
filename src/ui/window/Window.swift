@@ -55,10 +55,10 @@ class WindowView:FlippedView,IElement{
     func resolveSkin() {
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
-        Swift.print("WindowView.resolveSkin: " + "\(String(self))")
+        /*Swift.print("WindowView.resolveSkin: " + "\(String(self))")
         Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
         let tempStyle = StyleResolver.style(self)
-        StyleParser.describe(tempStyle)
+        StyleParser.describe(tempStyle)*/
     }
     /**
      * Toggles between css style sheets and have them applied to all Element instances

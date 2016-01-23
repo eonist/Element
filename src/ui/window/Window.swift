@@ -34,7 +34,8 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
 class TestWin:WindowView{
     override func resolveSkin() {
         super.resolveSkin()
-        
+        let button = Button(120,40)
+        addSubview(button)
     }
 }
 

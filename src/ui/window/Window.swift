@@ -19,8 +19,14 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
-        self.contentView = TestWin(frame.width,frame.height,id)/*Sets the mainview of the window*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
+        createContent()
+    }
+    /**
+     *
+     */
+    func createContent(){
+        self.contentView = TestWin(frame.width,frame.height,id)/*Sets the mainview of the window*/
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc

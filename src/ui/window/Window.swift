@@ -96,7 +96,7 @@ class WindowView:FlippedView,IElement{
      * Returns the class type of the Class instance
      */
     func getClassType()->String{
-        return String(Window)//<-- you could possibly drop the self.dynamicType since you refer to the class it self. test this
+        return String(Window)//Window can be targeted via the id 
     }
 }
 

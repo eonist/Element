@@ -7,7 +7,7 @@ class WindowView:NSVisualEffectView,IElement{
     override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
     var id : String?/*css selector id*/
     var parent:IElement?
-    var state:String = SkinStates.none
+    //var state:String = SkinStates.none
     var skin:ISkin?
     var style:IStyle = Style.clear
     init(_ width: CGFloat, _ height: CGFloat, _ id:String? = nil) {

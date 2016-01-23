@@ -9,7 +9,6 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * NOTE: remember to not set the width or height for the window in the css if you want the resizing working
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: impliment the max and min sizes into the constructor arguments
-     *
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400,_ id:String? = nil){
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask

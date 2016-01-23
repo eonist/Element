@@ -1,7 +1,4 @@
 import Cocoa
-/**
- * NOTE: /*NSBorderlessWindowMask*///NSTitledWindowMask/*A title bar*/|NSResizableWindowMask/*A resize bar, border, or box*/|NSMiniaturizableWindowMask/*A miniaturize button*/|NSClosableWindowMask/*A close button*/
- */
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     
     var view:NSView?

@@ -31,6 +31,13 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by the NSWindow*/
 }
+/**
+ * TODO: You should extend the window not the view
+ */
+
+//continue here: try the section see if it works, then do the todo above
+
+
 class TestWin:WindowView{
     override func resolveSkin() {
         super.resolveSkin()

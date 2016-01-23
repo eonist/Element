@@ -5,9 +5,9 @@ import Cocoa
  * // :TODO: rename to Div,Division,Section,Segment? or? Div sounds best and is closley related to css
  */
 class Container:Element{
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
-        super.init(width, height, parent, id)
-    }
+    /*    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
+    super.init(width, height, parent, id)
+    }*/
     override func resolveSkin() {
         self.skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/
     }
@@ -16,7 +16,7 @@ class Container:Element{
      * Returns "Container"
      * @Note This function is used to find the correct class type when synthezing the element cascade
      */
-    override func getClassType()->String{
-        return String(Container)
-    }
+    /*override func getClassType()->String{
+    return String(Container)
+    }*/
 }

@@ -26,17 +26,20 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        //resolveSkin()
-        let visualEffectView = NSVisualEffectView(frame: NSMakeRect(0, 0, 300, 180))
-        visualEffectView.material = NSVisualEffectMaterial.Dark
-        visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
-        visualEffectView.state = NSVisualEffectState.Active
+        resolveSkin()
+        
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework
      */
     func resolveSkin(){
-        self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
+        let visualEffectView = NSVisualEffectView(frame: NSMakeRect(0, 0, 300, 180))
+        visualEffectView.material = NSVisualEffectMaterial.Dark
+        visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
+        visualEffectView.state = NSVisualEffectState.Active
+        
+        self.contentView = visualEffectView
+        visualEffectView.addSubview(WindowView(frame.width,frame.height))/*Sets the mainview of the window*/
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc

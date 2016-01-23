@@ -16,7 +16,7 @@ class Element:InteractiveView,IElement {
     */
     var parent : IElement?
     var id : String?/*css selector id*/
-    var style:IStyle = Style.clear//<---what is clear?
+    var style:IStyle = Style.clear//<---what is clear? and how does it behave?
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
@@ -26,7 +26,7 @@ class Element:InteractiveView,IElement {
     /**
      * Draws the graphics
      * TODO: does nsview have a protocol which IElement then can use
-     * NOTE: this method is embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
+     * NOTE: this method was embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
      */
     func resolveSkin() {
         //Swift.print("resolveSkin: " + "\(String(self))")

@@ -11,6 +11,7 @@ class WindowView:NSVisualEffectView,IElement{
     //var state:String = SkinStates.none
     var skin:ISkin?
     var style:IStyle = Style.clear
+    override var allowsVibrancy:Bool {return true}
     init(_ width: CGFloat, _ height: CGFloat, _ id:String? = nil) {
         self.id = id;
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip

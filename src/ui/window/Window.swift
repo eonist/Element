@@ -27,18 +27,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         //view.wantsLayer = true;
         self.contentView = WindowView(frame.width,frame.height,id)
         
-        //self.title = ""
-        createContent()
         self.delegate = self
-    }
-    /*override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
-    
-    }*/
-    /**
-     *
-     */
-    func createContent(){
-        
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc

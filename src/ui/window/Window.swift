@@ -54,6 +54,9 @@ class WindowView:FlippedView,IElement{
      */
     func resolveSkin() {
         Swift.print("WindowView.resolveSkin: " + "\(String(self))")
+        Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
+        let tempStyle = StyleResolver.style(self)
+        StyleParser.describe(tempStyle)
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
     }

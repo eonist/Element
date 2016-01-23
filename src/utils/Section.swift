@@ -1,22 +1,17 @@
 import Foundation
-/*
-class Section:Element {//Unlike Container, section can have a style applied
-    override init(_ width:Int = 100, _ height:Int = 100, _ parent:IElement? = nil) {
-        super.init(width,height,parent)
+/**
+ * NOTE: Unlike Container, section can have a style applied
+ */
+class Section:Element {
+    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
+        super.init(width, height, parent, id)
     }
-    /*
-     * Required by super class 
-     * TODO: could we add it thorugh extions instead?
-     */
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class */
     /**
      * Returns "Section"
-     * @Note This function is used to find the correct class type when synthezing the element cascade
+     * NOTE: This function is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType()->String{
-        return String(Section)
+        return String(self.dynamicType)
     }
 }
-*/

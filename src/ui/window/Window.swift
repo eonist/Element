@@ -37,10 +37,15 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by the NSWindow*/
 }
+class TestWin:Window{
+    override func createContent() {
+        self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
+    }
+}
 /**
  * TODO: You should extend the window not the view
  */
-class TestWin:WindowView{
+class TestWinView:WindowView{
     override func resolveSkin() {
         super.resolveSkin()
         let section = Section(120,40)

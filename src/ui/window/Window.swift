@@ -72,7 +72,7 @@ class WindowView:FlippedView,IElement{
      * Returns the class type of the Class instance
      */
     func getClassType()->String{
-        return String(self.dynamicType)
+        return String(Window.self.dynamicType)
     }
 }
 

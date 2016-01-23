@@ -19,7 +19,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
-        self.contentView = WindowView(frame.width,frame.height,id)/*Sets the mainview of the window*/
+        self.contentView = TestWin(frame.width,frame.height,id)/*Sets the mainview of the window*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
     }
     /**
@@ -32,7 +32,10 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by the NSWindow*/
 }
 class TestWin:WindowView{
-    init()
+    override func resolveSkin() {
+        super.resolveSkin()
+        
+    }
 }
 
 /**
@@ -59,10 +62,6 @@ class WindowView:FlippedView,IElement{
     func resolveSkin() {
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
-        /*Swift.print("WindowView.resolveSkin: " + "\(String(self))")
-        Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
-        let tempStyle = StyleResolver.style(self)
-        StyleParser.describe(tempStyle)*/
     }
     /**
      * Toggles between css style sheets and have them applied to all Element instances

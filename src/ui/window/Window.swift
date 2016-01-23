@@ -11,14 +11,15 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * TODO: impliment the max and min sizes into the constructor arguments
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400){
-        let styleMask:Int = self.styleMask | NSFullSizeContentViewWindowMask;
+        let styleMask:Int = NSTitledWindowMask|NSResizableWindowMask|NSFullSizeContentViewWindowMask
         
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         
         self.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
         self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
-        self.opaque = true;/*this might be important*/
+        self.opaque = false;/*this might be important*/
+        self.titlebarAppearsTransparent = true
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/

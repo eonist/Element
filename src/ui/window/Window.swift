@@ -7,7 +7,6 @@ import Cocoa
  */
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     
-    var id : String?/*css selector id*/
     var view:NSView?
     override var canBecomeMainWindow:Bool{return true}
     override var canBecomeKeyWindow:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
@@ -18,7 +17,6 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     init(_ width:CGFloat = 600,_ height:CGFloat = 400,_ id:String? = nil){
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
-        self.id = id
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.contentView!.wantsLayer = true;
         self.backgroundColor = NSColorParser.nsColor("#4CD964")/*Sets the window background color*/
@@ -27,7 +25,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         //view.wantsLayer = true;
-        //self.contentView = Element(frame.width,frame.height,self)
+        self.contentView = WindowView(frame.width,frame.height,id)
         
         //self.title = ""
         createContent()
@@ -45,8 +43,8 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         
     
     /*
-    * I think this serves as a block for closing, i. promt the user to save etc
-    */
+     * I think this serves as a block for closing, i.e: prompt the user to save etc
+     */
     func windowShouldClose(sender: AnyObject) -> Bool {
         Swift.print("windowShouldClose")
         return true
@@ -62,7 +60,7 @@ class WindowView:FlippedView,IElement{
     var state:String = SkinStates.none
     var skin:ISkin?
     var style:IStyle = Style.clear
-    init(_ width: CGFloat, _ height: CGFloat, _ id:String) {
+    init(_ width: CGFloat, _ height: CGFloat, _ id:String?) {
         self.id = id;
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
         self.wantsLayer = true/*if true then view is layer backed*/

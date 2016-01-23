@@ -10,7 +10,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: impliment the max and min sizes into the constructor arguments
      */
-    init(_ width:CGFloat = 600,_ height:CGFloat = 400,_ id:String? = nil){
+    init(_ width:CGFloat = 600,_ height:CGFloat = 400){
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
@@ -26,7 +26,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      *
      */
     func createContent(){
-        self.contentView = TestWin(frame.width,frame.height,id)/*Sets the mainview of the window*/
+        self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc
@@ -59,7 +59,7 @@ class WindowView:FlippedView,IElement{
     var state:String = SkinStates.none
     var skin:ISkin?
     var style:IStyle = Style.clear
-    init(_ width: CGFloat, _ height: CGFloat, _ id:String?) {
+    init(_ width: CGFloat, _ height: CGFloat, _ id:String? = nil) {
         self.id = id;
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
         self.wantsLayer = true/*if true then view is layer backed*/

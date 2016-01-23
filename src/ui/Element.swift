@@ -4,16 +4,11 @@ import Cocoa
  * NOTE: it seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
  * NOTE: Currently we use InteractiveView, we could complicate things by making it only extend View, but for simplicity we use InteractiveView. (Optimization may be required, thus this may be revocated and maybe we will make a method named InteractiveElement etc.)
  * NOTE: subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
+ * NOTE: w,h,x,y are stored in the frame instance
  */
 class Element:InteractiveView,IElement {
     var state:String = SkinStates.none
     var skin:ISkin?
-    /*
-    var x:CGFloat = 0;
-    var y:CGFloat = 0;
-    var width:Double?
-    var height:Double?
-    */
     var parent : IElement?
     var id : String?/*css selector id*/
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
@@ -48,11 +43,6 @@ class Element:InteractiveView,IElement {
     func setSkinState(state:String) {
         skin!.setSkinState(state);
     }
-    /*
-    func setSkinState(skinState:String){
-        self.skinState = skinState
-    }
-    */
     /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
@@ -61,12 +51,7 @@ class Element:InteractiveView,IElement {
     func getClassType()->String{
         return String(self.dynamicType)
     }
-    /**
-     * Required by NSView
-     */
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
 
 extension IElement {

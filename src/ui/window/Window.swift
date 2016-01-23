@@ -53,7 +53,6 @@ class WindowView:FlippedView,IElement{
      * Draws the graphics
      */
     func resolveSkin() {
-        
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
         Swift.print("WindowView.resolveSkin: " + "\(String(self))")

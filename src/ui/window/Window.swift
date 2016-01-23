@@ -11,7 +11,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * TODO: impliment the max and min sizes into the constructor arguments
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400){
-        let styleMask:Int = NSFullSizeContentViewWindowMask
+        let styleMask:Int = self.styleMask | NSFullSizeContentViewWindowMask;
         
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
@@ -24,7 +24,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        //resolveSkin()
+        resolveSkin()
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

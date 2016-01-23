@@ -56,27 +56,54 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
 /**
  * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
  */
-/*class WindowView:FlippedView,IElement{
-var id : String?/*css selector id*/
-var parent:IElement?
-var state:String = SkinStates.none
-var skin:ISkin?
-var style:IStyle = Style.clear
-init(_ width: CGFloat, _ height: CGFloat, _ id:String) {
-self.id = id;
-super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
-self.wantsLayer = true/*if true then view is layer backed*/
-layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-layer!.masksToBounds = false//this is needed!!!
+class WindowView:FlippedView,IElement{
+    var id : String?/*css selector id*/
+    var parent:IElement?
+    var state:String = SkinStates.none
+    var skin:ISkin?
+    var style:IStyle = Style.clear
+    init(_ width: CGFloat, _ height: CGFloat, _ id:String) {
+        self.id = id;
+        super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
+        self.wantsLayer = true/*if true then view is layer backed*/
+        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+        layer!.masksToBounds = false//this is needed!!!
+    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    /**
+     * Draws the graphics
+     */
+    func resolveSkin() {
+        //Swift.print("resolveSkin: " + "\(String(self))")
+        self.skin = SkinResolver.skin(self)
+        self.addSubview(self.skin as! NSView)
+    }
 }
-required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 /**
-* Draws the graphics
-*/
-func resolveSkin() {
-//Swift.print("resolveSkin: " + "\(String(self))")
-self.skin = SkinResolver.skin(self)
-self.addSubview(self.skin as! NSView)
+ * @Note this is the function that we need to toggle between css style sheets and have them applied to all Element instances
+ * TODO: explain the logic of havong this var in this class and also in the skin class, i think its because you need to access the skinstate before the skin is created or initiated in the element.
+ */
+func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
+    return state;
 }
+/**
+ * Sets the current state of the button, which determins the current drawing of the skin
+ * TODO: this can be moved to an util class
+ * NOTE: you cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
+ */
+func setSkinState(state:String) {
+    skin!.setSkinState(state);
+}
+/*
+func setSkinState(skinState:String){
+self.skinState = skinState
 }
 */
+/**
+* Returns the class type of the Class instance
+* @Note if a class subclasses Element that sub-class will be the class type
+* @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
+*/
+func getClassType()->String{
+    return String(self.dynamicType)
+}

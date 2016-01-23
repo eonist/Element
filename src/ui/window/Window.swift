@@ -40,9 +40,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     func createContent(){
         
     }
-        
-    
-    /*
+    /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc
      */
     func windowShouldClose(sender: AnyObject) -> Bool {

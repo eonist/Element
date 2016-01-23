@@ -16,7 +16,6 @@ class WindowView:FlippedView,IElement{
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!
-        blendingMode = NSVisualEffectBlendingModeWithinWindow
         resolveSkin()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

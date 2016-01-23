@@ -7,6 +7,7 @@ class WindowView:NSVisualEffectView,IElement{
     override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
     var id : String?/*css selector id*/
     var parent:IElement?
+    var skinStateValue:String = SkinStates.none/*Cant be named state bc NSVisualEffectView, cant be named skinState bc of objc problems etc*/
     //var state:String = SkinStates.none
     var skin:ISkin?
     var style:IStyle = Style.clear
@@ -38,7 +39,7 @@ class WindowView:NSVisualEffectView,IElement{
      * Toggles between css style sheets and have them applied to all Element instances
      */
     func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
-        return state
+        return skinStateValue
     }
     /**
      * Sets the current state of the button, which determins the current drawing of the skin

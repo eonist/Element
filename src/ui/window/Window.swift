@@ -5,18 +5,20 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     override var canBecomeMainWindow:Bool{return true}
     override var canBecomeKeyWindow:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
     override var acceptsFirstResponder:Bool{return true}
-    
     /**
      * NOTE: remember to not set the width or height for the window in the css if you want the resizing working
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: impliment the max and min sizes into the constructor arguments
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400){
-        let styleMask:Int = NSFullSizeContentViewWindowMask//NSTitledWindowMask|NSResizableWindowMask|
+        let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask|NSFullSizeContentViewWindowMask
         
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
-        self.backgroundColor = NSColorParser.nsColor("#FF0000", 0.0)/*Sets the window background color*/
+        
+        self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+        self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
+        self.opaque = false;/*this might be important*/
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/

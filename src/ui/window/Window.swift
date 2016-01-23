@@ -5,6 +5,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     override var canBecomeMainWindow:Bool{return true}
     override var canBecomeKeyWindow:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
     override var acceptsFirstResponder:Bool{return true}
+    //override var allowsVibrancy:Bool {return true}
     /**
      * NOTE: remember to not set the width or height for the window in the css if you want the resizing working
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
@@ -25,7 +26,11 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        resolveSkin()
+        //resolveSkin()
+        let visualEffectView = NSVisualEffectView(frame: NSMakeRect(0, 0, 300, 180))
+        visualEffectView.material = NSVisualEffectMaterial.Dark
+        visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
+        visualEffectView.state = NSVisualEffectState.Active
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

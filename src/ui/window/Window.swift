@@ -46,13 +46,14 @@ class WindowView:FlippedView,IElement{
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!
+        resolveSkin()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      * Draws the graphics
      */
     func resolveSkin() {
-        //Swift.print("resolveSkin: " + "\(String(self))")
+        Swift.print("WindowView.resolveSkin: " + "\(String(self))")
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
     }

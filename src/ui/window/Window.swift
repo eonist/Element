@@ -15,6 +15,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
+        
         self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
         self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
         self.opaque = false;/*this might be important*/

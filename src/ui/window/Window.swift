@@ -40,7 +40,6 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
 /**
  * TODO: You should extend the window not the view
  */
-
 class TestWin:WindowView{
     override func resolveSkin() {
         super.resolveSkin()

@@ -53,12 +53,13 @@ class WindowView:FlippedView,IElement{
      * Draws the graphics
      */
     func resolveSkin() {
+        
+        self.skin = SkinResolver.skin(self)
+        self.addSubview(self.skin as! NSView)
         Swift.print("WindowView.resolveSkin: " + "\(String(self))")
         Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
         let tempStyle = StyleResolver.style(self)
         StyleParser.describe(tempStyle)
-        self.skin = SkinResolver.skin(self)
-        self.addSubview(self.skin as! NSView)
     }
     /**
      * Toggles between css style sheets and have them applied to all Element instances
@@ -76,7 +77,7 @@ class WindowView:FlippedView,IElement{
      * Returns the class type of the Class instance
      */
     func getClassType()->String{
-        return String(Window.self.dynamicType)//<-- you could possibly drop the self.dynamicType since you refer to the class it self. test this
+        return String(Window)//<-- you could possibly drop the self.dynamicType since you refer to the class it self. test this
     }
 }
 

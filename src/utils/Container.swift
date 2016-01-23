@@ -9,7 +9,7 @@ class Container:Element{
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        self.skin = SkinResolver.skin(self)
+        self.skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
     /**

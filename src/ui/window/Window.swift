@@ -17,14 +17,13 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      *
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400,_ id:String? = nil){
-        
         let styleMask:Int = NSBorderlessWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         //self.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)
         self.id = id
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.contentView!.wantsLayer = true;
-        self.backgroundColor = NSColor.orangeColor()/*Sets the window background color*/
+        self.backgroundColor = NSColor.greenColor()/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
@@ -59,29 +58,27 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
 /**
  * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
  */
-class WindowView:FlippedView,IElement{
-    var id : String?/*css selector id*/
-    var parent:IElement?
-    var state:String = SkinStates.none
-    var skin:ISkin?
-    var style:IStyle = Style.clear
-    init(_ width: CGFloat, _ height: CGFloat, _ id:String) {
-        self.id = id;
-        super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
-        self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!
-    }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    /**
-     * Draws the graphics
-     * TODO: does nsview have a protocol which IElement then can use
-     * NOTE: this method was embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
-     */
-    func resolveSkin() {
-        //Swift.print("resolveSkin: " + "\(String(self))")
-        self.skin = SkinResolver.skin(self)
-        self.addSubview(self.skin as! NSView)
-    }
+/*class WindowView:FlippedView,IElement{
+var id : String?/*css selector id*/
+var parent:IElement?
+var state:String = SkinStates.none
+var skin:ISkin?
+var style:IStyle = Style.clear
+init(_ width: CGFloat, _ height: CGFloat, _ id:String) {
+self.id = id;
+super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
+self.wantsLayer = true/*if true then view is layer backed*/
+layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+layer!.masksToBounds = false//this is needed!!!
 }
-
+required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+/**
+* Draws the graphics
+*/
+func resolveSkin() {
+//Swift.print("resolveSkin: " + "\(String(self))")
+self.skin = SkinResolver.skin(self)
+self.addSubview(self.skin as! NSView)
+}
+}
+*/

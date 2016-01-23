@@ -16,7 +16,7 @@ class Element:InteractiveView,IElement {
     */
     var parent : IElement?
     var id : String?/*css selector id*/
-    var style:IStyle = Style.clear
+    var style:IStyle = Style.clear//<---what is clear?
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;

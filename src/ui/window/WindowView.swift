@@ -3,10 +3,10 @@ import Cocoa
 /**
  * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
  */
-class WindowView:FlippedView,IElement{
+class WindowView:NSVisualEffectView,IElement{
     var id : String?/*css selector id*/
     var parent:IElement?
-    var state:String = SkinStates.none
+    //var state:String = SkinStates.none
     var skin:ISkin?
     var style:IStyle = Style.clear
     override var allowsVibrancy :Bool {return true}
@@ -16,6 +16,7 @@ class WindowView:FlippedView,IElement{
         self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!
+        blendingMode = NSVisualEffectBlendingMode
         resolveSkin()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -30,7 +31,7 @@ class WindowView:FlippedView,IElement{
      * Toggles between css style sheets and have them applied to all Element instances
      */
     func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
-        return state
+        return ""
     }
     /**
      * Sets the current state of the button, which determins the current drawing of the skin

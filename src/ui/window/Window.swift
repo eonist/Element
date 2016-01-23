@@ -82,19 +82,17 @@ class WindowView:FlippedView,IElement{
      * Toggles between css style sheets and have them applied to all Element instances
      */
     func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
-        return state;
+        return state
     }
     /**
      * Sets the current state of the button, which determins the current drawing of the skin
      */
     func setSkinState(state:String) {
-        skin!.setSkinState(state);
+        skin!.setSkinState(state)
     }
     /**
-    * Returns the class type of the Class instance
-    * @Note if a class subclasses Element that sub-class will be the class type
-    * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
-    */
+     * Returns the class type of the Class instance
+     */
     func getClassType()->String{
         return String(self.dynamicType)
     }

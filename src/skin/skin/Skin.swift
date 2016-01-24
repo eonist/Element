@@ -87,7 +87,7 @@ class Skin:FlippedView,ISkin{
     * Sets the width and height of skin also forces a redraw.
     * @Note similar to setStyle, this does not querry the styleManger when called
     */
-    func setSize(width:CGFloat, height:CGFloat) {
+    func setSize(width:CGFloat, _ height:CGFloat) {
         if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
             hasSizeChanged = true;
             self.width = width;

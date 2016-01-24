@@ -11,5 +11,5 @@ protocol ISkin{
     var hasStateChanged:Bool{get}
     var hasSizeChanged:Bool{get}
     func setSkinState(state:String)
-    func setSize(width:CGFloat, height:CGFloat)
+    func setSize(width:CGFloat, _ height:CGFloat)
 }

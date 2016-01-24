@@ -32,7 +32,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * We use the resolveSkin method since this is the common way to implement functionality in this framework
      */
     func resolveSkin(){
-        //self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
+        self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc

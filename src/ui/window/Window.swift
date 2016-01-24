@@ -11,7 +11,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * TODO: impliment the max and min sizes into the constructor arguments
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400){
-        let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask
+        let styleMask:Int = NSResizableWindowMask|NSFullSizeContentViewWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         //self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
@@ -20,14 +20,12 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
+        self.backgroundColor = NSColor.greenColor().alpha(0.2)
+        self.opaque = false
         
-        self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
-        resolveSkin()
-    }
-    /**
-     * We use the resolveSkin method since this is the common way to implement functionality in this framework
-     */
-    func resolveSkin(){
+        self.titlebarAppearsTransparent = true
+        //self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+        
         let visualEffectView = NSVisualEffectView(frame: NSMakeRect(0, 0, Win.sizeRect.width, Win.sizeRect.height))
         visualEffectView.material = NSVisualEffectMaterial.AppearanceBased//Dark,MediumLight,PopOver,UltraDark,AppearanceBased,Titlebar,Menu
         visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
@@ -35,6 +33,14 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         visualEffectView.wantsLayer = true;//this should be set in the iew not here
         //self.contentView?.addSubview(visualEffectView)
         self.contentView = visualEffectView
+        
+        resolveSkin()
+    }
+    /**
+     * We use the resolveSkin method since this is the common way to implement functionality in this framework
+     */
+    func resolveSkin(){
+       
         //self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
     }
     /**

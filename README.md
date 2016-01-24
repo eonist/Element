@@ -6,7 +6,8 @@
 
 <img width="432" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/custom_win.gif">
 
-
+ [Case study](http://stylekit.org/blog/2016/01/23/Chromeless-window/)
+ 
 ### Icon bar:  
 
 <img width="474" alt="task-bar-animation" src="https://dl.dropboxusercontent.com/u/2559476/the_icon_bar_anim_x2p.gif">

@@ -27,6 +27,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         visualEffectView.state = NSVisualEffectState.Active
         
         self.contentView?.addSubview(visualEffectView)
+        resolveSkin()
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

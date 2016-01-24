@@ -1,6 +1,6 @@
 import Cocoa
 
-class RectGraphic:SizeableGraphic{
+class RectGraphic:SizeableDecorator{
     /**
      * TODO: make the CGRect(x,y,width,height) into a variable on the Graphic class
      */

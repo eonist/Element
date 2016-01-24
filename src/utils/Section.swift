@@ -4,5 +4,4 @@ import Foundation
  * NOTE: you dont need anything in this method actually, the getClassType works if Section is the last SubClass in the subclass hierarchy
  */
 class Section:Element {
-    override var allowsVibrancy:Bool{return true}
 }

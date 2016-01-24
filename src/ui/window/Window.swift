@@ -14,9 +14,9 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
-        self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
+        //self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
-        self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
+        //self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/

@@ -23,7 +23,13 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         resolveSkin()
     }
     func windowDidResize(notification: NSNotification) {
+        //notification
+            
         Swift.print("windowDidResize")
+    }
+    func windowWillResize(sender: NSWindow, toSize frameSize: NSSize) -> NSSize {
+        Swift.print("windowWillResize")
+        return frameSize
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

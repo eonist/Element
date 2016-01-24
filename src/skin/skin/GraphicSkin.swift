@@ -65,16 +65,3 @@ class GraphicSkin:Skin{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
-/**
- *
- */
-private class Utils{
-    /**
-     * beta
-     * TODO: move to DecoratorModifier.swift
-     */
-    class func size(sizableDecorator:SizeableDecorator,_ size:CGSize){
-        sizableDecorator.setSizeValue(size)
-        sizableDecorator.draw()
-    }
-}

@@ -31,7 +31,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         //resolveSkin()
         
-        visualEffectView.maskImage = _maskImage(cornerRadius: 20.0)
+        visualEffectView.maskImage = _maskImage(cornerRadius: 10.0)
         //self.contentView?.addSubview(visualEffectView)
         self.contentView? = (visualEffectView)
         

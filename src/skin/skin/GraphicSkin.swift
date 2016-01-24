@@ -73,7 +73,7 @@ private class Utils{
      * beta
      * TODO: move to DecoratorModifier.swift
      */
-    class func size(sizableDecorator:ISizeable,_ size:CGSize){
+    class func size(sizableDecorator:SizeableDecorator,_ size:CGSize){
         sizableDecorator.setSizeValue(size)
         sizableDecorator.draw()
     }

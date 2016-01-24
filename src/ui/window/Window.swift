@@ -21,7 +21,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         
-        
+        self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
         resolveSkin()
     }
     /**
@@ -32,9 +32,9 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         visualEffectView.material = NSVisualEffectMaterial.AppearanceBased//Dark,MediumLight,PopOver,UltraDark,AppearanceBased,Titlebar,Menu
         visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
         visualEffectView.state = NSVisualEffectState.Active
-        
-        self.contentView?.addSubview(visualEffectView)
-        //self.contentView = visualEffectView
+        visualEffectView.wantsLayer = true;//this should be set in the iew not here
+        //self.contentView?.addSubview(visualEffectView)
+        self.contentView = visualEffectView
         //self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
     }
     /**

@@ -19,7 +19,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         visualEffectView.material = NSVisualEffectMaterial.AppearanceBased//Dark,MediumLight,PopOver,UltraDark,AppearanceBased,Titlebar,Menu
         visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
         visualEffectView.state = NSVisualEffectState.Active
-        visualEffectView.maskImage = self._maskImage(cornerRadius: 20.0)
+        
         tempView = visualEffectView
         
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
@@ -31,8 +31,9 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         //resolveSkin()
         
-        
-        self.contentView?.addSubview(visualEffectView)
+        visualEffectView.maskImage = _maskImage(cornerRadius: 20.0)
+        //self.contentView?.addSubview(visualEffectView)
+        self.contentView? = (visualEffectView)
         
         
         resolveSkin()

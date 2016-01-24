@@ -35,7 +35,6 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         //self.contentView?.addSubview(visualEffectView)
         self.contentView? = (visualEffectView)
         
-        
         resolveSkin()
     }
     func maskImage(cornerRadius cornerRadius: CGFloat) -> NSImage {

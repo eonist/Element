@@ -29,6 +29,10 @@ class GraphicSkin:Skin{
             //Swift.print("depthCount: " + "\(depthCount)")
             //if(hasSizeChanged) var padding:Padding2 = StylePropertyParser.padding(this,depth);// :TODO: what about margin?
             for (var depth : Int = 0; depth < depthCount; depth++) {
+                
+                sizableDecorator.setSizeValue(size)
+                sizableDecorator.draw()
+                
                 if(hasSizeChanged){Utils.size(decoratables[depth] as! SizeableDecorator, CGSize(width!/*+ padding.left + padding.right*/,height!/*+ padding.top + padding.bottom*/))}//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/

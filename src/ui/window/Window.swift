@@ -19,6 +19,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         visualEffectView.material = NSVisualEffectMaterial.AppearanceBased//Dark,MediumLight,PopOver,UltraDark,AppearanceBased,Titlebar,Menu
         visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
         visualEffectView.state = NSVisualEffectState.Active
+        visualEffectView.maskImage = self._maskImage(cornerRadius: 20.0)
         tempView = visualEffectView
         
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
@@ -35,6 +36,18 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         
         
         resolveSkin()
+    }
+    func _maskImage(cornerRadius cornerRadius: CGFloat) -> NSImage {
+        let edgeLength = 2.0 * cornerRadius + 1.0
+        let maskImage = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
+            let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
+            NSColor.blackColor().set()
+            bezierPath.fill()
+            return true
+        }
+        maskImage.capInsets = NSEdgeInsets(top: cornerRadius, left: cornerRadius, bottom: cornerRadius, right: cornerRadius)
+        maskImage.resizingMode = .Stretch
+        return maskImage
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

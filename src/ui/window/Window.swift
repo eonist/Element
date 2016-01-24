@@ -24,8 +24,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     }
     func windowDidResize(notification: NSNotification) {
         //notification
-        
-        Swift.print("windowDidResize")
+        Swift.print("Window.windowDidResize")
     }
     
     /**

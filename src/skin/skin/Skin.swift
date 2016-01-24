@@ -5,6 +5,11 @@ import Cocoa
  * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
+
+
+//continue here: add setSize to skin
+
+
 class Skin:FlippedView,ISkin{
     var decoratables:Array<IGraphicDecoratable> = [];
     //var decoratable:IGraphicDecoratable!

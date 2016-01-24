@@ -13,7 +13,7 @@ class AssetDecorator:SizeableDecorator{
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
     }
     override func draw() {
-        Swift.print("AssetDecorator.draw() ")
+        //Swift.print("AssetDecorator.draw() ")
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution, find a more elegant solution than removing*/
         asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset/*temp solution*/
         //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
@@ -21,7 +21,7 @@ class AssetDecorator:SizeableDecorator{
         super.draw()
     }
     override func drawFill() {
-        Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
+        //Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
         //super.drawFill()
         asset!.draw(x, y, width, height)//0, 0, graphic.width, graphic.height
     }

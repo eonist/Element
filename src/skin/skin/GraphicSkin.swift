@@ -20,11 +20,11 @@ class GraphicSkin:Skin{
      
     
     override func draw(){
-        Swift.print("GraphicSkin.draw()")
+        //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            Swift.print("hasStateChanged: " + "\(hasStateChanged)")
-            Swift.print("hasSizeChanged: " + "\(hasSizeChanged)")
-            Swift.print("hasStyleChanged: " + "\(hasStyleChanged)")
+            //Swift.print("hasStateChanged: " + "\(hasStateChanged)")
+            //Swift.print("hasSizeChanged: " + "\(hasSizeChanged)")
+            //Swift.print("hasStyleChanged: " + "\(hasStyleChanged)")
             let depthCount:Int = StyleParser.depthCount(style!);
             //Swift.print("depthCount: " + "\(depthCount)")
             //if(hasSizeChanged) var padding:Padding2 = StylePropertyParser.padding(this,depth);// :TODO: what about margin?
@@ -40,11 +40,11 @@ class GraphicSkin:Skin{
      * TODO: Dont forget to add fillet, and asset here to , see old code
      */
     func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
-        Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
+        //Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
         
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
-            Swift.print("has RectGraphic")
+            //Swift.print("has RectGraphic")
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) /*+ padding.left + padding.right*/// :TODO: only querry this if the size has changed?
             let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) /*+ padding.top + padding.bottom*/// :TODO: only querry this if the size has changed?
             (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed

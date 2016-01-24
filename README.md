@@ -6,6 +6,11 @@
 <img width="650" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2015-12-26 at 10.30.58.png">  
 Read more about the above Graphics framework case [here](https://github.com/eonist/Element/wiki/Progress2#ui-graphic-framework-for-osx)  
 
+### Window:  
+
+<img width="432" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/custom_win.gif">
+
+
 ### Icon bar:  
 
 <img width="474" alt="task-bar-animation" src="https://dl.dropboxusercontent.com/u/2559476/the_icon_bar_anim_x2p.gif">

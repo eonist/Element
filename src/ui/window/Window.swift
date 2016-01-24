@@ -14,27 +14,28 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         let styleMask:Int = NSResizableWindowMask|NSFullSizeContentViewWindowMask
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
-        //self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
-        self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
-        //self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
-        self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
-        self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
-        self.delegate = self/*So that we can use this class as the Window controller aswell*/
+        //super.init(contentRect: Win.sizeRect, styleMask: NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask|NSFullSizeContentViewWindowMask, backing: NSBackingStoreType.Buffered, `defer`: false)
+        self.contentView!.wantsLayer = true;/*this can and is set in the view*/
         self.backgroundColor = NSColor.greenColor().alpha(0.2)
         self.opaque = false
-        
-        self.titlebarAppearsTransparent = true
+        self.makeKeyAndOrderFront(nil)//moves the window to the front
+        self.makeMainWindow()//makes it the apps main menu?
         //self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+        self.titlebarAppearsTransparent = true
+        self.center()
+        
+        //self.contentView = view
+        //self.title = ""/*Sets the title of the window*/
+        self.title = ""//GitSync
+        
+        self.delegate = self
         
         let visualEffectView = NSVisualEffectView(frame: NSMakeRect(0, 0, Win.sizeRect.width, Win.sizeRect.height))
         visualEffectView.material = NSVisualEffectMaterial.AppearanceBased//Dark,MediumLight,PopOver,UltraDark,AppearanceBased,Titlebar,Menu
         visualEffectView.blendingMode = NSVisualEffectBlendingMode.BehindWindow
         visualEffectView.state = NSVisualEffectState.Active
-        visualEffectView.wantsLayer = true;//this should be set in the iew not here
-        //self.contentView?.addSubview(visualEffectView)
-        self.contentView = visualEffectView
         
-        resolveSkin()
+        self.contentView?.addSubview(visualEffectView)
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

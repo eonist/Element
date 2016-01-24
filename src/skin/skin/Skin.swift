@@ -72,6 +72,7 @@ class Skin:FlippedView,ISkin{
     
     
     //TODO:rename to set_skinState() and blame swift for the underscore
+    //Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
     
     
     func setSkinState(state:String){
@@ -81,11 +82,17 @@ class Skin:FlippedView,ISkin{
         style = StyleResolver.style(element!)/*looping through the entire styleManager isnt a good idea for just a state change*/
         draw();
     }
+    
     /**
-     * Sets the width and height of skin also forces a redraw.
-     * @Note similar to setStyle, this does not querry the styleManger when called
-     */
-    func setSize(width:Int, height:Int){
-        fatalError("not implemented yet")
+    * Sets the width and height of skin also forces a redraw.
+    * @Note similar to setStyle, this does not querry the styleManger when called
+    */
+    func setSize(width:CGFloat, height:CGFloat) {
+        if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
+            hasSizeChanged = true;
+            self.width = width;
+            self.height = height
+            draw()
+        }
     }
 }

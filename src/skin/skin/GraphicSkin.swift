@@ -29,11 +29,7 @@ class GraphicSkin:Skin{
             //Swift.print("depthCount: " + "\(depthCount)")
             //if(hasSizeChanged) var padding:Padding2 = StylePropertyParser.padding(this,depth);// :TODO: what about margin?
             for (var depth : Int = 0; depth < depthCount; depth++) {
-                
-                sizableDecorator.setSizeValue(size)
-                sizableDecorator.draw()
-                
-                if(hasSizeChanged){Utils.size(decoratables[depth] as! SizeableDecorator, CGSize(width!/*+ padding.left + padding.right*/,height!/*+ padding.top + padding.bottom*/))}//do sizing of the sizable here
+                if(hasSizeChanged){Utils.size(decoratables[depth], CGSize(width!/*+ padding.left + padding.right*/,height!/*+ padding.top + padding.bottom*/))}//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
             }
@@ -68,4 +64,17 @@ class GraphicSkin:Skin{
         decoratable.draw()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
+}
+/**
+ *
+ */
+private class Utils{
+    /**
+     * beta
+     * TODO: move to DecoratorModifier.swift
+     */
+    class func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
+        (sizableDecorator as! ISizeable).setSizeValue(size)
+        sizableDecorator.draw()
+    }
 }

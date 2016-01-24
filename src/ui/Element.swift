@@ -67,7 +67,7 @@ extension IElement {
     /**
      * Sets the width and height of the skin and this instance.
      */
-    func setSize(width:CGFloat, height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
+    func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
         frame.size.width = width
         frame.size.height = height
         //self.skin//.setSize(width, height);

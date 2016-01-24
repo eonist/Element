@@ -6,6 +6,7 @@ import Cocoa
  * TODO: Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol. 
  */
 class GraphicSkin:Skin{
+    override var allowsVibrancy:Bool{return true}
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         let depthCount:Int = StyleParser.depthCount(style!)

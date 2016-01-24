@@ -22,6 +22,9 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         resolveSkin()
     }
+    func windowDidResize(notification: NSNotification) {
+        Swift.print("windowDidResize")
+    }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework
      */

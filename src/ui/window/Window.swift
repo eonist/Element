@@ -15,14 +15,13 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         //super.init(contentRect: Win.sizeRect, styleMask: NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask|NSFullSizeContentViewWindowMask, backing: NSBackingStoreType.Buffered, `defer`: false)
-        self.contentView!.wantsLayer = true;/*this can and is set in the view*/
-        self.backgroundColor = NSColor.greenColor().alpha(0.2)
-        self.opaque = false
+//        self.contentView!.wantsLayer = true;/*this can and is set in the view*/
         self.makeKeyAndOrderFront(nil)//moves the window to the front
         self.makeMainWindow()//makes it the apps main menu?
         //self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
         self.titlebarAppearsTransparent = true
         self.center()
+        self.movableByWindowBackground = true
         
         //self.contentView = view
         //self.title = ""/*Sets the title of the window*/

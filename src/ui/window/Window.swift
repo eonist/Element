@@ -31,14 +31,14 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         //resolveSkin()
         
-        visualEffectView.maskImage = _maskImage(cornerRadius: 10.0)
+        visualEffectView.maskImage = maskImage(cornerRadius: 10.0)
         //self.contentView?.addSubview(visualEffectView)
         self.contentView? = (visualEffectView)
         
         
         resolveSkin()
     }
-    func _maskImage(cornerRadius cornerRadius: CGFloat) -> NSImage {
+    func maskImage(cornerRadius cornerRadius: CGFloat) -> NSImage {
         let edgeLength = 2.0 * cornerRadius + 1.0
         let maskImage = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
             let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)

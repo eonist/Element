@@ -38,7 +38,8 @@ class SkinModifier {
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
-        let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin);/*the top-left-corner of the parent*/
+        let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
+        
         
     }
 }

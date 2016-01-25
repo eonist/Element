@@ -19,8 +19,8 @@ class SkinModifier {
         positional.setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
         return positional
     }
-    func float(skin:Skin){
-    
+    class func float(skin:Skin){
+        if(skin.element.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
     }
 }
 private class Utils{

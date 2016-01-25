@@ -93,8 +93,8 @@ extension IElement {
     */
     func getParent(isAbsoltuteParent:Bool = false)->Any {// :TODO: beta
         //			trace("_parent: " + _parent);
-        if(isAbsoltuteParent) return _parent is Window ? (_parent as Window).stage : _parent;
-        return _parent;// == null || isAbsoltuteParent ? (_parent as Window).stage || super.parent:_parent;
+        if(isAbsoltuteParent) return parent is Window ? (parent as Window).stage : _parent;
+        return parent;// == null || isAbsoltuteParent ? (_parent as Window).stage || super.parent:_parent;
     }
     
     

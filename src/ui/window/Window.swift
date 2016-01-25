@@ -11,7 +11,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * TODO: impliment the max and min sizes into the constructor arguments
      */
     init(_ width:CGFloat = 600,_ height:CGFloat = 400){
-        let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask
+        let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/

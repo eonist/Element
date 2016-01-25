@@ -1,11 +1,16 @@
 import Foundation
 
 protocol IElement:class,IView{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol*/
+    /*core methods*/
+    func resolveSkin()
     /*implicit getters / setters*/
-    
+    func getSkinState() -> String
+    func setSkinState(skinState:String)
+    func getParent()->IElement?//TODO: maybe use weak?
+    func getClassType()->String
+    func getWidth()->CGFloat
+    func getHeight()->CGFloat
     /*getters / setters*/
-    
-    
     var parent:IElement?{get}
     //var state:String{get set}/*skinState is renamed to state because objc wont allow implicit setter with the same name*/
     var style:IStyle{get set}
@@ -15,14 +20,4 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     //var y:CGFloat{get set}
     var width:CGFloat{get}
     var height:CGFloat{get}
-    func resolveSkin()
-    func getSkinState() -> String
-    func setSkinState(skinState:String)
-    func getParent()->IElement?//TODO: maybe use weak?
-    func getClassType()->String
-    
-    
-    func getWidth()->CGFloat
-    func getHeight()->CGFloat
-    
 }

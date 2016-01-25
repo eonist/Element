@@ -88,10 +88,10 @@ extension IElement {
         frame.y = point.y
     }
     func getWidth()->CGFloat{
-        return skin != nil ? skin.getWidth() : CGFloat.NaN;
+        return skin != nil ? skin!.getWidth() : CGFloat.NaN;
     }
     func getHeight()->CGFloat{
-        return skin != nil ? skin.getHeight() : CGFloat.NaN;
+        return skin != nil ? skin!.getHeight() : CGFloat.NaN;
     }
 }
 

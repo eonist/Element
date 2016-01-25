@@ -6,9 +6,11 @@ class ElementParser{
      * Returns all children in @param element that is of type IElement
      */
     class func children(view:NSView)->Array<IElement> {
-        let array =  NSViewParser.childrenOfType(view, IElement.self)
-        let arr:Array<IElement> = array.map {($0) as! IElement}//<-temp solution, either
-        return arr
+        var children:Array<T> = []
+        for subView in view.subviews {
+            if(subView as? T != nil){children.append(subView as! T)}
+        }
+        return children;
     }
     /**
      * Returns an Array instance comprised of Selector instances for each (element,classId,id and state) in the element "cascade" (the spesseficity)

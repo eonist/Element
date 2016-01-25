@@ -8,7 +8,7 @@ class SkinParser {
         var margin:Margin = self.margin(skin);
         var border:Border = self.border(skin);
         var padding:Padding = self.padding(skin);
-        var offset:Point = self.offset(skin);
+        var offset:CGPoint = self.offset(skin);
         //Swift.print("padding.left: " + padding.left);
         //Swift.print("margin.left: " + margin.left);
         //Swift.print("skin.x: " + skin.x);
@@ -27,5 +27,17 @@ class SkinParser {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
         let lineThickness:CGFloat = StylePropertyParser.value(skin, "line-thickness") as! CGFloat
         return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0]);
+    }
+    /**
+     *
+     */
+    class func padding(skin:ISkin)->Padding{// :TODO: possibly rename to relativePadding
+        return StylePropertyParser.padding(skin);
+    }
+    /**
+     *
+     */
+    class func offset(skin:ISkin)->CGPoint{// :TODO: possibly rename to relativeOffset
+        return StylePropertyParser.offset(skin);
     }
 }

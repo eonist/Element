@@ -200,9 +200,9 @@ class StylePropertyParser{
      * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
      */
     class func offset(skin:ISkin,depth:Int = 0)->CGPoint {
-        var value:Any? = self.value(skin, CSSConstants.offset, depth);
+        let value:Any? = self.value(skin, CSSConstants.offset, depth);
         var array:Array = value is Array<CGFloat> ? value as! Array<CGFloat> : [value];
-        return array.count == 1 ? CGPoint(array[0]) : CGPoint(array[0],array[1]);
+        return array.count == 1 ? array[0] as! CGPoint : CGPoint(array[0] as! CGFloat,array[1] as! CGFloat);
     }
     /**
      * @Note TRBL

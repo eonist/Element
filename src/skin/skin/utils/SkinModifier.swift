@@ -19,4 +19,10 @@ class SkinModifier {
         positional.setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
         return positional
     }
+    func float(skin:Skin){
+    
+    }
+}
+private class Utils{
+    
 }

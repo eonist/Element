@@ -5,10 +5,10 @@ class SkinParser {
      * Returns the position when margin and padding is taken into account
      */
     class func relativePosition(skin:Skin)->CGPoint {
-        var margin:Margin = self.margin(skin);
-        var border:Border = self.border(skin);
-        var padding:Padding = self.padding(skin);
-        var offset:CGPoint = self.offset(skin);
+        let margin:Margin = self.margin(skin);
+        let border:Border = self.border(skin);
+        let padding:Padding = self.padding(skin);
+        let offset:CGPoint = self.offset(skin);
         //Swift.print("padding.left: " + padding.left);
         //Swift.print("margin.left: " + margin.left);
         //Swift.print("skin.x: " + skin.x);

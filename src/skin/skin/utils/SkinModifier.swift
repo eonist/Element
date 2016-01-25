@@ -46,7 +46,8 @@ class SkinModifier {
         //let leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
         
         
-        
+        //continue here: check your research for Range. You need to work with Int range. 
+        //also check your research for using methods as arguments
         
     }
 }
@@ -61,15 +62,17 @@ private class Utils{
     /**
      *
      */
+    /*
     class func leftFloatingElementSkin(elements:Array<IElement>,index:Int)->ISkin? {
         var lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }
-    
+    */
     /**
      * @Note loops backwards
      * @param range is the range within the possible rightfloating skin can be in
      */
+    /*
     class func lastIndex(elements:Array<IElement>,range:Range,floatType:String/*,exception:Function = nil*/)->Int {
         for(var i:Int = range.end; i >= range.start; i--){
             var skin:ISkin = (elements[i] as IElement).skin;
@@ -78,5 +81,6 @@ private class Utils{
         }
         return -1;
     }
+    */
     
 }

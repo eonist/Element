@@ -2,6 +2,15 @@ import Foundation
 
 class SkinParser {
     /**
+    *
+    */
+    public static function totalWidth(skin:Skin):Number {
+    var margin:Margin2 = margin(skin);
+    var border:Border = border(skin);
+    var padding:Padding2 = padding(skin);
+    return margin.left + border.left + padding.left + width(skin) + padding.right + border.right +  margin.right;
+    }
+    /**
      * Returns the position when margin and padding is taken into account
      */
     class func relativePosition(skin:ISkin/*<--recently hanged from Skin to ISKin*/)->CGPoint {

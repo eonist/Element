@@ -7,7 +7,7 @@ class SkinParser {
     class func totalWidth(skin:Skin)->CGFloat {
         var margin:Margin = self.margin(skin);
         var border:Border = self.border(skin);
-        var padding:Padding2 = self.padding(skin);
+        var padding:Padding = self.padding(skin);
         return margin.left + border.left + padding.left + width(skin) + padding.right + border.right +  margin.right;
     }
     /**

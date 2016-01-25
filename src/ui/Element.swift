@@ -62,7 +62,7 @@ extension IElement {
     /**
      * NOTE: this isnt fully implemented, see notes on the blog, see legacy code
      */
-    func getParent()->IElement? {// :TODO: beta
+    func getParent()->Any? {// :TODO: beta
         //Swift.print("_parent: " + _parent);
         return self.parent;
     }

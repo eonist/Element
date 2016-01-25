@@ -53,7 +53,9 @@ class Element:InteractiveView,IElement {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
-
+/**
+ * NOTE: some of these methods will probably be moved back into the class
+ */
 extension IElement {
     var width:CGFloat {return self.frame.width}
     var height:CGFloat {return self.frame.height}

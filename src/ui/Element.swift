@@ -90,7 +90,6 @@ extension IElement {
     /**
     * @Note this function is needed say if a Window is the parent of an Element instance, since Window does not inherit from DisplayObjectContainer we cant use the parent
     * @param isAbsoltuteParent (if you want to get hold of the stage in Window instances use this flag)
-    * TODO: I think we should redesign the Window element to act more independently, the window should act as an elment and just use the view as a vessle for the content. test if this is possible ofcourse
     */
     func getParent(isAbsoltuteParent:Bool = false)->Any {// :TODO: beta
         //			trace("_parent: " + _parent);

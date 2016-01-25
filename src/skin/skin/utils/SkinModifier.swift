@@ -61,6 +61,17 @@ private class Utils{
         return lastIndexOfLeftFloatingElement != -1 ? (elements[lastIndexOfLeftFloatingElement] as IElement).skin : nil;/*the left element-sibling*/
     }
     
-    //continue here: add range and the lastIndex method
+    /**
+    * @Note loops backwards
+    * @param range is the range within the possible rightfloating skin can be in
+    */
+    class func lastIndex(elements:Array,range:Range,floatType:String,exception:Function = null)->Int {
+        for(var i:Int = range.end; i >= range.start; i--){
+            var skin:ISkin = (elements[i] as IElement).skin;
+            if(exception != null && exception(skin)) return -1;
+            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.NONE) return i;
+        }
+        return -1;
+    }
     
 }

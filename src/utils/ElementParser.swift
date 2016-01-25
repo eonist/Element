@@ -7,7 +7,7 @@ class ElementParser{
      */
     class func children(view:NSView)->Array<IElement> {
         let array =  NSViewParser.childrenOfType(view, IElement.self)
-        let arr:Array<IElement> = array.map {($0) as! IElement}//<-temp solution, either 
+        let arr:Array<IElement> = array.map {($0) as! IElement}//<-temp solution, either
         return arr
     }
     /**

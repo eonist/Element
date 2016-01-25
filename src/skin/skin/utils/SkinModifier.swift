@@ -32,13 +32,13 @@ class SkinModifier {
         
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
-        //			trace("parent: " + parent);
+        //Swift.print("parent: " + parent);
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
-        //			trace("elementParent: " + elementParent);
+        //Swift.print("elementParent: " + elementParent);
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         
-        var index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
-        var parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin);/*the top-left-corner of the parent*/
+        let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
+        let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin);/*the top-left-corner of the parent*/
         
     }
 }

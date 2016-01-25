@@ -54,10 +54,13 @@ private class Utils{
     }
     
     /**
-    *
-    */
+     *
+     */
     class func leftFloatingElementSkin(elements:Array<IElement>,index:Int)->Skin {
-        var lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, new Range(0,index-1), CSSConstants.LEFT);
-        return lastIndexOfLeftFloatingElement != -1 ? (elements[lastIndexOfLeftFloatingElement] as IElement).skin : null;/*the left element-sibling*/
+        var lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.LEFT);
+        return lastIndexOfLeftFloatingElement != -1 ? (elements[lastIndexOfLeftFloatingElement] as IElement).skin : nil;/*the left element-sibling*/
     }
+    
+    //continue here: add range and the lastIndex method
+    
 }

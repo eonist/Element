@@ -201,10 +201,10 @@ class StylePropertyParser{
     * // :TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
     */
     class func padding(skin:ISkin,depth:Int = 0) -> Padding {
-        var value:* = StylePropertyParser.value(skin, CSSConstants.PADDING, depth);
+        var value:Any? = StylePropertyParser.value(skin, CSSConstants.padding, depth);
         var array:Array = value is Array ? value : [value];
-        var padding:Padding2 = new Padding2(array);
-        var paddingIndex:int = StyleParser.index(skin.style, CSSConstants.PADDING, depth);
+        var padding:Padding = Padding(array);
+        var paddingIndex:Int = StyleParser.index(skin.style, CSSConstants.PADDING, depth);
         padding.left = StyleParser.index(skin.style, CSSConstants.PADDING_LEFT,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.PADDING_LEFT, depth) : Utils.metric(padding.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/
         padding.right = StyleParser.index(skin.style, CSSConstants.PADDING_RIGHT,depth) > paddingIndex ? StylePropertyParser.value(skin, CSSConstants.PADDING_RIGHT, depth) : Utils.metric(padding.right, skin);
         padding.top = StyleParser.index(skin.style, CSSConstants.PADDING_TOP,depth) > paddingIndex ? padding.top = StylePropertyParser.value(skin, CSSConstants.PADDING_TOP, depth) : Utils.metric(padding.top, skin);

@@ -26,7 +26,7 @@ class SkinModifier {
         //			trace("parent: " + parent);
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
         //			trace("elementParent: " + elementParent);
-        let elements:Array<IElement> = ElementParser.children(parent);
+        let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         
     }
 }

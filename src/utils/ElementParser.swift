@@ -4,6 +4,7 @@ import Cocoa
 class ElementParser{
     /**
      * Returns all children in @param element that is of type IElement
+     * NOTE: if this doesnt work just use the array casting technique with the NSParser.children method
      */
     class func children<T>(view:NSView,_ type:T)->Array<IElement> {
         var children:Array<IElement> = []

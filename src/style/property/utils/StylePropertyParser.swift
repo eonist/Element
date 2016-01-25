@@ -196,6 +196,15 @@ class StylePropertyParser{
         }
     }
     /**
+     * Returns Offset
+     * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
+     */
+    class func offset(skin:ISkin,depth:int = 0)->CGPoint {
+        var value:* = value(skin, CSSConstants.OFFSET, depth);
+        var array:Array = value is Array ? value : [value];
+    return array.length == 1 ? new Point(array[0]) : new Point(array[0],array[1]);
+    }
+    /**
      * @Note TRBL
      * // :TODO: should this have a failsafe if there is no Padding property in the style?
      * // :TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing

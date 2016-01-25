@@ -7,9 +7,11 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     func getSkinState() -> String
     func setSkinState(skinState:String)
     func getParent()->IElement?//TODO: maybe use weak?
+    //func getParent(isAbsoltuteParent:Bool = false)->Any
     func getClassType()->String
     func getWidth()->CGFloat
     func getHeight()->CGFloat
+    
     /*getters / setters*/
     var parent:IElement?{get}
     //var state:String{get set}/*skinState is renamed to state because objc wont allow implicit setter with the same name*/

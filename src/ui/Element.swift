@@ -60,7 +60,7 @@ extension IElement {
     var width:CGFloat {return self.frame.width}
     var height:CGFloat {return self.frame.height}
     /**
-     *
+     * NOTE: this isnt fully implemented, see notes on the blog, see legacy code
      */
     func getParent()->IElement? {// :TODO: beta
         //Swift.print("_parent: " + _parent);
@@ -86,13 +86,6 @@ extension IElement {
         
         frame.x = point.x
         frame.y = point.y
-    }
-    /**
-    * @Note this function is needed say if a Window is the parent of an Element instance, since Window does not inherit from DisplayObjectContainer we cant use the parent
-    * @param isAbsoltuteParent (if you want to get hold of the stage in Window instances use this flag)
-    */
-    func getParent(isAbsoltuteParent:Bool = false)->Any {// :TODO: beta
-        return parent;//<---this isnt fully implemented, see notes on the blog
     }
     func getWidth()->CGFloat{
         return skin != nil ? skin!.getWidth() : CGFloat.NaN;

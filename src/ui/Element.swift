@@ -61,7 +61,7 @@ extension IElement {
     var height:CGFloat {return self.frame.height}
     /**
      * NOTE: this isnt fully implemented, see notes on the blog, see legacy code
-     * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil 
+     * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false
      */
     func getParent()->Any? {// :TODO: beta
         //Swift.print("_parent: " + _parent);

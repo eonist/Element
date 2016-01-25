@@ -22,9 +22,9 @@ class SkinModifier {
     class func float(skin:Skin){
         
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
-        var parent:DisplayObjectContainer = skin.element.getParent(true) as DisplayObjectContainer;
+        var parent:NSView = skin.element!.getParent(/*true*/) as! NSView/*can be */
         //			trace("parent: " + parent);
-        var elementParent:IElement = skin.element.getParent() as IElement;
+        var elementParent:IElement = skin.element!.getParent() as! IElement;
         //			trace("elementParent: " + elementParent);
         var elements:Array = ElementParser.children(parent);
     }

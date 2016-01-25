@@ -4,7 +4,7 @@ class SkinParser {
     /**
     *
     */
-    class func totalWidth(skin:Skin)->CGFloat {
+    class func totalWidth(skin:ISkin)->CGFloat {
         let margin:Margin = self.margin(skin);
         let border:Border = self.border(skin);
         let padding:Padding = self.padding(skin);
@@ -13,13 +13,13 @@ class SkinParser {
     /**
      *
      */
-    class func width(skin:Skin)->CGFloat {
+    class func width(skin:ISkin)->CGFloat {
         return skin.element!.getWidth() ?? skin.getWidth()
     }
     /**
      *
      */
-    class func height(skin:Skin)->CGFloat {
+    class func height(skin:ISkin)->CGFloat {
         return skin.element!.getHeight() ?? skin.getHeight()
     }
     /**

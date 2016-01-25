@@ -40,8 +40,8 @@ class SkinModifier {
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
         //			if(skin is TextSkin) trace("topLeft: " + topLeft);
-        let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
-        //var leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
+        let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
+        var leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
         
     }
 }

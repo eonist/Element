@@ -5,10 +5,22 @@ class SkinParser {
     *
     */
     class func totalWidth(skin:Skin)->CGFloat {
-        var margin:Margin = self.margin(skin);
-        var border:Border = self.border(skin);
-        var padding:Padding = self.padding(skin);
+        let margin:Margin = self.margin(skin);
+        let border:Border = self.border(skin);
+        let padding:Padding = self.padding(skin);
         return margin.left + border.left + padding.left + width(skin) + padding.right + border.right +  margin.right;
+    }
+    /**
+     *
+     */
+    class func width(skin:Skin)->CGFloat {
+        return skin.element!.getWidth() ?? skin.getWidth()
+    }
+    /**
+     *
+     */
+    class func height(skin:Skin)->CGFloat {
+        return skin.element!.getHeight() ?? skin.getHeight()
     }
     /**
      * Returns the position when margin and padding is taken into account

@@ -92,12 +92,8 @@ extension IElement {
     * @param isAbsoltuteParent (if you want to get hold of the stage in Window instances use this flag)
     */
     func getParent(isAbsoltuteParent:Bool = false)->Any {// :TODO: beta
-        //			trace("_parent: " + _parent);
-        if(isAbsoltuteParent) return parent is Window ? (parent as Window).stage : _parent;
-        return parent;// == null || isAbsoltuteParent ? (_parent as Window).stage || super.parent:_parent;
+        return parent;//<---this isnt fully implemented, see notes on the blog
     }
-    
-    
     func getWidth()->CGFloat{
         return skin != nil ? skin!.getWidth() : CGFloat.NaN;
     }

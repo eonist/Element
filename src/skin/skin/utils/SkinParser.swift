@@ -24,8 +24,8 @@ class SkinParser {
     *
     */
     class func border(skin:ISkin)->Border {
-        var lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
-        var lineThickness:CGFloat = StylePropertyParser.value(skin, "line-thickness");
-        return Border([lineOffsetType.top == OffsetType.OUTSIDE ? lineThickness : 0, lineOffsetType.right == OffsetType.OUTSIDE ? lineThickness : 0,lineOffsetType.bottom == OffsetType.OUTSIDE ? lineThickness : 0,lineOffsetType.left == OffsetType.OUTSIDE ? lineThickness : 0]);
+        let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
+        let lineThickness:CGFloat = StylePropertyParser.value(skin, "line-thickness") as! CGFloat
+        return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0]);
     }
 }

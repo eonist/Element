@@ -37,16 +37,16 @@ class SkinModifier {
         //			trace("elementParent: " + elementParent);
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         
-        var index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
-        //var parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin);/*the top-left-corner of the parent*/
+        var index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
+        var parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin);/*the top-left-corner of the parent*/
         
     }
 }
 private class Utils{
     /**
-    *
-    */
+     *
+     */
     class func elementIndex(parent:NSView,_ element:IElement)->Int {
-        return parent.subviews.indexOf(element as! NSView)
+        return parent.subviews.indexOf(element as! NSView)!
     }
 }

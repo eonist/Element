@@ -32,7 +32,7 @@ class SkinParser {
      *
      */
     class func padding(skin:ISkin)->Padding{// :TODO: possibly rename to relativePadding
-        return StylePropertyParser.padding(skin);
+        return StylePropertyParser.padding(skin)
     }
     /**
      *

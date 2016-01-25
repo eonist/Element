@@ -199,10 +199,10 @@ class StylePropertyParser{
      * Returns Offset
      * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
      */
-    class func offset(skin:ISkin,depth:int = 0)->CGPoint {
-        var value:* = value(skin, CSSConstants.OFFSET, depth);
-        var array:Array = value is Array ? value : [value];
-    return array.length == 1 ? new Point(array[0]) : new Point(array[0],array[1]);
+    class func offset(skin:ISkin,depth:Int = 0)->CGPoint {
+        var value:Any? = self.value(skin, CSSConstants.offset, depth);
+        var array:Array = value is Array<CGFloat> ? value as! Array<CGFloat> : [value];
+        return array.count == 1 ? CGPoint(array[0]) : CGPoint(array[0],array[1]);
     }
     /**
      * @Note TRBL
@@ -214,7 +214,7 @@ class StylePropertyParser{
     //you may want to copy margin on this
     
     class func padding(skin:ISkin,depth:Int = 0) -> Padding {
-        let value:Any? = StylePropertyParser.value(skin, CSSConstants.padding, depth);
+        let value:Any? = self.value(skin, CSSConstants.padding, depth);
         let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         let padding:Padding = Padding(array);
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth);
@@ -229,7 +229,7 @@ class StylePropertyParser{
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     class func margin(skin:ISkin, _ depth:Int = 0)->Margin {
-        let value:Any? = StylePropertyParser.value(skin, CSSConstants.margin,depth);
+        let value:Any? = self.value(skin, CSSConstants.margin,depth);
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth);
         //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))

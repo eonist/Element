@@ -202,7 +202,7 @@ class StylePropertyParser{
     */
     class func padding(skin:ISkin,depth:Int = 0) -> Padding {
         var value:Any? = StylePropertyParser.value(skin, CSSConstants.padding, depth);
-        var array:Array = value is Array ? value : [value];
+        var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         var padding:Padding = Padding(array);
         var paddingIndex:Int = StyleParser.index(skin.style, CSSConstants.PADDING, depth);
         padding.left = StyleParser.index(skin.style, CSSConstants.PADDING_LEFT,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.PADDING_LEFT, depth) : Utils.metric(padding.left, skin);/*if margin-left has a later index than margin then it overrides margin.left*/

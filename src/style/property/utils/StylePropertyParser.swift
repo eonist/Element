@@ -196,18 +196,21 @@ class StylePropertyParser{
         }
     }
     /**
-    * @Note TRBL
-    * // :TODO: should this have a failsafe if there is no Padding property in the style?
-    * // :TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
-    */
+     * @Note TRBL
+     * // :TODO: should this have a failsafe if there is no Padding property in the style?
+     * // :TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
+     */
+    
+    //Note to self: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
+    
     class func padding(skin:ISkin,depth:Int = 0) -> Padding {
         let value:Any? = StylePropertyParser.value(skin, CSSConstants.padding, depth);
         let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         let padding:Padding = Padding(array);
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth);
         padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth) : Utils.metric(padding.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
-        //padding.right = StyleParser.index(skin.style, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.value(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin);
-        //padding.top = StyleParser.index(skin.style, CSSConstants.paddingTop,depth) > paddingIndex ? padding.top = StylePropertyParser.value(skin, CSSConstants.v, depth) : Utils.metric(padding.top, skin);
+        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!;
+        padding.top = StyleParser.index(skin.style!, CSSConstants.paddingTop,depth) > paddingIndex ? padding.top = StylePropertyParser.value(skin, CSSConstants.v, depth) : Utils.metric(padding.top, skin);
         //padding.bottom = (StyleParser.index(skin.style, CSSConstants.paddingBottom,depth) > paddingIndex) ? StylePropertyParser.value(skin, CSSConstants.paddingBottom, depth) : Utils.metric(padding.bottom, skin);
         return padding;
     }

@@ -1,6 +1,13 @@
 import Foundation
 
 protocol ISkin{
+    /*core methods*/
+    /*implicit getters / setters*/
+    func setSkinState(state:String)
+    func setSize(width:CGFloat, _ height:CGFloat)
+    func getWidth()->CGFloat
+    func getHeight()->CGFloat
+    /*getters / setters*/
     var decoratables:Array<IGraphicDecoratable>{get set}
     var style:IStyle?{get}
     var state:String{get set}
@@ -10,6 +17,5 @@ protocol ISkin{
     var hasStyleChanged:Bool{get}
     var hasStateChanged:Bool{get}
     var hasSizeChanged:Bool{get}
-    func setSkinState(state:String)
-    func setSize(width:CGFloat, _ height:CGFloat)
+    
 }

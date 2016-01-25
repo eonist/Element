@@ -31,10 +31,10 @@ class ElementParser{
      */
     class func parents(element:IElement)->Array<IElement> {
         var parents:Array<IElement> = [];
-        var parent:IElement? = element.getParent()// :TODO: seperate this into a check if its DO then that, if its Window then do that
+        var parent:IElement? = element.getParent() as? IElement// :TODO: seperate this into a check if its DO then that, if its Window then do that
         while(parent != nil) {//loops up the object hierarchy as long as the parent is a Element supertype
             ArrayModifier.unshift(&parents,parent!)
-            parent = parent!.getParent()
+            parent = parent!.getParent() as? IElement
         }
         return parents;
     }

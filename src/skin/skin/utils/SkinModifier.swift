@@ -19,7 +19,16 @@ class SkinModifier {
         positional.setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
         return positional
     }
-    class func float(skin:Skin){
+    /**
+     * Floats @param skin
+     * @Note if clear == "none" no clearing is performed
+     * @Note if float == "none" no floating is performed
+     * // :TODO: Text instances are inline, button are block (impliment inline and block stuff)
+     * // :TODO: Impliment support for box-sizing?!?
+     * // :TODO: Add support for hiding the element if its float is none
+     * // :TODO: possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
+     */
+    class func float(skin:Skin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
         
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/

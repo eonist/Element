@@ -5,10 +5,10 @@ class ElementParser{
     /**
      * Returns all children in @param element that is of type IElement
      */
-    class func children(view:NSView)->Array<IElement> {
-        var children:Array<T> = []
+    class func children<T>(view:NSView,_ type:T)->Array<IElement> {
+        var children:Array<IElement> = []
         for subView in view.subviews {
-            if(subView as? T != nil){children.append(subView as! T)}
+            if(subView as? T != nil){children.append(subView as! IElement)}
         }
         return children;
     }

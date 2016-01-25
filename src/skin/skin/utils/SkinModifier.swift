@@ -41,7 +41,7 @@ class SkinModifier {
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
         //			if(skin is TextSkin) trace("topLeft: " + topLeft);
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
-        var leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
+        //let leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
         
     }
 }
@@ -51,5 +51,13 @@ private class Utils{
      */
     class func elementIndex(parent:NSView,_ element:IElement)->Int {
         return parent.subviews.indexOf(element as! NSView)!
+    }
+    
+    /**
+    *
+    */
+    class func leftFloatingElementSkin(elements:Array<IElement>,index:Int)->Skin {
+        var lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, new Range(0,index-1), CSSConstants.LEFT);
+        return lastIndexOfLeftFloatingElement != -1 ? (elements[lastIndexOfLeftFloatingElement] as IElement).skin : null;/*the left element-sibling*/
     }
 }

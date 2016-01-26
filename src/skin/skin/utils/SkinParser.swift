@@ -13,6 +13,15 @@ class SkinParser {
     /**
      *
      */
+    class func totalHeight(skin:ISkin)->CGFloat {
+        let margin:Margin = self.margin(skin);
+        let border:Border = self.border(skin);
+        let padding:Padding = self.padding(skin);
+        return margin.top + border.top + padding.top + height(skin) + padding.bottom + border.bottom + margin.bottom;
+    }
+    /**
+     *
+     */
     class func width(skin:ISkin)->CGFloat {
         return skin.element!.getWidth() ?? skin.getWidth()
     }

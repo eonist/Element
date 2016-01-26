@@ -50,7 +50,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         }
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
         //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
-        let clearType:String = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
+        let clearType:String? = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
         let floatType:String? = SkinParser.float(skin)
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
         Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);

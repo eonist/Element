@@ -76,6 +76,9 @@ private class Utils{
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         let y:CGFloat = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
         if(skin.element!.id == "box2"){
+            
+            //Continue here: figure out why leftSiblingSkin isnt being found, 
+            
             Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
             Swift.print("clearLeft y: " + "\(y)")
         }

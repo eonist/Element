@@ -88,7 +88,7 @@ private class Utils{
      * @param range is the range within the possible rightfloating skin can be in
      */
     /**/
-    class func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String,exception:(Int)->Int = nil)->Int {
+    class func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String,exception:(Int)->Int)->Int {
         for(var i:Int = range.end; i >= range.start; i--){
             let skin:ISkin = elements[i].skin!
             //if(exception != null && exception(skin)) return -1;

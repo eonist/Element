@@ -221,9 +221,9 @@ class StylePropertyParser{
         Swift.print("value: " + "\(value)")
         let padding:Padding
         if(value != nil){
-            
+            let padding:Padding = value != nil ? Padding(value!) : Padding()
         }
-        let padding:Padding = value != nil ? Padding(value!) : Padding()
+        
         let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
         let padding:Padding = Padding(array)
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)

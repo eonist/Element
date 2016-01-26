@@ -34,10 +34,10 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
         //Swift.print("elementParent: " + elementParent);
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
+        
         if(skin.element!.id == "box2"){
             Swift.print("elements.count: " + "\(elements.count)")
         }
-        
         
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/

@@ -12,11 +12,9 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let padding:Padding = StylePropertyParser.padding(skin,depth)
         let margin:Margin = StylePropertyParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
-        if(floatType == CSSConstants.left || floatType == "" || floatType == nil) { ViewModifier.position(displayObject, CGPoint(margin.left + offset.x, margin.top + offset.y)) }
-        //else if(floatType == CSSConstants.RIGHT) DisplayObjectModifier.position(displayObject, new Point(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y));
-        //else /*floatType == CSSConstants.NONE*/
-        
-        positional.setPosition(CGPoint(margin.left/* + offset.x*/, margin.top/* + offset.y*/))// :TODO: this is temp for testing
+        if(floatType == CSSConstants.left || floatType == "" || floatType == nil) { ViewModifier.position(positional as! NSView, CGPoint(margin.left + offset.x, margin.top + offset.y)) }
+        else if(floatType == CSSConstants.right) {ViewModifier.position(positional as! NSView, CGPoint(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y))}
+        else /*floatType == CSSConstants.NONE*/ {positional.setPosition(CGPoint(margin.left + offset.x/**/, margin.top + offset.y/**/))}// :TODO: this is temp for testing
         return positional
     }
     /**

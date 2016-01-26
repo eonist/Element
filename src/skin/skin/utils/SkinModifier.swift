@@ -78,11 +78,17 @@ private class Utils{
         return lastIndexOfRightFloatingElement != -1 ? elements[lastIndexOfRightFloatingElement].skin! : nil/*the right-sibling-skin*/
     }
     /**
+     * Exception method used to fix a problem where Elements would not float correctly to the right if a leftfloating Element that also cleared to the right or both, came before a Right floating Element
+     */
+    class func exception(skin:Skin) -> Bool{
+        return (SkinParser.float(skin) == CSSConstants.left && (SkinParser.clear(skin) == CSSConstants.right || SkinParser.clear(skin) == CSSConstants.both));
+    }
+    /**
      * @Note loops backwards
      * @param range is the range within the possible rightfloating skin can be in
      */
     /**/
-    class func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String/*,exception:Function = nil*/)->Int {
+    class func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String,exception:(Int)->Int = nil)->Int {
         for(var i:Int = range.end; i >= range.start; i--){
             let skin:ISkin = elements[i].skin!
             //if(exception != null && exception(skin)) return -1;

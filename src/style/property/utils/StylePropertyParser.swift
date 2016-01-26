@@ -199,7 +199,7 @@ class StylePropertyParser{
      * Returns Offset
      * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
      */
-    class func offset(skin:ISkin,depth:Int = 0)->CGPoint {
+    class func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth);
         var array:Array = value is Array<CGFloat> ? value as! Array<CGFloat> : [value];
         return array.count == 1 ? array[0] as! CGPoint : CGPoint(array[0] as! CGFloat,array[1] as! CGFloat);
@@ -213,7 +213,7 @@ class StylePropertyParser{
     //Note to self: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
     //you may want to copy margin on this
     
-    class func padding(skin:ISkin,depth:Int = 0) -> Padding {
+    class func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
         let value:Any? = self.value(skin, CSSConstants.padding, depth);
         let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         let padding:Padding = Padding(array);

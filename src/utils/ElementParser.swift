@@ -6,11 +6,11 @@ class ElementParser{
      * Returns all children in @param element that is of type IElement
      * NOTE: if this doesnt work just use the array casting technique with the NSParser.children method
      */
-    class func children<T>(view:NSView,_ type:T)->Array<IElement> {
+    class func children<T>(view:NSView,_ type:T.Type)->Array<IElement> {
         var children:Array<IElement> = []
         Swift.print("view.subviews.count: " + "\(view.subviews.count)")
         for subView in view.subviews {
-            Swift.print("subView: " + "\(subView as? IElement)")
+            Swift.print("subView: " + "\(subView as? T)")
             if(subView as? T != nil){children.append(subView as! IElement)}
         }
         return children;

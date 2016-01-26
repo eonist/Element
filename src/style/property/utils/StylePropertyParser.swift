@@ -219,13 +219,11 @@ class StylePropertyParser{
     class func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
         let value:Any? = self.value(skin, CSSConstants.padding, depth)
         Swift.print("value: " + "\(value)")
-        let padding:Padding
+        var padding:Padding = Padding()
         if(value != nil){
-            let padding:Padding = value != nil ? Padding(value!) : Padding()
+            let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
+            padding = Padding(array)
         }
-        
-        let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
-        let padding:Padding = Padding(array)
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
         padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth) : Utils.metric(padding.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
         padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!

@@ -30,6 +30,9 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         //Swift.print("SkinModifier.float()")
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
+        if(skin.element!.id == "box2"){
+            Swift.print("parent: " + "\(parent)")
+        }
         //Swift.print("parent: " + parent);
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
         //Swift.print("elementParent: " + elementParent);

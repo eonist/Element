@@ -201,9 +201,9 @@ class StylePropertyParser{
      */
     class func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth);
-        var array:Array = value is Array<CGFloat> ? value as! Array<CGFloat> : [value];
+        var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         Swift.print("array.count: " + "\(array.count)")
-        return array.count == 1 ? array[0] as! CGPoint : CGPoint(array[0] as! CGFloat, array[1] as! CGFloat);
+        return array.count == 1 ? array[0] : CGPoint(array[0], array[1]);
     }
     /**
      * @Note TRBL

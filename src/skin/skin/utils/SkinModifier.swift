@@ -92,7 +92,7 @@ private class Utils{
      * @param rightSiblingSkin the skin that is right of skin.element
      * @param top is the y value of the skins parent to align against
      */
-    class func clearRight(skin:Skin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
+    class func clearRight(skin:ISkin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
         (skin.element as! NSView).frame.y = rightSiblingSkin != nil ? (rightSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(rightSiblingSkin!) : top;
     }
     /**

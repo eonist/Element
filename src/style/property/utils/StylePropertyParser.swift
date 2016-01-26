@@ -201,10 +201,10 @@ class StylePropertyParser{
      */
     class func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth);
-        Swift.print("value: " + "\(value)")
+        Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
         var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
-        Swift.print("array.count: " + "\(array.count)")
+        Swift.print("StylePropertyParser.offset.array.count: " + "\(array.count)")
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1]);
     }
     /**
@@ -218,7 +218,7 @@ class StylePropertyParser{
     
     class func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
         let value:Any? = self.value(skin, CSSConstants.padding, depth)
-        Swift.print("value: " + "\(value)")
+        Swift.print("StylePropertyParser.padding.value: " + "\(value)")
         var padding:Padding = Padding()
         if(value != nil){
             let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]

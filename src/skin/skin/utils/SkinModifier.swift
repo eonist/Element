@@ -41,7 +41,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
         //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
-        let clearType:String = SkinParser.clear(skin)
+        let clearType:String = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
         let floatType:String? = SkinParser.float(skin)
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
         Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);
@@ -110,6 +110,7 @@ private class Utils{
      *  @param left the x value to align against
      */
     class func floatLeft(skin:ISkin, _ clearType:String, _ leftSiblingSkin:ISkin?,  var _ left:CGFloat){
+        //Swift.print("SkinModifier.floatLeft: " )
         if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = (leftSiblingSkin!.element as! NSView).frame.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
         (skin.element as! NSView).frame.x = left;/*Sets the position of the skin.element*/
     }

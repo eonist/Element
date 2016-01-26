@@ -41,7 +41,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
         //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
         let clearType:String = SkinParser.clear(skin)
-        let floatType:String = SkinParser.float(skin)
+        let floatType:String? = SkinParser.float(skin)
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
         Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);
     }
@@ -62,7 +62,7 @@ private class Utils{
     /**
      * Floats @param skin to the left or right or none
      */
-    class func float(skin:Skin, _ clearType:String, _ floatType:String, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
+    class func float(skin:Skin, _ clearType:String, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
         if(floatType == CSSConstants.left) { floatLeft(skin, clearType, leftSiblingSkin, left)}/*Float left*/
         else if(floatType == CSSConstants.right) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
     }

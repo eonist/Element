@@ -45,7 +45,8 @@ class SkinModifier {
         Swift.print("parentTopRight: " + "\(parentTopRight)")
         let leftSiblingSkin:ISkin = Utils.leftFloatingElementSkin(elements, index)!;/*the last left floating element-sibling skin*/
         Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
-        
+        var rightSiblingSkin:Skin = Utils.rightFloatingElementSkin(elements, index);/*the last right floating element-sibling-skin*/
+        //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
         
         
         

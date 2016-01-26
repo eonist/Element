@@ -53,7 +53,7 @@ class SkinModifier {
         let floatType:String = SkinParser.float(skin)
         Swift.print("floatType: " + "\(floatType)")
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
-        //Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);
+        Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);
     }
 }
 /**

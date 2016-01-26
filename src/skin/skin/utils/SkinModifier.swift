@@ -48,7 +48,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
     }
 }
 /**
- * TODO: You should split some of these methods into sub classes
+ * TODO: You should split some of these methods into sub classes, I think maybe the reason why they are bundled together into one class is because the way the methods are so intertwined
  */
 private class Utils{
     /**
@@ -74,6 +74,7 @@ private class Utils{
      * @param top is the y value of the skins parent to align against
      */
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
+        Swift.print("clearLeft")
         (skin.element as! NSView).frame.y = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
     }
     /**

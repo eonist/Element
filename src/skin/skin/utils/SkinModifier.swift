@@ -45,7 +45,8 @@ class SkinModifier {
         Swift.print("parentTopRight: " + "\(parentTopRight)")
         let leftSiblingSkin:ISkin = Utils.leftFloatingElementSkin(elements, index)!;/*the last left floating element-sibling skin*/
         Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
-        var rightSiblingSkin:Skin = Utils.rightFloatingElementSkin(elements, index);/*the last right floating element-sibling-skin*/
+        let rightSiblingSkin:Skin = Utils.rightFloatingElementSkin(elements, index);/*the last right floating element-sibling-skin*/
+        Swift.print("rightSiblingSkin: " + "\(rightSiblingSkin)")
         //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
         
         
@@ -62,7 +63,6 @@ private class Utils{
     class func elementIndex(parent:NSView,_ element:IElement)->Int {
         return parent.subviews.indexOf(element as! NSView)!
     }
-    
     /**
      *
      */
@@ -71,9 +71,9 @@ private class Utils{
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }
     /**
-    * @param index is the index of the skin being floated
-    */
-    class func rightFloatingElementSkin(elements:Array<IElement>,index:Int)->ISkin? {
+     * @param index is the index of the skin being floated
+     */
+    class func rightFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
         let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.right,exception);
         return lastIndexOfRightFloatingElement != -1 ? elements[lastIndexOfRightFloatingElement].skin! : nil/*the right-sibling-skin*/
     }
@@ -96,8 +96,6 @@ private class Utils{
         }
         return -1;
     }
-
-    
 }
 
 

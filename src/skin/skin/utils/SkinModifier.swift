@@ -77,7 +77,7 @@ private class Utils{
         let y:CGFloat = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
         if(skin.element!.id == "box2"){
             
-            //Continue here: figure out why leftSiblingSkin isnt being found, 
+            //Continue here: figure out why leftSiblingSkin isnt found, look over the legacy tests
             
             Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
             Swift.print("clearLeft y: " + "\(y)")

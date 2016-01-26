@@ -73,9 +73,19 @@ private class Utils{
      *  @param leftSiblingSkin the skin that is left of skin.element
      *  @param left the x value to align against
      */
-    class func floatLeft(skin:ISkin, _ clearType:String, _ leftSiblingSkin:ISkin, _ var left:CGFloat){
-        if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.BOTH)) {left = (leftSiblingSkin.element as NSView).x + SkinParser.totalWidth(leftSiblingSkin)} /*a previous element-sibling floats left*/
-        (skin.element as NSView).x = left;/*Sets the position of the skin.element*/
+    class func floatLeft(skin:ISkin, _ clearType:String, _ leftSiblingSkin:ISkin?,  var left:CGFloat){
+        if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = (leftSiblingSkin!.element as! NSView).frame.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
+        (skin.element as! NSView).frame.x = left;/*Sets the position of the skin.element*/
+    }
+    /**
+     *  Positions @param skin by way of floating it right
+     *  @param skin the skin to be floated
+     *  @param rightSiblingSkin the skin that is right of skin.element
+     *  @param right the x value to align against
+     */
+    class func floatRight(skin:Skin, clearType:String, rightSiblingSkin:ISkin, right:CGFloat){
+        if(rightSiblingSkin != null && (clearType != CSSConstants.right && clearType != CSSConstants.BOTH)) right = (rightSiblingSkin.element as DisplayObject).x;/*a previous element-sibling floats right*/
+        (skin.element as NSView).x = right - SkinParser.totalWidth(skin);/*Sets the position of the skin.element*/
     }
     /**
      *

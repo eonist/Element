@@ -11,8 +11,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let offset:CGPoint = StylePropertyParser.offset(skin,depth)
         let padding:Padding = StylePropertyParser.padding(skin,depth)
         let margin:Margin = StylePropertyParser.margin(skin,depth)
-        let floatType:String = SkinParser.float(skin,depth)
-        if(floatType == CSSConstants.left || floatType == "" || floatType == nil) { DisplayObjectModifier.position(displayObject, new Point(margin.left + offset.x, margin.top + offset.y)) }
+        let floatType:String? = SkinParser.float(skin,depth)
+        if(floatType == CSSConstants.left || floatType == "" || floatType == nil) { ViewModifier.position(displayObject, CGPoint(margin.left + offset.x, margin.top + offset.y)) }
         //else if(floatType == CSSConstants.RIGHT) DisplayObjectModifier.position(displayObject, new Point(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y));
         //else /*floatType == CSSConstants.NONE*/
         

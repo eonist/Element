@@ -53,7 +53,7 @@ private class Utils{
     /**
      * Clear @param skin to the left, right , both or none
      */
-    class func clear(skin:ISkin,_ clearType:String?,_ floatType:String,_ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
+    class func clear(skin:ISkin,_ clearType:String?,_ floatType:String?,_ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
         if(clearType == CSSConstants.left) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
         else if(clearType == CSSConstants.right) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
         else if(clearType == CSSConstants.both && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin ?? rightSiblingSkin,top)}/*Clear left & right*/
@@ -87,7 +87,7 @@ private class Utils{
     /**
      *
      */
-    class func clearNone(skin:ISkin, _ floatType:String, _ leftSibling:ISkin?,_ rightSibling:ISkin?,var _ top:CGFloat){
+    class func clearNone(skin:ISkin, _ floatType:String?, _ leftSibling:ISkin?,_ rightSibling:ISkin?,var _ top:CGFloat){
         if(floatType == CSSConstants.left && leftSibling != nil) { top = (leftSibling!.element as! NSView).frame.y }
         else if(floatType == CSSConstants.right && rightSibling != nil) { top = (rightSibling!.element as! NSView).frame.y }
         else if(floatType == CSSConstants.none) { top = (skin.element as! NSView).frame.y}/*0*/

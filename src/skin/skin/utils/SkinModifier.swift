@@ -82,8 +82,8 @@ private class Utils{
      * @param leftSiblingSkin the skin that is left of skin.element
      * @param top is the y value of the skins parent to align against
      */
-    class func clearLeft(skin:Skin,leftSiblingSkin:Skin,top:CGFloat) {
-        (skin.element as NSView).frame.y = leftSiblingSkin != nil ? (leftSiblingSkin.element as DisplayObject).y + SkinParser.totalHeight(leftSiblingSkin) : top;
+    class func clearLeft(skin:Skin,_ leftSiblingSkin:Skin?,_ top:CGFloat) {
+        (skin.element as! NSView).frame.y = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin) : top;
     }
     /**
      *  Positions @param skin by way of floating it left

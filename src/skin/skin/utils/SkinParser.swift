@@ -55,7 +55,7 @@ class SkinParser {
      */
     class func border(skin:ISkin)->Border {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
-        let lineThickness:CGFloat = StylePropertyParser.value(skin, "line-thickness") as! CGFloat
+        let lineThickness:CGFloat = (StylePropertyParser.value(skin, "line-thickness") ?? 0) as! CGFloat//<---recently changed
         return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0]);
     }
     /**

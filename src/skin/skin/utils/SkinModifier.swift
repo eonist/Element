@@ -85,6 +85,10 @@ private class Utils{
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         (skin.element as! NSView).frame.y = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
     }
+    
+    //continue here: create clearRight
+    
+    
     /**
      *  Positions @param skin by way of floating it left
      *  @param skin the skin to be floated

@@ -56,6 +56,7 @@ class SkinParser {
     class func border(skin:ISkin)->Border {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
         let value:Any? = StylePropertyParser.value(skin, "line-thickness")
+        Swift.print("SkinParser.border.value: " + "\(value)")
         let lineThickness:CGFloat =  value != nil ? CGFloat(value as! Int) : 0
         return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0]);
     }

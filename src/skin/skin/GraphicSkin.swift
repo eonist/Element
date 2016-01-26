@@ -18,8 +18,6 @@ class GraphicSkin:Skin{
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
         }
     }
-     
-    
     override func draw(){
         //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){

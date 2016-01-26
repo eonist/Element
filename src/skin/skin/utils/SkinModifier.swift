@@ -100,8 +100,8 @@ private class Utils{
      * @param prevSiblingSkin the skin that is previouse of skin.element
      * @param top is the y value of the skins parent to align against
      */
-    private static function clearBoth(skin:ISkin,_ prevSiblingSkin:ISkin,_ top:CGFloat){
-        (skin.element as NSView).y = prevSiblingSkin != null ? (prevSiblingSkin.element as! NSView).y + SkinParser.totalHeight(prevSiblingSkin) : top;
+    class func clearBoth(skin:ISkin,_ prevSiblingSkin:ISkin?,_ top:CGFloat){
+        (skin.element as! NSView).frame.y = prevSiblingSkin != nil ? (prevSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(prevSiblingSkin!) : top;
     }
     /**
      *  Positions @param skin by way of floating it left

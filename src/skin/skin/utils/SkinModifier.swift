@@ -66,7 +66,7 @@ private class Utils{
     class func clear(skin:ISkin,_ clearType:String?,_ floatType:String,_ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
         if(clearType == CSSConstants.left) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
         else if(clearType == CSSConstants.right) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
-        else if(clearType == CSSConstants.both && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin || rightSiblingSkin,top)}/*Clear left & right*/
+        else if(clearType == CSSConstants.both && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin ?? rightSiblingSkin,top)}/*Clear left & right*/
         else if(clearType == CSSConstants.none || clearType == nil) {clearNone(skin, floatType,leftSiblingSkin,rightSiblingSkin, top)}/*Clear is none or null*/
     }
     /**

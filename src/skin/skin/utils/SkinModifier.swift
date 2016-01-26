@@ -44,7 +44,7 @@ class SkinModifier {
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         Swift.print("parentTopRight: " + "\(parentTopRight)")
         let leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
-        
+        Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
         
         //continue here: check your research for Range. You need to work with Int range. 
         //also check your research for using methods as arguments
@@ -63,7 +63,7 @@ private class Utils{
      *
      */
     
-    class func leftFloatingElementSkin(elements:Array<IElement>,index:Int)->ISkin? {
+    class func leftFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
         var lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }
@@ -73,11 +73,11 @@ private class Utils{
      * @param range is the range within the possible rightfloating skin can be in
      */
     /**/
-    class func lastIndex(elements:Array<IElement>,range:Range,floatType:String/*,exception:Function = nil*/)->Int {
+    class func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String/*,exception:Function = nil*/)->Int {
         for(var i:Int = range.end; i >= range.start; i--){
-            var skin:ISkin = (elements[i] as IElement).skin;
+            let skin:ISkin = elements[i].skin!
             //if(exception != null && exception(skin)) return -1;
-            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.NONE) return i;
+            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.NONE) {return i}
         }
         return -1;
     }

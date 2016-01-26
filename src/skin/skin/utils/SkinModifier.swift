@@ -39,6 +39,9 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         //if(skin is TextSkin) trace("topLeft: " + topLeft);
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
+        if(skin.element!.id == "box2"){
+            Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
+        }
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
         //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
         let clearType:String = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
@@ -79,8 +82,8 @@ private class Utils{
             
             //Continue here: figure out why leftSiblingSkin isnt found, look over the legacy tests
             
-            Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
-            Swift.print("clearLeft y: " + "\(y)")
+            Swift.print("clearLeft() leftSiblingSkin: " + "\(leftSiblingSkin)")
+            Swift.print("clearLeft() y: " + "\(y)")
         }
         
         (skin.element as! NSView).frame.y = y

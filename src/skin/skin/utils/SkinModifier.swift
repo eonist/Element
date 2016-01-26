@@ -72,7 +72,7 @@ private class Utils{
     /**
      * Floats @param skin to the left or right or none
      */
-    class func float(skin:Skin, _ clearType:String, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
+    class func float(skin:Skin, _ clearType:String?, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
         if(floatType == CSSConstants.left) { floatLeft(skin, clearType, leftSiblingSkin, left)}/*Float left*/
         else if(floatType == CSSConstants.right) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
     }
@@ -127,7 +127,7 @@ private class Utils{
      *  @param leftSiblingSkin the skin that is left of skin.element
      *  @param left the x value to align against
      */
-    class func floatLeft(skin:ISkin, _ clearType:String, _ leftSiblingSkin:ISkin?,  var _ left:CGFloat){
+    class func floatLeft(skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  var _ left:CGFloat){
         //Swift.print("SkinModifier.floatLeft: " )
         if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = (leftSiblingSkin!.element as! NSView).frame.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
         (skin.element as! NSView).frame.x = left;/*Sets the position of the skin.element*/
@@ -138,7 +138,7 @@ private class Utils{
      *  @param rightSiblingSkin the skin that is right of skin.element
      *  @param right the x value to align against
      */
-    class func floatRight(skin:ISkin, _ clearType:String, _ rightSiblingSkin:ISkin?, var _ right:CGFloat){
+    class func floatRight(skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, var _ right:CGFloat){
         if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = (rightSiblingSkin!.element as! NSView).frame.x}/*a previous element-sibling floats right*/
         (skin.element as! NSView).frame.x = right - SkinParser.totalWidth(skin);/*Sets the position of the skin.element*/
     }

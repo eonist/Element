@@ -64,7 +64,7 @@ private class Utils{
      */
     
     class func leftFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
-        var lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
+        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }
     /**/

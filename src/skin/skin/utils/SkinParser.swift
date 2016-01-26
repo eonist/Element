@@ -65,6 +65,18 @@ class SkinParser {
      *
      */
     class func float(skin:ISkin,_ depth:Int = 0)->String{
-        return StylePropertyParser.value(skin,CSSConstants.float,depth);
+        return StylePropertyParser.value(skin,CSSConstants.float,depth) as! String
+    }
+    /**
+     *
+     */
+    class func function clear(skin:ISkin)->String {
+        return StylePropertyParser.value(skin,CSSConstants.clear);
+    }
+    /**
+     *
+     */
+    class func display(skin:ISkin)->String {
+        return StylePropertyParser.value(skin,CSSConstants.display);
     }
 }

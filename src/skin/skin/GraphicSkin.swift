@@ -8,7 +8,7 @@ import Cocoa
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
-        SkinModifier.float(self)
+        //SkinModifier.float(self)
         let depthCount:Int = StyleParser.depthCount(style!)
         //Swift.print("depthCount: " + "\(depthCount)")
         for (var depth : Int = 0; depth < depthCount; depth++) {

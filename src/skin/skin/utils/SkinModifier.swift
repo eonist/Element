@@ -66,12 +66,17 @@ private class Utils{
     /**
      *
      */
-    
     class func leftFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
         let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }
-    /**/
+    /**
+    * @param index is the index of the skin being floated
+    */
+    class func rightFloatingElementSkin(elements:Array<IElement>,index:Int)->ISkin {
+        var lastIndexOfRightFloatingElement:int = Utils.lastIndex(elements, new Range(0,index-1), CSSConstants.RIGHT,exception);
+        return lastIndexOfRightFloatingElement != -1 ? (elements[lastIndexOfRightFloatingElement] as IElement).skin : null;/*the right-sibling-skin*/
+    }
     /**
      * @Note loops backwards
      * @param range is the range within the possible rightfloating skin can be in

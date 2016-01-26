@@ -28,7 +28,7 @@ class StyleResolver{
         return finalStyle;
     }
     /**
-     *
+     * TODO: Deprecate this method, its not doing anything anymore
      */
     class func temp_style(element:IElement)->IStyle{
         //let querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing

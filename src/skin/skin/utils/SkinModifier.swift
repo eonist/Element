@@ -30,16 +30,14 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         //Swift.print("SkinModifier.float()")
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
-        if(skin.element!.id == "box2"){
-            Swift.print("parent: " + "\(parent)")
-        }
+        
         //Swift.print("parent: " + parent);
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
         //Swift.print("elementParent: " + elementParent);
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         
         if(skin.element!.id == "box2"){
-            Swift.print("elements.count: " + "\(elements.count)")
+            //Swift.print("elements.count: " + "\(elements.count)")
         }
         
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
@@ -48,7 +46,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
         if(skin.element!.id == "box2"){
-            Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
+            //Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
         }
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
         //if(skin.element.id == "four") trace("rightSiblingSkin: " + rightSiblingSkin);
@@ -90,8 +88,8 @@ private class Utils{
             
             //Continue here: figure out why leftSiblingSkin isnt found, look over the legacy tests
             
-            Swift.print("clearLeft() leftSiblingSkin: " + "\(leftSiblingSkin)")
-            Swift.print("clearLeft() y: " + "\(y)")
+            //Swift.print("clearLeft() leftSiblingSkin: " + "\(leftSiblingSkin)")
+            //Swift.print("clearLeft() y: " + "\(y)")
         }
         
         (skin.element as! NSView).frame.y = y
@@ -184,7 +182,3 @@ private class Utils{
         return -1;
     }
 }
-
-
-/*thingToDo: (Int)->Int*/
-

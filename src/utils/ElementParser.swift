@@ -8,6 +8,7 @@ class ElementParser{
      */
     class func children<T>(view:NSView,_ type:T)->Array<IElement> {
         var children:Array<IElement> = []
+        Swift.print("view.subviews.count: " + "\(view.subviews.count)")
         for subView in view.subviews {
             if(subView as? T != nil){children.append(subView as! IElement)}
         }

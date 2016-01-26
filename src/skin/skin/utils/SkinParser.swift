@@ -70,13 +70,13 @@ class SkinParser {
     /**
      *
      */
-    class func function clear(skin:ISkin)->String {
-        return StylePropertyParser.value(skin,CSSConstants.clear);
+    class func clear(skin:ISkin)->String {
+        return StylePropertyParser.value(skin,CSSConstants.clear) as! String
     }
     /**
      *
      */
     class func display(skin:ISkin)->String {
-        return StylePropertyParser.value(skin,CSSConstants.display);
+        return StylePropertyParser.value(skin,CSSConstants.display) as! String
     }
 }

@@ -43,8 +43,11 @@ class SkinModifier {
         //			if(skin is TextSkin) trace("topLeft: " + topLeft);
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         Swift.print("parentTopRight: " + "\(parentTopRight)")
-        let leftSiblingSkin:Skin = Utils.leftFloatingElementSkin(elements, index);/*the last left floating element-sibling skin*/
+        let leftSiblingSkin:ISkin = Utils.leftFloatingElementSkin(elements, index)!;/*the last left floating element-sibling skin*/
         Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
+        
+        
+        
         
         //continue here: check your research for Range. You need to work with Int range. 
         //also check your research for using methods as arguments
@@ -77,7 +80,7 @@ private class Utils{
         for(var i:Int = range.end; i >= range.start; i--){
             let skin:ISkin = elements[i].skin!
             //if(exception != null && exception(skin)) return -1;
-            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.NONE) {return i}
+            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none) {return i}
         }
         return -1;
     }

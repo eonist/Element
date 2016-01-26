@@ -56,7 +56,17 @@ class SkinModifier {
         //Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);
     }
 }
+/**
+ * TODO: You should split some of these methods into sub classes
+ */
 private class Utils{
+    /**
+     * Floats @param skin to the left or right or none
+     */
+    class func float(skin:Skin, _ clearType:String, _ floatType:String, _ leftSiblingSkin:ISkin,_ rightSiblingSkin:ISkin,_ left:CGFloat,_ right:CGFloat) {
+        if(floatType == CSSConstants.left) floatLeft(skin, clearType, leftSiblingSkin, left);/*Float left*/
+        else if(floatType == CSSConstants.RIGHT) floatRight(skin, clearType, rightSiblingSkin, right);/*Float right*/
+    }
     /**
      *
      */

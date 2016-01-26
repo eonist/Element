@@ -95,6 +95,15 @@ private class Utils{
         (skin.element as! NSView).frame.y = rightSiblingSkin != nil ? (rightSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(rightSiblingSkin!) : top;
     }
     /**
+     *
+     */
+    class func clearNone(skin:ISkin, _ floatType:String, _ leftSibling:Skin,_ rightSibling:ISkin,_ top:CGFloat){
+        if(floatType == CSSConstants.left && leftSibling != null) { top = (leftSibling.element as NSView).frame.y }
+        else if(floatType == CSSConstants.right && rightSibling != nil) { top = (rightSibling.element as! NSView).y }
+        else if(floatType == CSSConstants.none) top = (skin.element as DisplayObject).y/*0*/;
+        (skin.element as DisplayObject).y = top;
+    }
+    /**
      * Positions @param skin by way of clearing it left & right (both)
      * @param skin the skin to be cleared
      * @param prevSiblingSkin the skin that is previouse of skin.element

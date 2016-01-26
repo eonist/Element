@@ -68,6 +68,16 @@ private class Utils{
         else if(floatType == CSSConstants.RIGHT) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
     }
     /**
+     *  Positions @param skin by way of floating it left
+     *  @param skin the skin to be floated
+     *  @param leftSiblingSkin the skin that is left of skin.element
+     *  @param left the x value to align against
+     */
+    class func floatLeft(skin:ISkin, _ clearType:String, _ leftSiblingSkin:ISkin, _ var left:CGFloat){
+        if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.BOTH)) {left = (leftSiblingSkin.element as NSView).x + SkinParser.totalWidth(leftSiblingSkin)} /*a previous element-sibling floats left*/
+        (skin.element as NSView).x = left;/*Sets the position of the skin.element*/
+    }
+    /**
      *
      */
     class func elementIndex(parent:NSView,_ element:IElement)->Int {

@@ -61,11 +61,29 @@ class SkinModifier {
  */
 private class Utils{
     /**
+     * Clear @param skin to the left, right , both or none
+     */
+    class func clear(skin:ISkin,_ clearType:String?,_ floatType:String,_ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
+        if(clearType == CSSConstants.left) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
+        else if(clearType == CSSConstants.right) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
+        else if(clearType == CSSConstants.both && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin || rightSiblingSkin,top)}/*Clear left & right*/
+        else if(clearType == CSSConstants.none || clearType == nil) {clearNone(skin, floatType,leftSiblingSkin,rightSiblingSkin, top)}/*Clear is none or null*/
+    }
+    /**
      * Floats @param skin to the left or right or none
      */
     class func float(skin:Skin, _ clearType:String, _ floatType:String, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
         if(floatType == CSSConstants.left) { floatLeft(skin, clearType, leftSiblingSkin, left)}/*Float left*/
         else if(floatType == CSSConstants.right) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
+    }
+    /**
+     * Positions @param skin by way of clearing it left
+     * @param skin the skin to be cleared
+     * @param leftSiblingSkin the skin that is left of skin.element
+     * @param top is the y value of the skins parent to align against
+     */
+    class func clearLeft(skin:Skin,leftSiblingSkin:Skin,top:CGFloat) {
+        (skin.element as NSView).frame.y = leftSiblingSkin != nil ? (leftSiblingSkin.element as DisplayObject).y + SkinParser.totalHeight(leftSiblingSkin) : top;
     }
     /**
      *  Positions @param skin by way of floating it left

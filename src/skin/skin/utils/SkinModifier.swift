@@ -51,7 +51,8 @@ class SkinModifier {
         let clearType:String = SkinParser.clear(skin)
         Swift.print("clearType: " + "\(clearType)")
         let floatType:String = SkinParser.float(skin)
-        
+        Swift.print("floatType: " + "\(floatType)")
+        Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
     }
 }
 private class Utils{

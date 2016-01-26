@@ -85,7 +85,6 @@ private class Utils{
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         (skin.element as! NSView).frame.y = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
     }
-    
     /**
      * Positions @param skin by way of clearing it right
      * @param skin the skin to be cleared
@@ -94,6 +93,15 @@ private class Utils{
      */
     class func clearRight(skin:ISkin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
         (skin.element as! NSView).frame.y = rightSiblingSkin != nil ? (rightSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(rightSiblingSkin!) : top;
+    }
+    /**
+     * Positions @param skin by way of clearing it left & right (both)
+     * @param skin the skin to be cleared
+     * @param prevSiblingSkin the skin that is previouse of skin.element
+     * @param top is the y value of the skins parent to align against
+     */
+    private static function clearBoth(skin:ISkin,_ prevSiblingSkin:ISkin,_ top:CGFloat){
+        (skin.element as NSView).y = prevSiblingSkin != null ? (prevSiblingSkin.element as! NSView).y + SkinParser.totalHeight(prevSiblingSkin) : top;
     }
     /**
      *  Positions @param skin by way of floating it left

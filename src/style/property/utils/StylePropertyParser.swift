@@ -202,6 +202,7 @@ class StylePropertyParser{
     class func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth);
         Swift.print("value: " + "\(value)")
+        if(value == nil){return CGPoint(0,0)}//<---temp solution
         var array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
         Swift.print("array.count: " + "\(array.count)")
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1]);
@@ -216,15 +217,16 @@ class StylePropertyParser{
     //you may want to copy margin on this
     
     class func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
-        let value:Any? = self.value(skin, CSSConstants.padding, depth);
-        let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat];
-        let padding:Padding = Padding(array);
-        let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth);
+        let value:Any? = self.value(skin, CSSConstants.padding, depth)
+        Swift.print("value: " + "\(value)")
+        let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
+        let padding:Padding = Padding(array)
+        let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
         padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth) : Utils.metric(padding.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
-        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!;
-        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingTop, depth) : Utils.metric(padding.top, skin))!;
-        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom,depth) > paddingIndex) ? StylePropertyParser.metric(skin, CSSConstants.paddingBottom, depth) : Utils.metric(padding.bottom, skin))!;
-        return padding;
+        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!
+        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingTop, depth) : Utils.metric(padding.top, skin))!
+        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom,depth) > paddingIndex) ? StylePropertyParser.metric(skin, CSSConstants.paddingBottom, depth) : Utils.metric(padding.bottom, skin))!
+        return padding
     }
     /**
      * // :TODO: should this have a failsafe if there is no Margin property in the style?

@@ -104,8 +104,6 @@ private class Utils {
      */
     class func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
         
-        //continue here: do some string tests on the bellow pattern
-        
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
         //print("pattern: " + pattern);
         var match:Array = RegExp.match(string, pattern)
@@ -114,7 +112,7 @@ private class Utils {
             let matchString:String =  match[0]
             return value(matchString,propertyName);
         }else{
-            fatalError("no match found by linkName: " + linkName+" and propertyName: "+propertyName)
+            fatalError("no match found by linkName: " + linkName+" and propertyName: "+propertyName )
         }
     }
     /**

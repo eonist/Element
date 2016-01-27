@@ -198,9 +198,9 @@ private class Utils{
                 let alpha:String = RegExp.value(property, match, 2)
                 //Swift.print("alpha: " + alpha)
                 
-                let alphaVal:Float = Float(Utils.alpha(alpha))
+                let alphaVal:CGFloat = Float(Utils.alpha(alpha))
                 //Swift.print("alphaVal: " + "\(alphaVal)")
-                gradient.colors.append(NSColorParser.cgColor(StringParser.color(color,alphaVal)))//append color
+                gradient.colors.append(NSColorParser.cgColor(StringParser.color(color),alphaVal))//append color
                 
                 let ratio:String = RegExp.value(property, match, 3)
                 //Swift.print("ratio: " + ratio)

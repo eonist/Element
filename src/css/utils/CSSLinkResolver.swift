@@ -103,7 +103,6 @@ private class Utils {
      * // :TODO: you can write a more precise expression to match the content of a style block
      */
     class func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
-        
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
         //print("pattern: " + pattern);
         var match:Array = RegExp.match(string, pattern)

@@ -8,7 +8,9 @@ class SkinParser {
         let margin:Margin = self.margin(skin);
         let border:Border = self.border(skin);
         let padding:Padding = self.padding(skin);
-        return margin.left + border.left + padding.left + width(skin) + padding.right + border.right +  margin.right;
+        let w = width(skin)
+        Swift.print("w: " + "\(w)")
+        return margin.left + border.left + padding.left + w + padding.right + border.right +  margin.right;
     }
     /**
      *

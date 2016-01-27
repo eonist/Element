@@ -63,7 +63,7 @@ private class Utils {
                 //Swift.print(linkedStyleProperty)
                 
                 
-                //continue here, you need to add the replacement code
+                //continue here, you need to add the replacement code, i think thats done
                 
                 
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
@@ -76,7 +76,7 @@ private class Utils {
                 string = (string as NSString).stringByReplacingCharactersInRange(range, withString: linkedStyleProperty)
                 
                 
-                //continue here: figure out what to replace and how much of it, also why does replaceLinks fire 2 times?
+                //continue here: figure out what to replace and how much of it, also why does replaceLinks fire 2 times?, i think this is completed
                 
                 
             }

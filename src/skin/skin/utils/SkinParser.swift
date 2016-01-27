@@ -25,7 +25,7 @@ class SkinParser {
      *
      */
     class func width(skin:ISkin)->CGFloat {
-        return skin.element!.getWidth() ?? skin.getWidth()
+        return skin.element!.getWidth() != CGFloat.NaN ? skin.element!.getWidth() : skin.getWidth()
     }
     /**
      *

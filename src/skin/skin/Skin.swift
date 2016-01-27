@@ -28,7 +28,7 @@ class Skin:FlippedView,ISkin{
         self.state = state;
         self.element = element;
         width = element!.width;// :TODO: is this necessary?
-        Swift.print("element!.width" + "\(element!.width)")
+        //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necessary?
         //Swift.print("element!.width: " + "\(element!.width)")
         

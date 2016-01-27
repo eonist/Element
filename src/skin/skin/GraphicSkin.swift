@@ -30,9 +30,7 @@ class GraphicSkin:Skin{
             for (var depth : Int = 0; depth < depthCount; depth++) {
                 if(hasSizeChanged){
                     let padding:Padding = StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-                    let w:CGFloat = width! + padding.left + padding.right;
-                    let h:CGFloat = height! + padding.top + padding.bottom;
-                    Utils.size(decoratables[depth], CGSize(w,h))
+                    Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right,height! + padding.top + padding.bottom))
                 }//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/

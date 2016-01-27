@@ -12,10 +12,10 @@ class Element:InteractiveView,IElement {
     var parent : IElement?
     var id : String?/*css selector id*/
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
-    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil, _ isInteractive:Bool = true){
+    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        super.init(frame: NSRect(0,0,width/*+2.0*/,height/*+2.0*/),isInteractive)/*<- this is a temp bug fix*/
+        super.init(frame: NSRect(0,0,width/*+2.0*/,height/*+2.0*/))/*<- this is a temp bug fix*/
         resolveSkin()
     }
     /**

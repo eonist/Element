@@ -31,7 +31,7 @@ class SkinParser {
      *
      */
     class func height(skin:ISkin)->CGFloat {
-        return skin.element!.getHeight() ?? skin.getHeight()
+        return skin.element!.getHeight() != CGFloat.NaN ? skin.element!.getHeight() : skin.getHeight()
     }
     /**
      * Returns the position when margin and padding is taken into account

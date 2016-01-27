@@ -61,7 +61,8 @@ private class Utils {
             //Swift.print(match.numberOfRanges)
             if(match.numberOfRanges > 0){/*match = the link name>*/
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
-                range.location = range.location-1//add the < char
+                Swift.print("difference: " + "\(difference)")
+                range.location = range.location-1+difference//add the < char
                 range.length = range.length+2//add the > char
                 let linkNameSansBrackets:String = (string as NSString).substringWithRange(range)/*the link name>*/
                 let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/

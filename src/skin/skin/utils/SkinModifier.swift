@@ -30,24 +30,14 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         //Swift.print("SkinModifier.float()")
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
-        
-        //Swift.print("parent: " + parent);
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
-        //Swift.print("elementParent: " + elementParent);
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
-        
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
-        
-        
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
-        
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
-        if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}
-            
-        
+        //if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
-        
         let clearType:String? = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
         let floatType:String? = SkinParser.float(skin)
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
@@ -82,14 +72,6 @@ private class Utils{
      */
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         let y:CGFloat = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
-        if(skin.element!.id == "box2"){
-            
-            //Continue here: figure out why leftSiblingSkin isnt found, look over the legacy tests
-            
-            //Swift.print("clearLeft() leftSiblingSkin: " + "\(leftSiblingSkin)")
-            //Swift.print("clearLeft() y: " + "\(y)")
-        }
-        
         (skin.element as! NSView).frame.y = y
     }
     /**
@@ -137,11 +119,11 @@ private class Utils{
      *  @param right the x value to align against
      */
     class func floatRight(skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, var _ right:CGFloat){
-        if(skin.element!.id == "box1"){
-            Swift.print("floatRight right: " + "\(right)")
-            Swift.print("SkinParser.totalWidth(skin): " + "\(SkinParser.totalWidth(skin))")
+        /*        if(skin.element!.id == "box1"){
+        Swift.print("floatRight right: " + "\(right)")
+        Swift.print("SkinParser.totalWidth(skin): " + "\(SkinParser.totalWidth(skin))")
         }
-
+        */
         if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = (rightSiblingSkin!.element as! NSView).frame.x}/*a previous element-sibling floats right*/
         (skin.element as! NSView).frame.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
     }

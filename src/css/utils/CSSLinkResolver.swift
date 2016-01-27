@@ -49,6 +49,7 @@ private class Utils {
      * NOTE: there is no speed benefit of optimizing querrying for linkedStyleProperty
      * NOTE: the sansBracketPattern basically finds the content inside the "<" and the ">"
      * @param cssString: is the original css string in its entirety (not a form of excerpt)
+     * NOTE: you could also maybe loop backwards an replace that way, then you wouldnt have to store a new index
      */
     class func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{
         //Swift.print("replaceLinks.string: " + string);

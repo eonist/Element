@@ -27,9 +27,9 @@ class Skin:FlippedView,ISkin{
         self.style = style;
         self.state = state;
         self.element = element;
-        width = element!.width;// :TODO: is this necassary?
+        width = element!.width;// :TODO: is this necessary?
         //Swift.print("element!.width" + "\(element!.width)")
-        height = element!.height;// :TODO: is this necassary?
+        height = element!.height;// :TODO: is this necessary?
         //Swift.print("element!.width: " + "\(element!.width)")
         
         //TODO: you may not need to set the with and height of the bellow. since we now use layer hosted system. test it

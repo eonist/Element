@@ -198,7 +198,7 @@ private class Utils{
                 let alpha:String = RegExp.value(property, match, 2)
                 //Swift.print("alpha: " + alpha)
                 
-                let alphaVal:CGFloat = Float(Utils.alpha(alpha))
+                let alphaVal:CGFloat = CGFloat(Utils.alpha(alpha))
                 //Swift.print("alphaVal: " + "\(alphaVal)")
                 gradient.colors.append(NSColorParser.cgColor(StringParser.color(color),alphaVal))//append color
                 
@@ -212,8 +212,8 @@ private class Utils{
                 //Swift.print("gradient.locations end: " + "\(gradient.locations.count)")
             }
         }
-        Swift.print("gradient.colors[0].alpha: " + "\(gradient.colors[0].alpha)")
-        Swift.print("gradient.colors[1].alpha: " + "\(gradient.colors[1].alpha)")
+        //Swift.print("gradient.colors[0].alpha: " + "\(gradient.colors[0].alpha)")
+        //Swift.print("gradient.colors[1].alpha: " + "\(gradient.colors[1].alpha)")
         return gradient
     }
     /**

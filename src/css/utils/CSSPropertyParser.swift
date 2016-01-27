@@ -83,7 +83,7 @@ class CSSPropertyParser {
         gradient.startCenter = /*<-focalPointRatio*/ CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
         gradient.startRadius = CGSize(0,0)
         gradient.endCenter = CGPoint(x,y)
-        gradient.endRadius = CGSize(yScale,xScale)/*<---we reorder the values here, i think its best to do the correct order but */
+        gradient.endRadius = CGSize(yScale,xScale)/*<---we reorder the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
         return gradient
      }
     

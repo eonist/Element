@@ -4,4 +4,7 @@ import Foundation
  * NOTE: you dont need anything in this method actually, the getClassType works if Section is the last SubClass in the subclass hierarchy
  */
 class Section:WindowView {
+    override func getClassType()->String{
+        return String(Section)
+    }
 }

@@ -26,3 +26,6 @@ class SelectButton:Button,ISelectable {
         return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState();
     }
 }
+
+
+//continue: get window working with float. then add radio bullets then post

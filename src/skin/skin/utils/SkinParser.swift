@@ -8,9 +8,7 @@ class SkinParser {
         let margin:Margin = self.margin(skin);
         let border:Border = self.border(skin);
         let padding:Padding = self.padding(skin);
-        let w = width(skin)
-        Swift.print("w: " + "\(w)")
-        return margin.left + border.left + padding.left + w + padding.right + border.right +  margin.right;
+        return margin.left + border.left + padding.left + width(skin) + padding.right + border.right +  margin.right;
     }
     /**
      *
@@ -25,16 +23,15 @@ class SkinParser {
      *
      */
     class func width(skin:ISkin)->CGFloat {
-        Swift.print("skin.element!.getWidth(): " + "\(skin.element!.getWidth())")
-        Swift.print("skin.getWidth(): " + "\(skin.getWidth())")
-        let w = skin.element!.getWidth() != CGFloat.NaN ? skin.element!.getWidth() : skin.getWidth()
-        return w
+        //Swift.print("skin.element!.getWidth(): " + "\(skin.element!.getWidth())")
+        //Swift.print("skin.getWidth(): " + "\(skin.getWidth())")
+        return !skin.element!.getWidth().isNaN ? skin.element!.getWidth() : skin.getWidth()
     }
     /**
      *
      */
     class func height(skin:ISkin)->CGFloat {
-        return skin.element!.getHeight() != CGFloat.NaN ? skin.element!.getHeight() : skin.getHeight()
+        return !skin.element!.getHeight().isNaN ? skin.element!.getHeight() : skin.getHeight()
     }
     /**
      * Returns the position when margin and padding is taken into account

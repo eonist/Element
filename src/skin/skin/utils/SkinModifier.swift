@@ -36,10 +36,6 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         //Swift.print("elementParent: " + elementParent);
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         
-        if(skin.element!.id == "box2"){
-            //Swift.print("elements.count: " + "\(elements.count)")
-        }
-        
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
         
@@ -47,9 +43,9 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
-        if(skin.element!.id == "box2"){
-            //Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")
-        }
+        if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}
+            
+        
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
         
         let clearType:String? = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future

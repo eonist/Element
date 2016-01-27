@@ -56,33 +56,17 @@ private class Utils {
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         //Swift.print("replaceLinks()" + String(matches.count))
         //var index:Int = 0;
-        var differnence:Int = 0
+        var difference:Int = 0
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print(match.numberOfRanges)
             if(match.numberOfRanges > 0){/*match = the link name>*/
-                let linkNameSansBrackets:String = (string as NSString).substringWithRange(match.rangeAtIndex(0))/*the link name>*/
-                //Swift.print(linkNameSansBrackets)
-                let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
-                //Swift.print(linkedStyleProperty)
-                
-                
-                //continue here, you need to add the replacement code, i think thats done
-                
-                
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
-                differnence += (range.length - linkedStyleProperty.count)
+                difference += (replacement.count - range.length)
                 range.location = range.location-1//add the < char
                 range.length = range.length+2//add the > char
-                //string.substringWithRange(range)
-                //string.replaceRange(range, with: linkedStyleProperty)
-                
-                //replaceCharactersInRange
+                let linkNameSansBrackets:String = (string as NSString).substringWithRange(match.rangeAtIndex(0))/*the link name>*/
+                let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
                 string = (string as NSString).stringByReplacingCharactersInRange(range, withString: linkedStyleProperty)
-                
-                
-                //continue here: figure out what to replace and how much of it, also why does replaceLinks fire 2 times?, i think this is completed
-                
-                
             }
             
             /*

@@ -70,6 +70,7 @@ private class Utils {
                 
                 
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
+                differnence += (range.length - linkedStyleProperty.count)
                 range.location = range.location-1//add the < char
                 range.length = range.length+2//add the > char
                 //string.substringWithRange(range)

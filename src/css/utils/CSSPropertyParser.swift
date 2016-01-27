@@ -71,6 +71,7 @@ class CSSPropertyParser {
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let setupString:String = properties.shift()
         let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
+        //gradient.colors[0]
         let setup:Array<String> = setupString.split(" ");/*the gradient settings*/
         let x:CGFloat = StringParser.percentage(setup[0])/100;/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
         let y:CGFloat = StringParser.percentage(setup[1])/100;/*percentage wise*/
@@ -195,9 +196,10 @@ private class Utils{
                 //Swift.print("color: " + color)
                 
                 let alpha:String = RegExp.value(property, match, 2)
-                //Swift.print("alpha: " + alpha)
+                Swift.print("alpha: " + alpha)
                 
                 let alphaVal:Float = Float(Utils.alpha(alpha))
+                Swift.print("alphaVal: " + "\(alphaVal)")
                 gradient.colors.append(NSColorParser.cgColor(StringParser.color(color,alphaVal)))//append color
                 
                 let ratio:String = RegExp.value(property, match, 3)

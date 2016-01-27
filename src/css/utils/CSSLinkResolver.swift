@@ -56,30 +56,19 @@ private class Utils {
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         //Swift.print("replaceLinks()" + String(matches.count))
         //var index:Int = 0;
-        var difference:Int = 0
+        var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print(match.numberOfRanges)
             if(match.numberOfRanges > 0){/*match = the link name>*/
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
-                difference += (replacement.count - range.length)
                 range.location = range.location-1//add the < char
                 range.length = range.length+2//add the > char
-                let linkNameSansBrackets:String = (string as NSString).substringWithRange(match.rangeAtIndex(0))/*the link name>*/
+                let linkNameSansBrackets:String = (string as NSString).substringWithRange(range)/*the link name>*/
                 let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
+                difference += (linkedStyleProperty.count - range.length)
                 string = (string as NSString).stringByReplacingCharactersInRange(range, withString: linkedStyleProperty)
             }
-            
-            /*
-            if(match != nil){
-            //print("match: " + match);
-            var linkedStyleProperty:String = Utils.propertyValue(cssString,match,linkPropName);/*replacementString*/
-            //print("linkedStyleProperty: " + linkedStyleProperty);
-            string = StringModifier.replaceRange(string, new Range(lastIndex-match.length-1,lastIndex+1), linkedStyleProperty);
-            pattern.lastIndex = pattern.lastIndex - match.length + linkedStyleProperty.length - 1;
-            }
-            */
         }
-        
         return string;
     }
     /**

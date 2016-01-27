@@ -5,4 +5,7 @@ import Cocoa
  * // :TODO: rename to Div,Division,Section,Segment? or? Div sounds best and is closley related to css
  */
 class Container:Element{
+    override func resolveSkin() {
+        self.skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/
+    }
 }

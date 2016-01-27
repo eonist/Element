@@ -47,7 +47,7 @@ private class Utils {
      * Replaces the value with the value from the key pointer
      * // :TODO: write an example
      * NOTE: there is no speed benefit of optimizing querrying for linkedStyleProperty
-     * NOTE: 
+     * NOTE: the sansBracketPattern basically finds the content inside the "<" and the ">"
      * @param cssString: is the original css string in its entirety (not a form of excerpt)
      */
     class func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{

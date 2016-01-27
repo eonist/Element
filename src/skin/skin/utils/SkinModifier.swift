@@ -142,11 +142,12 @@ private class Utils{
      */
     class func floatRight(skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, var _ right:CGFloat){
         if(skin.element!.id == "box1"){
-            Swift.print("floatRight")
+            Swift.print("floatRight right: " + "\(right)")
+            Swift.print("SkinParser.totalWidth(skin): " + "\(SkinParser.totalWidth(skin))")
         }
 
         if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = (rightSiblingSkin!.element as! NSView).frame.x}/*a previous element-sibling floats right*/
-        (skin.element as! NSView).frame.x = right - SkinParser.totalWidth(skin);/*Sets the position of the skin.element*/
+        (skin.element as! NSView).frame.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
     }
     /**
      *

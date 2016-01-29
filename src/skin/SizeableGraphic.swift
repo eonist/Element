@@ -21,6 +21,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
 }
 /**
  * Convenience init methods
+ * TODO: Add explination and example code for each init
  */
 extension SizeableGraphic{
     /*Gradient fill initializers*/

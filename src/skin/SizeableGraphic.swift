@@ -3,6 +3,7 @@ import Cocoa
  * All SizableGraphics are also positionable
  */
 class SizeableGraphic:PositionalGraphic,ISizeable {
+    var trackingArea:NSTrackingArea?
     var size:CGSize
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {//TODO:add the last arg through an extension?
         self.size = size
@@ -70,5 +71,27 @@ extension SizeableGraphic{
     }
     convenience init(_ rect:NSRect, _ decoratable: IGraphicDecoratable){
         self.init(rect.origin,rect.size,decoratable)
+    }
+}
+extension SizeableGraphic{
+    /**
+     *
+     */
+    func updateNSTrackingArea(owner:NSView){
+        trackingArea = NSTrackingArea(rect: frameRect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: element, userInfo: nil)
+        addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+        
+        
+        if(trackingArea != nil) {
+            [self removeTrackingArea:trackingArea];
+            [trackingArea release];
+        }
+        
+        int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+        trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+            options:opts
+            owner:self
+            userInfo:nil];
+        [self addTrackingArea:trackingArea];
     }
 }

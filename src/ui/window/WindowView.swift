@@ -3,6 +3,9 @@ import Cocoa
 /**
  * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
  */
+
+//continue here: try to implement
+
 class WindowView:FlippedView,IElement{
     var id : String?/*css selector id*/
     var parent:IElement?

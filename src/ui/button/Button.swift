@@ -13,7 +13,7 @@ class Button:Element {
     /**
      * Handles actions and drawing states for the mouseEntered event.
      */
-    override func mouseOver() {
+    override func mouseOver(event:MouseEvent) {
         //Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
@@ -21,6 +21,7 @@ class Button:Element {
             setSkinState(getSkinState());
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
         }
+        //TODO: call super here
     }
     /**
      * Handles actions and drawing states for the mouseOut action.

@@ -70,8 +70,11 @@ class GraphicSkin:Skin{
     }
     override func updateTrackingAreas() {
         Swift.print("updateTrackingAreas: " + "\(self)")
-        trackingArea = NSTrackingArea(rect: frameRect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: parent, userInfo: nil)
-        addTrackingArea(trackingArea)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
+        
+        //each decoratable should have a trackingArea
+        
+        trackingArea = NSTrackingArea(rect: frameRect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: element, userInfo: nil)
+        addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
         
         
         if(trackingArea != nil) {

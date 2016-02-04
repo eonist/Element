@@ -81,3 +81,6 @@ private class Utils{
         sizableDecorator.draw()
     }
 }
+extension GraphicSkin{
+    
+}

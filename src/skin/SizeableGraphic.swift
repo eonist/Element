@@ -75,23 +75,15 @@ extension SizeableGraphic{
 }
 extension SizeableGraphic{
     /**
-     *
+     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds. 
      */
     func updateNSTrackingArea(owner:AnyObject?){
-        trackingArea = NSTrackingArea(rect: NSRect(pos.x,pos.y,size.width,size.height), options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: owner, userInfo: nil)
-        graphic.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-        
         
         if(trackingArea != nil) {
-            [self removeTrackingArea:trackingArea];
-            [trackingArea release];
+            graphic.removeTrackingArea(trackingArea!)
         }
         
-        int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
-        trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
-            options:opts
-            owner:self
-            userInfo:nil];
-        [self addTrackingArea:trackingArea];
+        trackingArea = NSTrackingArea(rect: NSRect(pos.x,pos.y,size.width,size.height), options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: owner, userInfo: nil)
+        graphic.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
 }

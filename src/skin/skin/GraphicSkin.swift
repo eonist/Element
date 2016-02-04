@@ -68,6 +68,19 @@ class GraphicSkin:Skin{
     }
     override func updateTrackingAreas() {
         Swift.print("updateTrackingAreas: " + "\(self)")
+        trackingArea = NSTrackingArea(rect: frameRect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: parent, userInfo: nil)
+        
+        if(trackingArea != nil) {
+            [self removeTrackingArea:trackingArea];
+            [trackingArea release];
+        }
+        
+        int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+        trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+            options:opts
+            owner:self
+            userInfo:nil];
+        [self addTrackingArea:trackingArea];
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }

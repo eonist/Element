@@ -6,7 +6,7 @@ import Cocoa
 
 //continue here: try to implement INteractiveView2 here, then on Element aswell, then try to get the buttons working
 
-class WindowView:FlippedView,IElement{
+class WindowView:InteractiveView2,IElement{
     var id : String?/*css selector id*/
     var parent:IElement?
     var state:String = SkinStates.none

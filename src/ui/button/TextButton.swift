@@ -12,7 +12,7 @@ class TextButton:Button {
         super.resolveSkin();
         text = Text(width,height,textString,self)
         addSubview(text!)
-        text?.isInteractive = false;
+        text?.isInteractive = false
     }
     override func setSkinState(skinState:String) {
         super.setSkinState(skinState);

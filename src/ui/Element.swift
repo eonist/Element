@@ -6,7 +6,7 @@ import Cocoa
  * NOTE: subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
  * NOTE: w,h,x,y are stored in the frame instance
  */
-class Element:InteractiveView,IElement {
+class Element:InteractiveView2,IElement {
     var state:String = SkinStates.none
     var skin:ISkin?
     var parent : IElement?

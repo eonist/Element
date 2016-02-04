@@ -1,5 +1,99 @@
-import Foundation
-
-class VSlider {
-
+import Cocoa
+/**
+ * VSlider is a simple vertical slider
+ * @Note the reasan we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
+ * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
+ * // :TODO: rename thumbHeight to thumbWidth or?
+ */
+class VSlider :InteractiveView2{
+    var thumb:Thumb?
+    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
+    var progress:CGFloat
+    var tempThumbMouseY:CGFloat = 0
+    var thumbHeight:CGFloat
+    init(_ width: CGFloat, _ height: CGFloat,_ thumbHeight:CGFloat = CGFloat.NaN, _ progress:CGFloat = 0){
+        self.progress = progress
+        self.thumbHeight = thumbHeight.isNaN ? width:thumbHeight// :TODO: explain in a comment what this does
+        super.init(frame: NSRect(0,0,width,height))
+        createContent()
+    }
+    func createContent(){
+        Swift.print("\(self.dynamicType)" + "createContent: ")
+        let skin = SkinA(NSRect(0,0,frame.width,frame.height),self)
+        addSubview(skin)
+        thumb = Thumb(40,40)
+        addSubview(thumb!)
+    }
+    func onThumbDown(event: MouseEvent){
+        Swift.print("onThumbDown")
+        tempThumbMouseY = event.event!.localPos(thumb!).y
+        Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )
+    }
+    func onThumbMove(event:NSEvent)-> NSEvent?{
+        Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
+        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight);
+        thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight);
+        //post SliderEvent(SliderEvent.change,progress)
+        return event
+    }
+    func onThumbUp(){
+        Swift.print("onThumbUp")
+        NSEvent.removeMonitor(globalMouseMovedHandeler!)
+    }
+    override func mouseDown(event: MouseEvent) {
+        if(event.origin === thumb){onThumbDown(event)}
+    }
+    override func mouseUp(event: MouseEvent) {
+        if(event.origin === thumb){onThumbUp()}
+    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+private class Utils{
+    /**
+     * Returns the x position of a nodes @param progress
+     */
+    class func thumbPosition(progress:CGFloat, _ height:CGFloat, _ thumbHeight:CGFloat)->CGFloat {
+        let minThumbPos:CGFloat = height - thumbHeight;/*Minimum thumb position*/
+        return progress * minThumbPos
+    }
+    /**
+     * Returns the progress derived from a node
+     * @return a number between 0 and 1
+     */
+    class func progress(mouseY:CGFloat,_ tempNodeMouseY:CGFloat,_ height:CGFloat,_ thumbHeight:CGFloat)->CGFloat {
+        if(thumbHeight == height) {return 0}/*if the thumbHeight is the same as the height of the slider then return 0*/
+        let progress:CGFloat = (mouseY-tempNodeMouseY) / (height-thumbHeight)
+        return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
+    }
+}
+class Thumb:InteractiveView2{
+    init(_ width: CGFloat, _ height: CGFloat) {
+        super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
+        createContent()
+    }
+    func createContent(){
+        //Swift.print("create content")
+        let skin = SkinB(NSRect(0,0,frame.width,frame.height),self)
+        addSubview(skin)
+    }
+    override func mouseOver(event:MouseEvent) {
+        Swift.print("\(self.dynamicType)" + " mouseOver() ")
+        super.mouseOver(event)
+    }
+    override func mouseOut(event:MouseEvent) {
+        Swift.print("\(self.dynamicType)" + " mouseOut() ")
+        super.mouseOut(event)
+    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+
+//a bg 50x400
+
+//a button 50x50
+
+//setup some event listeners
+
+//try to move the button
+
+//implement progress and positioning calculations

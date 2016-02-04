@@ -66,6 +66,9 @@ class GraphicSkin:Skin{
         }
         decoratable.draw()
     }
+    override func updateTrackingAreas() {
+        Swift.print("updateTrackingAreas: " + "\(self)")
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 /**

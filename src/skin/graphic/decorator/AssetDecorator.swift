@@ -3,6 +3,11 @@ import Cocoa
  * // :TODO: this solution isnt perfect but it works for now
  * @Note asset is svg for now but in the future it should support png
  */
+
+
+//continue here: you need to think how you can add trackingareas to all svg children aswell and subsequent hitTest 
+
+
 class AssetDecorator:SizeableDecorator{
     var asset : SVGAsset?
     var assetURL : String;

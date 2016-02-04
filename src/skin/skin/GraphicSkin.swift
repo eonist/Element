@@ -68,33 +68,9 @@ class GraphicSkin:Skin{
         }
         decoratable.draw()
     }
-    override func updateTrackingAreas() {
-        Swift.print("updateTrackingAreas: " + "\(self)")
-        
-        //each decoratable should have a weak trackingArea
-        
-        //loop over each decoratable and see if the trackingArea is not nil. if its not then remove it
-        
-        //then add the new trackingArea to the decoratable. 
-        
-        //actually, add the trackingArea when you make the decoratable
-        
-        trackingArea = NSTrackingArea(rect: frameRect, options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: element, userInfo: nil)
-        addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-        
-        
-        if(trackingArea != nil) {
-            [self removeTrackingArea:trackingArea];
-            [trackingArea release];
-        }
-        
-        int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
-        trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
-            options:opts
-            owner:self
-            userInfo:nil];
-        [self addTrackingArea:trackingArea];
-    }
+    /*override func updateTrackingAreas() {
+    Swift.print("updateTrackingAreas: " + "\(self)")
+    }*/
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 /**

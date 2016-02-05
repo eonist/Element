@@ -41,10 +41,10 @@ class VSlider :InteractiveView2{
         Swift.print("onThumbUp")
         NSEvent.removeMonitor(globalMouseMovedHandeler!)
     }
-    override func mouseDown(event: MouseEvent) {
+    override func onEvent(event: Event) {
         if(event.origin === thumb){onThumbDown(event)}
     }
-    override func mouseUp(event: MouseEvent) {
+    override func mouseUp(event: Event) {
         if(event.origin === thumb){onThumbUp()}
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

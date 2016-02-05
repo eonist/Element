@@ -90,7 +90,7 @@ class Thumb:Button2{
 //create a button test in the customWin
 //implement BUttonEvent in Button1
 //try iconbar
-
+//create LeverStepper and LeverSpinner
 
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {

@@ -86,3 +86,12 @@ extension SizeableGraphic{
         graphic.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
 }
+
+
+
+
+//there is a problem with keeping updateTracking area here. the graphic may not have been added to its parent yet. 
+//Check if draw() needs the same condition. If it doesnt then maybe use that. Or implement a selctor type of scheme to trigger updateTrackingRect from the updateTrackingARea in the graphic class.
+// all this seems redundant if you could only set the Graphic to a frame size. I mean, all graphics has frameSize, even line
+
+

@@ -8,9 +8,11 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {//TODO:add the last arg through an extension?
         self.size = size
         super.init(position,decoratable)
-        updateTrackingAreas()
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    override func draw() {
+        updateTrackingAreas()
+        super.draw()
+    }
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */
@@ -19,8 +21,8 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
     func setSizeValue(size: CGSize) {/*<- was named setSize, but objc doesnt allow it*/
         self.size = size
-        updateTrackingAreas()
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /**
  * Convenience init methods
@@ -83,6 +85,7 @@ extension SizeableGraphic{
      * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
      */
     func updateTrackingAreas(){
+        Swift.print("updateTrackingAreas: " + "\(NSRect(pos.x,pos.y,size.width,size.height))")
         if(trackingArea != nil) {graphic.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
         trackingArea = NSTrackingArea(rect: NSRect(pos.x,pos.y,size.width,size.height), options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: graphic, userInfo: nil)
         graphic.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc

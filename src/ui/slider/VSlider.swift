@@ -104,5 +104,8 @@ class Button2:InteractiveView2{
     override func mouseDown(event: MouseEvent) {
         super.onEvent(ButtonEvent(ButtonEvent.down))
     }
+    override func mouseUp(event: MouseEvent) {
+        super.onEvent(ButtonEvent(ButtonEvent.up))
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

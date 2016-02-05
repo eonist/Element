@@ -8,6 +8,9 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {//TODO:add the last arg through an extension?
         self.size = size
         super.init(position,decoratable)
+    }
+    override func draw() {
+        super.draw()
         graphic.updateTrackingArea(NSRect(pos,size))
     }
     /**
@@ -18,7 +21,6 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
     func setSizeValue(size: CGSize) {/*<- was named setSize, but objc doesnt allow it*/
         self.size = size
-        graphic.updateTrackingArea(NSRect(pos,size))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

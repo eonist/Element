@@ -8,7 +8,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {//TODO:add the last arg through an extension?
         self.size = size
         super.init(position,decoratable)
-        updateTrackingAreas()
+        graphic.updateTrackingArea(NSRect(pos,size))
     }
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
@@ -18,7 +18,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
     }
     func setSizeValue(size: CGSize) {/*<- was named setSize, but objc doesnt allow it*/
         self.size = size
-        updateTrackingAreas()
+        graphic.updateTrackingArea(NSRect(pos,size))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
@@ -75,16 +75,5 @@ extension SizeableGraphic{
         self.init(rect.origin,rect.size,decoratable)
     }
 }
-
-
-//continue here: 
-
-//there is a problem with keeping updateTracking area here. the graphic may not have been added to its parent yet. 
-//Check if draw() needs the same condition. If it doesnt then maybe use that. Or implement a selctor type of scheme to trigger updateTrackingRect from the updateTrackingARea in the graphic class.
-// all this seems redundant if you could only set the Graphic to a frame size. I mean, all graphics has frameSize, even line
-//after a test, draw does not garantue that a parent is present. 
-
-//look at the code that has to do with setting the frameSize of RoundRect etc. Toy with the idea of storing size and pos in the frame of the graphic. and having different methods for updating size retrieving size and setting size.
-
 
 

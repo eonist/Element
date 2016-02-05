@@ -31,7 +31,7 @@ class Button:Element {
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
-            setSkinState(getSkinState());
+            setSkinState(getSkinState())
             NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
         }
         //TODO: call super here

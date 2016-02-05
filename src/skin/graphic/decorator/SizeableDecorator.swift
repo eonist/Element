@@ -9,8 +9,8 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
             else{fatalError("Must subclass SizeableGraphic")}
         }
         set{
-            if(decoratable is SizeableGraphic){(decoratable as! SizeableGraphic).size = newValue}
-            else if(decoratable is SizeableDecorator){(decoratable as! SizeableDecorator).size = newValue}
+            if(decoratable is SizeableGraphic){(decoratable as! SizeableGraphic).setSizeValue(newValue)}//<--this line can be merged with the bellow line, just use as! ISizable
+            else if(decoratable is SizeableDecorator){(decoratable as! SizeableDecorator).setSizeValue(newValue)}
             else{fatalError("Must subclass SizeableGraphic")}
         }
     }

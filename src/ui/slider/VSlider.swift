@@ -24,9 +24,9 @@ class VSlider :InteractiveView2{
         thumb = Thumb(40,40)
         addSubview(thumb!)
     }
-    func onThumbDown(event: MouseEvent){
+    func onThumbDown(){
         Swift.print("onThumbDown")
-        tempThumbMouseY = event.event!.localPos(thumb!).y
+        tempThumbMouseY = thumb!.localPos().y
         Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )
     }

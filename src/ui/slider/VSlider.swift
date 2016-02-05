@@ -65,9 +65,9 @@ private class Utils{
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
     }
 }
-class Thumb:InteractiveView2{
-    init(_ width: CGFloat, _ height: CGFloat) {
-        super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
+class Thumb:Button2{
+    override init(_ width: CGFloat, _ height: CGFloat) {
+        super.init(width,height)//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
         createContent()
     }
     func createContent(){
@@ -97,7 +97,6 @@ class Thumb:InteractiveView2{
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
-        //createContent()
     }
     override func mouseDown(event: MouseEvent) {
         super.onEvent(ButtonEvent(ButtonEvent.down,self))

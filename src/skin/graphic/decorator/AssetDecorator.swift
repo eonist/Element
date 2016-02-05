@@ -5,7 +5,7 @@ import Cocoa
  */
 
 
-//continue here: you need to think how you can add trackingareas to all svg children aswell and subsequent hitTest 
+//continue here: you need to think how you can add trackingareas to all svg children aswell and subsequent hitTest, just get the bounds and assert isWithinPath in a tree-search 
 
 
 class AssetDecorator:SizeableDecorator{

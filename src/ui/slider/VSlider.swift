@@ -101,5 +101,8 @@ class Button2:InteractiveView2{
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
         //createContent()
     }
+    override func mouseDown(event: MouseEvent) {
+        <#code#>
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -74,7 +74,7 @@ class Thumb:InteractiveView2{
     }
     func createContent(){
         //Swift.print("create content")
-        let skin = SkinC(frame:NSRect(0,0,frame.width,frame.height),self)
+        let skin = SkinC(frame:NSRect(0,0,frame.width,frame.height))
         addSubview(skin)
     }
     override func mouseOver(event:MouseEvent) {

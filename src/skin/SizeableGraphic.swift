@@ -3,7 +3,6 @@ import Cocoa
  * All SizableGraphics are also positionable
  */
 class SizeableGraphic:PositionalGraphic,ISizeable {
-    var trackingArea:NSTrackingArea?
     var size:CGSize
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {//TODO:add the last arg through an extension?
         self.size = size

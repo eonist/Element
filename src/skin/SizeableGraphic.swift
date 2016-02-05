@@ -4,7 +4,7 @@ import Cocoa
  */
 class SizeableGraphic:PositionalGraphic,ISizeable {
     var size:CGSize
-    var trackingArea:NSTrackingArea?
+    
     init(_ position:CGPoint, _ size:CGSize, _ decoratable: IGraphicDecoratable = BaseGraphic(FillStyle(NSColor.redColor()))) {//TODO:add the last arg through an extension?
         self.size = size
         super.init(position,decoratable)
@@ -73,20 +73,6 @@ extension SizeableGraphic{
     }
     convenience init(_ rect:NSRect, _ decoratable: IGraphicDecoratable){
         self.init(rect.origin,rect.size,decoratable)
-    }
-}
-extension SizeableGraphic{
-    /**
-     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
-     * NOTE: the only way to update trackingArea is to remove it and add a new one
-     * PARAM: owner is the instance that receives the interaction event
-     * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
-     */
-    func updateTrackingAreas(inout trackingArea:NSTrackingArea?,_ rect:NSRect,_ owner:AnyObject? = nil){
-        Swift.print("updateTrackingAreas: " + "\(NSRect(pos.x,pos.y,size.width,size.height))")
-        if(trackingArea != nil) {graphic.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
-        trackingArea = NSTrackingArea(rect: NSRect(pos.x,pos.y,size.width,size.height), options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: graphic, userInfo: nil)
-        graphic.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
     }
 }
 

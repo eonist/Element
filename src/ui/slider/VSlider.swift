@@ -88,7 +88,7 @@ class Thumb:InteractiveView2{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
-//implement button2
+//implement button2 with just mouseDown that sends ButtonEvent.down
 //implement onEvent in interactiview2
 //add type? to Event
 //listen for origin === thumb && event.type == ButtonEvent.down in slider
@@ -97,16 +97,6 @@ class Thumb:InteractiveView2{
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
-        createContent()
+        //createContent()
     }
 }
-
-//a bg 50x400
-
-//a button 50x50
-
-//setup some event listeners
-
-//try to move the button
-
-//implement progress and positioning calculations

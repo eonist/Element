@@ -16,7 +16,7 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
     }
     override func draw() {
         super.draw()
-        
+        graphic.updateTrackingArea(NSRect(pos.x,pos.y,size.width,size.height))
     }
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)

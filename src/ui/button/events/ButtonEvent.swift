@@ -1,6 +1,6 @@
 import Foundation
 
-class ButtonEvent {
+class ButtonEvent:Event{
     static var down:String = "buttonEventDown"
     static var releaseInside:String = "buttonEventReleaseInside"
     static var releaseOutside:String = "buttonEventReleaseOutside"

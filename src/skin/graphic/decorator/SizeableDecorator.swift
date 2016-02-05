@@ -15,7 +15,8 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
         }
     }
     override func draw() {
-        <#code#>
+        super.draw()
+        
     }
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)

@@ -14,6 +14,9 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
             else{fatalError("Must subclass SizeableGraphic")}
         }
     }
+    override func draw() {
+        <#code#>
+    }
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */

@@ -95,3 +95,7 @@ extension SizeableGraphic{
 // all this seems redundant if you could only set the Graphic to a frame size. I mean, all graphics has frameSize, even line
 //after a test, draw does not garantue that a parent is present. 
 
+//look at the code that has to do with 
+
+
+

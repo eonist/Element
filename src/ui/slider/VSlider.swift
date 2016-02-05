@@ -87,12 +87,10 @@ class Thumb:Button2{
 }
 
 //continue here:
-
-//implement button2 with just mouseDown that sends ButtonEvent.down
-//implement onEvent in interactiview2
-//add type? to Event
-//listen for origin === thumb && event.type == ButtonEvent.down in slider
+//create a button test in the customWin
+//implement BUttonEvent in Button1
 //try iconbar
+
 
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {

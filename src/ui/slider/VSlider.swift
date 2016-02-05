@@ -88,6 +88,8 @@ class Thumb:InteractiveView2{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
+//continue here:
+
 //implement button2 with just mouseDown that sends ButtonEvent.down
 //implement onEvent in interactiview2
 //add type? to Event

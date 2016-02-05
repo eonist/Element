@@ -73,29 +73,5 @@ extension SizeableGraphic{
         self.init(rect.origin,rect.size,decoratable)
     }
 }
-extension SizeableGraphic{
-    /**
-     * NOTE: you should use bounds for the rect but we dont rotate the frame so we dont need to use bounds.
-     * NOTE: the only way to update trackingArea is to remove it and add a new one
-     * PARAM: owner is the instance that receives the interaction event
-     * NOTE: we could keep the trackingArea in graphic so its always easy to access, but i dont think it needs to be easily accesible atm.
-     */
-    func updateNSTrackingArea(owner:AnyObject?){
-        if(trackingArea != nil) {graphic.removeTrackingArea(trackingArea!)}//remove old trackingArea if it exists
-        trackingArea = NSTrackingArea(rect: NSRect(pos.x,pos.y,size.width,size.height), options: [NSTrackingAreaOptions.ActiveAlways, NSTrackingAreaOptions.MouseMoved,NSTrackingAreaOptions.MouseEnteredAndExited], owner: owner, userInfo: nil)
-        graphic.addTrackingArea(trackingArea!)//<---this will be in the Skin class in the future and the owner will be set to Element to get interactive events etc
-    }
-}
-
-
-//continue here: 
-
-//there is a problem with keeping updateTracking area here. the graphic may not have been added to its parent yet. 
-//Check if draw() needs the same condition. If it doesnt then maybe use that. Or implement a selctor type of scheme to trigger updateTrackingRect from the updateTrackingARea in the graphic class.
-// all this seems redundant if you could only set the Graphic to a frame size. I mean, all graphics has frameSize, even line
-//after a test, draw does not garantue that a parent is present. 
-
-//look at the code that has to do with setting the frameSize of RoundRect etc. Toy with the idea of storing size and pos in the frame of the graphic. and having different methods for updating size retrieving size and setting size.
-
 
 

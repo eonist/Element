@@ -88,14 +88,14 @@ extension SizeableGraphic{
 }
 
 
-
+//continue here: 
 
 //there is a problem with keeping updateTracking area here. the graphic may not have been added to its parent yet. 
 //Check if draw() needs the same condition. If it doesnt then maybe use that. Or implement a selctor type of scheme to trigger updateTrackingRect from the updateTrackingARea in the graphic class.
 // all this seems redundant if you could only set the Graphic to a frame size. I mean, all graphics has frameSize, even line
 //after a test, draw does not garantue that a parent is present. 
 
-//look at the code that has to do with 
+//look at the code that has to do with setting the frameSize of RoundRect etc. Toy with the idea of storing size and pos in the frame of the graphic. and having different methods for updating size retrieving size and setting size.
 
 
 

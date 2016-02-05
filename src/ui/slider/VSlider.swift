@@ -91,8 +91,8 @@ class Thumb:InteractiveView2{
 //implement button2
 //implement onEvent in interactiview2
 //add type? to Event
-//listen for origin === thumb && event.type == ButtonEvent.down
-//
+//listen for origin === thumb && event.type == ButtonEvent.down in slider
+//try iconbar
 
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {

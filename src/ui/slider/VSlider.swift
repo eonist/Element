@@ -19,7 +19,7 @@ class VSlider :InteractiveView2{
     }
     func createContent(){
         Swift.print("\(self.dynamicType)" + "createContent: ")
-        let skin = SkinA(frame:NSRect(0,0,frame.width,frame.height))
+        let skin = SkinC(frame:NSRect(0,0,frame.width,frame.height))
         addSubview(skin)
         thumb = Thumb(40,40)
         addSubview(thumb!)
@@ -74,7 +74,7 @@ class Thumb:InteractiveView2{
     }
     func createContent(){
         //Swift.print("create content")
-        let skin = SkinC(frame:NSRect(0,0,frame.width,frame.height))
+        let skin = SkinD(frame:NSRect(0,0,frame.width,frame.height))
         addSubview(skin)
     }
     override func mouseOver(event:MouseEvent) {

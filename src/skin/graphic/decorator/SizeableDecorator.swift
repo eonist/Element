@@ -7,7 +7,7 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
         get{
             Swift.print("decoratable: " + "\(decoratable)")
             if(decoratable is ISizeable){return (decoratable as! ISizeable).size}
-            else{fatalError("Must subclass SizeableGraphic")}
+            else{return CGSize(0,0)/*fatalError("Must subclass SizeableGraphic")*/}
         }
         set{
             if(decoratable is SizeableGraphic){(decoratable as! SizeableGraphic).size = newValue}//<--this line can be merged with the bellow line, just use as! ISizable

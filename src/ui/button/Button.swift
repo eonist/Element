@@ -55,7 +55,7 @@ class Button:Element {
     override func mouseUpInside(event:MouseEvent){
         //Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
-        setSkinState(getSkinState());
+        setSkinState(getSkinState())
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
         

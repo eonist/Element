@@ -19,7 +19,7 @@ class Button:Element {
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-            super.onEvent(ButtonEvent(ButtonEvent.over,self))
+            self.event!(ButtonEvent(ButtonEvent.over,self))
         }
         //TODO: call super here
     }
@@ -33,7 +33,7 @@ class Button:Element {
             state = SkinStates.none
             setSkinState(getSkinState())
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.out, object:self)
-            super.onEvent(ButtonEvent(ButtonEvent.out,self))
+            self.event!(ButtonEvent(ButtonEvent.out,self))
         }
         //TODO: call super here
     }
@@ -46,7 +46,7 @@ class Button:Element {
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
-        super.onEvent(ButtonEvent(ButtonEvent.down,self))
+        self.event!(ButtonEvent(ButtonEvent.down,self))
     }
     /**
      * Handles actions and drawing states for the release event.
@@ -58,6 +58,8 @@ class Button:Element {
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
+        
+        //continue here use self.event, maybe even remove the "!" then look how selectbutton works and maybe override onEvent
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.

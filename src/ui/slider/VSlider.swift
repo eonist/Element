@@ -86,11 +86,7 @@ class Thumb:Button2{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
-//continue here:
-//create a button test in the customWin
-//implement BUttonEvent in Button1
-//try iconbar
-//create LeverStepper and LeverSpinner
+
 
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {

@@ -19,7 +19,8 @@ class Button:Element {
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
-            NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
+            //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
+            super.onEvent(ButtonEvent(ButtonEvent.rollOver,self))
         }
         //TODO: call super here
     }

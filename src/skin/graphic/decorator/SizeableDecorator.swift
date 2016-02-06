@@ -5,7 +5,7 @@ import Foundation
 class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
         get{
-            Swift.print("decoratable: " + "\(decoratable)")
+            //Swift.print("decoratable: " + "\(decoratable)")
             if(decoratable is ISizeable){return (decoratable as! ISizeable).size}
             else{return CGSize(0,0)/*<- bug fix, GradientSKin needs size to get the trackingArea working was --> *//*fatalError("Must subclass SizeableGraphic")*/}
         }

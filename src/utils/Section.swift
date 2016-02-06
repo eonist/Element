@@ -9,5 +9,6 @@ class Section:Element {
     }*/
     override func onEvent(event: Event) {
         Swift.print("Section.event: " + "\(event)")
+        super.onEvent(event)
     }
 }

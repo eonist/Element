@@ -18,7 +18,6 @@ class SVGAsset:InteractiveView2 {
         layer!.masksToBounds = false//this is needed!!!*/
         addSubview(svg)
     }
-    
     /**
      *
      */

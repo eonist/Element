@@ -1,5 +1,7 @@
 import Cocoa
 /**
+ * @Note: this class also works greate with RadioBullets
+ * @Note: Remember to add the selectGroup instance to the view so that the event works correctly // :TODO: this is a bug try to fix it
  * EXAMPLE:
  * let radioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)

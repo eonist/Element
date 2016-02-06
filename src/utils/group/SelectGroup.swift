@@ -8,7 +8,7 @@ import Cocoa
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
 
-
+//so selectGroup needs to know about 
 
 class SelectGroup:NSView{
     private var selectables:Array<ISelectable> = [];

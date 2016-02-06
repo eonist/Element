@@ -7,7 +7,7 @@ import Cocoa
  */
 
 
-//continue here: add setSize to skin
+//continue here: make skin extend interactiveview2, probably disable ineteractivity when using TextSkin
 
 
 class Skin:FlippedView,ISkin{

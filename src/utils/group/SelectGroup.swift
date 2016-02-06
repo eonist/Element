@@ -37,16 +37,14 @@ class SelectGroup{
         selectables.append(selectable);
     }
     func onSelect(event:Event){
-        if(event.type == SelectEvent.select){ Swift.print("SelectGroup.onEvent() ")}
+        if(event.type == SelectEvent.select){
+            Swift.print("SelectGroup.onEvent() ")
+            NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
+            selected = (sender as! NSNotification).object as? ISelectable
+            SelectModifier.unSelectAllExcept(selected!, selectables);
+            NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:self)
+        }
     }
-    
-    @objc func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc
-        //Swift.print("SelectGroup.onSelect(): " + String(sender))
-        NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
-        selected = (sender as! NSNotification).object as? ISelectable
-        SelectModifier.unSelectAllExcept(selected!, selectables);
-        NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:self)
-    }/**/
     
     //@objc func onButtonDown(sender: AnyObject) {
         //Swift.print("SelectGroup.onButtonDown() ")

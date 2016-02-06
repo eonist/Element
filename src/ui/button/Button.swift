@@ -9,17 +9,11 @@ class Button:Element {
         super.init(width, height, parent, id)
         //addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
-    /*override func hitTest(aPoint: NSPoint) -> NSView? {
-    Swift.print("---")
-    let tempHit = super.hitTest(aPoint)
-    Swift.print("tempHit: " + "\(tempHit)")
-    return tempHit
-    }*/
     /**
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseOver(event:MouseEvent) {
-        Swift.print("Button.mouseOver() ")
+        //Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
@@ -33,7 +27,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseOut action.
      */
     override func mouseOut(event:MouseEvent) {
-        Swift.print("Button.mouseOut() ")
+        //Swift.print("Button.mouseOut() ")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
@@ -47,7 +41,7 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(event:MouseEvent) {
-        Swift.print("Button.mouseDown() ")
+        //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)

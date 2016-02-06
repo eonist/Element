@@ -8,7 +8,8 @@ import Cocoa
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
 
-//so selectGroup needs to know about 
+//continue here: so selectGroup needs to hock into the parent of the SelectableButton to get the onEvent call, a way to do this is to use selectors and clousures.
+//
 
 class SelectGroup:NSView{
     private var selectables:Array<ISelectable> = [];

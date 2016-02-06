@@ -21,7 +21,6 @@ class Button:Element {
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
             self.event!(ButtonEvent(ButtonEvent.over,self))
         }
-        //TODO: call super here
     }
     /**
      * Handles actions and drawing states for the mouseOut action.
@@ -35,7 +34,6 @@ class Button:Element {
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.out, object:self)
             self.event!(ButtonEvent(ButtonEvent.out,self))
         }
-        //TODO: call super here
     }
     /**
      * Handles actions and drawing states for the down event.

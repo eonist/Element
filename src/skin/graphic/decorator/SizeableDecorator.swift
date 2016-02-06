@@ -5,6 +5,7 @@ import Foundation
 class SizeableDecorator:PositionalDecorator,ISizeable {
     var size:CGSize{
         get{
+            Swift.print("decoratable: " + "\(decoratable)")
             if(decoratable is ISizeable){return (decoratable as! ISizeable).size}
             else{fatalError("Must subclass SizeableGraphic")}
         }

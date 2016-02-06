@@ -14,9 +14,6 @@ class WindowView:InteractiveView2,IElement{
         self.parent = parent
         self.id = id
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
-        self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!
         resolveSkin()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

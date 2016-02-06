@@ -5,7 +5,7 @@ class SelectGroupEvent:Event {
     static var select : String = "selectGroupSelect";/*This event is dispatched before the _selected variable is set in the SelectGroup instance*/
     //static var deSelect : String = "selectGroupDeSelect";
     var selectable : ISelectable
-    init(_ type: String, _ origin: AnyObject,_ selectable:ISelectable = nil) {
+    init(_ type: String, _ origin: AnyObject,_ selectable:ISelectable) {
         self.selectable = selectable
         super.init(type,origin)
     }

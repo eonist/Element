@@ -8,6 +8,6 @@ class Section:Element {
     return String(Section)
     }*/
     override func onEvent(event: Event) {
-        Swift.print("event: " + "\(event)")
+        Swift.print("Section.event: " + "\(event)")
     }
 }

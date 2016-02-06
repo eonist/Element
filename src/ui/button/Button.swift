@@ -57,7 +57,7 @@ class Button:Element {
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
-        super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
+        self.event!(ButtonEvent(ButtonEvent.upInside,self))
         
         //continue here use self.event, maybe even remove the "!" then look how selectbutton works and maybe override onEvent
     }
@@ -70,13 +70,13 @@ class Button:Element {
         state = SkinStates.none
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
-        super.onEvent(ButtonEvent(ButtonEvent.upOutside,self))
+        self.event!(ButtonEvent(ButtonEvent.upOutside,self))
     }
     /**
      * Convenince
      */
     override func mouseUp(event: MouseEvent) {
-        super.onEvent(ButtonEvent(ButtonEvent.up,self))
+        self.event!(ButtonEvent(ButtonEvent.up,self))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

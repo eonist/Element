@@ -1,8 +1,9 @@
 import Cocoa
 /**
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
+ * TODO: you need to think how you can add trackingareas to all svg children aswell and subsequent hitTest, just get the bounds and assert isWithinPath in a tree-search
  */
-class SVGAsset:FlippedView {
+class SVGAsset:InteractiveView2 {
     var svg:SVG
     init(_ path:String) {
         //Swift.print("SVGAsset.init()")
@@ -12,9 +13,9 @@ class SVGAsset:FlippedView {
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
-        self.wantsLayer = true/*if true then view is layer backed*/
+        /*self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!
+        layer!.masksToBounds = false//this is needed!!!*/
         addSubview(svg)
     }
     

@@ -34,7 +34,7 @@ class Button:Element {
             state = SkinStates.none
             setSkinState(getSkinState())
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.out, object:self)
-            super.onEvent(ButtonEvent(ButtonEvent.over,self))
+            super.onEvent(ButtonEvent(ButtonEvent.out,self))
         }
         //TODO: call super here
     }
@@ -45,8 +45,9 @@ class Button:Element {
         //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
-        super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
+        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
+        //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
+        super.onEvent(ButtonEvent(ButtonEvent.down,self))
     }
     /**
      * Handles actions and drawing states for the release event.
@@ -56,7 +57,8 @@ class Button:Element {
         //Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
+        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
+        super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
@@ -66,6 +68,13 @@ class Button:Element {
         //Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
-        NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
+        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
+        super.onEvent(ButtonEvent(ButtonEvent.upOutside,self))
+    }
+    /**
+     * Convenince
+     */
+    override func mouseUp(event: MouseEvent) {
+        super.onEvent(ButtonEvent(ButtonEvent.up,self))
     }
 }

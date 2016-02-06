@@ -20,7 +20,7 @@ class Button:Element {
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-            super.onEvent(ButtonEvent(ButtonEvent.rollOver,self))
+            super.onEvent(ButtonEvent(ButtonEvent.over,self))
         }
         //TODO: call super here
     }
@@ -33,7 +33,8 @@ class Button:Element {
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
             setSkinState(getSkinState())
-            NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOut, object:self)
+            //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.out, object:self)
+            super.onEvent(ButtonEvent(ButtonEvent.over,self))
         }
         //TODO: call super here
     }

@@ -3,7 +3,6 @@ import Cocoa
  * // :TODO: this solution isnt perfect but it works for now
  * @Note asset is svg for now but in the future it should support png
  */
-
 class AssetDecorator:SizeableDecorator{
     var asset : SVGAsset?
     var assetURL : String;

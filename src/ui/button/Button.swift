@@ -39,7 +39,7 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(event:MouseEvent) {
-        //Swift.print("Button.mouseDown() ")
+        Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)

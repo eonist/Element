@@ -37,7 +37,7 @@ class SelectGroup{
         selectables.append(selectable);
     }
     func onEvent(event:Event){
-        Swift.print("SelectGroup")
+        Swift.print("SelectGroup.onEvent()")
     }
     func onButtonSelect(){
         

@@ -5,5 +5,5 @@ import Foundation
  */
 class SelectEvent:Event {
     static var select:String = "select"
-    //static var deSelect:String = "deSelect"//use
+    //static var deSelect:String = "deSelect"//unSelect is also an option?
 }

@@ -30,8 +30,12 @@ class SelectGroup{
         //let anyObj:AnyObject = selectable
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as AnyObject)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as AnyObject)
+        if(selectable is IEventSender){(selectable as! IEventSender).event}
         selectables.append(selectable);
+    }
+    func onEvent(event:Event){
+        
     }
     func onButtonSelect(){
         

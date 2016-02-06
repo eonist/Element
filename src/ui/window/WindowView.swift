@@ -2,10 +2,8 @@ import Cocoa
 
 /**
  * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
+ * TODO: window should have a background element to target. check legacy code to confirm theory
  */
-
-//continue here: try to implement INteractiveView2 here, then on Element aswell, then try to get the buttons working
-
 class WindowView:InteractiveView2,IElement{
     var id : String?/*css selector id*/
     var parent:IElement?

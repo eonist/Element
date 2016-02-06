@@ -32,15 +32,12 @@ class SelectGroup{
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as AnyObject)
         if(selectable is IEventSender){
-            (selectable as! IEventSender).event = onEvent
+            (selectable as! IEventSender).event = onSelect
         }
         selectables.append(selectable);
     }
-    func onEvent(event:Event){
+    func onSelect(event:Event){
         if(event.type == SelectEvent.select){ Swift.print("SelectGroup.onEvent() ")}
-    }
-    func onButtonSelect(){
-        
     }
     
     @objc func onSelect(sender: AnyObject) {// :TODO: make this as protected since you may want to impose different functionaly when clicked, like multi select etc

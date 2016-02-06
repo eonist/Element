@@ -7,7 +7,6 @@ import Cocoa
  * NOTE: Why do we add tracking areas to the parent: because all mouseenter / exit mousemoved should be handled by the element not the skin
  */
 class GraphicSkin:Skin{
-    var trackingArea:NSTrackingArea?
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
         SkinModifier.float(self)

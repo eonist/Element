@@ -11,16 +11,12 @@ import Cocoa
 //continue here: so selectGroup needs to hock into the parent of the SelectableButton to get the onEvent call, a way to do this is to use selectors and clousures.
 //look at your selector example both the one on twitter and in the event article. Maybe we can make it work.
 
-class SelectGroup:NSView{
+class SelectGroup{
     private var selectables:Array<ISelectable> = [];
     private var selected:ISelectable?;
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
         self.selected = selected
-        super.init(frame: NSRect(0,0,0,0))/*if this has a size, makesure to invalidate its hitarea to not confuse overlaying UI elements*/
         addSelectables(selectables);
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     func addSelectables(selectables:Array<ISelectable>){
         //Swift.print("SelectGroup.addSelectables()")

@@ -9,7 +9,7 @@ class Button:Element {
         super.init(width, height, parent, id)
         //addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    
     /**
      * Handles actions and drawing states for the mouseEntered event.
      */
@@ -77,4 +77,5 @@ class Button:Element {
     override func mouseUp(event: MouseEvent) {
         super.onEvent(ButtonEvent(ButtonEvent.up,self))
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

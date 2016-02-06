@@ -39,7 +39,7 @@ class SelectGroup:EventSender{
     }
     func onSelect(event:Event){
         if(event.type == SelectEvent.select){
-            Swift.print("SelectGroup.onEvent() ")
+            //Swift.print("SelectGroup.onEvent() ")
             //NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
             self.event!(SelectGroupEvent(SelectGroupEvent.select,self,selected))
             selected = event.origin as? ISelectable

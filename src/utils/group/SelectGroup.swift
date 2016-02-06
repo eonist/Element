@@ -43,7 +43,8 @@ class SelectGroup:EventSender{
             NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
             selected = event.origin as? ISelectable
             SelectModifier.unSelectAllExcept(selected!, selectables);
-            NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.change, object:self)
+            self.event!(SelectGroupEvent(SelectGroupEvent.change,self))
+            //NSNotificationCenter.defaultCenter().postNotificationName(, object:self)
         }
     }
     

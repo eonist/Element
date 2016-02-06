@@ -9,7 +9,7 @@ import Cocoa
  */
 
 //continue here: so selectGroup needs to hock into the parent of the SelectableButton to get the onEvent call, a way to do this is to use selectors and clousures.
-//
+//look at your selector example both the one on twitter and in the event article. Maybe we can make it work.
 
 class SelectGroup:NSView{
     private var selectables:Array<ISelectable> = [];

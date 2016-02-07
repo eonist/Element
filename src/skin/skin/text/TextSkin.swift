@@ -23,6 +23,10 @@ class TextSkin:Skin,ITextSkin{
     override func draw() {
         if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
             SkinModifier.float(self)
+            if(hasSizeChanged) {
+                let padding:Padding = StylePropertyParser.padding(self);
+                TextFieldModifier.size(textField, width + padding.left + padding.right, height + padding.top + padding.bottom);
+            }
             if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
             if(hasTextChanged) {hasTextChanged = false}
             SkinModifier.align(self, textField)
@@ -33,13 +37,13 @@ class TextSkin:Skin,ITextSkin{
         
         //Continue here, bug here cant get width
         
-        var padding:Padding = StylePropertyParser.padding(self);
+        let padding:Padding = StylePropertyParser.padding(self);
         let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right;// :TODO: only querry this if the size has changed?
         //Swift.print("width: " + "\(width)")
         let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom;// :TODO: only querry this if the size has changed?
         //Swift.print("height: " + "\(height)")
-        textField.frame.width = width
-        textField.frame.height = height
+        textField.frame.width = width/*SkinParser.width(this);*/
+        textField.frame.height = height/*SkinParser.height(this);*/
         super.frame.width = width//quick fix
         super.frame.height = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)

@@ -28,6 +28,10 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      */
     class func float(skin:Skin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
         //Swift.print("SkinModifier.float()")
+        
+        //continue here: log only TextSkin and see if it gets the correct y value. 
+        
+        
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/

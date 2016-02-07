@@ -22,8 +22,10 @@ class TextSkin:Skin,ITextSkin{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func draw() {
-        //do aligning here
-        applyProperties(textField);
+        if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
+            SkinModifier.float(self)
+            applyProperties(textField);
+        }
         super.draw()
     }
     func applyProperties(textField:NSText){

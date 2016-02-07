@@ -8,9 +8,20 @@ import Foundation
 class LeverSpinner : Element{
     var textInput:TextInput
     var stepper:LeverStepper
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
-        super.init(width, height, 0,0,parent, id)
+    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+        super.init(width, height, parent, id)
     }
-
+    override func resolveSkin() {
+        super.resolveSkin();
+        plusButton = addSubView(Button(height,height,self,"plus")) as? Button;
+        minusButton = addSubView(Button(height,height,self, "minus")) as? Button;
+    }
+    /**
+     * Returns "Spinner"
+     * @Note This function is used to find the correct class type when synthezing the element stack
+     */
+    override func getClassType() -> String {
+        return String(Spinner)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

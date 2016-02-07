@@ -12,7 +12,7 @@ class LeverSpinner : Element{
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         textInput = Text(100,20,"Hello world",self)
         addSubview(text)
         text.isInteractive = false

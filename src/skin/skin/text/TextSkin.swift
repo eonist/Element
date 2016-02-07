@@ -24,7 +24,9 @@ class TextSkin:Skin,ITextSkin{
     override func draw() {
         if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
             SkinModifier.float(self)
-            applyProperties(textField);
+            if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
+            if(hasTextChanged) {hasTextChanged = false}
+            SkinModifier.align(self, textField)
         }
         super.draw()
     }

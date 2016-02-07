@@ -5,12 +5,13 @@ import Cocoa
  * TODO: WindowView should have a background element to target. check legacy code to confirm theory
  */
 class WindowView:Element{
+    var background:IElement?
     /**
      * Draws the graphics
      */
     override func resolveSkin() {
         super.resolveSkin()
-        addSubView(Element(0,0,self,"background"))
+        background = addSubView(Element(0,0,self,"background")) as? IElement
     }
     /**
      * Returns the class type of the Class instance
@@ -18,7 +19,8 @@ class WindowView:Element{
     override func getClassType()->String{
         return String(Window)//Window can be targeted via the id so we use Window for all Window subclasses, although this can be overriden in said subclasses
     }
-    func setSize(width: CGFloat, _ height: CGFloat) {
-        <#code#>
+    override func setSize(width: CGFloat, _ height: CGFloat) {
+        super.setSize(width, height)
+        background?.setSize(width, height)
     }
 }

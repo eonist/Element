@@ -75,6 +75,7 @@ class Button:Element {
      * Convenince
      */
     override func mouseUp(event: MouseEvent) {
+        Swift.print("Button.mouseUp: ")
         self.event!(ButtonEvent(ButtonEvent.up,self))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

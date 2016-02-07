@@ -11,7 +11,7 @@ class WindowView:Element{
      */
     override func resolveSkin() {
         super.resolveSkin()
-        background = addSubView(Element(0,0,self,"background")) as? IElement
+        background = addSubView(Element(width,height,self,"background")) as? IElement
     }
     /**
      * Returns the class type of the Class instance

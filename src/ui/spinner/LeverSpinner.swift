@@ -14,7 +14,7 @@ class LeverSpinner : Element{
     override func resolveSkin() {
         super.resolveSkin()
         textInput = Text(100,20,"Hello world",self)
-        addSubview(text)
+        addSubview(self.text)
         text.isInteractive = false
         
         stepper = addSubView(LeverStepper(100,24,self)) as! LeverStepper

@@ -13,8 +13,8 @@ class TextArea:Element {
         super.setSize(width, height);
         text!.setSize(width, height);
     }
-    func setText(text:String) {
-        text.setText(text);
+    func setTextValue(text:String) {
+        self.text!.setText(text)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -9,6 +9,10 @@ class TextArea:Element {
         self.textString = text;
         super.init(width, height, parent, id)
     }
+    override func resolveSkin() {
+        super.resolveSkin();
+        text = addSubView(Text(width,height,self.textString,this)) as? Text
+    }
     func setSize(width:CGFloat, height:CGFloat) {
         super.setSize(width, height);
         text!.setSize(width, height);

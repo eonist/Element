@@ -40,7 +40,7 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(event:MouseEvent) {
-        //Swift.print("Button.mouseDown() ")
+        Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
@@ -52,7 +52,7 @@ class Button:Element {
      * @Note: bubbling= true was added to make Stepper class dragable
      */
     override func mouseUpInside(event:MouseEvent){
-        //Swift.print("Button.mouseUpInside: ")
+        Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
@@ -65,7 +65,7 @@ class Button:Element {
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpOutside(event:MouseEvent){
-        //Swift.print("Button.mouseUpOutside: ")
+        Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)

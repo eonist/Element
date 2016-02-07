@@ -25,7 +25,7 @@ class TextSkin:Skin,ITextSkin{
             SkinModifier.float(self)
             if(hasSizeChanged) {
                 let padding:Padding = StylePropertyParser.padding(self);
-                TextFieldModifier.size(textField, width + padding.left + padding.right, height + padding.top + padding.bottom);
+                TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom);
             }
             if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
             if(hasTextChanged) {hasTextChanged = false}

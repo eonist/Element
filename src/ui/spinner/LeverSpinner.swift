@@ -13,7 +13,8 @@ class LeverSpinner : Element{
     }
     override func resolveSkin() {
         super.resolveSkin();
-        
+        let leverStepper:LeverStepper = addSubView(LeverStepper(100,24,self)) as! LeverStepper
+        leverStepper
     }
     /**
      * Returns "Spinner"

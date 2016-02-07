@@ -33,9 +33,10 @@ class TextSkin:Skin,ITextSkin{
         
         //Continue here, bug here cant get width
         
-        let width:CGFloat = StylePropertyParser.width(self) ?? super.width!
+        var padding:Padding = StylePropertyParser.padding(self);
+        let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right;// :TODO: only querry this if the size has changed?
         //Swift.print("width: " + "\(width)")
-        let height:CGFloat = StylePropertyParser.height(self) ?? super.height!
+        let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom;// :TODO: only querry this if the size has changed?
         //Swift.print("height: " + "\(height)")
         textField.frame.width = width
         textField.frame.height = height
@@ -54,5 +55,17 @@ class TextSkin:Skin,ITextSkin{
         hasTextChanged = true;
         draw();
     }
+    
+    /**
+     * // :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
+     */
+    /*override func getWidth() -> CGFloat {
+        if(!StylePropertyParser.value(self, "wordWrap")){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
+            var padding:Padding = StylePropertyParser.padding(self);
+            return textField.width + padding.left + padding.right;
+        }else {return super.getWidth()}
+    }
+     */
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

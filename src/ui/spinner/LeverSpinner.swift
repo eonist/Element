@@ -8,5 +8,9 @@ import Foundation
 class LeverSpinner : Element{
     var textInput:TextInput
     var stepper:LeverStepper
-    
+    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
+        super.init(width, height, 0,0,parent, id)
+    }
+
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

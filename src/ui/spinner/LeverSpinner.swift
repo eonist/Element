@@ -6,19 +6,19 @@ import Foundation
  * @Note the reason we dont extend the Stepper component is because the the Stepper component impliments RepeateButton, which LeverStepper doesnt, we could override creating the RepeateButtons but it would obfuscate this class a little, and its nice to have this class as simple as possible since we might need to create different steppers or even extend this class// :TODO: what about Not implimenting RepeatButton in Spinner then and make another class named RepeatStepper and RepeatSpinner?
  */
 class LeverSpinner : Element{
-    //var textInput:TextInput
-    //var stepper:LeverStepper
+    var textInput:TextInput?
+    var stepper:LeverStepper?
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
         super.resolveSkin();
-        let text = Text(100,20,"Hello world",self)
+        textInput = Text(100,20,"Hello world",self)
         addSubview(text)
         text.isInteractive = false
         
-        let leverStepper:LeverStepper = addSubView(LeverStepper(100,24,self)) as! LeverStepper
-        leverStepper
+        stepper = addSubView(LeverStepper(100,24,self)) as! LeverStepper
+        
     }
     /**
      * Returns "Spinner"

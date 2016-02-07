@@ -18,6 +18,7 @@ class TextSkin:Skin,ITextSkin{
         applyProperties(textField);
         SkinModifier.float(self)
         SkinModifier.align(self, textField)
+        textField.hidden = SkinParser.display(self) == CSSConstants.none
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func draw() {

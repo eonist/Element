@@ -1,8 +1,8 @@
 import Cocoa
 
 /**
- * NOTE: we dont extend Element or InteractiveView here because this view does not need the features that InteractiveView brings
- * TODO: window should have a background element to target. check legacy code to confirm theory
+ * NOTE: WindowView needs the interactiveView so that Element has, so that events can propegate to it
+ * TODO: WindowView should have a background element to target. check legacy code to confirm theory
  */
 class WindowView:Element{
     /**

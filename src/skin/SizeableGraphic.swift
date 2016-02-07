@@ -9,10 +9,10 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
         self.size = size
         super.init(position,decoratable)
     }
-    override func draw() {
-        super.draw()
-        graphic.updateTrackingArea(NSRect(pos,size))
-    }
+    /*override func draw() {
+    super.draw()
+    //graphic.updateTrackingArea(NSRect(pos,size))
+    }*/
     /**
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */

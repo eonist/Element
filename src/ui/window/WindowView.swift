@@ -10,6 +10,7 @@ class WindowView:Element{
      */
     override func resolveSkin() {
         super.resolveSkin()
+        addSubView(Element(0,0,self,"background"))
     }
     /**
      * Returns the class type of the Class instance

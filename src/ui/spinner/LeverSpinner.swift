@@ -13,8 +13,7 @@ class LeverSpinner : Element{
     }
     override func resolveSkin() {
         super.resolveSkin();
-        plusButton = addSubView(Button(height,height,self,"plus")) as? Button;
-        minusButton = addSubView(Button(height,height,self, "minus")) as? Button;
+        
     }
     /**
      * Returns "Spinner"

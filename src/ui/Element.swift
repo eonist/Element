@@ -44,6 +44,14 @@ class Element:InteractiveView2,IElement {
         skin!.setSkinState(state);
     }
     /**
+     * Sets the width and height of the skin and this instance.
+     */
+    func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
+        frame.size.width = width//<--im not sure these are correct? i get that we have to store size somewhere but frame is such a central variable fro appkit
+        frame.size.height = height
+        self.skin!.setSize(width, height);
+    }
+    /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
      * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes

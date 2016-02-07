@@ -37,6 +37,6 @@ class TextButton:Button {
     * Sets the text in the _text instance
     */
     func applyText(text:String){
-        self.text!.applyText(text);
+        self.text!.setText(text);
     }
 }

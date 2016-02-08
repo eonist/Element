@@ -3,14 +3,14 @@ import Cocoa
  * TODO: For the sake of optiomization, TextSkin should not extend Skin, but rather extend NSText. Less views means better speed
  */
 class TextSkin:Skin,ITextSkin{
-    var textField:CustomText;
+    var textField:TextField;
     //the bellow variable is a little more complex in the original code
     override var width:CGFloat? {get{return textField.frame.width} set{textField.frame.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         //Swift.print("TextSkin.init()")
-        textField = CustomText(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//<--TODO: these default values must be wrong, set w and h to 0
+        textField = TextField(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//<--TODO: these default values must be wrong, set w and h to 0
         //textField.sizeToFit()
         textField.stringValue = text
         super.init(style, state, element)
@@ -34,7 +34,7 @@ class TextSkin:Skin,ITextSkin{
         }
         super.draw()
     }
-    func applyProperties(textField:CustomText){
+    func applyProperties(textField:TextField){
         
         //Continue here, bug here cant get width
         

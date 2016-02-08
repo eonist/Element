@@ -30,6 +30,8 @@ class TextSkin:Skin,ITextSkin{
             if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
             if(hasTextChanged) {hasTextChanged = false}
             SkinModifier.align(self, textField)
+            let text = NSText()
+            text.x
         }
         super.draw()
     }

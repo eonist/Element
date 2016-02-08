@@ -291,12 +291,12 @@ private class Utils{
             let stringValue:String = String(value)
             let matches = stringValue.matches(pattern)
             for match:NSTextCheckingResult in matches {
-                var valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
                 let valNum =  CGFloat(Double(String(valStr))!)
                 if(suffix == "%") {
                     
-                    var val:CGFloat = valNum / 100 * (skin.element.getParent() != nil ? (totalWidth(skin.element.getParent() as IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
+                    let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
                     //				trace("skin.element.parent != null: " + skin.element.parent != null);
                     //				trace("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin);
                     return val
@@ -306,14 +306,25 @@ private class Utils{
                     return valNum * CSSConstants.emsFontSize;/*["suffix"] == "ems"*/
                 }
             }
-            return 0
-        }
-        else{
+            
+        }else{
             //fatalError("NOT IMPLEMENTED YET")
             //be warned this method is far from complete
             return 0
             
         }
+    }
+    /**
+    * Returns the total width
+    */
+    class func totalWidth(element:IElement)->CGFloat {/*beta*/
+        if(element.skin != nil){
+            let margin:Margin = SkinParser.margin(element.skin!)
+            let border:Border = SkinParser.border(element.skin!)
+            let padding:Padding = SkinParser.padding(element.skin!)
+            let width:CGFloat = element.getWidth();/*StylePropertyParser.height(element.skin);*/
+            return margin.left + border.left + padding.left + width - padding.right - border.right - margin.right/*Note used to be + padding.right + border.right + margin.right*/
+        }else {return element.getWidth()}
     }
     /**
      * new

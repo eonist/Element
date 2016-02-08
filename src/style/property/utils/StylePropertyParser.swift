@@ -289,7 +289,9 @@ private class Utils{
         else if(value is String){/*value is String*/
             let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
             let stringValue:String = String(value)
+            Swift.print("stringValue: " + "\(stringValue)")
             let matches = stringValue.matches(pattern)
+            Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
                 let valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1

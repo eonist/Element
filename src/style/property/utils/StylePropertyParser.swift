@@ -287,11 +287,11 @@ private class Utils{
         if(value is Int){ return CGFloat(value as! Int)}
         else if(value is CGFloat){ return value as? CGFloat}
         else if(value is String){/*value is String*/
-            let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+            let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//<--this can go into a static class variable since it is used twice in this class
             let stringValue:String = value as! String
-            Swift.print("stringValue: " + "\(stringValue)")
+            //Swift.print("stringValue: " + "\(stringValue)")
             let matches = stringValue.matches(pattern)
-            Swift.print("matches.count: " + "\(matches.count)")
+            //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
                 let valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1

@@ -283,9 +283,9 @@ private class Utils{
     /**
      * // :TODO: explain what this method is doing
      */
-    class func metric(value:Any?,_ skin:ISkin)->CGFloat? {
+    class func metric(value:Any?,_ skin:ISkin)->CGFloat {
         if(value is Int){ return CGFloat(value as! Int)}
-        else if(value is CGFloat){ return value as? CGFloat}
+        else if(value is CGFloat){ return value as! CGFloat}
         else if(value is String){/*value is String*/
             let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
             let stringValue:String = String(value)
@@ -307,12 +307,10 @@ private class Utils{
                 }
             }
             
-        }else{
-            //fatalError("NOT IMPLEMENTED YET")
-            //be warned this method is far from complete
-            return 0
-            
         }
+        //fatalError("NOT IMPLEMENTED YET")
+        //be warned this method is far from complete
+        return 0
     }
     /**
     * Returns the total width

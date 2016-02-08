@@ -1,5 +1,6 @@
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  
 [Follow the Progress on my blog](http://www.stylekit.org)   
+or
 [Follow the progress on Twitter](https://twitter.com/stylekit_org)  
 
 ### RadioBullet:

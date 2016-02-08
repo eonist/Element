@@ -293,7 +293,12 @@ private class Utils{
             for match:NSTextCheckingResult in matches {
                 var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
-                if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
+                if(suffix == "%") {
+                    value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize
+                }else {
+                    //print("ems");
+                    return value * CSSConstants.EMS_FONT_SIZE;/*["suffix"] == "ems"*/
+                }
             }
             return 0
         }

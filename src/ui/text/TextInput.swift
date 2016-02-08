@@ -13,7 +13,7 @@ class TextInput :Element{
     override func resolveSkin() {
         super.resolveSkin();
         //isInteractive = true//<-- only the textField should be interactive
-        //text = addSubView(Text(width,height,textString,self)) as? Text
+        text = addSubView(Text(width,height,textString,self)) as? Text
         inputTextArea = addSubView(TextArea(width,height,inputString,self)) as? TextArea;
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

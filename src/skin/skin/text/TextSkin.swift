@@ -74,24 +74,3 @@ class TextSkin:Skin,ITextSkin{
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-class TextField:NSTextField{
-    //override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
-    
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-    }
-    
-    //continue here: try to implement a subclass of NSText in TextSkin with the new hitTest
-    
-    /**
-    * NOTE: You must use InteractiveView as a parent for this class to work
-    * NOTE: the hitTesting bellow is the only combination i found that will give a correct hit. the x can also be derived from the
-    */
-    override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("CustomText: hitTest()" + "\(aPoint)" + " localPos(): " + "\(localPos())")
-        let tempPos = self.convertPoint(aPoint,fromView:nil)
-        Swift.print("tempPos: " + "\(tempPos)")
-        return super.hitTest(CGPoint(aPoint.x,localPos().y))
-    }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-}

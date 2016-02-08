@@ -2,7 +2,7 @@ import Cocoa
 
 class Text:Element,IText {
     var initText:String;//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
-    var textField:NSText{get{return (skin as! ITextSkin).textField}}
+    var textField:CustomText{get{return (skin as! ITextSkin).textField}}
     //var text:String{get{return textField.string!} set{fatalError("NOT SUPPORTED YET")}}
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         initText = text
@@ -21,9 +21,9 @@ class Text:Element,IText {
      * Returns the textField text and 
      */
     func getText()->String{
-        return getTextField().string!;
+        return getTextField().stringValue;
     }
-    func getTextField()->NSText{
+    func getTextField()->CustomText{
         return (skin as! ITextSkin).textField;
     }
     /**

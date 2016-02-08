@@ -2,6 +2,6 @@ import Cocoa
 
 protocol IText:IElement {
     func setText(text:String)
-    func getTextField()->NSText
+    func getTextField()->CustomText
     var initText:String{get}
 }

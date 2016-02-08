@@ -12,7 +12,7 @@ class TextSkin:Skin,ITextSkin{
         //Swift.print("TextSkin.init()")
         textField = CustomText(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//<--TODO: these default values must be wrong, set w and h to 0
         //textField.sizeToFit()
-        textField.string = text
+        textField.stringValue = text
         super.init(style, state, element)
         addSubview(textField)
         applyProperties(textField)
@@ -34,7 +34,7 @@ class TextSkin:Skin,ITextSkin{
         }
         super.draw()
     }
-    func applyProperties(textField:NSText){
+    func applyProperties(textField:CustomText){
         
         //Continue here, bug here cant get width
         

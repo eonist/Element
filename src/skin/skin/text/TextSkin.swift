@@ -48,7 +48,7 @@ class TextSkin:Skin,ITextSkin{
         super.frame.height = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
-        TextFieldModifier.applyTextFormat(textField,textFormat);
+        TextFieldModifier.applyTextFormat(textField,textFormat)
     }
     /**
      * Set the text and updates the skin

@@ -64,13 +64,14 @@ class TextSkin:Skin,ITextSkin{
     /**
      * // :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
      */
-    /*override func getWidth() -> CGFloat {
-        if(!StylePropertyParser.value(self, "wordWrap")){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
-            var padding:Padding = StylePropertyParser.padding(self);
-            return textField.width + padding.left + padding.right;
+    override func getWidth() -> CGFloat {
+        Swift.print("getWidth()")
+        if((StylePropertyParser.value(self, TextFormatConstants.wordWrap) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
+            let padding:Padding = StylePropertyParser.padding(self);
+            return textField.frame.width + padding.left + padding.right;
         }else {return super.getWidth()}
     }
-     */
+    
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

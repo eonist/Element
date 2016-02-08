@@ -55,7 +55,7 @@ class TextSkin:Skin,ITextSkin{
      * // :TODO: add more advance setText features like start and end etc
      */
     func setText(text:String){
-        textField.string = text;
+        textField.stringValue = text;
         hasTextChanged = true;
         draw();
     }

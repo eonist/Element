@@ -286,7 +286,7 @@ private class Utils{
     class func metric(value:Any?,_ skin:ISkin)->CGFloat? {
         if(value is Int){ return CGFloat(value as! Int)}
         else if(value is CGFloat){ return value as? CGFloat}
-        else of(value is String){/*value is String*/
+        else if(value is String){/*value is String*/
             
         }
         else{

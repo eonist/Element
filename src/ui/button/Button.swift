@@ -79,7 +79,7 @@ class Button:Element {
         self.event!(ButtonEvent(ButtonEvent.up,self))
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        Swift.print("Button.aPoint: " + "\(aPoint)")
+        //Swift.print("Button.aPoint: " + "\(aPoint)")
         return super.hitTest(aPoint)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -74,7 +74,7 @@ class TextSkin:Skin,ITextSkin{
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-class CustomText:NSTextField{
+class TextField:NSTextField{
     //override var flipped:Bool {return true}/*Organizes your view from top to bottom*/
     
     override init(frame frameRect: NSRect) {

@@ -288,7 +288,7 @@ private class Utils{
         else if(value is CGFloat){ return value as? CGFloat}
         else if(value is String){/*value is String*/
             let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
-            let stringValue:String = String(value)
+            let stringValue:String! = String(value)
             Swift.print("stringValue: " + "\(stringValue)")
             let matches = stringValue.matches(pattern)
             Swift.print("matches.count: " + "\(matches.count)")

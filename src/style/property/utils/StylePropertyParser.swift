@@ -293,8 +293,9 @@ private class Utils{
             for match:NSTextCheckingResult in matches {
                 var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
+                let value =  CGFloat(Double(String(value))!)
                 if(suffix == "%") {
-                    let value =  CGFloat(Double(String(value))!)
+                    
                     var val:CGFloat = value / 100 * (skin.element.getParent() != nil ? (totalWidth(skin.element.getParent() as IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
                     //				trace("skin.element.parent != null: " + skin.element.parent != null);
                     //				trace("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin);

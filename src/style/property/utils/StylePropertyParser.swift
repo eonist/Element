@@ -287,12 +287,20 @@ private class Utils{
         if(value is Int){ return CGFloat(value as! Int)}
         else if(value is CGFloat){ return value as? CGFloat}
         else if(value is String){/*value is String*/
-            
+            let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+            let stringValue:String = String(value)
+            let matches = stringValue.matches(pattern)
+            for match:NSTextCheckingResult in matches {
+                var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
+                if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
+            }
+            return 0
         }
         else{
             //fatalError("NOT IMPLEMENTED YET")
             //be warned this method is far from complete
-            return nil
+            return 0
             
         }
     }

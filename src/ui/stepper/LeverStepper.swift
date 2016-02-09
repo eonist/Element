@@ -17,7 +17,7 @@ class LeverStepper : Element{
     var plusButton:Button?
     var minusButton:Button?
     
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+    override init(_ width: CGFloat, _ height: CGFloat, value:CGFloat = 0, increment:CGFloat = 1, min:CGFloat = int.MIN_VALUE , max:CGFloat = int.MAX_VALUE, decimals:Int = 0, leverRange:Number = 100, leverHeight:Number = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {

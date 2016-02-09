@@ -3,24 +3,23 @@ import Cocoa
  * // :TODO: shouldnt this class extend Stepper?
  */
 class LeverStepper : Element{
-    private var maxVal:CGFloat = CGFloat.max
-    private var minVal:CGFloat = CGFloat.min
+    private var maxVal:CGFloat
+    private var minVal:CGFloat
     private var value:CGFloat;
     private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
     private var decimals:Int;/*decimal places*/
-    private var text:String;
-    private var onMouseDownMouseY:CGFloat;
-    private var onMouseDownValue:CGFloat;
+    private var onMouseDownMouseY:CGFloat = 0
+    private var onMouseDownValue:CGFloat = 0
     private var leverHeight:CGFloat;// :TODO: write a description about this value
     private var leverRange : CGFloat;
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe? //fix typo
     var plusButton:Button?
     var minusButton:Button?
     
-    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = int.MIN_VALUE , _ max:CGFloat = int.MAX_VALUE, _ decimals:Int = 0, _ leverRange:Number = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.value = value;
-        self.min = min;
-        self.max = max;
+        self.minVal = min;
+        self.maxVal = max;
         self.increment = increment;
         self.decimals = decimals;
         self.leverHeight = leverHeight;// :TODO: rename to something less ambiguous

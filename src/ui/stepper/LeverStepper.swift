@@ -3,8 +3,8 @@ import Cocoa
  * // :TODO: shouldnt this class extend Stepper?
  */
 class LeverStepper : Element{
-    private var maxVal:CGFloat;
-    private var minVal:CGFloat;
+    private var maxVal:CGFloat = CGFloat.max
+    private var minVal:CGFloat = CGFloat.min
     private var value:CGFloat;
     private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
     private var decimals:Int;/*decimal places*/
@@ -31,8 +31,8 @@ class LeverStepper : Element{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
-        onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
-        onMouseDownValue = value;
+        onMouseDownMouseY  = minusButton!.localPos().y
+        onMouseDownValue = value
         //minusButton.stage.addEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
         //minusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }

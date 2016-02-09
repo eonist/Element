@@ -37,12 +37,12 @@ class LeverSpinner : Element{
     func onStepperChange(event : StepperEvent) {
         Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");
         val = event.value
-        textInput!.inputTextArea?.setTextValue(String(val));
+        textInput!.inputTextArea?.setTextValue("1.0");
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self))
     }
     override func onEvent(event: Event) {
-        Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")
         if(event.origin === stepper && event.type == StepperEvent.change){
+            Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")
             onStepperChange(event as! StepperEvent)
         }
     }

@@ -18,7 +18,7 @@ class LeverSpinner : Element{
     var textInput:TextInput?
     var stepper:LeverStepper?
     
-    init(_ width: CGFloat, _ height: CGFloat, text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.val = value
         self.text = text
         self.minVal = min
@@ -48,7 +48,7 @@ class LeverSpinner : Element{
     }
     func setValue(var value:CGFloat) {
         value = NumberParser.minMax(value, minVal, maxVal)
-        value = NumberModifier.toFixed(value,decimals)
+        self.val = NumberModifier.toFixed(value,decimals)
         textInput!.inputTextArea?.setTextValue(String(value))
         stepper!.value = value
     }

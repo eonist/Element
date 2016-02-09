@@ -68,7 +68,7 @@ class LeverStepper : Element{
         self.event!(StepperEvent(StepperEvent.change,self.value,self))
         return event
     }
-    /*
+    /**
      *
      */
     override func onEvent(event: Event) {

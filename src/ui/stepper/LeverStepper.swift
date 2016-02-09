@@ -59,14 +59,14 @@ class LeverStepper : Element{
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{
-        
+        return onButtonMove(event,plusButton!)
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{
-        
+        return onButtonMove(event,minusButton!)
     }
-    func onButtonMove(){
+    func onButtonMove(event:NSEvent,_ button:Button)-> NSEvent?{
         //Swift.print("onButtonMove")
-        var leaverPos:CGFloat = -minusButton!.localPos().y + onMouseDownMouseY;
+        var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY;
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight);
         let multiplier:CGFloat = leaverPos / leverHeight
         let leaverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/

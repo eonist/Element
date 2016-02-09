@@ -7,18 +7,20 @@ import Foundation
  * TODO: you may need to convert CGFloat to an Int if decimal is set to 0, do this in the LeverSpinner class
  */
 class LeverSpinner : Element{
-    private var maxVal:CGFloat
-    private var minVal:CGFloat
-    private var value:CGFloat;
-    private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
-    private var decimals:Int;/*decimal places*/
-    private var leverHeight:CGFloat;// :TODO: write a description about this value
-    private var leverRange : CGFloat;
+    var maxVal:CGFloat
+    var minVal:CGFloat
+    var val:CGFloat;
+    var	increment:CGFloat;/*The amount of incrementation for each stepping*/
+    var decimals:Int;/*decimal places*/
+    var text:String;
+    var leverHeight:CGFloat;// :TODO: write a description about this value
+    var leverRange : CGFloat;
     var textInput:TextInput?
     var stepper:LeverStepper?
     
-    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
-        self.value = value
+    init(_ width: CGFloat, _ height: CGFloat, text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
+        self.val = value
+        self.text = text
         self.minVal = min
         self.maxVal = max
         self.increment = increment
@@ -34,9 +36,9 @@ class LeverSpinner : Element{
     }
     func onStepperChange(event : StepperEvent) {
         Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");
-        value = event.value
-        textInput!.inputTextArea?.setTextValue(String(value));
-        self.event!(SpinnerEvent(SpinnerEvent.change,self.value,self))
+        val = event.value
+        textInput!.inputTextArea?.setTextValue(String(val));
+        self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self))
     }
     override func onEvent(event: Event) {
         Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")

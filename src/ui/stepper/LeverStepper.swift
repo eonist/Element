@@ -76,6 +76,7 @@ class LeverStepper : Element{
      *
      */
     override func onEvent(event: Event) {
+        Swift.print("onEvent() event: " + "\(event)")
         if(event.origin === plusButton && event.type == ButtonEvent.down){onPlusButtonDown()}
         else if(event.origin === minusButton && event.type == ButtonEvent.down){onMinusButtonDown()}
         else if(event.origin === plusButton && event.type == ButtonEvent.upInside){onPlusButtonUpInside()}

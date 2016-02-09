@@ -47,7 +47,9 @@ class LeverStepper : Element{
         //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
         var value:CGFloat = NumberModifier.increment(self.value, increment);
         self.value = NumberParser.minMax(value, minVal, maxVal);// :TODO: dont set the value
-        //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
+        NumberParser
+        
+        self.event!(StepperEvent(StepperEvent.change,self.value,self))
     }
     func onMinusButtonUpInside() {
         //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);

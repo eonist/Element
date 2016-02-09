@@ -62,6 +62,7 @@ class LeverSpinner : Element{
             onStepperChange(event as! StepperEvent)
         }else if(event.origin === textInput!.inputTextArea!.text!.textField && event.type == Event.update){
             Swift.print("LeverSpinner.onEvent() event.update:" + "\(event)")
+            onInputTextChange(event)
         }
     }
     func setValue(var value:CGFloat) {

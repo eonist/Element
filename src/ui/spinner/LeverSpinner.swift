@@ -40,6 +40,14 @@ class LeverSpinner : Element{
         textInput!.inputTextArea?.setTextValue(String(val));
         self.event!(SpinnerEvent(SpinnerEvent.update,self.val,self))
     }
+    /**
+     * // :TODO: Also resolve decimal here?
+     */
+    func onInputTextChange(event:Event) {
+        val = NumberParser.minMax(CGFloat(textInput.inputTextArea.text.getText()), min, max);
+        stepper.setValue(value);
+        dispatchEvent(SpinnerEvent(SpinnerEvent.CHANGE,_value, true, true));
+    }
     override func onEvent(event: Event) {
         if(event.origin === stepper && event.type == StepperEvent.update){
             Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")

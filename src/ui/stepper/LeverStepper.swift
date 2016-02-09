@@ -30,7 +30,7 @@ class LeverStepper : Element{
         //plusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
-    func onMinusButtonDown(event:ButtonEvent) {
+    func onMinusButtonDown() {
         onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
         onMouseDownValue = value;
         //minusButton.stage.addEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);

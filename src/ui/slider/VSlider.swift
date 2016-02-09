@@ -32,8 +32,8 @@ class VSlider :InteractiveView2{
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
-        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight);
-        thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight);
+        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight)
+        thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
         //post SliderEvent(SliderEvent.change,progress)
         return event
     }

@@ -14,7 +14,6 @@ class LeverSpinner : Element{
     private var decimals:Int;/*decimal places*/
     private var leverHeight:CGFloat;// :TODO: write a description about this value
     private var leverRange : CGFloat;
-    
     var textInput:TextInput?
     var stepper:LeverStepper?
     
@@ -35,12 +34,12 @@ class LeverSpinner : Element{
     }
     func onStepperChange(event : StepperEvent) {
         Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");
-        value = event.value;
+        value = event.value
         textInput!.inputTextArea?.setTextValue(String(value));
         self.event!(SpinnerEvent(SpinnerEvent.change,self.value,self))
     }
     override func onEvent(event: Event) {
-        //Swift.print( "CustomView.onEvent() event:" + "\(event)")
+        Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")
         if(event.origin === stepper && event.type == StepperEvent.change){
             onStepperChange(event as! StepperEvent)
         }

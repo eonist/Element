@@ -26,23 +26,23 @@ class LeverStepper : Element{
     }
     
     func onPlusButtonDown(event:ButtonEvent) {
-        //_onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
-        //_onMouseDownValue = _value;
+        onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
+        onMouseDownValue = self.value;
 
-        //plusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
         onMouseDownMouseY  = minusButton!.localPos().y
         onMouseDownValue = value
-        //minusButton.stage.addEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
+
         //minusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }
-    func onPlusButtonReleaseOutside(event:ButtonEvent) {
+    func onPlusButtonUpOutside() {
         //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onPlusButtonReleaseOutside);
         //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }
-    func onMinusButtonReleaseOutside(event:ButtonEvent) {
+    func onMinusButtonUpOutside() {
         //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
         //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }
@@ -56,18 +56,18 @@ class LeverStepper : Element{
     func onMinusButtonUpInside() {
         //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);
         //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:CGFloat = NumberModifier.decrement(_value, increment);
-        _value = NumberParser.minMax(value, minVal, maxVal);
+        var value:CGFloat = NumberModifier.decrement(self.value, increment);
+        self.value = NumberParser.minMax(value, minVal, maxVal);
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }
-    func onButtonMove() {
-        var leaverPos:CGFloat = -_minusButton.mouseY + _onMouseDownMouseY;
-        leaverPos = NumberParser.minMax(leaverPos, -_leverHeight, _leverHeight);
-        var multiplier:CGFloat = leaverPos / _leverHeight;
-        var leaverValue:CGFloat =_leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
-        var value:CGFloat = _onMouseDownValue + leaverValue;
-        value = NumberParser.minMax(value, _min, _max);/*cap the value from min to max*/
-        value = Number(value.toFixed(_decimals));/*the value must have no more than the value of the _decimals*/
+    func onButtonMove(event:NSEvent)-> NSEvent?{
+        var leaverPos:CGFloat = - minusButton.mouseY + onMouseDownMouseY;
+        leaverPos = NumberParser.minMax(leaverPos, - leverHeight, leverHeight);
+        var multiplier:CGFloat = leaverPos / leverHeight;
+        var leaverValue:CGFloat =leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
+        var value:CGFloat =  onMouseDownValue + leaverValue;
+        value = NumberParser.minMax(value, min, max);/*cap the value from min to max*/
+        value = Number(value.toFixed(decimals));/*the value must have no more than the value of the _decimals*/
         _value = value;
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }

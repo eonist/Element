@@ -36,27 +36,14 @@ class LeverStepper : Element{
 
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }
-    func onPlusButtonUpOutside() {
-
-    }
-    func onMinusButtonUpOutside() {
-        
-    }
     func onPlusButtonUpInside() {
-        //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);
-        //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:CGFloat = NumberModifier.increment(self.value, increment);
-        self.value = NumberParser.minMax(value, minVal, maxVal);// :TODO: dont set the value
-        NumberParser
-        
-        self.event!(StepperEvent(StepperEvent.change,self.value,self))
+        let val:CGFloat = NumberModifier.increment(value, increment);
+        value = NumberParser.minMax(val, minVal, maxVal);// :TODO: dont set the value
+        self.event!(StepperEvent(StepperEvent.change,value,self))
     }
     func onMinusButtonUpInside() {
-        //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);
-        //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:CGFloat = NumberModifier.decrement(self.value, increment);
-        self.value = NumberParser.minMax(value, minVal, maxVal);
-
+        let val:CGFloat = NumberModifier.decrement(value, increment);
+        value = NumberParser.minMax(val, minVal, maxVal);
         self.event!(StepperEvent(StepperEvent.change,self.value,self))
     }
     func onButtonUp(){

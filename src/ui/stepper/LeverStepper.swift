@@ -60,6 +60,9 @@ class LeverStepper : Element{
         self.value = NumberParser.minMax(value, minVal, maxVal);
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }
+    func onButtonUp(){
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+    }
     func onButtonMove(event:NSEvent)-> NSEvent?{
         var leaverPos:CGFloat = - minusButton.mouseY + onMouseDownMouseY;
         leaverPos = NumberParser.minMax(leaverPos, - leverHeight, leverHeight);
@@ -81,6 +84,7 @@ class LeverStepper : Element{
         else if(event.origin === minusButton && event.type == ButtonEvent.upInside){onMinusButtonUpInside()}
         else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpOutside()}
         else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpOutside()}
+        else if(event.origin === minusButton && event.type == ButtonEvent.up){onButtonUp()}
     }
     /**
      * Returns "Stepper"

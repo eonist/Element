@@ -47,14 +47,14 @@ class LeverStepper : Element{
         //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
         var value:CGFloat = NumberModifier.increment(self.value, increment);
         self.value = NumberParser.minMax(value, minVal, maxVal);// :TODO: dont set the value
-        dispatchEvent(new StepperEvent(StepperEvent.CHANGE,self.value));
+        //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
     }
     func onMinusButtonUpInside() {
         //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);
         //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
         var value:CGFloat = NumberModifier.decrement(self.value, increment);
         self.value = NumberParser.minMax(value, minVal, maxVal);
-        dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
+        //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
     }
     func onButtonUp(){
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
@@ -71,7 +71,7 @@ class LeverStepper : Element{
         
         value = CGFloat(value.toFixed(decimals));/*the value must have no more than the value of the _decimals*/
         self.value = value;
-        dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
+        //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
     }
     /*
      *

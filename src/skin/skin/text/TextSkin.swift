@@ -58,7 +58,7 @@ class TextSkin:Skin,ITextSkin{
     func setText(text:String){
         textField.stringValue = text;
         hasTextChanged = true;
-        draw();
+        //draw();//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple
     }
     
     /**

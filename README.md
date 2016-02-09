@@ -3,6 +3,12 @@
 or  
 [Follow the progress on Twitter](https://twitter.com/stylekit_org)  
 
+### LeverSpinner:  
+
+<img width="550" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/leverSpinner_1_x14hs.gif">
+
+[Case study](http://stylekit.org/blog/2016/02/09/The-lever-spinner/)  
+
 ### RadioBullet:
 
 <img width="500" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/radiobullets_crop_low.gif">

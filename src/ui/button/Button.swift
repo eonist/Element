@@ -14,7 +14,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseOver(event:MouseEvent) {
-        Swift.print("Button.mouseOver() ")
+        //Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
@@ -27,7 +27,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseOut action.
      */
     override func mouseOut(event:MouseEvent) {
-        Swift.print("Button.mouseOut() ")
+        //Swift.print("Button.mouseOut() ")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
@@ -40,7 +40,7 @@ class Button:Element {
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(event:MouseEvent) {
-        Swift.print("Button.mouseDown() ")
+        //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
@@ -52,7 +52,7 @@ class Button:Element {
      * @Note: bubbling= true was added to make Stepper class dragable
      */
     override func mouseUpInside(event:MouseEvent){
-        Swift.print("Button.mouseUpInside: ")
+        //Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
@@ -65,7 +65,7 @@ class Button:Element {
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpOutside(event:MouseEvent){
-        Swift.print("Button.mouseUpOutside: ")
+        //Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
@@ -75,7 +75,7 @@ class Button:Element {
      * Convenince
      */
     override func mouseUp(event: MouseEvent) {
-        Swift.print("Button.mouseUp: ")
+        //Swift.print("Button.mouseUp: ")
         self.event!(ButtonEvent(ButtonEvent.up,self))
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {

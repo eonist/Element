@@ -28,7 +28,7 @@ class VSlider :InteractiveView2{
         Swift.print("onThumbDown")
         tempThumbMouseY = thumb!.localPos().y
         Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
@@ -39,7 +39,7 @@ class VSlider :InteractiveView2{
     }
     func onThumbUp(){
         Swift.print("onThumbUp")
-        NSEvent.removeMonitor(globalMouseMovedHandeler!)
+        NSEvent.removeMonitor(globalMouseMovedHandeler!)//we add a global mouse move event listener
     }
     override func onEvent(event: Event) {
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}

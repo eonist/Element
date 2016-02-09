@@ -84,6 +84,7 @@ class LeverStepper : Element{
         //else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpOutside()}
         //else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpOutside()}
         else if(event.origin === minusButton && event.type == ButtonEvent.up){onButtonUp()}
+        super.onEvent(event)
     }
     /**
      * Returns "Stepper"

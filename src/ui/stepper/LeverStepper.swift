@@ -40,7 +40,7 @@ class LeverStepper : Element{
 
     }
     func onMinusButtonUpOutside() {
-
+        
     }
     func onPlusButtonUpInside() {
         //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);

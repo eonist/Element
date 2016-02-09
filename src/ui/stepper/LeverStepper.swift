@@ -46,7 +46,7 @@ class LeverStepper : Element{
         //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);
         //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
         var value:CGFloat = NumberModifier.increment(self.value, increment);
-        self.value = NumberParser.minMax(value, minVal, maxVal);// :TODO: dont set the value
+        self.value = CGFloatParser.minMax(value, minVal, maxVal);// :TODO: dont set the value
         NumberParser
         
         self.event!(StepperEvent(StepperEvent.change,self.value,self))

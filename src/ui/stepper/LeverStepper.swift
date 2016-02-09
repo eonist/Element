@@ -54,7 +54,8 @@ class LeverStepper : Element{
         //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
         var value:CGFloat = NumberModifier.decrement(self.value, increment);
         self.value = NumberParser.minMax(value, minVal, maxVal);
-        //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
+
+        self.event!(StepperEvent(StepperEvent.change,self.value,self))
     }
     func onButtonUp(){
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener

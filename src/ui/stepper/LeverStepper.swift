@@ -8,8 +8,8 @@ class LeverStepper : Element{
     var minVal:CGFloat
     var	increment:CGFloat;/*The amount of incrementation for each stepping*/
     var decimals:Int;/*decimal places*/
-    var onMouseDownMouseY:CGFloat = 0
-    var onMouseDownValue:CGFloat = 0
+    var onMouseDownMouseY:CGFloat = CGFloat.NaN
+    var onMouseDownValue:CGFloat = CGFloat.NaN
     var leverHeight:CGFloat;// :TODO: write a description about this value
     var leverRange : CGFloat;
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe? //fix typo
@@ -37,8 +37,8 @@ class LeverStepper : Element{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
-        //Swift.print("onMinusButtonDown")
         onMouseDownMouseY  = minusButton!.localPos().y
+        Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }

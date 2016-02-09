@@ -49,6 +49,7 @@ class LeverSpinner : Element{
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self))
     }
     override func onEvent(event: Event) {
+        Swift.print("LeverSpinner.onEvent")
         if(event.origin === stepper && event.type == StepperEvent.change){
             Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")
             onStepperChange(event as! StepperEvent)

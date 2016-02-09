@@ -16,6 +16,7 @@ class LeverStepper : Element{
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe? //fix typo
     var plusButton:Button?
     var minusButton:Button?
+    
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
     }
@@ -52,16 +53,13 @@ class LeverStepper : Element{
     func onButtonMove(event:NSEvent)-> NSEvent?{
         var leaverPos:CGFloat = -minusButton!.localPos().y + onMouseDownMouseY;
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight);
-        let multiplier:CGFloat = leaverPos / leverHeight;
+        let multiplier:CGFloat = leaverPos / leverHeight
         let leaverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
         var val:CGFloat =  onMouseDownValue + leaverValue;
         val = NumberParser.minMax(val, minVal, maxVal);/*cap the value from min to max*/
-        
-        //the bellow line needs some work:
-        
         val = NumberModifier.toFixed(val,decimals)/*the value must have no more than the value of the _decimals*/
         value = val;
-        //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
+        self.event!(StepperEvent(StepperEvent.change,self.value,self))
     }
     /*
      *
@@ -71,8 +69,8 @@ class LeverStepper : Element{
         else if(event.origin === minusButton && event.type == ButtonEvent.down){onMinusButtonDown()}
         else if(event.origin === plusButton && event.type == ButtonEvent.upInside){onPlusButtonUpInside()}
         else if(event.origin === minusButton && event.type == ButtonEvent.upInside){onMinusButtonUpInside()}
-        else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpOutside()}
-        else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpOutside()}
+        //else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpOutside()}
+        //else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpOutside()}
         else if(event.origin === minusButton && event.type == ButtonEvent.up){onButtonUp()}
     }
     /**

@@ -17,11 +17,7 @@ class LeverStepper : Element{
     var minusButton:Button?
     init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.value = value;
-        Swift.print("min: " + "\(min)")
-        Swift.print("Int.min: " + "\(Int.min)")
-        Swift.print("Int.max: " + "\(Int.max)")
         self.minVal = min;
-        Swift.print("max: " + "\(max)")
         self.maxVal = max;
         self.increment = increment;
         self.decimals = decimals;

@@ -13,7 +13,7 @@ class LeverStepper : Element{
     private var onMouseDownValue:CGFloat;
     private var leverHeight:CGFloat;// :TODO: write a description about this value
     private var leverRange : CGFloat;
-    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe?
+    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe? //fix typo
     var plusButton:Button?
     var minusButton:Button?
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {

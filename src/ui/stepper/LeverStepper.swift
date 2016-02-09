@@ -25,37 +25,37 @@ class LeverStepper : Element{
     func onMinusButtonDown(event:ButtonEvent) {
         _onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
         _onMouseDownValue = _value;
-        minusButton.stage.addEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
-        minusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        //minusButton.stage.addEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
+        //minusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }
     func onPlusButtonReleaseOutside(event:ButtonEvent) {
-        plusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onPlusButtonReleaseOutside);
-        plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onPlusButtonReleaseOutside);
+        //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }
     func onMinusButtonReleaseOutside(event:ButtonEvent) {
-        minusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
-        minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
+        //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
     }
-    func onPlusButtonRelease(event:ButtonEvent) {
-        plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);
-        plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:Number = NumberModifier.increment(_value, _increment);
+    func onPlusButtonUpInside() {
+        //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);
+        //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        var value:CGFloat = NumberModifier.increment(_value, _increment);
         _value = NumberParser.minMax(value, _min, _max);// :TODO: dont set the value 
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }
-    func onMinusButtonRelease(event:ButtonEvent):void {
-        minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);
-        minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:Number = NumberModifier.decrement(_value, _increment);
+    func onMinusButtonUpInside() {
+        //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);
+        //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        var value:CGFloat = NumberModifier.decrement(_value, _increment);
         _value = NumberParser.minMax(value, _min, _max);
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }
-    func onButtonMove(event:MouseEvent):void {
-        var leaverPos:Number = -_minusButton.mouseY + _onMouseDownMouseY;
+    func onButtonMove() {
+        var leaverPos:CGFloat = -_minusButton.mouseY + _onMouseDownMouseY;
         leaverPos = NumberParser.minMax(leaverPos, -_leverHeight, _leverHeight);
-        var multiplier:Number = leaverPos / _leverHeight;
-        var leaverValue:Number =_leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
-        var value:Number = _onMouseDownValue + leaverValue;
+        var multiplier:CGFloat = leaverPos / _leverHeight;
+        var leaverValue:CGFloat =_leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
+        var value:CGFloat = _onMouseDownValue + leaverValue;
         value = NumberParser.minMax(value, _min, _max);/*cap the value from min to max*/
         value = Number(value.toFixed(_decimals));/*the value must have no more than the value of the _decimals*/
         _value = value;
@@ -69,8 +69,8 @@ class LeverStepper : Element{
         else if(event.origin === minusButton && event.type == ButtonEvent.down){onMinusButtonDown()}
         else if(event.origin === plusButton && event.type == ButtonEvent.upInside){onPlusButtonUpInside()}
         else if(event.origin === minusButton && event.type == ButtonEvent.upInside){onMinusButtonUpInside()}
-        else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpInside()}
-        else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpInside()}
+        else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpOutside()}
+        else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpOutside()}
     }
     /**
      * Returns "Stepper"

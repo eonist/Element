@@ -25,26 +25,22 @@ class LeverStepper : Element{
         minusButton = addSubView(Button(height,height,self, "minus")) as? Button;
     }
     
-    func onPlusButtonDown(event:ButtonEvent) {
-        onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
+    func onPlusButtonDown() {
+        onMouseDownMouseY  = plusButton!.localPos().y
         onMouseDownValue = self.value;
-
-
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
         onMouseDownMouseY  = minusButton!.localPos().y
         onMouseDownValue = value
 
-        //minusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }
     func onPlusButtonUpOutside() {
-        //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onPlusButtonReleaseOutside);
-        //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+
     }
     func onMinusButtonUpOutside() {
-        //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_OUTSIDE, onMinusButtonReleaseOutside);
-        //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+
     }
     func onPlusButtonUpInside() {
         //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);
@@ -70,8 +66,11 @@ class LeverStepper : Element{
         var leaverValue:CGFloat =leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
         var value:CGFloat =  onMouseDownValue + leaverValue;
         value = NumberParser.minMax(value, min, max);/*cap the value from min to max*/
-        value = Number(value.toFixed(decimals));/*the value must have no more than the value of the _decimals*/
-        _value = value;
+        
+        //the bellow line needs some work:
+        
+        value = CGFloat(value.toFixed(decimals));/*the value must have no more than the value of the _decimals*/
+        self.value = value;
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }
     /*

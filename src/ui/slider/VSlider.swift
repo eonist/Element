@@ -39,13 +39,13 @@ class VSlider :InteractiveView2{
     }
     func onThumbUp(){
         Swift.print("onThumbUp")
-        NSEvent.removeMonitor(globalMouseMovedHandeler!)//we add a global mouse move event listener
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}
-        else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}
+        if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
+        else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }
 private class Utils{
     /**

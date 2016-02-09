@@ -50,12 +50,12 @@ class LeverStepper : Element{
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onButtonMove(event:NSEvent)-> NSEvent?{
-        var leaverPos:CGFloat = - minusButton.mouseY + onMouseDownMouseY;
-        leaverPos = NumberParser.minMax(leaverPos, - leverHeight, leverHeight);
+        var leaverPos:CGFloat = -minusButton!.localPos().y + onMouseDownMouseY;
+        leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight);
         var multiplier:CGFloat = leaverPos / leverHeight;
-        var leaverValue:CGFloat =leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
+        var leaverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
         var value:CGFloat =  onMouseDownValue + leaverValue;
-        value = NumberParser.minMax(value, min, max);/*cap the value from min to max*/
+        value = NumberParser.minMax(value, minVal, maxVal);/*cap the value from min to max*/
         
         //the bellow line needs some work:
         

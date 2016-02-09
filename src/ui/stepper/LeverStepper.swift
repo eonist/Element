@@ -66,7 +66,6 @@ class LeverStepper : Element{
         let leaverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
         var val:CGFloat =  onMouseDownValue + leaverValue;
         val = NumberParser.minMax(val, minVal, maxVal);/*cap the value from min to max*/
-        Swift.print("val: " + "\(val)")
         val = NumberModifier.toFixed(val,decimals)/*the value must have no more than the value of the _decimals*/
         value = val
         Swift.print("value: " + "\(value)")

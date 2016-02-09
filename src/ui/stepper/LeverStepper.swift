@@ -34,13 +34,13 @@ class LeverStepper : Element{
         //Swift.print("onPlusButtonDown")
         onMouseDownMouseY  = plusButton!.localPos().y
         onMouseDownValue = self.value;
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onPlusButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
         onMouseDownMouseY  = minusButton!.localPos().y
         Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMinusButtonMove )//we add a global mouse move event listener
     }
     func onPlusButtonUpInside() {
         //Swift.print("onPlusButtonUpInside")
@@ -58,7 +58,7 @@ class LeverStepper : Element{
         //Swift.print("onButtonUp")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    func onPlusButtonMove(event:NSEvent)-> NSEvent?{
+    func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
         return onButtonMove(event,plusButton!)
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{

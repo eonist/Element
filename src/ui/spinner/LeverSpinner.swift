@@ -7,9 +7,25 @@ import Foundation
  * TODO: you may need to convert CGFloat to an Int if decimal is set to 0, do this in the LeverSpinner class
  */
 class LeverSpinner : Element{
+    private var maxVal:CGFloat
+    private var minVal:CGFloat
+    private var value:CGFloat;
+    private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
+    private var decimals:Int;/*decimal places*/
+    private var leverHeight:CGFloat;// :TODO: write a description about this value
+    private var leverRange : CGFloat;
+    
     var textInput:TextInput?
     var stepper:LeverStepper?
+    
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+        self.value = value
+        self.minVal = min
+        self.maxVal = max
+        self.increment = increment
+        self.decimals = decimals
+        self.leverHeight = leverHeight// :TODO: rename to something less ambiguous
+        self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
@@ -23,6 +39,12 @@ class LeverSpinner : Element{
      */
     override func getClassType() -> String {
         return String(Spinner)
+    }
+    func onStepperChange(event : StepperEvent) {
+        //			trace("LeverSpinner.onStepperChange.event.value: " + event.value);
+        _value = event.value;
+        _textInput.inputTextArea.setText(String(_value));
+        dispatchEvent(new SpinnerEvent(SpinnerEvent.CHANGE,_value,true,true));
     }
     override func onEvent(event: Event) {
         //Swift.print( "CustomView.onEvent() event:" + "\(event)")

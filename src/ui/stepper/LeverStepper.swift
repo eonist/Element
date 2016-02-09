@@ -3,6 +3,14 @@ import Cocoa
  * // :TODO: shouldnt this class extend Stepper?
  */
 class LeverStepper : Element{
+    private var maxVal:CGFloat;
+    private var minVal:CGFloat;
+    private var value:CGFloat;
+    private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
+    private var decimals:Int;/*decimal places*/
+    private var text:String;
+    private var leverHeight:CGFloat;// :TODO: write a description about this value
+    private var leverRange : CGFloat;
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe?
     var plusButton:Button?
     var minusButton:Button?
@@ -39,15 +47,15 @@ class LeverStepper : Element{
     func onPlusButtonUpInside() {
         //plusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onPlusButtonRelease);
         //plusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:CGFloat = NumberModifier.increment(self.value, _increment);
-        self.value = NumberParser.minMax(value, _min, _max);// :TODO: dont set the value
+        var value:CGFloat = NumberModifier.increment(self.value, increment);
+        self.value = NumberParser.minMax(value, minVal, maxVal);// :TODO: dont set the value
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,self.value));
     }
     func onMinusButtonUpInside() {
         //minusButton.stage.removeEventListener(ButtonEvent.RELEASE_INSIDE, onMinusButtonRelease);
         //minusButton.stage.removeEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        var value:CGFloat = NumberModifier.decrement(_value, _increment);
-        _value = NumberParser.minMax(value, _min, _max);
+        var value:CGFloat = NumberModifier.decrement(_value, increment);
+        _value = NumberParser.minMax(value, minVal, maxVal);
         dispatchEvent(new StepperEvent(StepperEvent.CHANGE,_value));
     }
     func onButtonMove() {

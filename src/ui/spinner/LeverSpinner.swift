@@ -44,9 +44,9 @@ class LeverSpinner : Element{
      * // :TODO: Also resolve decimal here?
      */
     func onInputTextChange(event:Event) {
-        val = NumberParser.minMax(CGFloat(textInput.inputTextArea.text.getText()), min, max);
-        stepper.setValue(value);
-        dispatchEvent(SpinnerEvent(SpinnerEvent.CHANGE,_value, true, true));
+        val = NumberParser.minMax(CGFloat(Double((textInput!.text?.getText())!)!), minVal, maxVal)
+        stepper!.value = val
+        self.event!(SpinnerEvent(SpinnerEvent.update,self.val,self))
     }
     override func onEvent(event: Event) {
         if(event.origin === stepper && event.type == StepperEvent.update){

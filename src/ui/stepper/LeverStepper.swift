@@ -66,6 +66,7 @@ class LeverStepper : Element{
         val = NumberModifier.toFixed(val,decimals)/*the value must have no more than the value of the _decimals*/
         value = val;
         self.event!(StepperEvent(StepperEvent.change,self.value,self))
+        return event
     }
     /*
      *

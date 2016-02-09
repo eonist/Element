@@ -41,7 +41,7 @@ class LeverSpinner : Element{
         return String(Spinner)
     }
     func onStepperChange(event : StepperEvent) {
-        //			trace("LeverSpinner.onStepperChange.event.value: " + event.value);
+        Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");
         value = event.value;
         textInput!.inputTextArea?.setTextValue(String(value));
         self.event!(SpinnerEvent(SpinnerEvent.change,self.value,self))
@@ -50,7 +50,7 @@ class LeverSpinner : Element{
         //Swift.print( "CustomView.onEvent() event:" + "\(event)")
         if(event.origin === stepper && event.type == StepperEvent.change){
             onStepperChange(event as! StepperEvent)
-        }   
+        }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

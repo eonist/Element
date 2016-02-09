@@ -4,7 +4,6 @@ import Foundation
  */
 class TextArea:Element {
     var text:Text?
-    var textField:TextField{get{return (skin as! ITextSkin).textField}}
     var textString:String// :TODO: rename to initTextString
     init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:IElement? = nil, _ id:String? = nil) {
         self.textString = text;

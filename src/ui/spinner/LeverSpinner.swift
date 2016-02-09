@@ -18,7 +18,7 @@ class LeverSpinner : Element{
     var textInput:TextInput?
     var stepper:LeverStepper?
     
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.value = value
         self.minVal = min
         self.maxVal = max
@@ -42,9 +42,9 @@ class LeverSpinner : Element{
     }
     func onStepperChange(event : StepperEvent) {
         //			trace("LeverSpinner.onStepperChange.event.value: " + event.value);
-        _value = event.value;
-        _textInput.inputTextArea.setText(String(_value));
-        dispatchEvent(new SpinnerEvent(SpinnerEvent.CHANGE,_value,true,true));
+        value = event.value;
+        textInput!.inputTextArea.setText(String(value));
+        dispatchEvent(SpinnerEvent(SpinnerEvent.change,value,true,true));
     }
     override func onEvent(event: Event) {
         //Swift.print( "CustomView.onEvent() event:" + "\(event)")

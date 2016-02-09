@@ -13,7 +13,7 @@ class LeverSpinner : Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        textInput = addSubView(TextInput(100,20,"Color:","22",self)) as? TextInput
+        textInput = addSubView(TextInput(100,20,"Value:","22",self)) as? TextInput
         stepper = addSubView(LeverStepper(100,24,self)) as? LeverStepper
     }
     /**

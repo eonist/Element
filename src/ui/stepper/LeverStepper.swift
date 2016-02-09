@@ -54,13 +54,13 @@ class LeverStepper : Element{
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight);
         var multiplier:CGFloat = leaverPos / leverHeight;
         var leaverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
-        var value:CGFloat =  onMouseDownValue + leaverValue;
-        value = NumberParser.minMax(value, minVal, maxVal);/*cap the value from min to max*/
+        var val:CGFloat =  onMouseDownValue + leaverValue;
+        val = NumberParser.minMax(val, minVal, maxVal);/*cap the value from min to max*/
         
         //the bellow line needs some work:
         
-        value = CGFloat(value.toFixed(decimals));/*the value must have no more than the value of the _decimals*/
-        self.value = value;
+        val = CGFloat(val.toFixed(decimals));/*the value must have no more than the value of the _decimals*/
+        value = val;
         //send event ->  StepperEvent(StepperEvent.CHANGE,self.value)
     }
     /*

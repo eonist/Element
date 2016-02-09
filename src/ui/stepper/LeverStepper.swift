@@ -9,6 +9,8 @@ class LeverStepper : Element{
     private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
     private var decimals:Int;/*decimal places*/
     private var text:String;
+    private var onMouseDownMouseY:CGFloat;
+    private var onMouseDownValue:CGFloat;
     private var leverHeight:CGFloat;// :TODO: write a description about this value
     private var leverRange : CGFloat;
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe?
@@ -28,7 +30,7 @@ class LeverStepper : Element{
         //_onMouseDownValue = _value;
 
         //plusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
         onMouseDownMouseY  = minusButton!.localPos().y

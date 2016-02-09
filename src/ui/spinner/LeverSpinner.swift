@@ -33,13 +33,6 @@ class LeverSpinner : Element{
         textInput = addSubView(TextInput(100,20,"Value:","22",self)) as? TextInput
         stepper = addSubView(LeverStepper(100,24,0,1,CGFloat(Int.min),CGFloat(Int.max),0,100,200,self)) as? LeverStepper
     }
-    /**
-     * Returns "Spinner"
-     * @Note This function is used to find the correct class type when synthezing the element stack
-     */
-    override func getClassType() -> String {
-        return String(Spinner)
-    }
     func onStepperChange(event : StepperEvent) {
         Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");
         value = event.value;
@@ -56,12 +49,19 @@ class LeverSpinner : Element{
         value = NumberParser.minMax(value, minVal, maxVal)
         value = NumberModifier.toFixed(value,decimals)
         textInput!.inputTextArea?.setTextValue(String(value))
-        stepper.setValue(value)
+        stepper!.value = value
     }
-    func setSkinState(skinState:String) {
-        super.setSkinState(skinState);
-        _textInput.setSkinState(skinState);
-        _stepper.setSkinState(skinState);
+    override func setSkinState(skinState:String) {
+        super.setSkinState(skinState)
+        textInput!.setSkinState(skinState)
+        stepper!.setSkinState(skinState)
+    }
+    /**
+     * Returns "Spinner"
+     * @Note This function is used to find the correct class type when synthezing the element stack
+     */
+    override func getClassType() -> String {
+        return String(Spinner)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

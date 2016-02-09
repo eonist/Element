@@ -3,15 +3,15 @@ import Cocoa
  * // :TODO: shouldnt this class extend Stepper?
  */
 class LeverStepper : Element{
-    private var maxVal:CGFloat
-    private var minVal:CGFloat
-    private var value:CGFloat;
-    private var	increment:CGFloat;/*The amount of incrementation for each stepping*/
-    private var decimals:Int;/*decimal places*/
-    private var onMouseDownMouseY:CGFloat = 0
-    private var onMouseDownValue:CGFloat = 0
-    private var leverHeight:CGFloat;// :TODO: write a description about this value
-    private var leverRange : CGFloat;
+    var value:CGFloat;
+    var maxVal:CGFloat
+    var minVal:CGFloat
+    var	increment:CGFloat;/*The amount of incrementation for each stepping*/
+    var decimals:Int;/*decimal places*/
+    var onMouseDownMouseY:CGFloat = 0
+    var onMouseDownValue:CGFloat = 0
+    var leverHeight:CGFloat;// :TODO: write a description about this value
+    var leverRange : CGFloat;
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe? //fix typo
     var plusButton:Button?
     var minusButton:Button?

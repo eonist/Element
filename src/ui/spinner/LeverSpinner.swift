@@ -52,5 +52,16 @@ class LeverSpinner : Element{
             onStepperChange(event as! StepperEvent)
         }
     }
+    func setValue(var value:CGFloat) {
+        value = NumberParser.minMax(value, minVal, maxVal)
+        value = NumberModifier.toFixed(value,decimals)
+        textInput!.inputTextArea?.setTextValue(String(value))
+        stepper.setValue(value)
+    }
+    func setSkinState(skinState:String) {
+        super.setSkinState(skinState);
+        _textInput.setSkinState(skinState);
+        _stepper.setSkinState(skinState);
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

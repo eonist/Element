@@ -3,6 +3,7 @@ import Cocoa
  * // :TODO: shouldnt this class extend Stepper?
  */
 class LeverStepper : Element{
+    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe?
     var plusButton:Button?
     var minusButton:Button?
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
@@ -15,10 +16,11 @@ class LeverStepper : Element{
     }
     
     func onPlusButtonDown(event:ButtonEvent) {
-        _onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
-        _onMouseDownValue = _value;
-        plusButton.stage.addEventListener(ButtonEvent.RELEASE_OUTSIDE, onPlusButtonReleaseOutside);
+        //_onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;
+        //_onMouseDownValue = _value;
+
         plusButton.stage.addEventListener(MouseEvent.MOUSE_MOVE, onButtonMove);
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown(event:ButtonEvent) {
         _onMouseDownMouseY  = (event.currentTarget as DisplayObject).mouseY;

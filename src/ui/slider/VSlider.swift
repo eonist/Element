@@ -23,6 +23,7 @@ class VSlider :InteractiveView2{
         addSubview(skin)
         thumb = Thumb(40,40)
         addSubview(thumb!)
+        //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
         Swift.print("onThumbDown")
@@ -45,6 +46,12 @@ class VSlider :InteractiveView2{
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
     }
+    
+    //TODO: 
+    //setProgress
+    //setThumbHeight
+    //setSize
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }
 private class Utils{

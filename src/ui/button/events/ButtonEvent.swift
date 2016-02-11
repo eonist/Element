@@ -9,5 +9,4 @@ class ButtonEvent:Event{
     static var upOutside:String = "buttonEventUpOutside"
     static var out:String = "buttonEventOut"
     static var over:String = "buttonEventOut"
-    
 }

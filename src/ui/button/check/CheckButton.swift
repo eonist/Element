@@ -4,8 +4,8 @@ import Foundation
  */
 class CheckButton :Button{
     var isChecked:Bool;
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
-        
+    init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil){
+        self.isChecked = isChecked
         super.init(width,height,parent,id);
     }
     

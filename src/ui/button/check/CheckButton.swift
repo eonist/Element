@@ -11,7 +11,7 @@ class CheckButton :Button{
     override func mouseUpInside(event: MouseEvent) {
         isChecked = !isChecked
         super.mouseUpInside(event)
-        //onEvent(CheckEvent(CheckEvent.check, isChecked, self))
+        self.event!(CheckEvent(CheckEvent.check, isChecked, self))
     }
     /**
      * Sets the _isChecked variable (Toggles between two states)

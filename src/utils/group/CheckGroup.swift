@@ -30,11 +30,19 @@ class CheckGroup {
      * Removes the RadioButton passed through the @param radioButton
      */
     func removeCheckable(item:ICheckable)->ICheckable {
-        for (var i:int=0; i < _checkables.length; i++) {
-            if (_checkables[i] === item) {
+        for (var i:int=0; i < checkables.count; i++) {
+            if (checkables[i] === item) {
                 return _checkables.splice (i,1);	// :TODO: disoatch something?
             }
         }
+        return nil;
+    }
+    /**
+     * Returns an ICheckable at a spessific index
+     */
+    func getCheckableAt(index:Int)->ICheckable? {// :TODO: consider moving in to util class or just write it up as a note
+        if(index <= checkables.count) {return checkables[index]}
+        else {fatalError("\(self)" + " no ISelectable at the index of: " + "\(index)")}
         return nil;
     }
 }

@@ -8,3 +8,6 @@ class CheckModifier {
         for checkable : ICheckable in checkables {if(checkable !== exceptionItem && checkable.isChecked) {checkable.setChecked(false)}}
     }
 }
+
+
+//continue here: revert the checked vs isChecked system. use the legacu version

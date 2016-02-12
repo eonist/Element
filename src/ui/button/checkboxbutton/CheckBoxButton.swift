@@ -16,5 +16,16 @@ class CheckBoxButton : Button{
         text = addSubView(Text(width,height,textString,self)) as? Text
         text!.isInteractive = false
     }
+    func setChecked(isChecked:Bool) {
+        _checkBox.setChecked(isChecked);
+    }
+    func getSkinState() -> String {
+        return _isChecked ? SkinStates.CHECKED + " " + super.getSkinState() : super.getSkinState();
+    }
+    func setSize(width : CGFloat, height : CGFloat) {
+        super.setSize(width, height);
+        _checkBox.setSkinState(_checkBox.skin.state);
+        _text.setSkinState(_checkBox.skin.state);
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

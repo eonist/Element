@@ -2,7 +2,7 @@ import Foundation
 /**
  * @Note: to force the CheckButton to apply its Checked or unchecked skin, use the setChecked after the instance is created
  */
-class CheckButton :Button{
+class CheckButton :Button,ICheckable{
     var isChecked:Bool;
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil){
         self.isChecked = isChecked

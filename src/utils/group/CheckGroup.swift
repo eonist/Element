@@ -15,7 +15,7 @@ class CheckGroup:EventSender {
     }
     func onCheck(event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == SelectEvent.select){
-            self.event!(CheckEvent(CheckGroupEvent.check,self,checked))
+            self.event!(CheckGroupEvent(CheckGroupEvent.check,self,checked))
             checked = event.origin as? ICheckable
             //SelectModifier.unSelectAllExcept(selected!, checkables);
             CheckUtil.unCheckAll(checked, checkables)

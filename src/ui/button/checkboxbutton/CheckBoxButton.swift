@@ -10,5 +10,11 @@ class CheckBoxButton : Button{
         self.isChecked = isChecked
         super.init(width,height,parent,id)
     }
+    override func resolveSkin():void {
+        super.resolveSkin();
+        _checkBox = addChild(new CheckBox(height,height,false,false,_isChecked,this)) as CheckBox;
+        _text = addChild(new Text(width,height,_textString,this)) as Text;
+        _text.mouseChildren = _text.mouseEnabled = _text.buttonMode = false;
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

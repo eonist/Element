@@ -1,12 +1,9 @@
 import Foundation
 
 class CheckBoxButton : Button,ICheckable{
-    /*/**
-    * @Note this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
-    */
-    public function get checked():Boolean {
-    return
-    }*/
+    //@Note this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
+    
+    //continue here, research if you can implment local setter and dynamic getter
     var isChecked:Bool{get {return checkBox != nil ? checkBox!.isChecked : self.isChecked;/*Temp fix*/} set {self.isChecked = newValue}}
     var checkBox : CheckBox?
     var text:Text?

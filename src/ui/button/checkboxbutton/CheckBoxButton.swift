@@ -12,7 +12,7 @@ class CheckBoxButton : Button,ICheckable{
     }
     override func resolveSkin() {
         super.resolveSkin();
-        checkBox = addSubView(CheckBox(0,0,isChecked,self)) as? CheckBox
+        checkBox = addSubView(CheckBox(14,14,isChecked,self)) as? CheckBox
         text = addSubView(Text(width,height,textString,self)) as? Text
         text!.isInteractive = false
     }

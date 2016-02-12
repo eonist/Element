@@ -13,4 +13,13 @@ class CheckGroup {
         addCheckables(checkables)
         self.checked = checked
     }
+    func onCheck(event:CheckEvent) {// :TODO: make protected see SelectGroup
+        //print("CheckGroup.onCheck: " + event);
+        checked = event.currentTarget as! ICheckable
+        CheckUtil.unCheckAll(checked, _checkables);
+        dispatchEvent(CheckGroupEvent(CheckGroupEvent.CHECK_GROUP_CHANGE));
+    }
+    func addCheckables(checkables:Array<ICheckable>) {
+        for checkable : ICheckable in checkables{ addCheckable(checkable)}
+    }
 }

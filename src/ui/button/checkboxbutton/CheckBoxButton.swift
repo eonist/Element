@@ -17,15 +17,15 @@ class CheckBoxButton : Button{
         text!.isInteractive = false
     }
     func setChecked(isChecked:Bool) {
-        _checkBox.setChecked(isChecked);
+        checkBox!.setChecked(isChecked);
     }
-    func getSkinState() -> String {
-        return _isChecked ? SkinStates.CHECKED + " " + super.getSkinState() : super.getSkinState();
+    override func getSkinState() -> String {
+        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();
     }
     func setSize(width : CGFloat, height : CGFloat) {
         super.setSize(width, height);
-        _checkBox.setSkinState(_checkBox.skin.state);
-        _text.setSkinState(_checkBox.skin.state);
+        checkBox!.setSkinState(checkBox!.skin!.state);
+        text!.setSkinState(checkBox!.skin!.state);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -8,4 +8,7 @@ protocol ICheckable: class/*derive only classes for the protocol, not structs, t
 
 
 
-//you probably have to revert to the checked variable as 
+//you probably have to revert to the checked variable as you need to be able to use only one way to assert checkedness. think checkgroup etc
+
+
+

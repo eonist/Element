@@ -20,6 +20,9 @@ class CheckButton :Button,ICheckable{
         self.isChecked = isChecked
         setSkinState(getSkinState())
     }
+    func getChecked() -> Bool {
+        return isChecked
+    }
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }

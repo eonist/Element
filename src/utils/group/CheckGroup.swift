@@ -6,14 +6,17 @@ import Foundation
  * // :TODO: In the future make a MultipleSelectionCheckGroup that can select many icheckable items with the use of shift key for instance (do not add this functionality in this class its not the correct abstraction level)
  * // :TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
  */
-class CheckGroup {
+class CheckGroup::EventSender {
     var checkables:Array<ICheckable> = []
     var checked:ICheckable
     init(checkables:Array<ICheckable>, checked:ICheckable? = nil){
         addCheckables(checkables)
         self.checked = checked!
     }
-    func onCheck(event:CheckEvent) {// :TODO: make protected see SelectGroup
+    func onCheck(event:Event) {// :TODO: make protected see SelectGroup
+        if(event.type == SelectEvent.select){
+           self.event!(CheckEvent(CheckGroupEvent.check,self,checked))
+        }
         //print("CheckGroup.onCheck: " + event);
         checked = event.currentTarget as! ICheckable
         CheckUtil.unCheckAll(checked, checkables)
@@ -27,9 +30,9 @@ class CheckGroup {
      */
     func addCheckable(checkable:ICheckable) {
         if(checkable is IEventSender){
-            (checkable as! IEventSender).event = onSelect
+            (checkable as! IEventSender).event = onCheck
         }
-        checkable.append(selectable);
+        checkables.append(checkable);
     }
     /**
      * Removes the RadioButton passed through the @param radioButton

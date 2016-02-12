@@ -11,19 +11,19 @@ class CheckGroup {
     var checked:ICheckable
     init(checkables:Array<ICheckable>, checked:ICheckable? = nil){
         addCheckables(checkables)
-        self.checked = checked
+        self.checked = checked!
     }
     func onCheck(event:CheckEvent) {// :TODO: make protected see SelectGroup
         //print("CheckGroup.onCheck: " + event);
         checked = event.currentTarget as! ICheckable
-        CheckUtil.unCheckAll(checked, _checkables);
-        dispatchEvent(CheckGroupEvent(CheckGroupEvent.CHECK_GROUP_CHANGE));
+        CheckUtil.unCheckAll(checked, checkables)
+        dispatchEvent(CheckGroupEvent(CheckGroupEvent.CHECK_GROUP_CHANGE))
     }
     func addCheckables(checkables:Array<ICheckable>) {
         for checkable : ICheckable in checkables{ addCheckable(checkable)}
     }
-    public function addCheckable(checkable:ICheckable):void {
-    IEventDispatcher(checkable).addEventListener(CheckEvent.CHECK, onCheck,false,0,true);//@Note: useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or from stage
-    _checkables.push(checkable);
+    func addCheckable(checkable:ICheckable) {
+        //IEventDispatcher(checkable).addEventListener(CheckEvent.CHECK, onCheck,false,0,true);//@Note: useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or from stage
+        //checkables.push(checkable);
     }
 }

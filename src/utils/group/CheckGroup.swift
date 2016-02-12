@@ -22,4 +22,8 @@ class CheckGroup {
     func addCheckables(checkables:Array<ICheckable>) {
         for checkable : ICheckable in checkables{ addCheckable(checkable)}
     }
+    public function addCheckable(checkable:ICheckable):void {
+    IEventDispatcher(checkable).addEventListener(CheckEvent.CHECK, onCheck,false,0,true);//@Note: useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or from stage
+    _checkables.push(checkable);
+    }
 }

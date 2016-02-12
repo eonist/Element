@@ -6,9 +6,9 @@ import Foundation
  * // :TODO: In the future make a MultipleSelectionCheckGroup that can select many icheckable items with the use of shift key for instance (do not add this functionality in this class its not the correct abstraction level)
  * // :TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
  */
-class CheckGroup::EventSender {
+class CheckGroup:EventSender {
     var checkables:Array<ICheckable> = []
-    var checked:ICheckable
+    var checked:ICheckable?
     init(checkables:Array<ICheckable>, checked:ICheckable? = nil){
         addCheckables(checkables)
         self.checked = checked!
@@ -16,6 +16,7 @@ class CheckGroup::EventSender {
     func onCheck(event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == SelectEvent.select){
            self.event!(CheckEvent(CheckGroupEvent.check,self,checked))
+           checked = event.origin as? ICheckable
         }
         //print("CheckGroup.onCheck: " + event);
         checked = event.currentTarget as! ICheckable

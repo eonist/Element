@@ -15,13 +15,14 @@ class CheckGroup:EventSender {
     }
     func onCheck(event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == SelectEvent.select){
-           self.event!(CheckEvent(CheckGroupEvent.check,self,checked))
-           checked = event.origin as? ICheckable
+            self.event!(CheckEvent(CheckGroupEvent.check,self,checked))
+            checked = event.origin as? ICheckable
+            //SelectModifier.unSelectAllExcept(selected!, checkables);
+            CheckUtil.unCheckAll(checked, checkables)
+            self.event!(CheckGroupEvent(CheckGroupEvent.change,self,checked))
+            
         }
         //print("CheckGroup.onCheck: " + event);
-        checked = event.currentTarget as! ICheckable
-        CheckUtil.unCheckAll(checked, checkables)
-        dispatchEvent(CheckGroupEvent(CheckGroupEvent.CHECK_GROUP_CHANGE))
     }
     func addCheckables(checkables:Array<ICheckable>) {
         for checkable : ICheckable in checkables{ addCheckable(checkable)}

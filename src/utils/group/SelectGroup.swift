@@ -1,15 +1,12 @@
 import Cocoa
 /**
- * @Note: this class also works greate with RadioBullets
+ * @Note: this class also works great with RadioBullets
  * @Note: Remember to add the selectGroup instance to the view so that the event works correctly // :TODO: this is a bug try to fix it
  * EXAMPLE:
  * let radioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
-
-//continue here: so selectGroup needs to hock into the parent of the SelectableButton to get the onEvent call, a way to do this is to use selectors and clousures.
-//look at your selector example both the one on twitter and in the event article. Maybe we can make it work.
 
 class SelectGroup:EventSender{
     private var selectables:Array<ISelectable> = [];

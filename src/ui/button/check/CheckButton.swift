@@ -9,6 +9,7 @@ class CheckButton :Button,ICheckable{
         super.init(width,height,parent,id);
     }
     override func mouseUpInside(event: MouseEvent) {
+        Swift.print("CheckButton.mouseUpInside()")
         isChecked = !isChecked
         super.mouseUpInside(event)
         self.event!(CheckEvent(CheckEvent.check, isChecked, self))

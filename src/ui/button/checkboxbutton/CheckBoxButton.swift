@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * TODO: Implement a way to also include the text in being in a checked status
+ */
 class CheckBoxButton : Button,ICheckable{
     var isChecked:Bool
     var textString:String

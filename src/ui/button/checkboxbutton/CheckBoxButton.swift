@@ -1,6 +1,13 @@
 import Foundation
 
-class CheckBoxButton : Button{
+class CheckBoxButton : Button,ICheckable{
+    /*/**
+    * @Note this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
+    */
+    public function get checked():Boolean {
+    return
+    }*/
+    var isChecked:Bool{return checkBox != nil ? checkBox.checked : isChecked;/*Temp fix*/}
     var checkBox : CheckBox?
     var text:Text?
     var textString:String

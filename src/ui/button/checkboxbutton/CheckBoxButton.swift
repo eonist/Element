@@ -1,10 +1,7 @@
 import Foundation
 
 class CheckBoxButton : Button,ICheckable{
-    //@Note this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
-    
-    //continue here, research if you can implment local setter and dynamic getter
-    var isChecked:Bool{get {return checkBox != nil ? checkBox!.isChecked : self.isChecked;/*Temp fix*/} set {self.isChecked = newValue}}
+    var isChecked:Bool
     var checkBox : CheckBox?
     var text:Text?
     var textString:String
@@ -22,6 +19,12 @@ class CheckBoxButton : Button,ICheckable{
     }
     func setChecked(isChecked:Bool) {
         checkBox!.setChecked(isChecked);
+    }
+    /**
+     * NOTE: this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
+     */
+    func getChecked() -> Bool {
+        return checkBox != nil ? checkBox!.isChecked : self.isChecked;/*Temp fix*/
     }
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();

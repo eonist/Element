@@ -26,4 +26,15 @@ class CheckGroup {
         //IEventDispatcher(checkable).addEventListener(CheckEvent.CHECK, onCheck,false,0,true);//@Note: useWeakReference is set to true so that we dont have to remove the event if the selectable is removed from the SelectGroup or from stage
         //checkables.push(checkable);
     }
+    /**
+     * Removes the RadioButton passed through the @param radioButton
+     */
+    func removeCheckable(item:ICheckable)->ICheckable {
+        for (var i:int=0; i < _checkables.length; i++) {
+            if (_checkables[i] === item) {
+                return _checkables.splice (i,1);	// :TODO: disoatch something?
+            }
+        }
+        return nil;
+    }
 }

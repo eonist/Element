@@ -1,10 +1,10 @@
 import Foundation
 /*
- * @Note: remeber to add the group to the stage or else the eventBubbling may make errors in other components
+ * @Note: remeber to add the group to the view or else the eventBubbling may make errors in other components
  * @Note: this class would be more logical if it extended EventDispatcher but it extends Sprite so that the event bubbling on the ICheckable objects works
  * @Note: the constructor checked parameter is just a reference no action is applied to that checked item.
  * // :TODO: In the future make a MultipleSelectionCheckGroup that can select many icheckable items with the use of shift key for instance (do not add this functionality in this class its not the correct abstraction level)
- * // :TODO: fix the bubbling stuff this should need to be added to the stage or be a sprite.
+ * // :TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
  */
 class CheckGroup {
     var checkables:Array<ICheckable> = []
@@ -29,10 +29,10 @@ class CheckGroup {
     /**
      * Removes the RadioButton passed through the @param radioButton
      */
-    func removeCheckable(item:ICheckable)->ICheckable {
-        for (var i:int=0; i < checkables.count; i++) {
+    func removeCheckable(item:ICheckable)->ICheckable? {
+        for (var i:Int=0; i < checkables.count; i++) {
             if (checkables[i] === item) {
-                return _checkables.splice (i,1);	// :TODO: disoatch something?
+                return checkables.splice (i,1);	// :TODO: dispatch something?
             }
         }
         return nil;
@@ -43,6 +43,12 @@ class CheckGroup {
     func getCheckableAt(index:Int)->ICheckable? {// :TODO: consider moving in to util class or just write it up as a note
         if(index <= checkables.count) {return checkables[index]}
         else {fatalError("\(self)" + " no ISelectable at the index of: " + "\(index)")}
-        return nil;
+        return nil
+    }
+    /**
+     * Returns the RadioButton index passed through the @param item
+     */
+    func itemToIndex(item:Object):int{// :TODO: move to utils class see SelectGroup
+        return _checkables.indexOf(item);
     }
 }

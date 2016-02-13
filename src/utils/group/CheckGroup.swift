@@ -9,7 +9,7 @@ import Foundation
 class CheckGroup:EventSender {
     var checkables:Array<ICheckable> = []
     var checked:ICheckable?
-    init(checkables:Array<ICheckable>, checked:ICheckable? = nil){
+    init(_ checkables:Array<ICheckable>, _ checked:ICheckable? = nil){
         super.init()
         addCheckables(checkables)
         self.checked = checked!

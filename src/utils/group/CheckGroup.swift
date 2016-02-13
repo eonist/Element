@@ -27,11 +27,11 @@ class CheckGroup:EventSender {
     override func onEvent(event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == CheckEvent.check){
             Swift.print("CheckGroup.onEvent() origin: " + "\(event.origin)" + " type: " + "\(event.type)")
-            self.event!(CheckGroupEvent(CheckGroupEvent.check,self,checked))
+            self.event!(CheckGroupEvent(CheckGroupEvent.check,checked,self,self))
             checked = event.origin as? ICheckable
             //SelectModifier.unSelectAllExcept(selected!, checkables);
             CheckModifier.unCheckAllExcept(checked!, checkables)
-            self.event!(CheckGroupEvent(CheckGroupEvent.change,self,checked))
+            self.event!(CheckGroupEvent(CheckGroupEvent.change,checked,self,self))
             
         }
         //print("CheckGroup.onCheck: " + event);

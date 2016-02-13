@@ -32,10 +32,7 @@ class CheckGroup:EventSender {
      * @Note use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addCheckable(checkable:ICheckable) {
-        if(checkable is IEventSender){
-            (checkable as! IEventSender).event = onCheck
-        }
+        if(checkable is IEventSender){(checkable as! IEventSender).event = onCheck}
         checkables.append(checkable);
     }
-    
 }

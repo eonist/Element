@@ -100,10 +100,10 @@ class Button2:InteractiveView2{
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
     }
     override func mouseDown(event: MouseEvent) {
-        super.onEvent(ButtonEvent(ButtonEvent.down,self,self))
+        super.onEvent(ButtonEvent(ButtonEvent.down,self/*,self*/))
     }
     override func mouseUp(event: MouseEvent) {
-        super.onEvent(ButtonEvent(ButtonEvent.up,self,self))
+        super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

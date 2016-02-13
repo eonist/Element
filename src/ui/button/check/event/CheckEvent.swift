@@ -7,6 +7,6 @@ class CheckEvent:Event{
     static var check:String = "checkEventCheck";
     init(_ type:String, _ isChecked:Bool, _ origin:NSView, _ immediate:AnyObject){
         self.isChecked = isChecked
-        super.init(type, origin, immediate)
+        super.init(type, origin/*, immediate*/)
     }
 }

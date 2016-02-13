@@ -20,7 +20,7 @@ class Button:Element {
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-            self.onEvent(ButtonEvent(ButtonEvent.over,self/*,self*/))
+            super.onEvent(ButtonEvent(ButtonEvent.over,self/*,self*/))
         }
     }
     /**
@@ -33,7 +33,7 @@ class Button:Element {
             state = SkinStates.none
             setSkinState(getSkinState())
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.out, object:self)
-            self.event!(ButtonEvent(ButtonEvent.out,self/*,self*/))
+            super.onEvent(ButtonEvent(ButtonEvent.out,self/*,self*/))
         }
     }
     /**
@@ -45,7 +45,7 @@ class Button:Element {
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
-        self.event!(ButtonEvent(ButtonEvent.down,self/*,self*/))
+        super.onEvent(ButtonEvent(ButtonEvent.down,self/*,self*/))
     }
     /**
      * Handles actions and drawing states for the release event.
@@ -56,7 +56,7 @@ class Button:Element {
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
-        self.event!(ButtonEvent(ButtonEvent.upInside,self/*,self*/))
+        super.onEvent(ButtonEvent(ButtonEvent.upInside,self/*,self*/))
         
         //continue here use self.event, maybe even remove the "!" then look how selectbutton works and maybe override onEvent
     }
@@ -69,14 +69,14 @@ class Button:Element {
         state = SkinStates.none
         setSkinState(getSkinState());
         //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
-        self.event!(ButtonEvent(ButtonEvent.upOutside,self/*,self*/))
+        super.onEvent(ButtonEvent(ButtonEvent.upOutside,self/*,self*/))
     }
     /**
      * Convenince
      */
     override func mouseUp(event: MouseEvent) {
         //Swift.print("Button.mouseUp: ")
-        self.event!(ButtonEvent(ButtonEvent.up,self/*,self*/))
+        super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
         //Swift.print("Button.aPoint: " + "\(aPoint)")

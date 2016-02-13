@@ -14,9 +14,9 @@ class CheckGroup:EventSender {
         addCheckables(checkables)
         self.checked = checked!
     }
-    func onCheck(event:Event) {// :TODO: make protected see SelectGroup
-        Swift.print("CheckGroup.onCheck() origin: " + "\(event.origin)" + " type: " + "\(event.type)")
+    func onEvent(event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == CheckEvent.check){
+            Swift.print("CheckGroup.onCheck() origin: " + "\(event.origin)" + " type: " + "\(event.type)")
             self.event!(CheckGroupEvent(CheckGroupEvent.check,self,checked))
             checked = event.origin as? ICheckable
             //SelectModifier.unSelectAllExcept(selected!, checkables);
@@ -33,7 +33,7 @@ class CheckGroup:EventSender {
      * @Note use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addCheckable(checkable:ICheckable) {
-        if(checkable is IEventSender){(checkable as! IEventSender).event = onCheck}
+        if(checkable is IEventSender){(checkable as! IEventSender).event = onEvent}
         checkables.append(checkable);
     }
 }

@@ -52,7 +52,7 @@ class LeverSpinner : Element{
         val = NumberParser.minMax(CGFloat(Double((valStr))!), minVal, maxVal)
         Swift.print("val: " + "\(val)")
         stepper!.value = val
-        self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self))
+        self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     override func onEvent(event: Event) {
         Swift.print("LeverSpinner.onEvent " + "\(event.origin)" + " event.type: " + "\(event)")

@@ -41,7 +41,7 @@ class SelectGroup:EventSender{
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable
             SelectModifier.unSelectAllExcept(selected!, selectables);
-            self.event!(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
+            super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
             //NSNotificationCenter.defaultCenter().postNotificationName(, object:self)
         }
     }

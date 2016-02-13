@@ -31,7 +31,7 @@ class CheckGroup:EventSender {
             checked = event.immediate as? ICheckable
             //SelectModifier.unSelectAllExcept(selected!, checkables);
             CheckModifier.unCheckAllExcept(checked!, checkables)
-            self.event!(CheckGroupEvent(CheckGroupEvent.change,checked,self/*,self*/))
+            super.onEvent(CheckGroupEvent(CheckGroupEvent.change,checked,self/*,self*/))
             
         }
         //print("CheckGroup.onCheck: " + event);

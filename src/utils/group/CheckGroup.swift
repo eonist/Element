@@ -18,7 +18,7 @@ class CheckGroup:EventSender {
             self.event!(CheckGroupEvent(CheckGroupEvent.check,self,checked))
             checked = event.origin as? ICheckable
             //SelectModifier.unSelectAllExcept(selected!, checkables);
-            CheckUtil.unCheckAll(checked, checkables)
+            CheckModifier.unCheckAllExcept(checked!, checkables)
             self.event!(CheckGroupEvent(CheckGroupEvent.change,self,checked))
             
         }

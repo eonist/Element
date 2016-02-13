@@ -9,5 +9,3 @@ class CheckModifier {
     }
 }
 
-
-//continue here: revert the checked vs isChecked system. use the legacu version

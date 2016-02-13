@@ -22,7 +22,7 @@ class CheckButton :Button,ICheckable{
         setSkinState(getSkinState())
     }
     func getChecked() -> Bool {
-        self.isChecked = isChecked
+       return isChecked
     }
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()

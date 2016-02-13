@@ -12,7 +12,7 @@ class CheckButton :Button,ICheckable{
         Swift.print("CheckButton.mouseUpInside()")
         isChecked = !isChecked
         super.mouseUpInside(event)
-        self.event!(CheckEvent(CheckEvent.check, isChecked, self/*,self*/))
+        super.onEvent(CheckEvent(CheckEvent.check, isChecked, self/*,self*/))
     }
     /**
      * Sets the _isChecked variable (Toggles between two states)

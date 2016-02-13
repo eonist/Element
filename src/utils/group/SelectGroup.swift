@@ -14,7 +14,7 @@ class SelectGroup:EventSender{
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
         super.init()
         self.selected = selected
-        addSelectables(selectables);
+        addSelectables(selectables)
     }
     func addSelectables(selectables:Array<ISelectable>){
         //Swift.print("SelectGroup.addSelectables()")

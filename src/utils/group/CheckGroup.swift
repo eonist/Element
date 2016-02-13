@@ -10,6 +10,7 @@ class CheckGroup:EventSender {
     var checkables:Array<ICheckable> = []
     var checked:ICheckable?
     init(checkables:Array<ICheckable>, checked:ICheckable? = nil){
+        super.init()
         addCheckables(checkables)
         self.checked = checked!
     }
@@ -36,25 +37,5 @@ class CheckGroup:EventSender {
         }
         checkables.append(checkable);
     }
-    /**
-     * Removes the RadioButton passed through the @param radioButton
-     */
-    func removeCheckable(item:ICheckable)->ICheckable? {
-        for (var i:Int=0; i < checkables.count; i++) {if (checkables[i] === item) {return checkables.splice(i, 1) as? ICheckable}}// :TODO: dispatch something?
-        return nil
-    }
-    /**
-     * Returns an ICheckable at a spessific index
-     */
-    func getCheckableAt(index:Int)->ICheckable? {// :TODO: consider moving in to util class or just write it up as a note
-        if(index <= checkables.count) {return checkables[index]}
-        else {fatalError("\(self)" + " no ISelectable at the index of: " + "\(index)")}
-        return nil
-    }
-    /**
-     * Returns the RadioButton index passed through the @param item
-     */
-    func itemToIndex(item:ICheckable)->Int{// :TODO: move to utils class see SelectGroup
-        return checkables.indexOf(item)
-    }
+    
 }

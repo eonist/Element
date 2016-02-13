@@ -7,6 +7,6 @@ class SelectGroupEvent:Event {
     var selected : ISelectable?//TODO: rename to selected
     init(_ type: String, _ selected:ISelectable? = nil, _ origin: AnyObject,_ immediate:AnyObject) {
         self.selected = selected
-        super.init(type,origin,immediate)
+        super.init(type,origin/*immediate*/)
     }
 }

@@ -6,6 +6,6 @@ class CheckGroupEvent:Event {
     var checked : ICheckable?
     init(_ type:String, _ checked:ICheckable? = nil,_ origin: AnyObject,_ immediate:AnyObject) {
         self.checked = checked
-        super.init(type,origin,immediate)
+        super.init(type,origin/*immediate*/)
     }
 }

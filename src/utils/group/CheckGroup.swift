@@ -40,11 +40,7 @@ class CheckGroup:EventSender {
      * Removes the RadioButton passed through the @param radioButton
      */
     func removeCheckable(item:ICheckable)->ICheckable? {
-        for (var i:Int=0; i < checkables.count; i++) {
-            if (checkables[i] === item) {
-                return ArrayModifier.splice(&checkables, i, 1) as? ICheckable	// :TODO: dispatch something?
-            }
-        }
+        for (var i:Int=0; i < checkables.count; i++) {if (checkables[i] === item) {return checkables.splice(i, 1) as? ICheckable}}// :TODO: dispatch something?
         return nil
     }
     /**
@@ -59,6 +55,6 @@ class CheckGroup:EventSender {
      * Returns the RadioButton index passed through the @param item
      */
     func itemToIndex(item:AnyObject)->Int{// :TODO: move to utils class see SelectGroup
-        return checkables.indexOf(item);
+        return checkables.indexOf(item)
     }
 }

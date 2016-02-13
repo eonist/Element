@@ -54,7 +54,7 @@ class CheckGroup:EventSender {
     /**
      * Returns the RadioButton index passed through the @param item
      */
-    func itemToIndex(item:AnyObject)->Int{// :TODO: move to utils class see SelectGroup
+    func itemToIndex(item:ICheckable)->Int{// :TODO: move to utils class see SelectGroup
         return checkables.indexOf(item)
     }
 }

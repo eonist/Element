@@ -3,7 +3,7 @@ import Foundation
 protocol ICheckable: class/*derive only classes for the protocol, not structs, this enables === operator of protocol*/{
     func setChecked(isChecked:Bool)
     //func getChecked()->Bool
-    var isChecked:Bool{get}// :TODO: this should be getChecked since composite classes can impliment ICHeckable and they will need to access a sub instance via a implimcit getter method, same for IDisableable, ISelectable, IFocusable etc
+    func getChecked()->Bool// :TODO: this should be getChecked since composite classes can impliment ICHeckable and they will need to access a sub instance via a implimcit getter method, same for IDisableable, ISelectable, IFocusable etc
 }
 
 

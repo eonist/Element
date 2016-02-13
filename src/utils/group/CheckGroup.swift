@@ -14,18 +14,6 @@ class CheckGroup:EventSender {
         addCheckables(checkables)
         self.checked = checked!
     }
-    func onEvent(event:Event) {// :TODO: make protected see SelectGroup
-        if(event.type == CheckEvent.check){
-            Swift.print("CheckGroup.onCheck() origin: " + "\(event.origin)" + " type: " + "\(event.type)")
-            self.event!(CheckGroupEvent(CheckGroupEvent.check,self,checked))
-            checked = event.origin as? ICheckable
-            //SelectModifier.unSelectAllExcept(selected!, checkables);
-            CheckModifier.unCheckAllExcept(checked!, checkables)
-            self.event!(CheckGroupEvent(CheckGroupEvent.change,self,checked))
-            
-        }
-        //print("CheckGroup.onCheck: " + event);
-    }
     func addCheckables(checkables:Array<ICheckable>) {
         for checkable : ICheckable in checkables{ addCheckable(checkable)}
     }
@@ -35,5 +23,17 @@ class CheckGroup:EventSender {
     func addCheckable(checkable:ICheckable) {
         if(checkable is IEventSender){(checkable as! IEventSender).event = onEvent}
         checkables.append(checkable);
+    }
+    override func onEvent(event:Event) {// :TODO: make protected see SelectGroup
+        if(event.type == CheckEvent.check){
+            Swift.print("CheckGroup.onEvent() origin: " + "\(event.origin)" + " type: " + "\(event.type)")
+            self.event!(CheckGroupEvent(CheckGroupEvent.check,self,checked))
+            checked = event.origin as? ICheckable
+            //SelectModifier.unSelectAllExcept(selected!, checkables);
+            CheckModifier.unCheckAllExcept(checked!, checkables)
+            self.event!(CheckGroupEvent(CheckGroupEvent.change,self,checked))
+            
+        }
+        //print("CheckGroup.onCheck: " + event);
     }
 }

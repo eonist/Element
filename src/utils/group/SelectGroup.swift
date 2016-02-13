@@ -30,11 +30,11 @@ class SelectGroup:EventSender{
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as AnyObject)
         if(selectable is IEventSender){
-            (selectable as! IEventSender).event = onSelect
+            (selectable as! IEventSender).event = onEvent
         }
         selectables.append(selectable);
     }
-    func onSelect(event:Event){
+    override func onEvent(event:Event){
         if(event.type == SelectEvent.select){
             //Swift.print("SelectGroup.onEvent() ")
             //NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/

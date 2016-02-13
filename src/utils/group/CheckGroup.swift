@@ -42,10 +42,10 @@ class CheckGroup:EventSender {
     func removeCheckable(item:ICheckable)->ICheckable? {
         for (var i:Int=0; i < checkables.count; i++) {
             if (checkables[i] === item) {
-                return checkables.splice (i,1);	// :TODO: dispatch something?
+                return ArrayModifier.splice(&checkables, i, 1) as? ICheckable	// :TODO: dispatch something?
             }
         }
-        return nil;
+        return nil
     }
     /**
      * Returns an ICheckable at a spessific index

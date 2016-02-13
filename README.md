@@ -3,6 +3,12 @@
 or  
 [Twitter](https://twitter.com/stylekit_org)  
 
+### CheckBoxButton:
+
+<img width="554" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/checkBoxButton.mov.gif">
+
+[Case study](http://stylekit.org/blog/2016/02/13/Check-box-button/) 
+
 ### LeverSpinner:  
 
 <img width="550" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/leverSpinner_1_x14hs.gif">

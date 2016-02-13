@@ -20,7 +20,7 @@ class Button:Element {
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
             //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
-            self.event!(ButtonEvent(ButtonEvent.over,self/*,self*/))
+            self.onEvent(ButtonEvent(ButtonEvent.over,self/*,self*/))
         }
     }
     /**

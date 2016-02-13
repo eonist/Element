@@ -46,13 +46,13 @@ class LeverStepper : Element{
         //Swift.print("onPlusButtonUpInside")
         let val:CGFloat = NumberModifier.increment(value, increment);
         value = NumberParser.minMax(val, minVal, maxVal);// :TODO: dont set the value
-        self.event!(StepperEvent(StepperEvent.change,value,self))
+        self.event!(StepperEvent(StepperEvent.change,value,self,self))
     }
     func onMinusButtonUpInside() {
         //Swift.print("onMinusButtonUpInside")
         let val:CGFloat = NumberModifier.decrement(value, increment);
         value = NumberParser.minMax(val, minVal, maxVal);
-        self.event!(StepperEvent(StepperEvent.change,self.value,self))
+        self.event!(StepperEvent(StepperEvent.change,self.value,self,self))
     }
     func onButtonUp(){
         //Swift.print("onButtonUp")

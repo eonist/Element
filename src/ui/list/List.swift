@@ -61,7 +61,7 @@ class List : Element{
             case DataProviderEvent.sort: DepthModifier.sortByList(lableContainer!,"text","title", dataProvider.items); break;/*This is called when the items in the DataProvider instance is sorted*/
             case DataProviderEvent.dataChange: /*Not implimented yet*/ break;/*This is called when the items in the DataProvider instance is sorted*/
             case DataProviderEvent.replace: /*This is called when an item is replaced from the DataProvider instance*/
-                self.lableContainer.removeChildAt(event.startIndex);
+                self.lableContainer!.removeSubviewAt(event.startIndex);
                 mergeAt(event.items, event.startIndex);
                 break;
             default:fatalError("event type not supported"); break;

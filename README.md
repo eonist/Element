@@ -85,12 +85,11 @@ StyleManager.addStyle("CustomButton{fill:yellow;} CustomButton:down{fill:green;}
 ```swift
 StyleManager.addStyle(File.resources.url + "assets/css/general.css");//call this one time to install all styles
 			
-var button = Button(self,96,24);//Create the button
-addSubview(button)//add the button to the view
-button.addTarget(self, action:"pressedAction:",event:.TouchUpInside)//add an event listener
+var button = addSubview(Button(96,24,self)) as! Button/*Create and add the button to the view*/
+button.event = onEvent/*add an event listener*/
 		
-func pressedAction(sender: Button!){//event handler
-	print(sender.target)
+func onEvent(event:Event){//event handler
+	print(event.origin)//Output: button
 }
 ```
 

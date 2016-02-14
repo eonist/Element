@@ -54,8 +54,8 @@ class List : Element{
         
     }
     /**
-    * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
-    */
+     * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
+     */
     func onUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
         Swift.print("selectedIndex: " + "\(selectedIndex)")

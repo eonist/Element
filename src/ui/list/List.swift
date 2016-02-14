@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * @Note There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
  * @Note ListParser and ListModifier are usefull utility classes
@@ -56,18 +56,17 @@ class List : Element{
     /**
     * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
     */
-    func onReleaseInside(buttonEvent:ButtonEvent) {
-        buttonEvent.stopImmediatePropagation();
-        var selectedIndex:int = _lableContainer.getChildIndex(buttonEvent.target as DisplayObject);
-        ListModifier.selectAt(this,selectedIndex);
-        dispatchEvent(new ListEvent(ListEvent.SELECT,buttonEvent.target as ISelectable/*<-this might be wrong*/,selectedIndex,true,true));
+    func onUpInside(buttonEvent:ButtonEvent) {
+        let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
+        Swift.print("selectedIndex: " + "\(selectedIndex)")
+        //ListModifier.selectAt(this,selectedIndex);
+        //super.onEvent(ListEvent(ListEvent.select,buttonEvent.origin as ISelectable/*<-this might be wrong*/,selectedIndex,true,true));
     }
-    func onEvent(event: Event) {
-        if(event.immediate === lableContainer && event.type == ButtonEvent.upInside ){
-            
+    override func onEvent(event: Event) {
+        if(event.immediate === lableContainer && event.type == ButtonEvent.upInside ){// :TODO: should listen for SelectEvent here
+            onUpInside(event as! ButtonEvent)
         }
-        
-        self.lableContainer.addEventListener(,false,0,false);// :TODO: should listen for SelectEvent here
+        //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

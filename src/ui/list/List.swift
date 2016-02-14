@@ -90,7 +90,7 @@ class List : Element{
     override func setSize(width : CGFloat, _ height : CGFloat) {
         super.setSize(width, height);
         //skin.setState(skin.state);
-        //_mask.setSize(width, height);
+        //self.mask.setSize(width, height);
         ElementModifier.refresh(lableContainer!)//was SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
     }
     /**

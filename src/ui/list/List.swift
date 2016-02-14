@@ -1,22 +1,24 @@
 import Foundation
-
+/**
+ * @Note There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
+ * @Note ListParser and ListModifier are usefull utility classes
+ * // :TODO: could List have a SelectGroup?
+ * // :TODO: xml should be able to hold a propert named selected="true" and then the cooresponding Item should be selected
+ * // :TODO: try to get rid of the lableCOntainer
+ * // :TODO: try to make the mask an Element
+ * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
+ */
 class List : Element{
     private var itemHeight:CGFloat
     private var dataProvider : DataProvider
     private var lableContainer  : Container?
-    /**
-     * @Note There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
-     * @Note ListParser and ListModifier are usefull utility classes
-     * // :TODO: could List have a SelectGroup?
-     * // :TODO: xml should be able to hold a propert named selected="true" and then the cooresponding Item should be selected
-     * // :TODO: try to get rid of the lableCOntainer
-     * // :TODO: try to make the mask an Element
-     * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
-     */
+    override var wantsDefaultClipping:Bool{return true}//avoids clipping the view
+    
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight;
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
         super.init(width, height,parent,id)
+        layer!.masksToBounds = true//this is needed!!!
     }
     /**
      * Creates the components in the List Component

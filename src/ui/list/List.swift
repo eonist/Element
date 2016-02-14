@@ -12,7 +12,6 @@ class List : Element{
     private var itemHeight:CGFloat
     private var dataProvider : DataProvider
     private var lableContainer  : Container?
-    override var wantsDefaultClipping:Bool{return true}//avoids clipping the view
     
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight;

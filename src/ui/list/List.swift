@@ -38,10 +38,10 @@ class List : Element{
     * Creates and adds items to the _lableContainer
     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
     */
-    func mergeAt(objects:Array, _ index:int){// :TODO: possible rename needed
+    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename needed
         var i:Int = index;
         //Swift.print("index: " + index);
-        for each (var object:Object in objects) {// :TODO: use for i
+        for object:Dictionary<String,String> in objects) {// :TODO: use for i
             var item:SelectTextButton = SelectTextButton(width, self.itemHeight, false,false,object["title"], false, self.lableContainer)
             self.lableContainer.addChildAt(item, i)/*the first index is reserved for the List skin*/
             i++

@@ -17,7 +17,7 @@ class List : Element{
         self.itemHeight = itemHeight;
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
         super.init(width, height,parent,id)
-        layer!.masksToBounds = true//this is needed!!!
+        layer!.masksToBounds = true/*masks the children to the frame*/
     }
     /**
      * Creates the components in the List Component

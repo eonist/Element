@@ -34,6 +34,20 @@ class List : Element{
         
         //mergeAt(_dataProvider.items, 0);
     }
+    /**
+    * Creates and adds items to the _lableContainer
+    * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
+    */
+    func mergeAt(objects:Array, _ index:int){// :TODO: possible rename needed
+        var i:Int = index;
+        //Swift.print("index: " + index);
+        for each (var object:Object in objects) {// :TODO: use fori
+            var item:SelectTextButton = new SelectTextButton(width, _itemHeight, false,false,object["title"], false, _lableContainer);
+            _lableContainer.addChildAt(item, i);/*the first index is reserved for the List skin*/
+            i++;
+        }
+    }
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 

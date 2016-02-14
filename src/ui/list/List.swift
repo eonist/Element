@@ -63,12 +63,13 @@ class List : Element{
         //super.onEvent(ListEvent(ListEvent.select,buttonEvent.origin as ISelectable/*<-this might be wrong*/,selectedIndex,true,true));
     }
     override func onEvent(event: Event) {
-        if(event.immediate === lableContainer && event.type == ButtonEvent.upInside ){// :TODO: should listen for SelectEvent here
+        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){// :TODO: should listen for SelectEvent here
             onUpInside(event as! ButtonEvent)
+        }else{
+            
         }
         //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 

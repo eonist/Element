@@ -7,7 +7,7 @@ class ElementModifier {
      * @Note keep in mind that this can be Window
      */
     class func refresh(element:IElement) {
-        if(element as? IElement != nil && element.skin!.style!.getStyleProperty("display") != nil && element.skin!.style!.getStyleProperty("display")!.value == CSSConstants.none) {return} /*Skip refreshing*/
+        if(element.skin!.style!.getStyleProperty("display") != nil && element.skin!.style!.getStyleProperty("display")!.value == CSSConstants.none) {return} /*Skip refreshing*/
         var container:DisplayObjectContainer = element is Window ? Window(element).stage : element as DisplayObjectContainer;
         var numChildren:int = container.numChildren;
         for (var i : int = 0; i < numChildren; i++) {

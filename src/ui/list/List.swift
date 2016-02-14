@@ -66,7 +66,7 @@ class List : Element{
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){// :TODO: should listen for SelectEvent here
             onUpInside(event as! ButtonEvent)
         }else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
-
+        
         //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

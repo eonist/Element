@@ -47,13 +47,27 @@ class List : Element{
             i++
         }
     }
-    
+    /**
+     * // :TODO: you need to update the float of the lables after an update
+     */
     func onDataProviderEvent(){
         
     }
-    
+    /**
+    * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
+    */
+    func onReleaseInside(buttonEvent:ButtonEvent) {
+        buttonEvent.stopImmediatePropagation();
+        var selectedIndex:int = _lableContainer.getChildIndex(buttonEvent.target as DisplayObject);
+        ListModifier.selectAt(this,selectedIndex);
+        dispatchEvent(new ListEvent(ListEvent.SELECT,buttonEvent.target as ISelectable/*<-this might be wrong*/,selectedIndex,true,true));
+    }
     func onEvent(event: Event) {
-        <#code#>
+        if(event.immediate === lableContainer && event.type == ButtonEvent.upInside ){
+            
+        }
+        
+        self.lableContainer.addEventListener(,false,0,false);// :TODO: should listen for SelectEvent here
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

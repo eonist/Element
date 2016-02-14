@@ -57,7 +57,7 @@ class List : Element{
         switch(event.type){
             case DataProviderEvent.add: mergeAt(event.items, event.startIndex+1); break;/*This is called when a new item is added to the DataProvider instance*/
             case DataProviderEvent.remove: lableContainer!.removeSubviewAt(event.startIndex); break;/*This is called when an item is removed form the DataProvider instance*/
-            case DataProviderEvent.removeAll: NSViewModifier.removeAllOfType(lableContainer, ISelectable); break;/*This is called when all item is removed form the DataProvider instance*/
+            case DataProviderEvent.removeAll: ViewModifier.removeAllOfType(lableContainer!, ISelectable); break;/*This is called when all item is removed form the DataProvider instance*/
             case DataProviderEvent.sort: DepthModifier.sortByList(_lableContainer,"text","title", _dataProvider.items); break;/*This is called when the items in the DataProvider instance is sorted*/
             case DataProviderEvent.dataChange: /*Not implimented yet*/ break;/*This is called when the items in the DataProvider instance is sorted*/
             case DataProviderEvent.replace: /*This is called when an item is replaced from the DataProvider instance*/

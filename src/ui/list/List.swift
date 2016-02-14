@@ -41,10 +41,10 @@ class List : Element{
     func mergeAt(objects:Array, _ index:int){// :TODO: possible rename needed
         var i:Int = index;
         //Swift.print("index: " + index);
-        for each (var object:Object in objects) {// :TODO: use fori
-            var item:SelectTextButton = new SelectTextButton(width, _itemHeight, false,false,object["title"], false, _lableContainer);
-            _lableContainer.addChildAt(item, i);/*the first index is reserved for the List skin*/
-            i++;
+        for each (var object:Object in objects) {// :TODO: use for i
+            var item:SelectTextButton = SelectTextButton(width, self.itemHeight, false,false,object["title"], false, self.lableContainer)
+            self.lableContainer.addChildAt(item, i)/*the first index is reserved for the List skin*/
+            i++
         }
     }
     

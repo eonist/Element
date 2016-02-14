@@ -27,7 +27,7 @@ class List : Element{
         //lableContainer = addSubView(Container(width,height,self)) as? Container
         let section = addSubView(Section(width,height,self)) as? Section
         section
-        //_lableContainer.mask = _mask = addChild(new Rect2(SkinParser.width(skin)/*<-- use getWidth() ???*/,SkinParser.height(skin)/*SkinParser.totalHeight2(skin)*//*<---might be wrong*/,new FillStyle(0x000000))) as Rect2;// :TODO: use Rect3
+        _lableContainer.mask = _mask = addChild(new Rect2(SkinParser.width(skin)/*<-- use getWidth() ???*/,SkinParser.height(skin)/*SkinParser.totalHeight2(skin)*//*<---might be wrong*/,new FillStyle(0x000000))) as Rect2;// :TODO: use Rect3
         //mergeAt(_dataProvider.items, 0);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

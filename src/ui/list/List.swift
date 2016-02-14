@@ -13,6 +13,9 @@ class List : Element{
     private var dataProvider : DataProvider
     private var lableContainer  : Container?
     
+    //SkinParser.width(skin) was used before to create the mask size
+    //SkinParser.height(skin) was used before to create the mask size
+    
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight;
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
@@ -27,7 +30,7 @@ class List : Element{
         //lableContainer = addSubView(Container(width,height,self)) as? Container
         let section = addSubView(Section(width,height,self)) as? Section
         section
-        _lableContainer.mask = _mask = addChild(new Rect2(SkinParser.width(skin)/*<-- use getWidth() ???*/,SkinParser.height(skin)/*SkinParser.totalHeight2(skin)*//*<---might be wrong*/,new FillStyle(0x000000))) as Rect2;// :TODO: use Rect3
+        
         //mergeAt(_dataProvider.items, 0);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

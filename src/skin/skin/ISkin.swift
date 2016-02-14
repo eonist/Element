@@ -1,8 +1,9 @@
 import Foundation
 
-protocol ISkin{
+protocol ISkin:class{
     /*core methods*/
     /*implicit getters / setters*/
+    func setStyle(style:IStyle)
     func setSkinState(state:String)
     func setSize(width:CGFloat, _ height:CGFloat)
     func getWidth()->CGFloat

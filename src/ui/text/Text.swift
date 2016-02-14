@@ -21,10 +21,10 @@ class Text:Element,IText {
      * Returns the textField text and 
      */
     func getText()->String{
-        return getTextField().stringValue;
+        return getTextField().stringValue
     }
     func getTextField()->TextField{
-        return (skin as! ITextSkin).textField;
+        return (skin as! ITextSkin).textField
     }
     /**
      * Returns "Text"

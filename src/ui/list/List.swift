@@ -74,6 +74,9 @@ class List : Element{
     func onUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
         Swift.print("selectedIndex: " + "\(selectedIndex)")
+        
+        //continue here: Implement ListModifer
+        
         //ListModifier.selectAt(this,selectedIndex);
         //super.onEvent(ListEvent(ListEvent.select,buttonEvent.origin as ISelectable/*<-this might be wrong*/,selectedIndex,true,true));
     }

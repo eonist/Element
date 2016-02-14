@@ -42,8 +42,8 @@ class List : Element{
         var i:Int = index;
         //Swift.print("index: " + index);
         for object:Dictionary<String,String> in objects {// :TODO: use for i
-            var item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight,object["title"], false, self.lableContainer)
-            self.lableContainer.addSubview(item, i)/*the first index is reserved for the List skin*/
+            let item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight,object["title"]!, false, self.lableContainer)
+            self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin*/
             i++
         }
     }

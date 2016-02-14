@@ -29,15 +29,15 @@ class List : Element{
     override func resolveSkin() {
         super.resolveSkin()
         //lableContainer = addSubView(Container(width,height,self)) as? Container
-        let section = addSubView(Section(width,height,self)) as? Section
-        section
+        /*let section = */addSubView(Section(width,height,self)) as? Section
+        //section
         
-        //mergeAt(_dataProvider.items, 0);
+        mergeAt(dataProvider.items, 0);
     }
     /**
-    * Creates and adds items to the _lableContainer
-    * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
-    */
+     * Creates and adds items to the _lableContainer
+     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
+     */
     func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename needed
         var i:Int = index;
         //Swift.print("index: " + index);
@@ -47,6 +47,8 @@ class List : Element{
             i++
         }
     }
+    
+    
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

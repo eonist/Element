@@ -85,13 +85,20 @@ class List : Element{
         //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     /**
-    *
-    */
-    override func setSize(width : CGFloat, height : CGFloat) {
+     *
+     */
+    override func setSize(width : CGFloat, _ height : CGFloat) {
         super.setSize(width, height);
         //skin.setState(skin.state);
         //_mask.setSize(width, height);
         ElementModifier.refresh(lableContainer!)//was SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
+    }
+    /**
+     * Returns "List"
+     * @Note This function is used to find the correct class type when synthezing the element cascade
+     */
+    override func getClassType() -> String {
+        return String(List)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

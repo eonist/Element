@@ -31,6 +31,6 @@ class Text:Element,IText {
      * @Note This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
      */
     override func getClassType() -> String {
-        return String(Text);
+        return String(Text)
     }
 }

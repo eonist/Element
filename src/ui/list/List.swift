@@ -20,6 +20,7 @@ class List : Element{
         self.itemHeight = itemHeight;
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
         super.init(width, height,parent,id)
+        self.dataProvider.event = onEvent//Add event handler for the dataProvider
         layer!.masksToBounds = true/*masks the children to the frame*/
     }
     /**

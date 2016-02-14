@@ -10,8 +10,8 @@ class ElementModifier {
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
         var container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
         var numChildren:Int = container.subviews.count
-        for (var i : int = 0; i < numChildren; i++) {
-            var child:DisplayObject = container.getChildAt(i);
+        for (var i : Int = 0; i < numChildren; i++) {
+            var child:NSView = container.getChildAt(i)
             if(child is IElement) {
                 IElement(child).skin.setStyle(IElement(child).skin.style);/*Uses the setStyle since its faster than setSkin*/
                 if(child is DisplayObjectContainer && DisplayObjectContainer(child).numChildren > 0) refresh(child as IElement);

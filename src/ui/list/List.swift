@@ -51,7 +51,19 @@ class List : Element{
      * // :TODO: you need to update the float of the lables after an update
      */
     func onDataProviderEvent(event:DataProviderEvent){
-        
+        switch(event.type){
+            case DataProviderEvent.add: mergeAt(event.items, event.startIndex+1); break;/*This is called when a new item is added to the DataProvider instance*/
+            case DataProviderEvent.remove: _lableContainer.removeChildAt(event.startIndex); break;/*This is called when an item is removed form the DataProvider instance*/
+            case DataProviderEvent.remove_all: DisplayObjectModifier.removeAllOfType(_lableContainer, ISelectable); break;/*This is called when all item is removed form the DataProvider instance*/
+            case DataProviderEvent.sort: DepthModifier.sortByList(_lableContainer,"text","title", _dataProvider.items); break;/*This is called when the items in the DataProvider instance is sorted*/
+            case DataProviderEvent.data_change: /*Not implimented yet*/ break;/*This is called when the items in the DataProvider instance is sorted*/
+            case DataProviderEvent.replace: /*This is called when an item is replaced from the DataProvider instance*/
+                _lableContainer.removeChildAt(event.startIndex);
+                mergeAt(event.items, event.startIndex);
+                break;
+        default:fatalError("event type not supported"); break;
+        }
+        //ElementModifier.floatChildren(_lableContainer);
     }
     /**
      * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event

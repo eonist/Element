@@ -8,8 +8,8 @@ class ElementModifier {
      */
     class func refresh(element:IElement) {
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
-        var container:DisplayObjectContainer = element is Window ? Window(element).stage : element as DisplayObjectContainer;
-        var numChildren:int = container.numChildren;
+        var container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
+        var numChildren:Int = container.subviews.count
         for (var i : int = 0; i < numChildren; i++) {
             var child:DisplayObject = container.getChildAt(i);
             if(child is IElement) {

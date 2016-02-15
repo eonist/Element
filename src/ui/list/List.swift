@@ -8,7 +8,7 @@ import Cocoa
  * // :TODO: try to make the mask an Element
  * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
  */
-class List : Element{
+class List : Element,IList{
     private var itemHeight:CGFloat
     private var dataProvider : DataProvider
     private var lableContainer  : Container?
@@ -74,10 +74,7 @@ class List : Element{
     func onUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
         Swift.print("selectedIndex: " + "\(selectedIndex)")
-        
-        //continue here: Implement ListModifer
-        
-        //ListModifier.selectAt(this,selectedIndex);
+        ListModifier.selectAt(self,selectedIndex);
         //super.onEvent(ListEvent(ListEvent.select,buttonEvent.origin as ISelectable/*<-this might be wrong*/,selectedIndex,true,true));
     }
     override func onEvent(event: Event) {

@@ -28,7 +28,7 @@ class List : Element,IList{
      */
     override func resolveSkin() {
         super.resolveSkin()
-        //lableContainer = addSubView(Container(width,height,self)) as? Container
+        lableContainer = addSubView(Container(width,height,self)) as? Container
         /*let section = */addSubView(Section(width,height,self)) as? Section
         //section
         

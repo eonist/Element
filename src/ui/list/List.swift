@@ -9,9 +9,9 @@ import Cocoa
  * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
  */
 class List : Element,IList{
-    private var itemHeight:CGFloat
-    private var dataProvider : DataProvider
-    private var lableContainer  : Container?
+    var itemHeight:CGFloat
+    var dataProvider : DataProvider
+    var lableContainer  : Container?
     
     //SkinParser.width(skin) was used before to create the mask size
     //SkinParser.height(skin) was used before to create the mask size

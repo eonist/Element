@@ -4,18 +4,16 @@ class SelectModifier {
     /**
      * Unselects all in @param items except @param target
      */
-    class func unSelectAllExcept(exceptionItem:ISelectable, _ aSelectables:Array<ISelectable>) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
-        
-        if(aSelectables is NSView) {}
-        else if(aSelectables is Array<ISelectable>) {selectables = aSelectables as! Array<ISelectable>}
+    class func unSelectAllExcept(exceptionItem:ISelectable, _ selectables:Array<ISelectable>) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
         for selectable : ISelectable in selectables {if(selectable !== exceptionItem && selectable.isSelected) {selectable.setSelected(false)}}
     }
 }
 extension SelectModifier{
     /**
-     * 
+     * Supports NSView
      */
     class func unSelectAllExcept(exceptionItem:ISelectable, _ view:NSView){
-        var selectables:Array<ISelectable> = selectables = SelectParser.selectables(aSelectables as! NSView)
+        let selectables:Array<ISelectable> = SelectParser.selectables(view)
+        unSelectAllExcept(exceptionItem,selectables)
     }
 }

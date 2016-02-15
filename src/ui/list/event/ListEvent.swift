@@ -1,5 +1,5 @@
 import Foundation
 
-class ListEvent {
+class ListEvent : Event{
 
 }

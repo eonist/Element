@@ -14,6 +14,6 @@ extension ListEvent{
      * NOTE: Keeps the event light-weight by not referencing the item directly
      */
     var selected:ISelectable{
-        return (origin as! IList).lableContainer.subviews[index] as! ISelectable
+        return (origin as! IList).lableContainer!.subviews[index] as! ISelectable
     }
 }

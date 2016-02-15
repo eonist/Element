@@ -31,7 +31,7 @@ class List : Element,IList{
         lableContainer = addSubView(Container(width,height,self)) as? Container
         /*let section = */addSubView(Section(width,height,self)) as? Section
         //section
-        
+        Swift.print("dataProvider.items.count: " + "\(dataProvider.items.count)")
         mergeAt(dataProvider.items, 0);
     }
     /**

@@ -4,8 +4,10 @@ class SelectModifier {
     /**
      * Unselects all in @param items except @param target
      */
-    class func unSelectAllExcept(exceptionItem:ISelectable, _ selectables:Array<ISelectable>) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
-        
+    class func unSelectAllExcept(exceptionItem:ISelectable, _ aSelectables:AnyObject) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
+        var selectables:Array<ISelectable> = []
+        if(selectables is DisplayObjectContainer) {selectables = SelectParser.selectables(selectables)}
+        else if((selectables is Array<ISelectable>) == false) {selectables = aSelectables as! Array<ISelectable>}
         
         for selectable : ISelectable in selectables {if(selectable !== exceptionItem && selectable.isSelected) {selectable.setSelected(false)}}
     }

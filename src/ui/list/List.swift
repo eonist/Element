@@ -32,7 +32,7 @@ class List : Element,IList{
         /*let section = */addSubView(Section(width,height,self)) as? Section
         //section
         
-        //mergeAt(dataProvider.items, 0);
+        mergeAt(dataProvider.items, 0);
     }
     /**
      * Creates and adds items to the _lableContainer

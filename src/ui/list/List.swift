@@ -40,9 +40,10 @@ class List : Element,IList{
      */
     func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename needed
         var i:Int = index;
-        //Swift.print("index: " + index);
+        Swift.print("mergeAt: index: " + "\(index)");
         for object:Dictionary<String,String> in objects {// :TODO: use for i
             let item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight,object["title"]!, false, self.lableContainer)
+            Swift.print("item: " + "\(item)")
             self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin*/
             i++
         }

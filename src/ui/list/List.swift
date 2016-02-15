@@ -48,8 +48,6 @@ class List : Element,IList{
         }
     }
     
-    //continue with the bellow:
-    
     /**
      * // :TODO: you need to update the float of the lables after an update
      */

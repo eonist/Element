@@ -1,7 +1,7 @@
 import Foundation
 
 class ListEvent : Event{
-    
+    static var select : String = "listEventSelect";
     private var index : Int
     init(_ type: String, _ index:Int, _ origin: AnyObject) {
         self.index = index

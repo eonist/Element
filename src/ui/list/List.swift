@@ -42,15 +42,9 @@ class List : Element,IList{
         var i:Int = index;
         Swift.print("mergeAt: index: " + "\(index)");
         for object:Dictionary<String,String> in objects {// :TODO: use for i
-            let w = getWidth()
-            //Swift.print("w: " + "\(w)")
-            let h = self.itemHeight
-            //Swift.print("h: " + "\(h)")
-            let title = object["title"]!
-            //Swift.print("title: " + "\(title)")
-            let item:SelectTextButton = SelectTextButton(w, h ,title, false, self.lableContainer)
+            let item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight ,object["title"]!, false, self.lableContainer)
             //Swift.print("item: " + "\(item)")
-            self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin*/
+            self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
             i++
         }
     }

@@ -75,7 +75,10 @@ private class Utils{
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         
         let y:CGFloat = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
-        Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
+        
+        Swift.print("clearLeft() top: " + "\(top)")
+        
+        
         (skin.element as! NSView).frame.y = y
     }
     /**

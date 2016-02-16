@@ -65,7 +65,7 @@ class List : Element,IList{
                 break;
             default:fatalError("event type not supported"); break;
         }
-        ElementModifier.floatChildren(lableContainer!)
+        ElementModifier.floatChildren(lableContainer!)/*this call re-floats the list items*/
     }
     /**
      * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event

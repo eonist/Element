@@ -171,7 +171,7 @@ private class Utils{
     class func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String,_ exception:((ISkin)->Bool)? = nil)->Int {
         for(var i:Int = range.end; i >= range.start; i--){
             let skin:ISkin = elements[i].skin!
-            //if(exception != null && exception(skin)) return -1;
+            if(exception != nil && self.exception(skin)) {return -1}
             if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none) {return i}
         }
         return -1;

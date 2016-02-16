@@ -147,6 +147,7 @@ private class Utils{
      *
      */
     class func leftFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
+        Swift.print("leftFloatingElementSkin: index: " + "\(index)")
         let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }

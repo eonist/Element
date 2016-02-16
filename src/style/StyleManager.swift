@@ -47,6 +47,7 @@ extension StyleManager{
      * @Note to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
     class func addStylesByURL(url:String) {
-        
+        let cssString:String = CSSFileParser.cssString(url)
+        addStyle(cssString)
     }
 }

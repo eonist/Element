@@ -11,7 +11,15 @@ class CSSFileParser {
     */
     class func cssString(url:String)->String {
         var cssString:String = "";
-        let string:String = FileParser.content(url.tildePath)//TODO: you need to make a tilePath assert
-    
+        let string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
+        cssString = string//temp fix until you implement the recusrive import stuff bellow
+        //Swift.print("string: " + "\(string)");
+        //string = StringModifier.removeComments(string);
+        //var importsAndStyles:Object = CSSFileParser.separateImportsAndStyles(string);
+        //var importStrings:Array = CSSFileParser.importStrings(importsAndStyles["import"]);
+        //var path:String = StringParser.path(url);
+        //for each (var importString : String in importStrings) cssString += CSSFileParser.cssString(path+importString);// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url
+        //cssString += importsAndStyles["style"];
+        return cssString
     }
 }

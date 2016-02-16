@@ -27,7 +27,10 @@ class ElementModifier {
         let numChildren:Int = view.subviews.count;
         for (var i : Int = 0; i < numChildren; i++) {
             let child:NSView = view.subviews[i]
-            if(child is IElement) {SkinModifier.float((child as! IElement).skin!)}
+            if(child is IElement) {
+                Swift.print("text: " + "\((child as! SelectTextButton).getText())")
+                SkinModifier.float((child as! IElement).skin!)
+            }
         }
     }
 }

@@ -10,8 +10,7 @@ class TextButton:Button {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func resolveSkin() {
         super.resolveSkin();
-        text = Text(width,height,textString,self)
-        addSubview(text!)
+        text = addSubView(Text(width,height,textString,self)) as? Text
         text?.isInteractive = false
     }
     override func setSkinState(skinState:String) {

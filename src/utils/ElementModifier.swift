@@ -23,6 +23,7 @@ class ElementModifier {
      * @Note i.e: after hideing of an element, or changing the depth order etc
      */
     class func floatChildren(view:NSView) {
+        Swift.print("ElementModifier.floatChildren()")
         let numChildren:Int = view.subviews.count;
         for (var i : Int = 0; i < numChildren; i++) {
             let child:NSView = view.subviews[i]

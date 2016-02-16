@@ -27,7 +27,7 @@ class ElementModifier {
         let numChildren:Int = view.subviews.count;
         for (var i : Int = 0; i < numChildren; i++) {
             let child:NSView = view.subviews[i]
-            if(child is IElement) {SkinModifier.float((child as! IElement).skin as! Skin)}
+            if(child is IElement) {SkinModifier.float((child as! IElement).skin!)}
         }
     }
 }

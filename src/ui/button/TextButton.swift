@@ -17,7 +17,10 @@ class TextButton:Button {
         super.setSkinState(skinState);
         text!.skin!.setSkinState(skinState);/*why is this set directly to the skin and not to the element?*/
     }
-    /**/
+    override func setSize(width: CGFloat, _ height: CGFloat) {
+        super.setSize(width, height);
+        text!.setSize(width, height);
+    }
     /**
      * Returns the text in the _text.textField.text
      */
@@ -25,8 +28,9 @@ class TextButton:Button {
         return text!.getText();
     }
     /**
-    * Sets the text in the _text instance
-    */
+     * Sets the text in the _text instance
+     * NOTE: cant be named setText as its blocked by objc
+     */
     func setTextValue(text:String){
         self.text!.setText(text);
     }

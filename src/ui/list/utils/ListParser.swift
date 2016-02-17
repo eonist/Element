@@ -20,10 +20,14 @@ class ListParser {
     /**
      * Returns a dataProviderItem
      */
-    class func dataProviderItem(list:IList, view:NSView)->Dictionary<String,String>? {
+    class func dataProviderItem(list:IList, _ view:NSView)->Dictionary<String,String>? {
         let index:Int = self.index(list, view)
         return list.dataProvider.getItemAt(index)
     }
+    
+    
+    //write a method: dataProviderItemAt
+    
     /**
      * Returns the index of a "label"
      * @param view is the Label
@@ -36,20 +40,20 @@ class ListParser {
      */
     class func selectedTitle(list:IList)->String {
         let index:Int = selectedIndex(list);
-        return list.dataProvider.getItemAt(index)!["title"]!;
+        return list.dataProvider.getItemAt(index)!["title"]!
     }
     /**
      * Returns the title of the currently selected
      */
     class func selectedProperty(list:IList) -> String {/*<--could be **/
-        var index:int = selectedIndex(list);
-        return list.dataProvider.getItemAt(index)["property"];
+        let index:Int = selectedIndex(list);
+        return list.dataProvider.getItemAt(index)!["property"]!
     }
     /**
      * Returns the index of the currentSelected
      */
     class func selectedIndex(list:IList) -> Int {
-        var selected:ISelectable = selected(list);
+        var selected:ISelectable = self.selected(list)
         return selected != nil ? list.lableContainer.getChildIndex(selected as NSView) : -1;
     }
 }

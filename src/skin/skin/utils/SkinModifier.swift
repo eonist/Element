@@ -27,7 +27,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * // :TODO: possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
      */
     class func float(skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
-        Swift.print("SkinModifier.float()")
+        //Swift.print("SkinModifier.float()")
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
         
@@ -76,9 +76,9 @@ private class Utils{
         
         let y:CGFloat = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
         
-        if(leftSiblingSkin != nil){
-            Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
-        }
+        /*if(leftSiblingSkin != nil){
+        Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
+        }*/
         
         
         
@@ -147,7 +147,7 @@ private class Utils{
      *
      */
     class func leftFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
-        Swift.print("leftFloatingElementSkin: index: " + "\(index)")
+        //Swift.print("leftFloatingElementSkin: index: " + "\(index)")
         let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
     }

@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * write a method: dataProviderItemAt
+ */
 class ListParser {
     /**
      * Returns a NSView instance from @param dataProviderItem
@@ -24,10 +26,6 @@ class ListParser {
         let index:Int = self.index(list, view)
         return list.dataProvider.getItemAt(index)
     }
-    
-    
-    //write a method: dataProviderItemAt
-    
     /**
      * Returns the index of a "label"
      * @param view is the Label
@@ -59,7 +57,7 @@ class ListParser {
     /**
      * Returns the current selected item
      */
-    class func selected(list:IList) -> ISelectable {
-        return SelectParser.selected(list.lableContainer)
+    class func selected(list:IList) -> ISelectable? {
+        return SelectParser.selected(list.lableContainer!)
     }
 }

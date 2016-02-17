@@ -60,4 +60,12 @@ class ListParser {
     class func selected(list:IList) -> ISelectable? {
         return SelectParser.selected(list.lableContainer!)
     }
+    /**
+     * Returns the total height of items
+     * @Note another name for this could be getTotalItemsHeight?
+     * // :TODO: you must for loop through each item and use the method getHeight() on each item to find the total height, item heights may vary and have different heights
+     */
+    class func itemsHeight(list:IList) -> CGFloat {
+        return CGFloat(list.dataProvider.count()) * list.itemHeight
+    }
 }

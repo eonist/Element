@@ -1,7 +1,10 @@
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  
 [Follow the Progress here](http://www.stylekit.org)   
 or  
-[Twitter](https://twitter.com/stylekit_org)  
+[follow the progress on Twitter](https://twitter.com/stylekit_org)  
+
+##Introduction:
+StyleKit is a **programatic UI framework** for OSX. You can use **native swift** code to add functionality to the provided UI components or create your own UI components from scratch. The OSX 10.10 styles are provided by default, add your own styles through SVG and CSS syntax. Or use swift Style Instances. StyleKit is written in pure native swift code and uses **Quartz and Core Graphics** to render the UI components. StyleKit is not a JS + web-wrapper. StyleKit does not use Xcode Interface builder. Although support is possible. StyleKit is **intended for building professional apps** where custom design and functionality is important.
 
 ### CheckBoxButton:
 
@@ -50,9 +53,9 @@ or
 Read more about the above Graphics framework case [here](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/)  
 
 
-**Element** (OSX UI Framework)
+**Description** (OSX UI Framework)
 
-Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style an NSButton programmatically, you usually end up with more code than its worth. Style an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 and SASS. Alignment of UI elements is achieved through a custom **positioning alogorithm** that adheres to syntax such as "float:left" "clear:left" etc. Its also possible to programmatically override the CSS alignment scheme for elements you need more control over, like a slider element. Add your own iconography through .svg vector files from Adobe Illustrator etc. Element uses a custom built SVG drawing engine to achieve **infinitely scaleable graphic**s, so your apps will look great at any resolution. Further more Element is a self contained framework that doesn't rely on other third party libraries to work, other than swift it self. **Element 1.0** is already up and running, but it is currently being implemented in swift here on GitHub. 
+Element enables you to separate code and design while maintaining the ability to code natively. If you ever tried to style an NSButton programmatically, you usually end up with more code than its worth. Style an entire UI and you end up with thousands of custom lines of code sprinkled everywhere, which discourages rapid evolving and simple updates to the UI. Element uses a dialect of the CSS3 and SASS. Alignment of UI elements is achieved through a custom **positioning algorithm** that adheres to syntax such as "float:left" "clear:left" etc. Its also possible to programmatically override the CSS alignment scheme for elements you need more control over, like a slider element. Add your own iconography through .svg vector files from Adobe Illustrator etc. Element uses a custom built SVG drawing engine to achieve **infinitely scaleable graphic**s, so your apps will look great at any resolution. Further more Element is a self contained framework that doesn't rely on other third party libraries to work, other than swift it self. **Element 1.0** is already up and running, but it is currently being implemented in swift here on GitHub. 
 
 One more thing...Element supports **multiple layers** of CSS3 styles. Meaning anything you can design in Adobe Illustrator can be used on a single UI Element. Stay tuned.
 

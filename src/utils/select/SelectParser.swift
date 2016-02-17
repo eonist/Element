@@ -2,11 +2,17 @@ import Cocoa
 
 class SelectParser {
     /**
-     * Returns the  first selected ISelectable in an array of ISelectables or a NSView with ISelectables
+     * Returns the  first selected ISelectable in an array of an NSView with ISelectables
      */
     class func selected(view:NSView) -> ISelectable? {
-        let selectables = selectables(view);
-        for each (var selectable : ISelectable in selectables) {if(selectable.selected) {return selectable}}
+        let selectables:Array<ISelectable> = self.selectables(view)
+        return selected(selectables)
+    }
+    /**
+     * Returns the  first selected ISelectable in an array of ISelectables or a
+     */
+    class func selected(selectables:Array<ISelectable>) -> ISelectable? {
+        for selectable : ISelectable in selectables {if(selectable.isSelected) {return selectable}}
         return nil
     }
     /**

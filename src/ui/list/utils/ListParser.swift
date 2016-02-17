@@ -17,4 +17,11 @@ class ListParser {
         if(dataProvderItem != nil){return ListParser.label(list,dataProvderItem!)}
         return nil
     }
+    /**
+     * Returns a dataProviderItem
+     */
+    class func dataProviderItem(list:IList, view:NSView)->Dictionary<String,String> {
+        var index:int = index(list, displayObject);
+        return list.dataProvider.getItemAt(index);
+    }
 }

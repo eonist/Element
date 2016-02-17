@@ -14,7 +14,7 @@ class ListParser {
     /**
      * Returns the item from the list (NSView instance) from @param list at @param index
      */
-    class func labelAt(list:IList,index:Int)->NSView? {
+    class func labelAt(list:IList,_ index:Int)->NSView? {
         let dataProvderItem:Dictionary<String,String>? = list.dataProvider.getItemAt(index)
         if(dataProvderItem != nil){return ListParser.label(list,dataProvderItem!)}
         return nil

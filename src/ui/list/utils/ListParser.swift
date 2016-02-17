@@ -20,8 +20,15 @@ class ListParser {
     /**
      * Returns a dataProviderItem
      */
-    class func dataProviderItem(list:IList, view:NSView)->Dictionary<String,String> {
-        var index:int = index(list, displayObject);
-        return list.dataProvider.getItemAt(index);
+    class func dataProviderItem(list:IList, view:NSView)->Dictionary<String,String>? {
+        let index:Int = self.index(list, view)
+        return list.dataProvider.getItemAt(index)
+    }
+    /**
+     * Returns the index of a "label"
+     * @param displayObject is the Label
+     */
+    class func index(list:IList,_ view:NSView)->Int {
+        return list.lableContainer.getChildIndex(view);
     }
 }

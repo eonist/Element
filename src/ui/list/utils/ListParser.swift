@@ -31,4 +31,25 @@ class ListParser {
     class func index(list:IList,_ view:NSView)->Int {
         return list.lableContainer!.indexOf(view)
     }
+    /**
+     * Returns the title of the currently selected
+     */
+    class func selectedTitle(list:IList)->String {
+        var index:Int = selectedIndex(list);
+        return list.dataProvider.getItemAt(index)["title"];
+    }
+    /**
+     * Returns the title of the currently selected
+     */
+    class func function selectedProperty(list:IList) -> String {/*<--could be **/
+        var index:int = selectedIndex(list);
+        return list.dataProvider.getItemAt(index)["property"];
+    }
+    /**
+     * Returns the index of the currentSelected
+     */
+    class func selectedIndex(list:IList) -> Int {
+        var selected:ISelectable = selected(list);
+        return selected != nil ? list.lableContainer.getChildIndex(selected as DisplayObject) : -1;
+    }
 }

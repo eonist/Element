@@ -13,9 +13,9 @@ class ListParser {
      * Returns the item from the list (DisplayObject instance) from @param list at @param index
      */
     class func labelAt(list:IList,index:Int)->NSView {
-        var dataProvderItem:Dictionary<String,String> = list.dataProvider.getItemAt(index);
+        var dataProvderItem:Dictionary<String,String>? = list.dataProvider.getItemAt(index)
         try{}
-        catch(e:Error){return null;};
-        return ListParser.label(list,dataProvderItem);
+        catch(e:Error){return null;}
+        return ListParser.label(list,dataProvderItem)
     }
 }

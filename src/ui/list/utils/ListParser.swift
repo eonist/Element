@@ -26,9 +26,9 @@ class ListParser {
     }
     /**
      * Returns the index of a "label"
-     * @param displayObject is the Label
+     * @param view is the Label
      */
     class func index(list:IList,_ view:NSView)->Int {
-        return list.lableContainer.getChildIndex(view);
+        return list.lableContainer!.indexOf(view)
     }
 }

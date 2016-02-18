@@ -7,7 +7,7 @@ import Cocoa
  * // :TODO: remove refs to frame. you can use width and height directly
  * // :TODO: onSkinDown, onSkinUp ?
  */
-class VSlider :Element,ISlider{
+class VSlider :Element{
     var thumb:Button?
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
@@ -38,7 +38,7 @@ class VSlider :Element,ISlider{
         Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
-        super.onEvent(SliderEvent(SliderEvent.change,progress))
+        super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
     func onThumbUp(){

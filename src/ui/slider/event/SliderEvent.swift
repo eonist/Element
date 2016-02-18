@@ -1,14 +1,12 @@
 import Foundation
-
+/**
+ * The progress was refrenced in an extension at first, but it seems more precise to include it in the event. Think multi threaded cpu etc
+ */
 class SliderEvent :Event{
-    static var change:String = "sliderEventChange";
-}
-extension ListEvent{
-    /**
-     * Convenience
-     * NOTE: Keeps the event light-weight by not storing any variables
-     */
-    var progress:CGFloat{
-        return (origin as! ISlider).progress
+    static var change:String = "sliderEventChange"
+    var progress:CGFloat
+    init(_ type: String, _ progress:CGFloat, _ origin: AnyObject) {
+        self.progress = progress
+        super.init(type, origin)
     }
 }

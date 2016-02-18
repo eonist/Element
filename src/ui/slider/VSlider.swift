@@ -7,7 +7,7 @@ import Cocoa
  * // :TODO: remove refs to frame. you can use width and height directly
  * // :TODO: onSkinDown, onSkinUp ?
  */
-class VSlider :Element{
+class VSlider :Element,ISlider{
     var thumb:Button?
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/

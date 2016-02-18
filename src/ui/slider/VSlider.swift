@@ -4,6 +4,7 @@ import Cocoa
  * @Note the reasan we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
  * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  * // :TODO: rename thumbHeight to thumbWidth or?
+ * TODO: remove refs to frame. you can use width and height directly
  */
 class VSlider :Element{
     var thumb:Button?
@@ -15,7 +16,6 @@ class VSlider :Element{
         self.progress = progress
         self.thumbHeight = thumbHeight.isNaN ? width:thumbHeight// :TODO: explain in a comment what this does
         super.init(width,height,parent,id)
-        createContent()
     }
     override func resolveSkin() {
         Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
@@ -26,10 +26,7 @@ class VSlider :Element{
         thumb = addSubView(Button(width, thumbHeight,self)) as? Button
         //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
-    func createContent(){
-        
-        
-    }
+    
     func onThumbDown(){
         Swift.print("onThumbDown")
         tempThumbMouseY = thumb!.localPos().y
@@ -54,7 +51,7 @@ class VSlider :Element{
     
     //TODO: 
     
-    //setThumbHeight
+
     //setSize
     
     
@@ -70,7 +67,7 @@ class VSlider :Element{
      */
     func setThumbHeightValue(thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
         self.thumbHeight = thumbHeight
-        //thumb.setSize(thumb.frame.width, thumbHeight)
+        thumb!.setSize(thumb!.width, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
     }
     

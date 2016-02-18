@@ -35,7 +35,7 @@ class VSlider :Element{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
-        Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
+        //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
@@ -46,10 +46,10 @@ class VSlider :Element{
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
-        super.onEvent(event)//forward events
+        //super.onEvent(event)//forward events, or stop the bubbeling of events by commenting this line out
     }
     /**
      * @param progress (0-1)

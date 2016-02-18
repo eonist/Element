@@ -29,7 +29,7 @@ class VSlider :Element{
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
-        Swift.print("\(self.dynamicType)"+".onThumbDown() ")
+        //Swift.print("\(self.dynamicType)"+".onThumbDown() ")
         tempThumbMouseY = thumb!.localPos().y
         Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
@@ -49,7 +49,7 @@ class VSlider :Element{
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
-        //super.onEvent(event)//forward events, or stop the bubbeling of events by commenting this line out
+        //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**
      * @param progress (0-1)

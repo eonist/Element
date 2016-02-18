@@ -17,13 +17,19 @@ class VSlider :Element{
         super.init(width,height,parent,id)
         createContent()
     }
-    func createContent(){
-        Swift.print("\(self.dynamicType)" + "createContent: ")
-        let skin = SkinC(frame:NSRect(0,0,frame.width,frame.height))
-        addSubview(skin)
+    override func resolveSkin() {
+        Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
+        super.resolveSkin();
+        
+        //skin.mouseEnabled = skin.buttonMode = false;// :TODO: explain why in a comment
         thumb = Thumb(40,40)
+        _thumb = addChild(new Button(width, _thumbHeight,false,false,this)) as Button;
         addSubview(thumb!)
         //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
+    }
+    func createContent(){
+        
+        
     }
     func onThumbDown(){
         Swift.print("onThumbDown")

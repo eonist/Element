@@ -12,6 +12,7 @@ extension ListEvent{
     /**
      * Convenience
      * NOTE: Keeps the event light-weight by not referencing the item directly
+     * NOTE: you may have to reconsider this as the selected item may have de-selected before the event arrives (think cpu threads etc)
      */
     var selected:ISelectable{
         return (origin as! IList).lableContainer!.subviews[index] as! ISelectable

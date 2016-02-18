@@ -48,9 +48,18 @@ class VSlider :InteractiveView2{
     }
     
     //TODO: 
-    //setProgress
+    
     //setThumbHeight
     //setSize
+    
+    
+    /**
+     * @param progress (0-1)
+     */
+    func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
+        self.progress = Swift.max(0,Swift.min(1,progress));/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
+        thumb!.frame.y = Utils.thumbPosition(self.progress, frame.height, thumbHeight);
+    }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }

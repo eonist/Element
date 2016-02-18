@@ -23,7 +23,7 @@ class VSlider :Element{
         
         //skin.mouseEnabled = skin.buttonMode = false;// :TODO: explain why in a comment
         thumb = Thumb(40,40)
-        _thumb = addChild(new Button(width, _thumbHeight,false,false,this)) as Button;
+        thumb = addSubView(Button(width, thumbHeight,self)) as! Button
         addSubview(thumb!)
         //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }

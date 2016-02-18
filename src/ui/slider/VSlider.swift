@@ -51,7 +51,7 @@ class VSlider :Element{
     
     //TODO: 
     
-
+    //onSkinDown, onSkinUp ?
     //setSize
     
     
@@ -70,7 +70,11 @@ class VSlider :Element{
         thumb!.setSize(thumb!.width, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
     }
-    
+    override func setSize(width:CGFloat, height:CGFloat) {
+        super.setSize(width,height);
+        thumb.setSize(thumb.width, height);
+        thumb.y = Utils.thumbPosition(progress, height, thumbHeight);
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }
 private class Utils{

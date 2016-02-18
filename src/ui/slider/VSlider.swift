@@ -26,7 +26,7 @@ class VSlider :Element{
         Swift.print("width: " + "\(width)")
         Swift.print("thumbHeight: " + "\(thumbHeight)")
         thumb = addSubView(Button(width, thumbHeight,self)) as? Button
-        setProgressValue(progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
+        setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
         Swift.print("\(self.dynamicType)"+".onThumbDown() ")
@@ -38,11 +38,11 @@ class VSlider :Element{
         Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
-        //post SliderEvent(SliderEvent.change,progress)
+        super.onEvent(SliderEvent(SliderEvent.change,progress))
         return event
     }
     func onThumbUp(){
-        Swift.print("onThumbUp")
+        Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {

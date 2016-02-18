@@ -49,7 +49,7 @@ class VSlider :Element{
         Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
-        onEvent(event)//forward events
+        super.onEvent(event)//forward events
     }
     /**
      * @param progress (0-1)

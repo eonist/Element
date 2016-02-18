@@ -6,7 +6,7 @@ import Cocoa
  * // :TODO: rename thumbHeight to thumbWidth or?
  */
 class VSlider :Element{
-    var thumb:Thumb?
+    var thumb:Button?
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
@@ -22,9 +22,8 @@ class VSlider :Element{
         super.resolveSkin();
         
         //skin.mouseEnabled = skin.buttonMode = false;// :TODO: explain why in a comment
-        thumb = Thumb(40,40)
-        thumb = addSubView(Button(width, thumbHeight,self)) as! Button
-        addSubview(thumb!)
+        //thumb = Thumb(40,40)
+        thumb = addSubView(Button(width, thumbHeight,self)) as? Button
         //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func createContent(){
@@ -95,6 +94,7 @@ private class Utils{
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
     }
 }
+/*
 class Thumb:Button2{
     override init(_ width: CGFloat, _ height: CGFloat) {
         super.init(width,height)//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
@@ -115,9 +115,9 @@ class Thumb:Button2{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+*/
 
-
-
+/*
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {
         super.init(frame: NSRect(0,0,width,height))//<--This can be a zero rect since the children contains the actual graphics. And when you use Layer-hosted views the subchildren doesnt clip
@@ -130,3 +130,4 @@ class Button2:InteractiveView2{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+*/

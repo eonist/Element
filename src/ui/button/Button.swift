@@ -14,7 +14,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event.
      */
     override func mouseOver(event:MouseEvent) {
-        //Swift.print("Button.mouseOver() ")
+        Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
@@ -27,7 +27,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseOut action.
      */
     override func mouseOut(event:MouseEvent) {
-        //Swift.print("Button.mouseOut() ")
+        Swift.print("Button.mouseOut() ")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
@@ -79,7 +79,7 @@ class Button:Element {
         super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {
-        //Swift.print("Button.aPoint: " + "\(aPoint)")
+        Swift.print("\(self.dynamicType)"+".hitTest() aPoint: " + "\(aPoint)")
         return super.hitTest(aPoint)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

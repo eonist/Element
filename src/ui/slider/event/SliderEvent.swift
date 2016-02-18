@@ -8,7 +8,7 @@ extension ListEvent{
      * Convenience
      * NOTE: Keeps the event light-weight by not referencing the item directly
      */
-    var selected:ISelectable{
-        return (origin as! IList).lableContainer!.subviews[index] as! ISelectable
+    var progress:CGFloat{
+        return (origin as! ISlider).progress
     }
 }

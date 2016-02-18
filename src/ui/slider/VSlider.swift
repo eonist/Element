@@ -29,13 +29,13 @@ class VSlider :Element{
         setProgressValue(progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
-        Swift.print("onThumbDown")
+        Swift.print("\(self.dynamicType)"+".onThumbDown() ")
         tempThumbMouseY = thumb!.localPos().y
         Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
-        Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
+        Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
         //post SliderEvent(SliderEvent.change,progress)

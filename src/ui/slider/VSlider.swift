@@ -21,7 +21,8 @@ class VSlider :Element{
     override func resolveSkin() {
         Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
         super.resolveSkin()
-        //skin.isInteractive = skin.useHandCursor = false;// :TODO: explain why in a comment
+        //skin.isInteractive = false// :TODO: explain why in a comment
+        //skin.useHandCursor = false;// :TODO: explain why in a comment
         thumb = addSubView(Button(width, thumbHeight,self)) as? Button
         //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }

@@ -4,7 +4,8 @@ import Cocoa
  * @Note the reasan we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
  * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  * // :TODO: rename thumbHeight to thumbWidth or?
- * TODO: remove refs to frame. you can use width and height directly
+ * // :TODO: remove refs to frame. you can use width and height directly
+ * // :TODO: onSkinDown, onSkinUp ?
  */
 class VSlider :Element{
     var thumb:Button?
@@ -19,14 +20,11 @@ class VSlider :Element{
     }
     override func resolveSkin() {
         Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
-        super.resolveSkin();
-        
-        //skin.mouseEnabled = skin.buttonMode = false;// :TODO: explain why in a comment
-        //thumb = Thumb(40,40)
+        super.resolveSkin()
+        //skin.isInteractive = skin.useHandCursor = false;// :TODO: explain why in a comment
         thumb = addSubView(Button(width, thumbHeight,self)) as? Button
         //setProgress(_progress);// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
-    
     func onThumbDown(){
         Swift.print("onThumbDown")
         tempThumbMouseY = thumb!.localPos().y
@@ -48,13 +46,6 @@ class VSlider :Element{
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
     }
-    
-    //TODO: 
-    
-    //onSkinDown, onSkinUp ?
-    //setSize
-    
-    
     /**
      * @param progress (0-1)
      */
@@ -70,10 +61,10 @@ class VSlider :Element{
         thumb!.setSize(thumb!.width, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
     }
-    override func setSize(width:CGFloat, height:CGFloat) {
+    override func setSize(width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height);
-        thumb.setSize(thumb.width, height);
-        thumb.y = Utils.thumbPosition(progress, height, thumbHeight);
+        thumb!.setSize(thumb!.width, height);
+        thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }

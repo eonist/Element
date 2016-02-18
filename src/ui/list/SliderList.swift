@@ -7,8 +7,7 @@ class SliderList : List{
     override func resolveSkin() {
         super.resolveSkin()
         //sliderInterval = Swift.floor(getItemsHeight() - height)/itemHeight;// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        
-        //continue here
+        //slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
     
     }
     

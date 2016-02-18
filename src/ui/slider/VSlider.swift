@@ -9,7 +9,7 @@ import Cocoa
  */
 class VSlider :Element{
     var thumb:Button?
-    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
+    //var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
     var thumbHeight:CGFloat
@@ -32,7 +32,7 @@ class VSlider :Element{
         Swift.print("onThumbDown")
         tempThumbMouseY = thumb!.localPos().y
         Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
+        //globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         Swift.print("onThumbMove " + "localPos: " + "\(event.localPos(self))")
@@ -43,12 +43,13 @@ class VSlider :Element{
     }
     func onThumbUp(){
         Swift.print("onThumbUp")
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        //if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
         Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
+        onEvent(event)//forward events
     }
     /**
      * @param progress (0-1)

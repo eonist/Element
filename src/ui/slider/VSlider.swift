@@ -5,16 +5,16 @@ import Cocoa
  * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  * // :TODO: rename thumbHeight to thumbWidth or?
  */
-class VSlider :InteractiveView2{
+class VSlider :Element{
     var thumb:Thumb?
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
     var thumbHeight:CGFloat
-    init(_ width: CGFloat, _ height: CGFloat,_ thumbHeight:CGFloat = CGFloat.NaN, _ progress:CGFloat = 0){
+    init(_ width: CGFloat, _ height: CGFloat,_ thumbHeight:CGFloat = CGFloat.NaN, _ progress:CGFloat = 0,_ parent : IElement? = nil, id : String? = nil){
         self.progress = progress
         self.thumbHeight = thumbHeight.isNaN ? width:thumbHeight// :TODO: explain in a comment what this does
-        super.init(frame: NSRect(0,0,width,height))
+        super.init(width,height,parent,id)
         createContent()
     }
     func createContent(){

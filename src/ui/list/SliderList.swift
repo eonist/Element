@@ -7,10 +7,10 @@ class SliderList : List{
     private var sliderInterval:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()
-        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight;// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height);
-        slider!.setThumbHeightValue(thumbHeight);
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
+        slider!.setThumbHeightValue(thumbHeight)
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent: NSEvent) {
@@ -18,6 +18,6 @@ class SliderList : List{
         super.scrollWheel(theEvent)
     }
     func onSliderChange(sliderEvent:SliderEvent){
-        ListModifier.scrollTo(self,sliderEvent.progress);
+        ListModifier.scrollTo(self,sliderEvent.progress)
     }
 }

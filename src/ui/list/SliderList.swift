@@ -15,7 +15,7 @@ class SliderList : List{
     }
     override func scrollWheel(theEvent: NSEvent) {
         Swift.print("theEvent: " + "\(theEvent)")
-        let scrollAmount:CGFloat = (theEvent.deltaY/100)/sliderInterval!/*_scrollBar.interval*/
+        let scrollAmount:CGFloat = (theEvent.deltaY/50)/sliderInterval!/*_scrollBar.interval*/
         var currentScroll:CGFloat = slider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
         currentScroll = NumberParser.minMax(currentScroll, 0, 1)
         ListModifier.scrollTo(self,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/

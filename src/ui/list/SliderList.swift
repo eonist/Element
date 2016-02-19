@@ -21,6 +21,9 @@ class SliderList : List{
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
     
-    //continue here
-    
+    override func onEvent(event: Event) {
+        if(event.type == SliderEvent.change && event.origin === slider){
+            
+        }
+    }
 }

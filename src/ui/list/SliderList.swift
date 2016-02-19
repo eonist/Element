@@ -17,4 +17,7 @@ class SliderList : List{
         Swift.print("theEvent: " + "\(theEvent)")
         super.scrollWheel(theEvent)
     }
+    func onSliderChange(sliderEvent:SliderEvent){
+        ListModifier.scrollTo(self,sliderEvent.progress);
+    }
 }

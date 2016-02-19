@@ -50,7 +50,10 @@ class VSlider :Element{
      */
     override func mouseDown(event:MouseEvent) {/*onSkinDown*/
         Swift.print("\(self.dynamicType)" + ".mouseDown() ")
-        progress = Utils.progress(event.loc.y/*<-this may be wrong*/, thumbHeight/2, height, thumbHeight);
+        
+        let y = event.event!.localPos(self).y//
+        
+        progress = Utils.progress(y/*<-this may be wrong*/, thumbHeight/2, height, thumbHeight);
         thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener

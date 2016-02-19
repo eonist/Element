@@ -22,8 +22,8 @@ class SliderList : List{
     }
     
     override func onEvent(event: Event) {
-        if(event.type == SliderEvent.change && event.origin === slider){
+        if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
             
-        }
+        
     }
 }

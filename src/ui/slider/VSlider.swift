@@ -48,8 +48,11 @@ class VSlider :Element{
     /**
      * Handles actions and drawing states for the down event.
      */
-    override func mouseDown(event:MouseEvent) {
+    override func mouseDown(event:MouseEvent) {/*onSkinDown*/
         Swift.print("\(self.dynamicType)" + ".mouseDown() ")
+        progress = Utils.progress(skin.localPos().y, thumbHeight/2, height, thumbHeight);
+        thumb.y = Utils.thumbPosition(_progress, height, _thumbHeight);
+        dispatchEvent(new SliderEvent(SliderEvent.CHANGE,_progress));
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func onEvent(event: Event) {

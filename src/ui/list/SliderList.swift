@@ -34,10 +34,10 @@ class SliderList : List{
      */
     override func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
         slider!.setSize(itemHeight, height)
-        _sliderInterval = Math.floor(getItemsHeight() - height)/itemHeight;
-        var thumbHeight:Number = SliderParser.thumbSize(height/getItemsHeight(), _slider.height/*<--this should probably be .getHeight()*/);
-        _slider.setThumbHeight(thumbHeight);
-        super.setSize(width,height);
-        ElementModifier.hide(_slider, getItemsHeight() > _slider.height);/*<--new adition*/
+        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
+        slider!.setThumbHeightValue(thumbHeight)
+        super.setSize(width,height)
+        ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
 }

@@ -13,6 +13,12 @@ class ElementModifier {
         element.skin!.setStyle(element.skin!.style!)
     }
     /**
+     *
+     */
+    func hideAll(elements:Array<IElement>,_ exception:IElement) {
+        for var element : IElement in elements{ElementModifier.hide(element, element === exception)}
+    }
+    /**
      * Refreshes many elements in @param displayObjectContainer
      * // :TODO: skin should have a dedicated redraw method or a simple workaround
      * @Note keep in mind that this can be Window

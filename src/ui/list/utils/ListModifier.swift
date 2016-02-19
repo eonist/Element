@@ -2,6 +2,13 @@ import Foundation
 
 class ListModifier {
     /**
+     * Selects the first item that has @param title as its title
+     */
+    class func select(list:IList, title:String) {
+        let index:Int = list.dataProvider.getItemIndex(list.dataProvider.getItem(title)!)
+        selectAt(list,index)
+    }
+    /**
      * Selects an item in the _itemContainer
      */
     class func selectAt(list:IList,_ index:Int) {

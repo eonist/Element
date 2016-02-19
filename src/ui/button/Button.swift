@@ -18,7 +18,6 @@ class Button:Element {
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState());
-            //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.rollOver, object:self)
             super.onEvent(ButtonEvent(ButtonEvent.over,self/*,self*/))
         }
     }
@@ -31,7 +30,6 @@ class Button:Element {
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none
             setSkinState(getSkinState())
-            //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.out, object:self)
             super.onEvent(ButtonEvent(ButtonEvent.out,self/*,self*/))
         }
     }
@@ -42,7 +40,6 @@ class Button:Element {
         //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over;
         setSkinState(getSkinState());
-        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.down, object:self)
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
         super.onEvent(ButtonEvent(ButtonEvent.down,self/*,self*/))
     }
@@ -54,10 +51,7 @@ class Button:Element {
         //Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState())
-        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseInside, object:self)
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self/*,self*/))
-        
-        //continue here use self.event, maybe even remove the "!" then look how selectbutton works and maybe override onEvent
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
@@ -67,7 +61,6 @@ class Button:Element {
         //Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
-        //NSNotificationCenter.defaultCenter().postNotificationName(ButtonEvent.releaseOutside, object:self)
         super.onEvent(ButtonEvent(ButtonEvent.upOutside,self/*,self*/))
     }
     /**

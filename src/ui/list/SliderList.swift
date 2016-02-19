@@ -25,8 +25,19 @@ class SliderList : List{
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
-    
     override func onEvent(event: Event) {
         if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
+    }
+    /**
+     * // :TODO: must update the float somehow
+     * Sets the list to correct height, the scrollbar thumb to correct size and the scrollbar interval to correct interval
+     */
+    override func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
+        slider!.setSize(itemHeight, height)
+        _sliderInterval = Math.floor(getItemsHeight() - height)/itemHeight;
+        var thumbHeight:Number = SliderParser.thumbSize(height/getItemsHeight(), _slider.height/*<--this should probably be .getHeight()*/);
+        _slider.setThumbHeight(thumbHeight);
+        super.setSize(width,height);
+        ElementModifier.hide(_slider, getItemsHeight() > _slider.height);/*<--new adition*/
     }
 }

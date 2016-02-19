@@ -45,6 +45,13 @@ class VSlider :Element{
         Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
+    /**
+     * Handles actions and drawing states for the down event.
+     */
+    override func mouseDown(event:MouseEvent) {
+        Swift.print("\(self.dynamicType)" + ".mouseDown() ")
+        //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
+    }
     override func onEvent(event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown

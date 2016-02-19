@@ -27,6 +27,7 @@ class SliderList : List{
     }
     override func onEvent(event: Event) {
         if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
+        super.onEvent(event)
     }
     /**
      * // :TODO: must update the float somehow

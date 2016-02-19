@@ -16,6 +16,7 @@ class VSlider :Element{
     init(_ width: CGFloat, _ height: CGFloat,_ thumbHeight:CGFloat = CGFloat.NaN, _ progress:CGFloat = 0,_ parent : IElement? = nil, id : String? = nil){
         self.progress = progress
         self.thumbHeight = thumbHeight.isNaN ? width:thumbHeight// :TODO: explain in a comment what this does
+        self.tempThumbMouseY = self.thumbHeight/2/*Center this loc on init*/
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {

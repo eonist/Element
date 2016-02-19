@@ -20,4 +20,7 @@ class SliderList : List{
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
+    
+    //continue here
+    
 }

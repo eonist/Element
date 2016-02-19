@@ -5,7 +5,7 @@ class ElementModifier {
      * Changes the visibility of @param element by @param isVisible
      * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state wont work
      */
-    func hide(element:IElement,_ isVisible:Bool) {
+    class func hide(element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an original style must be applied to every skin*/
         var styleProperty:IStyleProperty? = element.skin!.style!.getStyleProperty("display")
@@ -15,8 +15,8 @@ class ElementModifier {
     /**
      *
      */
-    func hideAll(elements:Array<IElement>,_ exception:IElement) {
-        for var element : IElement in elements {ElementModifier.hide(element, element === exception)}
+    class func hideAll(elements:Array<IElement>,_ exception:IElement) {
+        for element : IElement in elements {ElementModifier.hide(element, (element === exception))}  
     }
     /**
      * Refreshes many elements in @param displayObjectContainer

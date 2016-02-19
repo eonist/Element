@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * // :TODO: you may need to add an update method like SliderTreeList has, imagine if your scrolled to the bottom nd then an item is removed what happens? you should update the slider and y.position of the itemsContainer
+ */
 class SliderList : List{
     private var slider:VSlider?
     private var sliderInterval:CGFloat?
@@ -9,7 +11,7 @@ class SliderList : List{
         slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height);
         slider!.setThumbHeightValue(thumbHeight);
-        ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
+        //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent: NSEvent) {
         Swift.print("theEvent: " + "\(theEvent)")

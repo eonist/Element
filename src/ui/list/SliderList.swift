@@ -8,9 +8,9 @@ class SliderList : List{
         super.resolveSkin()
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight;// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
-        var thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider.height);
-        //slider.setThumbHeight(thumbHeight);
-        //ElementModifier.hide(slider, getItemsHeight() > slider.height)/*<--new adition*/
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height);
+        slider!.setThumbHeightValue(thumbHeight);
+        ElementModifier.hide(slider, ListParser.itemsHeight(self) > slider.height)/*<--new adition*/
     }
     
     override func scrollWheel(theEvent: NSEvent) {

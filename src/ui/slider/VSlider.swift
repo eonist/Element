@@ -53,7 +53,11 @@ class VSlider :Element{
         progress = Utils.progress(event.loc.y/*<-this may be wrong*/, thumbHeight/2, height, thumbHeight);
         thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
+    }
+    override func mouseUp(event: MouseEvent) {
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

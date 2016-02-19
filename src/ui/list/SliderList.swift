@@ -8,7 +8,7 @@ class SliderList : List{
         super.resolveSkin()
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight;// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
-        var thumbHeight:CGFloat = SliderParser.thumbSize(height/getItemsHeight(), slider.height);
+        //var thumbHeight:CGFloat = SliderParser.thumbSize(height/getItemsHeight(), slider.height);
         //slider.setThumbHeight(thumbHeight);
         //ElementModifier.hide(slider, getItemsHeight() > slider.height)/*<--new adition*/
     }

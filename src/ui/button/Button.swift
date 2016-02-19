@@ -77,7 +77,7 @@ class Button:Element {
         //Swift.print("Button.mouseUp: ")
         super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
-    override func hitTest(aPoint: NSPoint) -> NSView? {
+    override func hitTest(aPoint: NSPoint) -> NSView? {//TODO: this method can be removed
         //Swift.print("\(self.dynamicType)"+".hitTest() aPoint: " + "\(aPoint)")
         return super.hitTest(aPoint)
     }

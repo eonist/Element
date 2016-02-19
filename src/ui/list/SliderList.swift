@@ -10,7 +10,7 @@ class SliderList : List{
         slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height);
         slider!.setThumbHeightValue(thumbHeight);
-        ElementModifier.hide(slider, ListParser.itemsHeight(self) > slider.height)/*<--new adition*/
+        ElementModifier.hide(slider, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     
     override func scrollWheel(theEvent: NSEvent) {

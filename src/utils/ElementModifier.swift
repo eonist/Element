@@ -16,7 +16,7 @@ class ElementModifier {
      *
      */
     func hideAll(elements:Array<IElement>,_ exception:IElement) {
-        for var element : IElement in elements{ElementModifier.hide(element, element === exception)}
+        for var element : IElement in elements {ElementModifier.hide(element, element === exception)}
     }
     /**
      * Refreshes many elements in @param displayObjectContainer

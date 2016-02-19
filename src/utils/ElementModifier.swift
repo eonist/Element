@@ -2,6 +2,17 @@ import Cocoa
 
 class ElementModifier {
     /**
+     * Changes the visibility of @param element by @param isVisible
+     * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state wont work
+     */
+    func hide(element:IElement,_ isVisible:Boolean) {
+        var display:String = isVisible ? "" : CSSConstants.NONE;
+        element.skin.setStyle(StyleModifier.clone(element.skin.style));/*This is a temp fix, an original style must be applied to every skin*/
+        var styleProperty:IStyleProperty = element.skin.style.getStyleProperty("display");
+        styleProperty != null ? styleProperty.value = display : element.skin.style.addStyleProperty(new StyleProperty("display", display));
+        element.skin.setStyle(element.skin.style);
+    }
+    /**
      * Refreshes many elements in @param displayObjectContainer
      * // :TODO: skin should have a dedicated redraw method or a simple workaround
      * @Note keep in mind that this can be Window

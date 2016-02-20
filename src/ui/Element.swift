@@ -76,7 +76,6 @@ extension IElement {
         //Swift.print("_parent: " + _parent);
         return self.parent;
     }
-    
     /**
      * Positions the Element instance to @param point,
      * TODO: this could also be move to an utils class

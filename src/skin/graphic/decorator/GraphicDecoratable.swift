@@ -29,6 +29,10 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     func handleSelector(layer: CALayer,ctx:CGContext) {
         //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
+            NSAnimationContext.beginGrouping()
+            NSAnimationContext.currentContext()
+            
+            [ ]; [[ ] setDuration:5.0f]; [[window animator] setFrame:newFrame display:YES]; [NSAnimationContext endGrouping];
             //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx
             if(graphic.fillStyle != nil){fill()}

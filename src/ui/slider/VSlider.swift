@@ -83,7 +83,7 @@ class VSlider :Element{
      */
     func setThumbHeightValue(thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
         self.thumbHeight = thumbHeight
-        thumb!.setSize(thumb!.width, thumbHeight)
+        thumb!.setSize(thumb!.getWidth(), thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {

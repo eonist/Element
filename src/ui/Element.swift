@@ -63,6 +63,7 @@ class Element:InteractiveView2,IElement {
 }
 /**
  * NOTE: some of these methods will probably be moved back into the class
+ * TODO: add convenince methods for setting x and y independently?
  */
 extension IElement {
     var width:CGFloat {return self.frame.width}
@@ -85,7 +86,6 @@ extension IElement {
         self.x = point.x;
         self.y = point.y;
         */
-        
         frame.x = point.x
         frame.y = point.y
     }
@@ -96,7 +96,6 @@ extension IElement {
         return skin != nil ? skin!.getHeight() : CGFloat.NaN;
     }
 }
-
 extension Element{
     /**
      *

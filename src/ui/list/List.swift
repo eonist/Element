@@ -1,4 +1,6 @@
 import Cocoa
+//SkinParser.width(skin) was used before to create the mask size
+//SkinParser.height(skin) was used before to create the mask size
 /**
  * @Note There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
  * @Note ListParser and ListModifier are usefull utility classes
@@ -12,10 +14,6 @@ class List : Element,IList{
     var itemHeight:CGFloat
     var dataProvider : DataProvider
     var lableContainer  : Container?
-    
-    //SkinParser.width(skin) was used before to create the mask size
-    //SkinParser.height(skin) was used before to create the mask size
-    
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight;
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()

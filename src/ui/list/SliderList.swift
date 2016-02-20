@@ -8,8 +8,7 @@ class SliderList : List{
     override func resolveSkin() {
         super.resolveSkin()
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        let sliderContainer:Container = self.addSubView(Container(width, height, self, "sliderContainer")) as! Container
-        slider = sliderContainer.addSubView(VSlider(itemHeight,height,0,0,sliderContainer)) as? VSlider
+        slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/

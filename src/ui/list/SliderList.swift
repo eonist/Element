@@ -24,7 +24,10 @@ class SliderList : List{
         slider?.setProgressValue(currentScroll)
         if(theEvent.momentumPhase == NSEventPhase.Ended){
             Swift.print("the scroll motion ended")
-            
+            slider!.thumb!.setSkinState("inActive")
+        }else if(theEvent.momentumPhase == NSEventPhase.Began){
+            Swift.print("the scroll motion began")
+            slider!.thumb!.setSkinState(SkinStates.none)
         }
         super.scrollWheel(theEvent)
     }

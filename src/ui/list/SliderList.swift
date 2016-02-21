@@ -33,7 +33,7 @@ class SliderList : List{
             //swapAnimation.subtype = kCATransitionTypeFromUITableViewRowAnimation(animation);
             swapAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
             swapAnimation.fillMode = kCAFillModeBoth
-            swapAnimation.duration = 0.75
+            swapAnimation.duration = 0.5
             swapAnimation.removedOnCompletion = true
             swapAnimation.delegate = graphic//sets the instance that will get the animationDidStart callBack and the animationDidEnd callback
             //[self.layer addAnimation:swapAnimation forKey:@"UITableViewReloadDataAnimationKey"];
@@ -61,7 +61,7 @@ class SliderList : List{
             //swapAnimation.subtype = kCATransitionTypeFromUITableViewRowAnimation(animation);
             swapAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
             swapAnimation.fillMode = kCAFillModeBoth
-            swapAnimation.duration = 0.0
+            swapAnimation.duration = 0.10
             swapAnimation.removedOnCompletion = true
             swapAnimation.delegate = graphic//sets the instance that will get the animationDidStart callBack and the animationDidEnd callback
             //[self.layer addAnimation:swapAnimation forKey:@"UITableViewReloadDataAnimationKey"];

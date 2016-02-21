@@ -24,69 +24,10 @@ class SliderList : List{
         slider?.setProgressValue(currentScroll)
         if(theEvent.momentumPhase == NSEventPhase.Ended){
             Swift.print("the scroll motion ended")
-            
-            
-            
-            let graphic = slider!.thumb!.skin?.decoratables[0].graphic
-            let swapAnimation:CATransition = CATransition()
-            swapAnimation.type = kCATransitionPush;
-            //swapAnimation.subtype = kCATransitionTypeFromUITableViewRowAnimation(animation);
-            swapAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            swapAnimation.fillMode = kCAFillModeBoth
-            swapAnimation.duration = 0.5
-            swapAnimation.removedOnCompletion = true
-            swapAnimation.delegate = graphic//sets the instance that will get the animationDidStart callBack and the animationDidEnd callback
-            //[self.layer addAnimation:swapAnimation forKey:@"UITableViewReloadDataAnimationKey"];
-            graphic!.layer?.addAnimation(swapAnimation, forKey: "doesntmatter")
-            
-            
-
-            
-            
-            
-            CATransaction.begin()
             slider!.thumb!.setSkinState("inActive")
-            CATransaction.flush()
-            
-            CATransaction.commit()
         }else if(theEvent.momentumPhase == NSEventPhase.Began){
             Swift.print("the scroll motion began")
-            
-            
-            
-            
-            let graphic = slider!.thumb!.skin?.decoratables[0].graphic
-            let swapAnimation:CATransition = CATransition()
-            swapAnimation.type = kCATransitionPush;
-            //swapAnimation.subtype = kCATransitionTypeFromUITableViewRowAnimation(animation);
-            swapAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            swapAnimation.fillMode = kCAFillModeBoth
-            swapAnimation.duration = 0.10
-            swapAnimation.removedOnCompletion = true
-            swapAnimation.delegate = graphic//sets the instance that will get the animationDidStart callBack and the animationDidEnd callback
-            //[self.layer addAnimation:swapAnimation forKey:@"UITableViewReloadDataAnimationKey"];
-            graphic!.layer?.addAnimation(swapAnimation, forKey: "doesntmatter")
-            
-            
-            
-            
-            
-            
-            //rect.graphic.frame.x += 100//try to move this red box 100 px to the left
-            CATransaction.begin()
-            
-           
-            
-            
-            
             slider!.thumb!.setSkinState(SkinStates.none)
-            
-            
-            
-            CATransaction.flush()
-            
-            CATransaction.commit()
-
         }
         super.scrollWheel(theEvent)
     }

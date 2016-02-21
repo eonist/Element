@@ -30,7 +30,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
-            graphic.fillShape.graphics.context = ctx
+            graphic.fillShape.graphics.context = ctx/*TODO: why do we apply the ctx here again?*/
             if(graphic.fillStyle != nil){fill()}
         }else if(layer === graphic.lineShape){
             //Swift.print("lineShape")

@@ -16,7 +16,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     /**
      * Setup the geometry and init the display process of fill and line
-     * NOTE: its the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic. 
+     * NOTE: its the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )

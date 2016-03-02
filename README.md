@@ -1,5 +1,5 @@
 [follow the progress here ](http://stylekit.org/)   
-of
+or  
 [follow the progress on Twitter](https://twitter.com/stylekit_org)  
 
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  

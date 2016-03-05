@@ -68,7 +68,7 @@ class Animator{
     var duration:CGFloat?/*in seconds*/
     var framesToEnd:CGFloat?//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
-    init(_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat){
+    init(_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method: (CGFloat)->Void) -> Int){
         
     }
 }

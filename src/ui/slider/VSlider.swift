@@ -130,7 +130,12 @@ class Thumb:Button{
     /**
      *
      */
-    func applyOvershot(){
+    func applyOvershot(progress:CGFloat){
+        if(progress < 0){//top overshot
+            
+        }else if(progress > 1){//bottom overshot
+            
+        }
         self.skin!.setSize(width, height)
     }
 }

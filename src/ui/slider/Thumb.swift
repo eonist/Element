@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 /**
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
@@ -30,7 +30,8 @@ class Thumb:Button{
      *
      */
     func animate(seconds:CGFloat){
+        //CVDisplayLinkIsRunning
+        CVDisplayLinkStart(displayLink)
         
     }
-    
 }

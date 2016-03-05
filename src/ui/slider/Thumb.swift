@@ -55,5 +55,6 @@ class Thumb:Button{
             }
         }
         self.currentFrameCount++
+        super.onFrame()
     }
 }

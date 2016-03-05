@@ -128,7 +128,7 @@ class Thumb:Button{
         return String(Button)
     }
     /**
-     * Resizes the thumb 
+     * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand effect
      */
     func applyOvershot(progress:CGFloat){
         if(progress < 0){//top overshot

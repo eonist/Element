@@ -19,7 +19,7 @@ class RBSliderList:List {
     /**
      * movement code
      */
-    func moveViews(value:CGFloat){
+    func setProgress(value:CGFloat){
         lableContainer!.frame.y = value
         let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         //Swift.print("scalar: " + "\(scalar)")
@@ -27,14 +27,14 @@ class RBSliderList:List {
     }
     override func scrollWheel(theEvent:NSEvent) {
         scrollController?.scrollWheel(theEvent)//forward the event
-        if(theEvent.phase == NSEventPhase.Changed){moveViews(scrollController!.mover.result)}
+        if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/
     }
     override func onFrame(){
         if(scrollController!.mover.hasStopped){//stop the frameTicker here
             CVDisplayLinkStop(displayLink)
         }else{//only move the view if the mover is not stopped
             scrollController!.mover.updatePosition()/*tick the mover*/
-            moveViews(scrollController!.mover.result)
+            setProgress(scrollController!.mover.result)/*indirect manipulation aka momentum*/
         }
         super.onFrame()
     }

@@ -128,17 +128,16 @@ class Thumb:Button{
         return String(Button)
     }
     /**
-     *
+     * Resizes the thumb 
      */
     func applyOvershot(progress:CGFloat){
         if(progress < 0){//top overshot
             self.skin!.setSize(width, height-(height*abs(progress)))
         }else if(progress > 1){//bottom overshot
-            let overshot = height-(height*(progress-1))
-            self.skin!.setSize(width, overshot)
+            let overshot = height*(progress-1)
+            self.skin!.setSize(width, height - overshot)
             (self.skin! as! Skin).frame.y = overshot
         }
-        
     }
 }
 /*

@@ -60,7 +60,7 @@ class Thumb:Button{
     }
 }
 /**
- * You can store the active animator instance count
+ * You can store the active animator instance count in the AnimatableView
  */
 class Animator{
     let fps:CGFloat = 60

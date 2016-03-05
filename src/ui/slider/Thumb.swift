@@ -59,3 +59,12 @@ class Thumb:Button{
         super.onFrame()
     }
 }
+class Animator{
+    let fps:CGFloat = 60
+    var duration:CGFloat?/*in seconds*/
+    var framesToEnd:CGFloat?
+    var currentFrameCount:CGFloat = 0
+    init(){
+        
+    }
+}

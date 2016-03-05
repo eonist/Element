@@ -61,6 +61,7 @@ class Thumb:Button{
 }
 /**
  * TODO: You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
+ * TODO: take a look at other animation libs
  */
 class Animator{
     let fps:CGFloat = 60//this should be pulled from a device variable

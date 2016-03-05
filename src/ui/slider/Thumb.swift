@@ -7,7 +7,7 @@ class Thumb:Button{
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/
     var frameCountToEnd:CGFloat?
-    var currentFrameCount:CGFloat?
+    var currentFrameCount:CGFloat = 0
     override func getClassType() -> String {
         return String(Button)
     }
@@ -34,14 +34,19 @@ class Thumb:Button{
      *
      */
     func animate(duration:CGFloat){
-        //CVDisplayLinkIsRunning
+        //
         frameCountToEnd = fps * duration
+        Swift.print("beginning of anim")
         CVDisplayLinkStart(displayLink)
         
     }
     override func onFrame() {
         if(currentFrameCount == frameCountToEnd){
-            
+            Swift.print("end of anim")
+            if(CVDisplayLinkIsRunning(displayLink)){
+                CVDisplayLinkStop(displayLink)
+            }
         }
+        self.currentFrameCount++
     }
 }

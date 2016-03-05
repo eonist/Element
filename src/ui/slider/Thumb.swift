@@ -59,6 +59,9 @@ class Thumb:Button{
         super.onFrame()
     }
 }
+/**
+ * You can store the active animator instance count
+ */
 class Animator{
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/

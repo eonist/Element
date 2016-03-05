@@ -135,6 +135,8 @@ class Thumb:Button{
             self.skin!.setSize(width, height-(height*abs(progress)))
         }else if(progress > 1){//bottom overshot
             let overshot = height-(height*(progress-1))
+            self.skin!.setSize(width, overshot)
+            (self.skin! as! Skin).frame.y = overshot
         }
         
     }

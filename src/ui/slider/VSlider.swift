@@ -121,7 +121,11 @@ private class Utils{
 //do a isolated button test with this scenario first.
 
 
-
+class Thumb:Button{
+    override func resolveSkin() {
+        <#code#>
+    }
+}
 /*
 class Thumb:Button2{
     override init(_ width: CGFloat, _ height: CGFloat) {

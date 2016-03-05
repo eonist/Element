@@ -72,11 +72,18 @@ class Animator{
     var method:(CGFloat)->Void
     var framesToEnd:CGFloat?//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
+    //isActive used by the AnimatiableView to assert if an animator is active or not
     init(_ view:AnimatableView, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
         self.view = view
         self.duration = duration
         self.from = from
         self.to = to
         self.method = method
+    }
+    /**
+     *
+     */
+    func onFrame(){
+        
     }
 }

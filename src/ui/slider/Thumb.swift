@@ -6,7 +6,7 @@ import Cocoa
 class Thumb:Button{
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/
-    var frameCountToEnd:CGFloat?
+    var framesToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
 
     override func getClassType() -> String {
@@ -36,7 +36,7 @@ class Thumb:Button{
      */
     func animate(duration:CGFloat){
         //
-        frameCountToEnd = fps * duration
+        framesToEnd = fps * duration
         Swift.print("beginning of anim")
         CVDisplayLinkStart(displayLink)
         
@@ -44,10 +44,10 @@ class Thumb:Button{
     let from:CGFloat = 0
     let to:CGFloat = 1
     override func onFrame() {
-        let val:CGFloat //use the 
-        skin?.decoratables[0].getGraphic().fillStyle?.color = skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(<#T##alpha: CGFloat##CGFloat#>)
+        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)
+        skin?.decoratables[0].getGraphic().fillStyle?.color = skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val)
         skin?.decoratables[0].drawFill()
-        if(currentFrameCount == frameCountToEnd){
+        if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")
             if(CVDisplayLinkIsRunning(displayLink)){
                 CVDisplayLinkStop(displayLink)

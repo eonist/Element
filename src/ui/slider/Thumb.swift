@@ -8,6 +8,7 @@ class Thumb:Button{
     var duration:CGFloat?/*in seconds*/
     var frameCountToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
+
     override func getClassType() -> String {
         return String(Button)
     }
@@ -40,7 +41,10 @@ class Thumb:Button{
         CVDisplayLinkStart(displayLink)
         
     }
+    let from:CGFloat = 0
+    let to:CGFloat = 1
     override func onFrame() {
+        skin?.decoratables[0].getGraphic().fillStyle?.color.alphaComponent
         if(currentFrameCount == frameCountToEnd){
             Swift.print("end of anim")
             if(CVDisplayLinkIsRunning(displayLink)){

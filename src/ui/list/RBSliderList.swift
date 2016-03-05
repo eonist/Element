@@ -21,12 +21,8 @@ class RBSliderList:List {
      */
     func moveViews(value:CGFloat){
         lableContainer!.frame.y = value
-        
-        //continue here: Try to get the the scalar values from value.
-        
-        let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)
-        Swift.print("scalar: " + "\(scalar)")
-        
+        let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
+        //Swift.print("scalar: " + "\(scalar)")
         slider?.setProgressValue(scalar)
     }
     override func scrollWheel(theEvent:NSEvent) {

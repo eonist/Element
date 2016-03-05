@@ -114,7 +114,8 @@ private class Utils{
 
 
 
-
+//continue here: create an Internatl Thumb class
+//it should for the sake of simplicity 
 
 
 

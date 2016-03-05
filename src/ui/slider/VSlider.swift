@@ -121,7 +121,7 @@ private class Utils{
 //do a isolated button test with this scenario first.
 
 /**
- * NOTE: 
+ * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  */
 class Thumb:Button{
     override func getClassType() -> String {

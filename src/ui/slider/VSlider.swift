@@ -131,6 +131,9 @@ class Thumb:Button{
     func applyOvershot(){
         super.setSize(<#T##width: CGFloat##CGFloat#>, <#T##height: CGFloat##CGFloat#>)
     }
+    override func setSize(width: CGFloat, _ height: CGFloat) {
+        super.setSize(width, height)
+    }
 }
 /*
 class Thumb:Button2{

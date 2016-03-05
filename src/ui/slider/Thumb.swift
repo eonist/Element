@@ -66,9 +66,15 @@ class Thumb:Button{
 class Animator{
     let fps:CGFloat = 60//this should be pulled from a device variable
     var duration:CGFloat?/*in seconds*/
+    var from:CGFloat
+    var to:CGFloat
+    var method:(CGFloat)->Void
     var framesToEnd:CGFloat?//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
     init(_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
-        return method(aNumber)
+        self.duration = duration
+        self.from = from
+        self.to = to
+        self.method = method
     }
 }

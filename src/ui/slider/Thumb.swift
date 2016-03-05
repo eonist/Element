@@ -72,7 +72,7 @@ class Animator{
     var method:(CGFloat)->Void
     var framesToEnd:CGFloat?//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
-    init(_ view:AnimatableView,_ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
+    init(_ view:AnimatableView, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
         self.view = view
         self.duration = duration
         self.from = from

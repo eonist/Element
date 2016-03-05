@@ -122,9 +122,7 @@ private class Utils{
 
 
 class Thumb:Button{
-    override func resolveSkin() {
-        <#code#>
-    }
+    
 }
 /*
 class Thumb:Button2{

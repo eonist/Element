@@ -120,7 +120,9 @@ private class Utils{
 //do the same with the bottomOvershot but also offset the skin.y value with the same amount
 //do a isolated button test with this scenario first.
 
-
+/**
+ * NOTE: 
+ */
 class Thumb:Button{
     override func getClassType() -> String {
         return String(Button)
@@ -129,10 +131,7 @@ class Thumb:Button{
      *
      */
     func applyOvershot(){
-        super.setSize(<#T##width: CGFloat##CGFloat#>, <#T##height: CGFloat##CGFloat#>)
-    }
-    override func setSize(width: CGFloat, _ height: CGFloat) {
-        super.setSize(width, height)
+        self.skin!.setSize(width, height)
     }
 }
 /*

@@ -122,7 +122,7 @@ private class Utils{
 
 
 class Thumb:Button{
-    func getClassType() -> String {
+    override func getClassType() -> String {
         return String(Button)
     }
 }

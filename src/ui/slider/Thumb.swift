@@ -62,6 +62,7 @@ class Thumb:Button{
 /**
  * TODO: You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
  * TODO: take a look at other animation libs
+ * TODO: Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
  */
 class Animator{
     let fps:CGFloat = 60//this should be pulled from a device variable
@@ -84,6 +85,12 @@ class Animator{
      *
      */
     func onFrame(){
-        
+        //call the method here
+        //the method should be posible to be created as a inline method closure
     }
+    //start
+    //stop
+    //pause
+    //remove
+    //
 }

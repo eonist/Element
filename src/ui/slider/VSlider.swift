@@ -8,7 +8,7 @@ import Cocoa
  * // :TODO: onSkinDown, onSkinUp ?
  */
 class VSlider :Element{
-    var thumb:Button?
+    var thumb:Thumb?
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
@@ -25,7 +25,7 @@ class VSlider :Element{
         //skin.useHandCursor = false;// :TODO: explain why in a comment
         Swift.print("width: " + "\(width)")
         Swift.print("thumbHeight: " + "\(thumbHeight)")
-        thumb = addSubView(Button(width, thumbHeight,self)) as? Button
+        thumb = addSubView(Thumb(width, thumbHeight,self)) as? Thumb
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){

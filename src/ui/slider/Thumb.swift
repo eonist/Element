@@ -45,8 +45,9 @@ class Thumb:Button{
     let to:CGFloat = 1
     override func onFrame() {
         let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)
-        skin?.decoratables[0].getGraphic().fillStyle?.color = skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val)
-        skin?.decoratables[0].drawFill()
+        //Swift.print("val: " + "\(val)")
+        skin?.decoratables[0].getGraphic().fillStyle?.color = (skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
+        skin?.decoratables[0].draw()
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")
             if(CVDisplayLinkIsRunning(displayLink)){

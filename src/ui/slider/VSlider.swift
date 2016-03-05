@@ -115,7 +115,9 @@ private class Utils{
 
 
 //continue here: create an Internatl Thumb class
-//it should for the sake of simplicity 
+//it should resize and setposition of its own skin for given overshoot values. 
+//so -0,25 top overshoot then resize its own height to height+(height*abs(topOvershot))
+//do the same with the bottomOvershot but also offset the skin.y value with the same amount
 
 
 

@@ -24,5 +24,6 @@ class Thumb:Button{
     //Continue here: 
     //animate from value to value with: duration and custom property or adhock arg method that you can set your self
     //should have 2 custom transition types: easeIn and easeOut (use log10 or regular easing multiplier, see book for this)
+    //you should have a finished call-back method
     
 }

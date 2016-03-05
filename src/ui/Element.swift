@@ -55,6 +55,7 @@ class Element:InteractiveView2,IElement {
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
      * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes
+     * NOTE: to return a spessific class type: String(TextEditor)
      */
     func getClassType()->String{
         return String(self.dynamicType)

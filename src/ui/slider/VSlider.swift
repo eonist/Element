@@ -7,7 +7,7 @@ import Cocoa
  * // :TODO: remove refs to frame. you can use width and height directly
  * // :TODO: onSkinDown, onSkinUp ?
  */
-class VSlider :Element{
+class VSlider:Element{
     var thumb:Thumb?
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
@@ -77,6 +77,7 @@ class VSlider :Element{
     func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
         thumb!.frame.y = Utils.thumbPosition(self.progress, frame.height, thumbHeight)
+        
     }
     /**
      * Sets the thumbs height and repositions the thumb accordingly

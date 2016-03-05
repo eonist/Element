@@ -45,6 +45,7 @@ class Thumb:Button{
     let to:CGFloat = 1
     override func onFrame() {
         skin?.decoratables[0].getGraphic().fillStyle?.color.alphaComponent
+        skin?.decoratables[0].drawFill()
         if(currentFrameCount == frameCountToEnd){
             Swift.print("end of anim")
             if(CVDisplayLinkIsRunning(displayLink)){

@@ -4,6 +4,10 @@ import Cocoa
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  */
 class Thumb:Button{
+    let fps:CGFloat = 60
+    var duration:CGFloat?/*in seconds*/
+    var frameCountToEnd:CGFloat?
+    var currentFrameCount:CGFloat?
     override func getClassType() -> String {
         return String(Button)
     }
@@ -29,12 +33,15 @@ class Thumb:Button{
     /**
      *
      */
-    func animate(seconds:CGFloat){
+    func animate(duration:CGFloat){
         //CVDisplayLinkIsRunning
+        frameCountToEnd = fps * duration
         CVDisplayLinkStart(displayLink)
-        let frameCount = 60 * seconds
+        
     }
     override func onFrame() {
-        
+        if(currentFrameCount == frameCountToEnd){
+            
+        }
     }
 }

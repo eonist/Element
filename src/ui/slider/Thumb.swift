@@ -32,6 +32,9 @@ class Thumb:Button{
     func animate(seconds:CGFloat){
         //CVDisplayLinkIsRunning
         CVDisplayLinkStart(displayLink)
+        let frameCount = 60 * seconds
+    }
+    override func onFrame() {
         
     }
 }

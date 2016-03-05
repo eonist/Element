@@ -26,4 +26,11 @@ class Thumb:Button{
     //should have 2 custom transition types: easeIn and easeOut (use log10 or regular easing multiplier, see book for this)
     //you should have a finished call-back method
     
+    /**
+     *
+     */
+    func animate(seconds:CGFloat){
+        
+    }
+    
 }

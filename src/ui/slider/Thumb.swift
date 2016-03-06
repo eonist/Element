@@ -88,8 +88,8 @@ class Animator{
         let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)
         method(val)
         if(currentFrameCount == framesToEnd){
-            Swift.print("end of anim")
-            
+            Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
+            view.activeAnimatorCount--
         }
         self.currentFrameCount++
         //call the method here

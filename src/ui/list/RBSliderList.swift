@@ -41,4 +41,8 @@ class RBSliderList:List {
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
+    override func onEvent(event: Event) {
+        if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
+        super.onEvent(event)
+    }
 }

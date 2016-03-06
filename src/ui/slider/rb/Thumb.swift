@@ -26,6 +26,10 @@ class Thumb:Button{
             (self.skin! as! Skin).frame.y = overshot
         }
     }
+    
+    
+}
+extension Thumb{
     func interpolateAlpha(val:CGFloat){
         self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
         self.skin?.decoratables[0].draw()
@@ -38,5 +42,4 @@ class Thumb:Button{
     func fadeOut(){
         
     }
-    
 }

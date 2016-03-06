@@ -5,6 +5,11 @@ import Cocoa
  *
  * TODO: Create the algorithm that calculates the actual throw speed. By looking at the time that each intervall travles. 
  */
+
+
+//continue here: you need to set the progress when using the thumb to scroll. So that when you then use the scrollwheel it can pickup the last value
+//see the SliderList when you implement this, since it works there
+
 class RBScrollController {
     var frame:CGRect/*represents the visible part of the content*///TODO: could be ranmed to maskRect
     var itemRect:CGRect/*represents the total size of the content*///TODO: could be ranmed to contentRect

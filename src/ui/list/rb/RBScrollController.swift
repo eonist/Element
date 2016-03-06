@@ -69,6 +69,7 @@ class RBScrollController {
         }else{/*stationary*/
             //CVDisplayLinkStart(view.displayLink)//<--I dont think you need to start the displayLink here
             (view as! RBSliderList).slider?.thumb?.fadeOut()
+            (view as! RBSliderList).slider?.thumb?.getSkinState()
         }
     }
 }

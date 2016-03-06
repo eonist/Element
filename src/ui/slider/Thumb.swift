@@ -71,7 +71,7 @@ class Animator{
     var duration:CGFloat/*in seconds*/
     var from:CGFloat
     var to:CGFloat
-    var method:(CGFloat)->Void
+    var method:(CGFloat)->Void//the closure method that changes the property
     var framesToEnd:CGFloat?//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
     //isActive used by the AnimatiableView to assert if an animator is active or not
@@ -101,7 +101,7 @@ class Animator{
      */
     func start(){
         if(CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStart(view.displayLink)}//start the displayLink if it isnt already running
-        view.animators.append(self)
+        view.animators.append(self)//add your self to the list of animators that gets the onFrame call
     }
     //start
     //stop

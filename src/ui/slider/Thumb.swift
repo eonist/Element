@@ -88,22 +88,28 @@ class Animator{
     //pause
     //resume
 }
+/**
+ * t: time (current frame) this can also be actual time
+ * b: begin (the value it is at the begining)
+ * c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
+ * d: duration (total frames in anim) this can also be actual time
+ */
 class Easing{
-    /**
-     * NOTE: If you decrease the decimal variable you increase the friction effect
-     */
-    class func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
-        let distToGoal:CGFloat = NumberParser.relativeDifference(value, to)
-        let val:CGFloat = 0.2 * distToGoal
-        return val
-    }
-    /**
-     * t: time (current frame) this can also be actual time
-     * b: begin (the value it is at the begining)
-     * c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
-     * d: duration (total frames in anim) this can also be actual time
-     */
+    
+    
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π) + c + b;
     }
 }
+
+/*
+/**
+* NOTE: If you decrease the decimal variable you increase the friction effect
+*/
+class func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
+let distToGoal:CGFloat = NumberParser.relativeDifference(value, to)
+let val:CGFloat = 0.2 * distToGoal
+return val
+}
+
+*/

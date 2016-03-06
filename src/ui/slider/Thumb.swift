@@ -110,7 +110,7 @@ class Easing{
     }
     //Quintic
     class func easeInQuint (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        let t = t/d
+        t = t/d
         return c*(t)*t*t*t*t + b;
     }
 }

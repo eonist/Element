@@ -25,4 +25,10 @@ class Thumb:Button{
             (self.skin! as! Skin).frame.y = overshot
         }
     }
+    func fadeIn(){
+    
+    }
+    func fadeOut(){
+        
+    }
 }

@@ -55,7 +55,7 @@ class Animator{
     func onFrame(){
         Swift.print("onFrame()")
         var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
-        val = Easing.easeOut(val, to)
+        val = Easing.easeOut(val, from, to)
         Swift.print("val: " + "\(val)")
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
@@ -90,7 +90,7 @@ class Easing{
      * NOTE: If you decrease the decimal variable you increase the friction effect
      */
     class func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
-        let multiplier = 0.2 * (value/to)
+        let multiplier = NumberParser.scalar(from, to, value)
         return NumberParser.interpolate(from, to, multiplier)
     }
 }

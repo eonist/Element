@@ -24,40 +24,6 @@ class Thumb:Button{
             (self.skin! as! Skin).frame.y = overshot
         }
     }
-    
-    
-    //Continue here: 
-    //animate from value to value with: duration and custom property or adhock arg method that you can set your self
-    //should have 2 custom transition types: easeIn and easeOut (use log10 or regular easing multiplier, see book for this)
-    //you should have a finished call-back method
-    //you should probably make a class that holds the animation variables etc. and hooks into the displayLink, Similar to RBScrollController, call it Animator.swift
-    
-    /**
-     *
-     */
-    func animate(duration:CGFloat){
-        //
-        framesToEnd = fps * duration
-        Swift.print("beginning of anim")
-        CVDisplayLinkStart(displayLink)
-        
-    }
-    let from:CGFloat = 0
-    let to:CGFloat = 1
-    override func onFrame() {
-        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)
-        //Swift.print("val: " + "\(val)")
-        skin?.decoratables[0].getGraphic().fillStyle?.color = (skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
-        skin?.decoratables[0].draw()
-        if(currentFrameCount == framesToEnd){
-            Swift.print("end of anim")
-            if(CVDisplayLinkIsRunning(displayLink)){
-                CVDisplayLinkStop(displayLink)
-            }
-        }
-        self.currentFrameCount++
-        super.onFrame()
-    }
 }
 /**
  * TODO: You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
@@ -72,7 +38,7 @@ class Animator{
     var from:CGFloat//from this value
     var to:CGFloat//to this value
     var method:(CGFloat)->Void//the closure method that changes the property
-    var framesToEnd:CGFloat?//totFrameCount
+    var framesToEnd:CGFloat//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
     //isActive used by the AnimatiableView to assert if an animator is active or not
     init(_ view:AnimatableView, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
@@ -81,12 +47,13 @@ class Animator{
         self.from = from
         self.to = to
         self.method = method
+        framesToEnd = fps * duration
     }
     /**
      * Fires on every frame tick
      */
     func onFrame(){
-        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)//interpolates the value
+        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
@@ -110,4 +77,6 @@ class Animator{
         view.animators.removeAt(view.animators.indexOf(self))
         if(view.animators.count == 0 && CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStop(view.displayLink)}//stops the frame ticker if there is not active running animators
     }
+    //pause
+    //resume
 }

@@ -97,10 +97,10 @@ class Easing{
         return val
     }
     /**
-     * t: time
-     * b: begin (the value it is now)
-     * c: change
-     * d: duration
+     * t: time (current frame) this can also be actual time
+     * b: begin (the value it is at the begining)
+     * c: change (the value it is currently)
+     * d: duration (total frames in anim) this can also be actual time
      */
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π) + c + b;

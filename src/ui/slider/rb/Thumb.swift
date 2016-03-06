@@ -1,6 +1,7 @@
 import Cocoa
 
 /**
+ * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  */
 class Thumb:Button{
@@ -13,7 +14,7 @@ class Thumb:Button{
         return String(Button)
     }
     /**
-     * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand effect
+     * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
     func applyOvershot(progress:CGFloat){
         if(progress < 0){//top overshot

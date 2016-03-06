@@ -104,6 +104,10 @@ class Easing{
     class func easeOutSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return c * sin(t/d * π) + b;
     }
+    class func easeInOutSine (t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat)->CGFloat{
+        return -c/2 * (cos(π*t/d) - 1) + b;
+        
+    }
 }
 
 /*

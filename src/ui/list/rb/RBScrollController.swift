@@ -71,7 +71,7 @@ class RBScrollController {
 
 //Continue here: It seems you can only use one CVDisplayLink at the time. Makes sence i guess.
 //Things to try: Only use AnimatableView in the Window (maybe event drop the View part and make it only for windows?)
-//
+//seems like values doesnt like being written to more than once during anim. Maybe 
 
 
 

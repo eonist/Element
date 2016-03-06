@@ -109,8 +109,9 @@ class Easing{
         return -c/2 * (cos(π*t/d) - 1) + b;
     }
     //Quintic
-    class func easeInQuint (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
-        return c*(t/=d)*t*t*t*t + b;
+    class func easeInQuint (var t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        let t = t/d
+        return c*(t)*t*t*t*t + b;
     }
 }
 

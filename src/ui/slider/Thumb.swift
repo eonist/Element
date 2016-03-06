@@ -98,7 +98,7 @@ class Easing{
     }
     /**
      * t: time
-     * b: begin
+     * b: begin (the value it is now)
      * c: change
      * d: duration
      */

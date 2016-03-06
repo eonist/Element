@@ -101,6 +101,7 @@ class Animator{
      *
      */
     func start(){
+        if(CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStart(view.displayLink)}//start the displayLink if it isnt already running
         view.animators.append(self)
     }
     //start

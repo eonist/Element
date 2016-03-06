@@ -57,7 +57,8 @@ class Animator{
     func onFrame(){
         Swift.print("onFrame()")
         //var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
-        val += Easing.easeOut(val, from, to)
+        //val += Easing.easeOut(val, from, to)
+        val = Easing.easeInSine(0, from, to-from, framesToEnd)
         Swift.print("val: " + "\(val)")
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
@@ -99,7 +100,7 @@ class Easing{
     /**
      * t: time (current frame) this can also be actual time
      * b: begin (the value it is at the begining)
-     * c: change (the value it is currently)
+     * c: change (end value - begining value) sort of the amount to change, this can also be described as the difference between two values
      * d: duration (total frames in anim) this can also be actual time
      */
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{

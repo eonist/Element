@@ -90,6 +90,7 @@ class Animator{
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
+            stop()
         }
         self.currentFrameCount++
         //call the method here
@@ -106,9 +107,7 @@ class Animator{
      * Stop the animation
      */
     func stop(){
-        if(view.animators.count == 0 && CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStop(view.displayLink)}//stops the frame ticker if there is not active running animators
         view.animators.removeAt(view.animators.indexOf(self))
+        if(view.animators.count == 0 && CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStop(view.displayLink)}//stops the frame ticker if there is not active running animators
     }
-    //pause
-    //remove
 }

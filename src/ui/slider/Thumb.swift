@@ -96,4 +96,10 @@ class Easing{
         let val:CGFloat = 0.2 * distToGoal
         return val
     }
+    /**
+     *
+     */
+    class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        return -c * cos(t/d * π) + c + b;
+    }
 }

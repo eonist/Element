@@ -97,7 +97,10 @@ class Easing{
         return val
     }
     /**
-     *
+     * t: time
+     * b: begin
+     * c: change
+     * d: duration
      */
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π) + c + b;

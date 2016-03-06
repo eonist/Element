@@ -55,6 +55,7 @@ class Animator{
     func onFrame(){
         Swift.print("onFrame()")
         let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
+        
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/

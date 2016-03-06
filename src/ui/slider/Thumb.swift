@@ -96,9 +96,14 @@ class Animator{
         //call the method here
         //the method should be posible to be created as a inline method closure
     }
+    /**
+     *
+     */
+    func start(){
+        view.activeAnimatorCount++
+    }
     //start
     //stop
     //pause
     //remove
-    //
 }

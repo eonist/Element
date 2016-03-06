@@ -24,6 +24,9 @@ class RBScrollController {
     func scrollWheel(theEvent: NSEvent) {
         if(theEvent.phase != NSEventPhase.Changed){
             Swift.print("theEvent.phase: " + "\(theEvent.phase)")
+            if(theEvent.phase == NSEventPhase.Cancelled){
+                Swift.print("cancelled")
+            }
         }
         switch theEvent.phase{
             case NSEventPhase.Changed://fires everytime there is direct scrollWheel gesture movment.

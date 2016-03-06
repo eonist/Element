@@ -9,6 +9,7 @@ class Thumb:Button{
     var duration:CGFloat?/*in seconds*/
     var framesToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
+    var animator:Animator?
     
     override func getClassType() -> String {
         return String(Button)
@@ -25,17 +26,17 @@ class Thumb:Button{
             (self.skin! as! Skin).frame.y = overshot
         }
     }
+    func interpolateAlpha(val:CGFloat){
+        self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
+        self.skin?.decoratables[0].draw()
+    }
     func fadeIn(){
-        let animator = Animator(thumb,0.5,1,0,interpolateAlpha,Easing.easeInOutQuad)
-        func onEvent(event:Event){
-            if(event.type == ButtonEvent.upInside){
-                Swift.print("click")
-                animator.start()
-            }
-        }
-        thumb.event = onEvent
+        if(animator != nil){animator!.stop()}//stop any previous running animation
+        animator = Animator(self,0.5,0,1,interpolateAlpha,Easing.easeInOutQuad)
+        animator!.start()
     }
     func fadeOut(){
         
     }
+    
 }

@@ -63,6 +63,7 @@ class Thumb:Button{
  * TODO: You can store the active animator instance count in the AnimatableView to know when to stop the cvdisplaylink
  * TODO: take a look at other animation libs
  * TODO: Add onComplete selector callback method on init and as a variable, do the same with method, use optional to assert if they exist or not
+ * TODO: seek,reverse,repeate,autoRepeat
  */
 class Animator{
     let fps:CGFloat = 60//this should be pulled from a device variable
@@ -85,8 +86,8 @@ class Animator{
      *
      */
     func onFrame(){
-        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)
-        method(val)
+        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)//interpolates the value
+        method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
             view.activeAnimatorCount--

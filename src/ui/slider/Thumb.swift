@@ -84,3 +84,11 @@ class Animator{
     //pause
     //resume
 }
+class Easing{
+    /**
+     *
+     */
+    class func easeOut(){
+        
+    }
+}

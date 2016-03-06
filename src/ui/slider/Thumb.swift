@@ -90,7 +90,8 @@ class Animator{
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
-            ArrayModifier.remove(&view.animators, self)
+            
+            ArrayModifier.removeAt(1)view.animators.indexOf(self)
         }
         self.currentFrameCount++
         //call the method here

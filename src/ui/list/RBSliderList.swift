@@ -5,7 +5,7 @@ import Cocoa
  */
 class RBSliderList:List {
     var scrollController:RBScrollController?
-    private var slider:VSlider?
+    var slider:VSlider?
     private var sliderInterval:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()

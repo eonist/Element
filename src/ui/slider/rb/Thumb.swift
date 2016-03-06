@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  */
-class Thumb:Button{
+class Thumb:Button{//rename to Thumb?
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/
     var framesToEnd:CGFloat?

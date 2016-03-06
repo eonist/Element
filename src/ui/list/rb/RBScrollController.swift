@@ -68,8 +68,9 @@ class RBScrollController {
             CVDisplayLinkStart(view.displayLink)//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
             //CVDisplayLinkStart(view.displayLink)//<--I dont think you need to start the displayLink here
-            (view as! RBSliderList).slider?.thumb?.fadeOut()
-            (view as! RBSliderList).slider?.thumb?.getSkinState()
+            if((view as! RBSliderList).slider?.thumb?.getSkinState() == SkinStates.none){
+                (view as! RBSliderList).slider?.thumb?.fadeOut()
+            }
         }
     }
 }

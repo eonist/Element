@@ -29,6 +29,7 @@ class RBSliderList:List {
         if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/
     }
     override func onFrame(){
+        //Swift.print("onFrame")
         if(scrollController!.mover.hasStopped){//stop the frameTicker here
             CVDisplayLinkStop(displayLink)
             slider?.thumb?.fadeOut()

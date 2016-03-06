@@ -93,7 +93,9 @@ class Easing{
      */
     class func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
         let distToGoal:CGFloat = NumberParser.distance(value, to)
-        let multiplier = 0.2 * NumberParser.scalar(from, to, value)
-        return NumberParser.interpolate(from, to, multiplier)
+        let val:CGFloat = 0.2 * distToGoal
+        return val
+        //let multiplier = 0.2 * NumberParser.scalar(from, to, value)
+        //return NumberParser.interpolate(from, to, multiplier)
     }
 }

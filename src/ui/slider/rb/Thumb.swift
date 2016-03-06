@@ -25,9 +25,7 @@ class Thumb:Button{
             self.skin!.setSize(width, height - overshot)
             (self.skin! as! Skin).frame.y = overshot
         }
-    }
-    
-    
+    }  
 }
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
@@ -36,13 +34,14 @@ extension Thumb{
     }
     func fadeIn(){
         if(animator != nil){animator!.stop()}//stop any previous running animation
-        let curVal:CGFloat = self.skin?.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
+        let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(self,0.5,curVal,1,interpolateAlpha,Easing.easeInOutQuad)
         animator!.start()
     }
     func fadeOut(){
         if(animator != nil){animator!.stop()}//stop any previous running animation
-        animator = Animator(self,0.5,1,0,interpolateAlpha,Easing.easeInOutQuad)
+        let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
+        animator = Animator(self,0.5,curVal,0,interpolateAlpha,Easing.easeInOutQuad)
         animator!.start()
     }
 }

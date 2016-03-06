@@ -53,7 +53,7 @@ class Skin:InteractiveView2,ISkin{//TODO:probably disable ineteractivity when us
         hasStyleChanged = false;
         hasSizeChanged = false;
         hasStateChanged = false;
-        needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
+        //needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
     }
     /**
      * Sets the style instance to apply to the skin also forces a redraw.

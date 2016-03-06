@@ -26,7 +26,14 @@ class Thumb:Button{
         }
     }
     func fadeIn(){
-    
+        let animator = Animator(thumb,0.5,1,0,interpolateAlpha,Easing.easeInOutQuad)
+        func onEvent(event:Event){
+            if(event.type == ButtonEvent.upInside){
+                Swift.print("click")
+                animator.start()
+            }
+        }
+        thumb.event = onEvent
     }
     func fadeOut(){
         

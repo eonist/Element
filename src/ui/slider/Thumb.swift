@@ -89,9 +89,7 @@ class Animator{
         method(val)
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")
-            if(CVDisplayLinkIsRunning(displayLink)){
-                CVDisplayLinkStop(displayLink)
-            }
+            
         }
         self.currentFrameCount++
         //call the method here

@@ -67,7 +67,9 @@ class RBScrollController {
             mover.velocity = velocity/*set the mover velocity to the current mouse gesture velocity, the reason this cant be additive is because you need to be more immediate when you change direction, this could be done vy assering last direction but its not a priority atm*///td try the += on the velocity with more rects to see its effect
             CVDisplayLinkStart(view.displayLink)//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
-            CVDisplayLinkStart(view.displayLink)
+            //CVDisplayLinkStart(view.displayLink)
+            (view as! RBSliderList).slider?.thumb?.fadeOut()
+            
         }
     }
 }

@@ -51,7 +51,6 @@ class RBScrollController {
      * NOTE: basically when you release your scrollWheel gesture
      */
     func onScrollWheelUp(){
-        (view as! RBSliderList).slider?.thumb?.fadeOut()
         mover.hasStopped = false/*reset this value to false, so that the FrameAnimatior can start again*/
         mover.isDirectlyManipulating = false
         mover.value = mover.result/*copy this back in again, as we used relative friction when above or bellow constraints*/

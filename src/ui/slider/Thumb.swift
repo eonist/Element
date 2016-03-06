@@ -90,7 +90,6 @@ class Animator{
         method(val)//call the property method
         if(currentFrameCount == framesToEnd){
             Swift.print("end of anim")/*when the count becomes 0 the frame ticker stops*/
-            view.animators.removeAt(view.animators.indexOf(self))
         }
         self.currentFrameCount++
         //call the method here
@@ -103,8 +102,12 @@ class Animator{
         if(CVDisplayLinkIsRunning(view.displayLink)){CVDisplayLinkStart(view.displayLink)}//start the displayLink if it isnt already running
         view.animators.append(self)//add your self to the list of animators that gets the onFrame call
     }
-    //start
-    //stop
+    /**
+     *
+     */
+    func stop(){
+        view.animators.removeAt(view.animators.indexOf(self))
+    }
     //pause
     //remove
 }

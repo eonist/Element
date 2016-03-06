@@ -40,6 +40,8 @@ extension Thumb{
         animator!.start()
     }
     func fadeOut(){
-        
+        if(animator != nil){animator!.stop()}//stop any previous running animation
+        animator = Animator(self,0.5,1,0,interpolateAlpha,Easing.easeInOutQuad)
+        animator!.start()
     }
 }

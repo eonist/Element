@@ -86,9 +86,10 @@ class Animator{
 }
 class Easing{
     /**
-     *
+     * NOTE: If you decrease the decimal variable you increase the friction effect
      */
-    class func easeOut(){
-        
+    class func easeOut(value : CGFloat, _ limit:CGFloat) -> CGFloat {
+        let multiplier = (0.2 * (value/limit))
+        return limit * multiplier
     }
 }

@@ -40,6 +40,7 @@ class Animator{
     var method:(CGFloat)->Void//the closure method that changes the property
     var framesToEnd:CGFloat//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount
+    var val:CGFloat
     //isActive used by the AnimatiableView to assert if an animator is active or not
     init(_ view:AnimatableView, _ duration:CGFloat = 0.5, _ from:CGFloat, _ to:CGFloat, _ method:(CGFloat)->Void){
         self.view = view
@@ -48,13 +49,14 @@ class Animator{
         self.to = to
         self.method = method
         framesToEnd = fps * duration
+        val = from
     }
     /**
      * Fires on every frame tick
      */
     func onFrame(){
         Swift.print("onFrame()")
-        var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
+        //var val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd)//interpolates the value
         val = Easing.easeOut(val, from, to)
         Swift.print("val: " + "\(val)")
         method(val)//call the property method
@@ -90,7 +92,7 @@ class Easing{
      * NOTE: If you decrease the decimal variable you increase the friction effect
      */
     class func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
-        let distToGoal:CGFloat = 
+        let distToGoal:CGFloat = NumberParser.distance(value, to)
         let multiplier = 0.2 * NumberParser.scalar(from, to, value)
         return NumberParser.interpolate(from, to, multiplier)
     }

@@ -89,8 +89,8 @@ class Easing{
     /**
      * NOTE: If you decrease the decimal variable you increase the friction effect
      */
-    class func easeOut(value : CGFloat, _ limit:CGFloat) -> CGFloat {
-        let multiplier = (0.2 * (value/limit))
-        return limit * multiplier
+    class func easeOut(value : CGFloat, _ from:CGFloat, _ to:CGFloat) -> CGFloat {
+        let multiplier = 0.2 * (value/to)
+        return NumberParser.interpolate(from, to, multiplier)
     }
 }

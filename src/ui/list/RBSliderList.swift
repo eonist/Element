@@ -38,4 +38,7 @@ class RBSliderList:List {
         }
         super.onFrame()
     }
+    func onSliderChange(sliderEvent:SliderEvent){
+        ListModifier.scrollTo(self,sliderEvent.progress)
+    }
 }

@@ -67,10 +67,10 @@ class Thumb:Button{
  */
 class Animator{
     let fps:CGFloat = 60//this should be pulled from a device variable
-    var view:AnimatableView
+    var view:AnimatableView//ref to where the displayLink recides
     var duration:CGFloat/*in seconds*/
-    var from:CGFloat
-    var to:CGFloat
+    var from:CGFloat//from this value
+    var to:CGFloat//to this value
     var method:(CGFloat)->Void//the closure method that changes the property
     var framesToEnd:CGFloat?//totFrameCount
     var currentFrameCount:CGFloat = 0//curFrameCount

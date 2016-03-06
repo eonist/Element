@@ -16,6 +16,9 @@ class RBSliderList:List {
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
     }
+    /**
+     * PARAM value: is the final y value for the lableContainer
+     */
     func setProgress(value:CGFloat){
         lableContainer!.frame.y = value
         let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/

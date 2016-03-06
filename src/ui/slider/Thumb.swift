@@ -95,9 +95,10 @@ class Animator{
  * d: duration (total frames in anim) this can also be actual time
  */
 class Easing{
-    class func easeLinear (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+    class func easeLinear (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{//Think line in graph: y = x
         return c*t/d + b;
     }
+    //Sine
     class func easeInSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c * cos(t/d * π2) + c + b;
     }
@@ -106,8 +107,8 @@ class Easing{
     }
     class func easeInOutSine (t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat)->CGFloat{
         return -c/2 * (cos(π*t/d) - 1) + b;
-        
     }
+    //Quintic
 }
 
 /*

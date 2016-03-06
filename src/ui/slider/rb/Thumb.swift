@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  */
-class Thumb:Button{//rename to Thumb?
+class Thumb:Button{
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/
     var framesToEnd:CGFloat?
@@ -36,7 +36,8 @@ extension Thumb{
     }
     func fadeIn(){
         if(animator != nil){animator!.stop()}//stop any previous running animation
-        animator = Animator(self,0.5,0,1,interpolateAlpha,Easing.easeInOutQuad)
+        let curVal:CGFloat = self.skin?.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
+        animator = Animator(self,0.5,curVal,1,interpolateAlpha,Easing.easeInOutQuad)
         animator!.start()
     }
     func fadeOut(){

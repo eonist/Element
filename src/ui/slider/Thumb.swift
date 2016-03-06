@@ -85,6 +85,15 @@ class Animator{
      *
      */
     func onFrame(){
+        let val:CGFloat = NumberParser.interpolate(from, to, currentFrameCount / framesToEnd!)
+        method(val)
+        if(currentFrameCount == framesToEnd){
+            Swift.print("end of anim")
+            if(CVDisplayLinkIsRunning(displayLink)){
+                CVDisplayLinkStop(displayLink)
+            }
+        }
+        self.currentFrameCount++
         //call the method here
         //the method should be posible to be created as a inline method closure
     }

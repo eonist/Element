@@ -22,17 +22,20 @@ class RBScrollController {
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
      */
     func scrollWheel(theEvent: NSEvent) {
+        if(theEvent.phase != NSEventPhase.Changed){
+            Swift.print("theEvent.phase: " + "\(theEvent.phase)")
+        }
         switch theEvent.phase{
-        case NSEventPhase.Changed://fires everytime there is direct scrollWheel gesture movment.
-            prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
-            velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
-            mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
-            mover.updatePosition()//the mover still governs the resulting value, inorder to get the displacement friction working
-        case NSEventPhase.MayBegin:onScrollWheelDown()//can be used to detect if two fingers are touching the trackpad
-        case NSEventPhase.Began:onScrollWheelDown()//the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly
-        case NSEventPhase.Ended:onScrollWheelUp()//if you release your touch-gesture and the momentum of the gesture has stopped.
-        case NSEventPhase.Cancelled:onScrollWheelUp()//this trigers if the scrollWhell gestures goes off the trackpad etc
-        default:break;
+            case NSEventPhase.Changed://fires everytime there is direct scrollWheel gesture movment.
+                prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
+                velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
+                mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
+                mover.updatePosition()//the mover still governs the resulting value, inorder to get the displacement friction working
+            case NSEventPhase.MayBegin:onScrollWheelDown()//can be used to detect if two fingers are touching the trackpad
+            case NSEventPhase.Began:onScrollWheelDown()//the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly
+            case NSEventPhase.Ended:onScrollWheelUp()//if you release your touch-gesture and the momentum of the gesture has stopped.
+            case NSEventPhase.Cancelled:onScrollWheelUp()//this trigers if the scrollWhell gestures goes off the trackpad etc
+            default:break;
         }
         //super.scrollWheel(theEvent)//call super if you want to forward the event to the parent view, you do since the parent listen to this event when directly manipulating the motion
     }

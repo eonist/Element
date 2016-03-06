@@ -105,10 +105,13 @@ class Easing{
     class func easeOutSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return c * sin(t/d * π2) + b;
     }
-    class func easeInOutSine (t:CGFloat, b:CGFloat, c:CGFloat, d:CGFloat)->CGFloat{
+    class func easeInOutSine (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
         return -c/2 * (cos(π*t/d) - 1) + b;
     }
     //Quintic
+    class func easeInQuint (t:CGFloat, _ b:CGFloat, _ c:CGFloat, _ d:CGFloat)->CGFloat{
+        return c*(t/=d)*t*t*t*t + b;
+    }
 }
 
 /*

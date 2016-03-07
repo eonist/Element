@@ -15,7 +15,7 @@ class RBScrollController {
         self.view = view
         self.frame = frame
         self.itemRect = itemRect
-        self.mover = RubberBand(frame,itemRect)
+        self.mover = RubberBand(view, frame,itemRect)
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
@@ -45,7 +45,8 @@ class RBScrollController {
      */
     func onScrollWheelDown(){
         (view as! RBSliderList).slider?.thumb?.fadeIn()
-        CVDisplayLinkStop(view.displayLink)
+        //CVDisplayLinkStop(view.displayLink)
+        mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover.isDirectlyManipulating = true/*toggle to directManipulationMode*/
@@ -63,9 +64,11 @@ class RBScrollController {
             if(prevScrollingDeltaY > 0){velocity = NumberParser.max(velocities)}/*find the most positive velocity value*/
             else{velocity = NumberParser.min(velocities)}/*find the most negative velocity value*/
             mover.velocity = velocity/*set the mover velocity to the current mouse gesture velocity, the reason this cant be additive is because you need to be more immediate when you change direction, this could be done vy assering last direction but its not a priority atm*///td try the += on the velocity with more rects to see its effect
-            CVDisplayLinkStart(view.displayLink)//'start the frameTicker here, do this part in parent view or use event or Selector
+            //CVDisplayLinkStart(view.displayLink)//'start the frameTicker here, do this part in parent view or use event or Selector
+            mover.start()
         }else{/*stationary*/
-            CVDisplayLinkStart(view.displayLink)//this needs to start if you in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
+            //CVDisplayLinkStart(view.displayLink)//this needs to start if you in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
+            mover.start()
             if((view as! RBSliderList).slider?.thumb?.getSkinState() == SkinStates.none){
                 (view as! RBSliderList).slider?.thumb?.fadeOut()
             }

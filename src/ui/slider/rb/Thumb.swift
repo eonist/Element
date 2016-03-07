@@ -33,7 +33,7 @@ class Thumb:Button{
     }  
 }
 
-//continue here: Solve the current problem by adding the animator instance to the 
+//continue here: Solve the current problem by adding the animator instance to the
 
 extension Thumb{
     func interpolateAlpha(val:CGFloat){

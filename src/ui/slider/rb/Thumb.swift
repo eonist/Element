@@ -18,6 +18,7 @@ class Thumb:Button{
      * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
     func applyOvershot(progress:CGFloat){
+        return
         //Swift.print("applyOvershot.start")
         if(progress < 0){//top overshot
             self.skin!.setSize(width, height-(height*abs(progress)))

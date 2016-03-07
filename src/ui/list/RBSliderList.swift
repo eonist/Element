@@ -35,7 +35,7 @@ class RBSliderList:List {
         //Swift.print("onFrame")
         if(scrollController!.mover.hasStopped){//stop the frameTicker here
             //CVDisplayLinkStop(displayLink)
-            scrollController!.mover.start()
+            scrollController!.mover.stop()
             //slider?.thumb?.fadeOut()
         }else{//only move the view if the mover is not stopped
             scrollController!.mover.updatePosition()/*tick the mover*/

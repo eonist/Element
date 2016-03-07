@@ -81,6 +81,6 @@ private class Utils{
      */
     class func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
         (sizableDecorator as! ISizeable).setSizeValue(size)
-        //sizableDecorator.draw()
+        sizableDecorator.draw()
     }
 }

@@ -12,8 +12,6 @@ class Thumb:Button{
     var animator:Animator?
     
     override func resolveSkin() {
-        let rbSliderListRef = self.superview?.superview
-        Swift.print("rbSliderListRef: " + "\(rbSliderListRef)")
         super.resolveSkin()
     }
     override func getClassType() -> String {
@@ -40,6 +38,9 @@ extension Thumb{
         self.skin?.decoratables[0].draw()/**/
     }
     func fadeIn(){
+        let rbSliderListRef = self.superview?.superview
+        Swift.print("rbSliderListRef: " + "\(rbSliderListRef)")
+
         if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(self,0.2,curVal,1,interpolateAlpha,Easing.easeOutSine)

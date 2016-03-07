@@ -33,8 +33,6 @@ class Thumb:Button{
     }  
 }
 
-//continue here: Solve the current problem by chaining animations in a small demo. This may be the proble,. Chaining
-
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
         Swift.print("interpolateAlpha()")

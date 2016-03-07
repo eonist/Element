@@ -22,7 +22,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         //Swift.print("GraphicDecoratable.draw()" )
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
-        getGraphic().updateTrackingArea()//<---the reason this is here is to avoid calling it too often. it was located in drawLayer and was called twice and caused problems when doing animation
+        //getGraphic().updateTrackingArea()//<---the reason this is here is to avoid calling it too often. it was located in drawLayer and was called twice and caused problems when doing animation
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)

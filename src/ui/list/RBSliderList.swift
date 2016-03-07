@@ -31,6 +31,11 @@ class RBSliderList:List {
         scrollController?.scrollWheel(theEvent)//forward the event
         if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/
     }
+    
+    
+    //continue here: the bellow is the problem, you need to use the onFrame call from the BaseAnimation class now not this. as this will get calls from the alpha animation aswell
+    
+    
     override func onFrame(){
         Swift.print("RBSliderList.onFrame")
         if(scrollController!.mover.hasStopped){//stop the frameTicker here

@@ -36,7 +36,7 @@ class RBSliderList:List {
         if(scrollController!.mover.hasStopped){//stop the frameTicker here
             //CVDisplayLinkStop(displayLink)
             scrollController!.mover.start()
-            slider?.thumb?.fadeOut()
+            //slider?.thumb?.fadeOut()
         }else{//only move the view if the mover is not stopped
             scrollController!.mover.updatePosition()/*tick the mover*/
             setProgress(scrollController!.mover.result)/*indirect manipulation aka momentum*/

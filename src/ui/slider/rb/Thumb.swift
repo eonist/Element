@@ -11,6 +11,11 @@ class Thumb:Button{
     var currentFrameCount:CGFloat = 0
     var animator:Animator?
     
+    override func resolveSkin() {
+        let rbSliderListRef = self.superview?.superview
+        Swift.print("rbSliderListRef: " + "\(rbSliderListRef)")
+        super.resolveSkin()
+    }
     override func getClassType() -> String {
         return String(Button)
     }

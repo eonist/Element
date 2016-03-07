@@ -75,7 +75,7 @@ class Skin:InteractiveView2,ISkin{//TODO:probably disable ineteractivity when us
     //Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
     
     
-    func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone
+    func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
         //Swift.print("Skin.applySkinState")
         hasStateChanged = true;
         self.state = state;

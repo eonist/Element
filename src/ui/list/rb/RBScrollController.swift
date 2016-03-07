@@ -28,11 +28,11 @@ class RBScrollController {
      */
     func scrollWheel(theEvent: NSEvent) {
         if(theEvent.phase != NSEventPhase.None){
-            Swift.print("theEvent.phase: " + "\(theEvent.phase)")
+            //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
             case NSEventPhase.Changed://fires everytime there is direct scrollWheel gesture movment.
-                Swift.print("changed")
+                //Swift.print("changed")
                 prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
                 velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
                 mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/

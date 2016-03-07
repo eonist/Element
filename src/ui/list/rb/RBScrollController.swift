@@ -22,7 +22,7 @@ class RBScrollController {
      */
     func scrollWheel(theEvent: NSEvent) {
         if(theEvent.phase != NSEventPhase.None){
-            Swift.print("theEvent.phase: " + "\(theEvent.phase)")
+            //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
             case NSEventPhase.Changed://fires everytime there is direct scrollWheel gesture movment.
@@ -44,7 +44,7 @@ class RBScrollController {
      * NOTE: basically when you enter your scrollWheel gesture
      */
     func onScrollWheelDown(){
-        //(view as! RBSliderList).slider?.thumb?.fadeIn()
+        (view as! RBSliderList).slider?.thumb?.fadeIn()
         CVDisplayLinkStop(view.displayLink)
         mover.hasStopped = true/*set the stop flag to true*/
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
@@ -67,7 +67,7 @@ class RBScrollController {
         }else{/*stationary*/
             CVDisplayLinkStart(view.displayLink)//this needs to start if you in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
             if((view as! RBSliderList).slider?.thumb?.getSkinState() == SkinStates.none){
-                //(view as! RBSliderList).slider?.thumb?.fadeOut()
+                (view as! RBSliderList).slider?.thumb?.fadeOut()
             }
         }
     }

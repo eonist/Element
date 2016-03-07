@@ -3,11 +3,6 @@ import Cocoa
  * TODO: Add support fo rubberband behaviour even if there is no need for scrolling
  * TODO: make the top and bottom values when scrolling absolutly pinned to 0 and 1. There should be a final tick that cooresponds to these values in the Mover class
  */
-
-
-
-
-
 class RBSliderList:List {
     var scrollController:RBScrollController?
     var slider:VSlider?
@@ -40,7 +35,7 @@ class RBSliderList:List {
         //Swift.print("onFrame")
         if(scrollController!.mover.hasStopped){//stop the frameTicker here
             CVDisplayLinkStop(displayLink)
-            //slider?.thumb?.fadeOut()
+            slider?.thumb?.fadeOut()
         }else{//only move the view if the mover is not stopped
             scrollController!.mover.updatePosition()/*tick the mover*/
             setProgress(scrollController!.mover.result)/*indirect manipulation aka momentum*/

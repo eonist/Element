@@ -32,7 +32,7 @@ class Thumb:Button{
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
         self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
-        self.skin?.decoratables[0].draw()/**/
+        //self.skin?.decoratables[0].draw()/**/
     }
     func fadeIn(){
         if(animator != nil){animator!.stop()}//stop any previous running animation

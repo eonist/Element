@@ -34,7 +34,7 @@ class Thumb:Button{
 }
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
-        Swift.print("interpolateAlpha")
+        Swift.print("interpolateAlpha()")
         self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
         self.skin?.decoratables[0].draw()/**/
     }

@@ -20,15 +20,34 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
-        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
-        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
-        //getGraphic().updateTrackingArea()//<---the reason this is here is to avoid calling it too often. it was located in drawLayer and was called twice and caused problems when doing animation
+
+        
+        //Continue here: try to setup a boolean that marks it hasBeenDisplayed for both fill and line and reset this value on handleSelector etc
+        //the problem seem to still be that the draw call is called twice in a tick, you can probably test this by printing the tick and then print this call
+        //try to break the app when you not calling draw from thumb
+        
+        //a way to solve this would be to have a ref to the obj that gets the draw() call and call it at the end of the frameTick
+        //a ref to the draw() call it self. Store it as var displayCall, and if its not nil then it will be called at the end of the FrameTick in the onFrame method in the AnimatableView
+        
+        //maybe watch that video on coreAnim again
+        //look through facebook pop and that other lib for similar ideas
+        
+        //Here is a good idea: Dont draw directly on every tick, rather use the Animator class and set the drawCall to a selector call that can also be nil. Then in the future you can exapnd with an array that does the same thing. 
+        //Then this selector is just overriden if there are many draw calls. and then at the end of the onFrame call in the AnimatableView you check if the Animator has something in the selector variable, if it does then call it , you might not need to remove the selector but you can just for safty
+        
+
+        
+        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.display();}/*setup the fill geometry*//*draw the fileShape*/
+        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.display();}/*setup the line geometry*//*draw the fileShape*/
+        
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
-     * NOTE: This method gets its call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
+     * NOTE: This method gets it's call from the Graphic instance through a functional selector. Which gets its call through a instance selector. The call is fired when OSX deems it right to be fired. This is initiated by setNeedsDisplay calls on the line and the fill shape (This )
      */
     func handleSelector(layer: CALayer,ctx:CGContext) {
+        //isDrawing = false//reset if(!isDrawing){}
+        
         //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")

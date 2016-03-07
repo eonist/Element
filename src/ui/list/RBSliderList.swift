@@ -33,21 +33,6 @@ class RBSliderList:List {
     }
     
     
-    //continue here: the bellow is the problem, you need to use the onFrame call from the BaseAnimation class now not this. as this will get calls from the alpha animation aswell
-    
-    
-    override func onFrame(){
-        Swift.print("RBSliderList.onFrame")
-        if(scrollController!.mover.hasStopped){//stop the frameTicker here
-            //CVDisplayLinkStop(displayLink)
-            scrollController!.mover.stop()
-            //slider?.thumb?.fadeOut()
-        }else{//only move the view if the mover is not stopped
-            scrollController!.mover.updatePosition()/*tick the mover*/
-            setProgress(scrollController!.mover.result)/*indirect manipulation aka momentum*/
-        }
-        super.onFrame()
-    }
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
         scrollController?.mover.value = lableContainer!.frame.y

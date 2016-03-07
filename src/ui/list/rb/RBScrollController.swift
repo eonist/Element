@@ -45,8 +45,9 @@ class RBScrollController {
      */
     func onScrollWheelDown(){
         Swift.print("onScrollWheelDown")
-        //(view as! RBSliderList).slider?.thumb?.fadeIn()
+        (view as! RBSliderList).slider?.thumb?.fadeIn()
         //CVDisplayLinkStop(view.displayLink)
+        Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/

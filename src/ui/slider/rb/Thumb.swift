@@ -38,18 +38,17 @@ extension Thumb{
         self.skin?.decoratables[0].draw()/**/
     }
     func fadeIn(){
-        let rbSliderListRef = self.superview?.superview
-        Swift.print("rbSliderListRef: " + "\(rbSliderListRef)")
-
+        let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
-        animator = Animator(self,0.2,curVal,1,interpolateAlpha,Easing.easeOutSine)
+        animator = Animator(rbSliderListRef,0.2,curVal,1,interpolateAlpha,Easing.easeOutSine)
         animator!.start()
     }
     func fadeOut(){
+        let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
-        animator = Animator(self,0.5,curVal,0,interpolateAlpha,Easing.easeInQuad)
+        animator = Animator(rbSliderListRef,0.5,curVal,0,interpolateAlpha,Easing.easeInQuad)
         animator!.start()
     }
 }

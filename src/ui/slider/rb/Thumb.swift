@@ -32,6 +32,9 @@ class Thumb:Button{
         //Swift.print("applyOvershot.end")
     }  
 }
+
+//continue here: Solve the current problem by 
+
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
         Swift.print("interpolateAlpha()")
@@ -41,7 +44,7 @@ extension Thumb{
     func fadeIn(){
         Swift.print("fadeIn")
         let rbSliderListRef = self.superview?.superview as! RBSliderList
-        if(animator != nil && CVDisplayLinkIsRunning(rbSliderListRef.displayLink)){animator!.stop()}//stop any previous running animation
+        if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(rbSliderListRef,0.2,curVal,1,interpolateAlpha,Easing.easeOutSine)
         animator!.start()
@@ -49,7 +52,7 @@ extension Thumb{
     func fadeOut(){
         Swift.print("fadeOut")
         let rbSliderListRef = self.superview?.superview as! RBSliderList
-        if(animator != nil && CVDisplayLinkIsRunning(rbSliderListRef.displayLink)){animator!.stop()}//stop any previous running animation
+        if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(rbSliderListRef,0.5,curVal,0,interpolateAlpha,Easing.easeInQuad)
         animator!.start()

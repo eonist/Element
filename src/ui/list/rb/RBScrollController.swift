@@ -45,7 +45,7 @@ class RBScrollController {
      */
     func onScrollWheelDown(){
         Swift.print("onScrollWheelDown")
-        (view as! RBSliderList).slider?.thumb?.fadeIn()
+        //(view as! RBSliderList).slider?.thumb?.fadeIn()
         //CVDisplayLinkStop(view.displayLink)
         mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/

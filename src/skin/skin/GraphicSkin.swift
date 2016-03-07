@@ -35,6 +35,7 @@ class GraphicSkin:Skin{
                 }//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
+                if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}
             }
         }
         super.draw();
@@ -64,7 +65,7 @@ class GraphicSkin:Skin{
             //Swift.print("dropShadow?.color.alphaComponent: " + "\(dropShadow?.color.alphaComponent)")
             (DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = dropShadow
         }
-        decoratable.draw()
+        //decoratable.draw()
     }
     /*override func updateTrackingAreas() {
     Swift.print("updateTrackingAreas: " + "\(self)")
@@ -81,6 +82,6 @@ private class Utils{
      */
     class func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
         (sizableDecorator as! ISizeable).setSizeValue(size)
-        sizableDecorator.draw()
+        //sizableDecorator.draw()
     }
 }

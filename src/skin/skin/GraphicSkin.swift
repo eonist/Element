@@ -35,7 +35,7 @@ class GraphicSkin:Skin{
                 }//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
-                if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}
+                //if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}
             }
         }
         super.draw();

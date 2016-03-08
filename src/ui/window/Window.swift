@@ -1,6 +1,5 @@
 import Cocoa
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
-    
     var view:NSView?
     override var canBecomeMainWindow:Bool{return true}
     override var canBecomeKeyWindow:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
@@ -26,7 +25,6 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         //notification
         Swift.print("Window.windowDidResize")
     }
-    
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework
      */

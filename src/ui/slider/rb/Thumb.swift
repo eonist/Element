@@ -34,12 +34,6 @@ class Thumb:Button{
 }
 
 
-//Continue here: the draw call only should happen once per frameTick. Or else strange bugs start to happen. 
-//a way to do this is to create a hasDrawBeenCalled bool value to that makes sure the draw call is only called once per cycle. 
-
-//also keep perfecting the fadeout of the slider bar effect
-
-
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
         //Swift.print("interpolateAlpha()")

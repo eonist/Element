@@ -24,7 +24,9 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         let displayLink = animatableView!.displayLink
         let isAnimating = CVDisplayLinkIsRunning(displayLink)
         if(isAnimating){
-            
+            animatableView?.drawCalls.append(finalDraw)
+        }else{
+            finalDraw()
         }
     }
     func finalDraw(){

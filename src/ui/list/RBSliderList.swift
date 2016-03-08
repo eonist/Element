@@ -9,10 +9,7 @@ class RBSliderList:List {
     private var sliderInterval:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()
-        Swift.print("self.window : " + "\(self.window )")
-        Swift.print("NSApp.windows[0]: " + "\(NSApp.windows[0])")
-        Swift.print("NSApp.windows[1]: " + "\(NSApp.windows[1])")
-        scrollController = RBScrollController(self.window as! IAnimatable,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
+        scrollController = RBScrollController(WindowParser.firstWindowOfType(IAnimatable)!,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
         /*slider*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self)) as? VSlider

@@ -38,7 +38,7 @@ extension Thumb{
     func interpolateAlpha(val:CGFloat){
         //Swift.print("interpolateAlpha()")
         self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
-        animator!.drawCall = self.skin?.decoratables[0].draw
+        self.skin?.decoratables[0].draw()
     }
     func fadeIn(){
         Swift.print("fadeIn")

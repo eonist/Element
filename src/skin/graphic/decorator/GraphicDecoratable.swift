@@ -23,15 +23,15 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         
         let displayLink = (graphic.window!.contentView as! TestView7).sliderList?.displayLink
         let isAnimating = CVDisplayLinkIsRunning(displayLink!)
-        if(getGraphic().fillStyle != nil){
-            if(isAnimating){
-                
-            }
-            drawFill();graphic.fillShape.setNeedsDisplay();
-        }/*setup the fill geometry*//*draw the fileShape*/
-        if(getGraphic().lineStyle != nil){
-            drawLine();graphic.lineShape.setNeedsDisplay();
-        }/*setup the line geometry*//*draw the fileShape*/
+        if(isAnimating){
+                    }
+    }
+    /**
+     *
+     */
+    func finalDraw(){
+        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
+        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)

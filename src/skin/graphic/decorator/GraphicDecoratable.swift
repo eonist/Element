@@ -21,6 +21,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
         //let isAnimating =
+        graphic.window
         if(getGraphic().fillStyle != nil){
             drawFill();graphic.fillShape.setNeedsDisplay();
         }/*setup the fill geometry*//*draw the fileShape*/

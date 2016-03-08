@@ -20,9 +20,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
-        
         let window:CustomWin? = graphic.window as? CustomWin
-        
         if(window != nil){
             let displayLink = window!.displayLink
             let isAnimating = CVDisplayLinkIsRunning(displayLink)

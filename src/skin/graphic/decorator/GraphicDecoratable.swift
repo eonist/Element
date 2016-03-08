@@ -21,14 +21,13 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
         
-        let window:NSWindow? = graphic.window
+        let window:CustomWin? = graphic.window as? CustomWin
         
         if(window != nil){
-            let animatableView = (window!.contentView as! TestView7).sliderList
-            let displayLink = animatableView!.displayLink
+            let displayLink = window!.displayLink
             let isAnimating = CVDisplayLinkIsRunning(displayLink)
             if(isAnimating){
-                animatableView?.drawCalls.append(finalDraw)
+                window!.drawCalls.append(finalDraw)
             }else{
                 finalDraw()
             }

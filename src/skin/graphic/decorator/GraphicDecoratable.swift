@@ -20,9 +20,13 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
-        //let isAnimating =
-        (graphic.window!.contentView as! TestView7).sliderList?.displayLink
+        
+        let displayLink = (graphic.window!.contentView as! TestView7).sliderList?.displayLink
+        let isAnimating = CVDisplayLinkIsRunning(displayLink!)
         if(getGraphic().fillStyle != nil){
+            if(isAnimating){
+                
+            }
             drawFill();graphic.fillShape.setNeedsDisplay();
         }/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){

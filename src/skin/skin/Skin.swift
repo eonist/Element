@@ -6,10 +6,6 @@ import Cocoa
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
 
-
-//continue here: make skin extend interactiveview2,
-
-
 class Skin:InteractiveView2,ISkin{//TODO:probably disable ineteractivity when using TextSkin
     var decoratables:Array<IGraphicDecoratable> = [];
     //var decoratable:IGraphicDecoratable!

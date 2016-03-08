@@ -7,6 +7,12 @@ or
 ## Introduction:
 Element is a [programatic UI framework](https://github.com/eonist/Element/wiki/What-is-a-programatic-UI) for OSX. You can use **native swift** code to add functionality to the provided UI components or create your own custom UI components. The OSX 10.10 styles are provided by default, add your own styles through [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  and [CSS](http://stylekit.org/blog/2016/02/18/Cascading-Style-Sheets-System/) syntax. Or use the Style class. Element is written in pure native swift code and uses [Quartz and Core Graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) to render the UI components. Element is not a JS + web-wrapper. Element does not use Xcode Interface builder. Although support is possible. Element is not a UI prototype framework or tool, Element is intended for production code in professional apps where **design & functionality freedom** is important.
 
+### RBSliderList:  
+  
+<img width="516" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/list_full_quality.mov.gif">  
+
+[Case study](http://stylekit.org/blog/2016/03/08/Rubber-band-slider-list/)   
+
 ### CheckBoxButton:
 
 <img width="554" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/checkBoxButton.mov.gif">

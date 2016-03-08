@@ -7,15 +7,15 @@ import Cocoa
 class RBScrollController {
     var frame:CGRect/*represents the visible part of the content*///TODO: could be ranmed to maskRect
     var itemRect:CGRect/*represents the total size of the content*///TODO: could be ranmed to contentRect
-    var view:IAnimatable
+    var view:RBSliderList
     var mover:RubberBand
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
-    init(_ view:IAnimatable,_ frame:CGRect, _ itemRect:CGRect){
+    init(_ view:RBSliderList,_ frame:CGRect, _ itemRect:CGRect){
         self.view = view
         self.frame = frame
         self.itemRect = itemRect
-        self.mover = RubberBand(view, frame,itemRect)
+        self.mover = RubberBand(WindowParser.firstWindowOfType(IAnimatable)!, frame,itemRect)
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
@@ -45,7 +45,7 @@ class RBScrollController {
      */
     func onScrollWheelDown(){
         Swift.print("onScrollWheelDown")
-        (view as! RBSliderList).slider?.thumb?.fadeIn()
+        (view).slider?.thumb?.fadeIn()
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/
@@ -69,8 +69,8 @@ class RBScrollController {
             mover.start()//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
             mover.start()//this needs to start if you in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
-            if((view as! RBSliderList).slider?.thumb?.getSkinState() == SkinStates.none){
-                (view as! RBSliderList).slider?.thumb?.fadeOut()
+            if((view).slider?.thumb?.getSkinState() == SkinStates.none){
+                (view).slider?.thumb?.fadeOut()
             }
         }
     }

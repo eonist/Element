@@ -20,7 +20,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
-        let window:CustomWin? = graphic.window as? CustomWin
+        /*let window:CustomWin? = graphic.window as? CustomWin
         if(window != nil){
             let displayLink = window!.displayLink
             let isAnimating = CVDisplayLinkIsRunning(displayLink)
@@ -31,11 +31,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
             }
         }else{
             finalDraw()
-        }
-    }
-    func finalDraw(){
+        }*/
         if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay();}/*setup the fill geometry*//*draw the fileShape*/
         if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay();}/*setup the line geometry*//*draw the fileShape*/
+    }
+    func finalDraw(){
+        
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)

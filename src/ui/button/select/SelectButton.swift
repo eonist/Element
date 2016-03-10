@@ -8,7 +8,7 @@ class SelectButton:Button,ISelectable {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func mouseUpInside(event: MouseEvent) {
-        Swift.print("SelectButton.mouseUpInside()")
+        //Swift.print("SelectButton.mouseUpInside()")
         isSelected = true
         super.mouseUpInside(event)
         //NSNotificationCenter.defaultCenter().postNotificationName(SelectEvent.select, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/

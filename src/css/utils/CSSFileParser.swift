@@ -17,6 +17,7 @@ class CSSFileParser {
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
         //Swift.print("string: " + "\(string)");
         string = StringModifier.removeComments(string);
+        
         //var importsAndStyles:Object = CSSFileParser.separateImportsAndStyles(string);
         //var importStrings:Array = CSSFileParser.importStrings(importsAndStyles["import"]);
         //var path:String = StringParser.path(url);

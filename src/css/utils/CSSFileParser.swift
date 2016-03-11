@@ -49,7 +49,7 @@ class CSSFileParser {
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
-        let importChars:String = "[@\\(\\)\\w\\040\\.\\/\"\\;\n]"
+        let importChars:String = "[@\\(\\)\\w\\040\\.\\/\";\\n]"
         let forwardLookingMatch = "[\\w\\040\\[\\]\\,\\#\\:\\.]"
         let importGroup:String = "(" + importChars + "*?(?=(\\n" + forwardLookingMatch + "+?" + "\\{|$" + "))"
         let styleGroup:String = "(.+?$)"

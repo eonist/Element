@@ -30,13 +30,25 @@ class CSSFileParser {
      */
     class func importStrings(string:String)->Array<String> {
         var importStrings:Array = [];
-        var pattern:String = "(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        //(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)
+        var pattern:String = ""//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
         var lastIndex:int = -1;
         while(lastIndex != 0){//Loops through the pattern
             var match:Array = pattern.exec(string);
             lastIndex = pattern.lastIndex;
             if(match != null) importStrings.push(match["url"]);
         }
+        
+        
+        let matches = RegExpParser.matches("abc def ghij", "\\w{3}")
+        for match:NSTextCheckingResult in matches {
+            match.numberOfRanges
+            let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+            let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            
+        
+        
         return importStrings;
     }
 }

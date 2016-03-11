@@ -51,7 +51,7 @@ class CSSFileParser {
         //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
         let importChars:String = "[@\\(\\)\\w\\040\\.\\/\";\\n]"
         let forwardLookingMatch = "[\\w\\040\\[\\]\\,\\#\\:\\.]"
-        let importGroup:String = "(" + importChars + "*?(?=\\n" + forwardLookingMatch + "+?" + "\\{)|$" + ")"
+        let importGroup:String = "(" + importChars + "*?(?=(\\n" + forwardLookingMatch + "+?" + "\\{)|$" + "))"
         let styleGroup:String = "(.+?$)"
         let pattern:String = "^" + importGroup + "?" + styleGroup + "?"
         Swift.print("pattern: " + "\(pattern)")

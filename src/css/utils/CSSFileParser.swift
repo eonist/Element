@@ -30,7 +30,7 @@ class CSSFileParser {
      */
     class func importStrings(string:String)->Array<String> {
         var importStrings:Array = [];
-        var pattern:RegExp = /(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)/g;//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        var pattern:String = "(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
         var lastIndex:int = -1;
         while(lastIndex != 0){//Loops through the pattern
             var match:Array = pattern.exec(string);

@@ -30,12 +30,11 @@ class CSSFileParser {
      */
     class func importStrings(string:String)->Array<String> {
         var importStrings:Array<String> = [];
-        //(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)
-        var pattern:String = ""//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
         
         
         
-        let matches = RegExp.matches(string, "\\w{3}")
+        let matches = RegExp.matches(string, pattern)
         for match:NSTextCheckingResult in matches {
             match.numberOfRanges
             //let content = (string as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match

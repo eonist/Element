@@ -216,10 +216,10 @@ Button:down{
 - [ ] Optimize the css retrival system with inspiration from this book: quicksort, heapsort, hasing etc, better algos to find styles Cormen T.H., Leiserson C.E., Rivest R.L., Stein C. Introduction to Algorithms (3ed., MIT, 2009)(ISBN 262033845)
 
 
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  
+
 [MIT License](http://opensource.org/licenses/MIT) 
 
 [follow the progress here ](http://stylekit.org/)   
 or  
 [follow the progress on Twitter](https://twitter.com/stylekit_org)  
-
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  

@@ -18,6 +18,7 @@ class CSSFileParser {
         //Swift.print("string: " + "\(string)");
         string = RegExpModifier.removeComments(cssString);
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string);
+        Swift.print("importsAndStyles.imports: " + "\(importsAndStyles.imports)")
         let importStrings:Array<String> = CSSFileParser.importStrings(importsAndStyles.imports);
         let path:String = StringParser.path(url);
         Swift.print("path: " + "\(path)")

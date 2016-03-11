@@ -51,6 +51,7 @@ class CSSFileParser {
         //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
         //let  =
         //let forwardLookingMatch =
+        let styleCharSet:String = "[\\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*]"//all possible chars that can be found in a stylesheet. the capture all dot variable didnt work so this is the alternate wway of doing it
         var pattern:String = "^"
         pattern += "("
         pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
@@ -60,7 +61,7 @@ class CSSFileParser {
         pattern +=          ")|$"
         pattern +=      ")"
         pattern +=  ")?"
-        pattern +=  "(.+?$)?"
+        pattern +=  "(" + styleCharSet + "+?$)?"
         
 
         

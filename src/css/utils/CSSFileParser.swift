@@ -45,6 +45,7 @@ class CSSFileParser {
      * Returns an Object with an import property and a style property from @param cssString
      * @Note comments are removed before this method is called so no need for comments code here
      * @Note supports cssString that has only import or style or both
+     * Example: "@import url(\"mainContent.css\");"
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?

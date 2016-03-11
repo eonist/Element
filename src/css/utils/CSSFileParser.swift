@@ -46,8 +46,9 @@ class CSSFileParser {
      * @Note comments are removed before this method is called so no need for comments code here
      * @Note supports cssString that has only import or style or both
      */
-    class func separateImportsAndStyles(cssString:String)->(imports:String,style){// :TODO: rename to filter or split maybe?
+    class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
+        let pattern:String = ""
         var matches:Object = cssString.match(//s);
         //			trace("matchs: " + matchs);
         //			if(matches != null){

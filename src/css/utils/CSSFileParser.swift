@@ -40,13 +40,13 @@ class CSSFileParser {
         }
         
         
-        let matches = RegExp.matches("abc def ghij", "\\w{3}")
+        let matches = RegExp.matches(string, "\\w{3}")
         for match:NSTextCheckingResult in matches {
             match.numberOfRanges
             let content = (string as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-            let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
-            
+            let url = (string as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            importStrings.append(url)
+        }
         
         
         return importStrings;

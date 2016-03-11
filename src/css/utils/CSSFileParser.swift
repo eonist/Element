@@ -60,10 +60,13 @@ class CSSFileParser {
         for match:NSTextCheckingResult in matches {
             Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             Swift.print(match.rangeAtIndex(2).location)
+            Swift.print(match.rangeAtIndex(2).length)
+            Swift.print(match.rangeAtIndex(3).location)
+            Swift.print(match.rangeAtIndex(3).length)
             let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             Swift.print("content: " + "\(content)")
             result.imports = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-            result.style = (cssString as NSString).substringWithRange(match.rangeAtIndex(3))//capturing group 2
+            result.style = match.rangeAtIndex(3).length > 0 ? (cssString as NSString).substringWithRange(match.rangeAtIndex(3)) : ""//capturing group 2
         }
         return result;
     }

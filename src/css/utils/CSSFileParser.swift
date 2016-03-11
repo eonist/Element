@@ -59,7 +59,7 @@ class CSSFileParser {
         let matches = RegExp.matches(cssString, pattern)
         for match:NSTextCheckingResult in matches {
             Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-            Swift.print(match.rangeAtIndex(3))
+            Swift.print(match.rangeAtIndex(2).location)
             let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             Swift.print("content: " + "\(content)")
             result.imports = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1

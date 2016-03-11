@@ -19,9 +19,9 @@ class CSSFileParser {
         string = RegExpModifier.removeComments(cssString);
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string);
         let importStrings:Array<String> = CSSFileParser.importStrings(importsAndStyles.imports);
-        var path:String = StringParser.path(url);
-        //for each (var importString : String in importStrings) cssString += CSSFileParser.cssString(path+importString);// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url
-        //cssString += importsAndStyles["style"];
+        let path:String = StringParser.path(url);
+        for importString in importStrings{ cssString += CSSFileParser.cssString(path+importString)}// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url
+        cssString += importsAndStyles.style
         return cssString
     }
     /**

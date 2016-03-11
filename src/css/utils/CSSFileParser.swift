@@ -22,4 +22,21 @@ class CSSFileParser {
         //cssString += importsAndStyles["style"];
         return cssString
     }
+    /**
+     * Returns import urls in an array (only the path part)
+     * @Note Supports both syntax styles: @import url("style.css") and @import "style.css"
+     * @Note this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
+     * // :TODO: this can probably be written a little better
+     */
+    class func importStrings(string:String)->Array<String> {
+        var importStrings:Array = [];
+        var pattern:RegExp = /(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)/g;//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        var lastIndex:int = -1;
+        while(lastIndex != 0){//Loops through the pattern
+            var match:Array = pattern.exec(string);
+            lastIndex = pattern.lastIndex;
+            if(match != null) importStrings.push(match["url"]);
+        }
+        return importStrings;
+    }
 }

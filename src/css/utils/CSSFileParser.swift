@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * @Note it may be tempting to move this into CSSFIle class as an internal class since noone else uses this class but CSSFile is simpler to understand as a standalone class (Number of classes != ease of use)
+ */
 class CSSFileParser {
     /**
     * Returns a string containing css styles (including styles from imports and sub imports)
@@ -38,5 +40,19 @@ class CSSFileParser {
             importStrings.append(url)
         }
         return importStrings;
+    }
+    /**
+     * Returns an Object with an import property and a style property from @param cssString
+     * @Note comments are removed before this method is called so no need for comments code here
+     * @Note supports cssString that has only import or style or both
+     */
+    class func separateImportsAndStyles(cssString:String)->Object{// :TODO: rename to filter or split maybe?
+        var matches:Object = cssString.match(/^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?/s);
+        //			trace("matchs: " + matchs);
+        //			if(matches != null){
+        //				trace("import: " + matches["import"]);
+        //				trace("style: " + matches["style"]);
+        //			}
+        return matches;
     }
 }

@@ -48,9 +48,19 @@ class CSSFileParser {
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
-        let pattern:String = "^([@\\(\\)\\w\\040\\.\\/\"\\;\n]*?"
-        "(?=(\n[\\w\\040\\[\\]\\,\\#\\:\\.]+?\\{|$))?"
-        var matches:Object = cssString.match(//s);
+        let importGroup:String = "([@\\(\\)\\w\\040\\.\\/\"\\;\n]*?(?=(\n[\\w\\040\\[\\]\\,\\#\\:\\.]+?\\{|$))"
+        let styleGroup:String = "(.+?$)"
+        let pattern:String = "^" + importGroup + "?" + styleGroup + "?"
+        
+        
+        
+        let matches = RegExp.matches(cssString, pattern)
+         for match:NSTextCheckingResult in matches {
+               match.numberOfRanges
+               let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+               let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            * }
         //			trace("matchs: " + matchs);
         //			if(matches != null){
         //				trace("import: " + matches["import"]);

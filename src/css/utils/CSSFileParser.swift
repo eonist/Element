@@ -48,9 +48,6 @@ class CSSFileParser {
      * Example: "@import url(\"mainContent.css\");"
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
-        //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
-        //let  =
-        //let forwardLookingMatch =
         let styleCharSet:String = "[\\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*]"//all possible chars that can be found in a stylesheet. the capture all dot variable didnt work so this is the alternate wway of doing it
         var pattern:String = "^"
         pattern += "("
@@ -67,13 +64,13 @@ class CSSFileParser {
         let matches = RegExp.matches(cssString, pattern)
         for match:NSTextCheckingResult in matches {
             //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-            for var i = 0; i < match.numberOfRanges; ++i{
+            //for var i = 0; i < match.numberOfRanges; ++i{
                 //Swift.print("loc: " + "\(match.rangeAtIndex(i).location)" + " length: " + "\(match.rangeAtIndex(i).length)")
 
-            }
+            //}
             //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             //Swift.print("content: " + "\(content)")
-            result.imports = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            result.imports = match.rangeAtIndex(1).length > 0 ?(cssString as NSString).substringWithRange(match.rangeAtIndex(1)) : ""//capturing group 1
             result.style = match.rangeAtIndex(2).length > 0 ? (cssString as NSString).substringWithRange(match.rangeAtIndex(2)) : ""//capturing group 2
         }
         return result;

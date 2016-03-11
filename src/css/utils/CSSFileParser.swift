@@ -59,7 +59,7 @@ class CSSFileParser {
         pattern +=              "\\n"
         pattern +=              "[\\w\\040\\[\\]\\,\\#\\:\\.]+?"
         pattern +=              "\\{"
-        pattern +=          ")|$"
+        pattern +=          ")"
         pattern +=      ")"
         pattern +=  ")?"
         pattern +=  "([.$]+?)?"

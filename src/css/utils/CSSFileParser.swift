@@ -27,17 +27,13 @@ class CSSFileParser {
      * @Note Supports both syntax styles: @import url("style.css") and @import "style.css"
      * @Note this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
      * // :TODO: this can probably be written a little better
+     * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     class func importStrings(string:String)->Array<String> {
         var importStrings:Array<String> = [];
         let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
-        
-        
-        
         let matches = RegExp.matches(string, pattern)
         for match:NSTextCheckingResult in matches {
-            match.numberOfRanges
-            //let content = (string as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             let url = (string as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
             importStrings.append(url)
         }

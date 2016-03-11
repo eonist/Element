@@ -56,28 +56,25 @@ class CSSFileParser {
         pattern += "("
         pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
         pattern +=      "(?="
-        pattern +=          "("
+        pattern +=          "(?:"
         pattern +=              "\\n[\\w\\s\\[\\]\\,\\#\\:\\.]+?\\{"
         pattern +=          ")|$"
         pattern +=      ")"
         pattern +=  ")?"
         pattern +=  "(" + styleCharSet + "+?$)?"
-        
-
-        
-        Swift.print("pattern: " + "\(pattern)")
+        //Swift.print("pattern: " + "\(pattern)")
         var result:(imports:String,style:String) = ("","")
         let matches = RegExp.matches(cssString, pattern)
         for match:NSTextCheckingResult in matches {
-            Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             for var i = 0; i < match.numberOfRanges; ++i{
-                Swift.print("loc: " + "\(match.rangeAtIndex(i).location)" + " length: " + "\(match.rangeAtIndex(i).length)")
+                //Swift.print("loc: " + "\(match.rangeAtIndex(i).location)" + " length: " + "\(match.rangeAtIndex(i).length)")
 
             }
-            let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            Swift.print("content: " + "\(content)")
+            //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+            //Swift.print("content: " + "\(content)")
             result.imports = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-            result.style = match.rangeAtIndex(3).length > 0 ? (cssString as NSString).substringWithRange(match.rangeAtIndex(3)) : ""//capturing group 2
+            result.style = match.rangeAtIndex(2).length > 0 ? (cssString as NSString).substringWithRange(match.rangeAtIndex(2)) : ""//capturing group 2
         }
         return result;
     }

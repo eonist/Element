@@ -16,8 +16,7 @@ class CSSFileParser {
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
         //Swift.print("string: " + "\(string)");
-        string = StringModifier.removeComments(string);
-        
+        string = RegExpModifier.removeComments(cssString);
         //var importsAndStyles:Object = CSSFileParser.separateImportsAndStyles(string);
         //var importStrings:Array = CSSFileParser.importStrings(importsAndStyles["import"]);
         //var path:String = StringParser.path(url);

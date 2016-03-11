@@ -62,7 +62,7 @@ class CSSFileParser {
         pattern +=          ")|$"
         pattern +=      ")"
         pattern +=  ")?"
-        pattern +=  "(.+?$)?"
+        pattern +=  "([.$]+?)?"
         
 
         

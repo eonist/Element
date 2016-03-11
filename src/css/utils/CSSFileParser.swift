@@ -17,9 +17,9 @@ class CSSFileParser {
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
         //Swift.print("string: " + "\(string)");
         string = RegExpModifier.removeComments(cssString);
-        //var importsAndStyles:Object = CSSFileParser.separateImportsAndStyles(string);
-        //var importStrings:Array = CSSFileParser.importStrings(importsAndStyles["import"]);
-        //var path:String = StringParser.path(url);
+        let importsAndStyles = CSSFileParser.separateImportsAndStyles(string);
+        let importStrings:Array<String> = CSSFileParser.importStrings(importsAndStyles.imports);
+        var path:String = StringParser.path(url);
         //for each (var importString : String in importStrings) cssString += CSSFileParser.cssString(path+importString);// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url
         //cssString += importsAndStyles["style"];
         return cssString

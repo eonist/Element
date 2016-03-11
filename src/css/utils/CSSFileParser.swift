@@ -29,26 +29,19 @@ class CSSFileParser {
      * // :TODO: this can probably be written a little better
      */
     class func importStrings(string:String)->Array<String> {
-        var importStrings:Array = [];
+        var importStrings:Array<String> = [];
         //(?:@import (?:url)?\(\")(?P<url>.*?)(?=\"\)\;)
         var pattern:String = ""//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
-        var lastIndex:int = -1;
-        while(lastIndex != 0){//Loops through the pattern
-            var match:Array = pattern.exec(string);
-            lastIndex = pattern.lastIndex;
-            if(match != null) importStrings.push(match["url"]);
-        }
+        
         
         
         let matches = RegExp.matches(string, "\\w{3}")
         for match:NSTextCheckingResult in matches {
             match.numberOfRanges
-            let content = (string as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+            //let content = (string as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             let url = (string as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
             importStrings.append(url)
         }
-        
-        
         return importStrings;
     }
 }

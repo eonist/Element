@@ -63,7 +63,7 @@ class CSSFileParser {
             let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             Swift.print("content: " + "\(content)")
             result.imports = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-            result.style = (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+            result.style = (cssString as NSString).substringWithRange(match.rangeAtIndex(3))//capturing group 2
         }
         return result;
     }

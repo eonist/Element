@@ -51,22 +51,15 @@ class CSSFileParser {
         let importGroup:String = "([@\\(\\)\\w\\040\\.\\/\"\\;\n]*?(?=(\n[\\w\\040\\[\\]\\,\\#\\:\\.]+?\\{|$))"
         let styleGroup:String = "(.+?$)"
         let pattern:String = "^" + importGroup + "?" + styleGroup + "?"
-        
-        
-        
+        var result:(imports:String,style:String) = ("","")
         let matches = RegExp.matches(cssString, pattern)
-         for match:NSTextCheckingResult in matches {
-               match.numberOfRanges
-               let content = (str as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-               let name = (str as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-            *    let properties = (str as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
-            * }
-        //			trace("matchs: " + matchs);
-        //			if(matches != null){
-        //				trace("import: " + matches["import"]);
-        //				trace("style: " + matches["style"]);
-        //			}
-        return matches;
+        for match:NSTextCheckingResult in matches {
+            Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
+            //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
+            result.imports = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+            result.style = (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
+        }
+        return result;
     }
 }
 

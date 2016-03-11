@@ -13,10 +13,10 @@ class CSSFileParser {
     */
     class func cssString(url:String)->String {
         var cssString:String = "";
-        let string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
-        cssString = string//temp fix until you implement the recusrive import stuff bellow
+        var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
+        //cssString = string//temp fix until you implement the recusrive import stuff bellow
         //Swift.print("string: " + "\(string)");
-        //string = StringModifier.removeComments(string);
+        string = StringModifier.removeComments(string);
         //var importsAndStyles:Object = CSSFileParser.separateImportsAndStyles(string);
         //var importStrings:Array = CSSFileParser.importStrings(importsAndStyles["import"]);
         //var path:String = StringParser.path(url);
@@ -47,7 +47,8 @@ class CSSFileParser {
      * @Note supports cssString that has only import or style or both
      */
     class func separateImportsAndStyles(cssString:String)->Object{// :TODO: rename to filter or split maybe?
-        var matches:Object = cssString.match(/^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?/s);
+        //^(?P<import>[@\(\)\w\040\.\/";\n]*?(?=(\n[\w\040\[\]\,\#\:\.]+?\{)|$))?(?P<style>.+?$)?
+        var matches:Object = cssString.match(//s);
         //			trace("matchs: " + matchs);
         //			if(matches != null){
         //				trace("import: " + matches["import"]);

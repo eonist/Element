@@ -55,9 +55,9 @@ class CSSFileParser {
         pattern += "("
         pattern +=      "[@\\(\\)\\w\\040\\.\\/\";\\n]*?"//importChars
         pattern +=      "(?="
-        pattern +=          ""
+        pattern +=          "("
         pattern +=              "\\n[\\w\\040\\[\\]\\,\\#\\:\\.]+?\\{"
-        pattern +=          ""
+        pattern +=          ")|$"
         pattern +=      ")"
         pattern +=  ")?"
         pattern +=  "(.+?$)?"

@@ -53,10 +53,10 @@ class CSSFileParser {
         //let forwardLookingMatch =
         var pattern:String = "^"
         pattern += "("
-        pattern +=      "[@\\(\\)\\w\\040\\.\\/\";\\n]*?"//importChars
+        pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
         pattern +=      "(?="
         pattern +=          "("
-        pattern +=              "\\n[\\w\\040\\[\\]\\,\\#\\:\\.]+?\\{"
+        pattern +=              "\\n[\\w\\s\\[\\]\\,\\#\\:\\.]+?\\{"
         pattern +=          ")|$"
         pattern +=      ")"
         pattern +=  ")?"

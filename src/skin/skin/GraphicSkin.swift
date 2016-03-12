@@ -73,6 +73,7 @@ private class Utils{
      * TODO: move to DecoratorModifier.swift
      */
     class func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
+        Swift.print("size")
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }

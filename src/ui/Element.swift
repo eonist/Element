@@ -19,7 +19,7 @@ class Element:InteractiveView2,IElement {
         self.id = id;
         self.width = width
         self.height = height
-        super.init(frame: NSRect(0,0,0,0))
+        super.init(frame: NSRect())
         resolveSkin()
     }
     /**

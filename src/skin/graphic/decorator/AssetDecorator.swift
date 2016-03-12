@@ -10,12 +10,12 @@ class AssetDecorator:SizeableDecorator{
         assetURL = iconURL;
         //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
-        asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset
+        asset = graphic.addSubView(SVGAsset(assetURL))
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution, find a more elegant solution than removing*/
-        asset = graphic.addSubView(SVGAsset(assetURL)) as? SVGAsset/*temp solution*/
+        asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
         //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
         if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}
         super.draw()

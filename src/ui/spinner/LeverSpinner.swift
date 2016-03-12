@@ -31,8 +31,8 @@ class LeverSpinner : Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        textInput = addSubView(TextInput(100,20,text,String(val),self)) as? TextInput
-        stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self)) as? LeverStepper
+        textInput = addSubView(TextInput(100,20,text,String(val),self))
+        stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self)) 
     }
     func onStepperChange(event : StepperEvent) {
         Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");

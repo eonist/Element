@@ -7,6 +7,8 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  */
 class Element:InteractiveView2,IElement {
+    var width:CGFloat
+    var height:CGFloat
     var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
     var skin:ISkin?
     var parent : IElement?
@@ -15,8 +17,8 @@ class Element:InteractiveView2,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        /*self.width = width
-        self.height = height*/
+        self.width = width
+        self.height = height
         super.init(frame: NSRect(0,0,width,height))
         resolveSkin()
     }
@@ -49,6 +51,7 @@ class Element:InteractiveView2,IElement {
      * Sets the width and height of the skin and this instance.
      */
     func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
+        Swift.print("you dont use frame anymore")
         frame.size.width = width//<--im not sure these are correct? i get that we have to store size somewhere but frame is such a central variable fro appkit
         frame.size.height = height
         self.skin!.setSize(width, height)

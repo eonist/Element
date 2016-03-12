@@ -25,7 +25,7 @@ class VSlider:Element{
         //skin.useHandCursor = false;// :TODO: explain why in a comment
         Swift.print("width: " + "\(width)")
         Swift.print("thumbHeight: " + "\(thumbHeight)")
-        thumb = addSubView(Thumb(width, thumbHeight,self)) as? Thumb
+        thumb = addSubView(Thumb(width, thumbHeight,self))
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){

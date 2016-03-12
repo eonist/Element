@@ -32,12 +32,12 @@ class LeverSpinner : Element{
     override func resolveSkin() {
         super.resolveSkin()
         textInput = addSubView(TextInput(100,20,text,String(val),self))
-        stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self)) 
+        stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self))
     }
     func onStepperChange(event : StepperEvent) {
-        Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)");
+        Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)")
         val = event.value
-        textInput!.inputTextArea?.setTextValue(String(val));
+        textInput!.inputTextArea?.setTextValue(String(val))
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     /**

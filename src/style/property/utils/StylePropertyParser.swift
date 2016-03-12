@@ -284,8 +284,8 @@ private class Utils{
      * // :TODO: explain what this method is doing
      */
     class func metric(value:Any?,_ skin:ISkin)->CGFloat? {
-        if(value is Int){ return CGFloat(value as! Int)}
-        else if(value is CGFloat){ return value as? CGFloat}
+        if(value is Int){ return CGFloat(value as! Int)}//<-int really? shouldnt you use something with decimals?
+        else if(value is CGFloat && !(value as! CGFloat).isNaN){ return value as? CGFloat}
         else if(value is String){/*value is String*/
             let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//<--this can go into a static class variable since it is used twice in this class
             let stringValue:String = value as! String

@@ -8,8 +8,8 @@ class Stepper : Element{
     }
     override func resolveSkin() {
         super.resolveSkin();
-        plusButton = addSubView(Button(height,height,self,"plus")) as? Button;
-        minusButton = addSubView(Button(height,height,self, "minus")) as? Button;
+        plusButton = addSubView(Button(height,height,self,"plus"))
+        minusButton = addSubView(Button(height,height,self, "minus"))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     

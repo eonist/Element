@@ -324,7 +324,7 @@ private class Utils{
             let border:Border = SkinParser.border(element.skin!)
             let padding:Padding = SkinParser.padding(element.skin!)
             let width:CGFloat = element.getWidth();/*StylePropertyParser.height(element.skin);*/
-            let tot:CGFloat = margin.left + border.left + padding.left + width - padding.right - border.right - margin.right
+            let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
             Swift.print("tot: " + "\(tot)")
             return tot/*Note used to be + padding.right + border.right + margin.right*/
         }else {return element.getWidth()}

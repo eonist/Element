@@ -5,10 +5,8 @@ import Cocoa
  * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
-
-class Skin:InteractiveView2,ISkin{//TODO:probably disable ineteractivity when using TextSkin
+class Skin:InteractiveView2,ISkin{
     var decoratables:Array<IGraphicDecoratable> = [];
-    //var decoratable:IGraphicDecoratable!
     var style:IStyle?
     var state:String
     var width:CGFloat?;
@@ -17,18 +15,13 @@ class Skin:InteractiveView2,ISkin{//TODO:probably disable ineteractivity when us
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;
     var hasSizeChanged:Bool = false;
-    //override var wantsDefaultClipping:Bool{return false}//avoids clipping the view
-    //override var wantsUpdateLayer:Bool {return true}
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         self.style = style;
         self.state = state;
         self.element = element;
         width = element!.width;// :TODO: is this necessary?
-        //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necessary?
-        //Swift.print("element!.width: " + "\(element!.width)")
-        super.init(frame: NSRect())/*this used to be a generic size, but since wants deault clipping doesnt work anymore we have to set this size to something as big as the skin needs to be*/
-
+        super.init(frame: NSRect())/*<-this doesnt need a size*/
     }
     /**
      * Required by super class

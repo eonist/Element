@@ -50,7 +50,7 @@ class GraphicSkin:Skin{
             //Swift.print("has RectGraphic")
             let padding:Padding = StylePropertyParser.padding(self,depth);
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right/**/// :TODO: only querry this if the size has changed?
-            Swift.print("width: " + "\(width)")
+            //Swift.print("width: " + "\(width)")
             let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.top + padding.bottom/**/// :TODO: only querry this if the size has changed?
             (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }

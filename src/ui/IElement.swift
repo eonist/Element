@@ -24,3 +24,37 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     var width:CGFloat{get}
     var height:CGFloat{get}
 }
+/**
+ * NOTE: some of these methods will probably be moved back into the class
+ * TODO: add convenince methods for setting x and y independently?
+ */
+extension IElement {
+    /*var width:CGFloat {return self.frame.width}*/
+    /*var height:CGFloat {return self.frame.height}*/
+    /**
+     * NOTE: this isnt fully implemented, see notes on the blog, see legacy code
+     * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false
+     */
+    func getParent()->Any? {// :TODO: beta
+        //Swift.print("_parent: " + _parent);
+        return self.parent;
+    }
+    /**
+     * Positions the Element instance to @param point,
+     * TODO: this could also be move to an utils class
+     */
+    func setPosition(point:CGPoint){
+        /*
+        self.x = point.x;
+        self.y = point.y;
+        */
+        frame.x = point.x
+        frame.y = point.y
+    }
+    /*func getWidth()->CGFloat{
+    return skin != nil ? skin!.getWidth() : CGFloat.NaN;
+    }*/
+    /*func getHeight()->CGFloat{
+    return skin != nil ? skin!.getHeight() : CGFloat.NaN;
+    }*/
+}

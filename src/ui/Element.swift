@@ -7,6 +7,7 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  */
 class Element:InteractiveView2,IElement {
+    
     var state:String = SkinStates.none
     var skin:ISkin?
     var parent : IElement?
@@ -61,40 +62,6 @@ class Element:InteractiveView2,IElement {
         return String(self.dynamicType)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
-}
-/**
- * NOTE: some of these methods will probably be moved back into the class
- * TODO: add convenince methods for setting x and y independently?
- */
-extension IElement {
-    var width:CGFloat {return self.frame.width}
-    var height:CGFloat {return self.frame.height}
-    /**
-     * NOTE: this isnt fully implemented, see notes on the blog, see legacy code
-     * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false
-     */
-    func getParent()->Any? {// :TODO: beta
-        //Swift.print("_parent: " + _parent);
-        return self.parent;
-    }
-    /**
-     * Positions the Element instance to @param point,
-     * TODO: this could also be move to an utils class
-     */
-    func setPosition(point:CGPoint){
-        /*
-        self.x = point.x;
-        self.y = point.y;
-        */
-        frame.x = point.x
-        frame.y = point.y
-    }
-    func getWidth()->CGFloat{
-        return skin != nil ? skin!.getWidth() : CGFloat.NaN;
-    }
-    func getHeight()->CGFloat{
-        return skin != nil ? skin!.getHeight() : CGFloat.NaN;
-    }
 }
 extension Element{
     /**

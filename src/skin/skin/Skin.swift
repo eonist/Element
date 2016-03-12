@@ -27,13 +27,8 @@ class Skin:InteractiveView2,ISkin{//TODO:probably disable ineteractivity when us
         //Swift.print("element!.width" + "\(element!.width)")
         height = element!.height;// :TODO: is this necessary?
         //Swift.print("element!.width: " + "\(element!.width)")
-        
-        //TODO: you may not need to set the with and height of the bellow. since we now use layer hosted system. test it
-        
-        super.init(frame: NSRect(x: 0, y: 0, width: 0/*+2.0*/, height: 0/*+2.0*/))/*this used to be a generic size, but since wants deault clipping doesnt work anymore we have to set this size to something as big as the skin needs to be*/
-        /*self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!*/
+        super.init(frame: NSRect())/*this used to be a generic size, but since wants deault clipping doesnt work anymore we have to set this size to something as big as the skin needs to be*/
+
     }
     /**
      * Required by super class

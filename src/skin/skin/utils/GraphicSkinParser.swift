@@ -37,8 +37,10 @@ private class Utils{
      * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
     class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
+        let padding:Padding = StylePropertyParser.padding(skin,depth)
         let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!)  + padding.left + padding.right;
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom;
+        /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
         return RectGraphic(width,height,decoratable);
     }
     /**

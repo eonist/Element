@@ -15,8 +15,8 @@ class Element:InteractiveView2,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        self.width = width
-        self.height = height
+        /*self.width = width
+        self.height = height*/
         super.init(frame: NSRect(0,0,0,0))
         resolveSkin()
     }

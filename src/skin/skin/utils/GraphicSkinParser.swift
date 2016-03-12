@@ -38,7 +38,7 @@ private class Utils{
      */
     class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!) /* + padding.left + padding.right;*/
-        Swift.print("width: " + "\(width)")
+        //Swift.print("width: " + "\(width)")
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) /*+ padding.top + padding.bottom;*/
         return RectGraphic(width,height,decoratable);
     }

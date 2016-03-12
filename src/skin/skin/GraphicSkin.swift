@@ -50,21 +50,13 @@ class GraphicSkin:Skin{
             //Swift.print("has RectGraphic")
             let padding:Padding = StylePropertyParser.padding(self,depth);
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right/**/// :TODO: only querry this if the size has changed?
+            //Swift.print("width: " + "\(width)")
             let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.top + padding.bottom/**/// :TODO: only querry this if the size has changed?
             (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
-        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {/*fillet*/
-            (DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)
-        }
-        if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {/*Svg*/
-            (DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)
-        }
-        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {/*dropshadow*/
-            let dropShadow = StylePropertyParser.dropShadow(self,depth)
-            //StyleParser.describe(self.style!)
-            //Swift.print("dropShadow?.color.alphaComponent: " + "\(dropShadow?.color.alphaComponent)")
-            (DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = dropShadow
-        }
+        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {(DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
+        if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {(DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
+        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
         //decoratable.draw()
     }
     /*override func updateTrackingAreas() {

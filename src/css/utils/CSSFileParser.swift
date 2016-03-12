@@ -50,7 +50,7 @@ class CSSFileParser {
      * Example: "@import url(\"mainContent.css\");"
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
-        let styleCharSet:String = "[^]"//all possible chars that can be found in a stylesheet. the capture all dot variable didnt work so this is the alternate wway of doing it
+        let styleCharSet:String = "[^$]"//all possible chars that can be found in a stylesheet, except the end. the capture all dot variable didnt work so this is the alternate wway of doing it
         var pattern:String = "^"
         pattern += "("
         pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
@@ -60,7 +60,7 @@ class CSSFileParser {
         pattern +=          ")|$"
         pattern +=      ")"
         pattern +=  ")?"
-        pattern +=  "(" + styleCharSet + "+?$)?"
+        pattern +=  "(" + styleCharSet + "?+$)?"
         //Swift.print("pattern: " + "\(pattern)")
         var result:(imports:String,style:String) = ("","")
         let matches = RegExp.matches(cssString, pattern)

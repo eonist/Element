@@ -7,8 +7,9 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  */
 class Element:InteractiveView2,IElement {
-    
-    var state:String = SkinStates.none
+    var width:CGFloat;
+    var height:CGFloat;
+    var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
     var skin:ISkin?
     var parent : IElement?
     var id : String?/*css selector id*/

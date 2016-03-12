@@ -40,7 +40,7 @@ private class Utils{
         
         //TODO: add padding here, see old code
         
-        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!);
+        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!) /* + padding.left + padding.right;*/
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!);
         return RectGraphic(width,height,decoratable);
     }

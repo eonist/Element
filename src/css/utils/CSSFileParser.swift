@@ -50,8 +50,7 @@ class CSSFileParser {
      * Example: "@import url(\"mainContent.css\");"
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
-        //TODO:readlly dont like the styleCharSet. you should use the dot or something else
-        let styleCharSet:String = "[\\d\\s\\w\\W\\^\\[\\]\\{\\}\\(\\)\\:\\;\\n\\%\\$\\-\\_\\.\\,~\\/\\*\\#\\?]"//all possible chars that can be found in a stylesheet. the capture all dot variable didnt work so this is the alternate wway of doing it
+        let styleCharSet:String = "[^]"//all possible chars that can be found in a stylesheet. the capture all dot variable didnt work so this is the alternate wway of doing it
         var pattern:String = "^"
         pattern += "("
         pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars

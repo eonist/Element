@@ -210,7 +210,7 @@ Button:down{
 - [ ] Element UML pdf
 - [ ] R*-Trees are another way to spatially index objects to improve efficiency when dealing with very large data sets
 - [ ] bsp-tree for storing large data sets?
-- [ ] Create the RBScrollBar,RBSlider,RBScrollTextArea,RBScrollList,RBScrollTreeList (RB = Rubber band)
+- [x] Create the RBScrollBar,RBSlider,RBScrollTextArea,RBScrollList,RBScrollTreeList (RB = Rubber band)
 - [ ] List has a mask, this mask could possibly be an Element (the current soloution works but is not elegant)
 - [ ] R*-Trees are able to efficiently store millions of objects.
 - [ ] Optimize the css retrival system with inspiration from this book: quicksort, heapsort, hasing etc, better algos to find styles Cormen T.H., Leiserson C.E., Rivest R.L., Stein C. Introduction to Algorithms (3ed., MIT, 2009)(ISBN 262033845)

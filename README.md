@@ -91,7 +91,7 @@ StyleManager.addStyle("CustomButton{fill:yellow;} CustomButton:down{fill:green;}
 ```swift
 StyleManager.addStyle(File.resources.url + "assets/css/general.css");//call this one time to install all default styles
 			
-var button = addSubview(Button(96,24,self)) as! Button/*Create and add the button to the view*/
+var button = addSubview(Button(96,24,self))/*Create and add the button to the view*/
 button.event = onEvent/*add an event listener*/
 		
 func onEvent(event:Event){/*event handler*/

@@ -23,6 +23,8 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     //var y:CGFloat{get set}
     var width:CGFloat{get}
     var height:CGFloat{get}
+    var x:CGFloat{get}
+    var y:CGFloat{get}
 }
 /**
  * NOTE: some of these methods will probably be moved back into the class

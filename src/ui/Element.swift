@@ -9,8 +9,8 @@ import Cocoa
 class Element:InteractiveView2,IElement {
     var width:CGFloat
     var height:CGFloat
-    var x:CGFloat{get{return super.frame.x}set{frame.x = newValue}}
-    var y:CGFloat{get{return super.frame.y}set{frame.y = newValue}}
+    var x:CGFloat{get{return super.frame.x}set{super.frame.x = newValue}}
+    var y:CGFloat{get{return super.frame.y}set{super.frame.y = newValue}}
     var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
     var skin:ISkin?
     var parent : IElement?

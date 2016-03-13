@@ -24,9 +24,8 @@ class SelectorParser{
     /**
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
      * @Note this method can also be used for debuging purposes
-     * NOTE: this lib used to be called stackString
      */
-    class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString or stackString?
+    class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString 
         var string:String = "";
         for (var i : Int = 0; i < selectors.count; i++) {
             string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"");

@@ -14,7 +14,14 @@ class Element:InteractiveView2,IElement {
     var parent : IElement?
     var id : String?/*css selector id*/
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
-    override var frame: NSRect {get{return NSRect()}set{Swift.print("set frame")}}
+    override var frame: NSRect {
+                                    get{
+                                        Swift.print("get frame")
+                                        return super.frame
+                                    }set{
+                                        super.frame = newValue
+                                    }
+                                }
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;

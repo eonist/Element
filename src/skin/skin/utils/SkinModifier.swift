@@ -38,7 +38,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
         if(skin.element is Text){
-            Swift.print()
+            Swift.print("parentTopLeft: " + "\(parentTopLeft)")
+            Swift.print("leftSiblingSkin?.element.y: " + "\(leftSiblingSkin?.element!.y)")
         }
         //if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}//<--this is how you debug the floating system
         //if(skin is TextSkin){Swift.print("float() leftSiblingSkin.height:" + "\(leftSiblingSkin?.height)" + " clearType: " + "\(clearType)")}//<- or you can debug like this

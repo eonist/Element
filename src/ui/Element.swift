@@ -17,6 +17,7 @@ class Element:InteractiveView2,IElement {
     override var frame: NSRect {
                                     get{
                                         Swift.print("get frame: " + "\(super.frame)")
+                                        fatalError("use width and height")
                                         return super.frame
                                     }set{
                                         super.frame = newValue

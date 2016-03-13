@@ -7,14 +7,7 @@ class ElementParser{
      * NOTE: if this doesnt work just use the array casting technique with the NSParser.children method
      */
     class func children<T>(view:NSView,_ type:T.Type)->Array<T> {
-        //TODO: you can just use the utils method to do much of the bellow code
-        var children:Array<T> = []
-        //Swift.print("view.subviews.count: " + "\(view.subviews.count)")
-        for subView in view.subviews {
-            //Swift.print("subView: " + "\(subView as? T)")
-            if(subView as? T != nil){children.append(subView as! T)}
-        }
-        return children;
+        return NSViewParser.childrenOfType(view, type);
     }
     /**
      * Returns an Array instance comprised of Selector instances for each (element,classId,id and state) in the element "cascade" (the spesseficity)

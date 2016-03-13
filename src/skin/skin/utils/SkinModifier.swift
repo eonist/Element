@@ -33,7 +33,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         
         let elementParent:IElement = skin.element!.getParent() as! IElement/**/
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
-        let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element!) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
+        let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element! as! Element) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
@@ -145,9 +145,12 @@ private class Utils{
     /**
      *
      */
-    class func elementIndex(parent:NSView,_ element:IElement)->Int {
+    class func elementIndex(parent:NSView,_ element:Element)->Int {
         //Continue here: this is where the bug is, use , see legacy code
-        let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
+        let elements:Array<Element> = ElementParser.children(parent,Element.self)
+        
+        //continue here: do some more cleaning
+        
         return ArrayParser.index(elements, element)
     }
     /**

@@ -7,6 +7,7 @@ class ElementParser{
      * NOTE: if this doesnt work just use the array casting technique with the NSParser.children method
      */
     class func children<T>(view:NSView,_ type:T.Type)->Array<IElement> {
+        //TODO: you can just use the utils method to do much of the bellow code
         var children:Array<IElement> = []
         //Swift.print("view.subviews.count: " + "\(view.subviews.count)")
         for subView in view.subviews {

@@ -148,9 +148,9 @@ private class Utils{
     class func elementIndex(parent:NSView,_ element:IElement)->Int {
         
         
-        //Continue here: this is where the bug is, use ElementParser.children, see legacy code
+        //Continue here: this is where the bug is, use , see legacy code
         
-        return ArrayParser.index(parent.subviews, element)
+        return ArrayParser.index(ElementParser.children(parent), element)
     }
     /**
      *

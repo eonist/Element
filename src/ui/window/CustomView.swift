@@ -16,7 +16,7 @@ class CustomView:WindowView{
      * Adds close button, min, max
      */
     func createTitleBar(){
-        //Swift.print("CustomView.createTitleBar()")
+        Swift.print("CustomView.createTitleBar()")
         StyleManager.addStylesByURL("~/Desktop/css/titleBar.css")
         section = self.addSubView(Section(75,16,self,"titleBar"))
         closeButton = section!.addSubView(Button(0,0,section!,"close")) /*<--TODO: the w and h should be NaN, test if it supports this*/

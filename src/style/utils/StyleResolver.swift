@@ -29,7 +29,7 @@ class StyleResolver{
             
             if(ElementParser.stackString(element) == "Window Button") {
                 Swift.print("Found button " + "\(isDirectStyle)")
-                //for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
+                StyleParser.describe(temp)
             }
             
             

@@ -5,13 +5,13 @@ import Cocoa
  */
 class TextSkin:Skin,ITextSkin{
     var textField:TextField;
-    //the bellow variable is a little more complex in the original code
+    //the bellow variable is a little more complex in the legacy code
     override var width:CGFloat? {get{return textField.frame.width} set{textField.frame.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         //Swift.print("TextSkin.init()")
-        textField = TextField(frame: NSRect(x: 0, y: 0, width: 200, height: 200))//<--TODO: these default values must be wrong, set w and h to 0
+        textField = TextField(frame: NSRect())
         //textField.sizeToFit()
         textField.stringValue = text
         super.init(style, state, element)
@@ -23,7 +23,7 @@ class TextSkin:Skin,ITextSkin{
     }
     override func draw() {
         if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
-            //SkinModifier.float(self)
+            SkinModifier.float(self)
             if(hasSizeChanged) {
                 let padding:Padding = StylePropertyParser.padding(self);
                 TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom);

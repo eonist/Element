@@ -79,8 +79,6 @@ class StyleModifier {
         for (var i : Int = 0; i < style.styleProperties.count; i++) {
             if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {/*we only keep items that are in both arrays*/
                styleProperties.append((style.styleProperties[i] as IStyleProperty))
-            }else{
-                Swift.print("SOME FILTER")
             }
         }
         return Style(style.name,style.selectors,styleProperties);

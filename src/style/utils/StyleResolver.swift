@@ -25,16 +25,11 @@ class StyleResolver{
         for weightStyle:WeightedStyle in weightedStyles{
             let isDirectStyle = StyleAsserter.direct(querrySelectors, weightStyle)
             
-            let temp:IStyle = isDirectStyle ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames)
+
             
-            if(ElementParser.stackString(element) == "Window Button") {
-                Swift.print("Found button " + "\(isDirectStyle)")
-                StyleParser.describe(temp)
-            }
-            
-            
-            
-            StyleModifier.merge(&finalStyle, temp)/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+            //if(ElementParser.stackString(element) == "Window Button") {Swift.print("Found button " + "\(isDirectStyle)");StyleParser.describe(temp)}
+
+            StyleModifier.merge(&finalStyle, isDirectStyle ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle;
     }

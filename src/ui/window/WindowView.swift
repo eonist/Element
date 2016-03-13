@@ -11,6 +11,7 @@ class WindowView:Element{
      */
     override func resolveSkin() {
         super.resolveSkin()
+        //TODO:adding a background is probably not needed after you fix the inheritage problem
         background = addSubView(Element(width,height,self,"background"))
     }
     /**

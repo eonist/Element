@@ -23,7 +23,7 @@ class TextSkin:Skin,ITextSkin{
     }
     override func draw() {
         if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
-            //SkinModifier.float(self)
+            SkinModifier.float(self)
             if(hasSizeChanged) {
                 let padding:Padding = StylePropertyParser.padding(self);
                 TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom);

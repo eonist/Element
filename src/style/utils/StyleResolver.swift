@@ -24,12 +24,15 @@ class StyleResolver{
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
         for weightStyle:WeightedStyle in weightedStyles{
             let isDirectStyle = StyleAsserter.direct(querrySelectors, weightStyle)
-            let temp:IStyle = isDirectStyle ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames)
+            
             if(ElementParser.stackString(element) == "Window Button") {
-                Swift.print("Found button")
+                Swift.print("Found button " + "\(isDirectStyle)")
                 //for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
             }
-            StyleModifier.merge(&finalStyle, )/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+            
+            let temp:IStyle = isDirectStyle ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames)
+            
+            StyleModifier.merge(&finalStyle, temp)/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle;
     }

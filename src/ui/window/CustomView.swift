@@ -9,6 +9,7 @@ class CustomView:WindowView{
      * Add content here
      */
     override func resolveSkin() {
+        Swift.print("CustomView.resolveSkin()")
         super.resolveSkin()
         createTitleBar()
     }

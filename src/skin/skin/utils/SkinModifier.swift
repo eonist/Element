@@ -75,7 +75,7 @@ private class Utils{
      */
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         
-        let y:CGFloat = leftSiblingSkin != nil ? (leftSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(leftSiblingSkin!) : top
+        let y:CGFloat = leftSiblingSkin != nil ? leftSiblingSkin!.element!.y + SkinParser.totalHeight(leftSiblingSkin!) : top
         
         /*if(leftSiblingSkin != nil){
         Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
@@ -90,7 +90,7 @@ private class Utils{
      * @param top is the y value of the skins parent to align against
      */
     class func clearRight(skin:ISkin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
-        skin.element!.y = rightSiblingSkin != nil ? (rightSiblingSkin!.element as! NSView).frame.y + SkinParser.totalHeight(rightSiblingSkin!) : top;
+        skin.element!.y = rightSiblingSkin != nil ? rightSiblingSkin!.element!.y + SkinParser.totalHeight(rightSiblingSkin!) : top;
     }
     /**
      *
@@ -118,7 +118,7 @@ private class Utils{
      */
     class func floatLeft(skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  var _ left:CGFloat){
         //Swift.print("SkinModifier.floatLeft: " )
-        if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = leftSiblingSkin!.element!.frame.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
+        if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = leftSiblingSkin!.element!.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
         skin.element!.x = left/*Sets the position of the skin.element*/
     }
     /**
@@ -133,7 +133,7 @@ private class Utils{
         Swift.print("SkinParser.totalWidth(skin): " + "\(SkinParser.totalWidth(skin))")
         }
         */
-        if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = (rightSiblingSkin!.element as! NSView).frame.x}/*a previous element-sibling floats right*/
+        if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = rightSiblingSkin!.element!.x}/*a previous element-sibling floats right*/
         skin.element!.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
     }
     /**

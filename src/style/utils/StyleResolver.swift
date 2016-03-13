@@ -19,7 +19,7 @@ class StyleResolver{
         
         
         if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
-        if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") {
+        if(SelectorParser.string(element) == "Window Box#tabBarBox SelectTextButton#first Text") {
             //for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
         }
         let styleName:String = SelectorParser.string(querrySelectors);

@@ -26,7 +26,7 @@ class SelectorParser{
      * @Note this method can also be used for debuging purposes
      * NOTE: this lib used to be called stackString
      */
-    class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
+    class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString or stackString?
         var string:String = "";
         for (var i : Int = 0; i < selectors.count; i++) {
             string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"");

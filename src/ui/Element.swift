@@ -22,6 +22,7 @@ class Element:InteractiveView2,IElement {
                                         
                                         return super.frame
                                     }set{
+                                        
                                         super.frame = newValue
                                     }
                                 }

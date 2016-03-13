@@ -20,11 +20,8 @@ class GraphicSkin:Skin{
         }
     }
     override func draw(){
-        Swift.print("GraphicSkin.draw()")
+        //Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            Swift.print("hasStateChanged: " + "\(hasStateChanged)")
-            Swift.print("hasSizeChanged: " + "\(hasSizeChanged)")
-            Swift.print("hasStyleChanged: " + "\(hasStyleChanged)")
             let depthCount:Int = StyleParser.depthCount(style!);
             //Swift.print("depthCount: " + "\(depthCount)")
             //if(hasSizeChanged)
@@ -33,7 +30,7 @@ class GraphicSkin:Skin{
                     let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
                     Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
                 }//do sizing of the sizable here
-                //if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
+                if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
                 if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
             }

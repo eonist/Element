@@ -21,10 +21,10 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     var id : String?{get};
     //var x:CGFloat{get set}
     //var y:CGFloat{get set}
-    var width:CGFloat{get}
-    var height:CGFloat{get}
-    var x:CGFloat{get}
-    var y:CGFloat{get}
+    var width:CGFloat{get set}
+    var height:CGFloat{get set}
+    var x:CGFloat{get set}
+    var y:CGFloat{get set}
 }
 /**
  * NOTE: some of these methods will probably be moved back into the class

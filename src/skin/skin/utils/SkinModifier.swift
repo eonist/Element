@@ -81,9 +81,7 @@ private class Utils{
         Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
         }*/
         
-        
-        
-        (skin.element as! NSView).frame.y = y
+        skin.element!.y = y
     }
     /**
      * Positions @param skin by way of clearing it right
@@ -121,7 +119,7 @@ private class Utils{
     class func floatLeft(skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  var _ left:CGFloat){
         //Swift.print("SkinModifier.floatLeft: " )
         if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = (leftSiblingSkin!.element as! NSView).frame.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
-        (skin.element as! NSView).frame.x = left;/*Sets the position of the skin.element*/
+        skin.element!.x = left/*Sets the position of the skin.element*/
     }
     /**
      *  Positions @param skin by way of floating it right
@@ -136,7 +134,7 @@ private class Utils{
         }
         */
         if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = (rightSiblingSkin!.element as! NSView).frame.x}/*a previous element-sibling floats right*/
-        (skin.element as! NSView).frame.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
+        (skin.element.frame.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
     }
     /**
      *

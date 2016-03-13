@@ -16,7 +16,7 @@ class Element:InteractiveView2,IElement {
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
     override var frame: NSRect {
                                     get{
-                                        Swift.print("get frame")
+                                        Swift.print("get frame: " + "\(super.frame)")
                                         return super.frame
                                     }set{
                                         super.frame = newValue

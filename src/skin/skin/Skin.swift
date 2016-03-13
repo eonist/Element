@@ -63,7 +63,7 @@ class Skin:InteractiveView2,ISkin{
         //Swift.print("Skin.applySkinState")
         hasStateChanged = true;
         self.state = state;
-        style = StyleResolver.style(element!)/*looping through the entire styleManager isnt a good idea for just a state change*/
+        style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isnt a good idea for just a state change, you need some caching system to handle this better*/
         draw();
     }
     

@@ -20,11 +20,11 @@ class GraphicSkin:Skin{
         }
     }
     override func draw(){
-        //Swift.print("GraphicSkin.draw()")
+        Swift.print("GraphicSkin.draw()")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            //Swift.print("hasStateChanged: " + "\(hasStateChanged)")
-            //Swift.print("hasSizeChanged: " + "\(hasSizeChanged)")
-            //Swift.print("hasStyleChanged: " + "\(hasStyleChanged)")
+            Swift.print("hasStateChanged: " + "\(hasStateChanged)")
+            Swift.print("hasSizeChanged: " + "\(hasSizeChanged)")
+            Swift.print("hasStyleChanged: " + "\(hasStyleChanged)")
             let depthCount:Int = StyleParser.depthCount(style!);
             //Swift.print("depthCount: " + "\(depthCount)")
             //if(hasSizeChanged)

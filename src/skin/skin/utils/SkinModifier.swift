@@ -96,9 +96,9 @@ private class Utils{
      *
      */
     class func clearNone(skin:ISkin, _ floatType:String?, _ leftSibling:ISkin?,_ rightSibling:ISkin?,var _ top:CGFloat){
-        if(floatType == CSSConstants.left && leftSibling != nil) { top = (leftSibling!.element as! NSView).frame.y }
-        else if(floatType == CSSConstants.right && rightSibling != nil) { top = (rightSibling!.element as! NSView).frame.y }
-        else if(floatType == CSSConstants.none) { top = (skin.element as! NSView).frame.y}/*0*/
+        if(floatType == CSSConstants.left && leftSibling != nil) { top = leftSibling!.element!.y }
+        else if(floatType == CSSConstants.right && rightSibling != nil) { top = rightSibling!.element!.y}
+        else if(floatType == CSSConstants.none) { top = skin.element!.y}/*0*/
         skin.element!.y = top
     }
     /**

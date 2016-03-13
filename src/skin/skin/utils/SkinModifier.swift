@@ -151,6 +151,8 @@ private class Utils{
         
         //continue here: do some more cleaning
         
+        //also do a project wide test for the same subChildren bug
+        
         return ArrayParser.index(elements, element)
     }
     /**

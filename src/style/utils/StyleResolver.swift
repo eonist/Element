@@ -23,7 +23,7 @@ class StyleResolver{
             //if(ElementParser.stackString(element) == "Window Button") {Swift.print("Found button " + "\(isDirectStyle)");StyleParser.describe(temp)}
             StyleModifier.merge(&finalStyle, StyleAsserter.direct(querrySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
-        return finalStyle;
+        return finalStyle
     }
     /**
      * TODO: Deprecate this method, its not doing anything anymore

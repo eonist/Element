@@ -146,7 +146,7 @@ private class Utils{
      *
      */
     class func elementIndex(parent:NSView,_ element:IElement)->Int {
-        return parent.subviews.indexOf(element as! NSView)!
+        return ArrayParser.index(parent.subviews, element as! NSView)
     }
     /**
      *

@@ -161,7 +161,6 @@ class StylePropertyParser{
                 }
                 if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
                 else if(value is UInt) {
-                    
                     value = NSColorParser.nsColor(value as! UInt,1)
                     //Swift.print("FOUND A COLOR: " + textFormatKey + " : " + "\(value)")
                 }//<--set the alpha in css aswell backgroundAlpha?

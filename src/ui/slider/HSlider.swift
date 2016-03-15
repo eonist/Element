@@ -34,5 +34,15 @@ class HSlider :Element{
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
+    func onThumbUp(){
+        Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+    }
+    func onMouseMove(event:NSEvent)-> NSEvent?{
+        //progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
+        //thumb!.frame.x = Utils.thumbPosition(progress, width, thumbWidth);
+        super.onEvent(SliderEvent(SliderEvent.change,progress,self))
+        return event
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

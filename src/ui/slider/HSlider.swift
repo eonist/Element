@@ -29,8 +29,8 @@ class HSlider :Element{
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
-        //progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
-        //thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
+        progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
+        thumb!.frame.x = Utils.thumbPosition(progress, frame.height, thumbWidth)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -39,8 +39,8 @@ class HSlider :Element{
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
-        //progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
-        //thumb!.frame.x = Utils.thumbPosition(progress, width, thumbWidth);
+        progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
+        thumb!.frame.x = Utils.thumbPosition(progress, width, thumbWidth);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -58,7 +58,7 @@ class HSlider :Element{
      */
     func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        //thumb!.frame.x = Utils.thumbPosition(self.progress, frame.width, thumbWidth)
+        thumb!.frame.x = Utils.thumbPosition(self.progress, frame.width, thumbWidth)
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
     /**

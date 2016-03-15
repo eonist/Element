@@ -31,6 +31,7 @@ class HSlider :Element{
         progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
         Swift.print("progress: " + "\(progress)")
         let thumbX:CGFloat = Utils.thumbPosition(progress, frame.width, thumbWidth)
+        Swift.print("thumbX: " + "\(thumbX)")
         thumb!.frame.x = thumbX
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event

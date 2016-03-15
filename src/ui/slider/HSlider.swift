@@ -7,7 +7,7 @@ import Foundation
 class HSlider :Element{
     var progress : CGFloat;
     var thumbWidth : CGFloat;
-    var thumb : Button;
+    var thumb : Thumb;
     var tempThumbMouseX:CGFloat;/*This value holds the onDown position when you click the thumb*/
     init(width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat, progress:CGFloat = 0, parent:IElement? = nil, id:String? = nil, classId:String? = nil) {
         self.progress = progress
@@ -19,7 +19,7 @@ class HSlider :Element{
     override func resolveSkin() {
         super.resolveSkin();
         //skin.mouseEnabled = skin.buttonMode = false;
-        thumb = addSubView(Button(thumbWidth, height,false,false,self)) as! Button
+        thumb = addSubView(Thumb(width, thumbHeight,self))
         //setProgress(progress);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -36,8 +36,8 @@ class VSlider:Element{
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
-        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height/*<--this is the problem, dont use frame*/, thumbHeight)
-        thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
+        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, height/*<--this is the problem, dont use frame*/, thumbHeight)
+        thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -47,7 +47,7 @@ class VSlider:Element{
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self).y, thumbHeight/2, height, thumbHeight);
-        thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight);
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -57,7 +57,7 @@ class VSlider:Element{
     override func mouseDown(event:MouseEvent) {/*onSkinDown*/
         Swift.print("\(self.dynamicType)" + ".mouseDown() ")
         progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight);
-        thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight);
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
@@ -76,7 +76,7 @@ class VSlider:Element{
      */
     func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb!.frame.y = Utils.thumbPosition(self.progress, frame.height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(self.progress, height, thumbHeight)
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
     /**
@@ -85,7 +85,7 @@ class VSlider:Element{
     func setThumbHeightValue(thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
         self.thumbHeight = thumbHeight
         thumb!.setSize(thumb!.getWidth(), thumbHeight)
-        thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height);

@@ -29,7 +29,9 @@ class HSlider :Element{
     func onThumbMove(event:NSEvent)-> NSEvent?{
         Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
-        thumb!.frame.x = Utils.thumbPosition(progress, frame.width, thumbWidth)
+        Swift.print("progress: " + "\(progress)")
+        let thumbX:CGFloat = Utils.thumbPosition(progress, frame.width, thumbWidth)
+        thumb!.frame.x = thumbX
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }

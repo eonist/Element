@@ -92,6 +92,10 @@ private class Utils{
      * @return a number between 0 and 1
      */
     class func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ thumbWidth:CGFloat)->CGFloat {
+        Swift.print("mouseX: " + "\(mouseX)")
+        Swift.print("tempNodeMouseX: " + "\(tempNodeMouseX)")
+        Swift.print("width: " + "\(width)")
+        Swift.print("thumbWidth: " + "\(thumbWidth)")
         if(thumbWidth == width) {Swift.print("bug");return 0;}/*if the thumbWidth is the same as the Width of the slider then return 0*/
         let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-thumbWidth)
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/

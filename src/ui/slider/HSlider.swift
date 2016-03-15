@@ -5,17 +5,15 @@ import Foundation
  * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  */
 class HSlider :Element{
-    var progress : CGFloat;
-    var thumbWidth : CGFloat;
-    var thumb : Thumb;
-    var tempThumbMouseX:CGFloat;/*This value holds the onDown position when you click the thumb*/
+    var progress:CGFloat
+    var thumbWidth:CGFloat
+    var thumb:Thumb?
+    var tempThumbMouseX:CGFloat = 0/*This value holds the onDown position when you click the thumb*/
     init(width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat, progress:CGFloat = 0, parent:IElement? = nil, id:String? = nil, classId:String? = nil) {
         self.progress = progress
         self.thumbWidth = thumbWidth.isNaN ? height:thumbWidth
         super.init(width,height,parent,id)
     }
-
-    
     override func resolveSkin() {
         super.resolveSkin();
         //skin.mouseEnabled = skin.buttonMode = false;

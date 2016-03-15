@@ -13,6 +13,7 @@ class HSlider :Element{
     init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.progress = progress
         self.thumbWidth = thumbWidth.isNaN ? height:thumbWidth
+        Swift.print("width: " + "\(width)")
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
@@ -28,11 +29,11 @@ class HSlider :Element{
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
-        progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
+        progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
         Swift.print("progress: " + "\(progress)")
-        let thumbX:CGFloat = Utils.thumbPosition(progress, frame.width, thumbWidth)
+        let thumbX:CGFloat = Utils.thumbPosition(progress, width, thumbWidth)
         Swift.print("thumbX: " + "\(thumbX)")
-        thumb!.frame.x = thumbX
+        thumb!.x = thumbX
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -42,7 +43,7 @@ class HSlider :Element{
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
-        thumb!.frame.x = Utils.thumbPosition(progress, width, thumbWidth);
+        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -60,7 +61,7 @@ class HSlider :Element{
      */
     func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb!.frame.x = Utils.thumbPosition(self.progress, frame.width, thumbWidth)
+        thumb!.x = Utils.thumbPosition(self.progress, width, thumbWidth)
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
     /**
@@ -69,12 +70,12 @@ class HSlider :Element{
     func setThumbWidthValue(thumbWidth:CGFloat) {/*Can't be named setThumbHeight because of objc*/
         self.thumbWidth = thumbWidth
         thumb!.setSize(thumbWidth, thumb!.getHeight())
-        thumb!.frame.x = Utils.thumbPosition(progress, frame.width, thumbWidth)
+        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height);
         thumb!.setSize(thumb!.width, height);
-        thumb!.frame.x = Utils.thumbPosition(progress, width, thumbWidth);
+        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -37,7 +37,7 @@ class VSlider:Element{
     func onThumbMove(event:NSEvent)-> NSEvent?{
         //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, height/*<--this is the problem, dont use frame*/, thumbHeight)
-        thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -85,12 +85,12 @@ class VSlider:Element{
     func setThumbHeightValue(thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
         self.thumbHeight = thumbHeight
         thumb!.setSize(thumb!.getWidth(), thumbHeight)
-        thumb!.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height);
         thumb!.setSize(thumb!.width, height);
-        thumb!.frame.y = Utils.thumbPosition(progress, height, thumbHeight);
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }

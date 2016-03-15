@@ -19,7 +19,7 @@ class HSlider :Element{
     override func resolveSkin() {
         super.resolveSkin();
         //skin.mouseEnabled = skin.buttonMode = false;
-        thumb = addSubView(Thumb(width, thumbHeight,self))
+        thumb = addSubView(Thumb(width, thumbWidth,self))
         //setProgress(progress);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

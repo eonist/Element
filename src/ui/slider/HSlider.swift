@@ -17,9 +17,8 @@ class HSlider :Element{
     }
     override func resolveSkin() {
         super.resolveSkin();
-        //skin.mouseEnabled = skin.buttonMode = false;
         thumb = addSubView(Thumb(width, thumbWidth,self))
-        //setProgress(progress);
+        setProgressValue(progress);
     }
     func onThumbDown(){
         //Swift.print("\(self.dynamicType)"+".onThumbDown() ")
@@ -30,7 +29,7 @@ class HSlider :Element{
     func onThumbMove(event:NSEvent)-> NSEvent?{
         //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
-        thumb!.frame.x = Utils.thumbPosition(progress, frame.height, thumbWidth)
+        thumb!.frame.x = Utils.thumbPosition(progress, frame.width, thumbWidth)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -62,10 +61,10 @@ class HSlider :Element{
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
     /**
-     * Sets the thumbs height and repositions the thumb accordingly
+     * Sets the thumbs width and repositions the thumb accordingly
      */
-    func setThumbWidthValue(thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
-        self.thumbWidth = thumbHeight
+    func setThumbWidthValue(thumbWidth:CGFloat) {/*Can't be named setThumbHeight because of objc*/
+        self.thumbWidth = thumbWidth
         thumb!.setSize(thumbWidth, thumb!.getHeight())
         thumb!.frame.x = Utils.thumbPosition(progress, frame.width, thumbWidth)
     }
@@ -90,7 +89,7 @@ private class Utils{
      * @return a number between 0 and 1
      */
     class func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ thumbWidth:CGFloat)->CGFloat {
-        if(thumbWidth == width) {return 0}/*if the thumbHeight is the same as the height of the slider then return 0*/
+        if(thumbWidth == width) {return 0}/*if the thumbWidth is the same as the Width of the slider then return 0*/
         let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-thumbWidth)
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
     }

@@ -53,5 +53,26 @@ class HSlider :Element{
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
+    /**
+     * @param progress (0-1)
+     */
+    func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
+        self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
+        //thumb!.frame.x = Utils.thumbPosition(self.progress, frame.width, thumbWidth)
+        thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
+    }
+    /**
+     * Sets the thumbs height and repositions the thumb accordingly
+     */
+    func setThumbWidthValue(thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
+        self.thumbWidth = thumbHeight
+        thumb!.setSize(thumbWidth, thumb!.getHeight())
+        thumb!.frame.x = Utils.thumbPosition(progress, frame.width, thumbWidth)
+    }
+    override func setSize(width:CGFloat, _ height:CGFloat) {
+        super.setSize(width,height);
+        thumb!.setSize(thumb!.width, height);
+        thumb!.frame.x = Utils.thumbPosition(progress, width, thumbWidth);
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

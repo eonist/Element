@@ -76,3 +76,22 @@ class HSlider :Element{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+
+private class Utils{
+    /**
+     * Returns the x position of a nodes @param progress
+     */
+    class func thumbPosition(progress:CGFloat, _ width:CGFloat, _ thumbWidth:CGFloat)->CGFloat {
+        let minThumbPos:CGFloat = width - thumbWidth;/*Minimum thumb position*/
+        return progress * minThumbPos
+    }
+    /**
+     * Returns the progress derived from a node
+     * @return a number between 0 and 1
+     */
+    class func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ thumbWidth:CGFloat)->CGFloat {
+        if(thumbWidth == width) {return 0}/*if the thumbHeight is the same as the height of the slider then return 0*/
+        let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-thumbWidth)
+        return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
+    }
+}

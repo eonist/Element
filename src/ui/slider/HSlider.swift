@@ -10,7 +10,7 @@ class HSlider :Element{
     var thumb:Thumb?
     var tempThumbMouseX:CGFloat = 0/*This value holds the onDown position when you click the thumb*/
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
-    init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.progress = progress
         self.thumbWidth = thumbWidth.isNaN ? height:thumbWidth
         super.init(width,height,parent,id)

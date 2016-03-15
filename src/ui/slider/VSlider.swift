@@ -13,7 +13,7 @@ class VSlider:Element{
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
     var thumbHeight:CGFloat
-    init(_ width: CGFloat, _ height: CGFloat,_ thumbHeight:CGFloat = CGFloat.NaN, _ progress:CGFloat = 0,_ parent : IElement? = nil, id : String? = nil){
+    init(_ width: CGFloat, _ height: CGFloat,_ thumbHeight:CGFloat = NaN, _ progress:CGFloat = 0,_ parent : IElement? = nil, id : String? = nil){
         self.progress = progress
         self.thumbHeight = thumbHeight.isNaN ? width:thumbHeight// :TODO: explain in a comment what this does
         super.init(width,height,parent,id)

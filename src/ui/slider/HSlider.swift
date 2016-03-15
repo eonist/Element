@@ -17,7 +17,7 @@ class HSlider :Element{
     }
     override func resolveSkin() {
         super.resolveSkin();
-        thumb = addSubView(Thumb(width, thumbWidth,self))
+        thumb = addSubView(Thumb(thumbWidth, height,self))
         setProgressValue(progress);
     }
     func onThumbDown(){
@@ -27,7 +27,7 @@ class HSlider :Element{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
-        //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
+        Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, frame.width, thumbWidth)
         thumb!.frame.x = Utils.thumbPosition(progress, frame.width, thumbWidth)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))

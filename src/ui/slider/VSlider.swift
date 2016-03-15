@@ -36,7 +36,7 @@ class VSlider:Element{
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
-        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height, thumbHeight)
+        progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, frame.height/*<--this is the problem, dont use frame*/, thumbHeight)
         thumb!.frame.y = Utils.thumbPosition(progress, frame.height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event

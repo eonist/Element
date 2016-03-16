@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * HorizontalNodeSlider is used when 2 sliders are need, as in section definition or zoom, or gradient values
  * // :TODO: to get the toFront method working you need to support relative positioning, currently the Element framework doesnt support this
@@ -13,6 +13,7 @@ class VNodeSlider:Element{
     var tempNodeMouseY:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
+    var globalMouseMovedHandeler:AnyObject?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeHeight:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
@@ -29,12 +30,13 @@ class VNodeSlider:Element{
     }
     func onStartNodeDown(event : ButtonEvent) {
 //		DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
-        tempNodeMouseY = startNode.mouseY
+        tempNodeMouseY = startNode!.localPos().y
         //add on move listener here
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown(event : ButtonEvent) {
 //		DepthModifier.toFront(_endNode, this);// :TODO: this may now work since they are floating:none
-        tempNodeMouseY = _endNode.mouseY
+        tempNodeMouseY = endNode!.localPos().y
         //add on move listener here
     }
     func onStartNodeMove(event : MouseEvent) {

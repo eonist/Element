@@ -1,8 +1,7 @@
 import Foundation
 
-class RadioButton:SelectButton,ISelectable{// :TODO: impliment IDisableable also and extend DisableTextButton
+class RadioButton:SelectButton{// :TODO: impliment IDisableable also and extend DisableTextButton
     var radioBullet:RadioBullet?
-    var isSelected:Bool
     init(width:CGFloat, height:CGFloat, text:String = "defaultText", isSelected:Bool = false, parent:IElement? = nil, id:String? = nil) {
         self.isSelected = isSelected;
         super.init(width,height,text,parent,id);
@@ -15,20 +14,15 @@ class RadioButton:SelectButton,ISelectable{// :TODO: impliment IDisableable also
         super.resolveSkin();
         radioBullet = addSubView(RadioBullet(super.width,super.height,false,false,_isSelected,this)) as RadioBullet;
     }
-    //----------------------------------
-    //  implicit getters / setters
-    //----------------------------------
     override func setSelected(isSelected:Bool) {
         radioBullet.setSelected(isSelected);
     }
-    //----------------------------------
-    //  getters / setters
-    //----------------------------------
     /**
      * @Note this method represents something that should be handled by a method named getSelected, but since this class impliments ISelectable it has to implment selected and selectable
      */
     func getSelected()->Bool {
-        return radioBullet != nil ? radioBullet.selected : isSelected;/*Temp fix*/
+        return radioBullet != nil ? radioBullet?.isSelected : isSelected;/*Temp fix*/
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 

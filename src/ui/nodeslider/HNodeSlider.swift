@@ -18,12 +18,17 @@ class HNodeSlider:Element {
     }
     override func resolveSkin() {
         super.resolveSkin();
-        startNode = addChild(SelectButton(nodeWidth, height, false, self, "start"))
+        startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
         setStartProgress(startProgress)
-        endNode = addChild(SelectButton(nodeWidth, height, false, self, "end"))
+        endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
         setEndProgress(endProgress)
         selectGroup = SelectGroup([startNode,endNode])
         selectGroup.setSelected(startNode)
+    }
+    func onStartNodeDown(event : ButtonEvent) {
+//		DepthModifier.toFront(_startNode, this);
+        tempNodeMouseX = startNode.mouseX;
+        //add on move handler here
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

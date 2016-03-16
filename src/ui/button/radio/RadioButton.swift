@@ -3,7 +3,7 @@ import Foundation
 class RadioButton:TextButton,ISelectable{// :TODO: impliment IDisableable also and extend DisableTextButton
     var radioBullet:RadioBullet?
     var isSelected:Bool
-    init(_ width:CGFloat, _ height:CGFloat, text:String = "defaultText", _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
         self.isSelected = isSelected
         super.init(text,width,height,parent,id)
     }

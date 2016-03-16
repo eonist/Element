@@ -5,7 +5,7 @@ import Foundation
  * // :TODO: support for custom node shape design
  * // :TODO: when implimenting selectgroup functionality you need to be able to change set the selection on press not on release (You might need to impliment NodeButton that impliments iselectable in order to make this happen)
  */
-class VNodeSlider {
+class VNodeSlider:Element{
     var startNode:SelectButton?
     var endNode:SelectButton?
     var selectGroup:SelectGroup?
@@ -19,4 +19,5 @@ class VNodeSlider {
         self.nodeHeight = nodeHeight.isNaN ? width:nodeHeight
         super.init(width, height, parent, id)
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

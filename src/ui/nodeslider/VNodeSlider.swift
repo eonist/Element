@@ -77,16 +77,16 @@ class Utils{
 	/**
 	 * Returns the x position of a nodes @param progress
 	 */
-	public static function nodePosition(progress:Number, height:Number, nodeHeight:Number):Number {
-		var minThumbPos:Number = height - nodeHeight;/*Minimum thumb position*/
-		return progress * minThumbPos;
+	static func nodePosition(progress:CGFloat, _ height:CGFloat, _ nodeHeight:CGFloat) -> CGFloat {
+		var minThumbPos:Number = height - nodeHeight/*Minimum thumb position*/
+		return progress * minThumbPos
 	}
 	/**
 	 * Returns the progress derived from a node 
 	 * @return a number between 0 and 1
 	 */
-	public static function progress(mouseY:Number,tempNodeMouseX:Number,height:Number,nodeHeight:Number):Number {
+	static func progress(mouseY:CGFloat,_ tempNodeMouseX:CGFloat,_ height:CGFloat,_ nodeHeight:CGFloat) -> CGFloat {
 		var progress:Number = (mouseY-tempNodeMouseX) / (height-nodeHeight);
-		return Math.max(0,Math.min(progress,1));/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
+		return Math.max(0,Math.min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
 	}
 }

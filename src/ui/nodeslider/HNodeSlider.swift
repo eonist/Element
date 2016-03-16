@@ -25,12 +25,12 @@ class HNodeSlider:Element {
         setEndProgressValue(endProgress)
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
-    func onStartNodeDown(event:ButtonEvent) {
+    func onStartNodeDown() {
 //		DepthModifier.toFront(_startNode, this);
         tempNodeMouseX = startNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
-    func onEndNodeDown(event:ButtonEvent) {
+    func onEndNodeDown() {
 //		DepthModifier.toFront(_endNode, this);
         tempNodeMouseX = endNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener

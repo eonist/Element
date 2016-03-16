@@ -23,15 +23,14 @@ class VNodeSlider:Element{
     override func resolveSkin() {
         super.resolveSkin();
         startNode = addSubView(SelectButton(width, nodeHeight,false,self,"start"))
-        setStartProgress(startProgress)
+        setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(width, nodeHeight,false,self,"end"))
-        setEndProgress(endProgress)
+        setEndProgressValue(endProgress)
         selectGroup = SelectGroup([startNode!,endNode!],startNode)
     }
     func onStartNodeDown(event : ButtonEvent) {
 //		DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
         tempNodeMouseY = startNode!.localPos().y
-        //add on move listener here
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown(event : ButtonEvent) {

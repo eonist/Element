@@ -13,8 +13,11 @@ class HNodeSlider:Element {
     init(width:CGFloat = NaN, height:CGFloat = NaN, nodeWidth:CGFloat = NaN, startProgress:CGFloat = 0, endProgress:CGFloat = 1, parent:IElement? = nil, id:String? = nil, classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
-        self.nodeWidth = isNaN(nodeWidth) ? height:nodeWidth
-        super.init(width, height, parent, id,classId)
-        
+        self.nodeWidth = nodeWidth.isNaN ? height:nodeWidth
+        super.init(width, height, parent, id, classId)
     }
+
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+        
+    
 }

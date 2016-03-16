@@ -10,6 +10,7 @@ class HNodeSlider:Element {
     var tempNodeMouseX:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
+    var globalMouseMovedHandeler:AnyObject?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeWidth:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
@@ -27,12 +28,12 @@ class HNodeSlider:Element {
     func onStartNodeDown(event:ButtonEvent) {
 //		DepthModifier.toFront(_startNode, this);
         tempNodeMouseX = startNode!.localPos().x
-        //add on move handler here
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown(event:ButtonEvent) {
 //		DepthModifier.toFront(_endNode, this);
         tempNodeMouseX = endNode!.localPos().x
-        //add on move handler here
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)

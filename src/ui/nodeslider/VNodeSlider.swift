@@ -59,7 +59,7 @@ class VNodeSlider:Element{
          if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === startNode && event.type == ButtonEvent.down){onStartNodeDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === startNode && event.type == ButtonEvent.up){onStartNodeUp()}//if thumbButton is down call onThumbUp
         else if(event.origin === endNode && event.type == ButtonEvent.down){onEndNodeDown()}

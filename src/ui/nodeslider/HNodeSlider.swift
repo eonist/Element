@@ -37,15 +37,13 @@ class HNodeSlider:Element {
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         startNode!.x = Utils.nodePosition(startProgress, width, nodeWidth)
-        //send this event: NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
-        super.onEvent(SliderEvent(SliderEvent.change,startProgress,self))
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,self))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent?  {
         endProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         endNode!.x = Utils.nodePosition(endProgress, width, nodeWidth)
-        //send this event:NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode)
-        super.onEvent(SliderEvent(SliderEvent.change,endProgress,self))
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,self))
         return event
     }
     func onStartNodeUp(event : MouseEvent)  {

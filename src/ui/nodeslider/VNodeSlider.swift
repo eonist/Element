@@ -40,15 +40,15 @@ class VNodeSlider:Element{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
-        startProgress = Utils.progress(self.mouseY, tempNodeMouseY, height, nodeHeight)
-        startNode.y = Utils.nodePosition(startProgress, height, nodeHeight)
-        NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
+        startProgress = Utils.progress(event.localPos(self).y, tempNodeMouseY!, height, nodeHeight)
+        startNode!.y = Utils.nodePosition(startProgress, height, nodeHeight)
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode!))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent? {
-        endProgress = Utils.progress(this.mouseY, tempNodeMouseY, height, nodeHeight)
-        endNode.y = Utils.nodePosition(endProgress, height, nodeHeight)
-        NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode)
+        endProgress = Utils.progress(event.localPos(self).y, tempNodeMouseY!, height, nodeHeight)
+        endNode!.y = Utils.nodePosition(endProgress, height, nodeHeight)
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode!))
         return event
     }
     func onStartNodeUp(event : MouseEvent) {
@@ -77,7 +77,7 @@ class VNodeSlider:Element{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-class Utils{
+private class Utils{
 	/**
 	 * Returns the x position of a nodes @param progress
 	 */

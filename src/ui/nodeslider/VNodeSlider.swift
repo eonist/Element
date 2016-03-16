@@ -37,5 +37,10 @@ class VNodeSlider:Element{
         tempNodeMouseY = _endNode.mouseY
         //add on move listener here
     }
+    func onStartNodeMove(event : MouseEvent) {
+        startProgress = Utils.progress(self.mouseY, tempNodeMouseY, height, nodeHeight)
+        startNode.y = Utils.nodePosition(startProgress, height, nodeHeight)
+        NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

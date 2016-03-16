@@ -19,9 +19,9 @@ class HNodeSlider:Element {
     override func resolveSkin() {
         super.resolveSkin();
         startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
-        setStartProgress(startProgress)
+        setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
-        setEndProgress(endProgress)
+        setEndProgressValue(endProgress)
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
     func onStartNodeDown(event:ButtonEvent) {
@@ -38,11 +38,15 @@ class HNodeSlider:Element {
         startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         startNode!.x = Utils.nodePosition(startProgress, width, nodeWidth)
         //send this event: NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
+        super.onEvent(SliderEvent(SliderEvent.change,startProgress,self))
+        return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent?  {
         endProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         endNode!.x = Utils.nodePosition(endProgress, width, nodeWidth)
         //send this event:NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode)
+        super.onEvent(SliderEvent(SliderEvent.change,endProgress,self))
+        return event
     }
     func onStartNodeUp(event : MouseEvent)  {
         //remove move event here

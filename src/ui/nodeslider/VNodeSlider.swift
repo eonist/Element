@@ -6,18 +6,17 @@ import Foundation
  * // :TODO: when implimenting selectgroup functionality you need to be able to change set the selection on press not on release (You might need to impliment NodeButton that impliments iselectable in order to make this happen)
  */
 class VNodeSlider {
-    private var _startNode : SelectButton;
-    private var _endNode : SelectButton;
-    private var _selectGroup : SelectGroup;
-    private var _nodeHeight : Number;
-    private var _tempNodeMouseY : Number;
-    private var _startProgress : Number;
-    private var _endProgress : Number;
-    public function VNodeSlider(width:Number = NaN, height:Number = NaN, nodeHeight:Number = NaN, startProgress:Number = 0,endProgress:Number = 1, parent : IElement = null, id : String = null, classId:String = null) {
-    _startProgress = startProgress;
-    _endProgress = endProgress;
-    _nodeHeight = isNaN(nodeHeight) ? width:nodeHeight;
-    super(width, height, parent, id, classId);
-    addEventListeners();
+    var startNode:SelectButton?
+    var endNode:SelectButton?
+    var selectGroup:SelectGroup?
+    var nodeHeight:CGFloat
+    var tempNodeMouseY:CGFloat
+    var startProgress:CGFloat
+    var endProgress:CGFloat
+    init(_width:CGFloat = NaN, height:CGFloat = NaN, nodeHeight:CGFloat = NaN, startProgress:CGFloat = 0,endProgress:CGFloat = 1, parent:IElement = nil, id:String = nil, classId:String = nil) {
+        self.startProgress = startProgress
+        self.endProgress = endProgress
+        self.nodeHeight = nodeHeight.isNaN ? width:nodeHeight
+        super.init(width, height, parent, id)
     }
 }

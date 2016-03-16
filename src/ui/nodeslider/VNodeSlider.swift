@@ -19,5 +19,14 @@ class VNodeSlider:Element{
         self.nodeHeight = nodeHeight.isNaN ? width:nodeHeight
         super.init(width, height, parent, id)
     }
+    func resolveSkin() : void {
+        super.resolveSkin();
+        startNode = addSubView(SelectButton(width, nodeHeight,false,this,"start"))
+        setStartProgress(startProgress)
+        endNode = addChild(new SelectButton(width, nodeHeight,false,this,"end"))
+        setEndProgress(endProgress)
+        selectGroup = new SelectGroup([startNode,endNode])
+        selectGroup.setSelected(startNode)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

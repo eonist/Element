@@ -35,13 +35,13 @@ class HNodeSlider:Element {
         //add on move handler here
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
-        startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX, width, nodeWidth)
-        startNode.x = Utils.nodePosition(startProgress, width, nodeWidth)
+        startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
+        startNode!.x = Utils.nodePosition(startProgress, width, nodeWidth)
         //send this event: NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
     }
-    func onEndNodeMove(event:MouseEvent)  {
-        endProgress = Utils.progress(mouseX, tempNodeMouseX, width, nodeWidth)
-        endNode.x = Utils.nodePosition(endProgress, width, nodeWidth)
+    func onEndNodeMove(event:NSEvent)-> NSEvent?  {
+        endProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
+        endNode!.x = Utils.nodePosition(endProgress, width, nodeWidth)
         //send this event:NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode)
     }
     func onStartNodeUp(event : MouseEvent)  {
@@ -53,20 +53,20 @@ class HNodeSlider:Element {
     /**
      * @param progress (0-1)
      */
-    func setStartProgress(progress:CGFloat){
+    func setStartProgressValue(progress:CGFloat){
         startProgress = progress
-        startNode.x = Utils.nodePosition(progress, width, nodeWidth)
+        startNode!.x = Utils.nodePosition(progress, width, nodeWidth)
     }
-    func setEndProgress(progress:CGFloat){
+    func setEndProgressValue(progress:CGFloat){
         endProgress = progress
-        endNode.x = Utils.nodePosition(progress, width, nodeWidth)
+        endNode!.x = Utils.nodePosition(progress, width, nodeWidth)
     }
-    func setSize(width : CGFloat, _ height : CGFloat)  {
+    override func setSize(width : CGFloat, _ height : CGFloat)  {
         super.setSize(width, height)
-        setEndProgress(endProgress)
-        setStartProgress(startProgress)
-        startNode.setSize(startNode.width, height)
-        endNode.setSize(startNode.width, height)
+        setEndProgressValue(endProgress)
+        setStartProgressValue(startProgress)
+        startNode!.setSize(startNode!.width, height)
+        endNode!.setSize(startNode!.width, height)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

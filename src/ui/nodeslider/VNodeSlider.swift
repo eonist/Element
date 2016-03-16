@@ -19,14 +19,19 @@ class VNodeSlider:Element{
         self.nodeHeight = nodeHeight.isNaN ? width:nodeHeight
         super.init(width, height, parent, id)
     }
-    func resolveSkin() : void {
+    override func resolveSkin() {
         super.resolveSkin();
-        startNode = addSubView(SelectButton(width, nodeHeight,false,this,"start"))
+        startNode = addSubView(SelectButton(width, nodeHeight,false,self,"start"))
         setStartProgress(startProgress)
-        endNode = addChild(new SelectButton(width, nodeHeight,false,this,"end"))
+        endNode = addSubView(SelectButton(width, nodeHeight,false,self,"end"))
         setEndProgress(endProgress)
-        selectGroup = new SelectGroup([startNode,endNode])
-        selectGroup.setSelected(startNode)
+        selectGroup = SelectGroup([startNode!,endNode!],startNode)
+    }
+    func onStartNodeDown(event : ButtonEvent) {
+//			DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
+        _tempNodeMouseY = _startNode.mouseY;
+        this.stage.addEventListener(MouseEvent.MOUSE_UP, onStartNodeUp);
+        this.stage.addEventListener(MouseEvent.MOUSE_MOVE, onStartNodeMove);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

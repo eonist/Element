@@ -45,11 +45,29 @@ class HNodeSlider:Element {
         endNode.x = Utils.nodePosition(endProgress, width, nodeWidth)
         //send this event:NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode)
     }
-    private function onStartNodeUp(event : MouseEvent)  {
+    func onStartNodeUp(event : MouseEvent)  {
         //remove move event here
     }
-    private function onEndNodeUp(event : MouseEvent)  {
+    func onEndNodeUp(event : MouseEvent)  {
         //remove move event here
+    }
+    /**
+     * @param progress (0-1)
+     */
+    func setStartProgress(progress:CGFloat){
+        startProgress = progress
+        startNode.x = Utils.nodePosition(progress, width, nodeWidth)
+    }
+    func setEndProgress(progress:CGFloat){
+        endProgress = progress
+        endNode.x = Utils.nodePosition(progress, width, nodeWidth)
+    }
+    func setSize(width : CGFloat, height : CGFloat)  {
+        super.setSize(width, height)
+        setEndProgress(endProgress)
+        setStartProgress(startProgress)
+        startNode.setSize(startNode.width, height)
+        endNode.setSize(startNode.width, height)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -28,10 +28,9 @@ class VNodeSlider:Element{
         selectGroup = SelectGroup([startNode!,endNode!],startNode)
     }
     func onStartNodeDown(event : ButtonEvent) {
-//			DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
-        _tempNodeMouseY = _startNode.mouseY;
-        this.stage.addEventListener(MouseEvent.MOUSE_UP, onStartNodeUp);
-        this.stage.addEventListener(MouseEvent.MOUSE_MOVE, onStartNodeMove);
+//		DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
+        tempNodeMouseY = startNode.mouseY
+        //add on move listener here
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

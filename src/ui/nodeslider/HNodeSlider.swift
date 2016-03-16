@@ -22,17 +22,16 @@ class HNodeSlider:Element {
         setStartProgress(startProgress)
         endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
         setEndProgress(endProgress)
-        selectGroup = SelectGroup([startNode,endNode])
-        selectGroup.setSelected(startNode)
+        selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
     func onStartNodeDown(event:ButtonEvent) {
 //		DepthModifier.toFront(_startNode, this);
-        tempNodeMouseX = startNode.mouseX
+        tempNodeMouseX = startNode!.localPos().x
         //add on move handler here
     }
     func onEndNodeDown(event:ButtonEvent) {
 //		DepthModifier.toFront(_endNode, this);
-        tempNodeMouseX = endNode.mouseX
+        tempNodeMouseX = endNode!.localPos().x
         //add on move handler here
     }
     func onStartNodeMove(event:MouseEvent) {

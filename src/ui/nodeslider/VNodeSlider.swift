@@ -37,17 +37,19 @@ class VNodeSlider:Element{
     func onEndNodeDown(event : ButtonEvent) {
 //		DepthModifier.toFront(_endNode, this);// :TODO: this may now work since they are floating:none
         tempNodeMouseY = endNode!.localPos().y
-        //add on move listener here
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
-    func onStartNodeMove(event : MouseEvent) {
+    func onStartNodeMove(event:NSEvent)-> NSEvent? {
         startProgress = Utils.progress(self.mouseY, tempNodeMouseY, height, nodeHeight)
         startNode.y = Utils.nodePosition(startProgress, height, nodeHeight)
         NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
+        return event
     }
-    func onEndNodeMove(event : MouseEvent) {
+    func onEndNodeMove(event:NSEvent)-> NSEvent? {
         endProgress = Utils.progress(this.mouseY, tempNodeMouseY, height, nodeHeight)
         endNode.y = Utils.nodePosition(endProgress, height, nodeHeight)
         NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode)
+        return event
     }
     func onStartNodeUp(event : MouseEvent) {
         //remove listener

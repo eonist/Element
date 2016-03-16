@@ -53,5 +53,40 @@ class VNodeSlider:Element{
     func onEndNodeUp(event : MouseEvent) {
         //remove listener
     }
+    /**
+     * @param progress (0-1)
+     */
+    func setStartProgress(progress:CGFloat){
+        startProgress = progress
+        startNode.y = Utils.nodePosition(progress, height, nodeHeight)
+    }
+    func setEndProgress(progress:CGFloat){
+        endProgress = progress
+        endNode.y = Utils.nodePosition(progress, height, nodeHeight)
+    }
+    func setSize(width:CGFloat, _ height:CGFloat) {
+        super.setSize(width, height)
+        setEndProgress(endProgress)
+        setStartProgress(startProgress)
+        startNode.setSize(width, startNode.height)
+        endNode.setSize(width, startNode.height)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+class Utils{
+	/**
+	 * Returns the x position of a nodes @param progress
+	 */
+	public static function nodePosition(progress:Number, height:Number, nodeHeight:Number):Number {
+		var minThumbPos:Number = height - nodeHeight;/*Minimum thumb position*/
+		return progress * minThumbPos;
+	}
+	/**
+	 * Returns the progress derived from a node 
+	 * @return a number between 0 and 1
+	 */
+	public static function progress(mouseY:Number,tempNodeMouseX:Number,height:Number,nodeHeight:Number):Number {
+		var progress:Number = (mouseY-tempNodeMouseX) / (height-nodeHeight);
+		return Math.max(0,Math.min(progress,1));/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
+	}
 }

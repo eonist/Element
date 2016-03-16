@@ -16,8 +16,14 @@ class HNodeSlider:Element {
         self.nodeWidth = nodeWidth.isNaN ? height:nodeWidth
         super.init(width, height, parent, id)
     }
-
+    override func resolveSkin() {
+        super.resolveSkin();
+        startNode = addChild(SelectButton(nodeWidth, height, false, self, "start"))
+        setStartProgress(startProgress)
+        endNode = addChild(SelectButton(nodeWidth, height, false, self, "end"))
+        setEndProgress(endProgress)
+        selectGroup = SelectGroup([startNode,endNode])
+        selectGroup.setSelected(startNode)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-        
-    
 }

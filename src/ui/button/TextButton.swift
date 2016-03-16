@@ -3,7 +3,7 @@ import Cocoa
 class TextButton:Button {
     var text:Text? = nil;
     var textString:String;
-    init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
+    /*text should be after w and h-->*/init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
         textString = text;
         super.init(width, height, parent, id)
     }

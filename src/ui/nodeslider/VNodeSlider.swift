@@ -10,10 +10,10 @@ class VNodeSlider {
     var endNode:SelectButton?
     var selectGroup:SelectGroup?
     var nodeHeight:CGFloat
-    var tempNodeMouseY:CGFloat
+    var tempNodeMouseY:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
-    init(_width:CGFloat = NaN, height:CGFloat = NaN, nodeHeight:CGFloat = NaN, startProgress:CGFloat = 0,endProgress:CGFloat = 1, parent:IElement = nil, id:String = nil, classId:String = nil) {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeHeight:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
         self.nodeHeight = nodeHeight.isNaN ? width:nodeHeight

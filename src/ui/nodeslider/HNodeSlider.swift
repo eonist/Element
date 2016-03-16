@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * HorizontalNodeSlider is used when 2 sliders are need, as in section definition or zoom, or gradient values
  */
@@ -34,8 +34,8 @@ class HNodeSlider:Element {
         tempNodeMouseX = endNode!.localPos().x
         //add on move handler here
     }
-    func onStartNodeMove(event:MouseEvent) {
-        startProgress = Utils.progress(mouseX, tempNodeMouseX, width, nodeWidth)
+    func onStartNodeMove(event:NSEvent)-> NSEvent? {
+        startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX, width, nodeWidth)
         startNode.x = Utils.nodePosition(startProgress, width, nodeWidth)
         //send this event: NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode)
     }

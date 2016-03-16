@@ -32,5 +32,10 @@ class VNodeSlider:Element{
         tempNodeMouseY = startNode.mouseY
         //add on move listener here
     }
+    func onEndNodeDown(event : ButtonEvent) {
+//		DepthModifier.toFront(_endNode, this);// :TODO: this may now work since they are floating:none
+        tempNodeMouseY = _endNode.mouseY
+        //add on move listener here
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

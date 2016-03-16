@@ -10,7 +10,7 @@ class HNodeSlider:Element {
     var tempNodeMouseX:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
-    init(width:CGFloat = NaN, height:CGFloat = NaN, nodeWidth:CGFloat = NaN, startProgress:CGFloat = 0, endProgress:CGFloat = 1, parent:IElement? = nil, id:String? = nil, classId:String? = nil) {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeWidth:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
         self.nodeWidth = nodeWidth.isNaN ? height:nodeWidth
@@ -62,7 +62,7 @@ class HNodeSlider:Element {
         endProgress = progress
         endNode.x = Utils.nodePosition(progress, width, nodeWidth)
     }
-    func setSize(width : CGFloat, height : CGFloat)  {
+    func setSize(width : CGFloat, _ height : CGFloat)  {
         super.setSize(width, height)
         setEndProgress(endProgress)
         setStartProgress(startProgress)
@@ -70,4 +70,21 @@ class HNodeSlider:Element {
         endNode.setSize(startNode.width, height)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+private class Utils{
+	/**
+	 * Return the x position of a nodes @param progress
+	 */
+	static func nodePosition(progress:CGFloat, _ width:CGFloat, _ nodeWidth:CGFloat)->CGFloat {
+		let minThumbPos:CGFloat = width - nodeWidth;/*Minimum thumb position*/
+		return progress * minThumbPos;
+	}
+	/**
+	 * Returns the progress derived from a node 
+	 * @return a number between 0 and 1
+	 */
+	static func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ nodeWidth:CGFloat)->CGFloat {
+		let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-nodeWidth);
+		return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
+	}
 }

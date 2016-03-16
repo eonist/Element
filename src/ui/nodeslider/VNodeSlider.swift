@@ -13,4 +13,11 @@ class VNodeSlider {
     private var _tempNodeMouseY : Number;
     private var _startProgress : Number;
     private var _endProgress : Number;
+    public function VNodeSlider(width:Number = NaN, height:Number = NaN, nodeHeight:Number = NaN, startProgress:Number = 0,endProgress:Number = 1, parent : IElement = null, id : String = null, classId:String = null) {
+    _startProgress = startProgress;
+    _endProgress = endProgress;
+    _nodeHeight = isNaN(nodeHeight) ? width:nodeHeight;
+    super(width, height, parent, id, classId);
+    addEventListeners();
+    }
 }

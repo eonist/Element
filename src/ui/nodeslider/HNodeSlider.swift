@@ -30,5 +30,15 @@ class HNodeSlider:Element {
         tempNodeMouseX = startNode.mouseX;
         //add on move handler here
     }
+    func onEndNodeDown(event : ButtonEvent) {
+//		DepthModifier.toFront(_endNode, this);
+        tempNodeMouseX = endNode.mouseX;
+        //add on move handler here
+    }
+    func onStartNodeMove(event : MouseEvent) {
+        _startProgress = Utils.progress(this.mouseX, _tempNodeMouseX, width, _nodeWidth);
+        _startNode.x = Utils.nodePosition(_startProgress, width, _nodeWidth);
+        dispatchEvent(new NodeSliderEvent(NodeSliderEvent.CHANGE,_startProgress,_endProgress,_startNode));
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

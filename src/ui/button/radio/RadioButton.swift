@@ -13,7 +13,7 @@ class RadioButton:TextButton,ISelectable{// :TODO: impliment IDisableable also a
      */
     override func resolveSkin() {
         super.resolveSkin();
-        radioBullet = addSubView(RadioBullet(super.width,super.height,isSelected,self))
+        radioBullet = addSubView(RadioBullet(13,13,isSelected,self))
     }
     func setSelected(isSelected:Bool) {
         radioBullet!.setSelected(isSelected);

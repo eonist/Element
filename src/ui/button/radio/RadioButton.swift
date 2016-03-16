@@ -26,4 +26,3 @@ class RadioButton:TextButton,ISelectable{// :TODO: impliment IDisableable also a
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-

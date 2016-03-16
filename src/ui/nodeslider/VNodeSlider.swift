@@ -29,11 +29,13 @@ class VNodeSlider:Element{
         selectGroup = SelectGroup([startNode!,endNode!],startNode)
     }
     func onStartNodeDown() {
+        Swift.print("onStartNodeDown")
 //		DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
         tempNodeMouseY = startNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
+        Swift.print("onEndNodeDown")
 //		DepthModifier.toFront(_endNode, this);// :TODO: this may now work since they are floating:none
         tempNodeMouseY = endNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
@@ -50,16 +52,18 @@ class VNodeSlider:Element{
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode!))
         return event
     }
-    func onStartNodeUp(event : MouseEvent) {
+    func onStartNodeUp() {
          if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    func onEndNodeUp(event : MouseEvent) {
+    func onEndNodeUp() {
          if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === startNode && event.type == ButtonEvent.down){onStartNodeDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === startNode && event.type == ButtonEvent.up){onStartNodeUp()}//if thumbButton is down call onThumbUp
+        else if(event.origin === endNode && event.type == ButtonEvent.down){onEndNodeDown()}
+        else if(event.origin === endNode && event.type == ButtonEvent.up){onEndNodeUp()}
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**

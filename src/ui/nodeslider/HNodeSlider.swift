@@ -58,6 +58,7 @@ class HNodeSlider:Element {
         if(event.origin === startNode && event.type == ButtonEvent.down){onStartNodeDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === startNode && event.type == ButtonEvent.up){onStartNodeUp()}//if thumbButton is down call onThumbUp
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
+        fatalError("implement listeners for endNode aswell")
     }
     /**
      * @param progress (0-1)

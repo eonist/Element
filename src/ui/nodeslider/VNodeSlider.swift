@@ -26,7 +26,7 @@ class VNodeSlider:Element{
         setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(width, nodeHeight,false,self,"end"))
         setEndProgressValue(endProgress)
-        selectGroup = SelectGroup([startNode!,endNode!],startNode)
+        //selectGroup = SelectGroup([startNode!,endNode!],startNode)
     }
     func onStartNodeDown() {
         Swift.print("onStartNodeDown")

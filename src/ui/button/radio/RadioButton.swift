@@ -1,11 +1,11 @@
 import Foundation
 
 class RadioButton:SelectButton,ISelectable{// :TODO: impliment IDisableable also and extend DisableTextButton
-    var radioBullet:RadioBullet
+    var radioBullet:RadioBullet?
     var isSelected:Bool
-    init(width:CGFloat, height:CGFloat, isFocused:Boolean = false, isDisabled:Boolean = false,text:String = "defaultText", isSelected:Bool? = false, parent:IElement? = nil, id:String? = nil) {
-        _isSelected = isSelected;
-        super(width,height,isFocused, isDisabled,text,parent,id,classId);
+    init(width:CGFloat, height:CGFloat, text:String = "defaultText", isSelected:Bool = false, parent:IElement? = nil, id:String? = nil) {
+        self.isSelected = isSelected;
+        super.init(width,height,text,parent,id);
     }
     /**
      * @Note:when added to stage and if RadioBullet dispatches selct event it will bubble up and through this class (so no need for extra eventlistners and dispatchers in this class)
@@ -13,13 +13,13 @@ class RadioButton:SelectButton,ISelectable{// :TODO: impliment IDisableable also
      */
     override func resolveSkin() {
         super.resolveSkin();
-        radioBullet = addChild(RadioBullet(super.width,super.height,false,false,_isSelected,this)) as RadioBullet;
+        radioBullet = addSubView(RadioBullet(super.width,super.height,false,false,_isSelected,this)) as RadioBullet;
     }
     //----------------------------------
     //  implicit getters / setters
     //----------------------------------
     override func setSelected(isSelected:Bool) {
-        _radioBullet.setSelected(isSelected);
+        radioBullet.setSelected(isSelected);
     }
     //----------------------------------
     //  getters / setters

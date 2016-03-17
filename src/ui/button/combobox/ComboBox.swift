@@ -1,3 +1,4 @@
+import Foundation
 /** 
  * @Note for multiSelect option make MultiCheckComboBox.as aand CheckComboBox?
  * @Note: to get the height while the list is pulled down: comboBox.height * comboBox.maxShowingItems

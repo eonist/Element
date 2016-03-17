@@ -1,3 +1,4 @@
+import Foundation
 /**
  * NOTE: you can derive the slected via the combobox item it self. So no need to pass the selected along in the event
  */
@@ -10,7 +11,7 @@ class ComboBoxEvent :Event{
         super.init(type, origin)
     }
 }
-extension ListEvent{
+extension ComboBoxEvent{
     /**
      * Convenience
      * NOTE: Keeps the event light-weight by not referencing the item directly

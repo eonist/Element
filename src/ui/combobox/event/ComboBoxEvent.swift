@@ -6,10 +6,6 @@ class ComboBoxEvent :Event{
     static var click:String = "comboBoxEventClick"
 	static var headerClick:String = "comboBoxEventHeaderClick"
 	static var listSelect:String = "comboBoxEventListSelect"
-    /*private var _selected : ISelectable;*/
-    init(_ type: String, _ origin: AnyObject) {
-        super.init(type, origin)
-    }
 }
 extension ComboBoxEvent{
     /**
@@ -18,6 +14,6 @@ extension ComboBoxEvent{
      * NOTE: you may have to reconsider this as the selected item may have de-selected before the event arrives (think cpu threads etc)
      */
     var selected:ISelectable{
-        return (origin as! ComboBox).list.lableContainer!.subviews[index] as! ISelectable
+        return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
     }
 }

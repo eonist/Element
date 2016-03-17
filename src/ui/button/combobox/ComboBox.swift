@@ -53,8 +53,6 @@ class ComboBox{
 	
 	override onEvent(event:Event){
 		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
-			
-		_list.addEventListener(ListEvent.SELECT, onListSelect);
-		_headerButton.addEventListener(ButtonEvent.DOWN, onHeaderMouseDown);
+		if(event.type == ButtonEvent.down, && event.origin === headerButton){onListSelect(event as! ListEvent)}
 	}
 }

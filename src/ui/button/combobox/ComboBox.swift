@@ -32,4 +32,8 @@ class ComboBox{
 		headerButton.setText(ListParser.selectedTitle(list))
 		setOpen(isOpen)
 	}
+	func onHeaderMouseDown(event:ButtonEvent) {
+		setOpen(!_isOpen)
+		/*send this event*/ComboBoxEvent(ComboBoxEvent.headerClick,self)
+	}
 }

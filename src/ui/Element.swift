@@ -16,6 +16,7 @@ class Element:InteractiveView2,IElement {
     var parent : IElement?
     var id : String?/*css selector id*/
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
+    override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width,height)}set{}}
     /*override var frame: NSRect {
     get{
     Swift.print("get frame: " + "\(super.frame)")

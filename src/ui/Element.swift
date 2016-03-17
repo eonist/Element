@@ -7,8 +7,8 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  */
 class Element:InteractiveView2,IElement {
-    var width:CGFloat {get{return super.frame.width}set{super.frame.width = newValue}}
-    var height:CGFloat {get{return super.frame.height}set{super.frame.height = newValue}}
+    var width:CGFloat //{get{return super.frame.width}set{super.frame.width = newValue}}
+    var height:CGFloat //{get{return super.frame.height}set{super.frame.height = newValue}}
     var x:CGFloat{get{return super.frame.x}set{super.frame.x = newValue}}
     var y:CGFloat{get{return super.frame.y}set{super.frame.y = newValue}}
     var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
@@ -18,7 +18,7 @@ class Element:InteractiveView2,IElement {
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
     override var frame:CGRect {
                                 get{
-                                    return CGRect(super.frame.x,super.frame.y,super.frame.width.isNaN ? 0 : super.frame.width,super.frame.height.isNaN ? 0 : super.frame.height)
+                                    return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)
                                 }set{
                                     super.frame = newValue
                                 }
@@ -35,12 +35,12 @@ class Element:InteractiveView2,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        /*self.width = width
-        self.height = height*/
+        self.width = width
+        self.height = height
         /*if(width.isNaN){
         fatalError("NaN")
         }*/
-        super.init(frame: NSRect(0,0,width,height))
+        super.init(frame: NSRect(0,0,0,0))
         resolveSkin()
     }
     /**

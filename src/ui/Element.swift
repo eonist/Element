@@ -17,23 +17,11 @@ class Element:InteractiveView2,IElement {
     var id : String?/*css selector id*/
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}
-    /*override var frame: NSRect {
-    get{
-    Swift.print("get frame: " + "\(super.frame)")
-    return super.frame
-    }set{
-    
-    super.frame = newValue
-    }
-    }*/
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
         self.width = width
         self.height = height
-        /*if(width.isNaN){
-        fatalError("NaN")
-        }*/
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
         resolveSkin()
     }

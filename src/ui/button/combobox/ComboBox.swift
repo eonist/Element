@@ -64,4 +64,9 @@ class ComboBox{
 		if(isOpen && window != null && !window.hasEventListener(MouseEvent.MOUSE_DOWN)) {}//add globalListener
 		if(!isOpen && window != null && widn.hasEventListener(MouseEvent.MOUSE_DOWN)) {}//remove globalListener // :TODO: fix this mess
 	}
+	override func setSize(width : CGFloat, _ height : CGFloat)  {
+		super.setSize(width, height)
+		_list.setSize(width, StylePropertyParser.height(_list.skin))/*temp solution*/
+		_headerButton.setSize(width, StylePropertyParser.height(_headerButton.skin))/*temp solution*/
+	}
 }

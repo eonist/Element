@@ -46,7 +46,7 @@ class ComboBox{
 	 * the select event should be fired only onReleaseInside not as it is now onPress
 	 */
 	func onListSelect(event:ListEvent) {
-		var text:String = ListParser.selectedTitle(_list)
+		var text:String = ListParser.selectedTitle(list)
 		headerButton.setText(text)
 		setOpen(false)
 	}

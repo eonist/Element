@@ -8,7 +8,7 @@ import Foundation
  * // :TODO: Impliment a failsafe so that the slider.thumb doesnt get smaller than its width, do the same for both sliders
  */
 class SliderTextArea:TextArea{
-	static var linesPerScroll:CGFloat = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
+    let linesPerScroll:UInt = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
 	var scrollBarSize:CGFloat
 	var vSlider:VSlider?
 	var hSlider:HSlider?
@@ -26,13 +26,13 @@ class SliderTextArea:TextArea{
 		super.resolveSkin()
 		vSliderInterval = Utils.vSliderinterval(text!.getTextField())
 		vSlider = addSubView(VSlider(24/*_scrollBarSize*/,height,24,0,self))
-		var vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
-		vSlider.setThumbHeight(vSliderThumbHeight)
+		let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
+		vSlider!.setThumbHeightValue(vSliderThumbHeight)
 		//vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
-		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
+		hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
 		hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
-		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider)
-		hSlider.setThumbWidth(hSliderThumbWidth)
+		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+		hSlider!.setThumbWidthValue(hSliderThumbWidth)
 		//hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
 	}
 	/**

@@ -114,6 +114,6 @@ private class Utils{
         horizontalScalar
 //		var horizontalInterval:int = ScrollTextAreaUtil.hScrollBarInterpolation(textField);
 		let horizontalThumbSize:CGFloat = 0//SliderParser.thumbSize(horizontalScalar, slider.width
-		return min(slider.width,horizontalThumbSize);/*the Math.min is a temp fix*/
+		return min(slider.width,horizontalThumbSize)/*the Math.min is a temp fix*/
 	}
 }

@@ -25,7 +25,7 @@ class ComboBox:Element{
 		super.init(width,height,parent,id)
 	}
 	override func resolveSkin(){
-		super.resolveSkin();
+		super.resolveSkin()
 		headerButton = addSubView(TextButton(width, itemHeight, false, false, "", self))// :TODO: - _itemHeight should be something else
 		list = addSubView(SliderList(width, height, itemHeight, dataProvider, self))
 		ListModifier.selectAt(list, initSelected)

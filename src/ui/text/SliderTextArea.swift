@@ -43,7 +43,7 @@ class SliderTextArea:TextArea{
 		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider)
 		hSlider.setThumbWidth(hSliderThumbWidth)
 		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
-		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, LINES_PER_SCROLL)
+		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, SliderTextArea)
 		vSlider.setThumbHeight(verticalThumbSize)
 		vSliderInterval = Utils.vSliderinterval(text.getTextField())
 	}	

@@ -40,22 +40,26 @@ class SliderTextArea:TextArea{
 	 * // :TODO: can be further refactored
 	 */
 	func updateScrollBarThumbSizes() {
-		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
 		hSlider!.setThumbWidthValue(hSliderThumbWidth)
 		hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
-		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, SliderTextArea)
+		let verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
 		vSlider!.setThumbHeightValue(verticalThumbSize)
-		vSliderInterval = Utils.vSliderinterval(text.getTextField())
+		vSliderInterval = Utils.vSliderinterval(text!.getTextField())
 	}	
-	func onSliderChange(event:SliderEvent):void{
-		if(event.currentTarget == _vSlider) {TextFieldModifier.vScrollTo(text.getTextField(), event.progress)}
-		else {TextFieldModifier.hScrollTo(text.getTextField(), event.progress)}
+	func onSliderChange(event:SliderEvent){
+		if(event.origin === vSlider) {
+            //TextFieldModifier.vScrollTo(text.getTextField(), event.progress)
+        }
+		else {
+            //TextFieldModifier.hScrollTo(text.getTextField(), event.progress)
+        }
 	}
 	func onMouseWheel(event:MouseEvent) {
-		var scrollAmount:CGFloat = event.delta/_vSliderInterval/*_scrollBar.interval*/;
-		var currentScroll:CGFloat = _vSlider.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
+		var scrollAmount:CGFloat = 0//event.delta/vSliderInterval/*_scrollBar.interval*/;
+		var currentScroll:CGFloat = vSlider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
 		currentScroll = NumberParser.minMax(currentScroll, 0, 1)
-		vSlider.setProgress(currentScroll)
+		vSlider!.setProgressValue(currentScroll)
 		TextFieldModifier.vScrollTo(text.getTextField(), currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
 	}	
 	override func onEvent(event:Event){

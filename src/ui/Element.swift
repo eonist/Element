@@ -38,6 +38,9 @@ class Element:InteractiveView2,IElement {
         self.id = id;
         /*self.width = width
         self.height = height*/
+        if(width.isNaN){
+            fatalError("NaN")
+        }
         super.init(frame: NSRect(0,0,width,height))
         resolveSkin()
     }

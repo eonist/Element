@@ -25,9 +25,10 @@ class SliderTextArea:TextArea{
 	override func resolveSkin() {
 		super.resolveSkin()
 		vSliderInterval = Utils.vSliderinterval(text!.getTextField())
-		vSlider = addSubView(VSlider(24/*_scrollBarSize*/,height,24,0,self))
+		vSlider = addSubView(VSlider(NaN/*_scrollBarSize*/,height,24,0,self))
 		let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
-		vSlider!.setThumbHeightValue(vSliderThumbHeight)
+        vSliderThumbHeight
+		vSlider!.setThumbHeightValue(45)
 		//vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
 		//hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
 		//hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))

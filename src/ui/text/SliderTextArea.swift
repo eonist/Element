@@ -58,4 +58,9 @@ class SliderTextArea{
 		vSlider.setProgress(currentScroll)
 		TextFieldModifier.vScrollTo(text.getTextField(), currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
 	}	
+	override func onEvent(event:Event){
+		if(event.name == SliderEvent.change || event.origin === vSlider){}
+		else if(event.name == SliderEvent.change || event.origin === hSlider){}
+		/*also listen for mouseWheel events*/
+	}
 }

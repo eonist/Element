@@ -19,7 +19,7 @@ class List : Element,IList{
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
         super.init(width, height,parent,id)
         self.dataProvider.event = onEvent//Add event handler for the dataProvider
-        layer!.masksToBounds = true/*masks the children to the frame*/
+        //layer!.masksToBounds = true/*masks the children to the frame*/
     }
     /**
      * Creates the components in the List Component
@@ -40,6 +40,8 @@ class List : Element,IList{
         var i:Int = index;
         Swift.print("mergeAt: index: " + "\(index)");
         for object:Dictionary<String,String> in objects {// :TODO: use for i
+            Swift.print("getWidth(): " + "\(getWidth())")
+            Swift.print("self.itemHeight: " + "\(self.itemHeight)")
             let item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight ,object["title"]!, false, self.lableContainer)
             //Swift.print("item: " + "\(item)")
             self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/

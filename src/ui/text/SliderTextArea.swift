@@ -18,5 +18,21 @@ class SliderTextArea{
 		self.scrollBarSize = scrollBarSize
 		super.init(width,height,text,parent,id,classId)
 		//addEventListeners()
+	}
+	/**
+	 * // :TODO: Refactor this method
+	 */
+	override func resolveSkin() {
+		super.resolveSkin()
+		vSliderInterval = Utils.vSliderinterval(text.getTextField())
+		vSlider = addSubView(VSlider(24/*_scrollBarSize*/,height,24,0,self))
+		var vSliderThumbHeight:Number = Utils.vSliderThumbHeight(text.getTextField(), vSlider, linesPerScroll)
+		vSlider.setThumbHeight(vSliderThumbHeight)
+		vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
+		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
+		hSlider = addChild(HSlider(width/*_scrollBarSize*/,24,24,0,self))
+		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider)
+		hSlider.setThumbWidth(hSliderThumbWidth)
+		hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
 	}		
 }

@@ -16,7 +16,7 @@ class Element:InteractiveView2,IElement {
     var parent : IElement?
     var id : String?/*css selector id*/
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
-    override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}
+    override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame*/
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;

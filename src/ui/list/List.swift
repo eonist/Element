@@ -10,7 +10,7 @@ import Cocoa
  * // :TODO: try to make the mask an Element
  * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
  */
-class List : Element,IList{
+class List:Element,IList{
     var itemHeight:CGFloat
     var dataProvider : DataProvider
     var lableContainer  : Container?

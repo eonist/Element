@@ -1,3 +1,5 @@
+<img width="1055" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-03-17 at 21.10.40.png">  
+
 <img width="456" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/demo_app_30_fps_1x.gif">  
 High-res 60FPS version of the above Gif-anim here: [dropbox](https://dl.dropboxusercontent.com/u/2559476/demo_app_60fps_full.mov) & [vimeo](https://vimeo.com/158515887)  
 

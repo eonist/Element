@@ -33,7 +33,7 @@ class ComboBox{
 		setOpen(isOpen)
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
-		setOpen(!_isOpen)
+		setOpen(!isOpen)
 		/*send this event*/ComboBoxEvent(ComboBoxEvent.headerClick,self)
 	}
 }

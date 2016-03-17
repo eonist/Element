@@ -46,5 +46,16 @@ class SliderTextArea{
 		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, LINES_PER_SCROLL)
 		vSlider.setThumbHeight(verticalThumbSize)
 		vSliderInterval = Utils.vSliderinterval(text.getTextField())
-	}		
+	}	
+	func onSliderChange(event:SliderEvent):void{
+		if(event.currentTarget == _vSlider) {TextFieldModifier.vScrollTo(text.getTextField(), event.progress)}
+		else {TextFieldModifier.hScrollTo(text.getTextField(), event.progress)}
+	}
+	func onMouseWheel(event:MouseEvent) {
+		var scrollAmount:CGFloat = event.delta/_vSliderInterval/*_scrollBar.interval*/;
+		var currentScroll:CGFloat = _vSlider.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
+		currentScroll = NumberParser.minMax(currentScroll, 0, 1)
+		vSlider.setProgress(currentScroll)
+		TextFieldModifier.vScrollTo(text.getTextField(), currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
+	}	
 }

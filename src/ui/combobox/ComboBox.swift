@@ -9,7 +9,7 @@ import Foundation
  * //closeOnClick
  * //defaultText
  */
-class ComboBox{
+class ComboBox:Element{
 	private var headerButton:TextButton?
 	private var itemHeight:CGFloat// :TODO: this should be set in the css?
 	private var dataProvider:DataProvider?
@@ -69,4 +69,5 @@ class ComboBox{
 		list.setSize(width, StylePropertyParser.height(list.skin))/*temp solution*/
 		headerButton.setSize(width, StylePropertyParser.height(headerButton.skin))/*temp solution*/
 	}
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

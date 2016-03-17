@@ -39,7 +39,15 @@ class ComboBox{
 	func onGlobalClick() {//On clicks outside combobox, close the combobox
 		if (!hitTestPoint(x, y)) {//you sort of check if the mouse-click didnt happen within the bounds of the comboBox
 			setOpen(false);
-			//remove the globalListner here
+			//remove the globalListener here
 		}
+	}
+	/**
+	 * the select event should be fired only onReleaseInside not as it is now onPress
+	 */
+	func onListSelect(event:ListEvent) {
+		var text:String = ListParser.selectedTitle(_list)
+		headerButton.setText(text)
+		setOpen(false)
 	}
 }

@@ -34,7 +34,7 @@ class ComboBox:Element{
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
 		setOpen(!isOpen)
-        super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,self))/*send this event*/
+        super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
 	}
 	func onGlobalClick() {//On clicks outside combobox, close the combobox
 		//if (!hitTestPoint(x, y)) {//you sort of check if the mouse-click didnt happen within the bounds of the comboBox

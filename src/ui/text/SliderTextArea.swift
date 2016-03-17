@@ -63,4 +63,11 @@ class SliderTextArea{
 		else if(event.name == SliderEvent.change || event.origin === hSlider){}
 		/*also listen for mouseWheel events*/
 	}
+	/**
+	 * Returns "TextArea"
+	 * @Note This function is used to find the correct class type when synthezing the element stack
+	 */
+	override func getClassType() -> String {
+		return String(TextArea)
+	}
 }

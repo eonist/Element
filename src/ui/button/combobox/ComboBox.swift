@@ -36,4 +36,10 @@ class ComboBox{
 		setOpen(!isOpen)
 		/*send this event*/ComboBoxEvent(ComboBoxEvent.headerClick,self)
 	}
+	func onGlobalClick() {//On clicks outside combobox, close the combobox
+		if (!hitTestPoint(x, y)) {//you sort of check if the mouse-click didnt happen within the bounds of the comboBox
+			setOpen(false);
+			//remove the globalListner here
+		}
+	}
 }

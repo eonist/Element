@@ -40,11 +40,11 @@ class SliderTextArea:TextArea{
 	 * // :TODO: can be further refactored
 	 */
 	func updateScrollBarThumbSizes() {
-		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider)
-		hSlider.setThumbWidth(hSliderThumbWidth)
-		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
-		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, SliderTextArea)
-		vSlider.setThumbHeight(verticalThumbSize)
+		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+		hSlider!.setThumbWidthValue(hSliderThumbWidth)
+		hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
+		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, SliderTextArea)
+		vSlider!.setThumbHeightValue(verticalThumbSize)
 		vSliderInterval = Utils.vSliderinterval(text.getTextField())
 	}	
 	func onSliderChange(event:SliderEvent):void{
@@ -81,8 +81,8 @@ class SliderTextArea:TextArea{
 		vSlider.setSize(scrollBarSize, height)
 		updateScrollBarThumbSizes()
 	}
-	override func setText(text:String) {
-		super.setText(text)
+	override func setTextValue(text:String) {
+		super.setTextValue(text)
 		updateScrollBarThumbSizes()
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

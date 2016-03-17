@@ -14,6 +14,9 @@ extension ComboBoxEvent{
      * NOTE: you may have to reconsider this as the selected item may have de-selected before the event arrives (think cpu threads etc)
      */
     var selected:ISelectable{
+        
+        //continue here: index from where? See similar event class in list
+        
         return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
     }
 }

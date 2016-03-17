@@ -18,8 +18,7 @@ class Element:InteractiveView2,IElement {
     var style:IStyle = Style.clear//<---what is clear? and how does it behave?
     override var frame:CGRect {
                                 get{
-                                    
-                                    return CGRect(super.frame.x,super.frame.y,width,height)
+                                    return CGRect(super.frame.x,super.frame.y,super.frame.width.isNaN ? 0 : super.frame.width,super.frame.height.isNaN ? 0 : super.frame.height)
                                 }set{
                                     super.frame = newValue
                                 }
@@ -38,9 +37,9 @@ class Element:InteractiveView2,IElement {
         self.id = id;
         /*self.width = width
         self.height = height*/
-        if(width.isNaN){
-            fatalError("NaN")
-        }
+        /*if(width.isNaN){
+        fatalError("NaN")
+        }*/
         super.init(frame: NSRect(0,0,width,height))
         resolveSkin()
     }

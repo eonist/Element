@@ -2,7 +2,7 @@ class ComboBoxModifier{
 		/**
 		 * 
 		 */
-		static func selectByProperty(comboBox:ComboBox,property:String):void {
+		class func selectByProperty(comboBox:ComboBox,_ property:String) {
 			var index:int = comboBox.list.dataProvider.getItemIndex(DataProviderParser.itemByProperty(comboBox.list.dataProvider, property));
 			ListModifier.selectAt(comboBox.list,index);
 			var text:String = ListParser.selectedTitle(comboBox.list);
@@ -11,7 +11,7 @@ class ComboBoxModifier{
 		/**
 		 * // :TODO: implement asserting that the title exists
 		 */
-		static func select(comboBox:ComboBox,title:String):void {
+		class func select(comboBox:ComboBox,_ title:String) {
 			ListModifier.select(comboBox.list, title);
 			comboBox.headerButton.setText(title);
 		}

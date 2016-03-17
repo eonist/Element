@@ -29,10 +29,10 @@ class SliderTextArea:TextArea{
 		let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
 		vSlider!.setThumbHeightValue(vSliderThumbHeight)
 		//vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
-		hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
-		hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
-		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
-		hSlider!.setThumbWidthValue(hSliderThumbWidth)
+		//hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
+		//hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
+		//let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+		//hSlider!.setThumbWidthValue(hSliderThumbWidth)
 		//hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
 	}
 	/**

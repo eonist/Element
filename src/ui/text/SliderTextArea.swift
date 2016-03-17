@@ -77,8 +77,8 @@ class SliderTextArea:TextArea{
 	 */
 	override func setSize(width:CGFloat, height:CGFloat) {
 		super.setSize(width, height)
-		hSlider.setSize(width, scrollBarSize)
-		vSlider.setSize(scrollBarSize, height)
+		hSlider!.setSize(width, scrollBarSize)
+		vSlider!.setSize(scrollBarSize, height)
 		updateScrollBarThumbSizes()
 	}
 	override func setTextValue(text:String) {

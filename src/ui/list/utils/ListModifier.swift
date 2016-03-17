@@ -4,7 +4,7 @@ class ListModifier {
     /**
      * Selects the first item that has @param title as its title
      */
-    class func select(list:IList, title:String) {
+    class func select(list:IList, _ title:String) {
         let index:Int = list.dataProvider.getItemIndex(list.dataProvider.getItem(title)!)
         selectAt(list,index)
     }

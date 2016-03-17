@@ -202,9 +202,9 @@ class StylePropertyParser{
         let value:Any? = self.value(skin, CSSConstants.offset, depth);
         //Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
-        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).map {String($0).cgFloat}
+        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).map {String($0).cgFloat}//the map method is cool. But it isnt needed, since this array will always have a count of 2
         //Swift.print("StylePropertyParser.offset.array.count: " + "\(array.count)")
-        return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1]);
+        return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])
     }
     /**
      * @Note TRBL

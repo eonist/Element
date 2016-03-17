@@ -27,15 +27,14 @@ class ComboBox:Element{
 	override func resolveSkin(){
 		super.resolveSkin()
 		headerButton = addSubView(TextButton("", width, itemHeight, self))// :TODO: - _itemHeight should be something else
-		list = addSubView(SliderList(width, height, itemHeight, dataProvider, self))
-		ListModifier.selectAt(list!, initSelected)
-		headerButton!.setTextValue(ListParser.selectedTitle(list!))
-		setOpen(isOpen)
+        /*list = addSubView(SliderList(width, height, itemHeight, dataProvider, self))
+        ListModifier.selectAt(list!, initSelected)
+        headerButton!.setTextValue(ListParser.selectedTitle(list!))
+        setOpen(isOpen)*/
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,self))/*send this event*/
-        
 	}
 	func onGlobalClick() {//On clicks outside combobox, close the combobox
 		//if (!hitTestPoint(x, y)) {//you sort of check if the mouse-click didnt happen within the bounds of the comboBox

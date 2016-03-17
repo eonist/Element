@@ -1,3 +1,4 @@
+import Foundation
 /**
  * 13.05.21 15:00 - Added support for mousewheel, and replaced scrollbars with sliders
  * @Note it seems difficult to align the HSlider thumb in a relative but correct way, since offsetting the HSlider it self is difficult when thumb is positioned by absolute values

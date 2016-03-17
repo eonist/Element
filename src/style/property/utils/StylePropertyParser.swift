@@ -203,6 +203,9 @@ class StylePropertyParser{
         Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
         var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : value as! Array<CGFloat>
+        
+        if((val is CGFloat) || (val is Array<Any>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
+        
         //Swift.print("StylePropertyParser.offset.array.count: " + "\(array.count)")
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1]);
     }

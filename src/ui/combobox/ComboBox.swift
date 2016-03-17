@@ -10,19 +10,19 @@ import Foundation
  * //defaultText
  */
 class ComboBox{
-	private var _headerButton:TextButton?
-	private var _itemHeight:CGFloat// :TODO: this should be set in the css?
-	private var _dataProvider:DataProvider
-	private var _list:SliderList?
-	private var _isOpen:Bool
-	private var _depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
-	private var _initSelected:Int
-	init(_ width:Number = NaN, _ height:Number = NaN, _ itemHeight:Number = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Boolean = false, _ initSelected:int = 0, _ parent:IElement? = nil, _ id:String? = nil){
+	private var headerButton:TextButton?
+	private var itemHeight:CGFloat// :TODO: this should be set in the css?
+	private var dataProvider:DataProvider?
+	private var list:SliderList?
+	private var isOpen:Bool
+	private var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
+	private var initSelected:Int
+	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider
 		self.isOpen = isOpen
 		self.initSelected = initSelected
-		super.init(width,height,parent,id,classId)
+		super.init(width,height,parent,id)
 	}
 	override func resolveSkin(){
 		super.resolveSkin();
@@ -50,7 +50,7 @@ class ComboBox{
 		headerButton.setText(text)
 		setOpen(false)
 	}
-	override onEvent(event:Event){
+	override func onEvent(event:Event){
 		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down, && event.origin === headerButton){onListSelect(event as! ListEvent)}
 	}
@@ -66,7 +66,7 @@ class ComboBox{
 	}
 	override func setSize(width : CGFloat, _ height : CGFloat)  {
 		super.setSize(width, height)
-		_list.setSize(width, StylePropertyParser.height(_list.skin))/*temp solution*/
-		_headerButton.setSize(width, StylePropertyParser.height(_headerButton.skin))/*temp solution*/
+		list.setSize(width, StylePropertyParser.height(list.skin))/*temp solution*/
+		headerButton.setSize(width, StylePropertyParser.height(headerButton.skin))/*temp solution*/
 	}
 }

@@ -7,14 +7,16 @@
  * // :TODO: Impliment a failsafe so that the slider.thumb doesnt get smaller than its width, do the same for both sliders
  */
 class SliderTextArea{
-	 private static const linesPerScroll:Number = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
-	 private var _scrollBarSize:Number
-	 private var _vSlider:VSlider
-	 private var _hSlider:HSlider
-	 private var _vSliderInterval:Int
-	 private var _hInterval:Int
+	static var linesPerScroll:CGFloat = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
+	var _scrollBarSize:CGFloat
+	var _vSlider:VSlider?
+	var _hSlider:HSlider?
+	var _vSliderInterval:Int
+	var _hInterval:Int
 	 
 	init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ scrollBarSize:CGFloat = 24, _ parent:IElement? = nil, _ id:String? = nil){
-		
+		self.scrollBarSize = scrollBarSize
+		super.init(width,height,text,parent,id,classId)
+		//addEventListeners()
 	}		
 }

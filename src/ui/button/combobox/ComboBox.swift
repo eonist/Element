@@ -9,5 +9,18 @@
  * //defaultText
  */
 class ComboBox{
-	
+	private var _headerButton:TextButton;
+	private var _itemHeight:Number;// :TODO: this should be set in the css?
+	private var _dataProvider:DataProvider;
+	private var _list:SliderList;
+	private var _isOpen : Boolean;
+	private var _depth:int;/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
+	private var _initSelected:int;
+	init(_ width:Number = NaN, _ height:Number = NaN, _ itemHeight:Number = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Boolean = false, _ initSelected:int = 0, _ parent:IElement? = nil, _ id:String? = nil){
+		_itemHeight = itemHeight
+		_dataProvider = dataProvider
+		_isOpen = isOpen
+		_initSelected = initSelected
+		super.init(width,height,parent,id,classId)
+	}
 }

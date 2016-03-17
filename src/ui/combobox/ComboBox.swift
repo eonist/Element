@@ -10,13 +10,13 @@ import Cocoa
  * //defaultText
  */
 class ComboBox:Element{
-	private var headerButton:TextButton?
-	private var itemHeight:CGFloat// :TODO: this should be set in the css?
-	private var dataProvider:DataProvider?
-	private var list:SliderList?
-	private var isOpen:Bool
-	private var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
-	private var initSelected:Int
+    var headerButton:TextButton?
+    var itemHeight:CGFloat// :TODO: this should be set in the css?
+    var dataProvider:DataProvider?
+    var list:SliderList?
+    var isOpen:Bool
+    var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
+    var initSelected:Int
 	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider

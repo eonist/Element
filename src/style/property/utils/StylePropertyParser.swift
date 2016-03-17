@@ -202,8 +202,8 @@ class StylePropertyParser{
         let value:Any? = self.value(skin, CSSConstants.offset, depth);
         Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
-        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>)
-                }
+        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).map {String($0).cgFloat}
+        
         
         
         

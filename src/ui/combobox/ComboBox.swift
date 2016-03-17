@@ -56,7 +56,8 @@ class ComboBox:Element{
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onListSelect(event as! ListEvent)}
 	}
 	func setOpen(isOpen:Bool) {
-		if(isOpen){
+		/*
+        if(isOpen){
 			depth = (getParent(true) as! NSView).getSubViewIndex(self)
 			DepthModifier.toFront(this,getParent(true))// :TODO: will this work in Element 2 framework? it does for now, and use parennt.setChildIndex this method is old
 		}else if(self.window != null) (getParent(true) as! NSView).setSubViewIndex(self, depth)
@@ -64,11 +65,12 @@ class ComboBox:Element{
 		ElementModifier.hide(list, isOpen)
 		if(isOpen && window != null && !window.hasEventListener(MouseEvent.MOUSE_DOWN)) {}//add globalListener
 		if(!isOpen && window != null && widn.hasEventListener(MouseEvent.MOUSE_DOWN)) {}//remove globalListener // :TODO: fix this mess
+        */
 	}
-	override func setSize(width : CGFloat, _ height : CGFloat)  {
+	override func setSize(width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)
-		list.setSize(width, StylePropertyParser.height(list.skin))/*temp solution*/
-		headerButton.setSize(width, StylePropertyParser.height(headerButton.skin))/*temp solution*/
+		list!.setSize(width, StylePropertyParser.height(list!.skin!)!)/*temp solution*/
+		headerButton!.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

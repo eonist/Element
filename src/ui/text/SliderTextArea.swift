@@ -40,11 +40,11 @@ class SliderTextArea{
 	 * // :TODO: can be further refactored
 	 */
 	func updateScrollBarThumbSizes() {
-		var hSliderThumbWidth:Number = Utils.hSliderThumbWidth(_text.getTextField(), _hSlider);
-		_hSlider.setThumbWidth(hSliderThumbWidth);
-		_hInterval = Utils.hScrollBarInterpolation(_text.getTextField());
-		var verticalThumbSize:Number =  Utils.vSliderThumbHeight(_text.getTextField(), _vSlider, LINES_PER_SCROLL);
-		_vSlider.setThumbHeight(verticalThumbSize);
-		_vSliderInterval = Utils.vSliderinterval(_text.getTextField());
+		var hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider)
+		hSlider.setThumbWidth(hSliderThumbWidth)
+		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
+		var verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, LINES_PER_SCROLL)
+		vSlider.setThumbHeight(verticalThumbSize)
+		vSliderInterval = Utils.vSliderinterval(text.getTextField())
 	}		
 }

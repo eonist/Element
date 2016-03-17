@@ -56,15 +56,15 @@ class SliderTextArea:TextArea{
         }
 	}
 	func onMouseWheel(event:MouseEvent) {
-		var scrollAmount:CGFloat = 0//event.delta/vSliderInterval/*_scrollBar.interval*/;
+		let scrollAmount:CGFloat = 0//event.delta/vSliderInterval/*_scrollBar.interval*/;
 		var currentScroll:CGFloat = vSlider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
 		currentScroll = NumberParser.minMax(currentScroll, 0, 1)
 		vSlider!.setProgressValue(currentScroll)
-		TextFieldModifier.vScrollTo(text.getTextField(), currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
+		//TextFieldModifier.vScrollTo(text.getTextField(), currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
 	}	
 	override func onEvent(event:Event){
-		if(event.name == SliderEvent.change || event.origin === vSlider){}
-		else if(event.name == SliderEvent.change || event.origin === hSlider){}
+		if(event.type == SliderEvent.change || event.origin === vSlider){}
+		else if(event.type == SliderEvent.change || event.origin === hSlider){}
 		/*also listen for mouseWheel events*/
 	}
 	/**

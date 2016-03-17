@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /** 
  * @Note for multiSelect option make MultiCheckComboBox.as aand CheckComboBox?
  * @Note: to get the height while the list is pulled down: comboBox.height * comboBox.maxShowingItems
@@ -48,12 +48,12 @@ class ComboBox:Element{
 	 */
 	func onListSelect(event:ListEvent) {
 		let text:String = ListParser.selectedTitle(list!)
-		headerButton.setTextValue(text)
+		headerButton!.setTextValue(text)
 		setOpen(false)
 	}
 	override func onEvent(event:Event){
 		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
-		if(event.type == ButtonEvent.down, && event.origin === headerButton){onListSelect(event as! ListEvent)}
+		if(event.type == ButtonEvent.down && event.origin === headerButton){onListSelect(event as! ListEvent)}
 	}
 	func setOpen(isOpen:Bool) {
 		if(isOpen){

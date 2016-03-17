@@ -7,8 +7,8 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  */
 class Element:InteractiveView2,IElement {
-    var width:CGFloat//{get{return super.frame.width}set{super.frame.width = newValue}}
-    var height:CGFloat//{get{return super.frame.height}set{super.frame.height = newValue}}
+    var width:CGFloat {get{return super.frame.width}set{super.frame.width = newValue}}
+    var height:CGFloat {get{return super.frame.height}set{super.frame.height = newValue}}
     var x:CGFloat{get{return super.frame.x}set{super.frame.x = newValue}}
     var y:CGFloat{get{return super.frame.y}set{super.frame.y = newValue}}
     var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
@@ -36,9 +36,9 @@ class Element:InteractiveView2,IElement {
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
         self.id = id;
-        self.width = width
-        self.height = height
-        super.init(frame: NSRect(0,0,0,0))
+        /*self.width = width
+        self.height = height*/
+        super.init(frame: NSRect(0,0,width,height))
         resolveSkin()
     }
     /**

@@ -7,27 +7,26 @@ import Foundation
  * // :TODO: the horizontal scroller isnt thourghouly testes. Make sure you set wordwrap to false to test this, and that the input text has break tags \n or br tags
  * // :TODO: Impliment a failsafe so that the slider.thumb doesnt get smaller than its width, do the same for both sliders
  */
-class SliderTextArea{
+class SliderTextArea:TextArea{
 	static var linesPerScroll:CGFloat = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
-	var _scrollBarSize:CGFloat
-	var _vSlider:VSlider?
-	var _hSlider:HSlider?
-	var _vSliderInterval:Int
-	var _hInterval:Int
+	var scrollBarSize:CGFloat
+	var vSlider:VSlider?
+	var hSlider:HSlider?
+	var vSliderInterval:Int?
+	var hInterval:Int?
 	 
 	init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ scrollBarSize:CGFloat = 24, _ parent:IElement? = nil, _ id:String? = nil){
 		self.scrollBarSize = scrollBarSize
-		super.init(width,height,text,parent,id,classId)
-		//addEventListeners()
+		super.init(width,height,text,parent,id)
 	}
 	/**
 	 * // :TODO: Refactor this method
 	 */
 	override func resolveSkin() {
 		super.resolveSkin()
-		vSliderInterval = Utils.vSliderinterval(text.getTextField())
+		vSliderInterval = Utils.vSliderinterval(text!.getTextField())
 		vSlider = addSubView(VSlider(24/*_scrollBarSize*/,height,24,0,self))
-		var vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text.getTextField(), vSlider, linesPerScroll)
+		var vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
 		vSlider.setThumbHeight(vSliderThumbHeight)
 		//vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
 		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
@@ -86,6 +85,7 @@ class SliderTextArea{
 		super.setText(text)
 		updateScrollBarThumbSizes()
 	}
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
 	/**

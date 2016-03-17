@@ -50,4 +50,11 @@ class ComboBox{
 		headerButton.setText(text)
 		setOpen(false)
 	}
+	
+	override onEvent(event:Event){
+		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
+			
+		_list.addEventListener(ListEvent.SELECT, onListSelect);
+		_headerButton.addEventListener(ButtonEvent.DOWN, onHeaderMouseDown);
+	}
 }

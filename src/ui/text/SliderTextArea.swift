@@ -70,4 +70,22 @@ class SliderTextArea{
 	override func getClassType() -> String {
 		return String(TextArea)
 	}
+	/**
+	 * Sets the size of the ScrollTextArea
+	 * @Note:Horizontatal must be set first because of an unknown bug, if you do not use the maxScrollH before maxScrollV the maxScrollV gives old values (Adobe bug)
+	 * // :TODO: this may not work since thumbsizes is updated in sliders and in this class
+	 */
+	override func setSize(width:CGFloat, height:CGFloat) {
+		super.setSize(width, height)
+		hSlider.setSize(width, scrollBarSize)
+		vSlider.setSize(scrollBarSize, height)
+		updateScrollBarThumbSizes()
+	}
+	override func setText(text:String) {
+		super.setText(text)
+		updateScrollBarThumbSizes()
+	}
+}
+private class Utils{
+	
 }

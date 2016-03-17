@@ -104,15 +104,16 @@ private class Utils{
 		return min(slider.height,verticalThumbSize)/*the Math.min is a temp fix*/
 	}
 	class func hScrollBarInterpolation(textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
-		return textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance;
+		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance;
 	}
 	/**
 	 * 
 	 */
 	class func hSliderThumbWidth(textField:TextField, _ slider:HSlider) -> CGFloat {
-		var horizontalScalar:CGFloat = textField.maxScrollH == 0 ? 1:textField.width/textField.maxScroll
+		let horizontalScalar:CGFloat = 0//textField.maxScrollH == 0 ? 1:textField.width/textField.maxScroll
+        horizontalScalar
 //		var horizontalInterval:int = ScrollTextAreaUtil.hScrollBarInterpolation(textField);
-		var horizontalThumbSize:CGFloat = SliderParser.thumbSize(horizontalScalar, slider.width
+		let horizontalThumbSize:CGFloat = 0//SliderParser.thumbSize(horizontalScalar, slider.width
 		return min(slider.width,horizontalThumbSize);/*the Math.min is a temp fix*/
 	}
 }

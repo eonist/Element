@@ -4,9 +4,9 @@ class ComboBoxModifier{
 		 * 
 		 */
 		class func selectByProperty(comboBox:ComboBox,_ property:String) {
-			var index:Int = comboBox.list!.dataProvider.getItemIndex(DataProviderParser.itemByProperty(comboBox.list.dataProvider, property))
+			let index:Int = comboBox.list!.dataProvider.getItemIndex(DataProviderParser.itemByProperty(comboBox.list!.dataProvider, property)!)
 			ListModifier.selectAt(comboBox.list!,index)
-			var text:String = ListParser.selectedTitle(comboBox.list!)
+			let text:String = ListParser.selectedTitle(comboBox.list!)
 			comboBox.headerButton!.setTextValue(text)
 		}
 		/**

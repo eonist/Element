@@ -67,7 +67,7 @@ Element enables you to separate code and design while maintaining the ability to
 
 One more thing...Element supports **multiple layers** of CSS3 styles. Meaning anything you can design in Adobe Illustrator can be used on a single UI Element. Stay tuned.
 
-And another this: Element now has support for rich interactive animation in 60FPS. (The first ever UI Kit written in swift that offers this, not even apple has this)
+One more thing...Element now has support for rich interactive animation in 60FPS. (The first ever UI Kit written in swift that offers this, not even apple has this) [Here is the app example that uses this Animation-engine](https://vimeo.com/158515887)
 
 **Inline CSS**
 

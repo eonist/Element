@@ -1,10 +1,14 @@
-<img width="1055" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-03-17 at 21.10.40.png">  
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  
 
-<img width="456" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/demo_app_30_fps_1x.gif">  
-High-res 60FPS version of the above Gif-anim here: [dropbox](https://dl.dropboxusercontent.com/u/2559476/demo_app_60fps_full.mov) & [vimeo](https://vimeo.com/158515887)  
+<img width="1055" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-03-17 at 21.10.40.png">  
 
 ## Introduction:
 Element is a [programatic UI framework](https://github.com/eonist/Element/wiki/What-is-a-programatic-UI) for OSX. You can use **native swift** code to add functionality to the provided UI components or create your own custom UI components. The OSX 10.10 styles are provided by default, add your own styles through [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/)  and [CSS](http://stylekit.org/blog/2016/02/18/Cascading-Style-Sheets-System/) syntax. Or use the Style class. Element is written in pure native swift code and uses [Quartz and Core Graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) to render the UI components. Element is not a JS + web-wrapper. Element does not use Xcode Interface builder. Although support is possible. Element is not a UI prototype framework or tool, Element is intended for production code in professional apps where **design & functionality freedom** is important.
+
+
+<img width="456" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/demo_app_30_fps_1x.gif">  
+High-res 60FPS version of the above Gif-anim here: [vimeo](https://vimeo.com/158515887)  or [dropbox](https://dl.dropboxusercontent.com/u/2559476/demo_app_60fps_full.mov)
+
 
 ### RBSliderList:  
   
@@ -141,6 +145,8 @@ Button:down{
 
 ![Other](https://cloud.githubusercontent.com/assets/11816788/10409980/73849778-6f33-11e5-8c35-6d4ac668667f.png) 
 
+[MIT License](http://opensource.org/licenses/MIT) 
+
 ###Goals
 - Element supports basic needs, extention and decoration is encouraged for advance use
 - Centralised styling via css (server side or embedded)
@@ -219,10 +225,4 @@ Button:down{
 - [ ] Optimize the css retrival system with inspiration from this book: quicksort, heapsort, hasing etc, better algos to find styles Cormen T.H., Leiserson C.E., Rivest R.L., Stein C. Introduction to Algorithms (3ed., MIT, 2009)(ISBN 262033845)
 
 
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/stylekit_logo_400x400_1.png">  
-
-[MIT License](http://opensource.org/licenses/MIT) 
-
-[follow the progress here ](http://stylekit.org/)   
-or  
-[follow the progress on Twitter](https://twitter.com/stylekit_org)  
+[Twitter](https://twitter.com/stylekit_org)  

@@ -80,7 +80,7 @@ class List:Element,IList{
             onUpInside(event as! ButtonEvent)
         }else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         
-        //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
+        super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     /**
      *

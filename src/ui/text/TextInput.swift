@@ -16,5 +16,10 @@ class TextInput :Element{
         text = addSubView(Text(width,height,textString,self))
         inputTextArea = addSubView(TextArea(width,height,inputString,self))
     }
+    override func setSize(width:CGFloat, _ height:CGFloat) {
+        super.setSize(width, height);
+        inputTextArea.setSize(width, height);//shouldnt this bet setSkin rather
+        text.setSize(width, height);//shouldnt this bet setSkin rather
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

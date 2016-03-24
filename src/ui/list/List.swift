@@ -6,7 +6,7 @@ import Cocoa
  * @Note ListParser and ListModifier are usefull utility classes
  * // :TODO: could List have a SelectGroup?
  * // :TODO: xml should be able to hold a propert named selected="true" and then the cooresponding Item should be selected
- * // :TODO: try to get rid of the lableCOntainer
+ * // :TODO: try to get rid of the lableContainer
  * // :TODO: try to make the mask an Element
  * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
  */

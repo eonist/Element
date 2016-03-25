@@ -40,11 +40,11 @@ class TreeList:Element/*,ITreeList*/ {
         //var selected:ISelectable = event.origin as! ISelectable
         //SelectModifier.unSelectAllExcept(selected, selectables);
     }
-    private function onItemCheck(event:CheckEvent) : void {
-        var index:Array = TreeListParser.index(this, (event.target as DisplayObject).parent);
-        XMLModifier.setAttributeAt(database.xml, index, {isOpen:event.checked});
-        ElementModifier.floatChildren(_itemContainer);
-        dispatchEvent(new TreeListEvent(TreeListEvent.CHANGE));
+    private func onItemCheck(event:CheckEvent) {
+        //var index:Array = TreeListParser.index(self, (event.target as DisplayObject).parent);
+        //XMLModifier.setAttributeAt(node.xml, index, ["isOpen":String(event.checked)])
+        ElementModifier.floatChildren(itemContainer!)
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     /**
      *

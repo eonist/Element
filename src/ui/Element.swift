@@ -61,6 +61,18 @@ class Element:InteractiveView2,IElement {
         //fatalError("Element.setSize() you dont use frame anymore")
     }
     /**
+     * TODO: this is likly to be overridden in the future, move to the Element class
+     */
+    func getWidth()->CGFloat{
+        return skin != nil ? skin!.getWidth() : CGFloat.NaN
+    }
+    /**
+     * TODO: this is likly to be overridden in the future, move to the Element class
+     */
+    func getHeight()->CGFloat{
+        return skin != nil ? skin!.getHeight() : CGFloat.NaN
+    }
+    /**
      * Returns the class type of the Class instance
      * @Note if a class subclasses Element that sub-class will be the class type
      * @Note override this function in the first subClass and that subclass will be the class type for other sub-classes

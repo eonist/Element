@@ -15,13 +15,13 @@ class TreeListParser{
     /**
      * Returns an array of descendants in @param treeList
      */
-    public static function descendants(treeList:ITreeList):Array{
-    var items:Array = [];
-    var numChildren:int = treeList.itemContainer.numChildren;
-    for (var i : int = 0; i < numChildren; i++) {
-				var displayObject:DisplayObject = treeList.itemContainer.getChildAt(i);
-				items.push(displayObject);
-				if(displayObject is ITreeList) items = items.concat(descendants(displayObject as ITreeList));
+    class func descendants(treeList:ITreeList)->Array<ITreeList>{
+    var items:Array<ITreeList> = [];
+    var numChildren:Int = treeList.itemContainer.numChildren;
+    for (var i : Int = 0; i < numChildren; i++) {
+        var displayObject:DisplayObject = treeList.itemContainer.getChildAt(i);
+        items.push(displayObject);
+        if(displayObject is ITreeList) items = items.concat(descendants(displayObject as ITreeList));
     }
     return items;
     }

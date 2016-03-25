@@ -79,29 +79,13 @@ class TreeList:Element/*,ITreeList*/ {
         //TreeListModifier.unSelectAll(self)
     }
     override func onEvent(event: Event) {
-        if(event.type == CheckEvent.check && event.origin === itemContainer){
-            onItemCheck(event as! CheckEvent )
-        }else if(event.type == SelectEvent.select && event.origin === itemContainer){
-            onItemSelect(event as! SelectEvent)
-        }else if(event.type == NodeEvent.removeAt && event.origin === node){
-            
-        }else if(event.type == NodeEvent.removeAll && event.origin === node){
-            
-        }else if(event.type == NodeEvent.addAt && event.origin === node){
-            //continue implementing forward calls to methods
-        }else if(event.type == NodeEvent.setAttributeAt && event.origin === node){
-            onDatabaseSetAttributeAt(event as! NodeEvent)
-        }
+        if(event.type == CheckEvent.check && event.origin === itemContainer){onItemCheck(event as! CheckEvent)}
+        else if(event.type == SelectEvent.select && event.origin === itemContainer){onItemSelect(event as! SelectEvent)}
+        else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}
+        else if(event.type == NodeEvent.removeAll && event.origin === node){onDatabaseRemoveAll(event as! NodeEvent)}
+        else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
+        else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
         //you also need to implement: onBackgroundMouseClick when the skin of self is clicked
-        /*
-        itemContainer.addEventListener(CheckEvent.CHECK, onItemCheck);
-        itemContainer.addEventListener(SelectEvent.SELECT, onItemSelect);
-        _database.addEventListener(DatabaseEvent.REMOVE_AT, onDatabaseRemoveAt);
-        _database.addEventListener(DatabaseEvent.REMOVE_ALL, onDatabaseRemoveAll);
-        _database.addEventListener(DatabaseEvent.ADD_AT, onDatabaseAddAt);
-        _database.addEventListener(DatabaseEvent.SET_ATTRIBUTE_AT, );
-        
-        */
     }
     /**
      *

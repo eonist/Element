@@ -46,10 +46,10 @@ class TreeList:Element/*,ITreeList*/ {
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
-    private function onDatabaseRemoveAt(event : DatabaseEvent) : void {
-        TreeListModifier.removeAt(this, event.index);
-        ElementModifier.floatChildren(_itemContainer);
-        dispatchEvent(new TreeListEvent(TreeListEvent.CHANGE));
+    private func onDatabaseRemoveAt(event : NodeEvent)  {
+        //TreeListModifier.removeAt(self, event.index)
+        ElementModifier.floatChildren(itemContainer!)
+        super.onEvent(TreeListEvent(TreeListEvent.change))
     }
     /**
      *

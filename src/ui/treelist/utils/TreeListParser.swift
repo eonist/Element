@@ -10,8 +10,10 @@ class TreeListParser:Element/*,ITreeList*/ {
     var itemHeight : CGFloat
     var node : Node
     var itemContainer : Container
-    init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
-        _itemHeight = itemHeight;
-        _database = database != null ? database:new Database(new XML());
+    init(width:CGFloat = NaN, height:CGFloat = NaN, itemHeight:CGFloat = NaN, node:Node = Node(), parent : IElement? = nil, id:String = "") {
+        self.itemHeight = itemHeight;
+        self.node = node
     }
+
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

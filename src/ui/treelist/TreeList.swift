@@ -1,5 +1,8 @@
 import Cocoa
 /**
+ * @Note the dispatchments of TreeListEvent.change is used to tell ScrollTreeList to update its scrollbar
+ * @Note Use Database to modify the treeList
+ * @Note ITreeList doesnt have access to database because, TreeListItem doesnt have a database
  * // :TODO: display:none and display:inline in the css shoud take care of the hiding and revealing of the elements not a method in this class (figure out how to do this)
  * // :TODO: there is a bug when setting the margin of any Text in this class that you have to counter meassure with a negative padding, this should be resolved
  * // :TODO: Why does ITreeListItem need to extend ITreeList, why does TreeList need ITreeList in the first place?

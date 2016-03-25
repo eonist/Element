@@ -57,7 +57,12 @@ class TreeListParser{
     }
     
     
-    //Continue here:  selectedIndex,selected,itemAt,getXML
+    //Continue here:  selectedIndex,selected,itemAt,getXML 
     
-    
+    /**
+     * Returns the index of the selected ISelectable instance in @param treeList
+     */
+    class func selectedIndex(treeList:ITreeList) -> Array<Int>{
+        return index(treeList, selected(treeList) as! NSView)
+    }
 }

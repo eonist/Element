@@ -33,5 +33,9 @@ class TreeListItem:SelectCheckBoxButton{
         setChecked(false)
         checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }
+    func onItemCheck(event : CheckEvent) {
+        if((event.origin as! NSView).superview === self){itemContainer!.hidden = event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
+        if(isChecked) {ElementModifier.floatChildren(itemContainer!)}/*this is called from any decending treeListItem*/
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

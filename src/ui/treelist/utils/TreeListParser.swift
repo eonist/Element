@@ -31,7 +31,7 @@ class TreeListParser{
     class func decendantsOfType(treeList:ITreeList,_ type:AnyClass? = nil)->Array<ITreeList> {
         var items:Array<ITreeList> = []
         for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
-            var view:NSView = treeList.itemContainer.getSubViewAt(i) as! NSView
+            let view:NSView = treeList.itemContainer.getSubviewAt(i)
             if(type == nil || (type != nil && view is type)) {
                 items.append(view)
                 items += (decendantsOfType(view as! ITreeList,type))

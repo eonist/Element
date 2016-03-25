@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 /**
  * // :TODO: display:none and display:inline in the css shoud take care of the hiding and revealing of the elements not a method in this class (figure out how to do this)
@@ -18,7 +18,22 @@ class TreeList:Element/*,ITreeList*/ {
     override func resolveSkin() {
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self))
-        setXML(node.xml)
+        //setXML(node.xml)
+    }
+    /**
+     * Adds an instance that impliments ITreeListItem to the itemContainer
+     */
+    func addItem(item:NSView){// :TODO: rename to add
+        itemContainer.addChild(item)
+        ElementModifier.floatChildren(itemContainer)
+    }
+    func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
+        _itemContainer.addChildAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
+        ElementModifier.floatChildren(_itemContainer)
+    }
+    public function removeAt(index:int):void{
+        _itemContainer.removeChildAt(index);
+        ElementModifier.floatChildren(_itemContainer);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

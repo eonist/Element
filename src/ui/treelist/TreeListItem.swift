@@ -41,5 +41,8 @@ class TreeListItem:SelectCheckBoxButton{
         super.onEvent(event)
         if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
     }
+    func getLength()->Int{//rename to count?
+        return itemContainer!.subviews.count
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

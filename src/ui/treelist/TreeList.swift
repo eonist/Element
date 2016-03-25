@@ -52,8 +52,8 @@ class TreeList:Element/*,ITreeList*/ {
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     private func onDatabaseRemoveAll(event:NodeEvent){
-        TreeListModifier.removeAll(self)
-        super.onEvent(TreeListEvent(TreeListEvent.change))
+        //TreeListModifier.removeAll(self)
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     /**
      *

@@ -25,5 +25,13 @@ class TreeListItem:SelectCheckBoxButton{
         itemContainer!.removeSubviewAt(index)
         ElementModifier.floatChildren(itemContainer!)
     }
+    func open(){
+        setChecked(true)
+        checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
+    }
+    func close(){
+        setChecked(false)
+        checkBox.dispatchEvent(new CheckEvent(CheckEvent.CHECK, false, true, true));
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

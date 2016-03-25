@@ -79,7 +79,11 @@ class TreeList:Element/*,ITreeList*/ {
         //TreeListModifier.unSelectAll(self)
     }
     override func onEvent(event: Event) {
-        if(CheckEvent.check)
+        if(event.type == CheckEvent.check && event.origin === itemContainer){
+            onItemCheck(event as! CheckedEvent.)
+        }else if(event.type == SelectEvent.select){
+            onItemSelect()
+        }
         /*
         itemContainer.addEventListener(CheckEvent.CHECK, onItemCheck);
         itemContainer.addEventListener(SelectEvent.SELECT, onItemSelect);

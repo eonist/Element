@@ -57,12 +57,12 @@ extension IElement {
      * TODO: this is likly to be overridden in the future, move to the Element class
      */
     func getWidth()->CGFloat{
-        return skin != nil ? skin!.getWidth() : CGFloat.NaN;
+        return skin != nil ? skin!.getWidth() : CGFloat.NaN
     }
     /**
      * TODO: this is likly to be overridden in the future, move to the Element class
      */
     func getHeight()->CGFloat{
-        return skin != nil ? skin!.getHeight() : CGFloat.NaN;
+        return skin != nil ? skin!.getHeight() : CGFloat.NaN
     }
 }

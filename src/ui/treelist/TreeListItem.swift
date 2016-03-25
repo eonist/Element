@@ -44,7 +44,10 @@ class TreeListItem:SelectCheckBoxButton{
     func getLength()->Int{//rename to count?
         return itemContainer!.subviews.count
     }
-    override func getHeight() -> CGFloat {
+    
+    //continue with the bellow method:
+    
+    /*override*/ func getHeight() -> CGFloat {
         var height:CGFloat = SkinParser.totalHeight2(skin);
         if(checked) for (var i : int = 0; i < _itemContainer.numChildren; i++) height += SkinParser.totalHeight((_itemContainer.getChildAt(i) as IElement).skin);
         return height

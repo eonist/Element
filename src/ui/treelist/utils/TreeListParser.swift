@@ -64,14 +64,14 @@ class TreeListParser{
     /**
      * Returns the selected ISelectable instance in the @param treeList
      */
-    class func selected(treeList:ITreeList)->ISelectable{
-        let selectable:ISelectable;
+    class func selected(treeList:ITreeList)->ISelectable?{
+        var selectable:ISelectable?
         for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
             let treeItem:NSView = treeList.itemContainer.getSubviewAt(i)
-            if(treeItem is ISelectable && ISelectable(treeItem).selected) {selectable = treeItem as! ISelectable}
+            if(treeItem is ISelectable && (treeItem as! ISelectable).isSelected) {selectable = treeItem as? ISelectable}
             if(treeItem is ITreeListItem && (treeItem as! ISelectable).isSelected) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
-            if(selectable != null) break;
+            if(selectable != nil) {break}//<--what does this break do?
         }
-        return selectable;
+        return selectable
     }
 }

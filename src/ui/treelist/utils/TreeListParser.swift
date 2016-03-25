@@ -25,4 +25,18 @@ class TreeListParser{
         }
         return items
     }
+    /**
+     *
+     */
+    class func decendantsOfType(treeList:ITreeList,type:Class.Type = null)->Array<ITreeList> {
+        var items:Array = []
+        for (var i : int = 0; i < treeList.itemContainer.numChildren; i++) {
+            var displayObject:DisplayObject = treeList.itemContainer.getChildAt(i) as DisplayObject;
+            if(type == null || (type != null && displayObject is type)) {
+                items.push(displayObject);
+                items = items.concat(decendantsOfType(displayObject as ITreeList,type));
+            }
+        }
+        return items;
+    }
 }

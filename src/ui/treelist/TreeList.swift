@@ -46,9 +46,13 @@ class TreeList:Element/*,ITreeList*/ {
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
-    private func onDatabaseRemoveAt(event : NodeEvent)  {
+    private func onDatabaseRemoveAt(event:NodeEvent)  {
         //TreeListModifier.removeAt(self, event.index)
         ElementModifier.floatChildren(itemContainer!)
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+    }
+    private func onDatabaseRemoveAll(event:NodeEvent){
+        TreeListModifier.removeAll(self)
         super.onEvent(TreeListEvent(TreeListEvent.change))
     }
     /**

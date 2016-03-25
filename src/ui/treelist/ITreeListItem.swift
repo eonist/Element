@@ -1,5 +1,6 @@
 import Foundation
 
-class ITreeListItem {
-
+protocol ITreeListItem {
+    func open()
+    func close()
 }

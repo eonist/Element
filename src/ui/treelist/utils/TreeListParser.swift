@@ -16,13 +16,13 @@ class TreeListParser{
      * Returns an array of descendants in @param treeList
      */
     class func descendants(treeList:ITreeList)->Array<ITreeList>{
-    var items:Array<ITreeList> = []
-    var numChildren:Int = treeList.itemContainer.subviews.count
-    for (var i : Int = 0; i < numChildren; i++) {
-        var view:NSView = treeList.itemContainer.getSubviewAt(i)
-        items.append(view as! ITreeList)
-        if(view is ITreeList) {items = items += (descendants(view as! ITreeList))}
-    }
-    return items;
+        var items:Array<ITreeList> = []
+        let numChildren:Int = treeList.itemContainer.subviews.count
+        for (var i : Int = 0; i < numChildren; i++) {
+            let view:NSView = treeList.itemContainer.getSubviewAt(i)
+            items.append(view as! ITreeList)
+            if(view is ITreeList) {items += (descendants(view as! ITreeList))}
+        }
+        return items
     }
 }

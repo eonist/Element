@@ -36,7 +36,7 @@ class ElementModifier {
         }
     }
     /**
-     * Resizes many elements in @param displayObjectContainer
+     * Resizes many elements in @param view
      * // :TODO: rename to Resize, its less ambigiouse
      */
     class func size(view:NSView,_ size:CGPoint) {

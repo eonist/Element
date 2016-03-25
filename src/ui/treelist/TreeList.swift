@@ -18,10 +18,7 @@ class TreeList:Element/*,ITreeList*/ {
     override func resolveSkin() {
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self))
-        /*let section = *///addSubView(Section(width,height,self))
-        //section
-        Swift.print("dataProvider.items.count: " + "\(dataProvider.items.count)")
-        mergeAt(dataProvider.items, 0);
+        setXML(node.xml)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

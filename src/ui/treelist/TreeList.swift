@@ -78,6 +78,17 @@ class TreeList:Element/*,ITreeList*/ {
         //Swift.print("onBackgroundMouseClick");
         //TreeListModifier.unSelectAll(self)
     }
+    override func onEvent(event: Event) {
+        /*
+        itemContainer.addEventListener(CheckEvent.CHECK, onItemCheck);
+        itemContainer.addEventListener(SelectEvent.SELECT, onItemSelect);
+        _database.addEventListener(DatabaseEvent.REMOVE_AT, onDatabaseRemoveAt);
+        _database.addEventListener(DatabaseEvent.REMOVE_ALL, onDatabaseRemoveAll);
+        _database.addEventListener(DatabaseEvent.ADD_AT, onDatabaseAddAt);
+        _database.addEventListener(DatabaseEvent.SET_ATTRIBUTE_AT, onDatabaseSetAttributeAt);
+        skin.addEventListener(MouseEvent.CLICK, onBackgroundMouseClick);
+        */
+    }
     /**
      *
      */

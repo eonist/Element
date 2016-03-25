@@ -55,14 +55,23 @@ class TreeListParser{
         }
         return index
     }
-    
-    
-    //Continue here:  selectedIndex,selected,itemAt,getXML 
-    
     /**
      * Returns the index of the selected ISelectable instance in @param treeList
      */
     class func selectedIndex(treeList:ITreeList) -> Array<Int>{
         return index(treeList, selected(treeList) as! NSView)
+    }
+    /**
+     * Returns the selected ISelectable instance in the @param treeList
+     */
+    class func selected(treeList:ITreeList)->ISelectable{
+        let selectable:ISelectable;
+        for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
+            let treeItem:NSView = treeList.itemContainer.getSubviewAt(i)
+            if(treeItem is ISelectable && ISelectable(treeItem).selected) {selectable = treeItem as! ISelectable}
+            if(treeItem is ITreeListItem && (treeItem as! ISelectable).isSelected) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
+            if(selectable != null) break;
+        }
+        return selectable;
     }
 }

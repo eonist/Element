@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class TreeListParser{
     /**
@@ -16,12 +16,12 @@ class TreeListParser{
      * Returns an array of descendants in @param treeList
      */
     class func descendants(treeList:ITreeList)->Array<ITreeList>{
-    var items:Array<ITreeList> = [];
-    var numChildren:Int = treeList.itemContainer.numChildren;
+    var items:Array<ITreeList> = []
+    var numChildren:Int = treeList.itemContainer.subviews.count
     for (var i : Int = 0; i < numChildren; i++) {
-        var displayObject:DisplayObject = treeList.itemContainer.getChildAt(i);
-        items.push(displayObject);
-        if(displayObject is ITreeList) items = items.concat(descendants(displayObject as ITreeList));
+        var view:NSView = treeList.itemContainer.getSubviewAt(i)
+        items.append(view as! ITreeList)
+        if(view is ITreeList) {items = items.concat(descendants(view as! ITreeList))}
     }
     return items;
     }

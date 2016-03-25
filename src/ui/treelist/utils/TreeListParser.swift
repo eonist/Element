@@ -48,9 +48,9 @@ class TreeListParser{
         for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
             let view:NSView = treeList.itemContainer.getSubviewAt(i)
             if(view === item) {index = [i]}
-            else if (view as! ITreeList && (view as! ITreeList).itemContainer.count > 0){
-                var tempIndex:Array = (TreeListParser.index(view as ITreeList, item))
-                if(tempIndex.length > 0) index = ([i] as Array).concat(tempIndex)
+            else if (view is ITreeList && (view as! ITreeList).itemContainer.subviews.count > 0){
+                let tempIndex:Array<Int> = (TreeListParser.index(view as! ITreeList, item))
+                if(tempIndex.length > 0) {index = [i] += tempIndex}
             }
         }
         return index;

@@ -28,15 +28,15 @@ class TreeListParser{
     /**
      *
      */
-    class func decendantsOfType(treeList:ITreeList,_ type:AnyClass? = nil)->Array<ITreeList> {
+    class func decendantsOfType<T>(treeList:ITreeList,_ type:T.Type? = nil)->Array<ITreeList> {
         var items:Array<ITreeList> = []
         for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
             let view:NSView = treeList.itemContainer.getSubviewAt(i)
-            if(type == nil || (type != nil && view is type)) {
-                items.append(view)
+            if(type == nil || (type != nil && view as? T != nil)) {//<--Inspired from the ClassParser.classType() method
+                items.append(view as! ITreeList)
                 items += (decendantsOfType(view as! ITreeList,type))
             }
         }
-        return items;
+        return items
     }
 }

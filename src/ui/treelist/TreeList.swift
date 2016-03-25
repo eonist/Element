@@ -83,6 +83,16 @@ class TreeList:Element/*,ITreeList*/ {
             onItemCheck(event as! CheckEvent )
         }else if(event.type == SelectEvent.select && event.origin === itemContainer){
             onItemSelect(event as! SelectEvent)
+        }else if(event.type == NodeEvent.removeAt && event.origin === node){
+            
+        }else if(event.type == NodeEvent.removeAll && event.origin === node){
+            
+        }else if(event.type == NodeEvent.addAt && event.origin === node){
+            
+        }else if(event.type == NodeEvent.setAttributeAt && event.origin === node){
+            
+        }else if(event.type == MouseEvent && event.origin === node){
+            
         }
         /*
         itemContainer.addEventListener(CheckEvent.CHECK, onItemCheck);

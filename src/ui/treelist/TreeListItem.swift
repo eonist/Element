@@ -5,5 +5,7 @@ import Foundation
  */
 class TreeListItem {
     //var itemContainer : Container
-    
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ isSelected:Bool = false, parent:IElement? = nil, id:String = "") {
+        super.init(width, height, isFocused, isDisabled, text, isSelected, isChecked, parent, id, classId)
+    }
 }

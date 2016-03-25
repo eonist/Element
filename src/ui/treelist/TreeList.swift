@@ -31,7 +31,11 @@ class TreeList:Element/*,ITreeList*/ {
         ElementModifier.floatChildren(itemContainer)
     }
     func removeAt(index:Int){
-        itemContainer.removeFromSuperview(index);
+        
+        //removeFromSuperview
+        //continue here: write a method: removeSubViewAt
+        
+        itemContainer.removeChildAt(index);
         ElementModifier.floatChildren(itemContainer);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

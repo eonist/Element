@@ -21,7 +21,7 @@ class TreeListParser{
     for (var i : Int = 0; i < numChildren; i++) {
         var view:NSView = treeList.itemContainer.getSubviewAt(i)
         items.append(view as! ITreeList)
-        if(view is ITreeList) {items = items.concat(descendants(view as! ITreeList))}
+        if(view is ITreeList) {items = items += (descendants(view as! ITreeList))}
     }
     return items;
     }

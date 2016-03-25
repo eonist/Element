@@ -104,5 +104,12 @@ class TreeList:Element/*,ITreeList*/ {
     override func getClassType() -> String {
         return String(TreeList)
     }
+    /**
+     *
+     */
+    override func setSize(width:CGFloat, _ height:CGFloat){
+        super.setSize(width,height);
+        ElementModifier.size(itemContainer, CGPoint(width,itemHeight));/*resizes all items in the itemContainer*/
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

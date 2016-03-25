@@ -1,5 +1,4 @@
 import Cocoa
-
 /**
  * // :TODO: display:none and display:inline in the css shoud take care of the hiding and revealing of the elements not a method in this class (figure out how to do this)
  * // :TODO: there is a bug when setting the margin of any Text in this class that you have to counter meassure with a negative padding, this should be resolved
@@ -24,16 +23,16 @@ class TreeList:Element/*,ITreeList*/ {
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
-        itemContainer.addChild(item)
+        itemContainer.addSubView(item)
         ElementModifier.floatChildren(itemContainer)
     }
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
-        _itemContainer.addChildAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
-        ElementModifier.floatChildren(_itemContainer)
+        itemContainer.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
+        ElementModifier.floatChildren(itemContainer)
     }
-    public function removeAt(index:int):void{
-        _itemContainer.removeChildAt(index);
-        ElementModifier.floatChildren(_itemContainer);
+    func removeAt(index:Int){
+        itemContainer.removeFromSuperview(index);
+        ElementModifier.floatChildren(itemContainer);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

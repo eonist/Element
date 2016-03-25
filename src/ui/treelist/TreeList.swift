@@ -80,9 +80,9 @@ class TreeList:Element/*,ITreeList*/ {
     }
     override func onEvent(event: Event) {
         if(event.type == CheckEvent.check && event.origin === itemContainer){
-            onItemCheck(event as! CheckedEvent.)
-        }else if(event.type == SelectEvent.select){
-            onItemSelect()
+            onItemCheck(event as! CheckEvent )
+        }else if(event.type == SelectEvent.select && event.origin === itemContainer){
+            onItemSelect(event as! SelectEvent)
         }
         /*
         itemContainer.addEventListener(CheckEvent.CHECK, onItemCheck);

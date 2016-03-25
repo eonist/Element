@@ -43,14 +43,14 @@ class TreeListParser{
      * Returns the index of @param item from @param treeList
      * // :TODO: this code could possibly be optimized Check similar function: XMLParser.index(xml,attribute) this has simpler syntax
      */
-    class func index(treeList:ITreeList,item:DisplayObject):Array {
-        var index:Array = [];
-        for (var i : int = 0; i < treeList.itemContainer.numChildren; i++) {
-            var displayObject:DisplayObject = treeList.itemContainer.getChildAt(i);
-            if(displayObject === item) index = [i];
-            else if (displayObject as ITreeList && (displayObject as ITreeList).itemContainer.numChildren > 0){
-                var tempIndex:Array = (TreeListParser.index(displayObject as ITreeList, item));
-                if(tempIndex.length > 0) index = ([i] as Array).concat(tempIndex);
+    class func index(treeList:ITreeList,item:NSView)->Array<Int> {
+        var index:Array<Int> = []
+        for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
+            let view:NSView = treeList.itemContainer.getSubviewAt(i)
+            if(view === item) {index = [i]}
+            else if (view as! ITreeList && (view as! ITreeList).itemContainer.count > 0){
+                var tempIndex:Array = (TreeListParser.index(view as ITreeList, item))
+                if(tempIndex.length > 0) index = ([i] as Array).concat(tempIndex)
             }
         }
         return index;

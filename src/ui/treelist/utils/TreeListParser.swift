@@ -6,6 +6,12 @@ import Foundation
  * // :TODO: it may be wise to remove some of the floatChildren method sprinkled around, and only float after creation and after an event?, if possible, remeber that floatChildren doesnt float descendents aswell? Maybe create a float Decendants method?
  * // :TODO: create a close method that removes all items and eventlisteners
  */
-class TreeListParser:Element,ITreeList {
-
+class TreeListParser:Element/*,ITreeList*/ {
+    var itemHeight : CGFloat
+    var node : Node
+    var itemContainer : Container
+    init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
+        _itemHeight = itemHeight;
+        _database = database != null ? database:new Database(new XML());
+    }
 }

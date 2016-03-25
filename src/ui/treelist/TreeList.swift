@@ -56,6 +56,20 @@ class TreeList:Element/*,ITreeList*/ {
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     /**
+    * @Note the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
+    * @Note the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
+    */
+    private func onDatabaseAddAt(event : NodeEvent) {
+        //			trace("onDatabaseAddAt() "+ this);
+        var parentIndex:Array = event.index.slice2(0,event.index.count-1);
+        var parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
+        var item:DisplayObject = TreeListUtils.item(event.xml,parentTreeList.itemContainer,new Point(width, _itemHeight));
+        var itemIndex:Int = event.index[event.index.count-1];
+        parentTreeList.addItemAt(item,itemIndex);/*We could use TreeListModifier.addAt(parentTreeList, index, item) here but since we already have the parent since we need it when creating the item we can just use the addAt method directly*/
+        ElementModifier.floatChildren(itemContainer);/*Re aligns the entire treesturcture*/
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+    }
+    /**
      *
      */
     func setXML(xml:NSXMLElement){

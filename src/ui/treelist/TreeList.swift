@@ -97,5 +97,12 @@ class TreeList:Element/*,ITreeList*/ {
         //TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
     }
+    /**
+     * Returns "TreeList"
+     * @Note This function is used to find the correct class type when synthezing the element cascade
+     */
+    override func getClassType() -> String {
+        return String(TreeList)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

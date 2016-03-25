@@ -49,5 +49,9 @@ class TreeListItem:SelectCheckBoxButton{
         if(checked) for (var i : int = 0; i < _itemContainer.numChildren; i++) height += SkinParser.totalHeight((_itemContainer.getChildAt(i) as IElement).skin);
         return height
     }
+    override func setSize(width:CGFloat, _ height:CGFloat){
+        super.setSize(width,height)
+        ElementModifier.size(itemContainer!, CGPoint(width,height))/*so that descendants is updated when the TreeList is resized*/
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

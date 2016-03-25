@@ -8,11 +8,12 @@ import Cocoa
  */
 class TreeList:Element/*,ITreeList*/ {
     var itemHeight : CGFloat
-    var node : Node?
-    var itemContainer : Container
-    init(width:CGFloat = NaN, height:CGFloat = NaN, itemHeight:CGFloat = NaN, node:Node = Node(), parent : IElement? = nil, id:String = "") {
+    var node : Node
+    var itemContainer : Container?
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ node:Node = Node(), _ parent : IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight;
         self.node = node
+        super.init(width, height, parent, id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -23,16 +24,16 @@ class TreeList:Element/*,ITreeList*/ {
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
-        itemContainer.addSubView(item)
-        ElementModifier.floatChildren(itemContainer)
+        itemContainer!.addSubView(item)
+        ElementModifier.floatChildren(itemContainer!)
     }
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
-        itemContainer.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
-        ElementModifier.floatChildren(itemContainer)
+        itemContainer!.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
+        ElementModifier.floatChildren(itemContainer!)
     }
     func removeAt(index:Int){
-        itemContainer.removeSubviewAt(index)
-        ElementModifier.floatChildren(itemContainer)
+        itemContainer!.removeSubviewAt(index)
+        ElementModifier.floatChildren(itemContainer!)
     }
     /**
      *
@@ -40,9 +41,9 @@ class TreeList:Element/*,ITreeList*/ {
     func setXML(xml:NSXMLElement){
         Swift.print("setXML")
         //TreeListModifier.removeAll(self)/*clear the tree list first*/
-        node.setXML(xml)
-        TreeListUtils.treeItems(node.xml,self,Point(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
-        ElementModifier.floatChildren(_itemContainer);
+        node.xml = xml
+        //TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
+        ElementModifier.floatChildren(itemContainer!)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

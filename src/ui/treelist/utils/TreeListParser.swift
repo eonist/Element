@@ -53,6 +53,6 @@ class TreeListParser{
                 if(tempIndex.count > 0) {index = [i] + tempIndex}
             }
         }
-        return index;
+        return index
     }
 }

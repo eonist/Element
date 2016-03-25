@@ -8,7 +8,7 @@ import Cocoa
  */
 class TreeList:Element/*,ITreeList*/ {
     var itemHeight : CGFloat
-    var node : Node
+    var node : Node?
     var itemContainer : Container
     init(width:CGFloat = NaN, height:CGFloat = NaN, itemHeight:CGFloat = NaN, node:Node = Node(), parent : IElement? = nil, id:String = "") {
         self.itemHeight = itemHeight;
@@ -31,12 +31,18 @@ class TreeList:Element/*,ITreeList*/ {
         ElementModifier.floatChildren(itemContainer)
     }
     func removeAt(index:Int){
-        
-        //removeFromSuperview
-        //continue here: write a method: removeSubViewAt
-        
-        itemContainer.removeChildAt(index);
-        ElementModifier.floatChildren(itemContainer);
+        itemContainer.removeSubviewAt(index)
+        ElementModifier.floatChildren(itemContainer)
+    }
+    /**
+     *
+     */
+    func setXML(xml:NSXMLElement){
+        Swift.print("setXML")
+        //TreeListModifier.removeAll(self)/*clear the tree list first*/
+        node.setXML(xml)
+        TreeListUtils.treeItems(node.xml,self,Point(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
+        ElementModifier.floatChildren(_itemContainer);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

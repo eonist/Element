@@ -32,7 +32,7 @@ class TreeListParser{
         var items:Array<ITreeList> = []
         for (var i : Int = 0; i < treeList.itemContainer.subviews.count; i++) {
             let view:NSView = treeList.itemContainer.getSubviewAt(i)
-            if(type == nil || (type != nil && view as? T != nil)) {//<--Inspired from the ClassParser.classType() method
+            if(type == nil || (type != nil && view as? T != nil)) {//<--Inspired from the ClassParser.ofType() method
                 items.append(view as! ITreeList)
                 items += (decendantsOfType(view as! ITreeList,type))
             }

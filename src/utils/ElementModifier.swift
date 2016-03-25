@@ -36,6 +36,17 @@ class ElementModifier {
         }
     }
     /**
+     * Resizes many elements in @param displayObjectContainer
+     * // :TODO: rename to Resize, its less ambigiouse
+     */
+    class func size(view:NSView,_ size:CGPoint) {
+        let numChildren:Int = view.subviews.count;
+        for (var i : Int = 0; i < numChildren; i++) {
+            let child:NSView = view.getSubviewAt(i)
+            if(child is IElement) {(child as! IElement).setSize(size.x, size.y)}
+        }
+    }
+    /**
      * @Note refloats @param view children that are of type IElement
      * @Note i.e: after hideing of an element, or changing the depth order etc
      */

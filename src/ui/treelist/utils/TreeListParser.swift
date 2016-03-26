@@ -80,7 +80,7 @@ class TreeListParser{
     class func itemAt(treeList:ITreeList,_ index:Array<Int>) -> NSView{
         if(index.count == 1 && treeList.itemContainer.getSubViewAt(index[0]) != nil) {
             return treeList.itemContainer.getSubViewAt(index[0])!
-        }else if(index.count > 1 && treeList.itemContainer.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) as ITreeList) {
+        }else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) as ITreeList) {
             return itemAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1, index.length))
         }else {
             return treeList as DisplayObject;/*index.length == 0*/

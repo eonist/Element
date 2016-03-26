@@ -135,10 +135,10 @@ class TreeListModifier {
      *
      */
     class func moveToTop(treeList:TreeList,_ index:Array<Int>) -> Array<Int> {
-        var removed:NSXMLElement = treeList.node.removeAt(index)
-        var newIndex:Array = index.slice2(0,index.count-1).concat([0])
-        treeList.database.addAt(newIndex, removed);
-        return newIndex;
+        let removed:NSXMLElement = treeList.node.removeAt(index)
+        let newIndex:Array<Int> = index.slice2(0,index.count-1) + [0]
+        treeList.node.addAt(newIndex, removed)
+        return newIndex
     }
     
 }

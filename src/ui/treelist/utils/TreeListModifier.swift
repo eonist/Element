@@ -7,7 +7,7 @@ class TreeListModifier {
      * Scrolls the treeList to a scalar position (value 0-1)
      */
     class func scrollTo(treeList:ITreeList,_ progress:CGFloat){
-        treeList.itemContainer.y = SliderParser.y(progress, treeList.getHeight(),  TreeListParser.itemsHeight(treeList))
+        treeList.itemContainer!.y = SliderParser.y(progress, treeList.getHeight(),  TreeListParser.itemsHeight(treeList))
     }
     /**
      * @Note: to explode the entire treeList pass an empty array as @param index
@@ -36,8 +36,8 @@ class TreeListModifier {
      */
     class func addAt(treeList:ITreeList,_ index:Array<Int>,_ item:NSView) {
         if(index.count == 1) {treeList.addItemAt(item,index[0])}
-        else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
-            addAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),item)
+        else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
+            addAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),item)
         }
     }
     /**
@@ -45,32 +45,32 @@ class TreeListModifier {
      * // :TODO: rename to selectAt
      */
     class func setSelectedAt(treeList:ITreeList, _ index:Array<Int>,_ isSelected:Bool = true) {
-        if(index.count == 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ISelectable) {
-            (treeList.itemContainer.getSubViewAt(index[0]) as! ISelectable).setSelected(isSelected)
+        if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ISelectable) {
+            (treeList.itemContainer!.getSubViewAt(index[0]) as! ISelectable).setSelected(isSelected)
         }
-        else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
-            setSelectedAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
+        else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
+            setSelectedAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
         }
     }
     /**
      *
      */
     class func setTitleAt(treeList:ITreeList, _ index:Array<Int>, _ name:String){
-        if(index.count == 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is TextButton) {
-            treeList.itemContainer.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name)
+        if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is TextButton) {
+            treeList.itemContainer!.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer!.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer!.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name)
         }
-        else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
-            setTitleAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),name)
+        else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
+            setTitleAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),name)
         }
     }
     /**
      * Removes an NSView instance at @param index in @param treeList
      */
     class func removeAt(treeList:ITreeList,_ index:Array<Int>) {
-        if(index.count == 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) != nil) {
+        if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) != nil) {
             treeList.removeAt(index[0])
-        }else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
-            removeAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count))
+        }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
+            removeAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count))
         }
     }
     /**
@@ -84,14 +84,14 @@ class TreeListModifier {
      *
      */
     class func removeAll(treeList:ITreeList) {
-        while(treeList.itemContainer.subviews.count > 0) {removeAt(treeList, [0])}
+        while(treeList.itemContainer!.subviews.count > 0) {removeAt(treeList, [0])}
     }
     /**
      * // :TODO: can this work?
      */
     class func setSelected(treeList:TreeList, _ key:String, _ value:String) {
         let index:Array<Int> = XMLParser.index(treeList.node.xml, key, value)!
-        setSelectedAt(treeList as! ITreeList, index)
+        setSelectedAt(treeList, index)
     }
     /**
      * @Note: this function works as long as multiple selection is not allowed in the treeList

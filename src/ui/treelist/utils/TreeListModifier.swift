@@ -18,4 +18,15 @@ class TreeListModifier {
             if(!(treeListItem as! ICheckable).getChecked()) {treeListItem.open()}
         }
     }
+    /**
+     * @Note: to collapse the entire treeList pass an empty array as @param index
+     * @Note this method collapses all nodes from the @param index
+     */
+    class func collapseAt(var treeList:ITreeList,index:Array<Int>) {
+        treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
+        var decendants:Array<ITreeListItem> = TreeListParser.decendantsOfType(treeList,ITreeListItem)
+        for treeListItem : ITreeListItem in decendants {
+            if(ICheckable(treeListItem).checked) {treeListItem.close()}
+        }
+    }
 }

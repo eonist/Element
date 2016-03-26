@@ -42,12 +42,12 @@ class TreeListModifier {
      * Sets a selectable in @param treeList at @param index (array index)
      * // :TODO: rename to selectAt
      */
-    class func setSelectedAt(treeList:ITreeList, index:Array,isSelected:Boolean = true):void{
-    if(index.length == 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0])) {
-				(treeList.itemContainer.getChildAt(index[0]) as ISelectable).setSelected(isSelected);
-    }
-    else if(index.length > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
-				setSelectedAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1,index.length),isSelected);
-    }
+    class func setSelectedAt(treeList:ITreeList, _ index:Array<Int>,_ isSelected:Bool = true) {
+        if(index.count == 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ISelectable) {
+            (treeList.itemContainer.getSubViewAt(index[0]) as! ISelectable).setSelected(isSelected)
+        }
+        else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
+            setSelectedAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
+        }
     }
 }

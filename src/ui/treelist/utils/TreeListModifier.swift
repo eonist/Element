@@ -94,8 +94,8 @@ class TreeListModifier {
     /**
      * @Note: this function works as long as multiple selection is not allowed in the treeList
      */
-    class func unSelectAll(treeList:TreeList) ->  {
-        var selectedIndex:Array = TreeListParser.selectedIndex(treeList);
-        if(selectedIndex != null) setSelectedAt(treeList, selectedIndex,false);
+    class func unSelectAll(treeList:ITreeList){
+        let selectedIndex:Array<Int> = TreeListParser.selectedIndex(treeList)
+        if(selectedIndex != nil) {setSelectedAt(treeList, selectedIndex, false)}
     }
 }

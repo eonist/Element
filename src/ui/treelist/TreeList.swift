@@ -9,7 +9,7 @@ import Cocoa
  * // :TODO: it may be wise to remove some of the floatChildren method sprinkled around, and only float after creation and after an event?, if possible, remeber that floatChildren doesnt float descendents aswell? Maybe create a float Decendants method?
  * // :TODO: create a close method that removes all items and eventlisteners
  */
-class TreeList:Element/*,ITreeList*/ {
+class TreeList:Element,ITreeList {
     var itemHeight : CGFloat
     var node : Node
     var itemContainer : Container?
@@ -21,7 +21,7 @@ class TreeList:Element/*,ITreeList*/ {
     override func resolveSkin() {
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self))
-        //setXML(node.xml)
+        setXML(node.xml)
     }
     /**
      * Adds an instance that impliments ITreeListItem to the itemContainer
@@ -88,14 +88,14 @@ class TreeList:Element/*,ITreeList*/ {
         else if(event.type == NodeEvent.removeAll && event.origin === node){onDatabaseRemoveAll(event as! NodeEvent)}
         else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
         else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
-        //you also need to implement: onBackgroundMouseClick when the skin of self is clicked
+        //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
     }
     /**
      *
      */
     func setXML(xml:NSXMLElement){
         Swift.print("setXML")
-        //TreeListModifier.removeAll(self)/*clear the tree list first*/
+        TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         //TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)

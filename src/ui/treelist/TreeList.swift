@@ -74,11 +74,11 @@ class TreeList:Element,ITreeList {
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     private func onDatabaseSetAttributeAt(event : NodeEvent) {
-        TreeListModifier.setTitleAt(self, event.index, event.xml["@title"])
+        TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
     }
     private func onBackgroundMouseClick(event:MouseEvent){
         //Swift.print("onBackgroundMouseClick");
-        //TreeListModifier.unSelectAll(self)
+        TreeListModifier.unSelectAll(self)
     }
     override func onEvent(event: Event) {
         if(event.type == CheckEvent.check && event.origin === itemContainer){onItemCheck(event as! CheckEvent)}
@@ -96,7 +96,7 @@ class TreeList:Element,ITreeList {
         Swift.print("setXML")
         TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
-        //TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
+        TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
     }
     func getCount() -> Int{

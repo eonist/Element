@@ -46,29 +46,29 @@ class TreeList:Element,ITreeList {
     }
     private func onItemCheck(event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        XMLModifier.setAttributeAt(node.xml, index, "isOpen",event.checked)
+        XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     private func onDatabaseRemoveAt(event:NodeEvent)  {
-        //TreeListModifier.removeAt(self, event.index)
+        TreeListModifier.removeAt(self, event.index)
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     private func onDatabaseRemoveAll(event:NodeEvent){
-        //TreeListModifier.removeAll(self)
+        TreeListModifier.removeAll(self)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     /**
-    * @Note the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
-    * @Note the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
-    */
+     * @Note the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
+     * @Note the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
+     */
     private func onDatabaseAddAt(event : NodeEvent) {
         //Swift.print("onDatabaseAddAt() "+ this);
         let parentIndex:Array = event.index.slice2(0,event.index.count-1)
         parentIndex
-        //var parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
-        //var item:NSView = TreeListUtils.item(event.xml,parentTreeList.itemContainer,CGPoint(width, _itemHeight));
+        let parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
+        var item:NSView = TreeListUtils.item(event.xml,parentTreeList.itemContainer,CGPoint(width, _itemHeight));
         let itemIndex:Int = event.index[event.index.count-1]
         itemIndex
         //parentTreeList.addItemAt(item,itemIndex);/*We could use TreeListModifier.addAt(parentTreeList, index, item) here but since we already have the parent since we need it when creating the item we can just use the addAt method directly*/

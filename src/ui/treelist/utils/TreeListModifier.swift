@@ -61,6 +61,15 @@ class TreeListModifier {
             setTitleAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),name)
         }
     }
-    
+    /**
+     * Removes an DisplayObject instance at @param index in @param treeList
+     */
+    class func removeAt(treeList:ITreeList,index:Array) {
+        if(index.length == 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0])) {
+            treeList.removeAt(index[0]);
+        }else if(index.length > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
+            removeAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1,index.length));
+        }
+    }
 }   
 

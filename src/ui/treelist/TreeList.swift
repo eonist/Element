@@ -45,7 +45,7 @@ class TreeList:Element,ITreeList {
         SelectModifier.unSelectAllExcept(selected, selectables)
     }
     private func onItemCheck(event:CheckEvent) {
-        //var index:Array = TreeListParser.index(self, (event.target as DisplayObject).parent);
+        var index:Array<Int> = TreeListParser.index(self, (event.target as! NSView).parent)
         //XMLModifier.setAttributeAt(node.xml, index, ["isOpen":String(event.checked)])
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))

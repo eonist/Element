@@ -43,9 +43,9 @@ private class Utils{
         var attributes:Dictionary<String,String> = XMLParser.attributes(xml)
         var hasChildren:Bool = attributes["hasChildren"] == "true" || xml.children().length() > 0
         var title:String = attributes["title"]!
-        var isOpen:Bool = attributes["isOpen"] != undefined ? attributes["isOpen"] == "true" : false
-        var isSelected:Bool = attributes["isSelected"] != undefined ? attributes["isSelected"] == "true" : false
-        var isVisible:Bool = attributes["isVisible"] != undefined ?  attributes["isVisible"] == "true" : true
+        var isOpen:Bool = attributes["isOpen"] != nil ? attributes["isOpen"] == "true" : false//<- you can shorten this by doing ??
+        var isSelected:Bool = attributes["isSelected"] != nil ? attributes["isSelected"] == "true" : false//<- you can shorten this by doing ??
+        var isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
         return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
     }
 }

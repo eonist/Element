@@ -40,12 +40,12 @@ private class Utils{
      *
      */
     class func itemData(xml:NSXMLElement)->ItemData {
-        var attributes:Dictionary<String,String> = XMLParser.attributes(xml)
-        var hasChildren:Bool = attributes["hasChildren"] == "true" || xml.children().length() > 0
-        var title:String = attributes["title"]!
-        var isOpen:Bool = attributes["isOpen"] != nil ? attributes["isOpen"] == "true" : false//<- you can shorten this by doing ??
-        var isSelected:Bool = attributes["isSelected"] != nil ? attributes["isSelected"] == "true" : false//<- you can shorten this by doing ??
-        var isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
+        var attributes:Dictionary<String,String> = XMLParser.attribs(xml)
+        let hasChildren:Bool = attributes["hasChildren"] == "true" || xml.children?.count > 0
+        let title:String = attributes["title"]!
+        let isOpen:Bool = attributes["isOpen"] != nil ? attributes["isOpen"] == "true" : false//<- you can shorten this by doing ??
+        let isSelected:Bool = attributes["isSelected"] != nil ? attributes["isSelected"] == "true" : false//<- you can shorten this by doing ??
+        let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
         return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
     }
 }

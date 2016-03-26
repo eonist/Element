@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * TODO: some way to move items up/down the hierarchy
+ */
 class TreeListModifier {
     /**
      * Scrolls the treeList to a scalar position (value 0-1)
@@ -130,7 +132,6 @@ class TreeListModifier {
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }
-    
     /**
      *
      */
@@ -140,5 +141,14 @@ class TreeListModifier {
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }
-    
+    /**
+     *
+     */
+    class func moveToBottom(treeList:TreeList,_ index:Array<Int>) -> Array<Int> {
+        let removed:NSXMLElement = treeList.node.removeAt(index)
+        let childrenCount:Int = NodeParser.childrenCount(treeList.node, index.slice2(0,index.count-1))
+        let newIndex:Array<Int> = index.slice2(0,index.count-1) + [childrenCount]
+        treeList.node.addAt(newIndex, removed)
+        return newIndex
+    }
 }

@@ -30,4 +30,13 @@ class SliderParser {
     class func progress(y:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
         return Swift.max(0,Swift.min(1,y / -(totalHeight - height)))
     }
+    /**
+     * Returns the y value
+     * @param height in most cases the list.height
+     * @param totalHeight the total height of all visible items
+     */
+    public static function y(progress:Number,height:Number,totalHeight:Number):Number {
+    var scrollHeight:Number = totalHeight - height;
+    return -Math.round(progress * scrollHeight);
+    }
 }

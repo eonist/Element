@@ -84,4 +84,18 @@ class TreeListModifier {
     class func removeAll(treeList:ITreeList) {
         while(treeList.itemContainer.subviews.count > 0) {removeAt(treeList, [0])}
     }
+    /**
+     * // :TODO: can this work?
+     */
+    class func setSelected(treeList:TreeList, attribute:Dictionary<String,String>) {
+        var index:Array<Int> = XMLParser.index(treeList.database.xml, attribute)
+        setSelectedAt(treeList, index)
+    }
+    
+    
+    
+    //continue here
+    
+    
+    
 }

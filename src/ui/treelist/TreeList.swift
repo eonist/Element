@@ -66,7 +66,9 @@ class TreeList:Element,ITreeList {
     private func onDatabaseAddAt(event : NodeEvent) {
         //Swift.print("onDatabaseAddAt() "+ this);
         let parentIndex:Array = event.index.slice2(0,event.index.count-1)
-        parentIndex
+        
+        //continue here:
+        
         let parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
         var item:NSView = TreeListUtils.item(event.xml,parentTreeList.itemContainer,CGPoint(width, _itemHeight));
         let itemIndex:Int = event.index[event.index.count-1]

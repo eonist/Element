@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class TreeListModifier {
     /**
@@ -29,5 +29,13 @@ class TreeListModifier {
             if((treeListItem as! ICheckable).getChecked()) {treeListItem.close()}
         }
     }
-    
+    /**
+     * @Note this method is recursive
+     */
+    class func addAt(treeList:ITreeList,_ index:Array<Int>,_ item:NSView) {
+        if(index.length == 1) treeList.addItemAt(item,index[0]);
+        else if(index.count > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
+            addAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1,index.length),item);
+        }
+    }
 }

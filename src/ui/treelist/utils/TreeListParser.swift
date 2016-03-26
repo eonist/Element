@@ -75,8 +75,8 @@ class TreeListParser{
         return selectable
     }
     /**
-    * Returns an NSView instance at @param index in @param treeList
-    */
+     * Returns an NSView instance at @param index in @param treeList
+     */
     class func itemAt(treeList:ITreeList,_ index:Array<Int>) -> NSView{
         if(index.count == 1 && treeList.itemContainer.getSubViewAt(index[0]) != nil) {
             return treeList.itemContainer.getSubViewAt(index[0])!

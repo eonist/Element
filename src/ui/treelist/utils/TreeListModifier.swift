@@ -91,11 +91,4 @@ class TreeListModifier {
         var index:Array<Int> = XMLParser.index(treeList.database.xml, attribute)
         setSelectedAt(treeList, index)
     }
-    
-    
-    
-    //continue here
-    
-    
-    
 }

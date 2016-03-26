@@ -27,3 +27,14 @@ class TreeListUtils {
         return treeList;
     }
 }
+private class Utils{
+    /**
+     * // :TODO: write java doc
+     */
+    class func treeItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> NSView {
+        var item:NSView = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
+        item.visible = itemData.isVisible// :TODO: should this be here and do we need isVisible?
+        return item;
+    }
+
+}

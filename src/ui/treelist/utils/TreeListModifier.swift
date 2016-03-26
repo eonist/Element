@@ -50,18 +50,15 @@ class TreeListModifier {
             setSelectedAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
         }
     }
-    
-    //create setTitleAt method aswell
-    
     /**
      *
      */
     class func setTitleAt(treeList:ITreeList, _ index:Array<Int>, _ name:String){
         if(index.count == 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is TextButton) {
-            treeList.itemContainer.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name);
+            treeList.itemContainer.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name)
         }
-        else if(index.count > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
-            setTitleAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1,index.length),name);
+        else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
+            setTitleAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),name)
         }
     }
     

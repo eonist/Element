@@ -123,7 +123,13 @@ class TreeListModifier {
      */
     class func moveDown(treeList:TreeList,var _ index:Array<Int>) -> Array<Int> {
         var removed:NSXMLElement = treeList.node.removeAt(index);
-        var childrenCount:Int = NodeParser.childrenCount(treeList.database, index.slice(0,index.length-1));
+        
+        
+        XMLParser.childAt(treeList.node.xml, index.slice2(0,index.count-1))!.children!.count;
+        
+        
+        
+        var childrenCount:Int = NodeParser.childrenCount(treeList.database, index.slice2(0,index.length-1));
         var integer:Int = index.pop()
         integer = integer < childrenCount ? integer+1:childrenCount;
         var newIndex:Array<Int> = index.concat(integer);

@@ -35,8 +35,8 @@ class SliderParser {
      * @param height in most cases the list.height
      * @param totalHeight the total height of all visible items
      */
-    public static function y(progress:Number,height:Number,totalHeight:Number):Number {
-    var scrollHeight:Number = totalHeight - height;
-    return -Math.round(progress * scrollHeight);
+    class func y(progress:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
+        var scrollHeight:Number = totalHeight - height;
+        return -Math.round(progress * scrollHeight);
     }
 }

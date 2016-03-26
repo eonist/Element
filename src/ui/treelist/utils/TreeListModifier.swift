@@ -88,7 +88,14 @@ class TreeListModifier {
      * // :TODO: can this work?
      */
     class func setSelected(treeList:TreeList, _ key:String, _ value:String) {
-        var index:Array<Int> = XMLParser.index(treeList.node.xml, key, value)!
-        setSelectedAt(treeList, index, key, value)
+        let index:Array<Int> = XMLParser.index(treeList.node.xml, key, value)!
+        setSelectedAt(treeList as! ITreeList, index)
+    }
+    /**
+     * @Note: this function works as long as multiple selection is not allowed in the treeList
+     */
+    class func unSelectAll(treeList:TreeList) ->  {
+        var selectedIndex:Array = TreeListParser.selectedIndex(treeList);
+        if(selectedIndex != null) setSelectedAt(treeList, selectedIndex,false);
     }
 }

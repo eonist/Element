@@ -50,4 +50,10 @@ class TreeListModifier {
             setSelectedAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
         }
     }
-}
+    
+    //create setTitleAt method aswell
+    
+    
+    
+}   
+

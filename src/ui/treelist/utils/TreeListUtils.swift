@@ -36,5 +36,16 @@ private class Utils{
         item.visible = itemData.isVisible// :TODO: should this be here and do we need isVisible?
         return item;
     }
-
+    /**
+     *
+     */
+    class func itemData(xml:XML)->ItemData {
+        var attributes:Dictionary<String,String> = XMLParser.attributes(xml)
+        var hasChildren:Bool = attributes["hasChildren"] == "true" || xml.children().length() > 0
+        var title:String = attributes["title"]!
+        var isOpen:Bool = attributes["isOpen"] != undefined ? attributes["isOpen"] == "true" : false
+        var isSelected:Bool = attributes["isSelected"] != undefined ? attributes["isSelected"] == "true" : false
+        var isVisible:Bool = attributes["isVisible"] != undefined ?  attributes["isVisible"] == "true" : true
+        return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
+    }
 }

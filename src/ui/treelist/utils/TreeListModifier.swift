@@ -98,4 +98,16 @@ class TreeListModifier {
         let selectedIndex:Array<Int> = TreeListParser.selectedIndex(treeList)
         if(selectedIndex.count > 0) {setSelectedAt(treeList, selectedIndex, false)}
     }
+    /**
+     * @Note the @param index is modified so its wise to clone the array if you wish to use it later
+     * // :TODO: use the newIndex to your advantage with slice and the index doesnt have to be modified
+     */
+    class func moveUp(treeList:TreeList,index:Array<Int>) -> Array<Int> {
+        var removed:NSXMLElement = treeList.node.removeAt(index)
+        var integer:Int = index.pop()
+        integer = integer > 0 ? integer-1:0
+        var newIndex:Array = index.concat(integer)
+        treeList.database.addAt(newIndex, removed)
+        return newIndex
+    }
 }

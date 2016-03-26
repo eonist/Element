@@ -75,8 +75,8 @@ class TreeListModifier {
      * Removes an DisplayObject instance in @param treeList
      */
     class func remove(treeList:ITreeList,_ item:NSView) {
-        var index:Array = TreeListParser.index(treeList, item);
-        removeAt(treeList, index);
+        let index:Array<Int> = TreeListParser.index(treeList, item)
+        removeAt(treeList, index)
     }
 }   
 

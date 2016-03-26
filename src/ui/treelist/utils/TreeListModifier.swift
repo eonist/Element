@@ -13,9 +13,9 @@ class TreeListModifier {
     class func explodeAt(var treeList:ITreeList,_ index:Array<Int>) {
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
         if(treeList is ITreeListItem){(treeList as! ITreeListItem).open()}
-        var decendants:Array<ITreeList> = TreeListParser.decendantsOfType(treeList,ITreeListItem)
-        for each (var treeListItem : ITreeListItem in decendants){
-            if(!ICheckable(treeListItem).checked) treeListItem.open()
+        let decendants:Array<AnyObject> = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
+        for treeListItem:ITreeListItem in decendants{
+            if(!ICheckable(treeListItem).checked) {treeListItem.open()}
         }
     }
 }

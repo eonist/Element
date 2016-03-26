@@ -2,6 +2,12 @@ import Foundation
 
 class SliderParser {
     /**
+     * Asserts and returns a boolean value that determines if slider should be visible.
+     */
+    class func assertSliderVisibility(scalar:CGFloat)->Bool {
+        return scalar < 1
+    }
+    /**
      * Returns a slider thumbSize
      * @param scalar
      * @param sliderSize (thumbWidth or thumbHeight)

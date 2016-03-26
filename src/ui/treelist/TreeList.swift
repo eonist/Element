@@ -100,6 +100,9 @@ class TreeList:Element,ITreeList {
         //TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
     }
+    func getCount() -> Int{
+        return itemContainer!.subviews.count
+    }
     /**
      * Returns "TreeList"
      * @Note This function is used to find the correct class type when synthezing the element cascade

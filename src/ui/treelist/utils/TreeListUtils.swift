@@ -18,7 +18,7 @@ class TreeListUtils {
      * // :TODO: this should just return not modify?!? and be moved to TreeListParser
      */
     class func treeItems(xml:NSXMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {
-        for var child in xml.children! {
+        for child in xml.children! as! Array<NSXMLElement>{
             var itemData:ItemData = Utils.itemData(child)
             var treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             if(itemData.hasChildren) treeItems(child,treeItem as ITreeList,size)// :TODO: move this line into treeitem?
@@ -49,10 +49,10 @@ private class Utils{
         return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
     }
     class func treeListItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
-        return treeListItem(<#T##itemData: ItemData##ItemData#>, <#T##parent: IElement##IElement#>, <#T##size: CGPoint##CGPoint#>)
+        return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
     class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
-        return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent);
+        return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }
 class ItemData{

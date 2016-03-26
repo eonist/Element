@@ -5,6 +5,9 @@ import Cocoa
  */
 class TreeListItem:SelectCheckBoxButton{//this class doesnt need an init method since its exactly the same as the one it extends
     var itemContainer : Container?
+    override init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String = "") {
+        super.init(width, height, text, isSelected, isChecked, parent, id)
+    }
     override func resolveSkin(){
         super.resolveSkin();
         itemContainer = addSubView(Container(NaN,NaN,self,"lable"))//0. add _itemContainer

@@ -125,15 +125,15 @@ class TreeListModifier {
         var removed:NSXMLElement = treeList.node.removeAt(index);
         
         
-        XMLParser.childAt(treeList.node.xml, index.slice2(0,index.count-1))!.children!.count;
+        XMLParser.childAt(treeList.node.xml, index.slice2(0,index.count-1))!.children!.count
         
         
         
-        var childrenCount:Int = NodeParser.childrenCount(treeList.database, index.slice2(0,index.length-1));
+        var childrenCount:Int = NodeParser.childrenCount(treeList.database, index.slice2(0,index.length-1))
         var integer:Int = index.pop()
-        integer = integer < childrenCount ? integer+1:childrenCount;
-        var newIndex:Array<Int> = index.concat(integer);
-        treeList.database.addAt(newIndex, removed);
-        return newIndex;
+        integer = integer < childrenCount ? integer+1:childrenCount
+        var newIndex:Array<Int> = index.concat(integer)
+        treeList.database.addAt(newIndex, removed)
+        return newIndex
     }
 }

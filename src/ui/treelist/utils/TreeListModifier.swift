@@ -62,7 +62,7 @@ class TreeListModifier {
         }
     }
     /**
-     * Removes an DisplayObject instance at @param index in @param treeList
+     * Removes an NSView instance at @param index in @param treeList
      */
     class func removeAt(treeList:ITreeList,_ index:Array<Int>) {
         if(index.count == 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) != nil) {
@@ -72,11 +72,16 @@ class TreeListModifier {
         }
     }
     /**
-     * Removes an DisplayObject instance in @param treeList
+     * Removes an NSView instance in @param treeList
      */
     class func remove(treeList:ITreeList,_ item:NSView) {
         let index:Array<Int> = TreeListParser.index(treeList, item)
         removeAt(treeList, index)
     }
-}   
-
+    /**
+     *
+     */
+    class func removeAll(treeList:ITreeList) {
+        while(treeList.itemContainer.subviews.count > 0) {removeAt(treeList, [0])}
+    }
+}

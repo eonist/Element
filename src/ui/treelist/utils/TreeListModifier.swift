@@ -33,9 +33,21 @@ class TreeListModifier {
      * @Note this method is recursive
      */
     class func addAt(treeList:ITreeList,_ index:Array<Int>,_ item:NSView) {
-        if(index.length == 1) treeList.addItemAt(item,index[0]);
-        else if(index.count > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
-            addAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1,index.length),item);
+        if(index.count == 1) {treeList.addItemAt(item,index[0])}
+        else if(index.count > 1 && treeList.itemContainer.subviews.count > 0 && treeList.itemContainer.getSubViewAt(index[0]) is ITreeList) {
+            addAt(treeList.itemContainer.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),item)
         }
+    }
+    /**
+     * Sets a selectable in @param treeList at @param index (array index)
+     * // :TODO: rename to selectAt
+     */
+    class func setSelectedAt(treeList:ITreeList, index:Array,isSelected:Boolean = true):void{
+    if(index.length == 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0])) {
+				(treeList.itemContainer.getChildAt(index[0]) as ISelectable).setSelected(isSelected);
+    }
+    else if(index.length > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
+				setSelectedAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1,index.length),isSelected);
+    }
     }
 }

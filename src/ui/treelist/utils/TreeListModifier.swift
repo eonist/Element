@@ -87,8 +87,8 @@ class TreeListModifier {
     /**
      * // :TODO: can this work?
      */
-    class func setSelected(treeList:TreeList, attribute:Dictionary<String,String>) {
-        var index:Array<Int> = XMLParser.index(treeList.database.xml, attribute)
-        setSelectedAt(treeList, index)
+    class func setSelected(treeList:TreeList, _ key:String, _ value:String) {
+        var index:Array<Int> = XMLParser.index(treeList.node.xml, key, value)!
+        setSelectedAt(treeList, index, key, value)
     }
 }

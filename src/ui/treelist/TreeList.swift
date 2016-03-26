@@ -39,9 +39,9 @@ class TreeList:Element,ITreeList {
         ElementModifier.floatChildren(itemContainer!)
     }
     private func onItemSelect(event:SelectEvent){// :TODO: make protected since we may want to have differ functionality, like multi select
-        let selectables:Array<ISelectable> = TreeListParser.descendants(self) as Array<ISelectable>
+        let selectables:Array<ITreeList> = TreeListParser.descendants(self)
         let selected:ISelectable = event.origin as! ISelectable
-        SelectModifier.unSelectAllExcept(selected, selectables);
+        SelectModifier.unSelectAllExcept(selected, selectables)
     }
     private func onItemCheck(event:CheckEvent) {
         //var index:Array = TreeListParser.index(self, (event.target as DisplayObject).parent);

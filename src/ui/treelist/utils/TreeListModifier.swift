@@ -122,18 +122,12 @@ class TreeListModifier {
      * // :TODO: do we really need to go from DisplayObject to xml and then again to DisplayObject?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
      */
     class func moveDown(treeList:TreeList,var _ index:Array<Int>) -> Array<Int> {
-        var removed:NSXMLElement = treeList.node.removeAt(index);
-        
-        
-        XMLParser.childAt(treeList.node.xml, index.slice2(0,index.count-1))!.children!.count
-        
-        
-        
-        var childrenCount:Int = NodeParser.childrenCount(treeList.database, index.slice2(0,index.length-1))
-        var integer:Int = index.pop()
+        let removed:NSXMLElement = treeList.node.removeAt(index);
+        let childrenCount:Int = NodeParser.childrenCount(treeList.node, index.slice2(0,index.count-1))
+        var integer:Int = index.pop()!
         integer = integer < childrenCount ? integer+1:childrenCount
-        var newIndex:Array<Int> = index.concat(integer)
-        treeList.database.addAt(newIndex, removed)
+        let newIndex:Array<Int> = index + [integer]
+        treeList.node.addAt(newIndex, removed)
         return newIndex
     }
 }

@@ -78,7 +78,7 @@ class TreeListParser{
     * Returns an NSView instance at @param index in @param treeList
     */
     class func itemAt(treeList:ITreeList,_ index:Array<Int>) -> NSView{
-        if(index.count == 1 && treeList.itemContainer.getSubviewAt(index[0]) != nil) {
+        if(index.count == 1 && treeList.itemContainer.subviews.count > index[0] != nil) {
             return treeList.itemContainer.getChildAt(index[0]);
         }else if(index.length > 1 && treeList.itemContainer.numChildren > 0 && treeList.itemContainer.getChildAt(index[0]) as ITreeList) {
             return itemAt(treeList.itemContainer.getChildAt(index[0]) as ITreeList, index.slice(1, index.length));

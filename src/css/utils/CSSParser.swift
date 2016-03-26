@@ -141,7 +141,7 @@ private class Utils{
                         let condiditonalPrefix:String = prefix != "" ? prefix + " " : "";
                         let conditionalSuffix:String = suffix != "" ? " " + suffix : "";
                         let fullName:String =  condiditonalPrefix + name + conditionalSuffix;
-                        Swift.print("fullName: " + fullName)
+                        //Swift.print("fullName: " + fullName)
                         sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)));
                     }
                 }

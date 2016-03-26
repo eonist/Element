@@ -96,6 +96,6 @@ class TreeListModifier {
      */
     class func unSelectAll(treeList:ITreeList){
         let selectedIndex:Array<Int> = TreeListParser.selectedIndex(treeList)
-        if(selectedIndex != nil) {setSelectedAt(treeList, selectedIndex, false)}
+        if(selectedIndex.count > 0) {setSelectedAt(treeList, selectedIndex, false)}
     }
 }

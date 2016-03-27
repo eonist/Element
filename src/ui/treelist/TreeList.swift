@@ -53,6 +53,9 @@ class TreeList:Element,ITreeList {
         itemContainer!.removeSubviewAt(index)
         ElementModifier.floatChildren(itemContainer!)
     }
+    /**
+     * NOTE: This method gets all SelectEvent's from all decending ICheckable instances
+     */
     private func onItemSelect(event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
         Swift.print("onItemSelect()")
         let descendants:Array<ITreeList> = TreeListParser.descendants(self)
@@ -61,7 +64,7 @@ class TreeList:Element,ITreeList {
         SelectModifier.unSelectAllExcept(selected, selectables)
     }
     /**
-     * NOTE: This method gets all Check events from all decending ICheckable instances
+     * NOTE: This method gets all CheckEvent's from all decending ICheckable instances
      */
     private func onItemCheck(event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)

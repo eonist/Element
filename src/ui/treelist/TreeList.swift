@@ -27,7 +27,6 @@ class TreeList:Element,ITreeList {
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
         
-        
         setXML(node.xml)
         /*
         let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
@@ -69,22 +68,15 @@ class TreeList:Element,ITreeList {
         //TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
-        //ElementModifier.floatChildren(itemContainer!)
+        ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
-        Swift.print("addItem() item: " + "\(item)")
-        //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
-        //itemContainer!.addSubView(selectCheckBoxButton)
-        
-        
-        
-        //continue here: figure out what item contains that is different from the above, by creating the above in the util method
-        
+        //Swift.print("addItem() item: " + "\(item)")
         itemContainer!.addSubView(item)
-        //ElementModifier.floatChildren(itemContainer!)
+        ElementModifier.floatChildren(itemContainer!)
     }
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
         itemContainer!.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/

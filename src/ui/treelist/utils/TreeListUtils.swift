@@ -60,7 +60,6 @@ private class Utils{
     class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
         //Swift.print("selectTextButton size: " + "\(size)" + " title: " + "\(itemData.title)")
         //Swift.print("parent: " + "\(parent)")
-        //return SelectTextButton(100,24,"hello",false,parent/*,"specialTextButton"*/)
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }

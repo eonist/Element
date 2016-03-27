@@ -4,7 +4,7 @@ import Cocoa
  * // :TODO: why doesnt the treeListItem extend a class that ultimatly extends a TextButton?, has it something to do with the indentation via css?
  */
 class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need an init method since its exactly the same as the one it extends
-    var itemContainer : Container?
+    var itemContainer:Container?
     override init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String = "") {
         super.init(width, height, text, isSelected, isChecked, parent, id)
     }
@@ -41,7 +41,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         super.onEvent(event)
         if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
     }
-    func getLength()->Int{//rename to count?
+    func getCount()->Int{
         return itemContainer!.subviews.count
     }
     override func getHeight() -> CGFloat {

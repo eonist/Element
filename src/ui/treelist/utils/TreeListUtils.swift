@@ -25,7 +25,7 @@ class TreeListUtils {
             let treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             //Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")
             if(itemData.hasChildren) {
-                Swift.print("treeItem: " + "\(treeItem)")
+                //Swift.print("treeItem: " + "\(treeItem)")
                 treeItems(child,treeItem as! ITreeList,size)
             }// :TODO: move this line into treeitem?
             treeList.addItem(treeItem)

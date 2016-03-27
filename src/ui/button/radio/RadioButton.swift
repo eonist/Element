@@ -5,7 +5,7 @@ class RadioButton:TextButton,ISelectable{// :TODO: impliment IDisableable also a
     var isSelected:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
         self.isSelected = isSelected
-        super.init(text,width,height,parent,id)
+        super.init(width,height,text,parent,id)
     }
     /**
      * @Note:when added to stage and if RadioBullet dispatches selct event it will bubble up and through this class (so no need for extra eventlistners and dispatchers in this class)

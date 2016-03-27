@@ -6,7 +6,7 @@ class SelectTextButton:TextButton,ISelectable {
     var isSelected:Bool;
     init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isSelected : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
         self.isSelected = isSelected;
-        super.init(text, width, height, parent, id);
+        super.init(width, height, text, parent, id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func mouseUpInside(event: MouseEvent) {

@@ -6,7 +6,7 @@ class TreeListUtils {
      * @Note this method is used in the onDataBaseAddAt method in the TreeList class
      */
     class func item(xml:NSXMLElement,_ parent:IElement,_ size:CGPoint)->NSView {
-        Swift.print("item size: " + "\(size)")
+        //Swift.print("item size: " + "\(size)")
         let itemData:ItemData = Utils.itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
         if(itemData.hasChildren) {treeItems(xml,item as! ITreeList,CGPoint(size.x, size.y)) as! NSView}/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
@@ -19,7 +19,7 @@ class TreeListUtils {
      * // :TODO: this should just return not modify?!? and be moved to TreeListParser
      */
     class func treeItems(xml:NSXMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
-        Swift.print("treeItems size: " + "\(size)")
+        //Swift.print("treeItems size: " + "\(size)")
         for child in xml.children! as! Array<NSXMLElement>{
             let itemData:ItemData = Utils.itemData(child)
             let treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)

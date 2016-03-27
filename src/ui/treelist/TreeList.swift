@@ -99,7 +99,7 @@ class TreeList:Element,ITreeList {
         TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
-        //ElementModifier.floatChildren(itemContainer!)
+        ElementModifier.floatChildren(itemContainer!)
     }
     func getCount() -> Int{
         return itemContainer!.subviews.count

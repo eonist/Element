@@ -63,7 +63,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     /**
      * event listeners
      */
-    override func onEvent(event: Event) {
+    override func onEvent(event:Event) {
         super.onEvent(event)
         if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
     }

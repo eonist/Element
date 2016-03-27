@@ -48,7 +48,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
         if(isChecked) {
             for (var i : Int = 0; i < itemContainer!.subviews.count; i++) {
-                height += SkinParser.totalHeight((itemContainer?.getSubviewAt(i) as! IElement).skin!)
+                height += SkinParser.totalHeight((itemContainer!.getSubviewAt(i) as! IElement).skin!)
             }
         }
         return height

@@ -19,6 +19,7 @@ class TreeList:Element,ITreeList {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
+        Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self))
         setXML(node.xml)

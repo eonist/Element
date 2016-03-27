@@ -29,7 +29,7 @@ class CheckBoxButton : Button,ICheckable{
      * NOTE: this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
      */
     func getChecked() -> Bool {
-        return checkBox != nil ? checkBox!.isChecked : self.isChecked;/*Temp fix*/
+        return checkBox != nil ? checkBox!.isChecked : self.isChecked;/*<--Temp fix*/
     }
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();

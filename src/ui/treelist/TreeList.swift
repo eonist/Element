@@ -21,8 +21,8 @@ class TreeList:Element,ITreeList {
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         
-        StyleManager.addStyle("Button#special{fill:blue;float:left;clear:left;}")
-        StyleManager.addStyle("SelectCheckBoxButton{float:left;clear:left;}")
+        //StyleManager.addStyle("Button#special{fill:blue;float:left;clear:left;}")
+        //StyleManager.addStyle("SelectCheckBoxButton{float:left;clear:left;}")
         
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
@@ -79,8 +79,10 @@ class TreeList:Element,ITreeList {
         //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         //itemContainer!.addSubView(selectCheckBoxButton)
         
-        let txtBtn = itemContainer!.addSubView(SelectTextButton(100,24,"hello",false,itemContainer,"specialTextButton"))
+        let txtBtn = itemContainer!.addSubView(SelectTextButton(100,24,"hello",false,itemContainer/*,"specialTextButton"*/))
         txtBtn
+        
+        //continue here: figure out what item contains that is different from the above
         
         //itemContainer!.addSubView(item)
         //ElementModifier.floatChildren(itemContainer!)

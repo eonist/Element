@@ -33,6 +33,11 @@ class TreeList:Element,ITreeList {
         let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
         btn
         
+        StyleManager.addStyle("Button#second{fill:blue;float:left;clear:left;}")
+        
+        let btn2 = itemContainer!.addSubView(Button(100,24,itemContainer,"second"))
+        btn2
+        
         //continue here: figure out whats going on with adding more than one item to the itemContainer
         
         /*

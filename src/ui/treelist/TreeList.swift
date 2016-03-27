@@ -21,7 +21,7 @@ class TreeList:Element,ITreeList {
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
-        itemContainer = addSubView(Container(width,height,self))
+        itemContainer = addSubView(Container(width,height,self,"lable"))
         setXML(node.xml)
     }
     /**

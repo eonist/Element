@@ -22,7 +22,7 @@ class TreeList:Element,ITreeList {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
-        //setXML(node.xml)
+        setXML(node.xml)
         StyleManager.addStyle("Button#special{fill:blue;}")
         /*let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
         btn*/
@@ -53,7 +53,11 @@ class TreeList:Element,ITreeList {
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
-        itemContainer!.addSubView(item)
+        Swift.print("addItem()")
+        let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
+        itemContainer!.addSubView(selectCheckBoxButton)
+
+        //itemContainer!.addSubView(item)
         ElementModifier.floatChildren(itemContainer!)
     }
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt

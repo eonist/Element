@@ -27,15 +27,17 @@ class TreeList:Element,ITreeList {
         /*let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
         btn*/
         
-        /*let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
-        txtBtn*/
+        /*
+        let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
+        txtBtn
+        */
         
         //continue here: try to make a 
         
+        /*
         let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         itemContainer!.addSubView(selectCheckBoxButton)
-        
-        
+        */
     }
     /**
      *

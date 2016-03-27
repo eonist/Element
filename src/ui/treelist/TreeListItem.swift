@@ -35,13 +35,17 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
-     * Simulates what happens when the user clicks 
+     * Simulates what happens when the user clicks on the CheckBox instanance
+     * NOTE: this method is used in conjunction with 
      */
     func open(){
         Swift.print("TreeListItem.open()")
         setChecked(true)
         checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
     }
+    /**
+     * Simulates what happens when the user clicks on the CheckBox instanance
+     */
     func close(){
         Swift.print("TreeListItem.close()")
         setChecked(false)

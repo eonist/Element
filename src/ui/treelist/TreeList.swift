@@ -22,7 +22,10 @@ class TreeList:Element,ITreeList {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
-        setXML(node.xml)
+        //setXML(node.xml)
+        StyleManager.addStyle("Button#special{fill:blue;}")
+        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
+        btn
     }
     /**
      *

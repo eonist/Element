@@ -98,8 +98,8 @@ class TreeList:Element,ITreeList {
         TreeListModifier.unSelectAll(self)
     }
     override func onEvent(event: Event) {
-        if(event.type == CheckEvent.check && event.origin === itemContainer){onItemCheck(event as! CheckEvent)}
-        else if(event.type == SelectEvent.select && event.origin === itemContainer){onItemSelect(event as! SelectEvent)}
+        if(event.type == CheckEvent.check && event.immediate === itemContainer){onItemCheck(event as! CheckEvent)}
+        else if(event.type == SelectEvent.select && event.immediate === itemContainer){onItemSelect(event as! SelectEvent)}
         else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}
         else if(event.type == NodeEvent.removeAll && event.origin === node){onDatabaseRemoveAll(event as! NodeEvent)}
         else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}

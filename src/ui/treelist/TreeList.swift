@@ -30,6 +30,10 @@ class TreeList:Element,ITreeList {
         let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
         btn
         */
+        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
+        btn
+        
+        //continue here: figure out whats going on with adding more than one item to the itemContainer
         
         /*
         let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
@@ -61,8 +65,7 @@ class TreeList:Element,ITreeList {
         //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         //itemContainer!.addSubView(selectCheckBoxButton)
         
-        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        btn
+        
 
         //itemContainer!.addSubView(item)
         //ElementModifier.floatChildren(itemContainer!)

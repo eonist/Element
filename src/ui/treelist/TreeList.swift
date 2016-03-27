@@ -75,13 +75,10 @@ class TreeList:Element,ITreeList {
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
-        Swift.print("addItem()")
+        Swift.print("addItem() item: " + "\(item)")
         let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         itemContainer!.addSubView(selectCheckBoxButton)
         
-        //let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        //btn
-
         //itemContainer!.addSubView(item)
         //ElementModifier.floatChildren(itemContainer!)
     }

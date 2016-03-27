@@ -18,7 +18,7 @@ class TreeListUtils {
      * // :TODO: this should just return not modify?!? and be moved to TreeListParser
      */
     class func treeItems(xml:NSXMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
-        Swift.print("treeItems")
+        Swift.print("treeItems size: " + "\(size)")
         for child in xml.children! as! Array<NSXMLElement>{
             let itemData:ItemData = Utils.itemData(child)
             let treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
@@ -33,7 +33,7 @@ private class Utils{
      * // :TODO: write java doc
      */
     class func treeItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> NSView {
-        Swift.print("treeItem")
+        Swift.print("treeItem size: " + "\(size)")
         let item:NSView = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
         item.hidden = itemData.isVisible// :TODO: should this be here and do we need isVisible?
         return item
@@ -54,6 +54,7 @@ private class Utils{
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
     class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
+        Swift.print("selectTextButton")
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }

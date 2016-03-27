@@ -56,9 +56,10 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
      * event handler
      */
     func onItemCheck(event : CheckEvent) {
-        //Swift.print("TreeListItem.onItemCheck() !event.isChecked: " + "\(!event.isChecked)")
+        Swift.print("TreeListItem.onItemCheck() !event.isChecked: " + "\(!event.isChecked)")
         if((event.origin as! NSView).superview === self){itemContainer!.hidden = !event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
-        if(event.isChecked) {ElementModifier.floatChildren(itemContainer!)}/*this is called from any decending treeListItem*/
+        if(event.isChecked) {}/*this is called from any decending treeListItem*/
+        ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * event listeners

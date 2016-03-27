@@ -6,6 +6,7 @@ class TreeListUtils {
      * @Note this method is used in the onDataBaseAddAt method in the TreeList class
      */
     class func item(xml:NSXMLElement,_ parent:IElement,_ size:CGPoint)->NSView {
+        Swift.print("item size: " + "\(size)")
         let itemData:ItemData = Utils.itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
         if(itemData.hasChildren) {treeItems(xml,item as! ITreeList,CGPoint(size.x, size.y)) as! NSView}/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
@@ -51,6 +52,7 @@ private class Utils{
         return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
     }
     class func treeListItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
+        Swift.print("treeListItem size: " + "\(size)")
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
     class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {

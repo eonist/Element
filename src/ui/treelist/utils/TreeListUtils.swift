@@ -35,7 +35,7 @@ private class Utils{
      * // :TODO: write java doc
      */
     class func treeItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> NSView {
-        Swift.print("treeItem size: " + "\(size)")
+        //Swift.print("treeItem size: " + "\(size)")
         let item:NSView = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
         item.hidden = itemData.isVisible// :TODO: should this be here and do we need isVisible?
         return item
@@ -53,11 +53,11 @@ private class Utils{
         return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
     }
     class func treeListItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
-        Swift.print("treeListItem size: " + "\(size)")
+        //Swift.print("treeListItem size: " + "\(size)")
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
     class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
-        Swift.print("selectTextButton size: " + "\(size)")
+        //Swift.print("selectTextButton size: " + "\(size)")
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }

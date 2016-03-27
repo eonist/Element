@@ -29,7 +29,7 @@ class TreeList:Element,ITreeList {
      */
     func setXML(xml:NSXMLElement){
         Swift.print("setXML")
-        TreeListModifier.removeAll(self)/*clear the tree list first*/
+        //TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)

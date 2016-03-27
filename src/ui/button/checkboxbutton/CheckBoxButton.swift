@@ -22,7 +22,7 @@ class CheckBoxButton : Button,ICheckable{
         checkBox!.setChecked(isChecked);
     }
     override func onEvent(event: Event) {
-        Swift.print("CheckBoxButton.onEvent() type: " + "\(event.type)")
+        //Swift.print("CheckBoxButton.onEvent() type: " + "\(event.type)")
         super.onEvent(event)
     }
     /**

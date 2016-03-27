@@ -15,13 +15,13 @@ class TreeListParser{
     /**
      * Returns an array of descendants in @param treeList
      */
-    class func descendants(treeList:ITreeList)->Array<ITreeList>{
-        var items:Array<ITreeList> = []
+    class func descendants(treeList:ITreeList)->Array<AnyObject>{
+        var items:Array<AnyObject> = []
         let numChildren:Int = treeList.itemContainer!.subviews.count
         for (var i : Int = 0; i < numChildren; i++) {
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
-            Swift.print("view: " + "\(view)")
-            items.append(view as! ITreeList)
+            //Swift.print("view: " + "\(view)")
+            items.append(view)
             if(view is ITreeList) {items += (descendants(view as! ITreeList))}
         }
         return items

@@ -58,8 +58,9 @@ class TreeList:Element,ITreeList {
      */
     private func onItemSelect(event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
         Swift.print("onItemSelect()")
-        let descendants:Array<ITreeList> = TreeListParser.descendants(self)
+        let descendants:Array<AnyObject> = TreeListParser.descendants(self)
         let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
+        Swift.print("event.origin: " + "\(event.origin)")
         let selected:ISelectable = event.origin as! ISelectable
         SelectModifier.unSelectAllExcept(selected, selectables)
     }

@@ -31,7 +31,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
     }
     func close(){
-        Swift.print("close()")
+        Swift.print("TreeListItem.close()")
         setChecked(false)
         checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }

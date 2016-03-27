@@ -64,15 +64,14 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     }
     override func getHeight() -> CGFloat {
         //Swift.print("TreeListItem.getHeight(): ")
-        let height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
-        var extraHeight:CGFloat = 0
+        var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
         if(getChecked()) {
             for (var i : Int = 0; i < itemContainer!.subviews.count; i++) {
-                extraHeight += SkinParser.totalHeight((itemContainer!.getSubviewAt(i) as! IElement).skin!)
+                height += SkinParser.totalHeight((itemContainer!.getSubviewAt(i) as! IElement).skin!)
             }
             //Swift.print("extraHeight: " + "\(extraHeight)")
         }
-        return height + extraHeight
+        return height
     }
     override func setSize(width:CGFloat, _ height:CGFloat){
         super.setSize(width,height)

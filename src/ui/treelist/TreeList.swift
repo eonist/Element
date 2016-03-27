@@ -24,8 +24,13 @@ class TreeList:Element,ITreeList {
         itemContainer = addSubView(Container(width,height,self,"lable"))
         //setXML(node.xml)
         StyleManager.addStyle("Button#special{fill:blue;}")
-        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        btn
+        /*let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
+        btn*/
+        
+        /*let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
+        txtBtn*/
+        
+        //continue here: try to make a selectCheckBoxButton
     }
     /**
      *

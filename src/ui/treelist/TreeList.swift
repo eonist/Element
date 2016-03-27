@@ -22,6 +22,7 @@ class TreeList:Element,ITreeList {
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self))
         setXML(node.xml)
+        Swift.print("after setXML")
     }
     /**
      * Adds an instance that impliments ITreeListItem to the itemContainer

@@ -104,6 +104,9 @@ class TreeList:Element,ITreeList {
         //Swift.print("onBackgroundMouseClick");
         TreeListModifier.unSelectAll(self)
     }
+    /**
+     * EventListeners
+     */
     override func onEvent(event: Event) {
         if(event.type == CheckEvent.check && event.immediate === itemContainer){onItemCheck(event as! CheckEvent)}
         else if(event.type == SelectEvent.select && event.immediate === itemContainer){onItemSelect(event as! SelectEvent)}

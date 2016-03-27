@@ -36,7 +36,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     }
     /**
      * Simulates what happens when the user clicks on the CheckBox instanance
-     * NOTE: this method is used in conjunction with 
+     * NOTE: this method is used in conjunction with the explode method
      */
     func open(){
         Swift.print("TreeListItem.open()")
@@ -45,6 +45,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     }
     /**
      * Simulates what happens when the user clicks on the CheckBox instanance
+     * NOTE: this method is used in conjunction with the collapse method
      */
     func close(){
         Swift.print("TreeListItem.close()")

@@ -53,7 +53,8 @@ class TreeList:Element,ITreeList {
         itemContainer!.removeSubviewAt(index)
         ElementModifier.floatChildren(itemContainer!)
     }
-    private func onItemSelect(event:SelectEvent){// :TODO: make protected since we may want to have differ functionality, like multi select
+    private func onItemSelect(event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
+        Swift.print("onItemSelect()")
         let descendants:Array<ITreeList> = TreeListParser.descendants(self)
         let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
         let selected:ISelectable = event.origin as! ISelectable

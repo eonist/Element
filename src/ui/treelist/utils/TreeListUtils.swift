@@ -19,14 +19,14 @@ class TreeListUtils {
      * // :TODO: this should just return not modify?!? and be moved to TreeListParser
      */
     class func treeItems(xml:NSXMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
-        //Swift.print("treeItems size: " + "\(size)")
+        Swift.print("treeItems size: " + "\(size)")
         for child in xml.children! as! Array<NSXMLElement>{
             let itemData:ItemData = Utils.itemData(child)
             let treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             //Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")
             if(itemData.hasChildren) {
                 //Swift.print("treeItem: " + "\(treeItem)")
-                treeItems(child,treeItem as! ITreeList,size)
+                TreeListUtils.treeItems(child,treeItem as! ITreeList,size)
             }// :TODO: move this line into treeitem?
             treeList.addItem(treeItem)
         }

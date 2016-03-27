@@ -20,6 +20,7 @@ class TreeListParser{
         let numChildren:Int = treeList.itemContainer!.subviews.count
         for (var i : Int = 0; i < numChildren; i++) {
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
+            Swift.print("view: " + "\(view)")
             items.append(view as! ITreeList)
             if(view is ITreeList) {items += (descendants(view as! ITreeList))}
         }

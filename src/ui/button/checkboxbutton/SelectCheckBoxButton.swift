@@ -1,7 +1,7 @@
 import Cocoa
 /**
  * @example see TestCheckBoxButton
- * @Note: Remeber to use the setChecked(true) if you want to change the state and skin after initiating the instance, since it wont do this itself on initiate
+ * @Note: Remember to use the setChecked(true) if you want to change the state and skin after initiating the instance, since it wont do this itself on initiate
  */
 class SelectCheckBoxButton:CheckBoxButton,ISelectable {
     var isSelected:Bool

@@ -34,7 +34,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }
     func onItemCheck(event : CheckEvent) {
-        if((event.origin as! NSView).superview === self){itemContainer!.hidden = event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
+        if((event.origin as! NSView).superview === self){itemContainer!.hidden = !event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
         if(isChecked) {ElementModifier.floatChildren(itemContainer!)}/*this is called from any decending treeListItem*/
     }
     override func onEvent(event: Event) {
@@ -45,7 +45,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         return itemContainer!.subviews.count
     }
     override func getHeight() -> CGFloat {
-        var height:CGFloat = SkinParser.totalHeight2(skin!)
+        var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
         if(isChecked) {
             for (var i : Int = 0; i < itemContainer!.subviews.count; i++) {
                 height += SkinParser.totalHeight((itemContainer?.getSubviewAt(i) as! IElement).skin!)

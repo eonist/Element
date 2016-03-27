@@ -42,7 +42,7 @@ private class Utils{
         return item
     }
     /**
-     *
+     * Creates a data instance to make it easier to work with the attributes in the xml
      */
     class func itemData(xml:NSXMLElement)->ItemData {
         var attributes:Dictionary<String,String> = XMLParser.attribs(xml)
@@ -51,7 +51,7 @@ private class Utils{
         let isOpen:Bool = attributes["isOpen"] != nil ? attributes["isOpen"] == "true" : false//<- you can shorten this by doing ??
         let isSelected:Bool = attributes["isSelected"] != nil ? attributes["isSelected"] == "true" : false//<- you can shorten this by doing ??
         let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
-        return ItemData(title, hasChildren, isOpen, isVisible,isSelected)
+        return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
     }
     class func treeListItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
         //Swift.print("treeListItem size: " + "\(size)")

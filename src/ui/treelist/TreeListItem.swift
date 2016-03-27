@@ -11,7 +11,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     override func resolveSkin(){
         super.resolveSkin();
         itemContainer = addSubView(Container(NaN,NaN,self,"lable"))//0. add _itemContainer
-        itemContainer!.hidden = isChecked
+        itemContainer!.hidden = !isChecked
     }
     func addItem(item:NSView){
         itemContainer!.addSubView(item)

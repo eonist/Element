@@ -20,16 +20,21 @@ class TreeList:Element,ITreeList {
     }
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
-        super.resolveSkin()
-        itemContainer = addSubView(Container(width,height,self,"lable"))
-        setXML(node.xml)
+        
         StyleManager.addStyle("Button#special{fill:blue;float:left;clear:left;}")
         StyleManager.addStyle("SelectCheckBoxButton{float:left;clear:left;}")
         
+        super.resolveSkin()
+        itemContainer = addSubView(Container(width,height,self,"lable"))
+        
+        
+        setXML(node.xml)
         /*
         let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
         btn
         */
+        
+        /*
         let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
         btn
         
@@ -40,6 +45,7 @@ class TreeList:Element,ITreeList {
         
         let btn2 = itemContainer!.addSubView(Button(100,24,itemContainer,"second"))
         btn2
+        */
         
         //continue here: figure out whats going on with adding more than one item to the itemContainer
         
@@ -73,7 +79,8 @@ class TreeList:Element,ITreeList {
         //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         //itemContainer!.addSubView(selectCheckBoxButton)
         
-        
+        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
+        btn
 
         //itemContainer!.addSubView(item)
         //ElementModifier.floatChildren(itemContainer!)

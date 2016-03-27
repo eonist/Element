@@ -23,7 +23,7 @@ class TreeListUtils {
         for child in xml.children! as! Array<NSXMLElement>{
             let itemData:ItemData = Utils.itemData(child)
             let treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
-            Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")
+            //Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")
             if(itemData.hasChildren) {treeItems(child,treeItem as! ITreeList,size)}// :TODO: move this line into treeitem?
             treeList.addItem(treeItem)
         }

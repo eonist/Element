@@ -79,12 +79,11 @@ class TreeList:Element,ITreeList {
         //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         //itemContainer!.addSubView(selectCheckBoxButton)
         
-        let txtBtn = itemContainer!.addSubView(SelectTextButton(100,24,"hello",false,itemContainer/*,"specialTextButton"*/))
-        txtBtn
         
-        //continue here: figure out what item contains that is different from the above
         
-        //itemContainer!.addSubView(item)
+        //continue here: figure out what item contains that is different from the above, by creating the above in the util method
+        
+        itemContainer!.addSubView(item)
         //ElementModifier.floatChildren(itemContainer!)
     }
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt

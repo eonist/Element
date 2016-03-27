@@ -26,39 +26,7 @@ class TreeList:Element,ITreeList {
         
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
-        
         setXML(node.xml)
-        /*
-        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        btn
-        */
-        
-        /*
-        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        btn
-        
-        let btn3 = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        btn3
-        
-        StyleManager.addStyle("Button#second{fill:red;float:left;clear:left;}")
-        
-        let btn2 = itemContainer!.addSubView(Button(100,24,itemContainer,"second"))
-        btn2
-        */
-        
-        //continue here: figure out whats going on with adding more than one item to the itemContainer
-        
-        /*
-        let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
-        txtBtn
-        */
-        
-        //continue here: try to make a 
-        
-        /*
-        let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
-        itemContainer!.addSubView(selectCheckBoxButton)
-        */
     }
     /**
      *

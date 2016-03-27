@@ -34,12 +34,12 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }
     func onItemCheck(event : CheckEvent) {
-        if((event.origin as! NSView).superview === self){itemContainer!.hidden = !event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
+        if((event.immediate as! NSView).superview === self){itemContainer!.hidden = !event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
         if(isChecked) {ElementModifier.floatChildren(itemContainer!)}/*this is called from any decending treeListItem*/
     }
     override func onEvent(event: Event) {
-        if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
         super.onEvent(event)
+        if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
     }
     func getCount()->Int{
         return itemContainer!.subviews.count

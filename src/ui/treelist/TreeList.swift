@@ -23,11 +23,13 @@ class TreeList:Element,ITreeList {
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
         setXML(node.xml)
-        StyleManager.addStyle("Button#special{fill:blue;}")
+        StyleManager.addStyle("Button#special{fill:blue;float:left;clear:left;}")
         StyleManager.addStyle("SelectCheckBoxButton{float:left;clear:left;}")
         
-        /*let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
-        btn*/
+        /*
+        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
+        btn
+        */
         
         /*
         let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
@@ -49,18 +51,21 @@ class TreeList:Element,ITreeList {
         //TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
-        ElementModifier.floatChildren(itemContainer!)
+        //ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
-        //Swift.print("addItem()")
-        let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
-        itemContainer!.addSubView(selectCheckBoxButton)
+        Swift.print("addItem()")
+        //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
+        //itemContainer!.addSubView(selectCheckBoxButton)
+        
+        let btn = itemContainer!.addSubView(Button(100,24,itemContainer,"special"))
+        btn
 
         //itemContainer!.addSubView(item)
-        ElementModifier.floatChildren(itemContainer!)
+        //ElementModifier.floatChildren(itemContainer!)
     }
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
         itemContainer!.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/

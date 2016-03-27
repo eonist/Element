@@ -34,6 +34,11 @@ class CheckBoxButton : Button,ICheckable{
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();
     }
+    override func setSkinState(skinState:String) {
+        //Swift.print("\(self.dynamicType)" + " setSkinState() skinState: " + "\(skinState)")
+        super.setSkinState(skinState);
+        text!.setSkinState(skinState);/*why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
+    }
     func setSize(width : CGFloat, height : CGFloat) {
         super.setSize(width, height);
         checkBox!.setSkinState(checkBox!.skin!.state);

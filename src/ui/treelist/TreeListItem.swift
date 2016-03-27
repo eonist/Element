@@ -60,7 +60,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         Swift.print("TreeListItem.onItemCheck() event.isChecked: " + "\(event.isChecked)")
         if((event.origin as! NSView).superview === self){itemContainer!.hidden = !event.isChecked}/*Checks if its this.checkButton is dispatching the event*///for (var i : int = 0; i < _itemContainer.numChildren; i++) (_itemContainer.getChildAt(i) as DisplayObject).visible = event.checked;
         if(!event.isChecked) {}/*this is called from any decending treeListItem*/
-        ElementModifier.floatChildren(itemContainer!)
+        ElementModifier.floatChildren(itemContainer!)//<--temp fix, seems like you need to float when checked is true and false. Try to fix this, or figure out the intended logic around this subject
     }
     /**
      * event listeners

@@ -30,7 +30,9 @@ class TreeList:Element,ITreeList {
         /*let txtBtn = itemContainer!.addSubView(TextButton("hello",100,24,itemContainer,"specialTextButton"))
         txtBtn*/
         
-        //continue here: try to make a selectCheckBoxButton
+        //continue here: try to make a 
+        
+        let selectCheckBoxButton = SelectCheckBoxButton(100,24,itemContainer)
     }
     /**
      *

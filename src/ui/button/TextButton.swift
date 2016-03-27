@@ -7,9 +7,7 @@ class TextButton:Button {
         textString = text;
         super.init(width, height, parent, id)
     }
-    convenience init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
-        self.init(width,height,text,parent,id)
-    }
+    
     override func resolveSkin() {
         super.resolveSkin();
         text = addSubView(Text(width,height,textString,self))
@@ -38,4 +36,9 @@ class TextButton:Button {
         self.text!.setText(text);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension TextButton{
+    convenience init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
+        self.init(width,height,text,parent,id)
+    }
 }

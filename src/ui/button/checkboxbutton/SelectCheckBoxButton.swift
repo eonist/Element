@@ -12,7 +12,7 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
     override func mouseDown(event:MouseEvent) {
         self.isSelected = !self.isSelected;
         super.mouseDown(event)
-        super.onEvent(SelectEvent(SelectEvent.select,isSelected))/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
+        super.onEvent(SelectEvent(SelectEvent.select,self))/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
     }
     /**
      * @Note: do not add a dispatch event here, that is the responsibilyy of the caller

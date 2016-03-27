@@ -7,3 +7,6 @@ class SelectEvent:Event {
     static var select:String = "select"
     //static var deSelect:String = "deSelect"//unSelect is also an option?
 }
+extension SelectEvent{
+    var isSelected:Bool{return (origin as! ISelectable).isSelected}
+}

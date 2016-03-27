@@ -33,7 +33,7 @@ class TreeList:Element,ITreeList {
      *
      */
     func setXML(xml:NSXMLElement){
-        Swift.print("setXML")
+        //Swift.print("setXML")
         //TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
@@ -71,7 +71,7 @@ class TreeList:Element,ITreeList {
      */
     private func onItemCheck(event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        //Swift.print("TreeList.onItemCheck() index:" + "\(index)")
+        Swift.print("TreeList.onItemCheck() index:" + "\(index)")
         XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))

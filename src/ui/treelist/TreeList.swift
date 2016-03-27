@@ -25,6 +25,16 @@ class TreeList:Element,ITreeList {
         setXML(node.xml)
     }
     /**
+     *
+     */
+    func setXML(xml:NSXMLElement){
+        Swift.print("setXML")
+        TreeListModifier.removeAll(self)/*clear the tree list first*/
+        node.xml = xml
+        TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
+        ElementModifier.floatChildren(itemContainer!)
+    }
+    /**
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(item:NSView){// :TODO: rename to add
@@ -89,16 +99,6 @@ class TreeList:Element,ITreeList {
         else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
         else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
         //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
-    }
-    /**
-     *
-     */
-    func setXML(xml:NSXMLElement){
-        Swift.print("setXML")
-        TreeListModifier.removeAll(self)/*clear the tree list first*/
-        node.xml = xml
-        TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
-        ElementModifier.floatChildren(itemContainer!)
     }
     func getCount() -> Int{
         return itemContainer!.subviews.count

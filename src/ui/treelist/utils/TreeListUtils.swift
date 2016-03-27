@@ -57,7 +57,8 @@ private class Utils{
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
     class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
-        //Swift.print("selectTextButton size: " + "\(size)")
+        Swift.print("selectTextButton size: " + "\(size)" + " title: " + "\(itemData.title)")
+        
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }

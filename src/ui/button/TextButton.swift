@@ -3,11 +3,13 @@ import Cocoa
 class TextButton:Button {
     var text:Text? = nil;
     var textString:String;
-    /*text should be after w and h-->*/init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "defaultText", _ parent: IElement?, _ id: String?) {
         textString = text;
         super.init(width, height, parent, id)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    convenience init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
+        self.init(width,height,text,parent,id)
+    }
     override func resolveSkin() {
         super.resolveSkin();
         text = addSubView(Text(width,height,textString,self))
@@ -35,4 +37,5 @@ class TextButton:Button {
     func setTextValue(text:String){
         self.text!.setText(text);
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -9,7 +9,7 @@ class SVGAsset:InteractiveView2 {
         //Swift.print("SVGAsset.init()")
         //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
         let content = FileParser.content(path.tildePath)//TODO: you need to make a tilePath assert
-        Swift.print("content: " + "\(content)")
+        //Swift.print("content: " + "\(content)")
         let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement)

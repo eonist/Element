@@ -3,7 +3,7 @@ import Cocoa
  * @Note: Keep the TreeListItem name, since you might want to create TreeMenuItem one day
  * // :TODO: why doesnt the treeListItem extend a class that ultimatly extends a TextButton?, has it something to do with the indentation via css?
  */
-class TreeListItem:SelectCheckBoxButton{//this class doesnt need an init method since its exactly the same as the one it extends
+class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need an init method since its exactly the same as the one it extends
     var itemContainer : Container?
     override init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String = "") {
         super.init(width, height, text, isSelected, isChecked, parent, id)

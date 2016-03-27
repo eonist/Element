@@ -22,7 +22,7 @@ class TreeList:Element,ITreeList {
         Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self))
-        //setXML(node.xml)
+        setXML(node.xml)
         Swift.print("after setXML")
     }
     /**

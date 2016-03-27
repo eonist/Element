@@ -13,14 +13,23 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         itemContainer = addSubView(Container(NaN,NaN,self,"lable"))//0. add _itemContainer
         itemContainer!.hidden = !isChecked
     }
+    /**
+     * Takes care of adding items to the itemContainer
+     */
     func addItem(item:NSView){
         itemContainer!.addSubView(item)
         ElementModifier.floatChildren(itemContainer!)
     }
+    /**
+     * Takes care of adding items to the itemContainer at a specific index
+     */
     func addItemAt(item:NSView,_ index:Int){
         itemContainer!.addSubviewAt(item, index)
         ElementModifier.floatChildren(itemContainer!)
     }
+    /**
+     * Takes care of removing items to the itemContainer at a specific index
+     */
     func removeAt(index:Int){
         itemContainer!.removeSubviewAt(index)
         ElementModifier.floatChildren(itemContainer!)
@@ -50,7 +59,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         return itemContainer!.subviews.count
     }
     override func getHeight() -> CGFloat {
-        Swift.print("TreeListItem.getHeight(): ")
+        //Swift.print("TreeListItem.getHeight(): ")
         let height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
         var extraHeight:CGFloat = 0
         if(isChecked) {

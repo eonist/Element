@@ -38,8 +38,9 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         if(isChecked) {ElementModifier.floatChildren(itemContainer!)}/*this is called from any decending treeListItem*/
     }
     override func onEvent(event: Event) {
-        super.onEvent(event)
+        
         if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
+        super.onEvent(event)
     }
     func getCount()->Int{
         return itemContainer!.subviews.count

@@ -79,7 +79,7 @@ class TreeList:Element,ITreeList {
         //let selectCheckBoxButton = SelectCheckBoxButton(100,24,"test",false,false,itemContainer,"specialCheckBoxButton")
         //itemContainer!.addSubView(selectCheckBoxButton)
         
-        let txtBtn = itemContainer!.addSubView(SelectTextButton("hello",100,24,false,itemContainer,"specialTextButton"))
+        let txtBtn = itemContainer!.addSubView(SelectTextButton(100,24,"hello",false,itemContainer,"specialTextButton"))
         txtBtn
         
         //itemContainer!.addSubView(item)

@@ -52,7 +52,7 @@ class TreeList:Element,ITreeList {
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
-     * NOTE: NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
+     * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
      */
     func removeAt(index:Int){
         itemContainer!.removeSubviewAt(index)

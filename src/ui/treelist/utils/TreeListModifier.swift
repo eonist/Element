@@ -35,6 +35,7 @@ class TreeListModifier {
     }
     /**
      * @Note this method is recursive
+     * NOTE: Use TreeList.node.addAt method if you want to add things to the TreeList, this method is then eventually used internally
      */
     class func addAt(treeList:ITreeList,_ index:Array<Int>,_ item:NSView) {
         if(index.count == 1) {treeList.addItemAt(item,index[0])}
@@ -67,6 +68,7 @@ class TreeListModifier {
     }
     /**
      * Removes an NSView instance at @param index in @param treeList
+     * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
      */
     class func removeAt(treeList:ITreeList,_ index:Array<Int>) {
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) != nil) {

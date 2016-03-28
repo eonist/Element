@@ -27,6 +27,7 @@ class TreeListModifier {
     class func collapseAt(var treeList:ITreeList,_ index:Array<Int>) {
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
         let decendants:Array<ITreeListItem> = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
+        Swift.print("decendants.count: " + "\(decendants.count)")
         for treeListItem : ITreeListItem in decendants {
             Swift.print("treeListItem: " + "\(treeListItem)")
             if((treeListItem as! ICheckable).getChecked()) {treeListItem.close()}

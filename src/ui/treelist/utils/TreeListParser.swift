@@ -30,11 +30,12 @@ class TreeListParser{
      *
      */
     class func decendantsOfType<T>(treeList:ITreeList,_ type:T.Type? = nil)->Array<T> {
+        Swift.print("decendantsOfType()")
         var items:Array<T> = []
         for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
             if(type == nil || (type != nil && view as? T != nil)) {//<--Inspired from the ClassParser.ofType() method
-                //items.append(view as! ITreeList)//<--strickly speaking this not of the type
+                items.append(view as! T)//<--strickly speaking this not of the type
                 items += (decendantsOfType(view as! ITreeList,type))
             }
         }

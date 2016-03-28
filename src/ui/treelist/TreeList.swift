@@ -68,10 +68,9 @@ class TreeList:Element,ITreeList {
         //Swift.print("event.origin: " + "\(event.origin)")
         let selected:ISelectable = event.origin as! ISelectable
         SelectModifier.unSelectAllExcept(selected, selectables)
-        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        
-        Swift.print("event.isSelected: " + "\(event.isSelected)")
-        XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))
+        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)//<--new
+        //Swift.print("event.isSelected: " + "\(event.isSelected)")
+        XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))//<--new
     }
     /**
      * NOTE: This method gets all CheckEvent's from all decending ICheckable instances

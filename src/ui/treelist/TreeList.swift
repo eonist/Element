@@ -22,9 +22,6 @@ class TreeList:Element,ITreeList {
     }
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
-        //StyleManager.addStyle("Button#special{fill:blue;float:left;clear:left;}")
-        //StyleManager.addStyle("SelectCheckBoxButton{float:left;clear:left;}")
-        
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
         setXML(node.xml)
@@ -34,7 +31,7 @@ class TreeList:Element,ITreeList {
      */
     func setXML(xml:NSXMLElement){
         //Swift.print("setXML")
-        //TreeListModifier.removeAll(self)/*clear the tree list first*/
+        TreeListModifier.removeAll(self)/*clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)

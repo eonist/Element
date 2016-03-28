@@ -28,6 +28,7 @@ class TreeListModifier {
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
         let decendants:Array<ITreeListItem> = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
         for treeListItem : ITreeListItem in decendants {
+            Swift.print("treeListItem: " + "\(treeListItem)")
             if((treeListItem as! ICheckable).getChecked()) {treeListItem.close()}
         }
     }

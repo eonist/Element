@@ -106,7 +106,13 @@ class TreeList:Element,ITreeList {
         ElementModifier.floatChildren(itemContainer!)/*Re aligns the entire treesturcture*/
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
+    /**
+     * NOTE: if an attribute changes in any child in node.xml, this handles the cooresponding action
+     */
     private func onDatabaseSetAttributeAt(event : NodeEvent) {
+        
+        //
+        
         TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
     }
     private func onBackgroundMouseClick(event:MouseEvent){

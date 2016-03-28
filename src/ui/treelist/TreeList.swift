@@ -68,6 +68,7 @@ class TreeList:Element,ITreeList {
         //Swift.print("event.origin: " + "\(event.origin)")
         let selected:ISelectable = event.origin as! ISelectable
         SelectModifier.unSelectAllExcept(selected, selectables)
+        XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isChecked))
     }
     /**
      * NOTE: This method gets all CheckEvent's from all decending ICheckable instances

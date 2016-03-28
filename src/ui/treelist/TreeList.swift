@@ -56,10 +56,10 @@ class TreeList:Element,ITreeList {
      * NOTE: This method gets all SelectEvent's from all decending ICheckable instances
      */
     private func onItemSelect(event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
-        Swift.print("onItemSelect()")
+        //Swift.print("onItemSelect()")
         let descendants:Array<AnyObject> = TreeListParser.descendants(self)
         let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
-        Swift.print("event.origin: " + "\(event.origin)")
+        //Swift.print("event.origin: " + "\(event.origin)")
         let selected:ISelectable = event.origin as! ISelectable
         SelectModifier.unSelectAllExcept(selected, selectables)
     }
@@ -68,7 +68,7 @@ class TreeList:Element,ITreeList {
      */
     private func onItemCheck(event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        Swift.print("TreeList.onItemCheck() index:" + "\(index)")
+        //Swift.print("TreeList.onItemCheck() index:" + "\(index)")
         XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))

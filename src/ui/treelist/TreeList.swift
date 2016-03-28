@@ -44,6 +44,9 @@ class TreeList:Element,ITreeList {
         itemContainer!.addSubView(item)
         ElementModifier.floatChildren(itemContainer!)
     }
+    /**
+     * NOTE: Use TreeList.node.addAt method if you want to add things to the TreeList, this method is then eventually used by 
+     */
     func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
         itemContainer!.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
         ElementModifier.floatChildren(itemContainer!)

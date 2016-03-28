@@ -74,8 +74,8 @@ class TreeList:Element,ITreeList {
      */
     private func onItemCheck(event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        //Swift.print("TreeList.onItemCheck() index:" + "\(index)")
-        XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(!event.isChecked))
+        Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
+        XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked) + "bad")
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }

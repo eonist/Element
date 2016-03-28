@@ -8,7 +8,7 @@ class SelectButton:Button,ISelectable {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func mouseUpInside(event: MouseEvent) {
-        Swift.print("SelectButton.mouseUpInside()")
+        //Swift.print("SelectButton.mouseUpInside()")
         isSelected = true
         super.mouseUpInside(event)
         super.onEvent(SelectEvent(SelectEvent.select,self/*,self*/))

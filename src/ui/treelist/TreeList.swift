@@ -110,9 +110,6 @@ class TreeList:Element,ITreeList {
      * NOTE: if an attribute changes in any child in node.xml, this handles the cooresponding action
      */
     private func onDatabaseSetAttributeAt(event : NodeEvent) {
-        
-        //continue here:
-        
         TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
     }
     private func onBackgroundMouseClick(event:MouseEvent){

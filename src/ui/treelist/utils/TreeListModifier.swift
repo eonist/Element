@@ -42,14 +42,14 @@ class TreeListModifier {
     }
     /**
      * Sets a selectable in @param treeList at @param index (array index)
-     * // :TODO: rename to selectAt
+     * NOTE: this does not unselect previously selected items. 
      */
-    class func setSelectedAt(treeList:ITreeList, _ index:Array<Int>,_ isSelected:Bool = true) {
+    class func selectAt(treeList:ITreeList, _ index:Array<Int>,_ isSelected:Bool = true) {
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ISelectable) {
             (treeList.itemContainer!.getSubViewAt(index[0]) as! ISelectable).setSelected(isSelected)
         }
         else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
-            setSelectedAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
+            selectAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
         }
     }
     /**
@@ -91,14 +91,14 @@ class TreeListModifier {
      */
     class func setSelected(treeList:TreeList, _ key:String, _ value:String) {
         let index:Array<Int> = XMLParser.index(treeList.node.xml, key, value)!
-        setSelectedAt(treeList, index)
+        selectAt(treeList, index)
     }
     /**
      * @Note: this function works as long as multiple selection is not allowed in the treeList
      */
     class func unSelectAll(treeList:ITreeList){
         let selectedIndex:Array<Int> = TreeListParser.selectedIndex(treeList)
-        if(selectedIndex.count > 0) {setSelectedAt(treeList, selectedIndex, false)}
+        if(selectedIndex.count > 0) {selectAt(treeList, selectedIndex, false)}
     }
     /**
      * @Note the @param index is modified so its wise to clone the array if you wish to use it later

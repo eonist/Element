@@ -111,7 +111,7 @@ class TreeList:Element,ITreeList {
      */
     private func onDatabaseSetAttributeAt(event : NodeEvent) {
         
-        //
+        //continue here:
         
         TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
     }

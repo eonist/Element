@@ -1,7 +1,9 @@
 import Foundation
 
 class ColorBoxEvent:Event {
-    public static const CHANGE:String = "colorBoxChange"
+    static var change:String = "colorBoxChange"
     var color : CGFloat
-    
+    override init(_ type:String = "", _ origin:AnyObject){
+        
+    }
 }

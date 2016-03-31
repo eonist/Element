@@ -6,6 +6,6 @@ class ColorBoxEvent:Event {
         super.init(type, origin)
     }
 }
-extension ColorBoxEvent{
+/*extension ColorBoxEvent{
     var color:CGFloat
-}
+}*/

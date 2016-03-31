@@ -1,6 +1,6 @@
 import Foundation
 
-class ColorBox:Button{
+class ColorBox:Button,IColorInput{
     var color:CGFloat
     init(width:CGFloat = NaN, height:CGFloat = NaN, color:CGFloat = 16711935/*<--Color.MAGENTA*/, parent:IElement? = nil, id:String = "") {
         self.color = color

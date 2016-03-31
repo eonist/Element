@@ -17,5 +17,15 @@ class ColorBox:Button/*,IColorInput*/{
         styleProperty!.value = color.hex
         skin!.setStyle(style)/*updates the skin*/
     }
+    /**
+     * Returns "ColorBox"
+     * @Note This function is used to find the correct class type when synthezing the element cascade
+     */
+    override func getClassType() -> String {
+        return String(ColorBox);
+    }
+    override func setSkinState(state:String){
+        /*temp fix so that the color doesnt change on button interaction*/
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

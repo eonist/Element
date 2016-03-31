@@ -1,6 +1,6 @@
-import Foundation
+import Cocoa
 
 protocol IColorInput {
-    var color:CGFloat{get}
-    func setColor(color:CGFloat)
+    var color:NSColor{get}
+    func setColor(color:NSColor)
 }

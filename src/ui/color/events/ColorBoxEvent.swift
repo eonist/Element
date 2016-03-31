@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class ColorBoxEvent:Event {
     static var change:String = "colorBoxChange"
@@ -7,5 +7,5 @@ class ColorBoxEvent:Event {
     }
 }
 extension ColorBoxEvent{
-    var color:CGFloat {return (origin as! IColorInput).color}
+    var color:NSColor {return (origin as! IColorInput).color}
 }

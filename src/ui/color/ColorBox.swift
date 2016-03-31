@@ -2,7 +2,7 @@ import Cocoa
 
 class ColorBox:Button/*,IColorInput*/{
     var color:NSColor
-    init(width:CGFloat = NaN, height:CGFloat = NaN, color:NSColor = NSColor.magentaColor(), parent:IElement? = nil, id:String = "") {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ color:NSColor = NSColor.magentaColor(), _ parent:IElement? = nil, _ id:String = "") {
         self.color = color
         super.init(width,height,parent,id)
         //setColor(color)

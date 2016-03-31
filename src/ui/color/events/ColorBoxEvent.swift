@@ -7,5 +7,5 @@ class ColorBoxEvent:Event {
     }
 }
 extension ColorBoxEvent{
-    var color:CGFloat
+    var color:CGFloat 
 }

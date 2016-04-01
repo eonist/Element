@@ -38,7 +38,7 @@ class ColorInput:Element,IColorInput {
     override func onEvent(event: Event) {
         if(event.type == ButtonEvent.down && event.origin === colorBox){onColorBoxDown(event as! ButtonEvent)}
         
-        onTextInputChange
+        
     }
     func setColorValue(color:NSColor){
         self.color = color

@@ -60,7 +60,7 @@ class LeverSpinner : Element{
         if(event.origin === stepper && event.type == StepperEvent.change){
             Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")
             onStepperChange(event as! StepperEvent)
-        }else if(event.origin === textInput!.inputTextArea!.text!.textField && event.type == Event.update){
+        }else if(event.origin === textInput!.inputTextArea!.text!.textField && event.type == Event.update){//you could use immediate here to shorten the if statement
             Swift.print("LeverSpinner.onEvent() event.update:" + "\(event)")
             onInputTextChange(event)
         }

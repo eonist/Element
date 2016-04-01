@@ -5,7 +5,7 @@ class ColorBox:Button,IColorInput{
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ color:NSColor = NSColor.magentaColor(), _ parent:IElement? = nil, _ id:String = "") {
         self.color = color
         super.init(width,height,parent,id)
-        //setColor(color)
+        setColorValue(color)
     }
     override func mouseDown(event: MouseEvent) {
         super.onEvent(ColorBoxEvent(ColorBoxEvent.change,color))

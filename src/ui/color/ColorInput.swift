@@ -24,6 +24,17 @@ class ColorInput:Element,IColorInput {
         /*cant we set this outside this class?*/
         super.onEvent(ColorInputEvent(ColorInputEvent.colorBoxDown,self))
     }
+    /**
+    * @Note asserts if the color is a valid color before it is applied
+    */
+    func onTextInputChange(event:Event){
+        var colorString:String = inputText!.inputTextArea!.text.getText()
+        if(ColorAsserter.isColor(colorString)){
+            color = NSColorParser.cgColor(colorString.uint)
+            colorBox.setColor(color);
+            (ColorInputEvent(ColorInputEvent.change,color);
+        }
+    }
     override func onEvent(event: Event) {
         if(event.type == ButtonEvent.down && event.origin === colorBox){onColorBoxDown(event as! ButtonEvent)}
         

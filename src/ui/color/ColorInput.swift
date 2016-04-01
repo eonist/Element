@@ -27,8 +27,8 @@ class ColorInput:Element,IColorInput {
     /**
     * @Note asserts if the color is a valid color before it is applied
     */
-    func onTextInputChange(event:Event){
-        let colorString:String = inputText!.inputTextArea!.text!.getText()
+    func onTextInputChange(event:TextFieldEvent){
+        let colorString:String = inputText!.inputTextArea!.text!.getText()//could also use: event.stringValue
         if(ColorAsserter.isColor(colorString)){
             color = NSColorParser.nsColor(colorString.uint)
             colorBox!.setColorValue(color);
@@ -37,8 +37,7 @@ class ColorInput:Element,IColorInput {
     }
     override func onEvent(event: Event) {
         if(event.type == ButtonEvent.down && event.origin === colorBox){onColorBoxDown(event as! ButtonEvent)}
-        
-        
+        if(event.type == TextFieldEvent.update && event.immediate === inputText){onTextInputChange(event as! TextFieldEvent)}
     }
     func setColorValue(color:NSColor){
         self.color = color

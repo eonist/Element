@@ -28,11 +28,11 @@ class ColorInput:Element,IColorInput {
     * @Note asserts if the color is a valid color before it is applied
     */
     func onTextInputChange(event:Event){
-        var colorString:String = inputText!.inputTextArea!.text.getText()
+        let colorString:String = inputText!.inputTextArea!.text!.getText()
         if(ColorAsserter.isColor(colorString)){
-            color = NSColorParser.cgColor(colorString.uint)
-            colorBox.setColor(color);
-            (ColorInputEvent(ColorInputEvent.change,color);
+            color = NSColorParser.nsColor(colorString.uint)
+            colorBox!.setColorValue(color);
+            super.onEvent(ColorInputEvent(ColorInputEvent.change,color))//sends the event
         }
     }
     override func onEvent(event: Event) {

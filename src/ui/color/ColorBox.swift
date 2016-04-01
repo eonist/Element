@@ -1,6 +1,6 @@
 import Cocoa
 
-class ColorBox:Button/*,IColorInput*/{
+class ColorBox:Button,IColorInput{
     var color:NSColor
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ color:NSColor = NSColor.magentaColor(), _ parent:IElement? = nil, _ id:String = "") {
         self.color = color

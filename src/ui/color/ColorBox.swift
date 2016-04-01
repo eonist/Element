@@ -17,7 +17,7 @@ class ColorBox:Button,IColorInput{
         var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
         Swift.print("styleProperty: " + "\(styleProperty)")
         Swift.print("color.hex: " + "\(color.hex)")
-        styleProperty!.value = ("0x" + color.hex).cgFloat
+        styleProperty!.value = ("0x" + color.hex).double
         skin!.setStyle(style)/*updates the skin*/
     }
     /**

@@ -9,7 +9,7 @@ class ColorInput:Element,IColorInput {
     var inputText:TextInput?
     var text:String
     var color:NSColor
-    init(width:CGFloat = NaN, height:CGFloat = NaN, text:String = "Color: ", color:NSColor = NSColor.magentaColor(), parent:IElement? = nil, id:String = ""){
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ text:String = "Color: ", _ color:NSColor = NSColor.magentaColor(),_ parent:IElement? = nil,_ id:String = ""){
         self.text = text
         self.color = color
         super.init(width,height,parent,id)

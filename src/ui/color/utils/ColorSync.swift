@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * let singleton = ColorSync.sharedInstance
  * singleton.test()
@@ -14,13 +14,13 @@ class ColorSync {
             print("_receiver: " + "\(ColorSync.receiver)")
             //print("event.target: " + event.target);
             //print("event.currentTarget: " + event.currentTarget);
-            ColorSync.broadcaster = event.target as IColorInput
-            ColorSync.receiver.setColor(event.color)
-            ColorSync.receiver.onEvent(ColorInputEvent(ColorInputEvent.change,event.color))
+            ColorSync.broadcaster = event.origin as? IColorInput
+            ColorSync.receiver!.setColorValue(event.color)
+            ColorSync.receiver!.onEvent(ColorInputEvent(ColorInputEvent.change,event.color))
         }
     }
-    public static function setColor(color:Number):void {
-    if (_broadcaster != null) _broadcaster.setColor(color);
+    class func setColor(color:NSColor) {
+        if (ColorSync.broadcaster != nil) {ColorSync.broadcaster!.setColorValue(color)}
     }
 }
 

@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol IColorInput {
+protocol IColorInput:IEventSender{
     var color:NSColor{get}
     func setColorValue(color:NSColor)
 }

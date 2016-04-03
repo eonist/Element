@@ -60,9 +60,9 @@ class ColorPanel:Element,IColorPanel{
             case HSV:color = ColorParser.rgbValueByHsv(spinner1.value, spinner2.value/240, spinner3.value/240);break;
             default:break;
         }
-        colorInput.setColorValue(color);
-        self.color = color;
-        dispatchEvent(new ColorInputEvent(ColorInputEvent.CHANGE,_color));
+        colorInput!.setColorValue(color)
+        self.color = color
+        super.onEvent(ColorInputEvent(ColorInputEvent.change,self))
     }
     override func onEvent(event: Event) {
         super.onEvent(event)

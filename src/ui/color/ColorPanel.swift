@@ -43,11 +43,10 @@ class ColorPanel:Element,IColorPanel{
     }
     override func onEvent(event: Event) {
         super.onEvent(event)
-        
+        //if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event)}
+        //if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
+        if()
         /*
-        super.addEventListeners();
-        _colorTypeSelectGroup.addEventListener(SelectGroupEvent.SELECT_GROUP_CHANGE, onColorTypeSelectGroupChange);
-        _colorInput.addEventListener(ColorInputEvent.CHANGE, onColorInputChange);
         _spinner1.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);// :TODO: cant we just listen for one event in this.?
         _spinner2.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);
         _spinner3.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);

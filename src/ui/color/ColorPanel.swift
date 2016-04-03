@@ -50,5 +50,8 @@ class ColorPanel:Element,IColorPanel{
         super.setSize(width, height)
         ElementModifier.refresh(self)
     }
+    public function getColorType() : String {
+        return (SelectGroupParser.selected(colorTypeSelectGroup) as! RadioButton).getText()
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

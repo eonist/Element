@@ -15,12 +15,15 @@ class ColorPanelUtils {
             colorPanel.spinner3.setValue(rbgObj.b*255)//bb
             break
         case ColorPanel.HSB:
-            var hsbObj:[String:CGFloat] = ColorParser.hsb(color)
-            colorPanel.spinner1.setValue(hsbObj["hue"]!)
-            colorPanel.spinner2.setValue(hsbObj["saturation"]!*100)
-            colorPanel.spinner3.setValue(hsbObj["brightness"]!*100)
+            var hsbObj:HSBColor = ColorParser.hsb(color)
+            colorPanel.spinner1.setValue(hsbObj.hue)
+            colorPanel.spinner2.setValue(hsbObj.saturation*100)
+            colorPanel.spinner3.setValue(hsbObj.brightness*100)
             break
         case ColorPanel.HLS:
+            
+            //continue with the bellow: hls code
+            
             var hlsObj:[String:CGFloat] = ColorParser.hlsByNumericRgb(color)
             colorPanel.spinner1.setValue(hlsObj["h"]!)
             colorPanel.spinner2.setValue(hlsObj["l"]!)

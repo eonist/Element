@@ -35,11 +35,12 @@ class ColorPanelUtils {
      * 
      */
     class func toggleColorType(colorPanel:IColorPanel,_ colorType:String){// :TODO: move to utils class
-        var steppers:Array = [colorPanel.spinner1,colorPanel.spinner2,colorPanel.spinner3];
+        var steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
         switch(colorType){
             case ColorPanel.RGB:
-                for each (var rgbStepper : LeverSpinner in steppers) {
-                    with(rgbStepper.stepper){
+                for var rgbStepper : LeverSpinner in steppers {
+                    rgbStepper.stepper?.minVal
+                    with(){
                         min = 0;
                         max = 255;
                         increment = 1;
@@ -51,7 +52,7 @@ class ColorPanelUtils {
                 colorPanel.spinner2.textInput.text.setText("Green:");
                 colorPanel.spinner3.textInput.text.setText("Blue:");
                 break;
-            case ColorPanel.HSB_TYPE:
+            case ColorPanel.HSB:
                 for each (var hsbStepper : LeverSpinner in steppers) {
                     with(hsbStepper.stepper){
                         min = 0;
@@ -69,7 +70,7 @@ class ColorPanelUtils {
                 colorPanel.spinner2.textInput.text.setText("Saturate:");
                 colorPanel.spinner3.textInput.text.setText("Brightness:");
                 break;
-            case ColorPanel.HLS_TYPE:
+            case ColorPanel.HLS:
                 for each (var hlsStepper : LeverSpinner in steppers) {
                     with(hlsStepper.stepper){
                         min = 0;
@@ -83,7 +84,7 @@ class ColorPanelUtils {
                 colorPanel.spinner2.textInput.text.setText("Lightness:");
                 colorPanel.spinner3.textInput.text.setText("Saturation:");
                 break;
-            case ColorPanel.HSV_TYPE:
+            case ColorPanel.HSV:
                 for each (var hsvStepper : LeverSpinner in steppers) {
                     with(hsvStepper.stepper){
                         min = 0;

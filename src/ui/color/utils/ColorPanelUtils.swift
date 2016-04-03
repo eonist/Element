@@ -27,9 +27,9 @@ class ColorPanelUtils {
             break
         case ColorPanel.HSV:
             var hsvObj:HSV = ColorParser.hsv(color)
-            colorPanel.spinner1.setValue(hsvObj.h)
-            colorPanel.spinner2.setValue(hsvObj.s * 240)
-            colorPanel.spinner3.setValue(hsvObj.v * 240)
+            colorPanel.spinner1!.setValue(hsvObj.h)
+            colorPanel.spinner2!.setValue(hsvObj.s * 240)
+            colorPanel.spinner3!.setValue(hsvObj.v * 240)
             break
         }
     }

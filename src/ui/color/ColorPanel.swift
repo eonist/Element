@@ -32,7 +32,7 @@ class ColorPanel:Element{
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         //var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
         
-        
+        let rb = ""
         
         spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rgbObj["rb"],1,0,255,1,100,200,self))
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgbObj["gb"],1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/

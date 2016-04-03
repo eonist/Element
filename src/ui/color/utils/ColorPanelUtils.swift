@@ -38,15 +38,12 @@ class ColorPanelUtils {
         var steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
         switch(colorType){
             case ColorPanel.RGB:
-                for var rgbStepper : LeverSpinner in steppers {
-                    rgbStepper.stepper?.minVal
-                    with(){
-                        min = 0;
-                        max = 255;
-                        increment = 1;
-                        decimals = 0;
-                        leverRange = 200;
-                    }			
+                for rgbStepper:LeverSpinner in steppers {
+                    rgbStepper.stepper!.minVal = 0;
+                    rgbStepper.stepper!.maxVal = 255;
+                    rgbStepper.stepper!.increment = 1;
+                    rgbStepper.stepper!.decimals = 0;
+                    rgbStepper.stepper!.leverRange = 200;
                 }
                 colorPanel.spinner1.textInput.text.setText("Red:");
                 colorPanel.spinner2.textInput.text.setText("Green:");

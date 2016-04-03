@@ -42,6 +42,9 @@ class ColorPanel:Element,IColorPanel{
         ColorSync.broadcaster = self
     }
     func setColor(color:NSColor){
+        
+        //continue here
+        
         ColorPanelUtils.applyColor(self,color)
         colorInput.setColor(color)
         self.color = color
@@ -50,8 +53,8 @@ class ColorPanel:Element,IColorPanel{
         super.setSize(width, height)
         ElementModifier.refresh(self)
     }
-    func getColorType() -> String {
-        return (SelectParser.selected(colorTypeSelectGroup.sel) as! RadioButton).getText()
+    func getColorType()->String {
+        return (SelectGroupParser.selected(colorTypeSelectGroup!) as! RadioButton).getText()
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

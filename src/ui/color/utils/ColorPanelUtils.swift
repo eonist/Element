@@ -76,14 +76,13 @@ class ColorPanelUtils {
                 colorPanel.spinner2!.textInput!.text!.setText("Lightness:");
                 colorPanel.spinner3!.textInput!.text!.setText("Saturation:");
             case ColorPanel.HSV:
-                for each (var hsvStepper : LeverSpinner in steppers) {
-                    with(hsvStepper.stepper){
-                        min = 0;
-                        max = 240;
-                        increment = 1;
-                        decimals = 0;
-                        leverRange = 200;
-                    }			
+                for hsvStepper in steppers {
+                    let stepper:LeverStepper = hsvStepper.stepper!
+                    stepper.minVal = 0
+                    stepper.maxVal = 240
+                    stepper.increment = 1
+                    stepper.decimals = 0
+                    stepper.leverRange = 200		
                 }
                 colorPanel.spinner1.textInput.text.setText("Hue:");
                 colorPanel.spinner2.textInput.text.setText("Saturation:");

@@ -38,7 +38,7 @@ class ColorPanelUtils {
         var steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
         switch(colorType){
             case ColorPanel.RGB:
-                for rgbStepper:LeverSpinner in steppers {
+                for rgbStepper in steppers {
                     rgbStepper.stepper!.minVal = 0;
                     rgbStepper.stepper!.maxVal = 255;
                     rgbStepper.stepper!.increment = 1;

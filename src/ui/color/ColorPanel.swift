@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * // :TODO: add an alpha-stepper?
  */
@@ -10,11 +10,11 @@ class ColorPanel {
     static var HSB:String = "HSB"
     static var HLS:String = "HLS"
     static var HSV:String = "HSV"
-    private var _color : Number;
-    private var _colorInput : ColorInput;
-    private var _spinner1 : LeverSpinner;
-    private var _spinner2 : LeverSpinner;
-    private var _spinner3 : LeverSpinner;
-    private var _itemHeight:Number;
-    private var _colorTypeSelectGroup:SelectGroup;
+    static var color:NSColor
+    static var colorInput:ColorInput?
+    static var spinner1:LeverSpinner?
+    static var spinner2:LeverSpinner?
+    static var spinner3:LeverSpinner?
+    static var itemHeight:CGFloat
+    static var colorTypeSelectGroup:SelectGroup?
 }

@@ -24,17 +24,17 @@ class ColorPanel:Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        var rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.RGB,true,self))
-        var hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSB,false,self))
-        var hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HLS,false,self))
-        var hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSV,false,self))
+        let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.RGB,true,self))
+        let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSB,false,self))
+        let hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HLS,false,self))
+        let hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSV,false,self))
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         //var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
         
-        let rb = 255
-        let gb = 0
-        let bb = 0
+        let rb:CGFloat = 255
+        let gb:CGFloat = 0
+        let bb:CGFloat = 0
         
         spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rb,1,0,255,1,100,200,self))
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",gb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/

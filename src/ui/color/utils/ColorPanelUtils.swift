@@ -35,7 +35,7 @@ class ColorPanelUtils {
      * 
      */
     class func toggleColorType(colorPanel:IColorPanel,_ colorType:String){// :TODO: move to utils class
-        var steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
+        let steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
         switch(colorType){
             case ColorPanel.RGB:
                 for rgbStepper in steppers {
@@ -82,11 +82,12 @@ class ColorPanelUtils {
                     stepper.maxVal = 240
                     stepper.increment = 1
                     stepper.decimals = 0
-                    stepper.leverRange = 200		
+                    stepper.leverRange = 200
                 }
-                colorPanel.spinner1.textInput.text.setText("Hue:");
-                colorPanel.spinner2.textInput.text.setText("Saturation:");
-                colorPanel.spinner3.textInput.text.setText("Value:");
+                colorPanel.spinner1!.textInput!.text!.setText("Hue:");
+                colorPanel.spinner2!.textInput!.text!.setText("Saturation:");
+                colorPanel.spinner3!.textInput!.text!.setText("Value:");
+            default:
                 break;
         }
     }

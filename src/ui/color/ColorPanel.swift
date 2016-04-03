@@ -54,7 +54,7 @@ class ColorPanel:Element,IColorPanel{
         var color:NSColor//<--was UInt
         var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
-            case ColorPanel.RGB:color = RGBParser.rgb(spinner1!.val, spinner2!.val, spinner3!.val);break;
+            case ColorPanel.RGB:color = RGBParser.rgbValueByHsb(spinner1!.val, spinner2!.val, spinner3!.val);break;
             case ColorPanel.HSB:color = ColorParser.rgbByHsb(spinner1.value, spinner2.value/100, spinner3.value/100);break;
             case ColorPanel.HLS:color = ColorParser.rgbValueByHls(spinner1.value, spinner2.value, spinner3.value);break;
             case ColorPanel.HSV:color = ColorParser.rgbValueByHsv(spinner1.value, spinner2.value/240, spinner3.value/240);break;

@@ -45,12 +45,13 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)
         //if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event)}
         //if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
-        if(){}
+        //if(event.type == SpinnerEvent.change){onSpinnerChange(event)}// :TODO: cant we just listen for one event in this.?
+        if(event.type == ColorInputEvent.change && event.origin === ){ColorSync.onColorChange(event)}
         /*
-        _spinner1.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);// :TODO: cant we just listen for one event in this.?
+        _spinner1.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);
         _spinner2.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);
         _spinner3.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);
-        addEventListener(ColorInputEvent.CHANGE, ColorSync.onColorChange);
+        addEventListener(ColorInputEvent.CHANGE, );
         */
     }
     

@@ -42,9 +42,6 @@ class ColorPanel:Element,IColorPanel{
         ColorSync.broadcaster = self
     }
     func setColorValue(color:NSColor){
-        
-        //continue here: Make the COlorPanelUtils class
-        
         ColorPanelUtils.applyColor(self,color)
         colorInput!.setColorValue(color)
         self.color = color

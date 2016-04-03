@@ -8,6 +8,7 @@ class ColorPanelUtils {
         var colorType:String = colorPanel.getColorType()
         switch(colorType){
         case ColorPanel.RGB:
+            NSColorParser.rgb
             var rbgObj:[String:CGFloat] = ColorParser.rgbByHex(color)
             colorPanel.spinner1.setValue(rbgObj["rb"]!)
             colorPanel.spinner2.setValue(rbgObj["gb"]!)

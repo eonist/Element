@@ -22,4 +22,5 @@ class ColorPanel:Element{
         self.color = color
         super.init(width, height, 24, title, minSize, maxSize, parent, id)
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

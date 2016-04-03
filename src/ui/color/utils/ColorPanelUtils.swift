@@ -8,7 +8,6 @@ class ColorPanelUtils {
         var colorType:String = colorPanel.getColorType()
         switch(colorType){
         case ColorPanel.RGB:
-            
             var rbgObj = ColorParser.rgba(color)
             colorPanel.spinner1!.setValue(rbgObj.r*255)//rb
             colorPanel.spinner2!.setValue(rbgObj.g*255)//gb
@@ -21,19 +20,16 @@ class ColorPanelUtils {
             colorPanel.spinner3!.setValue(hsbObj.brightness*100)
             break
         case ColorPanel.HLS:
-            
-            //continue with the bellow: hls code
-            
-            var hlsObj:[String:CGFloat] = ColorParser.hlsByNumericRgb(color)
-            colorPanel.spinner1.setValue(hlsObj["h"]!)
-            colorPanel.spinner2.setValue(hlsObj["l"]!)
-            colorPanel.spinner3.setValue(hlsObj["s"]!)
+            var hlsObj:HLS = ColorParser.hls(color)
+            colorPanel.spinner1!.setValue(hlsObj.h)
+            colorPanel.spinner2!.setValue(hlsObj.l)
+            colorPanel.spinner3!.setValue(hlsObj.s)
             break
         case ColorPanel.HSV:
-            var hsvObj:[String:CGFloat] = ColorParser.hsvByNumericRgb(color)
-            colorPanel.spinner1.setValue(hsvObj["h"]!)
-            colorPanel.spinner2.setValue(hsvObj["s"]!*240)
-            colorPanel.spinner3.setValue(hsvObj["v"]!*240)
+            var hsvObj:HSV = ColorParser.hsv(color)
+            colorPanel.spinner1.setValue(hsvObj.h)
+            colorPanel.spinner2.setValue(hsvObj.s * 240)
+            colorPanel.spinner3.setValue(hsvObj.v * 240)
             break
         }
     }

@@ -41,12 +41,12 @@ class ColorPanel:Element,IColorPanel{
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
-    func setColor(color:NSColor){
+    func setColorValue(color:NSColor){
         
-        //continue here
+        //continue here: Make the COlorPanelUtils class
         
         ColorPanelUtils.applyColor(self,color)
-        colorInput.setColor(color)
+        colorInput!.setColorValue(color)
         self.color = color
     }
     override func setSize(width : CGFloat, _ height : CGFloat)  {

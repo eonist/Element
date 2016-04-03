@@ -41,6 +41,22 @@ class ColorPanel:Element,IColorPanel{
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
+    override func onEvent(event: Event) {
+        super.onEvent(event)
+        
+        /*
+        super.addEventListeners();
+        _colorTypeSelectGroup.addEventListener(SelectGroupEvent.SELECT_GROUP_CHANGE, onColorTypeSelectGroupChange);
+        _colorInput.addEventListener(ColorInputEvent.CHANGE, onColorInputChange);
+        _spinner1.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);// :TODO: cant we just listen for one event in this.?
+        _spinner2.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);
+        _spinner3.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);
+        addEventListener(ColorInputEvent.CHANGE, ColorSync.onColorChange);
+        */
+    }
+    
+   
+    
     func setColorValue(color:NSColor){
         ColorPanelUtils.applyColor(self,color)
         colorInput!.setColorValue(color)

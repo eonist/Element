@@ -41,7 +41,6 @@ class ColorPanel:Element,IColorPanel{
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
-    
     func setColor(color:NSColor){
         ColorPanelUtils.applyColor(self,color)
         colorInput.setColor(color)
@@ -49,8 +48,7 @@ class ColorPanel:Element,IColorPanel{
     }
     override func setSize(width : CGFloat, _ height : CGFloat)  {
         super.setSize(width, height)
-        ElementModifier.refresh(this)
+        ElementModifier.refresh(self)
     }
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -31,4 +31,72 @@ class ColorPanelUtils {
                 break;
         }
     }
+    /**
+     * 
+     */
+    class func toggleColorType(colorPanel:IColorPanel,_ colorType:String){// :TODO: move to utils class
+        var steppers:Array = [colorPanel.spinner1,colorPanel.spinner2,colorPanel.spinner3];
+        switch(colorType){
+            case ColorPanel.RGB:
+                for each (var rgbStepper : LeverSpinner in steppers) {
+                    with(rgbStepper.stepper){
+                        min = 0;
+                        max = 255;
+                        increment = 1;
+                        decimals = 0;
+                        leverRange = 200;
+                    }			
+                }
+                colorPanel.spinner1.textInput.text.setText("Red:");
+                colorPanel.spinner2.textInput.text.setText("Green:");
+                colorPanel.spinner3.textInput.text.setText("Blue:");
+                break;
+            case ColorPanel.HSB_TYPE:
+                for each (var hsbStepper : LeverSpinner in steppers) {
+                    with(hsbStepper.stepper){
+                        min = 0;
+                        max = 100;
+                        increment = 1;
+                        decimals = 0;
+                        leverRange = 100;
+                    }			
+                }
+                with(colorPanel.spinner1){
+                    stepper.max = 360;
+                    stepper.leverRange = 200;
+                    textInput.text.setText("Hue: ");
+                }
+                colorPanel.spinner2.textInput.text.setText("Saturate:");
+                colorPanel.spinner3.textInput.text.setText("Brightness:");
+                break;
+            case ColorPanel.HLS_TYPE:
+                for each (var hlsStepper : LeverSpinner in steppers) {
+                    with(hlsStepper.stepper){
+                        min = 0;
+                        max = 240;
+                        increment = 1;
+                        decimals = 0;
+                        leverRange = 200;
+                    }			
+                }
+                colorPanel.spinner1.textInput.text.setText("Hue:");
+                colorPanel.spinner2.textInput.text.setText("Lightness:");
+                colorPanel.spinner3.textInput.text.setText("Saturation:");
+                break;
+            case ColorPanel.HSV_TYPE:
+                for each (var hsvStepper : LeverSpinner in steppers) {
+                    with(hsvStepper.stepper){
+                        min = 0;
+                        max = 240;
+                        increment = 1;
+                        decimals = 0;
+                        leverRange = 200;
+                    }			
+                }
+                colorPanel.spinner1.textInput.text.setText("Hue:");
+                colorPanel.spinner2.textInput.text.setText("Saturation:");
+                colorPanel.spinner3.textInput.text.setText("Value:");
+                break;
+        }
+    }
 }

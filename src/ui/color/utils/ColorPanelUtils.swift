@@ -9,10 +9,10 @@ class ColorPanelUtils {
         switch(colorType){
         case ColorPanel.RGB:
             
-            var rbgObj:[String:CGFloat] = ColorParser.rgba(color)
-            colorPanel.spinner1.setValue(rbgObj["rb"]!)
-            colorPanel.spinner2.setValue(rbgObj["gb"]!)
-            colorPanel.spinner3.setValue(rbgObj["bb"]!)
+            var rbgObj = ColorParser.rgba(color)
+            colorPanel.spinner1.setValue(rbgObj.r)//rb
+            colorPanel.spinner2.setValue(rbgObj.g)//gb
+            colorPanel.spinner3.setValue(rbgObj.b)//bb
             break
         case ColorPanel.HSB:
             var hsbObj:[String:CGFloat] = ColorParser.hsbByRgb(color)

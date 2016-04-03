@@ -45,6 +45,11 @@ class ColorPanel:Element,IColorPanel{
         ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
         ColorPanelUtils.applyColor(self,color)
     }
+    private func onColorInputChange(event : ColorInputEvent) {
+        ColorPanelUtils.applyColor(self,event.color);
+        self.color = event.color;
+        (ColorInputEvent(ColorInputEvent.change,_color));	// :TODO: is thhis needed? cant we just propegate the original event
+    }
     override func onEvent(event: Event) {
         super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}

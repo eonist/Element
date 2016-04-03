@@ -20,7 +20,7 @@ class ColorPanel:Element{
     init(width:CGFloat = NaN, height:CGFloat = NaN, itemHeight:CGFloat = NaN, color:NSColor = NSColorParser.nsColor("0xFF00FF"), title:String = "Color", minSize:CGPoint? = nil, maxSize:CGPoint? = nil, parent:IElement? = nil, id:String = "") {
         self.itemHeight = itemHeight
         self.color = color
-        super.init(width, height, title, parent, id)
+        super.init(width, height           , parent, id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

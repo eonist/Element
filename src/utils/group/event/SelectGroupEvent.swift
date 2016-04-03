@@ -11,5 +11,5 @@ class SelectGroupEvent:Event {
     }
 }
 extension SelectGroupEvent{
-    var selectable : ISelectable {return (origin as! SelectGroup).event}
+    var selectable : ISelectable {return (origin as! SelectGroup).selected}
 }

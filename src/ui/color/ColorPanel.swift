@@ -50,6 +50,19 @@ class ColorPanel:Element,IColorPanel{
         color = event.color
         super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
     }
+    private func onSpinnerChange(event : SpinnerEvent) {
+        var color:UInt
+        var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
+        switch(colorType){
+            case RGB:color = ColorParser.rgbValueByRgb(spinner1.value, spinner2.value, spinner3.value);break;
+            case HSB:color = ColorParser.rgbByHsb(_spinner1.value, _spinner2.value/100, _spinner3.value/100);break;
+            case HLS:color = ColorParser.rgbValueByHls(_spinner1.value, _spinner2.value, _spinner3.value);break;
+            case HSV:color = ColorParser.rgbValueByHsv(_spinner1.value, _spinner2.value/240, _spinner3.value/240);break;
+        }
+        _colorInput.setColor(color);
+        _color = color;
+        dispatchEvent(new ColorInputEvent(ColorInputEvent.CHANGE,_color));
+    }
     override func onEvent(event: Event) {
         super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}

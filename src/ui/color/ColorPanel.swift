@@ -2,7 +2,7 @@ import Cocoa
 /**
  * // :TODO: add an alpha-stepper?
  */
-class ColorPanel:Element{
+class ColorPanel:Element,IColorPanel{
     static var title:String = "Color"
     static var minSize:CGPoint = CGPoint(180, 232)
     static var maxSize:CGPoint = CGPoint(1200,232)

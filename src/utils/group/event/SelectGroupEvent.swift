@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ *
+ */
 class SelectGroupEvent:Event {
     static var change:String = "selectGroupChange";/*this event is dispatched after the _selected variable is set in the SelectGroup instance*/// :TODO: possibly rename to SELECT_GROUP_SELECTED
     static var select : String = "selectGroupSelect";/*This event is dispatched before the _selected variable is set in the SelectGroup instance*/
@@ -11,5 +13,5 @@ class SelectGroupEvent:Event {
     }
 }
 extension SelectGroupEvent{
-    var selectable : ISelectable {return (origin as! SelectGroup).selected}
+    var selected : ISelectable {return (origin as! SelectGroup).selected!}
 }

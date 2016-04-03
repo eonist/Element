@@ -51,10 +51,10 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
     }
     private func onSpinnerChange(event : SpinnerEvent) {
-        var color:UInt
+        var color:NSColor//<--was UInt
         var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
-            case RGB:color = ColorParser.rgbValueByRgb(spinner1.value, spinner2.value, spinner3.value);break;
+            case RGB:color = ColorParser.rgb(spinner1.value, spinner2.value, spinner3.value);break;
             case HSB:color = ColorParser.rgbByHsb(spinner1.value, spinner2.value/100, spinner3.value/100);break;
             case HLS:color = ColorParser.rgbValueByHls(spinner1.value, spinner2.value, spinner3.value);break;
             case HSV:color = ColorParser.rgbValueByHsv(spinner1.value, spinner2.value/240, spinner3.value/240);break;

@@ -58,16 +58,17 @@ class ColorPanel:Element,IColorPanel{
             case HSB:color = ColorParser.rgbByHsb(_spinner1.value, _spinner2.value/100, _spinner3.value/100);break;
             case HLS:color = ColorParser.rgbValueByHls(_spinner1.value, _spinner2.value, _spinner3.value);break;
             case HSV:color = ColorParser.rgbValueByHsv(_spinner1.value, _spinner2.value/240, _spinner3.value/240);break;
+            default:break;
         }
-        _colorInput.setColor(color);
-        _color = color;
+        colorInput.setColorValue(color);
+        self.color = color;
         dispatchEvent(new ColorInputEvent(ColorInputEvent.CHANGE,_color));
     }
     override func onEvent(event: Event) {
         super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
-        if(event.type == SpinnerEvent.change){onSpinnerChange(event)}// :TODO: cant we just listen for one event in this.?
+        if(event.type == SpinnerEvent.change){onSpinnerChange(event as! SpinnerEvent)}// :TODO: cant we just listen for one event in this.?
 //        if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }
     func setColorValue(color:NSColor){

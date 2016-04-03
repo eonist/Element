@@ -22,5 +22,12 @@ class ColorPanel:Element{
         self.color = color
         super.init(width, height, parent, id)
     }
+    override func resolveSkin() {
+        super.resolveSkin()
+        var rgbRadioButton:RadioButton = addChild(new RadioButton(NaN,NaN,false,false,RGB_TYPE,true,this)) as RadioButton
+        var hsbRadioButton:RadioButton = addChild(new RadioButton(NaN,NaN,false,false,HSB_TYPE,false,this)) as RadioButton
+        var hlsRadioButton:RadioButton = addChild(new RadioButton(NaN,NaN,false,false,HLS_TYPE,false,this)) as RadioButton
+        var hsvRadioButton:RadioButton = addChild(new RadioButton(NaN,NaN,false,false,HSV_TYPE,false,this)) as RadioButton
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

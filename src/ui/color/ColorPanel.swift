@@ -41,12 +41,16 @@ class ColorPanel:Element,IColorPanel{
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
+    private func onColorTypeSelectGroupChange(event : SelectGroupEvent) {
+        ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
+        ColorPanelUtils.applyColor(self,color)
+    }
     override func onEvent(event: Event) {
         super.onEvent(event)
-        if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event)}
-        if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
-        if(event.type == SpinnerEvent.change){onSpinnerChange(event)}// :TODO: cant we just listen for one event in this.?
-        if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
+        if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! onColorTypeSelectGroupChange)}
+//        if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
+//        if(event.type == SpinnerEvent.change){onSpinnerChange(event)}// :TODO: cant we just listen for one event in this.?
+//        if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }
     func setColorValue(color:NSColor){
         ColorPanelUtils.applyColor(self,color)

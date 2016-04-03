@@ -10,3 +10,6 @@ class SelectGroupEvent:Event {
         super.init(type,origin/*immediate*/)
     }
 }
+extension SelectGroupEvent{
+    var selectable : ISelectable {return (origin as! SelectGroup).event}
+}

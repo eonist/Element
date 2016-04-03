@@ -45,7 +45,7 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)
         //if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event)}
         //if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
-        if()
+        if(){}
         /*
         _spinner1.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);// :TODO: cant we just listen for one event in this.?
         _spinner2.addEventListener(SpinnerEvent.CHANGE, onSpinnerChange);

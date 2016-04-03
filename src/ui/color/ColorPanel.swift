@@ -32,11 +32,13 @@ class ColorPanel:Element{
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         //var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
         
-        let rb = ""
+        let rb = 255
+        let gb = 0
+        let bb = 0
         
-        spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rgbObj["rb"],1,0,255,1,100,200,self))
-        spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgbObj["gb"],1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
-        spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgbObj["bb"],1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
+        spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rb,1,0,255,1,100,200,self))
+        spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",gb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
+        spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

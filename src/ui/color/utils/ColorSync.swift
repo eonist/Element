@@ -8,7 +8,7 @@ class ColorSync {
     private init() {} //This prevents others from using the default '()' initializer for this class.
     static var receiver:IColorInput?
     static var broadcaster:IColorInput?
-    func onColorChange(event:ColorInputEvent){
+    class func onColorChange(event:ColorInputEvent){
         print("onColorChange" + "\(ColorSync.receiver)")
         if(ColorSync.receiver != nil) {
             print("_receiver: " + "\(ColorSync.receiver)")

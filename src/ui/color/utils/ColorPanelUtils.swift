@@ -50,25 +50,22 @@ class ColorPanelUtils {
                 colorPanel.spinner2!.textInput!.text!.setText("Green:")
                 colorPanel.spinner3!.textInput!.text!.setText("Blue:")
             case ColorPanel.HSB:
-                for hsbStepper : LeverSpinner in steppers {
-                    with(hsbStepper.stepper){
-                        min = 0;
-                        max = 100;
-                        increment = 1;
-                        decimals = 0;
-                        leverRange = 100;
-                    }			
+                for hsbStepper in steppers {
+                    let stepper:LeverStepper = hsbStepper.stepper!
+                    stepper.minVal = 0
+                    stepper.maxVal = 100
+                    stepper.increment = 1
+                    stepper.decimals = 0
+                    stepper.leverRange = 100
                 }
-                with(colorPanel.spinner1){
-                    stepper.max = 360;
-                    stepper.leverRange = 200;
-                    textInput.text.setText("Hue: ");
-                }
-                colorPanel.spinner2.textInput.text.setText("Saturate:");
-                colorPanel.spinner3.textInput.text.setText("Brightness:");
+                colorPanel.spinner1!.stepper!.maxVal = 360
+                colorPanel.spinner1!.stepper!.leverRange = 200
+                colorPanel.spinner1!.textInput!.text!.setText("Hue: ")
+                colorPanel.spinner2!.textInput!.text!.setText("Saturate:")
+                colorPanel.spinner3!.textInput!.text!.setText("Brightness:")
                 break;
             case ColorPanel.HLS:
-                for each (var hlsStepper : LeverSpinner in steppers) {
+                for hlsStepper in steppers {
                     with(hlsStepper.stepper){
                         min = 0;
                         max = 240;

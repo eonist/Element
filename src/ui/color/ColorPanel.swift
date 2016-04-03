@@ -28,15 +28,13 @@ class ColorPanel:Element{
         var hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSB,false,self))
         var hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HLS,false,self))
         var hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSV,false,self))
-        
-        
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
-        var rgbObj:Object = ColorParser.rgbByHex(_color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
+        var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
         spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rgbObj["rb"],1,0,255,1,100,200,self))
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgbObj["gb"],1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgbObj["bb"],1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
-        ColorSync.broadcaster = this;
+        ColorSync.broadcaster = self
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

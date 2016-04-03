@@ -49,9 +49,7 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}
 
-        //Continue with the bellow:
-        
-//        if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
+        if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event)}
 //        if(event.type == SpinnerEvent.change){onSpinnerChange(event)}// :TODO: cant we just listen for one event in this.?
 //        if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }

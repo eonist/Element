@@ -43,7 +43,7 @@ class ColorInput:Element,IColorInput {
     func setColorValue(color:NSColor){
         self.color = color
         colorBox!.setColorValue(color)
-        inputText!.inputTextArea!.setTextValue("0x" + color.hex.uppercaseString)//ColorParser.hexByNumericRgb(color).toUpperCase()
+        inputText!.inputTextArea!.setTextValue("0x" + color.hexString.uppercaseString)//ColorParser.hexByNumericRgb(color).toUpperCase()
     }
     func setSize(width:CGFloat, height:CGFloat){
         super.setSize(width,height)

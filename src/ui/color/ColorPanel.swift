@@ -6,10 +6,10 @@ class ColorPanel:Element,IColorPanel{
     static var title:String = "Color"
     static var minSize:CGPoint = CGPoint(180, 232)
     static var maxSize:CGPoint = CGPoint(1200,232)
-    static var RGB:String = "RGB"
-    static var HSB:String = "HSB"
-    static var HLS:String = "HLS"
-    static var HSV:String = "HSV"
+    static var rgb:String = "RGB"
+    static var hsb:String = "HSB"
+    static var hls:String = "HLS"
+    static var hsv:String = "HSV"
     var color:NSColor
     var colorInput:ColorInput?
     var spinner1:LeverSpinner?
@@ -24,10 +24,10 @@ class ColorPanel:Element,IColorPanel{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.RGB,true,self))
-        let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSB,false,self))
-        let hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HLS,false,self))
-        let hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.HSV,false,self))
+        let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.rgb,true,self))
+        let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsb,false,self))
+        let hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hls,false,self))
+        let hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsv,false,self))
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         //var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
@@ -54,10 +54,10 @@ class ColorPanel:Element,IColorPanel{
         var color:NSColor//<--was UInt
         var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
-            case ColorPanel.RGB:color = RGB(spinner1!.val.uint, spinner2!.val.uint, spinner3!.val.uint).nsColor;break;
-            case ColorPanel.HSB:color = RGBParser.rgbByHsb(spinner1!.val, spinner2!.val/100, spinner3!.val/100);break;
-            case ColorPanel.HLS:color = RGBParser.rgbValueByHls(spinner1!.val, spinner2!.val, spinner3!.val);break;
-            case ColorPanel.HSV:color = RGBParser.rgbValueByHsv(spinner1.val, spinner2.val/240, spinner3.val/240);break;
+            case ColorPanel.rgb:color = RGB(spinner1!.val, spinner2!.val, spinner3!.val).nsColor;break;
+            case ColorPanel.hsb:color = RGBParser.rgbByHsb(spinner1!.val, spinner2!.val/100, spinner3!.val/100);break;
+            case ColorPanel.hls:color = RGBParser.rgbValueByHls(spinner1!.val, spinner2!.val, spinner3!.val);break;
+            case ColorPanel.hsv:color = RGBParser.rgbValueByHsv(spinner1.val, spinner2.val/240, spinner3.val/240);break;
             default:break;
         }
         colorInput!.setColorValue(color)

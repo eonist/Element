@@ -24,6 +24,7 @@ class ColorPanel:Element,IColorPanel{
     }
     override func resolveSkin() {
         super.resolveSkin()
+        /*
         let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.rgb,true,self))
         let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsb,false,self))
         let hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hls,false,self))
@@ -40,6 +41,7 @@ class ColorPanel:Element,IColorPanel{
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",gb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
+        */
     }
     private func onColorTypeSelectGroupChange(event : SelectGroupEvent) {
         ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
@@ -52,13 +54,13 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onSpinnerChange(event : SpinnerEvent) {
         var color:NSColor//<--was UInt
-        var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
+        let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
             case ColorPanel.rgb:color = RGB(spinner1!.val, spinner2!.val, spinner3!.val).nsColor;break;
             case ColorPanel.hsb:color = HSB(spinner1!.val.uint, (spinner2!.val/100).uint, (spinner3!.val/100).uint).nsColor;break;
             case ColorPanel.hls:color = HLS(spinner1!.val, spinner2!.val, spinner3!.val).nsColor;break;
             case ColorPanel.hsv:color = HSV(spinner1!.val, spinner2!.val/240, spinner3!.val/240).nsColor;break;
-            default:break;
+            default:fatalError("this can't happen"); break;
         }
         colorInput!.setColorValue(color)
         self.color = color

@@ -17,7 +17,7 @@ class ColorPanel:Element,IColorPanel{
     var spinner3:LeverSpinner?
     var itemHeight:CGFloat
     var colorTypeSelectGroup:SelectGroup?
-    init(width:CGFloat = NaN, height:CGFloat = NaN, itemHeight:CGFloat = NaN, color:NSColor = NSColorParser.nsColor("0xFF00FF"), title:String = "Color", minSize:CGPoint? = nil, maxSize:CGPoint? = nil, parent:IElement? = nil, id:String = "") {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ color:NSColor = NSColorParser.nsColor("0xFF00FF"), _ title:String = "Color", _ minSize:CGPoint? = nil, _ maxSize:CGPoint? = nil, _ parent:IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight
         self.color = color
         super.init(width, height, parent, id)
@@ -55,9 +55,9 @@ class ColorPanel:Element,IColorPanel{
         var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
             case ColorPanel.RGB:color = RGBParser.rgbValueByRgb(spinner1!.val.uint, spinner2!.val.uint, spinner3!.val.uint);break;
-            case ColorPanel.HSB:color = RGBParser.rgbByHsb(spinner1.value, spinner2.value/100, spinner3.value/100);break;
-            case ColorPanel.HLS:color = RGBParser.rgbValueByHls(spinner1.value, spinner2.value, spinner3.value);break;
-            case ColorPanel.HSV:color = RGBParser.rgbValueByHsv(spinner1.value, spinner2.value/240, spinner3.value/240);break;
+            case ColorPanel.HSB:color = RGBParser.rgbByHsb(spinner1!.val, spinner2!.val/100, spinner3!.val/100);break;
+            case ColorPanel.HLS:color = RGBParser.rgbValueByHls(spinner1!.val, spinner2!.val, spinner3!.val);break;
+            case ColorPanel.HSV:color = RGBParser.rgbValueByHsv(spinner1.val, spinner2.val/240, spinner3.val/240);break;
             default:break;
         }
         colorInput!.setColorValue(color)

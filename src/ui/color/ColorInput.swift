@@ -16,7 +16,7 @@ class ColorInput:Element,IColorInput {
     }
     override func resolveSkin(){
         super.resolveSkin();
-        self.inputText = addSubView(TextInput(width - height,height,text,"0x" + color.hex,self))//ColorParser.hexByNumericRgb(_color)
+        self.inputText = addSubView(TextInput(width - height,height,text,"0x" + color.hexString,self))//ColorParser.hexByNumericRgb(_color)
         self.colorBox = addSubView(ColorBox(height,height,color,self))
     }
     func onColorBoxDown(event:ButtonEvent){

@@ -37,7 +37,7 @@ class ColorPanelUtils {
     class func toggleColorType(colorPanel:IColorPanel,_ colorType:String){// :TODO: move to utils class
         let steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
         switch(colorType){
-            case ColorPanel.RGB:
+            case ColorPanel.rgb:
                 for rgbStepper in steppers {
                     let stepper:LeverStepper = rgbStepper.stepper!
                     stepper.minVal = 0
@@ -49,7 +49,7 @@ class ColorPanelUtils {
                 colorPanel.spinner1!.textInput!.text!.setText("Red:")
                 colorPanel.spinner2!.textInput!.text!.setText("Green:")
                 colorPanel.spinner3!.textInput!.text!.setText("Blue:")
-            case ColorPanel.HSB:
+            case ColorPanel.hsb:
                 for hsbStepper in steppers {
                     let stepper:LeverStepper = hsbStepper.stepper!
                     stepper.minVal = 0
@@ -63,7 +63,7 @@ class ColorPanelUtils {
                 colorPanel.spinner1!.textInput!.text!.setText("Hue: ")
                 colorPanel.spinner2!.textInput!.text!.setText("Saturate:")
                 colorPanel.spinner3!.textInput!.text!.setText("Brightness:")
-            case ColorPanel.HLS:
+            case ColorPanel.hls:
                 for hlsStepper in steppers {
                     let stepper:LeverStepper = hlsStepper.stepper!
                     stepper.minVal = 0
@@ -75,7 +75,7 @@ class ColorPanelUtils {
                 colorPanel.spinner1!.textInput!.text!.setText("Hue:");
                 colorPanel.spinner2!.textInput!.text!.setText("Lightness:");
                 colorPanel.spinner3!.textInput!.text!.setText("Saturation:");
-            case ColorPanel.HSV:
+            case ColorPanel.hsv:
                 for hsvStepper in steppers {
                     let stepper:LeverStepper = hsvStepper.stepper!
                     stepper.minVal = 0

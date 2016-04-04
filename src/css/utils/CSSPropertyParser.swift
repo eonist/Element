@@ -200,7 +200,7 @@ private class Utils{
                 
                 let alphaVal:CGFloat = CGFloat(Utils.alpha(alpha))
                 //Swift.print("alphaVal: " + "\(alphaVal)")
-                gradient.colors.append(NSColorParser.cgColor(StringParser.color(color),alphaVal))//append color
+                gradient.colors.append(CGColorParser.cgColor(StringParser.color(color),alphaVal))//append color
                 
                 let ratio:String = RegExp.value(property, match, 3)
                 //Swift.print("ratio: " + ratio)

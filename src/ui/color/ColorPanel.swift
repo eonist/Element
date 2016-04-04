@@ -55,7 +55,7 @@ class ColorPanel:Element,IColorPanel{
         var colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
             case ColorPanel.rgb:color = RGB(spinner1!.val, spinner2!.val, spinner3!.val).nsColor;break;
-            case ColorPanel.hsb:color = RGBParser.rgbByHsb(spinner1!.val, spinner2!.val/100, spinner3!.val/100);break;
+            case ColorPanel.hsb:color = HSB(spinner1!.val.uint, (spinner2!.val/100).uint, (spinner3!.val/100).uint).nsColor;break;
             case ColorPanel.hls:color = RGBParser.rgbValueByHls(spinner1!.val, spinner2!.val, spinner3!.val);break;
             case ColorPanel.hsv:color = RGBParser.rgbValueByHsv(spinner1.val, spinner2.val/240, spinner3.val/240);break;
             default:break;

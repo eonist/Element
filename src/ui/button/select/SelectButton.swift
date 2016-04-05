@@ -1,7 +1,7 @@
 import Cocoa
 
 class SelectButton:Button,ISelectable {
-    var isSelected:Bool
+    private var isSelected:Bool
     init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: IElement? = nil, _ id: String? = nil) {
         self.isSelected = isSelected
         super.init(width, height, parent, id)

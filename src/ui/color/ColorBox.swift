@@ -2,7 +2,7 @@ import Cocoa
 
 class ColorBox:Button,IColorInput{
     var color:NSColor
-    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ color:NSColor = NSColor.magentaColor(), _ parent:IElement? = nil, _ id:String = "") {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ color:NSColor = NSColor.redColor(), _ parent:IElement? = nil, _ id:String = "") {
         self.color = color
         super.init(width,height,parent,id)
         setColorValue(color)
@@ -17,8 +17,10 @@ class ColorBox:Button,IColorInput{
         var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
         Swift.print("styleProperty: " + "\(styleProperty)")
         Swift.print("color.hex: " + "\(color.hexString)")
-        styleProperty!.value = ("0x" + color.hexString).uint
-        skin!.setStyle(style)/*updates the skin*/
+        if(styleProperty != nil){//temp
+            styleProperty!.value = ("0x" + color.hexString).uint
+            skin!.setStyle(style)/*updates the skin*/
+        }
     }
     /**
      * Returns "ColorBox"

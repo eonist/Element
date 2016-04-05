@@ -14,7 +14,7 @@ class ColorPanelUtils {
                 colorPanel.spinner3!.setValue(rbgObj.b.cgFloat)//bb
             case ColorPanel.hsb:
                 let hsbObj:HSB = color.hsb
-                colorPanel.spinner1!.setValue(hsbObj.h)
+                colorPanel.spinner1!.setValue(hsbObj.h*360)
                 colorPanel.spinner2!.setValue(hsbObj.s*100)
                 colorPanel.spinner3!.setValue(hsbObj.b*100)
             case ColorPanel.hls:

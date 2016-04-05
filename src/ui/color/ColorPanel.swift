@@ -25,12 +25,12 @@ class ColorPanel:Element,IColorPanel{
     override func resolveSkin() {
         super.resolveSkin()
         
-        let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.rgb,false,self))
-        let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsb,true,self))
+        let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.rgb,true,self))
+        let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsb,false,self))
         let hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hls,false,self))
         let hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsv,false,self))
         
-        colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],hsbBtn)
+        colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorTypeSelectGroup!.event = onEvent/*attach the selectGroup to self, to handle the events here*/
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         let rgb:RGB = color.rgb/*LeverStepper instance ->Red (0 - 255) (Read/write)*/

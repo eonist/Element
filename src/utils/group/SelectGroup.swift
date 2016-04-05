@@ -43,8 +43,11 @@ class SelectGroup:EventSender{
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable
             Swift.print("selectables.count: " + "\(selectables.count)")
+            
             SelectModifier.unSelectAllExcept(selected!, selectables)
-            selected
+            for s in selectables{
+                Swift.print("s.isSelected: " + "\(s.isSelected)")
+            }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
             //NSNotificationCenter.defaultCenter().postNotificationName(, object:self)
         }

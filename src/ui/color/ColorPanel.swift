@@ -50,7 +50,7 @@ class ColorPanel:Element,IColorPanel{
         color = event.color
         super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
     }
-    private func onSpinnerChange(event : SpinnerEvent) {
+    private func onSpinnerChange(event:SpinnerEvent) {
         Swift.print("onSpinnerChange()")
         /*
         var color:NSColor//<--was UInt

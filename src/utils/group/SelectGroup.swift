@@ -35,6 +35,7 @@ class SelectGroup:EventSender{
         selectables.append(selectable);
     }
     override func onEvent(event:Event){
+        Swift.print("SelectGroup.onEvent()")
         if(event.type == SelectEvent.select){
             //Swift.print("SelectGroup.onEvent() immediate: " + "\(event.immediate)")
             //NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/

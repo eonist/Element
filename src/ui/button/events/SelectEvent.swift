@@ -8,5 +8,5 @@ class SelectEvent:Event {
     //static var deSelect:String = "deSelect"//unSelect is also an option?
 }
 extension SelectEvent{
-    var isSelected:Bool{return (origin as! ISelectable).isSelected}
+    var isSelected:Bool{return (origin as! ISelectable).getSelected()}
 }

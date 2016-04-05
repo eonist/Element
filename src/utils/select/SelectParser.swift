@@ -12,7 +12,7 @@ class SelectParser {
      * Returns the  first selected ISelectable in an array of ISelectables or a
      */
     class func selected(selectables:Array<ISelectable>) -> ISelectable? {
-        for selectable : ISelectable in selectables {if(selectable.isSelected) {return selectable}}
+        for selectable : ISelectable in selectables {if(selectable.getSelected()) {return selectable}}
         return nil
     }
     /**
@@ -26,7 +26,7 @@ class SelectParser {
      */
     class func allSelected(selectables:Array<ISelectable>)->Array<ISelectable> {
         var selected:Array<ISelectable> = []
-        for selectable : ISelectable in selectables{ if(selectable.isSelected) {selected.append(selectable)} }
+        for selectable : ISelectable in selectables{ if(selectable.getSelected()) {selected.append(selectable)} }
         return selected
     }
 }

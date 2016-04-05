@@ -3,7 +3,7 @@ import Foundation
  * TODO: Implement a way to also include the text in being in a checked status
  */
 class CheckBoxButton : Button,ICheckable{
-    var isChecked:Bool
+    private var isChecked:Bool
     var textString:String
     var checkBox : CheckBox?
     var text:Text?
@@ -29,7 +29,7 @@ class CheckBoxButton : Button,ICheckable{
      * NOTE: this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
      */
     func getChecked() -> Bool {
-        return checkBox != nil ? checkBox!.isChecked : self.isChecked;/*<--Temp fix*/
+        return checkBox != nil ? checkBox!.getChecked() : self.isChecked;/*<--Temp fix*/
     }
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();

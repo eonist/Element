@@ -13,7 +13,7 @@ class ListModifier {
      */
     class func selectAt(list:IList,_ index:Int) {
         let selectable:ISelectable = list.lableContainer!.subviews[index] as! ISelectable;
-        if(!selectable.isSelected) {selectable.setSelected(true)}
+        if(!selectable.getSelected()) {selectable.setSelected(true)}
         SelectModifier.unSelectAllExcept(selectable, list.lableContainer!)
     }
     /**

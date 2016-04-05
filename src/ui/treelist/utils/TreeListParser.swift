@@ -70,8 +70,8 @@ class TreeListParser{
         var selectable:ISelectable?
         for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
             let treeItem:NSView = treeList.itemContainer!.getSubviewAt(i)
-            if(treeItem is ISelectable && (treeItem as! ISelectable).isSelected) {selectable = treeItem as? ISelectable}
-            if(treeItem is ITreeListItem && !(treeItem as! ISelectable).isSelected) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
+            if(treeItem is ISelectable && (treeItem as! ISelectable).getSelected()) {selectable = treeItem as? ISelectable}
+            if(treeItem is ITreeListItem && !(treeItem as! ISelectable).getSelected()) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
             if(selectable != nil) {break}//<--what does this break do?
         }
         return selectable

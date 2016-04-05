@@ -9,12 +9,12 @@ import Foundation
 class LeverSpinner : Element{
     var maxVal:CGFloat
     var minVal:CGFloat
-    var val:CGFloat;
-    var	increment:CGFloat;/*The amount of incrementation for each stepping*/
-    var decimals:Int;/*decimal places*/
-    var text:String;
-    var leverHeight:CGFloat;// :TODO: write a description about this value
-    var leverRange : CGFloat;
+    var val:CGFloat
+    var	increment:CGFloat/*The amount of incrementation for each stepping*/
+    var decimals:Int/*decimal places*/
+    var text:String
+    var leverHeight:CGFloat// :TODO: write a description about this value
+    var leverRange : CGFloat
     var textInput:TextInput?
     var stepper:LeverStepper?
     

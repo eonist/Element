@@ -33,11 +33,12 @@ class ColorPanel:Element,IColorPanel{
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         let rgb:RGB = color.rgb/*LeverStepper instance ->Red (0 - 255) (Read/write)*/
-
+        
         spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rgb.r.cgFloat,1,0,255,1,100,200,self))
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgb.g.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgb.b.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
+        /**/
     }
     private func onColorTypeSelectGroupChange(event : SelectGroupEvent) {
         ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())

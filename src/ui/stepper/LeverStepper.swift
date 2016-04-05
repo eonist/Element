@@ -61,6 +61,7 @@ class LeverStepper : Element{
         Swift.print("onButtonUp()")
         Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
         return onButtonMove(event,plusButton!)
@@ -94,6 +95,7 @@ class LeverStepper : Element{
         //else if(event.origin === plusButton && event.type == ButtonEvent.upOutside){onPlusButtonUpOutside()}
         //else if(event.origin === minusButton && event.type == ButtonEvent.upOutside){onMinusButtonUpOutside()}
         else if(event.origin === minusButton && event.type == ButtonEvent.up){onButtonUp()}
+        else if(event.origin === plusButton && event.type == ButtonEvent.up){onButtonUp()}
         super.onEvent(event)
     }
     /**

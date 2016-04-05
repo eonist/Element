@@ -33,8 +33,8 @@ class LeverStepper : Element{
     func onPlusButtonDown() {
         //Swift.print("onPlusButtonDown()")
         //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
-        onMouseDownMouseY  = plusButton!.localPos().y
-        onMouseDownValue = self.value;
+        onMouseDownMouseY = plusButton!.localPos().y
+        onMouseDownValue = self.value
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onPlusButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {

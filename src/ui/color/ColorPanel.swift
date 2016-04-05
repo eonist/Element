@@ -79,7 +79,7 @@ class ColorPanel:Element,IColorPanel{
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
         if(event.type == SpinnerEvent.change){onSpinnerChange(event as! SpinnerEvent)}// :TODO: cant we just listen for one event in this.?
         /**/
-//        if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
+//      if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }
     func setColorValue(color:NSColor){
         ColorPanelUtils.applyColor(self,color)

@@ -11,20 +11,13 @@ class GradientSlider:HNodeSlider{
         self.gradient = gradient
         //trace("_gradient: " + _gradient);
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        style.getStyleProperty("fill")!.value = gradient/*edits the style*/
-        
-        
-        
-        var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
+        var styleProperty = style.getStyleProperty("fill"/*,1*/) /*edits the style*/
         //Swift.print("styleProperty: " + "\(styleProperty)")
         //Swift.print("color.hex: " + "\(color.hexString)")
         if(styleProperty != nil){//temp
-            styleProperty!.value = ("0x" + color.hexString).uint
+            styleProperty!.value = gradient/*edits the style*/
             skin!.setStyle(style)/*updates the skin*/
         }
-        
-        
-        
         //skin.setState(SkinStates.NONE);/*update the skin*/
         skin!.setStyle(style)/*updates the skin*/
     }

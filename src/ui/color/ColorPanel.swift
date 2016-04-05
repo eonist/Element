@@ -17,7 +17,7 @@ class ColorPanel:Element,IColorPanel{
     var spinner3:LeverSpinner?
     var itemHeight:CGFloat
     var colorTypeSelectGroup:SelectGroup?
-    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ color:NSColor = NSColorParser.nsColor("0xFF00FF"), _ title:String = "Color", _ minSize:CGPoint? = nil, _ maxSize:CGPoint? = nil, _ parent:IElement? = nil, _ id:String = "") {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ color:NSColor = NSColor.redColor(), _ title:String = "Color", _ minSize:CGPoint? = nil, _ maxSize:CGPoint? = nil, _ parent:IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight
         self.color = color
         super.init(width, height, parent, id)

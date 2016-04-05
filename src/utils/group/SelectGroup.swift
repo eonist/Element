@@ -47,7 +47,7 @@ class SelectGroup:EventSender{
             
             SelectModifier.unSelectAllExcept(selected!, selectables)
             for s in selectables{
-                Swift.print("s.isSelected: " + "\(s.getSelected())")
+                Swift.print("s.isSelected: " + "\(s.selected)")
             }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
             //NSNotificationCenter.defaultCenter().postNotificationName(, object:self)

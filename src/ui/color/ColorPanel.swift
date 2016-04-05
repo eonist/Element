@@ -24,15 +24,16 @@ class ColorPanel:Element,IColorPanel{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        /*
+        
         let rgbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.rgb,true,self))
         let hsbBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsb,false,self))
         let hlsBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hls,false,self))
         let hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsv,false,self))
+        
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         //var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
-        
+        /*
         let rb:CGFloat = 255
         let gb:CGFloat = 0
         let bb:CGFloat = 0

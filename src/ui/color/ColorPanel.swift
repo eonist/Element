@@ -38,7 +38,6 @@ class ColorPanel:Element,IColorPanel{
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgb.g.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgb.b.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
-        /**/
     }
     private func onColorTypeSelectGroupChange(event : SelectGroupEvent) {
         ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())

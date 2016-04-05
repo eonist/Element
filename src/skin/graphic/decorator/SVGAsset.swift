@@ -56,7 +56,7 @@ private class Utils{
         //TODO: the bellow line is now so complex that you should explode it, difficult to debug!
         
         
-        return SVGStyle(fillStyle != nil ? fillStyle!.color.rgb : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil/*<-fillRule*/,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil && lineStyle?.color != NSColor.clearColor()/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
+        return SVGStyle(fillStyle != nil ? fillStyle!.color.hexVal : nil,fillStyle != nil ? fillStyle!.color.alphaComponent : nil,nil/*<-fillRule*/,lineStyle != nil ? lineStyle!.thickness : nil,lineStyle != nil && lineStyle?.color != NSColor.clearColor()/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil,lineStyle != nil ? lineStyle!.color.alphaComponent : nil,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
     }
 }
 

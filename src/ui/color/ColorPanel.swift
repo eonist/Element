@@ -51,11 +51,11 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
     }
     private func onSpinnerChange(event:SpinnerEvent) {
-        Swift.print("onSpinnerChange()")
+        //Swift.print("onSpinnerChange()")
         
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
-        Swift.print("colorType: " + "\(colorType)")
+        //Swift.print("colorType: " + "\(colorType)")
         switch(colorType){
             case ColorPanel.rgb:color = RGB(spinner1!.val.uint, spinner2!.val.uint, spinner3!.val.uint).nsColor;break;
             case ColorPanel.hsb:color = HSB(spinner1!.val.uint, (spinner2!.val/100).uint, (spinner3!.val/100).uint).nsColor;break;
@@ -63,11 +63,12 @@ class ColorPanel:Element,IColorPanel{
             case ColorPanel.hsv:color = HSV(spinner1!.val, spinner2!.val/240, spinner3!.val/240).nsColor;break;
             default:fatalError("this can't happen"); break;
         }
+        /*
         Swift.print("spinner1!.val: " + "\(spinner1!.val)")
         Swift.print("spinner2!.val: " + "\(spinner2!.val)")
         Swift.print("spinner3!.val: " + "\(spinner3!.val)")
         Swift.print("color: " + "\(color.hexString)")
-        
+        */
         colorInput!.setColorValue(color)
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))

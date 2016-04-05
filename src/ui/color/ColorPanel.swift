@@ -52,7 +52,7 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onSpinnerChange(event:SpinnerEvent) {
         Swift.print("onSpinnerChange()")
-        /*
+        
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
@@ -62,6 +62,8 @@ class ColorPanel:Element,IColorPanel{
             case ColorPanel.hsv:color = HSV(spinner1!.val, spinner2!.val/240, spinner3!.val/240).nsColor;break;
             default:fatalError("this can't happen"); break;
         }
+        Swift.print("color: " + "\(color)")
+        /*
         colorInput!.setColorValue(color)
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))

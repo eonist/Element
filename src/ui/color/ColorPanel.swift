@@ -67,11 +67,11 @@ class ColorPanel:Element,IColorPanel{
         Swift.print("spinner2!.val: " + "\(spinner2!.val)")
         Swift.print("spinner3!.val: " + "\(spinner3!.val)")
         Swift.print("color: " + "\(color.hexString)")
-        /*
+        
         colorInput!.setColorValue(color)
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))
-        */
+        /**/
     }
     override func onEvent(event: Event) {
         super.onEvent(event)

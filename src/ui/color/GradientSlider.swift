@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class GradientSlider:HNodeSlider{
     var gradient : IGradient?
@@ -20,6 +20,12 @@ class GradientSlider:HNodeSlider{
         }
         //skin.setState(SkinStates.NONE);/*update the skin*/
         skin!.setStyle(style)/*updates the skin*/
+    }
+    override func onStartNodeMove(event:NSEvent)-> NSEvent? {
+        super.onStartNodeMove(event);
+        var ratio:CGFloat = round(startProgress * 255);
+        var gradient:IGradient = GradientModifier.gradient(_gradient,null,null,null,[ratio,_gradient.ratios[1]]);
+        setGradient(gradient);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

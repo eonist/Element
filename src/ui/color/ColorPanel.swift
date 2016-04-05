@@ -58,7 +58,7 @@ class ColorPanel:Element,IColorPanel{
         //Swift.print("colorType: " + "\(colorType)")
         switch(colorType){
             case ColorPanel.rgb:color = RGB(spinner1!.val.uint, spinner2!.val.uint, spinner3!.val.uint).nsColor;break;
-            case ColorPanel.hsb:color = HSB(spinner1!.val.uint, (spinner2!.val/100).uint, (spinner3!.val/100).uint).nsColor;break;
+            case ColorPanel.hsb:color = HSB(spinner1!.val, (spinner2!.val/100), (spinner3!.val/100)).nsColor;break;
             case ColorPanel.hls:color = HLS(spinner1!.val, spinner2!.val, spinner3!.val).nsColor;break;
             case ColorPanel.hsv:color = HSV(spinner1!.val, spinner2!.val/240, spinner3!.val/240).nsColor;break;
             default:fatalError("this can't happen"); break;

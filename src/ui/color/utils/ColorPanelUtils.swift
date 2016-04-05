@@ -59,6 +59,7 @@ class ColorPanelUtils {
                     stepper.leverRange = 100
                 }
                 colorPanel.spinner1!.stepper!.maxVal = 360
+                colorPanel.spinner1!.maxVal = 360//temp fix
                 colorPanel.spinner1!.stepper!.leverRange = 200
                 colorPanel.spinner1!.textInput!.text!.setText("Hue: ")
                 colorPanel.spinner2!.textInput!.text!.setText("Saturate:")

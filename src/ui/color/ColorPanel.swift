@@ -32,15 +32,12 @@ class ColorPanel:Element,IColorPanel{
         
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
-        //var rgbObj:Object = ColorParser.rgbByHex(color)/*LeaverStepper instance ->Red (0 - 255) (Read/write)*/
-        /*
-        let rb:CGFloat = 255
-        let gb:CGFloat = 0
-        let bb:CGFloat = 0
+        var rgb:RGB = color.rgb/*LeverStepper instance ->Red (0 - 255) (Read/write)*/
+
         
-        spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rb,1,0,255,1,100,200,self))
-        spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",gb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
-        spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",bb,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
+        spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rgb.r.cgFloat,1,0,255,1,100,200,self))
+        spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgb.g.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
+        spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgb.b.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
         */
     }

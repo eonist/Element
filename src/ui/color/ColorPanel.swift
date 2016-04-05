@@ -62,6 +62,9 @@ class ColorPanel:Element,IColorPanel{
             case ColorPanel.hsv:color = HSV(spinner1!.val, spinner2!.val/240, spinner3!.val/240).nsColor;break;
             default:fatalError("this can't happen"); break;
         }
+        Swift.print("spinner1!.val: " + "\(spinner1!.val)")
+        /*spinner2!.val
+        spinner3!.val*/
         Swift.print("color: " + "\(color.hexString)")
         /*
         colorInput!.setColorValue(color)

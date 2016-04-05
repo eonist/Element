@@ -31,6 +31,7 @@ class ColorPanel:Element,IColorPanel{
         let hsvBtn = addSubView(RadioButton(NaN,NaN,ColorPanel.hsv,false,self))
         
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
+        //colorTypeSelectGroup!.event = onEvent
         colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
         let rgb:RGB = color.rgb/*LeverStepper instance ->Red (0 - 255) (Read/write)*/
         

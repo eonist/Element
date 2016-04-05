@@ -52,7 +52,7 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onSpinnerChange(event:SpinnerEvent) {
         Swift.print("onSpinnerChange()")
-        /*
+        
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
@@ -62,19 +62,19 @@ class ColorPanel:Element,IColorPanel{
             case ColorPanel.hsv:color = HSV(spinner1!.val, spinner2!.val/240, spinner3!.val/240).nsColor;break;
             default:fatalError("this can't happen"); break;
         }
-        Swift.print("color: " + "\(color)")
-        
+        Swift.print("color: " + "\(color.hexString)")
+        /*
         colorInput!.setColorValue(color)
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))
         */
     }
     override func onEvent(event: Event) {
-        /*super.onEvent(event)
+        super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
         if(event.type == SpinnerEvent.change){onSpinnerChange(event as! SpinnerEvent)}// :TODO: cant we just listen for one event in this.?
-        */
+        /**/
 //        if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }
     func setColorValue(color:NSColor){

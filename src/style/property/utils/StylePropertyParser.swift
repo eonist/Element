@@ -39,7 +39,7 @@ class StylePropertyParser{
             //Swift.print("value is array");
             color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
         }else {/*colorValue is UInt*/
-            color = Double(colorValue as! UInt);
+            color = Double(colorValue as! UInt)
         }
         //Swift.print("color: " + "\(color)")
         let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha,depth)
@@ -51,10 +51,10 @@ class StylePropertyParser{
         return FillStyle(nsColor)
     }
     /**
-    * Returns a LineStyle instance
-    * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
-    * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
-    */
+     * Returns a LineStyle instance
+     * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
+     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
+     */
     class func colorLineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix

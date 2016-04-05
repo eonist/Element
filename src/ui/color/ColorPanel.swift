@@ -63,8 +63,8 @@ class ColorPanel:Element,IColorPanel{
             default:fatalError("this can't happen"); break;
         }
         Swift.print("spinner1!.val: " + "\(spinner1!.val)")
-        /*spinner2!.val
-        spinner3!.val*/
+        Swift.print("spinner2!.val: " + "\(spinner2!.val)")
+        Swift.print("spinner3!.val: " + "\(spinner3!.val)")
         Swift.print("color: " + "\(color.hexString)")
         /*
         colorInput!.setColorValue(color)

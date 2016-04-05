@@ -63,11 +63,11 @@ class ColorPanel:Element,IColorPanel{
             default:fatalError("this can't happen"); break;
         }
         Swift.print("color: " + "\(color)")
-        /*
+        
         colorInput!.setColorValue(color)
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))
-        */
+        /**/
     }
     override func onEvent(event: Event) {
         super.onEvent(event)

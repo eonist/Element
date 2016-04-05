@@ -42,6 +42,7 @@ class SelectGroup:EventSender{
             //NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable
+            Swift.print("selected: " + "\(selected)")
             Swift.print("selectables.count: " + "\(selectables.count)")
             
             SelectModifier.unSelectAllExcept(selected!, selectables)

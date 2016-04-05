@@ -42,8 +42,8 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onColorTypeSelectGroupChange(event:SelectGroupEvent) {
         Swift.print("onColorTypeSelectGroupChange()")
-        //ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
-        //ColorPanelUtils.applyColor(self,color)
+        ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
+        ColorPanelUtils.applyColor(self,color)
     }
     private func onColorInputChange(event : ColorInputEvent) {
         ColorPanelUtils.applyColor(self,event.color)
@@ -55,6 +55,7 @@ class ColorPanel:Element,IColorPanel{
         
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
+        Swift.print("colorType: " + "\(colorType)")
         switch(colorType){
             case ColorPanel.rgb:color = RGB(spinner1!.val.uint, spinner2!.val.uint, spinner3!.val.uint).nsColor;break;
             case ColorPanel.hsb:color = HSB(spinner1!.val.uint, (spinner2!.val/100).uint, (spinner3!.val/100).uint).nsColor;break;

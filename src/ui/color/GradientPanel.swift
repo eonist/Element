@@ -3,7 +3,7 @@ import Foundation
 class GradientPanel:Element{
     var itemHeight:CGFloat
     var gradient:IGradient
-    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, gradient:IGradient? = nil, _ parent:IElement? = nil, _ id:String = "") {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ gradient:IGradient? = nil, _ parent:IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight
         self.gradient = gradient!
         super.init(width, height, parent, id)

@@ -2,27 +2,27 @@ import Cocoa
 /**
  * // :TODO: shouldnt this class extend Stepper?
  */
-class LeverStepper : Element{
-    var value:CGFloat;
+class LeverStepper:Element{
+    var value:CGFloat
     var maxVal:CGFloat
     var minVal:CGFloat
-    var	increment:CGFloat;/*The amount of incrementation for each stepping*/
-    var decimals:Int;/*decimal places*/
+    var	increment:CGFloat/*The amount of incrementation for each stepping*/
+    var decimals:Int/*decimal places*/
     var onMouseDownMouseY:CGFloat = CGFloat.NaN
     var onMouseDownValue:CGFloat = CGFloat.NaN
-    var leverHeight:CGFloat;// :TODO: write a description about this value
-    var leverRange : CGFloat;
+    var leverHeight:CGFloat// :TODO: write a description about this value
+    var leverRange:CGFloat
     var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner maybe? //fix typo
     var plusButton:Button?
     var minusButton:Button?
     init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
-        self.value = value;
-        self.minVal = min;
-        self.maxVal = max;
-        self.increment = increment;
-        self.decimals = decimals;
-        self.leverHeight = leverHeight;// :TODO: rename to something less ambiguous
-        self.leverRange = leverRange;
+        self.value = value
+        self.minVal = min
+        self.maxVal = max
+        self.increment = increment
+        self.decimals = decimals
+        self.leverHeight = leverHeight// :TODO: rename to something less ambiguous
+        self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {

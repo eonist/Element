@@ -37,6 +37,7 @@ class LeverStepper : Element{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onPlusButtonMove )//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
+        Swift.print("onMinusButtonDown()")
         onMouseDownMouseY  = minusButton!.localPos().y
         //Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
@@ -55,7 +56,7 @@ class LeverStepper : Element{
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))
     }
     func onButtonUp(){
-        //Swift.print("onButtonUp")
+        Swift.print("onButtonUp()")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
@@ -69,8 +70,8 @@ class LeverStepper : Element{
         var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY;
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight);
         let multiplier:CGFloat = leaverPos / leverHeight
-        let leaverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
-        var val:CGFloat =  onMouseDownValue + leaverValue;
+        let leverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
+        var val:CGFloat =  onMouseDownValue + leverValue;
         val = NumberParser.minMax(val, minVal, maxVal);/*cap the value from min to max*/
         val = NumberModifier.toFixed(val,decimals)/*the value must have no more than the value of the _decimals*/
         value = val

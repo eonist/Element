@@ -39,9 +39,10 @@ class ColorPanel:Element,IColorPanel{
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgb.b.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
-    private func onColorTypeSelectGroupChange(event : SelectGroupEvent) {
-        ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
-        ColorPanelUtils.applyColor(self,color)
+    private func onColorTypeSelectGroupChange(event:SelectGroupEvent) {
+        Swift.print("onColorTypeSelectGroupChange()")
+        //ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
+        //ColorPanelUtils.applyColor(self,color)
     }
     private func onColorInputChange(event : ColorInputEvent) {
         ColorPanelUtils.applyColor(self,event.color)

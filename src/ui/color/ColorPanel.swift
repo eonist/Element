@@ -51,6 +51,8 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
     }
     private func onSpinnerChange(event : SpinnerEvent) {
+        Swift.print("onSpinnerChange()")
+        /*
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         switch(colorType){
@@ -63,6 +65,7 @@ class ColorPanel:Element,IColorPanel{
         colorInput!.setColorValue(color)
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))
+        */
     }
     override func onEvent(event: Event) {
         super.onEvent(event)

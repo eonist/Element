@@ -33,7 +33,7 @@ class ColorInput:Element,IColorInput {
         if(ColorAsserter.isColor(colorString)){
             color = NSColorParser.nsColor(colorString.uint)
             colorBox!.setColorValue(color);
-            super.onEvent(ColorInputEvent(ColorInputEvent.change,color))//sends the event
+            super.onEvent(ColorInputEvent(ColorInputEvent.change,self))//sends the event
         }
     }
     override func onEvent(event: Event) {

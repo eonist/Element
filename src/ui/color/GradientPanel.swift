@@ -84,14 +84,14 @@ class GradientPanel:Element{
         }
     }
     /**
-     * @Note you can set matrix to null in the @param gradient
+     * @Note you can set matrix to nil in the @param gradient
      */
-    func setGradient(gradient:IGradient){
-        _gradientSlider.setGradient(gradient);
-        var index:int = _gradientSlider.selectGroup.selected == _gradientSlider.startNode ? 0 : 1;
-        _alphaSpinner.setValue(gradient.alphas[index]);
-        _ratioSpinner.setValue(gradient.ratios[index]);
-        _gradient = gradient;
+    func setGradient(var gradient:IGradient){
+        gradientSlider!.setGradient(gradient)
+        let index:Int = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode ? 0 : 1
+        alphaSpinner!.setValue(gradient.colors[index].nsColor.alphaComponent)
+        ratioSpinner!.setValue(gradient.locations[index])
+        self.gradient = gradient
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -86,7 +86,14 @@ class GradientPanel:Element,IGradientPanel{
     override func onEvent(event: Event) {
         if(event.type == NodeSliderEvent.change && event.origin === gradientSlider){onGradientSliderChange(event as! NodeSliderEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientSlider!.selectGroup){onGradientSliderSelectGroupChange(event as! SelectGroupEvent)}
-
+        
+        if(event.type == SpinnerEvent.change && event.origin === alphaSpinner){onAlphaSpinnerChange(event as! )}
+        
+        
+        
+        
+        
+        
         
     }
     /**

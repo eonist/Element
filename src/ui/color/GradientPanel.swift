@@ -20,6 +20,9 @@ class GradientPanel:Element{
         let radialRadioButton = addSubView(RadioButton(NaN,NaN,"Radial",false,self))
         gradientTypeSelectGroup = SelectGroup([linearRadioButton,radialRadioButton],linearRadioButton)
         gradientSlider = addSubView(GradientSlider(width,12/*<--this should be NaN*/,20/*<--this should be NaN*/,gradient,0,1,self))
+        
+        //continue here make a nsColor Extension for CGColor
+        
         let cgColor:CGColor = gradientSlider!.gradient!.colors[0]
         let nsColor:NSColor = NSColorParser.nsColor(cgColor)
         colorInput = addSubView(ColorInput(width,NaN,"Color:",nsColor,self))
@@ -36,9 +39,12 @@ class GradientPanel:Element{
     private func onGradientSliderSelectGroupChange(event : SelectGroupEvent) {
         var index:UInt = event.selectable === gradientSlider!.startNode ? 0 : 1
         Swift.print("index: " + "\(index)");
-        Swift.print("_gradientSlider.gradient.colors: " + gradientSlider.gradient.colors);
-        var color:uint = gradientSlider.gradient.colors[index]
-        colorInput.setColor(color)
+        Swift.print("gradientSlider.gradient.colors: " + "\(gradientSlider!.gradient!.colors)")
+        
+        //continue here make a nsColor Extension for CGColor
+        
+        var color:UInt = gradientSlider!.gradient!.colors[index]
+        colorInput!.setColorValue(color)
         ColorSync.receiver = colorInput
         ColorSync.setColor(color)
         alphaSpinner.setValue(gradientSlider.gradient.alphas[index])

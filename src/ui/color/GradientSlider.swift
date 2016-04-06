@@ -27,5 +27,11 @@ class GradientSlider:HNodeSlider{
         setGradient(gradient!)
         return super.onStartNodeMove(event);
     }
+    override func onEndNodeMove(event:NSEvent)-> NSEvent? {
+        let ratio:CGFloat = round(endProgress * 255);
+        gradient!.locations = [gradient!.locations[0],ratio]
+        setGradient(gradient!);
+        return super.onEndNodeMove(event);
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

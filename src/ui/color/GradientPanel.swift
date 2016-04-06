@@ -62,5 +62,20 @@ class GradientPanel:Element{
     private func onFocalPointRatioSpinnerChange(event:SpinnerEvent){
         //gradient.focalPointRatio = event.value;// :TODO: test this!
     }
+    private func onColorInputChange(event : ColorInputEvent) {
+    //print("onColorInputChange: " + event);
+    var isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider.selectGroup) == gradientSlider.startNode;
+    //print("isStartNodeSelected: " + isStartNodeSelected);
+    var color1:CGFloat = isStartNodeSelected ? event.color : gradientSlider.gradient.colors[0];
+    //print("color1: " + color1);
+    var color2:CGFloat = !isStartNodeSelected ? event.color : gradientSlider.gradient.colors[1];
+    //print("color2: " + color2);
+    //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,[color1,color2]));
+        
+        
+    
+        
+    
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

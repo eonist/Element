@@ -62,20 +62,21 @@ class GradientPanel:Element{
     private func onFocalPointRatioSpinnerChange(event:SpinnerEvent){
         //gradient.focalPointRatio = event.value;// :TODO: test this!
     }
+    /**
+     * //TODO:remember to add alpha into the fold here
+     */
     private func onColorInputChange(event : ColorInputEvent) {
         //Swift.print("onColorInputChange: " + event);
-        var isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider!.selectGroup!) === gradientSlider!.startNode
+        let isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider!.selectGroup!) === gradientSlider!.startNode
         //Swift.print("isStartNodeSelected: " + isStartNodeSelected)
-        var color1:CGColorRef = isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[0]
+        let color1:CGColorRef = isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[0]
         //Swift.print("color1: " + color1)
-        var color2:CGColorRef = !isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[1]
+        let color2:CGColorRef = !isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[1]
         //Swift.print("color2: " + color2)
         //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,[color1,color2]))
         
-        gradientSlider!.gradient!.locations[0] = ratio1
-        gradientSlider!.gradient!.locations[1] = ratio2
-    
-        
+        gradientSlider!.gradient!.colors[0] = color1
+        gradientSlider!.gradient!.colors[1] = color2
     
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

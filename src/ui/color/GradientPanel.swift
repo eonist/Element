@@ -23,6 +23,8 @@ class GradientPanel:Element{
         let nsColor:NSColor = NSColorParser.nsColor(cgColor)
         colorInput = addSubView(ColorInput(width,NaN,"Color:",nsColor,self))
         alphaSpinner = addSubView(LeverSpinner(width, NaN,"Alpha:",1,0.01,0,1,2,1,200,self))
+        ratioSpinner = addSubView(LeverSpinner(width, NaN,"Ratio:",1,1,0,255,1,100,200,self))
+        focalPointRatioSpinner = addSubView(LeverSpinner(width, NaN,"Focal point:",0,0.01,-1,1,2,100,200,self))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

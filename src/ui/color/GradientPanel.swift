@@ -33,18 +33,15 @@ class GradientPanel:Element{
         ratioSpinner!.setValue(round(ratio * 255))
     }
     private func onGradientSliderSelectGroupChange(event : SelectGroupEvent) {
-        var index:Int = event.selectable === gradientSlider!.startNode ? 0 : 1
+        let index:Int = event.selectable === gradientSlider!.startNode ? 0 : 1
         Swift.print("index: " + "\(index)");
         Swift.print("gradientSlider.gradient.colors: " + "\(gradientSlider!.gradient!.colors)")
-        
-        //continue here make a nsColor Extension for CGColor
-        
-        var ncColor:NSColor = gradientSlider!.gradient!.colors[index].nsColor
-        colorInput!.setColorValue(color)
+        let nsColor:NSColor = gradientSlider!.gradient!.colors[index].nsColor
+        colorInput!.setColorValue(nsColor)
         ColorSync.receiver = colorInput
-        ColorSync.setColor(color)
-        alphaSpinner.setValue(gradientSlider.gradient.alphas[index])
-        ratioSpinner.setValue(gradientSlider.gradient.ratios[index])
+        ColorSync.setColor(nsColor)
+        alphaSpinner!.setValue(gradientSlider!.gradient!.colors[index].nsColor.alphaComponent)
+        ratioSpinner!.setValue(gradientSlider!.gradient!.locations[index])
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

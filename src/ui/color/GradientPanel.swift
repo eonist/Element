@@ -69,7 +69,12 @@ class GradientPanel:Element{
         //Swift.print("onColorInputChange: " + event);
         let isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider!.selectGroup!) === gradientSlider!.startNode
         //Swift.print("isStartNodeSelected: " + isStartNodeSelected)
-        
+        let color1:CGColorRef = isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[0]
+        //Swift.print("color1: " + color1)
+        let color2:CGColorRef = !isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[1]
+        //Swift.print("color2: " + color2)
+        gradientSlider!.gradient!.colors[0] = color1
+        gradientSlider!.gradient!.colors[1] = color2
     }
     private func onGradientTypeSelectGroupChange(event:SelectGroupEvent){
         if((event.selectable as! TextButton).getText() == "Linear"){
@@ -92,11 +97,9 @@ class GradientPanel:Element{
      *
      */
     func setColor(color:NSColor){
-        var isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
-        var color1:NSColor = isStartNodeSelected ? color : gradientSlider!.gradient!.colors[0].nsColor
-        var color2:NSColor = !isStartNodeSelected ? color : gradientSlider.gradient.colors[1].nsColor
-        
-        
+        let isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
+        let color1:NSColor = isStartNodeSelected ? color : gradientSlider!.gradient!.colors[0].nsColor
+        let color2:NSColor = !isStartNodeSelected ? color : gradientSlider!.gradient!.colors[1].nsColor
         //Swift.print("color2: " + color2)
         gradientSlider!.gradient!.colors[0] = color1.cgColor
         gradientSlider!.gradient!.colors[1] = color2.cgColor

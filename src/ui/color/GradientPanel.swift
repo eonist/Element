@@ -14,7 +14,7 @@ class GradientPanel:Element,IGradientPanel{
         self.gradient = gradient!
         super.init(width, height, parent, id)
     }
-    override func resolveSkin() {
+    override func resolveSkin(){
         super.resolveSkin()
         let linearRadioButton = addSubView(RadioButton(NaN,NaN,"Linear",true,self))
         let radialRadioButton = addSubView(RadioButton(NaN,NaN,"Radial",false,self))

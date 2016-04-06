@@ -104,5 +104,10 @@ class GradientPanel:Element{
         gradientSlider!.gradient!.colors[0] = color1.cgColor
         gradientSlider!.gradient!.colors[1] = color2.cgColor
     }
+    override func setSize(width : CGFloat, _ height : CGFloat) {
+        super.setSize(width, height)
+        ElementModifier.refresh(self)
+        gradientSlider!.setSize(width, StylePropertyParser.height(gradientSlider!.skin!)!)
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

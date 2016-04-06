@@ -1,6 +1,6 @@
 import Cocoa
 
-class GradientPanel:Element{
+class GradientPanel:Element,IGradientPanel{
     var gradientSlider:GradientSlider?
     var colorInput:ColorInput?
     var alphaSpinner:LeverSpinner?

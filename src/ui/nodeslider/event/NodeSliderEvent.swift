@@ -10,3 +10,6 @@ class NodeSliderEvent :Event{
         super.init(type, origin)
     }
 }
+extension NodeSliderEvent{
+    var selected:ISelected{return origin as }
+}

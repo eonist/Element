@@ -64,13 +64,13 @@ class GradientPanel:Element{
     }
     private func onColorInputChange(event : ColorInputEvent) {
         //Swift.print("onColorInputChange: " + event);
-        var isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider.selectGroup) == gradientSlider.startNode;
-        //Swift.print("isStartNodeSelected: " + isStartNodeSelected);
-        var color1:CGFloat = isStartNodeSelected ? event.color : gradientSlider.gradient.colors[0];
-        //Swift.print("color1: " + color1);
-        var color2:CGFloat = !isStartNodeSelected ? event.color : gradientSlider.gradient.colors[1];
-        //Swift.print("color2: " + color2);
-        //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,[color1,color2]));
+        var isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider!.selectGroup!) === gradientSlider!.startNode
+        //Swift.print("isStartNodeSelected: " + isStartNodeSelected)
+        var color1:CGColorRef = isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[0]
+        //Swift.print("color1: " + color1)
+        var color2:CGColorRef = !isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[1]
+        //Swift.print("color2: " + color2)
+        //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,[color1,color2]))
         
         gradientSlider!.gradient!.locations[0] = ratio1
         gradientSlider!.gradient!.locations[1] = ratio2

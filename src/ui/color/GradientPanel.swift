@@ -116,5 +116,9 @@ class GradientPanel:Element{
     override func getClassType() -> String {
         return String(GradientPanel)
     }
+    var color:NSColor {
+        let index:Int = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode ? 0 : 1
+        return gradientSlider!.gradient!.colors[index].nsColor
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

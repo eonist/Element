@@ -87,13 +87,9 @@ class GradientPanel:Element,IGradientPanel{
         if(event.type == NodeSliderEvent.change && event.origin === gradientSlider){onGradientSliderChange(event as! NodeSliderEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientSlider!.selectGroup){onGradientSliderSelectGroupChange(event as! SelectGroupEvent)}
         if(event.type == SpinnerEvent.change && event.origin === alphaSpinner){onAlphaSpinnerChange(event as! SpinnerEvent)}
-        
-        
-        
-        
-        
-        
-        
+        if(event.type == SpinnerEvent.change && event.origin === focalPointRatioSpinner){onFocalPointRatioSpinnerChange(event as! SpinnerEvent)}
+        if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
+
     }
     /**
      * @Note you can set matrix to nil in the @param gradient

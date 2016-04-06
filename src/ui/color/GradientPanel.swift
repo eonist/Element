@@ -16,10 +16,12 @@ class GradientPanel:Element,IGradientPanel{
     }
     override func resolveSkin(){
         super.resolveSkin()
-        /*
+        
         let linearRadioButton = addSubView(RadioButton(NaN,NaN,"Linear",true,self))
         let radialRadioButton = addSubView(RadioButton(NaN,NaN,"Radial",false,self))
         gradientTypeSelectGroup = SelectGroup([linearRadioButton,radialRadioButton],linearRadioButton)
+        gradientTypeSelectGroup!.event = onEvent/*attach the selectGroup to self, to handle the events here*/
+        /*
         gradientSlider = addSubView(GradientSlider(width,12/*<--this should be NaN*/,20/*<--this should be NaN*/,gradient,0,1,self))
         let nsColor:NSColor = gradientSlider!.gradient!.colors[0].nsColor
         colorInput = addSubView(ColorInput(width,NaN,"Color:",nsColor,self))

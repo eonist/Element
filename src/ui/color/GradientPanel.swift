@@ -34,9 +34,8 @@ class GradientPanel:Element{
         ratioSpinner!.setValue(round(ratio * 255))
     }
     private func onGradientSliderSelectGroupChange(event : SelectGroupEvent) {
-        
-        var index:UInt = event.selectable == gradientSlider.startNode ? 0 : 1
-        Swift.print("index: " + index);
+        var index:UInt = event.selectable === gradientSlider!.startNode ? 0 : 1
+        Swift.print("index: " + "\(index)");
         Swift.print("_gradientSlider.gradient.colors: " + gradientSlider.gradient.colors);
         var color:uint = gradientSlider.gradient.colors[index]
         colorInput.setColor(color)

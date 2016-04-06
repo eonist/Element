@@ -11,5 +11,5 @@ class NodeSliderEvent :Event{
     }
 }
 extension NodeSliderEvent{
-    var selected:ISelected{return origin as }
+    var selected:ISelectable {return (origin as! INodeSlider).selected!}
 }

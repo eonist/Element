@@ -33,5 +33,17 @@ class GradientPanel:Element{
         //Swift.print("ratio: " + ratio);
         ratioSpinner!.setValue(round(ratio * 255))
     }
+    private func onGradientSliderSelectGroupChange(event : SelectGroupEvent) {
+        
+        var index:UInt = event.selectable == gradientSlider.startNode ? 0 : 1
+        Swift.print("index: " + index);
+        Swift.print("_gradientSlider.gradient.colors: " + gradientSlider.gradient.colors);
+        var color:uint = gradientSlider.gradient.colors[index]
+        colorInput.setColor(color)
+        ColorSync.receiver = colorInput
+        ColorSync.setColor(color)
+        alphaSpinner.setValue(gradientSlider.gradient.alphas[index])
+        ratioSpinner.setValue(gradientSlider.gradient.ratios[index])
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -93,5 +93,14 @@ class GradientPanel:Element{
         ratioSpinner!.setValue(gradient.locations[index])
         self.gradient = gradient
     }
+    /**
+     *
+     */
+    func setColor(color:uint){
+        var isStartNodeSelected:Bool = gradientSlider.selectGroup.selected === gradientSlider.startNode
+        var color1:NSColor = isStartNodeSelected ? color : gradientSlider.gradient.colors[0]
+        var color2:NSColor = !isStartNodeSelected ? color : _gradientSlider.gradient.colors[1]
+        _gradientSlider.setGradient(GradientModifier.gradient(_gradientSlider.gradient,null,[color1,color2]))
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

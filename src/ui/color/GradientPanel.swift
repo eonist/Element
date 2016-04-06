@@ -83,6 +83,11 @@ class GradientPanel:Element,IGradientPanel{
             Swift.print("Radial ");
         }
     }
+    override func onEvent(event: Event) {
+        if(NodeSliderEvent.change ==  && event.origin === gradientSlider)
+        
+        (, onGradientSliderChange);
+    }
     /**
      * @Note you can set matrix to nil in the @param gradient
      */

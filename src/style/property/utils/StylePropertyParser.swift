@@ -21,7 +21,7 @@ class StylePropertyParser{
     /**
      *
      */
-    class func lineStyle(skin:ISkin, _ depth:Int = 0)->ILineStyle? {
+    class func lineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth) ;
     }
     /**

@@ -27,5 +27,11 @@ class GradientPanel:Element{
         ratioSpinner = addSubView(LeverSpinner(width, NaN,"Ratio:",1,1,0,255,1,100,200,self))
         focalPointRatioSpinner = addSubView(LeverSpinner(width, NaN,"Focal point:",0,0.01,-1,1,2,100,200,self))
     }
+    private func onGradientSliderChange(event : NodeSliderEvent) {
+        var isStartNodeSelected:Bool = event.selected == gradientSlider.startNode
+        var ratio:CGFloat = isStartNodeSelected ? event.startProgress : event.endProgress
+        //			trace("ratio: " + ratio);
+        ratioSpinner.setValue(round(ratio * 255))
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

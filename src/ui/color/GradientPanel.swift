@@ -50,8 +50,14 @@ class GradientPanel:Element{
         gradientSlider!.gradient!.colors[0] = gradientSlider!.gradient!.colors[0].alpha(alpha1)
         gradientSlider!.gradient!.colors[1] = gradientSlider!.gradient!.colors[1].alpha(alpha2)
     }
-    
-    //continue here: RatioSpinner
+    private func onRatioSpinnerChange(event : SpinnerEvent) {
+        var isStartNodeSelected:Bool = _gradientSlider.selectGroup.selected === gradientSlider.startNode;
+        var ratio1:Number = isStartNodeSelected ? event.value : _gradientSlider.gradient.ratios[0];
+        var ratio2:Number = !isStartNodeSelected ? event.value : _gradientSlider.gradient.ratios[1];
+        _gradientSlider.setGradient(GradientModifier.gradient(_gradientSlider.gradient,null,null,null,[ratio1,ratio2]));
+        if(isStartNodeSelected) _gradientSlider.setStartProgress(event.value/255);
+        else _gradientSlider.setEndProgress(event.value/255);
+    }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

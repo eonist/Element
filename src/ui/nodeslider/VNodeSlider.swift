@@ -46,13 +46,13 @@ class VNodeSlider:Element,INodeSlider{
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         startProgress = Utils.progress(event.localPos(self).y, tempNodeMouseY!, height, nodeHeight)
         startNode!.y = Utils.nodePosition(startProgress, height, nodeHeight)
-        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,startNode!))
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent? {
         endProgress = Utils.progress(event.localPos(self).y, tempNodeMouseY!, height, nodeHeight)
         endNode!.y = Utils.nodePosition(endProgress, height, nodeHeight)
-        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,endNode!))
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onStartNodeUp() {

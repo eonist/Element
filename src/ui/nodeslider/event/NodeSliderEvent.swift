@@ -2,14 +2,9 @@ import Foundation
 
 class NodeSliderEvent :Event{
     static var change:String = "nodeSliderEventChange"
-    init(_ type: String, _ startProgress:CGFloat,_ endProgress:CGFloat, _ origin:AnyObject) {
-        self.startProgress = startProgress
-        self.endProgress = endProgress
-        super.init(type, origin)
-    }
 }
 extension NodeSliderEvent{
     var selected:ISelectable {return (origin as! INodeSlider).selected!}
-    var startProgress:CGFloat {return }
-    var endProgress:CGFloat {}
+    var startProgress:CGFloat {return (origin as! INodeSlider).startProgress}
+    var endProgress:CGFloat {return (origin as! INodeSlider).endProgress}
 }

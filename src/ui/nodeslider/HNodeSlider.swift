@@ -41,13 +41,13 @@ class HNodeSlider:Element,INodeSlider {
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         startNode!.x = Utils.nodePosition(startProgress, width, nodeWidth)
-        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,self))
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent?  {
         endProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         endNode!.x = Utils.nodePosition(endProgress, width, nodeWidth)
-        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,startProgress,endProgress,self))
+        super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onStartNodeUp()  {

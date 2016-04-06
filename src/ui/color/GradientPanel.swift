@@ -8,6 +8,7 @@ class GradientPanel:Element{
     var itemHeight:CGFloat
     var gradient:IGradient
     var gradientTypeSelectGroup:SelectGroup?
+    var focalPointRatioSpinner:LeverSpinner?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ gradient:IGradient? = nil, _ parent:IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight
         self.gradient = gradient!

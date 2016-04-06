@@ -6,7 +6,6 @@ import Cocoa
  * // :TODO: when implimenting selectgroup functionality you need to be able to change set the selection on press not on release (You might need to impliment NodeButton that impliments iselectable in order to make this happen)
  */
 class VNodeSlider:Element,INodeSlider{
-    var selected:ISelectable?
     var startNode:SelectButton?
     var endNode:SelectButton?
     var selectGroup:SelectGroup?
@@ -31,14 +30,12 @@ class VNodeSlider:Element,INodeSlider{
     }
     func onStartNodeDown() {
         Swift.print("onStartNodeDown")
-        selected = startNode
 //		DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
         tempNodeMouseY = startNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
         Swift.print("onEndNodeDown")
-        selected = endNode
 //		DepthModifier.toFront(_endNode, this);// :TODO: this may now work since they are floating:none
         tempNodeMouseY = endNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener

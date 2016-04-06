@@ -60,8 +60,8 @@ class GradientPanel:Element{
         gradientSlider!.gradient!.locations[1] = ratio2
         
         
-        if(isStartNodeSelected){gradientSlider!.setStartProgress(event.value/255)}
-        else{gradientSlider!.setEndProgress(event.value/255)}
+        if(isStartNodeSelected){gradientSlider!.setStartProgressValue(event.value/255)}
+        else{gradientSlider!.setEndProgressValue(event.value/255)}
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

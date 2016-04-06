@@ -47,9 +47,11 @@ class GradientPanel:Element{
         let isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
         let alpha1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient!.colors[0].nsColor.alphaComponent
         let alpha2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient!.colors[1].nsColor.alphaComponent
-        //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,null,[alpha1,alpha2]))
         gradientSlider!.gradient!.colors[0] = gradientSlider!.gradient!.colors[0].alpha(alpha1)
         gradientSlider!.gradient!.colors[1] = gradientSlider!.gradient!.colors[1].alpha(alpha2)
     }
+    
+    //continue here: RatioSpinner
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

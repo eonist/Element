@@ -54,15 +54,13 @@ class GradientPanel:Element{
         let isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
         let ratio1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient!.locations[0]
         let ratio2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient!.locations[1]
-        //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,null,null,[ratio1,ratio2]))
-        
         gradientSlider!.gradient!.locations[0] = ratio1
         gradientSlider!.gradient!.locations[1] = ratio2
-        
-        
         if(isStartNodeSelected){gradientSlider!.setStartProgressValue(event.value/255)}
         else{gradientSlider!.setEndProgressValue(event.value/255)}
     }
-    
+    private func onFocalPointRatioSpinnerChange(event:SpinnerEvent){
+        gradient.focalPointRatio = event.value;// :TODO: test this!
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -26,6 +26,9 @@ class HNodeSlider:Element {
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
     func onStartNodeDown() {
+        
+        //Create a selected var that you connect with start and end
+        
 //		DepthModifier.toFront(_startNode, this);
         tempNodeMouseX = startNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener

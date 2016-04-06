@@ -85,9 +85,9 @@ class GradientPanel:Element,IGradientPanel{
     }
     override func onEvent(event: Event) {
         if(event.type == NodeSliderEvent.change && event.origin === gradientSlider){onGradientSliderChange(event as! NodeSliderEvent)}
-        if(event.type == && event.origin === gradientSlider.selectGroup){}
-        SelectGroupEvent.SELECT_GROUP_CHANGE
-        {onGradientSliderSelectGroupChange}
+        if(event.type == SelectGroupEvent.change && event.origin === gradientSlider!.selectGroup){onGradientSliderSelectGroupChange(event as! SelectGroupEvent)}
+
+        
     }
     /**
      * @Note you can set matrix to nil in the @param gradient

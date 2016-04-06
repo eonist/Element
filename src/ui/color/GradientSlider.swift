@@ -22,10 +22,10 @@ class GradientSlider:HNodeSlider{
         skin!.setStyle(style)/*updates the skin*/
     }
     override func onStartNodeMove(event:NSEvent)-> NSEvent? {
-        super.onStartNodeMove(event);
-        var ratio:CGFloat = round(startProgress * 255);
-        var gradient:IGradient = GradientModifier.gradient(_gradient,null,null,null,[ratio,_gradient.ratios[1]])
-        setGradient(gradient);
+        let ratio:CGFloat = round(startProgress * 255)
+        gradient!.locations = [ratio,gradient!.locations[1]]
+        setGradient(gradient!)
+        return super.onStartNodeMove(event);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

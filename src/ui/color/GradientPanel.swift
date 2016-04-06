@@ -60,7 +60,7 @@ class GradientPanel:Element{
         else{gradientSlider!.setEndProgressValue(event.value/255)}
     }
     private func onFocalPointRatioSpinnerChange(event:SpinnerEvent){
-        gradient.focalPointRatio = event.value;// :TODO: test this!
+        //gradient.focalPointRatio = event.value;// :TODO: test this!
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

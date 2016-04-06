@@ -16,6 +16,7 @@ class GradientPanel:Element,IGradientPanel{
     }
     override func resolveSkin(){
         super.resolveSkin()
+        /*
         let linearRadioButton = addSubView(RadioButton(NaN,NaN,"Linear",true,self))
         let radialRadioButton = addSubView(RadioButton(NaN,NaN,"Radial",false,self))
         gradientTypeSelectGroup = SelectGroup([linearRadioButton,radialRadioButton],linearRadioButton)
@@ -25,6 +26,7 @@ class GradientPanel:Element,IGradientPanel{
         alphaSpinner = addSubView(LeverSpinner(width, NaN,"Alpha:",1,0.01,0,1,2,1,200,self))
         ratioSpinner = addSubView(LeverSpinner(width, NaN,"Ratio:",1,1,0,255,1,100,200,self))
         focalPointRatioSpinner = addSubView(LeverSpinner(width, NaN,"Focal point:",0,0.01,-1,1,2,100,200,self))
+        */
     }
     private func onGradientSliderChange(event : NodeSliderEvent) {
         let isStartNodeSelected:Bool = event.selected === gradientSlider!.startNode

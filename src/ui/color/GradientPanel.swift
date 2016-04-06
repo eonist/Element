@@ -43,5 +43,11 @@ class GradientPanel:Element{
         alphaSpinner!.setValue(gradientSlider!.gradient!.colors[index].nsColor.alphaComponent)
         ratioSpinner!.setValue(gradientSlider!.gradient!.locations[index])
     }
+    private func onAlphaSpinnerChange(event:SpinnerEvent){
+        var isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
+        var alpha1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient.alphas[0]
+        var alpha2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient.alphas[1]
+        gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,null,[alpha1,alpha2]))
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

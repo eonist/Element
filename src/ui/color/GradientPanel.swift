@@ -73,11 +73,25 @@ class GradientPanel:Element{
         //Swift.print("color1: " + color1)
         let color2:CGColorRef = !isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[1]
         //Swift.print("color2: " + color2)
-        //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,[color1,color2]))
-        
         gradientSlider!.gradient!.colors[0] = color1
         gradientSlider!.gradient!.colors[1] = color2
-    
+    }
+    private func onGradientTypeSelectGroupChange(event:SelectGroupEvent){
+        if((event.selectable as! TextButton).getText() == "Linear"){
+            Swift.print("Linear ");
+        }else{
+            Swift.print("Radial ");
+        }
+    }
+    /**
+     * @Note you can set matrix to null in the @param gradient
+     */
+    func setGradient(gradient:IGradient){
+        _gradientSlider.setGradient(gradient);
+        var index:int = _gradientSlider.selectGroup.selected == _gradientSlider.startNode ? 0 : 1;
+        _alphaSpinner.setValue(gradient.alphas[index]);
+        _ratioSpinner.setValue(gradient.ratios[index]);
+        _gradient = gradient;
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -50,13 +50,18 @@ class GradientPanel:Element{
         gradientSlider!.gradient!.colors[0] = gradientSlider!.gradient!.colors[0].alpha(alpha1)
         gradientSlider!.gradient!.colors[1] = gradientSlider!.gradient!.colors[1].alpha(alpha2)
     }
-    private func onRatioSpinnerChange(event : SpinnerEvent) {
-        var isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
-        var ratio1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient.ratios[0]
-        var ratio2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider.gradient.ratios[1]
-        gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,null,null,[ratio1,ratio2]))
-        if(isStartNodeSelected) _gradientSlider.setStartProgress(event.value/255)
-        else _gradientSlider.setEndProgress(event.value/255)
+    private func onRatioSpinnerChange(event:SpinnerEvent) {
+        let isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
+        let ratio1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient!.locations[0]
+        let ratio2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient!.locations[1]
+        //gradientSlider.setGradient(GradientModifier.gradient(gradientSlider.gradient,null,null,null,[ratio1,ratio2]))
+        
+        gradientSlider!.gradient!.locations[0] = ratio1
+        gradientSlider!.gradient!.locations[1] = ratio2
+        
+        
+        if(isStartNodeSelected){gradientSlider!.setStartProgress(event.value/255)}
+        else{gradientSlider!.setEndProgress(event.value/255)}
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

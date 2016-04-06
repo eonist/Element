@@ -3,7 +3,6 @@ import Cocoa
  * HorizontalNodeSlider is used when 2 sliders are need, as in section definition or zoom, or gradient values
  */
 class HNodeSlider:Element,INodeSlider {
-    var selected:ISelectable?
     var startNode:SelectButton?
     var endNode:SelectButton?
     var selectGroup:SelectGroup?
@@ -27,13 +26,11 @@ class HNodeSlider:Element,INodeSlider {
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
     func onStartNodeDown() {
-        selected = startNode
 //		DepthModifier.toFront(_startNode, this);
         tempNodeMouseX = startNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
-        selected = endNode
 //		DepthModifier.toFront(_endNode, this);
         tempNodeMouseX = endNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener

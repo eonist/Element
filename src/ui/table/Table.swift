@@ -16,11 +16,12 @@ class Table:Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        columnContainer = addSubView(new Container(width,height,this,"column"))
-        for (var i : Int = 0; i < database.xml.children().Count(); i++) {
-            var child : XML = _database.xml.children()[i]
-            var itemData:Object = XMLParser.attributes(child)
-            if(itemData["hasChildren"] || child.children().length() > 0) _columns.append(_columnContainer.addSubView(Column(NaN,NaN,itemData["title"],new DataProvider(child),_columnContainer,String(i))))/*we add the columns index to the id so we can set individual css properties to each column*/
+        columnContainer = addSubView(Container(width,height,self,"column"))
+        let childCount:Int = node.xml.children!.count
+        for var i = 0; i < childCount; ++i{
+            var child : XMLNode = _database.xml.children[i]
+            var itemData = XMLParser.attributes(child)
+            if(itemData["hasChildren"] || child.children().length() > 0) columns.append(columnContainer.addSubView(Column(NaN,NaN,itemData["title"],DataProvider(child),columnContainer,String(i))))/*we add the columns index to the id so we can set individual css properties to each column*/
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

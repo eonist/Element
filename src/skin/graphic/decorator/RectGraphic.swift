@@ -42,13 +42,3 @@ class RectGraphic:SizeableGraphic{
         }
     }
 }
-
-
-/*
-
-func setSize(width:CGFloat,height:CGFloat) {
-self.width = width;
-self.height = height;
-}
-
-*/

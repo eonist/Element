@@ -47,6 +47,9 @@ class Table:Element{
         Swift.print("event.origin: " + "\(event)");
         //TableModifier.selectRow(self,event.rowIndex,event.origin as! Column);
     }
-    onEvent(event: Event)
+    override func onEvent(event: Event) {
+        if(event.type == CheckEvent.check) {onColumnHeaderCheck(event as! CheckEvent)}
+        if(event.type == ColumnEvent.select) {onColumnSelect(event as! ColumnEvent)}
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

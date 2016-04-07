@@ -4,13 +4,13 @@ import Cocoa
  */
 class CheckTextButton:TextButton,ICheckable {
     var isChecked:Bool;
-    init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isSelected : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
-        self.isSelected = isSelected;
+    init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isChecked : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
+        self.isChecked = isChecked;
         super.init(width, height, text, parent, id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func mouseUpInside(event: MouseEvent) {
-        isSelected = true
+        isChecked = true
         super.mouseUpInside(event)
         //NSNotificationCenter.defaultCenter().postNotificationName(SelectEvent.select, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
         self.event!(SelectEvent(SelectEvent.select,self/*,self*/))
@@ -23,10 +23,8 @@ class CheckTextButton:TextButton,ICheckable {
         self.isChecked = isChecked
         setSkinState(getSkinState())
     }
-    
-    
-    func getSelected()->Bool{return isSelected}
+    func getChecked()->Bool{return isChecked}
     override func getSkinState() -> String {
-        return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState();
+        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();
     }
 }

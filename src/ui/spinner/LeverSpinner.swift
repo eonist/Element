@@ -68,8 +68,8 @@ class LeverSpinner : Element{
     func setValue(var value:CGFloat) {
         value = NumberParser.minMax(value, minVal, maxVal)
         self.val = NumberModifier.toFixed(value,decimals)
-        textInput!.inputTextArea?.setTextValue(String(value))
-        stepper!.value = value
+        textInput!.inputTextArea?.setTextValue(String(self.val))
+        stepper!.value = self.val
     }
     override func setSkinState(skinState:String) {
         super.setSkinState(skinState)

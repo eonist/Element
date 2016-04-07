@@ -29,12 +29,10 @@ class GradientPanel:Element,IGradientPanel{
     }
     private func onGradientSliderChange(event : NodeSliderEvent) {
         Swift.print("GradientPanel.onGradientSliderChange()")
-        
         let isStartNodeSelected:Bool = event.selected === gradientSlider!.startNode
         let ratio:CGFloat = isStartNodeSelected ? event.startProgress : event.endProgress
         Swift.print("ratio: " + "\(ratio)")
         ratioSpinner!.setValue(ratio/*round( * 255)*/)
-        /**/
     }
     private func onGradientSliderSelectGroupChange(event : SelectGroupEvent) {
         let index:Int = event.selectable === gradientSlider!.startNode ? 0 : 1

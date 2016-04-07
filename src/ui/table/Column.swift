@@ -9,10 +9,9 @@ class Column:Element{
         self.title = title
         self.dataProvider = dataProvider
         super.init(width,height,parent,id)
-
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         header = addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))
         list = addSubView(List(NaN, NaN ,NaN, dataProvider, self))
     }
@@ -21,12 +20,12 @@ class Column:Element{
     //----------------------------------
     private func onHeaderCheck(event:CheckEvent){
         //Swift.print("onHeaderCheck");
-        //(CheckEvent(CheckEvent.check, event.checked,true));
+        super.onEvent(event)//forwards the event
     }
     private func onListSelect(event : ListEvent)  {
         //Swift.print("Column.onListSelect");
-        let rowIndex:Int = ListParser.index(list!, event.selected as! NSView);
-        Swift.print("rowIndex: " + "\(rowIndex)");
+        let rowIndex:Int = ListParser.index(list!, event.selected as! NSView)
+        Swift.print("rowIndex: " + "\(rowIndex)")
 		//(ColumnEvent(ColumnEvent.select,rowIndex,true));
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

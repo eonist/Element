@@ -47,7 +47,7 @@ class GradientPanel:Element,IGradientPanel{
     }
     private func onAlphaSpinnerChange(event:SpinnerEvent){
         Swift.print("onAlphaSpinnerChange()")
-        let isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
+        let isStartNodeSelected:Bool = /*gradientSlider!.selectGroup!.selected */ gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
         let alpha1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient!.colors[0].nsColor.alphaComponent
         let alpha2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient!.colors[1].nsColor.alphaComponent
         gradientSlider!.gradient!.colors[0] = gradientSlider!.gradient!.colors[0].alpha(alpha1)
@@ -55,7 +55,7 @@ class GradientPanel:Element,IGradientPanel{
     }
     private func onRatioSpinnerChange(event:SpinnerEvent) {
         Swift.print("onRatioSpinnerChange()")
-        let isStartNodeSelected:Bool = gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
+        let isStartNodeSelected:Bool = /*gradientSlider!.selectGroup!.selected*/ gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
         let ratio1:CGFloat = isStartNodeSelected ? event.value : gradientSlider!.gradient!.locations[0]
         let ratio2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient!.locations[1]
         gradientSlider!.gradient!.locations[0] = ratio1
@@ -64,6 +64,7 @@ class GradientPanel:Element,IGradientPanel{
         else{gradientSlider!.setEndProgressValue(event.value/255)}
     }
     private func onFocalPointRatioSpinnerChange(event:SpinnerEvent){
+        Swift.print("onFocalPointRatioSpinnerChange()")
         //gradient.focalPointRatio = event.value;// :TODO: test this!
     }
     /**

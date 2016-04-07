@@ -26,22 +26,26 @@ class HNodeSlider:Element,INodeSlider {
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
     func onStartNodeDown() {
+        Swift.print("onStartNodeDown()")
 //		DepthModifier.toFront(_startNode, this);
         tempNodeMouseX = startNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
+        Swift.print("onEndNodeDown()")
 //		DepthModifier.toFront(_endNode, this);
         tempNodeMouseX = endNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
+        Swift.print("HNodeSlider.onStartNodeMove()")
         startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         startNode!.x = Utils.nodePosition(startProgress, width, nodeWidth)
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent?  {
+        Swift.print("HNodeSlider.onStartNodeMove()")
         endProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         endNode!.x = Utils.nodePosition(endProgress, width, nodeWidth)
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))

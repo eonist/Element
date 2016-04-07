@@ -12,11 +12,9 @@ class Column:Element{
 
     }
     override func resolveSkin() {
-				super.resolveSkin();
-				self.header = addChild(new CheckTextButton(NaN, NaN,false,false,false,_title,this,"header")) as CheckTextButton;
-				self.list = addChild(new List(NaN, NaN ,NaN, _dataProvider, this)) as List;
+        super.resolveSkin();
+        header = addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))
+        list = addSubView(List(NaN, NaN ,NaN, dataProvider, self))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-        
-    
 }

@@ -47,6 +47,8 @@ class SelectGroup:EventSender{
                 Swift.print("s.isSelected: " + "\(s.getSelected())")
             }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
+        }else{
+            super.onEvent(event)
         }
     }
     //@objc func onButtonDown(sender: AnyObject) {

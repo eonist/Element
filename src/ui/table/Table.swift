@@ -20,8 +20,8 @@ class Table:Element{
         let childCount:Int = node.xml.children!.count
         for var i = 0; i < childCount; ++i{
             let child : NSXMLNode = node.xml.children![i]
-            let itemData = XMLParser.attributes(child as! NSXMLElement)
-            if(itemData["hasChildren"] == "true" || child.children.count > 0) {columns.append(columnContainer!.addSubView(Column(NaN,NaN,itemData["title"],DataProvider(child),columnContainer,String(i))))}/*we add the columns index to the id so we can set individual css properties to each column*/
+            let itemData = XMLParser.attribs(child as! NSXMLElement)
+            if(itemData["hasChildren"] == "true" || child.children!.count > 0) {columns.append(columnContainer!.addSubView(Column(NaN,NaN,itemData["title"],DataProvider(child),columnContainer,String(i))))}/*we add the columns index to the id so we can set individual css properties to each column*/
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

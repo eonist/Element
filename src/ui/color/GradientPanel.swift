@@ -71,7 +71,7 @@ class GradientPanel:Element,IGradientPanel{
      * //TODO:remember to add alpha into the fold here
      */
     private func onColorInputChange(event : ColorInputEvent) {
-        //Swift.print("onColorInputChange: " + event);
+        Swift.print("onColorInputChange() ");
         let isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider!.selectGroup!) === gradientSlider!.startNode
         //Swift.print("isStartNodeSelected: " + isStartNodeSelected)
         let color1:CGColorRef = isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[0]

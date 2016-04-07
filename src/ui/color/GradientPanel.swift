@@ -32,7 +32,7 @@ class GradientPanel:Element,IGradientPanel{
         
         let isStartNodeSelected:Bool = event.selected === gradientSlider!.startNode
         let ratio:CGFloat = isStartNodeSelected ? event.startProgress : event.endProgress
-        //Swift.print("ratio: " + ratio);
+        Swift.print("ratio: " + "\(ratio)")
         ratioSpinner!.setValue(round(ratio/* * 255*/))
         /**/
     }

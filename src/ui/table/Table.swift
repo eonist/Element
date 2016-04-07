@@ -40,5 +40,12 @@ class Table:Element{
             */
         }
     }
+    /**
+     * Selects the other rows to the current selected row index of the current pressed column item
+     */
+    private func onColumnSelect(event : ColumnEvent) {
+        Swift.print("event.origin: " + "\(event)");
+        //TableModifier.selectRow(self,event.rowIndex,event.origin as! Column);
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

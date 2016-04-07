@@ -28,7 +28,7 @@ class GradientPanel:Element,IGradientPanel{
         focalPointRatioSpinner = addSubView(LeverSpinner(width, NaN,"Focal point:",0,0.01,-1,1,2,100,200,self))
     }
     private func onGradientSliderChange(event : NodeSliderEvent) {
-        Swift.print("onGradientSliderChange()")
+        Swift.print("GradientPanel.onGradientSliderChange()")
         /*
         let isStartNodeSelected:Bool = event.selected === gradientSlider!.startNode
         let ratio:CGFloat = isStartNodeSelected ? event.startProgress : event.endProgress
@@ -91,12 +91,14 @@ class GradientPanel:Element,IGradientPanel{
         }
     }
     override func onEvent(event: Event) {
+        /*
         if(event.type == NodeSliderEvent.change && event.origin === gradientSlider){onGradientSliderChange(event as! NodeSliderEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientSlider!.selectGroup){onGradientSliderSelectGroupChange(event as! SelectGroupEvent)}
         if(event.type == SpinnerEvent.change && event.origin === alphaSpinner){onAlphaSpinnerChange(event as! SpinnerEvent)}
         if(event.type == SpinnerEvent.change && event.origin === focalPointRatioSpinner){onFocalPointRatioSpinnerChange(event as! SpinnerEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientTypeSelectGroup){onGradientTypeSelectGroupChange(event as! SelectGroupEvent)}
+        */
     }
     /**
      * @Note you can set matrix to nil in the @param gradient

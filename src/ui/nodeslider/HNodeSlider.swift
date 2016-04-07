@@ -51,10 +51,10 @@ class HNodeSlider:Element,INodeSlider {
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
-    func onStartNodeUp()  {
+    func onStartNodeUp() {
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    func onEndNodeUp()  {
+    func onEndNodeUp() {
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {

@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class Column:Element{
     private var title:String
@@ -15,6 +15,19 @@ class Column:Element{
         super.resolveSkin();
         header = addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))
         list = addSubView(List(NaN, NaN ,NaN, dataProvider, self))
+    }
+    //----------------------------------
+    //  event handlers
+    //----------------------------------
+    private func onHeaderCheck(event:CheckEvent){
+        //Swift.print("onHeaderCheck");
+        //(CheckEvent(CheckEvent.check, event.checked,true));
+    }
+    private func onListSelect(event : ListEvent)  {
+        //Swift.print("Column.onListSelect");
+        let rowIndex:Int = ListParser.index(list!, event.selected as! NSView);
+        Swift.print("rowIndex: " + "\(rowIndex)");
+		//(ColumnEvent(ColumnEvent.select,rowIndex,true));
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

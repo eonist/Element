@@ -6,9 +6,9 @@ import Foundation
  * // :TODO: Table header needs to be a SelectableCheckButton, since it needs both be selectable and checkable
  */
 class Table:Element{
-    private var node:Node
-    private var columns:Array<Column> = []
-    private var columnContainer:Container?
+    var node:Node
+    var columns:Array<Column> = []
+    var columnContainer:Container?
     init(_ width:CGFloat, _ height:CGFloat, _ node:Node, _ parent:IElement? = nil, _ id:String = "") {
         self.node = node
         super.init(width,height,parent,id)

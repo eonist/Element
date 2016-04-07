@@ -26,7 +26,7 @@ class VNodeSlider:Element,INodeSlider{
         setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(width, nodeHeight,false,self,"end"))
         setEndProgressValue(endProgress)
-        //selectGroup = SelectGroup([startNode!,endNode!],startNode)
+        selectGroup = SelectGroup([startNode!,endNode!],startNode)
     }
     func onStartNodeDown() {
         Swift.print("onStartNodeDown")
@@ -41,22 +41,26 @@ class VNodeSlider:Element,INodeSlider{
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
+        Swift.print("onStartNodeMove()")
         startProgress = Utils.progress(event.localPos(self).y, tempNodeMouseY!, height, nodeHeight)
         startNode!.y = Utils.nodePosition(startProgress, height, nodeHeight)
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent? {
+        Swift.print("onEndNodeMove()")
         endProgress = Utils.progress(event.localPos(self).y, tempNodeMouseY!, height, nodeHeight)
         endNode!.y = Utils.nodePosition(endProgress, height, nodeHeight)
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onStartNodeUp() {
-         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        Swift.print("onStartNodeUp()")
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onEndNodeUp() {
-         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        Swift.print("onEndNodeUp()")
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
         Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

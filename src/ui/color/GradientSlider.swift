@@ -23,12 +23,14 @@ class GradientSlider:HNodeSlider{
         skin!.setStyle(style)/*updates the skin*/
     }
     override func onStartNodeMove(event:NSEvent)-> NSEvent? {
+        Swift.print("onStartNodeMove: " + "\(onStartNodeMove)")
         let ratio:CGFloat = round(startProgress * 255)
         gradient!.locations = [ratio,gradient!.locations[1]]
         setGradient(gradient!)
         return super.onStartNodeMove(event);
     }
     override func onEndNodeMove(event:NSEvent)-> NSEvent? {
+        Swift.print("onEndNodeMove: " + "\(onEndNodeMove)")
         let ratio:CGFloat = round(endProgress * 255);
         gradient!.locations = [gradient!.locations[0],ratio]
         setGradient(gradient!);

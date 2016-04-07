@@ -12,7 +12,6 @@ class Table:Element{
     init(_ width:CGFloat, _ height:CGFloat, _ node:Node, _ parent:IElement? = nil, _ id:String = "") {
         self.node = node
         super.init(width,height,parent,id)
-        
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -25,6 +24,19 @@ class Table:Element{
                 columns.append(columnContainer!.addSubView(Column(NaN,NaN,itemData["title"]!,DataProvider(child as? NSXMLElement),columnContainer,String(i))))
             }/*we add the columns index to the id so we can set individual css properties to each column*/
         }
+    }
+    /**
+     * When a header of a column is clicked then sort that column and sibling columns to the same sort order
+     * // :TODO: Research how UNIQUE sort works see flash docs or google, it might be faster!?!?
+     */
+    private function onColumnHeaderCheck(event : CheckEvent) : void {
+    if(event.target is Column) {
+				var indices:Array = ColumnParser.sortOrder(event.target as Column, [event.checked ? 0:Array.DESCENDING/*,Array.NUMERIC*/]);// :TODO: maybe we can add the NUMERIC so that if a text starts with a number etc
+				for each (var column : Column in _columns) {
+    DepthModifier.sortByIndices(column.list.lableContainer, indices);
+    ElementModifier.floatChildren(column.list.lableContainer);
+				}
+    }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

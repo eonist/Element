@@ -69,11 +69,11 @@ class VNodeSlider:Element,INodeSlider{
         }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
-        if(event.origin === startNode && event.type == ButtonEvent.down){onStartNodeDown()}//if thumbButton is down call onThumbDown
-        else if(event.origin === startNode && event.type == ButtonEvent.up){onStartNodeUp()}//if thumbButton is down call onThumbUp
-        else if(event.origin === endNode && event.type == ButtonEvent.down){onEndNodeDown()}
-        else if(event.origin === endNode && event.type == ButtonEvent.up){onEndNodeUp()}
+        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}//if thumbButton is down call onThumbDown
+        else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}//if thumbButton is down call onThumbUp
+        else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
+        else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**

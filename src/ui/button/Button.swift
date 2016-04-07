@@ -48,7 +48,7 @@ class Button:Element {
      * @Note: bubbling= true was added to make Stepper class dragable
      */
     override func mouseUpInside(event:MouseEvent){
-        //Swift.print("Button.mouseUpInside: ")
+        Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over;// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self/*,self*/))
@@ -58,7 +58,7 @@ class Button:Element {
      * @Note: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpOutside(event:MouseEvent){
-        //Swift.print("Button.mouseUpOutside: ")
+        Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState());
         super.onEvent(ButtonEvent(ButtonEvent.upOutside,self/*,self*/))
@@ -67,7 +67,7 @@ class Button:Element {
      * Convenince
      */
     override func mouseUp(event: MouseEvent) {
-        //Swift.print("Button.mouseUp: ")
+        Swift.print("Button.mouseUp: ")
         super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
     override func hitTest(aPoint: NSPoint) -> NSView? {//TODO: this method can be removed

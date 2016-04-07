@@ -22,7 +22,7 @@ class GradientPanel:Element,IGradientPanel{
         gradientTypeSelectGroup = SelectGroup([linearRadioButton,radialRadioButton],linearRadioButton)
         gradientTypeSelectGroup!.event = onEvent/*attach the selectGroup to self, to handle the events here*/
         
-        gradientSlider = addSubView(GradientSlider(width,12/*<--this should be NaN*/,20/*<--this should be NaN*/,gradient,0,1,self))
+        gradientSlider = addSubView(GradientSlider(width,200/*<--this should be NaN*/,20/*<--this should be NaN*/,gradient,0,1,self))
         
         /*
         let nsColor:NSColor = gradientSlider!.gradient!.colors[0].nsColor

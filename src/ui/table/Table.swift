@@ -19,9 +19,9 @@ class Table:Element{
         columnContainer = addSubView(Container(width,height,self,"column"))
         let childCount:Int = node.xml.children!.count
         for var i = 0; i < childCount; ++i{
-            var child : XMLNode = _database.xml.children[i]
-            var itemData = XMLParser.attributes(child)
-            if(itemData["hasChildren"] || child.children().length() > 0) columns.append(columnContainer.addSubView(Column(NaN,NaN,itemData["title"],DataProvider(child),columnContainer,String(i))))/*we add the columns index to the id so we can set individual css properties to each column*/
+            let child : NSXMLNode = node.xml.children![i]
+            let itemData = XMLParser.attributes(child as! NSXMLElement)
+            if(itemData["hasChildren"] || child.children.count > 0) {columns.append(columnContainer!.addSubView(Column(NaN,NaN,itemData["title"],DataProvider(child),columnContainer,String(i))))}/*we add the columns index to the id so we can set individual css properties to each column*/
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

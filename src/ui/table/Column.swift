@@ -28,5 +28,9 @@ class Column:Element{
         Swift.print("rowIndex: " + "\(rowIndex)")
 		//(ColumnEvent(ColumnEvent.select,rowIndex,true));
     }
+    override func onEvent(event: Event) {
+        if(event.type == CheckEvent.check && event.origin === header){onHeaderCheck(event as! CheckEvent)}
+        if(event.type == ListEvent.select && event.origin === header){onListSelect(event as! ListEvent)}
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -71,7 +71,7 @@ class GradientPanel:Element,IGradientPanel{
      */
     private func onColorInputChange(event : ColorInputEvent) {
         Swift.print("onColorInputChange() ");
-        let isStartNodeSelected:Bool = SelectGroupParser.selected(gradientSlider!.selectGroup!) === gradientSlider!.startNode
+        let isStartNodeSelected:Bool = /*SelectGroupParser.selected(gradientSlider!.selectGroup!)*/gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
         Swift.print("isStartNodeSelected: " + "\(isStartNodeSelected)")
         let color1:CGColorRef = isStartNodeSelected ? event.color.cgColor : gradientSlider!.gradient!.colors[0]
         //Swift.print("color1: " + color1)

@@ -16,7 +16,7 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
-            Swift.print("boundingBox: " + "\(boundingBox)")
+            Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")
             let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")

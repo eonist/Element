@@ -24,6 +24,7 @@ class HNodeSlider:Element,INodeSlider {
         endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
         setEndProgressValue(endProgress)
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
+        selectGroup!.event = onEvent
     }
     func onStartNodeDown() {
         Swift.print("HNodeSlider.onStartNodeDown()")
@@ -59,10 +60,11 @@ class HNodeSlider:Element,INodeSlider {
     }
     override func onEvent(event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
-        if(event.origin === startNode && event.type == ButtonEvent.down){onStartNodeDown()}//if thumbButton is down call onThumbDown
-        else if(event.origin === startNode && event.type == ButtonEvent.up){onStartNodeUp()}//if thumbButton is down call onThumbUp
+        if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
+        else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
+        else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
+        else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
-        fatalError("implement listeners for endNode aswell")
     }
     /**
      * @param progress (0-1)

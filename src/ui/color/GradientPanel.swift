@@ -80,6 +80,7 @@ class GradientPanel:Element,IGradientPanel{
         //Swift.print("color2: " + color2)
         gradientSlider!.gradient!.colors[0] = color1
         gradientSlider!.gradient!.colors[1] = color2
+        gradientSlider!.setGradient(gradientSlider!.gradient!)
     }
     private func onGradientTypeSelectGroupChange(event:SelectGroupEvent){
         if((event.selectable as! TextButton).getText() == "Linear"){

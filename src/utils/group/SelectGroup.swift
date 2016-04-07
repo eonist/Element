@@ -27,8 +27,6 @@ class SelectGroup:EventSender{
         //Swift.print("SelectGroup.addSelectable()")
         //let anyObj:AnyObject = selectable
         
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onButtonDown:", name: ButtonEvent.down, object: selectable as! SelectButton)
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSelect:", name: SelectEvent.select, object: selectable as AnyObject)
         if(selectable is IEventSender){
             (selectable as! IEventSender).event = onEvent
         }
@@ -39,7 +37,6 @@ class SelectGroup:EventSender{
         if(event.type == SelectEvent.select){
             Swift.print("SelectGroup.onEvent()")
             //Swift.print("SelectGroup.onEvent() immediate: " + "\(event.immediate)")
-            //NSNotificationCenter.defaultCenter().postNotificationName(SelectGroupEvent.select, object:self/*DOnt forget you can put things inside: userInfo*/)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable
             Swift.print("selected: " + "\(selected)")
@@ -50,7 +47,6 @@ class SelectGroup:EventSender{
                 Swift.print("s.isSelected: " + "\(s.getSelected())")
             }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
-            //NSNotificationCenter.defaultCenter().postNotificationName(, object:self)
         }
     }
     //@objc func onButtonDown(sender: AnyObject) {

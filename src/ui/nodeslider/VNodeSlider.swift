@@ -13,7 +13,7 @@ class VNodeSlider:Element,INodeSlider{
     var tempNodeMouseY:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
-    var globalMouseMovedHandeler:AnyObject?
+    var globalMouseMovedHandeler:AnyObject? = nil
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeHeight:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
@@ -56,11 +56,17 @@ class VNodeSlider:Element,INodeSlider{
     }
     func onStartNodeUp() {
         Swift.print("onStartNodeUp()")
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(globalMouseMovedHandeler != nil){
+            NSEvent.removeMonitor(globalMouseMovedHandeler!)
+            globalMouseMovedHandeler = nil
+        }//we remove a global mouse move event listener
     }
     func onEndNodeUp() {
         Swift.print("onEndNodeUp()")
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(globalMouseMovedHandeler != nil){
+            NSEvent.removeMonitor(globalMouseMovedHandeler!)
+            globalMouseMovedHandeler = nil
+        }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
         Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

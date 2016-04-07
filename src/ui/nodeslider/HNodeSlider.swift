@@ -26,13 +26,13 @@ class HNodeSlider:Element,INodeSlider {
         selectGroup = SelectGroup([startNode!,endNode!],startNode!)
     }
     func onStartNodeDown() {
-        Swift.print("onStartNodeDown()")
+        Swift.print("HNodeSlider.onStartNodeDown()")
 //		DepthModifier.toFront(_startNode, this);
         tempNodeMouseX = startNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
-        Swift.print("onEndNodeDown()")
+        Swift.print("HNodeSlider.onEndNodeDown()")
 //		DepthModifier.toFront(_endNode, this);
         tempNodeMouseX = endNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener

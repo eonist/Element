@@ -33,7 +33,6 @@ class SelectGroup:EventSender{
         selectables.append(selectable);
     }
     override func onEvent(event:Event){
-        
         if(event.type == SelectEvent.select){
             Swift.print("SelectGroup.onEvent()")
             //Swift.print("SelectGroup.onEvent() immediate: " + "\(event.immediate)")
@@ -47,9 +46,8 @@ class SelectGroup:EventSender{
                 Swift.print("s.isSelected: " + "\(s.getSelected())")
             }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
-        }else{
-            super.onEvent(event)
         }
+        super.onEvent(event)//we dont want to block any event being passed through, so we forward all events right through the SelectGroup
     }
     //@objc func onButtonDown(sender: AnyObject) {
         //Swift.print("SelectGroup.onButtonDown() ")

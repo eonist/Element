@@ -52,6 +52,7 @@ class GradientPanel:Element,IGradientPanel{
         let alpha2:CGFloat = !isStartNodeSelected ? event.value : gradientSlider!.gradient!.colors[1].nsColor.alphaComponent
         gradientSlider!.gradient!.colors[0] = gradientSlider!.gradient!.colors[0].alpha(alpha1)
         gradientSlider!.gradient!.colors[1] = gradientSlider!.gradient!.colors[1].alpha(alpha2)
+        gradientSlider!.setGradient(gradientSlider!.gradient!)
     }
     private func onRatioSpinnerChange(event:SpinnerEvent) {
         Swift.print("onRatioSpinnerChange()")

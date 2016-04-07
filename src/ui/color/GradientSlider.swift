@@ -24,7 +24,7 @@ class GradientSlider:HNodeSlider{
     }
     override func onStartNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("GradientSlider.onStartNodeMove() ")
-        let ratio:CGFloat = round(startProgress/* * 255*/)
+        let ratio:CGFloat = startProgress//round(/* * 255*/)
         Swift.print("ratio: " + "\(ratio)")
         gradient!.locations = [ratio,gradient!.locations[1]]
         setGradient(gradient!)
@@ -32,10 +32,10 @@ class GradientSlider:HNodeSlider{
     }
     override func onEndNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("GradientSlider.onEndNodeMove() ")
-        let ratio:CGFloat = round(endProgress * 255)
+        let ratio:CGFloat = endProgress//round( * 255)
         Swift.print("ratio: " + "\(ratio)")
-        //gradient!.locations = [gradient!.locations[0],ratio]
-        //setGradient(gradient!);
+        gradient!.locations = [gradient!.locations[0],ratio]
+        setGradient(gradient!);
         return super.onEndNodeMove(event);
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

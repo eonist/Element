@@ -26,8 +26,8 @@ class VNodeSlider:Element,INodeSlider{
         setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(width, nodeHeight,false,self,"end"))
         setEndProgressValue(endProgress)
-        selectGroup = SelectGroup([startNode!,endNode!],startNode)//TODO: Remember to add this and reroute the events back into this scope
-        selectGroup.event = onEvent
+        selectGroup = SelectGroup([startNode!,endNode!],startNode)
+        selectGroup!.event = onEvent//reroute the events back into this scope
     }
     func onStartNodeDown() {
         Swift.print("onStartNodeDown")
@@ -70,7 +70,7 @@ class VNodeSlider:Element,INodeSlider{
         }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}//if thumbButton is down call onThumbDown
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}//if thumbButton is down call onThumbUp
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}

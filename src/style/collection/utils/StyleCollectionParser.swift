@@ -2,6 +2,15 @@ import Foundation
 
 class StyleCollectionParser {
     /**
+     * @return an array of style names
+     */
+    class func styleNames(styleCollection:IStyleCollection) -> Array<String>{
+        var styleNames:Array<String> = []
+        let numOfStyles:Int = styleCollection.styles.count/*for speed*/
+        for (var i : Int = 0;i < numOfStyles; i++) {styleNames.append(styleCollection.styles[i].name)}
+        return styleNames
+    }
+    /**
      * Describes the stylecollection content
      * Note can you use the ObjectDescriber in place of this class?
      */

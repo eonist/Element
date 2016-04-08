@@ -23,15 +23,15 @@ class ElementModifier {
      * // :TODO: skin should have a dedicated redraw method or a simple workaround
      * @Note keep in mind that this can be Window
      */
-    class func refresh(element:IElement, method:(IElement)) {
+    class func refresh(element:IElement, _ theMethod:(IElement)) {
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
         let numChildren:Int = container.subviews.count
         for (var i : Int = 0; i < numChildren; i++) {
             let child:NSView = container.subviews[i]
             if(child is IElement) {
-                method(child as! IElement)
-                if(child.subviews.count > 0) {refresh(child as! IElement)}/*<--this line makes it recursive*/
+                theMethod(child as! IElement)
+                if(child.subviews.count > 0) {refresh(child as! IElement,theMethod)}/*<--this line makes it recursive*/
             }
         }
     }

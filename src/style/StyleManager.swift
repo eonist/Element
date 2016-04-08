@@ -1,8 +1,9 @@
 import Foundation
 /**
  * NOTE: The reason we use array instead of object: a problem may be that the order will be different every time you read this object, random
- * @example
- * TODO: This class can be a struct
+ * EXAMPLE: print("StyleManager.getInstance().getStyle(Button): " + StyleManager.getInstance().getStyle("someText").getPropertyNames());//prints style names
+ * // :TODO:  Could potentially extend StyleCollection and just implimnet the extra functions in this class?!?
+ * // :TODO: This class can be a struct
  */
 
 

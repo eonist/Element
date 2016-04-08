@@ -5,11 +5,6 @@ import Foundation
  * // :TODO:  Could potentially extend StyleCollection and just implimnet the extra functions in this class?!?
  * // :TODO: This class can be a struct
  */
-
-
-//continue here: add more comments above
-
-
 class StyleManager{
     static var styles:Array<IStyle> = []
     /**
@@ -69,5 +64,8 @@ extension StyleManager{
     class func addStylesByURL(url:String) {
         let cssString:String = CSSFileParser.cssString(url)
         addStyle(cssString)
+    }
+    class func getStyleAt(index:Int)->IStyle{
+        return styles[index]
     }
 }

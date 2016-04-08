@@ -47,7 +47,7 @@ class StyleCollection:IStyleCollection{
                 return  styles[i];
             }
         }
-        return nil;
+        return nil
     }
     /**
      *

@@ -35,7 +35,12 @@ class ElementModifier {
             }
         }
     }
-    
+    /**
+     * new
+     */
+    class func refreshSkin(element:IElement){
+        ElementModifier.refresh(element, Utils.setSkinState)
+    }
     /**
      * Resizes many elements in @param view
      * // :TODO: rename to Resize, its less ambigiouse

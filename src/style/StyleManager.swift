@@ -9,7 +9,7 @@ class StyleManager{
      * @param style: IStyle
      */
     class func addStyle(style:IStyle){
-        styles.append(style);
+        styles.append(style)
     }
     /**
      * Locates and returns a Style by the @param name.
@@ -19,10 +19,10 @@ class StyleManager{
         let numOfStyles:Int = styles.count;
         for(var i:Int = 0;i < numOfStyles;i++) {
             if((styles[i] as IStyle).name == name) {
-                return styles[i];
+                return styles[i]
             }
         }
-        return nil;
+        return nil
     }
 }
 //convenince methods
@@ -31,16 +31,16 @@ extension StyleManager{
      * Adds every style in a styleCollection to the stylemanager
      */
     class func addStyle(styles:Array<IStyle>){
-        self.styles += styles;
+        self.styles += styles/*<- concats*/
     }
     /**
      * Adds styles by parsing @param string (the string must comply to the Element css syntax)
      * // :TODO: add support for css import statement in the @param string
      */
     class func addStyle(var cssString:String){
-        cssString = CSSLinkResolver.resolveLinks(cssString);
-        cssString = RegExpModifier.removeComments(cssString);
-        addStyle(CSSParser.styleCollection(cssString).styles);
+        cssString = CSSLinkResolver.resolveLinks(cssString)
+        cssString = RegExpModifier.removeComments(cssString)
+        addStyle(CSSParser.styleCollection(cssString).styles)
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)

@@ -2,6 +2,11 @@ import Foundation
 /**
  * TODO: This class can be a struct
  */
+
+
+//continue here: add more comments above
+
+
 class StyleManager{
     static var styles:Array<IStyle> = []
     /**
@@ -11,10 +16,17 @@ class StyleManager{
     class func addStyle(style:IStyle){
         styles.append(style)
     }
-    public function removeStyle(name:String):IStyle {
-    var numOfStyles:int = _styles.length;
-    for (var i : int = 0; i < numOfStyles; i++) if(IStyle(_styles[i]).name == name) return _styles.splice (i,1);
-    return null;
+    /**
+     *
+     */
+    class func removeStyle(name:String) -> IStyle? {
+        let numOfStyles:Int = styles.count;
+        for (var i : Int = 0; i < numOfStyles; i++){
+            if(styles[i].name == name) {
+                return styles.splice (i,1)[0]
+            }
+        }
+        return nil
     }
     /**
      * Locates and returns a Style by the @param name.

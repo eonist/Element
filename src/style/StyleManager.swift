@@ -11,6 +11,11 @@ class StyleManager{
     class func addStyle(style:IStyle){
         styles.append(style)
     }
+    public function removeStyle(name:String):IStyle {
+    var numOfStyles:int = _styles.length;
+    for (var i : int = 0; i < numOfStyles; i++) if(IStyle(_styles[i]).name == name) return _styles.splice (i,1);
+    return null;
+    }
     /**
      * Locates and returns a Style by the @param name.
      * @return a Style

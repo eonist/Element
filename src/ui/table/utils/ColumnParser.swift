@@ -19,6 +19,6 @@ class ColumnParser {
         */
         
         //Continue here: fix the above
-        
+        return [0]
     }
 }

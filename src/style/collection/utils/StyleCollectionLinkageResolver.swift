@@ -1,10 +1,16 @@
 import Foundation
-
+/**
+ * @Note StyleLinkageResolver is a better name than StyleLinkingParser
+ */
 class StyleCollectionLinkageResolver {
     /**
      * Resolves linking on @param styleCollection
      * // :TODO: what if the link is not found? should we provide a default value? or remove the stylepropp maybe?
      */
+    
+    //TODO: to finish the bellow you just copy the code from CSSLinkResolver
+    
+    /*
     class func resolveLinkage(styleCollection:IStyleCollection) -> IStyleCollection {
         var bracketPattern:RegExp = new RegExp("(?<=<).+?(?=>)","g");
         for var style : IStyle in styleCollection.styles {
@@ -20,4 +26,5 @@ class StyleCollectionLinkageResolver {
         }
         return styleCollection;
     }
+    */
 }

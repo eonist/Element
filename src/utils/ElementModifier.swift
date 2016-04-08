@@ -30,11 +30,12 @@ class ElementModifier {
         for (var i : Int = 0; i < numChildren; i++) {
             let child:NSView = container.subviews[i]
             if(child is IElement) {
-                (child as! IElement).skin!.setStyle((child as! IElement).skin!.style!)/*Uses the setStyle since its faster than setSkin*/
+                
                 if(child.subviews.count > 0) {refresh(child as! IElement)}/*<--this line makes it recursive*/
             }
         }
     }
+    
     /**
      * Resizes many elements in @param view
      * // :TODO: rename to Resize, its less ambigiouse
@@ -60,5 +61,13 @@ class ElementModifier {
                 SkinModifier.float((child as! IElement).skin!)
             }
         }
+    }
+}
+private class Utils{
+    class func setStyle(element:IElement){
+        element.skin!.setStyle(element.skin!.style!)/*Uses the setStyle since its faster than setSkin*/
+    }
+    class func setSkinState(element:IElement){
+        element.skin!.setSkinState(SkinStates.none)
     }
 }

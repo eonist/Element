@@ -31,7 +31,7 @@ class ElementModifier {
             let child:NSView = container.subviews[i]
             if(child is IElement) {
                 (child as! IElement).skin!.setStyle((child as! IElement).skin!.style!)/*Uses the setStyle since its faster than setSkin*/
-                if(child.subviews.count > 0) {refresh(child as! IElement)}
+                if(child.subviews.count > 0) {refresh(child as! IElement)}/*<--this line makes it recursive*/
             }
         }
     }

@@ -50,6 +50,12 @@ extension StyleManager{
         self.styles += styles/*<- concats*/
     }
     /**
+     * new
+     */
+    class func removeStyle(styles:Array<IStyle>){
+        for style in styles{removeStyle(style.name)}
+    }
+    /**
      * Adds styles by parsing @param string (the string must comply to the Element css syntax)
      * // :TODO: add support for css import statement in the @param string
      */

@@ -69,6 +69,8 @@ One more thing...Element supports **multiple layers** of CSS3 styles. Meaning an
 
 One more thing...Element now has support for [rich interactive animation in 60FPS](http://stylekit.org/blog/2016/02/24/CVDisplayLink/) (The first ever swift UI framework that offers this, not even apple has this) [Here is the first app example that uses this Animation-engine](https://vimeo.com/158515887)
 
+One more thing...Element now has "Live Edit" [vimeo](https://vimeo.com/162281545) 
+
 **Inline CSS**
 
 ```swift 

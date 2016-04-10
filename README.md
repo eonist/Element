@@ -8,6 +8,18 @@ Element is a [programatic UI framework](https://github.com/eonist/Element/wiki/W
 <img width="456" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/demo_app_30_fps_1x.gif">  
 High-res 60FPS version of the above Gif-anim here: [vimeo](https://vimeo.com/158515887)  or [dropbox](https://dl.dropboxusercontent.com/u/2559476/demo_app_60fps_full.mov)
 
+### GradientPanel:
+
+<img width="475" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-04-07 at 10.05.43.png">
+
+[vimeo](https://vimeo.com/161915498) 
+
+### ColorPanel:
+
+<img width="453" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-04-05 at 11.43.25.png">
+
+[vimeo](https://vimeo.com/162236240) 
+
 ### RBSliderList:  
   
 <img width="516" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/list_full_quality.mov.gif">  

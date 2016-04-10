@@ -72,12 +72,16 @@ extension StyleManager{
         let cssString:String = CSSFileParser.cssString(url)
         if(liveEdit){
             if(cssFiles[url] != nil){//check if the url exists,
-                //if it does then remove the styles that it represents
+                let cssString = CSSLinkResolver.resolveLinks(cssString)
+                let styles = CSSParser.styleCollection(cssString).styles
+                removeStyle(styles)//if it does then remove the styles that it represents
+            }else{//if the url wasnt already added then add it again
+                cssFiles[url] = cssString
             }
             
             
             //add styles
-            cssFiles[url] = cssString
+            
         }
         
         addStyle(cssString)

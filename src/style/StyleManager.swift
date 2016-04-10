@@ -6,6 +6,7 @@ import Foundation
  * // :TODO: This class can be a struct
  */
 class StyleManager{
+    static var urls:Array<String> = []
     static var styles:Array<IStyle> = []
     /**
      * Adds a style to the styleManager class
@@ -63,6 +64,7 @@ extension StyleManager{
      */
     class func addStylesByURL(url:String,_ liveEdit:Bool = false) {
         if(liveEdit){
+            urls.append(url)
             
         }
         let cssString:String = CSSFileParser.cssString(url)

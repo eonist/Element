@@ -71,6 +71,12 @@ extension StyleManager{
     class func addStylesByURL(url:String,_ liveEdit:Bool = false) {
         let cssString:String = CSSFileParser.cssString(url)
         if(liveEdit){
+            if(cssFiles[url] != nil){//check if the url exists,
+                //if it does then remove the styles that it represents
+            }
+            
+            
+            //add styles
             cssFiles[url] = cssString
         }
         

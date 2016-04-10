@@ -6,7 +6,7 @@ import Foundation
  * // :TODO: This class can be a struct
  */
 class StyleManager{
-    static var cssFiles:Array<[String:String]> = []
+    static var cssFiles:Dictionary<String,String> = []
     static var styles:Array<IStyle> = []
     /**
      * Adds a style to the styleManager class
@@ -50,7 +50,7 @@ extension StyleManager{
         self.styles += styles/*<- concats*/
     }
     /**
-     * new
+     * Removes styles
      */
     class func removeStyle(styles:Array<IStyle>){
         for style in styles{removeStyle(style.name)}

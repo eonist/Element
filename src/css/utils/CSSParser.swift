@@ -13,7 +13,7 @@ class CSSParser{
      * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
      * @param cssString: a string comprised by css data h1{color:blue;} etc
      * @return StyleCollection populated with Styles
-     * @Note: We cant sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
+     * @Note: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     class func styleCollection(cssString:String)->IStyleCollection{
         //Swift.print("CSSParser.styleCollection()")

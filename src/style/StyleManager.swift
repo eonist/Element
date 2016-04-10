@@ -61,7 +61,10 @@ extension StyleManager{
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
      * @Note to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
-    class func addStylesByURL(url:String) {
+    class func addStylesByURL(url:String,_ liveEdit:Bool = false) {
+        if(liveEdit){
+            
+        }
         let cssString:String = CSSFileParser.cssString(url)
         addStyle(cssString)
     }

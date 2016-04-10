@@ -6,7 +6,7 @@ import Foundation
  * // :TODO: This class can be a struct
  */
 class StyleManager{
-    static var urls:Array<String> = []
+    static var cssFiles:Array<[String:String]> = []
     static var styles:Array<IStyle> = []
     /**
      * Adds a style to the styleManager class
@@ -63,11 +63,11 @@ extension StyleManager{
      * @Note to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
     class func addStylesByURL(url:String,_ liveEdit:Bool = false) {
-        if(liveEdit){
-            urls.append(url)
-            
-        }
         let cssString:String = CSSFileParser.cssString(url)
+        if(liveEdit){
+            cssFiles.append([url:cssString])
+        }
+        
         addStyle(cssString)
     }
     class func getStyleAt(index:Int)->IStyle{

@@ -78,12 +78,7 @@ extension StyleManager{
             }else{//if the url wasnt already added then add it again
                 cssFiles[url] = cssString
             }
-            
-            
-            //add styles
-            
         }
-        
         addStyle(cssString)
     }
     class func getStyleAt(index:Int)->IStyle{

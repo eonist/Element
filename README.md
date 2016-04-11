@@ -12,6 +12,7 @@ High-res 60FPS version of the above Gif-anim here: [vimeo](https://vimeo.com/158
 
 <img width="448" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/live_edit_3.mov.gif">
 
+Edit the UI live while the app is running. No recompiling needed. 
 [vimeo](https://vimeo.com/162281545) 
 
 ### GradientPanel:

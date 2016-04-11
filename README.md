@@ -10,7 +10,7 @@ High-res 60FPS version of the above Gif-anim here: [vimeo](https://vimeo.com/158
 
 ### Live Edit feature:
 
-<img width="448" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/live_edit_3.jpg">
+<img width="448" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/live_edit_3.mov.gif">
 
 [vimeo](https://vimeo.com/162281545) 
 
@@ -22,7 +22,7 @@ High-res 60FPS version of the above Gif-anim here: [vimeo](https://vimeo.com/158
 
 ### ColorPanel:
 
-<img width="453" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-04-05 at 11.43.25.png">
+<img width="430" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/colorpanel_2.mp4.gif">
 
 [vimeo](https://vimeo.com/162236240) 
 

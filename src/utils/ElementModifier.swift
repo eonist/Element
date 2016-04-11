@@ -23,7 +23,7 @@ class ElementModifier {
      * // :TODO: skin should have a dedicated redraw method or a simple workaround
      * @Note keep in mind that this can be Window
      */
-    class func refresh(element:IElement, _ method: (IElement)->Void = Utils.setStyle) {
+    class func refresh(element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
         let numChildren:Int = container.subviews.count
@@ -73,6 +73,6 @@ private class Utils{
         element.skin!.setStyle(element.skin!.style!)/*Uses the setStyle since its faster than setSkin*/
     }
     class func setSkinState(element:IElement){
-        element.skin!.setSkinState(SkinStates.none)
+        element.skin!.setSkinState(element.skin!.state)/*SkinStates.none*/
     }
 }

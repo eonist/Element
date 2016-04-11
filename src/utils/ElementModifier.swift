@@ -73,6 +73,6 @@ private class Utils{
         element.skin!.setStyle(element.skin!.style!)/*Uses the setStyle since its faster than setSkin*/
     }
     class func setSkinState(element:IElement){
-        element.skin!.setSkinState(element.skin!.state)/*was SkinStates.none*/
+        element.skin!.setSkinState(element.skin!.state)/*<-- was SkinStates.none but re-applying the same skinState is a better option*/
     }
 }

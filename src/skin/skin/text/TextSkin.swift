@@ -52,7 +52,7 @@ class TextSkin:Skin,ITextSkin{
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat)
       
-        let temp = textField.stringValue
+        let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/
         textField.stringValue = " "
         textField.stringValue = temp
     }

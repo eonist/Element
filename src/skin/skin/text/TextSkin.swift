@@ -51,15 +51,15 @@ class TextSkin:Skin,ITextSkin{
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat)
-        textField.stringValue = text;
+        textField.stringValue = textField.stringValue
     }
     /**
      * Set the text and updates the skin
      * // :TODO: add more advance setText features like start and end etc
      */
     func setText(text:String){
-        textField.stringValue = text;
-        hasTextChanged = true;
+        textField.stringValue = text
+        hasTextChanged = true
         //draw();//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple
     }
     

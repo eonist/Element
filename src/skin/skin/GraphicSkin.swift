@@ -41,7 +41,7 @@ class GraphicSkin:Skin{
      * TODO: Dont forget to add fillet, and asset here to , see old code
      */
     func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
-        Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
+        //Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             //Swift.print("has RectGraphic")
@@ -54,7 +54,7 @@ class GraphicSkin:Skin{
         if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {(DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
         if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {(DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
         if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
-        decoratable.draw()
+        //decoratable.draw()
     }
     /*override func updateTrackingAreas() {
     Swift.print("updateTrackingAreas: " + "\(self)")

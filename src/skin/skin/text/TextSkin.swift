@@ -52,8 +52,9 @@ class TextSkin:Skin,ITextSkin{
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat)
       
-        textField.stringValue = textField.stringValue + " "
-        textField.stringValue = textField.stringValue
+        let temp = textField.stringValue
+        textField.stringValue = " "
+        textField.stringValue = temp
     }
     /**
      * Set the text and updates the skin

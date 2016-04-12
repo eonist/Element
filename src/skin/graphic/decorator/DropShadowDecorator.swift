@@ -1,6 +1,7 @@
 import Cocoa
 /**
  * NOTE: It isnt ideal that you have to extend PositionalDecorator instead of simply GraphicDecorable, but in the spirit of moving on we keep it as is
+ * TODO: Why did you stop using the Graphics outer shadow and start using the layer outer shadow?
  */
 class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure 
     var dropShadow:DropShadow?

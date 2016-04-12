@@ -14,10 +14,10 @@ class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend Sizea
         if(dropShadow != nil && dropShadow!.inner){/*inner*/
             graphic.fillShape.graphics.dropShadow = dropShadow
         }else if(dropShadow != nil && !dropShadow!.inner){/*outer*/
-            graphic.layer!.shadowColor = NSColor.blackColor().CGColor//dont forget about the graphic.layer!.shadowPath
-            graphic.layer!.shadowOpacity = 1.0
-            graphic.layer!.shadowRadius = 5.0
-            graphic.layer!.shadowOffset = CGSizeMake(0, 3)
+            graphic.layer!.shadowColor = dropShadow!.color.cgColor//dont forget about the graphic.layer!.shadowPath
+            graphic.layer!.shadowOpacity = dropShadow!.color.alphaComponent.float
+            graphic.layer!.shadowRadius = dropShadow!.blurRadius
+            graphic.layer!.shadowOffset = dropShadow!.offset
         }else{/*no shadow*/
             graphic.fillShape.graphics.dropShadow = nil
             graphic.layer!.shadowColor = NSColor.clearColor().CGColor

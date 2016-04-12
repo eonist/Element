@@ -170,6 +170,11 @@ class CSSPropertyParser {
         let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
         let offsetX:CGFloat = polarPoint.x
         let offsetY:CGFloat = polarPoint.y
+        Swift.print("color: " + "\(color)")
+        Swift.print("offsetX: " + "\(offsetX)")
+        Swift.print("offsetY: " + "\(offsetY)")
+        Swift.print("blur: " + "\(blur)")
+        Swift.print("inner: " + "\(inner)")
         let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
         //print("dropshadowfilter: " + dropshadowfilter);
         return dropShadow;

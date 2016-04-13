@@ -15,7 +15,7 @@ class GraphicSkinParser{
         //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
-        if(!StylePropertyAsserter.hasAsset(skin,depth)) {graphic = Utils.rectGraphic(skin,graphic,depth)}
+        graphic = Utils.rectGraphic(skin,graphic,depth)//}if(!StylePropertyAsserter.hasAsset(skin,depth)) {
         if(StylePropertyAsserter.hasFillet(skin,depth)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin,depth)) }
         if(StylePropertyAsserter.hasGradient(skin,depth)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasAsset(skin,depth)) { graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }

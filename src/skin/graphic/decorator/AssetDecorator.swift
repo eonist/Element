@@ -24,7 +24,7 @@ class AssetDecorator:SizeableDecorator{
     }
     override func drawFill() {
         //Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
-        super.drawFill()
+        //super.drawFill()
         asset!.draw(x, y, width, height)//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {

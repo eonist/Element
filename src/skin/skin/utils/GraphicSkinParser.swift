@@ -15,14 +15,13 @@ class GraphicSkinParser{
         //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
-        graphic = StylePropertyAsserter.hasAsset(skin,depth) ?  Utils.emptyGraphic(skin,graphic,depth) : Utils.rectGraphic(skin,graphic,depth)
+        if(!StylePropertyAsserter.hasAsset(skin,depth)){ graphic = Utils.rectGraphic(skin,graphic,depth)}
         if(StylePropertyAsserter.hasFillet(skin,depth)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin,depth)) }
         if(StylePropertyAsserter.hasGradient(skin,depth)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasAsset(skin,depth)) { graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }
-        if(StylePropertyAsserter.hasDropShadow(skin,depth)) {
-            Swift.print("hasDropShadow")
-            graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin,depth))
-        }
+        if(StylePropertyAsserter.hasDropShadow(skin,depth)) {graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin,depth))}
+            
+        
         return graphic
     }
 }
@@ -46,14 +45,7 @@ private class Utils{
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
         return RectGraphic(width,height,decoratable);
     }
-    class func emptyGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
-        let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
-        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!)  + padding.left + padding.right;
-        let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom;
-        /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
-        return EmptyGraphic(width,height,decoratable);
-    }
-
+   
     /**
     * Beta
     * @Note asset is svg for now but in the future it should support png

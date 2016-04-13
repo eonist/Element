@@ -26,7 +26,7 @@ class List:Element,IList{
      */
     override func resolveSkin() {
         super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self))
+        lableContainer = addSubView(Container(width,height,self,"lable"))
         /*let section = *///addSubView(Section(width,height,self))
         //section
         Swift.print("dataProvider.items.count: " + "\(dataProvider.items.count)")

@@ -1,6 +1,6 @@
 import Cocoa
 /*
- * // :TODO: this solution isnt perfect but it works for now
+ * // :TODO: this solution isnt perfect but it works for now. See legacy code for a better solution, the svg should become the graphic maybe?
  * @Note asset is svg for now but in the future it should support png
  */
 class AssetDecorator:SizeableDecorator{
@@ -11,7 +11,7 @@ class AssetDecorator:SizeableDecorator{
         //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
         asset = graphic.addSubView(SVGAsset(assetURL))
-        graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix*/
+        graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to hasve a width and height or else the shadow wont be applied*/
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")

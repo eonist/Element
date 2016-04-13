@@ -25,6 +25,12 @@ class AssetDecorator:SizeableDecorator{
         super.drawFill()
         asset!.draw(x, y, width, height)//0, 0, graphic.width, graphic.height
     }
+    override func fill() {
+        
+    }
+    override func line() {
+        
+    }
     override func drawLine() {
         /*this method must be overridden*/
     }

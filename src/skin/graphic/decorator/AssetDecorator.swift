@@ -2,7 +2,6 @@ import Cocoa
 /*
  * // :TODO: this solution isnt perfect but it works for now
  * @Note asset is svg for now but in the future it should support png
- * TODO: Add support for applying 
  */
 class AssetDecorator:SizeableDecorator{
     var asset : SVGAsset?
@@ -18,7 +17,7 @@ class AssetDecorator:SizeableDecorator{
         if(asset != nil) {asset!.removeFromSuperview()};/*temp solution, find a more elegant solution than removing*/
         asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
         //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
-        if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill to the svg
+        if(graphic.fillStyle!.color != NSColor.clearColor()) {asset!.applyStyle(graphic.fillStyle,graphic.lineStyle)}//this applies custom fill and line to the svg
         super.draw()
     }
     override func drawFill() {

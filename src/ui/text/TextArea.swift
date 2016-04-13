@@ -1,6 +1,7 @@
 import Foundation
 /**
  * :TODO: maybe rename text to defaultText and _text to _text
+ * :TODO: Add support for setting size via css for the TextArea. Its currently not working
  */
 class TextArea:Element {
     var text:Text?

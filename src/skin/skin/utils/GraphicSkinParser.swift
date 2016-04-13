@@ -15,14 +15,13 @@ class GraphicSkinParser{
         //Swift.print("fillStyle.color: " + "\(fillStyle.color)")
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth);
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
-        graphic = Utils.rectGraphic(skin,graphic,depth)
+        if(!StylePropertyAsserter.hasAsset(skin,depth)) {graphic = Utils.rectGraphic(skin,graphic,depth)}
         if(StylePropertyAsserter.hasFillet(skin,depth)) { graphic = Utils.fillet(graphic, StylePropertyParser.fillet(skin,depth)) }
         if(StylePropertyAsserter.hasGradient(skin,depth)) { graphic = Utils.gradient(graphic) }
         if(StylePropertyAsserter.hasAsset(skin,depth)) { graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }
         if(StylePropertyAsserter.hasDropShadow(skin,depth)) {
             Swift.print("hasDropShadow")
             graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin,depth))
-            
         }
         return graphic
     }

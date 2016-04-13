@@ -6,6 +6,7 @@ import Cocoa
 class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure 
     var dropShadow:DropShadow?
     init(_ decoratable: IGraphicDecoratable,_ dropShadow:DropShadow?) {
+        Swift.print("DropShadowDecorator.init()")
         self.dropShadow = dropShadow
         super.init(decoratable)
     }

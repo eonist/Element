@@ -4,9 +4,10 @@ class VolumeSlider:HSlider{
     lazy var volumeGraphic:Element = Element(1,1,self,"volumeGraphic")
     override func resolveSkin() {
         //add the volume graphic before the thumb is added
-        volumeGraphic = addSubView(volumeGraphic)
+        
         super.resolveSkin()
         
+        volumeGraphic = addSubView(volumeGraphic)
     }
     override func onMouseMove(event: NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())//this should be set after super

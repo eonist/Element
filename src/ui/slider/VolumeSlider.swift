@@ -7,7 +7,7 @@ class VolumeSlider:HSlider{
         
         super.resolveSkin()
         
-        volumeGraphic = addSubView(volumeGraphic)
+        volumeGraphic = addSubViewAt(volumeGraphic,self.indexOf(thumb!))
     }
     override func onMouseMove(event: NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())//this should be set after super

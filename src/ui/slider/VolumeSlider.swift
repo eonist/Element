@@ -12,17 +12,17 @@ class VolumeSlider:HSlider{
         return super.onMouseMove(event)
     }
     override func onThumbMove(event: NSEvent) -> NSEvent? {
-        volumeGraphic.setSize(thumb!.x, height)//this should be set after super
+        volumeGraphic.setSize(thumb!.x, getHeight())//this should be set after super
         return super.onThumbMove(event)
     }
     override func setProgressValue(progress: CGFloat) {
         
         super.setProgressValue(progress)
-        volumeGraphic.setSize(thumb!.x, height)
+        volumeGraphic.setSize(thumb!.x, getHeight())
     }
     override func setSize(width: CGFloat, _ height: CGFloat) {
         //setSize
         super.setSize(width,height)
-        volumeGraphic.setSize(thumb!.x, height)
+        volumeGraphic.setSize(thumb!.x, getHeight())
     }
 }

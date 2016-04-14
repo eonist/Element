@@ -32,8 +32,6 @@ class Thumb:Button{
         //Swift.print("applyOvershot.end")
     }  
 }
-
-
 extension Thumb{
     func interpolateAlpha(val:CGFloat){
         //Swift.print("interpolateAlpha()")

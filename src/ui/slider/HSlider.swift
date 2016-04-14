@@ -4,7 +4,7 @@ import Cocoa
  * @Note the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
  * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  */
-class HSlider :Element{
+class HSlider:Element{
     var progress:CGFloat
     var thumbWidth:CGFloat
     var thumb:Thumb?
@@ -38,16 +38,16 @@ class HSlider :Element{
         //Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    func onMouseMove(event:NSEvent)-> NSEvent?{
+    func onMouseMove(event:NSEvent) -> NSEvent?{
         progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
         thumb!.x = Utils.thumbPosition(progress, width, thumbWidth);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
-    override func mouseUp(event: MouseEvent) {
+    override func mouseUp(event:MouseEvent) {
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    override func onEvent(event: Event) {
+    override func onEvent(event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp

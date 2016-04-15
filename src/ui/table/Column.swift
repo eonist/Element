@@ -19,11 +19,11 @@ class Column:Element{
     //  event handlers
     //----------------------------------
     private func onHeaderCheck(event:CheckEvent){
-        //Swift.print("onHeaderCheck");
+        Swift.print("Column.onHeaderCheck");
         super.onEvent(event)//forwards the event
     }
     private func onListSelect(event : ListEvent)  {
-        //Swift.print("Column.onListSelect");
+        Swift.print("Column.onListSelect");
         let rowIndex:Int = ListParser.index(list!, event.selected as! NSView)
         Swift.print("rowIndex: " + "\(rowIndex)")
 		//(ColumnEvent(ColumnEvent.select,rowIndex,true));

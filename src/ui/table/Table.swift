@@ -36,10 +36,10 @@ class Table:Element{
             //continue here: Figure out what you are dealing with here. Sort a similar case in an isolated test
             
             /*
-            var indices:Array = ColumnParser.sortOrder(event.target as Column, [event.checked ? 0:Array.DESCENDING/*,Array.NUMERIC*/]);// :TODO: maybe we can add the NUMERIC so that if a text starts with a number etc
+            var indices:Array = ColumnParser.sortOrder(event.target as Column, event.checked)// :TODO: maybe we can add the NUMERIC sort so that if a text starts with a number etc
             for column in columns {
-                //DepthModifier.sortByIndices(column.list.lableContainer, indices);
-                ElementModifier.floatChildren(column.list.lableContainer);
+                //DepthModifier.sortByIndices(column.list.lableContainer, indices)
+                ElementModifier.floatChildren(column.list.lableContainer)
             }
             */
         }

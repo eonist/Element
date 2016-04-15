@@ -30,6 +30,7 @@ class Table:Element{
      * // :TODO: Research how UNIQUE sort works see flash docs or google, it might be faster!?!?
      */
     private func onColumnHeaderCheck(event:CheckEvent) {
+        Swift.print("Table.onColumnHeaderCheck()")
         if(event.origin is Column) {
             /*
             var indices:Array = ColumnParser.sortOrder(event.target as Column, [event.checked ? 0:Array.DESCENDING/*,Array.NUMERIC*/]);// :TODO: maybe we can add the NUMERIC so that if a text starts with a number etc

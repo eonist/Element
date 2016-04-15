@@ -47,7 +47,7 @@ class Table:Element{
     private func onColumnSelect(event : ColumnEvent) {
         Swift.print("Tavle.onColumnSelect() event.origin: " + "\(event)");
         
-        TableModifier.selectRow(self,event.rowIndex,event.origin as! Column);
+        TableModifier.selectRow(self,event.rowIndex!,event.origin as? Column);
     }
     override func onEvent(event: Event) {
         if(event.type == CheckEvent.check) {onColumnHeaderCheck(event as! CheckEvent)}

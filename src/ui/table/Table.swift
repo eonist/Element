@@ -46,6 +46,9 @@ class Table:Element{
      */
     private func onColumnSelect(event : ColumnEvent) {
         Swift.print("event.origin: " + "\(event)");
+        
+        //continue here: implement this
+        
         //TableModifier.selectRow(self,event.rowIndex,event.origin as! Column);
     }
     override func onEvent(event: Event) {

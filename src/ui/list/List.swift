@@ -19,7 +19,7 @@ class List:Element,IList{
         self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
         super.init(width, height,parent,id)
         self.dataProvider.event = onEvent//Add event handler for the dataProvider
-        //layer!.masksToBounds = true/*masks the children to the frame*/
+        layer!.masksToBounds = true/*masks the children to the frame*/
     }
     /**
      * Creates the components in the List Component

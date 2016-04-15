@@ -26,7 +26,7 @@ class Column:Element{
         Swift.print("Column.onListSelect");
         let rowIndex:Int = ListParser.index(list!, event.selected as! NSView)
         Swift.print("rowIndex: " + "\(rowIndex)")
-		super.onEvent(ColumnEvent(ColumnEvent.select,rowIndex));
+		super.onEvent(ColumnEvent(ColumnEvent.select,rowIndex,self))
     }
     override func onEvent(event: Event) {
         if(event.type == CheckEvent.check && event.origin === header){onHeaderCheck(event as! CheckEvent)}

@@ -12,21 +12,16 @@ class ColumnParser {
             sortList.append(["text":selectTextButton.text!.getText() != "" ? selectTextButton.text!.getText() : "~","index":list.lableContainer!.indexOf(selectTextButton)])
         }
         
-        sortList.sortInPlace({$0["text"] as! String > $1["text"] as! String})
-        
-        /*
-        sortList.sortOn(["text"],options)
-        
-        //
+        if(isAscending){
+            sortList.sortInPlace({$0["text"] as! String > $1["text"] as! String})
+        }else{
+            sortList.sortInPlace({$1["text"] as! String > $0["text"] as! String})
+        }
         
         var indices:Array<Int> = []
-        for (var i : Int = 0; i < sortList.count; i++) {indices.append(sortList[i]["index"])}
+        for (var i : Int = 0; i < sortList.count; i++) {indices.append(sortList[i]["index"] as! Int)}
+
+        
         return indices
-        */
-        
-        //Continue here: fix the above
-        
-        //
-        return [0]
     }
 }

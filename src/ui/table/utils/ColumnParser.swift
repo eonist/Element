@@ -12,7 +12,7 @@ class ColumnParser {
             sortList.append(["text":selectTextButton.text!.getText() != "" ? selectTextButton.text!.getText() : "~","index":list.lableContainer!.indexOf(selectTextButton)])
         }
         
-        sortList.sortInPlace({$0.firstName > $1.firstName})
+        sortList.sortInPlace({$0["text"] > $1["text"]})
         
         /*
         sortList.sortOn(["text"],options)

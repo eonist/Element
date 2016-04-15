@@ -20,7 +20,7 @@ class Column:Element{
     //----------------------------------
     private func onHeaderCheck(event:CheckEvent){
         Swift.print("Column.onHeaderCheck");
-        super.onEvent(event)//forwards the event
+        super.onEvent(CheckEvent(CheckEvent.check,event.isChecked,self))//clone the event and send it, we need the origin to be Column
     }
     private func onListSelect(event : ListEvent)  {
         Swift.print("Column.onListSelect");

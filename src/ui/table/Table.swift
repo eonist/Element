@@ -21,7 +21,7 @@ class Table:Element{
             let child : NSXMLNode = node.xml.children![i]
             let itemData = XMLParser.attribs(child as! NSXMLElement)
             if(itemData["hasChildren"] == "true" || child.children!.count > 0) {
-                columns.append(columnContainer!.addSubView(Column(NaN,NaN,itemData["title"]!,DataProvider(child as? NSXMLElement),columnContainer,String(i))))
+                columns.append(columnContainer!.addSubView(Column(100,height,itemData["title"]!,DataProvider(child as? NSXMLElement),columnContainer,String(i))))
             }/*we add the columns index to the id so we can set individual css properties to each column*/
         }
     }

@@ -5,10 +5,13 @@ class ColumnParser {
      * Returns the indices in a a spessific sort order
      */
     class func sortOrder(column:Column,_options:AnyObject)->Array<Int> {
-        /*
+        
         let list:IList = column.list!
         var sortList:Array<Int> = []
-        var children:Array = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
+        var children:Array<SelectTextButton> = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
+        
+        children.sortInPlace({$0.firstName > $1.firstName})
+        /*
         for selectTextButton  in children {
             sortList.append({name:selectTextButton.name,text:selectTextButton.text.getText() != "" ? selectTextButton.text.getText() : "~" ,index:list.lableContainer.getChildIndex(selectTextButton)})
         }
@@ -19,6 +22,8 @@ class ColumnParser {
         */
         
         //Continue here: fix the above
+        
+        //
         return [0]
     }
 }

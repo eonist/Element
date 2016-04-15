@@ -10,7 +10,7 @@ class ColumnParser {
         var sortList:Array<Int> = []
         var children:Array = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
         for selectTextButton  in children {
-            sortList.append({name:selectTextButton.name,text:selectTextButton.text.getText() != "" ? selectTextButton.text.getText() : "~",index:list.lableContainer.getChildIndex(selectTextButton)})
+            sortList.append({name:selectTextButton.name,text:selectTextButton.text.getText() != "" ? selectTextButton.text.getText() : "~" ,index:list.lableContainer.getChildIndex(selectTextButton)})
         }
         sortList.sortOn(["text"],options)
         var indices:Array<Int> = []

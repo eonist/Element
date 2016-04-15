@@ -10,6 +10,7 @@ class CheckTextButton:TextButton,ICheckable {
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func mouseUpInside(event: MouseEvent) {
+        Swift.print("CheckTextButton.mouseUpInside()")
         isChecked = true
         super.mouseUpInside(event)
         self.event!(SelectEvent(SelectEvent.select,self))

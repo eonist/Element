@@ -11,7 +11,6 @@ class ColumnParser {
         for selectTextButton  in children {
             sortList.append(["text":selectTextButton.text!.getText() != "" ? selectTextButton.text!.getText() : "~","index":list.lableContainer!.indexOf(selectTextButton)])
         }
-        
         if(isAscending){
             sortList.sortInPlace({$0["text"] as! String > $1["text"] as! String})
         }else{

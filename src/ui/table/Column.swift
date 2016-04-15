@@ -13,7 +13,7 @@ class Column:Element{
     override func resolveSkin() {
         super.resolveSkin()
         header = addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))
-        list = addSubView(List(NaN, NaN ,24, dataProvider, self))
+        list = addSubView(List(NaN, NaN ,NaN, dataProvider, self))
     }
     //----------------------------------
     //  event handlers

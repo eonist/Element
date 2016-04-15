@@ -7,15 +7,19 @@ class ColumnParser {
     class func sortOrder(column:Column,_options:AnyObject)->Array<Int> {
         
         let list:IList = column.list!
-        var sortList:Array<Int> = []
+        var sortList:Array<[String:String]> = []
         var children:Array<SelectTextButton> = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
         
-        children.sortInPlace({$0.firstName > $1.firstName})
-        /*
+        
+        
         for selectTextButton  in children {
-            sortList.append({name:selectTextButton.name,text:selectTextButton.text.getText() != "" ? selectTextButton.text.getText() : "~" ,index:list.lableContainer.getChildIndex(selectTextButton)})
+            sortList.append(["text":selectTextButton.text!.getText() != "" ? selectTextButton.text!.getText() : "~","index":list.lableContainer.getChildIndex(selectTextButton)])
         }
+        /*
         sortList.sortOn(["text"],options)
+        
+        //children.sortInPlace({$0.firstName > $1.firstName})
+        
         var indices:Array<Int> = []
         for (var i : Int = 0; i < sortList.count; i++) {indices.append(sortList[i]["index"])}
         return indices

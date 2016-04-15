@@ -27,21 +27,16 @@ class Table:Element{
     }
     /**
      * When a header of a column is clicked then sort that column and sibling columns to the same sort order
-     * // :TODO: Research how UNIQUE sort works see flash docs or google, it might be faster!?!?
+     * // :TODO: Research how UNIQUE sort works see legacy code help docs or google, it might be faster!?!?
      */
     private func onColumnHeaderCheck(event:CheckEvent) {
         Swift.print("Table.onColumnHeaderCheck()")
         if(event.origin is Column) {
-            
-            //continue here: Figure out what you are dealing with here. Sort a similar case in an isolated test
-            
-            /*
-            var indices:Array = ColumnParser.sortOrder(event.target as Column, event.checked)// :TODO: maybe we can add the NUMERIC sort so that if a text starts with a number etc
+            let indices:Array<Int> = ColumnParser.sortOrder(event.origin as! Column, event.isChecked)// :TODO: maybe we can add the NUMERIC sort so that if a text starts with a number etc
             for column in columns {
-                //DepthModifier.sortByIndices(column.list.lableContainer, indices)
-                ElementModifier.floatChildren(column.list.lableContainer)
+                DepthModifier.sortByIndices(column.list!.lableContainer!, indices)
+                ElementModifier.floatChildren(column.list!.lableContainer!)
             }
-            */
         }
     }
     /**

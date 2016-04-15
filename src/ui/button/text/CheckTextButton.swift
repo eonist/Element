@@ -12,8 +12,7 @@ class CheckTextButton:TextButton,ICheckable {
     override func mouseUpInside(event: MouseEvent) {
         isChecked = true
         super.mouseUpInside(event)
-        //NSNotificationCenter.defaultCenter().postNotificationName(SelectEvent.select, object:self)/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
-        self.event!(SelectEvent(SelectEvent.select,self/*,self*/))
+        self.event!(SelectEvent(SelectEvent.select,self))
     }
     /**
      * Sets the _isChecked variable (Toggles between two states)

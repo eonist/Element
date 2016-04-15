@@ -4,7 +4,7 @@ class ColumnParser {
     /**
      * Returns the indices in a a spessific sort order
      */
-    class func sortOrder(column:Column,_options:AnyObject)->Array<Int> {
+    class func sortOrder(column:Column,_ isAscending:Bool)->Array<Int> {
         let list:IList = column.list!
         let children:Array<SelectTextButton> = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
         var sortList:Array<[String:AnyObject]> = []

@@ -10,9 +10,9 @@ import Cocoa
  * // :TODO: create a close method that removes all items and eventlisteners
  */
 class TreeList:Element,ITreeList {
-    var itemHeight : CGFloat
-    var node : Node
-    var itemContainer : Container?
+    var itemHeight:CGFloat
+    var node:Node
+    var itemContainer:Container?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ node:Node = Node(), _ parent : IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight;
         self.node = node

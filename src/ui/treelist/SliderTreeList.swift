@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 /**
  * @Note you must supply the itemHeight, since we need it to calculate the interval
  */
@@ -40,6 +40,23 @@ class SliderTreeList:TreeList{
     func onTreeListChange(event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
         update()
+    }
+    override func scrollWheel(theEvent: NSEvent) {
+        //Swift.print("theEvent: " + "\(theEvent)")
+        let scrollAmount:CGFloat = (theEvent.deltaY/30)/sliderInterval!/*_scrollBar.interval*/
+        var currentScroll:CGFloat = slider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
+        currentScroll = NumberParser.minMax(currentScroll, 0, 1)
+        //Swift.print("currentScroll: " + "\(currentScroll)")
+        TreeListModifier.scrollTo(self,currentScroll)  /*Sets the target item to correct y, according to the current scrollBar progress*/
+        slider?.setProgressValue(currentScroll)
+        if(theEvent.momentumPhase == NSEventPhase.Ended){
+            Swift.print("the scroll motion ended")
+            slider!.thumb!.setSkinState("inActive")
+        }else if(theEvent.momentumPhase == NSEventPhase.Began){//include maybegin here
+            Swift.print("the scroll motion began")
+            slider!.thumb!.setSkinState(SkinStates.none)
+        }
+        super.scrollWheel(theEvent)
     }
     override func onEvent(event: Event) {
         if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}

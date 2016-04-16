@@ -42,11 +42,9 @@ class SliderTreeList:TreeList{
         update()
     }
     override func onEvent(event: Event) {
+        if(event.type == SliderEvent.change && event.origin === slider){}
+        if(event.type == TreeListEvent.change){onTreeListChange(event as TreeListEvent)}
         
-        
-        _slider.addEventListener(SliderEvent.CHANGE, onSliderChange);
-        (TreeListEvent.CHANGE, onTreeListChange);
-        (MouseEvent.MOUSE_WHEEL, onMouseWheel);
         super.onEvent(event)
     
     }

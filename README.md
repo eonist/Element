@@ -1,4 +1,4 @@
-<img width="410" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/colorpanel_el_cap.mov.gif">
+<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/element_logo.svg">
 
 ## Description:
 
@@ -10,5 +10,6 @@ Element is a programatic UI framework for OSX. You can edit the UI design while 
 
 <img width="1034" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-04-16 at 13.08.01.png">
 
+<img width="410" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/colorpanel_el_cap.mov.gif">
 
 [Wiki](https://github.com/eonist/Element/wiki)  

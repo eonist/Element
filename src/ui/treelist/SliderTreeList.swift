@@ -13,9 +13,6 @@ class SliderTreeList:TreeList{
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/TreeListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
         
-        
-        
-        
         //slider!.hidden = !SliderParser.assertSliderVisibility(thumbHeight/slider!.getHeight())
     }
     /**

@@ -16,9 +16,8 @@ class TreeList:Element,ITreeList {
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ node:Node = Node(), _ parent : IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight;
         self.node = node
-        super.init(width, height-2, parent, id)
+        super.init(width, height, parent, id)
         self.node.event = onEvent//Add event handler for the node
-        layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")

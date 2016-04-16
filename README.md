@@ -6,4 +6,6 @@
 
 <img width="410" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/colorpanel_el_cap.mov.gif">
 
-[Wiki](https://google.com/)  
+Element is a programatic UI framework for OSX. You can edit the UI design while the app is running. Element is built from the ground up and provides highly customizable UI components that you can remix to make a truly unique UI/UX experience. 
+
+[Wiki](https://github.com/eonist/Element/wiki)  

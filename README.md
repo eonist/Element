@@ -1,6 +1,6 @@
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/element_logo.svg">
 
-## Description:
+# Element 1.0
 
 Element is a programatic UI framework for OSX. You can edit the UI design while the app is running. Element is built from the ground up and provides highly customizable UI components that you can remix to make a truly unique UI/UX experience. More information in the [Wiki](https://github.com/eonist/Element/wiki) 
 

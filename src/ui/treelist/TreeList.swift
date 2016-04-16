@@ -23,8 +23,8 @@ class TreeList:Element,ITreeList {
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
-        itemContainer = addSubView(Container(width,height,self,"lable"))
-        //itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
+        itemContainer = addSubView(Container(width,height-2/*<--quick fix*/,self,"lable"))
+        itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
         setXML(node.xml)
     }
     /**

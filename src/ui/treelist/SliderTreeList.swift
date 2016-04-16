@@ -62,6 +62,6 @@ class SliderTreeList:TreeList{
     override func onEvent(event: Event) {
         if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
         if(event.type == TreeListEvent.change){onTreeListChange(event as! TreeListEvent)}
-        //super.onEvent(event)//TODO: Unsure if the events needs to be forwared. Enable if needed
+        super.onEvent(event)//<--we need to forward the events to TreeList, or else TreeList will not work correctly
     }
 }

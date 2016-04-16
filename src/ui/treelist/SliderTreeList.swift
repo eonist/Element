@@ -41,4 +41,13 @@ class SliderTreeList:TreeList{
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
         update()
     }
+    override func onEvent(event: Event) {
+        
+        
+        _slider.addEventListener(SliderEvent.CHANGE, onSliderChange);
+        (TreeListEvent.CHANGE, onTreeListChange);
+        (MouseEvent.MOUSE_WHEEL, onMouseWheel);
+        super.onEvent(event)
+    
+    }
 }

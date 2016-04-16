@@ -19,7 +19,7 @@ class SliderTreeList:TreeList{
      */
     func update(){
         Swift.print("SliderTreeList.update()");
-        var itemsHeight:CGFloat = TreeListParser.itemsHeight(self)/*total height of the items*/
+        let itemsHeight:CGFloat = TreeListParser.itemsHeight(self)/*total height of the items*/
         /*
         Swift.print("itemsHeight: " + itemsHeight);
         Swift.print("itemHeight: " + itemHeight);
@@ -27,11 +27,18 @@ class SliderTreeList:TreeList{
         */
         sliderInterval = SliderParser.interval(itemsHeight, getHeight(), itemHeight)
         //			Swift.print("update() _sliderInterval: " + _sliderInterval);
-        var thumbHeight:CGFloat = SliderParser.thumbSize(getHeight()/itemsHeight, slider.getHeight())
-        slider.setThumbHeightValue(thumbHeight:)(thumbHeight)
-        var progress:CGFloat = SliderParser.progress(itemContainer.y, getHeight(), itemsHeight)
-        slider.setProgress(progress)
+        let thumbHeight:CGFloat = SliderParser.thumbSize(getHeight()/itemsHeight, slider!.getHeight())
+        slider!.setThumbHeightValue(thumbHeight)
+        let progress:CGFloat = SliderParser.progress(itemContainer!.y, getHeight(), itemsHeight)
+        slider!.setProgressValue(progress)
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
         TreeListModifier.scrollTo(self, progress)
+    }
+    func onSliderChange(sliderEvent:SliderEvent){
+        TreeListModifier.scrollTo(self,sliderEvent.progress)
+    }
+    func onTreeListChange(event:TreeListEvent) {
+        Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
+        update()
     }
 }

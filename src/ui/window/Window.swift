@@ -23,7 +23,6 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         resolveSkin()
     }
     func windowDidResize(notification: NSNotification) {
-        //notification
         Swift.print("Window.windowDidResize")
     }
     /**

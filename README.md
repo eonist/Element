@@ -1,4 +1,11 @@
-<img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/element_logo.svg">
+<h1 align="center">
+  <br>
+  <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/element_logo.svg">
+  <br>
+  Element
+  <br>
+  <br>
+</h1>
 
 ## Description:
 

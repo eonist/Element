@@ -23,10 +23,10 @@ class PathGraphic:SizeableDecorator{
     }
 }
 extension PathGraphic{
-    convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {
-        self.init(p1,p2, BaseGraphic(nil,lineStyle))
+    convenience init(_ path:IPath, _ fillStyle:IFillStyle, _ lineStyle:ILineStyle) {
+        self.init(path, BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ gradientlineStyle:GradientLineStyle) {
+    convenience init(_ path:IPath, _ gradientlineStyle:GradientLineStyle) {
         self.init(p1,p2, GradientGraphic(BaseGraphic(nil,gradientlineStyle)))
     }
 }

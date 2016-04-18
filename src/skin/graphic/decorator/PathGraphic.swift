@@ -20,6 +20,5 @@ class PathGraphic:SizeableDecorator{
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
         var offsetPath = graphic.fillShape.path.copy()
         graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
-        
     }
 }

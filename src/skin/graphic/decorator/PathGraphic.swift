@@ -14,8 +14,8 @@ class PathGraphic:SizeableDecorator{
 
             graphic.fillShape.frame = boundingBox
             let offset = CGPoint(-boundingBox.x,-boundingBox.y)
-            var offsetPath = path.copy()
-            fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
+            var offsetPath = cgPath.copy()
+            graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
         
     }
     override func drawLine() {

@@ -23,10 +23,10 @@ class PathGraphic:SizeableDecorator{
     }
 }
 extension PathGraphic{
-    convenience init(_ path:IPath, _ fillStyle:IFillStyle, _ lineStyle:ILineStyle) {
+    convenience init(_ path:IPath, _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
         self.init(path, BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ path:IPath, _ gradientFillStyle:GradientFillStyle, _ gradientlineStyle:GradientLineStyle) {
+    convenience init(_ path:IPath, _ gradientFillStyle:GradientFillStyle?, _ gradientlineStyle:GradientLineStyle?) {
         self.init(path, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
     }
 }

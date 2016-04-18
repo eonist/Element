@@ -11,7 +11,8 @@ class PathGraphic:SizeableDecorator{
         
     }
     override func drawLine() {
-        let boundingBox:CGRect = CGPathGetPathBoundingBox(graphic.fillShape.path)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
+        let cgPath = DisplayPathUtils.compile(CGPathCreateMutable(), path)
+        let boundingBox:CGRect = PathParser.boundingBox(cgPath, graphic.lineStyle!)
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(boundingBox, graphic.lineStyle!.thickness, graphic.lineOffsetType)
         graphic.lineShape.frame = boundingBox
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)

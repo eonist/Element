@@ -22,9 +22,7 @@ class LineGraphic:SizeableDecorator {
         let lineOffsetRect = RectGraphicUtils.lineOffsetRect(rect, graphic.lineStyle!.thickness, graphic.lineOffsetType)
         graphic.lineShape.frame = lineOffsetRect.lineFrameRect
         //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
-
         //Swift.print("lineOffsetRect.lineRect: " + "\(lineOffsetRect.lineRect)")
-        
         let a:CGPoint = lineOffsetRect.lineRect.topLeft + p1-pos//<--p1,p2 is now in 0,0 coordinate space. Since the frame should only cover the actual path. We also offset the points to support the lineoffset
         let b:CGPoint = lineOffsetRect.lineRect.topLeft + p2-pos
         graphic.lineShape.path = CGPathParser.line(a, b)
@@ -58,9 +56,6 @@ class LineGraphic:SizeableDecorator {
     }
 }
 extension LineGraphic{
-    
-    //continue here: create a gradient fill and line initializer
-    
     convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {
         self.init(p1,p2, BaseGraphic(nil,lineStyle))
     }

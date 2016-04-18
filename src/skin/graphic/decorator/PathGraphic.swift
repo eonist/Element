@@ -27,6 +27,6 @@ extension PathGraphic{
         self.init(path, BaseGraphic(fillStyle,lineStyle))
     }
     convenience init(_ path:IPath, _ gradientlineStyle:GradientLineStyle) {
-        self.init(p1,p2, GradientGraphic(BaseGraphic(nil,gradientlineStyle)))
+        self.init(path, GradientGraphic(BaseGraphic(nil,gradientlineStyle)))
     }
 }

@@ -2,7 +2,7 @@ import Foundation
 
 class PathGraphic:SizeableDecorator{
     var path:IPath
-    var fillPathBoundingBox:CGRet?
+    var fillBoundingBox:CGRect?
     init(_ path:IPath, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         Swift.print("PathGraphic.init()")
         self.path = path
@@ -11,10 +11,10 @@ class PathGraphic:SizeableDecorator{
     override func drawFill() {
         Swift.print("PathGraphic.drawFill()")
         let cgPath = DisplayPathUtils.compile(CGPathCreateMutable(), path)
-        fillPathBoundingBox = CGPathGetPathBoundingBox(cgPath)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
-        Swift.print("fillPathBoundingBox: " + "\(fillPathBoundingBox)")
-        graphic.fillShape.frame = fillPathBoundingBox
-        let offset = CGPoint(-fillPathBoundingBox.x,-fillPathBoundingBox.y)
+        fillBoundingBox = CGPathGetPathBoundingBox(cgPath)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
+        Swift.print("fillPathBoundingBox: " + "\(fillBoundingBox)")
+        graphic.fillShape.frame = fillBoundingBox!
+        let offset = CGPoint(-fillBoundingBox!.x,-fillBoundingBox!.y)
         var offsetPath = cgPath.copy()
         graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
     }

@@ -3,6 +3,7 @@ import Foundation
 class PathGraphic:SizeableDecorator{
     var path:IPath
     init(_ path:IPath, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
+        Swift.print("PathGraphic.init()")
         self.path = path
         super.init(decoratable)
     }

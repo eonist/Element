@@ -1,8 +1,10 @@
 import Foundation
 
 class PathGraphic:SizeableDecorator{
-    lazy var cgPath
+    
     var path:IPath
+    
+    lazy var cgPath:CGMutablePathRef = DisplayPathUtils.compile(CGPathCreateMutable(), self.path)
     var fillBoundingBox:CGRect?
     init(_ path:IPath, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         Swift.print("PathGraphic.init()")

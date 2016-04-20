@@ -1,6 +1,7 @@
 import Foundation
 
 class PathGraphic:SizeableDecorator{
+    lazy var cgPath
     var path:IPath
     var fillBoundingBox:CGRect?
     init(_ path:IPath, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
@@ -20,6 +21,7 @@ class PathGraphic:SizeableDecorator{
     }
     override func drawLine() {
         Swift.print("PathGraphic.drawLine()")
+        let cgPath = graphic.fillShape.path != nil ? graphic.fillShape.path : DisplayPathUtils.compile(CGPathCreateMutable(), path)
         var boundingBox:CGRect = PathParser.boundingBox(graphic.fillShape.path, graphic.lineStyle!)/*regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
         Swift.print("boundingBox: " + "\(boundingBox)")
         boundingBox += fillBoundingBox!.topLeft

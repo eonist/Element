@@ -1,3 +1,5 @@
+![mit](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-OSX-blue.svg) ![Lang](https://img.shields.io/badge/Language-Swift-orange.svg) 
+
 <img width="200" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/element_logo.svg">
 
 ## Description:

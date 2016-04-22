@@ -11,3 +11,5 @@ Element is a programatic UI framework for OSX. Its written in pure swift and fea
 <img width="1034" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-04-15 at 06.41.37.png">
 
 <img width="1034" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Screen Shot 2016-04-16 at 13.08.01.png">
+
+[MIT License](http://opensource.org/licenses/MIT)

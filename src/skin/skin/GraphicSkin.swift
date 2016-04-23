@@ -28,7 +28,7 @@ class GraphicSkin:Skin{
             for (var depth : Int = 0; depth < depthCount; depth++) {
                 if(hasSizeChanged){
                     let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-                    Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
+                    Utils.size(decoratables[depth], CGSize(widthVal! + padding.left + padding.right, heightVal! + padding.top + padding.bottom))
                 }//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
@@ -46,9 +46,9 @@ class GraphicSkin:Skin{
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             //Swift.print("has RectGraphic")
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);
-            let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right/**/// :TODO: only querry this if the size has changed?
+            let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.widthVal!) + padding.left + padding.right/**/// :TODO: only querry this if the size has changed?
             //Swift.print("width: " + "\(width)")
-            let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.top + padding.bottom/**/// :TODO: only querry this if the size has changed?
+            let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.heightVal!) + padding.top + padding.bottom/**/// :TODO: only querry this if the size has changed?
             (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
         if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {(DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/

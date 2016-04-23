@@ -9,8 +9,8 @@ class Skin:InteractiveView2,ISkin{
     var decoratables:Array<IGraphicDecoratable> = [];
     var style:IStyle?
     var state:String
-    var widthVal:CGFloat?;
-    var heightVal:CGFloat?;
+    var width:CGFloat?;
+    var height:CGFloat?;
     var element:IElement?
     var hasStyleChanged:Bool = false;
     var hasStateChanged:Bool = false;
@@ -19,8 +19,8 @@ class Skin:InteractiveView2,ISkin{
         self.style = style;
         self.state = state;
         self.element = element;
-        widthVal = element!.width;// :TODO: is this necessary?
-        heightVal = element!.height;// :TODO: is this necessary?
+        width = element!.width;// :TODO: is this necessary?
+        height = element!.height;// :TODO: is this necessary?
         super.init(frame: NSRect())/*<-this doesnt need a size*/
     }
     /**
@@ -66,10 +66,10 @@ class Skin:InteractiveView2,ISkin{
     * @Note similar to setStyle, this does not querry the styleManger when called
     */
     func setSize(width:CGFloat, _ height:CGFloat) {
-        if(self.widthVal != width || self.heightVal != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
+        if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
             hasSizeChanged = true;
-            self.widthVal = width;
-            self.heightVal = height
+            self.width = width;
+            self.height = height
             draw()
         }
     }
@@ -78,10 +78,10 @@ class Skin:InteractiveView2,ISkin{
      * NOTE: these methods are an important part of the float system
      */
     func getWidth()->CGFloat{
-        return StylePropertyParser.width(self) ?? self.widthVal!//!isNaN(skin.width) ? skin.width : StylePropertyParser.width(skin);
+        return StylePropertyParser.width(self) ?? self.width!//!isNaN(skin.width) ? skin.width : StylePropertyParser.width(skin);
     }
     func getHeight()->CGFloat{
-        return StylePropertyParser.height(self) ?? self.heightVal!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin);
+        return StylePropertyParser.height(self) ?? self.height!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin);
     }
     
 }

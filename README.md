@@ -2,7 +2,7 @@
 
 ## Description:
 
-Element is a programatic UI framework for OSX. Its written in pure swift and features: Live reload, SVG & CSS support, 60FPS Interactive animation. More information in the [Wiki](https://github.com/eonist/Element/wiki) 
+Element is a programatic UI framework for OSX. Features: Live reload, SVG & CSS support, 60FPS Interactive animation, 100% Swift. More information in the [Wiki](https://github.com/eonist/Element/wiki) 
 
 <img width="410" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/colorpanel_el_cap.mov.gif">
 

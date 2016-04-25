@@ -42,16 +42,15 @@ class ElementModifier {
     class func zoomDescenants(view:NSView,_ zoom:CGFloat){
         for child in view.subviews{
             if(child is IGraphic){
-                let graphic:IGraphic = child as! IGraphic
+                let graphicDecoratable:IGraphicDecoratable = child as! IGraphicDecoratable
+                let graphic:IGraphic = graphicDecoratable.graphic
                 graphic.fillShape.contentsScale = 2.0 * zoom
                 graphic.lineShape.contentsScale = 2.0 * zoom
+                graphicDecoratable.draw()//Updates the graphic
             }
-            
+            if(child.subviews.count > 0) {zoomDescenants(child,zoom)}/*<--this line makes it recursive*/
         }
-        //if child is IGraphic
-        //set fill.contentsScale = zoom
-        //set line.contentsScale = zoom
-        //graphic.draw()//Updates the graphic
+        
         //if (child is NSView && child.children > 0)
         //zoomDescenants(child)
     }

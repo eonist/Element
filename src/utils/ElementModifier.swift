@@ -39,7 +39,7 @@ class ElementModifier {
      * Applies contentsScale to descendants of a view that has been zoomed (so that we avoid pixelation while zooming)
      * NOTE: maybe you can use a method in ElementModifier as it has similar code
      */
-    class func zoomDescenants(view:NSView,_ zoom:CGFloat){
+    class func applyContentsScale(view:NSView,_ zoom:CGFloat){
         for child in view.subviews{
             if(child is IGraphic){
                 let graphicDecoratable:IGraphicDecoratable = child as! IGraphicDecoratable
@@ -48,7 +48,7 @@ class ElementModifier {
                 graphic.lineShape.contentsScale = 2.0 * zoom
                 graphicDecoratable.draw()//Updates the graphic
             }
-            if(child.subviews.count > 0) {zoomDescenants(child,zoom)}/*<--this line makes it recursive*/
+            if(child.subviews.count > 0) {applyContentsScale(child,zoom)}/*<--this line makes it recursive*/
         }
         
         //if (child is NSView && child.children > 0)

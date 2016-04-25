@@ -27,13 +27,33 @@ class ElementModifier {
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
         let numChildren:Int = container.subviews.count
-        for (var i : Int = 0; i < numChildren; i++) {
+        for (var i : Int = 0; i < numChildren; i++) {//<- you can use a for each loop here maybe?
             let child:NSView = container.subviews[i]
             if(child is IElement) {
                 method(child as! IElement)
                 if(child.subviews.count > 0) {refresh(child as! IElement,method)}/*<--this line makes it recursive*/
             }
         }
+    }
+    /*
+     * Applies contentsScale to descendants of a view that has been zoomed (so that we avoid pixelation while zooming)
+     * NOTE: maybe you can use a method in ElementModifier as it has similar code
+     */
+    class func zoomDescenants(view:NSView,_ zoom:CGFloat){
+        for child in view.subviews{
+            if(child is IGraphic){
+                let graphic:IGraphic = child as! IGraphic
+                graphic.fillShape.contentsScale = 2.0 * zoom
+                graphic.lineShape.contentsScale = 2.0 * zoom
+            }
+            
+        }
+        //if child is IGraphic
+        //set fill.contentsScale = zoom
+        //set line.contentsScale = zoom
+        //graphic.draw()//Updates the graphic
+        //if (child is NSView && child.children > 0)
+        //zoomDescenants(child)
     }
     /**
      * new

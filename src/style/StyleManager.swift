@@ -20,11 +20,7 @@ class StyleManager{
      */
     class func removeStyle(name:String) -> IStyle? {
         let numOfStyles:Int = styles.count;
-        for (var i : Int = 0; i < numOfStyles; i++){
-            if(styles[i].name == name) {
-                return styles.splice (i,1)[0]
-            }
-        }
+        for (var i : Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice (i,1)[0]}}
         return nil
     }
     /**
@@ -33,11 +29,7 @@ class StyleManager{
      */
     class func getStyle(name:String)->IStyle?{
         let numOfStyles:Int = styles.count;
-        for(var i:Int = 0;i < numOfStyles;i++) {
-            if((styles[i] as IStyle).name == name) {
-                return styles[i]
-            }
-        }
+        for(var i:Int = 0;i < numOfStyles;i++) {if((styles[i] as IStyle).name == name) {return styles[i]}}
         return nil
     }
 }

@@ -13,7 +13,7 @@ class GradientGraphic:PositionalDecorator/*<--recently changed from GraphicDecor
      */
     override func beginFill(){
         //Swift.print("GradientGraphic.beginFill()")
-        if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){
+        if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){//<- TODO: I think you can do just a regular is test there
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
             //Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")

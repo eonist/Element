@@ -34,7 +34,7 @@ extension PathGraphic{
         Swift.print("PathGraphic.init() type: BaseGraphic")
         self.init(path, BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ path:IPath, _ gradientFillStyle:GradientFillStyle?, _ gradientlineStyle:GradientLineStyle?) {
+    convenience init(_ path:IPath, _ gradientFillStyle:IGradientFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
         Swift.print("PathGraphic.init() type: GradientGraphic")
         self.init(path, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
     }

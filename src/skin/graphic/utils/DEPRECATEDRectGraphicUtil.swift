@@ -1,7 +1,6 @@
 import Foundation
 
 class RectGraphicUtil {
-    
     /**
      * Returns a Tuple with "frame and line rects" by offsetting @param rect with @param lineOffset
      * NOTE: works with different side offsetType (left,right,top,bottom)
@@ -38,7 +37,6 @@ private class Converter{
         //Swift.print("difference: " + "\(difference)")
         return p + difference
     }
-    
     /**
      * Converts topLeft corner and topRight corner to a CGRect instance
      */

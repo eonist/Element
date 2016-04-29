@@ -13,12 +13,11 @@ class DecoratorParser {
         while(current.getDecoratable() !== current) {
             //Swift.print(String(current.getDecoratable().dynamicType))
             if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {return current.getDecoratable()}
-            current = current.getDecoratable();
+            current = current.getDecoratable()
         }
-        return nil;
+        return nil
     }
 }
-
 private class Utils{
     /**
      * NOTE: this is a naive way of asserting if an instance of a protocol is a class

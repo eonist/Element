@@ -1,6 +1,6 @@
 import Cocoa
 /*
- * // :TODO: this solution isnt perfect but it works for now. See legacy code for a better solution, the svg should become the graphic maybe?
+ * // :TODO: this solution isn't perfect but it works for now. See legacy code for a better solution, the svg should become the graphic maybe?
  * @Note asset is svg for now but in the future it should support png
  */
 class AssetDecorator:SizeableDecorator{

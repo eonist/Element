@@ -2,8 +2,8 @@ import Foundation
 
 class PathGraphic:SizeableDecorator{
     var path:IPath
-    lazy var cgPath:CGMutablePathRef = DisplayPathUtils.compile(CGPathCreateMutable(), self.path)//this is lazy because both drawFill and drawLine uses it, its risky but convenient
-    lazy var fillBoundingBox:CGRect = CGPathGetPathBoundingBox(self.cgPath)//this is lazy because both drawFill and drawLine uses it, its risky but convenient
+    lazy var cgPath:CGMutablePathRef = DisplayPathUtils.compile(CGPathCreateMutable(), self.path)/*this is lazy because both drawFill and drawLine uses it, its risky but convenient*/
+    lazy var fillBoundingBox:CGRect = CGPathGetPathBoundingBox(self.cgPath)/*this is lazy because both drawFill and drawLine uses it, its risky but convenient*/
     init(_ path:IPath, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         //Swift.print("PathGraphic.init()")
         self.path = path

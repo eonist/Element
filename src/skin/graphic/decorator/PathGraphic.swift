@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * NOTE: the path compile method is the important part in this class
+ */
 class PathGraphic:SizeableDecorator{
     var path:IPath
     lazy var cgPath:CGMutablePathRef = DisplayPathUtils.compile(CGPathCreateMutable(), self.path)/*this is lazy because both drawFill and drawLine uses it, its risky but convenient*/

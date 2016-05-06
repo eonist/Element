@@ -31,9 +31,9 @@ class LineGraphic:SizeableDecorator {
      *
      */
     func setPoints(p1:CGPoint, _ p2:CGPoint) {
-        self.p1 = p1;
-        self.p2 = p2;
-        //update frame here
+        self.p1 = p1
+        self.p2 = p2
+        draw()//<--new
     }
     /**
      * Untested

@@ -3,7 +3,7 @@ import Cocoa
  * TODO: For the sake of optiomization, TextSkin should not extend Skin, but rather extend NSText. Less views means better speed
  * TODO: probably disable ineteractivity when using TextSkin ?
  * TODO: Add support for disabling interactivty via css: mouseEnabled:true; or alike
- * TODO: Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research)
+ * TODO: Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research): This has the answer but its very complicated to setup: http://stackoverflow.com/questions/11182735/nstextfield-add-line-spacing
  */
 class TextSkin:Skin,ITextSkin{
     var textField:TextField
@@ -51,7 +51,6 @@ class TextSkin:Skin,ITextSkin{
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat)
-      
         let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/
         textField.stringValue = " "
         textField.stringValue = temp

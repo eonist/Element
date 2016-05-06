@@ -6,7 +6,7 @@ import Cocoa
  * TODO: Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research)
  */
 class TextSkin:Skin,ITextSkin{
-    var textField:TextField;
+    var textField:TextField
     //the bellow variable is a little more complex in the legacy code
     override var width:CGFloat? {get{return textField.frame.width} set{textField.frame.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/

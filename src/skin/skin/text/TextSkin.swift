@@ -14,6 +14,7 @@ class TextSkin:Skin,ITextSkin{
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         //Swift.print("TextSkin.init()")
         textField = TextField(frame: NSRect())
+        
         //textField.sizeToFit()
         textField.stringValue = text
         super.init(style, state, element)

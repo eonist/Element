@@ -2,7 +2,7 @@ import Cocoa
 /**
  * // :TODO: this could just extend TextInput right?
  * // :TODO: the input could be sans "0x" ?
- * @Note even though creating an eventhandler in the parent class for when to open the ColorWin is tedious, including it in this class is not a good idea, consider when ColorInput is only used as an indicatar of color and not as opener for ColorWin
+ * NOTE: even though creating an eventhandler in the parent class for when to open the ColorWin is tedious, including it in this class is not a good idea, consider when ColorInput is only used as an indicatar of color and not as opener for ColorWin
  */
 class ColorInput:Element,IColorInput {
     var colorBox:ColorBox?
@@ -25,7 +25,7 @@ class ColorInput:Element,IColorInput {
         super.onEvent(ColorInputEvent(ColorInputEvent.colorBoxDown,self))
     }
     /**
-     * @Note asserts if the color is a valid color before it is applied
+     * NOTE: asserts if the color is a valid color before it is applied
      */
     func onTextInputChange(event:TextFieldEvent){
         //Swift.print("onTextInputChange() ")

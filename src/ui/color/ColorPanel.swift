@@ -53,7 +53,6 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onSpinnerChange(event:SpinnerEvent) {
         //Swift.print("onSpinnerChange()")
-        
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
         //Swift.print("colorType: " + "\(colorType)")

@@ -112,7 +112,6 @@ private class Utils{
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
     }
 }
-
 /*
 class Thumb:Button2{
     override init(_ width: CGFloat, _ height: CGFloat) {
@@ -135,7 +134,6 @@ class Thumb:Button2{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 */
-
 /*
 class Button2:InteractiveView2{
     init(_ width: CGFloat, _ height: CGFloat) {

@@ -50,8 +50,7 @@ class SliderTextArea:TextArea{
 	func onSliderChange(event:SliderEvent){
 		if(event.origin === vSlider) {
             //TextFieldModifier.vScrollTo(text.getTextField(), event.progress)
-        }
-		else {
+        }else {
             //TextFieldModifier.hScrollTo(text.getTextField(), event.progress)
         }
 	}

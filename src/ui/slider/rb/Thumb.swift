@@ -1,5 +1,4 @@
 import Cocoa
-
 /**
  * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
@@ -10,7 +9,6 @@ class Thumb:Button{
     var framesToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
     var animator:Animator?
-    
     override func resolveSkin() {
         super.resolveSkin()
     }

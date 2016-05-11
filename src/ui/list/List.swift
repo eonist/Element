@@ -101,6 +101,4 @@ class List:Element,IList{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-
-
 // Continue here: how did you solve the clipping issue in Element? can it be used to mask? make a mask test

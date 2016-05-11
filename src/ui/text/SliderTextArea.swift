@@ -14,7 +14,6 @@ class SliderTextArea:TextArea{
 	var hSlider:HSlider?
 	var vSliderInterval:Int?
 	var hInterval:Int?
-	 
 	init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ scrollBarSize:CGFloat = 24, _ parent:IElement? = nil, _ id:String? = nil){
 		self.scrollBarSize = scrollBarSize
 		super.init(width,height,text,parent,id)

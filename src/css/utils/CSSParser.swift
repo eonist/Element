@@ -1,8 +1,8 @@
 import Foundation
 /*
-* // :TODO: if you strip the inital css data for spaces then you wont need to removeWrappingWhiteSpace all the time
-* // :TODO: use Vector<String> for speed etc, vector is faster for array yes but not for associate object array?
-*/
+ * // :TODO: if you strip the inital css data for spaces then you wont need to removeWrappingWhiteSpace all the time
+ * // :TODO: use Vector<String> for speed etc, vector is faster for array yes but not for associate object array?
+ */
 class CSSParser{
     static var precedingWith:String = "(?<=^|\\})"
     static var nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"

@@ -57,16 +57,13 @@ class CSSPropertyParser {
      * NOTE: somehow also add support for: reflect and repeat
      * NOTE: the reason we do it this way is that this approach can make any 2 point radial gradient. some scaling may be needed
      * IMPORTANT
-     
      * //SpreadMethod.REFLECT
      //SpreadMethod.REPEAT
      //SpreadMethod.PAD for the spread
-     *
      * // :TODO: create a small app that generates the radial-gradient from an svg
      * // :TODO: possibly use the RegExp.exec to loop the properties!!
      */
      class func radialGradient(string:String)->IGradient{
-
         let propertyString:String = string.match("(?<=radial-gradient\\().+?(?=\\);?)")[0]
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let setupString:String = properties.shift()
@@ -78,7 +75,6 @@ class CSSPropertyParser {
         let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1;
         let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1;
         let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
-        
         gradient.rotation = rotation
         gradient.startCenter = /*<-focalPointRatio*/ CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
         gradient.startRadius = CGSize(0,0)
@@ -86,8 +82,6 @@ class CSSPropertyParser {
         gradient.endRadius = CGSize(yScale,xScale)/*<---we reorder the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
         return gradient
      }
-    
-     
     /**
      * Returns an array comprised of values if the individual value is a digit then it is processed as a digit if its not a digit then its just processed as a string
      * // :TODO: does this support comma delimited lists?
@@ -101,9 +95,9 @@ class CSSPropertyParser {
         return array;
     }
     /**
-    * TextFormat
-    * // :TODO: should possibly return a TextFormat class instance or alike
-    */
+     * TextFormat
+     * // :TODO: should possibly return a TextFormat class instance or alike
+     */
     class func textFormat(input : String) -> Dictionary<String,Any> {
         var textFormat:Dictionary<String,Any> = Dictionary<String,Any>();
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
@@ -192,7 +186,6 @@ private class Utils{
         for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
             let property:String = properties[i];
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
-            
             let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
             //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
@@ -200,17 +193,13 @@ private class Utils{
                 //let content = RegExp.value(property, match, 0)//the entire match
                 let color:String = RegExp.value(property, match, 1)
                 //Swift.print("color: " + color)
-                
                 let alpha:String = RegExp.value(property, match, 2)
                 //Swift.print("alpha: " + alpha)
-                
                 let alphaVal:CGFloat = CGFloat(Utils.alpha(alpha))
                 //Swift.print("alphaVal: " + "\(alphaVal)")
                 gradient.colors.append(CGColorParser.cgColor(StringParser.color(color),alphaVal))//append color
-                
                 let ratio:String = RegExp.value(property, match, 3)
                 //Swift.print("ratio: " + ratio)
-                
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 //Swift.print("gradient.locations start: " + "\(gradient.locations.count)")
@@ -275,5 +264,4 @@ linear-gradient(90deg|90|left|right|top|bottom|, #B1D0DE 0.5|50%| 0.2|20%|, #F3F
 ,]?
 <color-stop>[, <color-stop>]+
 );
-
 */

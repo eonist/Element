@@ -64,9 +64,9 @@ extension LineGraphic{
     }
 }
 /**
-* NOTE: sets p1 to the position
-* NOTE: sets p2 to the relative position of p1 to p2
-*/
+ * NOTE: sets p1 to the position
+ * NOTE: sets p2 to the relative position of p1 to p2
+ */
 /*
 override func setPosition(position:CGPoint){
 p2.x = position.x + NumberParser.relativeDifference(p1.x, p2.x)

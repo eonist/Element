@@ -20,7 +20,6 @@ class ColumnParser {
         var indices:Array<Int> = []
         for (var i : Int = 0; i < sortList.count; i++) {indices.append(sortList[i]["index"] as! Int)}
 
-        
         return indices
     }
 }

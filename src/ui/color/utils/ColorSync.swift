@@ -23,4 +23,3 @@ class ColorSync {
         if (ColorSync.broadcaster != nil) {ColorSync.broadcaster!.setColorValue(color)}
     }
 }
-

@@ -98,7 +98,6 @@ class GradientPanel:Element,IGradientPanel{
         if(event.type == SpinnerEvent.change && event.origin === focalPointRatioSpinner){onFocalPointRatioSpinnerChange(event as! SpinnerEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientTypeSelectGroup){onGradientTypeSelectGroupChange(event as! SelectGroupEvent)}
-        /**/
     }
     /**
      * @Note you can set matrix to nil in the @param gradient

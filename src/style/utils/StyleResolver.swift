@@ -34,7 +34,6 @@ class StyleResolver{
         var styleComposition:IStyle = Style("styleComp")
         //let classType:String = element.getClassType()//gets the classtype from the component
         let querrySelector:ISelector = ElementParser.selector(element);// :TODO: possibly move up in scope for optimizing
-
         //Swift.print("styleComposition")
         //Swift.print(StyleManager.styles.count)
         for style in StyleManager.styles{//loop through styles
@@ -57,10 +56,8 @@ class StyleResolver{
                         StyleModifier.combine(&styleComposition, style)
                     }
                 }
-            }
-            
+            }    
         }
-        
         //Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")
         //StyleParser.describe(styleComposition)
         return styleComposition

@@ -16,7 +16,6 @@ protocol IStyle {
     func getStyleProperties(name:String)->Array<IStyleProperty>
     func getStylePropertyAt(index:Int)->IStyleProperty
 }
-
 extension IStyle{
     /**
      * Convenience method since apple doesnt support default values in protocols

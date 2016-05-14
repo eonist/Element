@@ -25,7 +25,6 @@ class StyleModifier {
         }
         //Swift.print("\(String(style))"+" PROPERTY BY THE NAME OF "+styleProperty.name+" WAS NOT FOUND IN THE PROPERTIES ")//this should throw error
     }
-    
     /**
      * Combines @param a and @param b
      * @Note: if similar styleProperties are found @param b takes precedence
@@ -109,8 +108,6 @@ class StyleModifier {
         ArrayModifier.unshift(&style.styleProperties, styleProperty)
     }
 }
-
-
 private class Utils{
     class func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
         let len = style.styleProperties.count

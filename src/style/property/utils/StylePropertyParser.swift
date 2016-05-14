@@ -67,7 +67,6 @@ class StylePropertyParser{
         let lineColor:NSColor = Utils.nsColor(lineColorValue, lineAlpha)
         return LineStyle(lineThickness, lineColor);
     }
-    
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */

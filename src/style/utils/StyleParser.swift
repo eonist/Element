@@ -1,5 +1,4 @@
 import Foundation
-
 /**
  *
  * @Note: One could use  Vector<String> for speed etc, but that would make the framework less readable for now
@@ -44,7 +43,6 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         for styleProperty : IStyleProperty in style.styleProperties{ propertyNames.append(styleProperty.name) }
         return propertyNames;
     }
-    
     /**
      * @param name the propertyname
      */

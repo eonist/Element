@@ -1,5 +1,4 @@
 import Foundation
-
 class StyleAsserter {
     /**
      * Asserts if @param style is a direct style of the @param stack (the stack is derived from an Element instance)

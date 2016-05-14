@@ -124,7 +124,6 @@ private class Utils{
         for state:String in a {weight += b.count - b.indexOf(state)!/*<-is this really wise? what if it is -1 aka doesnt exist*/}
         return weight;
     }
-     
 }
 /**
  * RegExp pattern for the SelectorParser.selector() method

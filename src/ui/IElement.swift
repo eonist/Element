@@ -12,7 +12,6 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     func getClassType()->String
     func getWidth()->CGFloat
     func getHeight()->CGFloat
-    
     /*getters / setters*/
     var parent:IElement?{get}
     //var state:String{get set}/*skinState is renamed to state because objc won't allow implicit setter with the same name*/

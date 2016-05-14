@@ -1,6 +1,5 @@
 import Cocoa
 
-
 class ElementParser{
     /**
      * Returns all children in @param element that is of type IElement

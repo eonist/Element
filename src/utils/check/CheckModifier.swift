@@ -14,6 +14,4 @@ class CheckModifier {
         for (var i:Int=0; i < checkables.count; i++) {if (checkables[i] === item) {return checkables.splice(i, 1) as? ICheckable}}// :TODO: dispatch something?
         return nil
     }
-    
 }
-

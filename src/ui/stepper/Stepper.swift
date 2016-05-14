@@ -12,5 +12,4 @@ class Stepper : Element{
         minusButton = addSubView(Button(height,height,self, "minus"))
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    
 }

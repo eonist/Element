@@ -76,7 +76,6 @@ class HSlider:Element{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-
 private class Utils{
     /**
      * Returns the x position of a nodes @param progress

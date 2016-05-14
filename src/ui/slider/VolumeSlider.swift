@@ -15,7 +15,6 @@ class VolumeSlider:HSlider{
         return super.onThumbMove(event)
     }
     override func setProgressValue(progress: CGFloat) {
-        
         super.setProgressValue(progress)
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())
     }

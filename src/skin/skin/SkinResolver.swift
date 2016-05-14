@@ -26,7 +26,6 @@ class SkinResolver{
         fatalError("SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: "/* + element.id*/)
     }
 }
-
 private class Utils{
     /**
     * Returns a skin name based on what class type the element parent is

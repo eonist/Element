@@ -1,6 +1,5 @@
 import Foundation
 
-
 class SkinStates {
     static var none:String = "";/*aka idle*/
     static var over:String = "over";
@@ -11,7 +10,6 @@ class SkinStates {
     static var focused:String = "focused";
     static var disabled:String = "disabled";
 }
-
 /*
 enum SkinStates:String
 case None = ""

@@ -2,8 +2,8 @@ import Foundation
 
 class SkinParser {
     /**
-    *
-    */
+     *
+     */
     class func totalWidth(skin:ISkin)->CGFloat {
         let margin:Margin = self.margin(skin);
         let border:Border = self.border(skin);

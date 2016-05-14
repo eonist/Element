@@ -76,5 +76,3 @@ extension SizeableGraphic{
         self.init(rect.origin,rect.size,decoratable)
     }
 }
-
-

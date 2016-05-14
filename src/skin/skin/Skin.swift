@@ -83,5 +83,4 @@ class Skin:InteractiveView2,ISkin{
     func getHeight()->CGFloat{
         return StylePropertyParser.height(self) ?? self.height!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin);
     }
-    
 }

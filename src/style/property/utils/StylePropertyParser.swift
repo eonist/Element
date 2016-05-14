@@ -103,12 +103,10 @@ class StylePropertyParser{
      * TODO: needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc. 
      */
     class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
-        
         let val:Any? = value(skin, CSSConstants.cornerRadius,depth);
         var fillet:Fillet = Fillet();
         //Swift.print(val)
         if((val is CGFloat) || (val is Array<Any>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
-        
         //Swift.print("StylePropertyParser.fillet: " + String(ClassParser.classType(val!)))
         //Swift.print(fillet.topRight)
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius, depth);//returns -1 if it doesnt exist
@@ -212,10 +210,8 @@ class StylePropertyParser{
      * // :TODO: should this have a failsafe if there is no Padding property in the style?
      * // :TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
-    
     //Note to self: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
     //you may want to copy margin on this
-    
     class func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
         let value:Any? = self.value(skin, CSSConstants.padding, depth)
         //Swift.print("StylePropertyParser.padding.value: " + "\(value)")
@@ -302,13 +298,11 @@ private class Utils{
                     //				trace("skin.element.parent != null: " + skin.element.parent != null);
                     //				trace("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin);
                     return val
-                    
                 }else {
                     //print("ems");
                     return valNum * CSSConstants.emsFontSize;/*["suffix"] == "ems"*/
                 }
             }
-            
         }
         //fatalError("NOT IMPLEMENTED YET")
         //be warned this method is far from complete

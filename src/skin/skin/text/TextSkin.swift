@@ -14,7 +14,6 @@ class TextSkin:Skin,ITextSkin{
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
         //Swift.print("TextSkin.init()")
         textField = TextField(frame: NSRect())
-        
         //textField.sizeToFit()
         textField.stringValue = text
         super.init(style, state, element)
@@ -34,7 +33,6 @@ class TextSkin:Skin,ITextSkin{
             if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
             if(hasTextChanged) {hasTextChanged = false}
             SkinModifier.align(self, textField)
-            
         }
         super.draw()
     }
@@ -64,7 +62,6 @@ class TextSkin:Skin,ITextSkin{
         hasTextChanged = true
         //draw();//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple
     }
-    
     /**
      * // :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
      */
@@ -75,7 +72,5 @@ class TextSkin:Skin,ITextSkin{
             return textField.frame.width + padding.left + padding.right;
         }else {return super.getWidth()}
     }
-    
-    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

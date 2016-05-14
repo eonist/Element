@@ -118,7 +118,6 @@ private class Utils{
                 //Swift.print("prefix: " + prefix)
                 prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix) : prefix;
                 
-                
                 let group:String =  (styleName as NSString).substringWithRange(match.rangeAtIndex(2))
                 //Swift.print("group: " + group)
                 
@@ -128,7 +127,6 @@ private class Utils{
                 //Swift.print("suffix: " + suffix)
                 
                 suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix;
-                
                 if(group == "") {
                     sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{
@@ -145,12 +143,9 @@ private class Utils{
                         sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)));
                     }
                 }
-                /**/
             }
             //Swift.print( match.numberOfRanges)
-            //
         }
-        //styleName
         return sibblingStyles
     }
 }

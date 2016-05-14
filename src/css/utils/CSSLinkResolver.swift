@@ -23,7 +23,6 @@ class CSSLinkResolver {
         let matches = RegExp.matches(string, linkPropertyPattern)
         matches.count
         for var i = matches.count-1; i > -1; --i{
-            
             let match:NSTextCheckingResult = matches[i]
             //print(i)
             //Swift.print(match.numberOfRanges)
@@ -31,10 +30,8 @@ class CSSLinkResolver {
             //Swift.print("Name: " + name)
             let value = (string as NSString).substringWithRange(match.rangeAtIndex(CSSElementType.value.rawValue))//
             //Swift.print("Value: " + value)
-            
             let replacementString:String = Utils.replaceLinks(value,name,string)
             //Swift.print("Result: " + replacementString)
-            
             let range:NSRange = match.rangeAtIndex(2)//the range of the value
             //Swift.print("CSSLinkResolver.resolveLinks() range: " + String(range))
             string = (string as NSString).stringByReplacingCharactersInRange(range, withString: replacementString)

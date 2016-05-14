@@ -31,8 +31,6 @@ class RBSliderList:List {
         scrollController?.scrollWheel(theEvent)//forward the event
         if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/
     }
-    
-    
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
         scrollController?.mover.value = lableContainer!.frame.y

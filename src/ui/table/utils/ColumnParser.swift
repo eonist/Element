@@ -16,10 +16,8 @@ class ColumnParser {
         }else{
             sortList.sortInPlace({$1["text"] as! String > $0["text"] as! String})
         }
-        
         var indices:Array<Int> = []
         for (var i : Int = 0; i < sortList.count; i++) {indices.append(sortList[i]["index"] as! Int)}
-
         return indices
     }
 }

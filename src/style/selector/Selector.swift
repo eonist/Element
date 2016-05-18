@@ -1,4 +1,7 @@
 import Foundation
+/**
+ * NOTE: ObjectC already has a class named Selector that may conflict with this one, use: this syntax instead if you need to use the ObjC Selector: ObjectiveC.Selector
+ */
 class Selector:ISelector{// :TODO: you should probably use a struct instead of class in the future
     var element:String/*Button*///should be nil
     var classIds:Array<String>/*.customButton*///should be nil

@@ -26,9 +26,9 @@ class PathGraphic:SizeableDecorator{
         //Swift.print("boundingBox: " + "\(boundingBox)")
         //boundingBox += fillBoundingBox.topLeft
         graphic.lineShape.frame = boundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
-        let offset = CGPoint(-boundingBox.x,-boundingBox.y)
-        var offsetPath = cgPath.copy()
-        graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in 0,0 space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
+        let offset = CGPoint(-boundingBox.x,-boundingBox.y)/*we get the amount of offset need to set the path in (0,0) inside the frame*/
+        var offsetPath = cgPath.copy()/*we clone the path so that the original isnt modified*/
+        graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in (0,0) space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
 }
 extension PathGraphic{

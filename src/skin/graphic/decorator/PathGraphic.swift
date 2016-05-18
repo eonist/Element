@@ -15,9 +15,9 @@ class PathGraphic:SizeableDecorator{
         //Swift.print("PathGraphic.drawFill()")
         fillBoundingBox = CGPathGetPathBoundingBox(cgPath)/*there is also CGPathGetPathBoundingBox, CGPathGetBoundingBox, which works a bit different, the difference is probably just support for cruves etc*/
         //Swift.print("fillPathBoundingBox: " + "\(fillBoundingBox)")
-        graphic.fillShape.frame = fillBoundingBox
-        let offset = CGPoint(-fillBoundingBox.x,-fillBoundingBox.y)
-        var offsetPath = cgPath.copy()
+        graphic.fillShape.frame = fillBoundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
+        let offset = CGPoint(-fillBoundingBox.x,-fillBoundingBox.y)/*we get the amount of offset need to set the path in (0,0) inside the frame*/
+        var offsetPath = cgPath.copy()/*we clone the path so that the original isnt modified*/
         graphic.fillShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
     }
     override func drawLine() {

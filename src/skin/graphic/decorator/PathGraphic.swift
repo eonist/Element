@@ -25,7 +25,7 @@ class PathGraphic:SizeableDecorator{
         var boundingBox:CGRect = CGPathParser.boundingBox(cgPath, graphic.lineStyle!)/*regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
         //Swift.print("boundingBox: " + "\(boundingBox)")
         //boundingBox += fillBoundingBox.topLeft
-        graphic.lineShape.frame = boundingBox
+        graphic.lineShape.frame = boundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
         var offsetPath = cgPath.copy()
         graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)

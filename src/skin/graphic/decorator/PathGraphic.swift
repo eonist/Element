@@ -28,7 +28,7 @@ class PathGraphic:SizeableDecorator{
         graphic.lineShape.frame = boundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/
         let offset = CGPoint(-boundingBox.x,-boundingBox.y)
         var offsetPath = cgPath.copy()
-        graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)
+        graphic.lineShape.path = CGPathModifier.translate(&offsetPath, offset.x, offset.y)/*we translate the path so that its in 0,0 space in the frame, we position the frame not the path so that the drawing is as optimized as can be*/
     }
 }
 extension PathGraphic{

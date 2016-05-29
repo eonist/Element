@@ -3,7 +3,7 @@ import Cocoa
 class TextButton:Button {
     var text:Text? = nil;
     var textString:String;
-    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "defaultText", _ parent: IElement?, _ id: String?) {
+    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "defaultText", _ parent: IElement?, _ id: String? = nil) {
         textString = text;
         super.init(width, height, parent, id)
     }
@@ -40,7 +40,9 @@ extension TextButton{
     /**
      * NOTE: Keep this method around until you have phased out this way of initiating
      */
+    /*
     convenience init(_ text:String = "defaultText", _ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
         self.init(width,height,text,parent,id)
     }
+    */
 }

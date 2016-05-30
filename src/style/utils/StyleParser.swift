@@ -11,11 +11,11 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     class func depthCount(style:IStyle)->Int{
         let propertyNames:Array = stylePropertyNames(style);
         //Swift.print("propertyNames: " + "\(propertyNames)")
-        let fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0;
+        let fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0
         //Swift.print(style.getStyleProperties("fill"))
         //Swift.print("fillCount: " + "\(fillCount)")
-        let lineCount:Int = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").count : 0;
-        return max(fillCount,lineCount);
+        let lineCount:Int = ArrayAsserter.has(propertyNames, "line") ? style.getStyleProperties("line").count : 0
+        return max(fillCount,lineCount)
     }
     /**
      * // :TODO: write java doc
@@ -31,7 +31,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
             else {
                 value = String(styleProperty.value)//ObjectParser.parse(styleProperty.value);//was if(styleProperty.value is Object)  //if the property is an object parse it
             }
-            Swift.print(" " + styleProperty.name + ":" + value + " depth:" + "\(styleProperty.depth)");
+            Swift.print(" " + styleProperty.name + ":" + value + " depth:" + "\(styleProperty.depth)")
         }
     }
     /**
@@ -51,6 +51,6 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
             let styleProperty : IStyleProperty  = style.styleProperties[i]
             if(styleProperty.name == name && styleProperty.depth == depth){ return i }
         }
-        return -1;
+        return -1
     }
 }

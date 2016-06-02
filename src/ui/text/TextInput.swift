@@ -5,7 +5,7 @@ class TextInput :Element{
     var inputTextArea : TextArea?
     var textString:String
     var inputString:String
-    init(_ width : CGFloat, _ height : CGFloat, _ textString:String, _ inputString:String, _ parent : IElement? = nil,  id:String? = nil) {
+    init(_ width : CGFloat, _ height : CGFloat, _ textString:String, _ inputString:String, _ parent : IElement? = nil,  _ id:String? = nil) {
         self.textString = textString
         self.inputString = inputString
         super.init(width, height, parent, id)

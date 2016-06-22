@@ -222,7 +222,7 @@ private class Utils{
             let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
             rotation = Trig.angleType(angleType)-180.0;// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}
-        //		trace("rotation: " + rotation);
+        //print("rotation: " + rotation);
         return rotation;
     }
     /**

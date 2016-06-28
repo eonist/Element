@@ -47,7 +47,6 @@ class CustomView:WindowView{
     func onMinimizeButtonReleaseInside(){
         Swift.print("onMinimizeButtonReleaseInside")
         //minimize the window here
-        
         //NSApp.miniaturizeAll(self)//minimizes all windows in the app
         self.window?.miniaturize(self)
     }

@@ -66,10 +66,13 @@ class Button:Element {
     /**
      * Convenince
      */
+    //This method was turned off temporarily, because it could fire after, this could be resolved by moving the mouseUp call in INteractiveView2 to before the mouseUpInside and mouseUpOutside calls.
+    /*
     override func mouseUp(event: MouseEvent) {
         //Swift.print("Button.mouseUp: ")
         super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
+    */
     override func hitTest(aPoint: NSPoint) -> NSView? {//TODO: this method can be removed
         //Swift.print("\(self.dynamicType)"+".hitTest() aPoint: " + "\(aPoint)")
         return super.hitTest(aPoint)

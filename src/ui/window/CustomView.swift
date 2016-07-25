@@ -38,8 +38,8 @@ class CustomView:WindowView{
     func onCloseButtonReleaseInside() {
         Swift.print("onCloseButtonReleaseInside")
         //Close window here
-        //self.window?.close()//this closes the window
-        NSApp.terminate(self)//quits the app, or does it Quit the window?
+        self.window?.close()//this closes the window
+        //NSApp.terminate(self)//this method actually quits the app
     }
     /**
      *
@@ -74,5 +74,6 @@ class CustomView:WindowView{
         if(event.origin === closeButton && event.type == ButtonEvent.upInside){onCloseButtonReleaseInside()}
         else if(event.origin === minimizeButton && event.type == ButtonEvent.upInside){onMinimizeButtonReleaseInside()}
         else if(event.origin === maximizeButton && event.type == ButtonEvent.upInside){onMaximizeButtonReleaseInside()}
+        //super.onEvent(event)//<--beta
     }
 }

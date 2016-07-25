@@ -14,11 +14,11 @@ import Foundation
 
 
 class TitleView:CustomView{
+    var textArea:TextArea?
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = "") {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        
         var css:String = ""
         css += "TextArea{"
         css +=     "float:none;"
@@ -50,10 +50,8 @@ class TitleView:CustomView{
         
         super.resolveSkin()
         
-        let textArea:TextArea = addSubView(TextArea(NaN,24,"TextArea test",self))
-        textArea.text?.isInteractive = false
-        
-        
+        textArea = addSubView(TextArea(NaN,24,"Title goes here",self))
+        textArea!.text?.isInteractive = false
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -74,7 +74,7 @@ class List:Element,IList{
     func onUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
         Swift.print("selectedIndex: " + "\(selectedIndex)")
-        ListModifier.selectAt(self,selectedIndex);
+        ListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
     override func onEvent(event: Event) {

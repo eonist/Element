@@ -12,7 +12,7 @@ class SizeableDecorator:PositionalDecorator,ISizeable {
         set{
             if(decoratable is SizeableGraphic){(decoratable as! SizeableGraphic).size = newValue}//<--this line can be merged with the bellow line, just use as! ISizable
             else if(decoratable is SizeableDecorator){(decoratable as! SizeableDecorator).size = newValue}
-            else{fatalError("\(decoratable)" + "Must subclass SizeableGraphic")}
+            else{fatalError("\(decoratable)" + " must subclass SizeableGraphic")}
         }
     }
     /*override func draw() {

@@ -12,7 +12,7 @@ import Cocoa
 
 class SelectGroup:EventSender{
     var selectables:Array<ISelectable> = []
-    var selected:ISelectable?
+    private var selected:ISelectable?
     init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
         super.init()
         self.selected = selected

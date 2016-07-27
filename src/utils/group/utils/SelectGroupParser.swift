@@ -15,7 +15,7 @@ class SelectGroupParser {
         //return selectGroup.selectables.indexOf(selectable)
     }
     /**
-     *
+     * Returns the index of a selected ISelectable in PARAM: selectGroup
      */
     class func indexOfSelected(selectGroup:SelectGroup)->Int {
         let selected:ISelectable? = SelectGroupParser.selected(selectGroup)

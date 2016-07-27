@@ -18,7 +18,7 @@ class CustomView:WindowView{
      */
     func createTitleBar(){
         //Swift.print("createTitleBar() ")
-        section = addSubView(Section(75,26,self,"titleBar"))
+        section = addSubView(Section(75,22,self,"titleBar"))/*height was 26 but we added 4px as padding-top*/
         closeButton = section!.addSubView(Button(0,0,section!,"close")) /*<--TODO: the w and h should be NaN, test if it supports this*/
         minimizeButton = section!.addSubView(Button(0,0,section!,"minimize"))
         maximizeButton = section!.addSubView(Button(0,0,section!,"maximize")) 

@@ -1,8 +1,10 @@
 import Cocoa
 /**
- * @Note: this class also works great with RadioBullets
- * @Note: Remember to add the selectGroup instance to the view so that the event works correctly // :TODO: this is a bug try to fix it
- * EXAMPLE:
+ * NOTE: this class also works great with RadioBullets
+ * NOTE: Remember to add the selectGroup instance to the view so that the event works correctly // :TODO: this is a bug try to fix it
+ * NOTE: Use the SelectGroupModifier and SelectGroupParser for Modifing and parsing the SelectGroup
+ * TODO: You could add a SelectGroupExtension class that adds Modifing and parsing methods to the SelectGroup instance!
+ * EXAMPLE: (IMPORTANT: We use the EventLib instead now)
  * let radioButtonGroup = RadioButtonGroup([rb1,rb2, rb3]);
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}

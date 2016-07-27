@@ -1,7 +1,7 @@
-import Foundation
+import Cocoa
 
 extension SelectGroup {
-    //Continue here, also make sure both selectgroups works in the ToolBarWin
     func selected(selectables:Array<ISelectable>) -> ISelectable? {return SelectParser.selected(self.selectables)}
+    func selected(view:NSView) -> ISelectable? {return SelectParser.selected(view)}
     
 }

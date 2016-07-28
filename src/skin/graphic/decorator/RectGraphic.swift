@@ -1,6 +1,12 @@
 import Cocoa
 /**
  * NOTE: the reason this class extends SizeableGraphic and not SizeableDecorator is because SizeableDecorator doesnt hold any size, it merly passes the size that the instance it decorates holds. Same goes for PositionalDecorator
+ * // :TODO: add support for DashedLineStyle
+ * // :TODO: needs x and y as arguments, or does it?, in the future this will be supported via fillOffset
+ * // :TODO: We need value based fillOffset (Think tank this)
+ * // :TODO: LineOffset could also use values (Think tank this)
+ * // :TODO: should beginFill have parameters or does this clutter up the decoration chain?
+ * // :TODO: could it rather extend a class called DecoratableGraphic and this class could have the decorator stuff and even extend graphic which could ahve the lineoffset stuff?
  */
 class RectGraphic:SizeableGraphic{
     /**

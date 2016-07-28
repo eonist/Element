@@ -11,7 +11,6 @@ class PolyLineGraphic:SizeableDecorator{
      */
     override func drawLine() {
         //Swift.print("PolyLineGraphic.drawLine()")
-        
-        graphic.lineShape.path = CGPathParser.lines(<#T##points: Array<CGPoint>##Array<CGPoint>#>, false, <#T##offset: CGPoint##CGPoint#>)
+        graphic.lineShape.path = CGPathParser.lines(points, false, CGPoint(0,0))
     }
 }

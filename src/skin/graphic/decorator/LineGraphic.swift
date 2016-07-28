@@ -10,7 +10,6 @@ class LineGraphic:SizeableDecorator {
         self.p2 = p2
         super.init(decoratable)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      *
      */
@@ -54,6 +53,7 @@ class LineGraphic:SizeableDecorator {
         return CGPoint(min(p1.x,p2.x),min(p1.y,p2.y))//topLeft
         //fatalError("Not implemented yet")
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension LineGraphic{
     convenience init(_ p1:CGPoint = CGPoint(), _ p2:CGPoint = CGPoint(), _ lineStyle:ILineStyle) {

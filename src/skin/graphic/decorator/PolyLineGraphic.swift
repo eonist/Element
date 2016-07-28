@@ -10,6 +10,10 @@ class PolyLineGraphic:SizeableDecorator{
      *
      */
     override func drawLine() {
+        
+        
+        //continue here: Use similar boundingBox code as PathGraphic
+        
         //Swift.print("PolyLineGraphic.drawLine()")
         graphic.lineShape.path = CGPathParser.lines(points, false, CGPoint(0,0))
     }

@@ -1,10 +1,10 @@
 import Foundation
 
-class PolyLineGraphic:SizeableDecorator{
+class PolyLineGraphic:PathGraphic{
     var points:Array<CGPoint>
     init(_ points:Array<CGPoint>, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         self.points = points
-        super.init(decoratable)
+        super.init(<#T##path: IPath##IPath#>)
     }
     /**
      *

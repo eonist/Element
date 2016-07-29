@@ -4,18 +4,14 @@ class PolyLineGraphic:PathGraphic{
     var points:Array<CGPoint>
     init(_ points:Array<CGPoint>, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         self.points = points
-        super.init(<#T##path: IPath##IPath#>)
+        let path:IPath = PathParser.path(points)/*convert points to a Path*/
+        super.init(path, decoratable)
     }
-    /**
-     *
-     */
-    override func drawLine() {
-        
-        
-        //continue here: Use similar boundingBox code as PathGraphic, actually you could just extend PathGraphic and override init and convert points to a Path
-        
-        
-        //Swift.print("PolyLineGraphic.drawLine()")
-        graphic.lineShape.path = CGPathParser.lines(points, false, CGPoint(0,0))
+    //----------------------------------
+    //  implicit getters / setters
+    //----------------------------------
+    func setPoints(points:Array<CGPoint>) {
+        self.points = points
+        draw()
     }
 }

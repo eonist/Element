@@ -15,8 +15,8 @@ class ColorSync {
             //print("event.target: " + event.target);
             //print("event.currentTarget: " + event.currentTarget);
             ColorSync.broadcaster = event.origin as? IColorInput
-            ColorSync.receiver!.setColorValue(event.color)
-            ColorSync.receiver!.onEvent(ColorInputEvent(ColorInputEvent.change,event.color))
+            ColorSync.receiver!.setColorValue(event.color!)
+            ColorSync.receiver!.onEvent(ColorInputEvent(ColorInputEvent.change,event.color!))
         }
     }
     class func setColor(color:NSColor) {

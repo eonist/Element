@@ -47,8 +47,8 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onColorInputChange(event : ColorInputEvent) {
         Swift.print("ColorPanel.onColorInputChange()")
-        ColorPanelUtils.applyColor(self,event.color)
-        color = event.color
+        ColorPanelUtils.applyColor(self,event.color!)
+        color = event.color!
         super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
     }
     private func onSpinnerChange(event:SpinnerEvent) {

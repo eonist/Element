@@ -8,7 +8,7 @@ class ColorInput:Element,IColorInput {
     var colorBox:ColorBox?
     var inputText:TextInput?
     var text:String
-    var color:NSColor
+    var color:NSColor?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ text:String = "Color: ", _ color:NSColor = NSColor.redColor(),_ parent:IElement? = nil,_ id:String = ""){
         self.text = text
         self.color = color
@@ -16,8 +16,8 @@ class ColorInput:Element,IColorInput {
     }
     override func resolveSkin(){
         super.resolveSkin();
-        self.inputText = addSubView(TextInput(width - height,height,text,"0x" + color.hexString,self))//ColorParser.hexByNumericRgb(_color)
-        self.colorBox = addSubView(ColorBox(height,height,color,self))
+        self.inputText = addSubView(TextInput(width - height,height,text,"0x" + color!.hexString,self))//ColorParser.hexByNumericRgb(_color)
+        self.colorBox = addSubView(ColorBox(height,height,color!,self))
     }
     func onColorBoxDown(event:ButtonEvent){
         ColorSync.receiver = self
@@ -32,7 +32,7 @@ class ColorInput:Element,IColorInput {
         let colorString:String = inputText!.inputTextArea!.text!.getText()//could also use: event.stringValue here
         if(ColorAsserter.isColor(colorString)){
             color = NSColorParser.nsColor(colorString.uint)
-            colorBox!.setColorValue(color);
+            colorBox!.setColorValue(color!)
             super.onEvent(ColorInputEvent(ColorInputEvent.change,self))//sends the event
         }
     }

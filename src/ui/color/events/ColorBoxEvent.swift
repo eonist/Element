@@ -7,5 +7,5 @@ class ColorBoxEvent:Event {
     }
 }
 extension ColorBoxEvent{
-    var color:NSColor {return (origin as! IColorInput).color}
+    var color:NSColor {return (origin as! IColorInput).color!}
 }

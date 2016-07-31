@@ -1,7 +1,7 @@
 import Cocoa
 
 class ColorBox:Button,IColorInput{
-    var color:NSColor
+    var color:NSColor?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ color:NSColor = NSColor.redColor(), _ parent:IElement? = nil, _ id:String = "") {
         self.color = color
         super.init(width,height,parent,id)

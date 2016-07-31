@@ -8,7 +8,7 @@ class ColorBox:Button,IColorInput{
         setColorValue(color)
     }
     override func mouseDown(event: MouseEvent) {
-        super.onEvent(ColorBoxEvent(ColorBoxEvent.change,color))
+        super.onEvent(ColorBoxEvent(ColorBoxEvent.change,color!))
     }
     func setColorValue(color:NSColor){
         self.color = color

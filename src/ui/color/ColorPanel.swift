@@ -10,7 +10,7 @@ class ColorPanel:Element,IColorPanel{
     static var hsb:String = "HSB"
     static var hls:String = "HLS"
     static var hsv:String = "HSV"
-    var color:NSColor
+    var color:NSColor?
     var colorInput:ColorInput?
     var spinner1:LeverSpinner?
     var spinner2:LeverSpinner?
@@ -32,8 +32,8 @@ class ColorPanel:Element,IColorPanel{
         /*SelectGroup*/
         colorTypeSelectGroup = SelectGroup([rgbBtn,hsbBtn,hlsBtn,hsvBtn],rgbBtn)
         colorTypeSelectGroup!.event = onEvent/*attach the selectGroup to self, to handle the events here*/
-        colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color,self))
-        let rgb:RGB = color.rgb/*LeverStepper instance ->Red (0 - 255) (Read/write)*/
+        colorInput = addSubView(ColorInput(width,itemHeight,"Color:",color!,self))
+        let rgb:RGB = color!.rgb/*LeverStepper instance ->Red (0 - 255) (Read/write)*/
         /*LeverSpinner*/
         spinner1 = addSubView(LeverSpinner(width, itemHeight,"Red:",rgb.r.cgFloat,1,0,255,1,100,200,self))
         spinner2 = addSubView(LeverSpinner(width, itemHeight,"Green:",rgb.g.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Green (0 - 255) (Read/write)*/
@@ -43,7 +43,7 @@ class ColorPanel:Element,IColorPanel{
     private func onColorTypeSelectGroupChange(event:SelectGroupEvent) {
         //Swift.print("onColorTypeSelectGroupChange()")
         ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
-        ColorPanelUtils.applyColor(self,color)
+        ColorPanelUtils.applyColor(self,color!)
     }
     private func onColorInputChange(event : ColorInputEvent) {
         Swift.print("ColorPanel.onColorInputChange()")

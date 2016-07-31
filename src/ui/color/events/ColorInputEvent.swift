@@ -8,5 +8,5 @@ class ColorInputEvent:Event {
     }
 }
 extension ColorInputEvent{
-    var color:NSColor {return (origin as! IColorInput).color}
+    var color:NSColor? {return (origin as! IColorInput).color}
 }

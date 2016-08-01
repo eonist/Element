@@ -20,7 +20,7 @@ class TitleView:CustomView{
     }
     override func resolveSkin() {
         var css:String = ""
-        css += "TextArea{"
+        css += "TextArea#winTitle{"
         css +=     "float:none;"
         css +=     "clear:none;"
         css +=     "width:100%;"
@@ -31,7 +31,7 @@ class TitleView:CustomView{
         css +=     "line-thickness:0px;"
         css +=     "background:true;"
         css += "}"
-        css += "TextArea Text{"
+        css += "TextArea#winTitle Text{"
         css +=     "width:100%;"
         css +=     "height:16px;"
         css +=     "offset:-75px,0px;"//<- set the width of the text to 100% and the offset to -the width of the titlebarIconContainer
@@ -50,7 +50,7 @@ class TitleView:CustomView{
         
         super.resolveSkin()
         
-        textArea = addSubView(TextArea(NaN,24,"Title goes here",self))
+        textArea = addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))
         textArea!.text?.isInteractive = false
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -60,7 +60,10 @@ class LeverStepper:Element{
     func onButtonUp(){
         Swift.print("LeverStepper.onButtonUp()")
         Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
-        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){
+            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
+            Swift.print("after removal of leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
+        }//we remove a global mouse move event listener
         Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic

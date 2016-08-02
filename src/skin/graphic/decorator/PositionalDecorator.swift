@@ -12,8 +12,8 @@ class PositionalDecorator:GraphicDecoratable,IPositional{
         }
         set{
             if(decoratable is PositionalGraphic){(decoratable as! PositionalGraphic).pos = newValue}
-            else if(decoratable is IPositional){(decoratable as! IPositional).pos = newValue}
-            else{fatalError("Must subclass PositionalGraphic")}
+            else if(decoratable is PositionalDecorator){(decoratable as! PositionalDecorator).pos = newValue}
+            else{fatalError("Must subclass PositionalGraphic: " + "\(decoratable)")}
         }
     }
     /**

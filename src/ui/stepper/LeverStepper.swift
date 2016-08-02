@@ -66,12 +66,13 @@ class LeverStepper:Element{
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
-        return onButtonMove(event,plusButton!)
-        
+         onButtonMove(event,plusButton!)
+        return nil
         //the problem could actually be here, try to return nil?!?
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{
-        return onButtonMove(event,minusButton!)
+         onButtonMove(event,minusButton!)
+        return nil
     }
     func onButtonMove(event:NSEvent,_ button:Button)-> NSEvent?{
         //Swift.print("onButtonMove")

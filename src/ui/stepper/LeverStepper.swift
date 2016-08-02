@@ -58,7 +58,7 @@ class LeverStepper:Element{
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))
     }
     func onButtonUp(){
-        //Swift.print("onButtonUp()")
+        Swift.print("LeverStepper.onButtonUp()")
         //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
         if(globalMouseMovedHandler != nil){NSEvent.removeMonitor(globalMouseMovedHandler!)}//we remove a global mouse move event listener
         //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")

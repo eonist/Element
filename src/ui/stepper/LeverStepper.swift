@@ -62,17 +62,17 @@ class LeverStepper:Element{
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
+            leftMouseDraggedEventListener= nil
         }//we remove a global mouse move event listener
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
-         onButtonMove(event,plusButton!)
-        return nil
+        return onButtonMove(event,plusButton!)
+        
         //the problem could actually be here, try to return nil?!?
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{
-         onButtonMove(event,minusButton!)
-        return nil
+         return onButtonMove(event,minusButton!)
     }
     func onButtonMove(event:NSEvent,_ button:Button)-> NSEvent?{
         //Swift.print("onButtonMove")

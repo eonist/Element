@@ -43,7 +43,7 @@ class LeverStepper:Element{
         onMouseDownMouseY  = minusButton!.localPos().y
         //Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
-        if(leftMouseDraggedEventListener != nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
+        if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
     }
     func onPlusButtonUpInside() {
         //Swift.print("onPlusButtonUpInside")

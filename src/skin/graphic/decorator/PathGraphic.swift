@@ -1,6 +1,7 @@
 import Foundation
 /**
  * NOTE: the path compile method is the important part in this class
+ * NOTE: You need to re-compile the cgPath manually if you want any update to the path to also reflect the cgPath
  */
 class PathGraphic:SizeableDecorator{
     var path:IPath

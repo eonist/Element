@@ -58,7 +58,7 @@ class LeverStepper:Element{
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))
     }
     func onButtonUp(){
-        Swift.print("LeverStepper.onButtonUp()" + "\(self)")
+        //Swift.print("LeverStepper.onButtonUp()" + "\(self)")
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)

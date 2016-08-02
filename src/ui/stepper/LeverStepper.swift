@@ -68,8 +68,6 @@ class LeverStepper:Element{
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
         return onButtonMove(event,plusButton!)
-        
-        //the problem could actually be here, try to return nil?!?
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{
          return onButtonMove(event,minusButton!)

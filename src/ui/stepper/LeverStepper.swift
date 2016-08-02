@@ -35,7 +35,7 @@ class LeverStepper:Element{
         //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
         onMouseDownMouseY = plusButton!.localPos().y
         onMouseDownValue = self.value
-        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onPlusButtonMove )//we add a global mouse move event listener
+        if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onPlusButtonMove )}//we add a global mouse move event listener
     }
     func onMinusButtonDown() {
         //Swift.print("onMinusButtonDown()")
@@ -43,7 +43,7 @@ class LeverStepper:Element{
         onMouseDownMouseY  = minusButton!.localPos().y
         //Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
-        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove )//we add a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
     }
     func onPlusButtonUpInside() {
         //Swift.print("onPlusButtonUpInside")
@@ -62,7 +62,7 @@ class LeverStepper:Element{
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
-            leftMouseDraggedEventListener= nil
+            leftMouseDraggedEventListener = nil
         }//we remove a global mouse move event listener
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }

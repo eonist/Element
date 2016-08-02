@@ -236,11 +236,11 @@ class StylePropertyParser{
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth);
         //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!;/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight,depth) > marginIndex ? metric(skin, CSSConstants.marginRight,depth) : Utils.metric(margin.right, skin))!;
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop,depth) > marginIndex ? metric(skin, CSSConstants.marginTop,depth) : Utils.metric(margin.top, skin))!;
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom,depth)! : Utils.metric(margin.bottom, skin)!;
-        return margin;
+        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight,depth) > marginIndex ? metric(skin, CSSConstants.marginRight,depth) : Utils.metric(margin.right, skin))!
+        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop,depth) > marginIndex ? metric(skin, CSSConstants.marginTop,depth) : Utils.metric(margin.top, skin))!
+        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom,depth)! : Utils.metric(margin.bottom, skin)!
+        return margin
     }
     /**
      *
@@ -259,20 +259,20 @@ class StylePropertyParser{
      */
     class func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth);
-        return Utils.metric(value,skin);
+        return Utils.metric(value,skin)
     }
     /**
      * Beta
      */
     class func asset(skin:ISkin, _ depth:Int = 0)-> String {
-        return (value(skin, CSSConstants.fill,depth) as! Array<Any>)[0] as! String;
+        return (value(skin, CSSConstants.fill,depth) as! Array<Any>)[0] as! String
     }
     /**
      * TODO: this method is asserted before its used, so you may ommit the optionality
      */
     class func dropShadow(skin:ISkin, _ depth:Int = 0)->DropShadow? {
-        let dropShadow:Any? = value(skin, CSSConstants.drop_shadow,depth);
-        return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow;
+        let dropShadow:Any? = value(skin, CSSConstants.drop_shadow,depth)
+        return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow
     }
 }
 private class Utils{

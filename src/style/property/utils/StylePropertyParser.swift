@@ -317,7 +317,7 @@ private class Utils{
             let margin:Margin = SkinParser.margin(element.skin!)
             let border:Border = SkinParser.border(element.skin!)
             let padding:Padding = SkinParser.padding(element.skin!)
-            let width:CGFloat = element.getWidth();/*StylePropertyParser.height(element.skin);*/
+            let width:CGFloat = element.getWidth()/*StylePropertyParser.height(element.skin);*/
             let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
             //Swift.print("tot: " + "\(tot)")
             return tot/*Note used to be + padding.right + border.right + margin.right*/
@@ -336,7 +336,7 @@ extension StylePropertyParser{
      * Convenince method for deriving CGFloat values
      */
     class func number(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->CGFloat{
-        return CGFloat(Double(string(skin, propertyName,depth))!)
+        return string(skin, propertyName,depth).cgFloat//was cast like this-> CGFloat(Double()!)
     }
     /*
     * Convenince method for deriving String values

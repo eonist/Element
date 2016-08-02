@@ -62,7 +62,7 @@ class LeverStepper:Element{
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
-            leftMouseDraggedEventListener = nil
+            leftMouseDraggedEventListener = nil//<--this part may not be needed
         }//we remove a global mouse move event listener
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }

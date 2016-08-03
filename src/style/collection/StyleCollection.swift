@@ -27,12 +27,13 @@ class StyleCollection:IStyleCollection{
     }
     /**
      * TODO: One Could change this to return nothing
+     * RETURNS: the removed Style
      */
     func removeStyle(name:String)->IStyle?{
         let numOfStyles:Int = styles.count;
         for (var i : Int = 0; i < numOfStyles; i++) {
             if((styles[i] as IStyle).name == name){
-                return ArrayModifier.splice(&styles,i,1) as? IStyle
+                return ArrayModifier.splice2(&styles,i,1) as? IStyle
             }
         }
         return nil//could also return the index i guess -1 instead of nil, do we need to return anything ?

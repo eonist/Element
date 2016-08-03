@@ -24,7 +24,7 @@ class SelectGroupModifier {
     class func removeSelectable(selectGroup:SelectGroup,_ item:ISelectable)->ISelectable? {
         for (var i:Int = 0; i < selectGroup.selectables.count; i++) {
             if (selectGroup.selectables[i] === item) {
-                return selectGroup.selectables.splice(i,1)[0]	// :TODO: dispatch something?
+                return selectGroup.selectables.splice2(i,1)[0]	// :TODO: dispatch something?
             }
         }
         return nil

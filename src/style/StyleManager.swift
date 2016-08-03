@@ -20,7 +20,7 @@ class StyleManager{
      */
     class func removeStyle(name:String) -> IStyle? {
         let numOfStyles:Int = styles.count;
-        for (var i : Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice (i,1)[0]}}
+        for (var i : Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice2(i,1)[0]}}
         return nil
     }
     /**

@@ -16,7 +16,9 @@ class StyleResolver{
             if(selectorWeights != nil) {weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))}
         }
         //print("weightedStyles: " + weightedStyles.length);
-        if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
+        if(weightedStyles.count > 1) {
+            weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)
+        }//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         let styleName:String = SelectorParser.string(querrySelectors);
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
         for weightStyle:WeightedStyle in weightedStyles{

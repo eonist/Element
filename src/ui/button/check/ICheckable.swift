@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * IMPORTANT: The reason why getChecked and setChecked is used rather than variables is because we want to support class composition, methods overriding methods in sub classes. THis is not possible with variables. getChecked and setChecked also implies implicit gettters and setters which a word like "checked" does not
+ */
 protocol ICheckable: class/*derive only classes for the protocol, not structs, this enables === operator of protocol*/{
     func setChecked(isChecked:Bool)
     //func getChecked()->Bool

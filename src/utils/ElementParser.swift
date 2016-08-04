@@ -6,7 +6,7 @@ class ElementParser{
      * NOTE: if this doesnt work just use the array casting technique with the NSParser.children method
      */
     class func children<T>(view:NSView,_ type:T.Type)->Array<T> {
-        return NSViewParser.childrenOfType(view, type);
+        return NSViewParser.childrenOfType(view, type)
     }
     /**
      * Returns an Array instance comprised of Selector instances for each (element,classId,id and state) in the element "cascade" (the spesseficity)

@@ -122,7 +122,7 @@ private class Utils{
     class func stateWeight(a:Array<String>,_ b:Array<String>)->Int{
         var weight:Int = 0;
         for state:String in a {weight += b.count - ArrayParser.index(b,state)/*<-is this really wise? what if it is -1 aka doesnt exist*/}
-        return weight;
+        return weight
     }
 }
 /**

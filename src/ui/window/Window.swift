@@ -10,7 +10,8 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     /**
      * NOTE: remember to not set the width or height for the window in the css if you want the resizing working
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
-     * TODO: impliment the max and min sizes into the constructor arguments
+     * TODO: implement the max and min sizes into the constructor arguments
+     * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/
@@ -20,7 +21,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         //self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
-        //self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
+        //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
         self.movableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         resolveSkin()

@@ -52,7 +52,7 @@ class ComboBox:Element{
 	}
 	override func onEvent(event:Event){
 		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
-		if(event.type == ButtonEvent.down && event.origin === headerButton){onListSelect(event as! ListEvent)}
+		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {
 		/*

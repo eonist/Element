@@ -4,7 +4,6 @@ class ComboBoxModifier{
 	 * 
 	 */
 	class func selectByProperty(comboBox:ComboBox,_ property:String) {
-        Swift.print("property: " + "\(property)")
 		let index:Int = comboBox.list!.dataProvider.getItemIndex(DataProviderParser.itemByProperty(comboBox.list!.dataProvider, property)!)
 		ListModifier.selectAt(comboBox.list!,index)
 		let text:String = ListParser.selectedTitle(comboBox.list!)

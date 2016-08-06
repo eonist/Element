@@ -8,6 +8,7 @@ import Cocoa
  * // :TODO: find a way to add a mask that can have rounded corners, if a TextButton has a square fill then it overlaps outside the combobox
  * //closeOnClick
  * //defaultText
+ * TODO: Upgrade the ComboBox to support popping open a window that hovers above the origin window. It needs to align it self to the screen correctly etc
  */
 class ComboBox:Element{
     var headerButton:TextButton?

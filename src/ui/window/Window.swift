@@ -12,7 +12,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: impliment the max and min sizes into the constructor arguments
      */
-    required init(rect:CGRect = CGRect(0,0,600,400)){/*required prefix in the init is so that instances can be created via factory design patterns*/
+    required init(_ rect:CGRect = CGRect(0,0,600,400)){/*required prefix in the init is so that instances can be created via factory design patterns*/
         //_ width:CGFloat = 600,_ height:CGFloat = 400, _ x:CGFloat = 0 , _ y:CGFloat = 0
         
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/

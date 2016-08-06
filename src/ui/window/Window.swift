@@ -15,6 +15,9 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400/*, _ x:CGFloat = 0 , _ y:CGFloat = 0*/){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(100, 100, width, height)
+        
+        //COntinue here: use x and y and explaine why in a param note. Also use the Align method to get the point you need to position the window on creation! nice!
+        
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/

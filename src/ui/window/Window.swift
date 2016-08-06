@@ -12,11 +12,11 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: impliment the max and min sizes into the constructor arguments
      */
-    required init(_ rect:CGRect = CGRect(0,0,600,400)){/*required prefix in the init is so that instances can be created via factory design patterns*/
-        //_ width:CGFloat = 600,_ height:CGFloat = 400, _ x:CGFloat = 0 , _ y:CGFloat = 0
-        
+    required init(_ width:CGFloat = 600,_ height:CGFloat = 400/*, _ x:CGFloat = 0 , _ y:CGFloat = 0*/){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/
-        let rect:NSRect = NSMakeRect(rect.x, rect.y, rect.width, rect.height)
+        let rect:NSRect = NSMakeRect(00, 00, width, height)
+        
+        //COntinue here: use x and y and explaine why in a param note. Also use the Align method to get the point you need to position the window on creation! nice!
         
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/

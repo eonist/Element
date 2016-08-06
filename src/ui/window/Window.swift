@@ -12,9 +12,9 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: impliment the max and min sizes into the constructor arguments
      */
-    required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
+    required init(_ width:CGFloat = 600,_ height:CGFloat = 400/*, _ x:CGFloat = 0 , _ y:CGFloat = 0*/){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/
-        let rect:NSRect = NSMakeRect(0, 0, width, height)
+        let rect:NSRect = NSMakeRect(100, 100, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.Buffered, `defer`: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.backgroundColor = NSColor.clearColor()/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*THis moves the window to front and makes it key, should also be settable from within the win itself, test this*/

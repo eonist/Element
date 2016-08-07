@@ -33,13 +33,11 @@ class CustomView:WindowView{
         section!.setSize(width, section!.height)
     }
     /**
-     *
+     * NOTE: for re-usable panels etc, override and use the orderOut and makeKeyandOrderInfront combo. Use visible to assert between the modes
      */
     func onCloseButtonReleaseInside() {
         Swift.print("onCloseButtonReleaseInside")
-        //Close window here
-        self.window?.close()//this closes the window
-        //NSApp.terminate(self)//this method actually quits the app
+        self.window?.close()/*this closes the window*/
     }
     /**
      *

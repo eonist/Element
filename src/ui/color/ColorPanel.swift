@@ -42,7 +42,7 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onColorTypeSelectGroupChange(event:SelectGroupEvent) {
         //Swift.print("onColorTypeSelectGroupChange()")
-        let colorType:String = (event.selectable as! TextButton).getText()//you can also use: getColorType()
+        let colorType:String = (event.selectable as! TextButton).getText()//TODO: you can also use: getColorType() here
         ColorPanelUtils.toggleColorType(self,colorType)
         ColorPanelUtils.applyColor(self,color!)
     }
@@ -78,7 +78,7 @@ class ColorPanel:Element,IColorPanel{
         super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
-        if(event.type == SpinnerEvent.change){onSpinnerChange(event as! SpinnerEvent)}// :TODO: cant we just listen for one event in this.?
+        if(event.type == SpinnerEvent.change){onSpinnerChange(event as! SpinnerEvent)}// :TODO: cant we just listen for one event in this.?, could be usefull to assert origin, just to be safe
         //if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }
     func setColorValue(color:NSColor){

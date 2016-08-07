@@ -42,7 +42,8 @@ class ColorPanel:Element,IColorPanel{
     }
     private func onColorTypeSelectGroupChange(event:SelectGroupEvent) {
         //Swift.print("onColorTypeSelectGroupChange()")
-        ColorPanelUtils.toggleColorType(self,(event.selectable as! TextButton).getText())
+        let colorType:String = (event.selectable as! TextButton).getText()//you can also use: getColorType()
+        ColorPanelUtils.toggleColorType(self,colorType)
         ColorPanelUtils.applyColor(self,color!)
     }
     private func onColorInputChange(event : ColorInputEvent) {

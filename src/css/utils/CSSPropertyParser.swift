@@ -11,19 +11,19 @@ class CSSPropertyParser {
     class func property(string:String) -> Any{//:TODO: Long switch statments can be replaced by polymorphism?!?
         //Swift.print("CSSPropertyParser.property() string: >" + string + "<")
         switch(true) {
-            case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string);/*40 or -1 or 1.002 or 12px or 20% or .02px*/
-            case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string;//ems|%
-            case StringAsserter.boolean(string):return StringParser.boolean(string);/*true or false*/
-            case StringAsserter.color(string):return StringParser.color(string);/*#00ff00 or 00ff00*/
-            case StringAsserter.webColor(string):return StringParser.color(string);/*green red etc*/
-            case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string);/*linear-gradient*/// :TODO: create a more complte exprrison for this test
-            case RegExp.test(string,"^radial-gradient\\b"):return radialGradient(string);/*radial-gradient*/// :TODO: create a more complte exprrison for this test
-            case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string);/*drop-shadow*/
-            case RegExp.test(string,"^textFormat\\b"):return textFormat(string);
-            case RegExp.test(string,"^textField\\b"):return textField(string);
-            case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"):/*Swift.print("isArray");*/return array(string);/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
+            case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
+            case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%
+            case StringAsserter.boolean(string):return StringParser.boolean(string)/*true or false*/
+            case StringAsserter.color(string):return StringParser.color(string)/*#00ff00 or 00ff00*/
+            case StringAsserter.webColor(string):return StringParser.color(string)/*green red etc*/
+            case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string)/*linear-gradient*/// :TODO: create a more complte exprrison for this test
+            case RegExp.test(string,"^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
+            case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
+            case RegExp.test(string,"^textFormat\\b"):return textFormat(string)
+            case RegExp.test(string,"^textField\\b"):return textField(string)
+            case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"):/*Swift.print("isArray");*/return array(string)/*corner-radius, line-offset-type, margin, padding, offset*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
             case RegExp.test(string,"(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):/*Swift.print("isString");*/return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
-            default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED");
+            default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
     }
     /**
@@ -56,7 +56,7 @@ class CSSPropertyParser {
      * NOTE: A better css syntax would be: radial-gradient(x1 y1 w1 h1 x2 y2 w2 h2,color alpha ratio) and if supply only the first 4 % variables then the center and the focal point is the same and you get an "uniform spread"
      * NOTE: somehow also add support for: reflect and repeat
      * NOTE: the reason we do it this way is that this approach can make any 2 point radial gradient. some scaling may be needed
-     * IMPORTANT
+     * IMPORTANT:
      * //SpreadMethod.REFLECT
      //SpreadMethod.REPEAT
      //SpreadMethod.PAD for the spread
@@ -69,11 +69,11 @@ class CSSPropertyParser {
         let setupString:String = properties.shift()
         let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         //gradient.colors[0]
-        let setup:Array<String> = setupString.split(" ");/*the gradient settings*/
-        let x:CGFloat = StringParser.percentage(setup[0])/100;/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
-        let y:CGFloat = StringParser.percentage(setup[1])/100;/*percentage wise*/
-        let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1;
-        let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1;
+        let setup:Array<String> = setupString.split(" ")/*the gradient settings*/
+        let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
+        let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/
+        let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1
+        let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1
         let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
         gradient.rotation = rotation
         gradient.startCenter = /*<-focalPointRatio*/ CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
@@ -116,14 +116,14 @@ class CSSPropertyParser {
                 textFormat[name] = value
             }
         }
-        return textFormat;
+        return textFormat
     }
     /**
      * Textfield
      * // :TODO: should possibly return a TextField class instance or alike
      */
     class func textField(input:String)->Dictionary<String,Any>{
-        var textField:Dictionary<String,Any> = Dictionary<String,Any>();
+        var textField:Dictionary<String,Any> = Dictionary<String,Any>()
         let propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
         var properties:Array = propertyString.split(",")
         for (var i : Int = 0; i < properties.count; i++) {

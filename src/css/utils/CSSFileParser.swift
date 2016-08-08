@@ -1,15 +1,15 @@
 import Foundation
 /**
- * @Note it may be tempting to move this into CSSFIle class as an internal class since noone else uses this class but CSSFile is simpler to understand as a standalone class (Number of classes != ease of use)
+ * NOTE: it may be tempting to move this into CSSFIle class as an internal class since noone else uses this class but CSSFile is simpler to understand as a standalone class (Number of classes != ease of use)
  */
 class CSSFileParser {
     /**
     * Returns a string containing css styles (including styles from imports and sub imports)
-    * @Note this method is recursive
-    * @Note this method also removes any comments (the reason it must be located within the recursive method is because comments may be among the import statements aswell)
-    * @Note alternative method name: cssStringByURL
-    * @param url The url to load the css file from
-    * @param cssString the recursive string passed down the hierarchy
+    * NOTE: this method is recursive
+    * NOTE: this method also removes any comments (the reason it must be located within the recursive method is because comments may be among the import statements aswell)
+    * NOTE: alternative method name: cssStringByURL
+    * PARAM: url The url to load the css file from
+    * PARAM: cssString the recursive string passed down the hierarchy
     */
     class func cssString(url:String)->String {
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
@@ -28,8 +28,8 @@ class CSSFileParser {
     }
     /**
      * Returns import urls in an array (only the path part)
-     * @Note Supports both syntax styles: @import url("style.css") and @import "style.css"
-     * @Note this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
+     * NOTE: Supports both syntax styles: @import url("style.css") and @import "style.css"
+     * NOTE: this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
      * // :TODO: this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
@@ -41,12 +41,12 @@ class CSSFileParser {
             let url = (string as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
             importStrings.append(url)
         }
-        return importStrings;
+        return importStrings
     }
     /**
-     * Returns an Object with an import property and a style property from @param cssString
-     * @Note comments are removed before this method is called so no need for comments code here
-     * @Note supports cssString that has only import or style or both
+     * Returns an Object with an import property and a style property from PARAM: cssString
+     * NOTE: comments are removed before this method is called so no need for comments code here
+     * NOTE: supports cssString that has only import or style or both
      * Example: "@import url(\"mainContent.css\");"
      */
     class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
@@ -76,6 +76,6 @@ class CSSFileParser {
             result.imports = match.rangeAtIndex(1).length > 0 ?(cssString as NSString).substringWithRange(match.rangeAtIndex(1)) : ""//capturing group 1
             result.style = match.rangeAtIndex(2).length > 0 ? (cssString as NSString).substringWithRange(match.rangeAtIndex(2)) : ""//capturing group 2
         }
-        return result;
+        return result
     }
 }

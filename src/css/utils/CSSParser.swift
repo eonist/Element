@@ -4,16 +4,16 @@ import Foundation
  * // :TODO: use Vector<String> for speed etc, vector is faster for array yes but not for associate object array?
  */
 class CSSParser{
-    static var precedingWith:String = "(?<=^|\\})"
-    static var nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
-    static var valueGroup:String = "((?:.|\\n)*?)"
-    static var CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
+    static let precedingWith:String = "(?<=^|\\})"
+    static let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
+    static let valueGroup:String = "((?:.|\\n)*?)"
+    static let CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
     enum CSSElementType:Int{ case name = 1, value}
     /**
      * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
-     * @param cssString: a string comprised by css data h1{color:blue;} etc
-     * @return StyleCollection populated with Styles
-     * @Note: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
+     * PARAM: cssString: a string comprised by css data h1{color:blue;} etc
+     * RETURN: StyleCollection populated with Styles
+     * NOTE:: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     class func styleCollection(cssString:String)->IStyleCollection{
         //Swift.print("CSSParser.styleCollection()")
@@ -30,8 +30,7 @@ class CSSParser{
             if(StringAsserter.contains(styleName, ",") == false){
                 let style:IStyle = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style);/*If the styleName has 1 name*/
-            }
-            else{
+            }else{
                 let siblingStyles:Array<IStyle> = Utils.siblingStyles(styleName, value)
                 styleCollection.addStyles(siblingStyles);/*If the styleName has multiple comma-seperated names*/
             }
@@ -41,15 +40,14 @@ class CSSParser{
     /**
      * Converts cssStyleString to a Style instance
      * Also transforms the values so that : (with Flash readable values, colors: become hex colors, boolean strings becomes real booleans etc)
-     * @param name: the name of the style
-     * @param value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
+     * PARAM: name: the name of the style
+     * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
     class func style(var name:String,_ value:String)->IStyle!{
         //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
-        let selectors:Array<ISelector> = SelectorParser.selectors(name);
-    
-        let style:IStyle = Style(name,selectors, []);
+        let selectors:Array<ISelector> = SelectorParser.selectors(name)
+        let style:IStyle = Style(name,selectors, [])
         let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
@@ -59,13 +57,13 @@ class CSSParser{
             let propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
             //Swift.print("propertyValue: "+propertyValue)
             let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
-            style.addStyleProperties(styleProperties);
+            style.addStyleProperties(styleProperties)
         }
         return style
     }
     /**
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
-     * @Note now supports StyleProperty2 that can have many property values
+     * NOTE: now supports StyleProperty2 that can have many property values
      */
     class func styleProperties(propertyName:String, _ propertyValue:String)->Array<IStyleProperty>{
         var styleProperties:Array<IStyleProperty> = []
@@ -95,8 +93,8 @@ private class Utils{
     static var suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
     static var siblingPattern:String = precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
     /**
-     * Returns an array of style instances derived from @param style (that has a name with 1 or more comma signs, or in combination with a group [])
-     * @param style: style.name has 1 or more comma seperated words
+     * Returns an array of style instances derived from PARAM: style (that has a name with 1 or more comma signs, or in combination with a group [])
+     * PARAM: style: style.name has 1 or more comma seperated words
      * // :TODO: write a better description
      * // :TODO: optimize this function, we probably need to ousource the second loop in this function
      * // :TODO: using the words suffix and prefix is the wrong use of their meaning, use something els

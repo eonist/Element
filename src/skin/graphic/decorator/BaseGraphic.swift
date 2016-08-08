@@ -7,8 +7,7 @@ import Cocoa
 class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGraphicDecoratable*/
     override var graphic:BaseGraphic {return self}
     /**
-     * TODO: color can't be uint since uint cant be NaN, use Double, 
-     * TODO: check if cgfloat can be NaN? it can
+     * NOTE: color can't be uint since uint can't be NaN, use Double as a differntiator
      */
     override func beginFill(){
         //Swift.print("BaseGraphic.beginFill")

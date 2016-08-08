@@ -28,8 +28,8 @@ class CSSPropertyParser {
     }
     /**
      * // :TODO: possibly use the RegExp.exec to loop the properties!!
-     * @param string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
-     * @Note setting the gradientType isnt necessary since its the default setting
+     * PARAM: string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
+     * NOTE: setting the gradientType isnt necessary since its the default setting
      */
     class func linearGradient(string:String)->IGradient{
         //Swift.print("CSSPropertyparser.linearGradient")
@@ -42,7 +42,7 @@ class CSSPropertyParser {
         return gradient;
     }
     /**
-     * @param string radial-gradient(50% 50% 100% 100% 1,blue 1 0,red 1 1);//2 color radial-gradient, with focalPointRatio and with percentage of x,y,width and height
+     * PARAM: string radial-gradient(50% 50% 100% 100% 1,blue 1 0,red 1 1);//2 color radial-gradient, with focalPointRatio and with percentage of x,y,width and height
      * NOTE: color: color,alpha,gradiant-ratio (aka gradient-location)
      * NOTE: The first and second % variables makes out the location of the radial gradient
      * NOTE: the third and fourth % variables makes out the width and the height of the radial gradient
@@ -90,16 +90,16 @@ class CSSPropertyParser {
     class func array(string:String)->Array<Any>{
         //Swift.print("CSSPropertyParser.array()")
         let matches:Array<String> = StringModifier.split(string, " ")
-        var array:Array<Any> = [];
+        var array:Array<Any> = []
         for str : String in matches { array.append(StringAsserter.digit(str) ? StringParser.digit(str) : str) }
-        return array;
+        return array
     }
     /**
      * TextFormat
      * // :TODO: should possibly return a TextFormat class instance or alike
      */
     class func textFormat(input : String) -> Dictionary<String,Any> {
-        var textFormat:Dictionary<String,Any> = Dictionary<String,Any>();
+        var textFormat:Dictionary<String,Any> = Dictionary<String,Any>()
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
         let propertyString:String = RegExp.match(input,pattern)[0]
         let properties:Array<String> = StringParser.split(propertyString, ",")
@@ -113,7 +113,7 @@ class CSSPropertyParser {
                 else if(String(value) == "false") {value = false }
                 //else {StringParser.boolean(String(value))}
                 //Swift.print("CSSPropertyParser.textFormat() value: " + "\(value)")
-                textFormat[name] = value;
+                textFormat[name] = value
             }
         }
         return textFormat;
@@ -127,15 +127,15 @@ class CSSPropertyParser {
         let propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
         var properties:Array = propertyString.split(",")
         for (var i : Int = 0; i < properties.count; i++) {
-            let property:String = properties[i];
-            let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$");
+            let property:String = properties[i]
+            let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches {
                 let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
                 if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.color(value as! String)}
                 else if(value as! String == "true") { value = true }
                 else if(value as! String == "false") { value = false }
-                textField[name] = value;
+                textField[name] = value
             }
         }
         return textField;
@@ -145,17 +145,17 @@ class CSSPropertyParser {
      */
     class func dropShadow(string:String)->DropShadow {
         let propertyString:String = string.match("(?<=drop-shadow\\().+?(?=\\);?)")[0]
-        //print("propertyString: " + propertyString);
-        var properties:Array = propertyString.split(" ");
-        //print("properties: " + properties);
-        let distance:CGFloat = StringParser.digit(properties[0]);
-        let angle:CGFloat = StringParser.digit(properties[1]);/*In degrees*/
-        let colorValue:UInt = StringParser.color(properties[2]);/*hex color*/
-        let alpha:CGFloat = StringParser.digit(properties[3]);
-        let blurX:CGFloat = StringParser.digit(properties[4]);
-        let blurY:CGFloat = StringParser.digit(properties[5]);
-        //let strength:CGFloat = StringParser.digit(properties[6]);
-        //let quality:CGFloat = StringParser.digit(properties[7]);
+        //print("propertyString: " + propertyString)
+        var properties:Array = propertyString.split(" ")
+        //print("properties: " + properties)
+        let distance:CGFloat = StringParser.digit(properties[0])
+        let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
+        let colorValue:UInt = StringParser.color(properties[2])/*hex color*/
+        let alpha:CGFloat = StringParser.digit(properties[3])
+        let blurX:CGFloat = StringParser.digit(properties[4])
+        let blurY:CGFloat = StringParser.digit(properties[5])
+        //let strength:CGFloat = StringParser.digit(properties[6])
+        //let quality:CGFloat = StringParser.digit(properties[7])
         let inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
         let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
@@ -177,8 +177,8 @@ class CSSPropertyParser {
 }
 private class Utils{
     /**
-     * Returns a Gradient instance derived from @param properties
-     * @Note adds colors, opacities and ratios
+     * Returns a Gradient instance derived from PARAM: properties
+     * NOTE: adds colors, opacities and ratios
      */
     class func gradient(properties:Array<String>)->IGradient {
         //print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));

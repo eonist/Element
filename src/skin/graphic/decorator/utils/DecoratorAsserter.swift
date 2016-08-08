@@ -7,6 +7,6 @@ class DecoratorAsserter {
      */
     class func hasDecoratable(decoratable:IGraphicDecoratable,_ classType:AnyClass)-> Bool {
         //Swift.print("DecoratorAsserter.hasDecoratable()")
-        return DecoratorParser.decoratable(decoratable, classType) != nil;
+        return DecoratorParser.decoratable(decoratable, classType) != nil
     }
 }

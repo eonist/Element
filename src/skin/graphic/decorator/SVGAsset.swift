@@ -47,17 +47,18 @@ class SVGAsset:InteractiveView2 {
 }
 private class Utils{
     /**
-     * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of theme uses either of them. Think coupling etc
-     * @NOTE: why the long method call? I feel the arguments are so simple that it can be done this way. You can debug by describing the SVGStyle or the Style with the describe methods etc
+     * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of them uses either of them. Think coupling etc
      */
     class func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
-        
-        //TODO: the bellow line is now so complex that you should explode it, difficult to debug!
         let fill:Any? = fillStyle != nil ? fillStyle!.color.hexVal : nil
         let fillOpacity:CGFloat? = fillStyle != nil ? fillStyle!.color.alphaComponent : nil
         let fillRule:String? = nil
         let strokeWidth:CGFloat? = lineStyle != nil ? lineStyle!.thickness : nil
         let stroke:Any? = lineStyle != nil && lineStyle?.color != NSColor.clearColor()/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil
-        return SVGStyle(fill,fillOpacity,fillRule,strokeWidth,stroke,strokeOpacity,lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil,lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil,lineStyle != nil ? lineStyle!.miterLimit : nil)
+        let strokeOpacity:CGFloat? = lineStyle != nil ? lineStyle!.color.alphaComponent : nil
+        let strokeLineCap:String? = lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil
+        let strokeLineJoin:String? = lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil
+        let strokeMiterLimit:CGFloat? = lineStyle != nil ? lineStyle!.miterLimit : nil
+        return SVGStyle(fill,fillOpacity,fillRule,strokeWidth,stroke,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit)
     }
 }

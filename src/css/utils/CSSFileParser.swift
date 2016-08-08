@@ -14,14 +14,14 @@ class CSSFileParser {
     class func cssString(url:String)->String {
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
-        //Swift.print("string: " + "\(string)");
+        //Swift.print("string: " + "\(string)")
         string = RegExpModifier.removeComments(string)
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)
         //Swift.print("importsAndStyles.imports: " + "\(importsAndStyles.imports)")
         let importStrings:Array<String> = CSSFileParser.importStrings(importsAndStyles.imports)
         let path:String = StringParser.path(url)
         //Swift.print("path: " + "\(path)")
-        var cssString:String = "";
+        var cssString:String = ""
         for importString in importStrings{ cssString += CSSFileParser.cssString(path+importString)}// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url
         cssString += importsAndStyles.style
         return cssString
@@ -34,7 +34,7 @@ class CSSFileParser {
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     class func importStrings(string:String)->Array<String> {
-        var importStrings:Array<String> = [];
+        var importStrings:Array<String> = []
         let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
         let matches = RegExp.matches(string, pattern)
         for match:NSTextCheckingResult in matches {

@@ -4,12 +4,12 @@ import Foundation
  * EXAMPLE: Swift.print(CSSLinkResolver.resolveLinks("Button{fill:<ButtonBase>;} ButtonBase{fill:green;line:blue;} CheckButton{line:<ButtonBase>;}"))//Button{fill:green;} ButtonBase{fill:green;line:blue;} CheckButton{line:blue;}
  */
 class CSSLinkResolver {
-    static var precedingWith:String = "(?<=\\;|^|\\{)"
-    static var whiteSpace:String = "[\\n\\s\\t\\v\\r]*?"
-    static var nameGroup:String = "([\\w \\,\\[\\]\\.\\#\\:\\-]+?)"
-    static var valueGroup:String = "(.+?)(?=\\;)"
-    static var linkPropertyPattern:String = precedingWith + whiteSpace + nameGroup + "\\:" + valueGroup
-    static var sansBracketPattern:String = "(?<=<)[\\w \\:]+?(?=>)"
+    static let precedingWith:String = "(?<=\\;|^|\\{)"
+    static let whiteSpace:String = "[\\n\\s\\t\\v\\r]*?"
+    static let nameGroup:String = "([\\w \\,\\[\\]\\.\\#\\:\\-]+?)"
+    static let valueGroup:String = "(.+?)(?=\\;)"
+    static let linkPropertyPattern:String = precedingWith + whiteSpace + nameGroup + "\\:" + valueGroup
+    static let sansBracketPattern:String = "(?<=<)[\\w \\:]+?(?=>)"
     enum CSSElementType:Int{ case name = 1, value}
     /**
      * Returns a CSS string with all css links resolved, a css link is where a key points to another key to obtain its value
@@ -58,7 +58,7 @@ private class Utils {
             //Swift.print(match.numberOfRanges)
             if(match.numberOfRanges > 0){/*match = the link name>*/
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
-                range.location = range.location+difference
+                range.location = range.location + difference
                 let linkNameSansBrackets:String = (string as NSString).substringWithRange(range)/*the link name>*/
                 let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
                 range.location = range.location-1//add the < char

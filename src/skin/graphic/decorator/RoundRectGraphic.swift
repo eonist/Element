@@ -7,7 +7,7 @@ import Cocoa
  * NOTE: CGRect has a roundRect method with eliptical corners. You have this code in your research folder
  */
 class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
-    var fillet:Fillet;
+    var fillet:Fillet
     init(_ decoratable: IGraphicDecoratable,_ fillet:Fillet) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         self.fillet = fillet
         super.init(decoratable)
@@ -25,13 +25,13 @@ class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
     override func drawLine(){
         //Swift.print("RoundRectGraphic.drawLine() " + String(graphic.lineStyle != nil))
         if(graphic.lineStyle != nil){/*updates only if lineStyle and lineStyle.color are valid*/// :TODO: this check could possibly be redundant
-            let lineOffsetType:OffsetType = graphic.lineOffsetType;
+            let lineOffsetType:OffsetType = graphic.lineOffsetType
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!.thickness, lineOffsetType)
-            let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!);
+            let fillet:Fillet = FilletParser.config(self.fillet, lineOffsetType, graphic.lineStyle!)
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
             graphic.lineShape.path = CGPathParser.roundRect(lineOffsetRect.lineRect.x,lineOffsetRect.lineRect.y,lineOffsetRect.lineRect.width,lineOffsetRect.lineRect.height,fillet.topLeft, fillet.topRight, fillet.bottomLeft, fillet.bottomRight)//lineOffsetRect.lineRect.path
             /*mask*/
-            //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0,graphic.width,graphic.height), graphic.lineStyle!, lineOffsetType);
+            //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0,graphic.width,graphic.height), graphic.lineStyle!, lineOffsetType)
             //fatalError("the above lines needs to be updated, RectGraphicUtils.offsetRect etc")
         }
     }

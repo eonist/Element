@@ -32,7 +32,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     func handleSelector(layer: CALayer,ctx:CGContext) {
         //isDrawing = false//reset if(!isDrawing){}
-        
         //Swift.print("GraphicDecoratable.handleSelector()")
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
@@ -58,7 +57,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     /*
     func displayLayer(layer: CALayer){
-    Swift.print("displayLayer")
+     Swift.print("displayLayer")
     }
     */
     /**

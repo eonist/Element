@@ -1,10 +1,8 @@
 import Cocoa
-
 /**
  * NOTE: Dont create a circle class, ellipse will do the same as a circle
  * //TODO: possibly add a diameter var
  */
-
 class EllipseGraphic:SizeableGraphic{
     override func drawFill() {
         //Swift.print("EllipseGraphic.drawFill()")
@@ -21,6 +19,3 @@ class EllipseGraphic:SizeableGraphic{
         //Swift.print("lineOffsetRect.lineRect: " + "\(lineOffsetRect.lineRect)")
     }
 }
-//extension EllipseGraphic{
-    //use sizableGraphic extension instead
-//}

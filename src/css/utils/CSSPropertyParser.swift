@@ -171,8 +171,8 @@ class CSSPropertyParser {
         Swift.print("inner: " + "\(inner)")
         */
         let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
-        //print("dropshadowfilter: " + dropshadowfilter);
-        return dropShadow;
+        //Swift.print("dropshadowfilter: " + dropshadowfilter)
+        return dropShadow
     }
 }
 private class Utils{

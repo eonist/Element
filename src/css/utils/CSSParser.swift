@@ -115,16 +115,12 @@ private class Utils{
                 var prefix:String = (styleName as NSString).substringWithRange(match.rangeAtIndex(1))
                 //Swift.print("prefix: " + prefix)
                 prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix) : prefix;
-                
                 let group:String =  (styleName as NSString).substringWithRange(match.rangeAtIndex(2))
                 //Swift.print("group: " + group)
-                
                 //Swift.print("match.rangeAtIndex(3): " + "\(match.rangeAtIndex(3))")
-                
                 var suffix:String = (styleName as NSString).substringWithRange(match.rangeAtIndex(3))
                 //Swift.print("suffix: " + suffix)
-                
-                suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix;
+                suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix
                 if(group == "") {
                     sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{
@@ -134,11 +130,11 @@ private class Utils{
                     let namesInsideBrackets:String = RegExp.match(group, bracketPattern)[0]
                     let names:Array<String> = StringModifier.split(namesInsideBrackets, ",")
                     for name in names {
-                        let condiditonalPrefix:String = prefix != "" ? prefix + " " : "";
-                        let conditionalSuffix:String = suffix != "" ? " " + suffix : "";
-                        let fullName:String =  condiditonalPrefix + name + conditionalSuffix;
+                        let condiditonalPrefix:String = prefix != "" ? prefix + " " : ""
+                        let conditionalSuffix:String = suffix != "" ? " " + suffix : ""
+                        let fullName:String =  condiditonalPrefix + name + conditionalSuffix
                         //Swift.print("fullName: " + fullName)
-                        sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)));
+                        sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)))
                     }
                 }
             }

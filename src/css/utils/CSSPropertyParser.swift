@@ -220,10 +220,10 @@ private class Utils{
         }
         else if(RegExp.test(rotationMatch,directionPattern)){
             let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
-            rotation = Trig.angleType(angleType)-180.0;// :TODO: Create support for top left and other corners
+            rotation = Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}
-        //print("rotation: " + rotation);
-        return rotation;
+        //Swift.print("rotation: " + rotation)
+        return rotation
     }
     /**
      * // :TODO: add support for auto ratio values if they are not defined, you have implimented this functionality somewhere, so find this code
@@ -241,12 +241,12 @@ private class Utils{
      */
     class func alpha(var alpha:String)->Double{
         var alphaValue:Double = 1
-        if(RegExp.test(alpha,"\\d{1,3}%")){//i.e: 100%
-            alpha = RegExp.match(alpha,"\\d{1,3}")[0];
+        if(RegExp.test(alpha,"\\d{1,3}%")){/*i.e: 100%*/
+            alpha = RegExp.match(alpha,"\\d{1,3}")[0]
             alphaValue = Double(alpha)!/100
         }else if(RegExp.test(alpha,"\\d\\.\\d{1,3}|\\d")) {alphaValue = Double(alpha)!}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         else if(RegExp.test(alpha,"^$")) {alphaValue = 1}//no value present
-        return alphaValue;
+        return alphaValue
     }
 }
 /*

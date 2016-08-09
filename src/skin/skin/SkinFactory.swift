@@ -7,8 +7,8 @@ import Foundation
  * TODO: create an EmptySkin that also
  */
 class SkinFactory{
-    static var graphicsSkin:String = "graphicSkin";//TODO: we could use Skin(GraphicSkin) instead of this variable
-    static var textSkin:String = "textSkin";
+    static var graphicsSkin:String = "graphicSkin"//TODO: we could use Skin(GraphicSkin) instead of this variable
+    static var textSkin:String = "textSkin"
     /*
     class func graphicSkin(element:IElement,style:IStyle)->ISkin {
         return GraphicSkin(style, element.getSkinState(), element);

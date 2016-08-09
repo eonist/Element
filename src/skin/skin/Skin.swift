@@ -6,21 +6,21 @@ import Cocoa
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
 class Skin:InteractiveView2,ISkin{
-    var decoratables:Array<IGraphicDecoratable> = [];
+    var decoratables:Array<IGraphicDecoratable> = []
     var style:IStyle?
     var state:String
-    var width:CGFloat?;
-    var height:CGFloat?;
+    var width:CGFloat?
+    var height:CGFloat?
     var element:IElement?
-    var hasStyleChanged:Bool = false;
-    var hasStateChanged:Bool = false;
-    var hasSizeChanged:Bool = false;
+    var hasStyleChanged:Bool = false
+    var hasStateChanged:Bool = false
+    var hasSizeChanged:Bool = false
     init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
-        self.style = style;
-        self.state = state;
-        self.element = element;
-        width = element!.width;// :TODO: is this necessary?
-        height = element!.height;// :TODO: is this necessary?
+        self.style = style
+        self.state = state
+        self.element = element
+        width = element!.width// :TODO: is this necessary?
+        height = element!.height// :TODO: is this necessary?
         super.init(frame: NSRect())/*<-this doesnt need a size*/
     }
     /**
@@ -34,9 +34,9 @@ class Skin:InteractiveView2,ISkin{
      */
     func draw(){
         //Swift.print("Skin.draw() refresh the graphics")
-        hasStyleChanged = false;
-        hasSizeChanged = false;
-        hasStateChanged = false;
+        hasStyleChanged = false
+        hasSizeChanged = false
+        hasStateChanged = false
         //needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
     }
     /**
@@ -44,9 +44,9 @@ class Skin:InteractiveView2,ISkin{
      * @Note this is a great way to update an skin without querying StyleManager
      */
     func setStyle(style:IStyle){
-        hasStyleChanged = true;
-        self.style = style;
-        draw();
+        hasStyleChanged = true
+        self.style = style
+        draw()
     }
     /**
      * sets the skin state and forces a redraw
@@ -56,8 +56,8 @@ class Skin:InteractiveView2,ISkin{
      */
     func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
         //Swift.print("Skin.applySkinState")
-        hasStateChanged = true;
-        self.state = state;
+        hasStateChanged = true
+        self.state = state
         style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isnt a good idea for just a state change, you need some caching system to handle this better*/
         draw()
     }
@@ -67,8 +67,8 @@ class Skin:InteractiveView2,ISkin{
     */
     func setSize(width:CGFloat, _ height:CGFloat) {
         if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
-            hasSizeChanged = true;
-            self.width = width;
+            hasSizeChanged = true
+            self.width = width
             self.height = height
             draw()
         }
@@ -78,9 +78,9 @@ class Skin:InteractiveView2,ISkin{
      * NOTE: these methods are an important part of the float system
      */
     func getWidth()->CGFloat{
-        return StylePropertyParser.width(self) ?? self.width!//!isNaN(skin.width) ? skin.width : StylePropertyParser.width(skin);
+        return StylePropertyParser.width(self) ?? self.width!//!isNaN(skin.width) ? skin.width : StylePropertyParser.width(skin)
     }
     func getHeight()->CGFloat{
-        return StylePropertyParser.height(self) ?? self.height!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin);
+        return StylePropertyParser.height(self) ?? self.height!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin)
     }
 }

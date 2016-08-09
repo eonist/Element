@@ -79,7 +79,7 @@ private class Utils{
             frameRect = rect.copy()/*frame*/
             lineRect = rect.outset(thickness/2, thickness/2)//CGRect(0,0,rect.width,rect.height).inset(thickness/2, thickness/2) /*line*/
         }else{/*outside*/
-            frameRect = rect.outset(thickness, thickness) /*frame*/
+            frameRect = rect.outset(thickness, thickness)/*frame*/
             lineRect = rect.outset(thickness/2, thickness/2)//CGRect(-thickness/2,-thickness/2,rect.width+thickness,rect.height+thickness)/*line, you expand the rect in the 0,0 coordinatespace*/
         }
         return (lineRect,frameRect)

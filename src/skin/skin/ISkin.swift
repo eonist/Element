@@ -1,7 +1,6 @@
 import Foundation
 
 protocol ISkin:class{
-    /*core methods*/
     /*implicit getters / setters*/
     func setStyle(style:IStyle)
     func setSkinState(state:String)

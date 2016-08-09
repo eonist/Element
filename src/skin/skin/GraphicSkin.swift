@@ -45,7 +45,7 @@ class GraphicSkin:Skin{
         GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             //Swift.print("has RectGraphic")
-            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);
+            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right/**/// :TODO: only querry this if the size has changed?
             //Swift.print("width: " + "\(width)")
             let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.top + padding.bottom/**/// :TODO: only querry this if the size has changed?

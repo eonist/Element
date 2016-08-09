@@ -151,21 +151,21 @@ private class Utils{
      */
     class func leftFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
         //Swift.print("leftFloatingElementSkin: index: " + "\(index)")
-        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left);
-        return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil;/*the left element-sibling*/
+        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.left)
+        return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil/*the left element-sibling*/
     }
     /**
      * @param index is the index of the skin being floated
      */
     class func rightFloatingElementSkin(elements:Array<IElement>,_ index:Int)->ISkin? {
-        let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.right,exception);
+        let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, Range(0,index-1), CSSConstants.right,exception)
         return lastIndexOfRightFloatingElement != -1 ? elements[lastIndexOfRightFloatingElement].skin! : nil/*the right-sibling-skin*/
     }
     /**
      * Exception method used to fix a problem where Elements would not float correctly to the right if a leftfloating Element that also cleared to the right or both, came before a Right floating Element
      */
     class func exception(skin:ISkin) -> Bool{
-        return (SkinParser.float(skin) == CSSConstants.left && (SkinParser.clear(skin) == CSSConstants.right || SkinParser.clear(skin) == CSSConstants.both));
+        return (SkinParser.float(skin) == CSSConstants.left && (SkinParser.clear(skin) == CSSConstants.right || SkinParser.clear(skin) == CSSConstants.both))
     }
     /**
      * @Note loops backwards
@@ -178,6 +178,6 @@ private class Utils{
             if(exception != nil && exception!(skin)) {return -1}
             if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none) {return i}
         }
-        return -1;
+        return -1
     }
 }

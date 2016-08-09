@@ -11,6 +11,7 @@ class SelectParser {
     }
     /**
      * Returns the  first selected ISelectable in an array of ISelectables or a
+     * TODO: Rename to firstSelected
      */
     class func selected(selectables:Array<ISelectable>) -> ISelectable? {
         for selectable : ISelectable in selectables {if(selectable.getSelected()) {return selectable}}

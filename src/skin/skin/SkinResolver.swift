@@ -10,19 +10,19 @@ class SkinResolver{
      * 	TODO: enable these additions when you have more controll over the Element FrameWork for now you need to throw error to debug
      */
     class func skin(element:IElement)->ISkin?{
-        let style:IStyle = StyleResolver.style(element);
-        //			trace("style: " + style);
-        let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element);
+        let style:IStyle = StyleResolver.style(element)
+        //Swift.print("style: " + style)
+        let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element)
         //Swift.print("SkinResolver.skin() skinName: " + skinName)
-        return SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element);
+        return SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element)
     }
     /**
      * Throws an error message if a skin cant be resolved (with usefull information for debugging)
      */
-    class func resolveError(style:IStyle, _ element:IElement)->ISkin {// :FIXME: argument type should be IAurora2
-        //print("with parent: " + (element.parent || ""));
-        //print("with skin: "+element.skin || "");
-        //print("with style.selector: "+style.name || "");//could have to be altred
+    class func resolveError(style:IStyle, _ element:IElement)->ISkin {
+        //Swift.print("with parent: " + (element.parent || ""))
+        //Swift.print("with skin: "+element.skin || "")
+        //Swift.print("with style.selector: "+style.name || "")//could have to be altred
         fatalError("SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: "/* + element.id*/)
     }
 }

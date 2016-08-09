@@ -28,7 +28,7 @@ class TextSkin:Skin,ITextSkin{
             SkinModifier.float(self)
             if(hasSizeChanged) {
                 let padding:Padding = StylePropertyParser.padding(self);
-                TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom);
+                TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom)
             }
             if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
             if(hasTextChanged) {hasTextChanged = false}
@@ -42,8 +42,8 @@ class TextSkin:Skin,ITextSkin{
         //Swift.print("TextSkin.applyProperties() width: " + "\(width)")
         let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom;// :TODO: only querry this if the size has changed?
         //Swift.print("TextSkin.applyProperties() height: " + "\(height)")
-        textField.frame.width = width/*SkinParser.width(this);*/
-        textField.frame.height = height/*SkinParser.height(this);*/
+        textField.frame.width = width/*SkinParser.width(this)*/
+        textField.frame.height = height/*SkinParser.height(this)*/
         super.frame.width = width//quick fix
         super.frame.height = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)
@@ -55,12 +55,12 @@ class TextSkin:Skin,ITextSkin{
     }
     /**
      * Set the text and updates the skin
-     * // :TODO: add more advance setText features like start and end etc
+     * TODO: add more advance setText features like start and end etc
      */
     func setText(text:String){
         textField.stringValue = text
         hasTextChanged = true
-        draw();//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple
+        draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple
     }
     /**
      * // :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield

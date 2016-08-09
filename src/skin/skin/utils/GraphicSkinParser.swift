@@ -1,11 +1,11 @@
 import Foundation
 
 class GraphicSkinParser{
-   static var rect:String = "rect";
-   static var gradient:String = "gradient";
-   static var icon:String = "icon";// :TODO: rename to asset or svgasset or alike (keep in mind that you will need to support png assets soon enough)
-   static var fillet:String = "fillet";// :TODO: rename to ROUNDED?
-   static var dropshadow:String = "dropshadow";
+   static var rect:String = "rect"
+   static var gradient:String = "gradient"
+   static var icon:String = "icon"// :TODO: rename to asset or svgasset or alike (keep in mind that you will need to support png assets soon enough)
+   static var fillet:String = "fillet"// :TODO: rename to ROUNDED?
+   static var dropshadow:String = "dropshadow"
     /**
      * Configures a GraphicDecoratable instance based on what stylePropertyValues is found in @param skin at @param depth
      */
@@ -34,7 +34,6 @@ private class Utils{
     }
     /**
      * Returns a "GraphicRect instance"
-     * @example: var r:Rect2 = new Rect2(20,20,new FillStyle());//black square
      */
     class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)

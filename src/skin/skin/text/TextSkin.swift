@@ -60,7 +60,7 @@ class TextSkin:Skin,ITextSkin{
     func setText(text:String){
         textField.stringValue = text
         hasTextChanged = true
-        draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple
+        draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
     }
     /**
      * // :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
@@ -69,7 +69,7 @@ class TextSkin:Skin,ITextSkin{
         //Swift.print("TextSkin.getWidth()")
         if((StylePropertyParser.value(self, TextFormatConstants.wordWrap) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
             let padding:Padding = StylePropertyParser.padding(self);
-            return textField.frame.width + padding.left + padding.right;
+            return textField.frame.width + padding.left + padding.right
         }else {return super.getWidth()}
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

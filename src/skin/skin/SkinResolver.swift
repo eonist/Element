@@ -36,6 +36,6 @@ private class Utils{
             case "Text":skinName = SkinFactory.textSkin
             default:skinName = SkinFactory.graphicsSkin
         }
-        return skinName;
+        return skinName
     }
 }

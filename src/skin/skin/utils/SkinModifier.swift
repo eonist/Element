@@ -29,9 +29,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
     class func float(skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
         //Swift.print("SkinModifier.float()")
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
-        let parent:NSView = skin.element!.getParent(/*true*/) as! NSView/**/
-        
-        let elementParent:IElement = skin.element!.getParent() as! IElement/**/
+        let parent:NSView = skin.element!.getParent(/*true*/) as! NSView
+        let elementParent:IElement = skin.element!.getParent() as! IElement
         let elements:Array<IElement> = ElementParser.children(parent,IElement.self)
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element! as! Element) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!);/*the top-left-corner of the parent*/
@@ -52,7 +51,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let clearType:String? = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
         let floatType:String? = SkinParser.float(skin)
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)
-        Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y);
+        Utils.clear(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.y)
     }
 }
 /**
@@ -82,13 +81,10 @@ private class Utils{
      * @param top is the y value of the skins parent to align against
      */
     class func clearLeft(skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
-        
         let y:CGFloat = leftSiblingSkin != nil ? leftSiblingSkin!.element!.y + SkinParser.totalHeight(leftSiblingSkin!) : top
-        
         /*if(leftSiblingSkin != nil){
         Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
         }*/
-        
         skin.element!.y = y
     }
     /**
@@ -98,7 +94,7 @@ private class Utils{
      * @param top is the y value of the skins parent to align against
      */
     class func clearRight(skin:ISkin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
-        skin.element!.y = rightSiblingSkin != nil ? rightSiblingSkin!.element!.y + SkinParser.totalHeight(rightSiblingSkin!) : top;
+        skin.element!.y = rightSiblingSkin != nil ? rightSiblingSkin!.element!.y + SkinParser.totalHeight(rightSiblingSkin!) : top
     }
     /**
      *
@@ -116,7 +112,7 @@ private class Utils{
      * @param top is the y value of the skins parent to align against
      */
     class func clearBoth(skin:ISkin,_ prevSiblingSkin:ISkin?,_ top:CGFloat){
-        skin.element!.y = prevSiblingSkin != nil ? prevSiblingSkin!.element!.y + SkinParser.totalHeight(prevSiblingSkin!) : top;
+        skin.element!.y = prevSiblingSkin != nil ? prevSiblingSkin!.element!.y + SkinParser.totalHeight(prevSiblingSkin!) : top
     }
     /**
      *  Positions @param skin by way of floating it left
@@ -136,7 +132,7 @@ private class Utils{
      *  @param right the x value to align against
      */
     class func floatRight(skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, var _ right:CGFloat){
-        /*        if(skin.element!.id == "box1"){
+        /*if(skin.element!.id == "box1"){
         Swift.print("floatRight right: " + "\(right)")
         Swift.print("SkinParser.totalWidth(skin): " + "\(SkinParser.totalWidth(skin))")
         }

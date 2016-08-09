@@ -37,10 +37,10 @@ private class Utils{
      */
     class func rectGraphic(skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
-        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!)  + padding.left + padding.right;
-        let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom;
+        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!)  + padding.left + padding.right
+        let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
-        return RectGraphic(width,height,decoratable);
+        return RectGraphic(width,height,decoratable)
     }
    
     /**
@@ -49,7 +49,7 @@ private class Utils{
      * // :TODO: this solution isnt perfect but it works for now
      */
     class func asset(decoratable:IGraphicDecoratable,_ asset:String)->IGraphicDecoratable {
-        return AssetDecorator(decoratable, asset);
+        return AssetDecorator(decoratable, asset)
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance
@@ -66,12 +66,12 @@ private class Utils{
      * // :TODO: support for GradientLineStyle, GradientFillStyle
      */
     class func gradient(decoratable:IGraphicDecoratable)->IGraphicDecoratable{
-        return GradientGraphic(decoratable);
+        return GradientGraphic(decoratable)
     }
     /**
      * Wraps a DropShadowDecorator instance on @param decoratable
      */
     class func dropShadow(decoratable:IGraphicDecoratable, _ dropShadow:DropShadow?)->IGraphicDecoratable {
-        return DropShadowDecorator(decoratable,dropShadow);
+        return DropShadowDecorator(decoratable,dropShadow)
     }
 }

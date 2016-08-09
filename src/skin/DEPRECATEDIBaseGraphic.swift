@@ -1,7 +1,7 @@
 
 import Foundation
 
-protocol IBaseGraphic{
+protocol DEPRECATEDIBaseGraphic{
     /*
     var width:CGFloat{get}
     var height:CGFloat{get}

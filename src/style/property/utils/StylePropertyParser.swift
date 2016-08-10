@@ -3,36 +3,36 @@ import Cocoa
 class StylePropertyParser{
     /**
      * Returns a property from @param skin and @param property
-     * @Note the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
-     * // :TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
+     * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
+     * TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
     class func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
-        let value:Any? = skin.style!.getValue(propertyName,depth);
+        let value:Any? = skin.style!.getValue(propertyName,depth)
         //Swift.print("value: " + "\(value)")
-        return value;
+        return value
     }
     /**
      *
      */
     class func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
-        return value(skin,CSSConstants.fill,depth) is IGradient ? gradientFillStyle(skin,depth):colorFillStyle(skin,depth);
+        return value(skin,CSSConstants.fill,depth) is IGradient ? gradientFillStyle(skin,depth) : colorFillStyle(skin,depth)
     }
     /**
      *
      */
     class func lineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth) ;
+        return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth)
     }
     /**
      * Returns a FillStyle instance
      */
     class func colorFillStyle(skin:ISkin, _ depth:Int = 0)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
-        let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth);
+        let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
-        var color:Double;
+        var color:Double
         if(colorValue == nil){
             color = Double.NaN
         }else if(colorValue! is Array<Any>) {

@@ -146,7 +146,7 @@ class StylePropertyParser{
         for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
             //Swift.print("StylePropertypParser.textFormat() value: " + "\(value.dynamicType)")
-            //				if(textFormatKey == "size") trace("size: "+value+" "+(value is String));
+            //if(textFormatKey == "size") trace("size: "+value+" "+(value is String))
             if(value != nil) {
                 if(StringAsserter.metric(String(value))){
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
@@ -174,7 +174,7 @@ class StylePropertyParser{
      */
     class func textField(skin:TextSkin) {
         for textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
-            let value:Any? = StylePropertyParser.value(skin,textFieldKey);
+            let value:Any? = StylePropertyParser.value(skin,textFieldKey)
             if(value != nil) {
                 if(StringAsserter.metric(value as! String)){
                     //TODO:you may need to set one of the inner groups to be non-catachple
@@ -189,7 +189,7 @@ class StylePropertyParser{
                 }
                 //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently
                 fatalError("Not implemented yet")
-                //skin.textField[textFieldKey] = value;
+                //skin.textField[textFieldKey] = value
             }
         }
     }
@@ -198,10 +198,10 @@ class StylePropertyParser{
      * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
      */
     class func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
-        let value:Any? = self.value(skin, CSSConstants.offset, depth);
+        let value:Any? = self.value(skin, CSSConstants.offset, depth)
         //Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
-        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).map {String($0).cgFloat}//the map method is cool. But it isnt needed, since this array will always have a count of 2
+        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).cast() /*map {String($0).cgFloat}*/ //the map method is cool. But it isnt needed, since this array will always have a count of 2
         //Swift.print("StylePropertyParser.offset.array.count: " + "\(array.count)")
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])
     }

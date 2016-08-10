@@ -43,15 +43,15 @@ class SelectorAsserter {
       return a.states.count != 0/* != nil*/ && b.states.count != 0/* != nil*/
     }
     class func hasSimilarState(a:ISelector,_ b:ISelector)->Bool {
-      return SelectorParser.numOfSimilarStates(a, b) > 0;
+      return SelectorParser.numOfSimilarStates(a, b) > 0
     }
     class func hasStates(selector:ISelector)->Bool {
-      return selector.states.count != 0 /*!= nil*/;
+      return selector.states.count != 0 /*!= nil*/
     }
     class func hasElement(selector:ISelector)->Bool {
-      return selector.element != "" /*nil*/;
+      return selector.element != "" /*nil*/
     }
     class func hasId(selector:ISelector)->Bool {
-      return selector.id != ""/*nil*/;
+      return selector.id != ""/*nil*/
     }
 }

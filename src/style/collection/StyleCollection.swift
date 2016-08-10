@@ -51,9 +51,9 @@ class StyleCollection:IStyleCollection{
         return nil
     }
     /**
-     *
+     * convenience
      */
-    func getStyleAt(index:Int)->IStyle?{/*convenience*/
+    func getStyleAt(index:Int)->IStyle?{
         return styles[index]
     }
 }

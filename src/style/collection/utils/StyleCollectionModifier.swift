@@ -11,7 +11,7 @@ class StyleCollectionModifier {
                 if(styleB.name == styleA.name){// :TODO: untested may not work
                     hasStyle = true
                     StyleModifier.merge(&styleA, styleB)
-                    break
+                    break/*breaks out of the for-loop*/
                 }
             }
             if(!hasStyle) {a.addStyle(styleB)}

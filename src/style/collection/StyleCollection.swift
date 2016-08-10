@@ -36,7 +36,7 @@ class StyleCollection:IStyleCollection{
                 return ArrayModifier.splice2(&styles,i,1) as? IStyle
             }
         }
-        return nil//could also return the index i guess -1 instead of nil, do we need to return anything ?
+        return nil//could also return the index i guess -1 instead of nil, do we need to return anything ? its nice to be able to assert if something was removed with nil coalesing as it is now
     }
     /**
      * TODO: One could use a for each loop instead
@@ -53,7 +53,7 @@ class StyleCollection:IStyleCollection{
     /**
      *
      */
-    func getStyleAt(index:Int)->IStyle?{
+    func getStyleAt(index:Int)->IStyle?{/*convenience*/
         return styles[index]
     }
 }

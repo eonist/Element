@@ -65,15 +65,15 @@ class StylePropertyParser{
         //Swift.print("StylePropertyParser.colorLineStyle() " + String(value(skin, CSSConstants.lineAlpha)))
         let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha,depth) as? CGFloat ?? 1
         let lineColor:NSColor = Utils.nsColor(lineColorValue, lineAlpha)
-        return LineStyle(lineThickness, lineColor);
+        return LineStyle(lineThickness, lineColor)
     }
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
     class func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
-        let color:Any? = value(skin, propertyName,depth);
+        let color:Any? = value(skin, propertyName,depth)
         //Swift.print("color: " + "\(color)")
-        return color == nil || String(color!) == CSSConstants.none ? Double.NaN : Double(color as! UInt);
+        return color == nil || String(color!) == CSSConstants.none ? Double.NaN : (color as! UInt).double
     }
     /**
      * Returns an Offset instance
@@ -82,11 +82,11 @@ class StylePropertyParser{
      */
     class func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
         //Swift.print("StylePropertyparser.lineOffsetType()")
-        let val:Any? = value(skin, CSSConstants.lineOffsetType,depth);
-        var offsetType:OffsetType = OffsetType();
+        let val:Any? = value(skin, CSSConstants.lineOffsetType,depth)
+        var offsetType:OffsetType = OffsetType()
         if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
         //LayoutUtils.describe(offsetType)
-        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth);
+        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth)
         //Swift.print("lineOffsetTypeIndex: " + "\(lineOffsetTypeIndex)")
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight,depth)}
@@ -95,7 +95,7 @@ class StylePropertyParser{
         //if(offsetType.top == OffsetType.center || offsetType.bottom == OffsetType.center || offsetType.left == OffsetType.center || offsetType.right == OffsetType.center){fatalError("lineOffsetType:center is not supported yet")}//<--temp fix, implement center as a way of alignment or remove it from parsing or?
         //Swift.print("------after-------")
         //LayoutUtils.describe(offsetType)
-        return offsetType;
+        return offsetType
     }
     /**
      * Returns a Fillet instance
@@ -103,8 +103,8 @@ class StylePropertyParser{
      * TODO: needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc. 
      */
     class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
-        let val:Any? = value(skin, CSSConstants.cornerRadius,depth);
-        var fillet:Fillet = Fillet();
+        let val:Any? = value(skin, CSSConstants.cornerRadius,depth)
+        var fillet:Fillet = Fillet()
         //Swift.print(val)
         if((val is CGFloat) || (val is Array<Any>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
         //Swift.print("StylePropertyParser.fillet: " + String(ClassParser.classType(val!)))
@@ -114,16 +114,16 @@ class StylePropertyParser{
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, "corner-radius-top-right", depth) }
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, "corner-radius-bottom-left", depth) }
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right", depth) }
-        return fillet;
+        return fillet
     }
     /**
      * Returns a GradientFillStyle
      */
     class func gradientFillStyle(skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
-        let newGradient:Gradient/*IGradient*/ = value(skin, CSSConstants.fill, depth) as! Gradient/*IGradient*///GradientParser.clone();
+        let newGradient:Gradient/*IGradient*/ = value(skin, CSSConstants.fill, depth) as! Gradient/*IGradient*///GradientParser.clone()
         //let sizeWidth:Double = skin.width!
         //let sizeHeight:Double = skin.height!
-        return GradientFillStyle(newGradient,NSColor.clearColor());
+        return GradientFillStyle(newGradient,NSColor.clearColor())
     }
     /**
     * Returns a GradientLineStyle
@@ -136,7 +136,7 @@ class StylePropertyParser{
         if(!(gradient is IGradient)){return nil}//<--temp fix
         //gradient.rotation *= ㎭
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
-        return GradientLineStyle(gradient as! IGradient, lineThickness, NSColor.clearColor()/*colorLineStyle(skin)*/);
+        return GradientLineStyle(gradient as! IGradient, lineThickness, NSColor.clearColor()/*colorLineStyle(skin)*/)
     }
     /**
      *
@@ -163,10 +163,10 @@ class StylePropertyParser{
                     value = NSColorParser.nsColor(value as! UInt,1)
                     //Swift.print("FOUND A COLOR: " + textFormatKey + " : " + "\(value)")
                 }//<--set the alpha in css aswell backgroundAlpha?
-                textFormat[textFormatKey] = value!;
+                textFormat[textFormatKey] = value!
             }
         }
-        return textFormat;
+        return textFormat
     }
     /**
      * @Note this is really a modifier method

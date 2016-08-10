@@ -232,9 +232,9 @@ class StylePropertyParser{
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     class func margin(skin:ISkin, _ depth:Int = 0)->Margin {
-        let value:Any? = self.value(skin, CSSConstants.margin,depth);
+        let value:Any? = self.value(skin, CSSConstants.margin,depth)
         let margin:Margin = value != nil ? Margin(value!) : Margin()
-        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth);
+        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth)
         //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
         margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
         margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight,depth) > marginIndex ? metric(skin, CSSConstants.marginRight,depth) : Utils.metric(margin.right, skin))!
@@ -258,7 +258,7 @@ class StylePropertyParser{
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
      */
     class func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
-        let value = StylePropertyParser.value(skin,propertyName,depth);
+        let value = StylePropertyParser.value(skin,propertyName,depth)
         return Utils.metric(value,skin)
     }
     /**
@@ -295,11 +295,11 @@ private class Utils{
                 if(suffix == "%") {
                     //Swift.print("Suffix is %")
                     let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
-                    //				trace("skin.element.parent != null: " + skin.element.parent != null);
-                    //				trace("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin);
+                    //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
+                    //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
                     return val
                 }else {
-                    //print("ems");
+                    //print("ems")
                     return valNum * CSSConstants.emsFontSize;/*["suffix"] == "ems"*/
                 }
             }

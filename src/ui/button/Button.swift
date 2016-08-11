@@ -18,7 +18,7 @@ class Button:Element {
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             //Swift.print("skinstate: " + getSkinState())
-            setSkinState(getSkinState());
+            setSkinState(getSkinState())
             super.onEvent(ButtonEvent(ButtonEvent.over,self/*,self*/))
         }
     }
@@ -39,7 +39,7 @@ class Button:Element {
      */
     override func mouseDown(event:MouseEvent) {
         //Swift.print("Button.mouseDown() ")
-        state = SkinStates.down+" "+SkinStates.over;
+        state = SkinStates.down+" "+SkinStates.over
         setSkinState(getSkinState());
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
         super.onEvent(ButtonEvent(ButtonEvent.down,self/*,self*/))

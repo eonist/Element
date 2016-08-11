@@ -31,4 +31,10 @@ class SelectParser {
         for selectable : ISelectable in selectables{ if(selectable.getSelected()) {selected.append(selectable)} }
         return selected
     }
+    /**
+     * Returns the index of the first selected ISelectable instance in 
+     */
+    class func index(){
+        
+    }
 }

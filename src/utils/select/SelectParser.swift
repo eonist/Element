@@ -32,9 +32,13 @@ class SelectParser {
         return selected
     }
     /**
-     * Returns the index of the first selected ISelectable instance in 
+     * Returns the index of the first selected ISelectable instance in a NSView instance
      */
-    class func index(){
-        
+    class func index(view:NSView){
+        let numOfSubViews:Int = view.numSubViews/*CPU-optimization*/
+        for var i = 0; i < 3; ++i{
+            print(i)
+        }
+        for child : NSView in view.subviews {if(child.getSelected()) {return selectable}}
     }
 }

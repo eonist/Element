@@ -2,7 +2,7 @@ import Cocoa
 
 class SelectParser {
     /**
-     * Returns the  first selected ISelectable in an array of an NSView with ISelectables
+     * Returns the  first selected ISelectable in an array of an NSView with ISelectables (returns nil if it doesnt exist)
      * TODO: Rename to firstSelected
      */
     class func selected(view:NSView) -> ISelectable? {

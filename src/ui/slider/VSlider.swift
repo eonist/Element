@@ -23,15 +23,15 @@ class VSlider:Element{
         super.resolveSkin()
         //skin.isInteractive = false// :TODO: explain why in a comment
         //skin.useHandCursor = false;// :TODO: explain why in a comment
-        Swift.print("width: " + "\(width)")
-        Swift.print("thumbHeight: " + "\(thumbHeight)")
+        //Swift.print("width: " + "\(width)")
+        //Swift.print("thumbHeight: " + "\(thumbHeight)")
         thumb = addSubView(Thumb(width, thumbHeight,self))
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
         //Swift.print("\(self.dynamicType)"+".onThumbDown() ")
         tempThumbMouseY = thumb!.localPos().y
-        Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
+        //Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
@@ -42,7 +42,7 @@ class VSlider:Element{
         return event
     }
     func onThumbUp(){
-        Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
+        //Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
@@ -55,7 +55,7 @@ class VSlider:Element{
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(event:MouseEvent) {/*onSkinDown*/
-        Swift.print("\(self.dynamicType)" + ".mouseDown() ")
+        //Swift.print("\(self.dynamicType)" + ".mouseDown() ")
         progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight);
         thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/

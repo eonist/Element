@@ -29,7 +29,7 @@ class List:Element,IList{
         lableContainer = addSubView(Container(width,height,self,"lable"))
         /*let section = *///addSubView(Section(width,height,self))
         //section
-        Swift.print("dataProvider.items.count: " + "\(dataProvider.items.count)")
+        //Swift.print("List.dataProvider.items.count: " + "\(dataProvider.items.count)")
         //lableContainer!.addSubview(Element(20,20,lableContainer!,"box"))
         mergeAt(dataProvider.items, 0);
     }

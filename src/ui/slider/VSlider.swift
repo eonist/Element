@@ -19,7 +19,7 @@ class VSlider:Element{
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
-        Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
+        //Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
         super.resolveSkin()
         //skin.isInteractive = false// :TODO: explain why in a comment
         //skin.useHandCursor = false;// :TODO: explain why in a comment

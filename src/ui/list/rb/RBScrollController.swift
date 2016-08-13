@@ -25,16 +25,16 @@ class RBScrollController {
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
-            case NSEventPhase.Changed://fires everytime there is direct scrollWheel gesture movment.
+            case NSEventPhase.Changed:/*fires everytime there is direct scrollWheel gesture movment.*/
                 //Swift.print("changed")
                 prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
                 velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
                 mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
-                mover.updatePosition()//the mover still governs the resulting value, inorder to get the displacement friction working
-            case NSEventPhase.MayBegin:onScrollWheelDown()//can be used to detect if two fingers are touching the trackpad
-            case NSEventPhase.Began:onScrollWheelDown()//the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly
-            case NSEventPhase.Ended:onScrollWheelUp();Swift.print("ended")//if you release your touch-gesture and the momentum of the gesture has stopped.
-            case NSEventPhase.Cancelled:onScrollWheelUp();Swift.print("cancelled")//this trigers if the scrollWhell gestures goes off the trackpad etc
+                mover.updatePosition()/*the mover still governs the resulting value, inorder to get the displacement friction working*/
+            case NSEventPhase.MayBegin:onScrollWheelDown()/*can be used to detect if two fingers are touching the trackpad*/
+            case NSEventPhase.Began:onScrollWheelDown()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
+            case NSEventPhase.Ended:onScrollWheelUp();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
+            case NSEventPhase.Cancelled:onScrollWheelUp();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
             case NSEventPhase.None:break;
             default:break;
         }
@@ -44,20 +44,20 @@ class RBScrollController {
      * NOTE: basically when you enter your scrollWheel gesture
      */
     func onScrollWheelDown(){
-        Swift.print("onScrollWheelDown")
-        (view).slider?.thumb?.fadeIn()
+        //Swift.print("onScrollWheelDown")
+        view.slider?.thumb?.fadeIn()
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover.isDirectlyManipulating = true/*toggle to directManipulationMode*/
-        velocities = [0,0,0,0,0,0,0,0,0,0]//reset the velocities
+        velocities = [0,0,0,0,0,0,0,0,0,0]/*reset the velocities*/
     }
     /**
      * NOTE: basically when you release your scrollWheel gesture
      */
     func onScrollWheelUp(){
-        Swift.print("onScrollWheelUp")
+        //Swift.print("onScrollWheelUp")
         mover.hasStopped = false/*reset this value to false, so that the FrameAnimatior can start again*/
         mover.isDirectlyManipulating = false
         mover.value = mover.result/*copy this back in again, as we used relative friction when above or bellow constraints*/
@@ -69,8 +69,8 @@ class RBScrollController {
             mover.start()//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
             mover.start()//this needs to start if you in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
-            if((view).slider?.thumb?.getSkinState() == SkinStates.none){
-                (view).slider?.thumb?.fadeOut()
+            if(view.slider?.thumb?.getSkinState() == SkinStates.none){
+                view.slider?.thumb?.fadeOut()
             }
         }
     }

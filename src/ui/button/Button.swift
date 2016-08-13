@@ -61,7 +61,7 @@ class Button:Element {
     override func mouseUpOutside(event:MouseEvent){
         //Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
-        setSkinState(getSkinState());
+        setSkinState(getSkinState())
         super.onEvent(ButtonEvent(ButtonEvent.upOutside,self/*,self*/))
     }
     /**

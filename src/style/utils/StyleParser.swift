@@ -22,13 +22,12 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
      */
     class func describe(style:IStyle){
         Swift.print("StyleParser.describe()")
-        Swift.print(style.name+": ");
+        Swift.print(style.name+": ")
         for styleProperty : IStyleProperty in style.styleProperties {
             var value:String = ""
             if(styleProperty.value is String || styleProperty.value is Double || styleProperty.value is Bool || styleProperty.value is UInt || styleProperty.value is Int){
                 value =  String(styleProperty.value)
-            }
-            else {
+            }else {
                 value = String(styleProperty.value)//ObjectParser.parse(styleProperty.value);//was if(styleProperty.value is Object)  //if the property is an object parse it
             }
             Swift.print(" " + styleProperty.name + ":" + value + " depth:" + "\(styleProperty.depth)")
@@ -40,7 +39,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     class func stylePropertyNames(style:IStyle) -> Array<String>{
         var propertyNames:Array<String> = []
         for styleProperty : IStyleProperty in style.styleProperties{ propertyNames.append(styleProperty.name) }
-        return propertyNames;
+        return propertyNames
     }
     /**
      * @param name the propertyname

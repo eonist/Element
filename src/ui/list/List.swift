@@ -31,15 +31,15 @@ class List:Element,IList{
         //section
         //Swift.print("List.dataProvider.items.count: " + "\(dataProvider.items.count)")
         //lableContainer!.addSubview(Element(20,20,lableContainer!,"box"))
-        mergeAt(dataProvider.items, 0);
+        mergeAt(dataProvider.items, 0)
     }
     /**
      * Creates and adds items to the _lableContainer
      * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
      */
     func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename needed
-        var i:Int = index;
-        //Swift.print("mergeAt: index: " + "\(index)");
+        var i:Int = index
+        //Swift.print("mergeAt: index: " + "\(index)")
         for object:Dictionary<String,String> in objects {// :TODO: use for i
             //Swift.print("getWidth(): " + "\(getWidth())")
             //Swift.print("self.itemHeight: " + "\(self.itemHeight)")
@@ -55,15 +55,14 @@ class List:Element,IList{
      */
     func onDataProviderEvent(event:DataProviderEvent){
         switch(event.type){
-            case DataProviderEvent.add: mergeAt(event.items, event.startIndex); break;/*This is called when a new item is added to the DataProvider instance*/
-            case DataProviderEvent.remove: lableContainer!.removeSubviewAt(event.startIndex); break;/*This is called when an item is removed form the DataProvider instance*/
-            case DataProviderEvent.removeAll: ViewModifier.removeAllOfType(lableContainer!, ISelectable.self/*<--this may not work, see your comparing protocol and class code*/); break;/*This is called when all item is removed form the DataProvider instance*/
-            case DataProviderEvent.sort: DepthModifier.sortByList(lableContainer!,"text","title", dataProvider.items); break;/*This is called when the items in the DataProvider instance is sorted*/
+            case DataProviderEvent.add: mergeAt(event.items, event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
+            case DataProviderEvent.remove: lableContainer!.removeSubviewAt(event.startIndex); /*This is called when an item is removed form the DataProvider instance*/
+            case DataProviderEvent.removeAll: ViewModifier.removeAllOfType(lableContainer!, ISelectable.self/*<--this may not work, see your comparing protocol and class code*/)/*This is called when all item is removed form the DataProvider instance*/
+            case DataProviderEvent.sort: DepthModifier.sortByList(lableContainer!,"text","title", dataProvider.items)/*This is called when the items in the DataProvider instance is sorted*/
             case DataProviderEvent.dataChange: /*Not implimented yet*/ break;/*This is called when the items in the DataProvider instance is sorted*/
             case DataProviderEvent.replace: /*This is called when an item is replaced from the DataProvider instance*/
-                self.lableContainer!.removeSubviewAt(event.startIndex);
-                mergeAt(event.items, event.startIndex);
-                break;
+                self.lableContainer!.removeSubviewAt(event.startIndex)
+                mergeAt(event.items, event.startIndex)
             default:fatalError("event type not supported"); break;
         }
         ElementModifier.floatChildren(lableContainer!)/*this call re-floats the list items*/

@@ -18,8 +18,6 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     var style:IStyle{get set}
     var skin:ISkin?{get set}
     var id : String?{get};
-    //var x:CGFloat{get set}
-    //var y:CGFloat{get set}
     var width:CGFloat{get /*set*/}
     var height:CGFloat{get /*set*/}
     var x:CGFloat{get set}

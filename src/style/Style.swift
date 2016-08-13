@@ -5,7 +5,7 @@ import Foundation
  * TODO: you could probably add most of these methods to an extension, since nothing is subclassing this class
  */
 class Style:IStyle{
-    static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this wont work since it doesnt have any selectors
+    static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this won't work since it doesnt have any selectors
     var name:String
     var styleProperties:Array<IStyleProperty>
     var selectors:Array<ISelector>
@@ -14,6 +14,8 @@ class Style:IStyle{
         self.selectors = selectors
         self.styleProperties = styleProperties
     }
+}
+extension Style{
     /**
      * Adds styleProperties
      */
@@ -44,10 +46,10 @@ class Style:IStyle{
         for styleProperty : IStyleProperty in styleProperties {
             //Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
             if(styleProperty.name == name && styleProperty.depth == depth){
-                return styleProperty;
+                return styleProperty
             }
         }
-        return nil;
+        return nil
     }
     /**
      * NOTE: StyleParser.depthCount() uses this method
@@ -55,7 +57,7 @@ class Style:IStyle{
     func getStyleProperties(name:String)->Array<IStyleProperty>{
         var styleProperties:Array<IStyleProperty> = []
         for styleProperty : IStyleProperty in self.styleProperties{if(styleProperty.name == name) {styleProperties.append(styleProperty)}}
-        return styleProperties;
+        return styleProperties
     }
     /**
      * @Note a benefit of having this method is that when used you can use the interface of the return type instantly
@@ -67,13 +69,13 @@ class Style:IStyle{
      * @Note this function is not redundant, its usefull for qucik access in some methods
      */
     func getValue(name:String,_ depth:Int = 0)->Any?{
-        var styleProperty:IStyleProperty? = getStyleProperty(name,depth);
-        return styleProperty != nil ? styleProperty?.value : nil;
+        var styleProperty:IStyleProperty? = getStyleProperty(name,depth)
+        return styleProperty != nil ? styleProperty?.value : nil
     }
     /**
      * @Note this method is here for convenience (methods that should be contained in an Utils class are thous that are seldom used)
      */
     func getValueAt(index:Int)->Any{
-        return getStylePropertyAt(index).value;
+        return getStylePropertyAt(index).value
     }
 }

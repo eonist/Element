@@ -6,20 +6,20 @@ class StyleModifier {
      * // :TODO: explain what newSelectors does
      */
     class func clone(style:IStyle, _ newName:String? = nil, _ newSelectors:Array<ISelector>? = nil)->IStyle{
-        let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[]);
+        let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[])
         for styleProperty : IStyleProperty in style.styleProperties{
-            returnStyle.addStyleProperty(StyleProperty(styleProperty.name, styleProperty.value, styleProperty.depth));
+            returnStyle.addStyleProperty(StyleProperty(styleProperty.name, styleProperty.value, styleProperty.depth))
         }
-        return returnStyle;
+        return returnStyle
     }
     /**
      *
      */
     class func overrideStyleProperty(inout style:IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
         let stylePropertiesLength:Int = style.styleProperties.count;
-        for (var i:Int=0; i<stylePropertiesLength; i++) { // :TODO: use fore each
+        for (var i:Int=0; i<stylePropertiesLength; i++) { // :TODO: use for each
             if((style.styleProperties[i] as IStyleProperty).name == styleProperty.name){
-                style.styleProperties[i] = styleProperty;
+                style.styleProperties[i] = styleProperty
                 break//was return
             }
         }
@@ -60,8 +60,8 @@ class StyleModifier {
             var hasStyleProperty:Bool = false;
             for stylePropA : IStyleProperty in a.styleProperties {
                 if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
-                    hasStyleProperty = true;
-                    break;
+                    hasStyleProperty = true
+                    break/*breaks out of the loop*/
                 }
             }
             if(!hasStyleProperty) {//asserts true if the style from b doest exist in a

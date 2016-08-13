@@ -1,7 +1,5 @@
 import Cocoa
-/**
- *
- */
+
 class CheckTextButton:TextButton,ICheckable {
     var isChecked:Bool;
     init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isChecked : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
@@ -25,6 +23,6 @@ class CheckTextButton:TextButton,ICheckable {
     }
     func getChecked()->Bool{return isChecked}
     override func getSkinState() -> String {
-        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();
+        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
 }

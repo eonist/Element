@@ -18,10 +18,10 @@ class SelectButton:Button,ISelectable {
      */
     func setSelected(isSelected:Bool){
         self.isSelected = isSelected
-        setSkinState(getSkinState());
+        setSkinState(getSkinState())
     }
     func getSelected()->Bool{return isSelected}
     override func getSkinState() -> String {
-        return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState();
+        return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState()
     }
 }

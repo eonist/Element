@@ -15,7 +15,7 @@ class ColorInput:Element,IColorInput {
         super.init(width,height,parent,id)
     }
     override func resolveSkin(){
-        super.resolveSkin();
+        super.resolveSkin()
         self.inputText = addSubView(TextInput(width - height,height,text,"0x" + color!.hexString,self))//ColorParser.hexByNumericRgb(_color)
         self.colorBox = addSubView(ColorBox(height,height,color!,self))
     }

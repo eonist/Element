@@ -86,9 +86,9 @@ class GradientPanel:Element,IGradientPanel{
     }
     private func onGradientTypeSelectGroupChange(event:SelectGroupEvent){
         if((event.selectable as! TextButton).getText() == "Linear"){
-            Swift.print("Linear ");
+            Swift.print("Linear ")
         }else{
-            Swift.print("Radial ");
+            Swift.print("Radial ")
         }
     }
     override func onEvent(event: Event) {

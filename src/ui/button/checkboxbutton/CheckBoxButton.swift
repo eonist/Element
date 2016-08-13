@@ -19,7 +19,7 @@ class CheckBoxButton : Button,ICheckable{
         text!.isInteractive = false
     }
     func setChecked(isChecked:Bool) {
-        checkBox!.setChecked(isChecked);
+        checkBox!.setChecked(isChecked)
     }
     override func onEvent(event: Event) {
         //Swift.print("CheckBoxButton.onEvent() type: " + "\(event.type)")
@@ -40,9 +40,9 @@ class CheckBoxButton : Button,ICheckable{
         text!.setSkinState(skinState);/*why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
     func setSize(width : CGFloat, height : CGFloat) {
-        super.setSize(width, height);
-        checkBox!.setSkinState(checkBox!.skin!.state);
-        text!.setSkinState(checkBox!.skin!.state);
+        super.setSize(width, height)
+        checkBox!.setSkinState(checkBox!.skin!.state)
+        text!.setSkinState(checkBox!.skin!.state)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

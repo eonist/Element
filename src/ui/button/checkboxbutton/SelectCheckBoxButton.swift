@@ -10,7 +10,7 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
         super.init(width, height, text, isChecked, parent, id)
     }
     override func mouseDown(event:MouseEvent) {
-        self.isSelected = !self.isSelected;
+        self.isSelected = !self.isSelected
         super.mouseDown(event)
         super.onEvent(SelectEvent(SelectEvent.select,self))/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
     }
@@ -18,8 +18,8 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
      * @Note: do not add a dispatch event here, that is the responsibilyy of the caller
      */
     func setSelected(isSelected:Bool) {
-        self.isSelected = isSelected;
-        setSkinState(getSkinState());
+        self.isSelected = isSelected
+        setSkinState(getSkinState())
     }
     func getSelected()->Bool{return isSelected}
     override func getSkinState() -> String {

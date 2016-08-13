@@ -9,6 +9,7 @@ import Cocoa
  * // :TODO: try to get rid of the lableContainer
  * // :TODO: try to make the mask an Element
  * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
+ * // :TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List:Element,IList{
     var itemHeight:CGFloat
@@ -72,7 +73,7 @@ class List:Element,IList{
      */
     func onUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
-        Swift.print("selectedIndex: " + "\(selectedIndex)")
+        //Swift.print("selectedIndex: " + "\(selectedIndex)")
         ListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
@@ -89,7 +90,7 @@ class List:Element,IList{
         super.setSize(width, height);
         //skin.setState(skin.state);
         //self.mask.setSize(width, height);
-        ElementModifier.refresh(lableContainer!)//was SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
+        ElementModifier.refresh(lableContainer!)//was --> SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
     }
     /**
      * Returns "List"
@@ -100,4 +101,4 @@ class List:Element,IList{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-// Continue here: how did you solve the clipping issue in Element? can it be used to mask? make a mask test
+

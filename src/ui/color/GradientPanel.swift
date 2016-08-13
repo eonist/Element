@@ -72,7 +72,7 @@ class GradientPanel:Element,IGradientPanel{
      * //TODO:remember to add alpha into the fold here
      */
     private func onColorInputChange(event : ColorInputEvent) {
-        Swift.print("onColorInputChange() ");
+        Swift.print("onColorInputChange() ")
         //the onUpINside isnt working with svg based graphic at the moment so the bellow is a temp fix
         let isStartNodeSelected:Bool = /*SelectGroupParser.selected(gradientSlider!.selectGroup!)*/gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
         Swift.print("isStartNodeSelected: " + "\(isStartNodeSelected)")

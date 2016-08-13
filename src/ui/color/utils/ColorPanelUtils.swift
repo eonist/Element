@@ -9,9 +9,9 @@ class ColorPanelUtils {
         switch(colorType){
             case ColorPanel.rgb:
                 let rbgObj:RGB = color.rgb
-                colorPanel.spinner1!.setValue(rbgObj.r.cgFloat)//rb
-                colorPanel.spinner2!.setValue(rbgObj.g.cgFloat)//gb
-                colorPanel.spinner3!.setValue(rbgObj.b.cgFloat)//bb
+                colorPanel.spinner1!.setValue(rbgObj.r.cgFloat)/*rb*/
+                colorPanel.spinner2!.setValue(rbgObj.g.cgFloat)/*gb*/
+                colorPanel.spinner3!.setValue(rbgObj.b.cgFloat)/*bb*/
             case ColorPanel.hsb:
                 let hsbObj:HSB = color.hsb
                 colorPanel.spinner1!.setValue(hsbObj.h*360)

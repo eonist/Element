@@ -58,17 +58,17 @@ class WeightedStyleAsserter {
             //if(a.name == temp) trace("BLOCK - 4: "+priority)
         }
         else if(hasState && hasEqualStateWeight){
-            priority = assertStateWeight(a, b);
-            //if(a.name == temp) trace("BLOCK - 5: "+priority);
+            priority = assertStateWeight(a, b)
+            //if(a.name == temp) trace("BLOCK - 5: "+priority)
         }
-        //if(a.name == temp) print(a.name +" HAS PRIORITY OVER: " + b.name+ " == " + priority);
-        return priority;
+        //if(a.name == temp) print(a.name +" HAS PRIORITY OVER: " + b.name+ " == " + priority)
+        return priority
     }
     /**
      *
      */
     private class func elementCount(selectors:Array<ISelector>)->Int{
-        var elementCount:Int = 0;
+        var elementCount:Int = 0
         for (var i : Int = 0; i < selectors.count; i++) {
             if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount++}
         }
@@ -94,19 +94,19 @@ class WeightedStyleAsserter {
         //}
         //loop through a and calc the total stateWeight
         //loop through b and cal the total stateweight
-        /*new code start*/// :TODO: nor sure if Things like Button:over Text{fill:blue;} works yet
+        /*new code start*/// :TODO: not sure if Things like Button:over Text{fill:blue;} works yet
         var aTotStateWeight:Int = 0;
         for aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights {
             aTotStateWeight += aSelectorWeight.stateWeight
         }
-        //print("aTotStateWeight: " + aTotStateWeight);
-        var bTotStateWeight:Int = 0;
+        //print("aTotStateWeight: " + aTotStateWeight)
+        var bTotStateWeight:Int = 0
         for bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights {
             bTotStateWeight += bSelectorWeight.stateWeight
         }
         //print("bTotStateWeight: " + bTotStateWeight)
         return aTotStateWeight >= bTotStateWeight
         /*new code end*/
-        //return true;/*if none of the selector.stateWeigh`s were stronger or weaker then they are all equal*/
+        //return true/*if none of the selector.stateWeigh`s were stronger or weaker then they are all equal*/
     }
 }

@@ -46,8 +46,8 @@ class VSlider:Element{
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
-        progress = Utils.progress(event.localPos(self).y, thumbHeight/2, height, thumbHeight);
-        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
+        progress = Utils.progress(event.localPos(self).y, thumbHeight/2, height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }

@@ -17,9 +17,9 @@ class HSlider:Element{
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         thumb = addSubView(Thumb(thumbWidth, height,self))
-        setProgressValue(progress);
+        setProgressValue(progress)
     }
     func onThumbDown(){
         //Swift.print("\(self.dynamicType)"+".onThumbDown() ")
@@ -70,9 +70,9 @@ class HSlider:Element{
         thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {
-        super.setSize(width,height);
-        thumb!.setSize(thumb!.width, height);
-        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth);
+        super.setSize(width,height)
+        thumb!.setSize(thumb!.width, height)
+        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

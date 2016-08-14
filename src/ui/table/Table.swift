@@ -43,9 +43,8 @@ class Table:Element{
      * Selects the other rows to the current selected row index of the current pressed column item
      */
     private func onColumnSelect(event : ColumnEvent) {
-        Swift.print("Tavle.onColumnSelect() event.origin: " + "\(event)");
-        
-        TableModifier.selectRow(self,event.rowIndex!,event.origin as? Column);
+        Swift.print("Tavle.onColumnSelect() event.origin: " + "\(event)")
+        TableModifier.selectRow(self,event.rowIndex!,event.origin as? Column)
     }
     override func onEvent(event: Event) {
         if(event.type == CheckEvent.check) {onColumnHeaderCheck(event as! CheckEvent)}

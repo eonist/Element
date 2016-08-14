@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * // :TODO: you may need to add an update method like SliderTreeList has, imagine if your scrolled to the bottom nd then an item is removed what happens? you should update the slider and y.position of the itemsContainer
+ * TODO: you may need to add an update method like SliderTreeList has, imagine if your scrolled to the bottom nd then an item is removed what happens? you should update the slider and y.position of the itemsContainer
  * TODO: Do more research into the scroller speed. as its now an  arbetrary value of 30. Do you pull this from the user profile or?
  */
 class SliderList : List{
@@ -25,7 +25,7 @@ class SliderList : List{
         if(theEvent.momentumPhase == NSEventPhase.Ended){
             Swift.print("the scroll motion ended")
             slider!.thumb!.setSkinState("inActive")
-        }else if(theEvent.momentumPhase == NSEventPhase.Began){//include maybegin here
+        }else if(theEvent.momentumPhase == NSEventPhase.Began){//include may begin here
             Swift.print("the scroll motion began")
             slider!.thumb!.setSkinState(SkinStates.none)
         }

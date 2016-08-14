@@ -52,7 +52,7 @@ class ListParser {
      */
     class func selectedIndex(list:IList) -> Int {
         let selected:ISelectable? = self.selected(list)
-        return selected != nil ? list.lableContainer!.indexOf(selected as! NSView) : -1;
+        return selected != nil ? list.lableContainer!.indexOf(selected as! NSView) : -1
     }
     /**
      * Returns the current selected item

@@ -18,7 +18,7 @@ class HNodeSlider:Element,INodeSlider {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
         setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
@@ -28,13 +28,13 @@ class HNodeSlider:Element,INodeSlider {
     }
     func onStartNodeDown() {
         Swift.print("HNodeSlider.onStartNodeDown()")
-//		DepthModifier.toFront(_startNode, this);
+//		DepthModifier.toFront(_startNode, this)
         tempNodeMouseX = startNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
         Swift.print("HNodeSlider.onEndNodeDown()")
-//		DepthModifier.toFront(_endNode, this);
+//		DepthModifier.toFront(_endNode, this)
         tempNodeMouseX = endNode!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
@@ -91,15 +91,15 @@ private class Utils{
 	 * Return the x position of a nodes @param progress
 	 */
 	static func nodePosition(progress:CGFloat, _ width:CGFloat, _ nodeWidth:CGFloat)->CGFloat {
-		let minThumbPos:CGFloat = width - nodeWidth;/*Minimum thumb position*/
-		return progress * minThumbPos;
+		let minThumbPos:CGFloat = width - nodeWidth/*Minimum thumb position*/
+		return progress * minThumbPos
 	}
 	/**
 	 * Returns the progress derived from a node 
 	 * @return a number between 0 and 1
 	 */
 	static func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ nodeWidth:CGFloat)->CGFloat {
-		let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-nodeWidth);
+		let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-nodeWidth)
 		return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
 	}
 }

@@ -22,12 +22,12 @@ class SliderTreeList:TreeList{
         Swift.print("SliderTreeList.update()");
         let itemsHeight:CGFloat = TreeListParser.itemsHeight(self)/*total height of the items*/
         /*
-        Swift.print("itemsHeight: " + itemsHeight);
-        Swift.print("itemHeight: " + itemHeight);
-        Swift.print("getHeight(): " +  getHeight());
+        Swift.print("itemsHeight: " + itemsHeight)
+        Swift.print("itemHeight: " + itemHeight)
+        Swift.print("getHeight(): " +  getHeight())
         */
         sliderInterval = SliderParser.interval(itemsHeight, getHeight(), itemHeight)
-        //			Swift.print("update() _sliderInterval: " + _sliderInterval);
+        //Swift.print("update() _sliderInterval: " + _sliderInterval);
         let thumbHeight:CGFloat = SliderParser.thumbSize(getHeight()/itemsHeight, slider!.getHeight())
         slider!.setThumbHeightValue(thumbHeight)
         let progress:CGFloat = SliderParser.progress(itemContainer!.y, getHeight(), itemsHeight)

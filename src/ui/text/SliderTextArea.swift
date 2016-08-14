@@ -102,12 +102,12 @@ private class Utils{
 		let numOfVisibleLines:Int = 0//(textField.numLines-textField.maxScrollV)
         numOfVisibleLines
 		let verticalScalar:CGFloat = 0//textField.maxScrollV == 1 ? 1:numOfVisibleLines/textField.numLines
-//		var tempInterval:Int = textField.maxScrollV == 1 ? 1:textField.maxScrollV / linesPerScroll;
+//		var tempInterval:Int = textField.maxScrollV == 1 ? 1:textField.maxScrollV / linesPerScroll
 		let verticalThumbSize:CGFloat = SliderParser.thumbSize(verticalScalar, slider.height)
 		return min(slider.height,verticalThumbSize)/*the Math.min is a temp fix*/
 	}
 	class func hScrollBarInterpolation(textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
-		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance;
+		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance
 	}
 	/**
 	 * 

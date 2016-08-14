@@ -7,16 +7,16 @@ class TextArea:Element {
     var text:Text?
     var textString:String// :TODO: rename to initTextString
     init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:IElement? = nil, _ id:String? = nil) {
-        self.textString = text;
+        self.textString = text
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         text = addSubView(Text(width,height,self.textString,self)) 
     }
     func setSize(width:CGFloat, height:CGFloat) {
-        super.setSize(width, height);
-        text!.setSize(width, height);
+        super.setSize(width, height)
+        text!.setSize(width, height)
     }
     func setTextValue(text:String) {
         self.text!.setText(text)

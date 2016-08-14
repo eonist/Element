@@ -56,8 +56,8 @@ class VSlider:Element{
      */
     override func mouseDown(event:MouseEvent) {/*onSkinDown*/
         //Swift.print("\(self.dynamicType)" + ".mouseDown() ")
-        progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight);
-        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
+        progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
@@ -88,9 +88,9 @@ class VSlider:Element{
         thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {
-        super.setSize(width,height);
-        thumb!.setSize(thumb!.width, height);
-        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight);
+        super.setSize(width,height)
+        thumb!.setSize(thumb!.width, height)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }
@@ -99,7 +99,7 @@ private class Utils{
      * Returns the x position of a nodes @param progress
      */
     class func thumbPosition(progress:CGFloat, _ height:CGFloat, _ thumbHeight:CGFloat)->CGFloat {
-        let minThumbPos:CGFloat = height - thumbHeight;/*Minimum thumb position*/
+        let minThumbPos:CGFloat = height - thumbHeight/*Minimum thumb position*/
         return progress * minThumbPos
     }
     /**

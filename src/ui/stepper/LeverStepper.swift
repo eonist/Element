@@ -76,12 +76,12 @@ class LeverStepper:Element{
     }
     func onButtonMove(event:NSEvent,_ button:Button)-> NSEvent?{
         //Swift.print("onButtonMove")
-        var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY;
-        leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight);
+        var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY
+        leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight)
         let multiplier:CGFloat = leaverPos / leverHeight
-        let leverValue:CGFloat = leverRange * multiplier;/*the lever value fluctuates, sometimes with decimals so we round it*/
-        var val:CGFloat =  onMouseDownValue + leverValue;
-        val = NumberParser.minMax(val, minVal, maxVal);/*cap the value from min to max*/
+        let leverValue:CGFloat = leverRange * multiplier/*the lever value fluctuates, sometimes with decimals so we round it*/
+        var val:CGFloat =  onMouseDownValue + leverValue
+        val = NumberParser.minMax(val, minVal, maxVal)/*cap the value from min to max*/
         val = NumberModifier.toFixed(val,decimals)/*the value must have no more than the value of the _decimals*/
         value = val
         //Swift.print("value: " + "\(value)")

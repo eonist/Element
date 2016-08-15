@@ -1,18 +1,7 @@
 import Foundation
-
-
-//Continue here:
-//1. Make TitleView which should go next to CustomView and extend it
-//2. Install the css required to style TitleView in the ElCapitan css framework. (Currently they are Inline)
-
-//1. center the text to 50% of its parent (the parrent must be 100%)
-//2. you offset the  Text element by half its width (100px) in the negative x dir (the text should be centered, and 200px wide)
-
-//Continue here: You need to figure out how to center align things. Make a box test. see old notes
-//then you need to figure out how to Align something to the left and centered and to the right (see css tricks)
-//then you need to apply it to the bellow (You could also possiblly add it to the Window class, or add TitleWindw to the fold)
-
-
+/**
+ * NOTE: the titleView has a working model for centering things in css
+ */
 class TitleView:CustomView{
     var textArea:TextArea?
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = "") {

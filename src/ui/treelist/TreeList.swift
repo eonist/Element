@@ -116,7 +116,7 @@ class TreeList:Element,ITreeList {
         TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
     }
     private func onBackgroundMouseClick(event:MouseEvent){
-        //Swift.print("onBackgroundMouseClick");
+        //Swift.print("onBackgroundMouseClick")
         TreeListModifier.unSelectAll(self)
     }
     /**

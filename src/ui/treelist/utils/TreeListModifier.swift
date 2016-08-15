@@ -50,8 +50,7 @@ class TreeListModifier {
     class func selectAt(treeList:ITreeList, _ index:Array<Int>,_ isSelected:Bool = true) {
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ISelectable) {
             (treeList.itemContainer!.getSubViewAt(index[0]) as! ISelectable).setSelected(isSelected)
-        }
-        else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
+        }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
             selectAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),isSelected)
         }
     }
@@ -61,8 +60,7 @@ class TreeListModifier {
     class func setTitleAt(treeList:ITreeList, _ index:Array<Int>, _ name:String){
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is TextButton) {
             treeList.itemContainer!.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer!.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer!.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name)
-        }
-        else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
+        }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
             setTitleAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),name)
         }
     }
@@ -128,7 +126,7 @@ class TreeListModifier {
      * // :TODO: do we really need to go from DisplayObject to xml and then again to DisplayObject?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
      */
     class func moveDown(treeList:TreeList,var _ index:Array<Int>) -> Array<Int> {
-        let removed:NSXMLElement = treeList.node.removeAt(index);
+        let removed:NSXMLElement = treeList.node.removeAt(index)
         let childrenCount:Int = NodeParser.childrenCount(treeList.node, index.slice2(0,index.count-1))
         var integer:Int = index.pop()!
         integer = integer < childrenCount ? integer+1:childrenCount

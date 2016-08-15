@@ -34,6 +34,7 @@ class SelectParser {
     /**
      * Returns the index of the first selected ISelectable instance in a NSView instance (returns -1 if non is found)
      * TODO: make a similar method for Array instead of NSView
+     * NOTE: you could return nil instead of -1
      */
     class func index(view:NSView) -> Int{
         let numOfSubViews:Int = view.numSubViews/*CPU-optimization*/

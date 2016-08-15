@@ -9,7 +9,6 @@ import Cocoa
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
-
 class SelectGroup:EventSender{
     var selectables:Array<ISelectable> = []
     var selected:ISelectable?

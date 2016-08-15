@@ -1,10 +1,10 @@
 import Foundation
 /*
- * @Note: remeber to add the group to the view or else the eventBubbling may make errors in other components
- * @Note: this class would be more logical if it extended EventSender but it extends View so that the event bubbling on the ICheckable objects works
- * @Note: the constructor checked parameter is just a reference no action is applied to that checked item.
- * // :TODO: In the future make a MultipleSelectionCheckGroup that can select many icheckable items with the use of shift key for instance (do not add this functionality in this class its not the correct abstraction level)
- * // :TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
+ * NOTE: remeber to add the group to the view or else the eventBubbling may make errors in other components
+ * NOTE: this class would be more logical if it extended EventSender but it extends View so that the event bubbling on the ICheckable objects works
+ * NOTE: the constructor checked parameter is just a reference no action is applied to that checked item.
+ * TODO: In the future make a MultipleSelectionCheckGroup that can select many icheckable items with the use of shift key for instance (do not add this functionality in this class its not the correct abstraction level)
+ * TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
  */
 class CheckGroup:EventSender {
     var checkables:Array<ICheckable> = []

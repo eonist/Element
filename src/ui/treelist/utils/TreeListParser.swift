@@ -72,7 +72,7 @@ class TreeListParser{
             let treeItem:NSView = treeList.itemContainer!.getSubviewAt(i)
             if(treeItem is ISelectable && (treeItem as! ISelectable).getSelected()) {selectable = treeItem as? ISelectable}
             if(treeItem is ITreeListItem && !(treeItem as! ISelectable).getSelected()) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
-            if(selectable != nil) {break}//<--what does this break do?
+            if(selectable != nil) {break}//<--what does this break do?, well when the first selectable is found it breaks out of the loop, should probably find a better design for this
         }
         return selectable
     }

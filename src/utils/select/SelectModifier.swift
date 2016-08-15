@@ -5,7 +5,7 @@ class SelectModifier {
      * Unselects all in @param items except @param target
      */
     class func unSelectAllExcept(exceptionItem:ISelectable, _ selectables:Array<ISelectable>) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
-        for selectable : ISelectable in selectables {if(selectable !== exceptionItem && selectable.getSelected()) {selectable.setSelected(false)}}
+        for selectable:ISelectable in selectables {if(selectable !== exceptionItem && selectable.getSelected()) {selectable.setSelected(false)}}
     }
     /**
      *
@@ -27,7 +27,7 @@ class SelectModifier {
      */
     class func selectRange(selectables:Array<ISelectable>, _ from:Int, _ to:Int,_ isSelected:Bool = true) {
         for (var i : Int = from; i <= to; i++) {
-            let selectable:ISelectable = selectables[i];
+            let selectable:ISelectable = selectables[i]
             if(!selectable.getSelected()) {selectable.setSelected(isSelected)}
         }
     }

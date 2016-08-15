@@ -14,7 +14,7 @@ class TreeList:Element,ITreeList {
     var node:Node
     var itemContainer:Container?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ node:Node = Node(), _ parent : IElement? = nil, _ id:String = "") {
-        self.itemHeight = itemHeight;
+        self.itemHeight = itemHeight
         self.node = node
         super.init(width, height, parent, id)
         self.node.event = onEvent//Add event handler for the node

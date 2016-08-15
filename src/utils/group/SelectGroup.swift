@@ -27,11 +27,8 @@ class SelectGroup:EventSender{
     func addSelectable(selectable:ISelectable) {
         //Swift.print("SelectGroup.addSelectable()")
         //let anyObj:AnyObject = selectable
-        
-        if(selectable is IEventSender){
-            (selectable as! IEventSender).event = onEvent
-        }
-        selectables.append(selectable);
+        if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
+        selectables.append(selectable)
     }
     override func onEvent(event:Event){
         if(event.type == SelectEvent.select){
@@ -41,11 +38,8 @@ class SelectGroup:EventSender{
             selected = event.immediate as? ISelectable
             Swift.print("selected: " + "\(selected)")
             Swift.print("selectables.count: " + "\(selectables.count)")
-            
             SelectModifier.unSelectAllExcept(selected!, selectables)
-            for s in selectables{
-                Swift.print("s.isSelected: " + "\(s.getSelected())")
-            }
+            for s in selectables{ Swift.print("s.isSelected: " + "\(s.getSelected())") }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
         }
         super.onEvent(event)//we dont want to block any event being passed through, so we forward all events right through the SelectGroup

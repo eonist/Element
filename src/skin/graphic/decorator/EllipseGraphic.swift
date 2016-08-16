@@ -1,6 +1,7 @@
 import Cocoa
 /**
  * NOTE: Dont create a circle class, ellipse will do the same as a circle
+ * NOTE: EllipseGraphic is drawn from topLeft
  * //TODO: possibly add a diameter var
  */
 class EllipseGraphic:SizeableGraphic{

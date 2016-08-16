@@ -4,13 +4,13 @@ import Foundation
  */
 class CSSFileParser {
     /**
-    * Returns a string containing css styles (including styles from imports and sub imports)
-    * NOTE: this method is recursive
-    * NOTE: this method also removes any comments (the reason it must be located within the recursive method is because comments may be among the import statements aswell)
-    * NOTE: alternative method name: cssStringByURL
-    * PARAM: url The url to load the css file from
-    * PARAM: cssString the recursive string passed down the hierarchy
-    */
+     * Returns a string containing css styles (including styles from imports and sub imports)
+     * NOTE: this method is recursive
+     * NOTE: this method also removes any comments (the reason it must be located within the recursive method is because comments may be among the import statements aswell)
+     * NOTE: alternative method name: cssStringByURL
+     * PARAM: url The url to load the css file from
+     * PARAM: cssString the recursive string passed down the hierarchy
+     */
     class func cssString(url:String)->String {
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
         //cssString = string//temp fix until you implement the recusrive import stuff bellow

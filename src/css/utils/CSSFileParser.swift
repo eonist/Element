@@ -69,7 +69,6 @@ class CSSFileParser {
             //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             //for var i = 0; i < match.numberOfRanges; ++i{
                 //Swift.print("loc: " + "\(match.rangeAtIndex(i).location)" + " length: " + "\(match.rangeAtIndex(i).length)")
-
             //}
             //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             //Swift.print("content: " + "\(content)")

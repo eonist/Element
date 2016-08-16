@@ -1,5 +1,5 @@
 import Foundation
-/*
+/**
  * TODO: rename this class to CSSPointerResolver? Since it can be confused with resolving css View container urls?
  * EXAMPLE: Swift.print(CSSLinkResolver.resolveLinks("Button{fill:<ButtonBase>;} ButtonBase{fill:green;line:blue;} CheckButton{line:<ButtonBase>;}"))//Button{fill:green;} ButtonBase{fill:green;line:blue;} CheckButton{line:blue;}
  */

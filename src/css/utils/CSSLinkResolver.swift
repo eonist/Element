@@ -52,7 +52,7 @@ private class Utils {
         //Swift.print("replaceLinks.string: " + string);
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         //Swift.print("replaceLinks()" + String(matches.count))
-        //var index:Int = 0;
+        //var index:Int = 0
         var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print(match.numberOfRanges)
@@ -67,7 +67,7 @@ private class Utils {
                 string = (string as NSString).stringByReplacingCharactersInRange(range, withString: linkedStyleProperty)
             }
         }
-        return string;
+        return string
     }
     /**
      * Returns a style property value by parsing through PARAM: string and tries to find a match that matches both PARAM: linkName and PARAM: propertyName

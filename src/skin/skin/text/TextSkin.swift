@@ -46,9 +46,9 @@ class TextSkin:Skin,ITextSkin{
         textField.frame.height = height/*SkinParser.height(this)*/
         super.frame.width = width//quick fix
         super.frame.height = height//quick fix
-        let textFormat:TextFormat = StylePropertyParser.textFormat(self)
+        let textFormat:TextFormat = StylePropertyParser.textFormat(self)/*creates the textFormat*/
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
-        TextFieldModifier.applyTextFormat(textField,textFormat)
+        TextFieldModifier.applyTextFormat(textField,textFormat)/*applies the textFormat*/
         let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/
         textField.stringValue = " "
         textField.stringValue = temp

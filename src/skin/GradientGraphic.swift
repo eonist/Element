@@ -14,7 +14,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){//<- TODO: I think you can do just a regular is test there
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
-            //Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")
+            Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")
             let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")

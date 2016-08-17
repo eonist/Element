@@ -21,6 +21,7 @@ class TextSkin:Skin,ITextSkin{
         applyProperties(textField)
         SkinModifier.float(self)
         SkinModifier.align(self, textField)
+        textField.frame.origin += CGPoint(0,10)
         textField.hidden = SkinParser.display(self) == CSSConstants.none
     }
     override func draw() {

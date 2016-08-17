@@ -53,6 +53,8 @@ class TextSkin:Skin,ITextSkin{
         let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/
         textField.stringValue = " "
         textField.stringValue = temp
+        
+        //textField.attributedStringValue = attrString
         */
     }
     /**

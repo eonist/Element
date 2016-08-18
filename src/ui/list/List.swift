@@ -17,7 +17,7 @@ class List:Element,IList{
     var lableContainer  : Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight;
-        self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()
+        self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()//<--this can be shortned with ??
         super.init(width, height,parent,id)
         self.dataProvider.event = onEvent//Add event handler for the dataProvider
         layer!.masksToBounds = true/*masks the children to the frame*/
@@ -32,7 +32,7 @@ class List:Element,IList{
         //section
         //Swift.print("List.dataProvider.items.count: " + "\(dataProvider.items.count)")
         //lableContainer!.addSubview(Element(20,20,lableContainer!,"box"))
-        mergeAt(dataProvider.items, 0)
+        //mergeAt(dataProvider.items, 0)
     }
     /**
      * Creates and adds items to the _lableContainer

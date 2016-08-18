@@ -19,6 +19,13 @@ class ElementModifier {
         for element : IElement in elements {ElementModifier.hide(element, (element === exception))}  
     }
     /**
+     *
+     */
+    class func hideChildren(view:NSView,_ exception:IElement) {
+        var elements:Array<IElement> = ElementParser.children(view)
+        hideAll(elements, exception)
+    }
+    /**
      * Refreshes many elements in @param displayObjectContainer
      * // :TODO: skin should have a dedicated redraw method or a simple workaround
      * @Note keep in mind that this can be Window

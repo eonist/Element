@@ -22,7 +22,7 @@ class ElementModifier {
      *
      */
     class func hideChildren(view:NSView,_ exception:IElement) {
-        var elements:Array<IElement> = ElementParser.children(view)
+        let elements:Array<IElement> = ElementParser.children(view,IElement.self)
         hideAll(elements, exception)
     }
     /**

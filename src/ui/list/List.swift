@@ -32,7 +32,7 @@ class List:Element,IList{
         //section
         //Swift.print("List.dataProvider.items.count: " + "\(dataProvider.items.count)")
         //lableContainer!.addSubview(Element(20,20,lableContainer!,"box"))
-        //mergeAt(dataProvider.items, 0)
+        mergeAt(dataProvider.items, 0)
     }
     /**
      * Creates and adds items to the _lableContainer

@@ -8,3 +8,11 @@ protocol IList {
     var dataProvider:DataProvider{get}
     var lableContainer :Container? {get}
 }
+extension IList{
+    /*Parsers*/
+    
+    /*Modifiers*/
+    func selectAt(index:Int){/*convenience*/
+        ListModifier.selectAt(self, index)
+    }
+}

@@ -11,9 +11,13 @@ class PositionalGraphic:GraphicDecoratable,IPositional {
      * NOTE: This method must remain an instance method so that other decorators can override it (Circle, Line, Path, etc)
      */
     func getPosition() -> CGPoint {
+        if(self.pos.x.isNaN){fatalError("x can't be NaN")}
+        if(self.pos.y.isNaN){fatalError("y can't be NaN")}
         return pos
     }
     func setPosition(position: CGPoint) {
+        if(position.x.isNaN){fatalError("x can't be NaN")}
+        if(position.y.isNaN){fatalError("y can't be NaN")}
         self.pos = position
     }
 }

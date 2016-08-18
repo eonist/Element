@@ -8,9 +8,14 @@ protocol IList {
     var dataProvider:DataProvider{get}
     var lableContainer :Container? {get}
 }
+/**
+ * TODO: Continue adding methods here
+ */
 extension IList{
     /*Parsers*/
-    
+    func selected() -> ISelectable?{
+        return ListParser.selected(self)
+    }
     /*Modifiers*/
     func selectAt(index:Int){/*convenience*/
         ListModifier.selectAt(self, index)

@@ -26,6 +26,7 @@ class StylePropertyParser{
     }
     /**
      * Returns a FillStyle instance
+     * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      */
     class func colorFillStyle(skin:ISkin, _ depth:Int = 0)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")

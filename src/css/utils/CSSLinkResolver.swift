@@ -79,14 +79,14 @@ private class Utils {
      */
     class func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
-        //print("pattern: " + pattern);
+        //print("pattern: " + pattern)
         var match:Array = RegExp.match(string, pattern)
-        //print("value.match: " + match[0]);
+        //print("value.match: " + match[0])
         if(match.count > 0){/*this try catch method is here so its easier to debug which linkName threw */
             let matchString:String =  match[0]
-            return value(matchString,propertyName);
+            return value(matchString,propertyName)
         }else{
-            fatalError("no match found by linkName: " + linkName+" and propertyName: "+propertyName )
+            fatalError("no match found for linkName: " + linkName+" with propertyName: " + propertyName )
         }
     }
     /**

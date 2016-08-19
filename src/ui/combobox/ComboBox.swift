@@ -19,7 +19,7 @@ class ComboBox:Element{
     var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var initSelected:Int
     var popOver:PopWin?
-    var popupWindow:PopupWindow?
+    static var popupWindow:PopupWindow?
 	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider
@@ -40,9 +40,9 @@ class ComboBox:Element{
     }
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        popupWindow = PopupWindow(100,100)
+        ComboBox.popupWindow = PopupWindow(100,100)
         
-        (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent
+        (ComboBox.popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent
         
         
         //popOver = PopWin()
@@ -148,7 +148,7 @@ class PopupWindow:Window{
         fatalError("init(coder:) has not been implemented")
     }
     deinit{
-        
+        (self.contentView as! WindowView).event = (self.contentView as! WindowView).onEvent
     }
 }
 /**

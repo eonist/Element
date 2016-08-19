@@ -109,7 +109,9 @@ class PopWin:NSPopover, NSPopoverDelegate{
 }
 class PopView:WindowView{
     override func resolveSkin() {
+        Swift.print("resolveSkin")
         StyleManager.addStyle("Window#special{fill:red;}")
+        super.resolveSkin()
     }
 }
 class PopViewController:NSViewController{

@@ -60,9 +60,10 @@ class CustomView:WindowView{
         
         //screenFrame = [[NSScreen mainScreen] frame];
         
+        //NSWindowCollectionBehaviorFullScreenAuxiliary or NSWindowCollectionBehaviorFullScreenPrimary
         
-        self.window!.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary
-
+        self.window!.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
+        window!.setFrame(NSScreen.mainScreen()!.visibleFrame, display: true, animate: true)
         //[self.window setFrame:screenFrame display:YES];
 
         self.window?.toggleFullScreen(self.window)

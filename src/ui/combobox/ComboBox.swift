@@ -36,8 +36,9 @@ class ComboBox:Element{
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        popOver = PopWin()
-        popOver?.showRelativeToRect(NSZeroRect, ofView: self, preferredEdge: NSRectEdge.MaxX)
+        popupWindow = PopupWindow()
+        //popOver = PopWin()
+        //popOver?.showRelativeToRect(NSZeroRect, ofView: self, preferredEdge: NSRectEdge.MaxX)
         
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
@@ -90,13 +91,14 @@ class PopWin:NSPopover, NSPopoverDelegate{
         Swift.print("PopWin")
         super.init()
         self.behavior = .Semitransient
-        self.delegate = self
+        
         self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)!
         self.contentSize = NSSize(100,100)
         view = PopView(100,100,nil,"special")
         viewController = PopViewController(view!)
         self.contentViewController = viewController
-        self.positioningRect = CGRect(0,0,100,100)
+        self.delegate = self
+        //self.positioningRect = CGRect(0,0,100,100)
 
         
         

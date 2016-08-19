@@ -83,7 +83,7 @@ class PopWin:NSPopover, NSPopoverDelegate{
         super.init()
         self.behavior = .Semitransient
         self.delegate = self
-        self.contentSize = NSRect(0.0,0.0,100.0,100.0)
+        self.contentSize = NSSize(100,100)
         //popover.contentViewController = ContentViewController()
         
     }

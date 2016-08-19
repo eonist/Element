@@ -18,6 +18,7 @@ class ComboBox:Element{
     var isOpen:Bool
     var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var initSelected:Int
+    var popOver:NSPopover?
 	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider
@@ -34,6 +35,7 @@ class ComboBox:Element{
         setOpen(isOpen)
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
+        Swift.print("onHeaderMouseDown")
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
 	}
@@ -56,7 +58,8 @@ class ComboBox:Element{
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {
-        let popOver = PopWin()
+        Swift.print("setOpen")
+        popOver = PopWin()
         
 		/*
         if(isOpen){
@@ -79,11 +82,12 @@ class ComboBox:Element{
 
 class PopWin:NSPopover, NSPopoverDelegate{
     override init() {
-
+        Swift.print("PopWin")
         super.init()
         self.behavior = .Semitransient
         self.delegate = self
         self.contentSize = NSSize(100,100)
+        self.positioningRect = CGRect(0,0,100,100)
         //popover.contentViewController = ContentViewController()
         
     }

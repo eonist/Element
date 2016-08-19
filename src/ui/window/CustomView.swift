@@ -56,7 +56,7 @@ class CustomView:WindowView{
         Swift.print("onMaximizeButtonReleaseInside")
         //maximize the window here
         //self.window?.zoom(self)//<--alt + click is the default behaviour to launch zoom
-        self.window?.toggleFullScreen(self)
+        self.window?.toggleFullScreen(self.window)
         
     }
     /**

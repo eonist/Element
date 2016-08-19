@@ -153,4 +153,8 @@ class PopupView:WindowView{
 }
 
 //on click outside of the popup window needs to be recorded
-//click a button in popupWin sends an event
+//click a button in popupWin sends an event and then closes it self
+//the popupWinow needs to be stored somewhere, maybe in a static variable or somewhere else in the Element framework
+//
+
+

@@ -155,6 +155,7 @@ class PopupView:WindowView{
 //1. on click outside of the popup window needs to be recorded
 //2. click a button in popupWin sends an event and then closes it self
 //3. the popupWindow needs to be stored somewhere, maybe in a static variable or somewhere else in the Element framework
-//4. Make an universal alignemnet method for aligning windows 
+//4. Make an universal alignment method for aligning windows, you can probably use the regular Align method here with a zeroSize and CGPoint and TopCenter as the alignment type
+
 
 

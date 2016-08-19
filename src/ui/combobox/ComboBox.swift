@@ -151,3 +151,6 @@ class PopupView:WindowView{
         super.resolveSkin()
     }
 }
+
+//on click outside of the popup window needs to be recorded
+//click a button in popupWin sends an event

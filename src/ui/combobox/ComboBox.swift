@@ -183,6 +183,7 @@ class PopupView:WindowView{
 //7. populate the window with a List/SliderList
 //8. hock up the List event
 //9. create the ComboBoxPopUpWindow
+//10. you need a method that checks avilable space for the popup to be shown in (mesure screen vs origin-pos vs popup-size) <--do some doodeling etc
 
 
 

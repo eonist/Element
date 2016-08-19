@@ -145,7 +145,7 @@ class PopupWindow:Window{
     }
 }
 /**
- * NOTE: the difference between local and global monitors is that local takes care of events that happen inside an app window, and the global handle events that also is detected outside an app window. 
+ * NOTE: the difference between local and global monitors is that local takes care of events that happen inside an app window, and the global handle events that also is detected outside an app window.
  */
 class PopupView:WindowView{
     var leftMouseDownEventListener:AnyObject?
@@ -159,7 +159,11 @@ class PopupView:WindowView{
     
     func onMouseDown(event:NSEvent) {
         Swift.print("PopupView.onMouseDown()")
-        
+        if(leftMouseDownEventListener != nil){
+            NSEvent.removeMonitor(leftMouseDownEventListener!)
+            leftMouseDownEventListener = nil
+        }
+        self.window!.close()
         //return event
     }
 }

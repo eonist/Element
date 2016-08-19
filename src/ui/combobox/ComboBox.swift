@@ -92,7 +92,7 @@ class PopWin:NSPopover, NSPopoverDelegate{
         self.behavior = .Semitransient
         self.delegate = self
         self.contentSize = NSSize(100,100)
-        view = WindowView(100,100)
+        view = WindowView(100,100,nil,"special")
         viewController = PopViewController(view!)
         self.contentViewController = viewController
         //self.positioningRect = CGRect(0,0,100,100)
@@ -105,6 +105,11 @@ class PopWin:NSPopover, NSPopoverDelegate{
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+class PopView:WindowView{
+    override func resolveSkin() {
+        StyleManager.addStyle("Window#special{fill:red;}")
     }
 }
 class PopViewController:NSViewController{

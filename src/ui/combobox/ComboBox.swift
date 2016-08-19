@@ -93,7 +93,7 @@ class PopWin:NSPopover, NSPopoverDelegate{
         self.delegate = self
         self.contentSize = NSSize(100,100)
         view = WindowView(100,100)
-        viewController = PopViewController()
+        viewController = PopViewController(view!)
         self.contentViewController = viewController
         //self.positioningRect = CGRect(0,0,100,100)
 
@@ -108,5 +108,11 @@ class PopWin:NSPopover, NSPopoverDelegate{
     }
 }
 class PopViewController:NSViewController{
-    
+    init(_ view:NSView){
+        super.init(nibName: nil, bundle: nil)!
+        self.view = view
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

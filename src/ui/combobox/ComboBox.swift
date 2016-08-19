@@ -126,3 +126,19 @@ class PopViewController:NSViewController{
         fatalError("init(coder:) has not been implemented")
     }
 }
+class PopupWindow:Window{
+    required init(_ width: CGFloat, _ height: CGFloat) {
+        super.init(100,100)
+        WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
+    }
+    override func resolveSkin() {
+        super.resolveSkin()
+        self.contentView = PopupView(frame.width,frame.height,nil)/*Sets the mainview of the window*/
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+class PopupView:WindowView{
+    
+}

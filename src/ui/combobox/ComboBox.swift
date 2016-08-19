@@ -182,7 +182,7 @@ class PopupView:WindowView{
 //6. the popupwin must have an init with size and position, 
 //7. populate the window with a List
 //8. hock up the List event
-//9. ComboBoxPopOver
+//9. create the ComboBoxPopUpWindow
 
 
 

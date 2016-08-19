@@ -39,8 +39,8 @@ class ComboBox:Element{
         Swift.print("onHeaderMouseDown")
         popupWindow = PopupWindow(100,100)
         
+        (popupWindow!.contentView as! WindowView).event = 
         
-        //Research how you can make a custom shape for the window, see your old notes on this too, and that blog post you did
         
         //popOver = PopWin()
         //popOver?.showRelativeToRect(NSZeroRect, ofView: self, preferredEdge: NSRectEdge.MaxX)

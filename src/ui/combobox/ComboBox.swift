@@ -150,14 +150,14 @@ class PopupView:WindowView{
         Swift.print("PopupView.resolveSkin")
         StyleManager.addStyle("Window#special{fill:red;}")
         super.resolveSkin()
-        if(leftMouseDownEventListener == nil) {leftMouseDownEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:self.onMouseDown ) }//we add a global mouse move event listener
+        if(leftMouseDownEventListener == nil) {leftMouseDownEventListener = NSEvent.addGlobalMonitorForEventsMatchingMask([.LeftMouseDownMask], handler:self.onMouseDown ) }//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     
-    func onMouseDown(event:NSEvent) -> NSEvent? {
+    func onMouseDown(event:NSEvent) {
         Swift.print("PopupView.onMouseDown()")
         
-        return event
+        //return event
     }
 }
 

@@ -84,15 +84,17 @@ class ComboBox:Element{
 }
 
 class PopWin:NSPopover, NSPopoverDelegate{
-    var view:PopView?
+    var view:WindowView?
+    var viewController:PopViewController?
     override init() {
         Swift.print("PopWin")
         super.init()
         self.behavior = .Semitransient
         self.delegate = self
         self.contentSize = NSSize(100,100)
-        view = PopView(100,100)
-        self.contentViewController = view
+        view = WindowView(100,100)
+        viewController = PopViewController()
+        self.contentViewController = viewController
         //self.positioningRect = CGRect(0,0,100,100)
 
         //popover.contentViewController = ContentViewController()
@@ -105,6 +107,6 @@ class PopWin:NSPopover, NSPopoverDelegate{
         fatalError("init(coder:) has not been implemented")
     }
 }
-class PopView:WindowView{
+class PopViewController:NSViewController{
     
 }

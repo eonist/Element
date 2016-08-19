@@ -56,7 +56,7 @@ class ComboBox:Element{
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {
-        let popOver = NSPopover()
+        let popOver = PopWin()
         
 		/*
         if(isOpen){
@@ -75,4 +75,10 @@ class ComboBox:Element{
 		headerButton!.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+
+class PopWin:NSPopover{
+    init() {
+        super.init()
+    }
 }

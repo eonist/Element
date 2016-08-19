@@ -35,11 +35,14 @@ class ComboBox:Element{
         headerButton!.setTextValue(ListParser.selectedTitle(list!))
         setOpen(isOpen)
 	}
+    func onPopUpWinEvent(event:Event){
+        Swift.print("onPopUpWinEvent")
+    }
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
         popupWindow = PopupWindow(100,100)
         
-        (popupWindow!.contentView as! WindowView).event = 
+        (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent
         
         
         //popOver = PopWin()
@@ -63,6 +66,7 @@ class ComboBox:Element{
 		setOpen(false)
 	}
 	override func onEvent(event:Event){
+        
 		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}

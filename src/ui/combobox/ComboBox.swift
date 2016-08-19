@@ -19,6 +19,7 @@ class ComboBox:Element{
     var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var initSelected:Int
     var popOver:PopWin?
+    var popupWindow:PopupWindow?
 	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider
@@ -36,7 +37,7 @@ class ComboBox:Element{
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        popupWindow = PopupWindow()
+        popupWindow = PopupWindow(100,100)
         //popOver = PopWin()
         //popOver?.showRelativeToRect(NSZeroRect, ofView: self, preferredEdge: NSRectEdge.MaxX)
         
@@ -128,7 +129,7 @@ class PopViewController:NSViewController{
 }
 class PopupWindow:Window{
     required init(_ width: CGFloat, _ height: CGFloat) {
-        super.init(100,100)
+        super.init(width,height)
         WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
     }
     override func resolveSkin() {
@@ -140,5 +141,9 @@ class PopupWindow:Window{
     }
 }
 class PopupView:WindowView{
-    
+    override func resolveSkin() {
+        Swift.print("PopupView.resolveSkin")
+        StyleManager.addStyle("Window#special{fill:red;}")
+        super.resolveSkin()
+    }
 }

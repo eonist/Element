@@ -36,6 +36,7 @@ class ComboBox:Element{
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
+        popOver = PopWin()
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
 	}
@@ -59,7 +60,7 @@ class ComboBox:Element{
 	}
 	func setOpen(isOpen:Bool) {
         Swift.print("setOpen")
-        popOver = PopWin()
+        
         
 		/*
         if(isOpen){
@@ -88,6 +89,7 @@ class PopWin:NSPopover, NSPopoverDelegate{
         self.delegate = self
         self.contentSize = NSSize(100,100)
         self.positioningRect = CGRect(0,0,100,100)
+
         //popover.contentViewController = ContentViewController()
         
     }

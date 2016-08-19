@@ -144,6 +144,9 @@ class PopupWindow:Window{
         fatalError("init(coder:) has not been implemented")
     }
 }
+/**
+ * NOTE: the difference between local and global monitors is that local takes care of events that happen inside an app window, and the global handle events that also is detected outside an app window. 
+ */
 class PopupView:WindowView{
     var leftMouseDownEventListener:AnyObject?
     override func resolveSkin() {

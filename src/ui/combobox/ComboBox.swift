@@ -56,6 +56,8 @@ class ComboBox:Element{
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {
+        let popOver = NSPopover()
+        
 		/*
         if(isOpen){
 			depth = (getParent(true) as! NSView).getSubViewIndex(self)

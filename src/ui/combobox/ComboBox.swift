@@ -180,5 +180,10 @@ class PopupView:WindowView{
 //4. Make an universal alignment method for aligning windows, you can probably use the regular Align method here with a zeroSize and CGPoint and TopCenter as the alignment type
 //5. try to animate the popup effect
 //6. the popupwin must have an init with size and position, 
+//7. populate the window with a List
+//8. hock up the List event
+//9. ComboBoxPopOver
+
+
 
 

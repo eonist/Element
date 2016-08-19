@@ -138,7 +138,6 @@ class PopViewController:NSViewController{
 class PopupWindow:Window{
     required init(_ width: CGFloat, _ height: CGFloat) {
         super.init(width,height)
-        self.releasedWhenClosed = false
         WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
     }
     override func resolveSkin() {
@@ -147,9 +146,6 @@ class PopupWindow:Window{
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    deinit{
-        //(self.contentView as! WindowView).event = (self.contentView as! WindowView).onEvent
     }
 }
 /**

@@ -1,7 +1,5 @@
 import Cocoa
-/**
- * 
- */
+
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     var view:NSView?
     override var canBecomeMainWindow:Bool{return true}
@@ -12,6 +10,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
      * TODO: implement the max and min sizes into the constructor arguments
      * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
+     * NOTE: self.acceptsMouseMovedEvents = true/*<--new, could enable you to use the overide mouseMoved*/
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/
@@ -22,11 +21,10 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         //self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
-        //self.acceptsMouseMovedEvents = true/*<--new, could enable you to use the overide mouseMoved*/
+        self.releasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically*/
         self.movableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         resolveSkin()
-        
     }
     func windowDidResize(notification: NSNotification) {
         Swift.print("Window.windowDidResize")

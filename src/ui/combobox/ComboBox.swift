@@ -147,6 +147,9 @@ class PopupWindow:Window{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    deinit{
+        
+    }
 }
 /**
  * NOTE: the difference between local and global monitors is that local takes care of events that happen inside an app window, and the global handle events that also is detected outside an app window.

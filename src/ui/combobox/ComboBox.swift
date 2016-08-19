@@ -138,7 +138,7 @@ class PopupWindow:Window{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        self.contentView = PopupView(frame.width,frame.height,nil)/*Sets the mainview of the window*/
+        self.contentView = PopupView(frame.width,frame.height,nil,"special")/*Sets the mainview of the window*/
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -12,7 +12,7 @@ class TextArea:Element {
     }
     override func resolveSkin() {
         super.resolveSkin()
-        text = addSubView(Text(width,height,self.textString,self)) 
+        text = addSubView(Text(width,height,self.textString,self))
     }
     func setSize(width:CGFloat, height:CGFloat) {
         super.setSize(width, height)

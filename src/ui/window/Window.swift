@@ -22,9 +22,11 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         //self.movableByWindowBackground = true/*This enables you do drag the window around via the background*/
         //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
+        //self.acceptsMouseMovedEvents = true/*<--new, could enable you to use the overide mouseMoved*/
         self.movableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         resolveSkin()
+        
     }
     func windowDidResize(notification: NSNotification) {
         Swift.print("Window.windowDidResize")

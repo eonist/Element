@@ -42,7 +42,7 @@ class ComboBox:Element{
         Swift.print("onHeaderMouseDown")
         ComboBox.popupWindow = PopupWindow(100,100)
         
-        (ComboBox.popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent
+        (ComboBox.popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent//add event handler
         
         
         //popOver = PopWin()
@@ -168,13 +168,14 @@ class PopupView:WindowView{
             NSEvent.removeMonitor(leftMouseDownEventListener!)
             leftMouseDownEventListener = nil
         }
+        //TODO: set the event to it self again here
         self.window!.close()
         //return event
     }
 }
 
-//1. on click outside of the popup window needs to be recorded
-//2. click a button in popupWin sends an event and then closes it self
+//1. on click outside of the popup window needs to be recorded (done)
+//2. click a button in popupWin sends an event and then closes it self (done)
 //3. the popupWindow needs to be stored somewhere, maybe in a static variable or somewhere else in the Element framework
 //4. Make an universal alignment method for aligning windows, you can probably use the regular Align method here with a zeroSize and CGPoint and TopCenter as the alignment type
 //5. try to animate the popup effect

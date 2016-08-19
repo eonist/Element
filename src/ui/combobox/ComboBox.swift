@@ -91,14 +91,14 @@ class PopWin:NSPopover, NSPopoverDelegate{
         super.init()
         self.behavior = .Semitransient
         self.delegate = self
-        self.appearance = NSAppearanceNameVibrantDark
+        self.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)!
         self.contentSize = NSSize(100,100)
         view = PopView(100,100,nil,"special")
         viewController = PopViewController(view!)
         self.contentViewController = viewController
-        //self.positioningRect = CGRect(0,0,100,100)
+        self.positioningRect = CGRect(0,0,100,100)
 
-        //popover.contentViewController = ContentViewController()
+        
         
     }
     func popoverWillShow(notification: NSNotification) {

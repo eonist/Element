@@ -174,6 +174,8 @@ class PopupView:WindowView{
     }
 }
 
+//IMPORTANT: try to open the popover window when the origin window is in fullscreen mode
+
 //1. on click outside of the popup window needs to be recorded (done)
 //2. click a button in popupWin sends an event and then closes it self (done)
 //3. the popupWindow needs to be stored somewhere, maybe in a static variable or somewhere else in the Element framework (done)

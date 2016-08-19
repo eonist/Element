@@ -37,6 +37,8 @@ class ComboBox:Element{
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
         popOver = PopWin()
+
+    
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
 	}
@@ -93,7 +95,9 @@ class PopWin:NSPopover, NSPopoverDelegate{
         //popover.contentViewController = ContentViewController()
         
     }
-
+    func popoverWillShow(notification: NSNotification) {
+        Swift.print("popoverWillShow")
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

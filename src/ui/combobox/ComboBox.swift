@@ -174,7 +174,8 @@ class PopupView:WindowView{
     }
 }
 
-//IMPORTANT: try to open the popover window when the origin window is in fullscreen mode
+//IMPORTANT: try to open the popover window when the origin window is in fullscreen mode (works)
+//Figure out how to listen to mouseEvents outside and inside NSWindow
 
 //1. on click outside of the popup window needs to be recorded (done)
 //2. click a button in popupWin sends an event and then closes it self (done)

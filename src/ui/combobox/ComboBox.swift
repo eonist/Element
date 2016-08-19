@@ -77,8 +77,18 @@ class ComboBox:Element{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
-class PopWin:NSPopover{
-    init() {
+class PopWin:NSPopover, NSPopoverDelegate{
+    override init() {
+
         super.init()
+        self.behavior = .Semitransient
+        self.delegate = self
+        self.contentSize = NSRect(0.0,0.0,100.0,100.0)
+        //popover.contentViewController = ContentViewController()
+        
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

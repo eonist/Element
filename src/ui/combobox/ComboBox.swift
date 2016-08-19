@@ -38,7 +38,7 @@ class ComboBox:Element{
         Swift.print("onHeaderMouseDown")
         popOver = PopWin()
         popOver?.showRelativeToRect(NSZeroRect, ofView: self, preferredEdge: NSRectEdge.MaxX)
-        popOver.viewController.
+        (popOver!.viewController as! NSWindowController).window?.makeKeyAndOrderFront(nil)
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
 	}

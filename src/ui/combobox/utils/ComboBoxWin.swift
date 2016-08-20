@@ -36,6 +36,9 @@ class ComboBoxView:PopupView{
         list = addSubView(List(width, height, itemHeight, dataProvider, self))
         ListModifier.selectAt(list!, initSelectedIndex)
     }
+    override func onEvent(event: Event) {
+        if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 

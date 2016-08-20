@@ -15,7 +15,7 @@ class ComboBox:Element{
     var itemHeight:CGFloat// :TODO: this should be set in the css?
     var dataProvider:DataProvider?
     //var list:SliderList?
-    var isOpen:Bool
+    var isOpen:Bool = false
     //var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var initSelected:Int
     var popupWindow:ComboBoxWin?

@@ -45,7 +45,7 @@ class ComboBox:Element{
         Swift.print("ComboBox.height: " + "\(height)")
         popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
         //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
-        
+        Swift.print("self.window!.frame.origin: " + "\(self.window!.frame.origin)")
         Swift.print("MouseUtils.point(self): " + "\(MouseUtils.point(self))")
         Swift.print("convertPoint(CGPoint(0,0), fromView: self): " + "\(convertPoint(CGPoint(0,0), fromView: self))")
         Swift.print("self.globalPoint(): " + "\(self.globalPoint())")

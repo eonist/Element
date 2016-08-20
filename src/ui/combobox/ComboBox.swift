@@ -37,8 +37,6 @@ class ComboBox:Element{
     
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        
-        
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,selectedIndex,self))/*send this event*/
 	}
@@ -52,7 +50,7 @@ class ComboBox:Element{
 		setOpen(false)
 	}
 	override func onEvent(event:Event){
-        if(event.type == Event.update && event.origin === popupWindow!){}
+        if(event.type == Event.update && event.origin === popupWindow!){setOpen(false)}
 		if(event.type == ListEvent.select && event.origin === (popupWindow!.contentView as! ComboBoxView).list) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
@@ -67,8 +65,9 @@ class ComboBox:Element{
             
             (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         }else{
-            
+            //
         }
+        self.isOpen = isOpen
 	}
 	override func setSize(width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)

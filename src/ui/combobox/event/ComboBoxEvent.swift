@@ -21,6 +21,7 @@ extension ComboBoxEvent{
     var selected:ISelectable{
         //continue here: index from where? See similar event class in list
         //you could even just grab the index from the list it self
-        return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
+        fatalError("not supported yet")
+        //return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
     }
 }

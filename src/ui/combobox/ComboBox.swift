@@ -17,13 +17,13 @@ class ComboBox:Element{
     //var list:SliderList?
     var isOpen:Bool = false
     //var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
-    var initSelected:Int
+    var selectedIndex:Int
     var popupWindow:ComboBoxWin?
-	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
+	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ selectedIndex:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider
 		self.isOpen = isOpen
-		self.initSelected = initSelected
+		self.selectedIndex = selectedIndex
 		super.init(width,height,parent,id)
 	}
 	override func resolveSkin(){
@@ -31,7 +31,7 @@ class ComboBox:Element{
 		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
         //list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
         // ListModifier.selectAt(list!, initSelected)
-        let selectedTitle:String = dataProvider!.getItemAt(initSelected)!["title"]!
+        let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
         Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)
         setOpen(isOpen)
@@ -42,7 +42,7 @@ class ComboBox:Element{
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
         
-        popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
+        popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
         var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
         comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
         let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos

@@ -45,7 +45,8 @@ class ComboBox:Element{
 	func onListSelect(event:ListEvent) {
         Swift.print("onListSelect")
         let list:IList = event.origin as! List
-		let text:String = ListParser.selectedTitle(list)
+        selectedIndex = ListParser.selectedIndex(list)
+		let text:String = ListParser.
         Swift.print("text: " + "\(text)")
 		headerButton!.setTextValue(text)
         popupWindow!.close()

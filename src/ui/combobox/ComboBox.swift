@@ -30,7 +30,7 @@ class ComboBox:Element{
 		super.resolveSkin()
 		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
         //list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
-       // ListModifier.selectAt(list!, initSelected)
+        // ListModifier.selectAt(list!, initSelected)
         let selectedTitle:String = dataProvider!.getItemAt(initSelected)!["title"]!
         Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)
@@ -69,8 +69,6 @@ class ComboBox:Element{
 		//setOpen(false)
 	}
 	override func onEvent(event:Event){
-        
-		//if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {

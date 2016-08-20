@@ -64,7 +64,9 @@ class ComboBox:Element{
         
         Swift.print("self.window!.topLeft: " + "\(self.window!.topLeft)")
         
-        let winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.topLeft)//comboBoxPos
+        //let p = CGPoint(window!.topLeft.x,)
+        
+        let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft)//comboBoxPos
         Swift.print("winPos: " + "\(winPos)")
         
         WinModifier.position(popupWindow!, winPos)

@@ -44,9 +44,11 @@ class ComboBox:Element{
         Swift.print("ComboBox.width: " + "\(width)")
         Swift.print("ComboBox.height: " + "\(height)")
         popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
-        WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
         
         
+        let winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)
+        WinModifier.position(self.window!, winPos)
+
         
         (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/
         

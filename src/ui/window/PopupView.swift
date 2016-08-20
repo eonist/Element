@@ -15,7 +15,20 @@ class PopupView:WindowView{
     }
     func onMouseDown(event:NSEvent) -> NSEvent? {
         Swift.print("PopupView.onMouseDown()")
-        self.localPos
+        Swift.print("self.localPos: " + "\(self.localPos)")
+        
+        //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
+        /**/
+        
+        Swift.print("convertPoint(CGPoint(0,0), fromView: self): " + "\(convertPoint(CGPoint(0,0), fromView: self))")
+        Swift.print("self.globalPoint(): " + "\(self.globalPoint())")
+        Swift.print("convertPoint(CGPoint(0,0), fromView: self.window!.contentView): " + "\(convertPoint(CGPoint(0,0), fromView: self.window!.contentView))")
+        Swift.print("convertPoint(CGPoint(0,0), toView: self.window!.contentView): " + "\(convertPoint(CGPoint(0,0), toView: self.window!.contentView))")
+        
+        Swift.print("comboBoxPos: " + "\(comboBoxPos)")
+        
+        
+        
         
         super.onEvent(Event(Event.update,self))
         if(leftMouseDownEventListener != nil){

@@ -20,7 +20,7 @@ class PopupView:WindowView{
         //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
         /**/
         
-        if(!frame.contains(self.localPos())){/*click outside window, but most hit another app window*/
+        if(!CGRect(CGPoint(),frame.size).contains(self.localPos())){/*click outside window, but most hit another app window*/
             super.onEvent(Event(Event.update,self))
             if(leftMouseDownEventListener != nil){
                 NSEvent.removeMonitor(leftMouseDownEventListener!)

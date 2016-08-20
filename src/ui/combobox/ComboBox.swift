@@ -50,6 +50,7 @@ class ComboBox:Element{
         Swift.print("convertPoint(CGPoint(0,0), fromView: self): " + "\(convertPoint(CGPoint(0,0), fromView: self))")
         Swift.print("self.globalPoint(): " + "\(self.globalPoint())")
         Swift.print("convertPoint(CGPoint(0,0), fromView: self.window!.contentView): " + "\(convertPoint(CGPoint(0,0), fromView: self.window!.contentView))")
+        Swift.print("convertPoint(CGPoint(0,0), toView: self.window!.contentView): " + "\(convertPoint(CGPoint(0,0), toView: self.window!.contentView))")
         /*
         var winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)
         winPos += CGPoint(0,itemHeight)

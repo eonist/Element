@@ -53,7 +53,7 @@ class ComboBoxView:PopupView{
 //8. hock up the List event
 //9. create the ComboBoxPopUpWindow (done)
 //10. you need a method that checks avilable space for the popup to be shown in (mesure screen vs origin-pos vs popup-size) <--do some doodeling etc
-//11. 4px top and bottom margin for the comboboxwin, to avoid clipping the rounded corners
-//12. blue color when selected, white text when selected. 
+//11. 4px top and bottom margin for the comboboxwin, to avoid clipping the rounded corners (done)
+//12. blue color when selected, white text when selected. (done)
 //13. 
 

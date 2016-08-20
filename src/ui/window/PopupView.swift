@@ -20,7 +20,9 @@ class PopupView:WindowView{
         //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
         /**/
         
-        
+        if(frame.contains(self.localPos())){
+            
+        }
         
         
         super.onEvent(Event(Event.update,self))

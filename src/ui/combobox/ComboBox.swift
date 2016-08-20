@@ -32,9 +32,8 @@ class ComboBox:Element{
         let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
         Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)
-        //setOpen(isOpen)
+        setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
 	}
-    
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
 		setOpen(!isOpen)
@@ -44,8 +43,10 @@ class ComboBox:Element{
 	 * the select event should be fired only onReleaseInside not as it is now onPress
 	 */
 	func onListSelect(event:ListEvent) {
+        Swift.print("onListSelect")
         let list:IList = event.origin as! List
 		let text:String = ListParser.selectedTitle(list)
+        Swift.print("text: " + "\(text)")
 		headerButton!.setTextValue(text)
 		setOpen(false)
 	}

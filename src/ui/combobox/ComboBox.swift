@@ -29,19 +29,16 @@ class ComboBox:Element{
 	override func resolveSkin(){
 		super.resolveSkin()
 		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
-        //list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
-        // ListModifier.selectAt(list!, initSelected)
         let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
         Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)
-        setOpen(isOpen)
+        //setOpen(isOpen)
 	}
     func onPopUpWinEvent(event:Event){
         Swift.print("onPopUpWinEvent")
     }
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        
         popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
         var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
         comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
@@ -51,8 +48,7 @@ class ComboBox:Element{
         (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         
 		setOpen(!isOpen)
-        super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
-        
+        super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,selectedIndex,self))/*send this event*/
 	}
 	/**
 	 * the select event should be fired only onReleaseInside not as it is now onPress

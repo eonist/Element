@@ -48,6 +48,7 @@ class ComboBox:Element{
 		let text:String = ListParser.selectedTitle(list)
         Swift.print("text: " + "\(text)")
 		headerButton!.setTextValue(text)
+        popupWindow!.close()
 		setOpen(false)
 	}
     func onClickOutside() {//onClickOutsidePopupWin

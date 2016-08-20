@@ -43,7 +43,7 @@ class ComboBox:Element{
         Swift.print("onHeaderMouseDown")
         Swift.print("ComboBox.width: " + "\(width)")
         Swift.print("ComboBox.height: " + "\(height)")
-        popupWindow = ComboBoxWin(width,height,initSelected,itemHeight)
+        popupWindow = ComboBoxWin(width,height,dataProvider, initSelected,itemHeight)
         
         (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/
         

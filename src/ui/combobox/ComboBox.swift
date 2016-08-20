@@ -173,6 +173,9 @@ class PopupView:WindowView{
         //return event
     }
 }
+class ComboBoxWin:PopupView{
+    
+}
 
 //IMPORTANT: try to open the popover window when the origin window is in fullscreen mode (works)
 //Figure out how to listen to mouseEvents outside and inside NSWindow (maybe use local and global monitors)

@@ -34,7 +34,7 @@ class ComboBoxView:PopupView{
         Swift.print("width: " + "\(width)")
         Swift.print("height: " + "\(height)")
         super.resolveSkin()
-        list = /*addSubView*/(List(width, height, itemHeight, dataProvider, self))
+        list = addSubView(List(width, height, itemHeight, dataProvider, self))
         ListModifier.selectAt(list!, initSelectedIndex)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

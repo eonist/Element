@@ -15,6 +15,7 @@ class PopupView:WindowView{
     }
     func onMouseDown(event:NSEvent) -> NSEvent? {
         Swift.print("PopupView.onMouseDown()")
+        self.localPos
         
         super.onEvent(Event(Event.update,self))
         if(leftMouseDownEventListener != nil){

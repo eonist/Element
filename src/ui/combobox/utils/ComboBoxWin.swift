@@ -30,6 +30,9 @@ class ComboBoxView:PopupView{
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
+        Swift.print("ComboBoxView.resolveSkin()")
+        Swift.print("width: " + "\(width)")
+        Swift.print("height: " + "\(height)")
         super.resolveSkin()
         list = addSubView(List(width, height, itemHeight, dataProvider, self))
         ListModifier.selectAt(list!, initSelectedIndex)

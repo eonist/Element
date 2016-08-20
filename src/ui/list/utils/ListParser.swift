@@ -38,6 +38,12 @@ class ListParser {
      */
     class func selectedTitle(list:IList)->String {
         let index:Int = selectedIndex(list);
+        return titleAt(list, index)
+    }
+    /**
+     * Returns the title for index
+     */
+    class func titleAt(list:IList, _ index:Int)->String{
         return list.dataProvider.getItemAt(index)!["title"]!
     }
     /**

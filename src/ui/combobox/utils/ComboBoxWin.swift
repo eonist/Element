@@ -18,7 +18,7 @@ class ComboBoxView:PopupView{
     var list:SliderList?
     var initSelectedIndex:Int
     var itemHeight:CGFloat// :TODO: this should be set in the css?
-    override init(_ width: CGFloat, _ height: CGFloat, _ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         self.initSelectedIndex = initSelectedIndex
         self.itemHeight = itemHeight
         super.init(width,height,parent,id)
@@ -27,7 +27,7 @@ class ComboBoxView:PopupView{
     override func resolveSkin() {
         super.resolveSkin()
         list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
-        ListModifier.selectAt(list!, initSelected)
+        ListModifier.selectAt(list!, initSelectedIndex)
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

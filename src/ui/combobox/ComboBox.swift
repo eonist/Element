@@ -14,7 +14,7 @@ class ComboBox:Element{
     var headerButton:TextButton?
     var itemHeight:CGFloat// :TODO: this should be set in the css?
     var dataProvider:DataProvider?
-    var list:SliderList?
+    //var list:SliderList?
     var isOpen:Bool
     var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var initSelected:Int
@@ -29,8 +29,8 @@ class ComboBox:Element{
 	override func resolveSkin(){
 		super.resolveSkin()
 		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
-        list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
-        ListModifier.selectAt(list!, initSelected)
+        //list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
+       // ListModifier.selectAt(list!, initSelected)
         headerButton!.setTextValue(ListParser.selectedTitle(list!))
         setOpen(isOpen)
 	}
@@ -39,7 +39,9 @@ class ComboBox:Element{
     }
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        popupWindow = ComboBoxWin(100,100,initSelected,itemHeight)
+        Swift.print("ComboBox.width: " + "\(width)")
+        Swift.print("ComboBox.height: " + "\(height)")
+        popupWindow = ComboBoxWin(width,height,initSelected,itemHeight)
         
         (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/
         

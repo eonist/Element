@@ -1,7 +1,11 @@
 import Foundation
 
 class ComboBoxWin:Window{
+    let initSelectedIndex:Int
+    var itemHeight:CGFloat
     init(_ width: CGFloat, _ height: CGFloat, _ initSelectedIndex:Int, _ itemHeight:CGFloat) {
+        self.initSelectedIndex = initSelectedIndex
+        self.itemHeight = itemHeight
         super.init(width,height)
         WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
     }

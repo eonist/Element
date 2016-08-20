@@ -46,8 +46,9 @@ class ComboBox:Element{
         popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
         
         
-        let winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)
-        WinModifier.position(self.window!, winPos)
+        var winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)
+        winPos += CGPoint(0,itemHeight)
+        WinModifier.position(popupWindow!, winPos)
 
         
         (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/

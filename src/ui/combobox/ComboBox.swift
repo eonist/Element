@@ -34,18 +34,10 @@ class ComboBox:Element{
         headerButton!.setTextValue(selectedTitle)
         //setOpen(isOpen)
 	}
-    func onPopUpWinEvent(event:Event){
-        Swift.print("onPopUpWinEvent")
-    }
+    
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
-        var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
-        comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
-        let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
-        WinModifier.position(popupWindow!, winPos)
         
-        (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         
 		setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,selectedIndex,self))/*send this event*/
@@ -60,13 +52,20 @@ class ComboBox:Element{
 		setOpen(false)
 	}
 	override func onEvent(event:Event){
+        if(event.type == Event.update && event.origin === popupWindow!){}
 		if(event.type == ListEvent.select && event.origin === (popupWindow!.contentView as! ComboBoxView).list) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {
         Swift.print("setOpen")
         if(isOpen){
+            popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
+            var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
+            comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
+            let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
+            WinModifier.position(popupWindow!, winPos)
             
+            (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         }else{
             
         }

@@ -41,23 +41,17 @@ class ComboBox:Element{
     }
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-        Swift.print("ComboBox.width: " + "\(width)")
-        Swift.print("ComboBox.height: " + "\(height)")
+        
         popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
-        
+        var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
+        comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
         let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
-        Swift.print("winPos: " + "\(winPos)")
-        
         WinModifier.position(popupWindow!, winPos)
-        
         
         (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/
         
 		setOpen(!isOpen)
         //super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
-        
-        
-        //to align to the tl of basicwin, you need to += basicwin height - comboboxwin height
         
 	}
 	func onGlobalClick() {//On clicks outside combobox, close the combobox

@@ -15,7 +15,7 @@ class PopupView:WindowView{
     }
     func onMouseDown(event:NSEvent) -> NSEvent? {
         Swift.print("PopupView.onMouseDown()")
-        Swift.print("self.localPos: " + "\(self.localPos)")
+        Swift.print("self.localPos: " + "\(self.localPos())")
         
         //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
         /**/

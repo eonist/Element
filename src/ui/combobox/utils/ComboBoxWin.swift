@@ -46,8 +46,11 @@ class ComboBoxView:PopupView{
 //4. Make an universal alignment method for aligning windows, you can probably use the regular Align method here with a zeroSize and CGPoint and TopCenter as the alignment type
 //5. try to animate the popup effect
 //6. the popupwin must have an init with size and position,
-//7. populate the window with a List/SliderList
+//7. populate the window with a List/SliderList (done)
 //8. hock up the List event
-//9. create the ComboBoxPopUpWindow
+//9. create the ComboBoxPopUpWindow (done)
 //10. you need a method that checks avilable space for the popup to be shown in (mesure screen vs origin-pos vs popup-size) <--do some doodeling etc
+//11. 4px top and bottom margin for the comboboxwin, to avoid clipping the rounded corners
+//12. blue color when selected, white text when selected. 
+//13. 
 

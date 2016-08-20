@@ -16,7 +16,7 @@ class ComboBox:Element{
     var dataProvider:DataProvider?
     //var list:SliderList?
     var isOpen:Bool
-    var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
+    //var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var initSelected:Int
     var popupWindow:ComboBoxWin?
 	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ initSelected:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
@@ -31,7 +31,9 @@ class ComboBox:Element{
 		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
         //list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
        // ListModifier.selectAt(list!, initSelected)
-        headerButton!.setTextValue(ListParser.selectedTitle(list!))
+        let selectedTitle:String = dataProvider!.getItemAt(initSelected)!["title"]!
+        Swift.print("selectedTitle: " + "\(selectedTitle)")
+        headerButton!.setTextValue(selectedTitle)
         setOpen(isOpen)
 	}
     func onPopUpWinEvent(event:Event){
@@ -58,13 +60,13 @@ class ComboBox:Element{
 	 * the select event should be fired only onReleaseInside not as it is now onPress
 	 */
 	func onListSelect(event:ListEvent) {
-		let text:String = ListParser.selectedTitle(list!)
-		headerButton!.setTextValue(text)
-		setOpen(false)
+		//let text:String = ListParser.selectedTitle(list!)
+		//headerButton!.setTextValue(text)
+		//setOpen(false)
 	}
 	override func onEvent(event:Event){
         
-		if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
+		//if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {
@@ -84,7 +86,7 @@ class ComboBox:Element{
 	}
 	override func setSize(width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)
-		list!.setSize(width, StylePropertyParser.height(list!.skin!)!)/*temp solution*/
+		//list!.setSize(width, StylePropertyParser.height(list!.skin!)!)/*temp solution*/
 		headerButton!.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

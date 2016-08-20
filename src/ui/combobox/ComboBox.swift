@@ -57,7 +57,7 @@ class ComboBox:Element{
         
         let winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)//comboBoxPos
         Swift.print("winPos: " + "\(winPos)")
-        WinModifier.position(popupWindow!, winPos)
+        WinModifier.position(popupWindow!, self.window!.frame.origin)
         
         
         (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/

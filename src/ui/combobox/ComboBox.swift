@@ -49,11 +49,16 @@ class ComboBox:Element{
 		headerButton!.setTextValue(text)
 		setOpen(false)
 	}
+    func onClickOutside() {//onClickOutsidePopupWin
+        Swift.print("onClickOutsidePopupWin")
+        setOpen(false)
+    }
 	override func onEvent(event:Event){
-        if(event.type == Event.update && event.origin === popupWindow!){setOpen(false)}
+        if(event.type == Event.update && event.origin === popupWindow!){onClickOutside()}
 		if(event.type == ListEvent.select && event.origin === (popupWindow!.contentView as! ComboBoxView).list) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
+    
 	func setOpen(isOpen:Bool) {
         Swift.print("setOpen")
         if(isOpen){

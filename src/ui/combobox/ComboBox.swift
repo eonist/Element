@@ -48,7 +48,7 @@ class ComboBox:Element{
         let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
         WinModifier.position(popupWindow!, winPos)
         
-        (popupWindow!.contentView as! WindowView).event = self.onPopUpWinEvent/*add event handler*/
+        (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         
 		setOpen(!isOpen)
         //super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
@@ -69,6 +69,7 @@ class ComboBox:Element{
 		//setOpen(false)
 	}
 	override func onEvent(event:Event){
+		if(event.type == ListEvent.select) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {

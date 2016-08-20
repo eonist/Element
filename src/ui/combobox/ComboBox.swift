@@ -64,12 +64,13 @@ class ComboBox:Element{
 	 * the select event should be fired only onReleaseInside not as it is now onPress
 	 */
 	func onListSelect(event:ListEvent) {
-		//let text:String = ListParser.selectedTitle(list!)
-		//headerButton!.setTextValue(text)
-		//setOpen(false)
+        let list:IList = event.origin as! List
+		let text:String = ListParser.selectedTitle(list)
+		headerButton!.setTextValue(text)
+		setOpen(false)
 	}
 	override func onEvent(event:Event){
-		if(event.type == ListEvent.select) {onListSelect(event as! ListEvent)}
+		if(event.type == ListEvent.select && event.origin === (popupWindow!.contentView as! ComboBoxView).list) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
 	func setOpen(isOpen:Bool) {

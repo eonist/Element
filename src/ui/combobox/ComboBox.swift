@@ -46,6 +46,9 @@ class ComboBox:Element{
         popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
         WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
         
+        Swift.print("MouseUtils.point(self): " + "\(MouseUtils.point(self))")
+        Swift.print("convertPoint(CGPoint(0,0), fromView: self): " + "\(convertPoint(CGPoint(0,0), fromView: self))")
+        Swift.print("self.globalPoint(): " + "\(self.globalPoint())")
         /*
         var winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)
         winPos += CGPoint(0,itemHeight)

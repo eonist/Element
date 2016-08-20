@@ -51,14 +51,8 @@ class ComboBox:Element{
         (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         
 		setOpen(!isOpen)
-        //super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
+        super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
         
-	}
-	func onGlobalClick() {//On clicks outside combobox, close the combobox
-		//if (!hitTestPoint(x, y)) {//you sort of check if the mouse-click didnt happen within the bounds of the comboBox
-			//setOpen(false);
-			//remove the globalListener here
-		//}
 	}
 	/**
 	 * the select event should be fired only onReleaseInside not as it is now onPress
@@ -78,7 +72,6 @@ class ComboBox:Element{
 	}
 	override func setSize(width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)
-		//list!.setSize(width, StylePropertyParser.height(list!.skin!)!)/*temp solution*/
 		headerButton!.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

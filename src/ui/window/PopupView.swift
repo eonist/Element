@@ -18,9 +18,8 @@ class PopupView:WindowView{
         Swift.print("self.localPos: " + "\(self.localPos())")
         
         //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
-        /**/
         
-        if(!CGRect(CGPoint(),frame.size).contains(self.localPos())){/*click outside window, but most hit another app window*/
+        if(!CGRect(CGPoint(),frame.size).contains(self.localPos())){/*click outside window, but must hit another app window*/
             super.onEvent(Event(Event.update,self))
             if(leftMouseDownEventListener != nil){
                 NSEvent.removeMonitor(leftMouseDownEventListener!)
@@ -29,9 +28,6 @@ class PopupView:WindowView{
             //TODO: set the event to it self again here
             self.window!.close()
         }
-        
-        
-        
         return event
     }
 }

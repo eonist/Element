@@ -75,18 +75,6 @@ class ComboBox:Element{
 	}
 	func setOpen(isOpen:Bool) {
         Swift.print("setOpen")
-        
-        
-		/*
-        if(isOpen){
-			depth = (getParent(true) as! NSView).getSubViewIndex(self)
-			DepthModifier.toFront(this,getParent(true))// :TODO: will this work in Element 2 framework? it does for now, and use parennt.setChildIndex this method is old
-		}else if(self.window != null) (getParent(true) as! NSView).setSubViewIndex(self, depth)
-		self.isOpen = isOpen// :TODO: here is the problem since if you resize the skin is updated and visible is reset, also mask in list should be an element with float and clear set to none, do a test and see if you can overlap 2 elements
-		ElementModifier.hide(list, isOpen)
-		if(isOpen && window != nil && !window.hasEventListener(MouseEvent.MOUSE_DOWN)) {}//add globalListener
-		if(!isOpen && window != nil && widn.hasEventListener(MouseEvent.MOUSE_DOWN)) {}//remove globalListener // :TODO: fix this mess
-        */
 	}
 	override func setSize(width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)

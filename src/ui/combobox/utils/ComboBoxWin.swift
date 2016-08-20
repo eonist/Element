@@ -32,7 +32,7 @@ class ComboBoxView:PopupView{
     override func resolveSkin() {
         super.resolveSkin()
         list = addSubView(List(width, height, itemHeight, dataProvider, self))
-        //ListModifier.selectAt(list!, initSelectedIndex)
+        ListModifier.selectAt(list!, initSelectedIndex)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

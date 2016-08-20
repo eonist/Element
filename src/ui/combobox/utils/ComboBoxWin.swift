@@ -9,7 +9,6 @@ class ComboBoxWin:Window{
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider
         super.init(width,height)
-        WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
     }
     override func resolveSkin() {
         super.resolveSkin()

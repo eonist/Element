@@ -14,12 +14,23 @@ class ComboBoxWin:Window{
     }
 }
 class ComboBoxView:PopupView{
+    var dataProvider:DataProvider?
+    var list:SliderList?
+    var initSelectedIndex:Int
+    var itemHeight:CGFloat// :TODO: this should be set in the css?
+    override init(_ width: CGFloat, _ height: CGFloat, _ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+        self.initSelectedIndex = initSelectedIndex
+        self.itemHeight = itemHeight
+        super.init(width,height,parent,id)
+    }
+
     override func resolveSkin() {
         super.resolveSkin()
         list = /*addSubView*/(SliderList(width, height, itemHeight, dataProvider, self))
         ListModifier.selectAt(list!, initSelected)
         
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
 //IMPORTANT: try to open the popover window when the origin window is in fullscreen mode (works)

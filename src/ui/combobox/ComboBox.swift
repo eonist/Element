@@ -65,6 +65,11 @@ class ComboBox:Element{
 	}
 	func setOpen(isOpen:Bool) {
         Swift.print("setOpen")
+        if(isOpen){
+            
+        }else{
+            
+        }
 	}
 	override func setSize(width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)

@@ -64,6 +64,10 @@ class ComboBox:Element{
         
 		setOpen(!isOpen)
         //super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,ListParser.selectedIndex(list!),self))/*send this event*/
+        
+        
+        //to align to the tl of basicwin, you need to += basicwin height - comboboxwin height
+        
 	}
 	func onGlobalClick() {//On clicks outside combobox, close the combobox
 		//if (!hitTestPoint(x, y)) {//you sort of check if the mouse-click didnt happen within the bounds of the comboBox

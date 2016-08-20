@@ -11,7 +11,7 @@ class ComboBoxWin:Window{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        self.contentView = PopupView(frame.width,frame.height,nil,"special")/*Sets the mainview of the window*/
+        self.contentView = ComboBoxView(frame.width,frame.height,initSelectedIndex,itemHeight,nil,"special")/*Sets the mainview of the window*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     required init(_ width: CGFloat, _ height: CGFloat) {fatalError("init has not been implemented")}

@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class ComboBoxWin:Window{
     var dataProvider:DataProvider
@@ -60,4 +60,4 @@ class ComboBoxView:PopupView{
 //12. blue color when selected, white text when selected. (done)
 //13. Try to align the comboboxwin with simple means first -> 1. find the bottom left pos of the combobox header button, 2. convert this position into screen coordinates -> similar to how you did draggin windows etc
 //14. to create an universal alignment method you need 2 alignment types passed to the PopUpWin and then PopUpwin will take care of the rest
-//15. Research close animation for NSWindow
+//15. Research close animation for NSWindow (done)

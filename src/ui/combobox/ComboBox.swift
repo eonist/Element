@@ -45,6 +45,7 @@ class ComboBox:Element{
         Swift.print("ComboBox.height: " + "\(height)")
         popupWindow = ComboBoxWin(width,height, dataProvider!, initSelected,itemHeight)
         //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
+        /*
         Swift.print("self.window!.frame.origin: " + "\(self.window!.frame.origin)")
         self.window
         Swift.print("self.window!.flippedScreenPosition: " + "\(self.window!.flippedScreenPosition)")
@@ -60,6 +61,10 @@ class ComboBox:Element{
         
         let winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition)//comboBoxPos
         Swift.print("winPos: " + "\(winPos)")
+        */
+        
+        Swift.print("self.window!.flippedScreenPos: " + "\(self.window!.flippedScreenPos)")
+        
         WinModifier.position(popupWindow!, self.window!.frame.origin)
         
         

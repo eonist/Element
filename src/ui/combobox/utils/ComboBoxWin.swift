@@ -9,9 +9,7 @@ class ComboBoxWin:Window{
         super.resolveSkin()
         self.contentView = PopupView(frame.width,frame.height,nil,"special")/*Sets the mainview of the window*/
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     required init(_ width: CGFloat, _ height: CGFloat) {fatalError("init has not been implemented")}
 }
 class ComboBoxView:PopupView{

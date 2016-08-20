@@ -55,5 +55,5 @@ class ComboBoxView:PopupView{
 //10. you need a method that checks avilable space for the popup to be shown in (mesure screen vs origin-pos vs popup-size) <--do some doodeling etc
 //11. 4px top and bottom margin for the comboboxwin, to avoid clipping the rounded corners (done)
 //12. blue color when selected, white text when selected. (done)
-//13. 
+//13. Try to align the comboboxwin with simple means first -> 1. find the bottom left pos of the combobox header button, 2. 
 

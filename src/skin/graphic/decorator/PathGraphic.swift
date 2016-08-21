@@ -51,10 +51,7 @@ extension PathGraphic{
         }
         self.init(path, graphic)
         
-        //Continue here: reset the explorer.app and try to implement the above init instead of the multiple inits in the current setup, that will enable you to remove the above init aswell
-        //done!
-        
-        
+        //Continue here: THe default pathgraphic init should be init(path, fill, linestyle) Actually, make that init in RectGraphic into an util method that returns a decoratable, so that this init can use the same code
         
     }
 }

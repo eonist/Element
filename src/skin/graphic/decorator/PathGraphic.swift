@@ -34,11 +34,15 @@ class PathGraphic:SizeableDecorator{
 }
 extension PathGraphic{
     convenience init(_ path:IPath, _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
-        Swift.print("PathGraphic.init() type: BaseGraphic")
+        Swift.print("PathGraphic.init() fillStyle, lineStyle")
         self.init(path, BaseGraphic(fillStyle,lineStyle))
     }
     convenience init(_ path:IPath, _ gradientFillStyle:IGradientFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
-        Swift.print("PathGraphic.init() type: GradientGraphic")
+        Swift.print("PathGraphic.init() gradientFillStyle, gradientlineStyle")
         self.init(path, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
+    }
+    convenience init(_ path:IPath, _ gradientFillStyle:IGradientFillStyle?, _ lineStyle:ILineStyle?) {
+        Swift.print("PathGraphic.init() gradientFillStyle, lineStyle")
+        self.init(path, GradientGraphic(BaseGraphic(gradientFillStyle,lineStyle)))
     }
 }

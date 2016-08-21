@@ -26,7 +26,7 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
 /**
  * Convenience init methods
  * TODO: Add explination and example code for each init
- * TODO: 
+ * TODO: it would be better to only have one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which GRaphic should be created. This is simply too many initiators
  */
 extension SizeableGraphic{
     /*Gradient fill initializers*/

@@ -30,6 +30,30 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
  */
 extension SizeableGraphic{
     /*Gradient fill initializers*/
+    /*Color fill initializers*/
+    convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
+        //Swift.print("Init with Fill")
+        var graphic:IGraphicDecoratable
+        if(fillStyle is IGradientFillStyle){
+            if(lineStyle is IGradientLineStyle){//gradientFill,gradientLine
+                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle))
+            }else{//gradientFill,line
+                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle))
+            }
+        }else{
+            if(lineStyle is IGradientLineStyle){//fill,gradientLine
+                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle))
+            }else{//fill,line
+                graphic = BaseGraphic(fillStyle,lineStyle)
+            }
+        }
+
+        
+        
+        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle,lineOffset))
+    }
+    
+    
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle?, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and Gradient stroke*/
         //Swift.print("Init with none Fill and gradient line")
         self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))

@@ -26,10 +26,12 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
 /**
  * Convenience init methods
  * TODO: Add explination and example code for each init
- * TODO: it would be better to only have one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which GRaphic should be created. This is simply too many initiators
  */
 extension SizeableGraphic{
-    /*universal initiator for any mix of FillStyle,LineStyle,GradientFillStyle,GradientLineStyle,nil*/
+    /*
+     * NOTE: universal initiator for any mix of FillStyle,LineStyle,GradientFillStyle,GradientLineStyle,nil
+     * NOTE: one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which Graphic should be created.
+     */
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         var graphic:IGraphicDecoratable
         if(fillStyle is IGradientFillStyle){

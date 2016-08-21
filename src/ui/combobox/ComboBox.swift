@@ -14,9 +14,7 @@ class ComboBox:Element{
     var headerButton:TextButton?
     var itemHeight:CGFloat// :TODO: this should be set in the css?
     var dataProvider:DataProvider?
-    //var list:SliderList?
     var isOpen:Bool = false
-    //var depth:Int?/*used to store the temp sprite depth so the popover can hover over other instance siblings*/
     var selectedIndex:Int
     var popupWindow:ComboBoxWin?
 	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ selectedIndex:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
@@ -32,11 +30,11 @@ class ComboBox:Element{
         let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
         Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)
-        setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
+        //setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
 	}
 	func onHeaderMouseDown(event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
-		setOpen(!isOpen)
+        setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,selectedIndex,self))/*send this event*/
 	}
 	/**
@@ -49,31 +47,32 @@ class ComboBox:Element{
 		let text:String = ListParser.titleAt(list, selectedIndex)
         Swift.print("text: " + "\(text)")
 		headerButton!.setTextValue(text)
-        popupWindow!.close()
+        super.onEvent(ComboBoxEvent(ComboBoxEvent.listSelect,selectedIndex,self))/*send this event*/
+        popupWindow!.close()/*after we process the ListEvent, we close the PopupWindow*/
 		setOpen(false)
 	}
     func onClickOutside() {//onClickOutsidePopupWin
         Swift.print("onClickOutsidePopupWin")
-        setOpen(false)
+        if(!CGRect(CGPoint(),headerButton!.frame.size).contains(headerButton!.localPos())){/*hittest to avoid calling setOpen if the headerButton is clicked while the popupwin is open*/
+            setOpen(false)
+        }
     }
 	override func onEvent(event:Event){
-        if(event.type == Event.update && event.origin === popupWindow!){onClickOutside()}
+        if(event.type == Event.update && event.origin === popupWindow!.contentView){onClickOutside()}
 		if(event.type == ListEvent.select && event.origin === (popupWindow!.contentView as! ComboBoxView).list) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
-    
 	func setOpen(isOpen:Bool) {
-        Swift.print("setOpen")
+        Swift.print("setOpen: " + "\(isOpen)")
         if(isOpen){
             popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
             var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
             comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
             let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
             WinModifier.position(popupWindow!, winPos)
-            
             (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
         }else{
-            //
+            //do nothing
         }
         self.isOpen = isOpen
 	}
@@ -83,8 +82,15 @@ class ComboBox:Element{
 	}
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-
-
+extension ComboBox{
+    var selectedProperty:String{//convenience
+        return ComboBoxParser.selectedProperty(self)
+    }
+    var selectedTitle:String{//convenience
+        return ComboBoxParser.selectedTitle(self)
+    }
+    
+}
 
 
 

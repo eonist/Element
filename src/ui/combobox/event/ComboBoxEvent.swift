@@ -24,4 +24,14 @@ extension ComboBoxEvent{
         fatalError("not supported yet")
         //return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
     }
+    var selectedProperty:String{
+        let list:IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
+        let property:String = ListParser.propertyAt(list, index)
+        return property
+    }
+    var selectedTitle:String{
+        let list:IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
+        let title:String = ListParser.titleAt(list, index)
+        return title
+    }
 }

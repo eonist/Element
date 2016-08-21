@@ -51,6 +51,12 @@ class ListParser {
      */
     class func selectedProperty(list:IList) -> String {/*<--could be **/
         let index:Int = selectedIndex(list);
+        return propertyAt(list,index)
+    }
+    /**
+     * Returns the property for index
+     */
+    class func propertyAt(list:IList, _ index:Int)->String{
         return list.dataProvider.getItemAt(index)!["property"]!
     }
     /**

@@ -16,11 +16,8 @@ class PopupView:WindowView{
     func onMouseDown(event:NSEvent) -> NSEvent? {
         Swift.print("PopupView.onMouseDown()")
         Swift.print("self.localPos: " + "\(self.localPos())")
-        
-        //WinModifier.align(popupWindow!, Alignment.centerCenter, Alignment.centerCenter)
-        
         if(!CGRect(CGPoint(),frame.size).contains(self.localPos())){/*click outside window, but must hit another app window*/
-            super.onEvent(Event(Event.update,self))
+            super.onEvent(Event(Event.update,self))/*notifies the initiator of the PopupWin that it will close*/
             if(leftMouseDownEventListener != nil){
                 NSEvent.removeMonitor(leftMouseDownEventListener!)
                 leftMouseDownEventListener = nil
@@ -31,3 +28,20 @@ class PopupView:WindowView{
         return event
     }
 }
+
+
+/*
+
+Implement this if you want the popupwin to be closed if the app looses focus:
+
+- (void)setupWindowForEvents{
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignMainNotification object:self];
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self];
+}
+
+-(void)windowDidResignKey:(NSNotification *)note {
+NSLog(@"notification");
+[self close];
+}
+
+*/

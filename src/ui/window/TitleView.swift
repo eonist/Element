@@ -16,7 +16,7 @@ class TitleView:CustomView{
         css +=     "clear:none;"
         css +=     "width:100%;"
         css +=     "offset:75px,0px;"
-        css +=     "fill-alpha:1;"
+        css +=     "fill-alpha:0;"
         css +=     "fill:yellow;"
         css +=     "line-alpha:0;"
         css +=     "line-thickness:0px;"

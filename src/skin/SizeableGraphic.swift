@@ -90,9 +90,11 @@ extension SizeableGraphic{
     convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }
+    //TODO: is this init really needed?
     convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ decoratable:IGraphicDecoratable){
         self.init(CGPoint(0,0),CGSize(width,height),decoratable)
     }
+    //TODO: I think the two bellow init methods can be merged into one, do it and test explorer if it works
     convenience init(_ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }

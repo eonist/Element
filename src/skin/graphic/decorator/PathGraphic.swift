@@ -52,7 +52,7 @@ extension PathGraphic{
         self.init(path, graphic)
         
         //Continue here: reset the explorer.app and try to implement the above init instead of the multiple inits in the current setup, that will enable you to remove the above init aswell
-        
+        //done!
         
         
         

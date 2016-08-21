@@ -37,6 +37,7 @@ extension PathGraphic{
         Swift.print("PathGraphic.init() fillStyle, lineStyle")
         var graphic:IGraphicDecoratable?
         if(fillStyle is IGradientFillStyle){
+            graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle))
             if(lineStyle is IGradientLineStyle){
                 
                 

@@ -29,31 +29,30 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
  * TODO: it would be better to only have one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which GRaphic should be created. This is simply too many initiators
  */
 extension SizeableGraphic{
-    /*Gradient fill initializers*/
-    /*Color fill initializers*/
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         //Swift.print("Init with Fill")
         var graphic:IGraphicDecoratable
         if(fillStyle is IGradientFillStyle){
             if(lineStyle is IGradientLineStyle){//gradientFill,gradientLine
-                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle))
+                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle,lineOffset))
             }else{//gradientFill,line
-                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle))
+                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle,lineOffset))
             }
         }else{
             if(lineStyle is IGradientLineStyle){//fill,gradientLine
-                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle))
+                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle,lineOffset))
             }else{//fill,line
-                graphic = BaseGraphic(fillStyle,lineStyle)
+                graphic = BaseGraphic(fillStyle,lineStyle,lineOffset)
             }
         }
-
-        
-        
-        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle,lineOffset))
+        self.init(CGPoint(x,y),CGSize(width,height),graphic)
     }
     
+    /*Gradient fill initializers*/
+    /*Color fill initializers*/
     
+    
+    /*
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ gradientFillStyle:GradientFillStyle?, _ gradientLineStyle:GradientLineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){/*Gradient fill and Gradient stroke*/
         //Swift.print("Init with none Fill and gradient line")
         self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
@@ -74,6 +73,7 @@ extension SizeableGraphic{
         //Swift.print("Init with gradientFill and gradientLineStyle")
         self.init(CGPoint(x,y),CGSize(width,height),GradientGraphic(BaseGraphic(gradientFillStyle,gradientLineStyle,lineOffset)))
     }
+
     /*Color fill initializers*/
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
         //Swift.print("Init with Fill")
@@ -82,11 +82,13 @@ extension SizeableGraphic{
     convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
         self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
     }
-    convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
-        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
-    }
     convenience init(_ width:CGFloat, _ height:CGFloat, _ fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil){
         self.init(CGPoint(0,0),CGSize(width,height),BaseGraphic(fillStyle,lineStyle))
+    }
+    */
+    
+    convenience init(_ x:CGFloat, _ y:CGFloat, _ width:CGFloat,_ height:CGFloat,_ fillColor:NSColor){
+        self.init(CGPoint(x,y),CGSize(width,height),BaseGraphic(FillStyle(fillColor)))
     }
     convenience init(_ width:CGFloat = 100, _ height:CGFloat = 100,_ decoratable:IGraphicDecoratable){
         self.init(CGPoint(0,0),CGSize(width,height),decoratable)

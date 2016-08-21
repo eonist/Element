@@ -41,14 +41,10 @@ extension PathGraphic{
             if(lineStyle is IGradientLineStyle){
                 
                 
-            }else if(lineStyle == nil){
-                
-            }else{/*stroke is ILineStyle*/
+            }else{/*stroke is ILineStyle or nil*/
                 
             }
-        }else if(fillStyle == nil){
-            
-        }else{/*fill is IFillStyle*/
+        }else{
             
         }
         self.init(path, BaseGraphic(fillStyle,lineStyle))

@@ -35,33 +35,20 @@ class PathGraphic:SizeableDecorator{
 extension PathGraphic{
     convenience init(_ path:IPath, _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
         Swift.print("PathGraphic.init() fillStyle, lineStyle")
-        var graphic:IGraphicDecoratable?
+        var graphic:IGraphicDecoratable
         if(fillStyle is IGradientFillStyle){
             if(lineStyle is IGradientLineStyle){//gradientFill,gradientLine
                 graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle))
             }else{//gradientFill,line
-                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle))
+                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle))
             }
         }else{
             if(lineStyle is IGradientLineStyle){//fill,gradientLine
-                
-                
+                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle))
             }else{//fill,line
                 graphic = BaseGraphic(fillStyle,lineStyle)
             }
         }
-        self.init(path, BaseGraphic(fillStyle,lineStyle))
-    }
-    convenience init(_ path:IPath, _ gradientFillStyle:IGradientFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
-        Swift.print("PathGraphic.init() gradientFillStyle, gradientlineStyle")
-        self.init(path, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
-    }
-    convenience init(_ path:IPath, _ gradientFillStyle:IGradientFillStyle?, _ lineStyle:ILineStyle?) {
-        Swift.print("PathGraphic.init() gradientFillStyle, lineStyle")
-        self.init(path, GradientGraphic(BaseGraphic(gradientFillStyle,lineStyle)))
-    }
-    convenience init(_ path:IPath, _ fillStyle:IFillStyle?, _ gradientlineStyle:IGradientLineStyle?) {
-        Swift.print("PathGraphic.init() fillStyle, gradientlineStyle")
-        self.init(path, GradientGraphic(BaseGraphic(fillStyle,gradientlineStyle)))
+        self.init(path, graphic)
     }
 }

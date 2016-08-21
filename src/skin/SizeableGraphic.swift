@@ -29,21 +29,15 @@ class SizeableGraphic:PositionalGraphic,ISizeable {
  * TODO: it would be better to only have one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which GRaphic should be created. This is simply too many initiators
  */
 extension SizeableGraphic{
+    /*universal initiator for any mix of FillStyle,LineStyle,GradientFillStyle,GradientLineStyle,nil*/
     convenience init(_ x:CGFloat,_ y:CGFloat,_ width:CGFloat, _ height:CGFloat,_ fillStyle:IFillStyle, _ lineStyle:ILineStyle, _ lineOffset:OffsetType = OffsetType(OffsetType.center)){
-        //Swift.print("Init with Fill")
         var graphic:IGraphicDecoratable
         if(fillStyle is IGradientFillStyle){
-            if(lineStyle is IGradientLineStyle){//gradientFill,gradientLine
-                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle,lineOffset))
-            }else{//gradientFill,line
-                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle,lineOffset))
-            }
+            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle,lineOffset))}/*gradientFill,gradientLine*/
+            else{graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle,lineOffset))}/*gradientFill,line*/
         }else{
-            if(lineStyle is IGradientLineStyle){//fill,gradientLine
-                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle,lineOffset))
-            }else{//fill,line
-                graphic = BaseGraphic(fillStyle,lineStyle,lineOffset)
-            }
+            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle,lineOffset))}/*fill,gradientLine*/
+            else{graphic = BaseGraphic(fillStyle,lineStyle,lineOffset)}/*fill,line*/
         }
         self.init(CGPoint(x,y),CGSize(width,height),graphic)
     }

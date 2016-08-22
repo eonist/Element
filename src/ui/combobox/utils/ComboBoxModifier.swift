@@ -4,12 +4,10 @@ class ComboBoxModifier{
 	 * 
 	 */
 	class func selectByProperty(comboBox:ComboBox,_ property:String) {
-		let item = DataProviderParser.itemByProperty(comboBox.dataProvider!, property)!
-        
-        let index:Int = comboBox.dataProvider!.getItemIndex(<#T##item: Dictionary<String, String>##Dictionary<String, String>#>)
-		ListModifier.selectAt(comboBox.list!,index)
-		let text:String = ListParser.selectedTitle(comboBox.list!)
-		comboBox.headerButton!.setTextValue(text)
+        let index:Int = comboBox.dataProvider!.index("property", property)!
+        let title:String = comboBox.dataProvider!.getItemAt(index)!["title"]!
+        comboBox.selectedIndex = index
+        comboBox.headerButton!.setTextValue(title)
         
 	}
 	/**

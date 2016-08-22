@@ -6,14 +6,7 @@ class GraphicParser {
      * NOTE: one init method that would take IFillStyle and ILineStyle and then make a if decision tree to which Graphic should be created.
      */
     class func graphic(fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffset:OffsetType = OffsetType(OffsetType.center))->IGraphicDecoratable{
-        var graphic:IGraphicDecoratable
-        if(fillStyle is IGradientFillStyle){
-            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset))}/*gradientFill,gradientLine*/
-            else{graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset))}/*gradientFill,line*/
-        }else{
-            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset))}/*fill,gradientLine*/
-            else{graphic = BaseGraphic(fillStyle,lineStyle,lineOffset)}/*fill,line*/
-        }
+        let graphic:IGraphicDecoratable = fillStyle is IGradientFillStyle || lineStyle is IGradientLineStyle ? GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset)) : BaseGraphic(fillStyle,lineStyle,lineOffset)
         return graphic
     }
 }

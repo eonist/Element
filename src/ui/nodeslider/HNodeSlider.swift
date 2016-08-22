@@ -23,8 +23,8 @@ class HNodeSlider:Element,INodeSlider {
         setStartProgressValue(startProgress)
         endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
         setEndProgressValue(endProgress)
-        selectGroup = SelectGroup([startNode!,endNode!],startNode!)
-        selectGroup!.event = onEvent
+        //selectGroup = SelectGroup([startNode!,endNode!],startNode!)
+        //selectGroup!.event = onEvent
     }
     func onStartNodeDown() {
         Swift.print("HNodeSlider.onStartNodeDown()")
@@ -55,12 +55,14 @@ class HNodeSlider:Element,INodeSlider {
         return event
     }
     func onStartNodeUp() {
+        Swift.print("onStartNodeUp")
         if(mouseMoveHandler != nil){
             NSEvent.removeMonitor(mouseMoveHandler!)
             mouseMoveHandler = nil
         }//we remove a global mouse move event listener
     }
     func onEndNodeUp() {
+        Swift.print("onEndNodeUp")
         if(mouseMoveHandler != nil){
             NSEvent.removeMonitor(mouseMoveHandler!)
             mouseMoveHandler = nil

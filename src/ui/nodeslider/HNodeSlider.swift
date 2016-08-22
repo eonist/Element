@@ -72,7 +72,7 @@ class HNodeSlider:Element,INodeSlider {
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
-        //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
+        super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**
      * @param progress (0-1)

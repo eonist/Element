@@ -19,7 +19,8 @@ class HNodeSlider:Element,INodeSlider {
     }
     override func resolveSkin() {
         super.resolveSkin()
-        startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
+        //startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
+        addSubView(Button(nodeWidth, height, self, "start"))
         //setStartProgressValue(startProgress)
         //endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
         //setEndProgressValue(endProgress)

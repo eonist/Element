@@ -44,11 +44,12 @@ class HSlider:Element{
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
-    /*
+    /**
+     * TODO: Overriding mouseUp like this isnt good, listen to buttonUp etc
+     */
     override func mouseUp(event:MouseEvent) {
         if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    */
     override func onEvent(event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown

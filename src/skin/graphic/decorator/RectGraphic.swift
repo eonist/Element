@@ -35,15 +35,12 @@ class RectGraphic:SizeableGraphic{
             //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
             
-            
             //Swift.print("offsetRects.lineRect: " + "\(lineOffsetRect.lineRect)")
             graphic.lineShape.path = lineOffsetRect.lineRect.path//rect.path
             
-            
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
             //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, graphic.width,graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
-            //draw the mask line
-            //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height);
+            //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height)/*draw the mask line*/
         }
     }
 }

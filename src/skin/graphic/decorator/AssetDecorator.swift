@@ -11,7 +11,7 @@ class AssetDecorator:SizeableDecorator{
         //Swift.print("AssetDecorator.init() " + "assetURL: " + "\(assetURL)")
         super.init(decoratable)
         asset = graphic.addSubView(SVGAsset(assetURL))
-        graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to hasve a width and height or else the shadow won't be applied*/
+        graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied*/
     }
     override func draw() {
         //Swift.print("AssetDecorator.draw() ")

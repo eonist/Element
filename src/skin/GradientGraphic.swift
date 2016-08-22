@@ -33,7 +33,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
             var boundingBox:CGRect = CGPathGetBoundingBox(graphic.lineShape.path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/
             
-            //TODO: the above isn't totally correct, use the outlinestroke method and then get the boundingbox from that, think different caps etc
+            //TODO: the above isn't totally correct, use the outline-stroke method and then get the boundingbox from that, think different caps etc
             
             let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
             graphic.lineShape.graphics.gradientLine(graphicsGradient)

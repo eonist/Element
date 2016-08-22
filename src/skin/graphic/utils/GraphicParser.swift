@@ -8,10 +8,10 @@ class GraphicParser {
     class func graphic(fillStyle:IFillStyle? = nil, _ lineStyle:ILineStyle? = nil, _ lineOffset:OffsetType = OffsetType(OffsetType.center))->IGraphicDecoratable{
         var graphic:IGraphicDecoratable
         if(fillStyle is IGradientFillStyle){
-            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle,lineOffset))}/*gradientFill,gradientLine*/
-            else{graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle,lineOffset))}/*gradientFill,line*/
+            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset))}/*gradientFill,gradientLine*/
+            else{graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset))}/*gradientFill,line*/
         }else{
-            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle,lineOffset))}/*fill,gradientLine*/
+            if(lineStyle is IGradientLineStyle){graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle,lineOffset))}/*fill,gradientLine*/
             else{graphic = BaseGraphic(fillStyle,lineStyle,lineOffset)}/*fill,line*/
         }
         return graphic

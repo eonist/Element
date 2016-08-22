@@ -19,9 +19,15 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: its the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
-        //Swift.print("GraphicDecoratable.draw()" )
-        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*setup the fill geometry*//*draw the fileShape*/
-        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*setup the line geometry*//*draw the fileShape*/
+        Swift.print("GraphicDecoratable.draw()" )
+        if(getGraphic().fillStyle != nil){
+            Swift.print("draw().drawFill()")
+            drawFill();graphic.fillShape.setNeedsDisplay()
+        }/*setup the fill geometry*//*draw the fileShape*/
+        if(getGraphic().lineStyle != nil){
+            Swift.print("draw().drawLine()")
+            drawLine();graphic.lineShape.setNeedsDisplay()
+        }/*setup the line geometry*//*draw the fileShape*/
     }
     func finalDraw(){//I guess this can be deleted
         

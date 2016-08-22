@@ -20,9 +20,9 @@ class HNodeSlider:Element,INodeSlider {
     override func resolveSkin() {
         super.resolveSkin()
         startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
-        setStartProgressValue(startProgress)
-        endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
-        setEndProgressValue(endProgress)
+        //setStartProgressValue(startProgress)
+        //endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
+        //setEndProgressValue(endProgress)
         //selectGroup = SelectGroup([startNode!,endNode!],startNode!)
         //selectGroup!.event = onEvent
     }
@@ -68,6 +68,7 @@ class HNodeSlider:Element,INodeSlider {
             mouseMoveHandler = nil
         }//we remove a global mouse move event listener
     }
+    /*
     override func onEvent(event: Event) {
         Swift.print("\(self.dynamicType)" + ".onEvent() event.type: " + "\(event.type)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
@@ -76,6 +77,7 @@ class HNodeSlider:Element,INodeSlider {
         else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
         super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
+*/
     /**
      * @param progress (0-1)
      */

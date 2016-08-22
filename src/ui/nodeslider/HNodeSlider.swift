@@ -67,7 +67,7 @@ class HNodeSlider:Element,INodeSlider {
         }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        Swift.print("\(self.dynamicType)" + ".onEvent() event.type: " + "\(event.type)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}

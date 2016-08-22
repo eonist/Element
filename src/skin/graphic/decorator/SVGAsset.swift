@@ -28,7 +28,6 @@ class SVGAsset:InteractiveView2 {
         //Swift.print("svg.width: " + "\(svg.width)")
         //Swift.print("svg.height: " + "\(svg.height)")
         //Swift.print("scale: " + "\(scale)")
-        
         SVGModifier.scale(svg, CGPoint(0,0), scale);
         svg.setFrameOrigin(CGPoint(x,y))
     }

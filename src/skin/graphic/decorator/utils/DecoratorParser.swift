@@ -2,7 +2,7 @@ import Foundation
 
 class DecoratorParser {
     /**
-     * Returns a Decorator instance from @param decoratable by Class type @param classType if it exists, if it doesnt it returns null
+     * Returns a Decorator instance from @param decoratable by Class type @param classType if it exists, if it doesnt it returns nil
      * NOTE: parses throught the hirarchy of decorators to see if there is a match, then returns this match, 
      */
     class func decoratable(decoratable:IGraphicDecoratable,_ theClassType:AnyClass)->IGraphicDecoratable? {

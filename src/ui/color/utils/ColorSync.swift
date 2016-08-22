@@ -19,6 +19,9 @@ class ColorSync {
             ColorSync.receiver!.onEvent(ColorInputEvent(ColorInputEvent.change,event.color!))
         }
     }
+    /**
+     * NOTE: this sets the color of the broadcaster not the receiver
+     */
     class func setColor(color:NSColor) {
         if (ColorSync.broadcaster != nil) {ColorSync.broadcaster!.setColorValue(color)}
     }

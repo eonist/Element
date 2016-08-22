@@ -10,20 +10,23 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
      *
      */
     override func beginFill(){
-        //Swift.print("GradientGraphic.beginFill()")
+        Swift.print("GradientGraphic.beginFill()")
         if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){//<- TODO: I think you can do just a regular is test there
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
             //Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")
             let graphicsGradient:IGraphicsGradient = Utils.graphicsGradient(boundingBox, gradient)
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
-        }else{super.beginFill()}//fatalError("NOT CORRECT fillStyle")
+        }else{
+            Swift.print("super.beginFill()")
+            super.beginFill()
+        }//fatalError("NOT CORRECT fillStyle")
     }
     /**
      * // :TODO: could possibly be renamed to applyGradientLinestyle, as it needs to override it cant be renamed
      */
     override func applyLineStyle() {
-        //Swift.print("GradientGraphic.applyLineStyle()")
+        Swift.print("GradientGraphic.applyLineStyle()")
         super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
         if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed, you can probably do is directly or even (a as! B != nil)
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient

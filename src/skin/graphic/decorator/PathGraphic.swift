@@ -35,23 +35,7 @@ class PathGraphic:SizeableDecorator{
 extension PathGraphic{
     convenience init(_ path:IPath, _ fillStyle:IFillStyle?, _ lineStyle:ILineStyle?) {
         Swift.print("PathGraphic.init() fillStyle, lineStyle")
-        var graphic:IGraphicDecoratable
-        if(fillStyle is IGradientFillStyle){
-            if(lineStyle is IGradientLineStyle){//gradientFill,gradientLine
-                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle as? IGradientLineStyle))
-            }else{//gradientFill,line
-                graphic = GradientGraphic(BaseGraphic(fillStyle as? IGradientFillStyle,lineStyle))
-            }
-        }else{
-            if(lineStyle is IGradientLineStyle){//fill,gradientLine
-                graphic = GradientGraphic(BaseGraphic(fillStyle,lineStyle as? IGradientLineStyle))
-            }else{//fill,line
-                graphic = BaseGraphic(fillStyle,lineStyle)
-            }
-        }
+        let graphic:IGraphicDecoratable = GraphicParser.graphic(fillStyle,lineStyle)
         self.init(path, graphic)
-        
-        //Continue here: THe default pathgraphic init should be init(path, fill, linestyle) Actually, make that init in RectGraphic into an util method that returns a decoratable, so that this init can use the same code
-        
     }
 }

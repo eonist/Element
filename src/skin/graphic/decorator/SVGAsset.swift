@@ -20,7 +20,7 @@ class SVGAsset:InteractiveView2 {
         addSubview(svg)
     }
     /**
-     *
+     * TODO: explaine what this method does
      */
     func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
         //Swift.print("SVGAsset.drawFill() width: " + String(width) + " height: " + String(height) + " x: " + String(x) + " y: " + String(y))

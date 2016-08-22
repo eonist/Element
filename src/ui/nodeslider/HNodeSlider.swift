@@ -30,13 +30,15 @@ class HNodeSlider:Element,INodeSlider {
         Swift.print("HNodeSlider.onStartNodeDown()")
 //		DepthModifier.toFront(_startNode, this)
         tempNodeMouseX = startNode!.localPos().x
-        mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
+        if(mouseMoveHandler != nil){mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)}//we add a global mouse move event listener
+        else{fatalError("should not be possible")}
     }
     func onEndNodeDown() {
         Swift.print("HNodeSlider.onEndNodeDown()")
 //		DepthModifier.toFront(_endNode, this)
         tempNodeMouseX = endNode!.localPos().x
-        mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
+        if(mouseMoveHandler != nil) {mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)}//we add a global mouse move event listener
+        else{fatalError("should not be possible")}
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("HNodeSlider.onStartNodeMove()")
@@ -53,10 +55,16 @@ class HNodeSlider:Element,INodeSlider {
         return event
     }
     func onStartNodeUp() {
-        if(mouseMoveHandler != nil){NSEvent.removeMonitor(mouseMoveHandler!)}//we remove a global mouse move event listener
+        if(mouseMoveHandler != nil){
+            NSEvent.removeMonitor(mouseMoveHandler!)
+            mouseMoveHandler = nil
+        }//we remove a global mouse move event listener
     }
     func onEndNodeUp() {
-        if(mouseMoveHandler != nil){NSEvent.removeMonitor(mouseMoveHandler!)}//we remove a global mouse move event listener
+        if(mouseMoveHandler != nil){
+            NSEvent.removeMonitor(mouseMoveHandler!)
+            mouseMoveHandler = nil
+        }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

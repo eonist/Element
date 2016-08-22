@@ -31,8 +31,8 @@ class SelectGroup:EventSender{
         selectables.append(selectable)
     }
     override func onEvent(event:Event){
+        Swift.print("SelectGroup.onEvent()" + "\(event)")
         if(event.type == SelectEvent.select){
-            Swift.print("SelectGroup.onEvent()")
             //Swift.print("SelectGroup.onEvent() immediate: " + "\(event.immediate)")
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable

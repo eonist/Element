@@ -28,7 +28,7 @@ class GradientSlider:HNodeSlider{
         //Swift.print("ratio: " + "\(ratio)")
         gradient!.locations = [ratio,gradient!.locations[1]]
         setGradient(gradient!)
-        return super.onStartNodeMove(event);
+        return super.onStartNodeMove(event)
     }
     override func onEndNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("GradientSlider.onEndNodeMove() ")

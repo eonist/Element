@@ -10,7 +10,7 @@ class HNodeSlider:Element,INodeSlider {
     var tempNodeMouseX:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
-    var mouseMoveHandler:AnyObject?
+    var globalMouseMovedHandeler:AnyObject?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeWidth:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
@@ -19,27 +19,24 @@ class HNodeSlider:Element,INodeSlider {
     }
     override func resolveSkin() {
         super.resolveSkin()
-        //startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
-        addSubView(Button(nodeWidth, height, self, "start"))
-        //setStartProgressValue(startProgress)
-        //endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
-        //setEndProgressValue(endProgress)
-        //selectGroup = SelectGroup([startNode!,endNode!],startNode!)
-        //selectGroup!.event = onEvent
+        startNode = addSubView(SelectButton(nodeWidth, height, false, self, "start"))
+        setStartProgressValue(startProgress)
+        endNode = addSubView(SelectButton(nodeWidth, height, false, self, "end"))
+        setEndProgressValue(endProgress)
+        selectGroup = SelectGroup([startNode!,endNode!],startNode!)
+        selectGroup!.event = onEvent
     }
     func onStartNodeDown() {
         Swift.print("HNodeSlider.onStartNodeDown()")
 //		DepthModifier.toFront(_startNode, this)
-        //tempNodeMouseX = startNode!.localPos().x
-        //if(mouseMoveHandler == nil){mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)}//we add a global mouse move event listener
-        //else{fatalError("should not be possible")}
+        tempNodeMouseX = startNode!.localPos().x
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
         Swift.print("HNodeSlider.onEndNodeDown()")
 //		DepthModifier.toFront(_endNode, this)
-        //tempNodeMouseX = endNode!.localPos().x
-        //if(mouseMoveHandler == nil) {mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)}//we add a global mouse move event listener
-        //else{fatalError("should not be possible")}
+        tempNodeMouseX = endNode!.localPos().x
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("HNodeSlider.onStartNodeMove()")
@@ -56,29 +53,19 @@ class HNodeSlider:Element,INodeSlider {
         return event
     }
     func onStartNodeUp() {
-        Swift.print("onStartNodeUp")
-        if(mouseMoveHandler != nil){
-            NSEvent.removeMonitor(mouseMoveHandler!)
-            mouseMoveHandler = nil
-        }//we remove a global mouse move event listener
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
     func onEndNodeUp() {
-        Swift.print("onEndNodeUp")
-        if(mouseMoveHandler != nil){
-            NSEvent.removeMonitor(mouseMoveHandler!)
-            mouseMoveHandler = nil
-        }//we remove a global mouse move event listener
+        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
     }
-    /*
     override func onEvent(event: Event) {
-        Swift.print("\(self.dynamicType)" + ".onEvent() event.type: " + "\(event.type)")
+        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
-        super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
+        //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
-*/
     /**
      * @param progress (0-1)
      */

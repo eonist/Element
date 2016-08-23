@@ -44,18 +44,4 @@ class SelectGroup:EventSender{
         }
         super.onEvent(event)//we dont want to block any event being passed through, so we forward all events right through the SelectGroup
     }
-    //@objc func onButtonDown(sender: AnyObject) {
-        //Swift.print("SelectGroup.onButtonDown() ")
-        //let textButton:TextButton = (sender as! NSNotification).object as! TextButton
-        /*if(textButton === self.textButton!){
-        Swift.print("sender.object === self.textButton")
-        }*/
-        
-        /*
-        Swift.print("object: " + String((sender as! NSNotification).object))
-        Swift.print("name: " + String((sender as! NSNotification).name))//buttonEventDown
-        Swift.print("userInfo: " + String((sender as! NSNotification).userInfo))//nil
-        */
-        //Swift.print("WinView.onButtonDown() Sender: " + String(sender))
-    //}
 }

@@ -28,7 +28,7 @@ class ComboBox:Element{
 		super.resolveSkin()
 		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
         let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
-        Swift.print("selectedTitle: " + "\(selectedTitle)")
+        //Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)
         //setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
 	}

@@ -23,7 +23,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
         }//fatalError("NOT CORRECT fillStyle")
     }
     /**
-     * // :TODO: could possibly be renamed to applyGradientLinestyle, as it needs to override it cant be renamed
+     * NOTE: we could renamed this method to applyGradientLinestyle, but as it needs to override it cant be renamed!
      */
     override func applyLineStyle() {
         //Swift.print("GradientGraphic.applyLineStyle()")

@@ -6,19 +6,13 @@ import Cocoa
 class SVGAsset:InteractiveView2 {
     var svg:SVG
     init(_ path:String) {
-        //Swift.print("SVGAsset.init()")
-        //var xml:XML = FileParser.xml(new File(File.applicationDirectory.url+path));
-        let content = FileParser.content(path.tildePath)//TODO: you need to make a tilePath assert
-        //Swift.print("content: " + "\(content)")
-        XMLUtils.xmlByURL
-        let xmlDoc:NSXMLDocument = try! NSXMLDocument(XMLString: content!, options: 0)
-        let rootElement:NSXMLElement = xmlDoc.rootElement()!
+        let rootElement:XML = FileParser.xml(path.tildePath)
         svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
         isInteractive = false/*<--very important, as SVG interactivity is currently not supported*/
         /*self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
-        layer!.masksToBounds = false//this is needed!!!*/
+        layer!.masksToBounds = false//this is needed!!!, seems not to be needed!*/
         addSubview(svg)
     }
     /**

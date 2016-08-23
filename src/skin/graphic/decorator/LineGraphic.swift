@@ -26,6 +26,9 @@ class LineGraphic:SizeableDecorator {
         let b:CGPoint = lineOffsetRect.lineRect.topLeft + p2-pos
         graphic.lineShape.path = CGPathParser.line(a, b)
     }
+    override func drawFill() {
+        //must be overriden
+    }
     /**
      *
      */

@@ -11,7 +11,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
      */
     override func beginFill(){
         //Swift.print("GradientGraphic.beginFill()")
-        if(graphic.fillStyle!.dynamicType is GradientFillStyle.Type){//<- TODO: I think you can do just a regular is test there
+        if(graphic.fillStyle is IGradientFillStyle){
             let gradient = (graphic.fillStyle as! GradientFillStyle).gradient
             let boundingBox:CGRect = CGPathGetBoundingBox(graphic.fillShape.path) /*creates a boundingbox derived from the bounds of the path*/
             //Swift.print("GradientGraphic.boundingBox: " + "\(boundingBox)")
@@ -19,7 +19,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
             graphic.fillShape.graphics.gradientFill(graphicsGradient)
         }else{
             //Swift.print("super.beginFill()")
-            super.beginFill()
+            super.beginFill()/*do regular color fill*/
         }//fatalError("NOT CORRECT fillStyle")
     }
     /**
@@ -28,7 +28,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
     override func applyLineStyle() {
         //Swift.print("GradientGraphic.applyLineStyle()")
         super.applyLineStyle()/*call the BaseGraphic to set the stroke-width, cap, joint etc*/
-        if(getGraphic().lineStyle!.dynamicType is GradientLineStyle.Type){//<--the dynamicType may not be needed, you can probably do is directly or even (a as! B != nil)
+        if(getGraphic().lineStyle is IGradientLineStyle){
             let gradient:IGradient = (graphic.lineStyle as! GradientLineStyle).gradient
             var boundingBox:CGRect = CGPathGetBoundingBox(graphic.lineShape.path) // this method can be moved up one level if its better for performance, but wait untill you impliment matrix etc
             boundingBox = boundingBox.outset(graphic.lineStyle!.thickness/2, graphic.lineStyle!.thickness/2)/*Outset the boundingbox to cover the entire stroke*/

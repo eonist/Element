@@ -27,6 +27,9 @@ class GradientPanel:Element,IGradientPanel{
         ratioSpinner = addSubView(LeverSpinner(width, NaN,"Ratio:",0,0.1,0,1,1,100,200,self))
         focalPointRatioSpinner = addSubView(LeverSpinner(width, NaN,"Focal point:",0,0.01,-1,1,2,100,200,self))
     }
+    /**
+     * Happens when the handles are moved
+     */
     private func onGradientSliderChange(event : NodeSliderEvent) {
         Swift.print("GradientPanel.onGradientSliderChange()")
         let isStartNodeSelected:Bool = event.selected === gradientSlider!.startNode
@@ -34,6 +37,9 @@ class GradientPanel:Element,IGradientPanel{
         Swift.print("ratio: " + "\(ratio)")
         ratioSpinner!.setValue(ratio/*round( * 255)*/)
     }
+    /**
+     * Happens when the handles are clicked
+     */
     private func onGradientSliderSelectGroupChange(event : SelectGroupEvent) {
         let index:Int = event.selectable === gradientSlider!.startNode ? 0 : 1
         Swift.print("index: " + "\(index)");

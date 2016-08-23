@@ -35,7 +35,7 @@ class GraphicSkin:Skin{
                 if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
             }
         }
-        super.draw();
+        super.draw()
     }
     /**
      * TODO: Dont forget to add fillet, and asset here to , see old code

@@ -14,7 +14,7 @@ class SVGAsset:InteractiveView2 {
         let rootElement:NSXMLElement = xmlDoc.rootElement()!
         svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
-        isInteractive = false
+        isInteractive = false/*<--very important, as SVG interactivity is currently not supported*/
         /*self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
         layer!.masksToBounds = false//this is needed!!!*/

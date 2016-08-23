@@ -14,7 +14,7 @@ class AssetDecorator:SizeableDecorator{
         graphic.fillShape.frame = NSRect(0,0,1,1)/*<--temp fix, the frame needs to have a width and height or else the shadow won't be applied*/
     }
     override func draw() {
-        //Swift.print("AssetDecorator.draw() ")
+        Swift.print("AssetDecorator.draw() ")
         if(asset != nil) {asset!.removeFromSuperview()}/*temp solution, find a more elegant solution than removing*/
         asset = graphic.addSubView(SVGAsset(assetURL))/*temp solution*/
         //Swift.print("graphic.fillStyle: " + "\(graphic.fillStyle)")
@@ -22,11 +22,12 @@ class AssetDecorator:SizeableDecorator{
         super.draw()
     }
     override func drawFill() {
-        //Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
+        Swift.print("AssetDecorator.drawFill() width: " + "\(width)" + " height: " + "\(height)")
         //super.drawFill()
         asset!.draw(x, y, width, height)//0, 0, graphic.width, graphic.height
     }
     override func drawLine() {
+        Swift.print("AssetDecorator.drawFill.drawLine()")
         /*this method must be overridden*/
     }
 }

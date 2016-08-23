@@ -27,28 +27,28 @@ class HNodeSlider:Element,INodeSlider {
         selectGroup!.event = onEvent
     }
     func onStartNodeDown() {
-        Swift.print("HNodeSlider.onStartNodeDown()")
-//		DepthModifier.toFront(_startNode, this)
+        //Swift.print("HNodeSlider.onStartNodeDown()")
+		//DepthModifier.toFront(_startNode, this)
         tempNodeMouseX = startNode!.localPos().x
         if(mouseMoveHandler == nil){mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)}//we add a global mouse move event listener
         else{fatalError("should not be possible")}
     }
     func onEndNodeDown() {
-        Swift.print("HNodeSlider.onEndNodeDown()")
-//		DepthModifier.toFront(_endNode, this)
+        //Swift.print("HNodeSlider.onEndNodeDown()")
+		//DepthModifier.toFront(_endNode, this)
         tempNodeMouseX = endNode!.localPos().x
         if(mouseMoveHandler == nil) {mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)}//we add a global mouse move event listener
         else{fatalError("should not be possible")}
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
-        Swift.print("HNodeSlider.onStartNodeMove()")
+        //Swift.print("HNodeSlider.onStartNodeMove()")
         startProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         startNode!.x = Utils.nodePosition(startProgress, width, nodeWidth)
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
         return event
     }
     func onEndNodeMove(event:NSEvent)-> NSEvent?  {
-        Swift.print("HNodeSlider.onStartNodeMove()")
+        //Swift.print("HNodeSlider.onStartNodeMove()")
         endProgress = Utils.progress(event.localPos(self).x, tempNodeMouseX!, width, nodeWidth)
         endNode!.x = Utils.nodePosition(endProgress, width, nodeWidth)
         super.onEvent(NodeSliderEvent(NodeSliderEvent.change,self))
@@ -67,7 +67,7 @@ class HNodeSlider:Element,INodeSlider {
         }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        Swift.print("\(self.dynamicType)" + ".onEvent() event.type: " + "\(event.type)")
+        //Swift.print("\(self.dynamicType)" + ".onEvent() event.type: " + "\(event.type)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}

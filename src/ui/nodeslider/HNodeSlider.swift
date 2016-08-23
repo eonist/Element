@@ -72,11 +72,7 @@ class HNodeSlider:Element,INodeSlider {
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
-        else if(event.type == SelectGroupEvent.change && event.origin === gradientSlider!.selectGroup){onGradientSliderSelectGroupChange(event as! SelectGroupEvent)}){
-            
-        }
-        //Continue here: you need to forward the selectgroup events or hijack them
-        
+        else if(event.type == SelectGroupEvent.change && event.origin === selectGroup){super.onEvent(event)}//forward event
         ///*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**

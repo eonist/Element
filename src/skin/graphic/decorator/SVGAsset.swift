@@ -42,6 +42,10 @@ class SVGAsset:InteractiveView2 {
         //SVGStyleParser.describe(svgStyle)
         SVGModifier.style(svg, svgStyle)
     }
+    override func hitTest(aPoint: NSPoint) -> NSView? {
+        Swift.print("SVGAsset.hitTest()")
+        return nil
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{

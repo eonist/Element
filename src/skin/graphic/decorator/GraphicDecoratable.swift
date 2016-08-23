@@ -19,12 +19,18 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: its the setNeedsDisplay tells the system to initiate the drawing. The system then decides when its apropriate to draw the graphic.
      */
     override func draw() {
+        
+        //as draw
+        
+        
         //Swift.print("GraphicDecoratable.draw()" )
         //if(getGraphic().fillStyle != nil){
-            drawFill();graphic.fillShape.setNeedsDisplay()
+        drawFill();
+        graphic.fillShape.setNeedsDisplay()
         //}/*setup the fill geometry*//*draw the fileShape*/
         //if(getGraphic().lineStyle != nil){
-            drawLine();graphic.lineShape.setNeedsDisplay()
+        drawLine();
+        graphic.lineShape.setNeedsDisplay()
         //}/*setup the line geometry*//*draw the lineShape*/
     }
     func finalDraw(){//I guess this can be deleted
@@ -40,7 +46,8 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
         if(layer === graphic.fillShape){
             //Swift.print("fillShape: ")
             graphic.fillShape.graphics.context = ctx/*TODO: why do we apply the ctx here again?*/
-            if(graphic.fillStyle != nil){fill()}
+            if(graphic.fillStyle != nil){}
+            fill()
         }else if(layer === graphic.lineShape){
             //Swift.print("lineShape")
             graphic.lineShape.graphics.context = ctx

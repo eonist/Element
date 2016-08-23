@@ -1,12 +1,12 @@
 import Cocoa
 
-class GradientPanel:Element,IGradientPanel{
+class GradientPanel:Element,IGradientInput{
     var gradientSlider:GradientSlider?
     var colorInput:ColorInput?
     var alphaSpinner:LeverSpinner?
     var ratioSpinner:LeverSpinner?
     var itemHeight:CGFloat
-    var gradient:IGradient
+    var gradient:IGradient?
     var gradientTypeSelectGroup:SelectGroup?
     var focalPointRatioSpinner:LeverSpinner?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ gradient:IGradient? = nil, _ parent:IElement? = nil, _ id:String = "") {

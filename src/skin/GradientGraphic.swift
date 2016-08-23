@@ -42,7 +42,7 @@ class GradientGraphic:SizeableDecorator/*<--recently changed from GraphicDecorat
 }
 private class Utils{
     /**
-     *
+     * Returns IGraphicsGradient for IGradient
      */
     class func graphicsGradient(boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
         if(gradient is LinearGradient){

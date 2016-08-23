@@ -20,8 +20,12 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
-        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*setup the fill geometry*//*draw the fileShape*/
-        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*setup the line geometry*//*draw the fileShape*/
+        if(getGraphic().fillStyle != nil){
+            drawFill();graphic.fillShape.setNeedsDisplay()
+        }/*setup the fill geometry*//*draw the fileShape*/
+        if(getGraphic().lineStyle != nil){
+            drawLine();graphic.lineShape.setNeedsDisplay()
+        }/*setup the line geometry*//*draw the fileShape*/
     }
     func finalDraw(){//I guess this can be deleted
         

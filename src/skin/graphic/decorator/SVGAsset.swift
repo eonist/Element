@@ -11,20 +11,20 @@ class SVGAsset:InteractiveView2 {
         super.init(frame: NSRect())
         isInteractive = false/*<--very important, as SVG interactivity is currently not supported*/
         /*self.wantsLayer = true/*if true then view is layer backed*/
-        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children*/
+        layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children, or not!*/
         layer!.masksToBounds = false//this is needed!!!, seems not to be needed!*/
         addSubview(svg)
     }
     /**
-     * TODO: explaine what this method does
+     * TODO: explain what this method does
      */
     func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
         //Swift.print("SVGAsset.drawFill() width: " + String(width) + " height: " + String(height) + " x: " + String(x) + " y: " + String(y))
-        let scale:CGPoint = CGPoint(width/svg.width,height/svg.height);
+        let scale:CGPoint = CGPoint(width/svg.width,height/svg.height)//<---why is this working? could be because you have tested only with square svg files
         //Swift.print("svg.width: " + "\(svg.width)")
         //Swift.print("svg.height: " + "\(svg.height)")
         //Swift.print("scale: " + "\(scale)")
-        SVGModifier.scale(svg, CGPoint(0,0), scale);
+        SVGModifier.scale(svg, CGPoint(0,0), scale)
         svg.setFrameOrigin(CGPoint(x,y))
     }
     /**

@@ -31,13 +31,13 @@ class SelectGroup:EventSender{
         selectables.append(selectable)
     }
     override func onEvent(event:Event){
-        Swift.print("SelectGroup.onEvent() event.type:" + "\(event.type)")
+        //Swift.print("SelectGroup.onEvent() event.type:" + "\(event.type)")
         if(event.type == SelectEvent.select){
             //Swift.print("SelectGroup.onEvent() immediate: " + "\(event.immediate)")
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable
-            Swift.print("selected: " + "\(selected)")
-            Swift.print("selectables.count: " + "\(selectables.count)")
+            //Swift.print("selected: " + "\(selected)")
+            //Swift.print("selectables.count: " + "\(selectables.count)")
             SelectModifier.unSelectAllExcept(selected!, selectables)
             for s in selectables{ Swift.print("s.isSelected: " + "\(s.getSelected())") }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))

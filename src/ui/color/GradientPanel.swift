@@ -91,7 +91,6 @@ class GradientPanel:Element,IGradientPanel{
             Swift.print("Radial ")
         }
     }
-    /*
     override func onEvent(event: Event) {
         if(event.type == NodeSliderEvent.change && event.origin === gradientSlider){onGradientSliderChange(event as! NodeSliderEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientSlider!.selectGroup){onGradientSliderSelectGroupChange(event as! SelectGroupEvent)}
@@ -99,9 +98,7 @@ class GradientPanel:Element,IGradientPanel{
         if(event.type == SpinnerEvent.change && event.origin === focalPointRatioSpinner){onFocalPointRatioSpinnerChange(event as! SpinnerEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
         if(event.type == SelectGroupEvent.change && event.origin === gradientTypeSelectGroup){onGradientTypeSelectGroupChange(event as! SelectGroupEvent)}
-        //super.onEvent(event)/*forward events*/
     }
-    */
     /**
      * @Note you can set matrix to nil in the @param gradient
      */

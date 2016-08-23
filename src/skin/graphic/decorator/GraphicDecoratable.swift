@@ -20,21 +20,10 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      */
     override func draw() {
         //Swift.print("GraphicDecoratable.draw()" )
-        if(getGraphic().fillStyle != nil){
-            drawFill();graphic.fillShape.setNeedsDisplay()
-        }/*setup the fill geometry*//*draw the fileShape*/
-        else{
-            graphic.fillShape.setNeedsDisplay()
-        }
-        if(getGraphic().lineStyle != nil){
-            drawLine();graphic.lineShape.setNeedsDisplay()
-        }/*setup the line geometry*//*draw the fileShape*/
-        else{
-            graphic.lineShape.setNeedsDisplay()
-        }
-    }
-    func finalDraw(){//I guess this can be deleted
-        
+        if(getGraphic().fillStyle != nil){drawFill();graphic.fillShape.setNeedsDisplay()}/*setup the fill geometry, draw the fileShape*/
+        else{graphic.fillShape.setNeedsDisplay()}/*if the fillStyle is nil, we want the possible last drawing to disapear*/
+        if(getGraphic().lineStyle != nil){drawLine();graphic.lineShape.setNeedsDisplay()}/*setup the line geometry, draw the lineShape*/
+        else{graphic.lineShape.setNeedsDisplay()}
     }
     /**
      * This method starts the actual drawing of the path and style to the context (for fill and stroke)
@@ -59,17 +48,6 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
      * NOTE: this is a delegate method for the shapes in Graphic
      * NOTE: this method is also called on every frame of the animation it seems
      */
-     /*
-     override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-     //Swift.print("actionForLayer")
-     return NSNull()
-     }
-     */
-    /*
-    func displayLayer(layer: CALayer){
-     Swift.print("displayLayer")
-    }
-    */
     /**
      * This method results in the actual drawing of the fill to the context
      * NOTE:Conceptually this is equvielnt to the line call
@@ -139,3 +117,16 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     override func getDecoratable()->IGraphicDecoratable{return decoratable}/*new*/
 }
+
+/*
+//old methods that didnt make the cut, delete eventually
+override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
+//Swift.print("actionForLayer")
+return NSNull()
+}
+*/
+/*
+func displayLayer(layer: CALayer){
+Swift.print("displayLayer")
+}
+*/

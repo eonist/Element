@@ -72,7 +72,7 @@ class HNodeSlider:Element,INodeSlider {
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
-        else if(event.type == SelectGroupEvent.change && event.origin === selectGroup){super.onEvent(event)}//forward event
+        else if(event.type == SelectGroupEvent.change && event.origin === selectGroup){super.onEvent(event)}//forward event so that other components can toggle their behaviour on handle click
         ///*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**

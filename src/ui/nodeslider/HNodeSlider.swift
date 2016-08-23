@@ -10,7 +10,7 @@ class HNodeSlider:Element,INodeSlider {
     var tempNodeMouseX:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
-    var globalMouseMovedHandeler:AnyObject?
+    var mouseMoveHandler:AnyObject?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeWidth:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
@@ -30,13 +30,15 @@ class HNodeSlider:Element,INodeSlider {
         Swift.print("HNodeSlider.onStartNodeDown()")
 //		DepthModifier.toFront(_startNode, this)
         tempNodeMouseX = startNode!.localPos().x
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
+        if(mouseMoveHandler == nil){mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)}//we add a global mouse move event listener
+        else{fatalError("should not be possible")}
     }
     func onEndNodeDown() {
         Swift.print("HNodeSlider.onEndNodeDown()")
 //		DepthModifier.toFront(_endNode, this)
         tempNodeMouseX = endNode!.localPos().x
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
+        if(mouseMoveHandler == nil) {mouseMoveHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)}//we add a global mouse move event listener
+        else{fatalError("should not be possible")}
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("HNodeSlider.onStartNodeMove()")
@@ -53,17 +55,26 @@ class HNodeSlider:Element,INodeSlider {
         return event
     }
     func onStartNodeUp() {
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(mouseMoveHandler != nil){
+            NSEvent.removeMonitor(mouseMoveHandler!)
+            mouseMoveHandler = nil
+        }//we remove a global mouse move event listener
     }
     func onEndNodeUp() {
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(mouseMoveHandler != nil){
+            NSEvent.removeMonitor(mouseMoveHandler!)
+            mouseMoveHandler = nil
+        }//we remove a global mouse move event listener
     }
     override func onEvent(event: Event) {
-        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        Swift.print("\(self.dynamicType)" + ".onEvent() event.type: " + "\(event.type)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
         else if(event.type == ButtonEvent.down && event.origin === endNode){onEndNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === endNode){onEndNodeUp()}
+        
+        //Continue here: you need to forward the selectgroup events or hijack them
+        
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**

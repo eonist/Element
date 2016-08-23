@@ -15,7 +15,6 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     /*Getters / Setters*/
     var parent:IElement?{get}
     //var state:String{get set}/*skinState is renamed to state because objc won't allow implicit setter with the same name*/
-    var style:IStyle{get set}
     var skin:ISkin?{get set}
     var id : String?{get};
     var width:CGFloat{get /*set*/}

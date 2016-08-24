@@ -14,10 +14,18 @@ class GradientSync {
             GradientSync.receiver!.onEvent(GradientInputEvent(GradientInputEvent.change,event.origin))
         }
     }
+}
+extension GradientSync{
     /**
-     * NOTE: this sets the gradient of the broadcaster not the receiver
+     * NOTE: this sets the gradient of the receiver
      */
-    class func setGradient(gradient:IGradient) {
+    class func setRecieverGradient(gradient:IGradient){
+        if (GradientSync.receiver != nil) {GradientSync.receiver!.setGradient(gradient)}
+    }
+    /**
+     * NOTE: this sets the gradient of the broadcaster
+     */
+    class func setBroadcasterGradient(gradient:IGradient){
         if (GradientSync.broadcaster != nil) {GradientSync.broadcaster!.setGradient(gradient)}
     }
 }

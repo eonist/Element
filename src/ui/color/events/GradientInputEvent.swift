@@ -1,9 +1,9 @@
 import Foundation
 
 class GradientInputEvent:Event{
-    enum GradientInputEventType: String {case change = "gradientInputChange"}
-    override init(_ type:String = "", _ origin:AnyObject){
-        super.init(type, origin)
+    enum GradientInputEventType: String {case Change = "gradientInputChange"}
+    init(_ type:GradientInputEventType = .Change, _ origin:AnyObject){
+        super.init(type.rawValue, origin)
     }
 }
 extension GradientInputEvent{

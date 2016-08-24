@@ -9,7 +9,7 @@ class ColorSync {
     static var receiver:IColorInput?
     static var broadcaster:IColorInput?
     class func onColorChange(event:ColorInputEvent){
-        print("onColorChange" + "\(ColorSync.receiver)")
+        print("ColorSync.onColorChange" + "\(ColorSync.receiver)")
         if(ColorSync.receiver != nil) {
             print("_receiver: " + "\(ColorSync.receiver)")
             //print("event.target: " + event.target);

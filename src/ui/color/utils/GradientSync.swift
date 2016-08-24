@@ -4,9 +4,9 @@ class GradientSync {
     static var receiver:IGradientInput?
     static var broadcaster:IGradientInput?
     class func onGradientChange(event:GradientInputEvent){
-        print("onGradientChange receiver:" + "\(GradientSync.receiver)")
+        print("GradientSync.onGradientChange receiver:" + "\(GradientSync.receiver)")
         if(GradientSync.receiver != nil) {
-            //print("_receiver: " + "\(ColorSync.receiver)")
+            //print("_receiver: " + "\(GradientSync.receiver)")
             //print("event.target: " + event.target);
             //print("event.currentTarget: " + event.currentTarget);
             GradientSync.broadcaster = event.origin as? IGradientInput

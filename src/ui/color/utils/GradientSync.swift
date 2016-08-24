@@ -3,22 +3,22 @@ import Cocoa
 class GradientSync {
     static var receiver:IGradientInput?
     static var broadcaster:IGradientInput?
-    class func onGradientChange(event:ColorInputEvent){
-        print("onColorChange" + "\(ColorSync.receiver)")
-        if(ColorSync.receiver != nil) {
-            print("_receiver: " + "\(ColorSync.receiver)")
+    class func onGradientChange(event:GradientInputEvent){
+        print("onGradientChange receiver:" + "\(GradientSync.receiver)")
+        if(GradientSync.receiver != nil) {
+            //print("_receiver: " + "\(ColorSync.receiver)")
             //print("event.target: " + event.target);
             //print("event.currentTarget: " + event.currentTarget);
-            ColorSync.broadcaster = event.origin as? IColorInput
-            ColorSync.receiver!.setColorValue(event.color!)
-            ColorSync.receiver!.onEvent(ColorInputEvent(ColorInputEvent.change,event.color!))
+            GradientSync.broadcaster = event.origin as? IGradientInput
+            GradientSync.receiver!.setGradient(event.gradient!)
+            GradientSync.receiver!.onEvent(GradientInputEvent(GradientInputEvent.change,event.gradient))
         }
     }
     /**
      * NOTE: this sets the color of the broadcaster not the receiver
      */
     class func setColor(color:NSColor) {
-        if (ColorSync.broadcaster != nil) {ColorSync.broadcaster!.setColorValue(color)}
+        if (GradientSync.broadcaster != nil) {GradientSync.broadcaster!.setColorValue(color)}
     }
 
 }

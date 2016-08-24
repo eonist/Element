@@ -20,8 +20,7 @@ class ColorInput:Element,IColorInput {
         self.colorBox = addSubView(ColorBox(height,height,color!,self))
     }
     func onColorBoxDown(event:ButtonEvent){
-        ColorSync.receiver = self
-        /*cant we set this outside this class?*/
+        ColorSync.receiver = self/*cant we set this outside this class?, nopp probably shouldn't*/
         super.onEvent(ColorInputEvent(ColorInputEvent.colorBoxDown,self))
     }
     /**

@@ -2,9 +2,10 @@ import Cocoa
 /**
  * let singleton = ColorSync.sharedInstance
  * singleton.test()
+ * NOTE: the way it works is that the broadcaster and receiver are set by the user interaction with the GUI, and then you call ColorSync.onColorChange(event as! ColorInputEvent) and ColorSync decides what is receiving at that point in time
  */
 class ColorSync {
-    static let sharedInstance = ColorSync()
+    static let sharedInstance = ColorSync()//TODO:IDont think this needs to be a singleton
     private init() {} //This prevents others from using the default '()' initializer for this class.
     static var receiver:IColorInput?
     static var broadcaster:IColorInput?

@@ -1,8 +1,8 @@
 import Cocoa
 
 class GradientSync {
-    static var receiver:IGradientInput?
-    static var broadcaster:IGradientInput?
+    static var receiver:IGradientInput?//this should be only settable from outside not gettable
+    static var broadcaster:IGradientInput?//this should be only settable from outside not gettable
     class func onGradientChange(event:GradientInputEvent){
         print("GradientSync.onGradientChange receiver:" + "\(GradientSync.receiver)")
         if(GradientSync.receiver != nil) {
@@ -14,18 +14,11 @@ class GradientSync {
             GradientSync.receiver!.onEvent(GradientInputEvent(GradientInputEvent.change,event.origin))
         }
     }
-}
-extension GradientSync{
     /**
-     * NOTE: this sets the gradient of the receiver
+     * NOTE: this sets the gradient of the broadcaster not the receiver
+     * NOTE: use the GradientSync.onGradientChange(GradientInputEvent(.change,self)) if you want to update the receiver
      */
-    class func setRecieverGradient(gradient:IGradient){
-        if (GradientSync.receiver != nil) {GradientSync.receiver!.setGradient(gradient)}
-    }
-    /**
-     * NOTE: this sets the gradient of the broadcaster
-     */
-    class func setBroadcasterGradient(gradient:IGradient){
+    class func setGradient(gradient:IGradient) {
         if (GradientSync.broadcaster != nil) {GradientSync.broadcaster!.setGradient(gradient)}
     }
 }

@@ -11,7 +11,7 @@ class GradientSync {
             //print("event.currentTarget: " + event.currentTarget);
             GradientSync.broadcaster = event.origin as? IGradientInput
             GradientSync.receiver!.setGradient(event.gradient!)
-            GradientSync.receiver!.onEvent(GradientInputEvent(GradientInputEvent.change,event.gradient))
+            GradientSync.receiver!.onEvent(GradientInputEvent(GradientInputEvent.change,event.gradient!))
         }
     }
     /**

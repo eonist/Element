@@ -15,7 +15,7 @@ class GradientSync {
         }
     }
     /**
-     * NOTE: this sets the color of the broadcaster not the receiver
+     * NOTE: this sets the gradient of the broadcaster not the receiver
      */
     class func setGradient(gradient:IGradient) {
         if (GradientSync.broadcaster != nil) {GradientSync.broadcaster!.setGradient(gradient)}

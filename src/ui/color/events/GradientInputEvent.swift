@@ -1,7 +1,7 @@
 import Foundation
 
 class GradientInputEvent:Event{
-    static var change:String = "gradientInputChange"//probably should be ColorInputChange
+    enum GradientInputEventType: String {case change = "gradientInputChange"}
     override init(_ type:String = "", _ origin:AnyObject){
         super.init(type, origin)
     }

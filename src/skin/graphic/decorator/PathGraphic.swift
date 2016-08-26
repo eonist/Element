@@ -23,7 +23,7 @@ class PathGraphic:SizeableDecorator{
     }
     override func drawLine() {
         //Swift.print("PathGraphic.drawLine()")
-        Swift.print("path.pathData: " + "\(path.pathData)")
+        //Swift.print("path.pathData: " + "\(path.pathData)")
         var boundingBox:CGRect = CGPathParser.boundingBox(cgPath, graphic.lineStyle!)/*regardless if the line is inside outside or centered, this will still work, as the path is already exapnded correctly*/
         //boundingBox += fillBoundingBox.topLeft
         graphic.lineShape.frame = boundingBox/*We need to set frame because this is the lowest level graphic and they must have a frame to be visible*/

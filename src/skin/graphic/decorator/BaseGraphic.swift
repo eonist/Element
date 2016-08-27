@@ -25,7 +25,7 @@ class BaseGraphic:AbstractGraphic,IGraphicDecoratable{/*was extending AbstractGr
         //Swift.print("BaseGraphic.applyLineStyle() ")
         //Swift.print("lineStyle!.color: " + String(lineStyle!.color))
         if(lineStyle != nil) {/*updates only if lineStyle of class LineStyle*/
-            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit)
+            lineShape.graphics.line(lineStyle!.thickness, lineStyle!.color, lineStyle!.lineCap, lineStyle!.lineJoin, lineStyle!.miterLimit,lineStyle.phase,lineStyle.lengths)
         }
     }
     override func stylizeLine(){

@@ -60,23 +60,28 @@ class SelectorParser{
     class func selector(string:String)->ISelector {
         //var selector:ISelector =
         let matches = RegExp.matches(string, SelectorPattern.pattern)
+        var selectorElement:String?
+        var selectorClassIds:[String]?
+        var selectorId:String?
+        var selectorStates:[String]?
+        
         for match:NSTextCheckingResult in matches {
-            let selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
+            selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
             if match.rangeAtIndex(2).location != NSNotFound {
                 let classIds:String = RegExp.value(string, match, 2)
-                let selectorClassIds = classIds.containsString(" ") ? StringModifier.split(classIds, " ") : [classIds]
+                selectorClassIds = classIds.containsString(" ") ? StringModifier.split(classIds, " ") : [classIds]
             }else{
-                let selectorClassIds = []
+                selectorClassIds = []
             }
-            let selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? RegExp.value(string, match, 3) : ""
+            selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? RegExp.value(string, match, 3) : ""
             if match.rangeAtIndex(4).location != NSNotFound {
                 let states:String = RegExp.value(string, match, 4)
-                let selectorStates = states.containsString(":") ? StringModifier.split(states, ":") : [states]
+                selectorStates = states.containsString(":") ? StringModifier.split(states, ":") : [states]
             }else{
-                let selectorStates = []
+                selectorStates = []
             }
         }
-        return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
+        return Selector(selectorElement!,selectorClassIds!,selectorId!,selectorStates!)
     }
     class func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0

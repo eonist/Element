@@ -11,11 +11,11 @@ class StyleResolver{
         var weightedStyles:Array<WeightedStyle> = []
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that don't apply to the element Selectors*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
-            //Swift.print("style: " + style.name);
+            //Swift.print("style: " + style.name)
             let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors)
             if(selectorWeights != nil) {weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))}
         }
-        //Swift.print("weightedStyles: " + weightedStyles.length);
+        //Swift.print("weightedStyles: " + weightedStyles.count)
         if(weightedStyles.count > 1) {
             weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         }
@@ -26,7 +26,6 @@ class StyleResolver{
         }
         return finalStyle
     }
-    
 }
 /**
  * TODO: Deprecate this method, its not doing anything anymore

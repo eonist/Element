@@ -60,10 +60,10 @@ class SelectorParser{
     class func selector(string:String)->ISelector {
         //var selector:ISelector =
         let matches = RegExp.matches(string, SelectorPattern.pattern)
-        var selectorElement:String?
-        var selectorClassIds:[String]?
-        var selectorId:String?
-        var selectorStates:[String]?
+        var selectorElement:String = ""
+        var selectorClassIds:[String] = []
+        var selectorId:String = ""
+        var selectorStates:[String] = []
         
         for match:NSTextCheckingResult in matches {
             selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""

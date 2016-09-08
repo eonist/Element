@@ -7,9 +7,9 @@ class StyleResolver{
      * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
      */
     class func style(element:IElement)->IStyle{
-        let querrySelectors:Array<ISelector> = ElementParser.selectors(element)// :TODO: possibly move up in scope for optimizing
+        let querrySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var weightedStyles:Array<WeightedStyle> = []
-        for style : IStyle in StyleManager.styles {/*This loop disregards styles that dont apply to the elements cascade*/
+        for style : IStyle in StyleManager.styles {/*This loop disregards styles that don't apply to the element Selectors*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //print("style: " + style.name);
             let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors)

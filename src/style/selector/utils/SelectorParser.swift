@@ -58,7 +58,7 @@ class SelectorParser{
      * EXAMPLE: SelectorParser.selector("Button.tab#arrow:down")//element: >Button<classIds: >["tab"]<id: >arrow<states: >["down"]<
      */
     class func selector(string:String)->ISelector {
-        var selector:ISelector = Selector()
+        var selector:ISelector =
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         for match:NSTextCheckingResult in matches {
             selector.element = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
@@ -76,7 +76,7 @@ class SelectorParser{
                 selector.states = []
             }
         }
-        return selector
+        return Selector()
     }
     class func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0

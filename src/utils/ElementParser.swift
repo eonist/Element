@@ -23,7 +23,6 @@ class ElementParser{
      *
      */
     class func selector(element:IElement)->ISelector{
-        
         let elmnt:String = element.getClassType()
         //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId]
         let id:String = element.id ?? ""

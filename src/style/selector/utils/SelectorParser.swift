@@ -81,7 +81,7 @@ class SelectorParser{
                 selectorStates = []
             }
         }
-        return Selector(selectorElement!,selectorClassIds!,selectorId!,selectorStates!)
+        return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
     }
     class func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0

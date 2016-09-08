@@ -10,7 +10,7 @@ class ElementParser{
     }
     /**
      * Returns an Array instance comprised of Selector instances for each (element,classId,id and state) in the element "cascade" (the spesseficity)
-     * @Note to get the stackString use: print(SelectorUtils.toString(StyleResolver.stack(checkButton)));
+     * @Note to get the stackString use: StyleParser.describe(StyleResolver.style(button))
      */
     class func selectors(element:IElement)->Array<ISelector>{
         //Swift.print("ElementParser.selectors()")

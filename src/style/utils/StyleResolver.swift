@@ -17,9 +17,9 @@ class StyleResolver{
         }
         //print("weightedStyles: " + weightedStyles.length);
         if(weightedStyles.count > 1) {
-            weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)
-        }//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
-        let styleName:String = SelectorParser.string(querrySelectors)/*returns the absolute selecter adress of the element*/
+            weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
+        }
+        let styleName:String = SelectorParser.string(querrySelectors)/*returns the absolute selecter address of the element*/
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
         for weightStyle:WeightedStyle in weightedStyles{
             //if(ElementParser.stackString(element) == "Window Button") {Swift.print("Found button " + "\(isDirectStyle)");StyleParser.describe(temp)}

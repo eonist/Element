@@ -62,8 +62,8 @@ class SelectorParser{
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         var selectorElement:String = ""
         var selectorClassIds:[String] = []
-        var selectorId:String = ""
-        var selectorStates:[String] = []
+        
+        // = []
         
         for match:NSTextCheckingResult in matches {
             selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
@@ -73,15 +73,16 @@ class SelectorParser{
             }else{
                 selectorClassIds = []
             }
-            selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? RegExp.value(string, match, 3) : ""
+            let selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? RegExp.value(string, match, 3) : ""
             if match.rangeAtIndex(4).location != NSNotFound {
                 let states:String = RegExp.value(string, match, 4)
-                selectorStates = states.containsString(":") ? StringModifier.split(states, ":") : [states]
+                let selectorStates:[String] = states.containsString(":") ? StringModifier.split(states, ":") : [states]
             }else{
-                selectorStates = []
+                let selectorStates:[String] = []
             }
+            return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
         }
-        return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
+        return Selector()
     }
     class func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0

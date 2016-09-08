@@ -13,7 +13,7 @@ class SelectorParser{
      */
     class func selectorWeights(style:IStyle,_ querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
         var selectorWeights:Array<SelectorWeight> = []
-        cursor = 0;/*so that we skip testing the same selector again*/
+        cursor = 0/*so that we skip testing the same selector again*/
         for styleSel : ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
             let selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors)
             if(selectorWeight == nil) {return nil}

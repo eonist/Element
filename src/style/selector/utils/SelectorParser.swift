@@ -58,28 +58,30 @@ class SelectorParser{
      * EXAMPLE: SelectorParser.selector("Button.tab#arrow:down")//element: >Button<classIds: >["tab"]<id: >arrow<states: >["down"]<
      */
     class func selector(string:String)->ISelector {
-        //var selector:ISelector =
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         var selectorElement:String = ""
-        var selectorClassIds:[String] = []
-        
-        // = []
-        
         for match:NSTextCheckingResult in matches {
             selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
-            if match.rangeAtIndex(2).location != NSNotFound {
-                let classIds:String = RegExp.value(string, match, 2)
-                selectorClassIds = classIds.containsString(" ") ? StringModifier.split(classIds, " ") : [classIds]
-            }else{
-                selectorClassIds = []
+            func classIds()->[String]{
+                if match.rangeAtIndex(2).location != NSNotFound {
+                    let classIds:String = RegExp.value(string, match, 2)
+                    return classIds.containsString(" ") ? StringModifier.split(classIds, " ") : [classIds]
+                }else{
+                    return []
+                }
             }
+            let selectorClassIds:[String] = classIds()
             let selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? RegExp.value(string, match, 3) : ""
-            if match.rangeAtIndex(4).location != NSNotFound {
-                let states:String = RegExp.value(string, match, 4)
-                let selectorStates:[String] = states.containsString(":") ? StringModifier.split(states, ":") : [states]
-            }else{
-                let selectorStates:[String] = []
+            
+            func states()->[String]{
+                if match.rangeAtIndex(4).location != NSNotFound {
+                    let states:String = RegExp.value(string, match, 4)
+                    return states.containsString(":") ? StringModifier.split(states, ":") : [states]
+                }else{
+                    return []
+                }
             }
+            let selectorStates:[String] = states()
             return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
         }
         return Selector()

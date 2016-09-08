@@ -109,7 +109,7 @@ private class Utils{
         for (var i : Int = SelectorParser.cursor; i < querrySelectors.count; i++) {/*loops through each selector in the stack*///Item Container Item Container Button Text
             let querrySelector:ISelector = querrySelectors[i]
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){/*Asserts if the selector in the style should influence the style of the element*/
-                let selectorWeight:SelectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1)
+                let selectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1)
                 SelectorParser.cursor = i+1// :TODO: this could possibly also be solved by looping the style inside the stack, but this was a faster fix
                 return selectorWeight
             }

@@ -23,12 +23,12 @@ class ElementParser{
      *
      */
     class func selector(element:IElement)->ISelector{
-        let selector:Selector = Selector()
-        selector.element = element.getClassType()
+        
+        let elmnt:String = element.getClassType()
         //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId]
-        selector.id = element.id ?? ""
-        selector.states = (element.skin != nil ? element.skin!.state : element.getSkinState()).match("\\b\\w+\\b")/*Matches words with spaces between them*/
-        return selector
+        let id:String = element.id ?? ""
+        let states:[String] = (element.skin != nil ? element.skin!.state : element.getSkinState()).match("\\b\\w+\\b")/*Matches words with spaces between them*/
+        return Selector(elmnt,[],id,states)
     }
     /**
      * Returns an array populated with IElement parents of the target (Basically the ancestry)

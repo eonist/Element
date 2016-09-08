@@ -7,7 +7,7 @@ class SelectorParser{
     /**
      * Returns a weight value based on where aSelector is locaeted on the @param b array (higher values means higher priotiy)
      * @param style: originally from the styleManager
-     * @param querrySelectors: an array comprised of Selectors (from the element stack)
+     * @param querrySelectors: an array comprised of Selectors (from the elements selectors)
      * // :TODO: this the sub method of this class could still need some refactoring, and clearafication
      * // :TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */

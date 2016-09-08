@@ -7,19 +7,19 @@ class StyleResolver{
      * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
      */
     class func style(element:IElement)->IStyle{
-        let querrySelectors:Array<ISelector> = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
-        var weightedStyles:Array<WeightedStyle> = [];
+        let querrySelectors:Array<ISelector> = ElementParser.selectors(element)// :TODO: possibly move up in scope for optimizing
+        var weightedStyles:Array<WeightedStyle> = []
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that dont apply to the elements cascade*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //print("style: " + style.name);
-            let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors);
+            let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors)
             if(selectorWeights != nil) {weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))}
         }
         //print("weightedStyles: " + weightedStyles.length);
         if(weightedStyles.count > 1) {
             weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)
         }//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
-        let styleName:String = SelectorParser.string(querrySelectors);
+        let styleName:String = SelectorParser.string(querrySelectors)
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querrySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
         for weightStyle:WeightedStyle in weightedStyles{
             //if(ElementParser.stackString(element) == "Window Button") {Swift.print("Found button " + "\(isDirectStyle)");StyleParser.describe(temp)}

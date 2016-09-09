@@ -9,6 +9,7 @@ class StyleResolver{
         let elementAddress = ElementParser.stackString(element)
         for var i = 0; i < recently.count; ++i{
             let item = recently[i]
+            let index = -1
             if(item.address == elementAddress) {
                 
             }

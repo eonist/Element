@@ -15,8 +15,8 @@ class StyleResolver{
                 break;//terminate Loop
             }
         }
-        if(idx != -1){//already exists in cache
-            ArrayModifier.indexSwap(.recentlyUsed,idx)//move to front
+        if(index != -1){//already exists in cache
+            ArrayModifier.indexSwap(recently,index)//move to front
         }else{//does not exist in cache
             
         }

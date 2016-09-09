@@ -16,10 +16,10 @@ class StyleResolver{
             }
         }
         if(index != -1){//already exists in cache
-            ArrayModifier.move(&recently, index, 0)//move to front
+            if(index != 0){ ArrayModifier.move(&recently, index, 0)}//move to front if its not already in front
             return recently[index].style
         }else{//does not exist in cache
-            if(recently.count > 9){recently.popLast()}
+            if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
             recently.unshift((style,elementAddress))//add to front
         }
 

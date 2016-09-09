@@ -6,7 +6,9 @@ class StyleResolver{
      *
      */
     static func style(element:IElement)->IStyle{
-        
+        for var i = 0; i < recently.count; ++i{
+            print(i)
+        }
         return resolveStyle(element)
     }
     /**

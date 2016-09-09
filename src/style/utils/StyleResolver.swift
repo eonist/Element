@@ -4,7 +4,7 @@ class StyleResolver{
     static var recently:Array<(style:IStyle,address:String)> = []
     static var recycleCount:Int = 0
     static var lookUpCount:Int = 0
-    static var addresses:[Dictionary<String:IStyle>]
+    static var addresses:[Dictionary<String, Int>] = []
     /**
      *
      */
@@ -13,6 +13,9 @@ class StyleResolver{
         //return resolveStyle(element)
         
         let elementAddress = ElementParser.stackString(element)
+        addresses[elementAddress] = 0
+        
+        
         var index = -1
         for var i = 0; i < recently.count; ++i{
             let item = recently[i]

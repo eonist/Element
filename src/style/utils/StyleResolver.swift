@@ -20,11 +20,10 @@ class StyleResolver{
             return recently[index].style
         }else{//does not exist in cache
             if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
+            let style = resolveStyle(element)
             recently.unshift((style,elementAddress))//add to front
-        }
-
-        
-        return resolveStyle(element)
+            return style
+        }  
     }
     /**
      * Returns a style comprised of all the styleProperties element inherit from

@@ -6,9 +6,10 @@ class StyleResolver{
      *
      */
     static func style(element:IElement)->IStyle{
+        let elementAddress = ElementParser.stackString(element)
         for var i = 0; i < recently.count; ++i{
             let item = recently[i]
-            if(item.address == "") {
+            if(item.address == elementAddress) {
                 
             }
         }

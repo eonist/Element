@@ -3,10 +3,12 @@ import Foundation
 class StyleResolver{
     static var recently:Array<(style:IStyle,address:String)> = []
     static var recycleCount:Int = 0
+    static var lookUpCount:Int = 0
     /**
      *
      */
     static func style(element:IElement)->IStyle{
+        lookUpCount++
         //return resolveStyle(element)
         
         let elementAddress = ElementParser.stackString(element)
@@ -24,7 +26,7 @@ class StyleResolver{
             if(index != 0){ ArrayModifier.move(&recently, index, 0)}//move to front if its not already in front
             return recently[0].style
         }else{//does not exist in cache
-            if(recently.count > 19){recently.popLast()}//the array has a limit of 10 items
+            if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
             let style = resolveStyle(element)
             recently.unshift((style,elementAddress))//add to front
             return style

@@ -17,6 +17,7 @@ class StyleResolver{
         }
         if(index != -1){//already exists in cache
             ArrayModifier.move(&recently, index, 0)//move to front
+            return recently[index].style
         }else{//does not exist in cache
             if(recently.count > 9){recently.popLast()}
             recently.unshift((style,elementAddress))//add to front

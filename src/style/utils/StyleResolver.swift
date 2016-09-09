@@ -6,6 +6,8 @@ class StyleResolver{
      *
      */
     static func style(element:IElement)->IStyle{
+        return resolveStyle(element)
+        /*
         let elementAddress = ElementParser.stackString(element)
         var index = -1
         for var i = 0; i < recently.count; ++i{
@@ -23,7 +25,8 @@ class StyleResolver{
             let style = resolveStyle(element)
             recently.unshift((style,elementAddress))//add to front
             return style
-        }  
+        }
+        */
     }
     /**
      * Returns a style comprised of all the styleProperties element inherit from

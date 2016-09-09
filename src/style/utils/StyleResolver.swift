@@ -7,13 +7,23 @@ class StyleResolver{
      */
     static func style(element:IElement)->IStyle{
         let elementAddress = ElementParser.stackString(element)
+        var index = -1
         for var i = 0; i < recently.count; ++i{
             let item = recently[i]
-            let index = -1
             if(item.address == elementAddress) {
-                
+                index = i
+                break;//terminate Loop
             }
         }
+        if(idx != -1){//already exists in cache
+            ArrayModifier.indexSwap(.recentlyUsed,idx)//move to front
+        }else{//does not exist in cache
+            
+        }
+
+        //if(recentlyUsed.count > 9){
+        //recently.popLast()
+        //recently.unshift((style,address))//add to front
         return resolveStyle(element)
     }
     /**

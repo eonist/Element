@@ -4,6 +4,7 @@ class StyleResolver{
     static var recently:Array<(style:IStyle,address:String)> = []
     static var recycleCount:Int = 0
     static var lookUpCount:Int = 0
+    static var addresses:[Dictionary<String:IStyle>]
     /**
      *
      */

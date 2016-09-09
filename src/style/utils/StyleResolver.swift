@@ -6,7 +6,7 @@ class StyleResolver{
      *
      */
     static func style(element:IElement)->IStyle{
-        return resolveStyle(element)
+        //return resolveStyle(element)
         
         let elementAddress = ElementParser.stackString(element)
         var index = -1

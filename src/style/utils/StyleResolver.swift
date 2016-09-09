@@ -16,14 +16,13 @@ class StyleResolver{
             }
         }
         if(index != -1){//already exists in cache
-            ArrayModifier.indexSwap(recently,index)//move to front
+            ArrayModifier.move(&recently, index, 0)//move to front
         }else{//does not exist in cache
-            
+            if(recently.count > 9){recently.popLast()}
+            recently.unshift((style,elementAddress))//add to front
         }
 
-        //if(recentlyUsed.count > 9){
-        //recently.popLast()
-        //recently.unshift((style,address))//add to front
+        
         return resolveStyle(element)
     }
     /**

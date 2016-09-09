@@ -19,7 +19,7 @@ class StyleResolver{
         }
         if(index != -1){//already exists in cache
             if(index != 0){ ArrayModifier.move(&recently, index, 0)}//move to front if its not already in front
-            return recently[index].style
+            return recently[0].style
         }else{//does not exist in cache
             if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
             let style = resolveStyle(element)

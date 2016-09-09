@@ -1,14 +1,20 @@
 import Foundation
 
 class StyleResolver{
-    
-    
+    static var recently:Array<(style:IStyle,address:String)> = []
+    /**
+     *
+     */
+    static func style(element:IElement)->IStyle{
+        
+        return resolveStyle(element)
+    }
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
      * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
      */
-    class func style(element:IElement)->IStyle{
+    static func resolveStyle(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var weightedStyles:Array<WeightedStyle> = []
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that don't apply to the element Selectors*/

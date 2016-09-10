@@ -58,10 +58,7 @@ class StyleResolver{
             return StyleManager.hashedStyles[i.string]!
         }
         
-        //test how many element selector addresses are similar
-        
-        //
-        
+       
         //let styles = getStyles(querrySelectors.count)
         for style : IStyle in StyleManager.styles/*styles*/ {/*This loop disregards styles that don't apply to the element Selectors*/
             styleLookUpCount++

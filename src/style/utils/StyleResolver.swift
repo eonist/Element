@@ -11,6 +11,7 @@ class StyleResolver{
     static func style(element:IElement)->IStyle{
         lookUpCount++
         //return resolveStyle(element)
+        //Swift.print("element selector count: " + "\(ElementParser.selectors(element).count)")
         
         let elementAddress = ElementParser.stackString(element)
         addresses[elementAddress] = 0

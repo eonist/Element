@@ -31,7 +31,7 @@ class StyleManagerUtils{
             ac.updateValue([o], forKey: selectorCount)/*add the item from items as an array*/
         }
         ac.keys.forEach{
-            if(String($0).int < String(selectorCount).int) {/*add style to all arrays that have a selectorCount less than the current style has*/
+            if(String($0).int > String(selectorCount).int) {/*add style to all arrays that have a selectorCount less than the current style has*/
                 if var temp = ac[$0]{
                     temp.append(o)
                     ac.updateValue(temp, forKey: $0)/*add the item from items as an array*/

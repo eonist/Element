@@ -40,6 +40,9 @@ extension StyleManager{
      * Adds every style in a styleCollection to the stylemanager
      */
     class func addStyle(styles:Array<IStyle>){
+        styles.forEach{
+            StyleManagerUtils.hashStyle($0)
+        }
         self.styles += styles/*<- concats*/
     }
     /**

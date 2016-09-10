@@ -2,6 +2,9 @@ import Foundation
 
 class StyleManagerUtils{
     static var stylesByElement:Dictionary<String,[IStyle]> = [:]
+    static var stylesByID:Dictionary<String,[IStyle]> = [:]
+    static var stylesByClassId:Dictionary<String,[IStyle]> = [:]
+    static var stylesByState:Dictionary<String,[IStyle]> = [:]
     /**
      * We hash the tail of the style selectors
      */
@@ -15,24 +18,24 @@ class StyleManagerUtils{
             }
         }
         if(style.selectors.last!.id != ""){
-            if (stylesByElement[style.selectors.last!.id] != nil){
-                stylesByElement[style.selectors.last!.id]!.append(style)
+            if (stylesByID[style.selectors.last!.id] != nil){
+                stylesByID[style.selectors.last!.id]!.append(style)
             }else{
-                stylesByElement[style.selectors.last!.id] = [style]
+                stylesByID[style.selectors.last!.id] = [style]
             }
         }
         if(style.selectors.last!.classIds.count > 0){//temp solution, you need to flatten the classIds somehow, or test individual etc
-            if (stylesByElement[style.selectors.last!.classIds.first!] != nil){
-                stylesByElement[style.selectors.last!.classIds.first!]!.append(style)
+            if (stylesByClassId[style.selectors.last!.classIds.first!] != nil){
+                stylesByClassId[style.selectors.last!.classIds.first!]!.append(style)
             }else{
-                stylesByElement[style.selectors.last!.classIds.first!] = [style]
+                stylesByClassId[style.selectors.last!.classIds.first!] = [style]
             }
         }
         if(style.selectors.last!.states.count > 0){//temp solution, you need to flatten the states somehow, or test individual etc
-            if (stylesByElement[style.selectors.last!.states.first!] != nil){
-                stylesByElement[style.selectors.last!.states.first!]!.append(style)
+            if (stylesByState[style.selectors.last!.states.first!] != nil){
+                stylesByState[style.selectors.last!.states.first!]!.append(style)
             }else{
-                stylesByElement[style.selectors.last!.states.first!] = [style]
+                stylesByState[style.selectors.last!.states.first!] = [style]
             }
         }    
     }

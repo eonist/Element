@@ -21,16 +21,19 @@ class StyleManagerUtils{
                 stylesByElement[style.selectors.last!.id] = [style]
             }
         }
-        if(style.selectors.last!.classIds.count > 0){
-            if (stylesByElement[style.selectors.last!.id] != nil){
-                stylesByElement[style.selectors.last!.id]!.append(style)
+        if(style.selectors.last!.classIds.count > 0){//temp solution, you need to flatten the classIds somehow, or test individual etc
+            if (stylesByElement[style.selectors.last!.classIds.first!] != nil){
+                stylesByElement[style.selectors.last!.classIds.first!]!.append(style)
             }else{
-                stylesByElement[style.selectors.last!.id] = [style]
+                stylesByElement[style.selectors.last!.classIds.first!] = [style]
             }
         }
-        if(style.selectors.last!.states.count > 0){
-            
+        if(style.selectors.last!.states.count > 0){//temp solution, you need to flatten the states somehow, or test individual etc
+            if (stylesByElement[style.selectors.last!.states.first!] != nil){
+                stylesByElement[style.selectors.last!.states.first!]!.append(style)
+            }else{
+                stylesByElement[style.selectors.last!.states.first!] = [style]
+            }
         }    
     }
 }
-

@@ -8,6 +8,7 @@ import Foundation
 class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]
     static var styles:Array<IStyle> = []
+    static var hashedStyles:Dictionary<Int,IStyle> = [:]
     /**
      * Adds a style to the styleManager class
      * @param style: IStyle

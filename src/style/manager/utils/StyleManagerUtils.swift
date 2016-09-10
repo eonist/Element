@@ -32,19 +32,14 @@ class StyleManagerUtils{
         }
         ac.keys.forEach{
             if(String(selectorCount).int < String($0).int) {/*add style to all arrays that have a selectorCount less than the current style has*/
-                let temp = ac[$0]
-                temp
-                ac[$0]!.append(o)
-                ac.updateValue([o], forKey: $0)/*add the item from items as an array*/
+                if var temp = ac[$0]{
+                    temp.append(o)
+                    ac.updateValue(temp, forKey: $0)/*add the item from items as an array*/
+                }
+                
             }
         }
-        ac.keys.forEach{
-            if(String(selectorCount).int < String($0).int) {/*add style to all arrays that have a selectorCount less than the current style has*/
-                Swift.print("ac[$0]!: " + "\(ac[$0]!)")
-                //ac[$0]!.append(o)
-                //ac.updateValue(ac[$0]!, forKey: $0)/*add the item from items as an array*/
-            }
-        }
+        
         
     }
     

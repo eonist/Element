@@ -21,6 +21,14 @@ class StyleManagerUtils{
     /**
      *
      */
+    class func concat(inout hashedStyles:Dictionary<String,[IStyle]>, _ styles:[IStyle]){
+        styles.forEach{
+            append(&hashedStyles, $0, { $0.selectors.count.string })
+        }
+    }
+    /**
+     *
+     */
     class func append<T, H: Hashable>(/**/inout ac:[H: [T]]/*Dictionary<String,[IStyle]>*/, /*style*/_ o:T,_ f: (T) -> H){
         let selectorCount = f(o)/*h is the key, an item is passed to f to get h*/
         //Swift.print("selectorCount: " + "\(selectorCount)")
@@ -36,12 +44,5 @@ class StyleManagerUtils{
             }
         }
     }
-    /**
-     *
-     */
-    class func concat(inout hashedStyles:Dictionary<String,[IStyle]>, _ styles:[IStyle]){
-        styles.forEach{
-            append(&hashedStyles, $0, { $0.selectors.count.string })
-        }
-    }
+    
 }

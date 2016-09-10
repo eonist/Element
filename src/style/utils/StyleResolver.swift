@@ -4,6 +4,7 @@ class StyleResolver{
     static var recently:Array<(style:IStyle,address:String)> = []
     static var recycleCount:Int = 0
     static var lookUpCount:Int = 0
+    static var styleLookUpCount:Int = 0
     static var addresses:Dictionary<String, Int> = [String:Int]()
     /**
      *
@@ -57,7 +58,7 @@ class StyleResolver{
             return StyleManager.hashedStyles[i.string]!
         }
 */
-        let styles = getStyles(querrySelectors.count)
+        //let styles = getStyles(querrySelectors.count)
         for style : IStyle in StyleManager.styles {/*This loop disregards styles that don't apply to the element Selectors*/
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)

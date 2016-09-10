@@ -20,7 +20,7 @@ class StyleManagerUtils{
     }
     /**
      * group 5 needs to have all selectorCounts
-     * TODO: you need to 
+     * TODO: you need to populate the dictionary from the start. 0 -> 10 for instance
      */
     class func append<T, H: Hashable>(/**/inout ac:[H: [T]]/*Dictionary<String,[IStyle]>*/, /*style*/_ o:T,_ f: (T) -> H){
         let selectorCount = f(o)/*h is the key, an item is passed to f to get h*/

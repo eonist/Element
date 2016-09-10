@@ -58,6 +58,8 @@ class StyleResolver{
             return StyleManager.hashedStyles[i.string]!
         }
         
+        //test how many element selector addresses are similar
+        
         
         
         //let styles = getStyles(querrySelectors.count)

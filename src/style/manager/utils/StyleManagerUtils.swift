@@ -39,9 +39,7 @@ class StyleManagerUtils{
                 }
                 
             }
-        }
-        
-        
+        } 
     }
     
     /**

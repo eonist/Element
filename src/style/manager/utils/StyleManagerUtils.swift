@@ -21,14 +21,6 @@ class StyleManagerUtils{
     /**
      *
      */
-    class func concat(inout hashedStyles:Dictionary<String,[IStyle]>, _ styles:[IStyle]){
-        styles.forEach{
-            append(&hashedStyles, $0, { $0.selectors.count.string })
-        }
-    }
-    /**
-     *
-     */
     class func append<T, H: Hashable>(/**/inout ac:[H: [T]]/*Dictionary<String,[IStyle]>*/, /*style*/_ o:T,_ f: (T) -> H){
         let selectorCount = f(o)/*h is the key, an item is passed to f to get h*/
         //Swift.print("selectorCount: " + "\(selectorCount)")
@@ -40,11 +32,16 @@ class StyleManagerUtils{
         }
         ac.keys.forEach{
             if(String(selectorCount).int < String($0).int) {/*add style to all arrays that have a selectorCount less than the current style has*/
-                Swift.print("ac[$0]!: " + "\(ac[$0]!)")
-                //ac[$0]!.append(o)
-                //ac.updateValue(ac[$0]!, forKey: $0)/*add the item from items as an array*/
+                ac.updateValue([o], forKey: $0)/*add the item from items as an array*/
             }
         }
     }
-    
+    /**
+     *
+     */
+    class func concat(inout hashedStyles:Dictionary<String,[IStyle]>, _ styles:[IStyle]){
+        styles.forEach{
+            append(&hashedStyles, $0, { $0.selectors.count.string })
+        }
+    }
 }

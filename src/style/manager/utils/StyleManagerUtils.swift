@@ -32,10 +32,15 @@ class StyleManagerUtils{
         }
         ac.keys.forEach{
             if(String(selectorCount).int < String($0).int) {/*add style to all arrays that have a selectorCount less than the current style has*/
+                let temp = ac[$0]
+                temp
                 ac.updateValue([o], forKey: $0)/*add the item from items as an array*/
             }
         }
+        
+        
     }
+    
     /**
      *
      */

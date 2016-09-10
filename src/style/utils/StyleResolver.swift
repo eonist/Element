@@ -1,54 +1,16 @@
 import Foundation
 
 class StyleResolver{
-    static var recently:Array<(style:IStyle,address:String)> = []
-    static var recycleCount:Int = 0
-    static var lookUpCount:Int = 0
-    static var styleLookUpCount:Int = 0
-    static var addresses:Dictionary<String, Int> = [String:Int]()
-    /**
-     *
-     */
-    static func style(element:IElement)->IStyle{
-        lookUpCount++
-        //return resolveStyle(element)
-        //Swift.print("element selector count: " + "\(ElementParser.selectors(element).count)")
-        
-        let elementAddress = ElementParser.stackString(element)
-        addresses[elementAddress] = 0
-        
-        
-        var index = -1
-        for var i = 0; i < recently.count; ++i{
-            let item = recently[i]
-            if(item.address == elementAddress) {
-                index = i
-                break;//terminate Loop
-            }
-        }
-        if(index != -1){//already exists in cache
-            //Swift.print("recycle")
-            recycleCount++
-            if(index != 0){ ArrayModifier.move(&recently, index, 0)}//move to front if its not already in front
-            return recently[0].style
-        }else{//does not exist in cache
-            if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
-            let style = resolveStyle(element)
-            recently.unshift((style,elementAddress))//add to front
-            return style
-        }
-    }
+    
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
      * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
      */
-    static func resolveStyle(element:IElement)->IStyle{
+    static func style(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var weightedStyles:Array<WeightedStyle> = []
         for style : IStyle in StyleManager.styles/*styles*/ {/*This loop disregards styles that don't apply to the element Selectors*/
-            styleLookUpCount++
-            //
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)
             let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors)
@@ -66,3 +28,39 @@ class StyleResolver{
         return finalStyle
     }
 }
+//static var recently:Array<(style:IStyle,address:String)> = []
+//static var recycleCount:Int = 0
+//static var lookUpCount:Int = 0
+//static var styleLookUpCount:Int = 0
+//static var addresses:Dictionary<String, Int> = [String:Int]()
+/*
+static func style(element:IElement)->IStyle{
+    lookUpCount++
+    //return resolveStyle(element)
+    //Swift.print("element selector count: " + "\(ElementParser.selectors(element).count)")
+    
+    let elementAddress = ElementParser.stackString(element)
+    addresses[elementAddress] = 0
+    
+    
+    var index = -1
+    for var i = 0; i < recently.count; ++i{
+        let item = recently[i]
+        if(item.address == elementAddress) {
+            index = i
+            break;//terminate Loop
+        }
+    }
+    if(index != -1){//already exists in cache
+        //Swift.print("recycle")
+        recycleCount++
+        if(index != 0){ ArrayModifier.move(&recently, index, 0)}//move to front if its not already in front
+        return recently[0].style
+    }else{//does not exist in cache
+        if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
+        let style = resolveStyle(element)
+        recently.unshift((style,elementAddress))//add to front
+        return style
+    }
+}
+*/

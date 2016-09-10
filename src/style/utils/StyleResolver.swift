@@ -34,10 +34,10 @@ class StyleResolver{
 private class Utils{
     static func getStyles(selector:ISelector)->[IStyle]{
         var styles:[IStyle] = []
-        styles += StyleManagerUtils.stylesByElement[selector.element]!
-        styles += StyleManagerUtils.stylesByID[selector.id]!
-        styles += StyleManagerUtils.stylesByClassId[selector.classIds.first!]!
-        styles += StyleManagerUtils.stylesByState[selector.states.first!]!
+        if(selector.element != ""){styles += StyleManagerUtils.stylesByElement[selector.element]!}
+        if(selector.id != ""){styles += StyleManagerUtils.stylesByID[selector.id]!}
+        if(selector.classIds.count > 0){styles += StyleManagerUtils.stylesByClassId[selector.classIds.first!]!}
+        if(selector.states.count > 0){styles += StyleManagerUtils.stylesByState[selector.states.first!]!}
         return styles
     }
 }

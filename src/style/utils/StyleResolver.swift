@@ -37,7 +37,6 @@ class StyleResolver{
             recently.unshift((style,elementAddress))//add to front
             return style
         }
-        /**/
     }
     /**
      * Returns a style comprised of all the styleProperties element inherit from
@@ -47,19 +46,6 @@ class StyleResolver{
     static func resolveStyle(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var weightedStyles:Array<WeightedStyle> = []
-        /**
-         *
-         */
-        func getStyles(selectorCount:Int)->[IStyle]{
-            var i = selectorCount
-            while(StyleManager.hashedStyles[i.string] == nil){
-                i--
-            }
-            return StyleManager.hashedStyles[i.string]!
-        }
-        
-       
-        //let styles = getStyles(querrySelectors.count)
         for style : IStyle in StyleManager.styles/*styles*/ {/*This loop disregards styles that don't apply to the element Selectors*/
             styleLookUpCount++
             //
@@ -80,42 +66,3 @@ class StyleResolver{
         return finalStyle
     }
 }
-/**
- * TODO: Deprecate this method, its not doing anything anymore
- */
-/*
-class func temp_style(element:IElement)->IStyle{
-    //let querrySelectors:Array = ElementParser.selectors(element);// :TODO: possibly move up in scope for optimizing
-    //Swift.print("STACK: " + SelectorParser.string(querrySelectors));
-    var styleComposition:IStyle = Style("styleComp")
-    //let classType:String = element.getClassType()//gets the classtype from the component
-    let querrySelector:ISelector = ElementParser.selector(element);// :TODO: possibly move up in scope for optimizing
-    //Swift.print("styleComposition")
-    //Swift.print(StyleManager.styles.count)
-    for style in StyleManager.styles{//loop through styles
-        //Swift.print("style.selector.element: " + style.selector.element)
-        for selector in style.selectors{
-            if(selector.element == querrySelector.element){ //if style.selector == classType
-                //Swift.print("  element match found")
-                if(selector.states.count > 0){
-                    for state in selector.states{//loop style.selector.states
-                        //Swift.print("state: " + state)
-                        //Swift.print("element.skinState: " + element.skinState)
-                        for s in querrySelector.states{
-                            if(state == s){//if state == any of the current states TODO: figure out how the statemaschine works and impliment that
-                                //Swift.print("    state match found")
-                                StyleModifier.combine(&styleComposition, style)//gracefully append this style to styleComposition, forced overwrite
-                            }
-                        }
-                    }
-                }else{//temp solution
-                    StyleModifier.combine(&styleComposition, style)
-                }
-            }
-        }
-    }
-    //Swift.print("styleComposition.styleProperties.count: " + "\(styleComposition.styleProperties.count)")
-    //StyleParser.describe(styleComposition)
-    return styleComposition
-}
-*/

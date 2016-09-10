@@ -50,16 +50,20 @@ class StyleResolver{
         /**
          *
          */
-        /*func getStyles(selectorCount:Int)->[IStyle]{
+        func getStyles(selectorCount:Int)->[IStyle]{
             var i = selectorCount
             while(StyleManager.hashedStyles[i.string] == nil){
                 i--
             }
             return StyleManager.hashedStyles[i.string]!
         }
-*/
+        
+        
+        
         //let styles = getStyles(querrySelectors.count)
-        for style : IStyle in StyleManager.styles {/*This loop disregards styles that don't apply to the element Selectors*/
+        for style : IStyle in StyleManager.styles/*styles*/ {/*This loop disregards styles that don't apply to the element Selectors*/
+            styleLookUpCount++
+            //
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)
             let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors)

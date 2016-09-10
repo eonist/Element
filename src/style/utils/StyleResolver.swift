@@ -10,7 +10,7 @@ class StyleResolver{
     static func style(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var weightedStyles:Array<WeightedStyle> = []
-        let styles = element as? Text != nil ? Utils.getStyles(querrySelectors.last!) : StyleManager.styles
+        let styles = Utils.getStyles(querrySelectors.last!)// element as? Text != nil ? : StyleManager.styles
         for style : IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/
             styleLookUpCount++
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/

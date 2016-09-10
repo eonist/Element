@@ -27,3 +27,14 @@ class StyleResolver{
         return finalStyle
     }
 }
+
+private class Utils{
+    static func getStyles(selector:Selector)->[IStyle]{
+        var styles:[IStyle] = []
+        styles += StyleManagerUtils.stylesByElement[selector.element]!
+        styles += StyleManagerUtils.stylesByID[selector.id]!
+        styles += StyleManagerUtils.stylesByClassId[selector.classIds.first!]!
+        styles += StyleManagerUtils.stylesByState[selector.states.first!]!
+        return styles
+    }
+}

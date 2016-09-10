@@ -1,6 +1,7 @@
 import Foundation
 
 class StyleResolver{
+    static var styleLookUpCount:Int = 0
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
@@ -9,8 +10,9 @@ class StyleResolver{
     static func style(element:IElement)->IStyle{
         let querrySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var weightedStyles:Array<WeightedStyle> = []
-        let styles = Utils.getStyles(querrySelectors.last!)//StyleManager.styles
+        let styles = element as? Text != nil ? Utils.getStyles(querrySelectors.last!) : StyleManager.styles
         for style : IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/
+            styleLookUpCount++
             if(style.selectors.count > querrySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)
             let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querrySelectors)

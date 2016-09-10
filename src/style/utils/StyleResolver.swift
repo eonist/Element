@@ -28,39 +28,3 @@ class StyleResolver{
         return finalStyle
     }
 }
-//static var recently:Array<(style:IStyle,address:String)> = []
-//static var recycleCount:Int = 0
-//static var lookUpCount:Int = 0
-//static var styleLookUpCount:Int = 0
-//static var addresses:Dictionary<String, Int> = [String:Int]()
-/*
-static func style(element:IElement)->IStyle{
-    lookUpCount++
-    //return resolveStyle(element)
-    //Swift.print("element selector count: " + "\(ElementParser.selectors(element).count)")
-    
-    let elementAddress = ElementParser.stackString(element)
-    addresses[elementAddress] = 0
-    
-    
-    var index = -1
-    for var i = 0; i < recently.count; ++i{
-        let item = recently[i]
-        if(item.address == elementAddress) {
-            index = i
-            break;//terminate Loop
-        }
-    }
-    if(index != -1){//already exists in cache
-        //Swift.print("recycle")
-        recycleCount++
-        if(index != 0){ ArrayModifier.move(&recently, index, 0)}//move to front if its not already in front
-        return recently[0].style
-    }else{//does not exist in cache
-        if(recently.count > 9){recently.popLast()}//the array has a limit of 10 items
-        let style = resolveStyle(element)
-        recently.unshift((style,elementAddress))//add to front
-        return style
-    }
-}
-*/

@@ -35,7 +35,7 @@ class SelectorParser{
     /**
      * Returns a single selector (ie: Button#first:over)
      */
-    class func selectorToString(selector:ISelector)->String{// :TODO: rename to selectorString
+    class func selectorString(selector:ISelector)->String{// :TODO: rename to selectorString
         var string:String = ""
         if(selector.element != "") { string += selector.element }
         for classId:String in selector.classIds { string += ("."+classId) }
@@ -105,6 +105,15 @@ class SelectorParser{
         let stateWeight:Int = hasBothSelectorsStates ? Utils.stateWeight(styleSel.states,querrySelector.states) : 0
         let hasStateWeight:Bool = hasBothSelectorsStates && stateWeight > 0
         return SelectorWeight(weight, hasId, hasElement, hasClassId, hasStateWeight, numOfSimilarClassIds, stateWeight)
+    }
+    //deprecated
+    static func selectorToString(selector:ISelector)->String{return selectorString(selector)}
+    static func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
+        var string:String = ""
+        for (var i : Int = 0; i < selectors.count; i++) {
+            string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
+        }
+        return string
     }
 }
 private class Utils{

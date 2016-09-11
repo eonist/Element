@@ -21,7 +21,7 @@ class StyleManager{
     static func addStyle(style:IStyle, inout _ parentBranch:[String:Any], _ cursor:Int = 0){
         //print("branch.cursor: " + "\(cursor)")
         if(cursor < style.selectors.count) {
-            let selectorString:String = style.selectors[cursor].element
+            let selectorString:String = SelectorParser.selectorToString(style.selectors[cursor]);
             //print("selectorString: " + selectorString);
             if(parentBranch[selectorString] == nil) {
                 //print("no branch with key: " + "\(selectorString)" + " was found, create new branch and append")

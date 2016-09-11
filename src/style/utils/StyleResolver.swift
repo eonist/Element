@@ -37,7 +37,10 @@ class StyleResolver{
         }
         return finalStyle
     }
-    
+    static func style2(element:IElement)->IStyle{
+        let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
+        return style2(querySelectors,element)
+    }
     class func style2(querySelectors:[ISelector])->IStyle{
         var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
         //print("weightedStyles: " + "\(weightedStyles.count)")

@@ -38,7 +38,7 @@ class StyleResolver{
         return finalStyle
     }
     
-    class func style2(querySelectors:[ISelector],_ element:IElement)->IStyle{
+    class func style2(querySelectors:[ISelector])->IStyle{
         var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
         //print("weightedStyles: " + "\(weightedStyles.count)")
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);

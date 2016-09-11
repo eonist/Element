@@ -39,8 +39,8 @@ class StyleResolver{
     }
     
     class func style2(querySelectors:[ISelector],_ element:IElement)->IStyle{
-        var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0,[])
-        print("weightedStyles: " + "\(weightedStyles.count)")
+        var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
+        //print("weightedStyles: " + "\(weightedStyles.count)")
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);
         if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);

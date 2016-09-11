@@ -39,7 +39,7 @@ class StyleResolver{
     }
     
     class func style2(querySelectors:[ISelector],_ element:IElement)->IStyle{
-        var weightedStyles:Array<WeightedStyle> = []
+        var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0,[])
         //continue here: add the query code in StyleResolverUtils maybe?
         StyleResolverUtils.query(querySelectors, StyleManager.styleTree)
         return Style()

@@ -11,14 +11,14 @@ class StyleResolverUtils {
         //var styles:[IStyle] = []
         for key in searchTree.keys {
             //print("key: " + key + " object: "+searchTree[key] + " at cursor: "+cursor);
-            if(key == "style") {weightedStyles.append(WeightedStyle(searchTree[key] as! IStyle, StyleWeight(selectorWeights)))}
+            if(key == "style") {weightedStyles.append(WeightedStyle(searchTree[key] as! IStyle, StyleWeight([])))}
             else{
                 let keySelector:ISelector = SelectorParser.selector(key)/*expand the selectorString to a selector*/
                 for (var i : Int = cursor; i < querySelectorsCount; i++) {
                     let querySelector:ISelector = querySelectors[i]
                     if(SelectorAsserter.hasCommonality(keySelector, querySelector)){
                         //print("matching element found, keep digging deeper");
-                        let result:[WeightedStyle] = query(querySelectors, searchTree[key] as! [String:Any],i+1,selectorWeights)
+                        let result:[WeightedStyle] = query(querySelectors, searchTree[key] as! [String:Any],i+1)
                         if(result.count > 0) {weightedStyles += result}
                     }
                 }

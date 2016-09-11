@@ -31,4 +31,10 @@ extension IStyle{
     func getValue(name:String,_ depth:Int = 0)->Any?{
         return getValue(name, depth)
     }
+    /**
+     *
+     */
+    func describe(){
+        StyleParser.describe(self)
+    }
 }

@@ -23,6 +23,7 @@ class StyleResolverUtils {
                 }
             }
         }
+        styleLookUpCount++
         return weightedStyles
     }
 }

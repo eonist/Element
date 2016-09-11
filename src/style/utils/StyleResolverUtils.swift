@@ -5,12 +5,12 @@ class StyleResolverUtils {
      * Return an array of WeightedStyle instances
      * @Note while loading the Basic.css flat structure queries 97656  vs treestructure queries 13324 (this is why we use a treestructure querey technique)
      */
-    static func query(querySelectors:[ISelector],_ searchTree:[String:Any],_ cursor:Int = 0, _ selectorWeights:[WeightedStyle] = []) -> [IStyle]{
-        var weightedStyles:Array = [];
-        var styles:[IStyle] = []
+    static func query(querySelectors:[ISelector],_ searchTree:[String:Any],_ cursor:Int = 0, _ selectorWeights:[ISelector] = []) -> [IStyle]{
+        var weightedStyles:[WeightedStyle] = []
+        //var styles:[IStyle] = []
         for key in searchTree.keys {
             //print("key: " + key + " object: "+searchTree[key] + " at cursor: "+cursor);
-            if(key == "style") {styles.append(searchTree[key] as! IStyle)}
+            if(key == "style") {WeightedStyle.append(searchTree[key] as! WeightedStyle)}
             else{
                 for (var i : Int = cursor; i < querySelectors.count; i++) {
                     let querySelector:ISelector = querySelectors[i]

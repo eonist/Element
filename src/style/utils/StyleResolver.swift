@@ -40,9 +40,16 @@ class StyleResolver{
     
     class func style2(querySelectors:[ISelector],_ element:IElement)->IStyle{
         var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0,[])
-        //continue here: add the query code in StyleResolverUtils maybe?
-        StyleResolverUtils.query(querySelectors, StyleManager.styleTree)
-        return Style()
+        print("weightedStyles: " + "\(weightedStyles.count)")
+        //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);
+        if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
+        //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
+        let styleName:String = SelectorParser.selectorsString(querySelectors)
+        var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
+        for weightStyle:WeightedStyle in weightedStyles{
+            StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+        }
+        return finalStyle
     }
 }
 

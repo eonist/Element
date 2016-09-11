@@ -90,7 +90,7 @@ extension StyleManager{
     class func addStyle(var cssString:String){
         cssString = CSSLinkResolver.resolveLinks(cssString)
         cssString = RegExpModifier.removeComments(cssString)
-        addStyle(&styleTree,CSSParser.styleCollection(cssString).styles)
+        addStyle(/*&styleTree,*/CSSParser.styleCollection(cssString).styles)
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)

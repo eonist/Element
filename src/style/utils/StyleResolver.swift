@@ -39,6 +39,9 @@ class StyleResolver{
     }
     
     class func style2(querySelectors:[ISelector],_ element:IElement)->IStyle{
+        
+        //continue here: add the query code in StyleResolverUtils maybe?
+        
         return Style()
     }
 }

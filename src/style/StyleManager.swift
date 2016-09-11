@@ -8,6 +8,7 @@ import Foundation
 class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]
     static var styles:Array<IStyle> = []
+    static var styleTree:[String:Any] = [:]
     /**
      * Adds @param styles to @param styleTree
      */
@@ -21,8 +22,8 @@ class StyleManager{
     static func addStyle(style:IStyle, inout _ parentBranch:[String:Any], _ cursor:Int = 0){
         //print("branch.cursor: " + "\(cursor)")
         if(cursor < style.selectors.count) {
-            let selectorString:String = SelectorParser.selectorString(style.selectors[cursor])
-            //print("selectorString: " + selectorString);
+            let selectorString:String = SelectorParser.selectorString(style.selectors[cursor])/*creates a string representation of the selector*/
+            //print("selectorString: " + "\(selectorString)")
             if(parentBranch[selectorString] == nil) {
                 //print("no branch with key: " + "\(selectorString)" + " was found, create new branch and append")
                 var newBranch:[String:Any] = [:]

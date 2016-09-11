@@ -7,13 +7,14 @@ class StyleResolverUtils {
      */
     static func query(querySelectors:[ISelector],_ searchTree:[String:Any],_ cursor:Int = 0, _ selectorWeights:[SelectorWeight] = []) -> [WeightedStyle]{
         var weightedStyles:[WeightedStyle] = []
+        let querySelectorsCount = querySelectors.count
         //var styles:[IStyle] = []
         for key in searchTree.keys {
             //print("key: " + key + " object: "+searchTree[key] + " at cursor: "+cursor);
             if(key == "style") {weightedStyles.append(WeightedStyle(searchTree[key] as! IStyle, StyleWeight(selectorWeights)))}
             else{
                 let keySelector:ISelector = SelectorParser.selector(key)/*expand the selectorString to a selector*/
-                for (var i : Int = cursor; i < querySelectors.count; i++) {
+                for (var i : Int = cursor; i < querySelectorsCount; i++) {
                     let querySelector:ISelector = querySelectors[i]
                     if(SelectorAsserter.hasCommonality(keySelector, querySelector)){
                         //print("matching element found, keep digging deeper");
@@ -23,7 +24,7 @@ class StyleResolverUtils {
                 }
             }
         }
-        styleLookUpCount++
+        StyleResolver.styleLookUpCount++
         return weightedStyles
     }
 }

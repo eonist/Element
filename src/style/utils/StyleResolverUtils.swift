@@ -17,7 +17,7 @@ class StyleResolverUtils {
                     let querySelector:ISelector = querySelectors[i]
                     if(SelectorAsserter.hasCommonality(keySelector, querySelector)){
                         //print("matching element found, keep digging deeper");
-                        let result:[WeightedStyle] = query(querySelectors, searchTree[key] as! [String:Any],i+1)
+                        let result:[WeightedStyle] = query(querySelectors, searchTree[key] as! [String:Any],i+1,selectorWeights)
                         if(result.count > 0) {weightedStyles += result}
                     }
                 }

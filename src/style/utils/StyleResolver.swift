@@ -2,6 +2,7 @@ import Foundation
 
 class StyleResolver{
     static var styleLookUpCount:Int = 0
+    
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
@@ -29,6 +30,12 @@ class StyleResolver{
             StyleModifier.merge(&finalStyle, StyleAsserter.direct(querrySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle
+    }
+    /**
+     *
+     */
+    class func style(){
+        
     }
 }
 

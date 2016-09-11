@@ -25,7 +25,7 @@ class SelectorParser{
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
      * @Note this method can also be used for debuging purposes
      */
-    class func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString 
+    static func selectorsString(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
         var string:String = ""
         for (var i : Int = 0; i < selectors.count; i++) {
             string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
@@ -35,7 +35,7 @@ class SelectorParser{
     /**
      * Returns a single selector (ie: Button#first:over)
      */
-    class func selectorString(selector:ISelector)->String{// :TODO: rename to selectorString
+    static func selectorString(selector:ISelector)->String{// :TODO: rename to selectorString
         var string:String = ""
         if(selector.element != "") { string += selector.element }
         for classId:String in selector.classIds { string += ("."+classId) }
@@ -108,13 +108,7 @@ class SelectorParser{
     }
     //deprecated
     static func selectorToString(selector:ISelector)->String{return selectorString(selector)}
-    static func string(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
-        var string:String = ""
-        for (var i : Int = 0; i < selectors.count; i++) {
-            string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
-        }
-        return string
-    }
+    static func string(selectors:Array<ISelector>)->String{return selectorsString(selectors)}
 }
 private class Utils{
     /**

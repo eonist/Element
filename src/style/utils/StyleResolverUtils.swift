@@ -15,6 +15,7 @@ class StyleResolverUtils {
             else{
                 let keySelector:ISelector = SelectorParser.selector(key)/*expand the selectorString to a selector*/
                 for (var i : Int = cursor; i < querySelectorsCount; i++) {
+                    StyleResolver.styleLookUpCount++
                     let querySelector:ISelector = querySelectors[i]
                     if(SelectorAsserter.hasCommonality(keySelector, querySelector)){
                         //print("matching element found, keep digging deeper");
@@ -24,7 +25,7 @@ class StyleResolverUtils {
                 }
             }
         }
-        StyleResolver.styleLookUpCount++
+        
         return weightedStyles
     }
 }

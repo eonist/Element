@@ -78,4 +78,10 @@ extension Style{
     func getValueAt(index:Int)->Any{
         return getStylePropertyAt(index).value
     }
+    /**
+     *
+     */
+    func describe(){
+        StyleParser.describe(self)
+    }
 }

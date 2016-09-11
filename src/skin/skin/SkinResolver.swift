@@ -10,7 +10,7 @@ class SkinResolver{
      * 	TODO: enable these additions when you have more controll over the Element FrameWork for now you need to throw error to debug
      */
     class func skin(element:IElement)->ISkin?{
-        let style:IStyle = StyleResolver.style2(element)
+        let style:IStyle = StyleResolver.style(element)
         //Swift.print("style: " + style)
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element)
         //Swift.print("SkinResolver.skin() skinName: " + skinName)

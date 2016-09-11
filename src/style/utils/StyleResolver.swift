@@ -47,6 +47,9 @@ class StyleResolver{
 }
 
 private class Utils{
+    /**
+     * Helper method for parsing styles by comparing the tail of a style
+     */
     static func getStyles(selector:ISelector)->[IStyle]{
         var styles:[IStyle] = []
         if(selector.element != ""){

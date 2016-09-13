@@ -1,4 +1,4 @@
-protocol ISelector:Reflectable{
+protocol ISelector{
     var element:String{get}
     var classIds:Array<String>{get}
     var id:String{get}

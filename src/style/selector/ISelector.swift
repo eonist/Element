@@ -13,7 +13,7 @@ extension ISelector{
         let element:String = xml.firstNode("element")!.value
         let id:String = xml.firstNode("id")!.value
         let classIds:[String] = xml.firstNode("classIds")!.children.map{
-            
+            return ($0 as! XML).value
         }
         return Selector()
     }

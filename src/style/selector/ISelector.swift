@@ -4,3 +4,13 @@ protocol ISelector{
     var id:String{get}
     var states:Array<String>{get}
 }
+
+extension ISelector{
+    /**
+     *
+     */
+    func selector(xml:XML)->ISelector{
+        let element:String = xml.firstNode("element")
+        return Selector()
+    }
+}

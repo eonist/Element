@@ -16,11 +16,11 @@ extension ISelector{
         let classIds:[String]? = xml.firstNode("classIds")!.children?.flatMap{
             ($0 as! XML).value
         }
-        Swift.print("classIds.count: " + "\(classIds.count)")
+        Swift.print("classIds.count: " + "\(classIds?.count)")
         let states:[String] = xml.firstNode("states")!.children!.map{
             ($0 as! XML).value
         }
         Swift.print("states.count: " + "\(states.count)")
-        return Selector(element,classIds,id,states)
+        return Selector(element,classIds ?? [],id,states)
     }
 }

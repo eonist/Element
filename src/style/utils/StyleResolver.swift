@@ -14,7 +14,7 @@ class StyleResolver{
         querySelectors.forEach{
              selectorsXMLString += Reflection.toXML($0).string//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
         }
-        AppDelegate.selectorsString += selectorsXMLString
+        AppDelegate.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
         return style(querySelectors,element)
     }
     /**

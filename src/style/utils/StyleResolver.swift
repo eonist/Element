@@ -10,7 +10,7 @@ class StyleResolver{
      */
     static func style(element:IElement)->IStyle{
         let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
-        AppDelegate.selectorsString += querySelectors.reduce{
+        AppDelegate.selectorsString += querySelectors.reduce(""){
             Reflection.toXML($0).XMLString
         }
         return style(querySelectors,element)

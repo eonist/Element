@@ -10,9 +10,11 @@ class StyleResolver{
      */
     static func style(element:IElement)->IStyle{
         let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
+        var selectorsXMLString:String = ""
         querySelectors.forEach{
-             AppDelegate.selectorsString += Reflection.toXML($0).string//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
+             selectorsXMLString += Reflection.toXML($0).string//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
         }
+        AppDelegate.selectorsString += selectorsXMLString
         return style(querySelectors,element)
     }
     /**

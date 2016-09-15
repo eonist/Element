@@ -10,17 +10,17 @@ extension ISelector{
      */
     static func selector(xml:XML)->ISelector{
         let element:String = xml.firstNode("element")!.value
-        Swift.print("element: " + "\(element)")
+        //Swift.print("element: " + "\(element)")
         let id:String = xml.firstNode("id")!.value
-        Swift.print("id: " + "\(id)")
-        let classIds:[String]? = xml.firstNode("classIds")!.children?.flatMap{
+        //Swift.print("id: " + "\(id)")
+        let classIds:[String] = xml.firstNode("classIds")!.children?.flatMap{
             ($0 as! XML).value
-        }
-        Swift.print("classIds.count: " + "\(classIds?.count)")
-        let states:[String] = xml.firstNode("states")!.children!.map{
+        } ?? []
+        //Swift.print("classIds.count: " + "\(classIds.count)")
+        let states:[String] = xml.firstNode("states")!.children?.flatMap{
             ($0 as! XML).value
-        }
-        Swift.print("states.count: " + "\(states.count)")
-        return Selector(element,classIds ?? [],id,states)
+        } ?? []
+        //Swift.print("states.count: " + "\(states.count)")
+        return Selector(element,classIds,id,states)
     }
 }

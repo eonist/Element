@@ -20,7 +20,7 @@ class StyleResolver{
     /**
      *
      */
-    class func style(querySelectors:[ISelector],_ element:IElement)->IStyle{
+    class func style(querySelectors:[ISelector],_ element:IElement?)->IStyle{
         var weightedStyles:Array<WeightedStyle> = []
         let styles = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)
         for style : IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/

@@ -18,7 +18,7 @@ class StyleResolver{
         return style(querySelectors,element)
     }
     /**
-     *
+     * NOTE: Parsing 192 elements with Basic styles with The tail trick: and w/o: 0.156262040138245
      */
     class func style(querySelectors:[ISelector],_ element:IElement?)->IStyle{
         var weightedStyles:Array<WeightedStyle> = []

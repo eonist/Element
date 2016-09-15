@@ -13,7 +13,9 @@ extension ISelector{
         Swift.print("element: " + "\(element)")
         let id:String = xml.firstNode("id")!.value
         Swift.print("id: " + "\(id)")
-        let classIds:[String] = xml.firstNode("classIds")!.children!.map{
+        let temp = xml.firstNode("classIds")!.children!
+        Swift.print("temp: " + "\(temp)")
+        let classIds:[String] = temp.map{
             ($0 as! XML).value
         }
         Swift.print("classIds.count: " + "\(classIds.count)")

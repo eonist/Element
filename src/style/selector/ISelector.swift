@@ -9,6 +9,7 @@ extension ISelector{
      * Converts xml to a Selector
      */
     static func selector(xml:XML)->ISelector{
+        //Swift.print("xml.string: " + "\(xml.string)")
         let element:String = xml.firstNode("element")!.value
         //Swift.print("element: " + "\(element)")
         let id:String = xml.firstNode("id")!.value

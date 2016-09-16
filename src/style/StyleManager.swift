@@ -103,7 +103,7 @@ extension StyleManager{
                 let cssString = CSSLinkResolver.resolveLinks(cssFiles[url]!)
                 let styles = CSSParser.styleCollection(cssString).styles
                 removeStyle(styles)/*if it does then remove the styles that it represents*/
-            }else{/*if the url wasn't already added to the dictionary, then add it again*/
+            }else{/*if the url wasn't in the dictionary, then add it*/
                 cssFiles[url] = cssString
             }
         }

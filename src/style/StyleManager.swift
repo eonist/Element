@@ -88,14 +88,9 @@ extension StyleManager{
      * // :TODO: add support for css import statement in the @param string
      */
     class func addStyle(var cssString:String){
-        
-        
         cssString = CSSLinkResolver.resolveLinks(cssString)
-        let startTime = NSDate()
         cssString = RegExpModifier.removeComments(cssString)
-        
         addStyle(/*&styleTree,*/CSSParser.styleCollection(cssString).styles)
-        Swift.print("Adding basic styles time: " + "\(abs(startTime.timeIntervalSinceNow))")
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)

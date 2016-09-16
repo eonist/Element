@@ -99,11 +99,11 @@ extension StyleManager{
     class func addStylesByURL(url:String,_ liveEdit:Bool = false) {
         let cssString:String = CSSFileParser.cssString(url)
         if(liveEdit){
-            if(cssFiles[url] != nil){//check if the url exists,
+            if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
                 let cssString = CSSLinkResolver.resolveLinks(cssFiles[url]!)
                 let styles = CSSParser.styleCollection(cssString).styles
-                removeStyle(styles)//if it does then remove the styles that it represents
-            }else{//if the url wasnt already added then add it again
+                removeStyle(styles)/*if it does then remove the styles that it represents*/
+            }else{/*if the url wasnt already added then add it again*/
                 cssFiles[url] = cssString
             }
         }

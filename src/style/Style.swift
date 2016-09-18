@@ -12,7 +12,7 @@ import Foundation
     //<StyleProperties>
         //<item>
             //<name>fill</name>
-            //<value type=color>red</value>
+            //<value type=UInt>red</value>
             //<depth>1</depth>
         //</item>
     //</StyleProperties>

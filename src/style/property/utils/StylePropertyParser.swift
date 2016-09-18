@@ -45,7 +45,7 @@ class StylePropertyParser{
             fatalError("colorValue not supported: " + "\(colorValue)")
         }
         //Swift.print("color: " + "\(color)")
-        let alpha:Any? = StylePropertyParser.value(skin, CSSConstants.fillAlpha,depth)
+        let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         //Swift.print("alphaValue: " + "\(alphaValue)")

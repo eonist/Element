@@ -11,7 +11,9 @@ import Foundation
     //<Selectors><Selectors>
     //<StyleProperties>
         //<item>
-            
+            //<name>fill</name>
+            //<value type=color>red</value>
+            //<depth>1</depth>
         //</item>
     //</StyleProperties>
 //</Style>

@@ -5,7 +5,6 @@ import Foundation
  * TODO: you could probably add most of these methods to an extension, since nothing is subclassing this class
  */
 class Style:IStyle{
-    static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this won't work since it doesnt have any selectors
     var name:String
     var styleProperties:Array<IStyleProperty>
     var selectors:Array<ISelector>
@@ -16,6 +15,7 @@ class Style:IStyle{
     }
 }
 extension Style{
+    static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this won't work since it doesnt have any selectors
     /**
      * Adds styleProperties
      */

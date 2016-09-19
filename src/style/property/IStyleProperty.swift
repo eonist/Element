@@ -13,7 +13,9 @@ extension IStyleProperty{
         //Swift.print("xml.string: " + "\(xml.string)")
         let name:String = xml.firstNode("name")!.value
         //Swift.print("element: " + "\(element)")
-        let value:Any = xml.firstNode("value")!.value
+        let val:String = xml.firstNode("value")!.value
+        //Swift.print("val: " + "\(val)")
+        let value:Any = CSSPropertyParser.property(val)//converts basic values, not complex values yet
         
         let depth:Int = xml.firstNode("depth")!.value.int
        

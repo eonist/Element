@@ -6,9 +6,10 @@ import Cocoa
  */
 class CSSPropertyParser {
     /**
-     * Retuns a css property to a property that can be read by the flash api
+     * Retuns a css property to a property that can be read by the Swift API
+     * //:TODO: Long switch statments can be replaced by polymorphism?!?
      */
-    class func property(string:String) -> Any{//:TODO: Long switch statments can be replaced by polymorphism?!?
+    class func property(string:String) -> Any{
         //Swift.print("CSSPropertyParser.property() string: >" + string + "<")
         switch(true) {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/

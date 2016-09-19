@@ -5,18 +5,7 @@ import Foundation
  * TODO: you could probably add most of these methods to an extension, since nothing is subclassing this class
  */
 
-//Reflection design of Style:
 
-//<Style name="">
-    //<Selectors><Selectors>
-    //<StyleProperties>
-        //<item>
-            //<name>fill</name>
-            //<value type=UInt>red</value>
-            //<depth>1</depth>
-        //</item>
-    //</StyleProperties>
-//</Style>
 class Style:IStyle{
     var name:String
     var styleProperties:Array<IStyleProperty>

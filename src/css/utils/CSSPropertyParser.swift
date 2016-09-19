@@ -88,7 +88,7 @@ class CSSPropertyParser {
      * // :TODO: does this support comma delimited lists?
      * EXAMPLE: a corner-radius "10 20 10 20"
      */
-    class func array(string:String)->Array<Any>{
+    class func array(string:String)->Array<Any>{//<--Any because type can be CGFloat or String
         //Swift.print("CSSPropertyParser.array()")
         let matches:Array<String> = StringModifier.split(string, " ")
         var array:Array<Any> = []

@@ -13,7 +13,7 @@ class CSSPropertyParser {
         //Swift.print("CSSPropertyParser.property() string: >" + string + "<")
         switch(true) {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
-            case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%
+            case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
             case StringAsserter.boolean(string):return StringParser.boolean(string)/*true or false*/
             case StringAsserter.color(string):return StringParser.color(string)/*#00ff00 or 00ff00*///TODO: should retur NSColor
             case StringAsserter.webColor(string):return StringParser.color(string)/*green red etc*///TODO: should retur NSColor

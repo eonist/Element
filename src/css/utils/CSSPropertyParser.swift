@@ -99,7 +99,7 @@ class CSSPropertyParser {
      * TextFormat
      * // :TODO: should possibly return a TextFormat class instance or alike
      */
-    class func textFormat(input : String) -> Dictionary<String,Any> {
+    class func textFormat(input:String) -> Dictionary<String,Any> {
         var textFormat:Dictionary<String,Any> = Dictionary<String,Any>()
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
         let propertyString:String = RegExp.match(input,pattern)[0]

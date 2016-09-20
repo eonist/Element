@@ -39,13 +39,12 @@ class StylePropertyParser{
             nsColor = nil
         }else if(colorValue! is Array<Any>) {
             //Swift.print("value is array");
-            if(colorValue as? Array<Any> != nil && ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none){
-                nsColor = NSColor.clearColor()
+            if(colorValue as? Array<Any> != nil && ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none){//<--Im not sure what this method does?!?
+                nsColor = nil
             }else{
-                nsColor = (colorValue as! Array<Any>)[1] as! NSColor
+                nsColor = (colorValue as! Array<Any>)[1] as? NSColor
             }
-            nsColor = (()[1] as! String)  ?  :
-        }else if(colorValue is NSColor){/*colorValue is UInt*/
+        }else if(colorValue is NSColor){/*colorValue is NSColor*/
             nsColor = colorValue as? NSColor
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")
@@ -54,14 +53,12 @@ class StylePropertyParser{
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
-        if(nsColor == nil){
-            nsColor = NSColor.clearColor()
+        //Swift.print("alphaValue: " + "\(alphaValue)")
+        if(nsColor == nil){/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
+            nsColor = NSColor.clearColor()//clear is white with alpha 0.0
         }else{
             nsColor!.alpha(alphaValue)
         }
-        //Swift.print("alphaValue: " + "\(alphaValue)")
-        // = !color.isNaN ? NSColorParser.nsColor(UInt(color), alphaValue) : /*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
-        
         return FillStyle(nsColor!)
     }
     /**

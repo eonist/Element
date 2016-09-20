@@ -79,10 +79,10 @@ class StylePropertyParser{
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    static func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
+    static func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor {
         let color:Any? = value(skin, propertyName,depth)
         //Swift.print("color: " + "\(color)")
-        return color == nil || String(color!) == CSSConstants.none ? Double.NaN : (color as! UInt).double
+        return color == nil || (color as? String) == CSSConstants.none ? Double.NaN : (color as! UInt).double
     }
     /**
      * Returns an Offset instance
@@ -331,13 +331,6 @@ private class Utils{
             //Swift.print("tot: " + "\(tot)")
             return tot/*Note used to be + padding.right + border.right + margin.right*/
         }else {return element.getWidth()}
-    }
-    /**
-     * new
-     */
-    static func nsColor(color:Double,_ alpha:CGFloat)->NSColor{
-        let nsColor = color.isNaN ? NSColor.clearColor() : NSColorParser.nsColor(UInt(color), alpha)
-        return nsColor
     }
 }
 extension StylePropertyParser{

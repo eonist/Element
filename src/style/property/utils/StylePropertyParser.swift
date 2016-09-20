@@ -6,7 +6,7 @@ class StylePropertyParser{
      * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
      * TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
-    class func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
+    static func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName,depth)
         //Swift.print("value: " + "\(value)")
@@ -15,20 +15,20 @@ class StylePropertyParser{
     /**
      * Returns an IFillStyle instance based on the Style attached to the skin
      */
-    class func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
+    static func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
         return value(skin,CSSConstants.fill,depth) is IGradient ? gradientFillStyle(skin,depth) : colorFillStyle(skin,depth)
     }
     /**
      * Returns an ILineStyle instance based on the Style attached to the skin
      */
-    class func lineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+    static func lineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth)
     }
     /**
      * Returns a FillStyle instance
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      */
-    class func colorFillStyle(skin:ISkin, _ depth:Int = 0)->IFillStyle {
+    static func colorFillStyle(skin:ISkin, _ depth:Int = 0)->IFillStyle {
         //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
@@ -58,7 +58,7 @@ class StylePropertyParser{
      * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
      * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    class func colorLineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+    static func colorLineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.NaN
@@ -71,7 +71,7 @@ class StylePropertyParser{
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    class func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
+    static func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> Double {
         let color:Any? = value(skin, propertyName,depth)
         //Swift.print("color: " + "\(color)")
         return color == nil || String(color!) == CSSConstants.none ? Double.NaN : (color as! UInt).double
@@ -81,7 +81,7 @@ class StylePropertyParser{
      * // :TODO: probably upgrade to TRBL
      * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
-    class func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
+    static func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
         //Swift.print("StylePropertyparser.lineOffsetType()")
         let val:Any? = value(skin, CSSConstants.lineOffsetType,depth)
         var offsetType:OffsetType = OffsetType()
@@ -103,7 +103,7 @@ class StylePropertyParser{
      * // :TODO: probably upgrade to TRBL
      * TODO: needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc. 
      */
-    class func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
+    static func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
         let val:Any? = value(skin, CSSConstants.cornerRadius,depth)
         var fillet:Fillet = Fillet()
         //Swift.print(val)
@@ -120,7 +120,7 @@ class StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    class func gradientFillStyle(skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
+    static func gradientFillStyle(skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
         let newGradient:Gradient/*IGradient*/ = value(skin, CSSConstants.fill, depth) as! Gradient/*IGradient*///GradientParser.clone()
         //let sizeWidth:Double = skin.width!
         //let sizeHeight:Double = skin.height!
@@ -131,7 +131,7 @@ class StylePropertyParser{
     * // :TODO: does this work? where is the creation of line-thickness etc
     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
     */
-    class func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
+    static func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         //Swift.print("StylePropertParser.gradientLineStyle()")
         let gradient = value(skin, CSSConstants.line,depth)
         if(!(gradient is IGradient)){return nil}//<--temp fix
@@ -142,7 +142,7 @@ class StylePropertyParser{
     /**
      *
      */
-    class func textFormat(skin:TextSkin)->TextFormat {
+    static func textFormat(skin:TextSkin)->TextFormat {
         let textFormat:TextFormat = TextFormat()
         for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
@@ -173,7 +173,7 @@ class StylePropertyParser{
      * @Note this is really a modifier method
      * // :TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
      */
-    class func textField(skin:TextSkin) {
+    static func textField(skin:TextSkin) {
         for textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
             let value:Any? = StylePropertyParser.value(skin,textFieldKey)
             if(value != nil) {
@@ -198,7 +198,7 @@ class StylePropertyParser{
      * Returns Offset
      * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
      */
-    class func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
+    static func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth)
         //Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
@@ -213,7 +213,7 @@ class StylePropertyParser{
      */
     //Note to self: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
     //you may want to copy margin on this
-    class func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
+    static func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
         let value:Any? = self.value(skin, CSSConstants.padding, depth)
         //Swift.print("StylePropertyParser.padding.value: " + "\(value)")
         var padding:Padding = Padding()
@@ -232,7 +232,7 @@ class StylePropertyParser{
      * // :TODO: should this have a failsafe if there is no Margin property in the style?
      * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
-    class func margin(skin:ISkin, _ depth:Int = 0)->Margin {
+    static func margin(skin:ISkin, _ depth:Int = 0)->Margin {
         let value:Any? = self.value(skin, CSSConstants.margin,depth)
         let margin:Margin = value != nil ? Margin(value!) : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth)
@@ -246,32 +246,32 @@ class StylePropertyParser{
     /**
      *
      */
-    class func width(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
+    static func width(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.width,depth)
     }
     /**
      *
      */
-    class func height(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
+    static func height(skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height,depth)
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
      */
-    class func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
+    static func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)
         return Utils.metric(value,skin)
     }
     /**
      * Beta
      */
-    class func asset(skin:ISkin, _ depth:Int = 0)-> String {
+    static func asset(skin:ISkin, _ depth:Int = 0)-> String {
         return (value(skin, CSSConstants.fill,depth) as! Array<Any>)[0] as! String
     }
     /**
      * TODO: this method is asserted before its used, so you may ommit the optionality
      */
-    class func dropShadow(skin:ISkin, _ depth:Int = 0)->DropShadow? {
+    static func dropShadow(skin:ISkin, _ depth:Int = 0)->DropShadow? {
         let dropShadow:Any? = value(skin, CSSConstants.drop_shadow,depth)
         return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow
     }
@@ -280,7 +280,7 @@ private class Utils{
     /**
      * // :TODO: explain what this method is doing
      */
-    class func metric(value:Any?,_ skin:ISkin)->CGFloat? {
+    static func metric(value:Any?,_ skin:ISkin)->CGFloat? {
         if(value is Int){ return CGFloat(value as! Int)}//<-int really? shouldnt you use something with decimals?
         else if(value is CGFloat){return value as? CGFloat}
         else if(value is String){/*value is String*/
@@ -310,9 +310,9 @@ private class Utils{
         return nil//<---this should be 0, it will require some reporgraming
     }
     /**
-    * Returns the total width
-    */
-    class func totalWidth(element:IElement)->CGFloat {/*beta*/
+     * Returns the total width
+     */
+    static func totalWidth(element:IElement)->CGFloat {/*beta*/
         if(element.skin != nil){
             //Swift.print("works")
             let margin:Margin = SkinParser.margin(element.skin!)
@@ -327,7 +327,7 @@ private class Utils{
     /**
      * new
      */
-    class func nsColor(color:Double,_ alpha:CGFloat)->NSColor{
+    static func nsColor(color:Double,_ alpha:CGFloat)->NSColor{
         let nsColor = color.isNaN ? NSColor.clearColor() : NSColorParser.nsColor(UInt(color), alpha)
         return nsColor
     }
@@ -336,13 +336,13 @@ extension StylePropertyParser{
     /*
      * Convenince method for deriving CGFloat values
      */
-    class func number(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->CGFloat{
+    static func number(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->CGFloat{
         return string(skin, propertyName,depth).cgFloat//was cast like this-> CGFloat(Double()!)
     }
-    /*
-    * Convenince method for deriving String values
-    */
-    class func string(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
+    /**
+     * Convenince method for deriving String values
+     */
+    static func string(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
         return String(value(skin, propertyName,depth))
     }
 }

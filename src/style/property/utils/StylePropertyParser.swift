@@ -35,7 +35,9 @@ class StylePropertyParser{
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         //var color:Double
         var nsColor:NSColor?
-        if(colorValue == nil){
+        if(colorValue is NSColor){/*colorValue is NSColor*/
+            nsColor = colorValue as? NSColor
+        }else if(colorValue == nil){
             nsColor = nil
         }else if(colorValue! is Array<Any>) {
             //Swift.print("value is array");
@@ -44,8 +46,6 @@ class StylePropertyParser{
             }else{
                 nsColor = (colorValue as! Array<Any>)[1] as? NSColor
             }
-        }else if(colorValue is NSColor){/*colorValue is NSColor*/
-            nsColor = colorValue as? NSColor
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")
         }

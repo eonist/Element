@@ -9,6 +9,7 @@ class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]
     static var styles:Array<IStyle> = []
     static var styleTree:[String:Any] = [:]
+    static var isHashingStyles:Bool = false/*enable this if you want to hash the styles (beta)*/
     /**
      * Adds @param styles to @param styleTree
      */
@@ -72,9 +73,7 @@ extension StyleManager{
      * Adds every style in a styleCollection to the stylemanager
      */
     class func addStyle(styles:Array<IStyle>){
-        styles.forEach{
-            StyleManagerUtils.hashStyle($0)
-        }
+        if(isHashingStyles){styles.forEach{StyleManagerUtils.hashStyle($0)}}
         self.styles += styles/*<- concats*/
     }
     /**

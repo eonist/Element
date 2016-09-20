@@ -42,7 +42,7 @@ class StylePropertyParser{
             if(colorValue as? Array<Any> != nil && ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none){
                 nsColor = NSColor.clearColor()
             }else{
-                colorValue as! Array<Any>)[1]
+                nsColor = (colorValue as! Array<Any>)[1] as! NSColor
             }
             nsColor = (()[1] as! String)  ?  :
         }else if(colorValue is NSColor){/*colorValue is UInt*/

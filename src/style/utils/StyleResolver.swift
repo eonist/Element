@@ -1,8 +1,8 @@
 import Foundation
 
 class StyleResolver{
+    static var isStoringSelectors:Bool = false// this will be isStoringStyles in the future
     static var styleLookUpCount:Int = 0
-    
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
@@ -11,10 +11,10 @@ class StyleResolver{
     static func style(element:IElement)->IStyle{
         let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         var selectorsXMLString:String = ""
-        querySelectors.forEach{
-             selectorsXMLString += Reflection.toXML($0).string//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
+        if(isStoringSelectors){
+            querySelectors.forEach{selectorsXMLString += Reflection.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
+            AppDelegate.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
         }
-        AppDelegate.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
         return style(querySelectors,element)
     }
     /**

@@ -70,19 +70,19 @@ class StylePropertyParser{
         //Swift.print("StylePropertyParser.colorLineStyle()")
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.NaN
-        let lineColorValue:Double = color(skin, CSSConstants.line,depth)
+        let lineColorValue:NSColor? = color(skin, CSSConstants.line,depth)
         //Swift.print("StylePropertyParser.colorLineStyle() " + String(value(skin, CSSConstants.lineAlpha)))
         let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha,depth) as? CGFloat ?? 1
-        let lineColor:NSColor = Utils.nsColor(lineColorValue, lineAlpha)
+        let lineColor:NSColor = lineColorValue != nil ? lineColorValue!.alpha(lineAlpha) : NSColor.clearColor()
         return LineStyle(lineThickness, lineColor)
     }
     /**
      * @Note makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    static func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor {
+    static func color(skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
         //Swift.print("color: " + "\(color)")
-        return color == nil || (color as? String) == CSSConstants.none ? Double.NaN : (color as! UInt).double
+        return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
     }
     /**
      * Returns an Offset instance

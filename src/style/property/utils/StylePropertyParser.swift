@@ -34,12 +34,13 @@ class StylePropertyParser{
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         var color:Double
+        let nsColor:NSColor?
         if(colorValue == nil){
             color = Double.NaN
         }else if(colorValue! is Array<Any>) {
             //Swift.print("value is array");
             color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
-        }else if(colorValue is UInt){/*colorValue is UInt*/
+        }else if(colorValue is NSColor){/*colorValue is UInt*/
             color = (colorValue as! UInt).double
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")
@@ -48,10 +49,15 @@ class StylePropertyParser{
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
+        if(nsColor == nil){
+            nsColor = NSColor.clearColor()
+        }else{
+            
+        }
         //Swift.print("alphaValue: " + "\(alphaValue)")
-        let nsColor:NSColor = !color.isNaN ? NSColorParser.nsColor(UInt(color), alphaValue) : NSColor.clearColor()/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
-        //TODO:You need to upgrade FillStyle to support alpha and color and add NSColor further down the line because checking for NaN is essential when setting or not setting things?, you can revert to pure NSColor and clearStyle later anyway
-        return FillStyle(nsColor)
+        // = !color.isNaN ? NSColorParser.nsColor(UInt(color), alphaValue) : /*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
+        
+        return FillStyle(nsColor!)
     }
     /**
      * Returns a LineStyle instance

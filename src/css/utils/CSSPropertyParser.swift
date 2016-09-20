@@ -15,8 +15,8 @@ class CSSPropertyParser {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
             case StringAsserter.boolean(string):return StringParser.boolean(string)/*true or false*/
-            case StringAsserter.color(string):return StringParser.color(string)/*#00ff00 or 00ff00*///TODO: should retur NSColor
-            case StringAsserter.webColor(string):return StringParser.color(string)/*green red etc*///TODO: should retur NSColor
+            case StringAsserter.color(string):return StringParser.nsColor(string)/*#00ff00 or 00ff00*///TODO: should retur NSColor
+            case StringAsserter.webColor(string):return StringParser.nsColor(string)/*green red etc*///TODO: should retur NSColor
             case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string)/*linear-gradient*/// :TODO: create a more complte exprrison for this test
             case RegExp.test(string,"^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
             case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/

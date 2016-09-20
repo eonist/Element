@@ -13,13 +13,13 @@ class StylePropertyParser{
         return value
     }
     /**
-     *
+     * Returns an IFillStyle instance based on the Style attached to the skin
      */
     class func fillStyle(skin:ISkin,_ depth:Int = 0)->IFillStyle {
         return value(skin,CSSConstants.fill,depth) is IGradient ? gradientFillStyle(skin,depth) : colorFillStyle(skin,depth)
     }
     /**
-     *
+     * Returns an ILineStyle instance based on the Style attached to the skin
      */
     class func lineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth)

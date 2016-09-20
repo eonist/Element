@@ -33,10 +33,10 @@ class StylePropertyParser{
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
-        var color:Double
-        let nsColor:NSColor?
+        //var color:Double
+        var nsColor:NSColor?
         if(colorValue == nil){
-            color = Double.NaN
+            nsColor = nil
         }else if(colorValue! is Array<Any>) {
             //Swift.print("value is array");
             color = ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none ? Double.NaN : Double(StringParser.color((colorValue as! Array<Any>)[1] as! String));
@@ -52,7 +52,7 @@ class StylePropertyParser{
         if(nsColor == nil){
             nsColor = NSColor.clearColor()
         }else{
-            
+            nsColor!.alpha(alphaValue)
         }
         //Swift.print("alphaValue: " + "\(alphaValue)")
         // = !color.isNaN ? NSColorParser.nsColor(UInt(color), alphaValue) : /*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */

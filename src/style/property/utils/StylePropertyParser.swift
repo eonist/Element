@@ -59,7 +59,6 @@ class StylePropertyParser{
         }else{
             nsColor!.alpha(alphaValue)
         }
-        Swift.print("nsColor: " + "\(nsColor)")
         return FillStyle(nsColor!)
     }
     /**

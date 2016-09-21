@@ -43,10 +43,15 @@ class StyleResolver{
         return finalStyle
     }
     static func style2(element:IElement)->IStyle{
+        fatalError("beta")
+        /*
         let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         return style2(querySelectors)
+        */
     }
     class func style2(querySelectors:[ISelector])->IStyle{
+        fatalError("beta")
+        /*
         var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
         //print("weightedStyles: " + "\(weightedStyles.count)")
         //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);
@@ -58,6 +63,7 @@ class StyleResolver{
             StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle
+        */
     }
 }
 

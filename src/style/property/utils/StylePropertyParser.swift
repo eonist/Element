@@ -157,17 +157,15 @@ class StylePropertyParser{
         for textFormatKey : String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
             //Swift.print("StylePropertypParser.textFormat() value: " + "\(value.dynamicType)")
-            //if(textFormatKey == "size") trace("size: "+value+" "+(value is String))
+            //if(textFormatKey == "size") print("size: "+value+" "+(value is String))
             if(value != nil) {
                 if(StringAsserter.metric(String(value))){
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
                     let stringValue:String = String(value)
                     let matches = stringValue.matches(pattern)
                     for match:NSTextCheckingResult in matches {
-                        //TODO:replace with RegExp.value....
-                        var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                         //TODO:replace with RegExp.value....
-                        let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
+                        var value:Any = RegExp.value(stringValue, match, 1)//capturing group 1
+                        let suffix:String = RegExp.value(stringValue, match, 2)//capturing group 1
                         if(suffix == CSSConstants.ems) {value = String(value).cgFloat * CSSConstants.emsFontSize }
                     }
                 }

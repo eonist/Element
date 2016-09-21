@@ -39,6 +39,7 @@ class TextSkin:Skin,ITextSkin{
     func applyProperties(textField:TextField){
         Swift.print("TextSkin.applyProperties()")
         let padding:Padding = StylePropertyParser.padding(self);
+        Swift.print("padding: " + "\(padding)")
         let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right;// :TODO: only querry this if the size has changed?
         Swift.print("TextSkin.applyProperties() width: " + "\(width)")
         let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom;// :TODO: only querry this if the size has changed?

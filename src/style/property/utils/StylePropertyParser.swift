@@ -57,7 +57,7 @@ class StylePropertyParser{
         if(nsColor == nil){/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
             nsColor = NSColor.clearColor()//clear is white with alpha 0.0
         }else{
-            nsColor!.alpha(alphaValue)
+            nsColor = nsColor!.alpha(alphaValue)
         }
         return FillStyle(nsColor!)
     }

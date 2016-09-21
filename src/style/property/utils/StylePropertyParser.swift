@@ -45,7 +45,7 @@ class StylePropertyParser{
                 nsColor = nil
             }else{
                 if((colorValue as! Array<Any>)[1] is String){
-                    
+                    nsColor = StringParser.nsColor((colorValue as! Array<Any>)[1] as! String)
                 }else if((colorValue as! Array<Any>)[1] is NSColor){
                     nsColor = (colorValue as! Array<Any>)[1] as? NSColor
                 }else{

@@ -41,17 +41,15 @@ class StylePropertyParser{
             nsColor = nil
         }else if(colorValue! is Array<Any>) {
             Swift.print("value is array");
+            
             if(colorValue as? Array<Any> != nil && ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none){//<--Im not sure what this method does?!?
                 nsColor = nil
             }else{
-                if((colorValue as! Array<Any>)[1] is String){
-                    nsColor = StringParser.nsColor((colorValue as! Array<Any>)[1] as! String)
-                }else if((colorValue as! Array<Any>)[1] is NSColor){
+                if((colorValue as! Array<Any>)[1] is NSColor){
                     nsColor = (colorValue as! Array<Any>)[1] as? NSColor
                 }else{
-                    fatalError("type not supported")
+                    fatalError("type not supported, must be nsColor")
                 }
-                
             }
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")

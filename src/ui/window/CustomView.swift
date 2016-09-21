@@ -9,7 +9,7 @@ class CustomView:WindowView{
      * Add content here
      */
     override func resolveSkin() {
-        Swift.print("CustomView.resolveSkin()")
+        //Swift.print("CustomView.resolveSkin()")
         super.resolveSkin()
         createTitleBar()
     }
@@ -17,11 +17,9 @@ class CustomView:WindowView{
      * Adds close button, min, max
      */
     func createTitleBar(){
-        Swift.print("createTitleBar() ")
+        //Swift.print("createTitleBar() ")
         section = addSubView(Section(75,22,self,"titleBar"))/*height was 26 but we added 4px as padding-top*/
-        Swift.print("Section is created")
         closeButton = section!.addSubView(Button(0,0,section!,"close")) /*<--TODO: the w and h should be NaN, test if it supports this*/
-        Swift.print("CloseButton is created")
         minimizeButton = section!.addSubView(Button(0,0,section!,"minimize"))
         maximizeButton = section!.addSubView(Button(0,0,section!,"maximize")) 
     }

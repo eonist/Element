@@ -204,6 +204,7 @@ class StylePropertyParser{
                 //skin.textField[textFieldKey] = value
             }
         }
+        fatalError("out of order")
     }
     /**
      * Returns Offset

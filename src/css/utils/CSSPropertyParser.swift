@@ -147,7 +147,8 @@ class CSSPropertyParser {
                 textField[name] = value
             }
         }
-        return textField
+        fatalError("out of order")
+        //return textField
     }
     /**
      * Returns a DropShadowFilter instance

@@ -15,8 +15,8 @@ class CSSPropertyParser {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
             case StringAsserter.boolean(string):return StringParser.boolean(string)/*true or false*/
-            case StringAsserter.color(string):return StringParser.nsColor(string)/*#00ff00 or 00ff00*///TODO: should retur NSColor
-            case StringAsserter.webColor(string):return StringParser.nsColor(string)/*green red etc*///TODO: should retur NSColor
+            case StringAsserter.color(string):return StringParser.nsColor(string)/*#00ff00 or 00ff00*/
+            case StringAsserter.webColor(string):return StringParser.nsColor(string)/*green red etc*/
             case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string)/*linear-gradient*/// :TODO: create a more complte exprrison for this test
             case RegExp.test(string,"^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
             case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
@@ -139,9 +139,7 @@ class CSSPropertyParser {
             let property:String = properties[i]
             let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches {
-                //TODO: use RegExp.value on the bellow
                 let name:String = RegExp.value(property, match, 1)//capturing group 1
-                //TODO: use RegExp.value on the bellow
                 var value:Any = RegExp.value(property, match, 2)//capturing group 2
                 if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.nsColor(value as! String)}
                 else if(value as! String == "true") { value = true }

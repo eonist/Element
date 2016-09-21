@@ -162,9 +162,11 @@ class StylePropertyParser{
                     let stringValue:String = String(value)
                     let matches = stringValue.matches(pattern)
                     for match:NSTextCheckingResult in matches {
+                        //TODO:replace with RegExp.value....
                         var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                         //TODO:replace with RegExp.value....
                         let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
-                        if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
+                        if(suffix == CSSConstants.ems) {value = String(value).cgFloat * CSSConstants.emsFontSize }
                     }
                 }
                 if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/

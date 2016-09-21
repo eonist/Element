@@ -134,7 +134,9 @@ class CSSPropertyParser {
             let property:String = properties[i]
             let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches {
+                //TODO: use RegExp.value on the bellow
                 let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+                //TODO: use RegExp.value on the bellow
                 var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
                 if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.nsColor(value as! String)}
                 else if(value as! String == "true") { value = true }

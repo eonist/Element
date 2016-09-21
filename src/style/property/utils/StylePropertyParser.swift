@@ -312,7 +312,7 @@ private class Utils{
                     return val
                 }else {
                     //print("ems")
-                    return valNum * CSSConstants.emsFontSize;/*["suffix"] == "ems"*/
+                    return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
                 }
             }
         }

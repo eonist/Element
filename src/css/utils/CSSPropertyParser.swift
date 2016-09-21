@@ -105,7 +105,7 @@ class CSSPropertyParser {
     }
     /**
      * TextFormat
-     * // :TODO: should possibly return a TextFormat class instance or alike
+     * RETURNS a TextFormat class instance
      */
     class func textFormat(input:String) -> TextFormat {
         let textFormat:TextFormat = TextFormat()

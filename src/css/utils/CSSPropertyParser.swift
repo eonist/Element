@@ -201,7 +201,7 @@ private class Utils{
                 //Swift.print("color: " + color)
                 let alpha:String = RegExp.value(property, match, 2)
                 //Swift.print("alpha: " + alpha)
-                let alphaVal:CGFloat = CGFloat(Utils.alpha(alpha))
+                let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat
                 //Swift.print("alphaVal: " + "\(alphaVal)")
                 gradient.colors.append(CGColorParser.cgColor(StringParser.color(color),alphaVal))//append color
                 let ratio:String = RegExp.value(property, match, 3)
@@ -209,7 +209,7 @@ private class Utils{
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (Double(i) / (Double(properties.count)-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 //Swift.print("gradient.locations start: " + "\(gradient.locations.count)")
-                gradient.locations.append(CGFloat(Float(ratioValue)))//append ratioValue
+                gradient.locations.append(ratioValue.cgFloat)//append ratioValue
                 //Swift.print("gradient.locations end: " + "\(gradient.locations.count)")
             }
         }

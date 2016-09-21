@@ -22,7 +22,8 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
      */
     class func describe(style:IStyle){
         Swift.print("StyleParser.describe()")
-        Swift.print(style.name+": ")
+        Swift.print("style.name: " + style.name)
+        Swift.print("style.styleProperties: " + "\(style.styleProperties)")
         for styleProperty : IStyleProperty in style.styleProperties {
             var value:String = ""
             if(styleProperty.value is String || styleProperty.value is Double || styleProperty.value is Bool || styleProperty.value is UInt || styleProperty.value is Int){

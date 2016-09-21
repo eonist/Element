@@ -12,7 +12,7 @@ class TextSkin:Skin,ITextSkin{
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
-        Swift.print("TextSkin.init()")
+        //Swift.print("TextSkin.init()")
         textField = TextField(frame: NSRect())
         //textField.sizeToFit()
         textField.stringValue = text
@@ -37,7 +37,6 @@ class TextSkin:Skin,ITextSkin{
         super.draw()
     }
     func applyProperties(textField:TextField){
-        //Swift.print("TextSkin.applyProperties()")
         let padding:Padding = StylePropertyParser.padding(self);
         let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right;// :TODO: only querry this if the size has changed?
         //Swift.print("TextSkin.applyProperties() width: " + "\(width)")

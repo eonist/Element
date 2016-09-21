@@ -33,7 +33,6 @@ class StylePropertyParser{
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
-        //var color:Double
         var nsColor:NSColor?
         if(colorValue is NSColor){/*colorValue is NSColor*/
             nsColor = colorValue as? NSColor

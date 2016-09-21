@@ -44,7 +44,14 @@ class StylePropertyParser{
             if(colorValue as? Array<Any> != nil && ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none){//<--Im not sure what this method does?!?
                 nsColor = nil
             }else{
-                nsColor = (colorValue as! Array<Any>)[1] as? NSColor
+                if((colorValue as! Array<Any>)[1] is String){
+                    
+                }else if((colorValue as! Array<Any>)[1] is NSColor){
+                    nsColor = (colorValue as! Array<Any>)[1] as? NSColor
+                }else{
+                    fatalError("type not supported")
+                }
+                
             }
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")

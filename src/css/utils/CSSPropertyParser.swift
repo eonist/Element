@@ -109,7 +109,7 @@ class CSSPropertyParser {
             for match:NSTextCheckingResult in matches{
                 let name:String = (property as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                 var value:Any = (property as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 2
-                if(name  == "color") { value = StringParser.color(value as! String) }
+                if(name == "color") { value = StringParser.nsColor(value as! String) }
                 else if(String(value) == "true") {value = true }
                 else if(String(value) == "false") {value = false }
                 //else {StringParser.boolean(String(value))}

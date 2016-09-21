@@ -40,7 +40,7 @@ class StylePropertyParser{
         }else if(colorValue == nil){
             nsColor = nil
         }else if(colorValue! is Array<Any>) {
-            //Swift.print("value is array");
+            Swift.print("value is array");
             if(colorValue as? Array<Any> != nil && ((colorValue as! Array<Any>)[1] as! String) == CSSConstants.none){//<--Im not sure what this method does?!?
                 nsColor = nil
             }else{

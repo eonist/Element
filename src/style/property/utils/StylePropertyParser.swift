@@ -170,10 +170,11 @@ class StylePropertyParser{
                     }
                 }
                 if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
-                else if(value is UInt) {
+                /*else if(value is NSColor) {
                     value = NSColorParser.nsColor(value as! UInt,1)
                     //Swift.print("FOUND A COLOR: " + textFormatKey + " : " + "\(value)")
                 }//<--set the alpha in css aswell backgroundAlpha?
+                */
                 textFormat[textFormatKey] = value!
             }
         }
@@ -195,7 +196,7 @@ class StylePropertyParser{
                     for match:NSTextCheckingResult in matches {
                         var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
                         let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
-                        if(suffix == CSSConstants.ems) {value = CGFloat(Double(String(value))!) * CSSConstants.emsFontSize }
+                        if(suffix == CSSConstants.ems) {value = String(value).cgFloat * CSSConstants.emsFontSize }
                     }
                 }
                 //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently

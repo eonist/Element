@@ -92,10 +92,15 @@ class CSSPropertyParser {
         //Swift.print("CSSPropertyParser.array()")
         let matches:Array<String> = StringModifier.split(string, " ")
         var array:Array<Any> = []
-        
-        //Continue here: Add support for more types: WebColor and Color
-        
-        for str : String in matches { array.append(StringAsserter.digit(str) ? StringParser.digit(str) : str) }
+        for str : String in matches {
+            if(StringAsserter.digit(str)){
+                array.append(StringParser.digit(str))
+            }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
+                array.append(StringParser.nsColor(str))
+            }else{
+                array.append(str)
+            }
+        }
         return array
     }
     /**

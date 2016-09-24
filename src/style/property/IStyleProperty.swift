@@ -16,9 +16,9 @@ extension IStyleProperty{
         let valueXML:XML = xml.firstNode("value")!
         let valueType:String = valueXML["type"]!
         
-        let val:String = xml.firstNode("value")!.value
+        let strVal:String = xml.firstNode("value")!.value
         //Swift.print("val: " + "\(val)")
-        let value:Any = val//Todo: write a method that looks at the type in the xml and converts that the value into that type: Grab inspiration from this method: CSSPropertyParser.property(val)
+        let value:Any? = strVal.count != 0 ? ReflectionUtils.toType(strVal, valueType) : nil//Todo: write a method that looks at the type in the xml and converts that the value into that type: Grab inspiration from this method: CSSPropertyParser.property(val)
         
         let depth:Int = xml.firstNode("depth")!.value.int
        

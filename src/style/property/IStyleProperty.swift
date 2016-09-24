@@ -14,11 +14,8 @@ extension IStyleProperty{
         let name:String = xml.firstNode("name")!.value
         //Swift.print("element: " + "\(element)")
         let valueXML:XML = xml.firstNode("value")!
-        let valueType:String = valueXML["type"]!
         
-        let strVal:String = xml.firstNode("value")!.value
-        //Swift.print("val: " + "\(val)")
-        let value:Any? = strVal.count != 0 ? ReflectionUtils.toType(strVal, valueType) : nil
+        let value:Any? = ReflectionUtils.toType(valueXML)
         
         let depth:Int = xml.firstNode("depth")!.value.int
        

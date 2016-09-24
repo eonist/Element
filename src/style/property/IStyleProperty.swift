@@ -13,6 +13,9 @@ extension IStyleProperty{
         //Swift.print("xml.string: " + "\(xml.string)")
         let name:String = xml.firstNode("name")!.value
         //Swift.print("element: " + "\(element)")
+        let valueXML:XML = xml.firstNode("value")!
+        let valueType:String = valueXML["type"]!
+        
         let val:String = xml.firstNode("value")!.value
         //Swift.print("val: " + "\(val)")
         let value:Any = val//Todo: write a method that looks at the type in the xml and converts that the value into that type: Grab inspiration from this method: CSSPropertyParser.property(val)

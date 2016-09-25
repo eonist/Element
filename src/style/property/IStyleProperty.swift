@@ -14,8 +14,11 @@ extension IStyleProperty{
         let name:String = xml.firstNode("name")!.value
         //Swift.print("element: " + "\(element)")
         let valueXML:XML = xml.firstNode("value")!
+        Swift.print("valueXML.XMLString: " + "\(valueXML.XMLString)")
         
-        let value:Any? = ReflectionUtils.toType(valueXML)
+        //this is out of order atm
+        
+        let value:Any? = nil//ReflectionUtils.toType(valueXML)
         
         let depth:Int = xml.firstNode("depth")!.value.int
        

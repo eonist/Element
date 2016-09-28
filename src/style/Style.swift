@@ -8,8 +8,8 @@ import Foundation
 
 class Style:IStyle{
     var name:String
-    var styleProperties:Array<IStyleProperty>
     var selectors:Array<ISelector>
+    var styleProperties:Array<IStyleProperty>
     init(_ name:String = "",_ selectors:Array<ISelector> = [], _ styleProperties:Array<IStyleProperty> = []){
         self.name = name
         self.selectors = selectors

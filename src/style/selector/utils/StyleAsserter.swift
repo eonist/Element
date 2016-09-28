@@ -5,6 +5,6 @@ class StyleAsserter {
      * @Note the opposite would be an indirect style
      */
     class func direct(stack:Array<ISelector>,_ style:IStyle)->Bool {//rename to isDirect, is it Necessary? StyleAsserter.direct is pretty self explanatory
-        return SelectorAsserter.hasSimilarity(stack[stack.count-1], style.selectors[style.selectors.count-1])
+        return SelectorAsserter.hasSimilarity(stack[stack.count-1], style.selectors[style.selectors.count-1])//<---TODO:You could do .last here
     }
 }

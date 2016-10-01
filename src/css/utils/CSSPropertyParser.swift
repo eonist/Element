@@ -92,7 +92,7 @@ class CSSPropertyParser {
         //Swift.print("CSSPropertyParser.array()")
         let matches:Array<String> = StringModifier.split(string, " ")
         var array:Array<Any> = []
-        for str : String in matches {
+        for str:String in matches {
             if(StringAsserter.digit(str)){
                 array.append(StringParser.digit(str))
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){

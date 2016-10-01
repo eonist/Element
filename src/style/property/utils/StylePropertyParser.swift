@@ -49,7 +49,7 @@ class StylePropertyParser{
                 }
             }
         }else{
-            fatalError("colorValue type not supported: " + "\(colorValue.dynamicType)")
+            fatalError("colorValue not supported: " + "\(colorValue)")
         }
         //Swift.print("color: " + "\(color)")
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)

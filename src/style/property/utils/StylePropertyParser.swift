@@ -34,7 +34,7 @@ class StylePropertyParser{
         //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
         //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         var nsColor:NSColor?
-        if(colorValue is NSColor){/*colorValue is NSColor*/
+        if(colorValue as? NSColor != nil){/*colorValue is NSColor*/
             nsColor = colorValue as? NSColor
         }else if(colorValue == nil){
             nsColor = nil

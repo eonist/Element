@@ -5,7 +5,7 @@ import Cocoa
 class SelectTextButton:TextButton,ISelectable {
     var isSelected:Bool
     init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isSelected : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
-        self.isSelected = isSelected;
+        self.isSelected = isSelected
         super.init(width, height, text, parent, id)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -20,7 +20,7 @@ class SelectTextButton:TextButton,ISelectable {
      */
     func setSelected(isSelected:Bool){
         self.isSelected = isSelected
-        setSkinState(getSkinState());
+        setSkinState(getSkinState())
     }
     func getSelected()->Bool{return isSelected}
     override func getSkinState() -> String {

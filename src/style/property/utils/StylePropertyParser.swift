@@ -282,6 +282,7 @@ class StylePropertyParser{
      */
     static func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)
+        Swift.print("value: " + "\(value)")
         return Utils.metric(value,skin)
     }
     /**
@@ -312,8 +313,8 @@ private class Utils{
             let matches = stringValue.matches(pattern)
             //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
-                let valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
+                let valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1//<-- use RegExp.value here
+                let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1<-- use RegExp.value here
                 let valNum =  CGFloat(Double(valStr as! String)!)
                 if(suffix == "%") {
                     //Swift.print("Suffix is %")
@@ -329,7 +330,7 @@ private class Utils{
         }
         //fatalError("NOT IMPLEMENTED YET")
         //be warned this method is far from complete
-        return nil//<---this should be 0, it will require some reporgraming
+        return nil//<---this should be 0, it will require some reprograming
     }
     /**
      * Returns the total width

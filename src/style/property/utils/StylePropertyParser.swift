@@ -9,7 +9,7 @@ class StylePropertyParser{
     static func value(skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
         //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName,depth)
-        Swift.print("value: " + "\(value)")
+        //Swift.print("value: " + "\(value)")
         return value
     }
     /**
@@ -236,7 +236,7 @@ class StylePropertyParser{
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
         let leftPaddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth)
         if(leftPaddingIndex > paddingIndex){
-            let leftPadding:CGFloat? = StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth)
+            let leftPadding:CGFloat? = StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth)!
             Swift.print("leftPadding: " + "\(leftPadding)")
             padding.left = leftPadding!
         }else{

@@ -3,7 +3,7 @@ import Cocoa
  * NOTE: Maybe the methods relating to ISelectable could be moved to an extension (Maybe not, since you need access to super, test this idea in playground)
  */
 class SelectTextButton:TextButton,ISelectable {
-    var isSelected:Bool;
+    var isSelected:Bool
     init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isSelected : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
         self.isSelected = isSelected;
         super.init(width, height, text, parent, id)

@@ -236,11 +236,11 @@ class StylePropertyParser{
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
         let leftPaddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth)
         if(leftPaddingIndex > paddingIndex){
-            let leftPadding = StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth)!
+            let leftPadding:CGFloat? = StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth)
             Swift.print("leftPadding: " + "\(leftPadding)")
-            padding.left = leftPadding
+            padding.left = leftPadding!
         }else{
-            let leftPadding = Utils.metric(padding.left, skin)
+            let leftPadding:CGFloat? = Utils.metric(padding.left, skin)
             Swift.print("leftPadding: " + "\(leftPadding)")
             padding.left = leftPadding!
         }/*if margin-left has a later index than margin then it overrides margin.left*/

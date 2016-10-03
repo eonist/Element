@@ -238,13 +238,13 @@ private class Utils{
     /**
      * // :TODO: add support for auto ratio values if they are not defined, you have implimented this functionality somewhere, so find this code
      */
-    class func ratio(var ratio:String)->Double{
+    class func ratio(var ratio:String)->Double{//<--Why not CGFloat?
         var ratioValue:Double = Double.NaN
         if(RegExp.test(ratio,"\\d{1,3}%")){//i.e: 100%
             ratio = RegExp.match(ratio,"\\d{1,3}")[0]
             ratioValue = Double(ratio)! / 100 /** 255*/
         }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = Double(ratio)! /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
-        return ratioValue;
+        return ratioValue
     }
     /**
      *

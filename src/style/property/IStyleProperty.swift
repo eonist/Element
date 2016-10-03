@@ -16,12 +16,14 @@ extension IStyleProperty{
         let valueXML:XML = xml.firstNode("value")!
         Swift.print("valueXML.XMLString: " + "\(valueXML.XMLString)")
         
-        //this is out of order atm
+        
         
         let value:Any? = nil//ReflectionUtils.toType(valueXML)
         
         let depth:Int = xml.firstNode("depth")!.value.int
        
-        return StyleProperty(name,value,depth)
+        fatalError("this is out of order atm")
+        
+        //return StyleProperty(name,value,depth)
     }
 }

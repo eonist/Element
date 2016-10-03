@@ -234,17 +234,7 @@ class StylePropertyParser{
             padding = Padding(array)
         }
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
-        let leftPaddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth)
-        if(leftPaddingIndex > paddingIndex){
-            let leftPadding = StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth)
-            Swift.print("leftPadding: " + "\(leftPadding)")
-            padding.left = leftPadding!
-        }else{
-            let leftPadding = Utils.metric(padding.left, skin)
-            Swift.print("leftPadding: " + "\(leftPadding)")
-            padding.left = leftPadding!
-        }/*if margin-left has a later index than margin then it overrides margin.left*/
-        
+        padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth) : Utils.metric(padding.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
         padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!
         padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingTop, depth) : Utils.metric(padding.top, skin))!
         padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom,depth) > paddingIndex) ? StylePropertyParser.metric(skin, CSSConstants.paddingBottom, depth) : Utils.metric(padding.bottom, skin))!
@@ -282,7 +272,7 @@ class StylePropertyParser{
      */
     static func metric(skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)
-        Swift.print("value: " + "\(value)")
+        //Swift.print("value: " + "\(value)")
         return Utils.metric(value,skin)
     }
     /**

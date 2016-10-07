@@ -24,10 +24,12 @@ class StyleResolver{
         var weightedStyles:Array<WeightedStyle> = []
         //let styles = StyleManager.styles
         Swift.print("querySelectors.last: " + "\(querySelectors.last)")
-        let styles
-        if(element as? Text){
+        let styles:[IStyle]
+        if(element as? Text != nil){
+            Swift.print("text")
             styles = StyleManager.styles
         }else{
+            Swift.print("not text")
             styles = Utils.getStyles(querySelectors.last!)//<-this is the tail trick
         }
         Swift.print("styles.count: " + "\(styles.count)")

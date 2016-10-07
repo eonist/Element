@@ -22,9 +22,14 @@ class StyleResolver{
      */
     class func style(querySelectors:[ISelector],_ element:IElement?)->IStyle{
         var weightedStyles:Array<WeightedStyle> = []
-        let styles = StyleManager.styles
+        //let styles = StyleManager.styles
         Swift.print("querySelectors.last: " + "\(querySelectors.last)")
-        //let styles = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
+        let styles
+        if(element as? Text){
+            styles = StyleManager.styles
+        }else{
+            styles = Utils.getStyles(querySelectors.last!)//<-this is the tail trick
+        }
         Swift.print("styles.count: " + "\(styles.count)")
         for style:IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/
             styleLookUpCount++

@@ -79,6 +79,7 @@ extension StyleManager{
         }
         
         //1. assert if the styles.xml exists and if it has content 
+        let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
         
         let cssFileDateList = StyleCache.cssFileDateList(dataXML)
         //2. assert if the query url has been cached and assert if the cached css files are all up to date

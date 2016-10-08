@@ -36,10 +36,10 @@ class CSSFileParser {
      */
     static func importStrings(string:String)->Array<String> {
         var importStrings:Array<String> = []
-        let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
+        let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
         let matches = RegExp.matches(string, pattern)
-        for match:NSTextCheckingResult in matches {
-            let url = (string as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
+        matches.forEach {
+            let url = $0.value(string, 1)//capturing group 1
             importStrings.append(url)
         }
         return importStrings

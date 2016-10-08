@@ -69,7 +69,7 @@ extension StyleManager{
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
                 let cssString:String = CSSLinkResolver.resolveLinks(cssFiles[url]!)
                 let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
-                removeStyle(styles)/*if url exists it does then remove the styles that it represents*/
+                removeStyle(styles)/*if url exists then remove the styles that it represents*/
             }else{/*if the url wasn't in the dictionary, then add it*/
                 cssFiles[url] = cssString
             }

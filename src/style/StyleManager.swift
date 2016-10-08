@@ -7,6 +7,7 @@ import Foundation
  */
 class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]
+    static var cssFileURLS:[String] = []//<--new
     static var styles:Array<IStyle> = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
     /**

@@ -12,6 +12,7 @@ class CSSFileParser {
      * PARAM: cssString the recursive string passed down the hierarchy
      */
     static func cssString(url:String)->String {
+        StyleManager.cssFileURLS.append(url)//<--new
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
         //Swift.print("string: " + "\(string)")

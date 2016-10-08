@@ -26,15 +26,15 @@ class StyleManagerUtils{
             }
         }
         if(style.selectors.last!.classIds.count > 0){//temp solution, you need to flatten the classIds somehow, or test individual etc
-            if (stylesByClassId[style.selectors.last!.classIds.first!] != nil){
-                stylesByClassId[style.selectors.last!.classIds.first!]!.append(style)
+            if var firstClassId = stylesByClassId[style.selectors.last!.classIds.first!]{
+                firstClassId.append(style)
             }else{
                 stylesByClassId[style.selectors.last!.classIds.first!] = [style]
             }
         }
         if(style.selectors.last!.states.count > 0){//temp solution, you need to flatten the states somehow, or test individual etc
-            if (stylesByState[style.selectors.last!.states.first!] != nil){
-                stylesByState[style.selectors.last!.states.first!]!.append(style)
+            if var firstState = stylesByState[style.selectors.last!.states.first!] {
+                firstState.append(style)
             }else{
                 stylesByState[style.selectors.last!.states.first!] = [style]
             }

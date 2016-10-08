@@ -11,7 +11,7 @@ class CSSFileParser {
      * PARAM: url The url to load the css file from
      * PARAM: cssString the recursive string passed down the hierarchy
      */
-    class func cssString(url:String)->String {
+    static func cssString(url:String)->String {
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
         //Swift.print("string: " + "\(string)")
@@ -33,7 +33,7 @@ class CSSFileParser {
      * // :TODO: this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
-    class func importStrings(string:String)->Array<String> {
+    static func importStrings(string:String)->Array<String> {
         var importStrings:Array<String> = []
         let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"//assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)
         let matches = RegExp.matches(string, pattern)
@@ -49,7 +49,7 @@ class CSSFileParser {
      * NOTE: supports cssString that has only import or style or both
      * Example: "@import url(\"mainContent.css\");"
      */
-    class func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
+    static func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         //was: \\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*
         let styleCharSet:String = "[^$]"//all possible chars that can be found in a stylesheet, except the end. the capture all dot variable didnt work so this is the alternate wway of doing it
         var pattern:String = "^"
@@ -72,8 +72,8 @@ class CSSFileParser {
             //}
             //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             //Swift.print("content: " + "\(content)")
-            result.imports = match.rangeAtIndex(1).length > 0 ?(cssString as NSString).substringWithRange(match.rangeAtIndex(1)) : ""//capturing group 1
-            result.style = match.rangeAtIndex(2).length > 0 ? (cssString as NSString).substringWithRange(match.rangeAtIndex(2)) : ""//capturing group 2
+            result.imports = match.rangeAtIndex(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
+            result.style = match.rangeAtIndex(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
         }
         return result
     }

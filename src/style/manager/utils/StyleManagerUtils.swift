@@ -12,15 +12,15 @@ class StyleManagerUtils{
     static func hashStyle(style:IStyle){
         //when you add styles:
         if(style.selectors.last!.element != ""){
-            if (stylesByElement[style.selectors.last!.element] != nil){
-                stylesByElement[style.selectors.last!.element]!.append(style)
+            if var lastElement = stylesByElement[style.selectors.last!.element]{
+                lastElement.append(style)
             }else{
                 stylesByElement[style.selectors.last!.element] = [style]
             }
         }
         if(style.selectors.last!.id != ""){
-            if (stylesByID[style.selectors.last!.id] != nil){
-                stylesByID[style.selectors.last!.id]!.append(style)
+            if var lasId = stylesByID[style.selectors.last!.id]{
+                lasId.append(style)
             }else{
                 stylesByID[style.selectors.last!.id] = [style]
             }

@@ -8,17 +8,7 @@ import Foundation
 class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]
     static var styles:Array<IStyle> = []
-    static var styleTree:[String:Any] = [:]
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
-    /**
-     * Adds @param styles to @param styleTree
-     */
-    static func addStyle(inout styleTree:[String:Any],_ styles:[IStyle]) -> [String:Any]{
-        for  style : IStyle in styles{ addStyle(style,&styleTree)}
-        return styleTree
-    }
-    
-    
     /**
      * Adds a style to the styleManager class
      * @param style: IStyle

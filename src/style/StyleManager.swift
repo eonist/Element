@@ -74,7 +74,7 @@ extension StyleManager{
                 let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
                 removeStyle(styles)/*if url exists then remove the styles that it represents*/
             }else{/*if the url wasn't in the dictionary, then add it*/
-                cssFiles[url] = cssString
+                cssFiles[url] = cssString//<--im not sure how this works, but it works
             }
         }
         addStyle(cssString)

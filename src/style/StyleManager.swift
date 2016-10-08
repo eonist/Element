@@ -84,7 +84,9 @@ extension StyleManager{
         let stylesXML:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)
         let cssFileDateList = StyleCache.cssFileDateList(stylesXML)
         //2. assert if the query url has been cached and assert if the cached css files are all up to date
-        let hasBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
+        let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
+        let isUpToDate = StyleCache.isUpToDate(cssFileDateList)
+        Swift.print("isUpToDate: " + "\(isUpToDate)")
         //if true then: read the styles from the xml
         //else read and parse styles from the .css files and write a new cache to styles.xml
         //3. continue

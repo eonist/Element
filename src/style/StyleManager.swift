@@ -80,10 +80,11 @@ extension StyleManager{
         
         //1. assert if the styles.xml exists and if it has content 
         let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
-        
-        let cssFileDateList = StyleCache.cssFileDateList(dataXML)
+        Swift.print("stylesXMLExists: " + "\(stylesXMLExists)")
+        let stylesXML:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)
+        let cssFileDateList = StyleCache.cssFileDateList(stylesXML)
         //2. assert if the query url has been cached and assert if the cached css files are all up to date
-        let hasBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, queryURL)
+        let hasBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
         //if true then: read the styles from the xml
         //else read and parse styles from the .css files and write a new cache to styles.xml
         //3. continue

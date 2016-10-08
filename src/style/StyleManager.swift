@@ -90,12 +90,12 @@ extension StyleManager{
             Swift.print("isUpToDate: " + "\(isUpToDate)")
             //if true then: read the styles from the xml
             if(hasURLBeenCached && isUpToDate){
-                StyleCache.readStylesFromDisk(xml)
+                StyleCache.readStylesFromDisk(xml)/*Super fast loading of cached styles*/
             }
             //else read and parse styles from the .css files and write a new cache to styles.xml
             else{
                 let startTime = NSDate()
-                let cssString:String = CSSFileParser.cssString(url)
+                let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/
                 addStyle(cssString)
                 Swift.print("Adding css styles time: " + "\(abs(startTime.timeIntervalSinceNow))")
                 StyleCache.writeStylesToDisk()

@@ -67,8 +67,9 @@ extension StyleManager{
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
     static func addStylesByURL(url:String,_ liveEdit:Bool = false) {
-        let cssString:String = CSSFileParser.cssString(url)
+        
         if(liveEdit){
+            let cssString:String = CSSFileParser.cssString(url)
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
                 let cssString:String = CSSLinkResolver.resolveLinks(cssFiles[url]!)
                 let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
@@ -76,22 +77,36 @@ extension StyleManager{
             }else{/*if the url wasn't in the dictionary, then add it*/
                 cssFiles[url] = cssString//<--im not sure how this works, but it works
             }
+            addStyle(cssString)
+        }else{//not live
+            //1. assert if the styles.xml exists and if it has content
+            let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
+            Swift.print("xmlExists: " + "\(stylesXMLExists)")
+            let xml:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)
+            let cssFileDateList = StyleCache.cssFileDateList(xml)
+            //2. assert if the query url has been cached and assert if the cached css files are all up to date
+            let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
+            Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached)")
+            let isUpToDate = StyleCache.isUpToDate(cssFileDateList)
+            Swift.print("isUpToDate: " + "\(isUpToDate)")
+            //if true then: read the styles from the xml
+            if(hasURLBeenCached && isUpToDate){
+                StyleCache.readStylesFromDisk(xml)
+            }
+                //else read and parse styles from the .css files and write a new cache to styles.xml
+            else{
+                let cssString:String = CSSFileParser.cssString(url)
+                addStyle(cssString)
+            }
+             //3. continue
+            
         }
         
-        //1. assert if the styles.xml exists and if it has content 
-        let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
-        Swift.print("stylesXMLExists: " + "\(stylesXMLExists)")
-        let stylesXML:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)
-        let cssFileDateList = StyleCache.cssFileDateList(stylesXML)
-        //2. assert if the query url has been cached and assert if the cached css files are all up to date
-        let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
-        let isUpToDate = StyleCache.isUpToDate(cssFileDateList)
-        Swift.print("isUpToDate: " + "\(isUpToDate)")
-        //if true then: read the styles from the xml
-        //else read and parse styles from the .css files and write a new cache to styles.xml
-        //3. continue
         
-        addStyle(cssString)
+        
+       
+        
+        
     }
     static func getStyleAt(index:Int)->IStyle{
         return styles[index]

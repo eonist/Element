@@ -77,9 +77,8 @@ class StyleCache {
     /**
      * Read pre-parsed styles
      */
-    static func readStylesFromDisk(){
+    static func readStylesFromDisk(xml:XML){
         let startTime = NSDate()
-        let xml:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)//then try to load this selectors.xml and convert every selector into Selector instancces in an array
         var styles:[IStyle] = []
         Swift.print("xml.children?.count: " + "\(xml.children?.count)")
         let stylesXML:XML = xml.firstNode("styles")!

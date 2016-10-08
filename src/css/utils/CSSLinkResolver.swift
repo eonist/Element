@@ -26,9 +26,9 @@ class CSSLinkResolver {
             let match:NSTextCheckingResult = matches[i]
             //print(i)
             //Swift.print(match.numberOfRanges)
-            let name = RegExp.value(string, match, CSSElementType.name.rawValue)
+            let name = match.value(string, CSSElementType.name.rawValue)
             //Swift.print("Name: " + name)
-            let value = (string as NSString).substringWithRange(match.rangeAtIndex(CSSElementType.value.rawValue))
+            let value = match.value(string, CSSElementType.value.rawValue)
             //Swift.print("Value: " + value)
             let replacementString:String = Utils.replaceLinks(value,name,string)
             //Swift.print("Result: " + replacementString)

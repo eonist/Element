@@ -77,6 +77,14 @@ extension StyleManager{
                 cssFiles[url] = cssString//<--im not sure how this works, but it works
             }
         }
+        
+        //1. assert if the styles.xml exists and if it has content
+        
+        //2. assert if the query url has been cached and assert if the cached css files are all up to date
+        //if true then: read the styles from the xml
+        //else read and parse styles from the .css files and write a new cache to styles.xml
+        //3. continue
+        
         addStyle(cssString)
     }
     static func getStyleAt(index:Int)->IStyle{

@@ -46,4 +46,5 @@ class StyleCache {
         }
         return cssFileDates
     }
+    c
 }

@@ -12,29 +12,29 @@ class StyleManagerUtils{
     static func hashStyle(style:IStyle){
         //when you add styles:
         if(style.selectors.last!.element != ""){
-            if var lastElement = stylesByElement[style.selectors.last!.element]{
-                lastElement.append(style)
+            if (stylesByElement[style.selectors.last!.element] != nil){
+                stylesByElement[style.selectors.last!.element]!.append(style)
             }else{
                 stylesByElement[style.selectors.last!.element] = [style]
             }
         }
         if(style.selectors.last!.id != ""){
-            if var lasId = stylesByID[style.selectors.last!.id]{
-                lasId.append(style)
+            if (stylesByID[style.selectors.last!.id] != nil){
+                stylesByID[style.selectors.last!.id]!.append(style)
             }else{
                 stylesByID[style.selectors.last!.id] = [style]
             }
         }
         if(style.selectors.last!.classIds.count > 0){//temp solution, you need to flatten the classIds somehow, or test individual etc
-            if var firstClassId = stylesByClassId[style.selectors.last!.classIds.first!]{
-                firstClassId.append(style)
+            if (stylesByClassId[style.selectors.last!.classIds.first!] != nil){
+                stylesByClassId[style.selectors.last!.classIds.first!]!.append(style)
             }else{
                 stylesByClassId[style.selectors.last!.classIds.first!] = [style]
             }
         }
         if(style.selectors.last!.states.count > 0){//temp solution, you need to flatten the states somehow, or test individual etc
-            if var firstState = stylesByState[style.selectors.last!.states.first!] {
-                firstState.append(style)
+            if (stylesByState[style.selectors.last!.states.first!] != nil){
+                stylesByState[style.selectors.last!.states.first!]!.append(style)
             }else{
                 stylesByState[style.selectors.last!.states.first!] = [style]
             }

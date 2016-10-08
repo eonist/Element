@@ -46,13 +46,13 @@ class StyleManager{
      * Adds a style to the styleManager class
      * @param style: IStyle
      */
-    class func addStyle(style:IStyle){
+    static func addStyle(style:IStyle){
         styles.append(style)
     }
     /**
      *
      */
-    class func removeStyle(name:String) -> IStyle? {
+    static func removeStyle(name:String) -> IStyle? {
         let numOfStyles:Int = styles.count;
         for (var i : Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice2(i,1)[0]}}
         return nil
@@ -61,7 +61,7 @@ class StyleManager{
      * Locates and returns a Style by the @param name.
      * @return a Style
      */
-    class func getStyle(name:String)->IStyle?{
+    static func getStyle(name:String)->IStyle?{
         let numOfStyles:Int = styles.count;
         for(var i:Int = 0;i < numOfStyles;i++) {if((styles[i] as IStyle).name == name) {return styles[i]}}
         return nil
@@ -72,21 +72,21 @@ extension StyleManager{
     /**
      * Adds every style in a styleCollection to the stylemanager
      */
-    class func addStyle(styles:Array<IStyle>){
+    static func addStyle(styles:Array<IStyle>){
         if(isHashingStyles){styles.forEach{StyleManagerUtils.hashStyle($0)}}
         self.styles += styles/*<- concats*/
     }
     /**
      * Removes styles
      */
-    class func removeStyle(styles:Array<IStyle>){
+    static func removeStyle(styles:Array<IStyle>){
         for style in styles{removeStyle(style.name)}
     }
     /**
      * Adds styles by parsing @param string (the string must comply to the Element css syntax)
      * // :TODO: add support for css import statement in the @param string
      */
-    class func addStyle(var cssString:String){
+    static func addStyle(var cssString:String){
         cssString = CSSLinkResolver.resolveLinks(cssString)
         cssString = RegExpModifier.removeComments(cssString)
         addStyle(/*&styleTree,*/CSSParser.styleCollection(cssString).styles)
@@ -95,7 +95,7 @@ extension StyleManager{
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
      * @Note to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
-    class func addStylesByURL(url:String,_ liveEdit:Bool = false) {
+    static func addStylesByURL(url:String,_ liveEdit:Bool = false) {
         let cssString:String = CSSFileParser.cssString(url)
         if(liveEdit){
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
@@ -108,7 +108,7 @@ extension StyleManager{
         }
         addStyle(cssString)
     }
-    class func getStyleAt(index:Int)->IStyle{
+    static func getStyleAt(index:Int)->IStyle{
         return styles[index]
     }
 }

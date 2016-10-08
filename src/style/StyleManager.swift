@@ -99,9 +99,9 @@ extension StyleManager{
         let cssString:String = CSSFileParser.cssString(url)
         if(liveEdit){
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
-                let cssString = CSSLinkResolver.resolveLinks(cssFiles[url]!)
-                let styles = CSSParser.styleCollection(cssString).styles
-                removeStyle(styles)/*if it does then remove the styles that it represents*/
+                let cssString:String = CSSLinkResolver.resolveLinks(cssFiles[url]!)
+                let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
+                removeStyle(styles)/*if url exists it does then remove the styles that it represents*/
             }else{/*if the url wasn't in the dictionary, then add it*/
                 cssFiles[url] = cssString
             }

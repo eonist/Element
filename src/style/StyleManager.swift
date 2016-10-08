@@ -9,7 +9,7 @@ class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]
     static var styles:Array<IStyle> = []
     static var styleTree:[String:Any] = [:]
-    static var isHashingStyles:Bool = false/*enable this if you want to hash the styles (beta)*/
+    static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
     /**
      * Adds @param styles to @param styleTree
      */

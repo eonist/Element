@@ -4,7 +4,7 @@ class StyleCache {
     /**
      * Asserts if the cssFiles that are cached have the same modified date as the cssFile that are querried
      */
-    static func isUpToDate(cssFileDateList:[String:String]) -> Bool{
+    static func isUpToDate(cssFileDateList:[String:String])->Bool{
         for (filePath,date) in cssFileDateList{
             let filePath:String = filePath
             let modificationDate:String = String(FileParser.modificationDate(filePath.tildePath).timeIntervalSince1970)

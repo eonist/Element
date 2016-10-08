@@ -78,9 +78,11 @@ extension StyleManager{
             }
         }
         
-        //1. assert if the styles.xml exists and if it has content
+        //1. assert if the styles.xml exists and if it has content 
         
+        let cssFileDateList = StyleCache.cssFileDateList(dataXML)
         //2. assert if the query url has been cached and assert if the cached css files are all up to date
+        let hasBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, queryURL)
         //if true then: read the styles from the xml
         //else read and parse styles from the .css files and write a new cache to styles.xml
         //3. continue

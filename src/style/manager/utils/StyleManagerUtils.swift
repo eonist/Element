@@ -10,7 +10,6 @@ class StyleManagerUtils{
      * NOTE: Using if let wont work on the code bellow
      */
     static func hashStyle(style:IStyle){
-        //when you add styles:
         if(style.selectors.last!.element != ""){
             if (stylesByElement[style.selectors.last!.element] != nil){
                 stylesByElement[style.selectors.last!.element]!.append(style)

@@ -20,7 +20,7 @@ class CSSFileParser {
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)
         //Swift.print("importsAndStyles.imports: " + "\(importsAndStyles.imports)")
         let importStrings:Array<String> = CSSFileParser.importStrings(importsAndStyles.imports)
-        let path:String = StringParser.path(url)
+        let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         //Swift.print("path: " + "\(path)")
         var cssString:String = ""
         for importString in importStrings{cssString += CSSFileParser.cssString(path + importString)}// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url

@@ -46,5 +46,16 @@ class StyleCache {
         }
         return cssFileDates
     }
-    c
+    /**
+     *
+     */
+    static func hasFileBeenCached(cssFileDateList:[String:String], _ filePath:String)->Bool{
+        var hasBeenCached:Bool = false
+        cssFileDateList.forEach{
+            if($0.0 == filePath){
+                hasBeenCached = true
+            }
+        }
+        return hasBeenCached
+    }
 }

@@ -40,13 +40,13 @@ class StyleCache {
     static func readStylesFromDisk(xml:XML){
         let startTime = NSDate()
         var styles:[IStyle] = []
-        Swift.print("xml.children?.count: " + "\(xml.children?.count)")
+        //Swift.print("xml.children?.count: " + "\(xml.children?.count)")
         let stylesXML:XML = xml.firstNode("styles")!
         stylesXML.children?.forEach{
             let style:Style? = Style.unWrap($0 as! XML)
             if(style != nil) {styles.append(style!)}
         }
-        Swift.print("styles.count: " + "\(styles.count)")//then check the count
+        //Swift.print("styles.count: " + "\(styles.count)")//then check the count
         Swift.print("parse xml time: " + "\(abs(startTime.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
         let startTime2 = NSDate()
         StyleManager.addStyle(styles)

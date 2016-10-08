@@ -1,18 +1,6 @@
 import Foundation
-
+/*Parser*/
 class StyleCache {
-    /**
-     * Asserts if the cssFiles that are cached have the same modified date as the cssFile that are querried
-     */
-    static func isUpToDate(cssFileDateList:[String:String])->Bool{
-        for (filePath,date) in cssFileDateList{
-            let filePath:String = filePath
-            let modificationDate:String = String(FileParser.modificationDate(filePath.tildePath).timeIntervalSince1970)
-            let cachedModificationDate:String = date
-            if(cachedModificationDate != modificationDate){return false}
-        }
-        return true
-    }
     /**
      * Compiles a list of css files derived from an xml
      */
@@ -47,36 +35,6 @@ class StyleCache {
         return cssFileDates
     }
     /**
-     *
-     */
-    static func hasFileBeenCached(cssFileDateList:[String:String], _ filePath:String)->Bool{
-        var hasBeenCached:Bool = false
-        cssFileDateList.forEach{
-            if($0.0 == filePath){
-                hasBeenCached = true
-            }
-        }
-        return hasBeenCached
-    }
-    /**
-     * 
-     */
-    static func writeStylesToDisk(){
-        let data:XML = "<data></data>".xml
-        let cssFileDates:XML = StyleCache.cssFileDates()
-        data.appendChild(cssFileDates)
-        let styles:XML = "<styles></styles>".xml
-        //Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
-        StyleManager.styles.forEach{
-            let xml = Reflection.toXML($0)
-            styles.appendChild(xml)
-            //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
-        }
-        data.appendChild(styles)
-        let contentToWriteToDisk = data.XMLString
-        FileModifier.write("~/Desktop/styles.xml".tildePath, contentToWriteToDisk)
-    }
-    /**
      * Read pre-parsed styles
      */
     static func readStylesFromDisk(xml:XML){
@@ -93,6 +51,53 @@ class StyleCache {
         let startTime2 = NSDate()
         StyleManager.addStyle(styles)
         Swift.print("addStyle time: " + "\(abs(startTime2.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
-        
+    }
+}
+/*Asserter*/
+extension StyleCache{
+    /**
+     * Asserts if the cssFiles that are cached have the same modified date as the cssFile that are querried
+     */
+    static func isUpToDate(cssFileDateList:[String:String])->Bool{
+        for (filePath,date) in cssFileDateList{
+            let filePath:String = filePath
+            let modificationDate:String = String(FileParser.modificationDate(filePath.tildePath).timeIntervalSince1970)
+            let cachedModificationDate:String = date
+            if(cachedModificationDate != modificationDate){return false}
+        }
+        return true
+    }
+    /**
+     *
+     */
+    static func hasFileBeenCached(cssFileDateList:[String:String], _ filePath:String)->Bool{
+        var hasBeenCached:Bool = false
+        cssFileDateList.forEach{
+            if($0.0 == filePath){
+                hasBeenCached = true
+            }
+        }
+        return hasBeenCached
+    }
+}
+/*Modifier*/
+extension StyleCache{
+    /**
+     *
+     */
+    static func writeStylesToDisk(){
+        let data:XML = "<data></data>".xml
+        let cssFileDates:XML = StyleCache.cssFileDates()
+        data.appendChild(cssFileDates)
+        let styles:XML = "<styles></styles>".xml
+        //Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
+        StyleManager.styles.forEach{
+            let xml = Reflection.toXML($0)
+            styles.appendChild(xml)
+            //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
+        }
+        data.appendChild(styles)
+        let contentToWriteToDisk = data.XMLString
+        FileModifier.write("~/Desktop/styles.xml".tildePath, contentToWriteToDisk)
     }
 }

@@ -67,7 +67,6 @@ extension StyleManager{
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
     static func addStylesByURL(url:String,_ liveEdit:Bool = false) {
-        
         if(liveEdit){
             let cssString:String = CSSFileParser.cssString(url)
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
@@ -97,8 +96,9 @@ extension StyleManager{
             else{
                 let cssString:String = CSSFileParser.cssString(url)
                 addStyle(cssString)
+                StyleCache.writeStylesToDisk()
             }
-        }  
+        }
     }
     static func getStyleAt(index:Int)->IStyle{
         return styles[index]

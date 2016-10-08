@@ -7,7 +7,7 @@ class StyleManagerUtils{
     static var stylesByState:Dictionary<String,[IStyle]> = [:]
     /**
      * We hash the tail of the style selectors
-     * TODO: Use if let to make this method smaller
+     * NOTE: Using if let wont work on the code bellow
      */
     static func hashStyle(style:IStyle){
         //when you add styles:

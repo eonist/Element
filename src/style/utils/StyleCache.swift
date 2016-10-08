@@ -58,7 +58,9 @@ class StyleCache {
         }
         return hasBeenCached
     }
-    
+    /**
+     * 
+     */
     static func writeStylesToDisk(){
         let data:XML = "<data></data>".xml
         let cssFileDates:XML = StyleCache.cssFileDates()

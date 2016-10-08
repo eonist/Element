@@ -8,7 +8,7 @@ class CSSFileParser {
      * NOTE: this method is recursive
      * NOTE: this method also removes any comments (the reason it must be located within the recursive method is because comments may be among the import statements aswell)
      * NOTE: alternative method name: cssStringByURL
-     * PARAM: url The url to load the css file from
+     * PARAM: url The url to load the css file from (must include the path + file-name + file-extension)
      * PARAM: cssString the recursive string passed down the hierarchy
      */
     static func cssString(url:String)->String {
@@ -23,7 +23,7 @@ class CSSFileParser {
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         //Swift.print("path: " + "\(path)")
         var cssString:String = ""
-        for importString in importStrings{cssString += CSSFileParser.cssString(path + importString)}// :TODO: make an if clause tha makes sure it doesnt import it self like path+import != url
+        for importString in importStrings{cssString += CSSFileParser.cssString(path + importString)}// :TODO: make an if clause that makes sure it doesn't import it self like path+import != url
         cssString += importsAndStyles.style
         return cssString
     }

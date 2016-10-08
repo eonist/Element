@@ -4,6 +4,7 @@ import Foundation
  * EXAMPLE: print("StyleManager.getInstance().getStyle(Button): " + StyleManager.getInstance().getStyle("someText").getPropertyNames());//prints style names
  * // :TODO:  Could potentially extend StyleCollection and just implimnet the extra functions in this class?!?
  * // :TODO: This class can be a struct
+ * TODO: the tail trick could possibly be even faster if you sorted the hashed styles and used a halfed algo when querrying (but its a dictionary so maybe not, maybe if you stored it in an array etc)
  */
 class StyleManager{
     static var cssFiles:Dictionary<String,String> = [:]

@@ -21,6 +21,7 @@ class TitleView:CustomView{
         css +=     "line-alpha:0;"
         css +=     "line-thickness:0px;"
         css +=     "background:true;"
+        css +=     "padding-top:8px;"
         css += "}"
         css += "TextArea#winTitle Text{"
         css +=     "width:100%;"

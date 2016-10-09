@@ -1,8 +1,9 @@
 import Foundation
 
 class StyleResolver{
-    static var isStoringSelectors:Bool = false// this will be isStoringStyles in the future
-    static var styleLookUpCount:Int = 0
+    static var isStoringSelectors:Bool = false// This variable is for optimization debugging and can be deleted or commented out later
+    static var selectorsString:String = ""// This variable is for optimization debugging and can be deleted or commented out later
+    static var styleLookUpCount:Int = 0// This variable is for optimization debugging and can be deleted or commented out later
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
@@ -13,13 +14,13 @@ class StyleResolver{
         if(isStoringSelectors){
             var selectorsXMLString:String = ""
             querySelectors.forEach{selectorsXMLString += Reflection.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
-            AppDelegate.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
+            StyleResolver.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
         }
         return style(querySelectors,element)
     }
     /**
      * NOTE: Parsing 192 elements with Basic styles with The tail trick: 0.00551801919937134 and w/o: 0.156262040138245 thats a 30x time difference, which is important when you parse lots of items and lots of styles
-     * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the tail trick
+     * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
     class func style(querySelectors:[ISelector],_ element:IElement?)->IStyle{
         var weightedStyles:Array<WeightedStyle> = []

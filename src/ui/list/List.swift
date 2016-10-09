@@ -12,7 +12,7 @@ import Cocoa
  * // :TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List:Element,IList{
-    var itemHeight:CGFloat
+    var itemHeight:CGFloat = 102
     var dataProvider : DataProvider
     var lableContainer  : Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {

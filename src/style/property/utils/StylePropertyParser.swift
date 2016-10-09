@@ -303,9 +303,9 @@ private class Utils{
             let matches = stringValue.matches(pattern)
             //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
-                let valStr:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1//<-- use RegExp.value here
-                let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1<-- use RegExp.value here
-                let valNum =  CGFloat(Double(valStr as! String)!)//TODO:do: .cgFloat instead
+                let valStr:Any = match.value(stringValue, 1)//capturing group 1
+                let suffix:String = match.value(stringValue, 2)//capturing group 1
+                let valNum:CGFloat = CGFloat(Double(valStr as! String)!)//TODO:do: .cgFloat instead
                 if(suffix == "%") {
                     //Swift.print("Suffix is %")
                     let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/

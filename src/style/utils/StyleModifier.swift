@@ -18,7 +18,7 @@ class StyleModifier {
     class func overrideStyleProperty(inout style:IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
         let stylePropertiesLength:Int = style.styleProperties.count;
         for (var i:Int=0; i<stylePropertiesLength; i++) { // :TODO: use for each
-            if((style.styleProperties[i] as IStyleProperty).name == styleProperty.name){
+            if(style.styleProperties[i].name == styleProperty.name){
                 style.styleProperties[i] = styleProperty
                 break//was return
             }
@@ -40,7 +40,7 @@ class StyleModifier {
             if(matchIndex != -1){//asserts true if styleProperty exist in both styles
                 a.styleProperties[matchIndex] = stylePropB//styleProperty already exist so overide it
             }else{
-                StyleModifier.append(&a,stylePropB)//doesnt exist so just add the style prop
+                StyleModifier.append(&a,stylePropB)//doesn't exist so just add the style prop
             }
         }
     }

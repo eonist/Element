@@ -242,19 +242,19 @@ private class Utils{
         var ratioValue:Double = Double.NaN
         if(RegExp.test(ratio,"\\d{1,3}%")){//i.e: 100%
             ratio = RegExp.match(ratio,"\\d{1,3}")[0]
-            ratioValue = Double(ratio)! / 100 /** 255*/
-        }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = Double(ratio)! /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+            ratioValue = ratio.double / 100 /** 255*/
+        }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = ratio.double /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         return ratioValue
     }
     /**
-     *
+     * TODO: We should use CGFloat here not Double
      */
     class func alpha(var alpha:String)->Double{
         var alphaValue:Double = 1
         if(RegExp.test(alpha,"\\d{1,3}%")){/*i.e: 100%*/
             alpha = RegExp.match(alpha,"\\d{1,3}")[0]
-            alphaValue = Double(alpha)!/100
-        }else if(RegExp.test(alpha,"\\d\\.\\d{1,3}|\\d")) {alphaValue = Double(alpha)!}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+            alphaValue = alpha.double/100
+        }else if(RegExp.test(alpha,"\\d\\.\\d{1,3}|\\d")) {alphaValue = alpha.double}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         else if(RegExp.test(alpha,"^$")) {alphaValue = 1}//no value present
         return alphaValue
     }

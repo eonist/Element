@@ -201,9 +201,9 @@ private class Utils{
             for match:NSTextCheckingResult in matches {
                 //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
                 //let content = RegExp.value(property, match, 0)//the entire match
-                let color:String = RegExp.value(property, match, 1)
+                let color:String = match.value(property,1)
                 //Swift.print("color: " + color)
-                let alpha:String = RegExp.value(property, match, 2)
+                let alpha:String = match.value(property, 2)
                 //Swift.print("alpha: " + alpha)
                 let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat
                 //Swift.print("alphaVal: " + "\(alphaVal)")

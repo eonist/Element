@@ -19,11 +19,11 @@ class StyleCollection:IStyleCollection{
     func addStyle(style:IStyle){
         for var styleItem in styles {
             if(styleItem.name == style.name) {/*if there are duplicates merge them*/
-                StyleModifier.combine(&styleItem, style)//<--was merge
+                StyleModifier.combine(&styleItem, style)//<--was merge, but styles that comes later in the array with the same name should hard-override properties, not soft-override like it was previously
                 return//you can also do break
             }
         }
-        styles.append(style);
+        styles.append(style)
     }
     /**
      * TODO: One Could change this to return nothing

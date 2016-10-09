@@ -49,7 +49,6 @@ private class Utils {
         //var index:Int = 0
         var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
-            //Swift.print(match.numberOfRanges)
             if(match.numberOfRanges > 0){/*match = the link name>*/
                 var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
                 range.location = range.location + difference
@@ -73,9 +72,7 @@ private class Utils {
      */
     class func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
-        //print("pattern: " + pattern)
         var match:Array = RegExp.match(string, pattern)
-        //print("value.match: " + match[0])
         if(match.count > 0){/*this try catch method is here so its easier to debug which linkName threw */
             let matchString:String =  match[0]
             return value(matchString,propertyName)

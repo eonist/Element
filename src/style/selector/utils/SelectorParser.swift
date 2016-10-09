@@ -61,17 +61,17 @@ class SelectorParser{
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         var selectorElement:String = ""
         for match:NSTextCheckingResult in matches {
-            selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? RegExp.value(string, match, 1) : ""
+            selectorElement = (match.rangeAtIndex(1).location != NSNotFound) ? match.value(string, 1) : ""
             func classIds()->[String]{
                 if match.rangeAtIndex(2).location != NSNotFound {
-                    let classIds:String = RegExp.value(string, match, 2)
+                    let classIds:String = match.value(string, 2)
                     return classIds.containsString(" ") ? StringModifier.split(classIds, " ") : [classIds]
                 }else{
                     return []
                 }
             }
             let selectorClassIds:[String] = classIds()
-            let selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? RegExp.value(string, match, 3) : ""
+            let selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? match.value(string, 3) : ""
             
             func states()->[String]{
                 if match.rangeAtIndex(4).location != NSNotFound {

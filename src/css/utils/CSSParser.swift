@@ -18,21 +18,16 @@ class CSSParser{
     class func styleCollection(cssString:String)->IStyleCollection{
         //Swift.print("CSSParser.styleCollection()")
         let styleCollection:IStyleCollection = StyleCollection();
-        //Swift.print(CSSElementPattern)
-        let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;        
-        //Swift.print(matches.count)
+        let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
-            //Swift.print( match.numberOfRanges)
-            let styleName:String = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//name
-            //Swift.print("styleName: " + styleName)
-            let value:String =  (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//value
-            //Swift.print("value: " + value)
+            let styleName:String = match.value(cssString, 1)//name
+            let value:String = match.value(cssString, 2)//value
             if(StringAsserter.contains(styleName, ",") == false){
                 let style:IStyle = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style);/*If the styleName has 1 name*/
             }else{
                 let siblingStyles:Array<IStyle> = Utils.siblingStyles(styleName, value)
-                styleCollection.addStyles(siblingStyles);/*If the styleName has multiple comma-seperated names*/
+                styleCollection.addStyles(siblingStyles)/*If the styleName has multiple comma-seperated names*/
             }
         }
         return styleCollection
@@ -51,11 +46,8 @@ class CSSParser{
         let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
-            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-            let propertyName:String = (value as NSString).substringWithRange(match.rangeAtIndex(1))//name
-            //Swift.print("propertyName: "+propertyName)
-            let propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
-            //Swift.print("propertyValue: "+propertyValue)
+            let propertyName:String = match.value(value, 1)//name
+            let propertyValue:String = match.value(value, 2)//value
             let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
             style.addStyleProperties(styleProperties)
         }
@@ -108,18 +100,11 @@ private class Utils{
         let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         //Swift.print("matches: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {
-            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             if(match.numberOfRanges > 0){
-                //var theMatchString = (styleName as NSString).substringWithRange(match.rangeAtIndex(0))
-                //Swift.print("theMatchString: " + theMatchString)
-                var prefix:String = (styleName as NSString).substringWithRange(match.rangeAtIndex(1))
-                //Swift.print("prefix: " + prefix)
+                var prefix:String = match.value(styleName,1)
                 prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix) : prefix;
-                let group:String =  (styleName as NSString).substringWithRange(match.rangeAtIndex(2))
-                //Swift.print("group: " + group)
-                //Swift.print("match.rangeAtIndex(3): " + "\(match.rangeAtIndex(3))")
-                var suffix:String = (styleName as NSString).substringWithRange(match.rangeAtIndex(3))
-                //Swift.print("suffix: " + suffix)
+                let group:String =  match.value(styleName,2)
+                var suffix:String = match.value(styleName,3)
                 suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix
                 if(group == "") {
                     sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
@@ -138,7 +123,6 @@ private class Utils{
                     }
                 }
             }
-            //Swift.print( match.numberOfRanges)
         }
         return sibblingStyles
     }

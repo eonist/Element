@@ -19,7 +19,7 @@ class StyleCollection:IStyleCollection{
     func addStyle(style:IStyle){
         for var styleItem in styles {
             if(styleItem.name == style.name) {/*if there are duplicates merge them*/
-                StyleModifier.merge(&styleItem, style);
+                StyleModifier.merge(&styleItem, style)
                 return//you can also do break
             }
         }

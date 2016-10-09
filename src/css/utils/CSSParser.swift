@@ -100,9 +100,7 @@ private class Utils{
         let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         //Swift.print("matches: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {
-            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
             if(match.numberOfRanges > 0){
-                //var theMatchString = (styleName as NSString).substringWithRange(match.rangeAtIndex(0))
                 var prefix:String = match.value(styleName,1)
                 prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix) : prefix;
                 let group:String =  match.value(styleName,2)

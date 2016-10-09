@@ -23,9 +23,9 @@ class CSSParser{
         //Swift.print(matches.count)
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             //Swift.print( match.numberOfRanges)
-            let styleName:String = (cssString as NSString).substringWithRange(match.rangeAtIndex(1))//name
+            let styleName:String = match.value(cssString, 1)//name
             //Swift.print("styleName: " + styleName)
-            let value:String =  (cssString as NSString).substringWithRange(match.rangeAtIndex(2))//value
+            let value:String = match.value(cssString, 1)//value
             //Swift.print("value: " + value)
             if(StringAsserter.contains(styleName, ",") == false){
                 let style:IStyle = CSSParser.style(styleName,value)
@@ -51,11 +51,8 @@ class CSSParser{
         let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
-            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-            let propertyName:String = (value as NSString).substringWithRange(match.rangeAtIndex(1))//name
-            //Swift.print("propertyName: "+propertyName)
-            let propertyValue:String = (value as NSString).substringWithRange(match.rangeAtIndex(2))//value
-            //Swift.print("propertyValue: "+propertyValue)
+            let propertyName:String = match.value(value, 1)//name
+            let propertyValue:String = match.value(value, 2)//value
             let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
             style.addStyleProperties(styleProperties)
         }

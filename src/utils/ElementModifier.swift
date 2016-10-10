@@ -33,7 +33,7 @@ class ElementModifier {
     class func refresh(element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
-        container.subviews.forEach{
+        container.subviews.forEach{//<- we could do a .filter here and assert is IElement
             let child:NSView = $0
             if(child is IElement) {
                 method(child as! IElement)

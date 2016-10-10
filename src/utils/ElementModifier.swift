@@ -37,8 +37,7 @@ class ElementModifier {
         container.subviews.forEach{//<- we could do a .filter here and assert is IElement
             let child:NSView = $0
             if(child is IElement) {
-                if(child.subviews.count == 0) {method(child as! IElement)}//dont refresh
-                if(child.subviews.count > 0) {refresh(child as! IElement,method)}/*<--this line makes it recursive*/
+                refresh(child as! IElement,method)/*<--this line makes it recursive*/
             }
         }
     }

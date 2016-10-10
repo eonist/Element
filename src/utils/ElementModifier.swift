@@ -32,11 +32,12 @@ class ElementModifier {
      */
     class func refresh(element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
+        method(element)
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
         container.subviews.forEach{//<- we could do a .filter here and assert is IElement
             let child:NSView = $0
             if(child is IElement) {
-                method(child as! IElement)
+                if(child.subviews.count == 0) {method(child as! IElement)}//dont refresh
                 if(child.subviews.count > 0) {refresh(child as! IElement,method)}/*<--this line makes it recursive*/
             }
         }

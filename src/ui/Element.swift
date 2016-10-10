@@ -48,6 +48,7 @@ class Element:InteractiveView2,IElement {
      * NOTE: you cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
      */
     func setSkinState(state:String) {
+        Swift.print("\(self.dynamicType)" + ".setSkinState() skinState: " + "\(state)")
         skin!.setSkinState(state)
     }
     /**

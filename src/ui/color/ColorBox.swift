@@ -18,7 +18,7 @@ class ColorBox:Button,IColorInput{
         //Swift.print("styleProperty: " + "\(styleProperty)")
         //Swift.print("color.hex: " + "\(color.hexString)")
         if(styleProperty != nil){//temp
-            styleProperty!.value = ("0x" + color.hexString).uint
+            styleProperty!.value = color//("0x" + color.hexString).uint
             skin!.setStyle(style)/*updates the skin*/
         }
     }

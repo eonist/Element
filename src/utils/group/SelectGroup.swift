@@ -18,15 +18,12 @@ class SelectGroup:EventSender{
         addSelectables(selectables)
     }
     func addSelectables(selectables:Array<ISelectable>){
-        //Swift.print("SelectGroup.addSelectables()")
         for item : ISelectable in selectables {addSelectable(item)}
     }
     /**
      * @Note use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
-        //Swift.print("SelectGroup.addSelectable()")
-        //let anyObj:AnyObject = selectable
         if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
         selectables.append(selectable)
     }

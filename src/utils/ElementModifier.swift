@@ -12,15 +12,9 @@ class ElementModifier {
         styleProperty != nil ? styleProperty!.value = display : element.skin!.style!.addStyleProperty(StyleProperty("display", display))
         element.skin!.setStyle(element.skin!.style!)
     }
-    /**
-     *
-     */
     class func hideAll(elements:Array<IElement>,_ exception:IElement) {
         for element : IElement in elements {ElementModifier.hide(element, (element === exception))}  
     }
-    /**
-     *
-     */
     class func hideChildren(view:NSView,_ exception:IElement) {
         let elements:Array<IElement> = ElementParser.children(view,IElement.self)
         hideAll(elements, exception)
@@ -60,7 +54,6 @@ class ElementModifier {
      * @Note i.e: after hideing of an element, or changing the depth order etc
      */
     class func floatChildren(view:NSView) {
-        //Swift.print("ElementModifier.floatChildren()")
         view.subviews.forEach{
             if($0 is IElement) {
                 //Swift.print("text: " + "\((child as! SelectTextButton).getText())")

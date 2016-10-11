@@ -16,7 +16,7 @@ class ElementParser{
         //Swift.print("ElementParser.selectors()")
         let elements:Array<IElement> = ArrayModifier.append(parents(element),element)
         var selectors:Array<ISelector> = []
-        for e:IElement in elements { selectors.append(selector(e)) }
+        elements.forEach {selectors.append(selector($0))}
         return selectors
     }
     /**

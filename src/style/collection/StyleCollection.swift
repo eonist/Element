@@ -5,6 +5,8 @@ import Foundation
 */
 class StyleCollection:IStyleCollection{
     var styles:Array<IStyle> = []//use obj instead?
+}
+extension StyleCollection{
     /**
      * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
      * @Note the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex

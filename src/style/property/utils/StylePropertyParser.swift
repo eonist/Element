@@ -1,5 +1,5 @@
 import Cocoa
-
+//we query with skin because we need to access element in the metrics method
 class StylePropertyParser{
     /**
      * Returns a property from @param skin and @param property

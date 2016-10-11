@@ -35,9 +35,8 @@ class ElementModifier {
         method(element)
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
         container.subviews.forEach{//<- we could do a .filter here and assert is IElement
-            let child:NSView = $0
-            if(child is IElement) {
-                refresh(child as! IElement,method)/*<--this line makes it recursive*/
+            if($0 is IElement) {
+                refresh($0 as! IElement,method)/*<--this line makes it recursive*/
             }
         }
     }
@@ -52,10 +51,8 @@ class ElementModifier {
      * // :TODO: rename to Resize, its less ambigiouse
      */
     class func size(view:NSView,_ size:CGPoint) {
-        let numChildren:Int = view.subviews.count;
-        for (var i : Int = 0; i < numChildren; i++) {
-            let child:NSView = view.getSubviewAt(i)
-            if(child is IElement) {(child as! IElement).setSize(size.x, size.y)}
+        view.subviews.forEach{
+            if($0 is IElement) {($0 as! IElement).setSize(size.x, size.y)}
         }
     }
     /**
@@ -64,12 +61,10 @@ class ElementModifier {
      */
     class func floatChildren(view:NSView) {
         //Swift.print("ElementModifier.floatChildren()")
-        let numChildren:Int = view.subviews.count;
-        for (var i : Int = 0; i < numChildren; i++) {
-            let child:NSView = view.subviews[i]
-            if(child is IElement) {
+        view.subviews.forEach{
+            if($0 is IElement) {
                 //Swift.print("text: " + "\((child as! SelectTextButton).getText())")
-                SkinModifier.float((child as! IElement).skin!)
+                SkinModifier.float(($0 as! IElement).skin!)
             }
         }
     }

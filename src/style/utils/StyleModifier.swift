@@ -56,7 +56,7 @@ class StyleModifier {
         Swift.print("--------")
         StyleParser.describe(b)
         Swift.print("----end----")*/
-        for stylePropB : IStyleProperty in b.styleProperties {
+        for stylePropB:IStyleProperty in b.styleProperties {
             var hasStyleProperty:Bool = false;
             for stylePropA : IStyleProperty in a.styleProperties {
                 if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
@@ -76,9 +76,9 @@ class StyleModifier {
     class func filter(style:IStyle,_ filter:Array<String>)->IStyle {
         var styleProperties:Array<IStyleProperty> = []
         for (var i : Int = 0; i < style.styleProperties.count; i++) {
-            if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {styleProperties.append((style.styleProperties[i] as IStyleProperty))}/*we only keep items that are in both arrays*/
+            if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {styleProperties.append(style.styleProperties[i])}/*we only keep items that are in both arrays*/
         }
-        return Style(style.name,style.selectors,styleProperties);
+        return Style(style.name,style.selectors,styleProperties)
     }
     /**
      * Adds @param styleProperty to the end of the @param style.styleProperties array

@@ -15,7 +15,7 @@ class CheckGroup:EventSender {
         self.checked = checked!
     }
     func addCheckables(checkables:Array<ICheckable>) {
-        for checkable : ICheckable in checkables{ addCheckable(checkable)}
+        for checkable:ICheckable in checkables{ addCheckable(checkable)}
     }
     /**
      * NOTE: use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view

@@ -18,7 +18,7 @@ class SelectGroup:EventSender{
         addSelectables(selectables)
     }
     func addSelectables(selectables:Array<ISelectable>){
-        for item : ISelectable in selectables {addSelectable(item)}
+        selectables.forEach{addSelectable($0)}
     }
     /**
      * @Note use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view

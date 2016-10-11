@@ -36,7 +36,7 @@ class SelectGroup:EventSender{
             //Swift.print("selected: " + "\(selected)")
             //Swift.print("selectables.count: " + "\(selectables.count)")
             SelectModifier.unSelectAllExcept(selected!, selectables)
-            for s in selectables{ Swift.print("s.isSelected: " + "\(s.getSelected())") }
+            //for s in selectables{ Swift.print("s.isSelected: " + "\(s.getSelected())") }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
         }
         super.onEvent(event)//we dont want to block any event being passed through, so we forward all events right through the SelectGroup

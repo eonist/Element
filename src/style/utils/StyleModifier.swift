@@ -47,7 +47,7 @@ class StyleModifier {
     /**
      * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
      * @Note the prepend method is used because the styleProps that has priority should come later in the array)
-     * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
+     * TODO: you can speed up this method by looping with a  better algo. don't check already checked b's etc
      * TODO: maybe use map or filter to speed this up?
      */
     class func merge(inout a:IStyle,_ b:IStyle){
@@ -57,7 +57,7 @@ class StyleModifier {
         StyleParser.describe(b)
         Swift.print("----end----")*/
         for stylePropB:IStyleProperty in b.styleProperties {
-            var hasStyleProperty:Bool = false;
+            var hasStyleProperty:Bool = false
             for stylePropA : IStyleProperty in a.styleProperties {
                 if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
                     hasStyleProperty = true

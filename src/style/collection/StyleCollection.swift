@@ -1,8 +1,8 @@
 import Foundation
-/*
-* @Note: a datastorage class ("bean") parsing should be done elsewhere!
-* // :TODO: get rid of name?!?
-*/
+/**
+ * @Note: a datastorage class ("bean") parsing should be done elsewhere!
+ * // :TODO: get rid of name?!?
+ */
 class StyleCollection:IStyleCollection{
     var styles:Array<IStyle> = []//use obj instead?
 }

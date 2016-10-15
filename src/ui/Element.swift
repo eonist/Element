@@ -14,8 +14,8 @@ class Element:InteractiveView2,IElement {
     //var y:CGFloat{get{return super.frame.y}set{super.frame.y = newValue}}
     var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
     var skin:ISkin?
-    var parent : IElement?
-    var id : String?/*css selector id*/
+    var parent:IElement?
+    var id:String?/*css selector id*/
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame*/
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent;
@@ -84,22 +84,10 @@ class Element:InteractiveView2,IElement {
 }
 extension Element{
     /**
-     *
+     * 
      */
     convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
         self.init(width,height,parent,id)
         setPosition(CGPoint(x,y))
     }
 }
-/*
-override func updateLayer() {
-Swift.print("updateLayer")
-//resolveSkin()//extension method that draws the graphics
-}
-*/
-//self.layer = CALayer() // Set view to be layer-hosting:
-//self.wantsLayer = true//need for the updateLayer method to be called internally, if set to true the drawRect call wont be called
-//needsDisplay = true
-//layerContentsRedrawPolicy = NSViewLayerContentsRedrawPolicy.OnSetNeedsDisplay //// :TODO: whats this?
-
-//let theLayer:CALayer

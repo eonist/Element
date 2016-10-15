@@ -8,8 +8,8 @@ import Cocoa
  * TODO: The width,height,x,y could be stored in a deeper super class. As its not related to Styling per se
  */
 class Element:InteractiveView2,IElement {
-    var width:CGFloat //{get{return super.frame.width}set{super.frame.width = newValue}}
-    var height:CGFloat //{get{return super.frame.height}set{super.frame.height = newValue}}
+    var width:CGFloat//{get{return super.frame.width}set{super.frame.width = newValue}}
+    var height:CGFloat//{get{return super.frame.height}set{super.frame.height = newValue}}
     //var x:CGFloat{get{return super.frame.x}set{super.frame.x = newValue}}
     //var y:CGFloat{get{return super.frame.y}set{super.frame.y = newValue}}
     var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
@@ -18,8 +18,8 @@ class Element:InteractiveView2,IElement {
     var id:String?/*css selector id*/
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame*/
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
-        self.parent = parent;
-        self.id = id;
+        self.parent = parent
+        self.id = id
         self.width = width
         self.height = height
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
@@ -42,7 +42,7 @@ class Element:InteractiveView2,IElement {
     }
     /**
      * Sets the current state of the button, which determins the current drawing of the skin
-     * TODO: this can be moved to an util class
+     * NOTE: this can't be moved to an util class, as it may need to be over-ridden
      * NOTE: you cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
      */
     func setSkinState(state:String) {
@@ -52,10 +52,9 @@ class Element:InteractiveView2,IElement {
      * Sets the width and height of the skin and this instance.
      */
     func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
-        /*frame.size*/self.width = width//<--im not sure these are correct? i get that we have to store size somewhere but frame is such a central variable fro appkit
-        /*frame.size*/self.height = height
+        self.width = width//<--im not sure these are correct? i get that we have to store size somewhere but frame is such a central variable fro appkit
+        self.height = height
         self.skin!.setSize(width, height)
-        //fatalError("Element.setSize() you dont use frame anymore")
     }
     /**
      * 

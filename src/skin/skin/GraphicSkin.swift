@@ -15,7 +15,7 @@ class GraphicSkin:Skin{
         for (var depth : Int = 0; depth < depthCount; depth++) {
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)
-            /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth);/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit settermethod isnt defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+            SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
         }
     }

@@ -4,7 +4,7 @@ class GraphicSkinParser{
    static var rect:String = "rect"
    static var gradient:String = "gradient"
    static var icon:String = "icon"// :TODO: rename to asset or svgasset or alike (keep in mind that you will need to support png assets soon enough)
-   static var fillet:String = "fillet"// :TODO: rename to ROUNDED?
+   static var fillet:String = "fillet"// :TODO: rename to rounded?
    static var dropshadow:String = "dropshadow"
     /**
      * Configures a GraphicDecoratable instance based on what stylePropertyValues is found in @param skin at @param depth
@@ -22,9 +22,6 @@ class GraphicSkinParser{
     }
 }
 private class Utils{
-    /**
-     *
-     */
     static func baseGraphic(skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle?,_ depth:Int = 0)->IGraphicDecoratable {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);
         //Swift.print("lineOffsetType: top:" + lineOffsetType.top + "  left:" + lineOffsetType.left + " bottom: " + lineOffsetType.bottom + " right: "+lineOffsetType.right)

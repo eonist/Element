@@ -11,6 +11,9 @@ class TitleView:CustomView{
     }
     override func resolveSkin() {
         super.resolveSkin()
+    }
+    override func createTitleBar() {
+        super.createTitleBar()
         textArea = addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))
         textArea!.text?.isInteractive = false/*Disable interactivity on the text*/
     }

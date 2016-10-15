@@ -18,7 +18,7 @@ class TitleView:CustomView{
         textArea!.text?.isInteractive = false/*Disable interactivity on the text*/
     }
     override func mouseDown(event: MouseEvent) {
-        Swift.print("TitleView.mouseDown event.immediate: \(event.immediate)" + " event.origin: \(event.origin)")
+        //Swift.print("TitleView.mouseDown event.immediate: \(event.immediate)" + " event.origin: \(event.origin)")
         if(event.immediate === textArea){
             mouseDownPos = self.winMousePos
             if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMove ) }//we add a global mouse move event listener

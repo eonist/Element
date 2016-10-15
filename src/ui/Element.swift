@@ -27,11 +27,9 @@ class Element:InteractiveView2,IElement {
     }
     /**
      * Draws the graphics
-     * TODO: does nsview have a protocol which IElement then can use
      * NOTE: this method was embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
      */
     func resolveSkin() {
-        //Swift.print("resolveSkin: " + "\(String(self))")
         self.skin = SkinResolver.skin(self)
         self.addSubview(self.skin as! NSView)
     }

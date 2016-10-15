@@ -12,7 +12,7 @@ class TitleView:CustomView{
     override func resolveSkin() {
         super.resolveSkin()
         textArea = addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))
-        textArea!.text?.isInteractive = false
+        textArea!.text?.isInteractive = false/*Disable interactivity on the text*/
     }
     override func mouseDown(event: MouseEvent) {
         Swift.print("TitleView.mouseDown")

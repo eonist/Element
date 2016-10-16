@@ -28,25 +28,16 @@ class List:Element,IList{
     override func resolveSkin() {
         super.resolveSkin()
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        /*let section = *///addSubView(Section(width,height,self))
-        //section
-        //Swift.print("List.dataProvider.items.count: " + "\(dataProvider.items.count)")
-        //lableContainer!.addSubview(Element(20,20,lableContainer!,"box"))
         mergeAt(dataProvider.items, 0)
     }
     /**
      * Creates and adds items to the _lableContainer
      * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
      */
-    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename needed
+    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
         var i:Int = index
-        //Swift.print("mergeAt: index: " + "\(index)")
         for object:Dictionary<String,String> in objects {// :TODO: use for i
-            //Swift.print("getWidth(): " + "\(getWidth())")
-            //Swift.print("self.itemHeight: " + "\(self.itemHeight)")
-            //Swift.print("Title: " + "\(object["title"]!)")
             let item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight ,object["title"]!, false, self.lableContainer)
-            //Swift.print("item: " + "\(item)")
             self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
             i++
         }
@@ -83,18 +74,15 @@ class List:Element,IList{
         }else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
-    /**
-     *
-     */
     override func setSize(width : CGFloat, _ height : CGFloat) {
         super.setSize(width, height);
-        //skin.setState(skin.state);
-        //self.mask.setSize(width, height);
+        //skin.setState(skin.state)
+        //self.mask.setSize(width, height)
         ElementModifier.refresh(lableContainer!)//was --> SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
     }
     /**
      * Returns "List"
-     * @Note This function is used to find the correct class type when synthezing the element cascade
+     * NOTE: This method is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
         return String(List)

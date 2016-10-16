@@ -11,7 +11,7 @@ class TextInput :Element{
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         //isInteractive = true//<-- only the textField should be interactive
         text = addSubView(Text(width,height,textString,self))
         inputTextArea = addSubView(TextArea(width,height,inputString,self))

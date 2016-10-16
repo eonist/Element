@@ -8,7 +8,7 @@ import Cocoa
  * // :TODO: xml should be able to hold a propert named selected="true" and then the cooresponding Item should be selected
  * // :TODO: try to get rid of the lableContainer
  * // :TODO: try to make the mask an Element
- * // :TODO:  MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
+ * // :TODO: MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
  * // :TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List:Element,IList{
@@ -17,7 +17,7 @@ class List:Element,IList{
     var lableContainer  : Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight
-        self.dataProvider = dataProvider != nil ? dataProvider!:DataProvider()//<--this can be shortned with ??
+        self.dataProvider = dataProvider ?? DataProvider()
         super.init(width, height,parent,id)
         self.dataProvider.event = onEvent//Add event handler for the dataProvider
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works*/

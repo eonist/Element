@@ -13,8 +13,11 @@ protocol IList {
  */
 extension IList{
     /*Parsers*/
-    func selected() -> ISelectable?{
+    func selected() -> ISelectable?{/*convenience*/
         return ListParser.selected(self)
+    }
+    func selectedIndex() -> Int{/*convenience*/
+        return ListParser.selectedIndex(self)
     }
     /*Modifiers*/
     func selectAt(index:Int){/*convenience*/

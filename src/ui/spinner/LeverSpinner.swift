@@ -44,12 +44,8 @@ class LeverSpinner : Element{
      */
     func onInputTextChange(event:Event) {
         //Swift.print("onInputTextChange")
-        //continue here: get stepper working, check legacy code, see if val is correct etc. see if you get the correct text
-        
         let valStr:String = textInput!.inputTextArea!.text!.getText()
-        //Swift.print("valStr: " + "\(valStr)")
         val = NumberParser.minMax(CGFloat(Double((valStr))!), minVal, maxVal)
-        //Swift.print("val: " + "\(val)")
         stepper!.value = val
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }

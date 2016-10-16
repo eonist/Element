@@ -33,7 +33,6 @@ class Skin:InteractiveView2,ISkin{
      * Resets skinState
      */
     func draw(){
-        //Swift.print("Skin.draw() refresh the graphics")
         hasStyleChanged = false
         hasSizeChanged = false
         hasStateChanged = false
@@ -49,16 +48,15 @@ class Skin:InteractiveView2,ISkin{
         draw()
     }
     /**
-     * sets the skin state and forces a redraw
+     * Sets the skin state and forces a redraw
      * @Note forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
      * //TODO:rename to set_skinState() and blame swift for the underscore
      * //Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
      */
     func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
-        //Swift.print("Skin.applySkinState")
         hasStateChanged = true
         self.state = state
-        style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isnt a good idea for just a state change, you need some caching system to handle this better*/
+        style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
         draw()
     }
     /**

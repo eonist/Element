@@ -9,7 +9,7 @@ class ListModifier {
         selectAt(list,index)
     }
     /**
-     * Selects an item in the _itemContainer
+     * Selects an item in the itemContainer
      */
     class func selectAt(list:IList,_ index:Int) {
         let selectable:ISelectable = list.lableContainer!.subviews[index] as! ISelectable;

@@ -21,7 +21,7 @@ class CheckBoxButton:Button,ICheckable{
     func setChecked(isChecked:Bool) {
         checkBox!.setChecked(isChecked)
     }
-    override func onEvent(event:Event) {
+    override func onEvent(event:Event) {//TODO: you could remove this method, as it doesnt add any functionality
         super.onEvent(event)/*Forwards the event*/
     }
     func getChecked() -> Bool {

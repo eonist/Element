@@ -2,10 +2,10 @@ import Foundation
 /**
  * TODO: Implement a way to also include the text in being in a checked status
  */
-class CheckBoxButton : Button,ICheckable{
+class CheckBoxButton:Button,ICheckable{
     private var isChecked:Bool
     var textString:String
-    var checkBox : CheckBox?
+    var checkBox:CheckBox?
     var text:Text?
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
         self.textString = text
@@ -13,7 +13,7 @@ class CheckBoxButton : Button,ICheckable{
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         checkBox = addSubView(CheckBox(13,13,isChecked,self))
         text = addSubView(Text(width,height,textString,self)) 
         text!.isInteractive = false
@@ -25,17 +25,16 @@ class CheckBoxButton : Button,ICheckable{
         super.onEvent(event)/*Forwards the event*/
     }
     func getChecked() -> Bool {
-        return checkBox != nil ? checkBox!.getChecked() : self.isChecked;/*<--Temp fix*/
+        return checkBox != nil ? checkBox!.getChecked() : self.isChecked/*<--Temp fix*/
     }
     override func getSkinState() -> String {
-        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState();
+        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
     override func setSkinState(skinState:String) {
-        //Swift.print("\(self.dynamicType)" + " setSkinState() skinState: " + "\(skinState)")
-        super.setSkinState(skinState);
-        text!.setSkinState(skinState);/*why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
+        super.setSkinState(skinState)
+        text!.setSkinState(skinState)/*why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
-    func setSize(width : CGFloat, height : CGFloat) {
+    func setSize(width:CGFloat, height:CGFloat) {
         super.setSize(width, height)
         checkBox!.setSkinState(checkBox!.skin!.state)
         text!.setSkinState(checkBox!.skin!.state)

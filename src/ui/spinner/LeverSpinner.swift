@@ -43,7 +43,7 @@ class LeverSpinner : Element{
      */
     func onInputTextChange(event:Event) {
         let valStr:String = textInput!.inputTextArea!.text!.getText()
-        val = NumberParser.minMax(CGFloat(Double((valStr))!), minVal, maxVal)
+        val = NumberParser.minMax(valStr.cgFloat, minVal, maxVal)
         stepper!.value = val
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }

@@ -11,7 +11,7 @@ class LeverSpinner : Element{
     var minVal:CGFloat
     var val:CGFloat
     var	increment:CGFloat/*The amount of incrementation for each stepping*/
-    var decimals:Int/*decimal places*/
+    var decimals:Int/*<--decimal places*/
     var text:String
     var leverHeight:CGFloat// :TODO: write a description about this value
     var leverRange : CGFloat
@@ -34,7 +34,6 @@ class LeverSpinner : Element{
         stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self))
     }
     func onStepperChange(event : StepperEvent) {
-        //Swift.print("LeverSpinner.onStepperChange.event.value: " + "\(event.value)")
         val = event.value
         textInput!.inputTextArea?.setTextValue(String(val))
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
@@ -43,20 +42,15 @@ class LeverSpinner : Element{
      * // :TODO: Also resolve decimal here?
      */
     func onInputTextChange(event:Event) {
-        //Swift.print("onInputTextChange")
         let valStr:String = textInput!.inputTextArea!.text!.getText()
         val = NumberParser.minMax(CGFloat(Double((valStr))!), minVal, maxVal)
         stepper!.value = val
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     override func onEvent(event: Event) {
-        //Swift.print("LeverSpinner.onEvent " + "\(event.origin)" + " event.type: " + "\(event)")
-        //Swift.print("textInput!.text!.textField: " + "\(textInput!.text!.textField)")
-        if(event.origin === stepper && event.type == StepperEvent.change){
-            //Swift.print( "LeverSpinner.onEvent() event:" + "\(event)")
+        if(event.assert(StepperEvent.change, stepper)){
             onStepperChange(event as! StepperEvent)
-        }else if(event.origin === textInput!.inputTextArea!.text!.textField && event.type == Event.update){//you could use immediate here to shorten the if statement
-            //Swift.print("LeverSpinner.onEvent() event.update:" + "\(event)")
+        }else if(event.assert(Event.update, textInput!.inputTextArea!.text!.textField)){//you could use immediate here to shorten the if statement
             onInputTextChange(event)
         }
     }

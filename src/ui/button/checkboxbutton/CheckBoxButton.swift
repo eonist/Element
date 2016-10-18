@@ -21,13 +21,9 @@ class CheckBoxButton : Button,ICheckable{
     func setChecked(isChecked:Bool) {
         checkBox!.setChecked(isChecked)
     }
-    override func onEvent(event: Event) {
-        //Swift.print("CheckBoxButton.onEvent() type: " + "\(event.type)")
+    override func onEvent(event:Event) {
         super.onEvent(event)/*Forwards the event*/
     }
-    /**
-     * NOTE: this method represents something that should be handled by a method named getChecked, but since this class impliments Icheckable it has to implment checked and checkable
-     */
     func getChecked() -> Bool {
         return checkBox != nil ? checkBox!.getChecked() : self.isChecked;/*<--Temp fix*/
     }

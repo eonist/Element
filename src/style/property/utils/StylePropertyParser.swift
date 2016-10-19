@@ -209,6 +209,7 @@ class StylePropertyParser{
     /**
      * Returns Offset
      * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
+     * TODO: add support for % as it isnt implemented yet, see the margin implementation for guidance
      */
     static func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth)

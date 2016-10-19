@@ -324,6 +324,7 @@ private class Utils{
     }
     /**
      * Returns the total width
+     * TODO: Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
      */
     static func totalWidth(element:IElement)->CGFloat {/*beta*/
         if(element.skin != nil){

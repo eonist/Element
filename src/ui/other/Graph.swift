@@ -8,6 +8,7 @@ class Graph:Element {
     var bottomBar:Section?
     var graphArea:Section?
     var graphLine:GraphLine?
+    var graphPoints:[Element] = []
     override func resolveSkin() {
         /*LeftBar*/
         leftBar = Section(NaN,NaN,self,"leftBar")//create left bar
@@ -36,18 +37,22 @@ class Graph:Element {
         
         graphArea = Section(NaN,NaN,self,"graphArea")
         
-        var graphPoints:[CGPoint] = []
+        var graphPts:[CGPoint] = []
         
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = i * itemWidth
             p.y = hValues[i] * itemHeight
-            graphPoints.append(p)
+            graphPts.append(p)
         }
         
-        let graphPath:IPath = PolyLineGraphicUtils.path(graphPoints)/*convert points to a Path*/
+        let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = addSubView(GraphLine(width,height,graphPath,self))
         
+        graphPts.forEach{
+            let graphPoint:Element = Element
+            graphPoints.append(<#T##newElement: Element##Element#>)
+        }
         //Graph.swift component
             //The graph drawing:
                 //calc the graphPoints:

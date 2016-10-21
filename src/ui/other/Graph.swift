@@ -75,12 +75,12 @@ class Graph:Element {
         leftBar!.setPosition(leftBarPos)
         bottomBar!.setPosition(bottomBarPos)
         
-        let graphPath:IPath = 
+        let graphPath:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
         graphLine = GraphLine(width,height)
     }
 }
 class GraphLine:Element{
-    var line:PathGraphic?
+    var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
     var path:IPath
     init(_ width: CGFloat, _ height: CGFloat,_ path:IPath, _ parent: IElement?, _ id: String?) {
         self.path = path

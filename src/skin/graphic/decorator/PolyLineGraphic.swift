@@ -4,7 +4,7 @@ class PolyLineGraphic:PathGraphic{
     var points:Array<CGPoint>
     init(_ points:Array<CGPoint>, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         self.points = points
-        let path:IPath = BasicPathParser.path(points)/*convert points to a Path*/
+        let path:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
         super.init(path, decoratable)
     }
     //----------------------------------
@@ -25,9 +25,9 @@ extension PolyLineGraphic{
         self.init(points, GradientGraphic(BaseGraphic(gradientFillStyle,gradientlineStyle)))
     }
 }
-private class BasicPathParser{
+class PolyLineGraphicUtils{
     /**
-     * // :TODO: rename to pathByPoints?
+     * NOTE: rename to pathByPoints?, as swift supports method overloading, you dont need that speccific naming
      */
     class func path(points:Array<CGPoint>) -> IPath {
         var commands:Array<Int> = [PathCommand.moveTo]

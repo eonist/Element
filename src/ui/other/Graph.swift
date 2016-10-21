@@ -47,25 +47,15 @@ class Graph:Element {
         }
         
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
-        graphLine = graphArea.addSubView(GraphLine(width,height,graphPath,graphArea))
+        graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         
         graphPts.forEach{
-            let graphPoint:Element = graphArea.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
-            graphPoints.append(<#T##newElement: Element##Element#>)
+            let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
+            graphPoint.setPosition($0)
+            graphPoints.append(graphPoint)
+            //style the button similar to VolumSlider knob (find isnp for this in ios)
+            //set the size as 12px and offset to -6 (so that its centered)
         }
-        //Graph.swift component
-            //The graph drawing:
-                //calc the graphPoints:
-                    //use the vSpace and hSpace
-                    //hCount.forEach
-                    //points += (x:hSpace*i,y:vSpace*timeArr[i].count)
-                //line
-                    //use PathGraphic w/ PathParser.points(graph points)
-                //Points
-                    //graphPoints.forEach
-                        //create Button#graph
-                        //style the button similar to VolumSlider knob (find isnp for this in ios)
-                        //set the size as 12px and offset to -6 (so that its centered)
     }
     /**
      * Aligns UI elements

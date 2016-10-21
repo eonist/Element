@@ -7,6 +7,7 @@ class Graph:Element {
     var leftBar:Section?
     var bottomBar:Section?
     var graphArea:Section?
+    var graphLine:GraphLine?
     override func resolveSkin() {
         /*LeftBar*/
         leftBar = Section(NaN,NaN,self,"leftBar")//create left bar
@@ -43,7 +44,10 @@ class Graph:Element {
             p.y = hValues[i] * itemHeight
             graphPoints.append(p)
         }
-      
+        
+        let graphPath:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
+        graphLine = GraphLine(width,height)
+        
         //Graph.swift component
             //The graph drawing:
                 //calc the graphPoints:
@@ -75,8 +79,6 @@ class Graph:Element {
         leftBar!.setPosition(leftBarPos)
         bottomBar!.setPosition(bottomBarPos)
         
-        let graphPath:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
-        graphLine = GraphLine(width,height)
     }
 }
 class GraphLine:Element{

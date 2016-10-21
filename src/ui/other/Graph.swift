@@ -74,6 +74,9 @@ class Graph:Element {
         bottomBarPos.y = height//we use offset in css to move it back into the visible area
         leftBar!.setPosition(leftBarPos)
         bottomBar!.setPosition(bottomBarPos)
+        
+        let graphPath:IPath = 
+        graphLine = GraphLine(width,height)
     }
 }
 class GraphLine:Element{
@@ -91,6 +94,7 @@ class GraphLine:Element{
         let baseGraphic = BaseGraphic(nil,lineStyle)
         line = PathGraphic(path,baseGraphic)
         addSubView(line!.graphic)
+        line!.draw()
     }
     override func setSkinState(skinState: String) {
         //update the line

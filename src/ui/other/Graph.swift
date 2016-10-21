@@ -88,4 +88,5 @@ class GraphLine:Element{
     override func setSize(width: CGFloat, _ height: CGFloat) {
         //update the line
     }
+
 }

@@ -47,10 +47,10 @@ class Graph:Element {
         }
         
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
-        graphLine = addSubView(GraphLine(width,height,graphPath,self))
+        graphLine = graphArea.addSubView(GraphLine(width,height,graphPath,graphArea))
         
         graphPts.forEach{
-            let graphPoint:Element = Element
+            let graphPoint:Element = graphArea.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
             graphPoints.append(<#T##newElement: Element##Element#>)
         }
         //Graph.swift component

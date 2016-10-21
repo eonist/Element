@@ -78,9 +78,15 @@ class Graph:Element {
 }
 
 class GraphLine:Element{
-    var path:PathGraphic?
+    var line:PathGraphic?
+    var path:IPath
+    init(_ width: CGFloat, _ height: CGFloat,_ path:IPath, _ parent: IElement?, _ id: String?) {
+        self.path = path
+        super.init(width, height, parent, id)
+    }
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
+        line = PathGraphic(path)
     }
     override func setSkinState(skinState: String) {
         //update the line
@@ -88,5 +94,5 @@ class GraphLine:Element{
     override func setSize(width: CGFloat, _ height: CGFloat) {
         //update the line
     }
-
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
 }

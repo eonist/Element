@@ -4,8 +4,6 @@ import Foundation
  * // :TODO: I think you need to move some of these methods into parsers and modifiers, this class is cognativly heavy to look at
  * TODO: you could probably add most of these methods to an extension, since nothing is subclassing this class
  */
-
-
 class Style:IStyle{
     var name:String
     var selectors:Array<ISelector>

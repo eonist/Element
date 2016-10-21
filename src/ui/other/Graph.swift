@@ -38,7 +38,7 @@ class Graph:Element {
         
         var graphPoints:[CGPoint] = []
         
-        for i in 0..<hCount{
+        for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = i * itemWidth
             p.y = hValues[i] * itemHeight

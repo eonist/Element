@@ -85,10 +85,8 @@ class GraphLine:Element{
     }
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
-        
         //Somehow derive the style data and make a basegraphic with it
         let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!
-
         let baseGraphic = BaseGraphic(nil,lineStyle)
         line = PathGraphic(path,baseGraphic)
         addSubView(line!.graphic)

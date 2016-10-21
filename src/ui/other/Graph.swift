@@ -56,6 +56,8 @@ class Graph:Element {
             //style the button similar to VolumSlider knob (find isnp for this in ios)
             //set the size as 12px and offset to -6 (so that its centered)
         }
+        
+        align()
     }
     /**
      * Aligns UI elements
@@ -73,6 +75,8 @@ class Graph:Element {
         bottomBarPos.y = height//we use offset in css to move it back into the visible area
         leftBar!.setPosition(leftBarPos)
         bottomBar!.setPosition(bottomBarPos)
+        
+        //align the graphPoints
         
     }
 }

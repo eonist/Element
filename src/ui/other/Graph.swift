@@ -79,6 +79,9 @@ class Graph:Element {
         //align the graphPoints
         
     }
+    override func setSize(width: CGFloat, _ height: CGFloat) {
+        //update different UI elements
+    }
 }
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future

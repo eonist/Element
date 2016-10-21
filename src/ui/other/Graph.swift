@@ -76,7 +76,6 @@ class Graph:Element {
         bottomBar!.setPosition(bottomBarPos)
     }
 }
-
 class GraphLine:Element{
     var line:PathGraphic?
     var path:IPath

@@ -5,7 +5,7 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
     func resolveSkin()
     /*implicit getters / setters*/
     func getSkinState() -> String
-    func setSkinState(skinState:String)
+    func setSkinState(state:String)
     func getParent()->Any?//TODO: maybe use weak?
     func setSize(width:CGFloat, _ height:CGFloat)
     //func getParent(isAbsoltuteParent:Bool = false)->Any

@@ -78,5 +78,14 @@ class Graph:Element {
 }
 
 class GraphLine:Element{
-    
+    var path:PathGraphic?
+    override func resolveSkin() {
+        skin = SkinResolver.skin(self)
+    }
+    override func setSkinState(skinState: String) {
+        //update the line
+    }
+    override func setSize(width: CGFloat, _ height: CGFloat) {
+        //update the line
+    }
 }

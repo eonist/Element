@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class Graph:Element {
     var hValues:[Int] = [0,2,7,1,4,0,3]
@@ -87,6 +87,9 @@ class GraphLine:Element{
         skin = SkinResolver.skin(self)
         
         //Somehow derive the style data and make a basegraphic with it
+        let style:IStyle = skin!.style!
+        let lineColor:NSColor = style.getStyleProperty("line", 0)!.value as! NSColor
+        lineColor
         
         line = PathGraphic(path)
         addSubView(line!.graphic)

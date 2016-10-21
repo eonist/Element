@@ -45,8 +45,8 @@ class Graph:Element {
             graphPoints.append(p)
         }
         
-        let graphPath:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
-        graphLine = GraphLine(width,height)
+        let graphPath:IPath = PolyLineGraphicUtils.path(graphPoints)/*convert points to a Path*/
+        graphLine = addSubView(GraphLine(width,height,graphPath,self))
         
         //Graph.swift component
             //The graph drawing:
@@ -84,7 +84,7 @@ class Graph:Element {
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
     var path:IPath
-    init(_ width: CGFloat, _ height: CGFloat,_ path:IPath, _ parent: IElement?, _ id: String?) {
+    init(_ width: CGFloat, _ height: CGFloat,_ path:IPath, _ parent: IElement? = nil, _ id: String? = nil) {
         self.path = path
         super.init(width, height, parent, id)
     }

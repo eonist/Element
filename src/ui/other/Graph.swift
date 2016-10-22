@@ -58,6 +58,7 @@ class Graph:Element {
         Swift.print("maxValue: " + "\(maxValue)")
         var y:CGFloat = itemYSpace
         for i in (0..<vCount).reverse() {
+            Swift.print("i: " + "\(i)")
             var num:CGFloat = (maxValue/vCount.cgFloat)*i
             Swift.print("num: " + "\(num)")
             num = round(num)//NumberModifier.toFixed(num, 0)

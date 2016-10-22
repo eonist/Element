@@ -33,10 +33,10 @@ class Graph:Element {
         Swift.print("(w/h): " + "\((w/h))")
         if((w/h) > ratio){
             Swift.print("w is wider than ratio allows")
-            graphArea!.setSize(w/4*3,h)
+            graphArea!.setSize(h*ratio,h)
         }else if((w/h) < ratio){
             Swift.print("h is taller than ratio allows")
-            graphArea!.setSize(w,h/4*3)
+            graphArea!.setSize(w,w*ratio)
         }else{
             graphArea!.setSize(w,h)
         }

@@ -1,7 +1,7 @@
 import Cocoa
 
 class Graph:Element {
-    var hValues:[Int] = [0,2,7,1,4,0,3]
+    var hValues:[CGFloat] = [0,2,7,1,4,0,3]
     var hValNames:[String] = ["A","B","C","D","E","F","G"]/*horizontal items*/
     var vCount:Int = 4/*number of vertical items*/
     var leftBar:Section?
@@ -44,16 +44,16 @@ class Graph:Element {
         
         //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
-        var maxValue:Int = IntParser.max(hValues)
+        var maxValue:CGFloat = NumberParser.max(hValues)
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         Swift.print("itemYSpace: " + "\(itemYSpace)")
-        if(NumberAsserter.odd(maxValue.cgFloat)){
+        if(NumberAsserter.odd(maxValue)){
             maxValue += 1//We need even values when we devide later
         }
         Swift.print("maxValue: " + "\(maxValue)")
         var y:CGFloat = itemYSpace
         for i in (0..<vCount).reverse() {
-            var num:CGFloat = ((maxValue/vCount)*i).cgFloat
+            var num:CGFloat = (maxValue/vCount.cgFloat)*i
             num = round(num)//NumberModifier.toFixed(num, 0)
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
@@ -114,8 +114,7 @@ class Graph:Element {
        
         graphArea = Section(width,height,self,"graphArea")
         
-        
-        let graphPts = GraphUtils.points(size, positions, spacing, hValues)
+        let graphPts = GraphUtils.points(size, position, spacing, hValues)
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         

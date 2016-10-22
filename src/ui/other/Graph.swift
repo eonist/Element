@@ -15,7 +15,7 @@ class Graph:Element {
         
         //create 2 boxes. one that is embedded in the other and is 3:4 ratio
         graphArea = addSubView(Section(width,height,self))
-        
+        scaleToRatio()
     }
     /**
      * //onResize
@@ -28,11 +28,14 @@ class Graph:Element {
         let ratio:CGFloat = 4/3
         if((w/h) > ratio){
             graphArea!.setSize(w,h/4*3)
+            
+            
         }else if((w/h) < ratio){
             graphArea!.setSize(h/4*3,h)
         }else{
             graphArea!.setSize(w,h)
         }
+        
     }
     /**
      *

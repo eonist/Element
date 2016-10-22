@@ -18,21 +18,22 @@ class Graph:Element {
         //Swift.print("graph.width: " + "\(width)")
         //Swift.print("graph.height: " + "\(height)")
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
-        createGraphArea()
-        createLeftBar()
-        alignUI()
+        let newPostition:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.width,graphArea!.frame.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        createGraphArea(newSize,newPostition)
+        createLeftBar(newSize,newPostition)
+        //alignUI()
     }
     /**
      *
      */
-    func createGraphArea(){
+    func createGraphArea(size:CGSize,_ position:CGPoint){
         graphArea = addSubView(Section(width,height,self))
     }
     /**
      *
      */
-    func createLeftBar(){
-        leftBar = Section(width,height,self,"leftBar")//create left bar
+    func createLeftBar(size:CGSize,_ position:CGPoint){
+        leftBar = Section(size.width,size.height,self,"leftBar")//create left bar
         
         var maxValue:Int = IntParser.max(hValues)
         let itemHeight:CGFloat = height/vCount.cgFloat
@@ -58,7 +59,9 @@ class Graph:Element {
         //Scale to ratio:
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         graphArea!.setSize(newSize.width,newSize.height)
-        Align.align(graphArea!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.width,graphArea!.frame.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        graphArea?.setPosition(alignmentPoint)
+    
     }
     /**
      *

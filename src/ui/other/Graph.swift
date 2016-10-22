@@ -53,8 +53,9 @@ class Graph:Element {
             var num:CGFloat = ((maxValue/vCount)*i).cgFloat
             num = round(num)//NumberModifier.toFixed(num, 0)
             let str:String = num.string
-            let text:TextArea = TextArea(NaN,itemHeight,str,leftBar!)
+            let text:Text = Text(NaN,NaN,str,leftBar!)
             leftBar!.addSubView(text)
+            text.setPosition(<#T##point: CGPoint##CGPoint#>)
         }
         /**/
     }

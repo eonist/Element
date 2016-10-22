@@ -50,7 +50,7 @@ class Graph:Element {
             var num:CGFloat = ((maxValue/vCount)*i).cgFloat
             num = round(num)//NumberModifier.toFixed(num, 0)
             let str:String = num.string
-            let text:Text = Text(NaN,itemHeight,str,leftBar!)
+            let text:TextArea = TextArea(NaN,itemHeight,str,leftBar!)
             leftBar!.addSubView(text)
         }
         /**/

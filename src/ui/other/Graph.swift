@@ -23,8 +23,9 @@ class Graph:Element {
         Swift.print("newPostition: " + "\(newPostition)")
         
         createGraphArea(newSize,newPostition)
-        createLeftBar(newSize,newPostition)
-        createBottomBar(newSize,newPostition)
+        let itemYSpace:CGFloat = createLeftBar(newSize,newPostition)
+        let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
+        
         //alignUI()
     }
     /**
@@ -37,7 +38,7 @@ class Graph:Element {
     /**
      *
      */
-    func createLeftBar(size:CGSize,_ position:CGPoint){
+    func createLeftBar(size:CGSize,_ position:CGPoint)->CGFloat{
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
@@ -61,11 +62,12 @@ class Graph:Element {
             y += itemYSpace
             //Tip: use skin.getWidth() if you need to align Element items with Align 
         }
+        return itemYSpace
     }
     /**
      *
      */
-    func createBottomBar(size:CGSize,_ position:CGPoint){
+    func createBottomBar(size:CGSize,_ position:CGPoint)->CGFloat{
         Swift.print("createBottomBar")
         Swift.print("size: " + "\(size)")
         Swift.print("position: " + "\(position)")
@@ -87,6 +89,7 @@ class Graph:Element {
             textArea.setPosition(CGPoint(x,0))
             x += itemXSpace
         }
+        return itemXSpace
     }
     
     /**

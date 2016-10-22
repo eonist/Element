@@ -23,11 +23,12 @@ class Graph:Element {
         Swift.print("newPostition: " + "\(newPostition)")
         
         createGraphArea(newSize,newPostition)
-        let itemYSpace:CGFloat = createLeftBar(newSize,newPostition)
+        let spaceData = createLeftBar(newSize,newPostition)
+        let itemYSpace:CGFloat = spaceData.itemYSpace
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         
-        let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues)
+        let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues,spaceData.maxValue)
         //createGraphLine(newSize, newPostition, spacing, graphPts)
         createGraphPoints(newSize,newPostition,spacing,graphPts)
         //alignUI()
@@ -48,7 +49,7 @@ class Graph:Element {
         
         //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
-        var maxValue:CGFloat = NumberParser.max(hValues)
+        var maxValue:CGFloat = NumberParser.max(hValues)//you need to map these and ceil them. as you need int values!?!?
         Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         Swift.print("itemYSpace: " + "\(itemYSpace)")
@@ -69,7 +70,7 @@ class Graph:Element {
             y += itemYSpace
             //Tip: use skin.getWidth() if you need to align Element items with Align 
         }
-        return itemYSpace
+        return (itemYSpace:itemYSpace,maxValue:maxValue)
     }
     /**
      *
@@ -166,7 +167,7 @@ private class GraphUtils{
     /**
      * Returns graph points
      */
-    static func points(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat]) -> [CGPoint]{
+    static func points(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
         let hCount:Int = hValues.count
         let x:CGFloat = /*position.x*/ 0
@@ -174,7 +175,7 @@ private class GraphUtils{
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)
-            p.y = y - (hValues[i] * spacing.height)
+            p.y = y - (size.height/maxValue * hValues[i])
             points.append(p)
         }
         return points

@@ -112,7 +112,9 @@ class Graph:Element {
     }
   
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
-    
+        Swift.print("createGraphPoints:")
+        Swift.print("graphPts: " + "\(graphPts)")
+        Swift.print("graphPts.count: " + "\(graphPts.count)")
         graphPts.forEach{
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
             graphPoints.append(graphPoint)

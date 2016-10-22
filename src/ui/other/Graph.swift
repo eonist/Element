@@ -115,8 +115,8 @@ class Graph:Element {
     
         graphPts.forEach{
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
-            graphPoint.setPosition($0)
             graphPoints.append(graphPoint)
+            graphPoint.setPosition($0)
             //style the button similar to VolumSlider knob (with a blue center, a shadow and white border, test different designs)
             //set the size as 12px and offset to -6 (so that its centered)
         }

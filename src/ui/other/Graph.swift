@@ -25,8 +25,10 @@ class Graph:Element {
         createGraphArea(newSize,newPostition)
         let itemYSpace:CGFloat = createLeftBar(newSize,newPostition)
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
+        let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         
-        createGraphPoints(newSize,newPostition,CGSize(itemXSpace,itemYSpace))
+        let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues)
+        createGraphPoints(newSize,newPostition,spacing,graphPts)
         //alignUI()
     }
     /**
@@ -107,18 +109,12 @@ class Graph:Element {
         graphArea?.setPosition(alignmentPoint)
     
     }
-    /**
-     *
-     */
+  
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
-        /*LeftBar*/
        
         graphArea = Section(width,height,self,"graphArea")
         addSubView(graphArea!)
         
-        
-        let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
-        graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         
         graphPts.forEach{
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
@@ -127,13 +123,11 @@ class Graph:Element {
             //style the button similar to VolumSlider knob (with a blue center, a shadow and white border, test different designs)
             //set the size as 12px and offset to -6 (so that its centered)
         }
-        
-        
     }
-    /**
-     *
-     */
-    func createGraphLine(){
+    
+    func createGraphLine(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
+        let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
+        graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         
     }
   

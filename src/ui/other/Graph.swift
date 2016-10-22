@@ -17,15 +17,22 @@ class Graph:Element {
         
         //Swift.print("graph.width: " + "\(width)")
         //Swift.print("graph.height: " + "\(height)")
-        graphArea = addSubView(Section(width,height,self))
+        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
+        createGraphArea()
         createLeftBar()
         alignUI()
     }
     /**
      *
      */
+    func createGraphArea(){
+        graphArea = addSubView(Section(width,height,self))
+    }
+    /**
+     *
+     */
     func createLeftBar(){
-        leftBar = Section(NaN,NaN,self,"leftBar")//create left bar
+        leftBar = Section(width,height,self,"leftBar")//create left bar
         
         var maxValue:Int = IntParser.max(hValues)
         let itemHeight:CGFloat = height/vCount.cgFloat

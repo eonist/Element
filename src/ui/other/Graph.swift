@@ -68,7 +68,7 @@ class Graph:Element {
     func createBottomBar(size:CGSize,_ position:CGPoint){
         bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))//create bottom bar
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
-        /*
+        
         let hCount = hValNames.count
         let itemXSpace:CGFloat = width/(hCount.cgFloat + 1)
         var x:CGFloat = itemXSpace
@@ -79,7 +79,6 @@ class Graph:Element {
             textArea.setPosition(CGPoint(x,0))
             x += itemXSpace
         }
-        */
     }
     
     /**

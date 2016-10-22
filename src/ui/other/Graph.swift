@@ -27,15 +27,20 @@ class Graph:Element {
         //Scale to ratio:
         let ratio:CGFloat = 4/3
         
+        if(4 < 6){
+            
+        }else{
+            
+        }
+        /*
         if (w/h > ratio){
             graphArea!.setSize(w,h/4*3)
-        }
-        else(w/h < ratio) {
+        }else(w/h < ratio) {
             self.graphArea!.setSize(h/4*3,h)
-        }
-        else {
+        }else {
             self.graphArea!.setSize(w,h)
         }
+        */
     }
     /**
      *

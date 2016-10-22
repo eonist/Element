@@ -112,19 +112,19 @@ class Graph:Element {
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize){
         /*LeftBar*/
        
-        graphArea = Section(NaN,NaN,self,"graphArea")
+        graphArea = Section(width,height,self,"graphArea")
         
         var graphPts:[CGPoint] = []
         
         let hCount:Int = hValNames.count
         
         let x:CGFloat = position.x
-        let y:CGFloat = position.y + size.height
+        let y:CGFloat = position.y + size.height - spacing.height
         
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
-            p.x = i * spacing.width
-            p.y = hValues[i] * spacing.height
+            p.x = x + (i * spacing.width)
+            p.y = y + (hValues[i] * spacing.height)
             graphPts.append(p)
         }
         

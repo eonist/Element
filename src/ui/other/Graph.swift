@@ -17,7 +17,7 @@ class Graph:Element {
         //also use 5/3 ratio for a more widescreen look
         //add tabbar to pick time type: Day/week/Month/year
         //add side stepper to itterate between times
-        //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors
+        //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors (should also be able to filter commits & codeLine.additions/codeLine.deletions)
         
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         Swift.print("newSize: " + "\(newSize)")

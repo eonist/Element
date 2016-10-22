@@ -75,11 +75,14 @@ class Graph:Element {
         let hCount = hValNames.count
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
         let itemXSpace:CGFloat = size.width/(hCount.cgFloat + 1)
+        Swift.print("itemXSpace: " + "\(itemXSpace)")
         var x:CGFloat = itemXSpace
         for i in 0..<hCount{
             let str:String = hValNames[i]
+            Swift.print("str: " + "\(str)")
             let textArea:TextArea = TextArea(NaN,NaN,str,bottomBar!)
             bottomBar!.addSubView(textArea)
+            Swift.print("CGPoint(x,0): " + "\(CGPoint(x,0))")
             textArea.setPosition(CGPoint(x,0))
             x += itemXSpace
         }

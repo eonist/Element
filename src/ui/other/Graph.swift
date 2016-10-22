@@ -66,10 +66,11 @@ class Graph:Element {
     /**
      *
      */
-    func createBottomBar(){
-
+    func createBottomBar(size:CGSize,_ position:CGPoint){
         
-        bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
+        
+        bottomBar = Section(size.width,NaN,self,"bottomBar")//create bottom bar
+        bottomBar!.setPosition(CGPoint(position.x,position.y))
         let hCount = hValNames.count
         let itemXSpace:CGFloat = width/(hCount.cgFloat + 1)
         var x:CGFloat = itemXSpace

@@ -14,7 +14,7 @@ class Graph:Element {
         //createGraphElements()
         
         //create 2 boxes. one that is embedded in the other and is 3:4 ratio
-        
+        graphArea = addSubView(Section(NaN,NaN,self))
         
     }
     /**

@@ -14,6 +14,9 @@ class Graph:Element {
         //createGraphElements()
         
         //create 2 boxes. one that is embedded in the other and is 3:4 ratio
+        
+        Swift.print("graph.width: " + "\(width)")
+        Swift.print("graph.height: " + "\(height)")
         graphArea = addSubView(Section(width,height,self))
         scaleToRatio()
     }

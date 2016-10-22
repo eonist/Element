@@ -52,8 +52,8 @@ class Graph:Element {
         Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         Swift.print("itemYSpace: " + "\(itemYSpace)")
-        if(NumberAsserter.odd(maxValue)){
-            maxValue += 1//We need even values when we devide later
+        if(NumberAsserter.even(maxValue)){
+            maxValue += 1//We need odd values when we devide later
         }
         Swift.print("maxValue: " + "\(maxValue)")
         var y:CGFloat = itemYSpace

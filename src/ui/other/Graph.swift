@@ -37,12 +37,13 @@ class Graph:Element {
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
-        /*
+        
         var maxValue:Int = IntParser.max(hValues)
         let itemHeight:CGFloat = size.height/vCount.cgFloat
         if(NumberAsserter.odd(maxValue.cgFloat)){
             maxValue += 1//We need even values when we devide later
         }
+        Swift.print("maxValue: " + "\(maxValue)")
         for i in (0..<vCount).reverse() {
             var num:CGFloat = ((maxValue/vCount)*i).cgFloat
             num = round(num)//NumberModifier.toFixed(num, 0)
@@ -50,7 +51,7 @@ class Graph:Element {
             let text:Text = Text(NaN,itemHeight,str,leftBar!)
             leftBar!.addSubView(text)
         }
-        */
+        /**/
     }
     
     /**

@@ -49,18 +49,16 @@ class Graph:Element {
             maxValue += 1//We need even values when we devide later
         }
         Swift.print("maxValue: " + "\(maxValue)")
-        var y:CGFloat = itemHeight/2
         for i in (0..<vCount).reverse() {
             var num:CGFloat = ((maxValue/vCount)*i).cgFloat
             num = round(num)//NumberModifier.toFixed(num, 0)
             let str:String = num.string
-            let text:Text = Text(NaN,NaN,str,leftBar!)
-            leftBar!.addSubView(text)
+            let textArea:TextArea = TextArea(NaN,itemHeight,str,leftBar!)
+            leftBar!.addSubView(textArea)
             
-            text.setPosition(CGPoint(0,y))
+            textArea.text!.setPosition(CGPoint(0,y))
             y += itemHeight
         }
-        /**/
     }
     
     /**

@@ -40,6 +40,7 @@ class Graph:Element {
         
         var maxValue:Int = IntParser.max(hValues)
         let itemHeight:CGFloat = size.height/vCount.cgFloat
+        Swift.print("itemHeight: " + "\(itemHeight)")
         if(NumberAsserter.odd(maxValue.cgFloat)){
             maxValue += 1//We need even values when we devide later
         }

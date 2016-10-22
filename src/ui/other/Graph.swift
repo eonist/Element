@@ -11,12 +11,9 @@ class Graph:Element {
     var graphPoints:[Element] = []
     override func resolveSkin() {
         super.resolveSkin()
-        //createGraphElements()
+       
+        //Continue here: vertical lines and try making DayGraph which has Day names (remember to return Graph as identifier)
         
-        //create 2 boxes. one that is embedded in the other and is 3:4 ratio
-        
-        //Swift.print("graph.width: " + "\(width)")
-        //Swift.print("graph.height: " + "\(height)")
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         Swift.print("newSize: " + "\(newSize)")
         let newPostition:CGPoint = Align.alignmentPoint(newSize, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))

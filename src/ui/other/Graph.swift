@@ -29,6 +29,8 @@ class Graph:Element {
     func scaleToRatio(){
         //Scale to ratio:
         let ratio:CGFloat = 4/3
+        Swift.print("ratio: " + "\(ratio)")
+        Swift.print("(w/h): " + "\((w/h))")
         if((w/h) > ratio){
             graphArea!.setSize(w,h/4*3)
         }else if((w/h) < ratio){

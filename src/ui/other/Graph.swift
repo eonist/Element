@@ -2,7 +2,7 @@ import Cocoa
 
 class Graph:Element {
     var hValues:[Int] = [0,2,7,1,4,0,3]
-    var hValNames:Arrayz = ["A,B,C,D,E,F,G"]/*horizontal items*/
+    var hValNames:[String] = ["A","B","C","D","E","F","G"]/*horizontal items*/
     var vCount:Int = 4/*number of vertical items*/
     var leftBar:Section?
     var bottomBar:Section?

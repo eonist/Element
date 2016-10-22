@@ -55,7 +55,7 @@ class Graph:Element {
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,itemHeight,str,leftBar!)
             leftBar!.addSubView(textArea)
-            Align.align(textArea.text!, CGSize(textArea.frame.width,textArea.frame.height), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
+            Align.align(textArea.text!, CGSize(textArea.width,textArea.height), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
         }
     }
     

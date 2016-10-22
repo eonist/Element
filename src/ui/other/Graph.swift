@@ -24,6 +24,7 @@ class Graph:Element {
         
         createGraphArea(newSize,newPostition)
         createLeftBar(newSize,newPostition)
+        createBottomBar(newSize,newPostition)
         //alignUI()
     }
     /**
@@ -61,16 +62,13 @@ class Graph:Element {
             //Tip: use skin.getWidth() if you need to align Element items with Align 
         }
     }
-    
-    
     /**
      *
      */
     func createBottomBar(size:CGSize,_ position:CGPoint){
-        
-        
-        bottomBar = Section(size.width,NaN,self,"bottomBar")//create bottom bar
+        bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))//create bottom bar
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
+        /*
         let hCount = hValNames.count
         let itemXSpace:CGFloat = width/(hCount.cgFloat + 1)
         var x:CGFloat = itemXSpace
@@ -81,7 +79,7 @@ class Graph:Element {
             textArea.setPosition(CGPoint(x,0))
             x += itemXSpace
         }
-
+        */
     }
     
     /**

@@ -57,8 +57,8 @@ class Graph:Element {
             leftBar!.addSubView(textArea)
             Swift.print("textArea.w: " + "\(textArea.w)")
             Swift.print("textArea.h: " + "\(textArea.h)")
-            Swift.print("textArea.text!.w: " + "\(textArea.text!.skin!.height)")
-            Swift.print("textArea.text!.h: " + "\(textArea.text!.skin!.width)")
+            Swift.print("textArea.text!.w: " + "\(textArea.text!.skin!.getWidth())")
+            Swift.print("textArea.text!.h: " + "\(textArea.text!.skin!.getHeight())")
             let alignPoint:CGPoint = Align.alignmentPoint(CGSize(textArea.text!.w,textArea.text!.h), CGSize(textArea.w,textArea.h), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
             Swift.print("alignPoint: " + "\(alignPoint)")
             textArea.text!.setPosition(alignPoint)

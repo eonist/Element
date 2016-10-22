@@ -171,7 +171,7 @@ private class GraphUtils{
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)
-            p.y = y + (hValues[i] * spacing.height)
+            p.y = y - (hValues[i] * spacing.height)
             points.append(p)
         }
         return points

@@ -118,6 +118,9 @@ class Graph:Element {
         
         let hCount:Int = hValNames.count
         
+        let x:CGFloat = position.x
+        let y:CGFloat = position.y + size.height
+        
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = i * spacing.width

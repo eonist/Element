@@ -55,7 +55,7 @@ class Graph:Element {
             let str:String = num.string
             let text:Text = Text(NaN,NaN,str,leftBar!)
             leftBar!.addSubView(text)
-            text.setPosition(<#T##point: CGPoint##CGPoint#>)
+            text.setPosition(CGPoint(0,(itemHeight*i)))
         }
         /**/
     }

@@ -70,7 +70,7 @@ class Graph:Element {
         
         
         bottomBar = Section(size.width,NaN,self,"bottomBar")//create bottom bar
-        bottomBar!.setPosition(CGPoint(position.x,position.y))
+        bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
         let hCount = hValNames.count
         let itemXSpace:CGFloat = width/(hCount.cgFloat + 1)
         var x:CGFloat = itemXSpace

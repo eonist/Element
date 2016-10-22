@@ -59,7 +59,7 @@ class Graph:Element {
         var y:CGFloat = itemYSpace
         for i in (0..<vCount).reverse() {
             Swift.print("i: " + "\(i)")
-            var num:CGFloat = (maxValue/(vCount.cgFloat))*i
+            var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
             Swift.print("num: " + "\(num)")
             num = round(num)//NumberModifier.toFixed(num, 1)//
             let str:String = num.string

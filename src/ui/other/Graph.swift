@@ -151,6 +151,7 @@ class GraphLine:Element{
         //I think the most apropriate way is to make a custom skin and add it as a subView wich would implement :ISkin etc, see TextSkin for details
         //Somehow derive the style data and make a basegraphic with it
         let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!
+        //LineStyleParser.describe(lineStyle)
         let baseGraphic = BaseGraphic(nil,lineStyle)
         line = PathGraphic(path,baseGraphic)
         addSubView(line!.graphic)

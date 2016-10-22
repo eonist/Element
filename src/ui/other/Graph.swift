@@ -28,7 +28,7 @@ class Graph:Element {
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         
         let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues)
-        createGraphLine(newSize, newPostition, spacing, graphPts)
+        //createGraphLine(newSize, newPostition, spacing, graphPts)
         createGraphPoints(newSize,newPostition,spacing,graphPts)
         //alignUI()
     }
@@ -113,8 +113,7 @@ class Graph:Element {
   
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
        
-        graphArea = Section(width,height,self,"graphArea")
-        addSubView(graphArea!)
+        
         
         
         graphPts.forEach{
@@ -168,8 +167,8 @@ private class GraphUtils{
     static func points(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat]) -> [CGPoint]{
         var points:[CGPoint] = []
         let hCount:Int = hValues.count
-        let x:CGFloat = position.x
-        let y:CGFloat = position.y + size.height - spacing.height
+        let x:CGFloat = /*position.x*/ 0
+        let y:CGFloat = /*position.y +*/ size.height - spacing.height
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)

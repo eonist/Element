@@ -70,7 +70,8 @@ class Graph:Element {
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
         
         let hCount = hValNames.count
-        let itemXSpace:CGFloat = width/(hCount.cgFloat + 1)
+        //let itemWidth:CGFloat = size.width / hCount.cgFloat
+        let itemXSpace:CGFloat = size.width/(hCount.cgFloat + 1)
         var x:CGFloat = itemXSpace
         for i in 0..<hCount{
             let str:String = hValNames[i]

@@ -67,15 +67,18 @@ class Graph:Element {
      *
      */
     func createBottomBar(){
-        let itemHeight:CGFloat = height/vCount.cgFloat
+
         
         bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
         let hCount = hValNames.count
-        let itemWidth:CGFloat = width/hCount.cgFloat
+        let itemXSpace:CGFloat = width/(hCount.cgFloat + 1)
+        var x:CGFloat = itemXSpace
         for i in 0..<hCount{
             let str:String = hValNames[i]
-            let text:Text = Text(itemWidth,NaN,str,bottomBar!)
-            bottomBar!.addSubView(text)
+            let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
+            bottomBar!.addSubView(textArea)
+            textArea.setPosition(CGPoint(x,0))
+            x += itemXSpace
         }
 
     }

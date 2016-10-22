@@ -28,6 +28,7 @@ class Graph:Element {
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         
         let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues)
+        createGraphLine(newSize, newPostition, spacing, graphPts)
         createGraphPoints(newSize,newPostition,spacing,graphPts)
         //alignUI()
     }

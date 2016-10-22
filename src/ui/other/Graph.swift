@@ -28,14 +28,13 @@ class Graph:Element {
         let ratio:CGFloat = 4/3
         if((w/h) > ratio){
             graphArea!.setSize(w,h/4*3)
-            
-            
         }else if((w/h) < ratio){
             graphArea!.setSize(h/4*3,h)
         }else{
             graphArea!.setSize(w,h)
         }
         
+        Align.align(graphArea!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
     }
     /**
      *

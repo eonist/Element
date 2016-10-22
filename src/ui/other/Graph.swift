@@ -14,7 +14,10 @@ class Graph:Element {
         
         //create 2 boxes. one that is embedded in the other and is 3:4 ratio
         
-        //if (width/height > 4/3)
+        //ratio = 4/3
+        //if (width/height > ratio){}
+        //else(width/height) < ratio
+        //else {graph.width = width, graph.height = height}
     }
     /**
      *

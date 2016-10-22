@@ -16,7 +16,8 @@ class Graph:Element {
         //contemplate removing the top value and centering the graph a bit more. Basically the graph would stil be contained in a perfect frame.
         //also use 5/3 ratio for a more widescreen look
         //add tabbar to pick time type: Day/week/Month/year
-        //add 
+        //add side stepper to itterate between times
+        //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors
         
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         Swift.print("newSize: " + "\(newSize)")

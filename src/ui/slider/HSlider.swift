@@ -84,7 +84,7 @@ private class Utils{
      * Returns the x position of a nodes @param progress
      */
     class func thumbPosition(progress:CGFloat, _ width:CGFloat, _ thumbWidth:CGFloat)->CGFloat {
-        let minThumbPos:CGFloat = width - thumbWidth;/*Minimum thumb position*/
+        let minThumbPos:CGFloat = width - thumbWidth/*Minimum thumb position*/
         return progress * minThumbPos
     }
     /**

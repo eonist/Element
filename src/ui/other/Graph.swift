@@ -3,7 +3,7 @@ import Cocoa
 class Graph:Element {
     var hValues:[CGFloat] = [0,2,7,1,4,0,3]
     var hValNames:[String] = ["A","B","C","D","E","F","G"]/*horizontal items*/
-    var vCount:Int = 4/*number of vertical items*/
+    var vCount:Int = 5/*number of vertical items*/
     var leftBar:Section?
     var bottomBar:Section?
     var graphArea:Section?
@@ -52,16 +52,16 @@ class Graph:Element {
         Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         Swift.print("itemYSpace: " + "\(itemYSpace)")
-        if(NumberAsserter.even(maxValue)){
-            maxValue += 1//We need odd values when we devide later
+        if(NumberAsserter.odd(maxValue)){
+            maxValue += 1//We need even values when we devide later
         }
         Swift.print("maxValue: " + "\(maxValue)")
         var y:CGFloat = itemYSpace
         for i in (0..<vCount).reverse() {
             Swift.print("i: " + "\(i)")
-            var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
+            var num:CGFloat = (maxValue/(vCount.cgFloat))*i
             Swift.print("num: " + "\(num)")
-            num = NumberModifier.toFixed(num, 1)//round(num)//
+            num = round(num)//NumberModifier.toFixed(num, 1)//
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
             leftBar!.addSubView(textArea)

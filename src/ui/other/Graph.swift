@@ -10,9 +10,65 @@ class Graph:Element {
     var graphLine:GraphLine?
     var graphPoints:[Element] = []
     override func resolveSkin() {
-        createGraphElements()
+        //createGraphElements()
+        
+        //create 2 boxes. one that is embedded in the other and is 3:4 ratio
+        
+        
     }
-    fu
+    /**
+     *
+     */
+    func createGraphElements(){
+        /*LeftBar*/
+        leftBar = Section(NaN,NaN,self,"leftBar")//create left bar
+        
+        var maxValue:Int = IntParser.max(hValues)
+        let itemHeight:CGFloat = height/vCount.cgFloat
+        if(NumberAsserter.odd(maxValue.cgFloat)){
+            maxValue += 1//We need even values when we devide later
+        }
+        for i in (0..<vCount).reverse() {
+            var num:CGFloat = ((maxValue/vCount)*i).cgFloat
+            num = round(num)//NumberModifier.toFixed(num, 0)
+            let str:String = num.string
+            let text:Text = Text(NaN,itemHeight,str,leftBar!)
+            leftBar!.addSubView(text)
+        }
+        
+        bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
+        let hCount = hValNames.count
+        let itemWidth:CGFloat = width/hCount.cgFloat
+        for i in 0..<hCount{
+            let str:String = hValNames[i]
+            let text:Text = Text(itemWidth,NaN,str,bottomBar!)
+            bottomBar!.addSubView(text)
+        }
+        
+        graphArea = Section(NaN,NaN,self,"graphArea")
+        
+        var graphPts:[CGPoint] = []
+        
+        for i in 0..<hCount{//calc the graphPoints:
+            var p = CGPoint()
+            p.x = i * itemWidth
+            p.y = hValues[i] * itemHeight
+            graphPts.append(p)
+        }
+        
+        let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
+        graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
+        
+        graphPts.forEach{
+            let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
+            graphPoint.setPosition($0)
+            graphPoints.append(graphPoint)
+            //style the button similar to VolumSlider knob (with a blue center, a shadow and white border, test different designs)
+            //set the size as 12px and offset to -6 (so that its centered)
+        }
+        
+        align()
+    }
     /**
      * Aligns UI elements
      * NOTE: we align/scale everything dynamically not via css

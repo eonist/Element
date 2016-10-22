@@ -15,28 +15,16 @@ class Graph:Element {
         
         //create 2 boxes. one that is embedded in the other and is 3:4 ratio
         
-        Swift.print("graph.width: " + "\(width)")
-        Swift.print("graph.height: " + "\(height)")
+        //Swift.print("graph.width: " + "\(width)")
+        //Swift.print("graph.height: " + "\(height)")
         graphArea = addSubView(Section(width,height,self))
-        scaleToRatio()
-    }
-    /**
-     * //onResize
-     * //recalc spacing
-     * //height should be uniform to the width
-     * //Realign components
-     */
-    func scaleToRatio(){
-        //Scale to ratio:
-        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
-        graphArea!.setSize(newSize.width,newSize.height)
-        Align.align(graphArea!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        createLeftBar()
+        alignUI()
     }
     /**
      *
      */
-    func createGraphElements(){
-        /*LeftBar*/
+    func createLeftBar(){
         leftBar = Section(NaN,NaN,self,"leftBar")//create left bar
         
         var maxValue:Int = IntParser.max(hValues)
@@ -51,6 +39,26 @@ class Graph:Element {
             let text:Text = Text(NaN,itemHeight,str,leftBar!)
             leftBar!.addSubView(text)
         }
+    }
+    
+    /**
+     * //onResize
+     * //recalc spacing
+     * //height should be uniform to the width
+     * //Realign components
+     */
+    func alignUI(){
+        //Scale to ratio:
+        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
+        graphArea!.setSize(newSize.width,newSize.height)
+        Align.align(graphArea!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+    }
+    /**
+     *
+     */
+    func createGraphElements(){
+        /*LeftBar*/
+        
         
         bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
         let hCount = hValNames.count

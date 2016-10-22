@@ -25,10 +25,17 @@ class Graph:Element {
      */
     func scaleToRatio(){
         //Scale to ratio:
-        //ratio = 4/3
-        //if (width/height > ratio){graph.width = width,graph.height = width/4*3}
-        //else(width/height) < ratio{graph.width = height/4*3,graph.height = height}
-        //else {graph.width = width, graph.height = height}
+        let ratio:CGFloat = 4/3
+        
+        if (w/h > ratio){
+            graphArea!.setSize(w,h/4*3)
+        }
+        else(w/h < ratio) {
+            self.graphArea!.setSize(h/4*3,h)
+        }
+        else {
+            self.graphArea!.setSize(w,h)
+        }
     }
     /**
      *

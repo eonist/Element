@@ -2,7 +2,7 @@ import Cocoa
 
 class Graph:Element {
     var hValues:[Int] = [0,2,7,1,4,0,3]
-    var hValNames:[String] = ["A,B,C,D,E,F,G"]/*horizontal items*/
+    var hValNames:Arrayz = ["A,B,C,D,E,F,G"]/*horizontal items*/
     var vCount:Int = 4/*number of vertical items*/
     var leftBar:Section?
     var bottomBar:Section?
@@ -72,7 +72,8 @@ class Graph:Element {
         bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))//create bottom bar
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
         
-        let hCount = hValNames.count
+        let hCount:Int = hValNames.count
+        Swift.print("hCount: " + "\(hCount)")
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
         let itemXSpace:CGFloat = size.width/(hCount.cgFloat + 1)
         Swift.print("itemXSpace: " + "\(itemXSpace)")

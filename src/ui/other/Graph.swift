@@ -55,7 +55,9 @@ class Graph:Element {
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,itemHeight,str,leftBar!)
             leftBar!.addSubView(textArea)
-            Align.align(textArea.text!, CGSize(textArea.width,textArea.height), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
+            Swift.print("textArea.w: " + "\(textArea.w)")
+            Swift.print("textArea.h: " + "\(textArea.h)")
+            Align.align(textArea.text!, CGSize(textArea.w,textArea.h), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
         }
     }
     

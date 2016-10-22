@@ -62,6 +62,24 @@ class Graph:Element {
         }
     }
     
+    
+    /**
+     *
+     */
+    func createBottomBar(){
+        let itemHeight:CGFloat = height/vCount.cgFloat
+        
+        bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
+        let hCount = hValNames.count
+        let itemWidth:CGFloat = width/hCount.cgFloat
+        for i in 0..<hCount{
+            let str:String = hValNames[i]
+            let text:Text = Text(itemWidth,NaN,str,bottomBar!)
+            bottomBar!.addSubView(text)
+        }
+
+    }
+    
     /**
      * //onResize
      * //recalc spacing

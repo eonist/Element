@@ -27,14 +27,14 @@ class Graph:Element {
      *
      */
     func createGraphArea(size:CGSize,_ position:CGPoint){
-        graphArea = addSubView(Section(size.width,size.height,self))
+        graphArea = addSubView(Section(size.width,size.height,self,"graphArea"))
         graphArea?.setPosition(position)
     }
     /**
      *
      */
     func createLeftBar(size:CGSize,_ position:CGPoint){
-        leftBar = Section(size.width,size.height,self,"leftBar")//create left bar
+        leftBar = Section(size.width,NaN,self,"leftBar")//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
         /*
@@ -72,7 +72,7 @@ class Graph:Element {
      */
     func createGraphElements(){
         /*LeftBar*/
-        
+        let itemHeight:CGFloat = height/vCount.cgFloat
         
         bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
         let hCount = hValNames.count

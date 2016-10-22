@@ -28,19 +28,8 @@ class Graph:Element {
      */
     func scaleToRatio(){
         //Scale to ratio:
-        let ratio:CGFloat = 4/3
-        Swift.print("ratio: " + "\(ratio)")
-        Swift.print("(w/h): " + "\((w/h))")
-        if((w/h) > ratio){
-            Swift.print("w is wider than ratio allows")
-            graphArea!.setSize(h*ratio,h)
-        }else if((w/h) < ratio){
-            Swift.print("h is taller than ratio allows")
-            graphArea!.setSize(w,w*ratio)
-        }else{
-            graphArea!.setSize(w,h)
-        }
-        
+        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
+        graphArea!.setSize(newSize.width,newSize.height)
         Align.align(graphArea!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
     }
     /**

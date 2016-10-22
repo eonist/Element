@@ -34,7 +34,7 @@ class Graph:Element {
      *
      */
     func createLeftBar(size:CGSize,_ position:CGPoint){
-        leftBar = Section(NaN,size.height,self,"leftBar")//create left bar
+        leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
         /*

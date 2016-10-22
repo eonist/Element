@@ -43,25 +43,25 @@ class Graph:Element {
         //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
         var maxValue:Int = IntParser.max(hValues)
-        let itemHeight:CGFloat = size.height/(vCount.cgFloat+1)
-        Swift.print("itemHeight: " + "\(itemHeight)")
+        let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
+        Swift.print("itemYSpace: " + "\(itemYSpace)")
         if(NumberAsserter.odd(maxValue.cgFloat)){
             maxValue += 1//We need even values when we devide later
         }
         Swift.print("maxValue: " + "\(maxValue)")
+        var y:CGFloat = itemYSpace
         for i in (0..<vCount).reverse() {
             var num:CGFloat = ((maxValue/vCount)*i).cgFloat
             num = round(num)//NumberModifier.toFixed(num, 0)
             let str:String = num.string
-            let textArea:TextArea = TextArea(NaN,itemHeight,str,leftBar!)
+            let textArea:TextArea = TextArea(NaN,itemYSpace,str,leftBar!)
             leftBar!.addSubView(textArea)
-            Swift.print("textArea.w: " + "\(textArea.skin!.getWidth())")
-            Swift.print("textArea.h: " + "\(textArea.skin!.getHeight())")
-            Swift.print("textArea.text!.w: " + "\(textArea.text!.skin!.getWidth())")
-            Swift.print("textArea.text!.h: " + "\(textArea.text!.skin!.getHeight())")
-            let alignPoint:CGPoint = Align.alignmentPoint(CGSize(textArea.text!.skin!.getWidth(),textArea.text!.skin!.getHeight()), CGSize(textArea.skin!.getWidth(),textArea.skin!.getHeight()), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
-            Swift.print("alignPoint: " + "\(alignPoint)")
-            textArea.text!.setPosition(alignPoint)
+            textArea.setPosition(CGPoint(0,y))
+            y += itemYSpace
+            
+            //let alignPoint:CGPoint = Align.alignmentPoint(CGSize(textArea.text!.skin!.getWidth(),textArea.text!.skin!.getHeight()), CGSize(textArea.skin!.getWidth(),textArea.skin!.getHeight()), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))//this should be done in css but something doesnt work or margin-top:50%; isnt supported or something
+           // Swift.print("alignPoint: " + "\(alignPoint)")
+            //textArea.text!.setPosition(alignPoint)
         }
     }
     

@@ -27,7 +27,8 @@ class Graph:Element {
      *
      */
     func createGraphArea(size:CGSize,_ position:CGPoint){
-        graphArea = addSubView(Section(width,height,self))
+        graphArea = addSubView(Section(size.width,size.height,self))
+        graphArea?.setPosition(position)
     }
     /**
      *
@@ -36,6 +37,7 @@ class Graph:Element {
         leftBar = Section(size.width,size.height,self,"leftBar")//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
+        /*
         var maxValue:Int = IntParser.max(hValues)
         let itemHeight:CGFloat = size.height/vCount.cgFloat
         if(NumberAsserter.odd(maxValue.cgFloat)){
@@ -48,6 +50,7 @@ class Graph:Element {
             let text:Text = Text(NaN,itemHeight,str,leftBar!)
             leftBar!.addSubView(text)
         }
+        */
     }
     
     /**

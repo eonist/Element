@@ -42,7 +42,7 @@ class Graph:Element {
     /**
      *
      */
-    func createLeftBar(size:CGSize,_ position:CGPoint)->CGFloat{
+    func createLeftBar(size:CGSize,_ position:CGPoint)->(itemYSpace:CGFloat,maxValue:CGFloat){
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         

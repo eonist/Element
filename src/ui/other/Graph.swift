@@ -61,7 +61,7 @@ class Graph:Element {
             Swift.print("i: " + "\(i)")
             var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
             Swift.print("num: " + "\(num)")
-            num = round(num)//NumberModifier.toFixed(num, 0)
+            num = NumberModifier.toFixed(num, 1)//round(num)//
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
             leftBar!.addSubView(textArea)

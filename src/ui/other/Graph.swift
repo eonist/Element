@@ -43,7 +43,7 @@ class Graph:Element {
         //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
         var maxValue:Int = IntParser.max(hValues)
-        let itemHeight:CGFloat = size.height/vCount.cgFloat
+        let itemHeight:CGFloat = size.height/(vCount.cgFloat+1)
         Swift.print("itemHeight: " + "\(itemHeight)")
         if(NumberAsserter.odd(maxValue.cgFloat)){
             maxValue += 1//We need even values when we devide later

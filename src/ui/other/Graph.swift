@@ -49,6 +49,7 @@ class Graph:Element {
         //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
         var maxValue:CGFloat = NumberParser.max(hValues)
+        Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         Swift.print("itemYSpace: " + "\(itemYSpace)")
         if(NumberAsserter.odd(maxValue)){
@@ -73,8 +74,8 @@ class Graph:Element {
      */
     func createBottomBar(size:CGSize,_ position:CGPoint)->CGFloat{
         Swift.print("createBottomBar")
-        Swift.print("size: " + "\(size)")
-        Swift.print("position: " + "\(position)")
+        //Swift.print("size: " + "\(size)")
+        //Swift.print("position: " + "\(position)")
         bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))//create bottom bar
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
         
@@ -86,10 +87,10 @@ class Graph:Element {
         var x:CGFloat = itemXSpace
         for i in 0..<hCount{
             let str:String = hValNames[i]
-            Swift.print("str: " + "\(str)")
+            //Swift.print("str: " + "\(str)")
             let textArea:TextArea = TextArea(NaN,NaN,str,bottomBar!)
             bottomBar!.addSubView(textArea)
-            Swift.print("CGPoint(x,0): " + "\(CGPoint(x,0))")
+            //Swift.print("CGPoint(x,0): " + "\(CGPoint(x,0))")
             textArea.setPosition(CGPoint(x,0))
             x += itemXSpace
         }

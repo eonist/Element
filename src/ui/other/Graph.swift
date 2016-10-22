@@ -109,27 +109,19 @@ class Graph:Element {
     /**
      *
      */
-    func createGraphElements(){
+    func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize){
         /*LeftBar*/
-        let itemHeight:CGFloat = height/vCount.cgFloat
-        
-        bottomBar = Section(NaN,NaN,self,"bottomBar")//create bottom bar
-        let hCount = hValNames.count
-        let itemWidth:CGFloat = width/hCount.cgFloat
-        for i in 0..<hCount{
-            let str:String = hValNames[i]
-            let text:Text = Text(itemWidth,NaN,str,bottomBar!)
-            bottomBar!.addSubView(text)
-        }
-        
+       
         graphArea = Section(NaN,NaN,self,"graphArea")
         
         var graphPts:[CGPoint] = []
         
+        let hCount:Int = hValNames.count
+        
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
-            p.x = i * itemWidth
-            p.y = hValues[i] * itemHeight
+            p.x = i * spacing.width
+            p.y = hValues[i] * spacing.height
             graphPts.append(p)
         }
         
@@ -144,28 +136,9 @@ class Graph:Element {
             //set the size as 12px and offset to -6 (so that its centered)
         }
         
-        align()
-    }
-    /**
-     * Aligns UI elements
-     * NOTE: we align/scale everything dynamically not via css
-     */
-    func align(){
-        //align things, remember constraints
-        
-        //4:3 layout ratio
-        let h:CGFloat = round((w/4)*3)
-        
-        var leftBarPos:CGPoint = CGPoint(0,0)
-        leftBarPos.y = (height-h)/2
-        var bottomBarPos:CGPoint = CGPoint(0,0)
-        bottomBarPos.y = height//we use offset in css to move it back into the visible area
-        leftBar!.setPosition(leftBarPos)
-        bottomBar!.setPosition(bottomBarPos)
-        
-        //align the graphPoints
         
     }
+  
     override func setSize(width: CGFloat, _ height: CGFloat) {
         //update different UI elements
     }

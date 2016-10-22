@@ -114,6 +114,7 @@ class Graph:Element {
         /*LeftBar*/
        
         graphArea = Section(width,height,self,"graphArea")
+        addSubView(graphArea!)
         
         let graphPts = GraphUtils.points(size, position, spacing, hValues)
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/

@@ -26,6 +26,7 @@ class Graph:Element {
         let itemYSpace:CGFloat = createLeftBar(newSize,newPostition)
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
         
+        createGraphPoints(newSize,newPostition,CGSize(itemXSpace,itemYSpace))
         //alignUI()
     }
     /**

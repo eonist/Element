@@ -16,6 +16,7 @@ class Graph:Element {
         //contemplate removing the top value and centering the graph a bit more. Basically the graph would stil be contained in a perfect frame.
         //also use 5/3 ratio for a more widescreen look
         //add tabbar to pick time type: Day/week/Month/year
+        //add 
         
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         Swift.print("newSize: " + "\(newSize)")

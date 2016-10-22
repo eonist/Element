@@ -110,13 +110,13 @@ class Graph:Element {
     /**
      *
      */
-    func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize){
+    func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         /*LeftBar*/
        
         graphArea = Section(width,height,self,"graphArea")
         addSubView(graphArea!)
         
-        let graphPts = GraphUtils.points(size, position, spacing, hValues)
+        
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         
@@ -128,6 +128,12 @@ class Graph:Element {
             //set the size as 12px and offset to -6 (so that its centered)
         }
         
+        
+    }
+    /**
+     *
+     */
+    func createGraphLine(){
         
     }
   

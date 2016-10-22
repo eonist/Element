@@ -37,7 +37,7 @@ class Graph:Element {
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
-        //COntinue here: Use TextArea and use margin-top:50%; and 
+        //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
         var maxValue:Int = IntParser.max(hValues)
         let itemHeight:CGFloat = size.height/vCount.cgFloat

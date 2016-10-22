@@ -114,20 +114,8 @@ class Graph:Element {
        
         graphArea = Section(width,height,self,"graphArea")
         
-        var graphPts:[CGPoint] = []
         
-        let hCount:Int = hValNames.count
-        
-        let x:CGFloat = position.x
-        let y:CGFloat = position.y + size.height - spacing.height
-        
-        for i in 0..<hCount{//calc the graphPoints:
-            var p = CGPoint()
-            p.x = x + (i * spacing.width)
-            p.y = y + (hValues[i] * spacing.height)
-            graphPts.append(p)
-        }
-        
+        let graphPts = GraphUtils.points(size, positions, spacing, hValues)
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         
@@ -170,4 +158,22 @@ class GraphLine:Element{
         //update the line
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
+}
+private class GraphUtils{
+    /**
+     * Returns graph points
+     */
+    static func points(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat]) -> [CGPoint]{
+        var points:[CGPoint] = []
+        let hCount:Int = hValues.count
+        let x:CGFloat = position.x
+        let y:CGFloat = position.y + size.height - spacing.height
+        for i in 0..<hCount{//calc the graphPoints:
+            var p = CGPoint()
+            p.x = x + (i * spacing.width)
+            p.y = y + (hValues[i] * spacing.height)
+            points.append(p)
+        }
+        return points
+    }
 }

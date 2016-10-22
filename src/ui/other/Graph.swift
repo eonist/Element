@@ -18,7 +18,7 @@ class Graph:Element {
         //Swift.print("graph.width: " + "\(width)")
         //Swift.print("graph.height: " + "\(height)")
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
-        let newPostition:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.width,graphArea!.frame.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        let newPostition:CGPoint = Align.alignmentPoint(newSize, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea(newSize,newPostition)
         createLeftBar(newSize,newPostition)
         //alignUI()
@@ -34,7 +34,7 @@ class Graph:Element {
      *
      */
     func createLeftBar(size:CGSize,_ position:CGPoint){
-        leftBar = Section(size.width,NaN,self,"leftBar")//create left bar
+        leftBar = Section(NaN,size.height,self,"leftBar")//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
         /*

@@ -112,10 +112,7 @@ class Graph:Element {
     }
   
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
-       
-        
-        
-        
+    
         graphPts.forEach{
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
             graphPoint.setPosition($0)

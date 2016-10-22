@@ -10,13 +10,21 @@ class Graph:Element {
     var graphLine:GraphLine?
     var graphPoints:[Element] = []
     override func resolveSkin() {
+        super.resolveSkin()
         //createGraphElements()
         
         //create 2 boxes. one that is embedded in the other and is 3:4 ratio
         
+        
+    }
+    /**
+     *
+     */
+    func scaleToRatio(){
+        //Scale to ratio:
         //ratio = 4/3
-        //if (width/height > ratio){}
-        //else(width/height) < ratio
+        //if (width/height > ratio){graph.width = width,graph.height = width/4*3}
+        //else(width/height) < ratio{graph.width = height/4*3,graph.height = height}
         //else {graph.width = width, graph.height = height}
     }
     /**

@@ -13,6 +13,8 @@ class Graph:Element {
         super.resolveSkin()
        
         //Continue here: vertical lines and try making DayGraph which has Day names (remember to return Graph as identifier)
+        //contemplate removing the top value and centering the graph a bit more. Basically the graph would stil be contained in a perfect frame.
+        //also use 5/3 ratio for a more widescreen look
         
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         Swift.print("newSize: " + "\(newSize)")

@@ -170,12 +170,12 @@ private class GraphUtils{
     static func points(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
         let hCount:Int = hValues.count
-        let x:CGFloat = /*position.x*/ 0
+        let x:CGFloat = /*position.x*/ spacing.width
         let y:CGFloat = /*position.y +*/ size.height - spacing.height
         for i in 0..<hCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)
-            p.y = y - (size.height/maxValue * hValues[i])
+            p.y = y - ((size.height-(spacing.height*2))/maxValue * hValues[i])
             points.append(p)
         }
         return points

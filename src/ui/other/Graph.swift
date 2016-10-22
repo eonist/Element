@@ -18,7 +18,10 @@ class Graph:Element {
         
     }
     /**
-     *
+     * //onResize
+     * //recalc spacing
+     * //height should be uniform to the width
+     * //Realign components
      */
     func scaleToRatio(){
         //Scale to ratio:

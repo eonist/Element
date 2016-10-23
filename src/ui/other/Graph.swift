@@ -2,7 +2,8 @@ import Cocoa
 
 class Graph:Element {
     var hValues:[CGFloat] = [4,2,3,7,5,0,1]
-    var hValNames:[String] = ["A","B","C","D","E","F","G"]/*horizontal items*/
+    var horValNames:[String] = ["A","B","C","D","E","F","G"]/*horizontal items*/
+    
     var vCount:Int = 5/*number of vertical items*/
     var leftBar:Section?
     var bottomBar:Section?

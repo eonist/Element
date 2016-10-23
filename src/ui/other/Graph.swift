@@ -41,7 +41,10 @@ class Graph:Element {
      */
     func createVLines(size:CGSize,_ position:CGPoint){
         let count:Int = hValNames.count
-        
+        for i in 0..<count{
+            
+            
+        }
     }
     /**
      *

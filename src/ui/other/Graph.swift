@@ -30,7 +30,7 @@ class Graph:Element {
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         
-        createVLines(newSize,newPostition,itemXSpace)
+        createVLines(newSize,newPostition,spacing)
         
         let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues,spaceData.maxValue)
         createGraphLine(newSize,newPostition,spacing,graphPts)
@@ -126,13 +126,13 @@ class Graph:Element {
     /**
      *
      */
-    func createVLines(size:CGSize,_ position:CGPoint,_ hSpace:CGFloat){
+    func createVLines(size:CGSize,_ position:CGPoint,_ spacing:CGSize){
         let count:Int = hValNames.count
-        var x:CGFloat = hSpace
+        var x:CGFloat = spacing.width
         for _ in 0..<count{
-            let vLine = graphArea!.addSubView(Element(NaN,size.height,graphArea,"vLine"))
-            vLine.setPosition(CGPoint(x,0))
-            x += hSpace
+            let vLine = graphArea!.addSubView(Element(NaN,size.height-(spacing.height*2),graphArea,"vLine"))
+            vLine.setPosition(CGPoint(x,spacing.height))
+            x += spacing.width
         }
     }
     

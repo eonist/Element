@@ -131,7 +131,7 @@ class Graph:Element {
         var x:CGFloat = hSpace
         for _ in 0..<count{
             let vLine = graphArea!.addSubView(Element(NaN,size.height,graphArea,"vLine"))
-            vLine.setPosition(CGPoint(x,position.y))
+            vLine.setPosition(CGPoint(x,0))
             x += hSpace
         }
     }

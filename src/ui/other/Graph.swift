@@ -41,10 +41,11 @@ class Graph:Element {
      */
     func createVLines(size:CGSize,_ position:CGPoint,_ hSpace:CGFloat){
         let count:Int = hValNames.count
-        let x:CGFloat = itemXSpace
+        let x:CGFloat = hSpace
         for i in 0..<count{
-            let vLine = graphArea.addSubView(Element(NaN,size.height,graphArea,"vLine"))
-            vLine.setPosition(CGPoint(x,))
+            let vLine = graphArea!.addSubView(Element(NaN,size.height,graphArea,"vLine"))
+            vLine.setPosition(CGPoint(x,position.y))
+            x += hSpace
         }
     }
     /**

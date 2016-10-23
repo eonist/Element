@@ -30,10 +30,12 @@ class Graph:Element {
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         
+        createVLines(newSize,newPostition,itemXSpace)
+        
         let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues,spaceData.maxValue)
         createGraphLine(newSize,newPostition,spacing,graphPts)
         createGraphPoints(newSize,newPostition,spacing,graphPts)
-        createVLines(newSize,newPostition,itemXSpace)
+        
         //alignUI()
     }
     /**

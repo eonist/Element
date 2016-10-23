@@ -39,18 +39,6 @@ class Graph:Element {
     /**
      *
      */
-    func createVLines(size:CGSize,_ position:CGPoint,_ hSpace:CGFloat){
-        let count:Int = hValNames.count
-        let x:CGFloat = hSpace
-        for i in 0..<count{
-            let vLine = graphArea!.addSubView(Element(NaN,size.height,graphArea,"vLine"))
-            vLine.setPosition(CGPoint(x,position.y))
-            x += hSpace
-        }
-    }
-    /**
-     *
-     */
     func createGraphArea(size:CGSize,_ position:CGPoint){
         graphArea = addSubView(Section(size.width,size.height,self,"graphArea"))
         graphArea?.setPosition(position)
@@ -61,8 +49,6 @@ class Graph:Element {
     func createLeftBar(size:CGSize,_ position:CGPoint)->(itemYSpace:CGFloat,maxValue:CGFloat){
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
-        
-        //Continue here: Use TextArea and use margin-top:50%; in Textarea and margin-top: -(fontSize/2)
         
         var maxValue:CGFloat = NumberParser.max(hValues)//you need to map these and ceil them. as you need int values!?!?
         Swift.print("maxValue: " + "\(maxValue)")
@@ -114,22 +100,9 @@ class Graph:Element {
         }
         return itemXSpace
     }
-    
     /**
-     * //onResize
-     * //recalc spacing
-     * //height should be uniform to the width
-     * //Realign components
+     *
      */
-    func alignUI(){
-        //Scale to ratio:
-        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
-        graphArea!.setSize(newSize.width,newSize.height)
-        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.width,graphArea!.frame.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
-        graphArea?.setPosition(alignmentPoint)
-    
-    }
-  
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         Swift.print("createGraphPoints:")
         Swift.print("graphPts: " + "\(graphPts)")
@@ -146,6 +119,33 @@ class Graph:Element {
     func createGraphLine(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
+        
+    }
+    /**
+     *
+     */
+    func createVLines(size:CGSize,_ position:CGPoint,_ hSpace:CGFloat){
+        let count:Int = hValNames.count
+        var x:CGFloat = hSpace
+        for _ in 0..<count{
+            let vLine = graphArea!.addSubView(Element(NaN,size.height,graphArea,"vLine"))
+            vLine.setPosition(CGPoint(x,position.y))
+            x += hSpace
+        }
+    }
+    
+    /**
+     * //onResize
+     * //recalc spacing
+     * //height should be uniform to the width
+     * //Realign components
+     */
+    func alignUI(){
+        //Scale to ratio:
+        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
+        graphArea!.setSize(newSize.width,newSize.height)
+        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.width,graphArea!.frame.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        graphArea?.setPosition(alignmentPoint)
         
     }
   

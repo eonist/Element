@@ -1,7 +1,7 @@
 import Cocoa
 
 class Graph:Element {
-    var hValues:[CGFloat] = [4,2,3,7,5,0,1]
+    public var hValues:[CGFloat] = [4,2,3,7,5,0,1]
     var hValNames:[String] = ["A","B","C","D","E","F","G"]/*horizontal items*/
     var vCount:Int = 5/*number of vertical items*/
     var leftBar:Section?
@@ -15,8 +15,6 @@ class Graph:Element {
         //Continue here: try making DayGraph which has Day names (remember to return Graph as identifier)
         //contemplate removing the top value and centering the graph a bit more. Basically the graph would stil be contained in a perfect frame.
         //also use 5/3 ratio for a more widescreen look
-        //add tabbar to pick time type: Day/week/Month/year
-        //add side stepper to itterate between times
         //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors (should also be able to filter commits & codeLine.additions & codeLine.deletions), also filter project via repo browser.
         
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)

@@ -19,9 +19,9 @@ class Graph:Element {
         //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors (should also be able to filter commits & codeLine.additions & codeLine.deletions), also filter project via repo browser.
         
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
-        Swift.print("newSize: " + "\(newSize)")
+        //Swift.print("newSize: " + "\(newSize)")
         let newPostition:CGPoint = Align.alignmentPoint(newSize, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
-        Swift.print("newPostition: " + "\(newPostition)")
+        //Swift.print("newPostition: " + "\(newPostition)")
         
         createGraphArea(newSize,newPostition)
         let spaceData = createLeftBar(newSize,newPostition)
@@ -52,18 +52,18 @@ class Graph:Element {
         leftBar!.setPosition(CGPoint(0,position.y))
         
         var maxValue:CGFloat = NumberParser.max(hValues)//you need to map these and ceil them. as you need int values!?!?
-        Swift.print("maxValue: " + "\(maxValue)")
+        //Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
-        Swift.print("itemYSpace: " + "\(itemYSpace)")
+        //Swift.print("itemYSpace: " + "\(itemYSpace)")
         if(NumberAsserter.odd(maxValue)){
             maxValue += 1//We need even values when we devide later
         }
-        Swift.print("maxValue: " + "\(maxValue)")
+        //Swift.print("maxValue: " + "\(maxValue)")
         var y:CGFloat = itemYSpace
         for i in (0..<vCount).reverse() {
-            Swift.print("i: " + "\(i)")
+            //Swift.print("i: " + "\(i)")
             var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
-            Swift.print("num: " + "\(num)")
+            //Swift.print("num: " + "\(num)")
             num = round(num)//NumberModifier.toFixed(num, 1)//
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
@@ -78,17 +78,17 @@ class Graph:Element {
      *
      */
     func createBottomBar(size:CGSize,_ position:CGPoint)->CGFloat{
-        Swift.print("createBottomBar")
+        //Swift.print("createBottomBar")
         //Swift.print("size: " + "\(size)")
         //Swift.print("position: " + "\(position)")
         bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))//create bottom bar
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
         
         let hCount:Int = hValNames.count
-        Swift.print("hCount: " + "\(hCount)")
+        //Swift.print("hCount: " + "\(hCount)")
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
         let itemXSpace:CGFloat = size.width/(hCount.cgFloat + 1)
-        Swift.print("itemXSpace: " + "\(itemXSpace)")
+        //Swift.print("itemXSpace: " + "\(itemXSpace)")
         var x:CGFloat = itemXSpace
         for i in 0..<hCount{
             let str:String = hValNames[i]
@@ -105,9 +105,9 @@ class Graph:Element {
      *
      */
     func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
-        Swift.print("createGraphPoints:")
-        Swift.print("graphPts: " + "\(graphPts)")
-        Swift.print("graphPts.count: " + "\(graphPts.count)")
+        //Swift.print("createGraphPoints:")
+        //Swift.print("graphPts: " + "\(graphPts)")
+        //Swift.print("graphPts.count: " + "\(graphPts.count)")
         graphPts.forEach{
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
             graphPoints.append(graphPoint)

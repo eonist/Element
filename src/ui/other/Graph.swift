@@ -33,7 +33,15 @@ class Graph:Element {
         let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues,spaceData.maxValue)
         createGraphLine(newSize,newPostition,spacing,graphPts)
         createGraphPoints(newSize,newPostition,spacing,graphPts)
+        createVLines(newSize,newPostition)
         //alignUI()
+    }
+    /**
+     *
+     */
+    func createVLines(size:CGSize,_ position:CGPoint){
+        let count:Int = hValNames.count
+        
     }
     /**
      *

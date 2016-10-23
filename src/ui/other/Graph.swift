@@ -33,17 +33,18 @@ class Graph:Element {
         let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues,spaceData.maxValue)
         createGraphLine(newSize,newPostition,spacing,graphPts)
         createGraphPoints(newSize,newPostition,spacing,graphPts)
-        createVLines(newSize,newPostition)
+        createVLines(newSize,newPostition,itemXSpace)
         //alignUI()
     }
     /**
      *
      */
-    func createVLines(size:CGSize,_ position:CGPoint){
+    func createVLines(size:CGSize,_ position:CGPoint,_ hSpace:CGFloat){
         let count:Int = hValNames.count
+        let x:CGFloat = itemXSpace
         for i in 0..<count{
-            
-            
+            let vLine = graphArea.addSubView(Element(NaN,size.height,graphArea,"vLine"))
+            vLine.setPosition(CGPoint(x,))
         }
     }
     /**

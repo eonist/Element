@@ -142,6 +142,9 @@ class Graph:Element {
      * //Realign components
      */
     func alignUI(){
+        
+        //this method is not in use
+        
         //Scale to ratio:
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         graphArea!.setSize(newSize.width,newSize.height)
@@ -152,6 +155,10 @@ class Graph:Element {
   
     override func setSize(width: CGFloat, _ height: CGFloat) {
         //update different UI elements
+    }
+    
+    override func getClassType() -> String {
+        return String(Graph)
     }
 }
 class GraphLine:Element{

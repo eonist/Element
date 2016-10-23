@@ -169,7 +169,7 @@ class GraphLine:Element{
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        Swift.print("GraphLine.resolveSkin")
+        //Swift.print("GraphLine.resolveSkin")
         skin = SkinResolver.skin(self)//you could use let style:IStyle = StyleResolver.style(element), but i think skin has to be created to not cause bugs 
         //I think the most apropriate way is to make a custom skin and add it as a subView wich would implement :ISkin etc, see TextSkin for details
         //Somehow derive the style data and make a basegraphic with it

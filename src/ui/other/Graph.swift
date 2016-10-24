@@ -37,7 +37,7 @@ class Graph:Element {
         
         createVLines(newSize!,newPostition!,spacing!)
         
-        let graphPts = GraphUtils.points(newSize!, newPostition!, spacing!, hValues,spaceData!.maxValue)
+        let graphPts:[CGPoint] = GraphUtils.points(newSize!, newPostition!, spacing!, hValues,spaceData!.maxValue)
         createGraphLine(newSize!,newPostition!,spacing!,graphPts)
         createGraphPoints(newSize!,newPostition!,spacing!,graphPts)
         

@@ -74,7 +74,7 @@ class Graph:Element {
             num = round(num)//NumberModifier.toFixed(num, 1)//
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
-            leftBarItems!
+            leftBarItems.append(textArea)
             leftBar!.addSubView(textArea)
             textArea.setPosition(CGPoint(0,y))
             y += itemYSpace

@@ -14,6 +14,8 @@ class Graph:Element {
     var newPostition:CGPoint?
     var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?
     var itemYSpace:CGFloat?
+    var itemXSpace:CGFloat?
+    var spacing:CGSize?
     override func resolveSkin() {
         super.resolveSkin()
        
@@ -29,15 +31,15 @@ class Graph:Element {
         
         createGraphArea(newSize!,newPostition!)
         spaceData = createLeftBar(newSize!,newPostition!)
-        itemYSpace = spaceData.itemYSpace
-        let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
-        let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
+        itemYSpace = spaceData!.itemYSpace
+        itemXSpace = createBottomBar(newSize!,newPostition!)
+        spacing = CGSize(itemXSpace!,itemYSpace!)
         
-        createVLines(newSize,newPostition,spacing)
+        createVLines(newSize!,newPostition!,spacing!)
         
-        let graphPts = GraphUtils.points(newSize, newPostition, spacing, hValues,spaceData.maxValue)
-        createGraphLine(newSize,newPostition,spacing,graphPts)
-        createGraphPoints(newSize,newPostition,spacing,graphPts)
+        let graphPts = GraphUtils.points(newSize!, newPostition!, spacing!, hValues,spaceData!.maxValue)
+        createGraphLine(newSize!,newPostition!,spacing!,graphPts)
+        createGraphPoints(newSize!,newPostition!,spacing!,graphPts)
         
         //alignUI()
     }

@@ -7,7 +7,7 @@ import Cocoa
 class RBScrollController {
     var frame:CGRect/*represents the visible part of the content*///TODO: could be ranmed to maskRect
     var itemRect:CGRect/*represents the total size of the content*///TODO: could be ranmed to contentRect
-    var view:RBSliderList
+    var view:RBSliderList/*holds a ref to the view*/
     var mover:RubberBand
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/

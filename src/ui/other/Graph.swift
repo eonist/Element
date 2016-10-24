@@ -5,6 +5,7 @@ class Graph:Element {
     var hValNames:[String] {return ["A","B","C","D","E","F","G"]}/*horizontal items*/
     var vCount:Int = 5/*number of vertical indicators*/
     var leftBar:Section?
+    var leftBarItems:[TextArea] = []
     var bottomBar:Section?
     var graphArea:Section?
     var graphLine:GraphLine?
@@ -73,6 +74,7 @@ class Graph:Element {
             num = round(num)//NumberModifier.toFixed(num, 1)//
             let str:String = num.string
             let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
+            leftBarItems!
             leftBar!.addSubView(textArea)
             textArea.setPosition(CGPoint(0,y))
             y += itemYSpace
@@ -147,6 +149,7 @@ class Graph:Element {
      * //height should be uniform to the width
      * //Realign components
      */
+    
     func alignUI(){
         
         //this method is not in use

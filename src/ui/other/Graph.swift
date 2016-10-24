@@ -215,3 +215,9 @@ class YearGraph:Graph{
     override var hValues:[CGFloat] {return [14,8,13,17,25,9,14,20,33,25,15,19]}
 }
 */
+/*
+class WeekGraph:Graph{
+    override var hValues:[CGFloat] {return [4,2,3,7,5,0,1]}
+    override var hValNames:[String] {return ["M","T","W","T","F","S","S"]}
+}
+*/

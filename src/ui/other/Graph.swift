@@ -206,3 +206,12 @@ private class GraphUtils{
         return points
     }
 }
+/**
+ * the values are the collected values from 1 to end of month
+ */
+/*
+class YearGraph:Graph{
+    override var hValNames:[String] {return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}
+    override var hValues:[CGFloat] {return [14,8,13,17,25,9,14,20,33,25,15,19]}
+}
+*/

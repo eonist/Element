@@ -68,6 +68,8 @@ class Graph:Element {
         //Swift.print("maxValue: " + "\(maxValue)")
         
         
+        let strings:[String] = GraphUtils.verticalIndicators(vCount, maxValue)
+
         var y:CGFloat = itemYSpace
         strings.forEach{
             let textArea:TextArea = TextArea(NaN,NaN,$0,leftBar!)
@@ -210,11 +212,10 @@ class GraphUtils{
         }
         return points
     }
-    
     /**
-    *
-    */
-    static func verticalIndicators(vCount:Int,_ maxValue:CGFloat){
+     *
+     */
+    static func verticalIndicators(vCount:Int,_ maxValue:CGFloat)->[String]{
         var strings:[String] = []
         for i in (0..<vCount).reverse() {
             //Swift.print("i: " + "\(i)")
@@ -225,6 +226,7 @@ class GraphUtils{
             strings.append(str)
             //Tip: use skin.getWidth() if you need to align Element items with Align
         }
+        return strings
     }
 }
 /**

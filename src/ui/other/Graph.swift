@@ -9,6 +9,7 @@ class Graph:Element {
     var graphArea:Section?
     var graphLine:GraphLine?
     var graphPoints:[Element] = []
+    var layoutData:(newSize:CGSize,newPostition:CGPoint,spaceData:(itemYSpace:CGFloat,maxValue:CGFloat))
     override func resolveSkin() {
         super.resolveSkin()
        
@@ -23,7 +24,7 @@ class Graph:Element {
         //Swift.print("newPostition: " + "\(newPostition)")
         
         createGraphArea(newSize,newPostition)
-        let spaceData = createLeftBar(newSize,newPostition)
+        let spaceData:(itemYSpace:CGFloat,maxValue:CGFloat) = createLeftBar(newSize,newPostition)
         let itemYSpace:CGFloat = spaceData.itemYSpace
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)

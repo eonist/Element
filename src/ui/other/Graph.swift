@@ -9,7 +9,11 @@ class Graph:Element {
     var graphArea:Section?
     var graphLine:GraphLine?
     var graphPoints:[Element] = []
-    var layoutData:(newSize:CGSize,newPostition:CGPoint,spaceData:(itemYSpace:CGFloat,maxValue:CGFloat))
+    /*layoutData:*/
+    var newSize:CGSize?
+    var newPostition:CGPoint?
+    var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?
+    var itemYSpace:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()
        
@@ -18,14 +22,14 @@ class Graph:Element {
         //also use 5/3 ratio for a more widescreen look
         //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors (should also be able to filter commits & codeLine.additions & codeLine.deletions), also filter project via repo browser.
         
-        let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
+        newSize = Resizer.fit(CGSize(w,h),4/3)
         //Swift.print("newSize: " + "\(newSize)")
-        let newPostition:CGPoint = Align.alignmentPoint(newSize, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        newPostition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         //Swift.print("newPostition: " + "\(newPostition)")
         
-        createGraphArea(newSize,newPostition)
-        let spaceData:(itemYSpace:CGFloat,maxValue:CGFloat) = createLeftBar(newSize,newPostition)
-        let itemYSpace:CGFloat = spaceData.itemYSpace
+        createGraphArea(newSize!,newPostition!)
+        spaceData = createLeftBar(newSize!,newPostition!)
+        itemYSpace = spaceData.itemYSpace
         let itemXSpace:CGFloat = createBottomBar(newSize,newPostition)
         let spacing:CGSize = CGSize(itemXSpace,itemYSpace)
         

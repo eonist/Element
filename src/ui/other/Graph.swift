@@ -245,7 +245,38 @@ class WeekGraph:Graph{
 }
 */
 
+/*
 
+
+class MonthGraph:Graph{
+    override var hValues:[CGFloat] {
+        var arr:[CGFloat] = []
+        for _ in 0..<numOfDaysInMonth{
+            let val:CGFloat = NumberParser.random(4, 24).cgFloat//generate hValues via random
+            arr.append(val)
+        }
+        return arr
+    }
+    override var hValNames:[String] {
+        var arr:[String] = []
+        for i in 1...numOfDaysInMonth{//you need 1 until numOfDaysInMonth as hvalnames
+            arr.append(i.string)
+        }
+        return arr
+    }
+    var numOfDaysInMonth:Int
+    var curMonth:Int
+    init(_ width: CGFloat, _ height: CGFloat,_ curMonth:Int, _ parent: IElement?, _ id: String? = nil) {
+        self.curMonth = curMonth
+        let date:NSDate = NSDate.createDate(nil,4)!
+        numOfDaysInMonth = date.numOfDaysInMonth
+        
+        super.init(width, height, parent, id)
+    }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+
+*/
 //day,week,month,year,all (focus on day and week)
 //12a 1a 2a 3a 4a 5a 6a 7a 8a 9a 10a 11a 12p 1p 2p 3p 4p 5p 6p 7p 8p 9p 10p 11p
 //00:00, 01:00, 02

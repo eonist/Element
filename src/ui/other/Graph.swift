@@ -66,19 +66,15 @@ class Graph:Element {
             maxValue += 1//We need even values when we devide later
         }
         //Swift.print("maxValue: " + "\(maxValue)")
+        
+        
         var y:CGFloat = itemYSpace
-        for i in (0..<vCount).reverse() {
-            //Swift.print("i: " + "\(i)")
-            var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
-            //Swift.print("num: " + "\(num)")
-            num = round(num)//NumberModifier.toFixed(num, 1)//
-            let str:String = num.string
-            let textArea:TextArea = TextArea(NaN,NaN,str,leftBar!)
+        strings.forEach{
+            let textArea:TextArea = TextArea(NaN,NaN,$0,leftBar!)
             leftBarItems.append(textArea)
             leftBar!.addSubView(textArea)
             textArea.setPosition(CGPoint(0,y))
             y += itemYSpace
-            //Tip: use skin.getWidth() if you need to align Element items with Align 
         }
         return (itemYSpace:itemYSpace,maxValue:maxValue)
     }
@@ -213,6 +209,22 @@ class GraphUtils{
             points.append(p)
         }
         return points
+    }
+    
+    /**
+    *
+    */
+    static func verticalIndicators(vCount:Int,_ maxValue:CGFloat){
+        var strings:[String] = []
+        for i in (0..<vCount).reverse() {
+            //Swift.print("i: " + "\(i)")
+            var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
+            //Swift.print("num: " + "\(num)")
+            num = round(num)//NumberModifier.toFixed(num, 1)//
+            let str:String = num.string
+            strings.append(str)
+            //Tip: use skin.getWidth() if you need to align Element items with Align
+        }
     }
 }
 /**

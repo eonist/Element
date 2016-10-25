@@ -55,12 +55,16 @@ class ProgressIndicator:Element {
     func start(){
         //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
+        if(animator != nil){animator!.stop()}//stop any previous running animation
+        animator = LoopingAnimator(Animation.sharedInstance,10,2,0,1,progress,Easing.easeInQuad)
+        animator!.start()
     }
     /**
      *
      */
     func stop(){
         //stop animator
+        animator!.stop()
     }
     
     

@@ -5,6 +5,7 @@ import Foundation
 class ProgressIndicator:Element {
     var lines:[LineGraphic] = []
     var lineStyle:ILineStyle = LineStyle()
+    var animator:Animator?
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
         lineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component

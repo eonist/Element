@@ -3,6 +3,7 @@ import Foundation
  * CSS: line-alpha:0.5;line:Gray;line-thickness:2px;width:60px;height:60px;
  */
 class ProgressIndicator:Element {
+    var line:LineGraphic?
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
         
@@ -10,7 +11,6 @@ class ProgressIndicator:Element {
         var lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         //add round end style 
         lineStyle.lineCap = CGLineCap.Round
-        let baseGraphic = BaseGraphic(nil,lineStyle)
         line = LineGraphic(CGPoint(),CGPoint(),lineStyle)
         addSubView(line!.graphic)
         line!.draw()

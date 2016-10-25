@@ -34,12 +34,12 @@ class ProgressIndicator:Element {
         
         //Could the bellow be done simpler: think sequence looping in a video.
         
-        for i in 0..<12{
+        for i in 0..<12{//reset all values
             let line = lines[i]
-            let alpha = lineStyle.color.alpha
-            line.graphic.lineStyle!.color.alpha()
-        }//reset all values
-        //progress = round(12*value)
+            let alpha = lineStyle.color.alphaComponent
+            line.graphic.lineStyle!.color.alpha(alpha)
+        }
+        let progress:CGFloat = round(12*value)
         //start = progress
         //end = progress + 7
         //for i in start..<end

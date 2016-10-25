@@ -30,7 +30,7 @@ class ProgressIndicator:Element {
      * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
-        Swift.print("progress: " + "\(value)")
+        //Swift.print("progress: " + "\(value)")
         //Could the bellow be done simpler: think sequence looping in a video.
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
@@ -43,16 +43,7 @@ class ProgressIndicator:Element {
         let progress:Int = round(12*value).int//value = 0.25 -> 3, value = 0.5 -> 6 etc etc (values from 0 - 12 )
         
         for i in 0..<7{//iterates 7 times
-            
-            //Continue here: you need to be at 1 when i = 7
-            
-            //this is wrong -> (1/7*i)...figure it out
-            
-            //7/i
-            
             let alpha:CGFloat = initAlpha + restAlpha * (1/7*i)//we need a half circle with gradually increasing alpha values starting from initAlpha
-            Swift.print("alpha: " + "\(alpha)")
-            
             let a:Int = progress + i
             let e:Int = IntParser.normalize(a, 12)//clamps the values between 0 and 12
             let line = lines[e]
@@ -68,7 +59,7 @@ class ProgressIndicator:Element {
         //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
         if(animator != nil){animator!.stop()}//stop any previous running animation
-        animator = LoopingAnimator(Animation.sharedInstance,10,2,0,1,progress,Easing.easeInQuad)
+        animator = LoopingAnimator(Animation.sharedInstance,10,2,0,1,progress,Easing.easeLinear)
         animator!.start()
     }
     /**

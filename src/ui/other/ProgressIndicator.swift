@@ -13,7 +13,7 @@ class ProgressIndicator:Element {
         Swift.print("radius: " + "\(radius)")
         let wedge:CGFloat = π*2/12
         var lines:[LineGraphic] = []
-        for i in 0..<12{
+        for i in 0..<12 {
             let angle = wedge * i
             let startP = center.polarPoint(radius/2, angle)
             let endP = center.polarPoint(radius, angle)

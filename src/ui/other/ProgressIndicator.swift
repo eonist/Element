@@ -46,11 +46,11 @@ class ProgressIndicator:Element {
             
             //Continue here: you need to be at 1 when i = 7
             
-            //this is wrong -> (i/7*i)...figure it out
+            //this is wrong -> (1/7*i)...figure it out
             
             //7/i
             
-            let alpha:CGFloat = initAlpha + restAlpha * (i/7*i)//we need a half circle with gradually increasing alpha values starting from initAlpha
+            let alpha:CGFloat = initAlpha + restAlpha * (1/7*i)//we need a half circle with gradually increasing alpha values starting from initAlpha
             Swift.print("alpha: " + "\(alpha)")
             
             let a:Int = progress + i

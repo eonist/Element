@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * CSS: line-alpha:0.5;line:Gray;line-thickness:2px;width:60px;height:60px;
+ */
 class ProgressIndicator:Element {
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
@@ -8,7 +10,7 @@ class ProgressIndicator:Element {
         //add round end style 
         //center of element
         //radius = width/2
-        //wedge = π/2
+        //wedge = π/12
         //lines = []
         //for i loop 12 lines
             //angle = wedge * i
@@ -21,7 +23,7 @@ class ProgressIndicator:Element {
         
     }
     /**
-     *
+     * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
         

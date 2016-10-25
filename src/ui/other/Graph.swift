@@ -180,7 +180,7 @@ class GraphLine:Element{
         skin = SkinResolver.skin(self)//you could use let style:IStyle = StyleResolver.style(element), but i think skin has to be created to not cause bugs 
         //I think the most apropriate way is to make a custom skin and add it as a subView wich would implement :ISkin etc, see TextSkin for details
         //Somehow derive the style data and make a basegraphic with it
-        let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!
+        let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         //LineStyleParser.describe(lineStyle)
         let baseGraphic = BaseGraphic(nil,lineStyle)
         line = PathGraphic(path,baseGraphic)

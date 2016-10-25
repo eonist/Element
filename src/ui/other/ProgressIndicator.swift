@@ -9,7 +9,7 @@ class ProgressIndicator:Element {
         lineStyle.lineCap = CGLineCap.Round//add round end style
         let center:CGPoint = CGRect(CGPoint(),CGSize(w,h)).center//center of element
         Swift.print("center: " + "\(center)")
-        let radius:CGFloat = w/2
+        let radius:CGFloat = w/2 - lineStyle.thickness/2
         Swift.print("radius: " + "\(radius)")
         let wedge:CGFloat = π*2/12
         var lines:[LineGraphic] = []

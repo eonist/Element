@@ -40,6 +40,12 @@ class ProgressIndicator:Element {
     /**
      *
      */
+    func onFrame(){
+        
+    }
+    /**
+     *
+     */
     func start(){
         //assert if animator exist else create animator
         //start anim

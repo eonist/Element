@@ -13,7 +13,7 @@ class ProgressIndicator:Element {
         //wedge = π/12
         //lines = []
         //for i loop 12 lines
-            //angle = wedge * i - π/2 //<--start angle should be center-left
+            //angle = wedge * i
             //startPos = center.polar(radius/2,angle)
             //endPos = center.polar(radius,angle)
             //line = LineGraphic(startP,endP,basegraphic(lineStyle))
@@ -26,7 +26,9 @@ class ProgressIndicator:Element {
      * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
-        //for i in 0..<6
-            //alpha = 0.5
+        //start = 0
+        //end = 7
+        //for i in start..<end
+            //alpha = 0.5 *
     }
 }

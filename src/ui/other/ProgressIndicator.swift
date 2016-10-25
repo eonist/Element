@@ -27,6 +27,9 @@ class ProgressIndicator:Element {
      * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
+        
+        //Could the bellow be done simpler: think sequence looping in a video.
+        
         //for i in 0..<12{alpha = 0.5}//reset all values
         //progress = round(12*value)
         //start = progress
@@ -50,4 +53,9 @@ class ProgressIndicator:Element {
         //assert if animator exist else create animator
         //start anim
     }
+    
+    
+    //Continue here: figure out how you can use one animator object to do looping and progress seemlesly
+        //using the LoopingAnimator should be fine, carry on
+    
 }

@@ -11,9 +11,9 @@ class ProgressIndicator:Element {
         lineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         lineStyle.lineCap = CGLineCap.Round//add round end style
         let center:CGPoint = CGRect(CGPoint(),CGSize(w,h)).center//center of element
-        Swift.print("center: " + "\(center)")
+        //Swift.print("center: " + "\(center)")
         let radius:CGFloat = w/2 - lineStyle.thickness/2
-        Swift.print("radius: " + "\(radius)")
+        //Swift.print("radius: " + "\(radius)")
         let wedge:CGFloat = π*2/12
         for i in 0..<12 {
             let angle = wedge * i

@@ -45,7 +45,7 @@ class ProgressIndicator:Element {
         let end:Int = progress + 7
         for i in start..<end{
             let e:Int = IntParser.normalize(i, 12)//i = NumberParser.loopClamp(i,0,12)
-            let alpha:CGFloat = initAlpha + (restAlpha*)
+            let alpha:CGFloat = initAlpha + (restAlpha/7) * ()
             //alpha += 0.5 * i (i/7)
             //setStyle(), draw()
         }

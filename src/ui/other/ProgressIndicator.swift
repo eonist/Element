@@ -7,7 +7,14 @@ class ProgressIndicator:Element {
         skin = SkinResolver.skin(self)
         
         //get the linestyle from this skin
+        var lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         //add round end style 
+        lineStyle.lineCap = CGLineCap.Round
+        let baseGraphic = BaseGraphic(nil,lineStyle)
+        line = LineGraphic(CGPoint(),CGPoint(),lineStyle)
+        addSubView(line!.graphic)
+        line!.draw()
+
         //center of element
         //radius = width/2
         //wedge = π/12

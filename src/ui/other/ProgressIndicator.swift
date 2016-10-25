@@ -58,7 +58,7 @@ class ProgressIndicator:Element {
      *
      */
     func stop(){
-        
+        //stop animator
     }
     
     

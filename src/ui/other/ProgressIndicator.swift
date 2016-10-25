@@ -3,16 +3,17 @@ import Foundation
  * CSS: line-alpha:0.5;line:Gray;line-thickness:2px;width:60px;height:60px;
  */
 class ProgressIndicator:Element {
+    var lines:[LineGraphic] = []
+    var lineStyle:ILineStyle = LineStyle()
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
-        var lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
+        lineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         lineStyle.lineCap = CGLineCap.Round//add round end style
         let center:CGPoint = CGRect(CGPoint(),CGSize(w,h)).center//center of element
         Swift.print("center: " + "\(center)")
         let radius:CGFloat = w/2 - lineStyle.thickness/2
         Swift.print("radius: " + "\(radius)")
         let wedge:CGFloat = π*2/12
-        var lines:[LineGraphic] = []
         for i in 0..<12 {
             let angle = wedge * i
             let startP = center.polarPoint(radius/2, angle)
@@ -33,7 +34,11 @@ class ProgressIndicator:Element {
         
         //Could the bellow be done simpler: think sequence looping in a video.
         
-        //for i in 0..<12{alpha = 0.5}//reset all values
+        for i in 0..<12{
+            let line = lines[i]
+            let alpha = lineStyle.color.alpha
+            line.graphic.lineStyle!.color.alpha()
+        }//reset all values
         //progress = round(12*value)
         //start = progress
         //end = progress + 7

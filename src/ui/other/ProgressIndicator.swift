@@ -1,5 +1,9 @@
 import Foundation
 
-class ProgressIndicator {
-
+class ProgressIndicator:Element {
+    override func resolveSkin() {
+        super.resolveSkin()
+        
+        //
+    }
 }

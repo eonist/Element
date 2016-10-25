@@ -26,6 +26,6 @@ class ProgressIndicator:Element {
      * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
-        
+        //0 -> l0
     }
 }

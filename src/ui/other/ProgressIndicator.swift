@@ -26,7 +26,7 @@ class ProgressIndicator:Element {
      * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
-        //for i in 0..<12
-            //
+        //for i in 0..<6
+            //alpha = 0.5
     }
 }

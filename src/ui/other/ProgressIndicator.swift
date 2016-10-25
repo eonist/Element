@@ -40,15 +40,13 @@ class ProgressIndicator:Element {
             //setStyle(), draw()
         //
     }
-    
     /**
-     *
+     * Esentially you start a repeating animation that modulates a value from 0 - 1 of a defined time over n-times
      */
     func start(){
         //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
     }
-    
     /**
      *
      */

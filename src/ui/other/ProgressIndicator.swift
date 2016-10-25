@@ -20,4 +20,10 @@ class ProgressIndicator:Element {
             //lines.append(line)
         
     }
+    /**
+     *
+     */
+    func progress(value:CGFloat){
+        
+    }
 }

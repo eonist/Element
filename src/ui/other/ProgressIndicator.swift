@@ -3,7 +3,7 @@ import Foundation
  * CSS: line-alpha:0.5;line:Gray;line-thickness:2px;width:60px;height:60px;
  */
 class ProgressIndicator:Element {
-    var line:LineGraphic?
+    
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
         
@@ -11,14 +11,18 @@ class ProgressIndicator:Element {
         var lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         //add round end style 
         lineStyle.lineCap = CGLineCap.Round
-        line = LineGraphic(CGPoint(),CGPoint(),lineStyle)
+        var line:LineGraphic? = LineGraphic(CGPoint(),CGPoint(),lineStyle)
         addSubView(line!.graphic)
         line!.draw()
 
         //center of element
+        let center:CGPoint = frame.center
         //radius = width/2
+        let radius:CGFloat = frame.width
         //wedge = π/12
+        let wedge:CGFloat = π/12
         //lines = []
+        var lines:[LineGraphic] = []
         //for i loop 12 lines
             //angle = wedge * i
             //startPos = center.polar(radius/2,angle)

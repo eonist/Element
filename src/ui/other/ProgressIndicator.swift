@@ -30,8 +30,6 @@ class ProgressIndicator:Element {
      */
     func progress(value:CGFloat){
         
-        //Continue here:
-        
         //Could the bellow be done simpler: think sequence looping in a video.
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
@@ -46,7 +44,7 @@ class ProgressIndicator:Element {
         var a:Int = 0
         for i in start..<end{//iterates 7 times
             a++
-            let alpha:CGFloat = initAlpha + (restAlpha / 7 * a)
+            let alpha:CGFloat = 1 - (restAlpha / 7 * a)//we need a half circle with gradually increasing alpha values starting from initAlpha
             let e:Int = IntParser.normalize(i, 12)//clamps the values between 0 and 12
             let line = lines[e]
             line.graphic.lineStyle!.color.alpha(alpha)

@@ -39,14 +39,15 @@ class ProgressIndicator:Element {
             let alpha = lineStyle.color.alphaComponent
             line.graphic.lineStyle!.color.alpha(alpha)
         }
-        let progress:CGFloat = round(12*value)
-        //start = progress
-        //end = progress + 7
-        //for i in start..<end
+        let progress:Int = round(12*value).int
+        let start:Int = progress
+        let end:Int = progress + 7
+        for i in start..<end{
+            
             //i = NumberParser.loopClamp(i,0,12)
             //alpha += 0.5 * i (i/7)
             //setStyle(), draw()
-        //
+        }
     }
     /**
      * Esentially you start a repeating animation that modulates a value from 0 - 1 of a defined time over n-times

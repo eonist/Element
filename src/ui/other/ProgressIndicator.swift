@@ -37,15 +37,18 @@ class ProgressIndicator:Element {
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
         for i in 0..<12{//reset all values
             let line = lines[i]
-            
             line.graphic.lineStyle!.color.alpha(initAlpha)
+            line.draw()
         }
         let progress:Int = round(12*value).int//value = 0.25 -> 3, value = 0.5 -> 6 etc etc (values from 0 - 12 )
         let start:Int = progress
         let end:Int = progress + 7
         for i in start..<end{//iterates 7 times
+            let alpha:CGFloat = initAlpha// + (restAlpha/7) * ()
             let e:Int = IntParser.normalize(i, 12)//clamps the values between 0 and 12
-            let alpha:CGFloat = initAlpha + (restAlpha/7) * ()
+            let line = lines[e]
+            line.graphic.lineStyle!.color.alpha(alpha)
+            line.draw()
             //alpha += 0.5 * i (i/7)
             //setStyle(), draw()
         }

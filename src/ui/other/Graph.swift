@@ -188,10 +188,10 @@ class GraphLine:Element{
         line!.draw()
     }
     override func setSkinState(skinState: String) {
-        //update the line
+        //update the line, implement this if you want to be able to set the theme of this component
     }
     override func setSize(width: CGFloat, _ height: CGFloat) {
-        //update the line
+        //update the line, implement this if you need win resize support for this component
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
 }

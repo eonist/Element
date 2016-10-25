@@ -18,7 +18,7 @@ class ProgressIndicator:Element {
             let angle = wedge * i
             let startP = center.polarPoint(radius/2, angle)
             let endP = center.polarPoint(radius, angle)
-            let line:LineGraphic = LineGraphic(startP,endP,lineStyle)
+            let line:LineGraphic = LineGraphic(startP,endP,lineStyle.copy())
             lines.append(line)
             addSubView(line.graphic)
             line.draw()
@@ -33,11 +33,11 @@ class ProgressIndicator:Element {
         //Continue here:
         
         //Could the bellow be done simpler: think sequence looping in a video.
-        
+        let initAlpha = lineStyle.color.alphaComponent
         for i in 0..<12{//reset all values
             let line = lines[i]
-            let alpha = lineStyle.color.alphaComponent
-            line.graphic.lineStyle!.color.alpha(alpha)
+            
+            line.graphic.lineStyle!.color.alpha(initAlpha)
         }
         let progress:Int = round(12*value).int
         let start:Int = progress

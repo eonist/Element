@@ -36,10 +36,10 @@ class ProgressIndicator:Element {
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
         for i in 0..<12{//reset all values
             let line = lines[i]
-            line.graphic.lineStyle!.color.alpha(1)
+            line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(initAlpha)
             line.draw()
         }
-        /*
+        
         let progress:Int = round(12*value).int//value = 0.25 -> 3, value = 0.5 -> 6 etc etc (values from 0 - 12 )
         
         for i in 0..<7{//iterates 7 times
@@ -47,10 +47,10 @@ class ProgressIndicator:Element {
             let a:Int = progress + i
             let e:Int = IntParser.normalize(a, 12)//clamps the values between 0 and 12
             let line = lines[e]
-            line.graphic.lineStyle!.color.alpha(alpha)
+            line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
             line.draw()
         }
-        */
+        
     }
     /**
      * Esentially you start a repeating animation that modulates a value from 0 - 1 of a defined time over n-times

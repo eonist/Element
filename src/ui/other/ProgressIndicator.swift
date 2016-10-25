@@ -8,6 +8,7 @@ class ProgressIndicator:Element {
         var lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         lineStyle.lineCap = CGLineCap.Round//add round end style
         let center:CGPoint = frame.center//center of element
+        Swift.print("center: " + "\(center)")
         let radius:CGFloat = frame.width/2
         let wedge:CGFloat = π*2/12
         var lines:[LineGraphic] = []

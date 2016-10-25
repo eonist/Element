@@ -27,8 +27,11 @@ class ProgressIndicator:Element {
         //for i loop 12 lines
         for i in 0..<12{
             //angle = wedge * i
+            let angle = wedge * i
             //startPos = center.polar(radius/2,angle)
+            let startP = center.polarPoint(radius/2, angle)
             //endPos = center.polar(radius,angle)
+            let sendP = center.polarPoint(radius/2, angle)
             //line = LineGraphic(startP,endP,basegraphic(lineStyle))
             //addSubView(line)
             //line.draw()

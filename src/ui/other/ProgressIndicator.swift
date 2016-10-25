@@ -23,7 +23,9 @@ class ProgressIndicator:Element {
         let wedge:CGFloat = π/12
         //lines = []
         var lines:[LineGraphic] = []
+
         //for i loop 12 lines
+        for i in 0..<12{
             //angle = wedge * i
             //startPos = center.polar(radius/2,angle)
             //endPos = center.polar(radius,angle)
@@ -31,7 +33,7 @@ class ProgressIndicator:Element {
             //addSubView(line)
             //line.draw()
             //lines.append(line)
-        
+        }
     }
     /**
      * Modulate the progress indicator (For iterative progress or looping animation)

@@ -23,7 +23,7 @@ class ProgressIndicator:Element {
         
     }
     /**
-     * 
+     * Modulate the progress indicator (For iterative progress or looping animation)
      * PARAM: value: 0 - 1
      */
     func progress(value:CGFloat){
@@ -34,6 +34,13 @@ class ProgressIndicator:Element {
         //for i in start..<end
             //i = NumberParser.loopClamp(i,0,12)
             //alpha += 0.5 * i (i/7)
+            //setStyle(), draw()
+        //
+    }
+    /**
+     *
+     */
+    func start(){
         //
     }
 }

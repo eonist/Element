@@ -40,17 +40,12 @@ class ProgressIndicator:Element {
             //setStyle(), draw()
         //
     }
-    /**
-     *
-     */
-    func onFrame(){
-        
-    }
+    
     /**
      *
      */
     func start(){
-        //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec
+        //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
     }
     

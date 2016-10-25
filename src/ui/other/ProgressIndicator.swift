@@ -29,6 +29,8 @@ class ProgressIndicator:Element {
      */
     func progress(value:CGFloat){
         
+        //Continue here:
+        
         //Could the bellow be done simpler: think sequence looping in a video.
         
         //for i in 0..<12{alpha = 0.5}//reset all values

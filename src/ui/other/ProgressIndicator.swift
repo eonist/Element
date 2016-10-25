@@ -41,6 +41,6 @@ class ProgressIndicator:Element {
      *
      */
     func start(){
-        //
+        //continue here: take alook at the Animator obj
     }
 }

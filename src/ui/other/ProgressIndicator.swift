@@ -29,8 +29,8 @@ class ProgressIndicator:Element {
         //progress = round(12*value)
         //start = progress
         //end = progress + 7
-        //end = NumberParser.loopClamp(end)
         //for i in start..<end
+            //i = NumberParser.loopClamp(i,0,12)
             //alpha += 0.5 * i (i/7)
         //
     }

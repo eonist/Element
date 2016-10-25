@@ -46,7 +46,7 @@ class ProgressIndicator:Element {
     /**
      *
      */
-    func start(){
+    func loop(){
         //assert if animator exist else create animator
         //start anim
     }

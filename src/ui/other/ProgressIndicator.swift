@@ -14,7 +14,10 @@ class ProgressIndicator:Element {
             //angle = wedge * i
             //startPos = center.polar(radius/2,angle)
             //endPos = center.polar(radius,angle)
-            //line = LineGraphic()
-            //lines.append()
+            //line = LineGraphic(startP,endP,basegraphic(lineStyle))
+            //addSubView(line)
+            //line.draw()
+            //lines.append(line)
+        
     }
 }

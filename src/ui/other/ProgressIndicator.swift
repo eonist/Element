@@ -46,7 +46,7 @@ class ProgressIndicator:Element {
         var a:Int = 0
         for i in start..<end{//iterates 7 times
             a++
-            let alpha:CGFloat = initAlpha// + (restAlpha/7) * ()
+            let alpha:CGFloat = initAlpha + (restAlpha / 7 * a)
             let e:Int = IntParser.normalize(i, 12)//clamps the values between 0 and 12
             let line = lines[e]
             line.graphic.lineStyle!.color.alpha(alpha)

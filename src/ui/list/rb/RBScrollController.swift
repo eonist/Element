@@ -15,7 +15,7 @@ class RBScrollController {
         self.view = view
         self.frame = frame
         self.itemRect = itemRect
-        self.mover = RubberBand(view, frame,itemRect)
+        self.mover = RubberBand(view,frame,itemRect)
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.

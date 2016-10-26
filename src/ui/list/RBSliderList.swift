@@ -25,7 +25,7 @@ class RBSliderList:List {
         Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value
         let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
-        //Swift.print("scalar: " + "\(scalar)")
+        Swift.print("RBSliderList.setProgress scalar: " + "\(scalar)")
         // Swift.print("setProgressValue.start")
         slider?.setProgressValue(scalar)
         //Swift.print("setProgressValue.end")

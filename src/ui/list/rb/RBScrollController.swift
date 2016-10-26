@@ -46,7 +46,7 @@ class RBScrollController {
      */
     func onScrollWheelDown(){
         //Swift.print("onScrollWheelDown")
-        view.slider?.thumb?.fadeIn()
+        view.slider?.thumb?.fadeIn()//<---TODO: use an event instead of directly manipulating this
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/

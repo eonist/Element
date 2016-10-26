@@ -2,12 +2,13 @@ import Cocoa
 /**
  * TODO: Add support for rubberband behaviour even if there is no need for scrolling
  * TODO: make the top and bottom values when scrolling absolutly pinned to 0 and 1. There should be a final tick that cooresponds to these values in the Mover class
+ * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
  */
 class RBSliderList:List {
     var scrollController:RBScrollController?
     var slider:VSlider?
     private var sliderInterval:CGFloat?
-    var progressValue:CGFloat = 0//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
+    var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
     override func resolveSkin() {
         super.resolveSkin()
         Swift.print("RBSliderList.width: " + "\(width)")
@@ -27,7 +28,7 @@ class RBSliderList:List {
         lableContainer!.frame.y = value
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         // Swift.print("setProgressValue.start")
-        slider?.setProgressValue(progressValue)
+        slider?.setProgressValue(progressValue!)
         //Swift.print("setProgressValue.end")
     }
     override func scrollWheel(theEvent:NSEvent) {

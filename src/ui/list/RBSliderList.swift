@@ -22,10 +22,10 @@ class RBSliderList:List {
      * PARAM value: is the final y value for the lableContainer
      */
     func setProgress(value:CGFloat){
-        Swift.print("RBSliderList.setProgress() value: " + "\(value)")
+        //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value
         let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
-        Swift.print("RBSliderList.setProgress scalar: " + "\(scalar)")
+        //Swift.print("RBSliderList.setProgress scalar: " + "\(scalar)")
         // Swift.print("setProgressValue.start")
         slider?.setProgressValue(scalar)
         //Swift.print("setProgressValue.end")
@@ -38,8 +38,8 @@ class RBSliderList:List {
         ListModifier.scrollTo(self,sliderEvent.progress)
         scrollController?.mover.value = lableContainer!.frame.y
     }
-    override func onEvent(event: Event) {
-        if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
+    override func onEvent(event:Event) {
+        if(event.assert(SliderEvent.change,slider)){onSliderChange(event as! SliderEvent)}
         super.onEvent(event)
     }
 }

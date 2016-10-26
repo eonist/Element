@@ -20,7 +20,7 @@ class RBScrollController {
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
      */
-    func scrollWheel(theEvent: NSEvent) {
+    func scrollWheel(theEvent:NSEvent) {
         if(theEvent.phase != NSEventPhase.None){
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }

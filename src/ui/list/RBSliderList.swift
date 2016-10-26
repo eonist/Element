@@ -33,7 +33,7 @@ class RBSliderList:List {
     override func scrollWheel(theEvent:NSEvent) {
         scrollController?.scrollWheel(theEvent)//forward the event to the scrollController
         if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/
-        super.scrollWheel(theEvent)
+        super.scrollWheel(theEvent)//keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to
     }
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)

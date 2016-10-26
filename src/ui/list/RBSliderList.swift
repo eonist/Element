@@ -39,7 +39,7 @@ class RBSliderList:List {
         scrollController?.mover.value = lableContainer!.frame.y
     }
     override func onEvent(event:Event) {
-        if(event.assert(SliderEvent.change,slider)){onSliderChange(event as! SliderEvent)}
+        if(event.assert(SliderEvent.change,slider)){onSliderChange(event.cast())}
         super.onEvent(event)
     }
 }

@@ -7,6 +7,7 @@ class RBSliderList:List {
     var scrollController:RBScrollController?
     var slider:VSlider?
     private var sliderInterval:CGFloat?
+    var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
     override func resolveSkin() {
         super.resolveSkin()
         Swift.print("RBSliderList.width: " + "\(width)")
@@ -24,10 +25,9 @@ class RBSliderList:List {
     func setProgress(value:CGFloat){
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value
-        let scalar:CGFloat = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
-        //Swift.print("RBSliderList.setProgress scalar: " + "\(scalar)")
+        progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         // Swift.print("setProgressValue.start")
-        slider?.setProgressValue(scalar)
+        slider?.setProgressValue(progressValue!)
         //Swift.print("setProgressValue.end")
     }
     override func scrollWheel(theEvent:NSEvent) {

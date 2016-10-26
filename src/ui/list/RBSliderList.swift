@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * TODO: Add support fo rubberband behaviour even if there is no need for scrolling
+ * TODO: Add support for rubberband behaviour even if there is no need for scrolling
  * TODO: make the top and bottom values when scrolling absolutly pinned to 0 and 1. There should be a final tick that cooresponds to these values in the Mover class
  */
 class RBSliderList:List {

@@ -3,19 +3,17 @@ import Cocoa
  * NOTE: You forward the scrollWheel events here
  * NOTE: It all works like a regular MVC system
  * TODO: Create the algorithm that calculates the actual throw speed. By looking at the time that each intervall travles. 
+ * PARAM: frame: represents the visible part of the content //TODO: could be ranmed to maskRect
+ * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
  */
-class RBScrollController {
-    var frame:CGRect/*represents the visible part of the content*///TODO: could be ranmed to maskRect
-    var itemRect:CGRect/*represents the total size of the content*///TODO: could be ranmed to contentRect
+class RBScrollController:EventSender{
     var view:RBSliderList/*holds a ref to the view*/
     var mover:RubberBand
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
     init(_ view:RBSliderList,_ frame:CGRect, _ itemRect:CGRect){
         self.view = view
-        self.frame = frame
-        self.itemRect = itemRect
-        self.mover = RubberBand(view,frame,itemRect)
+        mover = RubberBand(view,frame,itemRect)
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
@@ -32,10 +30,10 @@ class RBScrollController {
                 velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
                 mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
                 mover.updatePosition()/*the mover still governs the resulting value, inorder to get the displacement friction working*/
-            case NSEventPhase.MayBegin:onScrollWheelDown()/*can be used to detect if two fingers are touching the trackpad*/
-            case NSEventPhase.Began:onScrollWheelDown()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
-            case NSEventPhase.Ended:onScrollWheelUp();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
-            case NSEventPhase.Cancelled:onScrollWheelUp();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
+            case NSEventPhase.MayBegin:onScrollWheelEnter()/*can be used to detect if two fingers are touching the trackpad*/
+            case NSEventPhase.Began:onScrollWheelEnter()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
+            case NSEventPhase.Ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
+            case NSEventPhase.Cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
             case NSEventPhase.None:break;
             default:break;
         }
@@ -44,7 +42,7 @@ class RBScrollController {
     /**
      * NOTE: basically when you enter your scrollWheel gesture
      */
-    func onScrollWheelDown(){
+    func onScrollWheelEnter(){
         //Swift.print("onScrollWheelDown")
         view.slider?.thumb?.fadeIn()//<---TODO: use an event instead of directly manipulating this
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
@@ -53,11 +51,12 @@ class RBScrollController {
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover.isDirectlyManipulating = true/*toggle to directManipulationMode*/
         velocities = [0,0,0,0,0,0,0,0,0,0]/*reset the velocities*/
+        super.onEvent(ScrollWheelEvent(ScrollWheelEvent.enter,self))
     }
     /**
-     * NOTE: basically when you release your scrollWheel gesture
+     * NOTE: Basically when you release your scrollWheel gesture
      */
-    func onScrollWheelUp(){
+    func onScrollWheelExit(){
         //Swift.print("onScrollWheelUp")
         mover.hasStopped = false/*reset this value to false, so that the FrameAnimatior can start again*/
         mover.isDirectlyManipulating = false
@@ -74,5 +73,10 @@ class RBScrollController {
                 view.slider?.thumb?.fadeOut()
             }
         }
+        super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
+}
+class ScrollWheelEvent:Event{
+    static let enter:String = "scrollWheelEnter"
+    static let exit:String = "scrollWheelExit"
 }

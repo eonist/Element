@@ -2,8 +2,8 @@ import Cocoa
 //SkinParser.width(skin) was used before to create the mask size
 //SkinParser.height(skin) was used before to create the mask size
 /**
- * @Note There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
- * @Note ListParser and ListModifier are usefull utility classes
+ * NOTE: There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
+ * NOTE: ListParser and ListModifier are usefull utility classes
  * // :TODO: could List have a SelectGroup?
  * // :TODO: xml should be able to hold a propert named selected="true" and then the cooresponding Item should be selected
  * // :TODO: try to get rid of the lableContainer
@@ -17,9 +17,9 @@ class List:Element,IList{
     var lableContainer  : Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight
-        self.dataProvider = dataProvider ?? DataProvider()
-        super.init(width, height,parent,id)
-        self.dataProvider.event = onEvent//Add event handler for the dataProvider
+        self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
+        super.init(width,height,parent,id)
+        self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works*/
     }
     /**

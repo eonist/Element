@@ -37,7 +37,7 @@ extension Thumb{
         self.skin?.decoratables[0].draw()
     }
     func fadeIn(){
-        Swift.print("fadeIn")
+        //Swift.print("Thumb.fadeIn")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
@@ -45,7 +45,7 @@ extension Thumb{
         animator!.start()
     }
     func fadeOut(){
-        Swift.print("fadeOut")
+        //Swift.print("Thumb.fadeOut")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent

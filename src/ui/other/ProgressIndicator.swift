@@ -87,9 +87,6 @@ class ProgressIndicator:Element {
         //stop animator
         animator!.stop()
     }
-    
-    
-    //Continue here: figure out how you can use one animator object to do looping and progress seemlesly
-        //using the LoopingAnimator should be fine, carry on
+
     
 }

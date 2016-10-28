@@ -5,6 +5,7 @@ import Cocoa
  * TODO: Create the algorithm that calculates the actual throw speed. By looking at the time that each intervall travles. 
  * PARAM: frame: represents the visible part of the content //TODO: could be ranmed to maskRect
  * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
+ * TODO: It's possible to decouple this class from the view by using events and a callBack for the frame-ticks
  */
 class RBScrollController:EventSender{
     var view:RBSliderList/*holds a ref to the view*/

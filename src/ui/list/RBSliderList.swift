@@ -28,7 +28,7 @@ class RBSliderList:List {
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         // Swift.print("setProgressValue.start")
-        slider?.setProgressValue(progressValue!)
+        slider!.setProgressValue(progressValue!)
         //Swift.print("setProgressValue.end")
     }
     override func scrollWheel(theEvent:NSEvent) {

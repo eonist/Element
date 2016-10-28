@@ -51,6 +51,7 @@ extension Thumb{
         if(animator != nil){animator!.stop()}//stop any previous running animation
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(Animation.sharedInstance,0.5,curVal,0,interpolateAlpha,Easing.easeInQuad)
+        animator!.event = {(event:Event) -> Void in }
         animator!.start()
     }
 }

@@ -60,7 +60,10 @@ class ProgressIndicator:Element {
         let progression:Int = round(12 * value).int //from 0 to 12
         for i in 0..<12{
             if(i < progression){
-                
+                let alpha:CGFloat = 1
+                let line = lines[i]
+                line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
+                line.draw()
             }
         }
     }

@@ -50,7 +50,13 @@ class ProgressIndicator:Element {
             line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
             line.draw()
         }
-        
+    }
+    /**
+     *
+     */
+    func reveal(value:CGFloat){
+        //what you want to do...
+        //Reveal one tick at the time from top
     }
     /**
      * Esentially you start a repeating animation that modulates a value from 0 - 1 of a defined time over n-times

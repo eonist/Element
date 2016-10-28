@@ -59,12 +59,15 @@ class ProgressIndicator:Element {
         //Reveal one tick at the time from top
         let progression:Int = round(12 * value).int //from 0 to 12
         for i in 0..<12{
+            let alpha:CGFloat
             if(i < progression){
-                let alpha:CGFloat = 1
-                let line = lines[i]
-                line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
-                line.draw()
+                alpha = 1
+            }else{
+                alpha = 0
             }
+            let line = lines[i]
+            line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
+            line.draw()
         }
     }
     /**

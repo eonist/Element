@@ -54,9 +54,15 @@ class ProgressIndicator:Element {
     /**
      *
      */
-    func reveal(value:CGFloat){
+    func reveal(value:CGFloat){//value goes from 0 to 1
         //what you want to do...
         //Reveal one tick at the time from top
+        let progression:Int = round(12 * value).int //from 0 to 12
+        for i in 0..<12{
+            if(i < progression){
+                
+            }
+        }
     }
     /**
      * Esentially you start a repeating animation that modulates a value from 0 - 1 of a defined time over n-times

@@ -79,7 +79,7 @@ class RBScrollController:EventSender{
         super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
     override func onEvent(event: Event) {
-        Swift.print("RBScrollCOntroller.onEvent()")
+        Swift.print("RBScrollController.onEvent()")
         if(event.assert(AnimEvent.stopped, mover)){
             view.slider?.thumb?.fadeOut()//<--this should be handled through an Event
         }

@@ -72,15 +72,12 @@ class RBScrollController:EventSender{
             mover.start()//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
             mover.start()//this needs to start if your in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
-            if(view.slider?.thumb?.getSkinState() == SkinStates.none){
-                view.slider?.thumb?.fadeOut()
-            }
+            super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exitAndStationary,self))
         }
         super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
     override func onEvent(event:Event) {
         Swift.print("RBScrollController.onEvent()")
-        
         super.onEvent(event)
     }
 }

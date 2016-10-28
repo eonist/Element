@@ -6,6 +6,10 @@ class ProgressIndicator:Element {
     var lines:[LineGraphic] = []
     var lineStyle:ILineStyle = LineStyle()
     var animator:Animator?
+    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+        super.init(width, height, parent, id)
+        animator = LoopingAnimator(Animation.sharedInstance,5,1,0,1,progress,Easing.easeLinear)
+    }
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
         lineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
@@ -77,7 +81,6 @@ class ProgressIndicator:Element {
         //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
         if(animator != nil){animator!.stop()}//stop any previous running animation
-        animator = LoopingAnimator(Animation.sharedInstance,5,1,0,1,progress,Easing.easeLinear)
         animator!.start()
     }
     /**
@@ -87,6 +90,5 @@ class ProgressIndicator:Element {
         //stop animator
         animator!.stop()
     }
-
-    
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

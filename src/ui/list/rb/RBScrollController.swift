@@ -12,9 +12,9 @@ class RBScrollController:EventSender{
     var mover:RubberBand
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
-    init(_ view:RBSliderList,_ frame:CGRect, _ itemRect:CGRect){
+    init(_ callBack:(CGFloat)->Void,_ frame:CGRect, _ itemRect:CGRect){
         //self.view = view
-        mover = RubberBand(Animation.sharedInstance,view.setProgress,frame,itemRect)
+        mover = RubberBand(Animation.sharedInstance,callBack,frame,itemRect)
         super.init()
         mover.event = onEvent/*Add an eventHandler for the mover object*/
     }

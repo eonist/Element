@@ -77,7 +77,7 @@ class ProgressIndicator:Element {
         //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
         if(animator != nil){animator!.stop()}//stop any previous running animation
-        animator = LoopingAnimator(Animation.sharedInstance,10,1,0,1,progress,Easing.easeLinear)
+        animator = LoopingAnimator(Animation.sharedInstance,5,1,0,1,progress,Easing.easeLinear)
         animator!.start()
     }
     /**

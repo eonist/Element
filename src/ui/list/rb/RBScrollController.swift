@@ -15,7 +15,7 @@ class RBScrollController:EventSender{
         self.view = view
         mover = RubberBand(view,frame,itemRect)
         super.init()
-        mover.event = onEvent
+        mover.event = onEvent/*Add an eventHandler for the mover object*/
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
@@ -78,7 +78,7 @@ class RBScrollController:EventSender{
         super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
     override func onEvent(event: Event) {
-        if(event.assert(AnimEvent.stopped, self)){
+        if(event.assert(AnimEvent.stopped, mover)){
             view.slider?.thumb?.fadeOut()//<--this should be handled through an Event
         }
         super.onEvent(event)

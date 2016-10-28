@@ -8,12 +8,12 @@ import Cocoa
  * TODO: It's possible to decouple this class from the view by using events and a callBack for the frame-ticks
  */
 class RBScrollController:EventSender{
-    var view:RBSliderList/*holds a ref to the view*/
+    //var view:RBSliderList/*holds a ref to the view*/
     var mover:RubberBand
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
     init(_ view:RBSliderList,_ frame:CGRect, _ itemRect:CGRect){
-        self.view = view
+        //self.view = view
         mover = RubberBand(Animation.sharedInstance,view.setProgress,frame,itemRect)
         super.init()
         mover.event = onEvent/*Add an eventHandler for the mover object*/
@@ -78,7 +78,7 @@ class RBScrollController:EventSender{
         }
         super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
-    override func onEvent(event: Event) {
+    override func onEvent(event:Event) {
         Swift.print("RBScrollController.onEvent()")
         if(event.assert(AnimEvent.stopped, mover)){
             view.slider?.thumb?.fadeOut()//<--this should be handled through an Event

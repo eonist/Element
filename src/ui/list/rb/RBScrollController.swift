@@ -13,7 +13,7 @@ class RBScrollController:EventSender{
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
     init(_ view:RBSliderList,_ frame:CGRect, _ itemRect:CGRect){
         self.view = view
-        mover = RubberBand(view,frame,itemRect)
+        mover = RubberBand(Animation.sharedInstance,view,frame,itemRect)
         super.init()
         mover.event = onEvent/*Add an eventHandler for the mover object*/
     }

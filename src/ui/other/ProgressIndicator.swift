@@ -76,7 +76,8 @@ class ProgressIndicator:Element {
                     let relLoc = i - p
                     Swift.print("relLoc: " + "\(relLoc)")
                     let multiplier = relLoc/7
-                    alpha = 0.5 + 0.5 * multiplier
+                    Swift.print("multiplier: " + "\(multiplier)")
+                    alpha = 0.5 + (0.5 * multiplier)
                 }else{
                     alpha = 0.5
                 }

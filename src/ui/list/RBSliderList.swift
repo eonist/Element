@@ -41,11 +41,22 @@ class RBSliderList:List {
         ListModifier.scrollTo(self,sliderEvent.progress)
         scrollController?.mover.value = lableContainer!.frame.y
     }
+    func scrollWheelEnter(){//2. spring to refreshStatePosition
+        Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")
+        slider!.thumb!.fadeIn()
+    }
+    /**
+     *
+     */
+    func scrollWheelExitedAndIsStationary(){
+        Swift.print("CommitList.scrollWheelExitedAndIsStationary() ")
+        if(slider?.thumb?.getSkinState() == SkinStates.none){
+            slider?.thumb?.fadeOut()
+        }
+    }
     override func onEvent(event:Event) {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())
-        }else if(event.assert(ScrollWheelEvent.exit, scrollController)){
-            scrollWheelExit()
         }else if(event.assert(ScrollWheelEvent.enter, scrollController)){
             scrollWheelEnter()
         }else if(event.assert(ScrollWheelEvent.exitAndStationary, scrollController)){

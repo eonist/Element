@@ -18,7 +18,7 @@ class ProgressIndicator:Element {
         //Swift.print("center: " + "\(center)")
         let radius:CGFloat = w/2 - lineStyle.thickness/2
         //Swift.print("radius: " + "\(radius)")
-        let wedge:CGFloat = π*2/12
+        let wedge:CGFloat = π*2/12//Wedge amount
         for i in 0..<12 {
             let angle = wedge * i - π/2//<--minus π/2 so that the start angle is center bottom so to speak
             let startP = center.polarPoint(radius/2, angle)
@@ -43,9 +43,7 @@ class ProgressIndicator:Element {
             line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(initAlpha)
             line.draw()
         }
-        
         let progress:Int = round(12*value).int//value = 0.25 -> 3, value = 0.5 -> 6 etc etc (values from 0 - 12 )
-        
         for i in 0..<7{//iterates 7 times
             let alpha:CGFloat = initAlpha + restAlpha * (1/7*i)//we need a half circle with gradually increasing alpha values starting from initAlpha
             let a:Int = progress + i + 5//<--offset a half circle by adding 5
@@ -62,7 +60,7 @@ class ProgressIndicator:Element {
      * TODO: The final tick should be 0, to make this happen you need to offset the i, possibly
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
-        Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
+        //Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
         let p:Int = round(12 * value).int //progression from 0 to 12

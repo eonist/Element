@@ -27,12 +27,7 @@ class RBScrollController:EventSender{
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
-            case NSEventPhase.Changed:/*fires everytime there is direct scrollWheel gesture movment.*/
-                //Swift.print("changed")
-                prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
-                velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
-                mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
-                mover.updatePosition()/*the mover still governs the resulting value, inorder to get the displacement friction working*/
+            case NSEventPhase.Changed:onScrollWheelChange(theEvent)/*fires everytime there is direct scrollWheel gesture movment.*/
             case NSEventPhase.MayBegin:onScrollWheelEnter()/*can be used to detect if two fingers are touching the trackpad*/
             case NSEventPhase.Began:onScrollWheelEnter()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
             case NSEventPhase.Ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
@@ -41,6 +36,16 @@ class RBScrollController:EventSender{
             default:break;
         }
         //super.scrollWheel(theEvent)//call super if you want to forward the event to the parent view, you do since the parent listen to this event when directly manipulating the motion
+    }
+    /**
+     * Basically when you perform a scroll-gesture on the touch-pad
+     */
+    func onScrollWheelChange(theEvent:NSEvent){
+        //Swift.print("changed")
+        prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
+        velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
+        mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
+        mover.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
     }
     /**
      * NOTE: basically when you enter your scrollWheel gesture

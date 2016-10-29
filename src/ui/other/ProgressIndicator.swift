@@ -68,12 +68,12 @@ class ProgressIndicator:Element {
         for i in 0..<12{
             var alpha:CGFloat
             
-            if(i < p){//integers before p
+            if(i <= p){//integers before p
                 
                 if(i >= p-6 && i <= p){//<--use range here
                     let relLoc:CGFloat = 7 - (p - i).cgFloat
                     Swift.print("relLoc: " + "\(relLoc)")
-                    let multiplier:CGFloat = relLoc/7
+                    let multiplier:CGFloat = relLoc/6
                     Swift.print("multiplier: " + "\(multiplier)")
                     alpha = 0.5 + (0.5 * multiplier)
                 }else{

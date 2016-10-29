@@ -69,7 +69,9 @@ class ProgressIndicator:Element {
             
             //only affect p-6 until p
                 //only affect p-6 > i
-            //Figure out where the i is in the range: 
+            //Figure out where the i is in the range: p-6 until p
+                //base the relative pos as the multiplier for the alpha level. 
+                    //max equals 1 alpha min equals 0.5
             
             if(i < progression){
                 alpha = 1

@@ -48,7 +48,7 @@ class ProgressIndicator:Element {
         
         for i in 0..<7{//iterates 7 times
             let alpha:CGFloat = initAlpha + restAlpha * (1/7*i)//we need a half circle with gradually increasing alpha values starting from initAlpha
-            let a:Int = progress + i + 6//<--offset a half circle by adding 7
+            let a:Int = progress + i + 5//<--offset a half circle by adding 5
             let e:Int = IntParser.normalize(a, 12)//clamps the values between 0 and 12
             let line = lines[e]
             line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)

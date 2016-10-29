@@ -68,7 +68,7 @@ class ProgressIndicator:Element {
         for i in 0..<12{
             let alpha:CGFloat
             
-            if(p > i){
+            if(i < p){
                 
             }
             //only affect p-6 until p

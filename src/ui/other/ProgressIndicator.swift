@@ -71,7 +71,8 @@ class ProgressIndicator:Element {
             if(i < p){
                 alpha = 0.5
                 if(p-6 > 0 && i >= p-6 && i <= p){//<--use range here
-                    
+                    let relLoc = i - p
+                    let multiplier = relLoc/7
                 }
             }else{
                 alpha = 0

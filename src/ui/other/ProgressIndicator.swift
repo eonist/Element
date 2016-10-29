@@ -69,7 +69,9 @@ class ProgressIndicator:Element {
             var alpha:CGFloat
             
             if(i < p){//integers before p
+                
                 //Continue here: something is not right in the bellow assert
+                
                 if(p-6 > 0 && i >= p-6 && i <= p){//<--use range here
                     let relLoc = i - p
                     Swift.print("relLoc: " + "\(relLoc)")

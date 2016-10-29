@@ -70,7 +70,7 @@ class ProgressIndicator:Element {
             
             if(i < p){
                 alpha = 0.5
-                if(p-6 > i){
+                if(p-6 > i && ){
                     
                 }
             }else{

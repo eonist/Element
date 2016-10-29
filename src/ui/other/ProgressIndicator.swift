@@ -67,6 +67,9 @@ class ProgressIndicator:Element {
         for i in 0..<12{
             let alpha:CGFloat
             if(i < progression){
+                if(){
+                    
+                }
                 alpha = 1
             }else{
                 alpha = 0

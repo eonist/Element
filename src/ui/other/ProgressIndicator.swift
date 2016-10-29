@@ -70,8 +70,6 @@ class ProgressIndicator:Element {
             
             if(i < p){//integers before p
                 
-                //Continue here: something is not right in the bellow assert
-                
                 if(i >= p-7 && i <= p){//<--use range here
                     let relLoc:CGFloat = 7 - (p - i).cgFloat
                     Swift.print("relLoc: " + "\(relLoc)")

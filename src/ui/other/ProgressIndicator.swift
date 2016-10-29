@@ -64,10 +64,11 @@ class ProgressIndicator:Element {
         //Reveal one tick at the time from top
             //You also want to set the alpha gradually from half to full alpha in a half circle
         let progression:Int = round(12 * value).int //from 0 to 12
+        let p = progression
         for i in 0..<12{
             let alpha:CGFloat
             
-            if(){
+            if(p > i){
                 
             }
             //only affect p-6 until p

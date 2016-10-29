@@ -6,6 +6,7 @@ class ProgressIndicator:Element {
     var lines:[LineGraphic] = []
     var lineStyle:ILineStyle = LineStyle()
     var animator:Animator?
+    var revealProgress:CGFloat = 0
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
         animator = LoopingAnimator(Animation.sharedInstance,3,1,0,1,progress,Easing.easeLinear)
@@ -61,6 +62,7 @@ class ProgressIndicator:Element {
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
         //Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
+        revealProgress = value
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
         let p:Int = round(12 * value).int //progression from 0 to 12

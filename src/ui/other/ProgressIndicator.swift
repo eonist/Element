@@ -56,7 +56,7 @@ class ProgressIndicator:Element {
         }
     }
     /**
-     *
+     * Basically 
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
         //what you want to do...

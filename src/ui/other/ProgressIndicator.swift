@@ -61,7 +61,7 @@ class ProgressIndicator:Element {
      * TODO: The final tick should be 0, to make this happen you need to offset the i, possibly
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
-        //Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
+        Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
         revealProgress = value
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope

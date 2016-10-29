@@ -68,13 +68,16 @@ class ProgressIndicator:Element {
         for i in 0..<12{
             var alpha:CGFloat
             
-            if(i < p){
-                alpha = 0.5
+            if(i < p){//integers before p
+                
                 if(p-6 > 0 && i >= p-6 && i <= p){//<--use range here
                     let relLoc = i - p
                     let multiplier = relLoc/7
+                    alpha = 0.5 + 0.5 * multiplier
+                }else{
+                    alpha = 0.5
                 }
-            }else{
+            }else{//integers after p
                 alpha = 0
             }
             //only affect p-6 until p
@@ -82,12 +85,13 @@ class ProgressIndicator:Element {
             //Figure out where the i is in the range: p-6 until p
                 //base the relative pos as the multiplier for the alpha level. 
                     //max equals 1 alpha min equals 0.5
-            
+            /*
             if(i < progression){
                 alpha = 1
             }else{
                 alpha = 0
             }
+            */
             let line = lines[i]
             line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
             line.draw()

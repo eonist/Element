@@ -59,6 +59,7 @@ class ProgressIndicator:Element {
      * Basically Tick the lines into visibility one by one (from the top one)
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
+        Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
         //what you want to do...
         //Reveal one tick at the time from top
         let progression:Int = round(12 * value).int //from 0 to 12

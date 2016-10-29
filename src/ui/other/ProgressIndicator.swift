@@ -57,42 +57,30 @@ class ProgressIndicator:Element {
     }
     /**
      * Basically Tick the lines into visibility one by one (from the top one)
+     * NOTE: Reveal one tick at the time from top
+     * NOTE: You also want to set the alpha gradually from half to full alpha in a half circle
      * TODO: The final tick should be 0, to make this happen you need to offset the i, possibly
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
         Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
-        //what you want to do...
-        //Reveal one tick at the time from top
-            //You also want to set the alpha gradually from half to full alpha in a half circle
-        let progression:Int = round(12 * value).int //from 0 to 12
-        let p = progression
+        let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
+        let restAlpha = 1 - initAlpha//<--can be moved to a global scope
+        let p:Int = round(12 * value).int //progression from 0 to 12
         for i in 0..<12{
             var alpha:CGFloat
             if(i < p){//integers before p
                 if(i >= p-6 && i <= p){//<--use range here
-                    let relLoc:CGFloat = 7 - (p - i).cgFloat
-                    Swift.print("relLoc: " + "\(relLoc)")
-                    let multiplier:CGFloat = relLoc/6
-                    Swift.print("multiplier: " + "\(multiplier)")
-                    alpha = 0.5 + (0.5 * multiplier)
+                    let relLoc:CGFloat = 7 - (p - i).cgFloat//Figure out where the i is in the range: p-6 until p
+                    //Swift.print("relLoc: " + "\(relLoc)")
+                    let multiplier:CGFloat = relLoc/6//base the relative pos as the multiplier for the alpha level.
+                    //Swift.print("multiplier: " + "\(multiplier)")
+                    alpha = initAlpha + (restAlpha * multiplier)//max equals 1 alpha, min equals 0.5
                 }else{
-                    alpha = 0.5
+                    alpha = initAlpha
                 }
             }else{//integers after p
                 alpha = 0
             }
-            //only affect p-6 until p
-                //only affect p-6 > 0
-            //Figure out where the i is in the range: p-6 until p
-                //base the relative pos as the multiplier for the alpha level. 
-                    //max equals 1 alpha min equals 0.5
-            /*
-            if(i < progression){
-                alpha = 1
-            }else{
-                alpha = 0
-            }
-            */
             let line = lines[i]
             line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(alpha)
             line.draw()

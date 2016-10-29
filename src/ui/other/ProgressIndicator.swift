@@ -66,7 +66,7 @@ class ProgressIndicator:Element {
         let progression:Int = round(12 * value).int //from 0 to 12
         for i in 0..<12{
             let alpha:CGFloat
-            if(i < progression){
+            if(i + progression >i){
                 if(){
                     
                 }

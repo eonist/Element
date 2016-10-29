@@ -57,6 +57,7 @@ class ProgressIndicator:Element {
     }
     /**
      * Basically Tick the lines into visibility one by one (from the top one)
+     * TODO: The final tick should be 0, to make this happen you need to offset the i, possibly
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
         Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
@@ -67,9 +68,7 @@ class ProgressIndicator:Element {
         let p = progression
         for i in 0..<12{
             var alpha:CGFloat
-            
             if(i < p){//integers before p
-                
                 if(i >= p-6 && i <= p){//<--use range here
                     let relLoc:CGFloat = 7 - (p - i).cgFloat
                     Swift.print("relLoc: " + "\(relLoc)")

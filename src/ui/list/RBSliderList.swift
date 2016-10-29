@@ -45,6 +45,9 @@ class RBSliderList:List {
         //Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")
         slider!.thumb!.fadeIn()
     }
+    func scrollWheelExit(){
+        //Swift.print("CommitList.scrollWheelExit()")
+    }
     func scrollWheelExitedAndIsStationary(){
         Swift.print("CommitList.scrollWheelExitedAndIsStationary() ")
         if(slider?.thumb?.getSkinState() == SkinStates.none){
@@ -56,6 +59,8 @@ class RBSliderList:List {
             onSliderChange(event.cast())
         }else if(event.assert(ScrollWheelEvent.enter, scrollController)){
             scrollWheelEnter()
+        }else if(event.assert(ScrollWheelEvent.exit, scrollController)){
+            scrollWheelExit()
         }else if(event.assert(ScrollWheelEvent.exitAndStationary, scrollController)){
             scrollWheelExitedAndIsStationary()
         }

@@ -47,7 +47,6 @@ class RBScrollController:EventSender{
      */
     func onScrollWheelEnter(){
         //Swift.print("onScrollWheelDown")
-        
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover.stop()
         mover.hasStopped = true/*set the stop flag to true*/
@@ -77,7 +76,7 @@ class RBScrollController:EventSender{
         super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
     override func onEvent(event:Event) {
-        Swift.print("RBScrollController.onEvent()")
+        //Swift.print("RBScrollController.onEvent()")
         super.onEvent(event)
     }
 }

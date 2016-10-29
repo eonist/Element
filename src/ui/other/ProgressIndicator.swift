@@ -69,6 +69,7 @@ class ProgressIndicator:Element {
             
             //only affect p-6 until p
                 //only affect p-6 > i
+            //Figure out where the i is in the range: 
             
             if(i < progression){
                 alpha = 1

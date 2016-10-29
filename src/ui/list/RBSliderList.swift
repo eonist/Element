@@ -42,7 +42,7 @@ class RBSliderList:List {
         scrollController?.mover.value = lableContainer!.frame.y
     }
     func scrollWheelEnter(){//2. spring to refreshStatePosition
-        Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")
+        //Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")
         slider!.thumb!.fadeIn()
     }
     func scrollWheelExitedAndIsStationary(){

@@ -56,7 +56,7 @@ class ProgressIndicator:Element {
         }
     }
     /**
-     * Basically 
+     * Basically Tick the lines into visibility one by one (from the top one)
      */
     func reveal(value:CGFloat){//value goes from 0 to 1
         //what you want to do...

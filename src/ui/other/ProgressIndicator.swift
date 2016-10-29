@@ -68,7 +68,7 @@ class ProgressIndicator:Element {
         for i in 0..<12{
             var alpha:CGFloat
             
-            if(i <= p){//integers before p
+            if(i < p){//integers before p
                 
                 if(i >= p-6 && i <= p){//<--use range here
                     let relLoc:CGFloat = 7 - (p - i).cgFloat

@@ -62,6 +62,7 @@ class ProgressIndicator:Element {
         Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
         //what you want to do...
         //Reveal one tick at the time from top
+            //You also wan't
         let progression:Int = round(12 * value).int //from 0 to 12
         for i in 0..<12{
             let alpha:CGFloat

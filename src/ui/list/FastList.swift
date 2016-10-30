@@ -55,7 +55,7 @@ class FastList:Element {
         //Continue here: 
         var y:CGFloat = listY
         
-        let len:Int = itemContainer!.subviews.count
+        var len:Int = itemContainer!.subviews.count
         for i in 0..<len{//position the items
             let item:Element = itemContainer!.subviews[i] as! Element
             item.y = y

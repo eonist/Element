@@ -48,6 +48,7 @@ class FastList:Element {
         let y:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
         
         //Continue here: 
+        var
         itemContainer!.subviews.forEach{
             let item:IElement = $0 as! IElement
             item

@@ -70,7 +70,7 @@ class FastList:Element {
         //if topY > 25px -> move
     
     //New idea:
-        //you iterate 0..8
+        //you iterate 0..(8+1)
         //if curIdx = 45 -> 50 % 8 = 2
             //basically 2 leftover 
             //offset the visible views by 2*-50

@@ -3,8 +3,12 @@ import Foundation
 class FastList:Element {
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         super.init(width, height, parent, id)
-        //Add 20 rects to a list (random colors)
-        //
+        //Add 20 rects to a list (random colors) 100x50
+        //mask 100x400
+        
+        //move a "virtual" list up and down by:
+            //
+        
     }
     override func resolveSkin() {
         super.resolveSkin()

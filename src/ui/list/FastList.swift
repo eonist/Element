@@ -56,21 +56,20 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let color:NSColor = items[at]
         let item:Element = Element(100,50,itemContainer,"item")
+        return item
+    }
+    /**
+     * Reuse item but apply new data
+     */
+    func spoof(at:Int,_ item:IElement){
+        let color:NSColor = items[at]
         let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
         if(styleProperty != nil){
             styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
-        return item
-    }
-    /**
-     * 
-     */
-    func spoof(At:Int){
-        
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

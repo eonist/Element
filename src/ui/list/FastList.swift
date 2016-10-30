@@ -72,8 +72,11 @@ class FastList:Element {
     //New idea:
         //you iterate 0..8
         //if curIdx = 45 -> 50 % 8 = 2
-            //basically 2 leftover
-            
+            //basically 2 leftover 
+            //offset the visible views by 2*-50
+        //loop 8+1 item
+            //if(y < top)
+                //
     
     
     /**

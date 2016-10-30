@@ -64,11 +64,12 @@ class FastList:Element {
                                 //seems easier to not support variable heights
     /**
      * PARAM: progress: 0 to 1
+     * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      */
     func setProgress(progress:CGFloat){
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
         let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
-        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item 
+        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         let topY:CGFloat = listY % 50//the left over
         var y:CGFloat = topY
         ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak, in the future we should not delete the items but just reorder them and apply new values to the UI components,

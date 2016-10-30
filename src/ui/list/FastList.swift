@@ -4,6 +4,7 @@ class FastList:Element {
     var visibleItems:[NSView] = []
     var items:[NSColor] = []
     var itemContainer:Container?
+    let maxVisibleItemsCount:Int = 8
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         
         super.init(width, height, parent, id)

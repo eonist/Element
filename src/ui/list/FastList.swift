@@ -9,7 +9,7 @@ class FastList:Element {
     let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
     var visibleRange:Range<Int> = Range<Int>(0,8)
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
-        visibleRange.start += 1
+        
         
         
         super.init(width, height, parent, id)

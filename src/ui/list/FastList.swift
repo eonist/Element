@@ -19,11 +19,11 @@ class FastList:Element {
         //Actually: store the visible item indecies in an array that you push and pop when the list goes up and down
             //This has the benefit that you only need to calc the height of the items in view (thinking about variable size support)
             //when an item goes above the top 
-                //the index is removed from the visibleItemIndecies array
+                //the index is removed from the visibleItemIndecies array (one could also use a range here)
                 //if the last index in visibleItemIndecies < items.count 
                     //append items[visibleItemIndecies.last] to visibleItemIndecies
                 //it is moved to y:  visibleItems.last.y+visibleItems.last.height
-                //the item is 
+                //the item is
         
     }
     override func resolveSkin() {

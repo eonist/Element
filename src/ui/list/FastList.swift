@@ -59,7 +59,7 @@ class FastList:Element {
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         let topY:CGFloat = listY % 50//the left over
         var y:CGFloat = topY
-        ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak, in the future we should not delete the items but just reorder them and apply new values to the UI components,
+        ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak -> in the future we should not delete the items but just reorder them and apply new values to the UI components,
         for i in 0..<maxVisibleItems{
             let newItem = spawn(firstItemIndex+i)
             itemContainer!.addSubView(newItem)//add to the bottom

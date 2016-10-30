@@ -70,7 +70,9 @@ class FastList:Element {
         var firstItemIndex:Int = floor(abs(listY / 50)).int
         
         //find the last item
-        var lastItemIndex:Int = firstItemIndex
+        var lastItemIndex:Int = firstItemIndex + maxVisibleItems
+        
+        for
         
         
         var y:CGFloat = listY

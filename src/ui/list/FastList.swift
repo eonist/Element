@@ -64,11 +64,11 @@ class FastList:Element {
                 if(visibleItemIndecies.last < items.count){
                     let newItem = spawn(visibleItemIndecies.last!+1)
                     itemContainer!.addSubView(newItem)//add to the bottom
-                    //continue here: position the newly spawned item, then add an assert for the bottom
+                    
                     len++
                 }
             }else if(item.y > height){//bellow bottom
-                
+                item.removeFromSuperview()
             }
             y += 50
         }

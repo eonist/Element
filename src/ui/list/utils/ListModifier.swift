@@ -24,4 +24,10 @@ class ListModifier {
         let y:CGFloat = round(progress * scrollHeight)
         list.lableContainer!.frame.y = -y
     }
+    /**
+     *
+     */
+    class func scrollTo(maskHeight:CGFloat,_ itemsHeight:CGFloat){
+        
+    }
 }

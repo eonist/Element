@@ -49,19 +49,6 @@ class FastList:Element {
             itemContainer!.addSubView(item)
         }//spawn 8 items,
     }
-    //Continue here: A problem: what if progress jumps from 0.1 to 0.9 
-        //you need to derive the correct items for this dramatic change
-        //but keep in mind that items may have different item heights, so you may need to derive the height to reflect this
-            //the question becomes: how do do you find the correct position for the items
-                //Would you need to store all heights in the items array?
-                //or maybe you just calc the entier height and progress based on this height?
-                    //but then how do you know which items to spawn at progress:0.6?
-                    //the solution is to not support variable item.height
-                        //To support variable item.height one could save the heights in items and then looping heights on y calculations
-                        //Actually progress 0.6 of the totItemsHeight is actually: totHeight * 0.6 
-                            //the challenge is to find the items covering this progress point
-                                //if you virtually place all items on item (by adding their .y in the items array)
-                                //seems easier to not support variable heights
     /**
      * PARAM: progress: 0 to 1
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)

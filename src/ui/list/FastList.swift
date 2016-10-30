@@ -17,11 +17,13 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
-        
+        var y:CGFloat = 0
         for i in 0..<maxVisibleItems+1{//we need an extra item to cover the entire
             //visibleItemIndecies.append(i)
             let item = spawn(i)
             itemContainer!.addSubView(item)
+            item.y = y
+            y += 50
         }
         //spawn 8 items,
         setProgress(0)
@@ -45,19 +47,17 @@ class FastList:Element {
         
         currentVisibleItem = firstItemIndex
         let topY:CGFloat = listY % 50//the left over
-        var y:CGFloat = topY
         
-        ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak -> in the future we should not delete the items but just reorder them and apply new values to the UI components,
+        
+        
         for i in firstItemIndex..<maxVisibleItems{
             //only spoof new data if the top item goes above the top
                 //move the item to the bottom
             //only spoof new data if the bottom item goes bellow the bottom
                 //move the item to the top
             
-            let newItem = spawn(firstItemIndex+i)
-            itemContainer!.addSubView(newItem)//add to the bottom
-            newItem.y = y
-            y += 50
+            
+            
         }
     }
     /**

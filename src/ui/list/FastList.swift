@@ -5,7 +5,7 @@ class FastList:Element {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        
+        super.resolveSkin()
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

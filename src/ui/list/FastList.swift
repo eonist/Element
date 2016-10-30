@@ -44,7 +44,8 @@ class FastList:Element {
      * PARAM: progress: 0 to 1
      */
     func setProgress(progress:CGFloat){
-        let y:CGFloat = ListModifier.scrollTo(progress, height, <#T##itemsHeight: CGFloat##CGFloat#>)
+        let itemsHeight:CGFloat = items.count * 50//the tot items height can be calculated 
+        let y:CGFloat = ListModifier.scrollTo(progress, height, )
     }
     /**
      * PARAM: at: the index that coorespond to items

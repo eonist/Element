@@ -65,7 +65,7 @@ class FastList:Element {
                         //but then how do you know which items to spawn at progress:0.6?
                         //the solution is to not support variable item.height
                             //To support variable item.height one could save the heights in items and then looping heights on y calculations
-        
+                            //Actually progress 0.6 of the totItemsHeight is actually: totHeight * 0.6
         //find the first item 
         var firstItemIndex:Int = floor(abs(listY / 50)).int
         

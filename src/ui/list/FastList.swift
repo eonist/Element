@@ -78,6 +78,7 @@ class FastList:Element {
             //if(y < top-50)
                 //move item to bottom of the view
     
+    //The above idea is great, make a isolated test to test it
     
     /**
      * PARAM: at: the index that coorespond to items

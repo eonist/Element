@@ -66,6 +66,9 @@ class FastList:Element {
         //regardless of y offset
             //to accomplish this
     
+    //you get a value between 0 and 50 to determine when to reorder the view list
+        //
+    
     
     /**
      * PARAM: at: the index that coorespond to items

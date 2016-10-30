@@ -57,7 +57,7 @@ class FastList:Element {
         let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
         
         //Continue here: A problem: what if progress jumps from 0.1 to 0.9 
-            //
+            //you need to 
         var y:CGFloat = listY
         var len:Int = itemContainer!.subviews.count
         for var i = 0; i < len; ++i{//position the items

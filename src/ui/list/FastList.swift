@@ -57,12 +57,16 @@ class FastList:Element {
         itemContainer!.subviews.forEach{//position the items
             let item:Element = $0 as! Element
             item.y = y
+            
+            //Continue here: you actually only have to check the first and the last item if they are above or bellow
+            
             if(item.y < -50){//above top
                 item.removeFromSuperview()
                 visibleItemIndecies.shift()//removes the first item from the list
                 if(visibleItemIndecies.last < items.count){
                     let newItem = spawn(visibleItemIndecies.last!+1)
                     itemContainer!.addSubView(newItem)//add to the bottom
+                    //
                 }
             }
             y += 50

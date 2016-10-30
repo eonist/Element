@@ -24,8 +24,8 @@ class FastList:Element {
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         
-        for i in 0..<maxVisibleItems+1{//we need an extra item to cover the entire 
-            visibleItemIndecies.append(i)
+        for i in 0..<maxVisibleItems+1{//we need an extra item to cover the entire
+            //visibleItemIndecies.append(i)
             let item = spawn(i)
             itemContainer!.addSubView(item)
         }

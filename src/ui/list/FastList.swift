@@ -31,6 +31,8 @@ class FastList:Element {
         }
         *///spawn 8 items,
         setProgress(0)
+        
+        //Continue here: setup some prints to debug, then test it
     }
     /**
      * PARAM: progress: 0 to 1

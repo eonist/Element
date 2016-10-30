@@ -7,6 +7,7 @@ class FastList:Element {
         //mask 100x400
         
         //move a "virtual" list up and down by: (just by values) (se code for this in List.swift)
+            //(the index of the item in the list) * itemHeight, represetnts the initY pos
             //
         
     }

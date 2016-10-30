@@ -47,10 +47,9 @@ class FastList:Element {
         let item:Element = Element(100,50,itemContainer,"item")
         
         let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        //StyleParser.describe(style)
-        var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
-        //Swift.print("styleProperty: " + "\(styleProperty)")
-        //Swift.print("color.hex: " + "\(color.hexString)")
+        
+        var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
+        
         if(styleProperty != nil){//temp
             styleProperty!.value = color//("0x" + color.hexString).uint
             skin!.setStyle(style)/*updates the skin*/

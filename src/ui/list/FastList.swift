@@ -64,8 +64,8 @@ class FastList:Element {
                     //or maybe you just calc the entier height and progress based on this height?
                         //but then how do you know which items to spawn at progress:0.6?
                         //the solution is to not support variable item.height
-                            //To support variable item.height one could save the heights
-        
+                            //To support variable item.height one could save the heights in items and then looping heights on y calculations
+                            //or: calc the tot height on init and then move
         var y:CGFloat = listY
         var len:Int = itemContainer!.subviews.count
         for var i = 0; i < len; ++i{//position the items

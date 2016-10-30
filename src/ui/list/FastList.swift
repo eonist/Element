@@ -36,6 +36,9 @@ class FastList:Element {
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
         let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
+        
+        //figure out how many 
+        
         currentVisibleItem = firstItemIndex
         let topY:CGFloat = listY % 50//the left over
         var y:CGFloat = topY

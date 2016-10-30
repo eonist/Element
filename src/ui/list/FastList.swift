@@ -46,6 +46,7 @@ class FastList:Element {
         var y:CGFloat = topY
         ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak -> in the future we should not delete the items but just reorder them and apply new values to the UI components,
         for i in firstItemIndex..<maxVisibleItems{
+            //
             let newItem = spawn(firstItemIndex+i)
             itemContainer!.addSubView(newItem)//add to the bottom
             newItem.y = y

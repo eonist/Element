@@ -35,23 +35,21 @@ class FastList:Element {
     override func resolveSkin() {
         super.resolveSkin()
         for _ in 0..<20{items.append(NSColor.random)}
-            
-        
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
+        
+        //Continue here: Add
         
     }
     /**
-     *
+     * PARAM: at: the index that coorespond to items
      */
-    func spawn(index:Int){
+    func spawn(at:Int){
+        let color:NSColor = items[at]
         let item:Element = Element(100,50,itemContainer,"item")
-        
         let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        
         var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
-        
-        if(styleProperty != nil){//temp
-            styleProperty!.value = color//("0x" + color.hexString).uint
+        if(styleProperty != nil){
+            styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
         itemContainer!.addSubView(item)

@@ -41,7 +41,8 @@ class FastList:Element {
         //Continue here:  then make the progress() method
         for i in 0..<maxVisibleItems{
             visibleItemIndecies.append(i)
-            spawn(i)
+            let item = spawn(i)
+            itemContainer!.addSubView(item)
         }//spawn 8 items,
     }
     /**
@@ -60,7 +61,8 @@ class FastList:Element {
                 item.removeFromSuperview()
                 visibleItemIndecies.shift()//removes the first item from the list
                 if(visibleItemIndecies.last < items.count){
-                    spawn(visibleItemIndecies.last!+1)
+                    let newItem = spawn(visibleItemIndecies.last!+1)
+                    itemContainer!.addSubView(newItem)//add to the bottom
                 }
             }
             y += 50
@@ -69,7 +71,7 @@ class FastList:Element {
     /**
      * PARAM: at: the index that coorespond to items
      */
-    func spawn(at:Int){
+    func spawn(at:Int)->NSView{
         let color:NSColor = items[at]
         let item:Element = Element(100,50,itemContainer,"item")
         let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
@@ -78,7 +80,7 @@ class FastList:Element {
             styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
-        itemContainer!.addSubView(item)
+        return item
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

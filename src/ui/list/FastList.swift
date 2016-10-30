@@ -47,8 +47,9 @@ class FastList:Element {
         ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak -> in the future we should not delete the items but just reorder them and apply new values to the UI components,
         for i in firstItemIndex..<maxVisibleItems{
             //only spoof new data if the top item goes above the top
-                //
+                //move the item to the bottom
             //only spoof new data if the bottom item goes bellow the bottom
+                //move the item to the top
             
             let newItem = spawn(firstItemIndex+i)
             itemContainer!.addSubView(newItem)//add to the bottom

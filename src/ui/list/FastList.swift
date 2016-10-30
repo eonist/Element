@@ -70,7 +70,7 @@ class FastList:Element {
                                     //if you virtually place all items on item (by adding their .y in the items array)
                                     //seems easier to not support variable heights
         //find the first item 
-        var firstItemIndex:Int = floor(abs(listY / 50)).int
+        let firstItemIndex:Int = floor(abs(listY / 50)).int
         
         //find the last item
         //var lastItemIndex:Int = firstItemIndex + maxVisibleItems
@@ -80,10 +80,10 @@ class FastList:Element {
         ViewModifier.removeAllChildren(itemContainer!)//temp solution
         for i in 0..<maxVisibleItems{
             let newItem = spawn(firstItemIndex+i)
+            itemContainer!.addSubView(newItem)//add to the bottom
+            newItem.y = y
             y += 50
         }
-        
-        
     }
     /**
      * PARAM: at: the index that coorespond to items

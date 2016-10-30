@@ -6,17 +6,11 @@ class FastList:Element {
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
+    var currentVisibleItem:Int = 0//the current first visible item
     //var visibleRange:Range<Int> = Range<Int>(0,8)
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
-        
-        
-        
         super.init(width, height, parent, id)
-        
-        
-       
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
-        
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -42,8 +36,10 @@ class FastList:Element {
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
         let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
+        currentVisibleItem = firstItemIndex
         let topY:CGFloat = listY % 50//the left over
         var y:CGFloat = topY
+        
         ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak -> in the future we should not delete the items but just reorder them and apply new values to the UI components,
         for i in firstItemIndex..<maxVisibleItems{
             //only spoof new data if the top item goes above the top

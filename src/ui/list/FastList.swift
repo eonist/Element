@@ -11,6 +11,8 @@ class FastList:Element {
             //when you move the "virtual" list up and down you add the .y value of the "virtual" list to every item
             //when an item is above the top or bellow the bottom of the mask, then remove it
         
+        //You need a way to spawn items when they should be spawned (see legacy code for insp)
+        
     }
     override func resolveSkin() {
         super.resolveSkin()

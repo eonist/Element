@@ -37,8 +37,15 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}
             
         
-        itemContainer = addSubView(Container(width,height,self,"item"))
+        itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
+    }
+    /**
+     *
+     */
+    func spawn(index:Int){
+        let item:Element = Element(100,50,lableContainer,"item")
+        self.lableContainer!.addSubviewAt(item, i)
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -37,8 +37,8 @@ class List:Element,IList{
     func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
         var i:Int = index
         for object:Dictionary<String,String> in objects {// :TODO: use for i
-            let item:SelectTextButton = SelectTextButton(getWidth(), self.itemHeight ,object["title"]!, false, self.lableContainer)
-            self.lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+            let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
+            lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
             i++
         }
     }
@@ -63,7 +63,7 @@ class List:Element,IList{
      * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
      */
     func onUpInside(buttonEvent:ButtonEvent) {
-        let selectedIndex:Int = self.lableContainer!.indexOf(buttonEvent.origin as! NSView)
+        let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         //Swift.print("selectedIndex: " + "\(selectedIndex)")
         ListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))

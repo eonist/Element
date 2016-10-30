@@ -17,7 +17,8 @@ class FastList:Element {
         //VirtualList.y = -200 -> how many items are above the top? -> use modulo -> think variable size though
         
         //Actually: store the visible item indecies in an array that you push and pop when the list goes up and down
-            //This has the benefit that you only need to 
+            //This has the benefit that you only need to calc the height of the items in view (thinking about variable size support)
+            //
         
     }
     override func resolveSkin() {

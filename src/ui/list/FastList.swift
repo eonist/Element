@@ -44,8 +44,9 @@ class FastList:Element {
      *
      */
     func spawn(index:Int){
-        let item:Element = Element(100,50,lableContainer,"item")
-        self.lableContainer!.addSubviewAt(item, i)
+        let item:Element = Element(100,50,itemContainer,"item")
+        item.
+        itemContainer!.addSubView(item)
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

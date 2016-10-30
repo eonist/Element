@@ -61,10 +61,10 @@ class FastList:Element {
         }
     }
     
-    
-    //make a method that can move an array of items to a progress value
+    //Continue here: (This is the solution)
+    //make a method that can move an array of items to a progress value (then all you need to do is spoof the items that are different from last progress)
         //regardless of y offset
-            //to accomplish this 
+            //to accomplish this
     
     
     /**

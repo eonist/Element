@@ -38,7 +38,10 @@ class FastList:Element {
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         
         //figure out how many items needs to be spoofed
-        let spoofCount:Int = 
+        let spoofCount:Int = currentVisibleItem - firstItemIndex
+        
+        //Are we overcomplicating?
+            //
         
         currentVisibleItem = firstItemIndex
         let topY:CGFloat = listY % 50//the left over

@@ -60,6 +60,13 @@ class FastList:Element {
             
         }
     }
+    
+    
+    //make a method that can move an array of items to a progress value
+        //regardless of y offset
+            //to accomplish this 
+    
+    
     /**
      * PARAM: at: the index that coorespond to items
      */

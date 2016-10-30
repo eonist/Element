@@ -4,7 +4,7 @@ class FastList:Element {
     var visibleItems:[NSView] = []
     var items:[NSColor] = []
     var itemContainer:Container?
-    let maxVisibleItemsCount:Int = 8
+    let maxVisibleItems:Int = 8
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         
         super.init(width, height, parent, id)
@@ -37,8 +37,14 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
-        //Continue here: spawn 8 items, then make the progress() method
-        
+        //Continue here:  then make the progress() method
+        for i in 0..<maxVisibleItems{spawn(i)}//spawn 8 items,
+    }
+    /**
+     * PARAM: progress: 0 to 1
+     */
+    func setProgress(progress:CGFloat){
+        let y:CGFloat = ListModifier.scrollTo(<#T##progress: CGFloat##CGFloat#>, <#T##maskHeight: CGFloat##CGFloat#>, <#T##itemsHeight: CGFloat##CGFloat#>)
     }
     /**
      * PARAM: at: the index that coorespond to items

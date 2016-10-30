@@ -73,32 +73,17 @@ class FastList:Element {
         var firstItemIndex:Int = floor(abs(listY / 50)).int
         
         //find the last item
-        var lastItemIndex:Int = firstItemIndex + maxVisibleItems
+        //var lastItemIndex:Int = firstItemIndex + maxVisibleItems
         
+        let topY:CGFloat = listY % 50//the left over
+        var y:CGFloat = topY
+        ViewModifier.removeAllChildren(itemContainer!)//temp solution
         for i in 0..<maxVisibleItems{
-            
-        }
-        
-        
-        var y:CGFloat = listY
-        var len:Int = itemContainer!.subviews.count
-        for var i = 0; i < len; ++i{//position the items
-            let item:Element = itemContainer!.subviews[i] as! Element
-            item.y = y
-            if(item.y < -50){//above top
-                item.removeFromSuperview()
-                visibleItemIndecies.shift()//removes the first item from the list
-                if(visibleItemIndecies.last < items.count){
-                    let newItem = spawn(visibleItemIndecies.last!+1)
-                    itemContainer!.addSubView(newItem)//add to the bottom
-                    
-                    len++
-                }
-            }else if(item.y > height){//bellow bottom
-                item.removeFromSuperview()
-            }
+            let newItem = spawn(firstItemIndex+i)
             y += 50
         }
+        
+        
     }
     /**
      * PARAM: at: the index that coorespond to items

@@ -4,7 +4,7 @@ class FastList:Element {
     var visibleItems:[NSView] = []
     var items:[NSColor] = []
     var itemContainer:Container?
-    let maxVisibleItems:Int = 8
+    let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         
         super.init(width, height, parent, id)
@@ -44,8 +44,8 @@ class FastList:Element {
      * PARAM: progress: 0 to 1
      */
     func setProgress(progress:CGFloat){
-        let itemsHeight:CGFloat = items.count * 50//the tot items height can be calculated
-        let y:CGFloat = ListModifier.scrollTo(progress, height, )
+        let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
+        let y:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
     }
     /**
      * PARAM: at: the index that coorespond to items

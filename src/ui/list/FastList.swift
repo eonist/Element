@@ -58,7 +58,11 @@ class FastList:Element {
             item.y = y
             if(item.y < -50){//above top
                 item.removeFromSuperview()
-                visibleItemIndecies.first
+                visibleItemIndecies.shift()//removes the first item from the list
+                if(visibleItemIndecies.last < items.count){
+                    
+                }
+                //spawn()
             }
             y += 50
         }

@@ -3,6 +3,7 @@ import Cocoa
 class FastList:Element {
     var visibleItems:[NSView] = []
     var visibleItemIndecies:[Int] = []
+    var visibleRange:Range<Int> = Range<Int>()
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls

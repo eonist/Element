@@ -61,6 +61,7 @@ class FastList:Element {
             //but keep in mind that items may have different item heights, so you may need to derive the height to reflect this
                 //the question becomes: how do do you find the correct position for the items
                     //Would you need to store all heights in the items array?
+                    //or maybe you just calc the entier height and progress based on this height?
                     //
         
         var y:CGFloat = listY

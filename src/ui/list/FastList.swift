@@ -69,7 +69,7 @@ class FastList:Element {
     //you get a value between 0 and 50 to determine when to reorder the view list
         //if topY > 25px -> move
     
-    //New idea:
+    //New idea: The idea is basically to just carousel a 9 item list, and apply data to the parts that are new when needed
         //you iterate 0..(8+1)
         //if curIdx = 45 -> 50 % curIdx -> 2
             //basically 2 leftover 
@@ -79,6 +79,8 @@ class FastList:Element {
                 //move item to bottom of the view
     
     //The above idea is great, make a isolated test to test it
+        //you need to store the order of the 9 item indecies
+        //draw the idea on paper to get a clearer view of how to code this
     
     /**
      * PARAM: at: the index that coorespond to items

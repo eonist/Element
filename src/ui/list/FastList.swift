@@ -37,7 +37,7 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
-        //Continue here: Add
+        //Continue here: spawn 8 items, then 
         
     }
     /**

@@ -5,6 +5,7 @@ class FastList:Element {
     var items:[NSColor] = []
     var itemContainer:Container?
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
+        
         super.init(width, height, parent, id)
         //Add 20 rects to a list (random colors) 100x50
         //mask 100x400
@@ -32,6 +33,9 @@ class FastList:Element {
     }
     override func resolveSkin() {
         super.resolveSkin()
+        for _ in 0..<20{items.append(NSColor.random)}
+            
+        
         itemContainer = addSubView(Container(width,height,self,"item"))
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

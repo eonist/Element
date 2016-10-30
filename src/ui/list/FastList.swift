@@ -22,10 +22,9 @@ class FastList:Element {
                 //the index is removed from the visibleItemIndecies array (one could also use a range here)
                 //if the last index in visibleItemIndecies < items.count 
                     //append items[visibleItemIndecies.last] to visibleItemIndecies
-                //it is moved to y:  visibleItems.last.y+visibleItems.last.height
                 //item.removeFromSuperView()
-                //spawn new Item 
-        
+                //spawn new Item from visibleItemIndecies.last
+                //place it at y:  visibleItems.last.y+visibleItems.last.height
     }
     override func resolveSkin() {
         super.resolveSkin()

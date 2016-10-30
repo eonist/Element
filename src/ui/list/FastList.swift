@@ -72,7 +72,9 @@ class FastList:Element {
         //find the last item
         var lastItemIndex:Int = firstItemIndex + maxVisibleItems
         
-        for
+        for i in 0..<maxVisibleItems{
+            
+        }
         
         
         var y:CGFloat = listY

@@ -24,7 +24,7 @@ class FastList:Element {
                     //append items[visibleItemIndecies.last] to visibleItemIndecies
                 //it is moved to y:  visibleItems.last.y+visibleItems.last.height
                 //item.removeFromSuperView()
-                //item.
+                //spawn new Item 
         
     }
     override func resolveSkin() {

@@ -63,7 +63,8 @@ class FastList:Element {
                     //Would you need to store all heights in the items array?
                     //or maybe you just calc the entier height and progress based on this height?
                         //but then how do you know which items to spawn at progress:0.6?
-                        
+                        //the solution is to not support variable item.height
+                            //To support variable item.height
         
         var y:CGFloat = listY
         var len:Int = itemContainer!.subviews.count

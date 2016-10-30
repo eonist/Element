@@ -2,7 +2,8 @@ import Cocoa
 
 class FastList:Element {
     var visibleItems:[NSView] = []
-    var visibleItemIndecies:[Int] = []
+    var visibleItemRangeStart:Int = 0
+    var visibleItemRangeStart:Int = 8
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
@@ -40,7 +41,6 @@ class FastList:Element {
         
         //Continue here:  then make the progress() method
         for i in 0..<maxVisibleItems{
-            visibleItemIndecies.append(i)
             spawn(i)
         }//spawn 8 items,
     }

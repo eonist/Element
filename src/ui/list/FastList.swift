@@ -13,6 +13,9 @@ class FastList:Element {
         
         //You need a way to spawn items when they should be spawned (see legacy code for insp)
         
+        //Basically 8 items can be viewable at the time (maxViewableItems = 8)
+        //
+        
     }
     override func resolveSkin() {
         super.resolveSkin()

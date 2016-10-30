@@ -67,7 +67,7 @@ class FastList:Element {
                             //To support variable item.height one could save the heights in items and then looping heights on y calculations
         
         //find the first item 
-            //
+        var firstItemIndex = listY / 50 
         
         //find the last item
         

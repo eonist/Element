@@ -54,11 +54,17 @@ class FastList:Element {
         
         //Continue here: 
         var y:CGFloat = listY
-        itemContainer!.subviews.forEach{//position the items
-            let item:Element = $0 as! Element
+        
+        let len:Int = itemContainer!.subviews.count
+        for i in 0..<len{
+            let item:Element = itemContainer!.subviews[i] as! Element
             item.y = y
+        }
+        
+        itemContainer!.subviews.forEach{//position the items
             
-            //Continue here: you actually only have to check the first and the last item if they are above or bellow
+            
+
             
             if(item.y < -50){//above top
                 item.removeFromSuperview()

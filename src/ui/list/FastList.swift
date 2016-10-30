@@ -75,8 +75,8 @@ class FastList:Element {
             //basically 2 leftover 
             //offset the visible views by 2*-50
         //loop 8+1 item
-            //if(y < top)
-                //
+            //if(y < top-50)
+                //move item to bottom of the view
     
     
     /**

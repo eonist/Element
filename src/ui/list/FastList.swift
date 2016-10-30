@@ -23,13 +23,13 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
-        /*
-        for i in 0..<maxVisibleItems{
+        
+        for i in 0..<maxVisibleItems+1{//we need an extra item to cover the entire 
             visibleItemIndecies.append(i)
             let item = spawn(i)
             itemContainer!.addSubView(item)
         }
-        *///spawn 8 items,
+        //spawn 8 items,
         setProgress(0)
         
         //Continue here: setup some prints to debug, then test it

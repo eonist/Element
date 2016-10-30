@@ -67,7 +67,8 @@ class FastList:Element {
                             //To support variable item.height one could save the heights in items and then looping heights on y calculations
                             //Actually progress 0.6 of the totItemsHeight is actually: totHeight * 0.6 
                                 //the challenge is to find the items covering this progress point
-                                //
+                                    //if you virtually place all items on item (by adding their .y in the items array)
+                                    //
         //find the first item 
         var firstItemIndex:Int = floor(abs(listY / 50)).int
         

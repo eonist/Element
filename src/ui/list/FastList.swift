@@ -69,6 +69,12 @@ class FastList:Element {
     //you get a value between 0 and 50 to determine when to reorder the view list
         //if topY > 25px -> move
     
+    //New idea:
+        //you iterate 0..8
+        //if curIdx = 45 -> 50 % 8 = 2
+            //basically 2 leftover
+            
+    
     
     /**
      * PARAM: at: the index that coorespond to items

@@ -56,7 +56,7 @@ class FastList:Element {
         var y:CGFloat = listY
         
         var len:Int = itemContainer!.subviews.count
-        for i in 0..<len{//position the items
+        for var i = 0; i < len; ++i{//position the items
             let item:Element = itemContainer!.subviews[i] as! Element
             item.y = y
             if(item.y < -50){//above top
@@ -66,6 +66,7 @@ class FastList:Element {
                     let newItem = spawn(visibleItemIndecies.last!+1)
                     itemContainer!.addSubView(newItem)//add to the bottom
                     //continue here: position the newly spawned item, then add an assert for the bottom
+                    len++
                 }
             }
             y += 50

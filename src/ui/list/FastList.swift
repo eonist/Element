@@ -38,6 +38,7 @@ class FastList:Element {
             
         
         itemContainer = addSubView(Container(width,height,self,"item"))
+        
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

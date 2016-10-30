@@ -12,15 +12,15 @@ class FastList:Element {
         
         
         super.init(width, height, parent, id)
-        //Add 20 rects to a list (random colors) 100x50
-        //mask 100x400
+        
+        
        
-        layer!.masksToBounds = true/*masks the children to the frame*/
+        layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
         
     }
     override func resolveSkin() {
         super.resolveSkin()
-        for _ in 0..<20{items.append(NSColor.random)}
+        for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         /*
@@ -43,7 +43,7 @@ class FastList:Element {
         let topY:CGFloat = listY % 50//the left over
         var y:CGFloat = topY
         ViewModifier.removeAllChildren(itemContainer!)//temp solution -> may lead to memory leak -> in the future we should not delete the items but just reorder them and apply new values to the UI components,
-        for i in 0..<maxVisibleItems{
+        for i in firstItemIndex..<maxVisibleItems{
             let newItem = spawn(firstItemIndex+i)
             itemContainer!.addSubView(newItem)//add to the bottom
             newItem.y = y

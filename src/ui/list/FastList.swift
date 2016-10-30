@@ -3,11 +3,14 @@ import Cocoa
 class FastList:Element {
     var visibleItems:[NSView] = []
     var visibleItemIndecies:[Int] = []
-    var visibleRange:Range<Int> = Range<Int>()
+    
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
+    var visibleRange:Range<Int> = Range<Int>(0,8)
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
+        visibleRange += 1
+        
         
         super.init(width, height, parent, id)
         //Add 20 rects to a list (random colors) 100x50

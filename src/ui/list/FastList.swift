@@ -15,7 +15,9 @@ class FastList:Element {
         
         //Basically 8 items can be viewable at the time (maxViewableItems = 8)
         //VirtualList.y = -200 -> how many items are above the top? -> use modulo -> think variable size though
-        //
+        
+        //Actually: store the visible item indecies in an array that you push and pop when the list goes up and down
+            //This has the benefit that you only need to 
         
     }
     override func resolveSkin() {

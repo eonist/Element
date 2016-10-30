@@ -28,7 +28,7 @@ class FastList:Element {
             //when an item goes above the top 
                 //the index is removed from the visibleItemIndecies array (one could also use a range here )
                 //if the last index in visibleItemIndecies < items.count 
-                    //append items[visibleItemIndecies.last] to visibleItemIndecies
+                    //append items[visibleItemIndecies.last+1] to visibleItemIndecies
                 //item.removeFromSuperView()
                 //spawn new Item from items(visibleItemIndecies.last)
                 //place it at y:  visibleItems.last.y+visibleItems.last.height
@@ -60,9 +60,8 @@ class FastList:Element {
                 item.removeFromSuperview()
                 visibleItemIndecies.shift()//removes the first item from the list
                 if(visibleItemIndecies.last < items.count){
-                    
+                    spawn(visibleItemIndecies.last!+1)
                 }
-                //spawn()
             }
             y += 50
         }

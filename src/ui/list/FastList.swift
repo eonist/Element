@@ -39,7 +39,10 @@ class FastList:Element {
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         //Continue here:  then make the progress() method
-        for i in 0..<maxVisibleItems{spawn(i)}//spawn 8 items,
+        for i in 0..<maxVisibleItems{
+            visibleItemIndecies.append(i)
+            spawn(i)
+        }//spawn 8 items,
     }
     /**
      * PARAM: progress: 0 to 1

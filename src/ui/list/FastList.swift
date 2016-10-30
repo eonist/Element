@@ -22,7 +22,7 @@ class FastList:Element {
                 //the index is removed from the visibleItemIndecies array
                 //if the last index in visibleItemIndecies < items.count 
                     //append items[visibleItemIndecies.last] to visibleItemIndecies
-                //it is moved to bellow the last
+                //it is moved to y:  visibleItems.last.y+visibleItems.last.height
         
     }
     override func resolveSkin() {

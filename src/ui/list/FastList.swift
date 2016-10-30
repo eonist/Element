@@ -45,7 +45,16 @@ class FastList:Element {
      */
     func spawn(index:Int){
         let item:Element = Element(100,50,itemContainer,"item")
-        item.
+        
+        let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+        //StyleParser.describe(style)
+        var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
+        //Swift.print("styleProperty: " + "\(styleProperty)")
+        //Swift.print("color.hex: " + "\(color.hexString)")
+        if(styleProperty != nil){//temp
+            styleProperty!.value = color//("0x" + color.hexString).uint
+            skin!.setStyle(style)/*updates the skin*/
+        }
         itemContainer!.addSubView(item)
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

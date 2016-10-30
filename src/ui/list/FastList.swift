@@ -37,7 +37,8 @@ class FastList:Element {
         let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         
-        //figure out how many 
+        //figure out how many items needs to be spoofed
+        let spoofCount:Int = 
         
         currentVisibleItem = firstItemIndex
         let topY:CGFloat = listY % 50//the left over

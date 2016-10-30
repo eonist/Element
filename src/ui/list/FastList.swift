@@ -59,7 +59,9 @@ class FastList:Element {
         //Continue here: A problem: what if progress jumps from 0.1 to 0.9 
             //you need to derive the correct items for this dramatic change
             //but keep in mind that items may have different item heights, so you may need to derive the height to reflect this
-                //the question becomes: how do 
+                //the question becomes: how do do you find the correct position for the items
+                    //Would you need to store all heights in the items array?
+                    //
         
         var y:CGFloat = listY
         var len:Int = itemContainer!.subviews.count

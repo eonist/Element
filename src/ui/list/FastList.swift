@@ -80,9 +80,18 @@ class FastList:Element {
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y
-            let y:CGFloat = ceil(listItem.virtualY - listY)
-            listItem.y = y
+            
         }
+        //avoids tearing:
+        let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
+        var y:CGFloat = ceil(firstListItem.virtualY - listY)
+        Swift.print("y: " + "\(y)")
+        for i in 0..<maxVisibleItems{
+            let listItem:ListItem = itemContainer!.subviews[i] as! ListItem
+            listItem.y = y
+            y+=50
+        }
+        /**/
     }
     /**
      * PARAM: at: the index that coorespond to items
@@ -96,7 +105,7 @@ class FastList:Element {
      * Reuse item but apply new data
      */
     func spoof(item:ListItem){
-        let color:NSColor = NSColor.grayColor()//items[item.index]
+        let color:NSColor = items[item.index]//
         let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
         if(styleProperty != nil){

@@ -119,11 +119,12 @@ class FastList:Element {
         //add 8 items to view at progres 0
         //go to progress 0.6
         //find the top.y
-        //assert every current items if they are bellow top.y and above bottom.y
+        //assert every current items if they are bellow top.y and above bottom.y (this can be optimized later so you only check first and last item)
             //if they are not -> remove them
             //add new items from top.y or the last item in visible list
                 //keep adding until item.y > bottom.y
-        
+    
+        //when you remove an item you only hide it and add it to 
     
     
     /**

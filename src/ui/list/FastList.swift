@@ -106,6 +106,8 @@ class FastList:Element {
     //Maybe you could use the center of the view and calc above items needed and bellow items needed
         //
     
+    //you need to check topLimit
+    
     
     /**
      * PARAM: at: the index that coorespond to items

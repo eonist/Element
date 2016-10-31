@@ -150,6 +150,8 @@ class FastList:Element {
             item.y = item.virtualY - listY
         }
         
+        //maybe you store the index in the item, also see legacy code for tips
+        
     }
     /**
      * PARAM: at: the index that coorespond to items

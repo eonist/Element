@@ -44,12 +44,24 @@ class FastList:Element {
             //So its not moving individual items that tears the graphics
             //lets try and hide and reveal items as the go in and out of the visible area
                 //then we can try to remove items, but repurpouse them instead of creating new ones
+                //maybe even try to not add subviews, buth rather just reposition them (adding vies could cause tearing!?!?)
         
         
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
-            item.y = item.virtualY - listY
+            if(item.virtualY < listY - 50){
+                Swift.print("item is above top limit - remove()")
+                item.removeFromSuperview()
+                item.hidden = true
+            }else if(item.virtualY > listY + height){
+                Swift.print("item is bellow bottom limit - remove()")
+                item.hidden = true
+            }else{
+                item.y = item.virtualY - listY
+                item.hidden = false
+            }
+            
         }
         //Swift.print("listY: " + "\(listY)")
         /*

@@ -80,7 +80,7 @@ class FastList:Element {
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y
-            let y:CGFloat = ceil(listItem.virtualY - listY)
+            let y:CGFloat = listItem.virtualY - listY
             listItem.y = y
         }
     }

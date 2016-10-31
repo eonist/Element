@@ -18,7 +18,7 @@ class FastList:Element {
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         var y:CGFloat = 0
-        for i in 0..<maxVisibleItems+1{//we need an extra item to cover the entire
+        for i in 0..<20{//we need an extra item to cover the entire
             //visibleItemIndecies.append(i)
             let item = spawn(i)
             itemContainer!.addSubView(item)
@@ -40,7 +40,12 @@ class FastList:Element {
     func setProgress(progress:CGFloat){
         //Swift.print("FastList.setProgress() " + "\(progress)")
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
+        itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
+            let item:ListItem = $0 as! ListItem
+            item.y = item.virtualY - listY
+        }
         //Swift.print("listY: " + "\(listY)")
+        /*
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
@@ -51,8 +56,9 @@ class FastList:Element {
                 item.removeFromSuperview()
             }
         }
+        */
         //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
-      
+        /*
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
@@ -86,6 +92,7 @@ class FastList:Element {
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code
         }
+        */
         //avoids tearing:
     }
     /**

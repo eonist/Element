@@ -140,7 +140,8 @@ class FastList:Element {
                 item.removeFromSuperview()
             }
         }
-        let topY:CGFloat = listY % 50//the left over
+        let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
+        
     }
     /**
      * PARAM: at: the index that coorespond to items

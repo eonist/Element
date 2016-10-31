@@ -13,6 +13,7 @@ class FastList:Element {
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
     }
     override func resolveSkin() {
+        Swift.print("FastList.resolveSkin()")
         super.resolveSkin()
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))

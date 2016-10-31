@@ -81,7 +81,7 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let item:ListItem = ListItem(100,50,at,itemContainer,"item")
+        let item:ListItem = ListItem(100,50,at,itemContainer)
         return item
     }
     /**

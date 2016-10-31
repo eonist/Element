@@ -61,72 +61,6 @@ class FastList:Element {
         }
     }
     
-    //Continue here: (This is the solution)
-    //make a method that can move an array of items to a progress value (then all you need to do is spoof the items that are different from last progress)
-        //regardless of y offset
-            //to accomplish this
-    
-    //you get a value between 0 and 50 to determine when to reorder the view list
-        //if topY > 25px -> move
-    
-    //New idea: The idea is basically to just carousel a 9 item list, and apply data to the parts that are new when needed
-        //you iterate 0..(8+1)
-        //if curIdx = 45 -> 50 % curIdx -> 2
-            //basically 2 leftover 
-            //offset the visible views by 2*-50
-        //loop 8+1 item
-            //if(y < top-50)
-                //move item to bottom of the view
-    
-    //The above idea is great, make a isolated test to test it
-        //you need to store the order of the 9 item indecies
-        //draw the idea on paper to get a clearer view of how to code this (or try to visualize it in your mind, its a good excersie to do)
-    
-    
-    //Imagine an infinite list where the numbers keep repeating from 0..8
-        //you travel the list by progress * totItemsHeight
-        //you find the item offset by doing pos.y % 50
-        //you find the curIdx by doing floor(abs(pos.y /50)) -> 22
-        //you find the idex of 0..8 by doing 22 % 8 -> 6 -> which means 6 should be the top item, then 6,7,8,0,1,2,3,4,5
-        //you find the y value for each of the items above (simple)
-        //the previouse order is 0..8 -> how do you arrange it to the above? -> you dont rearange the view order -> you could and it would be trivial if it was needed
-        //how to spoof new data?
-            //store the curProgressIdx
-            //find the diff for prevProgressIdx and the curProgressIdx
-            //if the diff is +2 then the two last indecies has changed and needs spoofing
-            //if diff is -2 then the two first indcies has changed and needs spoofing
-            //if diff is more or less than 8 -> then spoof all
-    
-        //Edge cases
-        //If win resize then add more items to the array
-            //recalc the maxVisible Items
-            //which recalcs the repeating numbers, which won't work in scale
-            //Think of something else
-    
-    //Maybe you could use the center of the view and calc above items needed and bellow items needed
-        //
-    
-    //New idea:
-        //you need to check if the first item is above topLimit
-        //if first item is bellow topLimit -> add an item to the top of the list
-        //same for bottomLimit
-    
-        //what if you use the loop method when the maxVisibleItemCount grows -> it would only work with less than dubble the size of the original
-        //I think you need to draw to figure this out
-    
-    
-    //new idea 2: (add and remove)
-        //add 8 items to view at progres 0
-        //go to progress 0.6
-        //find the top.y
-        //assert every current items if they are bellow top.y and above bottom.y (this can be optimized later so you only check first and last item)
-            //if they are not -> remove them
-            //add new items from top.y or the last item in visible list
-                //keep adding until item.y > bottom.y
-    
-        //when you remove an item you only hide it and add it to removedItems array
-        //when you add items you attempt to get an item from removedItems array and then insert it in to the container and set the y and unhide it and spoof it with new data
-    
     
     func setProgress2(progress:CGFloat){
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
@@ -198,6 +132,78 @@ class ListItem:Element{
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+
+
+
+
+//Continue here: (This is the solution)
+//make a method that can move an array of items to a progress value (then all you need to do is spoof the items that are different from last progress)
+    //regardless of y offset
+        //to accomplish this
+
+//you get a value between 0 and 50 to determine when to reorder the view list
+    //if topY > 25px -> move
+
+//New idea: The idea is basically to just carousel a 9 item list, and apply data to the parts that are new when needed
+    //you iterate 0..(8+1)
+    //if curIdx = 45 -> 50 % curIdx -> 2
+        //basically 2 leftover 
+        //offset the visible views by 2*-50
+    //loop 8+1 item
+        //if(y < top-50)
+            //move item to bottom of the view
+
+//The above idea is great, make a isolated test to test it
+    //you need to store the order of the 9 item indecies
+    //draw the idea on paper to get a clearer view of how to code this (or try to visualize it in your mind, its a good excersie to do)
+
+
+//Imagine an infinite list where the numbers keep repeating from 0..8
+    //you travel the list by progress * totItemsHeight
+    //you find the item offset by doing pos.y % 50
+    //you find the curIdx by doing floor(abs(pos.y /50)) -> 22
+    //you find the idex of 0..8 by doing 22 % 8 -> 6 -> which means 6 should be the top item, then 6,7,8,0,1,2,3,4,5
+    //you find the y value for each of the items above (simple)
+    //the previouse order is 0..8 -> how do you arrange it to the above? -> you dont rearange the view order -> you could and it would be trivial if it was needed
+    //how to spoof new data?
+        //store the curProgressIdx
+        //find the diff for prevProgressIdx and the curProgressIdx
+        //if the diff is +2 then the two last indecies has changed and needs spoofing
+        //if diff is -2 then the two first indcies has changed and needs spoofing
+        //if diff is more or less than 8 -> then spoof all
+
+    //Edge cases
+    //If win resize then add more items to the array
+        //recalc the maxVisible Items
+        //which recalcs the repeating numbers, which won't work in scale
+        //Think of something else
+
+//Maybe you could use the center of the view and calc above items needed and bellow items needed
+    //
+
+//New idea:
+    //you need to check if the first item is above topLimit
+    //if first item is bellow topLimit -> add an item to the top of the list
+    //same for bottomLimit
+
+    //what if you use the loop method when the maxVisibleItemCount grows -> it would only work with less than dubble the size of the original
+    //I think you need to draw to figure this out
+
+
+//new idea 2: (add and remove)
+    //add 8 items to view at progres 0
+    //go to progress 0.6
+    //find the top.y
+    //assert every current items if they are bellow top.y and above bottom.y (this can be optimized later so you only check first and last item)
+        //if they are not -> remove them
+        //add new items from top.y or the last item in visible list
+            //keep adding until item.y > bottom.y
+
+    //when you remove an item you only hide it and add it to removedItems array
+    //when you add items you attempt to get an item from removedItems array and then insert it in to the container and set the y and unhide it and spoof it with new data
+
+
+
 
 //move a "virtual" list up and down by: (just by values) (see code for this in List.swift)
     //(the index of the item in the list) * itemHeight, represetnts the initY pos

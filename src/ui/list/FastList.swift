@@ -90,7 +90,11 @@ class FastList:Element {
         //you find the idex of 0..8 by doing 22 % 8 -> 6 -> which means 6 should be the top item, then 6,7,8,0,1,2,3,4,5
         //you find the y value for each of the items above (simple)
         //the previouse order is 0..8 -> how do you arrange it to the above? -> you dont rearange the view order -> you could and it would be trivial if it was needed
-        
+        //how to spoof new data?
+            //store the curProgressIdx
+            //find the diff for prevProgressIdx and the curProgressIdx
+            //if its +2
+    
     
     /**
      * PARAM: at: the index that coorespond to items

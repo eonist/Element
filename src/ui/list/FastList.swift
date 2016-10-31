@@ -131,13 +131,18 @@ class FastList:Element {
     func setProgress2(progress:CGFloat){
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
-        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
+        //let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         for i in 0..<maxVisibleItems{//remove items that are above or bellow the limits
-            let item:ListItem = $0 as! ListItem
-            if(item.virtualY < listY - 50){
-                item.removeFromSuperview()
-            }else if(item.virtualY > listY + height){
-                item.removeFromSuperview()
+            if let item:ListItem = itemContainer!.subviews[i] as? ListItem{
+                if(item.virtualY < listY - 50){//item is above top limit
+                    item.removeFromSuperview()
+                    //append new item
+                }else if(item.virtualY > listY + height){//item is bellow bottom limit
+                    item.removeFromSuperview()
+                    //prepend new item
+                }
+            }else{
+                //append new item
             }
         }
         let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item

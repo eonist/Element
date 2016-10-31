@@ -6,6 +6,7 @@ import Cocoa
  * // :TODO: rename thumbHeight to thumbWidth or?
  * // :TODO: remove refs to frame. you can use width and height directly
  * // :TODO: onSkinDown, onSkinUp ?
+ * TODO: Some extra asserts were added to HSlider for mouse up and down etc. consider adding them here aswell if bugs occure
  */
 class VSlider:Element{
     var thumb:Thumb?

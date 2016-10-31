@@ -9,7 +9,7 @@ class HSlider:Element{
     var thumbWidth:CGFloat
     var thumb:Thumb?
     var tempThumbMouseX:CGFloat = 0/*This value holds the onDown position when you click the thumb*/
-    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
+    var leftMouseDraggedEventListener:AnyObject? = nil//rename to leftMouseDraggedEventListener or draggedEventListner
     init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.progress = progress
         self.thumbWidth = thumbWidth.isNaN ? height:thumbWidth
@@ -23,7 +23,11 @@ class HSlider:Element{
     func onThumbDown(){
         Swift.print("HSlider.onThumbDown")
         tempThumbMouseX = thumb!.localPos().x
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){
+            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
+            leftMouseDraggedEventListener = nil
+        }
+        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
@@ -33,7 +37,10 @@ class HSlider:Element{
         return event
     }
     func onThumbUp(){
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){
+            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
+            leftMouseDraggedEventListener = nil
+        }//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent) -> NSEvent?{
         progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
@@ -42,10 +49,13 @@ class HSlider:Element{
         return event
     }
     /**
-     * TODO: Overriding mouseUp like this isnt good, listen to buttonUp etc
+     * TODO: Overriding mouseUp like this isn't good, listen to buttonUp etc
      */
     override func mouseUp(event:MouseEvent) {
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){
+            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
+            leftMouseDraggedEventListener = nil
+        }//we remove a global mouse move event listener
     }
     override func onEvent(event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

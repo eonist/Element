@@ -140,10 +140,7 @@ class FastList:Element {
                 item.removeFromSuperview()
             }
         }
-        let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
-
-        
-        //Continue here: you cant set the y for the items, you need to add when you remove, then you repositon with virtualY - listY or something
+        //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
         
         itemContainer?.subviews.forEach{
             let item:ListItem = $0 as! ListItem
@@ -151,9 +148,6 @@ class FastList:Element {
         }
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-        
-        
-        
        
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
@@ -163,7 +157,7 @@ class FastList:Element {
                 if(idx == listItem.index){
                     exists = true
                     //set Y
-                    listItem.y = listItem.virtualY 
+                    listItem.y = listItem.virtualY - listY
                 }
             }
             if(!exists){

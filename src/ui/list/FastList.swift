@@ -142,6 +142,9 @@ class FastList:Element {
         }
         let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
         var y:CGFloat = topY
+        
+        //Continue here: you cant set the y for the items, you need to add when you remove
+        
         itemContainer?.subviews.forEach{
             let item:ListItem = $0 as! ListItem
             item.y = y

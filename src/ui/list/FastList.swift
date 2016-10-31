@@ -6,6 +6,7 @@ class FastList:Element {
     let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
     var itemsHeight:CGFloat {return items.count * 50}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []
+    var visibleItems:[ListItem] = []
     
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         super.init(width, height, parent, id)
@@ -21,7 +22,8 @@ class FastList:Element {
         var y:CGFloat = 0
         for i in 0..<9{//we need an extra item to cover the entire
             //visibleItemIndecies.append(i)
-            let item = spawn(i)
+            let item:ListItem = spawn(i) as! ListItem
+            visibleItems.append(item)
             itemContainer!.addSubView(item)
             item.y = y
             y += 50
@@ -87,6 +89,7 @@ class FastList:Element {
                 //Swift.print("item is bellow bottom limit - remove()")
                 item.hidden = true
                 surplusItems.append(item)//
+                ArrayModifier.remove(&visibleItems, object: <#T##AnyObject#>)
             }
         }
         /**/
@@ -94,7 +97,7 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstIdx:Int? = (itemContainer?.subviews.first as? ListItem)?.index
+        let firstIdx:Int? = (visibleItems.first as? ListItem)?.index
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
         //Swift.print("lastIdx: " + "\(lastIdx)")

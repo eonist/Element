@@ -154,31 +154,14 @@ class FastList:Element {
         
         
         
-        //first range -> spawn
-        //second range -> set Y
-        //third range -> spawn
-        
-        let a:Int = firstItemIndex
-        let b:Int = (itemContainer?.subviews.first as? ListItem)?.index ?? firstItemIndex
-        let c:Int = (itemContainer?.subviews.last as? ListItem)?.index ?? firstItemIndex
-        let d:Int = firstItemIndex + maxVisibleItems
-        
-        for i in a..<b{
-            spawn(i)
-        }
-        for i in b..<c{//if no items exist then this doesnt iterate
+       
+        for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
+            let idx:Int = firstItemIndex + i
+            itemContainer!.subviews
             //set Y
+            (itemContainer?.subviews[] as? ListItem)?.index
         }
-        for i in c..<d{
-            spawn(i)
-        }
-        
-        if(itemContainer!.subviews.count > 0){
-            
-            
-        }
-        
-        
+       
         
         //maybe you store the index in the item, also see legacy code for tips
             //if you store the index, then you can disregard items if they are out of bounds

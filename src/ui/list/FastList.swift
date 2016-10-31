@@ -148,7 +148,9 @@ class FastList:Element {
         }
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-       
+        let firstIdx:Int? = (itemContainer?.subviews.first as? ListItem)?.index
+        let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
+        
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
             var exists:Bool = false
@@ -161,8 +163,13 @@ class FastList:Element {
                 }
             }
             if(!exists){
-                
                 //spawn, but append or prepend? back to the triple looping idea?
+                if(firstIdx != nil && idx < firstIdx){
+                    
+                }else if(lastIdx != nil && idx > lastIdx){
+                    
+                }
+                
             }
             
         }

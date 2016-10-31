@@ -141,11 +141,7 @@ class FastList:Element {
             }
         }
         //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
-        
-        itemContainer?.subviews.forEach{
-            let item:ListItem = $0 as! ListItem
-            item.y = item.virtualY - listY
-        }
+      
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         let firstIdx:Int? = (itemContainer?.subviews.first as? ListItem)?.index
@@ -173,9 +169,6 @@ class FastList:Element {
         }
        
         
-        //maybe you store the index in the item, also see legacy code for tips
-            //if you store the index, then you can disregard items if they are out of bounds
-        
     }
     /**
      * PARAM: at: the index that coorespond to items
@@ -200,7 +193,7 @@ class FastList:Element {
 }
 class ListItem:Element{
     var virtualY:CGFloat {return index * 50}
-    var index:Int
+    var index:Int//we store the index in the item
     init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
         self.index = index
         super.init(width, height, parent, id)

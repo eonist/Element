@@ -162,7 +162,7 @@ class FastList:Element {
             }
             if(!exists){
                 
-                //spawn
+                //spawn, but append or prepend? back to the triple looping idea?
             }
             
         }

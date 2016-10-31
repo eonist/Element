@@ -39,6 +39,13 @@ class FastList:Element {
      */
     func setProgress(progress:CGFloat){
         //Swift.print("FastList.setProgress() " + "\(progress)")
+        
+        //Continue here:
+            //So its not moving individual items that tears the graphics
+            //lets try and hide and reveal items as the go in and out of the visible area
+                //then 
+        
+        
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem

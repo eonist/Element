@@ -161,7 +161,7 @@ class FastList:Element {
         let a:Int = firstItemIndex
         let b:Int = (itemContainer?.subviews.first as? ListItem)?.index ?? firstItemIndex
         let c:Int = (itemContainer?.subviews.last as? ListItem)?.index ?? firstItemIndex
-        let d:Int = 0
+        let d:Int = firstItemIndex + maxVisibleItems
         
         for i in a..<b{
             spawn(i)

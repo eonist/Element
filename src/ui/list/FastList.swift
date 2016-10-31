@@ -150,6 +150,9 @@ class FastList:Element {
             item.y = item.virtualY - listY
         }
         
+        for i in 0..<maxVisibleItems{
+            
+        }
         //maybe you store the index in the item, also see legacy code for tips
             //if you store the index, then you can disregard items if they are out of bounds
         
@@ -158,8 +161,7 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let virtualY:CGFloat = at * 50
-        let item:ListItem = ListItem(100,50,virtualY,itemContainer,"item")
+        let item:ListItem = ListItem(100,50,at,itemContainer,"item")
         return item
     }
     /**
@@ -177,9 +179,10 @@ class FastList:Element {
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 class ListItem:Element{
-    var virtualY:CGFloat
-    init(_ width: CGFloat, _ height: CGFloat, _ virtualY:CGFloat, _ parent: IElement?, _ id: String? = nil) {
-        self.virtualY = virtualY
+    var virtualY:CGFloat {return index * 50}
+    var index:Int
+    init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
+        self.index = index
         super.init(width, height, parent, id)
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -61,7 +61,7 @@ class FastList:Element {
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         var subViewIdx:Int = 0
-        
+        var y:CGFloat = NaN
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -83,9 +83,11 @@ class FastList:Element {
             //set y
             if(i == 0){
                 listItem.y = listItem.virtualY - listY
-            }else{
                 
+            }else{
+                listItem.y = y
             }
+            y = listItem.y + 50
             //try to only set top item, then use above item for the rest
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code

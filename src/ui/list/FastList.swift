@@ -47,7 +47,8 @@ class FastList:Element {
                 //maybe even try to not add subviews, buth rather just reposition them (adding vies could cause tearing!?!?)
         
         //Observation:
-            //removing items definitly tears the graphics
+            //removing items definitly tears the graphics, 
+                //but does adding?
             //hiding and revealing animates items -> so we need to turn that off for this case
                 //you could just move the item to a location outside the mask
         

@@ -165,8 +165,10 @@ class FastList:Element {
             if(!exists){
                 //spawn, but append or prepend? back to the triple looping idea?
                 if(firstIdx != nil && idx < firstIdx){
-                    
+                    //append
                 }else if(lastIdx != nil && idx > lastIdx){
+                    //prepend
+                }else{
                     
                 }
                 

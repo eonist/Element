@@ -68,6 +68,7 @@ class FastList:Element {
             //spawn, but append or prepend? back to the triple looping idea?
             if(firstIdx != nil && idx < firstIdx){
                 //prepend
+                Swift.print("prepend")
                 listItem = NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem

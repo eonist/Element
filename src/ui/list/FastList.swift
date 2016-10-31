@@ -112,6 +112,7 @@ class FastList:Element {
         //same for bottomLimit
     
         //what if you use the loop method when the maxVisibleItemCount grows -> it would only work with less than dubble the size of the original
+        //I think you need to draw to figure this out
     
     
     /**

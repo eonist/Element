@@ -60,7 +60,7 @@ class FastList:Element {
         Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
         Swift.print("lastIdx: " + "\(lastIdx)")
-        /*
+        
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
@@ -82,7 +82,7 @@ class FastList:Element {
             //set y
             listItem.y = listItem.virtualY - listY
         }
-        */
+        /**/
     }
     /**
      * PARAM: at: the index that coorespond to items

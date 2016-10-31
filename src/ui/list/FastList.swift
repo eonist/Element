@@ -67,6 +67,11 @@ class FastList:Element {
             }
             
         }
+        
+        
+        
+        
+        
         //Swift.print("listY: " + "\(listY)")
         /*
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits

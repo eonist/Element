@@ -126,9 +126,11 @@ class FastList:Element {
     
         //when you remove an item you only hide it and add it to removedItems array
         //when you add items you attempt to get an item from removedItems array and then insert it in to the container and set the y and unhide it and spoof it with new data
+    
+    
+    func setProgress2(progress:CGFloat){
         
-    
-    
+    }
     /**
      * PARAM: at: the index that coorespond to items
      */

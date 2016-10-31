@@ -157,12 +157,12 @@ class FastList:Element {
             //spawn, but append or prepend? back to the triple looping idea?
             if(firstIdx != nil && idx < firstIdx){
                 //prepend
-                listItem = NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0)
+                listItem = NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
-                listItem = itemContainer?.addSubView(spawn(idx))
+                listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }else if(firstIdx != nil && lastIdx != nil){
                 //set y
-                 = itemContainer!.subviews[subViewIdx] as! ListItem
+                listItem = itemContainer!.subviews[subViewIdx] as! ListItem
                 
                 subViewIdx++
             }else{//no pre exisiting items exist

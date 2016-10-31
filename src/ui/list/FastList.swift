@@ -51,11 +51,10 @@ class FastList:Element {
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
-                Swift.print("item is above top limit - remove()")
-                item.removeFromSuperview()
+                //Swift.print("item is above top limit - remove()")
                 item.hidden = true
             }else if(item.virtualY > listY + height){
-                Swift.print("item is bellow bottom limit - remove()")
+                //Swift.print("item is bellow bottom limit - remove()")
                 item.hidden = true
             }else{
                 item.y = item.virtualY - listY

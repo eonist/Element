@@ -150,29 +150,21 @@ class FastList:Element {
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         let firstIdx:Int? = (itemContainer?.subviews.first as? ListItem)?.index
         let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
-        
+        var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
-            var exists:Bool = false
-            itemContainer!.subviews.forEach{//this can be optimized away by for looping 3 ranges -> but it complicates the code so this is used for now
-                let listItem:ListItem = $0 as! ListItem
-                if(idx == listItem.index){
-                    exists = true
-                    //set Y
-                    listItem.y = listItem.virtualY - listY
-                }
-            }
-            if(!exists){
-                
-                
-            }
+            
             //spawn, but append or prepend? back to the triple looping idea?
             if(firstIdx != nil && idx < firstIdx){
-                //append
-            }else if(lastIdx != nil && idx > lastIdx){
                 //prepend
+                itemContainer!.insertSu
+            }else if(lastIdx != nil && idx > lastIdx){
+                //append
             }else if(firstIdx != nil && lastIdx != nil){
                 //set y
+                let listItem:ListItem = itemContainer!.subviews[subViewIdx] as! ListItem
+                listItem.y = listItem.virtualY - listY
+                subViewIdx++
             }else{//no pre exisiting items exist
                 //append
             }

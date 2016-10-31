@@ -167,8 +167,6 @@ class FastList:Element {
             //set y
             listItem.y = listItem.virtualY - listY
         }
-       
-        
     }
     /**
      * PARAM: at: the index that coorespond to items

@@ -37,7 +37,7 @@ class FastList:Element {
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      */
     func setProgress(progress:CGFloat){
-        Swift.print("FastList.setProgress() " + "\(progress)")
+        //Swift.print("FastList.setProgress() " + "\(progress)")
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
@@ -85,6 +85,7 @@ class FastList:Element {
         
         let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
         var y:CGFloat = ceil(firstListItem.virtualY - listY)
+        Swift.print("y: " + "\(y)")
         for i in 0..<maxVisibleItems{
             let listItem:ListItem = itemContainer!.subviews[i] as! ListItem
             listItem.y = y

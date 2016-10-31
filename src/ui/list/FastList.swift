@@ -100,7 +100,8 @@ class FastList:Element {
         //Edge cases
         //If win resize then add more items to the array
             //recalc the maxVisible Items
-            
+            //which recalcs the repeating numbers, which won't work in scale
+            //Think of something else
     
     
     /**

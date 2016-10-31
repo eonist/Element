@@ -26,7 +26,7 @@ class FastList:Element {
             y += 50
         }
         //spawn 8 items,
-        setProgress(0)
+        setProgress2(0)
         
         //Continue here: setup some prints to debug, then test it
     }
@@ -129,7 +129,9 @@ class FastList:Element {
     
     
     func setProgress2(progress:CGFloat){
-        
+        let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
+        let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
+        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
     }
     /**
      * PARAM: at: the index that coorespond to items

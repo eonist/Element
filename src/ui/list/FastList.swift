@@ -121,7 +121,9 @@ class FastList:Element {
         //find the top.y
         //assert every current items if they are bellow top.y and above bottom.y
             //if they are not -> remove them
-            //
+            //add new items from top.y or the last item in visible list
+                //keep adding until item.y > bottom.y
+        
     
     
     /**

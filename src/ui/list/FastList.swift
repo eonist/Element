@@ -80,18 +80,17 @@ class FastList:Element {
         //Swift.print("listY: " + "\(listY)")
         
         visibleItems.forEach{//remove items that are above or bellow the limits
-            let item:ListItem = $0
+            var item:ListItem = $0
             if(item.virtualY < listY - 50){
                 //Swift.print("item is above top limit - remove()")
                 item.hidden = true
+                visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
                 surplusItems.append(item)
             }else if(item.virtualY > listY + height){
                 //Swift.print("item is bellow bottom limit - remove()")
                 item.hidden = true
-                surplusItems.append(item)//
-                ArrayParser.idx(&visibleItems, &item)
-
-
+                visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
+                surplusItems.append(item)
             }
         }
         /**/

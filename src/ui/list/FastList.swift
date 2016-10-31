@@ -61,8 +61,8 @@ class FastList:Element {
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         var subViewIdx:Int = 0
-        let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
-        var y:CGFloat = (firstListItem.virtualY - listY)
+
+        var y:CGFloat = (firstItemIndex * 50) - listY
         
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i

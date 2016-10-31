@@ -85,8 +85,9 @@ class FastList:Element {
     
     //Imagine an infinite list where the numbers keep repeating from 0..8
         //you travel the list by progress * totItemsHeight
-        //you find the offset by doing pos.y % 50
-        
+        //you find the item offset by doing pos.y % 50
+        //you find the curIdx by doing floor(abs(pos.y /50)) -> 22
+        //you find the idex of 0..8 by doing 22 % 8 -> 
     
     /**
      * PARAM: at: the index that coorespond to items

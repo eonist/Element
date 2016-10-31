@@ -14,6 +14,7 @@ class FastList:Element {
     }
     override func resolveSkin() {
         Swift.print("FastList.resolveSkin()")
+        Swift.print("itemsHeight: " + "\(itemsHeight)")
         super.resolveSkin()
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
@@ -29,25 +30,24 @@ class FastList:Element {
         
         setProgress(0)
         
-        //Continue here: setup some prints to debug, then test it
-            //I think the over-all concept should work now. Tests soon!
-            //remember that you dont remove but move to a repurpouse array where spawn then gets items from if any exists, if not they are created. (But for simplicitys sake we remove and add until things start to work)
+        //Continue here: It actually worked! 
+            //but you need to set the .y based on the item above, to avoid tearing, small gaps that apear
+        
     }
     /**
      * PARAM: progress: 0 to 1
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      */
     func setProgress(progress:CGFloat){
-        Swift.print("itemsHeight: " + "\(itemsHeight)")
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
-        Swift.print("listY: " + "\(listY)")
+        //Swift.print("listY: " + "\(listY)")
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
-                Swift.print("item is above top limit")
+                //Swift.print("item is above top limit")
                 item.removeFromSuperview()
             }else if(item.virtualY > listY + height){
-                Swift.print("item is bellow bottom limit")
+                //Swift.print("item is bellow bottom limit")
                 item.removeFromSuperview()
             }
         }
@@ -55,11 +55,11 @@ class FastList:Element {
       
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
+        //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstIdx:Int? = (itemContainer?.subviews.first as? ListItem)?.index
-        Swift.print("firstIdx: " + "\(firstIdx)")
+        //Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
-        Swift.print("lastIdx: " + "\(lastIdx)")
+        //Swift.print("lastIdx: " + "\(lastIdx)")
         
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
@@ -67,17 +67,17 @@ class FastList:Element {
             let listItem:ListItem
             //spawn, but append or prepend? back to the triple looping idea?
             if(firstIdx != nil && idx < firstIdx){//prepend
-                Swift.print("prepend spawn")
+                //Swift.print("prepend spawn")
                 listItem = NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
-                Swift.print("append spawn")
+                //Swift.print("append spawn")
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
-                Swift.print("already exist, just change .y")
+                //Swift.print("already exist, just change .y")
                 listItem = itemContainer!.subviews[subViewIdx] as! ListItem
                 subViewIdx++
             }else{//no pre exisiting items exist
-                Swift.print("append spawn")//append
+                //Swift.print("append spawn")//append
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y

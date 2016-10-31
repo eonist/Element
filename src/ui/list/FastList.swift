@@ -157,8 +157,8 @@ class FastList:Element {
         for i in firstItemIndex..<firstExistingItemIdx{
             spawn(i)
         }
-        for i in 0..<9{
-            
+        for i in firstExistingItemIdx..<lastExisitngItemIdx{
+            spawn(i)
         }
         //maybe you store the index in the item, also see legacy code for tips
             //if you store the index, then you can disregard items if they are out of bounds

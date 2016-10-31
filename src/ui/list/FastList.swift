@@ -79,8 +79,8 @@ class FastList:Element {
         
         //Swift.print("listY: " + "\(listY)")
         
-        itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
-            let item:ListItem = $0 as! ListItem
+        visibleItems.forEach{//remove items that are above or bellow the limits
+            let item:ListItem = $0
             if(item.virtualY < listY - 50){
                 //Swift.print("item is above top limit - remove()")
                 item.hidden = true
@@ -89,7 +89,7 @@ class FastList:Element {
                 //Swift.print("item is bellow bottom limit - remove()")
                 item.hidden = true
                 surplusItems.append(item)//
-                //ArrayModifier.remove(&visibleItems, item)
+                ArrayModifier.remove(&visibleItems, item)
             }
         }
         /**/
@@ -97,7 +97,7 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstIdx:Int? = (visibleItems.first as? ListItem)?.index
+        let firstIdx:Int? = visibleItems.first?.index
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
         //Swift.print("lastIdx: " + "\(lastIdx)")

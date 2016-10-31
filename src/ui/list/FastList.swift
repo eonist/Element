@@ -140,7 +140,7 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let virtualY:CGFloat = 
+        let virtualY:CGFloat = at * 
         let item:ListItem = ListItem(100,50,itemContainer,"item")
         return item
     }

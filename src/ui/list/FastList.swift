@@ -159,14 +159,15 @@ class FastList:Element {
             let idx:Int = firstItemIndex + i
             var exists:Bool = false
             itemContainer!.subviews.forEach{//this can be optimized away by for looping 3 ranges -> but it complicates the code so this is used for now
-                if(idx == ($0 as! ListItem).index){
+                let listItem:ListItem = $0 as! ListItem
+                if(idx == listItem.index){
                     exists = true
+                    //set Y
+                    listItem.y = listItem.virtualY 
                 }
             }
-            if(exists){
-                //set Y
+            if(!exists){
                 
-            }else{
                 //spawn
             }
             

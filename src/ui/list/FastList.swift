@@ -46,13 +46,16 @@ class FastList:Element {
                 //then we can try to remove items, but repurpouse them instead of creating new ones
                 //maybe even try to not add subviews, buth rather just reposition them (adding vies could cause tearing!?!?)
         
+        //Observation:
+            //removing items definitly tears the graphics
+            //hiding and revealing animates items -> so we need to turn that off for this case
+                //you could just move the item to a location outside the mask
         
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
                 //Swift.print("item is above top limit - remove()")
-                item.removeFromSuperview()
                 item.hidden = true
             }else if(item.virtualY > listY + height){
                 //Swift.print("item is bellow bottom limit - remove()")

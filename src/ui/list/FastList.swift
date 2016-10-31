@@ -1,13 +1,13 @@
 import Cocoa
 
 class FastList:Element {
-    var visibleItems:[NSView] = []
-    //var visibleItemIndecies:[Int] = []
+
+
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
-    var currentVisibleItem:Int = 0//the current first visible item
-    //var visibleRange:Range<Int> = Range<Int>(0,8)
+    var itemsHeight:CGFloat {return items.count * 50}//<--the tot items height can be calculated at init, and on list data refresh
+
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         super.init(width, height, parent, id)
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
@@ -27,7 +27,7 @@ class FastList:Element {
             y += 50
         }
         
-        //setProgress(0)
+        setProgress(0)
         
         //Continue here: setup some prints to debug, then test it
             //I think the over-all concept should work now. Tests soon!
@@ -39,14 +39,16 @@ class FastList:Element {
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      */
     func setProgress(progress:CGFloat){
-        let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
+        Swift.print("itemsHeight: " + "\(itemsHeight)")
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
-        
+        Swift.print("listY: " + "\(listY)")
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
+                Swift.print("item is above top limit")
                 item.removeFromSuperview()
             }else if(item.virtualY > listY + height){
+                Swift.print("item is bellow bottom limit")
                 item.removeFromSuperview()
             }
         }

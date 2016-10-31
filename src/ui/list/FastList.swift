@@ -5,7 +5,8 @@ class FastList:Element {
     var itemContainer:Container?
     let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
     var itemsHeight:CGFloat {return items.count * 50}//<--the tot items height can be calculated at init, and on list data refresh
-
+    var surplusItems:[ListItem] = []
+    
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         super.init(width, height, parent, id)
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
@@ -18,7 +19,7 @@ class FastList:Element {
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         var y:CGFloat = 0
-        for i in 0..<20{//we need an extra item to cover the entire
+        for i in 0..<9{//we need an extra item to cover the entire
             //visibleItemIndecies.append(i)
             let item = spawn(i)
             itemContainer!.addSubView(item)
@@ -53,6 +54,8 @@ class FastList:Element {
                 //you could just move the item to a location outside the mask
         
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
+        
+        /*
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
@@ -69,24 +72,23 @@ class FastList:Element {
         }
         
         
-        
+        */
         
         
         //Swift.print("listY: " + "\(listY)")
-        /*
+        
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
-                Swift.print("item is above top limit - remove()")
-                item.removeFromSuperview()
+                //Swift.print("item is above top limit - remove()")
+                item.hidden = true
             }else if(item.virtualY > listY + height){
-                Swift.print("item is bellow bottom limit - remove()")
-                item.removeFromSuperview()
+                //Swift.print("item is bellow bottom limit - remove()")
+                item.hidden = true
             }
         }
-        */
+        /**/
         //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
-        /*
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
@@ -120,7 +122,8 @@ class FastList:Element {
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code
         }
-        */
+        /*
+*/
         //avoids tearing:
     }
     /**

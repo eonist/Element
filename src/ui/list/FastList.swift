@@ -66,14 +66,14 @@ class FastList:Element {
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
             //spawn, but append or prepend? back to the triple looping idea?
-            if(firstIdx != nil && idx < firstIdx){
-                //prepend
-                Swift.print("prepend")
+            if(firstIdx != nil && idx < firstIdx){//prepend
+                Swift.print("prepend spawn")
                 listItem = NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
+                Swift.print("append spawn")
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
-            }else if(firstIdx != nil && lastIdx != nil){
-                //recycle the existing item
+            }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
+                Swift.print("already exist")
                 listItem = itemContainer!.subviews[subViewIdx] as! ListItem
                 subViewIdx++
             }else{//no pre exisiting items exist

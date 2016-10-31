@@ -5,7 +5,7 @@ class FastList:Element {
     //var visibleItemIndecies:[Int] = []
     var items:[NSColor] = []
     var itemContainer:Container?
-    let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
+    let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
     var currentVisibleItem:Int = 0//the current first visible item
     //var visibleRange:Range<Int> = Range<Int>(0,8)
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {

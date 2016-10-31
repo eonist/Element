@@ -130,12 +130,12 @@ class FastList:Element {
     
     func setProgress2(progress:CGFloat){
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
-        let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
+        let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         itemContainer?.subviews.forEach{
             let item:ListItem = $0 as! ListItem
-            let relativeY = item.virtualY + listY
-            if(relativeY < 0){
+            
+            if(item.virtualY < listY ){
                 
             }
         }

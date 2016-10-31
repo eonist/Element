@@ -161,14 +161,14 @@ class FastList:Element {
             }else if(lastIdx != nil && idx > lastIdx){
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }else if(firstIdx != nil && lastIdx != nil){
-                //set y
+                //recycle the existing item
                 listItem = itemContainer!.subviews[subViewIdx] as! ListItem
-                
                 subViewIdx++
             }else{//no pre exisiting items exist
                 //append
+                listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
-            
+            //set y
             listItem.y = listItem.virtualY - listY
         }
        

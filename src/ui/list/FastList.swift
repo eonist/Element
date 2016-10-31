@@ -33,7 +33,6 @@ class FastList:Element {
             //I think the over-all concept should work now. Tests soon!
             //remember that you dont remove but move to a repurpouse array where spawn then gets items from if any exists, if not they are created. (But for simplicitys sake we remove and add until things start to work)
     }
-  
     /**
      * PARAM: progress: 0 to 1
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
@@ -56,8 +55,12 @@ class FastList:Element {
       
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
+        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstIdx:Int? = (itemContainer?.subviews.first as? ListItem)?.index
+        Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = (itemContainer?.subviews.last as? ListItem)?.index
+        Swift.print("lastIdx: " + "\(lastIdx)")
+        /*
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
@@ -79,6 +82,7 @@ class FastList:Element {
             //set y
             listItem.y = listItem.virtualY - listY
         }
+        */
     }
     /**
      * PARAM: at: the index that coorespond to items

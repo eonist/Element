@@ -132,7 +132,7 @@ class FastList:Element {
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-        itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
+        for i in 0..<maxVisibleItems{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
                 item.removeFromSuperview()

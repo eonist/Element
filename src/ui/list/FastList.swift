@@ -157,9 +157,18 @@ class FastList:Element {
        
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
-            itemContainer!.subviews
-            //set Y
-            (itemContainer?.subviews[] as? ListItem)?.index
+            var exists:Bool = false
+            itemContainer!.subviews.forEach{//this can be optimized away by for looping 3 ranges -> but it complicates the code so this is used for now
+                if(idx == ($0 as! ListItem).index){
+                    exists = true
+                }
+            }
+            if(exists){
+                //set Y
+            }else{
+                //spawn
+            }
+            
         }
        
         

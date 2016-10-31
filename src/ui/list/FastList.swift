@@ -80,14 +80,15 @@ class FastList:Element {
     
     //The above idea is great, make a isolated test to test it
         //you need to store the order of the 9 item indecies
-        //draw the idea on paper to get a clearer view of how to code this
+        //draw the idea on paper to get a clearer view of how to code this (or try to visualize it in your mind, its a good excersie to do)
     
     
     //Imagine an infinite list where the numbers keep repeating from 0..8
         //you travel the list by progress * totItemsHeight
         //you find the item offset by doing pos.y % 50
         //you find the curIdx by doing floor(abs(pos.y /50)) -> 22
-        //you find the idex of 0..8 by doing 22 % 8 -> 
+        //you find the idex of 0..8 by doing 22 % 8 -> 6 -> which means 6 should be the top item, then 7,8,0,1,2,3,4,5
+        //
     
     /**
      * PARAM: at: the index that coorespond to items

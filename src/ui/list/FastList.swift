@@ -25,44 +25,18 @@ class FastList:Element {
             item.y = y
             y += 50
         }
-        //spawn 8 items,
-        setProgress2(0)
+        
+        //setProgress(0)
         
         //Continue here: setup some prints to debug, then test it
+            //I think the over-all concept should work now. Tests soon!
     }
+  
     /**
      * PARAM: progress: 0 to 1
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      */
     func setProgress(progress:CGFloat){
-        let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
-        let listY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
-        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-        
-        //figure out how many items needs to be spoofed
-        let spoofCount:Int = currentVisibleItem - firstItemIndex
-        
-        //Are we overcomplicating?
-            //
-        
-        currentVisibleItem = firstItemIndex
-        let topY:CGFloat = listY % 50//the left over
-        
-        
-        
-        for i in firstItemIndex..<maxVisibleItems{
-            //only spoof new data if the top item goes above the top
-                //move the item to the bottom
-            //only spoof new data if the bottom item goes bellow the bottom
-                //move the item to the top
-            
-            
-            
-        }
-    }
-    
-    
-    func setProgress2(progress:CGFloat){
         let itemsHeight:CGFloat = items.count * 50//<--the tot items height can be calculated at init, and on list data refresh
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         

@@ -140,7 +140,8 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let item:Element = Element(100,50,itemContainer,"item")
+        let virtualY:CGFloat = 
+        let item:ListItem = ListItem(100,50,itemContainer,"item")
         return item
     }
     /**
@@ -158,7 +159,9 @@ class FastList:Element {
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 class ListItem:Element{
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
+    var virtualY:CGFloat
+    init(_ width: CGFloat, _ height: CGFloat, _ virtualY:CGFloat, _ parent: IElement?, _ id: String? = nil) {
+        self.virtualY = virtualY
         super.init(width, height, parent, id)
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

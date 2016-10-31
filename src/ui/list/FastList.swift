@@ -160,13 +160,13 @@ class FastList:Element {
         
         let a:Int = firstItemIndex
         let b:Int = (itemContainer?.subviews.first as? ListItem)?.index ?? firstItemIndex
-        let c:Int = 0
+        let c:Int = (itemContainer?.subviews.last as? ListItem)?.index ?? firstItemIndex
         let d:Int = 0
         
         for i in a..<b{
             spawn(i)
         }
-        for i in b..<c{
+        for i in b..<c{//if no items exist then this doesnt iterate
             //set Y
         }
         for i in c..<d{

@@ -30,6 +30,7 @@ class FastList:Element {
         
         //Continue here: setup some prints to debug, then test it
             //I think the over-all concept should work now. Tests soon!
+            //remember that you dont remove but move to a repurpouse array where spawn then gets items from if any exists, if not they are created. (But for simplicitys sake we remove and add until things start to work)
     }
   
     /**

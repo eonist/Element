@@ -21,6 +21,7 @@ class HSlider:Element{
         setProgressValue(progress)
     }
     func onThumbDown(){
+        Swift.print("HSlider.onThumbDown")
         tempThumbMouseX = thumb!.localPos().x
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
     }

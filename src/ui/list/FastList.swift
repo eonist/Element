@@ -115,6 +115,15 @@ class FastList:Element {
         //I think you need to draw to figure this out
     
     
+    //new idea 2: (add and remove)
+        //add 8 items to view at progres 0
+        //go to progress 0.6
+        //find the top.y
+        //assert every current items if they are bellow top.y and above bottom.y
+            //if they are not -> remove them
+            //
+    
+    
     /**
      * PARAM: at: the index that coorespond to items
      */

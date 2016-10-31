@@ -151,8 +151,7 @@ class FastList:Element {
         }
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-        let firstExistingItemIdx:Int = (itemContainer?.subviews.first as? ListItem)?.index ?? 0
-        let lastExisitngItemIdx:Int = (itemContainer?.subviews.last as? ListItem)?.index ?? 0
+        
         
         
         //first range -> spawn
@@ -160,12 +159,14 @@ class FastList:Element {
         //third range -> spawn
         
         if(itemContainer!.subviews.count > 0){
-            
+            let firstExistingItemIdx:Int = (itemContainer?.subviews.first as? ListItem)?.index
+            let lastExisitngItemIdx:Int = (itemContainer?.subviews.last as? ListItem)?.index
+            for i in firstItemIndex..<firstExistingItemIdx{
+                //set Y
+            }
         }
         
-        for i in firstItemIndex..<firstExistingItemIdx{
-            spawn(i)
-        }
+        
         for i in firstExistingItemIdx..<lastExisitngItemIdx{
             spawn(i)
         }

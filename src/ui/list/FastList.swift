@@ -165,6 +165,7 @@ class FastList:Element {
             }
             if(exists){
                 //set Y
+                
             }else{
                 //spawn
             }

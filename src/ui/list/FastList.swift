@@ -83,6 +83,8 @@ class FastList:Element {
             //set y
             listItem.y = listItem.virtualY - listY
             //try to only set top item, then use above item for the rest
+            //if that doesn't work then try to repurpous items instead of removing them
+            //try to 
         }
         //avoids tearing:
     }

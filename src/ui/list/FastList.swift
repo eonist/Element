@@ -133,7 +133,10 @@ class FastList:Element {
         let topY:CGFloat = ListModifier.scrollTo(progress, height, itemsHeight)
         let firstItemIndex:Int = floor(abs(topY / 50)).int//find the first item
         itemContainer?.subviews.forEach{
-            let item:Element = $0 as! Element
+            let item:ListItem = $0 as! ListItem
+            if(item.virtualY < topY){
+                
+            }
         }
     }
     /**
@@ -141,7 +144,7 @@ class FastList:Element {
      */
     func spawn(at:Int)->NSView{
         let virtualY:CGFloat = at * 50
-        let item:ListItem = ListItem(100,50,itemContainer,virtualY,"item")
+        let item:ListItem = ListItem(100,50,virtualY,itemContainer,"item")
         return item
     }
     /**

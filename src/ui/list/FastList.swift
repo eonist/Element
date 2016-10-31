@@ -53,7 +53,7 @@ class FastList:Element {
                 //you could just move the item to a location outside the mask
         
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
-        itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
+        /*itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
                 //Swift.print("item is above top limit - remove()")
@@ -65,10 +65,10 @@ class FastList:Element {
                 item.y = item.virtualY - listY
                 item.hidden = false
             }
-            
         }
+        */
         //Swift.print("listY: " + "\(listY)")
-        /*
+        
         itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
             let item:ListItem = $0 as! ListItem
             if(item.virtualY < listY - 50){
@@ -79,9 +79,9 @@ class FastList:Element {
                 item.removeFromSuperview()
             }
         }
-        */
+        /**/
         //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
-        /*
+        
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
@@ -115,7 +115,7 @@ class FastList:Element {
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code
         }
-        */
+        /**/
         //avoids tearing:
     }
     /**

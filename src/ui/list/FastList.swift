@@ -99,6 +99,8 @@ class FastList:Element {
     
         //Edge cases
         //If win resize then add more items to the array
+            //recalc the maxVisible Items
+            
     
     
     /**

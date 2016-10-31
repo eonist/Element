@@ -30,6 +30,7 @@ class FastList:Element {
         
         //Continue here: It actually worked! 
             //but you need to set the .y based on the item above, to avoid tearing, small gaps that apear
+            //seems to tear no matter what you do. Try to figure it out or start moving the container and not each individual item
         
     }
     /**
@@ -61,7 +62,6 @@ class FastList:Element {
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         var subViewIdx:Int = 0
-        var y:CGFloat = NaN
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
             let listItem:ListItem

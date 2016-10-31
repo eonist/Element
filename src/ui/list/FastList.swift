@@ -159,17 +159,22 @@ class FastList:Element {
         //third range -> spawn
         
         if(itemContainer!.subviews.count > 0){
+            
             let firstExistingItemIdx:Int = (itemContainer?.subviews.first as? ListItem)?.index
             let lastExisitngItemIdx:Int = (itemContainer?.subviews.last as? ListItem)?.index
             for i in firstItemIndex..<firstExistingItemIdx{
+                spawn(i)
+            }
+            for i in firstExistingItemIdx..<lastExisitngItemIdx{
                 //set Y
+            }
+            for i in lastExisitngItemIdx..<lastExisitngItemIdx{
+                spawn(i)
             }
         }
         
         
-        for i in firstExistingItemIdx..<lastExisitngItemIdx{
-            spawn(i)
-        }
+        
         //maybe you store the index in the item, also see legacy code for tips
             //if you store the index, then you can disregard items if they are out of bounds
         

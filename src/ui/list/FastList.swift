@@ -151,11 +151,14 @@ class FastList:Element {
         }
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
-        let firstExistingItemIdx:Int = (itemContainer?.subviews.first as? ListItem)?.index ?? 0
+        let firstExistingItemIdx:Int = (itemContainer?.subviews.first as? ListItem)?.index ?? firstItemIndex
         let lastExisitngItemIdx:Int = (itemContainer?.subviews.last as? ListItem)?.index ?? 0
         
-        for i in 0..<maxVisibleItems{
-            spawn(firstItemIndex+i)
+        for i in firstItemIndex..<firstExistingItemIdx{
+            spawn(i)
+        }
+        for i in 0..<9{
+            
         }
         //maybe you store the index in the item, also see legacy code for tips
             //if you store the index, then you can disregard items if they are out of bounds

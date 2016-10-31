@@ -110,7 +110,8 @@ class FastList:Element {
         //you need to check if the first item is above topLimit
         //if first item is bellow topLimit -> add an item to the top of the list
         //same for bottomLimit
-        
+    
+        //what if you use the loop method when the maxVisibleItemCount grows -> it would only work with less than dubble the size of the original
     
     
     /**

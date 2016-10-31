@@ -11,7 +11,6 @@ class VolumeSlider:HSlider{
         return super.onMouseMove(event)
     }
     override func onThumbMove(event: NSEvent) -> NSEvent? {
-        Swift.print("VolumeSlider.onThumbMove")
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())//this should be set after super
         return super.onThumbMove(event)
     }

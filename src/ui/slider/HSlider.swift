@@ -21,12 +21,9 @@ class HSlider:Element{
         setProgressValue(progress)
     }
     func onThumbDown(){
-        Swift.print("HSlider.onThumbDown")
+        //Swift.print("HSlider.onThumbDown")
         tempThumbMouseX = thumb!.localPos().x
-        if(leftMouseDraggedEventListener != nil){
-            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
-            leftMouseDraggedEventListener = nil
-        }
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//avoids potential bugs
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
@@ -37,14 +34,11 @@ class HSlider:Element{
         return event
     }
     func onThumbUp(){
-        if(leftMouseDraggedEventListener != nil){
-            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
-            leftMouseDraggedEventListener = nil
-        }//we remove a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent) -> NSEvent?{
-        progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth);
-        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth);
+        progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
+        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -52,10 +46,7 @@ class HSlider:Element{
      * TODO: Overriding mouseUp like this isn't good, listen to buttonUp etc
      */
     override func mouseUp(event:MouseEvent) {
-        if(leftMouseDraggedEventListener != nil){
-            NSEvent.removeMonitor(leftMouseDraggedEventListener!)
-            leftMouseDraggedEventListener = nil
-        }//we remove a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//we remove a global mouse move event listener
     }
     override func onEvent(event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

@@ -85,6 +85,7 @@ class FastList:Element {
         
         for i in 0..<maxVisibleItems
             let idx:Int = firstItemIndex + i
+        let listItem:ListItem
             listItem.y = listItem.virtualY - listY
         }
         /**/

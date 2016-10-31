@@ -43,7 +43,7 @@ class FastList:Element {
         //Continue here:
             //So its not moving individual items that tears the graphics
             //lets try and hide and reveal items as the go in and out of the visible area
-                //then 
+                //then we can try to remove items, but repurpouse them instead of creating new ones
         
         
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value

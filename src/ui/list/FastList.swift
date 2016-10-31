@@ -80,18 +80,9 @@ class FastList:Element {
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y
-            
-        }
-        
-        let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
-        var y:CGFloat = ceil(firstListItem.virtualY - listY)
-        Swift.print("y: " + "\(y)")
-        for i in 0..<maxVisibleItems{
-            let listItem:ListItem = itemContainer!.subviews[i] as! ListItem
+            let y:CGFloat = ceil(listItem.virtualY - listY)
             listItem.y = y
-            y+=50
         }
-        /**/
     }
     /**
      * PARAM: at: the index that coorespond to items

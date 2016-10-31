@@ -80,6 +80,11 @@ class FastList:Element {
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y
+            
+        }
+        
+        for i in 0..<maxVisibleItems
+            let idx:Int = firstItemIndex + i
             listItem.y = listItem.virtualY - listY
         }
         /**/

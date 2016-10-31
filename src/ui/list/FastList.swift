@@ -93,7 +93,10 @@ class FastList:Element {
         //how to spoof new data?
             //store the curProgressIdx
             //find the diff for prevProgressIdx and the curProgressIdx
-            //if the diff is +2 then 
+            //if the diff is +2 then the two last indecies has changed and needs spoofing
+            //if diff is -2 then the two first indcies has changed and needs spoofing
+            //if diff is more or less than 8 -> then spoof all
+        //If win resize then 
     
     
     /**

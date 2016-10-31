@@ -96,7 +96,9 @@ class FastList:Element {
             //if the diff is +2 then the two last indecies has changed and needs spoofing
             //if diff is -2 then the two first indcies has changed and needs spoofing
             //if diff is more or less than 8 -> then spoof all
-        //If win resize then 
+    
+        //Edge cases
+        //If win resize then add more items to the array
     
     
     /**

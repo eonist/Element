@@ -157,6 +157,12 @@ class FastList:Element {
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+class ListItem:Element{
+    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
+        super.init(width, height, parent, id)
+    }
+    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
 
 //move a "virtual" list up and down by: (just by values) (see code for this in List.swift)
     //(the index of the item in the list) * itemHeight, represetnts the initY pos

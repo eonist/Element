@@ -111,6 +111,12 @@ class FastList:Element {
             if(firstIdx != nil && idx < firstIdx){//prepend
                 Swift.print("prepend spawn")
                 listItem = surplusItems.last!
+                listItem.index = idx
+                spoof(listItem)
+                listItem.hidden = false
+                
+                //Continue here: do the same as above for the other clauses
+                
                 //NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
                 Swift.print("append spawn")

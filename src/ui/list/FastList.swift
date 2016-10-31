@@ -151,7 +151,7 @@ class FastList:Element {
         }
         
         //maybe you store the index in the item, also see legacy code for tips
-            //
+            //if you store the index, then you can disregard items if they are out of bounds
         
     }
     /**

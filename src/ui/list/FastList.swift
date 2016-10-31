@@ -84,13 +84,10 @@ class FastList:Element {
         }
         
         let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
-        firstListItem.y = firstListItem.virtualY - listY
-        
-        
-        
-        for i in 1..<maxVisibleItems
-            let idx:Int = firstItemIndex + i
+        var y:CGFloat = firstListItem.virtualY - listY
+        for i in 0..<maxVisibleItems{
             let listItem:ListItem = itemContainer!.subviews[i] as! ListItem
+            
         }
         /**/
     }

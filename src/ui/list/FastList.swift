@@ -106,9 +106,11 @@ class FastList:Element {
     //Maybe you could use the center of the view and calc above items needed and bellow items needed
         //
     
-    //you need to check if the first item is above topLimit
-    //if first item is bellow topLimit -> add an item to the top of the list
-    //
+    //New idea:
+        //you need to check if the first item is above topLimit
+        //if first item is bellow topLimit -> add an item to the top of the list
+        //same for bottomLimit
+    
     
     
     /**

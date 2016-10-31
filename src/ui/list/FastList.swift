@@ -90,7 +90,7 @@ class FastList:Element {
      */
     func spawn(at:Int)->NSView{
         let item:ListItem = ListItem(100,50,at,itemContainer)
-        spoof(item)
+        if(item.index < items.count){spoof(item)}
         return item
     }
     /**

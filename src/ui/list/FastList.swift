@@ -141,7 +141,12 @@ class FastList:Element {
             }
         }
         let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
-        
+        var y:CGFloat = topY
+        itemContainer?.subviews.forEach{
+            let item:ListItem = $0 as! ListItem
+            item.y = y
+            y += 50
+        }
     }
     /**
      * PARAM: at: the index that coorespond to items

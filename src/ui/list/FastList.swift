@@ -103,6 +103,9 @@ class FastList:Element {
             //which recalcs the repeating numbers, which won't work in scale
             //Think of something else
     
+    //Maybe you could use the center of the view and calc above items needed and bellow items needed
+        //
+    
     
     /**
      * PARAM: at: the index that coorespond to items

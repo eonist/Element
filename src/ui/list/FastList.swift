@@ -61,6 +61,9 @@ class FastList:Element {
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         var subViewIdx:Int = 0
+        let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
+        var y:CGFloat = (firstListItem.virtualY - listY)
+        
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -80,18 +83,18 @@ class FastList:Element {
                 listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y
-            
-        }
-        //avoids tearing:
-        let firstListItem:ListItem = itemContainer!.subviews.first as! ListItem
-        var y:CGFloat = (firstListItem.virtualY - listY)
-        Swift.print("y: " + "\(y)")
-        for i in 0..<maxVisibleItems{
-            let listItem:ListItem = itemContainer!.subviews[i] as! ListItem
             listItem.y = y
             y+=50
         }
-        /**/
+        //avoids tearing:
+        
+        
+        Swift.print("y: " + "\(y)")
+        /*for i in 0..<maxVisibleItems{
+            let listItem:ListItem = itemContainer!.subviews[i] as! ListItem
+            
+        }
+        */
     }
     /**
      * PARAM: at: the index that coorespond to items

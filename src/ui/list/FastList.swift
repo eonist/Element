@@ -89,7 +89,7 @@ class FastList:Element {
                 //Swift.print("item is bellow bottom limit - remove()")
                 item.hidden = true
                 surplusItems.append(item)//
-                visibleItems.indexOf(item)
+                visibleItems.indexOf(<#T##element: ListItem##ListItem#>)
 
             }
         }

@@ -90,6 +90,8 @@ class FastList:Element {
                 spoof(listItem)
                 listItem.hide(false)
                 visibleItems.append(listItem)
+            }else{
+                visibleItems
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/

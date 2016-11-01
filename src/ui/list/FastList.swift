@@ -157,7 +157,16 @@ class ListItem:Element{
     init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
         self.index = index
         super.init(width, height, parent, id)
-        CATransaction.setDisableActions(true)
+    }
+    /**
+     *
+     */
+    func hide(isHidden:Bool){
+        CATransaction.begin()
+        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
+        // change properties here without animation
+        hidden = isHidden
+        CATransaction.commit()
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

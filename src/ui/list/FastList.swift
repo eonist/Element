@@ -12,6 +12,7 @@ import Cocoa
 //Continue here:
     //try using real data (text)
     //try using DataProvider
+ 
     //try the 1 loop setProgress idea
     //remove the mask and use an outline that is above the itemContainer
     //test if resize works, by spawning new items etc
@@ -19,6 +20,7 @@ import Cocoa
     //test the FastList with rubberband
     //test the FastList with 1000's of items
     //Make a SliderScrollWheelController --> for SliderList and SliderFastList (similar to RBScrollWheelController)
+
 typealias ListItem = (item:Element, idx:Int)
 class FastList:Element {
     var itemHeight:CGFloat

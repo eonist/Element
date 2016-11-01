@@ -62,9 +62,9 @@ class FastList:Element {
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleIdx:Int = visibleItems.first?.index ?? firstItemIndex//first of the items that wasn't deleted
-        //Swift.print("firstIdx: " + "\(firstIdx)")
+        Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int = visibleItems.last?.index ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
-        //Swift.print("lastIdx: " + "\(lastIdx)")
+        Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
         
         //Continue here: Its working, and no tearing!
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)

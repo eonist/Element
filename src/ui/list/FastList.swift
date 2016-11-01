@@ -144,13 +144,13 @@ class FastList:Element {
         
         
         //third part
-        let thirdPartStart:Int = lastVisibleIdx
+        /*let thirdPartStart:Int = lastVisibleIdx
         Swift.print("thirdPartStart: " + "\(thirdPartStart)")
         let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - (lastVisibleIdx + 1))
-        Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")
+        Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")*/
         
         //to find the len you need to utilize 
-        let len:Int = visibleItems.count
+        let len:Int = maxVisibleItems - visibleItems.count
         
         for i in 0..<len{
             let listItem:ListItem

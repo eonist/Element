@@ -86,7 +86,7 @@ class FastList:Element {
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
             //also there is still some gaps apearing between items. try to use values derived from the above item when setting y (done)
-            
+        
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
             let idx:Int = firstItemIndex + i

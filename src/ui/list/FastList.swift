@@ -154,6 +154,9 @@ class FastList:Element {
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+/**
+ * TODO: Try to move the index in an array instead of creating ListItem, this way we can use any Element ype we wish
+ */
 class ListItem:Element{
     var virtualY:CGFloat {return index * 50}
     var index:Int//we store the index in the item

@@ -30,11 +30,11 @@ class SliderList:List{
         }
         super.scrollWheel(theEvent)
     }
-    func onSliderChange(sliderEvent:SliderEvent){
+    func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
     override func onEvent(event: Event) {
-        if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}
+        if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)
     }
     /**

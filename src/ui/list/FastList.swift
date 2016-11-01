@@ -121,8 +121,7 @@ class FastList:Element {
                 spoof(listItem)
                 listItem.hide(false)
                 thirdPart.append(listItem)
-            }
-            else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
+            }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
                 Swift.print("append")//append
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx

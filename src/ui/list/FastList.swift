@@ -40,13 +40,13 @@ class FastList:Element {
     /**
      * PARAM: progress: 0 to 1
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
+     * //Continue here: Its working, and no tearing!
+     //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
      */
     func setProgress(progress:CGFloat){
         //Swift.print("FastList.setProgress() " + "\(progress)")
-        
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
-        
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
             var item:ListItem = $0
             if(item.virtualY < listY - 50){/*above top limit*/
@@ -59,48 +59,19 @@ class FastList:Element {
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }
         }
-        Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-        Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        
+        //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
+        //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleIdx:Int? = visibleItems.first?.index// ?? firstItemIndex//first of the items that wasn't deleted
-        Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
+        //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.index// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
-        Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
+        //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
+
         
-        //Continue here: Its working, and no tearing!
-            //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
-            //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
         var firstPart:[ListItem] = []
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        //var subViewIdx:Int = 0
-        /*
-        //first part
-        let firstPartStart:Int = firstItemIndex
-        Swift.print("firstPartStart: " + "\(firstPartStart)")
-        
-        //continue here: try to find the length of the firstPart, something is not working
-        
-        let firstPartEnd:Int = firstItemIndex + ((firstItemIndex + 1) - firstVisibleIdx )
-        Swift.print("firstPartEnd: " + "\(firstPartEnd)")
-        
-        for i in firstPartStart..<firstPartEnd{
-            Swift.print("first i: " + "\(i)")
-            let listItem:ListItem
-            listItem = surplusItems.removeAtIndex(0)
-            listItem.index = i
-            spoof(listItem)
-            listItem.hide(false)
-            firstPart.append(listItem)
-        }
-        //second part
-        
-        
-        */
-        
-        //continue here: create the loops for the above ranges, and stick everytihng together
         
         
         for i in 0..<maxVisibleItems{

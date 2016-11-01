@@ -80,6 +80,9 @@ class FastList:Element {
         //first part
         let firstPartStart:Int = firstItemIndex
         Swift.print("firstPartStart: " + "\(firstPartStart)")
+        
+        //continue here: try to find the length of the firstPart, something is not working
+        
         let firstPartEnd:Int = firstItemIndex + ((firstItemIndex + 1) - firstVisibleIdx )
         Swift.print("firstPartEnd: " + "\(firstPartEnd)")
         

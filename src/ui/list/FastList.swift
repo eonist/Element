@@ -158,19 +158,7 @@ class ListItem:Element{
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
-private class Utils{
-    /**
-     *
-     */
-    static func reveal(inout surplusItems:[ListItem],_ idx:Int, _ y:CGFloat) -> ListItem{
-        let listItem:ListItem = surplusItems.removeAtIndex(0)
-        listItem.index = idx
-        spoof(listItem)
-        listItem.hide(false)
-        listItem.y = y
-        return listItem
-    }
-}
+
 
 /*
 itemContainer?.subviews.forEach{//remove items that are above or bellow the limits

@@ -13,8 +13,8 @@ import Cocoa
  */
 class List:Element,IList{
     var itemHeight:CGFloat
-    var dataProvider : DataProvider
-    var lableContainer  : Container?
+    var dataProvider:DataProvider
+    var lableContainer:Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = CGFloat.NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/

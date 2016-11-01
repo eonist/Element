@@ -98,21 +98,6 @@ class FastList:Element {
         //second part
         
         
-        //third part
-        let thirdPartStart:Int = lastVisibleIdx
-        Swift.print("thirdPartStart: " + "\(thirdPartStart)")
-        let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - (lastVisibleIdx + 1))
-        Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")
-        
-        for i in thirdPartStart..<thirdPartEnd{
-            Swift.print("third i: " + "\(i)")
-            let listItem:ListItem
-            listItem = surplusItems.removeAtIndex(0)
-            listItem.index = i
-            spoof(listItem)
-            listItem.hide(false)
-            thirdPart.append(listItem)
-        }
         */
         
         //continue here: create the loops for the above ranges, and stick everytihng together
@@ -131,13 +116,14 @@ class FastList:Element {
                 firstPart.append(listItem)
 
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
+                /*
                 Swift.print("append (idx > last Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
                 thirdPart.append(listItem)
-
+                */
             }
             else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, no appending or prepending happened in this cycle
                 //Swift.print("already exist, just change .y")
@@ -153,6 +139,23 @@ class FastList:Element {
                 visibleItems.append(listItem)
 
             }
+        }
+        
+        
+        //third part
+        let thirdPartStart:Int = lastVisibleIdx
+        Swift.print("thirdPartStart: " + "\(thirdPartStart)")
+        let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - (lastVisibleIdx + 1))
+        Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")
+        
+        for i in thirdPartStart..<thirdPartEnd{
+            Swift.print("third i: " + "\(i)")
+            let listItem:ListItem
+            listItem = surplusItems.removeAtIndex(0)
+            listItem.index = i
+            spoof(listItem)
+            listItem.hide(false)
+            thirdPart.append(listItem)
         }
         
         visibleItems = firstPart + visibleItems + thirdPart//stick it all together

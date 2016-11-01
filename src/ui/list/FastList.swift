@@ -42,6 +42,7 @@ class FastList:Element {
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      * //Continue here: Its working, and no tearing!
      * //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
+     * NOTE: An idea would be to append when items are above top limit, and prepend if items are bellow bottom limit, this would lead to simpler code and 1 less for loop
      */
     func setProgress(progress:CGFloat){
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value

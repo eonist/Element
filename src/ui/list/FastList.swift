@@ -88,11 +88,11 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.append(listItem)
 
-            }else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, this only happens if no visible items exists
+            }else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, no appending or prepending happened in this cycle
                 //Swift.print("already exist, just change .y")
                 listItem = visibleItems[subViewIdx]//<--unsure about this
                 subViewIdx++
-            }else{//no pre exisiting items exist
+            }else{//no pre exisiting items exist,this only happens if no visible items exists
                 Swift.print("append spawn")//append
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx

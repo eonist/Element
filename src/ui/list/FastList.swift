@@ -19,7 +19,7 @@ class FastList:Element {
         Swift.print("FastList.resolveSkin()")
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         super.resolveSkin()
-        for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50
+        for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         var y:CGFloat = 0
@@ -84,7 +84,7 @@ class FastList:Element {
             //Turn of the hide/unhide animation (done)
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
-            //also there is still some gaps apearing between items. try to use values derived from the above item when setting y
+            //also there is still some gaps apearing between items. try to use values derived from the above item when setting y (done)
         
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate

@@ -129,17 +129,15 @@ class FastList:Element {
                 //Swift.print("already exist, just change .y")
                 //listItem = visibleItems[subViewIdx]//<--unsure about this
                 //subViewIdx++
-            }
-            else{//no pre exisiting items exist,this only happens if no visible items exists
+            }*/
+            else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
                 Swift.print("append")//append
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
                 visibleItems.append(listItem)
-
             }
-            */
         }
         
         

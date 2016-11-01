@@ -58,9 +58,9 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstVisibleIdx:Int? = visibleItems.first?.index//first of the items that wasnt deleted
+        let firstVisibleIdx:Int? = visibleItems.first?.index//first of the items that wasn't deleted
         //Swift.print("firstIdx: " + "\(firstIdx)")
-        let lastVisibleIdx:Int? = visibleItems.last?.index//last of the items that wasnt deleted
+        let lastVisibleIdx:Int? = visibleItems.last?.index//last of the items that wasn't deleted
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         //Continue here: Its working, and no tearing!

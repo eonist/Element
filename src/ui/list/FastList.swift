@@ -6,7 +6,11 @@ import Cocoa
  * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
  */
 
-//Continue here: to debug it even better, remove the mask and use an outline that is above the itemContainer
+//Continue here:
+    //try the 1 loop setProgress idea
+    //remove the mask and use an outline that is above the itemContainer
+    //try using real data (text)
+    //remove index from the ListItem and rather store it in a duplet -> so we can avoid using ListItem
 
 class FastList:Element {
     var items:[NSColor] = []

@@ -57,6 +57,8 @@ class FastList:Element {
         
         //Swift.print("listY: " + "\(listY)")
         
+        //continue here: try
+        
         visibleItems.forEach{//remove items that are above or bellow the limits
             var item:ListItem = $0
             if(item.virtualY < listY - 50){

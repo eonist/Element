@@ -58,9 +58,9 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstIdx:Int? = visibleItems.first?.index//start of the items that wasnt deleted
+        let firstVisibleIdx:Int? = visibleItems.first?.index//first of the items that wasnt deleted
         //Swift.print("firstIdx: " + "\(firstIdx)")
-        let lastIdx:Int? = visibleItems.last?.index
+        let lastVisibleIdx:Int? = visibleItems.last?.index//last of the items that wasnt deleted
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         //Continue here: Its working, and no tearing!
@@ -72,7 +72,7 @@ class FastList:Element {
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
             //spawn, but append or prepend? back to the triple looping idea?
-            if(firstIdx != nil && idx < firstIdx){//prepend
+            if(firstVisibleIdx != nil && idx < firstVisibleIdx){//prepend
                 Swift.print("prepend spawn")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
@@ -80,7 +80,7 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.unshift(listItem)
 
-            }else if(lastIdx != nil && idx > lastIdx){
+            }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){
                 Swift.print("append spawn")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
@@ -88,7 +88,7 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.append(listItem)
 
-            }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
+            }else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item
                 //Swift.print("already exist, just change .y")
                 listItem = visibleItems[subViewIdx]//<--unsure about this
                 subViewIdx++

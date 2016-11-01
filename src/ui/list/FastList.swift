@@ -41,7 +41,7 @@ class FastList:Element {
      * PARAM: progress: 0 to 1
      * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      * //Continue here: Its working, and no tearing!
-     //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
+     * //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
      */
     func setProgress(progress:CGFloat){
         //Swift.print("FastList.setProgress() " + "\(progress)")
@@ -49,12 +49,8 @@ class FastList:Element {
         //Swift.print("listY: " + "\(listY)")
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
             var item:ListItem = $0
-            if(item.virtualY < listY - 50){/*above top limit*/
+            if(item.virtualY < listY - 50 || item.virtualY > listY + height){/*above top limit or bellow limit*/
                 Swift.print("item is above top limit - remove()")
-                item.hide(true)
-                surplusItems += ArrayModifier.delete(&visibleItems, &item)
-            }else if(item.virtualY > listY + height){/*bellow bottom limit*/
-                Swift.print("item is bellow bottom limit - remove()")
                 item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }

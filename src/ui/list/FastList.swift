@@ -8,8 +8,8 @@ class FastList:Element {
     var itemContainer:Container?
     let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
     var itemsHeight:CGFloat {return items.count * 50}//<--the tot items height can be calculated at init, and on list data refresh
-    var surplusItems:[ListItem] = []
-    var visibleItems:[ListItem] = []
+    var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
+    var visibleItems:[ListItem] = []/*Items that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
         super.init(width, height, parent, id)

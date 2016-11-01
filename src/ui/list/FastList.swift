@@ -160,7 +160,7 @@ class ListItem:Element{
     }
     /**
      * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
-     * NOTE: 
+     * NOTE: maybe we can avoid hiding by just placing the view outside the mask item.y = top - item.height should to
      */
     func hide(isHidden:Bool){
         CATransaction.begin()

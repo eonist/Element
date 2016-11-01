@@ -29,7 +29,7 @@ class FastList:Element {
             y += 50
         }
         
-        //setProgress(0)
+        setProgress(0)
         
         //Continue here: It actually worked! 
             //but you need to set the .y based on the item above, to avoid tearing, small gaps that apear
@@ -82,12 +82,12 @@ class FastList:Element {
         visibleItems.forEach{//remove items that are above or bellow the limits
             var item:ListItem = $0
             if(item.virtualY < listY - 50){
-                //Swift.print("item is above top limit - remove()")
+                Swift.print("item is above top limit - remove()")
                 item.hidden = true
                 visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
                 surplusItems.append(item)
             }else if(item.virtualY > listY + height){
-                //Swift.print("item is bellow bottom limit - remove()")
+                Swift.print("item is bellow bottom limit - remove()")
                 item.hidden = true
                 visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
                 surplusItems.append(item)

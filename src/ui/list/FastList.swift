@@ -58,6 +58,7 @@ class FastList:Element {
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }
         }
+        Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")

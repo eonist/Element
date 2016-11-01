@@ -1,5 +1,8 @@
 import Cocoa
-
+/**
+ * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
+ * 
+ */
 class FastList:Element {
     var items:[NSColor] = []
     var itemContainer:Container?
@@ -30,11 +33,6 @@ class FastList:Element {
         }
         
         setProgress(0)
-        
-        //Continue here: It actually worked! 
-            //but you need to set the .y based on the item above, to avoid tearing, small gaps that apear
-            //seems to tear no matter what you do. Try to figure it out or start moving the container and not each individual item
-        
     }
     /**
      * PARAM: progress: 0 to 1

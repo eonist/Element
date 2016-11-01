@@ -109,7 +109,7 @@ class FastList:Element {
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
     }
     /**
-     * Unhides, sets y, sets index
+     * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 3 places)
      */
     private func reveal(idx:Int, _ y:CGFloat) -> ListItem{
         let listItem:ListItem = surplusItems.removeAtIndex(0)

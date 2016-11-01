@@ -14,6 +14,9 @@ import Cocoa
     //remove index from the ListItem and rather store it in a duplet -> so we can avoid using ListItem
     //start using constants and not fixed values
     //test if resize works, by spawning new items etc
+    //test the FastList with Slider
+    //test the FastList with rubberband
+    //test the FastList with 1000's of items
 
 class FastList:Element {
     var items:[NSColor] = []

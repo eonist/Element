@@ -67,10 +67,10 @@ class FastList:Element {
         var thirdPart:[ListItem] = []
         var curVisibleItemIdx:Int = 0
         
-        let topY:CGFloat = -50 + (listY % 50)//the y pos of the first item
+        let topY:CGFloat =  -(listY % 50)//the y pos of the first item
         Swift.print("topY: " + "\(topY)")
-        let temp:CGFloat =  (firstItemIndex * 50) - listY
-        Swift.print("temp: " + "\(temp)")
+        //let temp:CGFloat =  (firstItemIndex * 50) - listY
+        //Swift.print("temp: " + "\(temp)")
         var y:CGFloat = topY//
         
         for i in 0..<maxVisibleItems{

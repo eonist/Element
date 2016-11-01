@@ -130,7 +130,12 @@ class FastList:Element {
                 subViewIdx++
             }else{//no pre exisiting items exist
                 Swift.print("append spawn")//append
-                listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
+                listItem = surplusItems.removeAtIndex(0)
+                listItem.index = idx
+                spoof(listItem)
+                listItem.hidden = false
+                visibleItems.append(listItem)
+                //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             //set y
             listItem.y = listItem.virtualY - listY

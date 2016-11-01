@@ -149,8 +149,10 @@ class FastList:Element {
         let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - (lastVisibleIdx + 1))
         Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")
         
-        for i in thirdPartStart..<thirdPartEnd{
-            Swift.print("third i: " + "\(i)")
+        //to find the len you need to utilize 
+        let len:Int = visibleItems.count
+        
+        for i in 0..<len{
             let listItem:ListItem
             listItem = surplusItems.removeAtIndex(0)
             listItem.index = i

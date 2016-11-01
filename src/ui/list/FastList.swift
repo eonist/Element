@@ -65,13 +65,12 @@ class FastList:Element {
         var firstPart:[ListItem] = []
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        var curVisibleItemIdx:Int = 0
+        //var curVisibleItemIdx:Int = 0
         
-        let topY:CGFloat =  -(listY % 50)//the y pos of the first item
-        Swift.print("topY: " + "\(topY)")
+       
         //let temp:CGFloat =  (firstItemIndex * 50) - listY
         //Swift.print("temp: " + "\(temp)")
-        var y:CGFloat = topY//
+        //var y:CGFloat = topY//
         
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
@@ -83,7 +82,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                listItem.y = y
+                //listItem.y = y
                 firstPart.append(listItem)
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                 Swift.print("append (idx > last Visible Item)")
@@ -91,7 +90,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                listItem.y = y
+                //listItem.y = y
                 thirdPart.append(listItem)
             }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
                 Swift.print("append")//append
@@ -99,13 +98,13 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                listItem.y = y
+                //listItem.y = y
                 visibleItems.append(listItem)
             }else{
-                visibleItems[curVisibleItemIdx].y = y
-                curVisibleItemIdx++
+                //visibleItems[curVisibleItemIdx].y = y
+                //curVisibleItemIdx++
             }
-            y+=50
+            //y+=50
         }
         
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/

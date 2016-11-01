@@ -70,7 +70,7 @@ class FastList:Element {
         var curVisibleItemIdx:Int = 0
         for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
-            if(idx >= 0 && idx < items.count){//avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
+            if(idx >= 0 && idx < items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
                 let listItem:ListItem
                 if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
                     Swift.print("prepend (idx < first Visible Item)")

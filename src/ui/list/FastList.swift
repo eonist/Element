@@ -68,7 +68,7 @@ class FastList:Element {
             var item = $0
             if(item.idx*itemHeight <= listY - itemHeight || item.idx*itemHeight > listY + height){/*above top limit or bellow limit*/
                 //Swift.print("item is above top or bellow bottom limit - remove()")
-                item.item.hide(true)
+                Utils.hide(item.item, true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }
         }
@@ -76,9 +76,9 @@ class FastList:Element {
         //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
         let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstVisibleIdx:Int? = visibleItems.first?.index// ?? firstItemIndex//first of the items that wasn't deleted
+        let firstVisibleIdx:Int? = visibleItems.first?.idx// ?? firstItemIndex//first of the items that wasn't deleted
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
-        let lastVisibleIdx:Int? = visibleItems.last?.index// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
+        let lastVisibleIdx:Int? = visibleItems.last?.idx// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
@@ -111,11 +111,11 @@ class FastList:Element {
     /**
      * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 3 places)
      */
-    private func reveal(idx:Int, _ y:CGFloat) -> ListItem{
-        let listItem:ListItem = surplusItems.removeAtIndex(0)
-        listItem.index = idx
+    private func reveal(idx:Int, _ y:CGFloat) -> (item:Element,idx:Int){
+        let listItem = surplusItems.removeAtIndex(0)
+        listItem.idx = idx
         spoof(listItem)
-        listItem.hide(false)
+        Utils.hide(listItem, false)
         listItem.y = y
         return listItem
     }

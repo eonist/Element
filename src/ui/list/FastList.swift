@@ -80,7 +80,7 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.unshift(listItem)
 
-            }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){
+            }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                 Swift.print("append spawn")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx

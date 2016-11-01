@@ -1,7 +1,6 @@
 import Cocoa
 /**
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
- * 
  */
 class FastList:Element {
     var items:[NSColor] = []
@@ -79,6 +78,11 @@ class FastList:Element {
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = visibleItems.last?.index
         //Swift.print("lastIdx: " + "\(lastIdx)")
+        
+        //Continue here: Its working, and no tearing!
+            //Turn of the hide/unhide animation
+            //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
+            //
         
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate

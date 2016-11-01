@@ -119,12 +119,15 @@ class FastList:Element {
                 visibleItems.append(listItem)
                 //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
+            var y:CGFloat = listItem.virtualY - listY
+            visibleItems.first!.y = y
             
-            visibleItems.forEach{
-                $0
+            for i in 1..<visibleItems.count{
+                visibleItems[i].y = y
+                y += 50
             }
             //set y
-            listItem.y = listItem.virtualY - listY
+            
             //try to only set top item, then use above item for the rest
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code

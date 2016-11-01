@@ -1,6 +1,7 @@
 import Cocoa
 /**
- * This is a list that can support infinite data, while still being fast and responsive. To support 1000's of data items, just use DataProvider, To support millions, consider using a DataProvider that derive its data from a database (SQLite or other)
+ * This is a list that can support infinite list items, while still being fast, memory-convervative and responsive. To support 1000's of data items, just use DataProvider, To support millions, consider using a DataProvider that derive its data from a database (SQLite or other)
+ * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future
  * NOTE: Conceptually the first index is calculated with modulo, then subsecuent items have their index by adding 1
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though

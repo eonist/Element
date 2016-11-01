@@ -83,7 +83,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                firstPart.unshift(listItem)//this isnt correct you should append to a list and then stick that list together with a middle and a last part
+                firstPart.append(listItem)
 
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                 Swift.print("append spawn (idx > last Visible Item)")

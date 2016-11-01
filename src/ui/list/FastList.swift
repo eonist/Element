@@ -82,7 +82,7 @@ class FastList:Element {
         //Continue here: Its working, and no tearing!
             //Turn of the hide/unhide animation
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
-            //
+            //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
         
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate

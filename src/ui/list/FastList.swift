@@ -65,18 +65,12 @@ class FastList:Element {
         var firstPart:[ListItem] = []
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        var curVisibleItemIdx:Int = 0
-        
-       
-        //let temp:CGFloat =  (firstItemIndex * 50) - listY
-        //Swift.print("temp: " + "\(temp)")
-        let topY:CGFloat =  -(listY % 50)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
+        let topY:CGFloat =  -(listY % 50)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         var y:CGFloat = topY//
-        
-        for i in 0..<maxVisibleItems{
+        var curVisibleItemIdx:Int = 0
+        for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
-            //spawn, but append or prepend? back to the triple looping idea?
             if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
                 Swift.print("prepend (idx < first Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)

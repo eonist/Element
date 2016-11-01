@@ -54,7 +54,7 @@ class FastList:Element {
             item.y = y
             y += itemHeight
         }
-        setProgress(0)//<-not really needed, but nice to have while debugging
+        setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
      * PARAM: progress: 0 to 1

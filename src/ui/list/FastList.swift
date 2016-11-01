@@ -76,9 +76,12 @@ class FastList:Element {
         
         //first part
         let firstPartStart:Int = firstItemIndex
+        Swift.print("firstPartStart: " + "\(firstPartStart)")
         let firstPartEnd:Int = firstItemIndex + (firstVisibleIdx - firstItemIndex)
+        Swift.print("firstPartEnd: " + "\(firstPartEnd)")
         
         for i in firstPartStart..<firstPartEnd{
+            Swift.print("first i: " + "\(i)")
             let listItem:ListItem
             listItem = surplusItems.removeAtIndex(0)
             listItem.index = i
@@ -91,9 +94,12 @@ class FastList:Element {
         
         //third part
         let thirdPartStart:Int = lastVisibleIdx
+        Swift.print("thirdPartStart: " + "\(thirdPartStart)")
         let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - lastVisibleIdx)
+        Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")
         
         for i in thirdPartStart..<thirdPartEnd{
+            Swift.print("third i: " + "\(i)")
             let listItem:ListItem
             listItem = surplusItems.removeAtIndex(0)
             listItem.index = i

@@ -23,10 +23,10 @@ import Cocoa
 
 typealias ListItem = (item:Element, idx:Int)
 class FastList:Element {
-    var itemHeight:CGFloat
-    var dataProvider:DataProvider
-    var items:[NSColor] = []
-    var itemContainer:Container?
+    var itemHeight:CGFloat/*The list item height, each item must have the same height*/
+    var dataProvider:DataProvider/*data stoarge*/
+    var items:[NSColor] = []//temp data item storage, we use DataProvider in the future
+    var itemContainer:Container?/*holds the list items*/
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/

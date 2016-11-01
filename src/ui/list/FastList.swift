@@ -70,39 +70,38 @@ class FastList:Element {
         var curVisibleItemIdx:Int = 0
         for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
-            if(idx < items.count){//avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
-                
+            if(idx >= 0 && idx < items.count){//avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
+                let listItem:ListItem
+                if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
+                    Swift.print("prepend (idx < first Visible Item)")
+                    listItem = surplusItems.removeAtIndex(0)
+                    listItem.index = idx
+                    spoof(listItem)
+                    listItem.hide(false)
+                    listItem.y = y
+                    firstPart.append(listItem)
+                }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
+                    Swift.print("append (idx > last Visible Item)")
+                    listItem = surplusItems.removeAtIndex(0)
+                    listItem.index = idx
+                    spoof(listItem)
+                    listItem.hide(false)
+                    listItem.y = y
+                    thirdPart.append(listItem)
+                }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
+                    Swift.print("append")//append
+                    listItem = surplusItems.removeAtIndex(0)
+                    listItem.index = idx
+                    spoof(listItem)
+                    listItem.hide(false)
+                    listItem.y = y
+                    visibleItems.append(listItem)
+                }else{
+                    visibleItems[curVisibleItemIdx].y = y
+                    curVisibleItemIdx++
+                }
+                y+=50
             }
-            let listItem:ListItem
-            if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
-                Swift.print("prepend (idx < first Visible Item)")
-                listItem = surplusItems.removeAtIndex(0)
-                listItem.index = idx
-                spoof(listItem)
-                listItem.hide(false)
-                listItem.y = y
-                firstPart.append(listItem)
-            }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
-                Swift.print("append (idx > last Visible Item)")
-                listItem = surplusItems.removeAtIndex(0)
-                listItem.index = idx
-                spoof(listItem)
-                listItem.hide(false)
-                listItem.y = y
-                thirdPart.append(listItem)
-            }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
-                Swift.print("append")//append
-                listItem = surplusItems.removeAtIndex(0)
-                listItem.index = idx
-                spoof(listItem)
-                listItem.hide(false)
-                listItem.y = y
-                visibleItems.append(listItem)
-            }else{
-                visibleItems[curVisibleItemIdx].y = y
-                curVisibleItemIdx++
-            }
-            y+=50
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
     }
@@ -119,7 +118,7 @@ class FastList:Element {
      */
     func spoof(item:ListItem){
         
-            let color:NSColor = item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
+            let color:NSColor = items[item.index]//item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
             let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
             var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
             if(styleProperty != nil){

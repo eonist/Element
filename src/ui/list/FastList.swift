@@ -44,7 +44,6 @@ class FastList:Element {
      * //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
      */
     func setProgress(progress:CGFloat){
-        //Swift.print("FastList.setProgress() " + "\(progress)")
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
@@ -63,13 +62,9 @@ class FastList:Element {
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.index// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
-
-        
         var firstPart:[ListItem] = []
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        
-        
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -97,37 +92,14 @@ class FastList:Element {
                 visibleItems.append(listItem)
             }
         }
+        visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
         
-        
-        //third part
-        /*let thirdPartStart:Int = lastVisibleIdx
-        Swift.print("thirdPartStart: " + "\(thirdPartStart)")
-        let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - (lastVisibleIdx + 1))
-        Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")*/
-        
-        //to find the len you need to utilize 
-        /*
-        let len:Int = maxVisibleItems - visibleItems.count
-        Swift.print("len: " + "\(len)")
-        for i in 0..<len{
-            let listItem:ListItem
-            listItem = surplusItems.removeAtIndex(0)
-            listItem.index = lastVisibleIdx + i
-            spoof(listItem)
-            listItem.hide(false)
-            thirdPart.append(listItem)
-        }
-        */
-        visibleItems = firstPart + visibleItems + thirdPart//stick it all together
-        
-        /*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
-        visibleItems.first!.y = visibleItems.first!.virtualY - listY
+        visibleItems.first!.y = visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
         var y:CGFloat = 50.0 + visibleItems.first!.y
         for i in 1..<visibleItems.count{
             visibleItems[i].y = y
             y += 50
         }
-        
     }
     /**
      * PARAM: at: the index that coorespond to items

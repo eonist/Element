@@ -19,6 +19,8 @@ import Cocoa
     //test the FastList with 1000's of items
 
 class FastList:Element {
+    var itemHeight:CGFloat
+    var dataProvider:DataProvider
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
@@ -26,7 +28,9 @@ class FastList:Element {
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     var visibleItems:[ListItem] = []/*Items that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
+        self.itemHeight = itemHeight
+        self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
     }

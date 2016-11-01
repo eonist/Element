@@ -63,7 +63,7 @@ class FastList:Element {
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleIdx:Int = visibleItems.first?.index ?? firstItemIndex//first of the items that wasn't deleted
         //Swift.print("firstIdx: " + "\(firstIdx)")
-        let lastVisibleIdx:Int? = visibleItems.last?.index//last of the items that wasn't deleted
+        let lastVisibleIdx:Int = visibleItems.last?.index ?? maxVisibleItems//last of the items that wasn't deleted
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         //Continue here: Its working, and no tearing!
@@ -82,7 +82,7 @@ class FastList:Element {
         
         //third part
         let thirdPartStart:Int = lastVisibleIdx
-        let thirdPartEnd:Int = firstItemIndex + (firstVisibleIdx - firstItemIndex)
+        let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - lastVisibleIdx)
         
         
         for i in 0..<maxVisibleItems{

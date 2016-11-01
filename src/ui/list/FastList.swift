@@ -84,6 +84,8 @@ class FastList:Element {
         let thirdPartStart:Int = lastVisibleIdx
         let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - lastVisibleIdx)
         
+        //continue here: creat the loops for the above ranges, and stick everytihng together
+        
         
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i

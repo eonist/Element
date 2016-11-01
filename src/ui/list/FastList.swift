@@ -118,7 +118,12 @@ class FastList:Element {
                 //NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
                 Swift.print("append spawn")
-                listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
+                listItem = surplusItems.removeAtIndex(0)
+                listItem.index = idx
+                spoof(listItem)
+                listItem.hidden = false
+                visibleItems.append(listItem)
+                //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
                 //Swift.print("already exist, just change .y")
                 listItem = itemContainer!.subviews[subViewIdx] as! ListItem

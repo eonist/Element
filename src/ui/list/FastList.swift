@@ -60,12 +60,12 @@ class FastList:Element {
             var item:ListItem = $0
             if(item.virtualY < listY - 50){
                 Swift.print("item is above top limit - remove()")
-                item.hidden = true
+                item.hide(true)
                 visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
                 surplusItems.append(item)
             }else if(item.virtualY > listY + height){
                 Swift.print("item is bellow bottom limit - remove()")
-                item.hidden = true
+                item.hide(true)
                 visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
                 surplusItems.append(item)
             }
@@ -94,7 +94,7 @@ class FastList:Element {
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
-                listItem.hidden = false
+                listItem.hide(false)
                 visibleItems.unshift(listItem)
                 //NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
@@ -102,7 +102,7 @@ class FastList:Element {
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
-                listItem.hidden = false
+                listItem.hide(false)
                 visibleItems.append(listItem)
                 //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
@@ -114,7 +114,7 @@ class FastList:Element {
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
-                listItem.hidden = false
+                listItem.hide(false)
                 visibleItems.append(listItem)
                 //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
@@ -163,7 +163,7 @@ class ListItem:Element{
      */
     func hide(isHidden:Bool){
         CATransaction.begin()
-        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
+        CATransaction.setDisableActions(true)
         // change properties here without animation
         hidden = isHidden
         CATransaction.commit()

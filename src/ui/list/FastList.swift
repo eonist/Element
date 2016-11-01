@@ -112,11 +112,11 @@ class FastList:Element {
      * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 3 places)
      */
     private func reveal(idx:Int, _ y:CGFloat) -> (item:Element,idx:Int){
-        let listItem = surplusItems.removeAtIndex(0)
+        var listItem = surplusItems.removeAtIndex(0)
         listItem.idx = idx
         spoof(listItem)
-        Utils.hide(listItem, false)
-        listItem.y = y
+        Utils.hide(listItem.item, false)
+        listItem.item.y = y
         return listItem
     }
     /**
@@ -130,8 +130,9 @@ class FastList:Element {
     /**
      * Applies new data to pre-existing items (spoof == reuse)
      */
-    func spoof(item:ListItem){
-        let color:NSColor = items[item.index]//item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
+    func spoof(listItem:(item:Element,idx:Int)){
+        let item:Element = listItem.item
+        let color:NSColor = items[listItem.idx]//item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
         let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
         if(styleProperty != nil){

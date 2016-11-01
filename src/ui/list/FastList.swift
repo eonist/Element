@@ -114,6 +114,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hidden = false
+                visibleItems.unshift(listItem)
                 //NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
             }else if(lastIdx != nil && idx > lastIdx){
                 Swift.print("append spawn")

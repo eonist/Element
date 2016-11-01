@@ -95,7 +95,7 @@ class FastList:Element {
                     visibleItems[curVisibleItemIdx].y = y
                     curVisibleItemIdx++
                 }
-                y+=50
+                y+=50//increment the y value
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
@@ -103,7 +103,7 @@ class FastList:Element {
     /**
      *
      */
-    func reveal(idx:Int, _ y:CGFloat) -> ListItem{
+    private func reveal(idx:Int, _ y:CGFloat) -> ListItem{
         let listItem:ListItem = surplusItems.removeAtIndex(0)
         listItem.index = idx
         spoof(listItem)

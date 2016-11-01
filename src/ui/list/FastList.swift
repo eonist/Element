@@ -67,8 +67,8 @@ class FastList:Element {
         var thirdPart:[ListItem] = []
         var curVisibleItemIdx:Int = 0
         
-        var y:CGFloat = (firstItemIndex * 50) - listY
-        let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
+        let topY:CGFloat = -50 + (listY % 50)//the y pos of the first item
+        var y:CGFloat = topY//(firstItemIndex * 50) - listY
         
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
@@ -80,6 +80,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
+                listItem.y = y
                 firstPart.append(listItem)
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                 Swift.print("append (idx > last Visible Item)")
@@ -87,6 +88,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
+                listItem.y = y
                 thirdPart.append(listItem)
             }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
                 Swift.print("append")//append
@@ -94,11 +96,13 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
+                listItem.y = y
                 visibleItems.append(listItem)
             }else{
-                visibleItems[curVisibleItemIdx].y = 0
+                visibleItems[curVisibleItemIdx].y = y
                 curVisibleItemIdx++
             }
+            y+=50
         }
         
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/

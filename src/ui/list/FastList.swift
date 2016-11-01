@@ -46,7 +46,7 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         var y:CGFloat = 0
-        for i in 0..<9{/*we need an extra item to cover the entire*/
+        for i in 0...maxVisibleItems{/*we need an extra item to cover the entire*/
             //visibleItemIndecies.append(i)
             let item:ListItem = spawn(i) as! ListItem
             visibleItems.append(item)

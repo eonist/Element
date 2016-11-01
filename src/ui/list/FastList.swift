@@ -1,6 +1,7 @@
 import Cocoa
 /**
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
+ * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
  */
 class FastList:Element {
     var items:[NSColor] = []
@@ -119,12 +120,6 @@ class FastList:Element {
                 visibleItems.append(listItem)
                 //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
-           
-            //set y
-            
-            //try to only set top item, then use above item for the rest
-            //if that doesn't work then try to repurpous items instead of removing them
-            //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code
         }
         
         /*By setting the items to the bottom of the above item, we avoid gaps that may apear*/

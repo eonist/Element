@@ -120,7 +120,7 @@ class FastList:Element {
         return listItem
     }
     /**
-     * PARAM: at: the index that coorespond to items
+     * PARAM: at: the index that coorespond to items (spawn == create something)
      */
     func spawn(at:Int)->NSView{
         let item:ListItem = ListItem(getWidth(),itemHeight,at,itemContainer)
@@ -128,7 +128,7 @@ class FastList:Element {
         return item
     }
     /**
-     * Reuse item but apply new data
+     * Applies new data to pre-existing items (spoof == reuse)
      */
     func spoof(item:ListItem){
         let color:NSColor = items[item.index]//item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix

@@ -151,20 +151,21 @@ class ListItem:Element{
         self.index = index
         super.init(width, height, parent, id)
     }
+    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+private class Utils{
     /**
      * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
      * NOTE: maybe we can avoid hiding by just placing the view outside the mask item.y = top - item.height should to
      */
-    func hide(isHidden:Bool){
+    static func hide(view:NSView, _ isHidden:Bool){
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        // change properties here without animation
-        hidden = isHidden
+        //Change properties here without animation
+        view.hidden = isHidden
         CATransaction.commit()
     }
-    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-
 
 
 /*

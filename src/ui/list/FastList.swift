@@ -22,7 +22,6 @@ class FastList:Element {
         super.resolveSkin()
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
-        
         var y:CGFloat = 0
         for i in 0..<9{/*we need an extra item to cover the entire*/
             //visibleItemIndecies.append(i)
@@ -32,7 +31,6 @@ class FastList:Element {
             item.y = y
             y += 50
         }
-        
         setProgress(0)
     }
     /**
@@ -58,7 +56,6 @@ class FastList:Element {
             }
         }
         
-        
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstIdx:Int? = visibleItems.first?.index//start of the items that wasnt deleted
@@ -67,10 +64,8 @@ class FastList:Element {
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         //Continue here: Its working, and no tearing!
-            
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
-        
         
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{

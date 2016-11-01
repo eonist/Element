@@ -73,7 +73,7 @@ class FastList:Element {
         
         
         var subViewIdx:Int = 0
-        for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
+        for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
             //spawn, but append or prepend? back to the triple looping idea?
@@ -84,7 +84,7 @@ class FastList:Element {
                 spoof(listItem)
                 listItem.hide(false)
                 visibleItems.unshift(listItem)
-                //NSViewModifier.addSubviewAt(itemContainer!, spawn(idx), 0) as! ListItem
+
             }else if(lastIdx != nil && idx > lastIdx){
                 Swift.print("append spawn")
                 listItem = surplusItems.removeAtIndex(0)
@@ -92,7 +92,7 @@ class FastList:Element {
                 spoof(listItem)
                 listItem.hide(false)
                 visibleItems.append(listItem)
-                //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
+
             }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
                 //Swift.print("already exist, just change .y")
                 listItem = visibleItems[subViewIdx]//<--unsure about this
@@ -104,7 +104,7 @@ class FastList:Element {
                 spoof(listItem)
                 listItem.hide(false)
                 visibleItems.append(listItem)
-                //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
+
             }
         }
         

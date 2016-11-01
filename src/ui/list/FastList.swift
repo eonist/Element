@@ -63,12 +63,12 @@ class FastList:Element {
             if(item.virtualY < listY - 50){
                 Swift.print("item is above top limit - remove()")
                 item.hide(true)
-                visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
+                ArrayModifier.delete(&visibleItems, &item)
                 surplusItems.append(item)
             }else if(item.virtualY > listY + height){
                 Swift.print("item is bellow bottom limit - remove()")
                 item.hide(true)
-                visibleItems.removeAtIndex(ArrayParser.idx(&visibleItems, &item))
+                ArrayModifier.delete(&visibleItems, &item)
                 surplusItems.append(item)
             }
         }

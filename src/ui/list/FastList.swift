@@ -59,6 +59,7 @@ class FastList:Element {
             }
         }
         Swift.print("visibleItems.count: " + "\(visibleItems.count)")
+        Swift.print("surplusItems.count: " + "\(surplusItems.count)")
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")

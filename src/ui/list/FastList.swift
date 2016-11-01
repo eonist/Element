@@ -64,9 +64,9 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstVisibleIdx:Int = visibleItems.first?.index ?? firstItemIndex//first of the items that wasn't deleted
+        let firstVisibleIdx:Int? = visibleItems.first?.index// ?? firstItemIndex//first of the items that wasn't deleted
         Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
-        let lastVisibleIdx:Int = visibleItems.last?.index ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
+        let lastVisibleIdx:Int? = visibleItems.last?.index// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
         
         //Continue here: Its working, and no tearing!
@@ -76,7 +76,7 @@ class FastList:Element {
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         //var subViewIdx:Int = 0
-        
+        /*
         //first part
         let firstPartStart:Int = firstItemIndex
         Swift.print("firstPartStart: " + "\(firstPartStart)")
@@ -113,10 +113,11 @@ class FastList:Element {
             listItem.hide(false)
             thirdPart.append(listItem)
         }
+        */
         
         //continue here: create the loops for the above ranges, and stick everytihng together
         
-        /*
+        
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -153,7 +154,7 @@ class FastList:Element {
 
             }
         }
-        */
+        
         visibleItems = firstPart + visibleItems + thirdPart//stick it all together
         
         /*By setting the items to the bottom of the above item, we avoid gaps that may apear*/

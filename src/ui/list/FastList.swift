@@ -65,7 +65,7 @@ class FastList:Element {
         var firstPart:[ListItem] = []
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        //var curVisibleItemIdx:Int = 0
+        var curVisibleItemIdx:Int = 0
         
        
         //let temp:CGFloat =  (firstItemIndex * 50) - listY

@@ -57,26 +57,6 @@ class FastList:Element {
         
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         
-        /*
-        itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
-            let item:ListItem = $0 as! ListItem
-            if(item.virtualY < listY - 50){
-                //Swift.print("item is above top limit - remove()")
-                item.hidden = true
-            }else if(item.virtualY > listY + height){
-                //Swift.print("item is bellow bottom limit - remove()")
-                item.hidden = true
-            }else{
-                item.y = item.virtualY - listY
-                item.hidden = false
-            }
-            
-        }
-        
-        
-        */
-        
-        
         //Swift.print("listY: " + "\(listY)")
         
         visibleItems.forEach{//remove items that are above or bellow the limits
@@ -93,7 +73,6 @@ class FastList:Element {
                 surplusItems.append(item)
             }
         }
-        /**/
         //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
@@ -180,7 +159,24 @@ class ListItem:Element{
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 
+/*
+itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
+    let item:ListItem = $0 as! ListItem
+    if(item.virtualY < listY - 50){
+        //Swift.print("item is above top limit - remove()")
+        item.hidden = true
+    }else if(item.virtualY > listY + height){
+        //Swift.print("item is bellow bottom limit - remove()")
+        item.hidden = true
+    }else{
+        item.y = item.virtualY - listY
+        item.hidden = false
+    }
+    
+}
 
+
+*/
 
 
 //Continue here: (This is the solution)

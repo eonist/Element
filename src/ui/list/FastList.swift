@@ -68,6 +68,8 @@ class FastList:Element {
         var curVisibleItemIdx:Int = 0
         
         var y:CGFloat = (firstItemIndex * 50) - listY
+        let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
+        
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem

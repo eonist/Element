@@ -78,7 +78,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                visibleItems.unshift(listItem)
+                visibleItems.unshift(listItem)//this isnt correct you should append to a list and then stick that list together with a middle and a last part
 
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                 Swift.print("append spawn")
@@ -88,7 +88,7 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.append(listItem)
 
-            }else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item
+            }else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, this only happens if no visible items exists
                 //Swift.print("already exist, just change .y")
                 listItem = visibleItems[subViewIdx]//<--unsure about this
                 subViewIdx++

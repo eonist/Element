@@ -61,7 +61,7 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstVisibleIdx:Int? = visibleItems.first?.index//first of the items that wasn't deleted
+        let firstVisibleIdx:Int = visibleItems.first?.index ?? firstItemIndex//first of the items that wasn't deleted
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.index//last of the items that wasn't deleted
         //Swift.print("lastIdx: " + "\(lastIdx)")
@@ -73,12 +73,22 @@ class FastList:Element {
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         //var subViewIdx:Int = 0
+        
+        //first part
+        let firstPartStart:Int = firstItemIndex
+        let firstPartEnd:Int = firstItemIndex + (firstVisibleIdx - firstItemIndex)
+        //second part
+        
+        
+        //third part
+        
+        
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
             //spawn, but append or prepend? back to the triple looping idea?
             if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
-                Swift.print("prepend spawn (idx < first Visible Item)")
+                Swift.print("prepend (idx < first Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
@@ -86,7 +96,7 @@ class FastList:Element {
                 firstPart.append(listItem)
 
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
-                Swift.print("append spawn (idx > last Visible Item)")
+                Swift.print("append (idx > last Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
@@ -100,7 +110,7 @@ class FastList:Element {
                 //subViewIdx++
             }
             else{//no pre exisiting items exist,this only happens if no visible items exists
-                Swift.print("append spawn")//append
+                Swift.print("append")//append
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)

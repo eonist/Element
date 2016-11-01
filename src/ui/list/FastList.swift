@@ -108,19 +108,21 @@ class FastList:Element {
      */
     func spawn(at:Int)->NSView{
         let item:ListItem = ListItem(100,50,at,itemContainer)
-        if(item.index < items.count){spoof(item)}
+        spoof(item)
         return item
     }
     /**
      * Reuse item but apply new data
      */
     func spoof(item:ListItem){
-        let color:NSColor = item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
-        let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
-        if(styleProperty != nil){
-            styleProperty!.value = color
-            item.skin!.setStyle(style)/*updates the skin*/
+        if(item.index < items.count){
+            let color:NSColor = item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
+            let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+            var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
+            if(styleProperty != nil){
+                styleProperty!.value = color
+                item.skin!.setStyle(style)/*updates the skin*/
+            }
         }
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -98,7 +98,7 @@ class FastList:Element {
         //third part
         let thirdPartStart:Int = lastVisibleIdx
         Swift.print("thirdPartStart: " + "\(thirdPartStart)")
-        let thirdPartEnd:Int = lastVisibleIdx + ((firstItemIndex+maxVisibleItems) - lastVisibleIdx)
+        let thirdPartEnd:Int = lastVisibleIdx + 9 - lastVisibleIdx)
         Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")
         
         for i in thirdPartStart..<thirdPartEnd{

@@ -27,8 +27,8 @@ class FastList:Element {
     var itemContainer:Container?
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
-    var surplusItems:[(item:Element,idx:Int)] = []/*repurpouse Items instead of removing and creating new ones*/
-    var visibleItems:[(item:Element,idx:Int)] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
+    var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
+    var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
@@ -64,7 +64,7 @@ class FastList:Element {
         //Swift.print("listY: " + "\(listY)")
         var i:Int = 0/*<--we can't use "for in" loop here because we alter visibleItems as we iterate,forEach works but while seems more apropriate,c-style for loop is the intention but is going away in swift3*/
         while(i < visibleItems.count){/*remove items that are above or bellow the limits*/
-            let listItem = visibleItems[i]
+            let listItem:ListItem = visibleItems[i]
             if(listItem.idx*itemHeight <= listY - itemHeight || listItem.idx*itemHeight > listY + height){/*above top limit or bellow limit*/
                 //Swift.print("item is above top or bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
@@ -80,8 +80,8 @@ class FastList:Element {
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.idx// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
-        var firstPart:[(item:Element,idx:Int)] = []
-        var thirdPart:[(item:Element,idx:Int)] = []
+        var firstPart:[ListItem] = []
+        var thirdPart:[ListItem] = []
         let topY:CGFloat =  -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         var y:CGFloat = topY//
         var curVisibleItemIdx:Int = 0
@@ -123,7 +123,7 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items (spawn == create something)
      */
     func spawn(at:Int)->NSView{
-        let item:ListItem = ListItem(getWidth(),itemHeight,at,itemContainer)
+        let item:ColorItem = ColorItem(getWidth(),itemHeight,at,itemContainer)
         spoof((item,at))
         return item
     }
@@ -145,7 +145,7 @@ class FastList:Element {
 /**
  * TODO: Try to move the index in an array instead of creating ListItem, this way we can use any Element ype we wish
  */
-class ListItem:Element{
+class ColorItem:Element{
     var virtualY:CGFloat {return index * height}
     var index:Int//we store the index in the item
     init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {

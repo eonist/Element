@@ -77,8 +77,14 @@ class FastList:Element {
         //first part
         let firstPartStart:Int = firstItemIndex
         let firstPartEnd:Int = firstItemIndex + (firstVisibleIdx - firstItemIndex)
+        
         for i in firstPartStart..<firstPartEnd{
-            
+            let listItem:ListItem
+            listItem = surplusItems.removeAtIndex(0)
+            listItem.index = i
+            spoof(listItem)
+            listItem.hide(false)
+            firstPart.append(listItem)
         }
         //second part
         
@@ -87,9 +93,18 @@ class FastList:Element {
         let thirdPartStart:Int = lastVisibleIdx
         let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - lastVisibleIdx)
         
+        for i in thirdPartStart..<thirdPartEnd{
+            let listItem:ListItem
+            listItem = surplusItems.removeAtIndex(0)
+            listItem.index = i
+            spoof(listItem)
+            listItem.hide(false)
+            thirdPart.append(listItem)
+        }
+        
         //continue here: create the loops for the above ranges, and stick everytihng together
         
-        
+        /*
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -126,6 +141,7 @@ class FastList:Element {
 
             }
         }
+        */
         visibleItems = firstPart + visibleItems + thirdPart//stick it all together
         
         /*By setting the items to the bottom of the above item, we avoid gaps that may apear*/

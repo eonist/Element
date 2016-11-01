@@ -157,6 +157,7 @@ class ListItem:Element{
     init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
         self.index = index
         super.init(width, height, parent, id)
+        CATransaction.setDisableActions(true)
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

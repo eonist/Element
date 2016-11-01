@@ -77,6 +77,9 @@ class FastList:Element {
         //first part
         let firstPartStart:Int = firstItemIndex
         let firstPartEnd:Int = firstItemIndex + (firstVisibleIdx - firstItemIndex)
+        for i in firstPartStart..<firstPartEnd{
+            
+        }
         //second part
         
         
@@ -84,7 +87,7 @@ class FastList:Element {
         let thirdPartStart:Int = lastVisibleIdx
         let thirdPartEnd:Int = lastVisibleIdx + (maxVisibleItems - lastVisibleIdx)
         
-        //continue here: creat the loops for the above ranges, and stick everytihng together
+        //continue here: create the loops for the above ranges, and stick everytihng together
         
         
         for i in 0..<maxVisibleItems{

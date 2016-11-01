@@ -70,7 +70,7 @@ class FastList:Element {
        
         //let temp:CGFloat =  (firstItemIndex * 50) - listY
         //Swift.print("temp: " + "\(temp)")
-        let topY:CGFloat =  -(listY % 50)//the y pos of the first item
+        let topY:CGFloat =  -(listY % 50)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
         var y:CGFloat = topY//
         
         for i in 0..<maxVisibleItems{
@@ -107,22 +107,7 @@ class FastList:Element {
             }
             y+=50
         }
-        
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
-        /*
-        let topY:CGFloat =  -(listY % 50)//the y pos of the first item
-        Swift.print("topY: " + "\(topY)")
-        visibleItems.first!.y = topY//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
-        Swift.print("visibleItems.first!.y: " + "\(visibleItems.first!.y)")
-        /*if(topY != visibleItems.first!.y){
-            fatalError("bug")
-        }*/
-        var y:CGFloat = 50.0 + visibleItems.first!.y
-        for i in 1..<visibleItems.count{
-            visibleItems[i].y = y
-            y += 50
-        }
-        */
     }
     /**
      * PARAM: at: the index that coorespond to items

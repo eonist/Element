@@ -83,6 +83,7 @@ class FastList:Element {
             //Turn of the hide/unhide animation (done)
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
+            //also there is still some gaps apearing between items. try to use values derived from the above item when setting y
         
         var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{//if no items exist then this doesnt iterate
@@ -125,8 +126,6 @@ class FastList:Element {
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code
         }
-        /*
-*/
         //avoids tearing:
     }
     /**

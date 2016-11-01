@@ -4,6 +4,7 @@ import Cocoa
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
  * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
+ * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
  */
 
 //Continue here:
@@ -55,7 +56,6 @@ class FastList:Element {
     }
     /**
      * PARAM: progress: 0 to 1
-     * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
      * //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
      * TODO: An idea would be to append when items are above top limit, and prepend if items are bellow bottom limit, this would lead to simpler code and 1 less for loop
      */
@@ -80,7 +80,7 @@ class FastList:Element {
         //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        let topY:CGFloat =  -(listY % 50)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
+        let topY:CGFloat =  -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         var y:CGFloat = topY//
         var curVisibleItemIdx:Int = 0
         

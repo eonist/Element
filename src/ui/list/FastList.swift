@@ -4,6 +4,9 @@ import Cocoa
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
  * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
  */
+
+//Continue here: to debug it even better, remove the mask and use an outline that is above the itemContainer
+
 class FastList:Element {
     var items:[NSColor] = []
     var itemContainer:Container?
@@ -46,7 +49,7 @@ class FastList:Element {
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
             var item:ListItem = $0
             if(item.virtualY < listY - 50){/*above top limit*/
-                Swift.print("item is above top limit - remove() ")
+                Swift.print("item is above top limit - remove()")
                 item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }else if(item.virtualY > listY + height){/*bellow bottom limit*/

@@ -96,7 +96,7 @@ class FastList:Element {
         /**/
         //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
         
-        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
+        let firstItemIndex:Int = round(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstIdx:Int? = visibleItems.first?.index
         //Swift.print("firstIdx: " + "\(firstIdx)")

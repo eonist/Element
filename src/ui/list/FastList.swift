@@ -29,9 +29,8 @@ class FastList:Element {
     var itemContainer:Container?
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
-    var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
-    var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
-    var temp:[(item:Element,idx:Int)] = []
+    var surplusItems:[(item:Element,idx:Int)] = []/*repurpouse Items instead of removing and creating new ones*/
+    var visibleItems:[(item:Element,idx:Int)] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
@@ -50,7 +49,7 @@ class FastList:Element {
         for i in 0...maxVisibleItems{/*we need an extra item to cover the entire*/
             //visibleItemIndecies.append(i)
             let item:ListItem = spawn(i) as! ListItem
-            visibleItems.append(item)
+            visibleItems.append((item,i))
             itemContainer!.addSubView(item)
             item.y = y
             y += itemHeight
@@ -66,7 +65,7 @@ class FastList:Element {
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
-            var item:ListItem = $0
+            var item:ListItem = $0.item
             if(item.virtualY <= listY - itemHeight || item.virtualY > listY + height){/*above top limit or bellow limit*/
                 //Swift.print("item is above top or bellow bottom limit - remove()")
                 item.hide(true)

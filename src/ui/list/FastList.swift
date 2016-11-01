@@ -70,6 +70,9 @@ class FastList:Element {
         var curVisibleItemIdx:Int = 0
         for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
+            if(idx < items.count){//avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
+                
+            }
             let listItem:ListItem
             if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
                 Swift.print("prepend (idx < first Visible Item)")
@@ -115,7 +118,7 @@ class FastList:Element {
      * Reuse item but apply new data
      */
     func spoof(item:ListItem){
-        if(item.index < items.count){//avoids spoofing outside items.count, this can happen 
+        
             let color:NSColor = item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
             let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
             var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
@@ -123,7 +126,7 @@ class FastList:Element {
                 styleProperty!.value = color
                 item.skin!.setStyle(style)/*updates the skin*/
             }
-        }
+        
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

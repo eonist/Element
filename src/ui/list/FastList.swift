@@ -92,7 +92,7 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.append(listItem)
             }else{
-                visibleItems[]
+                visibleItems[curVisibleItemIdx]
                 curVisibleItemIdx++
             }
         }

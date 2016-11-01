@@ -66,7 +66,7 @@ class FastList:Element {
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleIdx:Int? = visibleItems.first?.index// ?? firstItemIndex//first of the items that wasn't deleted
         Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
-        let lastVisibleIdx:Int = visibleItems.last?.index ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
+        let lastVisibleIdx:Int? = visibleItems.last?.index// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
         
         //Continue here: Its working, and no tearing!
@@ -115,15 +115,15 @@ class FastList:Element {
                 listItem.hide(false)
                 firstPart.append(listItem)
 
-            }else if(/*lastVisibleIdx != nil && */idx > lastVisibleIdx){//basically idx is more than the last visible item
-                /*
+            }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
+                
                 Swift.print("append (idx > last Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
                 thirdPart.append(listItem)
-                */
+                
             }
             /*else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, no appending or prepending happened in this cycle
                 //Swift.print("already exist, just change .y")
@@ -150,6 +150,7 @@ class FastList:Element {
         Swift.print("thirdPartEnd: " + "\(thirdPartEnd)")*/
         
         //to find the len you need to utilize 
+        /*
         let len:Int = maxVisibleItems - visibleItems.count
         Swift.print("len: " + "\(len)")
         for i in 0..<len{
@@ -160,7 +161,7 @@ class FastList:Element {
             listItem.hide(false)
             thirdPart.append(listItem)
         }
-        
+        */
         visibleItems = firstPart + visibleItems + thirdPart//stick it all together
         
         /*By setting the items to the bottom of the above item, we avoid gaps that may apear*/

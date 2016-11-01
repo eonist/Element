@@ -48,7 +48,7 @@ class FastList:Element {
         var y:CGFloat = 0
         for i in 0...maxVisibleItems{/*we need an extra item to cover the entire*/
             //visibleItemIndecies.append(i)
-            let item:ListItem = spawn(i) as! ListItem
+            let item:Element = spawn(i) as! Element
             visibleItems.append((item,i))
             itemContainer!.addSubView(item)
             item.y = y
@@ -65,11 +65,11 @@ class FastList:Element {
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
-            var item = $0
-            if(item.idx*itemHeight <= listY - itemHeight || item.idx*itemHeight > listY + height){/*above top limit or bellow limit*/
+            var listItem = $0
+            if(listItem.idx*itemHeight <= listY - itemHeight || listItem.idx*itemHeight > listY + height){/*above top limit or bellow limit*/
                 //Swift.print("item is above top or bellow bottom limit - remove()")
-                Utils.hide(item.item, true)
-                surplusItems += ArrayModifier.delete(&visibleItems, &item)
+                Utils.hide(listItem.item, true)
+                surplusItems += ArrayModifier.delete(&visibleItems, &listItem)
             }
         }
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
@@ -80,8 +80,8 @@ class FastList:Element {
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.idx// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
-        var firstPart:[ListItem] = []
-        var thirdPart:[ListItem] = []
+        var firstPart:[(item:Element,idx:Int)] = []
+        var thirdPart:[(item:Element,idx:Int)] = []
         let topY:CGFloat =  -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         var y:CGFloat = topY//
         var curVisibleItemIdx:Int = 0
@@ -100,10 +100,10 @@ class FastList:Element {
                     //Swift.print("append")//append
                     visibleItems.append(reveal(idx,y))
                 }else{
-                    visibleItems[curVisibleItemIdx].y = y
+                    visibleItems[curVisibleItemIdx].item.y = y
                     curVisibleItemIdx++
                 }
-                y+=itemHeight/*increment the y value*/
+                y += itemHeight/*increment the y value*/
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
@@ -124,7 +124,7 @@ class FastList:Element {
      */
     func spawn(at:Int)->NSView{
         let item:ListItem = ListItem(getWidth(),itemHeight,at,itemContainer)
-        spoof(item)
+        spoof((item,at))
         return item
     }
     /**

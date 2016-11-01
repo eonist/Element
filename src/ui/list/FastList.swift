@@ -151,11 +151,11 @@ class FastList:Element {
         
         //to find the len you need to utilize 
         let len:Int = maxVisibleItems - visibleItems.count
-        
+        Swift.print("len: " + "\(len)")
         for i in 0..<len{
             let listItem:ListItem
             listItem = surplusItems.removeAtIndex(0)
-            listItem.index = i
+            listItem.index = lastVisibleIdx + i
             spoof(listItem)
             listItem.hide(false)
             thirdPart.append(listItem)

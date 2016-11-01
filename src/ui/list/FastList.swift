@@ -22,19 +22,19 @@ import Cocoa
     //test the FastList with 1000's of items
 
 class FastList:Element {
-    var itemHeight:CGFloat
+    var itemHeight:CGFloat = 50
     var dataProvider:DataProvider
     var items:[NSColor] = []
     var itemContainer:Container?
-    let maxVisibleItems:Int//this will be calculated on init and on setSize calls
+    let maxVisibleItems:Int = 8//this will be calculated on init and on setSize calls
     var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     var visibleItems:[ListItem] = []/*Items that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
-        self.itemHeight = itemHeight
+        //self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
-        maxVisibleItems = ceil(height / itemHeight).int
+        //maxVisibleItems = ceil(height / itemHeight).int
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         super.init(width, height, parent, id)
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
@@ -46,7 +46,7 @@ class FastList:Element {
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         var y:CGFloat = 0
-        for i in 0...maxVisibleItems{/*we need an extra item to cover the entire*/
+        for i in 0..<9{/*we need an extra item to cover the entire*/
             //visibleItemIndecies.append(i)
             let item:ListItem = spawn(i) as! ListItem
             visibleItems.append(item)

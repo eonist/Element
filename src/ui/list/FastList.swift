@@ -109,6 +109,7 @@ class FastList:Element {
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
     }
+    
     /**
      * PARAM: at: the index that coorespond to items
      */
@@ -155,6 +156,20 @@ class ListItem:Element{
         CATransaction.commit()
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+
+private class Utils{
+    /**
+     *
+     */
+    static func reveal(inout surplusItems:[ListItem],_ idx:Int, _ y:CGFloat) -> ListItem{
+        let listItem:ListItem = surplusItems.removeAtIndex(0)
+        listItem.index = idx
+        spoof(listItem)
+        listItem.hide(false)
+        listItem.y = y
+        return listItem
+    }
 }
 
 /*

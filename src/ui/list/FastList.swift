@@ -75,7 +75,7 @@ class FastList:Element {
             let listItem:ListItem
             //spawn, but append or prepend? back to the triple looping idea?
             if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
-                Swift.print("prepend spawn")
+                Swift.print("prepend spawn (idx < first Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)
@@ -83,7 +83,7 @@ class FastList:Element {
                 firstPart.unshift(listItem)//this isnt correct you should append to a list and then stick that list together with a middle and a last part
 
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
-                Swift.print("append spawn")
+                Swift.print("append spawn (idx > last Visible Item)")
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx
                 spoof(listItem)

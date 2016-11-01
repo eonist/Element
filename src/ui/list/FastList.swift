@@ -24,7 +24,7 @@ class FastList:Element {
     var items:[NSColor] = []
     var itemContainer:Container?
     let maxVisibleItems:Int = 6//this will be calculated on init and on setSize calls
-    var itemsHeight:CGFloat {return items.count * 50}//<--the tot items height can be calculated at init, and on list data refresh
+    var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     var visibleItems:[ListItem] = []/*Items that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     
@@ -47,7 +47,7 @@ class FastList:Element {
             visibleItems.append(item)
             itemContainer!.addSubView(item)
             item.y = y
-            y += 50
+            y += itemHeight
         }
         setProgress(0)
     }
@@ -62,7 +62,7 @@ class FastList:Element {
         //Swift.print("listY: " + "\(listY)")
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
             var item:ListItem = $0
-            if(item.virtualY <= listY - 50 || item.virtualY > listY + height){/*above top limit or bellow limit*/
+            if(item.virtualY <= listY - itemHeight || item.virtualY > listY + height){/*above top limit or bellow limit*/
                 Swift.print("item is above top limit - remove()")
                 item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
@@ -70,7 +70,7 @@ class FastList:Element {
         }
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
+        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleIdx:Int? = visibleItems.first?.index// ?? firstItemIndex//first of the items that wasn't deleted
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
@@ -99,7 +99,7 @@ class FastList:Element {
                     visibleItems[curVisibleItemIdx].y = y
                     curVisibleItemIdx++
                 }
-                y+=50//increment the y value
+                y+=itemHeight/*increment the y value*/
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
@@ -119,7 +119,7 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let item:ListItem = ListItem(100,50,at,itemContainer)
+        let item:ListItem = ListItem(getWidth(),50,at,itemContainer)
         spoof(item)
         return item
     }

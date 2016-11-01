@@ -65,6 +65,7 @@ class FastList:Element {
         var firstPart:[ListItem] = []
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
+        var curVisibleItemIdx:Int = 0
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -91,7 +92,8 @@ class FastList:Element {
                 listItem.hide(false)
                 visibleItems.append(listItem)
             }else{
-                visibleItems
+                visibleItems[]
+                curVisibleItemIdx++
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/

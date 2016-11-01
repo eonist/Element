@@ -60,11 +60,11 @@ class FastList:Element {
         
         visibleItems.forEach{//remove items that are above or bellow the limits
             var item:ListItem = $0
-            if(item.virtualY < listY - 50){
+            if(item.virtualY < listY - 50){/*above top limit*/
                 Swift.print("item is above top limit - remove()")
                 item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
-            }else if(item.virtualY > listY + height){
+            }else if(item.virtualY > listY + height){/*bellow bottom limit*/
                 Swift.print("item is bellow bottom limit - remove()")
                 item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)

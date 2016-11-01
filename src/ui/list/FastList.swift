@@ -74,7 +74,7 @@ class FastList:Element {
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstIdx:Int? = visibleItems.first?.index
+        let firstIdx:Int? = visibleItems.first?.index//start of the items that wasnt deleted
         //Swift.print("firstIdx: " + "\(firstIdx)")
         let lastIdx:Int? = visibleItems.last?.index
         //Swift.print("lastIdx: " + "\(lastIdx)")
@@ -120,6 +120,9 @@ class FastList:Element {
                 //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }
             
+            visibleItems.forEach{
+                $0
+            }
             //set y
             listItem.y = listItem.virtualY - listY
             //try to only set top item, then use above item for the rest

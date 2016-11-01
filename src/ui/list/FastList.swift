@@ -126,9 +126,9 @@ class FastList:Element {
             //if that doesn't work then try to repurpous items instead of removing them
             //try to add a slideList , then if that works then try populate it with colors to see the diff maybe you need to use really long NSViews after all like in legacy code
         }
-        var y:CGFloat = visibleItems.first!.virtualY - listY
-        visibleItems.first!.y = y
         
+        visibleItems.first!.y = visibleItems.first!.virtualY - listY
+        var y:CGFloat = visibleItems.first!.virtualY - listY + 50
         for i in 1..<visibleItems.count{
             visibleItems[i].y = y
             y += 50

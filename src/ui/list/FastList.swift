@@ -119,7 +119,7 @@ class FastList:Element {
      * PARAM: at: the index that coorespond to items
      */
     func spawn(at:Int)->NSView{
-        let item:ListItem = ListItem(getWidth(),50,at,itemContainer)
+        let item:ListItem = ListItem(getWidth(),itemHeight,at,itemContainer)
         spoof(item)
         return item
     }
@@ -141,7 +141,7 @@ class FastList:Element {
  * TODO: Try to move the index in an array instead of creating ListItem, this way we can use any Element ype we wish
  */
 class ListItem:Element{
-    var virtualY:CGFloat {return index * 50}
+    var virtualY:CGFloat {return index * height}
     var index:Int//we store the index in the item
     init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
         self.index = index

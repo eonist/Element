@@ -80,7 +80,7 @@ class FastList:Element {
         //Swift.print("lastIdx: " + "\(lastIdx)")
         
         //Continue here: Its working, and no tearing!
-            //Turn of the hide/unhide animation
+            //Turn of the hide/unhide animation (done)
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
         
@@ -159,7 +159,8 @@ class ListItem:Element{
         super.init(width, height, parent, id)
     }
     /**
-     *
+     * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
+     * NOTE: 
      */
     func hide(isHidden:Bool){
         CATransaction.begin()

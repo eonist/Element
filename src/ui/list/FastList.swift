@@ -126,7 +126,7 @@ class FastList:Element {
                 //listItem = itemContainer!.addSubView(spawn(idx)) as! ListItem
             }else if(firstIdx != nil && lastIdx != nil){//recycle the existing item
                 //Swift.print("already exist, just change .y")
-                listItem = itemContainer!.subviews[subViewIdx] as! ListItem
+                listItem = itemContainer!.subviews[subViewIdx] as! ListItem//<--unsure about this
                 subViewIdx++
             }else{//no pre exisiting items exist
                 Swift.print("append spawn")//append

@@ -66,8 +66,10 @@ class FastList:Element {
         //Continue here: Its working, and no tearing!
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
-        
-        var subViewIdx:Int = 0
+        var firstPart:[ListItem] = []
+        var secondPart:[ListItem] = []
+        var thirdPart:[ListItem] = []
+        //var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem
@@ -78,7 +80,7 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                visibleItems.unshift(listItem)//this isnt correct you should append to a list and then stick that list together with a middle and a last part
+                firstPart.unshift(listItem)//this isnt correct you should append to a list and then stick that list together with a middle and a last part
 
             }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                 Swift.print("append spawn")
@@ -86,13 +88,15 @@ class FastList:Element {
                 listItem.index = idx
                 spoof(listItem)
                 listItem.hide(false)
-                visibleItems.append(listItem)
+                thirdPart.append(listItem)
 
-            }else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, no appending or prepending happened in this cycle
+            }
+            /*else if(firstVisibleIdx != nil && lastVisibleIdx != nil){//recycle the existing item, no appending or prepending happened in this cycle
                 //Swift.print("already exist, just change .y")
                 listItem = visibleItems[subViewIdx]//<--unsure about this
                 subViewIdx++
-            }else{//no pre exisiting items exist,this only happens if no visible items exists
+            }*/
+            else{//no pre exisiting items exist,this only happens if no visible items exists
                 Swift.print("append spawn")//append
                 listItem = surplusItems.removeAtIndex(0)
                 listItem.index = idx

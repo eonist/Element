@@ -68,7 +68,7 @@ class FastList:Element {
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
             var item:ListItem = $0
             if(item.virtualY <= listY - itemHeight || item.virtualY > listY + height){/*above top limit or bellow limit*/
-                Swift.print("item is above top limit - remove()")
+                //Swift.print("item is above top or bellow bottom limit - remove()")
                 item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }

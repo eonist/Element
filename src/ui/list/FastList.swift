@@ -10,7 +10,10 @@ import Cocoa
     //try the 1 loop setProgress idea
     //remove the mask and use an outline that is above the itemContainer
     //try using real data (text)
+    //try using DataProvider
     //remove index from the ListItem and rather store it in a duplet -> so we can avoid using ListItem
+    //start using constants and not fixed values
+    //test if resize works, by spawning new items etc
 
 class FastList:Element {
     var items:[NSColor] = []

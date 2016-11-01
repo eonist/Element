@@ -66,8 +66,8 @@ class FastList:Element {
         //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         var curVisibleItemIdx:Int = 0
-        visibleItems.first!.y = visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
-        var y:CGFloat = 50.0 + visibleItems.first!.y
+        
+        var y:CGFloat = (firstItemIndex * 50) - listY
         for i in 0..<maxVisibleItems{
             let idx:Int = firstItemIndex + i
             let listItem:ListItem

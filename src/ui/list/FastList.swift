@@ -112,6 +112,7 @@ class FastList:Element {
         let topY:CGFloat =  -(listY % 50)//the y pos of the first item
         Swift.print("topY: " + "\(topY)")
         visibleItems.first!.y = visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
+        Swift.print("visibleItems.first!.y: " + "\(visibleItems.first!.y)")
         var y:CGFloat = 50.0 + visibleItems.first!.y
         for i in 1..<visibleItems.count{
             visibleItems[i].y = y

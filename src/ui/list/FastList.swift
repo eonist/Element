@@ -94,7 +94,7 @@ class FastList:Element {
                     thirdPart.append(listItem)
                 }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
                     Swift.print("append")//append
-                    listItem = surplusItems.removeAtIndex(0)
+                    listItem = reveal(idx,)
                     listItem.index = idx
                     spoof(listItem)
                     listItem.hide(false)
@@ -109,7 +109,17 @@ class FastList:Element {
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
     }
-    
+    /**
+     *
+     */
+    func reveal(idx:Int, _ y:CGFloat) -> ListItem{
+        let listItem:ListItem = surplusItems.removeAtIndex(0)
+        listItem.index = idx
+        spoof(listItem)
+        listItem.hide(false)
+        listItem.y = y
+        return listItem
+    }
     /**
      * PARAM: at: the index that coorespond to items
      */

@@ -68,6 +68,10 @@ class FastList:Element {
         let topY:CGFloat =  -(listY % 50)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         var y:CGFloat = topY//
         var curVisibleItemIdx:Int = 0
+        
+        
+        //continue here: make a reuse method that: hides, sets y, spoofs, removes from surplus items
+        
         for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
             if(idx >= 0 && idx < items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList

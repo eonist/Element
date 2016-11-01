@@ -2,6 +2,7 @@ import Cocoa
 /**
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
+ * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
  */
 class FastList:Element {
     var items:[NSColor] = []
@@ -23,7 +24,7 @@ class FastList:Element {
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         
         var y:CGFloat = 0
-        for i in 0..<9{//we need an extra item to cover the entire
+        for i in 0..<9{/*we need an extra item to cover the entire*/
             //visibleItemIndecies.append(i)
             let item:ListItem = spawn(i) as! ListItem
             visibleItems.append(item)
@@ -41,20 +42,7 @@ class FastList:Element {
     func setProgress(progress:CGFloat){
         //Swift.print("FastList.setProgress() " + "\(progress)")
         
-        //Continue here:
-            //So its not moving individual items that tears the graphics
-            //lets try and hide and reveal items as the go in and out of the visible area
-                //then we can try to remove items, but repurpouse them instead of creating new ones
-                //maybe even try to not add subviews, buth rather just reposition them (adding vies could cause tearing!?!?)
-        
-        //Observation:
-            //removing items definitly tears the graphics, 
-                //but does adding?
-            //hiding and revealing animates items -> so we need to turn that off for this case
-                //you could just move the item to a location outside the mask
-        
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
-        
         //Swift.print("listY: " + "\(listY)")
         
         
@@ -70,7 +58,7 @@ class FastList:Element {
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }
         }
-        //let topY:CGFloat = 50 - (listY % 50)//the y pos of the first item
+        
         
         let firstItemIndex:Int = floor(abs(listY / 50)).int//find the first item
         //Swift.print("firstItemIndex: " + "\(firstItemIndex)")

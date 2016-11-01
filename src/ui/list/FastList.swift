@@ -67,7 +67,7 @@ class FastList:Element {
             //Try to use 3 ranges when prepending,appending items instead of the 4 if clauses bellow. or group the if clauses (REfactor)
             //Try to avoid spoofing items when the limit is reached. needs an if statment or alike
         var firstPart:[ListItem] = []
-        var secondPart:[ListItem] = []
+        //var secondPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         //var subViewIdx:Int = 0
         for i in 0..<maxVisibleItems{
@@ -106,6 +106,7 @@ class FastList:Element {
 
             }
         }
+        visibleItems = firstPart + visibleItems + thirdPart//stick it all together
         
         /*By setting the items to the bottom of the above item, we avoid gaps that may apear*/
         visibleItems.first!.y = visibleItems.first!.virtualY - listY

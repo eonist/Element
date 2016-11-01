@@ -65,10 +65,10 @@ class FastList:Element {
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
         visibleItems.forEach{/*remove items that are above or bellow the limits*/
-            var item:ListItem = $0.item
-            if(item.virtualY <= listY - itemHeight || item.virtualY > listY + height){/*above top limit or bellow limit*/
+            var item = $0
+            if(item.idx*itemHeight <= listY - itemHeight || item.idx*itemHeight > listY + height){/*above top limit or bellow limit*/
                 //Swift.print("item is above top or bellow bottom limit - remove()")
-                item.hide(true)
+                item.item.hide(true)
                 surplusItems += ArrayModifier.delete(&visibleItems, &item)
             }
         }

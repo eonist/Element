@@ -7,6 +7,7 @@ import Cocoa
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
  * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
  * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
+ * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
  */
 
 //Continue here:
@@ -123,24 +124,12 @@ class FastList:Element {
         return listItem
     }
     /**
-     * PARAM: at: the index that coorespond to items (spawn == create something)
+     * PARAM: at: the index that coorespond to data items (spawn == create something)
      */
     func spawn(at:Int)->NSView{
-        let item:ColorItem = ColorItem(getWidth(),itemHeight,at,itemContainer)
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,"title", false, itemContainer)
         spoof((item,at))
         return item
-    }
-    /**
-     * Creates and adds items to the _lableContainer
-     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
-     */
-    func spawn(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
-        var i:Int = index
-        for object:Dictionary<String,String> in objects {// :TODO: use for i
-            let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
-            lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
-            i++
-        }
     }
     /**
      * Applies data to items (spoof == reuse)
@@ -149,6 +138,7 @@ class FastList:Element {
         let item:Element = listItem.item
         let idx:Int = listItem.idx
         
+        lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
     }
     
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

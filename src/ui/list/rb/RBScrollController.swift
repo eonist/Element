@@ -39,7 +39,6 @@ class RBScrollController:EventSender{
             case NSEventPhase.None:break;
             default:break;
         }
-        //super.scrollWheel(theEvent)//call super if you want to forward the event to the parent view, you do since the parent listen to this event when directly manipulating the motion
     }
     /**
      * Basically when you perform a scroll-gesture on the touch-pad

@@ -51,7 +51,7 @@ class FastList:Element,IList {
         while(i < visibleItems.count){/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             if(listItem.idx*itemHeight <= listY - itemHeight || listItem.idx*itemHeight > listY + height){/*above top limit or bellow limit*/
-                //Swift.print("item is above top or bellow bottom limit - remove()")
+                Swift.print("item is above top or bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }
@@ -132,7 +132,7 @@ class FastList:Element,IList {
      * Applies data to items (spoof == reuse)
      */
     func spoof(listItem:(item:Element,idx:Int)){
-        Swift.print("spoof")
+        //Swift.print("spoof")
         
         //Continue here: there are way to many calls to spoof while scrolling, figure it out, we should only call spoof on new items that apear
         

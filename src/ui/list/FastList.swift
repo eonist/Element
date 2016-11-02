@@ -68,8 +68,7 @@ class FastList:Element,IList {
             
             
             //1. set the virtualY to every item based on the progress
-            //2. shuffle items above and bellow on each iteration (like lego)
-            //
+            //2. remove and then shuffle items above and bellow on each iteration (like lego)
             
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight

@@ -21,10 +21,10 @@ import Cocoa
     //Make a SliderScrollWheelController --> for SliderList and SliderFastList (similar to RBScrollWheelController)
 
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
-class FastList:Element {
+class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/
-    var itemContainer:Container?/*holds the list items*/
+    var lableContainer:Container?/*holds the list items*/
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
@@ -42,7 +42,7 @@ class FastList:Element {
         Swift.print("FastList.resolveSkin()")
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         super.resolveSkin()
-        itemContainer = addSubView(Container(width,height,self,"itemContainer"))
+        lableContainer = addSubView(Container(width,height,self,"lable"))
         spawn(0...maxVisibleItems)
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
@@ -120,7 +120,7 @@ class FastList:Element {
             //visibleItemIndecies.append(i)
             let item:Element = spawn(i) as! Element
             visibleItems.append((item,i))
-            itemContainer!.addSubView(item)
+            lableContainer!.addSubView(item)
             item.y = y
             y += itemHeight
         }
@@ -130,7 +130,7 @@ class FastList:Element {
      */
     func spawn(idx:Int)->NSView{
         let title:String = dataProvider.items[idx]["title"]!
-        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, itemContainer)
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
         return item
     }
     /**

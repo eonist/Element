@@ -123,7 +123,8 @@ class FastList:Element,IList {
      */
     func spawn(idx:Int)->NSView{
         let title:String = dataProvider.items[idx]["title"]!
-        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
+        let selected:Bool = dataProvider.items[idx]["selected"]!.bool
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, selected, lableContainer)
         return item
     }
     /**
@@ -143,7 +144,7 @@ class FastList:Element,IList {
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         //Swift.print("selectedIndex: " + "\(selectedIndex)")
-        ListModifier.selectAt(self,selectedIndex)
+        FastListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
     override func onEvent(event:Event) {

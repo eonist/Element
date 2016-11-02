@@ -23,10 +23,10 @@ class SliderList:List{
         ListModifier.scrollTo(self,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
         slider?.setProgressValue(currentScroll)
         if(theEvent.momentumPhase == NSEventPhase.Ended){
-            Swift.print("the scroll motion ended")
+            //Swift.print("the scroll motion ended")
             slider!.thumb!.setSkinState("inActive")
         }else if(theEvent.momentumPhase == NSEventPhase.Began){//include may begin here
-            Swift.print("the scroll motion began")
+            //Swift.print("the scroll motion began")
             slider!.thumb!.setSkinState(SkinStates.none)
         }
         super.scrollWheel(theEvent)

@@ -1,5 +1,6 @@
 import Foundation
 
-class ISliderList {
-
+protocol ISliderList:IList {
+    var slider:VSlider?{get}
+    var sliderInterval:CGFloat?{get}
 }

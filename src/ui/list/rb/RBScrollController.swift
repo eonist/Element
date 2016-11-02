@@ -7,6 +7,7 @@ import Cocoa
  * PARAM: itemsRect: represents the total size of the content //TODO: could be ranmed to contentRect
  * TODO: You could make a class named ScrollController that doesnt have the rubberband and then extend it
  * TODO: Maybe create var's that store the enter and exit state.
+ * TODO: It could be possible to do all the methods i this class as an extension to IRBSliderList, and have the mover,prescorldeltay and velocites in Rbsliderlist instead
  */
 
 //Continue here: Check the swipe left right code for state code for enter and exit.

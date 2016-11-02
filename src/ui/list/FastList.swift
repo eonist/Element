@@ -58,11 +58,11 @@ class FastList:Element,IList {
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight
             //Swift.print("listItemY: " + "\(listItemY)")
-            if(listItemY < -itemHeight){/*above top limit or bellow limit*/
+            if(listItemY <= -itemHeight){/*above top limit or bellow limit*/
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
-            }else if(listItemY > height){
+            }else if(listItemY >= height){
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)

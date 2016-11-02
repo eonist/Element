@@ -13,13 +13,6 @@ import Cocoa
  * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
  * TODO: test if resize works, by spawning new items etc
  */
-
-//Continue here:
-    //test the FastList with Slider
-    //test the FastList with rubberband
-    //test the FastList with 1000's of items
-    //Make a SliderScrollWheelController --> for SliderList and SliderFastList (similar to RBScrollWheelController)
-
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
 class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/

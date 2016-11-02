@@ -60,7 +60,7 @@ class FastList:Element,IList {
             i++
             
             //Continue here: the only way to debug this issue is to disable mask and not hide items
-            
+                //Actually, try the 1 loop theory and use c-style for loop
         }
         Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")

@@ -91,7 +91,8 @@ class FastList:Element,IList {
                     //it wont work, think 0.1 progress to 0.8 progress, 
                         //then you cant base the positoning on visibleItems.first, 
                             //this is an edge case though and could be resolved by asserting for it,
-                                //if visibleItems.count == 0 then
+                                //if visibleItems.count == 0 then base the positioning on listY % itemHeight
+                                //or base your positioning on listY % itemHeight from the start (<--go with this solution)
                 
                 firstPart.append(reveal(listItem.idx,firstPartY))//place the removed item to the top of the visible items, think lego
                 firstPartY -= itemHeight

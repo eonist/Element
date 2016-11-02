@@ -13,6 +13,12 @@ import Cocoa
  * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
  * TODO: test if resize works, by spawning new items etc
  */
+
+
+//The bug was that the height was 73 and spoofing was triggered according to itemHeight vs itemsHeight in conjunction with modulo
+//So roll back to around 17:00 o clock or try to implement the simpler 1 loop setProgress method
+
+
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
 class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/

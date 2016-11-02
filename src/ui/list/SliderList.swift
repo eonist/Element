@@ -16,17 +16,11 @@ class SliderList:List{
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent:NSEvent) {
-        //Swift.print("theEvent: " + "\(theEvent)")
         let currentScroll:CGFloat = SliderListUtils.progress(theEvent.deltaY, sliderInterval!, slider!.progress)
         ListModifier.scrollTo(self,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
         slider?.setProgressValue(currentScroll)
-        if(theEvent.momentumPhase == NSEventPhase.Ended){
-            //Swift.print("the scroll motion ended")
-            slider!.thumb!.setSkinState("inActive")
-        }else if(theEvent.momentumPhase == NSEventPhase.Began){//include may begin here
-            //Swift.print("the scroll motion began")
-            slider!.thumb!.setSkinState(SkinStates.none)
-        }
+        if(theEvent.momentumPhase == NSEventPhase.Ended){slider!.thumb!.setSkinState("inActive")}
+        else if(theEvent.momentumPhase == NSEventPhase.Began){slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
         super.scrollWheel(theEvent)
     }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/

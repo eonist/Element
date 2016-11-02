@@ -20,6 +20,8 @@ class SliderList:List{
         let scrollAmount:CGFloat = (theEvent.deltaY/30)/sliderInterval!/*_scrollBar.interval*/
         var currentScroll:CGFloat = slider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
         currentScroll = NumberParser.minMax(currentScroll, 0, 1)/*clamps the num between 0 and 1*/
+        //Continue here: 
+        var currentScroll:CGFloat = SliderListUtils.progress(<#T##deltaY: CGFloat##CGFloat#>, <#T##sliderInterval: CGFloat##CGFloat#>, <#T##sliderProgress: CGFloat##CGFloat#>)
         ListModifier.scrollTo(self,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
         slider?.setProgressValue(currentScroll)
         if(theEvent.momentumPhase == NSEventPhase.Ended){

@@ -131,6 +131,18 @@ class FastList:Element {
         return item
     }
     /**
+     * Creates and adds items to the _lableContainer
+     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
+     */
+    func spawn(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
+        var i:Int = index
+        for object:Dictionary<String,String> in objects {// :TODO: use for i
+            let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
+            lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+            i++
+        }
+    }
+    /**
      * Applies data to items (spoof == reuse)
      */
     func spoof(listItem:(item:Element,idx:Int)){
@@ -138,6 +150,7 @@ class FastList:Element {
         let idx:Int = listItem.idx
         
     }
+    
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /**

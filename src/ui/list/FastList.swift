@@ -82,21 +82,14 @@ class FastList:Element,IList {
                 //place the removed item to the bottom of the visible items
                 thirdPart.append(reveal(listItem.idx,thirdPartY))
                 thirdPartY += itemHeight
-                Swift.print("visibleItems.count: " + "\(visibleItems.count)")
+                //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else if(listItemY > bottomLimit){
                 Swift.print("item is bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)//remove item that falls bellow the bottom limit
-                //place the removed item to the top of the visible items
-                
-                
-                //run the scenario above in you rhead a few times and try to think of how it can work or not work
-                
-                //Continue here: try to get the y right, Think (Keep going, this is a much more elegant solution)
-                    //actually -> try to find a more roboust way to do this, as
-                let y = 0
-                firstPart.append(reveal(listItem.idx,y))
-                Swift.print("visibleItems.count: " + "\(visibleItems.count)")
+                firstPart.append(reveal(listItem.idx,firstPartY))//place the removed item to the top of the visible items, think lego
+                firstPartY -= itemHeight
+                //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }
           
             

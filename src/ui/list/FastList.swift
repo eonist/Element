@@ -16,7 +16,7 @@ import Cocoa
 
 
 //The bug was that the height was 73 and spoofing was triggered according to itemHeight vs itemsHeight in conjunction with modulo
-//So roll back to around 17:00 o clock or try to implement the simpler 1 loop setProgress method
+//So roll back to around 17:00 o clock or try to implement the simpler 1 loop setProgress method, basinc calculations on modulo wasn't the best idea anyway
 
 
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
@@ -68,6 +68,7 @@ class FastList:Element,IList {
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+                
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else if(listItemY >= height){
                 Swift.print("item is above top limit - remove()")
@@ -91,8 +92,7 @@ class FastList:Element,IList {
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.idx// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
         //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
-        var firstPart:[ListItem] = []
-        var thirdPart:[ListItem] = []
+        
         let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY//
@@ -104,7 +104,7 @@ class FastList:Element,IList {
                 //let listItem:ListItem
                 if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
                     Swift.print("prepend (idx < first Visible Item)")
-                    firstPart.append(reveal(idx,y))
+                    
                 }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                     Swift.print("append (idx > last Visible Item)")
                     thirdPart.append(reveal(idx,y))

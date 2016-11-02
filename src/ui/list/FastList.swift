@@ -70,6 +70,7 @@ class FastList:Element,IList {
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+                let y:CGFloat = 0//y is the last item in visible
                 firstPart.append(reveal(listItem.idx,y))
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else if(listItemY >= height){

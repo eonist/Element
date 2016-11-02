@@ -1,11 +1,7 @@
 import Cocoa
 
 class ScrollController {
-    var sliderList:ISliderList
-    init(_ sliderList:ISliderList){
-        self.sliderList = sliderList
-    }
-    func scrollWheel(theEvent:NSEvent) {
+    func scrollWheel(sliderList:ISliderList, _ theEvent:NSEvent) {
         let currentScroll:CGFloat = Utils.progress(theEvent.deltaY, sliderList.sliderInterval!, sliderList.slider!.progress)
         ListModifier.scrollTo(sliderList,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
         sliderList.slider?.setProgressValue(currentScroll)
@@ -16,7 +12,6 @@ class ScrollController {
 private class Utils{
     /**
      * Returns the progress og the sliderList (used when we scroll with the scrollwheel/touchpad)
-     * NOTE: The SliderList and SliderFastList uses this method
      */
     static func progress(deltaY:CGFloat,_ sliderInterval:CGFloat,_ sliderProgress:CGFloat)->CGFloat{
         let scrollAmount:CGFloat = (deltaY/30)/sliderInterval/*_scrollBar.interval*/

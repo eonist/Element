@@ -65,6 +65,12 @@ class FastList:Element,IList {
         var firstPartY:CGFloat = visibleItems.first!.item.y - itemHeight
         var thirdPartY:CGFloat = visibleItems.last!.item.y
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
+            
+            
+            //1. set the virtualY to every item based on the progress
+            //2. shuffle items above and bellow on each iteration (like lego)
+            
+            
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight
             //Swift.print("listItemY: " + "\(listItemY)")

@@ -157,6 +157,7 @@ class ColorItem:Element{
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+
 private class Utils{
     /**
      * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc

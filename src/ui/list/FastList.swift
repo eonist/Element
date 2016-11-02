@@ -51,8 +51,8 @@ class FastList:Element,IList {
         Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
         while(i < visibleItems.count){/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
-            let listItemY:CGFloat = listItem.idx*itemHeight
-            if(listItemY <= listY - itemHeight || listItemY > listY + height){/*above top limit or bellow limit*/
+            let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight
+            if(listItemY <= -itemHeight || listItemY > height){/*above top limit or bellow limit*/
                 Swift.print("item is above top or bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)

@@ -59,7 +59,7 @@ class FastList:Element,IList {
             }
             i++
             
-            //the only way to debug this issue is to disable mask and not hide items
+            //Continue here: the only way to debug this issue is to disable mask and not hide items
             
         }
         Swift.print("visibleItems.count: " + "\(visibleItems.count)")

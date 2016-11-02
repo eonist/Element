@@ -8,7 +8,7 @@ import Cocoa
  * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
  * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
  * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
- * TODO: the dataProvider.items.count should probably be cached
+ * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self
  */
 
 //Continue here:

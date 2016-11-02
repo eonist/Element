@@ -60,6 +60,8 @@ class FastList:Element,IList {
         //Swift.print("listY: " + "\(listY)")
         //var i:Int = 0/*<--we can't use "for in" loop here because we alter visibleItems as we iterate,forEach works but while seems more apropriate,c-style for loop is the intention but is going away in swift3*/
         //Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
+        var firstPart:[ListItem] = []
+        var thirdPart:[ListItem] = []
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight
@@ -68,12 +70,13 @@ class FastList:Element,IList {
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
-                
+                firstPart.append(reveal(listItem.idx,y))
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else if(listItemY >= height){
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+                thirdPart.append(reveal(idx,y))
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }
           
@@ -107,7 +110,7 @@ class FastList:Element,IList {
                     
                 }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
                     Swift.print("append (idx > last Visible Item)")
-                    thirdPart.append(reveal(idx,y))
+                    
                 }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
                     Swift.print("append")//append
                     visibleItems.append(reveal(idx,y))

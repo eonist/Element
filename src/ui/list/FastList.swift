@@ -18,15 +18,15 @@ class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/
     var lableContainer:Container?/*holds the list items*/
-    let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
+    var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
-        maxVisibleItems = ceil(height / itemHeight).int + 1
-        Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
+        
+        
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
@@ -36,6 +36,8 @@ class FastList:Element,IList {
         Swift.print("FastList.resolveSkin()")
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         super.resolveSkin()
+        maxVisibleItems = ceil(height / itemHeight).int + 1
+        Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
         spawn(0...maxVisibleItems)
         setProgress(0)/*<-not really needed, but nice to have while debugging*/

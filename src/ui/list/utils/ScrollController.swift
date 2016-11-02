@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class ScrollController:EventSender {
     init(_ callBack:(CGFloat)->Void,_ frame:CGRect, _ itemRect:CGRect){

@@ -12,8 +12,6 @@ import Cocoa
  */
 
 //Continue here:
-    //try using real data (text)
-    //try using DataProvider
  
     //try the 1 loop setProgress idea
     //remove the mask and use an outline that is above the itemContainer

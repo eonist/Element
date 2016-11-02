@@ -54,6 +54,8 @@ class FastList:Element,IList {
      * PARAM: progress: 0 to 1
      * NOTE: why the complicated code in this method? Keep in mind that we must support going from progress: 0.1 to 0.9 in one cycle, which then recreates all items basically
      * TODO: An idea would be to append when items are above top limit, and prepend if items are bellow bottom limit, this would lead to simpler code and 1 less for loop
+     * 1. set the virtualY to every item based on the progress
+     * 2. remove and then shuffle items above and bellow on each iteration (like lego)
      */
     func setProgress(progress:CGFloat){
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
@@ -65,10 +67,6 @@ class FastList:Element,IList {
         var firstPartY:CGFloat = visibleItems.first!.item.y - itemHeight
         var thirdPartY:CGFloat = visibleItems.last!.item.y
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
-            
-            
-            //1. set the virtualY to every item based on the progress
-            //2. remove and then shuffle items above and bellow on each iteration (like lego)
             
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.idx*itemHeight//listItem.item.y//
@@ -90,47 +88,6 @@ class FastList:Element,IList {
                 firstPart.append(reveal(listItem.idx,firstPartY))//place the removed item to the top of the visible items, think lego
                 firstPartY -= itemHeight
                 //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-            }
-          
-            
-            //Continue here: the only way to debug this issue is to disable mask and not hide items
-                //Actually, try the 1 loop theory and use c-style for loop
-        }
-        //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-        //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-        //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        let firstItemIdx:CGFloat = abs(listY / itemHeight)
-        Swift.print("firstItemIdx: " + "\(firstItemIdx)")
-        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
-        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        let firstVisibleIdx:Int? = visibleItems.first?.idx// ?? firstItemIndex//first of the items that wasn't deleted
-        //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
-        let lastVisibleIdx:Int? = visibleItems.last?.idx// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted
-        //Swift.print("lastVisibleIdx: " + "\(lastVisibleIdx)")
-        
-        let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
-        Swift.print("topY: " + "\(topY)")
-        var y:CGFloat = topY//
-        var curVisibleItemIdx:Int = 0
-        
-        for i in 0..<maxVisibleItems!{//append or prepend? back to the triple looping idea?
-            let idx:Int = firstItemIndex + i
-            if(idx >= 0 && idx < dataProvider.items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
-                //let listItem:ListItem
-                if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
-                    Swift.print("prepend (idx < first Visible Item)")
-                    
-                }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
-                    Swift.print("append (idx > last Visible Item)")
-                    
-                }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
-                    Swift.print("append")//append
-                    visibleItems.append(reveal(idx,y))
-                }else{
-                    visibleItems[curVisibleItemIdx].item.y = y
-                    curVisibleItemIdx++
-                }
-                y += itemHeight/*increment the y value*/
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/

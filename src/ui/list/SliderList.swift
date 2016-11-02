@@ -7,18 +7,16 @@ import Cocoa
 class SliderList:List,ISliderList{
     var slider:VSlider?
     var sliderInterval:CGFloat?
-    var scrollController:ScrollController?
     override func resolveSkin() {
         super.resolveSkin()
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
-        scrollController = ScrollController()
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent:NSEvent) {
-        scrollController!.scrollWheel(self,theEvent)//forward the event to the scrollController
+        scroll(self,theEvent)//forward the event to the extension
         super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
     }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/

@@ -8,6 +8,7 @@ import Cocoa
  * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
  * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
  * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
+ * TODO: the dataProvider.items.count should probably be cached
  */
 
 //Continue here:
@@ -28,7 +29,7 @@ class FastList:Element {
     var dataProvider:DataProvider/*data stoarge*/
     var itemContainer:Container?/*holds the list items*/
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
-    var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
+    var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
@@ -44,7 +45,6 @@ class FastList:Element {
         Swift.print("FastList.resolveSkin()")
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         super.resolveSkin()
-    
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         spawn(0...maxVisibleItems)
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
@@ -83,7 +83,7 @@ class FastList:Element {
         
         for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
-            if(idx >= 0 && idx < items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
+            if(idx >= 0 && idx < dataProvider.items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
                 //let listItem:ListItem
                 if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
                     //Swift.print("prepend (idx < first Visible Item)")

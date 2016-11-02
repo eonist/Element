@@ -133,6 +133,8 @@ class FastList:Element,IList {
         let item:Element = listItem.item
         let idx:Int = listItem.idx
         let title:String = dataProvider.items[idx]["title"]!
+        let selected:Bool = dataProvider.items[idx]["selected"]!.bool
+        (item as! ISelectable).setSelected(selected)
         (item as! SelectTextButton).setTextValue(title)
     }
     /**

@@ -69,9 +69,8 @@ class List:Element,IList{
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
     override func onEvent(event: Event) {
-        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){// :TODO: should listen for SelectEvent here
-            onUpInside(event as! ButtonEvent)
-        }else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
+        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here    
+        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {

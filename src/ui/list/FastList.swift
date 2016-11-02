@@ -135,6 +135,7 @@ class FastList:Element,IList {
         let title:String = dataProvider.items[idx]["title"]!
         (item as! SelectTextButton).setTextValue(title)
     }
+    
     /**
      * So that we can use the List .css styles
      */

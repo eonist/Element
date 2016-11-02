@@ -89,6 +89,8 @@ class FastList:Element,IList {
                 firstPart.append(reveal(listItem.idx,firstPartY))//place the removed item to the top of the visible items, think lego
                 firstPartY -= itemHeight
                 //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
+            }else{//we also need to move items that ar within the limit
+                listItem.item.y = y
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/

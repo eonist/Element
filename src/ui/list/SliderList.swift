@@ -7,6 +7,7 @@ import Cocoa
 class SliderList:List,ISliderList{
     var slider:VSlider?
     var sliderInterval:CGFloat?
+    var scrollController
     override func resolveSkin() {
         super.resolveSkin()
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
@@ -16,11 +17,7 @@ class SliderList:List,ISliderList{
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent:NSEvent) {
-        let currentScroll:CGFloat = SliderListUtils.progress(theEvent.deltaY, sliderInterval!, slider!.progress)
-        ListModifier.scrollTo(self,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
-        slider?.setProgressValue(currentScroll)
-        if(theEvent.momentumPhase == NSEventPhase.Ended){slider!.thumb!.setSkinState("inActive")}
-        else if(theEvent.momentumPhase == NSEventPhase.Began){slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
+        scrollController!.scrollWheel(theEvent)//forward the event to the scrollController
         super.scrollWheel(theEvent)
     }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/

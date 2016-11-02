@@ -127,8 +127,8 @@ class FastList:Element {
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
      */
     func spawn(idx:Int)->NSView{
-        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,"title", false, itemContainer)
-        spoof((item,idx))
+        let title:String = dataProvider.items[idx]["title"]!
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, itemContainer)
         return item
     }
     /**
@@ -140,7 +140,12 @@ class FastList:Element {
         let title:String = dataProvider.items[idx]["title"]!
         (item as! SelectTextButton).setTextValue(title)
     }
-    
+    /**
+     * So that we can use the List .css styles
+     */
+    override func getClassType() -> String {
+        return String(List)
+    }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /**

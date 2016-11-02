@@ -48,18 +48,18 @@ class FastList:Element,IList {
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
         var i:Int = 0/*<--we can't use "for in" loop here because we alter visibleItems as we iterate,forEach works but while seems more apropriate,c-style for loop is the intention but is going away in swift3*/
-        //Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
+        Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
         while(i < visibleItems.count){/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.idx*itemHeight
-            if(listItemY <= listY - itemHeight || listItem.idx*itemHeight > listItemY + height){/*above top limit or bellow limit*/
+            if(listItemY <= listY - itemHeight || listItemY > listY + height){/*above top limit or bellow limit*/
                 Swift.print("item is above top or bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }
             i++
         }
-        //Swift.print("post visibleItems.count: " + "\(visibleItems.count)")
+        Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
         let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the first item

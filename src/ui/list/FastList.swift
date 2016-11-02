@@ -29,7 +29,7 @@ class FastList:Element,IList {
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
-        layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
+        //layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
     }
     override func resolveSkin() {
         Swift.print("FastList.resolveSkin()")
@@ -58,6 +58,9 @@ class FastList:Element,IList {
                 surplusItems += visibleItems.removeAtIndex(i)
             }
             i++
+            
+            //the only way to debug this issue is to disable mask and not hide items
+            
         }
         Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")

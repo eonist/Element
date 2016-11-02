@@ -81,7 +81,7 @@ class FastList:Element,IList {
                 thirdPart.append(reveal(listItem.idx,thirdPartY))
                 thirdPartY += itemHeight
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-            }else if(listItemY >= height){
+            }else if(listItemY >= listY+height){
                 Swift.print("item is bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)//remove item that falls bellow the bottom limit

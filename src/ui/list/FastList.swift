@@ -62,10 +62,12 @@ class FastList:Element,IList {
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+                Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else if(listItemY >= height){
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+                Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }
           
             
@@ -86,6 +88,7 @@ class FastList:Element,IList {
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         let topY:CGFloat =  -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
+        Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY//
         var curVisibleItemIdx:Int = 0
         

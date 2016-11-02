@@ -1,5 +1,5 @@
 import Foundation
 
-class FastSliderList {
-
+class SliderFastList:FastList {
+    
 }

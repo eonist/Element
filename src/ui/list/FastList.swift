@@ -109,7 +109,7 @@ class FastList:Element {
                 y += itemHeight/*increment the y value*/
             }
         }
-        visibleItems = firstPart + visibleItems + thirdPart/*combine it all together*/
+        visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/
     }
     /**
      * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 3 places)
@@ -131,7 +131,7 @@ class FastList:Element {
         return item
     }
     /**
-     * Applies new data to pre-existing items (spoof == reuse)
+     * Applies data to items (spoof == reuse)
      */
     func spoof(listItem:(item:Element,idx:Int)){
         let item:Element = listItem.item

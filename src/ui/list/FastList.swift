@@ -136,7 +136,7 @@ class FastList:Element,IList {
         (item as! SelectTextButton).setTextValue(title)
     }
     /**
-     * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
+     * This is called when a item in the lableContainer has send the ButtonEvent.upInside event
      */
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)

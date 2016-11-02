@@ -27,6 +27,9 @@ class FastList:Element {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/
     var items:[NSColor] = []//temp data item storage, we use DataProvider in the future
+    
+    //continue here: get rid of items above
+    
     var itemContainer:Container?/*holds the list items*/
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
@@ -47,7 +50,7 @@ class FastList:Element {
         super.resolveSkin()
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
-        
+        spawn(0...maxVisibleItems)
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
@@ -118,7 +121,7 @@ class FastList:Element {
     /**
      *
      */
-    func spawn(range:Range<Int>){
+    private func spawn(range:Range<Int>){
         var y:CGFloat = 0
         for i in range{/*we need an extra item to cover the entire area*/
             //visibleItemIndecies.append(i)
@@ -127,18 +130,6 @@ class FastList:Element {
             itemContainer!.addSubView(item)
             item.y = y
             y += itemHeight
-        }
-    }
-    /**
-     * Creates and adds items to the _lableContainer
-     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
-     */
-    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
-        var i:Int = index
-        for object:Dictionary<String,String> in objects {// :TODO: use for i
-            let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
-            lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
-            i++
         }
     }
     /**

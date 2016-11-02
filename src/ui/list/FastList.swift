@@ -124,11 +124,11 @@ class FastList:Element {
         return listItem
     }
     /**
-     * PARAM: at: the index that coorespond to data items (spawn == create something)
+     * PARAM: idx: the index that coorespond to data items (spawn == create something)
      */
-    func spawn(at:Int)->NSView{
+    func spawn(idx:Int)->NSView{
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,"title", false, itemContainer)
-        spoof((item,at))
+        spoof((item,idx))
         return item
     }
     /**
@@ -137,8 +137,8 @@ class FastList:Element {
     func spoof(listItem:(item:Element,idx:Int)){
         let item:Element = listItem.item
         let idx:Int = listItem.idx
-        let title:String = dataProvider.items[idx]["title"]
-        (item as! SelectTextButton).setTextValue(<#T##text: String##String#>)
+        let title:String = dataProvider.items[idx]["title"]!
+        (item as! SelectTextButton).setTextValue(title)
     }
     
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

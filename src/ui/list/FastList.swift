@@ -30,6 +30,7 @@ class FastList:Element,IList {
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
+        Swift.print("FastList.height: " + "\(height)")
     }
     override func resolveSkin() {
         Swift.print("FastList.resolveSkin()")
@@ -47,17 +48,19 @@ class FastList:Element,IList {
     func setProgress(progress:CGFloat){
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
-        var i:Int = 0/*<--we can't use "for in" loop here because we alter visibleItems as we iterate,forEach works but while seems more apropriate,c-style for loop is the intention but is going away in swift3*/
+        //var i:Int = 0/*<--we can't use "for in" loop here because we alter visibleItems as we iterate,forEach works but while seems more apropriate,c-style for loop is the intention but is going away in swift3*/
         Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
-        while(i < visibleItems.count){/*remove items that are above or bellow the limits*/
+        for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight
-            if(listItemY <= -itemHeight || listItemY > height){/*above top limit or bellow limit*/
+            if(listItemY <= -itemHeight){/*above top limit or bellow limit*/
                 Swift.print("item is above top or bellow bottom limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+            }else if(listItemY > height){
+                
             }
-            i++
+          
             
             //Continue here: the only way to debug this issue is to disable mask and not hide items
                 //Actually, try the 1 loop theory and use c-style for loop

@@ -137,8 +137,8 @@ class FastList:Element {
     func spoof(listItem:(item:Element,idx:Int)){
         let item:Element = listItem.item
         let idx:Int = listItem.idx
-        
-        lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+        let title:String = dataProvider.items[idx]["title"]
+        (item as! SelectTextButton).setTextValue(<#T##text: String##String#>)
     }
     
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -89,8 +89,3 @@ class RBScrollController:EventSender{
         super.onEvent(event)
     }
 }
-class ScrollWheelEvent:Event{
-    static let enter:String = "scrollWheelEnter"
-    static let exit:String = "scrollWheelExit"
-    static let exitAndStationary:String = "scrollWheelExitAndStationary"
-}

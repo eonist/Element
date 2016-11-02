@@ -90,6 +90,7 @@ class FastList:Element,IList {
                 firstPartY -= itemHeight
                 //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else{//we also need to move items that ar within the limit
+                Swift.print("item is within - set y")
                 listItem.item.y = listItemY
             }
         }

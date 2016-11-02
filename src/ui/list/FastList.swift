@@ -71,9 +71,9 @@ class FastList:Element,IList {
             //2. remove and then shuffle items above and bellow on each iteration (like lego)
             
             let listItem:ListItem = visibleItems[i]
-            let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight
+            let listItemY:CGFloat = listItem.idx*itemHeight//listItem.item.y//
             //Swift.print("listItemY: " + "\(listItemY)")
-            if(listItemY <= -itemHeight){/*above top limit*/
+            if(listItemY <= listY-itemHeight){/*above top limit*/
                 Swift.print("item is above top limit - remove()")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)//remove item that falls above the top limit

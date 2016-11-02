@@ -62,7 +62,8 @@ class FastList:Element,IList {
         //Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        var 
+        var firstPartY:CGFloat = visibleItems.first!.item.y
+        var thirdPartY:CGFloat = visibleItems.last!.item.y
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.item.y//listItem.idx*itemHeight

@@ -20,7 +20,7 @@ import Cocoa
     //test the FastList with 1000's of items
     //Make a SliderScrollWheelController --> for SliderList and SliderFastList (similar to RBScrollWheelController)
 
-typealias ListItem = (item:Element, idx:Int)
+typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
 class FastList:Element {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/

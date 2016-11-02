@@ -3,6 +3,7 @@ import Foundation
 class SliderListUtils {
     /**
      * Returns the progress og the sliderList (used when we scroll with the scrollwheel/touchpad)
+     * NOTE: The SliderList and SliderFastList uses this method
      */
     static func progress(deltaY:CGFloat,_ sliderInterval:CGFloat,_ sliderProgress:CGFloat)->CGFloat{
         let scrollAmount:CGFloat = (deltaY/30)/sliderInterval/*_scrollBar.interval*/

@@ -30,16 +30,18 @@ class FastList:Element,IList {
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
-        Swift.print("FastList.height: " + "\(height)")
+        
     }
     override func resolveSkin() {
         Swift.print("FastList.resolveSkin()")
-        Swift.print("itemsHeight: " + "\(itemsHeight)")
+        
         super.resolveSkin()
-        maxVisibleItems = ceil(height / itemHeight).int + 1
+        Swift.print("itemsHeight: " + "\(itemsHeight)")
+        Swift.print("FastList.height: " + "\(height)")
+        maxVisibleItems = round(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        spawn(0...maxVisibleItems)
+        spawn(0...maxVisibleItems!)
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
@@ -85,7 +87,7 @@ class FastList:Element,IList {
         var y:CGFloat = topY//
         var curVisibleItemIdx:Int = 0
         
-        for i in 0..<maxVisibleItems{//append or prepend? back to the triple looping idea?
+        for i in 0..<maxVisibleItems!{//append or prepend? back to the triple looping idea?
             let idx:Int = firstItemIndex + i
             if(idx >= 0 && idx < dataProvider.items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
                 //let listItem:ListItem

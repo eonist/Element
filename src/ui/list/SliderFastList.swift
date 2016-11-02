@@ -17,7 +17,7 @@ class SliderFastList:FastList,ISliderList {
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
-    override func onEvent(event: Event) {
+    override func onEvent(event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)
     }

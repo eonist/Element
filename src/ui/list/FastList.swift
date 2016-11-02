@@ -75,8 +75,10 @@ class FastList:Element,IList {
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
         //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the first item
-        //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
+        let firstItemIdx:CGFloat = abs(listY / itemHeight)
+        Swift.print("firstItemIdx: " + "\(firstItemIdx)")
+        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
+        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleIdx:Int? = visibleItems.first?.idx// ?? firstItemIndex//first of the items that wasn't deleted
         //Swift.print("firstVisibleIdx: " + "\(firstVisibleIdx)")
         let lastVisibleIdx:Int? = visibleItems.last?.idx// ?? firstItemIndex+maxVisibleItems//last of the items that wasn't deleted

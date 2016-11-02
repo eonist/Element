@@ -132,12 +132,13 @@ class FastList:Element,IList {
      * Applies data to items (spoof == reuse)
      */
     func spoof(listItem:(item:Element,idx:Int)){
+        Swift.print("spoof")
         let item:Element = listItem.item
         let idx:Int = listItem.idx
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
-        let selected:Bool = dpItem["selected"]!.bool
-        (item as! ISelectable).setSelected(selected)
+        //let selected:Bool = dpItem["selected"]!.bool
+        //(item as! ISelectable).setSelected(selected)
         (item as! SelectTextButton).setTextValue(title)
     }
     /**

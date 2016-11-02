@@ -3,6 +3,7 @@ import Cocoa
 protocol ISliderList:IList {
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get}
+    func setProgress(progress:CGFloat)
 }
 extension ISliderList{
     /**

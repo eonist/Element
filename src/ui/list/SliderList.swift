@@ -19,9 +19,11 @@ class SliderList:List,ISliderList{
         scroll(self,theEvent)//forward the event to the extension
         super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
     }
-    f
+    func setProgress(progress:CGFloat){
+        ListModifier.scrollTo(self,progress) /*Sets the target item to correct y, according to the current scrollBar progress*/
+    }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
-        ListModifier.scrollTo(self,sliderEvent.progress)
+        setProgress(sliderEvent.progress)
     }
     override func onEvent(event: Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/

@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class SliderFastList:FastList,ISliderList {
     var slider:VSlider?
@@ -20,5 +20,11 @@ class SliderFastList:FastList,ISliderList {
     override func onEvent(event: Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)
+    }
+    /**
+     * TODO: This must be implemented in the future, see SliderList for instructions
+     */
+    override func setSize(width:CGFloat, _ height:CGFloat) {
+        super.setSize(width, height)
     }
 }

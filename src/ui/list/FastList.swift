@@ -118,15 +118,27 @@ class FastList:Element {
     /**
      *
      */
-    func spawn(){
+    func spawn(range:Range<Int>){
         var y:CGFloat = 0
-        for i in 0...maxVisibleItems{/*we need an extra item to cover the entire area*/
+        for i in range{/*we need an extra item to cover the entire area*/
             //visibleItemIndecies.append(i)
             let item:Element = spawn(i) as! Element
             visibleItems.append((item,i))
             itemContainer!.addSubView(item)
             item.y = y
             y += itemHeight
+        }
+    }
+    /**
+     * Creates and adds items to the _lableContainer
+     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
+     */
+    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
+        var i:Int = index
+        for object:Dictionary<String,String> in objects {// :TODO: use for i
+            let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
+            lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+            i++
         }
     }
     /**

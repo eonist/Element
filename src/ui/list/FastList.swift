@@ -94,7 +94,7 @@ class FastList:Element,IList {
                 
                 //Continue here: try to get the y right, Think (Keep going, this is a much more elegant solution)
                     //actually -> try to find a more roboust way to do this, as
-                
+                let y = 0
                 firstPart.append(reveal(listItem.idx,y))
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }

@@ -37,6 +37,7 @@ class FastList:Element {
         maxVisibleItems = ceil(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         super.init(width, height, parent, id)
+        self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
     }
     override func resolveSkin() {

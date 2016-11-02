@@ -1,5 +1,9 @@
 import Cocoa
 
+//Continue here:
+    //Add support for Selected state for items in FastList, when you spoof you should assert selectedness, probably store selectedness in dataprovider
+    //test the FastList with rubberband
+    //test the FastList with 1000's of items
 class SliderFastList:FastList,ISliderList {
     var slider:VSlider?
     var sliderInterval:CGFloat?

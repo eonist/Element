@@ -144,7 +144,7 @@ class FastList:Element,IList {
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         //Swift.print("selectedIndex: " + "\(selectedIndex)")
-        FastListModifier.selectAt(self,selectedIndex)
+        FastListModifier.select(self,selectedIndex,true)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
     override func onEvent(event:Event) {

@@ -143,19 +143,6 @@ class FastList:Element,IList {
     }
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-/**
- * TODO: Try to move the index in an array instead of creating ListItem, this way we can use any Element ype we wish
- */
-class ColorItem:Element{
-    var virtualY:CGFloat {return index * height}
-    var index:Int//we store the index in the item
-    init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
-        self.index = index
-        super.init(width, height, parent, id)
-    }
-    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
-}
-
 private class Utils{
     /**
      * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
@@ -169,6 +156,21 @@ private class Utils{
         CATransaction.commit()
     }
 }
+/**
+ * TODO: Try to move the index in an array instead of creating ListItem, this way we can use any Element ype we wish
+ */
+/*
+class ColorItem:Element{
+    var virtualY:CGFloat {return index * height}
+    var index:Int//we store the index in the item
+    init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
+        self.index = index
+        super.init(width, height, parent, id)
+    }
+    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+*/
+
 /*
 private class ColorList{
     func spoof(listItem:(item:Element,idx:Int)){

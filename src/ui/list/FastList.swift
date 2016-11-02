@@ -122,8 +122,9 @@ class FastList:Element,IList {
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
      */
     func spawn(idx:Int)->NSView{
-        let title:String = dataProvider.items[idx]["title"]!
-        let selected:Bool = dataProvider.items[idx]["selected"]!.bool
+        let dpItem = dataProvider.items[idx]
+        let title:String = dpItem["title"]!
+        let selected:Bool = dpItem["selected"]!.bool
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, selected, lableContainer)
         return item
     }
@@ -133,8 +134,9 @@ class FastList:Element,IList {
     func spoof(listItem:(item:Element,idx:Int)){
         let item:Element = listItem.item
         let idx:Int = listItem.idx
-        let title:String = dataProvider.items[idx]["title"]!
-        let selected:Bool = dataProvider.items[idx]["selected"]!.bool
+        let dpItem = dataProvider.items[idx]
+        let title:String = dpItem["title"]!
+        let selected:Bool = dpItem["selected"]!.bool
         (item as! ISelectable).setSelected(selected)
         (item as! SelectTextButton).setTextValue(title)
     }

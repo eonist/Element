@@ -19,6 +19,7 @@ class SliderList:List,ISliderList{
         scroll(self,theEvent)//forward the event to the extension
         super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
     }
+    f
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         ListModifier.scrollTo(self,sliderEvent.progress)
     }

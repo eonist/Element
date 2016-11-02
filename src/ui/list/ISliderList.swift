@@ -5,6 +5,9 @@ protocol ISliderList:IList {
     var sliderInterval:CGFloat?{get}
 }
 extension ISliderList{
+    /**
+     * NOTE: Slider list and SliderFastList uses this method
+     */
     func scroll(sliderList:ISliderList, _ theEvent:NSEvent) {
         let currentScroll:CGFloat = Utils.progress(theEvent.deltaY, sliderList.sliderInterval!, sliderList.slider!.progress)
         ListModifier.scrollTo(sliderList,currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/

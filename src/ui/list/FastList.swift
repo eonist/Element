@@ -133,6 +133,9 @@ class FastList:Element,IList {
      */
     func spoof(listItem:(item:Element,idx:Int)){
         Swift.print("spoof")
+        
+        //Continue here: there are way to many calls to spoof while scrolling, figure it out, we should only call spoof on new items that apear
+        
         let item:Element = listItem.item
         let idx:Int = listItem.idx
         let dpItem = dataProvider.items[idx]

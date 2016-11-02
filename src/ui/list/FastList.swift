@@ -87,7 +87,7 @@ class FastList:Element,IList {
                 surplusItems += visibleItems.removeAtIndex(i)//remove item that falls bellow the bottom limit
                 
                 //only add above if there is something to add above (same for the topLimit)
-                    //assert 
+                    //assert idx of visibleItems.first.idx > 0
                 
                 firstPart.append(reveal(listItem.idx,firstPartY))//place the removed item to the top of the visible items, think lego
                 firstPartY -= itemHeight

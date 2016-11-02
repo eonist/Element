@@ -81,6 +81,8 @@ class FastList:Element,IList {
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
                 
+                //Continue here: try to get the y right, Think
+                
                 firstPart.append(reveal(listItem.idx,y))
                 Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }

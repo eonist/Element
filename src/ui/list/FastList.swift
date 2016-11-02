@@ -47,15 +47,7 @@ class FastList:Element {
         super.resolveSkin()
         for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
-        var y:CGFloat = 0
-        for i in 0...maxVisibleItems{/*we need an extra item to cover the entire*/
-            //visibleItemIndecies.append(i)
-            let item:Element = spawn(i) as! Element
-            visibleItems.append((item,i))
-            itemContainer!.addSubView(item)
-            item.y = y
-            y += itemHeight
-        }
+        
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
@@ -122,6 +114,20 @@ class FastList:Element {
         Utils.hide(listItem.item, false)
         listItem.item.y = y
         return listItem
+    }
+    /**
+     *
+     */
+    func spawn(){
+        var y:CGFloat = 0
+        for i in 0...maxVisibleItems{/*we need an extra item to cover the entire area*/
+            //visibleItemIndecies.append(i)
+            let item:Element = spawn(i) as! Element
+            visibleItems.append((item,i))
+            itemContainer!.addSubView(item)
+            item.y = y
+            y += itemHeight
+        }
     }
     /**
      * PARAM: idx: the index that coorespond to data items (spawn == create something)

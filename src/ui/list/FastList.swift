@@ -26,10 +26,6 @@ typealias ListItem = (item:Element, idx:Int)
 class FastList:Element {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/
-    var items:[NSColor] = []//temp data item storage, we use DataProvider in the future
-    
-    //continue here: get rid of items above
-    
     var itemContainer:Container?/*holds the list items*/
     let maxVisibleItems:Int/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
@@ -48,7 +44,7 @@ class FastList:Element {
         Swift.print("FastList.resolveSkin()")
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         super.resolveSkin()
-        for _ in 0..<20{items.append(NSColor.random)}//Add 20 rects to a list (random colors) 100x50, this represents the items to derive data from
+    
         itemContainer = addSubView(Container(width,height,self,"itemContainer"))
         spawn(0...maxVisibleItems)
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
@@ -119,7 +115,7 @@ class FastList:Element {
         return listItem
     }
     /**
-     *
+     * Creates the init items
      */
     private func spawn(range:Range<Int>){
         var y:CGFloat = 0

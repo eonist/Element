@@ -62,14 +62,14 @@ class List:Element,IList{
     /**
      * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
      */
-    func onUpInside(buttonEvent:ButtonEvent) {
+    func onListItemUpInside(buttonEvent:ButtonEvent) {
         let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         //Swift.print("selectedIndex: " + "\(selectedIndex)")
         ListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
     override func onEvent(event: Event) {
-        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here    
+        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
         else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }

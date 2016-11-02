@@ -92,13 +92,13 @@ class FastList:Element,IList {
             if(idx >= 0 && idx < dataProvider.items.count){//<--avoids adding items when outside the range 0...<items.count, this can happen for instance if you use a RubberBandList
                 //let listItem:ListItem
                 if(firstVisibleIdx != nil && idx < firstVisibleIdx){//basiccally idx is less than firstVisible item, so we spoof a new one and place it at the top of the stack
-                    //Swift.print("prepend (idx < first Visible Item)")
+                    Swift.print("prepend (idx < first Visible Item)")
                     firstPart.append(reveal(idx,y))
                 }else if(lastVisibleIdx != nil && idx > lastVisibleIdx){//basically idx is more than the last visible item
-                    //Swift.print("append (idx > last Visible Item)")
+                    Swift.print("append (idx > last Visible Item)")
                     thirdPart.append(reveal(idx,y))
                 }else if(firstVisibleIdx == nil && lastVisibleIdx == nil){//no pre exisiting items exist,this only happens if no visible items exists
-                    //Swift.print("append")//append
+                    Swift.print("append")//append
                     visibleItems.append(reveal(idx,y))
                 }else{
                     visibleItems[curVisibleItemIdx].item.y = y

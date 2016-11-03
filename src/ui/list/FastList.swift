@@ -141,8 +141,7 @@ class FastList:Element,IList {
     func spawn(idx:Int)->NSView{
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
-        let selected:Bool = dpItem["selected"]!.bool
-        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, selected, lableContainer)
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
         return item
     }
     /**

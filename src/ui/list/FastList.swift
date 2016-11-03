@@ -24,7 +24,7 @@ typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store
 
 
 class FastList:Element,IList {
-    var selectedIdx:Int = 0/*this cooresponds to the index in dp */
+    var selectedIdx:Int?/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/
     var lableContainer:Container?/*holds the list items*/
@@ -164,9 +164,7 @@ class FastList:Element,IList {
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)
-        var selectedDpIdx:Int?
-        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIndex = $0.idx}}
-        selectedIdx = selectedDpIdx
+        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}
         super.onEvent(ListEvent(ListEvent.select,selectedIdx,self))
     }
     override func onEvent(event:Event) {

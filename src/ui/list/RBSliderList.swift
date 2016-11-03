@@ -18,7 +18,7 @@ class RBSliderList:List,IRBSliderList{
         Swift.print("RBSliderList.height: " + "\(height)")
         
         mover = RubberBand(Animation.sharedInstance,setProgress,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
-        mover.event = onEvent/*Add an eventHandler for the mover object*/
+        mover!.event = onEvent/*Add an eventHandler for the mover object*/
         //scrollController = RBScrollController(setProgress,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
         //scrollController!.event = onEvent
         /*slider*/

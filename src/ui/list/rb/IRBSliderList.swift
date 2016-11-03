@@ -1,7 +1,7 @@
 import Cocoa
 
 protocol IRBSliderList:IEventSender{
-    var mover:RubberBand{get}
+    var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:Array<CGFloat>{get set}
 }

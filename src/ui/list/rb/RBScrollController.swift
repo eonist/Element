@@ -21,7 +21,7 @@ class RBScrollController:EventSender{
         //self.view = view
         mover = RubberBand(Animation.sharedInstance,callBack,frame,itemRect)
         super.init()
-        mover.event = onEvent/*Add an eventHandler for the mover object*/
+        //mover.event = onEvent/*Add an eventHandler for the mover object*/
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
@@ -84,8 +84,10 @@ class RBScrollController:EventSender{
         }
         super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
+    /*
     override func onEvent(event:Event) {
         //Swift.print("RBScrollController.onEvent()")
         super.onEvent(event)
     }
+    */
 }

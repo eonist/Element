@@ -4,8 +4,11 @@ import Cocoa
  * TODO: make the top and bottom values when scrolling absolutly pinned to 0 and 1. There should be a final tick that cooresponds to these values in the Mover class
  * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
  */
-class RBSliderList:List {
-    var scrollController:RBScrollController?
+class RBSliderList:List,IRBSliderList{
+    var mover:RubberBand
+    var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
+    var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
+    //var scrollController:RBScrollController?
     var slider:VSlider?
     private var sliderInterval:CGFloat?
     var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
@@ -13,8 +16,8 @@ class RBSliderList:List {
         super.resolveSkin()
         Swift.print("RBSliderList.width: " + "\(width)")
         Swift.print("RBSliderList.height: " + "\(height)")
-        scrollController = RBScrollController(setProgress,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
-        scrollController!.event = onEvent
+        //scrollController = RBScrollController(setProgress,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
+        //scrollController!.event = onEvent
         /*slider*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))

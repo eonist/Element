@@ -74,9 +74,9 @@ class FastList:Element,IList {
         /*idx*/
         let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
         Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        var firstPartIdx:Int = visibleItems.count > 0 ? visibleItems.first!.idx - 1 : firstItemIndex
-        var thirdPartIdx:Int = visibleItems.count > 0 ? visibleItems.last!.idx + 1 : firstItemIndex
-        /*limits*/
+        var firstPartIdx:Int = visibleItems.count > 0 ? visibleItems.first!.idx - 1 : firstItemIndex//we need to set the idx to the correct one
+        var thirdPartIdx:Int = visibleItems.count > 0 ? visibleItems.last!.idx + 1 : firstItemIndex//what do we base the idx on when we go from 0.1 to 0.6 and have to visibleItems to calc the idx
+        /*Limits*/
         let topLimit:CGFloat = /*listY*/ -itemHeight
         Swift.print("topLimit: " + "\(topLimit)")
         let bottomLimit:CGFloat = /*listY+*/ height
@@ -90,14 +90,9 @@ class FastList:Element,IList {
                 surplusItems += visibleItems.removeAtIndex(i)//remove item that falls above the top limit
                 //place the removed item to the bottom of the visible items
                 if(visibleItems.count > 0 && visibleItems.last.idx <= visibleItems.first.idx + maxViewableItems){
-                    
-                    //2 problems: 
-                        //we need to set the idx to the correct one on the bellow line
-                        //what do we base the idx on when we go from 0.1 to 0.6 and have to visibleItems to calc the idx 
-                            //similar to how we did thirdPartY, we make thirdPartIdx see legacy code on how to get the idx with modulo
-                    
-                    thirdPart.append(reveal(listItem.idx,thirdPartY))
+                    thirdPart.append(reveal(thirdPartIdx,thirdPartY))
                     thirdPartY += itemHeight//we stack under the last one appended
+                    thirdPartIdx--
                 }
                 
                 //Swift.print("visibleItems.count: " + "\(visibleItems.count)")

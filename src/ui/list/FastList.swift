@@ -106,12 +106,16 @@ class FastList:Element,IList {
         //Stage.2: stack items to cover the visible area
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last.idx : nil
+        var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{
             let itemIdx:Int = firstItemIndex + i
-            if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){
+            if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
                 firstPart.append(reveal(itemIdx,y))
-            }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){
+            }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
                 thirdPart.append(reveal(itemIdx,y))
+            }else{//item is
+                visibleItems[visibleItemIdx]
+                visibleItemIdx++
             }
             //continue here: add the else clause and test
             y += itemHeight

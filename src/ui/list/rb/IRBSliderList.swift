@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol IRBSliderList {
+protocol IRBSliderList:IEventSender{
     var mover:RubberBand{get}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:Array<CGFloat>{get set}
@@ -46,7 +46,7 @@ extension IRBSliderList{
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover.isDirectlyManipulating = true/*toggle to directManipulationMode*/
         velocities = [0,0,0,0,0,0,0,0,0,0]/*reset the velocities*/
-        super.onEvent(ScrollWheelEvent(ScrollWheelEvent.enter,self))
+        onEvent(ScrollWheelEvent(ScrollWheelEvent.enter,self))
     }
     /**
      * NOTE: Basically when you release your scrollWheel gesture
@@ -64,8 +64,8 @@ extension IRBSliderList{
             mover.start()//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
             mover.start()//this needs to start if your in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
-            super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exitAndStationary,self))
+            onEvent(ScrollWheelEvent(ScrollWheelEvent.exitAndStationary,self))
         }
-        super.onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
+        onEvent(ScrollWheelEvent(ScrollWheelEvent.exit,self))
     }
 }

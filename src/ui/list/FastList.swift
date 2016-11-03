@@ -108,8 +108,10 @@ class FastList:Element,IList {
         for var i = 0; i < len; ++i{
             if(visibleItems.count == 0){
                 firstPart.append(reveal(firstItemIndex+i,topY))
-            }else if(){
-                //continue here
+            }else if(firstPart.count > 0 && firstPart.first.idx > 0){
+                firstPart.prepend(reveal(firstPart.first.idx-1,firstPart.first.item.y - itemHeight))
+            }else if(thirdPart.last.idx < dataProvider.items.count){
+                
             }
         }
         /*

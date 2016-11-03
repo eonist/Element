@@ -15,11 +15,6 @@ import Cocoa
  * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
  */
 
-
-//The bug was that the height was 73 and spoofing was triggered according to itemHeight vs itemsHeight in conjunction with modulo
-//So roll back to around 17:00 o clock or try to implement the simpler 1 loop setProgress method, basinc calculations on modulo wasn't the best idea anyway
-
-
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
 class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
@@ -38,7 +33,7 @@ class FastList:Element,IList {
         
     }
     override func resolveSkin() {
-        Swift.print("FastList.resolveSkin()")        
+        Swift.print("FastList.resolveSkin()")
         super.resolveSkin()
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         Swift.print("FastList.height: " + "\(height)")
@@ -71,11 +66,11 @@ class FastList:Element,IList {
             let listItem:ListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
             if(virtualY <= topLimit){/*above top limit*/
-                Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
+                //Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else if(virtualY >= bottomLimit){
-                Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
+                //Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else{
@@ -145,7 +140,7 @@ class FastList:Element,IList {
      * Applies data to items (spoof == reuse)
      */
     func spoof(listItem:(item:Element,idx:Int)){
-        Swift.print("spoof")
+        //Swift.print("spoof")
         let item:Element = listItem.item
         let idx:Int = listItem.idx
         let dpItem = dataProvider.items[idx]

@@ -107,6 +107,7 @@ class FastList:Element,IList {
         let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area
         for var i = 0; i < len; ++i{
             if(visibleItems.count == 0){
+                firstPart.append(reveal(firstItemIndex+i,topY))
                 
             }
         }

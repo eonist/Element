@@ -110,7 +110,7 @@ class FastList:Element,IList {
                 firstPart.append(reveal(firstItemIndex+i,topY))
             }else if(firstPart.count > 0 && firstPart.first.idx > 0){
                 firstPart.prepend(reveal(firstPart.first.idx-1,firstPart.first.item.y - itemHeight))
-            }else if(thirdPart.last.idx < dataProvider.items.count){
+            }else if(thirdPart.count > 0 && thirdPart.last.idx < dataProvider.items.count){
                 
             }
         }

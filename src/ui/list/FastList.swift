@@ -88,6 +88,7 @@ class FastList:Element,IList {
         //THe concept is simple, you only show items that are within the limits as you scroll up and down. (these items only exists virtually, untill they are revealed if they are within the limits)
         //With these to rules: you should be able to create the algorithm that lay out items at a progress value
         //Stage.1: Remove items outside Limits
+        //Stage.2: stack items to cover the visible area
         for var i = 0; i < visibleItems.count; ++i{
             let listItem:ListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
@@ -95,28 +96,34 @@ class FastList:Element,IList {
                 Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
+                //stack items to the bottom
+                var newIdx:Int = firstPart
+                var newY:CGFloat = 0
+                firstPart.prepend(reveal(newIdx,newY))
             }else if(virtualY >= bottomLimit){
                 Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
-            }else{
-                Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
-            }
-        }
-        //Stage.2: stack items to cover the visible area
-        let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area
-        for var i = 0; i < len; ++i{
-            if(visibleItems.count == 0){//stack items to the bottom
-                firstPart.append(reveal(firstItemIndex+i,topY))
-                topY += itemHeight//IMPORTANT: it's imp that firstItemIndex and topY is in sync, or things will stutter
-            }else if(visibleItems.last.item.y <= bottomLimit){//stack item on top
-                var newIdx:Int = firstPart
-                var newY:CGFloat = 0
-                firstPart.prepend(reveal(newIdx,newY))
-            }else if(){//stack item to the bottom
+                //stack item to the bottom
                 var newIdx:Int = 0
                 var newY:CGFloat = 0
                 thirdPart.append(reveal(newIdx,newY))
+            }else{
+                Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
+                listItem.item.y = y
+                y += itemHeight
+            }
+        }
+        
+        let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area
+        for var i = 0; i < len; ++i{
+            if(visibleItems.count == 0){
+                firstPart.append(reveal(firstItemIndex+i,topY))
+                topY += itemHeight//IMPORTANT: it's imp that firstItemIndex and topY is in sync, or things will stutter
+            }else if(visibleItems.last.item.y <= bottomLimit){//stack item on top
+                
+            }else if(){
+                
             }
         }
         /*

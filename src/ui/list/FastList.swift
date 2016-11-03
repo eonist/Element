@@ -167,7 +167,7 @@ class FastList:Element,IList {
         var selectedDpIdx:Int?
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIndex = $0.idx}}
         selectedIdx = selectedDpIdx
-        super.onEvent(ListEvent(ListEvent.select,selectedIndex!,self))
+        super.onEvent(ListEvent(ListEvent.select,selectedIdx,self))
     }
     override func onEvent(event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here

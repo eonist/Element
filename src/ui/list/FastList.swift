@@ -19,7 +19,7 @@ typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store
 class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
-    var dataProvider:DataProvider/*data stoarge*/
+    var dataProvider:DataProvider/*data storage*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
@@ -32,7 +32,6 @@ class FastList:Element,IList {
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
-        
     }
     override func resolveSkin() {
         Swift.print("FastList.resolveSkin()")

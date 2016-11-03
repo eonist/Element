@@ -15,9 +15,7 @@ import Cocoa
  * TODO: test if resize works, by spawning new items etc
  * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
  */
-
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
-
 class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/

@@ -4,6 +4,9 @@ protocol IRBSliderList:class{
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:Array<CGFloat>{get set}
+    func scrollWheelEnter()
+    func scrollWheelExit()
+    func scrollWheelExitedAndIsStationary()
 }
 extension IRBSliderList{
     /**
@@ -41,8 +44,8 @@ extension IRBSliderList{
     func onScrollWheelEnter(){
         //Swift.print("onScrollWheelDown")
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
-        mover.stop()
-        mover.hasStopped = true/*set the stop flag to true*/
+        mover!.stop()
+        mover!.hasStopped = true/*set the stop flag to true*/
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover.isDirectlyManipulating = true/*toggle to directManipulationMode*/
         velocities = [0,0,0,0,0,0,0,0,0,0]/*reset the velocities*/

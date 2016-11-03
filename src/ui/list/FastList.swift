@@ -104,14 +104,14 @@ class FastList:Element,IList {
             }
         }
         //Stage.2: stack items to cover the visible area
+        let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first.idx : nil
+        let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last.idx : nil
         for var i = 0; i < maxVisibleItems; ++i{
             let itemIdx:Int = firstItemIndex + i
-            var visibleItem:ListItem? = nil
-            visibleItems.forEach{if(itemIdx == $0.idx){visibleItem = $0}}
-            if(visibleItem != nil){visibleItem.item.y = y}
-            else{
+            if(){
                 
             }
+            //thirdPart.append(reveal(thirdPartIdx,thirdPartY))
             y += itemHeight
         }
         

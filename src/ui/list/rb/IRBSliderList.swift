@@ -1,5 +1,8 @@
 import Foundation
 
-class IRBSliderList {
+protocol IRBSliderList {
 
+}
+extension IRBSliderList{
+    
 }

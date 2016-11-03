@@ -7,7 +7,6 @@ protocol IRBSliderList:class{
     func scrollWheelEnter()
     func scrollWheelExit()
     func scrollWheelExitedAndIsStationary()
-    func scrollWheelChange()
 }
 extension IRBSliderList{
     /**
@@ -19,11 +18,11 @@ extension IRBSliderList{
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
-            case NSEventPhase.Changed:scrollWheelChange(theEvent)/*fires everytime there is direct scrollWheel gesture movment.*/
-            case NSEventPhase.MayBegin:scrollWheelEnter()/*can be used to detect if two fingers are touching the trackpad*/
-            case NSEventPhase.Began:scrollWheelEnter()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
-            case NSEventPhase.Ended:scrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
-            case NSEventPhase.Cancelled:scrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
+            case NSEventPhase.Changed:onScrollWheelChange(theEvent)/*fires everytime there is direct scrollWheel gesture movment.*/
+            case NSEventPhase.MayBegin:onScrollWheelEnter()/*can be used to detect if two fingers are touching the trackpad*/
+            case NSEventPhase.Began:onScrollWheelEnter()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
+            case NSEventPhase.Ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
+            case NSEventPhase.Cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
             case NSEventPhase.None:break;
             default:break;
         }
@@ -32,7 +31,7 @@ extension IRBSliderList{
     /**
      * Basically when you perform a scroll-gesture on the touch-pad
      */
-    func scrollWheelChange(theEvent:NSEvent){
+    func onScrollWheelChange(theEvent:NSEvent){
         //Swift.print("changed")
         prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
@@ -42,7 +41,7 @@ extension IRBSliderList{
     /**
      * NOTE: basically when you enter your scrollWheel gesture
      */
-    func scrollWheelEnter(){
+    func onScrollWheelEnter(){
         //Swift.print("onScrollWheelDown")
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover!.stop()
@@ -50,12 +49,12 @@ extension IRBSliderList{
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover!.isDirectlyManipulating = true/*toggle to directManipulationMode*/
         velocities = [0,0,0,0,0,0,0,0,0,0]/*reset the velocities*/
-        
+        scrollWheelEnter()
     }
     /**
      * NOTE: Basically when you release your scrollWheel gesture
      */
-    func scrollWheelExit(){
+    func onScrollWheelExit(){
         //Swift.print("onScrollWheelUp")
         mover!.hasStopped = false/*reset this value to false, so that the FrameAnimatior can start again*/
         mover!.isDirectlyManipulating = false

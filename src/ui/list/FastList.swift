@@ -110,7 +110,7 @@ class FastList:Element,IList {
             //one of the problems with having only 1 loop is how do we get the y for the items that are within the limits?
                 //we cant use the virtualY, because it may be off by a little
                 //its easier to set y values when you have the final array
-                    //or you could base the values on 
+                    //or you could base the values on topY if ...
         
         
         let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area

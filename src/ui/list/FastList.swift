@@ -162,10 +162,11 @@ class FastList:Element,IList {
      * This is called when a item in the lableContainer has send the ButtonEvent.upInside event
      */
     func onListItemUpInside(buttonEvent:ButtonEvent) {
-        var selectedIndex:Int?
+        let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
+        ListModifier.selectAt(self,viewIndex)
+        var selectedDpIdx:Int?
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIndex = $0.idx}}
-        Swift.print("selectedIndex: " + "\(selectedIndex)")
-        FastListModifier.select(self,selectedIndex!,true)
+        selectedIdx = selectedDpIdx
         super.onEvent(ListEvent(ListEvent.select,selectedIndex!,self))
     }
     override func onEvent(event:Event) {

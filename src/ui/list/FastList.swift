@@ -12,6 +12,7 @@ import Cocoa
  * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self
  * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
  * TODO: test if resize works, by spawning new items etc
+ * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
  */
 
 

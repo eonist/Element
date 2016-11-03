@@ -102,6 +102,7 @@ class FastList:Element,IList {
                 if(firstPartIdx >= 0){//only add above if there is something to add above (same for the topLimit), assert idx of visibleItems.first.idx > 0
                     firstPart.prepend(reveal(firstPartIdx,firstPartY))//place the removed item to the top of the visible items, think lego
                     firstPartY -= itemHeight//We stack on top of the last appended
+                    firstPartIdx--
                 }
                 //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else{//we also need to move items that ar within the limit

@@ -83,6 +83,7 @@ class FastList:Element,IList {
         Swift.print("bottomLimit: " + "\(bottomLimit)")
         
         //Maybe we should try to loop over maxVisibleItemsCount instead?!?
+            //or re-think it?
         
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]

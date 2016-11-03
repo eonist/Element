@@ -64,11 +64,11 @@ class FastList:Element,IList {
         //Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
         let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         Swift.print("topY: " + "\(topY)")
-        var y:CGFloat = topY//
+
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        var firstPartY:CGFloat = y-itemHeight//visibleItems.first!.item.y - itemHeight
-        var thirdPartY:CGFloat = visibleItems.last!.item.y
+        var firstPartY:CGFloat = visibleItems.count > 0 ? visibleItems.first!.item.y - itemHeight : topY
+        var thirdPartY:CGFloat = visibleItems.count > 0 ? visibleItems.last!.item.y + itemHeight : topY
         let topLimit:CGFloat = /*listY*/ -itemHeight
         Swift.print("topLimit: " + "\(topLimit)")
         let bottomLimit:CGFloat = /*listY+*/ height

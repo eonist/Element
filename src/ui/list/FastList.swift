@@ -113,11 +113,10 @@ class FastList:Element,IList {
                 firstPart.append(reveal(itemIdx,y))
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
                 thirdPart.append(reveal(itemIdx,y))
-            }else{//item is
-                visibleItems[visibleItemIdx]
+            }else{//item is visibleItem
+                visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++
             }
-            //continue here: add the else clause and test
             y += itemHeight
         }
         

@@ -1,14 +1,5 @@
 import Cocoa
 
-//Continue here:
-    //Add support for Selected state for items in FastList, when you spoof you should assert selectedness, probably store selectedness in dataprovider
-        //Seems slower now (figure out why, The SliderList is still fast) do some logging
-            //it was the setSelected method that slowed things down. 
-            //Also there are way to many calls to spoof while scrolling, figure it out
-        //store selected index in another place than dataProvider, as setting and unsetting 1000's of times when you perform a click isnt good. 
-        //Rather store the prevSelected and curSelected and only alter these values in the dp
-    //test the FastList with rubberband
-    //test the FastList with 1000's of items
 class SliderFastList:FastList,ISliderList {
     var slider:VSlider?
     var sliderInterval:CGFloat?

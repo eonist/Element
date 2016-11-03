@@ -5,7 +5,7 @@ import Cocoa
  * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
  */
 class RBSliderList:List,IRBSliderList{
-    var mover:RubberBand
+    var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
     //var scrollController:RBScrollController?
@@ -16,6 +16,9 @@ class RBSliderList:List,IRBSliderList{
         super.resolveSkin()
         Swift.print("RBSliderList.width: " + "\(width)")
         Swift.print("RBSliderList.height: " + "\(height)")
+        CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self))
+        mover = RubberBand(Animation.sharedInstance,callBack,frame,itemRect)
+        mover.event = onEvent/*Add an eventHandler for the mover object*/
         //scrollController = RBScrollController(setProgress,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
         //scrollController!.event = onEvent
         /*slider*/

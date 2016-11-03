@@ -109,6 +109,7 @@ class FastList:Element,IList {
             if(visibleItems.count == 0){
                 firstPart.append(reveal(firstItemIndex+i,topY))
             }else if(visibleItems.last.idx < dataProvider.items.count && visibleItems.last.item.y <= bottomLimit){
+                
                 thirdPart.append(reveal(firstPart.first.idx-1,firstPart.first.item.y - itemHeight))
             }
         }

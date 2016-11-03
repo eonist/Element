@@ -27,11 +27,10 @@ extension IRBSliderList{
             default:break;
         }
     }
-    
     /**
      * Basically when you perform a scroll-gesture on the touch-pad
      */
-    func onScrollWheelChange(theEvent:NSEvent){
+    private func onScrollWheelChange(theEvent:NSEvent){
         //Swift.print("changed")
         prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
@@ -41,7 +40,7 @@ extension IRBSliderList{
     /**
      * NOTE: basically when you enter your scrollWheel gesture
      */
-    func onScrollWheelEnter(){
+    private func onScrollWheelEnter(){
         //Swift.print("onScrollWheelDown")
         //Swift.print("view.animators.count: " + "\(view.animators.count)")
         mover!.stop()
@@ -54,7 +53,7 @@ extension IRBSliderList{
     /**
      * NOTE: Basically when you release your scrollWheel gesture
      */
-    func onScrollWheelExit(){
+    private func onScrollWheelExit(){
         //Swift.print("onScrollWheelUp")
         mover!.hasStopped = false/*reset this value to false, so that the FrameAnimatior can start again*/
         mover!.isDirectlyManipulating = false

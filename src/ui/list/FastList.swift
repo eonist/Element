@@ -86,7 +86,8 @@ class FastList:Element,IList {
                     
                     //2 problems: 
                         //we need to set the idx to the correct one on the bellow line
-                        //
+                        //what do we base the idx on when we go from 0.1 to 0.6 and have to visibleItems to calc the idx 
+                            //similar to how we did thirdPartY, we make thirdPartIdx see legacy code on how to get the idx with modulo
                     
                     thirdPart.append(reveal(listItem.idx,thirdPartY))
                     thirdPartY += itemHeight//we stack under the last one appended

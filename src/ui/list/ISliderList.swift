@@ -9,12 +9,12 @@ extension ISliderList{
     /**
      * NOTE: Slider list and SliderFastList uses this method
      */
-    func scroll(sliderList:ISliderList, _ theEvent:NSEvent) {
-        let progress:CGFloat = Utils.progress(theEvent.deltaY, sliderList.sliderInterval!, sliderList.slider!.progress)
+    func scroll(theEvent:NSEvent) {
+        let progress:CGFloat = Utils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
         setProgress(progress) /*Sets the target item to correct y, according to the current scrollBar progress*/
-        sliderList.slider?.setProgressValue(progress)
-        if(theEvent.momentumPhase == NSEventPhase.Ended){sliderList.slider!.thumb!.setSkinState("inActive")}
-        else if(theEvent.momentumPhase == NSEventPhase.Began){sliderList.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
+        self.slider?.setProgressValue(progress)
+        if(theEvent.momentumPhase == NSEventPhase.Ended){self.slider!.thumb!.setSkinState("inActive")}
+        else if(theEvent.momentumPhase == NSEventPhase.Began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
     }
 }
 private class Utils{

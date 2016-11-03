@@ -16,7 +16,7 @@ class SliderList:List,ISliderList{
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent:NSEvent) {
-        scroll(self,theEvent)//forward the event to the extension
+        scroll(theEvent)//forward the event to the extension
         super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
     }
     func setProgress(progress:CGFloat){

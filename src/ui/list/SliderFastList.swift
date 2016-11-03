@@ -11,7 +11,7 @@ class SliderFastList:FastList,ISliderList {
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
     }
     override func scrollWheel(theEvent:NSEvent) {
-        scroll(self,theEvent)//forward the event to the extension
+        scroll(theEvent)//forward the event to the extension
         super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
     }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/

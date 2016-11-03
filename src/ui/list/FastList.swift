@@ -9,6 +9,7 @@ import Cocoa
  * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
  * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
  * NOTE: to debug you can: remove the mask and use an outline that is above the itemContainer
+ * NOTE: FastList supports select and unSelect w/o querrying dataProvider as dp is cpu intensive
  * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self
  * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
  * TODO: test if resize works, by spawning new items etc
@@ -16,12 +17,6 @@ import Cocoa
  */
 
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
-
-//Make FastList support select and unSelect w/o querrying dataProvider as dp is cpu intensive
-    //selectedIdx:Int = 0/*this cooresponds to the index in dp */
-    //onButtonUpInside -> unSelect all other visibleItems
-        //set selectedIdx
-
 
 class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the index in dp */
@@ -162,7 +157,7 @@ class FastList:Element,IList {
      */
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
-        ListModifier.selectAt(self,viewIndex)
+        ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))//probably use FastListEvent here in the future
     }

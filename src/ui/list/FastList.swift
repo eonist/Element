@@ -85,7 +85,7 @@ class FastList:Element,IList {
         //Maybe we should try to loop over maxVisibleItemsCount instead?!?
             //or re-think it?
         
-        
+        //THe concept is simple, you only show items that are within the limits as you scroll up and down. (these items only exists virtually, untill they are revealed if they are within the limits)
         //With these to rules: you should be able to create the algorithm that lay out items at a progress value
             //Stage.1: Remove items outside Limits
             //Stage.2: stack items to cover the visible area

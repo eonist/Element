@@ -82,7 +82,7 @@ class FastList:Element,IList {
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)//remove item that falls above the top limit
                 //place the removed item to the bottom of the visible items
-                if(visibleItems.count > 0 && visibleItems.last.idx < visibleItems.count){
+                if(visibleItems.count > 0 && visibleItems.last.idx < visibleItems.first.idx + maxViewableItems){
                     thirdPart.append(reveal(listItem.idx,thirdPartY))
                     thirdPartY += itemHeight//we stack under the last one appended
                 }

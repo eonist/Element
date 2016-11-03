@@ -62,6 +62,9 @@ class FastList:Element,IList {
         //Swift.print("listY: " + "\(listY)")
         //var i:Int = 0/*<--we can't use "for in" loop here because we alter visibleItems as we iterate,forEach works but while seems more apropriate,c-style for loop is the intention but is going away in swift3*/
         //Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
+        let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
+        Swift.print("topY: " + "\(topY)")
+        var y:CGFloat = topY//
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         var firstPartY:CGFloat = visibleItems.first!.item.y - itemHeight

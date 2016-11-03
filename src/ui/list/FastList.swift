@@ -64,7 +64,7 @@ class FastList:Element,IList {
         //Swift.print("pre visibleItems.count: " + "\(visibleItems.count)")
         let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         Swift.print("topY: " + "\(topY)")
-
+        var y:CGFloat = topY
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         var firstPartY:CGFloat = visibleItems.count > 0 ? visibleItems.first!.item.y - itemHeight : topY
@@ -93,7 +93,8 @@ class FastList:Element,IList {
                 //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             }else{//we also need to move items that ar within the limit
                 Swift.print("item: \(listItem.idx) is within at: \(listItemY)")
-                listItem.item.y = listItemY
+                listItem.item.y = y
+                y += itemHeight
             }
         }
         visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/

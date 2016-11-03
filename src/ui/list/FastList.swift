@@ -155,7 +155,7 @@ class FastList:Element,IList {
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
-        (item as! ISelectable).setSelected(selected)
+        if((item as! ISelectable).selected != selected){ (item as! ISelectable).setSelected(selected)}
         (item as! SelectTextButton).setTextValue(title)
     }
     /**

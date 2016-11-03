@@ -85,9 +85,24 @@ class FastList:Element,IList {
         //Maybe we should try to loop over maxVisibleItemsCount instead?!?
             //or re-think it?
         
-        //Stage.1: Remove items outside Limits
-        //Stage.2: stack items to cover the visible area
         
+        //With these to rules: you should be able to create the algorithm that lay out items at a progress value
+            //Stage.1: Remove items outside Limits
+            //Stage.2: stack items to cover the visible area
+        for var i = 0; i < maxVisibleItemsCount; ++i{
+            if(i < visibleItems.count){
+                let listItem:ListItem = visibleItems[i]
+                let virtualY:CGFloat = listItem.idx*itemHeight - listY
+                if(listItemY <= topLimit){/*above top limit*/
+                    
+                }else{
+                    
+                }
+            }else{
+                
+            }
+            
+        }
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.idx*itemHeight - listY //this is the relative y aka: virtualY (we need to assert against virtualY because progress can in theory jump from 0.1 to 0.6)

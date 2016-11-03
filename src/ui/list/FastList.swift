@@ -106,6 +106,7 @@ class FastList:Element,IList {
                 }
             }
             
+            
         }
         /*
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/

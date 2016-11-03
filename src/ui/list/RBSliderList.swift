@@ -32,6 +32,9 @@ class RBSliderList:List {
         slider!.setProgressValue(progressValue!)
         //Swift.print("setProgressValue.end")
     }
+    /**
+     * NOTE: this method overides the Native NSView scrollWheel method
+     */
     override func scrollWheel(theEvent:NSEvent) {
         scrollController!.scrollWheel(theEvent)//forward the event to the scrollController
         if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/

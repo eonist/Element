@@ -21,7 +21,7 @@ typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store
     //selectedIdx:Int = 0/*this cooresponds to the index in dp */
     //onButtonUpInside -> unSelect all other visibleItems
         //set selectedIdx
-        
+
 
 class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
@@ -29,8 +29,9 @@ class FastList:Element,IList {
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
-    var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
+    var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
+    
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/

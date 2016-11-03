@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol IRBSliderList:IEventSender{
+protocol IRBSliderList:class{
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:Array<CGFloat>{get set}
@@ -32,8 +32,8 @@ extension IRBSliderList{
         //Swift.print("changed")
         prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
-        mover.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
-        mover.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
+        mover!.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
+        mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
     }
     /**
      * NOTE: basically when you enter your scrollWheel gesture

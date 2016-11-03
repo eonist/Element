@@ -93,16 +93,17 @@ class FastList:Element,IList {
             if(i < visibleItems.count){
                 let listItem:ListItem = visibleItems[i]
                 let virtualY:CGFloat = listItem.idx*itemHeight - listY
-                if(listItemY <= topLimit){/*above top limit*/
-                    
-                }else{
-                    
+                if(virtualY <= topLimit){/*above top limit*/
+                    Utils.hide(listItem.item, true)
+                    surplusItems += visibleItems.removeAtIndex(i)
+                }else if(virtualY >= bottomLimit){
+                    Utils.hide(listItem.item, true)
+                    surplusItems += visibleItems.removeAtIndex(i)
                 }
-            }else{
-                
             }
             
         }
+        /*
         for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
             let listItem:ListItem = visibleItems[i]
             let listItemY:CGFloat = listItem.idx*itemHeight - listY //this is the relative y aka: virtualY (we need to assert against virtualY because progress can in theory jump from 0.1 to 0.6)
@@ -133,6 +134,7 @@ class FastList:Element,IList {
                 y += itemHeight
             }
         }
+        */
         visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/
     }
     /**

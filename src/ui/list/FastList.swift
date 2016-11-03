@@ -106,7 +106,7 @@ class FastList:Element,IList {
         //Stage.2: stack items to cover the visible area
         let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area
         for var i = 0; i < len; ++i{
-            if(visibleItems.count == 0){
+            if(visibleItems.count == 0){//stack items to the bottom
                 firstPart.append(reveal(firstItemIndex+i,topY))
                 topY += itemHeight
             }else if(visibleItems.last.item.y <= bottomLimit){//stack item on top

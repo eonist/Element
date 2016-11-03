@@ -69,13 +69,13 @@ class FastList:Element,IList {
         var y:CGFloat = topY
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        var firstPartY:CGFloat = visibleItems.count > 0 ? visibleItems.first!.item.y - itemHeight : topY
-        var thirdPartY:CGFloat = visibleItems.count > 0 ? visibleItems.last!.item.y + itemHeight : topY
+        //var firstPartY:CGFloat = visibleItems.count > 0 ? visibleItems.first!.item.y - itemHeight : topY
+        //var thirdPartY:CGFloat = visibleItems.count > 0 ? visibleItems.last!.item.y + itemHeight : topY
         /*idx*/
         let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
         Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        var firstPartIdx:Int = visibleItems.count > 0 ? visibleItems.first!.idx - 1 : firstItemIndex//we need to set the idx to the correct one
-        var thirdPartIdx:Int = visibleItems.count > 0 ? visibleItems.last!.idx + 1 : firstItemIndex//what do we base the idx on when we go from 0.1 to 0.6 and have to visibleItems to calc the idx
+        //var firstPartIdx:Int = visibleItems.count > 0 ? visibleItems.first!.idx - 1 : firstItemIndex//we need to set the idx to the correct one
+        //var thirdPartIdx:Int = visibleItems.count > 0 ? visibleItems.last!.idx + 1 : firstItemIndex//what do we base the idx on when we go from 0.1 to 0.6 and have to visibleItems to calc the idx
         /*Limits*/
         let topLimit:CGFloat = /*listY*/ -itemHeight
         Swift.print("topLimit: " + "\(topLimit)")
@@ -104,8 +104,8 @@ class FastList:Element,IList {
             }
         }
         //Stage.2: stack items to cover the visible area
-        let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first.idx : nil
-        let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last.idx : nil
+        let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
+        let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{
             let itemIdx:Int = firstItemIndex + i

@@ -32,16 +32,13 @@ class FastList:Element,IList {
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
-        
-        
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
-        //layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
+        layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
         
     }
     override func resolveSkin() {
-        Swift.print("FastList.resolveSkin()")
-        
+        Swift.print("FastList.resolveSkin()")        
         super.resolveSkin()
         Swift.print("itemsHeight: " + "\(itemsHeight)")
         Swift.print("FastList.height: " + "\(height)")

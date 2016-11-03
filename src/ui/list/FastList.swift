@@ -89,16 +89,20 @@ class FastList:Element,IList {
         //With these to rules: you should be able to create the algorithm that lay out items at a progress value
             //Stage.1: Remove items outside Limits
             //Stage.2: stack items to cover the visible area
-        for var i = 0; i < maxVisibleItemsCount; ++i{
+        for var i = 0; i < maxVisibleItems; ++i{
             if(i < visibleItems.count){
                 let listItem:ListItem = visibleItems[i]
                 let virtualY:CGFloat = listItem.idx*itemHeight - listY
                 if(virtualY <= topLimit){/*above top limit*/
+                    Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
                     Utils.hide(listItem.item, true)
                     surplusItems += visibleItems.removeAtIndex(i)
                 }else if(virtualY >= bottomLimit){
+                    Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
                     Utils.hide(listItem.item, true)
                     surplusItems += visibleItems.removeAtIndex(i)
+                }else{
+                    Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
                 }
             }
             

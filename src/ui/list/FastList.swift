@@ -106,7 +106,13 @@ class FastList:Element,IList {
         //Stage.2: stack items to cover the visible area
         for var i = 0; i < maxVisibleItems; ++i{
             let itemIdx:Int = firstItemIndex + i
-            
+            let itemExists:Bool = false
+            visibleItems.forEach{
+                if(itemIdx == $0.idx){itemExists = true}
+            }
+            if(itemExists){
+                visi
+            }
         }
         
         //continue here: 

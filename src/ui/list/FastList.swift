@@ -66,21 +66,10 @@ class FastList:Element,IList {
     func setProgress(progress:CGFloat){
         let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
         //Swift.print("listY: " + "\(listY)")
-        
-        let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
-        Swift.print("topY: " + "\(topY)")
-        var y:CGFloat = topY
-        var firstPart:[ListItem] = []
-        var thirdPart:[ListItem] = []
-        /*idx*/
-        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
-        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
-        /*Limits*/
         let topLimit:CGFloat = /*listY*/ -itemHeight
-        Swift.print("topLimit: " + "\(topLimit)")
+        //Swift.print("topLimit: " + "\(topLimit)")
         let bottomLimit:CGFloat = /*listY+*/ height
-        Swift.print("bottomLimit: " + "\(bottomLimit)")
-        
+        //Swift.print("bottomLimit: " + "\(bottomLimit)")
         for var i = 0; i < visibleItems.count; ++i{
             let listItem:ListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
@@ -96,6 +85,13 @@ class FastList:Element,IList {
                 Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
             }
         }
+        let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
+        //Swift.print("topY: " + "\(topY)")
+        var y:CGFloat = topY
+        var firstPart:[ListItem] = []
+        var thirdPart:[ListItem] = []
+        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
+        //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0

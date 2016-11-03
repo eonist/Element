@@ -21,7 +21,7 @@ class RBScrollController:EventSender{
         //self.view = view
         mover = RubberBand(Animation.sharedInstance,callBack,frame,itemRect)
         super.init()
-        //mover.event = onEvent/*Add an eventHandler for the mover object*/
+        mover.event = onEvent/*Add an eventHandler for the mover object*/
     }
     /**
      * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.

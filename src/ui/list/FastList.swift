@@ -82,7 +82,7 @@ class FastList:Element,IList {
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else{
-                Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
+                //Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
             }
         }
         let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY

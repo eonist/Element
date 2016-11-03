@@ -108,68 +108,15 @@ class FastList:Element,IList {
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last.idx : nil
         for var i = 0; i < maxVisibleItems; ++i{
             let itemIdx:Int = firstItemIndex + i
-            if(){
-                
+            if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){
+                firstPart.append(reveal(itemIdx,y))
+            }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){
+                thirdPart.append(reveal(itemIdx,y))
             }
-            //thirdPart.append(reveal(thirdPartIdx,thirdPartY))
+            //
             y += itemHeight
         }
         
-        //continue here: 
-            //one of the problems with having only 1 loop is how do we get the y for the items that are within the limits?
-                //we cant use the virtualY, because it may be off by a little
-                //its easier to set y values when you have the final array
-                    //or you could base the values on topY if there is no items in firstPart
-                        //or you could just have a second loop and have simple easy to debug code!?!?
-        
-        
-        let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area
-        for var i = 0; i < len; ++i{
-            if(visibleItems.count == 0){//stack items to the bottom
-                firstPart.append(reveal(firstItemIndex+i,topY))
-                topY += itemHeight//IMPORTANT: it's imp that firstItemIndex and topY is in sync, or things will stutter
-            }else if(visibleItems.last.item.y <= bottomLimit){//stack item on top
-                var newIdx:Int = firstPart
-                var newY:CGFloat = 0
-                firstPart.prepend(reveal(newIdx,newY))
-            }else if(){//stack item to the bottom
-                var newIdx:Int = 0
-                var newY:CGFloat = 0
-                thirdPart.append(reveal(newIdx,newY))
-            }
-        }
-        /*
-        for var i = 0; i < visibleItems.count; ++i{/*remove items that are above or bellow the limits*/
-            let listItem:ListItem = visibleItems[i]
-            let listItemY:CGFloat = listItem.idx*itemHeight - listY //this is the relative y aka: virtualY (we need to assert against virtualY because progress can in theory jump from 0.1 to 0.6)
-            if(listItemY <= topLimit){/*above top limit*/
-                Swift.print("item: \(listItem.idx) at: \(listItemY) is above top limit")
-                Utils.hide(listItem.item, true)
-                surplusItems += visibleItems.removeAtIndex(i)//remove item that falls above the top limit
-                //place the removed item to the bottom of the visible items
-                if(thirdPartIdx < dataProvider.items.count){
-                    thirdPart.append(reveal(thirdPartIdx,thirdPartY))
-                    thirdPartY += itemHeight//we stack under the last one appended
-                    thirdPartIdx--
-                }
-                //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-            }else if(listItemY >= bottomLimit){
-                Swift.print("item: \(listItem.idx) at: \(listItemY) is bellow bottom limit")
-                Utils.hide(listItem.item, true)
-                surplusItems += visibleItems.removeAtIndex(i)//remove item that falls bellow the bottom limit
-                if(firstPartIdx >= 0){//only add above if there is something to add above (same for the topLimit), assert idx of visibleItems.first.idx > 0
-                    firstPart.prepend(reveal(firstPartIdx,firstPartY))//place the removed item to the top of the visible items, think lego
-                    firstPartY -= itemHeight//We stack on top of the last appended
-                    firstPartIdx--
-                }
-                //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-            }else{//we also need to move items that ar within the limit
-                Swift.print("item: \(listItem.idx) is within at: \(listItemY)")
-                listItem.item.y = y
-                y += itemHeight
-            }
-        }
-        */
         visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/
     }
     /**
@@ -247,6 +194,7 @@ class FastList:Element,IList {
 }
 private class Utils{
     /**
+     * Temp solution
      * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
      * NOTE: maybe we can avoid hiding by just placing the view outside the mask item.y = top - item.height should to
      */
@@ -258,149 +206,3 @@ private class Utils{
         CATransaction.commit()
     }
 }
-/**
- * TODO: Try to move the index in an array instead of creating ListItem, this way we can use any Element ype we wish
- */
-/*
-class ColorItem:Element{
-    var virtualY:CGFloat {return index * height}
-    var index:Int//we store the index in the item
-    init(_ width: CGFloat, _ height: CGFloat, _ index:Int, _ parent: IElement?, _ id: String? = nil) {
-        self.index = index
-        super.init(width, height, parent, id)
-    }
-    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
-}
-*/
-
-/*
-private class ColorList{
-    func spoof(listItem:(item:Element,idx:Int)){
-        let item:Element = listItem.item
-        let color:NSColor = items[listItem.idx]//item.index < items.count ? items[item.index] : NSColor.grayColor()//<--temp bug fix
-        let style:IStyle = StyleModifier.clone(item.skin!.style!,item.skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        var styleProperty = style.getStyleProperty("fill",0) /*edits the style*/
-        if(styleProperty != nil){
-            styleProperty!.value = color
-            item.skin!.setStyle(style)/*updates the skin*/
-        }
-    }
-}
-*/
-/*
-itemContainer?.subviews.forEach{//remove items that are above or bellow the limits
-    let item:ListItem = $0 as! ListItem
-    if(item.virtualY < listY - 50){
-        //Swift.print("item is above top limit - remove()")
-        item.hidden = true
-    }else if(item.virtualY > listY + height){
-        //Swift.print("item is bellow bottom limit - remove()")
-        item.hidden = true
-    }else{
-        item.y = item.virtualY - listY
-        item.hidden = false
-    }
-    
-}
-
-//only add above if there is something to add above (same for the topLimit)
-    //assert idx of visibleItems.first.idx > 0
-    //it wont work, think 0.1 progress to 0.8 progress, 
-        //then you cant base the positoning on visibleItems.first, 
-            //this is an edge case though and could be resolved by asserting for it,
-                //if visibleItems.count == 0 then base the positioning on listY % itemHeight
-                //or base your positioning on listY % itemHeight from the start (<--go with this solution)
-
-
-
-*/
-
-
-//Continue here: (This is the solution)
-//make a method that can move an array of items to a progress value (then all you need to do is spoof the items that are different from last progress)
-    //regardless of y offset
-        //to accomplish this
-
-//you get a value between 0 and 50 to determine when to reorder the view list
-    //if topY > 25px -> move
-
-//New idea: The idea is basically to just carousel a 9 item list, and apply data to the parts that are new when needed
-    //you iterate 0..(8+1)
-    //if curIdx = 45 -> 50 % curIdx -> 2
-        //basically 2 leftover 
-        //offset the visible views by 2*-50
-    //loop 8+1 item
-        //if(y < top-50)
-            //move item to bottom of the view
-
-//The above idea is great, make a isolated test to test it
-    //you need to store the order of the 9 item indecies
-    //draw the idea on paper to get a clearer view of how to code this (or try to visualize it in your mind, its a good excersie to do)
-
-
-//Imagine an infinite list where the numbers keep repeating from 0..8
-    //you travel the list by progress * totItemsHeight
-    //you find the item offset by doing pos.y % 50
-    //you find the curIdx by doing floor(abs(pos.y /50)) -> 22
-    //you find the idex of 0..8 by doing 22 % 8 -> 6 -> which means 6 should be the top item, then 6,7,8,0,1,2,3,4,5
-    //you find the y value for each of the items above (simple)
-    //the previouse order is 0..8 -> how do you arrange it to the above? -> you dont rearange the view order -> you could and it would be trivial if it was needed
-    //how to spoof new data?
-        //store the curProgressIdx
-        //find the diff for prevProgressIdx and the curProgressIdx
-        //if the diff is +2 then the two last indecies has changed and needs spoofing
-        //if diff is -2 then the two first indcies has changed and needs spoofing
-        //if diff is more or less than 8 -> then spoof all
-
-    //Edge cases
-    //If win resize then add more items to the array
-        //recalc the maxVisible Items
-        //which recalcs the repeating numbers, which won't work in scale
-        //Think of something else
-
-//Maybe you could use the center of the view and calc above items needed and bellow items needed
-    //
-
-//New idea:
-    //you need to check if the first item is above topLimit
-    //if first item is bellow topLimit -> add an item to the top of the list
-    //same for bottomLimit
-
-    //what if you use the loop method when the maxVisibleItemCount grows -> it would only work with less than dubble the size of the original
-    //I think you need to draw to figure this out
-
-
-//new idea 2: (add and remove)
-    //add 8 items to view at progres 0
-    //go to progress 0.6
-    //find the top.y
-    //assert every current items if they are bellow top.y and above bottom.y (this can be optimized later so you only check first and last item)
-        //if they are not -> remove them
-        //add new items from top.y or the last item in visible list
-            //keep adding until item.y > bottom.y
-
-    //when you remove an item you only hide it and add it to removedItems array
-    //when you add items you attempt to get an item from removedItems array and then insert it in to the container and set the y and unhide it and spoof it with new data
-
-
-
-
-//move a "virtual" list up and down by: (just by values) (see code for this in List.swift)
-    //(the index of the item in the list) * itemHeight, represetnts the initY pos
-    //when you move the "virtual" list up and down you add the .y value of the "virtual" list to every item
-    //when an item is above the top or bellow the bottom of the mask, then remove it
-
-//You need a way to spawn items when they should be spawned (see legacy code for insp)
-
-//Basically 8 items can be viewable at the time (maxViewableItems = 8)
-//VirtualList.y = -200 -> how many items are above the top? -> use modulo -> think variable size though
-
-//Actually: store the visible item indecies in an array that you push and pop when the list goes up and down
-    //This has the benefit that you only need to calc the height of the items in view (thinking about variable size support)
-    //when an item goes above the top 
-        //the index is removed from the visibleItemIndecies array (one could also use a range here )
-        //if the last index in visibleItemIndecies < items.count 
-            //append items[visibleItemIndecies.last+1] to visibleItemIndecies
-        //item.removeFromSuperView()
-        //spawn new Item from items(visibleItemIndecies.last)
-        //place it at y:  visibleItems.last.y+visibleItems.last.height

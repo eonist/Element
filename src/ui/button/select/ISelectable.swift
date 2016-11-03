@@ -8,5 +8,5 @@ protocol ISelectable: class/*derive only classes for the protocol, not structs, 
     func getSelected()->Bool//<--shouldnt this be isSelected? :TODO: this should be getSelected since composite classes can impliment ICHeckable and they will need to access a sub instance via a implimcit getter method, same for IDisableable, ISelectable, IFocusable etc
 }
 extension ISelectable{/*<-- New, simplifes access, while maininting easy overriding abilities with the functions in the Iselectable protocol*/
-    var selected:Bool {get{return getSelected()}set{ setSelected(newValue)}}
+    var selected:Bool {get{return getSelected()}set{setSelected(newValue)}}
 }

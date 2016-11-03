@@ -165,7 +165,7 @@ class FastList:Element,IList {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}
-        super.onEvent(ListEvent(ListEvent.select,selectedIdx,self))
+        super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))//probably use FastListEvent here in the future
     }
     override func onEvent(event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here

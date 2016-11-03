@@ -6,6 +6,9 @@ class FastListModifier {
      */
     static func select(list:FastList, _ index:Int, _ isSelected:Bool){
         ListModifier.selectAt(list, index)//Handles the visible items in the lable container
+        var viewIndex:Int?
+        list.visibleItems.forEach{if(index == $0.idx){viewIndex = $0.idx}}
+        
         list.dataProvider.setValue(index,"selected",String(isSelected))
         list.dataProvider.setValuesExceptAt(index, "selected", String(!isSelected))
     }

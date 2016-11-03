@@ -42,8 +42,8 @@ class RBSliderList:List,IRBSliderList{
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(theEvent:NSEvent) {
-        scrollController!.scroll(theEvent)//forward the event to the scrollController
-        if(theEvent.phase == NSEventPhase.Changed){setProgress(scrollController!.mover.result)}/*direct manipulation*/
+        scroll(theEvent)//forward the event to the scrollController
+        if(theEvent.phase == NSEventPhase.Changed){setProgress(mover!.result)}/*direct manipulation*/
         super.scrollWheel(theEvent)//keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to
     }
     /**
@@ -51,7 +51,7 @@ class RBSliderList:List,IRBSliderList{
      */
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
-        scrollController?.mover.value = lableContainer!.frame.y
+        mover!.value = lableContainer!.frame.y
     }
     func scrollWheelEnter(){//2. spring to refreshStatePosition
         //Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")

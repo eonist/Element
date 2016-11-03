@@ -16,6 +16,9 @@ import Cocoa
  */
 
 typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
+
+//Make FastList support select and unSelect w/o querrying dataProvider as dp is cpu intensive
+
 class FastList:Element,IList {
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/

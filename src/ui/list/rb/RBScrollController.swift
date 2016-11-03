@@ -14,14 +14,10 @@ import Cocoa
 
 class RBScrollController:EventSender{
     //var view:RBSliderList/*holds a ref to the view*/
-    var mover:RubberBand
-    var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
-    var velocities:Array<CGFloat> = [0,0,0,0,0,0,0,0,0,0]/*represents the velocity resolution of the gesture movment*/
+    
     init(_ callBack:(CGFloat)->Void,_ frame:CGRect, _ itemRect:CGRect){
         //self.view = view
-        mover = RubberBand(Animation.sharedInstance,callBack,frame,itemRect)
-        super.init()
-        mover.event = onEvent/*Add an eventHandler for the mover object*/
+       
     }
     
     /*

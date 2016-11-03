@@ -67,7 +67,7 @@ class FastList:Element,IList {
         var y:CGFloat = topY//
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        var firstPartY:CGFloat = visibleItems.first!.item.y - itemHeight
+        var firstPartY:CGFloat = y-itemHeight//visibleItems.first!.item.y - itemHeight
         var thirdPartY:CGFloat = visibleItems.last!.item.y
         let topLimit:CGFloat = /*listY*/ -itemHeight
         Swift.print("topLimit: " + "\(topLimit)")

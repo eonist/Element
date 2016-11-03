@@ -110,13 +110,13 @@ class FastList:Element,IList {
                 firstPart.append(reveal(firstItemIndex+i,topY))
                 topY += itemHeight//IMPORTANT: it's imp that firstItemIndex and topY is in sync, or things will stutter
             }else if(visibleItems.last.item.y <= bottomLimit){//stack item on top
-                var newIdx:Int = 0
+                var newIdx:Int = firstPart
                 var newY:CGFloat = 0
                 firstPart.prepend(reveal(newIdx,newY))
             }else if(){//stack item to the bottom
                 var newIdx:Int = 0
                 var newY:CGFloat = 0
-                firstPart.prepend(reveal(newIdx,newY))
+                thirdPart.append(reveal(newIdx,newY))
             }
         }
         /*

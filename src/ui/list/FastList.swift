@@ -104,13 +104,17 @@ class FastList:Element,IList {
             }
         }
         //Stage.2: stack items to cover the visible area
-        
+        for var i = 0; i < maxVisibleItems; ++i{
+            let itemIdx:Int = firstItemIndex + i
+            
+        }
         
         //continue here: 
             //one of the problems with having only 1 loop is how do we get the y for the items that are within the limits?
                 //we cant use the virtualY, because it may be off by a little
                 //its easier to set y values when you have the final array
-                    //or you could base the values on topY if ...
+                    //or you could base the values on topY if there is no items in firstPart
+                        //or you could just have a second loop and have simple easy to debug code!?!?
         
         
         let len:Int = maxVisibleItems - visibleItems.count//we only need to add enough items to cover the visible area

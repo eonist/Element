@@ -24,6 +24,7 @@ typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store
 
 
 class FastList:Element,IList {
+    var selectedIdx:Int = 0/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data stoarge*/
     var lableContainer:Container?/*holds the list items*/

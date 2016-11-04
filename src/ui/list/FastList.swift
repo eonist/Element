@@ -22,7 +22,7 @@ class FastList:Element,IList {
     var dataProvider:DataProvider/*data storage*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
-    var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--the tot items height can be calculated at init, and on list data refresh
+    var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
     var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     

@@ -26,8 +26,8 @@ class RBSliderFastList:FastList/*,IRBSliderList*/{
      * PARAM value: is the final y value for the lableContainer
      */
     override func setProgress(value:CGFloat){
-        super.setProgress(value)
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
+        super.setProgress(progressValue!)
         slider!.setProgressValue(progressValue!)
     }
 }

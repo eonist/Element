@@ -21,8 +21,6 @@ class RBSliderList:List,IRBSliderList{
         let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object*/
-        //scrollController = RBScrollController(setProgress,CGRect(0,0,width,height),CGRect(0,0,width,ListParser.itemsHeight(self)))
-        //scrollController!.event = onEvent
         /*slider*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))

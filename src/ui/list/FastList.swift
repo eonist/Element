@@ -92,11 +92,11 @@ class FastList:Element,IList {
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = firstItemIndex + i
             if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
-                firstPart.append(reveal(itemIdx,y))
+                if(surplusItems.count > 0){firstPart.append(reveal(itemIdx,y))}
                 Swift.print("append to firstPart")
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
-                thirdPart.append(reveal(itemIdx,y))
+                if(surplusItems.count > 0){thirdPart.append(reveal(itemIdx,y))}
             }else{//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++

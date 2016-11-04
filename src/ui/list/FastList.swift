@@ -83,7 +83,8 @@ class FastList:Element,IList {
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         Swift.print("listY: " + "\(listY)")
-        let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, maxVisibleItems!)//find the "virtual" first item
+        let firstItemIdx:Int = floor(listY / itemHeight).int//find the "virtual" first item
+        //.minMax(0, maxVisibleItems!)
         Swift.print("firstItemIdx: " + "\(firstItemIdx)")
         //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         

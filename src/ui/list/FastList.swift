@@ -56,7 +56,7 @@ class FastList:Element,IList {
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(progress:CGFloat){
-        let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//we need the positive value
+        let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//this is the list y offset, we need the positive value
         //Swift.print("listY: " + "\(listY)")
         let topLimit:CGFloat = /*listY*/ -itemHeight
         //Swift.print("topLimit: " + "\(topLimit)")
@@ -78,17 +78,19 @@ class FastList:Element,IList {
             }
         }
         Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
+        //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         //Swift.print("topY: " + "\(topY)")
-        var y:CGFloat = topY
+        
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         Swift.print("listY: " + "\(listY)")
         let firstItemIndex:Int = floor(listY / itemHeight).int//find the "virtual" first item
+        let topY:CGFloat =  (firstItemIndex * itemHeight) - listY
+        var y:CGFloat = topY
         //.minMax(0, maxVisibleItems!)
         
         //continue here: Figure out how to handle overshot, the solution is probably simple
-            //we need a way to find the topY even in overshoot 
+            //we need a way to find the topY even in overshoot
         
         Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil

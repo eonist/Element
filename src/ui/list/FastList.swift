@@ -66,15 +66,15 @@ class FastList:Element,IList {
             let listItem:ListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
             if(virtualY <= topLimit){/*above top limit*/
-                //Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
+                Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else if(virtualY >= bottomLimit){
-                //Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
+                Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else{
-                //Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
+                Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
             }
         }
         Swift.print("surplusItems.count: " + "\(surplusItems.count)")
@@ -92,7 +92,9 @@ class FastList:Element,IList {
             let itemIdx:Int = firstItemIndex + i
             if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
                 firstPart.append(reveal(itemIdx,y))
+                Swift.print("append to firstPart")
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
+                Swift.print("append to thirdPart")
                 thirdPart.append(reveal(itemIdx,y))
             }else{//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y

@@ -17,6 +17,7 @@ class RBSliderList:List,IRBSliderList{
         super.resolveSkin()
         Swift.print("RBSliderList.width: " + "\(width)")
         Swift.print("RBSliderList.height: " + "\(height)")
+        /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content //TODO: could be ranmed to maskRect*/
         let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)

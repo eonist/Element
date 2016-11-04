@@ -98,8 +98,8 @@ class FastList:Element,IList {
                 //maybe assert topLimit and bottomLimit before appeninding
                 //it worked, but the solution isnt the best
         
-        let firstVisibleItemIdx:Int = visibleItems.count > 0 ? visibleItems.first!.idx : firstItemIdx
-        let lastVisibleItemIdx:Int = visibleItems.count > 0 ? visibleItems.last!.idx : firstItemIdx + maxVisibleItems!
+        let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0
+        let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = firstItemIdx + i

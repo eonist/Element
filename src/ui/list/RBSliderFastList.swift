@@ -47,14 +47,14 @@ class RBSliderFastList:FastList,IRBSliderList{
         mover!.value = lableContainer!.frame.y
     }
     func scrollWheelEnter(){//2. spring to refreshStatePosition
-        //Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")
+        Swift.print("RBSliderFastList.scrollWheelEnter()" + "\(progressValue)")
         slider!.thumb!.fadeIn()
     }
     func scrollWheelExit(){
-        //Swift.print("CommitList.scrollWheelExit()")
+        Swift.print("RBSliderFastList.scrollWheelExit()")
     }
     func scrollWheelExitedAndIsStationary(){
-        //Swift.print("CommitList.scrollWheelExitedAndIsStationary() ")
+        Swift.print("RBSliderFastList.scrollWheelExitedAndIsStationary() ")
         if(slider?.thumb?.getSkinState() == SkinStates.none){
             slider?.thumb?.fadeOut()
         }

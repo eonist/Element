@@ -96,6 +96,7 @@ class FastList:Element,IList {
         //continue here: 
             //try to avoid appending to first and third part when overshot happens
                 //maybe assert topLimit and bottomLimit before appeninding
+                //it worked, but the solution isnt the best
         
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil

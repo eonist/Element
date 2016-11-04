@@ -92,17 +92,17 @@ class FastList:Element,IList {
         Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY
         
-        let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0//if the visibleItems arr is empty then replenish it w/ items by appending items to thirdPart in the loop. This is triggered by setting this value to 0
+        let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0
         let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
-            let itemIdx:Int = (firstItemIdx + i).minMax(0, dataProvider.items.count-1)//We clamp the int to indecies that actually exist
+            let itemIdx:Int = firstItemIdx + i
             if(itemIdx < firstVisibleItemIdx && y > topLimit){//item is above visibleItems
-                firstPart.append(reveal(itemIdx,y))
+                if(itemIdx < dataProvider.items.count){firstPart.append(reveal(itemIdx,y))}
                 Swift.print("append to firstPart")
             }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
-                thirdPart.append(reveal(itemIdx,y))
+                if(itemIdx < dataProvider.items.count){thirdPart.append(reveal(itemIdx,y))}
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++

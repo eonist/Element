@@ -130,7 +130,7 @@ class FastList:Element,IList {
     /**
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
      */
-    func spawn(idx:Int)->NSView{
+    func spawn(idx:Int)->NSView{/*override this to use custom ItemList items*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
@@ -139,7 +139,7 @@ class FastList:Element,IList {
     /**
      * Applies data to items (spoof == reuse)
      */
-    func spoof(listItem:(item:Element,idx:Int)){
+    func spoof(listItem:(item:Element,idx:Int)){/*override this to use custom ItemList items*/
         //Swift.print("spoof")
         let item:Element = listItem.item
         let idx:Int = listItem.idx

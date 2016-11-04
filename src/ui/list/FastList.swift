@@ -42,7 +42,6 @@ class FastList:Element,IList {
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
         spawn(0..<maxVisibleItems!)
-        setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
      * PARAM: progress: 0 to 1

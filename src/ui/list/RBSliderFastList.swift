@@ -21,6 +21,7 @@ class RBSliderFastList:FastList,IRBSliderList{
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
+        setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
      * PARAM value: is the final y value for the lableContainer

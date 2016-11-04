@@ -66,15 +66,15 @@ class FastList:Element,IList {
             let listItem:ListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
             if(virtualY <= topLimit){/*above top limit*/
-                Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
+                //Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else if(virtualY >= bottomLimit){
-                Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
+                //Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
                 Utils.hide(listItem.item, true)
                 surplusItems += visibleItems.removeAtIndex(i)
             }else{
-                Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
+                //Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
             }
         }
         //Swift.print("surplusItems.count: " + "\(surplusItems.count)")

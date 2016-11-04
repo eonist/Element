@@ -20,6 +20,7 @@ class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
+    var itemsCount:Int/*IMPORTANT: update this value if you update the count in dp, use events, ideally this should be handled in dp altogether*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return dataProvider.items.count * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
@@ -29,6 +30,7 @@ class FastList:Element,IList {
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
+        itemsCount = dataProvider!.items.count
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400

@@ -93,8 +93,8 @@ class FastList:Element,IList {
         var y:CGFloat = topY
         //
         
-        //continue here: Figure out how to handle overshot, the solution is probably simple
-            //we need a way to find the topY even in overshoot
+        //continue here: 
+            //try to avoid appending to first and third part when overshot happens
         
         
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil

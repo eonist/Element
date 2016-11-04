@@ -83,11 +83,11 @@ class FastList:Element,IList {
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         Swift.print("listY: " + "\(listY)")
-        let firstItemIndex:Int = floor(listY / itemHeight).int.minMax(0, maxVisibleItems!)//find the "virtual" first item
-        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
+        let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, maxVisibleItems!)//find the "virtual" first item
+        Swift.print("firstItemIdx: " + "\(firstItemIdx)")
         //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         
-        let topY:CGFloat =  (firstItemIndex * itemHeight) - listY
+        let topY:CGFloat =  (firstItemIdx * itemHeight) - listY
         Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY
         //
@@ -100,7 +100,7 @@ class FastList:Element,IList {
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
-            let itemIdx:Int = firstItemIndex + i
+            let itemIdx:Int = firstItemIdx + i
             if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
                 firstPart.append(reveal(itemIdx,y))
                 Swift.print("append to firstPart")

@@ -84,7 +84,7 @@ class FastList:Element,IList {
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
-        //Swift.print("firstItemIndex: " + "\(firstItemIndex)")
+        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0

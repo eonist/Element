@@ -31,7 +31,7 @@ class FastList:Element,IList {
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
-        //layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
+        layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
     }
     override func resolveSkin() {
         Swift.print("FastList.resolveSkin()")
@@ -82,10 +82,10 @@ class FastList:Element,IList {
         
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
-        Swift.print("listY: " + "\(listY)")
+        //Swift.print("listY: " + "\(listY)")
         let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, dataProvider.items.count - visibleItems.count)//find the "virtual" first item
         //.minMax(0, maxVisibleItems!)
-        Swift.print("firstItemIdx: " + "\(firstItemIdx)")
+        //Swift.print("firstItemIdx: " + "\(firstItemIdx)")
         //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
         
         let topY:CGFloat =  (firstItemIdx * itemHeight) - listY
@@ -97,10 +97,10 @@ class FastList:Element,IList {
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = (firstItemIdx + i)
-            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.items.count){//item is above visibleItems, We make sure the index actually exist
+            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.items.count){//1. item is above visibleItems, 2. We make sure the index actually exist
                 firstPart.append(reveal(itemIdx,y))
                 Swift.print("append to firstPart")
-            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.items.count){//item is bellow visibleItems,We make sure the index actually exist
+            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.items.count){//1. item is bellow visibleItems,2. We make sure the index actually exist
                 Swift.print("append to thirdPart")
                 thirdPart.append(reveal(itemIdx,y))
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem

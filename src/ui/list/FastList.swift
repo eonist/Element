@@ -62,7 +62,7 @@ class FastList:Element,IList {
         //Swift.print("topLimit: " + "\(topLimit)")
         let bottomLimit:CGFloat = /*listY+*/ height
         //Swift.print("bottomLimit: " + "\(bottomLimit)")
-        for var i = 0; i < visibleItems.count; ++i{
+        for var i = 0; i < visibleItems.count; ++i{/*Stage.1: Remove items outside Limits*/
             let listItem:ListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
             if(virtualY <= topLimit){/*above top limit*/
@@ -88,7 +88,7 @@ class FastList:Element,IList {
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0
-        for var i = 0; i < maxVisibleItems; ++i{
+        for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = firstItemIndex + i
             if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
                 firstPart.append(reveal(itemIdx,y))

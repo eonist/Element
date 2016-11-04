@@ -59,9 +59,15 @@ class RBSliderFastList:FastList,IRBSliderList{
             slider?.thumb?.fadeOut()
         }
     }
+    func scrollAnimStopped(){
+        //Swift.print("RBSliderList.scrollAnimStopped()")
+        slider!.thumb!.fadeOut()
+    }
     override func onEvent(event:Event) {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())
+        }else if(event.assert(AnimEvent.stopped, mover!)){
+            scrollAnimStopped()
         }
         super.onEvent(event)
     }

@@ -91,12 +91,6 @@ class FastList:Element,IList {
         let topY:CGFloat =  (firstItemIdx * itemHeight) - listY
         Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY
-        //
-        
-        //continue here: 
-            //try to avoid appending to first and third part when overshot happens
-                //maybe assert topLimit and bottomLimit before appeninding
-                //it worked, but the solution isnt the best
         
         let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0
         let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0

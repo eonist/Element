@@ -77,20 +77,16 @@ class FastList:Element,IList {
                 Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
             }
         }
-        Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        
+        //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
         
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         //Swift.print("listY: " + "\(listY)")
         let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, dataProvider.items.count - visibleItems.count)//find the "virtual" first item
-        //.minMax(0, maxVisibleItems!)
         //Swift.print("firstItemIdx: " + "\(firstItemIdx)")
-        //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
-        
-        let topY:CGFloat =  (firstItemIdx * itemHeight) - listY
+        let topY:CGFloat =  (firstItemIdx * itemHeight) - listY//the y pos of the first item//-(listY % itemHeight)
         Swift.print("topY: " + "\(topY)")
-        var y:CGFloat = topY
+        var y:CGFloat = topY/*By iterativly setting items to the bottom of the above item, we avoid gaps. Gaps can apear if we base the positioning on other types of calculation*/
         
         let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0//if the visibleItems arr is empty then replenish it w/ items by appending items to thirdPart in the loop. This is triggered by setting this value to 0
         let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0

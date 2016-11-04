@@ -94,11 +94,11 @@ class FastList:Element,IList {
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = (firstItemIdx + i)
             if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.items.count){//1. item is above visibleItems, 2. We make sure the index actually exist
-                firstPart.append(reveal(itemIdx,y))
+                if(surplusItems.count > 0){firstPart.append(reveal(itemIdx,y))}//make sure there is available items in surplus
                 Swift.print("append to firstPart")
             }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.items.count){//1. item is bellow visibleItems,2. We make sure the index actually exist
                 Swift.print("append to thirdPart")
-                thirdPart.append(reveal(itemIdx,y))
+                if(surplusItems.count > 0){thirdPart.append(reveal(itemIdx,y))}//make sure there is available items in surplus
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++

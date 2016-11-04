@@ -88,7 +88,7 @@ class FastList:Element,IList {
         //.minMax(0, maxVisibleItems!)
         
         //continue here: Figure out how to handle overshot, the solution is probably simple
-            //we need a way to 
+            //we need a way to find the topY even in overshoot 
         
         Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil

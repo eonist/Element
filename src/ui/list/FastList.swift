@@ -96,7 +96,7 @@ class FastList:Element,IList {
         let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
-            let itemIdx:Int = (firstItemIdx + i).minMax(0, dataProvider.items.count)//We clamp the int to indecies that actually exist
+            let itemIdx:Int = (firstItemIdx + i).minMax(0, dataProvider.items.count-1)//We clamp the int to indecies that actually exist
             if(itemIdx < firstVisibleItemIdx && y > topLimit){//item is above visibleItems
                 firstPart.append(reveal(itemIdx,y))
                 Swift.print("append to firstPart")

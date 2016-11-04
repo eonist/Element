@@ -85,7 +85,7 @@ class FastList:Element,IList {
         let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, dataProvider.items.count - visibleItems.count)//find the "virtual" first item
         //Swift.print("firstItemIdx: " + "\(firstItemIdx)")
         let topY:CGFloat =  (firstItemIdx * itemHeight) - listY//the y pos of the first item//-(listY % itemHeight)
-        Swift.print("topY: " + "\(topY)")
+        //Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY/*By iterativly setting items to the bottom of the above item, we avoid gaps. Gaps can apear if we base the positioning on other types of calculation*/
         
         let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0//if the visibleItems arr is empty then replenish it w/ items by appending items to thirdPart in the loop. This is triggered by setting this value to 0
@@ -93,12 +93,12 @@ class FastList:Element,IList {
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = (firstItemIdx + i)
-            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.items.count){//1. item is above visibleItems, 2. We make sure the index actually exist
-                if(surplusItems.count > 0){firstPart.append(reveal(itemIdx,y))}//make sure there is available items in surplus
-                Swift.print("append to firstPart")
-            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.items.count){//1. item is bellow visibleItems,2. We make sure the index actually exist
-                Swift.print("append to thirdPart")
-                if(surplusItems.count > 0){thirdPart.append(reveal(itemIdx,y))}//make sure there is available items in surplus
+            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.items.count && surplusItems.count > 0){//1. item is above visibleItems, 2. y is bellow topLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
+                firstPart.append(reveal(itemIdx,y))
+                //Swift.print("append to firstPart")
+            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.items.count && surplusItems.count > 0){//1. item is bellow visibleItems,2. y is above bottomLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
+                //Swift.print("append to thirdPart")
+                thirdPart.append(reveal(itemIdx,y))
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++

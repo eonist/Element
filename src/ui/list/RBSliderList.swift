@@ -46,12 +46,12 @@ class RBSliderList:List,IRBSliderList{
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(theEvent:NSEvent) {
-        scroll(theEvent)//forward the event to the scrollController
+        scroll(theEvent)//forward the event to the scrollExtension
         if(theEvent.phase == NSEventPhase.Changed){setProgress(mover!.result)}/*direct manipulation*/
-        super.scrollWheel(theEvent)//keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to
+        super.scrollWheel(theEvent)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
     /**
-     * EventHandler for the Slider cahnge event
+     * EventHandler for the Slider change event
      */
     func onSliderChange(sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
@@ -65,7 +65,7 @@ class RBSliderList:List,IRBSliderList{
         //Swift.print("CommitList.scrollWheelExit()")
     }
     func scrollWheelExitedAndIsStationary(){
-        Swift.print("CommitList.scrollWheelExitedAndIsStationary() ")
+        //Swift.print("CommitList.scrollWheelExitedAndIsStationary() ")
         if(slider?.thumb?.getSkinState() == SkinStates.none){
             slider?.thumb?.fadeOut()
         }

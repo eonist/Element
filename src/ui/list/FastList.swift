@@ -84,7 +84,11 @@ class FastList:Element,IList {
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         Swift.print("listY: " + "\(listY)")
-        let firstItemIndex:Int = floor(listY / itemHeight).int.minMax(0, maxVisibleItems!)//find the "virtual" first item
+        let firstItemIndex:Int = floor(listY / itemHeight).int//find the "virtual" first item
+        //.minMax(0, maxVisibleItems!)
+        
+        //continue here: Figure out how to handle overshot, the solution is probably simple
+        
         Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
@@ -97,7 +101,7 @@ class FastList:Element,IList {
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
                 thirdPart.append(reveal(itemIdx,y))
-            }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
+            }else{//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++
             }

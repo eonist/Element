@@ -107,7 +107,7 @@ class FastList:Element,IList {
                 Swift.print("append to firstPart")
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx && y < bottomLimit){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
-                thirdPart.append(reveal(itemIdx,y))
+                if(visibleItems.count){thirdPart.append(reveal(itemIdx,y))}
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++

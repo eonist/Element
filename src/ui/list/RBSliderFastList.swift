@@ -22,4 +22,12 @@ class RBSliderFastList:FastList/*,IRBSliderList*/{
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
     }
+    /**
+     * PARAM value: is the final y value for the lableContainer
+     */
+    override func setProgress(value:CGFloat){
+        super.setProgress(value)
+        progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
+        slider!.setProgressValue(progressValue!)
+    }
 }

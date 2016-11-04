@@ -98,15 +98,15 @@ class FastList:Element,IList {
                 //maybe assert topLimit and bottomLimit before appeninding
                 //it worked, but the solution isnt the best
         
-        let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
-        let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
+        let firstVisibleItemIdx:Int = visibleItems.count > 0 ? visibleItems.first!.idx : firstItemIdx
+        let lastVisibleItemIdx:Int = visibleItems.count > 0 ? visibleItems.last!.idx : firstItemIdx + maxVisibleItems!
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = firstItemIdx + i
-            if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx && y > topLimit){//item is above visibleItems
+            if(itemIdx < firstVisibleItemIdx && y > topLimit){//item is above visibleItems
                 if(itemIdx < dataProvider.items.count){firstPart.append(reveal(itemIdx,y))}
                 Swift.print("append to firstPart")
-            }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx && y < bottomLimit){//item is bellow visibleItems
+            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
                 if(itemIdx < dataProvider.items.count){thirdPart.append(reveal(itemIdx,y))}
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem

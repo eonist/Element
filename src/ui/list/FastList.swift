@@ -95,17 +95,17 @@ class FastList:Element,IList {
         
         //continue here: 
             //try to avoid appending to first and third part when overshot happens
-                //maybe rely on 
+                //maybe assert topLimit and bottomLimit before appeninding
         
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = firstItemIdx + i
-            if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
+            if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx && y > topLimit){//item is above visibleItems
                 firstPart.append(reveal(itemIdx,y))
                 Swift.print("append to firstPart")
-            }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
+            }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx && y < bottomLimit){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
                 thirdPart.append(reveal(itemIdx,y))
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem

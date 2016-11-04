@@ -38,4 +38,30 @@ class RBSliderFastList:FastList,IRBSliderList{
         if(theEvent.phase == NSEventPhase.Changed){setProgress(mover!.result)}/*direct manipulation*/
         super.scrollWheel(theEvent)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
+    /**
+     * EventHandler for the Slider change event
+     */
+    func onSliderChange(sliderEvent:SliderEvent){
+        ListModifier.scrollTo(self,sliderEvent.progress)
+        mover!.value = lableContainer!.frame.y
+    }
+    func scrollWheelEnter(){//2. spring to refreshStatePosition
+        //Swift.print("CommitList.scrollWheelEnter()" + "\(progressValue)")
+        slider!.thumb!.fadeIn()
+    }
+    func scrollWheelExit(){
+        //Swift.print("CommitList.scrollWheelExit()")
+    }
+    func scrollWheelExitedAndIsStationary(){
+        //Swift.print("CommitList.scrollWheelExitedAndIsStationary() ")
+        if(slider?.thumb?.getSkinState() == SkinStates.none){
+            slider?.thumb?.fadeOut()
+        }
+    }
+    override func onEvent(event:Event) {
+        if(event.assert(SliderEvent.change,slider)){
+            onSliderChange(event.cast())
+        }
+        super.onEvent(event)
+    }
 }

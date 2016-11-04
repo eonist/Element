@@ -78,21 +78,24 @@ class FastList:Element,IList {
             }
         }
         Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
-        //Swift.print("topY: " + "\(topY)")
+        
         
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         Swift.print("listY: " + "\(listY)")
-        let firstItemIndex:Int = floor(listY / itemHeight).int//find the "virtual" first item
+        let firstItemIndex:Int = floor(listY / itemHeight).int.minMax(0, maxVisibleItems!)//find the "virtual" first item
+        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
+        //let topY:CGFloat = -(listY % itemHeight)//the y pos of the first item//visibleItems.first!.virtualY - listY/*By setting the items to the bottom of the above item, we avoid gaps that may apear*///let temp:CGFloat =  (firstItemIndex * 50) - listY
+        
         let topY:CGFloat =  (firstItemIndex * itemHeight) - listY
+        Swift.print("topY: " + "\(topY)")
         var y:CGFloat = topY
-        //.minMax(0, maxVisibleItems!)
+        //
         
         //continue here: Figure out how to handle overshot, the solution is probably simple
             //we need a way to find the topY even in overshoot
         
-        Swift.print("firstItemIndex: " + "\(firstItemIndex)")
+        
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
         var visibleItemIdx:Int = 0
@@ -104,7 +107,7 @@ class FastList:Element,IList {
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
                 thirdPart.append(reveal(itemIdx,y))
-            }else{//item is visibleItem
+            }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++
             }

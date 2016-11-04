@@ -84,7 +84,7 @@ class FastList:Element,IList {
         var firstPart:[ListItem] = []
         var thirdPart:[ListItem] = []
         Swift.print("listY: " + "\(listY)")
-        let firstItemIndex:Int = floor(abs(listY / itemHeight)).int//find the "virtual" first item
+        let firstItemIndex:Int = floor(listY / itemHeight).int//find the "virtual" first item
         Swift.print("firstItemIndex: " + "\(firstItemIndex)")
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil
@@ -92,11 +92,11 @@ class FastList:Element,IList {
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = firstItemIndex + i
             if(firstVisibleItemIdx != nil && itemIdx < firstVisibleItemIdx){//item is above visibleItems
-                if(surplusItems.count > 0){firstPart.append(reveal(itemIdx,y))}
+                firstPart.append(reveal(itemIdx,y))
                 Swift.print("append to firstPart")
             }else if(lastVisibleItemIdx != nil && itemIdx > lastVisibleItemIdx){//item is bellow visibleItems
                 Swift.print("append to thirdPart")
-                if(surplusItems.count > 0){thirdPart.append(reveal(itemIdx,y))}
+                thirdPart.append(reveal(itemIdx,y))
             }else{//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
                 visibleItemIdx++

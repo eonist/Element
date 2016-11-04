@@ -95,7 +95,7 @@ class FastList:Element,IList {
         
         //continue here: 
             //try to avoid appending to first and third part when overshot happens
-        
+                //maybe rely on 
         
         let firstVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.first!.idx : nil
         let lastVisibleItemIdx:Int? = visibleItems.count > 0 ? visibleItems.last!.idx : nil

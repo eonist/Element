@@ -66,7 +66,7 @@ extension IRBSliderList{
             mover!.start()//'start the frameTicker here, do this part in parent view or use event or Selector
         }else{/*stationary*/
             mover!.start()//this needs to start if your in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
-            scrollWheelExitedAndIsStationary()
+            scrollWheelExitedAndIsStationary()/*this is only called if you exit scrollWheel when in overshot areas in the slider, think above 0 and bellow 1 in progress*/
         }
         scrollWheelExit()
     }

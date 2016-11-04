@@ -1,6 +1,6 @@
-import Foundation
+import Cocoa
 
-class RBSliderFastList:FastList/*,IRBSliderList*/{
+class RBSliderFastList:FastList,IRBSliderList{
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
@@ -29,5 +29,13 @@ class RBSliderFastList:FastList/*,IRBSliderList*/{
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         super.setProgress(progressValue!)
         slider!.setProgressValue(progressValue!)
+    }
+    /**
+     * NOTE: this method overides the Native NSView scrollWheel method
+     */
+    override func scrollWheel(theEvent:NSEvent) {
+        scroll(theEvent)//forward the event to the scrollExtension
+        if(theEvent.phase == NSEventPhase.Changed){setProgress(mover!.result)}/*direct manipulation*/
+        super.scrollWheel(theEvent)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
 }

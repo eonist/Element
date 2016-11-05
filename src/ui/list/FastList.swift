@@ -169,6 +169,10 @@ class FastList:Element,IList {
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))//probably use FastListEvent here in the future
     }
+    /**
+     * EventHandler for the items in the list
+     * TODO: We should really use a SelectEvent here as SelectTextItem sends this event on ButtonEvent.upInside occurs
+     */
     override func onEvent(event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.

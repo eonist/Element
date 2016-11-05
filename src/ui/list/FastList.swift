@@ -147,17 +147,15 @@ class FastList:Element,IList {
         return item
     }
     /**
-     * Applies data to items (spoof == apply/reuse)
+     * Applies data to a pre-exisiting item (spoof == apply/reuse)
      * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */
     func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
-        //Swift.print("spoof")
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
-        
         if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable
         item.setTextValue(title)
     }

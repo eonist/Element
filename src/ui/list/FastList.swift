@@ -136,7 +136,7 @@ class FastList:Element,IList {
         }
     }
     /**
-     * 
+     * Creates the items needed to cover the visible area. (This method will also be used when you resize the component, to add more items to cover the resized visible area)
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
      * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */

@@ -48,7 +48,7 @@ class FastList:Element,IList {
     /**
      * PARAM: progress: 0 to 1
      * NOTE: why the complicated code in this method? Keep in mind that we must support going from progress: 0.1 to 0.9 in one cycle, which then recreates all items basically
-     * TODO: An idea would be to append when items are above top limit, and prepend if items are bellow bottom limit, this would lead to simpler code and 1 less for loop
+     * TODO: An idea would be to append when items are above top limit, and prepend if items are bellow bottom limit, this would lead to simpler code and 1 less for loop (so removing and appending in the same for-loop, hover it will be harder to reason about) (another way to optimize this algo is to rebuild the component and use a long nsView, which will be easier to reason about and then apply virtual values later)
      * 1. set the virtualY to every item based on the progress
      * 2. remove and then shuffle items above and bellow on each iteration (like lego)
      * 

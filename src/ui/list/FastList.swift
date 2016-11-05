@@ -152,13 +152,14 @@ class FastList:Element,IList {
      */
     func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
         //Swift.print("spoof")
-        let item:Element = listItem.item
+        let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
-        if((item as! ISelectable).selected != selected){ (item as! ISelectable).setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable
-        (item as! SelectTextButton).setTextValue(title)
+        
+        if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable
+        item.setTextValue(title)
     }
     /**
      * This is called when a item in the lableContainer has send the ButtonEvent.upInside event

@@ -147,13 +147,13 @@ class FastList:Element,IList {
         return item
     }
     /**
-     * Applies data to items (spoof == reuse)
+     * Applies data to items (spoof == apply/reuse)
      * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */
     func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
         //Swift.print("spoof")
         let item:Element = listItem.item
-        let idx:Int = listItem.idx
+        let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool

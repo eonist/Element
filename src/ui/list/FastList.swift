@@ -15,7 +15,7 @@ import Cocoa
  * TODO: test if resize works, by spawning new items etc
  * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
  */
-typealias ListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
+typealias FastListItem = (item:Element, idx:Int)/*Alias for the Duplet used to store list items and indecies*/
 class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
@@ -24,8 +24,8 @@ class FastList:Element,IList {
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return itemsCount * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
-    var visibleItems:[ListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
-    var surplusItems:[ListItem] = []/*repurpouse Items instead of removing and creating new ones*/
+    var visibleItems:[FastListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
+    var surplusItems:[FastListItem] = []/*repurpouse Items instead of removing and creating new ones*/
     
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
@@ -65,7 +65,7 @@ class FastList:Element,IList {
         let bottomLimit:CGFloat = /*listY+*/ height
         //Swift.print("bottomLimit: " + "\(bottomLimit)")
         for var i = 0; i < visibleItems.count; ++i{/*Stage.1: Remove items outside Limits*/
-            let listItem:ListItem = visibleItems[i]
+            let listItem:FastListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
             if(virtualY <= topLimit){/*above top limit*/
                 //Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
@@ -81,8 +81,8 @@ class FastList:Element,IList {
         }
         //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
         
-        var firstPart:[ListItem] = []
-        var thirdPart:[ListItem] = []
+        var firstPart:[FastListItem] = []
+        var thirdPart:[FastListItem] = []
         //Swift.print("listY: " + "\(listY)")
         let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, itemsCount - visibleItems.count)//find the "virtual" first item
         //Swift.print("firstItemIdx: " + "\(firstItemIdx)")
@@ -146,7 +146,7 @@ class FastList:Element,IList {
     /**
      * Applies data to items (spoof == reuse)
      */
-    func spoof(listItem:(item:Element,idx:Int)){/*override this to use custom ItemList items*/
+    func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
         //Swift.print("spoof")
         let item:Element = listItem.item
         let idx:Int = listItem.idx

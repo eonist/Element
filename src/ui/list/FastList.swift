@@ -127,7 +127,7 @@ class FastList:Element,IList {
         var y:CGFloat = 0
         for i in range{/*we need an extra item to cover the entire area*/
             //visibleItemIndecies.append(i)
-            let item:Element = spawn(i) as! Element
+            let item:Element = spawn(i)
             visibleItems.append((item,i))
             lableContainer!.addSubView(item)
             item.y = y
@@ -137,7 +137,7 @@ class FastList:Element,IList {
     /**
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
      */
-    func spawn(idx:Int)->NSView{/*override this to use custom ItemList items*/
+    func spawn(idx:Int)->Element{/*override this to use custom ItemList items*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)

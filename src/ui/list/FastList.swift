@@ -110,7 +110,8 @@ class FastList:Element,IList {
         visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/
     }
     /**
-     * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 3 places)
+     * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 2 places)
+     * NOTE: This method is only called if surplusItems.count > 0
      */
     private func reveal(idx:Int, _ y:CGFloat) -> (item:Element,idx:Int){
         var listItem = surplusItems.removeAtIndex(0)
@@ -135,7 +136,9 @@ class FastList:Element,IList {
         }
     }
     /**
+     * 
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
+     * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */
     func spawn(idx:Int)->Element{/*override this to use custom ItemList items*/
         let dpItem = dataProvider.items[idx]

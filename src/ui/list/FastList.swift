@@ -145,7 +145,7 @@ class FastList:Element,IList {
     }
     /**
      * Applies data to items (spoof == reuse)
-     * NOTE: Overide this method
+     * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */
     func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
         //Swift.print("spoof")

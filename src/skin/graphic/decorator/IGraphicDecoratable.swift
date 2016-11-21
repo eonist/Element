@@ -6,7 +6,7 @@ import Foundation
 protocol IGraphicDecoratable:class{/*<--explain why this extends class*/
     func getDecoratable()->IGraphicDecoratable
     var graphic:BaseGraphic{get}
-    func getGraphic() -> BaseGraphic/*Dont revert this variable to a protocol*/
+    func getGraphic() -> BaseGraphic/*Don't revert this variable to a protocol*/
     /*Design*/
     func fill()
     func beginFill()

@@ -52,7 +52,7 @@ private class Utils{
         let stroke:Any? = lineStyle != nil && lineStyle?.color != NSColor.clearColor()/*<--TODO: add this check to fill.color aswell*/ ? lineStyle!.color : nil
         let strokeOpacity:CGFloat? = lineStyle != nil ? lineStyle!.color.alphaComponent : nil
         let strokeLineCap:String? = lineStyle != nil ? LineStyleParser.lineCapType(lineStyle!.lineCap) : nil
-        let strokeLineJoin:String? = lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin): nil
+        let strokeLineJoin:String? = lineStyle != nil ? LineStyleParser.lineJoinType(lineStyle!.lineJoin) : nil
         let strokeMiterLimit:CGFloat? = lineStyle != nil ? lineStyle!.miterLimit : nil
         return SVGStyle(fill,fillOpacity,fillRule,strokeWidth,stroke,strokeOpacity,strokeLineCap,strokeLineJoin,strokeMiterLimit)
     }

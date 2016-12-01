@@ -1,7 +1,6 @@
 import Foundation
-/*
- * // :TODO: if you strip the inital css data for spaces then you wont need to removeWrappingWhiteSpace all the time
- * // :TODO: use Vector<String> for speed etc, vector is faster for array yes but not for associate object array?
+/**
+ * // :TODO: if you strip the inital css data for spaces then you won't need to removeWrappingWhiteSpace all the time
  */
 class CSSParser{
     static let precedingWith:String = "(?<=^|\\})"
@@ -34,7 +33,7 @@ class CSSParser{
     }
     /**
      * Converts cssStyleString to a Style instance
-     * Also transforms the values so that : (with Flash readable values, colors: become hex colors, boolean strings becomes real booleans etc)
+     * Also transforms the values so that : (with swift readable values, colors: become hex colors, boolean strings becomes real booleans etc)
      * PARAM: name: the name of the style
      * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
@@ -88,7 +87,7 @@ private class Utils{
      * Returns an array of style instances derived from PARAM: style (that has a name with 1 or more comma signs, or in combination with a group [])
      * PARAM: style: style.name has 1 or more comma seperated words
      * // :TODO: write a better description
-     * // :TODO: optimize this function, we probably need to ousource the second loop in this function
+     * // :TODO: optimize this function, we probably need to outsource the second loop in this function
      * // :TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
      * // :TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
@@ -102,10 +101,10 @@ private class Utils{
         for match:NSTextCheckingResult in matches {
             if(match.numberOfRanges > 0){
                 var prefix:String = match.value(styleName,1)
-                prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix) : prefix;
+                prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix):prefix
                 let group:String =  match.value(styleName,2)
                 var suffix:String = match.value(styleName,3)
-                suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix) : suffix
+                suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix):suffix
                 if(group == "") {
                     sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{

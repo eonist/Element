@@ -6,7 +6,7 @@ import Foundation
  * @Note the reason we dont extend the Stepper component is because the the Stepper component impliments RepeateButton, which LeverStepper doesnt, we could override creating the RepeateButtons but it would obfuscate this class a little, and its nice to have this class as simple as possible since we might need to create different steppers or even extend this class// :TODO: what about Not implimenting RepeatButton in Spinner then and make another class named RepeatStepper and RepeatSpinner?
  * TODO: you may need to convert CGFloat to an Int if decimal is set to 0, do this in the LeverSpinner class
  */
-class LeverSpinner : Element{
+class LeverSpinner:Element{
     var maxVal:CGFloat
     var minVal:CGFloat
     var val:CGFloat
@@ -14,7 +14,7 @@ class LeverSpinner : Element{
     var decimals:Int/*<--decimal places*/
     var text:String
     var leverHeight:CGFloat// :TODO: write a description about this value
-    var leverRange : CGFloat
+    var leverRange:CGFloat
     var textInput:TextInput?
     var stepper:LeverStepper?
     init(_ width: CGFloat, _ height: CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
@@ -33,7 +33,7 @@ class LeverSpinner : Element{
         textInput = addSubView(TextInput(100,20,text,String(val),self))
         stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self))
     }
-    func onStepperChange(event : StepperEvent) {
+    func onStepperChange(event:StepperEvent) {
         val = event.value
         textInput!.inputTextArea?.setTextValue(String(val))
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))

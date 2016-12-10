@@ -1,10 +1,9 @@
 ## Description:
 
-Element lets you create beautiful macOS apps with your own **design** and **animation**:  
+Element lets you create beautiful macOS apps with your own **design** and **animation**:    
+More info in the [Wiki](https://github.com/eonist/Element/wiki) 
 
 <img width="558" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/gitsync_take_3.mov.gif">
-
-More info in the [Wiki](https://github.com/eonist/Element/wiki) 
 
 ## Comparison:
 
@@ -27,3 +26,4 @@ Image support |  | X
 iOS support | Coming soon  | X 
 Flex-box support | Coming soon |
 Components | 50+ | 100+
+

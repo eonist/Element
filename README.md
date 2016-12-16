@@ -21,3 +21,4 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - iOS support
 - Flex-box layout alignment
 - Sketch import
+- Video tutorials

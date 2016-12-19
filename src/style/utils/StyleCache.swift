@@ -1,6 +1,9 @@
 import Foundation
-/*Parser*/
+
 class StyleCache {
+}
+/*Parser*/
+extension StyleCache{
     /**
      * Compiles a list of css files derived from an xml
      */

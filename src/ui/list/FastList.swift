@@ -15,7 +15,7 @@ import Cocoa
  * TODO: test if resize works, by spawning new items etc
  * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
  */
-typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and indecies*/
+typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the index in dp */
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
@@ -165,7 +165,7 @@ class FastList:Element,IList {
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
-        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self */
+        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))//probably use FastListEvent here in the future
     }
     /**

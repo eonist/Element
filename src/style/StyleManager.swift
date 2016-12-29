@@ -66,7 +66,8 @@ extension StyleManager{
      * PARAM: liveEdit enables you to see css changes while an app is running
      * IMPORTANT: LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple approach)
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
-     * TODO: Implement support for 
+     * TODO: Implement support for subFile watching aka watch children files that are imported into a parent css file
+     * TODO: Implement running the css resolve process on a background thread
      */
     static func addStylesByURL(url:String,_ liveEdit:Bool = false) {
         if(liveEdit){

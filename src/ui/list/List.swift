@@ -4,11 +4,11 @@ import Cocoa
 /**
  * NOTE: There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
  * NOTE: ListParser and ListModifier are usefull utility classes
- * // :TODO: could List have a SelectGroup?
- * // :TODO: xml should be able to hold a propert named selected="true" and then the cooresponding Item should be selected
+ * // :TODO: could List have a SelectGroup?<--dificult When using FastList probably, ?!?!?
+ * // :TODO: xml should be able to hold a property named selected="true" and then the cooresponding Item should be selected
  * // :TODO: try to get rid of the lableContainer
  * // :TODO: try to make the mask an Element
- * // :TODO: MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
+ * NOTE: MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
  * // :TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List:Element,IList{

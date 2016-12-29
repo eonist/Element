@@ -177,7 +177,7 @@ class FastList:Element,IList {
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     /**
-     * So that we can use the List .css styles (This is because FastList doesn't extend List so we need to manually set the getClassType var)
+     * So that we can use the List.css styles (This is because FastList doesn't extend List so we need to manually set the getClassType var)
      */
     override func getClassType() -> String {
         return String(List)

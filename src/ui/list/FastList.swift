@@ -21,17 +21,14 @@ class FastList:Element,IList {
     var selectedIdx:Int?/*this cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
-    var itemsCount:Int/*IMPORTANT: update this value if you update the count in dp, use events, ideally this should be handled in dp altogether*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
-    var itemsHeight:CGFloat {return itemsCount * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
+    var itemsHeight:CGFloat {return dataProvider.count * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
     var visibleItems:[FastListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     var surplusItems:[FastListItem] = []/*Repurpose Items instead of removing and creating new ones*/
-    
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
-        itemsCount = dataProvider!.items.count
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
@@ -85,7 +82,7 @@ class FastList:Element,IList {
         var firstPart:[FastListItem] = []
         var thirdPart:[FastListItem] = []
         //Swift.print("listY: " + "\(listY)")
-        let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, itemsCount - visibleItems.count)//find the "virtual" first item
+        let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, dataProvider.count - visibleItems.count)//find the "virtual" first item
         //Swift.print("firstItemIdx: " + "\(firstItemIdx)")
         let topY:CGFloat =  (firstItemIdx * itemHeight) - listY//the y pos of the first item//-(listY % itemHeight)
         //Swift.print("topY: " + "\(topY)")
@@ -96,10 +93,10 @@ class FastList:Element,IList {
         var visibleItemIdx:Int = 0
         for var i = 0; i < maxVisibleItems; ++i{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = (firstItemIdx + i)
-            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < itemsCount && surplusItems.count > 0){//1. item is above visibleItems, 2. y is bellow topLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
+            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.count && surplusItems.count > 0){//1. item is above visibleItems, 2. y is bellow topLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
                 firstPart.append(reveal(itemIdx,y))
                 //Swift.print("append to firstPart")
-            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < itemsCount && surplusItems.count > 0){//1. item is bellow visibleItems,2. y is above bottomLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
+            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.count && surplusItems.count > 0){//1. item is bellow visibleItems,2. y is above bottomLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
                 //Swift.print("append to thirdPart")
                 thirdPart.append(reveal(itemIdx,y))
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem

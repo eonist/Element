@@ -166,7 +166,7 @@ class FastList:Element,IList {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
-        super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))//probably use FastListEvent here in the future
+        super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
     }
     /**
      * EventHandler for the items in the list

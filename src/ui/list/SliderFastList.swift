@@ -10,9 +10,9 @@ class SliderFastList:FastList,ISliderList {
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
     }
-    override func scrollWheel(theEvent:NSEvent) {
-        scroll(theEvent)//forward the event to the extension
-        super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
+    override func scrollWheel(event:NSEvent) {
+        scroll(event)/*forwards the event to the extension*/
+        super.scrollWheel(event)/*forwards the event other delegates higher up in the stack*/
     }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         ListModifier.scrollTo(self,sliderEvent.progress)

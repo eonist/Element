@@ -165,7 +165,7 @@ class FastList:Element,IList {
     func onListItemUpInside(buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
-        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}
+        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/**/
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))//probably use FastListEvent here in the future
     }
     /**

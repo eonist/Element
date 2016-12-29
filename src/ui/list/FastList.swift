@@ -17,7 +17,7 @@ import Cocoa
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 class FastList:Element,IList {
-    var selectedIdx:Int?/*this cooresponds to the index in dp */
+    var selectedIdx:Int?/*this cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
     var itemsCount:Int/*IMPORTANT: update this value if you update the count in dp, use events, ideally this should be handled in dp altogether*/
@@ -25,7 +25,7 @@ class FastList:Element,IList {
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return itemsCount * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
     var visibleItems:[FastListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
-    var surplusItems:[FastListItem] = []/*repurpouse Items instead of removing and creating new ones*/
+    var surplusItems:[FastListItem] = []/*Repurpose Items instead of removing and creating new ones*/
     
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight

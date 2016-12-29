@@ -7,7 +7,7 @@ class StyleManagerUtils{
     static var stylesByState:Dictionary<String,[IStyle]> = [:]
     /**
      * We hash the tail of the style selectors
-     * NOTE: Using if let wont work on the code bellow
+     * NOTE: Using if let won't work on the code bellow
      */
     static func hashStyle(style:IStyle){
         if(style.selectors.last!.element != ""){

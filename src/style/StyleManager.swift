@@ -23,7 +23,7 @@ class StyleManager{
      */
     static func removeStyle(name:String) -> IStyle? {
         let numOfStyles:Int = styles.count;
-        for (var i : Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice2(i,1)[0]}}
+        for (var i:Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice2(i,1)[0]}}
         return nil
     }
     /**
@@ -31,8 +31,9 @@ class StyleManager{
      * @return a Style
      */
     static func getStyle(name:String)->IStyle?{
-        let numOfStyles:Int = styles.count;
-        for(var i:Int = 0;i < numOfStyles;i++) {if((styles[i] as IStyle).name == name) {return styles[i]}}
+        for (_,style) in self.styles.enumerate(){
+            if(style.name == name) {return style}
+        }
         return nil
     }
 }
@@ -52,8 +53,8 @@ extension StyleManager{
         for style in styles{removeStyle(style.name)}
     }
     /**
-     * Adds styles by parsing @param string (the string must comply to the Element css syntax)
-     * // :TODO: add support for css import statement in the @param string
+     * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)
+     * // :TODO: add support for CSS import statement in the @param string
      */
     static func addStyle(var cssString:String){
         cssString = CSSLinkResolver.resolveLinks(cssString)
@@ -63,7 +64,7 @@ extension StyleManager{
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
      * PARAM: liveEdit enables you to see css changes while an app is running
-     * IMPORTANT: LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple aporch)
+     * IMPORTANT: LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple approach)
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      */
     static func addStylesByURL(url:String,_ liveEdit:Bool = false) {
@@ -74,7 +75,7 @@ extension StyleManager{
                 let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
                 removeStyle(styles)/*if url exists then remove the styles that it represents*/
             }else{/*if the url wasn't in the dictionary, then add it*/
-                cssFiles[url] = cssString//<--im not sure how this works, but it works
+                cssFiles[url] = cssString//<--I'm not sure how this works, but it works
             }
             addStyle(cssString)
         }else{//not live

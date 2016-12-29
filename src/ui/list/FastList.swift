@@ -53,7 +53,7 @@ class FastList:Element,IList {
      * 2. remove and then shuffle items above and bellow on each iteration (like lego)
      * 
      * The concept is simple, you only show items that are within the limits as you scroll up and down. (these items only exists virtually, untill they are revealed if they are within the limits)
-     * With these to rules: you should be able to create the algorithm that lay out items at a progress value
+     * With these two rules: you should be able to create the algorithm that lay out items at a progress value
      * Stage.1: Remove items outside Limits
      * Stage.2: stack items to cover the visible area
      */

@@ -5,7 +5,7 @@ class FastList2:Element,IList{
     var dataProvider:DataProvider/*data storage*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
-    
+    var prevVisibleRange:Range<Int> = 
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
@@ -33,7 +33,8 @@ class FastList2:Element,IList{
         
         //continue here:
             //you use the iterate + loop value between min and max method from legacy code 🏀 
-        
+        let clampedIndex:Int = IntParser.normalize(loopIndex.int, maxVisibleItems!)
+        clampedIndex
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

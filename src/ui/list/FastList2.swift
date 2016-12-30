@@ -29,7 +29,9 @@ class FastList2:Element,IList{
         var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
-        let remainder:CGFloat = topItemIndex % maxVisibleItems!.cgFloat
+        let loopIndex:CGFloat = topItemIndex % maxVisibleItems!.cgFloat//the index in a repeating series of numbers
+        //continue here:
+            //you use the iterate + loop value between min and max method from legacy code 🏀
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

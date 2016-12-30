@@ -78,6 +78,6 @@ class ListParser {
      * // :TODO: you must for loop through each item and use the method getHeight() on each item to find the total height, item heights may vary and have different heights
      */
     static func itemsHeight(list:IList) -> CGFloat {
-        return CGFloat(list.dataProvider.count) * list.itemHeight
+        return list.dataProvider.count * list.itemHeight
     }
 }

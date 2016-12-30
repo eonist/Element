@@ -1,6 +1,6 @@
 import Foundation
 
-class FastList2:Element{
+class FastList2:Element,IList{
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
     var lableContainer:Container?/*holds the list items*/
@@ -20,7 +20,7 @@ class FastList2:Element{
      *
      */
     func setProgress(progress:CGFloat){
-        
+        ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

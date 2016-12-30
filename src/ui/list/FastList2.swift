@@ -37,9 +37,9 @@ class FastList2:Element,IList{
         let clampedIndex:Int = IntParser.normalize(loopIndex.int, maxVisibleItems!)
         clampedIndex
         */
-        let curVisibleRange = Range<Int>(loopIndex,loopIndex.int+maxVisibleItems!)
-        if(){
-            prevVisibleRange =
+        let curVisibleRange:Range<Int> = Range<Int>(loopIndex.int,loopIndex.int+maxVisibleItems!)
+        if(!curVisibleRange.equals(prevVisibleRange)){
+             prevVisibleRange = curVisibleRange
         }
         
     }

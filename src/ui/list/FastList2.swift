@@ -23,6 +23,7 @@ class FastList2:Element,IList{
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleTop:CGFloat = abs(lableContainer!.y)
         let visibleBottom:CGFloat = visibleTop + height
+        let topItemY:CGFloat = visibleTop % itemHeight
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

@@ -5,7 +5,7 @@ class FastList2:Element,IList{
     var dataProvider:DataProvider/*data storage*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
-    var prevVisibleRange:Range<Int>?
+    var prevVisibleRange:Range<Int> = Range<Int>(0,0)
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
@@ -38,8 +38,9 @@ class FastList2:Element,IList{
         clampedIndex
         */
         let curVisibleRange:Range<Int> = Range<Int>(loopIndex.int,loopIndex.int+maxVisibleItems!)
-        if(curVisibleRange != prevVisibleRange){
+        if(curVisibleRange != prevVisibleRange){//only set if its not the same as prev range
              prevVisibleRange = curVisibleRange
+            //spoof items in the new range
         }
         
     }

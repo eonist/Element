@@ -21,10 +21,11 @@ class FastList2:Element,IList{
      */
     func setProgress(progress:CGFloat){
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        let visibleTop:CGFloat = abs(lableContainer!.y)
-        let visibleBottom:CGFloat = visibleTop + height
-        var topItemY:CGFloat {let remainder = visibleTop % itemHeight;return visibleTop-itemHeight+remainder}
-        var
+        let visibleItemsTop:CGFloat = abs(lableContainer!.y)
+        let visibleBottom:CGFloat = visibleItemsTop + height
+        var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
+        let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
+        var topItemIndex:CGFloat = (itemsHeight / visibleItemsTop)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -16,5 +16,11 @@ class FastList2:Element{
         super.resolveSkin()
         lableContainer = addSubView(Container(width,height,self,"lable"))
     }
+    /**
+     *
+     */
+    func setProgress(progress:CGFloat){
+        
+    }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

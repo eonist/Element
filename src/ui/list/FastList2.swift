@@ -33,10 +33,15 @@ class FastList2:Element,IList{
         
         //continue here:
             //you use the iterate + loop value between min and max method from legacy code 🏀 
+        /*
         let clampedIndex:Int = IntParser.normalize(loopIndex.int, maxVisibleItems!)
         clampedIndex
+        */
+        let curVisibleRange = Range<Int>(loopIndex,loopIndex.int+maxVisibleItems!)
+        if(){
+            prevVisibleRange =
+        }
         
-         = Range<Int>(loopIndex,loopIndex+maxVisibleItems)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

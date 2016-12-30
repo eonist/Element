@@ -21,6 +21,7 @@ class FastList2:Element,IList{
      */
     func setProgress(progress:CGFloat){
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
+        let visibleTop:CGFloat = lableContainer?.y
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

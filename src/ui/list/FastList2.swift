@@ -30,6 +30,7 @@ class FastList2:Element,IList{
         //let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
         let loopIndex:CGFloat = topItemIndex % maxVisibleItems!.cgFloat//the index in a repeating series of numbers
+        
         //continue here:
             //you use the iterate + loop value between min and max method from legacy code 🏀 
         

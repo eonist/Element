@@ -26,7 +26,7 @@ class FastList:Element,IList {
     var itemsHeight:CGFloat {return dataProvider.count * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
     var visibleItems:[FastListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     var surplusItems:[FastListItem] = []/*Repurpose Items instead of removing and creating new ones*/
-    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = CGFloat.NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)

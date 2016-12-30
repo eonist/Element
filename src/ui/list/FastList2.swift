@@ -31,7 +31,7 @@ class FastList2:Element,IList{
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
         let loopIndex:CGFloat = topItemIndex % maxVisibleItems!.cgFloat//the index in a repeating series of numbers
         //continue here:
-            //you use the iterate + loop value between min and max method from legacy code 🏀
+            //you use the iterate + loop value between min and max method from legacy code 🏀 
         
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

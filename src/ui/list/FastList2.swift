@@ -24,8 +24,9 @@ class FastList2:Element,IList{
         let visibleItemsTop:CGFloat = abs(lableContainer!.y)
         let visibleBottom:CGFloat = visibleItemsTop + height
         var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
-        let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
-        var topItemIndex:CGFloat = (itemsHeight / visibleItemsTop)
+        //let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
+        var topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
+        
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

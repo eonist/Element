@@ -9,6 +9,8 @@ class FastList2:Element{
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
+        self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
+        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
     override func resolveSkin() {
         super.resolveSkin()

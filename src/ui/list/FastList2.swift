@@ -41,8 +41,19 @@ class FastList2:Element,IList{
         if(curVisibleRange != prevVisibleRange){//only set if its not the same as prev range
              prevVisibleRange = curVisibleRange
             //spoof items in the new range
+            
+            
         }
         
+    }
+    /**
+     *
+     */
+    func spoof(cur:Range<Int>){
+        let prev = prevVisibleRange
+        if(cur.start < prev.start){
+            //
+        }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

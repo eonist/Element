@@ -17,7 +17,7 @@ class FastList2:Element,IList{
     override func resolveSkin() {
         Swift.print("FastList2.resolveSkin()")
         super.resolveSkin()
-        Swift.print("FastList.height: " + "\(height)")
+        Swift.print("FastList2.height: " + "\(height)")
         maxVisibleItems = round(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         maxVisibleItems = round(height / itemHeight).int + 1

@@ -80,11 +80,27 @@ class FastList2:Element,IList{
         item.setTextValue(title)
         item.y = listItem.idx * itemHeight/*position the item*/
     }
+  
     /**
      * (spawn == create something)
      */
-    func spawn(){
-        
+    private func spawn(range:Range<Int>){
+        for i in range{/*we need an extra item to cover the entire area*/
+            //visibleItemIndecies.append(i)
+            let item:Element = spawn(i)
+            visibleItems.append((item,i))
+            lableContainer!.addSubView(item)
+            item.y = i * itemHeight
+        }
+    }
+    /**
+     * (spawn == create something)
+     */
+    func spawn(idx:Int)->Element{/*override this to use custom ItemList items*/
+        let dpItem = dataProvider.items[idx]
+        let title:String = dpItem["title"]!
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
+        return item
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -61,8 +61,9 @@ class FastList2:Element,IList{
     func spoof(cur:Range<Int>){
         Swift.print("spoof.range( \(cur) )")
         let prev = prevVisibleRange!
+        Swift.print("prev: " + "\(prev)")
         let diff = prev.start - cur.start
-        //Swift.print("diff: " + "\(diff)")
+        Swift.print("diff: " + "\(diff)")
         if(abs(diff) >= maxVisibleItems){//spoof every item
             //Swift.print("all")
             for i in 0..<visibleItems.count {visibleItems[i] = (visibleItems[i].item, cur.start + i);spoof(visibleItems[i])}
@@ -78,9 +79,7 @@ class FastList2:Element,IList{
             //Swift.print("items.count: " + "\(items.count)")
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
-            for i in 0..<items.count {
-                items[i] = (items[i].item, cur.last! + i);spoof(items[i])
-            }//assign correct absolute idx
+            for i in 0..<items.count {items[i] = (items[i].item, cur.last! + i);spoof(items[i])}//assign correct absolute idx
             visibleItems += items/*append to list*/
         }
     }

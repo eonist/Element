@@ -81,8 +81,12 @@ class FastList2:Element,IList{
     /**
      *
      */
-    func spoof(item:FastListItem){
-        
+    func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
+        let item:SelectTextButton = listItem.item as! SelectTextButton
+        let idx:Int = listItem.idx/*the index of the data in dataProvider*/
+        let dpItem = dataProvider.items[idx]
+        let title:String = dpItem["title"]!
+        item.setTextValue(title)
     }
     /**
      * (spawn == create something)

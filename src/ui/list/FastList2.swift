@@ -58,26 +58,16 @@ class FastList2:Element,IList{
         let diff = prev.start - cur.start
         if(abs(diff) >= maxVisibleItems){
             //spoof every item
+            
         }else if(diff.positive){//cur.start is less than prev.start
-            //prepend N items to the visibleItems arr (from the bottom)
             var items = visibleItems.splice2(visibleItems.count-diff, diff)//grab the end items
             for i in 0..<items.count {items[i] = (items[i].item, cur.start + i);spoof(items[i])}//assign correct absolute idx
             visibleItems = items + visibleItems/*prepend to list*/
         }else if(diff.negative){//cur.start is more than prev.start
-            
-            //append N items to the visibleItems arr (from the top)
             var items = visibleItems.splice2(0, abs(diff))//grab items from the top
             for i in 0..<items.count {items[i] = (items[i].item, cur.end + i);spoof(items[i])}//assign correct absolute idx
-            visibleItems = items + visibleItems/*prepend to list*/
-            //and position them
-                //and add data from dp
+            visibleItems += items/*append to list*/
         }
-    }
-    /**
-     * (spoof == apply/reuse)
-     */
-    func spoof(items:[FastListItem]){
-        
     }
     /**
      * (spoof == apply/reuse)

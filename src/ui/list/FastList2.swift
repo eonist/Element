@@ -60,13 +60,16 @@ class FastList2:Element,IList{
             //spoof every item
         }else if(diff.positive){//cur.start is less than prev.start
             //prepend N items to the visibleItems arr (from the bottom)
-            var items = visibleItems.splice2(visibleItems.count-diff, diff)
+            var items = visibleItems.splice2(visibleItems.count-diff, diff)//grab the end items
             for i in 0..<items.count {items[i] = (items[i].item, cur.start + i);spoof(items[i])}//assign correct absolute idx
             visibleItems = items + visibleItems/*prepend to list*/
         }else if(diff.negative){//cur.start is more than prev.start
             
             //append N items to the visibleItems arr (from the top)
-                //and position them
+            var items = visibleItems.splice2(0, abs(diff))//grab items from the top
+            for i in 0..<items.count {items[i] = (items[i].item, cur.end + i);spoof(items[i])}//assign correct absolute idx
+            visibleItems = items + visibleItems/*prepend to list*/
+            //and position them
                 //and add data from dp
         }
     }

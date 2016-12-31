@@ -48,7 +48,7 @@ class FastList2:Element,IList{
         
     }
     /**
-     *
+     * (spoof == apply/reuse)
      */
     func spoof(cur:Range<Int>){
         let prev = prevVisibleRange
@@ -65,6 +65,24 @@ class FastList2:Element,IList{
                 //and position them
                 //and add data from dp
         }
+    }
+    /**
+     *
+     */
+    func spoof(items:[FastListItem]){
+        
+    }
+    /**
+     *
+     */
+    func spoof(item:FastListItem){
+        
+    }
+    /**
+     * (spawn == create something)
+     */
+    func spawn(){
+        
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

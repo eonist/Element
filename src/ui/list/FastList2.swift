@@ -32,7 +32,7 @@ class FastList2:Element,IList{
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = abs(lableContainer!.y)
         //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
-        let visibleBottom:CGFloat = visibleItemsTop + height
+        //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
@@ -48,7 +48,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(cur:Range<Int>){
-        Swift.print("spoof(Range)")
+        Swift.print("spoof( \(cur) )")
         let prev = prevVisibleRange
         let diff = prev.start - cur.start
         if(abs(diff) >= maxVisibleItems){

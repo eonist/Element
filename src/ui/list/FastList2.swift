@@ -57,7 +57,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(cur:Range<Int>){
-        //Swift.print("spoof.range( \(cur) )")
+        Swift.print("spoof.range( \(cur) )")
         let prev = prevVisibleRange!
         let diff = prev.start - cur.start
         //Swift.print("diff: " + "\(diff)")

@@ -32,7 +32,7 @@ class FastList2:Element,IList{
     func setProgress(progress:CGFloat){
         //Swift.print("FastList2.setProgress()")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        let visibleItemsTop:CGFloat = abs(lableContainer!.y)
+        let visibleItemsTop:CGFloat = abs(lableContainer!.y > 0 ? 0 : lableContainer!.y)
         Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
@@ -81,7 +81,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){
-        //Swift.print("spoof.item(\(listItem.idx))")
+        Swift.print("spoof.item(\(listItem.idx))")
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]

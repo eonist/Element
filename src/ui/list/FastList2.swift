@@ -80,7 +80,7 @@ class FastList2:Element,IList{
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
             
-            //its almost correct, try with shorter list to find the missing piece🏀
+            //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
             
             for i in 0..<items.count {
                 if(cur.last! + i<dataProvider.count){

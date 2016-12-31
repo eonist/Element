@@ -6,6 +6,7 @@ class FastList2:Element,IList{
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
     var prevVisibleRange:Range<Int> = Range<Int>(0,0)
+    var visibleItems:[FastListItem] = []
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
@@ -52,7 +53,7 @@ class FastList2:Element,IList{
     func spoof(cur:Range<Int>){
         let prev = prevVisibleRange
         if(cur.start < prev.start){
-            //
+            //prepend N items to the visibleItems arr
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

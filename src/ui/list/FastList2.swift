@@ -33,7 +33,7 @@ class FastList2:Element,IList{
         //Swift.print("FastList2.setProgress()")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = abs(lableContainer!.y)
-        //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
+        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}

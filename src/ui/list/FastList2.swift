@@ -80,8 +80,10 @@ class FastList2:Element,IList{
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
             for i in 0..<items.count {
-                items[i] = (items[i].item, cur.last! + i);
-                if(i<dataProvider.count){spoof(items[i])}
+                if(cur.last! + i<dataProvider.count){
+                    items[i] = (items[i].item, cur.last! + i)
+                    spoof(items[i])
+                }
             }//assign correct absolute idx
             visibleItems += items/*append to list*/
         }

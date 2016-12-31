@@ -30,7 +30,7 @@ class FastList2:Element,IList{
         var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
-        let loopIndex:CGFloat = topItemIndex % maxVisibleItems!.cgFloat//the index in a repeating series of numbers
+        //let loopIndex:CGFloat = topItemIndex % maxVisibleItems!.cgFloat//the index in a repeating series of numbers
         
         //continue here:
             //you use the iterate + loop value between min and max method from legacy code 🏀 
@@ -38,7 +38,10 @@ class FastList2:Element,IList{
         let clampedIndex:Int = IntParser.normalize(loopIndex.int, maxVisibleItems!)
         clampedIndex
         */
-        let curVisibleRange:Range<Int> = Range<Int>(loopIndex.int,loopIndex.int+maxVisibleItems!)
+        
+        //Range<Int>(loopIndex.int,loopIndex.int+maxVisibleItems!)
+        
+        let curVisibleRange:Range<Int> = Range<Int>(topItemIndex.int,topItemIndex.int+maxVisibleItems!)
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
              prevVisibleRange = curVisibleRange
             //spoof items in the new range

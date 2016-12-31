@@ -10,6 +10,7 @@ class FastList2:Element,IList{
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
+        Swift.print("dataProvider.count: " + "\(dataProvider!.count)")
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
@@ -40,7 +41,9 @@ class FastList2:Element,IList{
         //Swift.print("topItemY: " + "\(topItemY)")
         var topItemIndex:Int = floor(visibleItemsTop / itemHeight).int
         topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
+        Swift.print("topItemIndex: " + "\(topItemIndex)")
         let bottomItemIndex:Int = topItemIndex+maxVisibleItems!
+        Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex

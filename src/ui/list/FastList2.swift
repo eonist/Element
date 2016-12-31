@@ -31,10 +31,13 @@ class FastList2:Element,IList{
         Swift.print("FastList2.setProgress()")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = abs(lableContainer!.y)
+        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         let visibleBottom:CGFloat = visibleItemsTop + height
-        var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
-        //let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
+        Swift.print("visibleBottom: " + "\(visibleBottom)")
+        //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
+        //Swift.print("topItemY: " + "\(topItemY)")
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
+        Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = Range<Int>(topItemIndex.int,topItemIndex.int+maxVisibleItems!)
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
             prevVisibleRange = curVisibleRange

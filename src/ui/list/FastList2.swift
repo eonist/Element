@@ -58,7 +58,7 @@ class FastList2:Element,IList{
         let diff = prev.start - cur.start
         if(abs(diff) >= maxVisibleItems){
             //spoof every item
-            
+            for i in 0..<visibleItems.count {visibleItems[i] = (visibleItems[i].item, cur.start + i);spoof(visibleItems[i])}
         }else if(diff.positive){//cur.start is less than prev.start
             var items = visibleItems.splice2(visibleItems.count-diff, diff)//grab the end items
             for i in 0..<items.count {items[i] = (items[i].item, cur.start + i);spoof(items[i])}//assign correct absolute idx

@@ -5,7 +5,7 @@ class FastList2:Element,IList{
     var dataProvider:DataProvider/*data storage*/
     var lableContainer:Container?/*holds the list items*/
     var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
-    var prevVisibleRange:Range<Int> = Range<Int>(0,0)
+    var prevVisibleRange:Range<Int>?
     var visibleItems:[FastListItem] = []
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
@@ -22,6 +22,7 @@ class FastList2:Element,IList{
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))
+        prevVisibleRange = Range<Int>(0,maxVisibleItems!)
         spawn(0..<maxVisibleItems!)
     }
     /**
@@ -49,7 +50,7 @@ class FastList2:Element,IList{
      */
     func spoof(cur:Range<Int>){
         Swift.print("spoof( \(cur) )")
-        let prev = prevVisibleRange
+        let prev = prevVisibleRange!
         let diff = prev.start - cur.start
         Swift.print("diff: " + "\(diff)")
         if(abs(diff) >= maxVisibleItems){//spoof every item

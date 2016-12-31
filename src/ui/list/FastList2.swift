@@ -53,9 +53,15 @@ class FastList2:Element,IList{
     func spoof(cur:Range<Int>){
         let prev = prevVisibleRange
         if(cur.start < prev.start){
+            let diff = prev.start - cur.start
             //prepend N items to the visibleItems arr (from the bottom)
+            //and position them
+            //and add data from dp
         }else if(cur.end > prev.end){
-            
+            let diff = prev.end - cur.end
+            //append N items to the visibleItems arr (from the top)
+                //and position them
+                //and add data from dp
         }
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

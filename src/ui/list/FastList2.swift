@@ -56,7 +56,7 @@ class FastList2:Element,IList{
     func spoof(cur:Range<Int>){
         let prev = prevVisibleRange
         let diff = prev.start - cur.start
-        if(diff.positive){
+        if(diff.positive && abs(diff) < maxVisibleItems){
             
             //prepend N items to the visibleItems arr (from the bottom)
             let items = visibleItems.splice2(visibleItems.count-diff, diff)

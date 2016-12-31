@@ -22,7 +22,7 @@ class FastList2:Element,IList{
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        prevVisibleRange = Range<Int>(0,maxVisibleItems!)
+        prevVisibleRange = 0..<maxVisibleItems!
         spawn(0..<maxVisibleItems!)
     }
     /**
@@ -39,7 +39,7 @@ class FastList2:Element,IList{
         //Swift.print("topItemY: " + "\(topItemY)")
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
-        let curVisibleRange:Range<Int> = Range<Int>(topItemIndex.int,topItemIndex.int+maxVisibleItems!)
+        let curVisibleRange:Range<Int> = topItemIndex.int..<topItemIndex.int+maxVisibleItems!-1
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
             spoof(curVisibleRange)/*spoof items in the new range*/
             prevVisibleRange = curVisibleRange

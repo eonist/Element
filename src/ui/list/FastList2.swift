@@ -73,13 +73,13 @@ class FastList2:Element,IList{
         }
     }
     /**
-     *
+     * (spoof == apply/reuse)
      */
     func spoof(items:[FastListItem]){
         
     }
     /**
-     *
+     * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){
         let item:SelectTextButton = listItem.item as! SelectTextButton
@@ -87,6 +87,7 @@ class FastList2:Element,IList{
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         item.setTextValue(title)
+        item.y = listItem.idx * itemHeight/*position the item*/
     }
     /**
      * (spawn == create something)

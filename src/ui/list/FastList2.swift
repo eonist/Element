@@ -58,13 +58,14 @@ class FastList2:Element,IList{
         let diff = prev.start - cur.start
         if(abs(diff) >= maxVisibleItems){
             //spoof every item
-        }else if(diff.positive){
+        }else if(diff.positive){//cur.start is less than prev.start
             //prepend N items to the visibleItems arr (from the bottom)
             let items = visibleItems.splice2(visibleItems.count-diff, diff)
+            for (index,element) in items.enumerate(){element.idx = }
             visibleItems = items + visibleItems/*prepend*/
             //and position them
             //and add data from dp
-        }else if(diff.negative){
+        }else if(diff.negative){//cur.start is more than prev.start
             
             //append N items to the visibleItems arr (from the top)
                 //and position them

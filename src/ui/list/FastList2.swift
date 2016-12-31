@@ -30,13 +30,10 @@ class FastList2:Element,IList{
         var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //let itemsHeight:CGFloat = (itemHeight * dataProvider.count)
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
-        
         let curVisibleRange:Range<Int> = Range<Int>(topItemIndex.int,topItemIndex.int+maxVisibleItems!)
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
-             prevVisibleRange = curVisibleRange
-            //spoof items in the new range
-            
-            
+            prevVisibleRange = curVisibleRange
+            spoof(curVisibleRange)/*spoof items in the new range*/
         }
     }
     /**

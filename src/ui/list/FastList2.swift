@@ -61,7 +61,7 @@ class FastList2:Element,IList{
         }else if(diff.positive){//cur.start is less than prev.start
             //prepend N items to the visibleItems arr (from the bottom)
             var items = visibleItems.splice2(visibleItems.count-diff, diff)
-            for i in 0..<items.count {items[i].idx = cur.start + index}
+            for i in 0..<items.count {items[i] = (items[i].item, cur.start + i)}//assign correct absolute idx
             visibleItems = items + visibleItems/*prepend*/
             //and position them
             //and add data from dp

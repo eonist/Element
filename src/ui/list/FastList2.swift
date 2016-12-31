@@ -78,8 +78,10 @@ class FastList2:Element,IList{
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
+        Swift.print("title: " + "\(title)")
         item.setTextValue(title)
         item.y = listItem.idx * itemHeight/*position the item*/
+        Swift.print("item.y: " + "\(item.y)")
     }
   
     /**

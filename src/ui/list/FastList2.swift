@@ -17,8 +17,9 @@ class FastList2:Element,IList{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self,"lable"))
         maxVisibleItems = round(height / itemHeight).int + 1
+        lableContainer = addSubView(Container(width,height,self,"lable"))
+        spawn(0..<maxVisibleItems!)
     }
     /**
      *

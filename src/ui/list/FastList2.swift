@@ -10,12 +10,17 @@ class FastList2:Element,IList{
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
-        
         super.init(width, height, parent, id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
     override func resolveSkin() {
+        Swift.print("FastList2.resolveSkin()")
+        super.resolveSkin()
+        Swift.print("FastList.height: " + "\(height)")
+        maxVisibleItems = round(height / itemHeight).int + 1
+        Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
+        
         super.resolveSkin()
         maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))

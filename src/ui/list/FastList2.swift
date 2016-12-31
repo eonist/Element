@@ -38,9 +38,10 @@ class FastList2:Element,IList{
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
-        let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
+        let topItemIndex:Int = floor(visibleItemsTop / itemHeight).int
+        let bottomItemIndex:Int = topItemIndex+maxVisibleItems!
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
-        let curVisibleRange:Range<Int> = topItemIndex.int..<topItemIndex.int+maxVisibleItems!
+        let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex
         //Swift.print("curVisibleRange: " + "\(curVisibleRange)")
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
             spoof(curVisibleRange)/*spoof items in the new range*/

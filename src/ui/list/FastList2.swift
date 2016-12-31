@@ -39,8 +39,9 @@ class FastList2:Element,IList{
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
-        //Swift.print("topItemIndex: " + "\(topItemIndex)")
+        Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = topItemIndex.int..<topItemIndex.int+maxVisibleItems!-1
+        Swift.print("curVisibleRange: " + "\(curVisibleRange)")
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
             spoof(curVisibleRange)/*spoof items in the new range*/
             prevVisibleRange = curVisibleRange
@@ -50,7 +51,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(cur:Range<Int>){
-        Swift.print("spoof( \(cur) )")
+        Swift.print("spoof.range( \(cur) )")
         let prev = prevVisibleRange!
         let diff = prev.start - cur.start
         Swift.print("diff: " + "\(diff)")
@@ -75,7 +76,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){
-        Swift.print("spoof(\(listItem.idx))")
+        Swift.print("spoof.item(\(listItem.idx))")
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]

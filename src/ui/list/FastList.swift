@@ -56,7 +56,7 @@ class FastList:Element,IList {
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(progress:CGFloat){
-        let listY:CGFloat = -ListModifier.scrollTo(progress, height, itemsHeight)//this is the list y offset, we add the substraction sign to get positive value
+        let listY:CGFloat = -1 * ListModifier.scrollTo(progress, height, itemsHeight)//this is the list y offset, we add the substraction sign to get positive value
         //Swift.print("listY: " + "\(listY)")
         let topLimit:CGFloat = /*listY*/ -itemHeight
         //Swift.print("topLimit: " + "\(topLimit)")

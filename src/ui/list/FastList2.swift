@@ -20,8 +20,6 @@ class FastList2:Element,IList{
         Swift.print("FastList.height: " + "\(height)")
         maxVisibleItems = round(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
-        
-        super.resolveSkin()
         maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))
         spawn(0..<maxVisibleItems!)

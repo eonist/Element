@@ -39,7 +39,7 @@ class FastList2:Element,IList{
         clampedIndex
         */
         let curVisibleRange:Range<Int> = Range<Int>(loopIndex.int,loopIndex.int+maxVisibleItems!)
-        if(curVisibleRange != prevVisibleRange){//only set if its not the same as prev range
+        if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
              prevVisibleRange = curVisibleRange
             //spoof items in the new range
             

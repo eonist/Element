@@ -23,6 +23,7 @@ class FastList2:Element,IList{
         maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))
         prevVisibleRange = 0..<maxVisibleItems!
+        Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
         spawn(0..<maxVisibleItems!)
     }
     /**

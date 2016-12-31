@@ -55,7 +55,7 @@ class FastList2:Element,IList{
         if(cur.start < prev.start){
             let diff = prev.start - cur.start//-> but no more than len
             //prepend N items to the visibleItems arr (from the bottom)
-            visibleItems += visibleItems.splice2(<#T##startIndex: Int##Int#>, <#T##deleteCount: Int##Int#>)
+            visibleItems += visibleItems.splice2(visibleItems.count-diff, diff)
             //and position them
             //and add data from dp
         }else if(cur.end > prev.end){

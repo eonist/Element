@@ -1,6 +1,6 @@
 import Cocoa
 
-class RBSliderFastList2:FastList,IRBSliderList{
+class RBSliderFastList2:FastList2,IRBSliderList{
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

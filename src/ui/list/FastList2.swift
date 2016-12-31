@@ -28,16 +28,16 @@ class FastList2:Element,IList{
      *
      */
     func setProgress(progress:CGFloat){
-        Swift.print("FastList2.setProgress()")
+        //Swift.print("FastList2.setProgress()")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = abs(lableContainer!.y)
-        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
+        //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         let visibleBottom:CGFloat = visibleItemsTop + height
-        Swift.print("visibleBottom: " + "\(visibleBottom)")
+        //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
         let topItemIndex:CGFloat = floor(visibleItemsTop / itemHeight)
-        Swift.print("topItemIndex: " + "\(topItemIndex)")
+        //Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = Range<Int>(topItemIndex.int,topItemIndex.int+maxVisibleItems!)
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
             prevVisibleRange = curVisibleRange
@@ -48,6 +48,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(cur:Range<Int>){
+        Swift.print("spoof(Range)")
         let prev = prevVisibleRange
         let diff = prev.start - cur.start
         if(abs(diff) >= maxVisibleItems){

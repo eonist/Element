@@ -61,7 +61,7 @@ class FastList2:Element,IList{
         }else if(diff.positive){//cur.start is less than prev.start
             //prepend N items to the visibleItems arr (from the bottom)
             var items = visibleItems.splice2(visibleItems.count-diff, diff)
-            for i in 0..<items.count {items[i] = (items[i].item, cur.start + i)}//assign correct absolute idx
+            for i in 0..<items.count {items[i] = (items[i].item, cur.start + i);spoof(items[i])}//assign correct absolute idx
             visibleItems = items + visibleItems/*prepend*/
             //and position them
             //and add data from dp
@@ -81,7 +81,7 @@ class FastList2:Element,IList{
     /**
      *
      */
-    func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
+    func spoof(listItem:FastListItem){
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]

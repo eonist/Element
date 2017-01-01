@@ -24,16 +24,13 @@ class FastList2:Element,IList{
         lableContainer = addSubView(Container(width,height,self,"lable"))
         prevVisibleRange = 0..<maxVisibleItems!-1
         Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
-        var numOfItems:Int = maxVisibleItems!-1
-        numOfItems = numOfItems > dataProvider.count ? dataProvider.count : numOfItems
+        let numOfItems:Int = Swift.min(maxVisibleItems!-1, dataProvider.count)
         spawn(0..<numOfItems)
     }
     /**
      *
      */
     func setProgress(progress:CGFloat){
-        
-        
         //Continue here: the bug was using cur.end when you should use prev.end
             //clean up the code🏀, make maxVisbible clearer, try other data lengths
             //use min and max instead of shorthand if statements

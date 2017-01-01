@@ -34,7 +34,7 @@ class FastList2:Element,IList{
         
         //Continue here: the bug was using cur.end when you should use prev.end
             //clean up the code🏀, make maxVisbible clearer, try other data lengths
-            
+            //use min and max instead of shorthand if statements
         
         //Swift.print("FastList2.setProgress() ")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/

@@ -83,7 +83,7 @@ class FastList2:Element,IList{
             //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
             
             for i in 0..<items.count {
-                if(cur.last! + i<dataProvider.count){
+                if(cur.last! + i < dataProvider.count){
                     items[i] = (items[i].item, cur.last! + i)
                     spoof(items[i])
                 }
@@ -95,6 +95,9 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){
+        if(listItem.idx >= 0 && listItem.idx < dataProvider){
+            
+        }
         Swift.print("spoof.item(\(listItem.idx))")
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/

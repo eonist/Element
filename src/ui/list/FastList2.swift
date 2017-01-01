@@ -74,17 +74,15 @@ class FastList2:Element,IList{
             Swift.print("append")
             var items = visibleItems.splice2(0, -1*(diff))//grab items from the top
             //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
-            //Swift.print("items.count: " + "\(items.count)")
+            Swift.print("items.count: " + "\(items.count)")
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
             
             //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
             
             for i in 0..<items.count {
-                if(cur.last! + i < dataProvider.count){
-                    items[i] = (items[i].item, cur.last! + i)
-                    spoof(items[i])
-                }
+                items[i] = (items[i].item, cur.last! + i)
+                spoof(items[i])
             }//assign correct absolute idx
             visibleItems += items/*append to list*/
         }

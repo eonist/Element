@@ -32,16 +32,18 @@ class FastList2:Element,IList{
     func setProgress(progress:CGFloat){
         //Swift.print("FastList2.setProgress() ")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        let visibleItemsTop:CGFloat = /*abs(lableContainer!.y > 0 ? 0 : lableContainer!.y)*/NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
+        let visibleItemsTop:CGFloat = abs(lableContainer!.y)/*abs(lableContainer!.y > 0 ? 0 : lableContainer!.y)*///NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
         //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
-        let topItemIndex:Int = round(visibleItemsTop / itemHeight).int
+        var topItemIndex:Int = (visibleItemsTop / itemHeight).int
+        topItemIndex = topItemIndex < 0 ? 0 :topItemIndex
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
-        let bottomItemIndex:Int = topItemIndex + maxVisibleItems!-1
+        var bottomItemIndex:Int = topItemIndex + maxVisibleItems!-1
+        
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")

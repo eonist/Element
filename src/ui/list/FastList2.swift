@@ -42,7 +42,7 @@ class FastList2:Element,IList{
         let topItemIndex:Int = round(visibleItemsTop / itemHeight).int
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
         Swift.print("topItemIndex: " + "\(topItemIndex)")
-        let bottomItemIndex:Int = topItemIndex + maxVisibleItems!
+        let bottomItemIndex:Int = topItemIndex + maxVisibleItems!-1
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
@@ -81,7 +81,7 @@ class FastList2:Element,IList{
             //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
             
             for i in 0..<items.count {
-                items[i] = (items[i].item, cur.end + i)
+                items[i] = (items[i].item, cur.last! + i)
                 spoof(items[i])
             }//assign correct absolute idx
             visibleItems += items/*append to list*/

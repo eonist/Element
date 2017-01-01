@@ -33,15 +33,15 @@ class FastList2:Element,IList{
     func setProgress(progress:CGFloat){
         //Swift.print("FastList2.setProgress()")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        let visibleItemsTop:CGFloat = NumberParser.minMax(abs(lableContainer!.y), 0, itemHeight * dataProvider.count - height)
-        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
+        let visibleItemsTop:CGFloat = NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
+        //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
-        let topItemIndex:Int = floor(visibleItemsTop / itemHeight).int
+        let topItemIndex:Int = round(visibleItemsTop / itemHeight).int
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
-        //Swift.print("topItemIndex: " + "\(topItemIndex)")
+        Swift.print("topItemIndex: " + "\(topItemIndex)")
         let bottomItemIndex:Int = topItemIndex + maxVisibleItems!
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
@@ -72,7 +72,7 @@ class FastList2:Element,IList{
             visibleItems = items + visibleItems/*prepend to list*/
         }else if(diff.negative){//cur.start is more than prev.start
             Swift.print("append")
-            var items = visibleItems.splice2(0, abs(diff))//grab items from the top
+            var items = visibleItems.splice2(0, -1*(diff))//grab items from the top
             //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             //Swift.print("items.count: " + "\(items.count)")
             //Swift.print("cur.last: " + "\(cur.last)")

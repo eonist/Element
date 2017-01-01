@@ -81,7 +81,7 @@ class FastList2:Element,IList{
                 //clean up the code🏀, make maxVisbible clearer, use floor instead of round when finding top index, try other data lengths
             
             for i in 0..<items.count {
-                items[i] = (items[i].item, prev.end + i)
+                items[i] = (items[i].item, prev.last! + i)
                 spoof(items[i])
             }//assign correct absolute idx
             visibleItems += items/*append to list*/
@@ -91,7 +91,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){
-        if(listItem.idx >= 0 && listItem.idx < dataProvider.count){
+        //if(listItem.idx >= 0 && listItem.idx < dataProvider.count){
             Swift.print("spoof.item(\(listItem.idx))")
             let item:SelectTextButton = listItem.item as! SelectTextButton
             let idx:Int = listItem.idx/*the index of the data in dataProvider*/
@@ -101,7 +101,7 @@ class FastList2:Element,IList{
             item.setTextValue(title)
             item.y = listItem.idx * itemHeight/*position the item*/
             //Swift.print("item.y: " + "\(item.y)")
-        }
+        //}
     }
     /**
      * (spawn == create something)

@@ -57,7 +57,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(cur:Range<Int>){
-        Swift.print("spoof.range( \(cur) )")
+        Swift.print("cur: " + "\(cur)")
         let prev = prevVisibleRange!
         Swift.print("prev: " + "\(prev)")
         let diff = prev.start - cur.start
@@ -99,7 +99,7 @@ class FastList2:Element,IList{
             let idx:Int = listItem.idx/*the index of the data in dataProvider*/
             let dpItem = dataProvider.items[idx]
             let title:String = dpItem["title"]!
-            //Swift.print("title: " + "\(title)")
+            Swift.print("title: " + "\(title)")
             item.setTextValue(title)
             item.y = listItem.idx * itemHeight/*position the item*/
             //Swift.print("item.y: " + "\(item.y)")

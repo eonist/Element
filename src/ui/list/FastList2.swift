@@ -65,15 +65,15 @@ class FastList2:Element,IList{
         let diff = prev.start - cur.start
         Swift.print("diff: " + "\(diff)")
         if(abs(diff) >= maxVisibleItems){//spoof every item
-            //Swift.print("all")
+            Swift.print("all")
             for i in 0..<visibleItems.count {visibleItems[i] = (visibleItems[i].item, cur.start + i);spoof(visibleItems[i])}
         }else if(diff.positive){//cur.start is less than prev.start
-            //Swift.print("prepend ")
+            Swift.print("prepend ")
             var items = visibleItems.splice2(visibleItems.count-diff, diff)//grab the end items
             for i in 0..<items.count {items[i] = (items[i].item, cur.start + i);spoof(items[i])}//assign correct absolute idx
             visibleItems = items + visibleItems/*prepend to list*/
         }else if(diff.negative){//cur.start is more than prev.start
-            //Swift.print("append")
+            Swift.print("append")
             var items = visibleItems.splice2(0, abs(diff))//grab items from the top
             //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             //Swift.print("items.count: " + "\(items.count)")

@@ -21,7 +21,6 @@ class FastList2:Element,IList{
         Swift.print("FastList2.height: " + "\(height)")
         maxVisibleItems = round(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
-        maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))
         prevVisibleRange = 0..<maxVisibleItems!-1
         Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
@@ -39,9 +38,9 @@ class FastList2:Element,IList{
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
-        let topItemIndex:Int = round(visibleItemsTop / itemHeight).int
+        let topItemIndex:Int = floor(visibleItemsTop / itemHeight).int
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
-        Swift.print("topItemIndex: " + "\(topItemIndex)")
+        //Swift.print("topItemIndex: " + "\(topItemIndex)")
         let bottomItemIndex:Int = topItemIndex + maxVisibleItems!-1
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")

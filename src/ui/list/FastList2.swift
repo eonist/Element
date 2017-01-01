@@ -45,8 +45,6 @@ class FastList2:Element,IList{
         let bottomItemIndex:Int = topItemIndex + maxVisibleItems!
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
-        
-        
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex
         //Swift.print("curVisibleRange: " + "\(curVisibleRange)")

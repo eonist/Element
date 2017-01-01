@@ -30,6 +30,12 @@ class FastList2:Element,IList{
      *
      */
     func setProgress(progress:CGFloat){
+        
+        
+        //Continue here: the bug was using cur.end when you should use prev.end
+            //clean up the code🏀, make maxVisbible clearer, try other data lengths
+            
+        
         //Swift.print("FastList2.setProgress() ")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = abs(lableContainer!.y > 0 ? 0 : lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
@@ -38,15 +44,14 @@ class FastList2:Element,IList{
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
         //Swift.print("topItemY: " + "\(topItemY)")
-        var topItemIndex:Int = round(visibleItemsTop / itemHeight).int
+        var topItemIndex:Int = (visibleItemsTop / itemHeight).int
         topItemIndex = topItemIndex < 0 ? 0 :topItemIndex
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         var bottomItemIndex:Int = topItemIndex + maxVisibleItems!-1
-        Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         bottomItemIndex = bottomItemIndex > dataProvider.count-1 ? dataProvider.count-1 : bottomItemIndex
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
-        Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
+        //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex
         //Swift.print("curVisibleRange: " + "\(curVisibleRange)")
@@ -79,9 +84,6 @@ class FastList2:Element,IList{
             Swift.print("items.count: " + "\(items.count)")
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
-            
-            //Continue here: the bug was using cur.end when you should use prev.end
-                //clean up the code🏀, make maxVisbible clearer, use floor instead of round when finding top index, try other data lengths
             
             for i in 0..<items.count {
                 items[i] = (items[i].item, prev.end + i)

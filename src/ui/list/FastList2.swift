@@ -81,7 +81,7 @@ class FastList2:Element,IList{
                 //clean up the code🏀, make maxVisbible clearer, use floor instead of round when finding top index, try other data lengths
             
             for i in 0..<items.count {
-                items[i] = (items[i].item, prev.last! + i)
+                items[i] = (items[i].item, prev.end + i)
                 spoof(items[i])
             }//assign correct absolute idx
             visibleItems += items/*append to list*/

@@ -95,20 +95,18 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){
-        if(listItem.idx >= 0 && listItem.idx < dataProvider){
-            
-        }
         Swift.print("spoof.item(\(listItem.idx))")
-        let item:SelectTextButton = listItem.item as! SelectTextButton
-        let idx:Int = listItem.idx/*the index of the data in dataProvider*/
-        let dpItem = dataProvider.items[idx]
-        let title:String = dpItem["title"]!
-        //Swift.print("title: " + "\(title)")
-        item.setTextValue(title)
-        item.y = listItem.idx * itemHeight/*position the item*/
-        //Swift.print("item.y: " + "\(item.y)")
+        if(listItem.idx >= 0 && listItem.idx < dataProvider.count){
+            let item:SelectTextButton = listItem.item as! SelectTextButton
+            let idx:Int = listItem.idx/*the index of the data in dataProvider*/
+            let dpItem = dataProvider.items[idx]
+            let title:String = dpItem["title"]!
+            //Swift.print("title: " + "\(title)")
+            item.setTextValue(title)
+            item.y = listItem.idx * itemHeight/*position the item*/
+            //Swift.print("item.y: " + "\(item.y)")
+        }
     }
-  
     /**
      * (spawn == create something)
      */

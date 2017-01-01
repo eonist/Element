@@ -78,8 +78,8 @@ class FastList2:Element,IList{
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
             
-            //the bug was using cur.end when you should use prev.end
-                //clean up the code🏀
+            //Continue here: the bug was using cur.end when you should use prev.end
+                //clean up the code🏀, make maxVisbible clearer, use floor instead of round when finding top index, try other data lengths
             
             for i in 0..<items.count {
                 items[i] = (items[i].item, prev.end + i)

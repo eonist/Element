@@ -43,7 +43,7 @@ class FastList2:Element,IList{
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         var bottomItemIndex:Int = topItemIndex + maxVisibleItems!-1
-        
+        bottomItemIndex = bottomItemIndex >= maxVisibleItems!-1 ? maxVisibleItems!-1 : bottomItemIndex
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")

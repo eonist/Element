@@ -81,7 +81,7 @@ class FastList2:Element,IList{
             //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
             
             for i in 0..<items.count {
-                items[i] = (items[i].item, cur.last! + i)
+                items[i] = (items[i].item, prev.last! + i)
                 spoof(items[i])
             }//assign correct absolute idx
             visibleItems += items/*append to list*/

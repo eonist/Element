@@ -78,10 +78,11 @@ class FastList2:Element,IList{
             //Swift.print("cur.last: " + "\(cur.last)")
             //Swift.print("cur.end: " + "\(cur.end)")
             
-            //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
+            //the bug was using cur.end when you should use prev.end
+                //clean up the code🏀
             
             for i in 0..<items.count {
-                items[i] = (items[i].item, prev.last! + i)
+                items[i] = (items[i].item, prev.end + i)
                 spoof(items[i])
             }//assign correct absolute idx
             visibleItems += items/*append to list*/

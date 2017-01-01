@@ -24,7 +24,9 @@ class FastList2:Element,IList{
         lableContainer = addSubView(Container(width,height,self,"lable"))
         prevVisibleRange = 0..<maxVisibleItems!-1
         Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
-        spawn(0..<maxVisibleItems!-1)
+        var numOfItems:Int = maxVisibleItems!-1
+        numOfItems = numOfItems > dataProvider.count ? dataProvider.count : numOfItems
+        spawn(0..<numOfItems)
     }
     /**
      *

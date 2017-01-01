@@ -83,7 +83,7 @@ class FastList2:Element,IList{
             
             //its almost correct, try with shorter list to find the missing piece🏀 and think!!!
             
-            for i in 0..<diff {
+            for i in 0..<abs(diff) {
                 if(cur.last! + i < dataProvider.count){
                     items[i] = (items[i].item, cur.last! + i)
                     spoof(items[i])

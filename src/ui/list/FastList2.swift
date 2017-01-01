@@ -74,7 +74,7 @@ class FastList2:Element,IList{
             visibleItems = items + visibleItems/*prepend to list*/
         }else if(diff.negative){//cur.start is more than prev.start
             Swift.print("append")
-            //let diff = prev.end - cur.end
+            let diff = prev.end - cur.end
             var items = visibleItems.splice2(0, abs(diff))//grab items from the top
             //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             //Swift.print("items.count: " + "\(items.count)")

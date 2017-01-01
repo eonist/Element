@@ -16,14 +16,14 @@ class FastList2:Element,IList{
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
     override func resolveSkin() {
-        Swift.print("FastList2.resolveSkin()")
+        //Swift.print("FastList2.resolveSkin()")
         super.resolveSkin()
         Swift.print("FastList2.height: " + "\(height)")
         maxVisibleItems = round(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         maxVisibleItems = round(height / itemHeight).int + 1
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        prevVisibleRange = 0..<maxVisibleItems!
+        prevVisibleRange = 0..<maxVisibleItems!-1
         Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
         spawn(0..<maxVisibleItems!-1)
     }
@@ -31,7 +31,7 @@ class FastList2:Element,IList{
      *
      */
     func setProgress(progress:CGFloat){
-        //Swift.print("FastList2.setProgress()")
+        Swift.print("FastList2.setProgress()")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
         //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")

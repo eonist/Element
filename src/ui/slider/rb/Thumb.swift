@@ -18,9 +18,9 @@ class Thumb:Button{
      */
     func applyOvershot(progress:CGFloat){
         //Swift.print("applyOvershot.start")
-        if(progress < 0){//top overshot
+        if(progress < 0){/*top overshot*/
             self.skin!.setSize(width, height-(height*abs(progress)))
-        }else if(progress > 1){//bottom overshot
+        }else if(progress > 1){/*bottom overshot*/
             let overshot = height*(progress-1)
             self.skin!.setSize(width, height - overshot)
             (self.skin! as! Skin).frame.y = overshot

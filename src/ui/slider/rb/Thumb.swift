@@ -37,19 +37,25 @@ extension Thumb{
         self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
         self.skin?.decoratables[0].draw()
     }
+    /**
+     * Call this when you want to fade-in the thumb
+     */
     func fadeIn(){
         //Swift.print("Thumb.fadeIn")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
-        if(animator != nil){animator!.stop()}//stop any previous running animation
+        if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(Animation.sharedInstance,0.2,curVal,1,interpolateAlpha,Easing.easeOutSine)
         animator!.event = {(event:Event) -> Void in }
         animator!.start()
     }
+    /**
+     * Call this when you want to fade-out the thumb
+     */
     func fadeOut(){
         //Swift.print("Thumb.fadeOut")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
-        if(animator != nil){animator!.stop()}//stop any previous running animation
+        if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         animator = Animator(Animation.sharedInstance,0.5,curVal,0,interpolateAlpha,Easing.easeInQuad)
         animator!.event = {(event:Event) -> Void in }

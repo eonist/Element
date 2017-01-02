@@ -12,14 +12,14 @@ class RBSliderFastList2:FastList2,IRBSliderList{
     override func resolveSkin() {
         super.resolveSkin()
         /*RubberBand*/
-        let frame = CGRect(0,0,width,height)/*represents the visible part of the content //TODO: could be ranmed to maskRect*/
+        let frame = CGRect(0,0,width,height)/*represents the visible part of the content //TODO: could be renamed to maskRect*/
         let itemsRect = CGRect(0,0,width,max(itemsHeight,height))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
         /*slider*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))/*add vSlider to view*/
-        if(itemsHeight <= height){slider!.thumb!.setDisabled(true);slider!.thumb!.alpha = 0;}/*if there is no need for the slider, then hide it*/
+        if(itemsHeight <= height){slider!.thumb!.setDisabled(true);slider!.thumb!.alpha = 0}/*if there is no need for the slider, then hide it*/
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
         setProgress(0)/*<-not really needed, but nice to have while debugging*/

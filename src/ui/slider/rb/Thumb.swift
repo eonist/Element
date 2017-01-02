@@ -42,6 +42,26 @@ class Thumb:Button{
             super.mouseOut(event)
         }
     }
+    override func mouseDown(event: MouseEvent) {
+        if(!isDisabled){
+            super.mouseDown(event)
+        }
+    }
+    override func mouseUp(event: MouseEvent) {
+        if(!isDisabled){
+            super.mouseUp(event)
+        }
+    }
+    override func mouseUpOutside(event: MouseEvent) {
+        if(!isDisabled){
+            super.mouseUpOutside(event)
+        }
+    }
+    override func mouseUpInside(event: MouseEvent) {
+        if(!isDisabled){
+            super.mouseUpOutside(event)
+        }
+    }
     override func getSkinState() -> String {//may not work
         var state:String = ""
         if(isDisabled) {state += SkinStates.disabled + " "}

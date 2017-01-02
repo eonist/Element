@@ -40,7 +40,7 @@ class Button:Element {
     override func mouseDown(event:MouseEvent) {
         //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over
-        setSkinState(getSkinState());
+        setSkinState(getSkinState())
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
         super.onEvent(ButtonEvent(ButtonEvent.down,self))
     }
@@ -50,7 +50,7 @@ class Button:Element {
      */
     override func mouseUpInside(event:MouseEvent){
         //Swift.print("Button.mouseUpInside: ")
-        state = SkinStates.over;// :TODO: why in two lines like this?
+        state = SkinStates.over// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
     }

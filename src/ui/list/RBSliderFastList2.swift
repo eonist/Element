@@ -56,7 +56,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
      * EventHandler for the Slider change event
      */
     func onSliderChange(sliderEvent:SliderEvent){
-        ListModifier.scrollTo(self,sliderEvent.progress)
+        ListModifier.scrollTo(self, sliderEvent.progress)
         mover!.value = lableContainer!.frame.y
     }
     func scrollWheelEnter(){//2. spring to refreshStatePosition

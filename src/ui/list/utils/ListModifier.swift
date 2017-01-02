@@ -29,7 +29,10 @@ class ListModifier {
      */
     static func scrollTo(progress:CGFloat,_ maskHeight:CGFloat,_ itemsHeight:CGFloat)->CGFloat{
         var scrollHeight:CGFloat = itemsHeight - maskHeight/*allItems.height - mask.height*/
-        //scrollHeight = Swift.max(scrollHeight,0)
+        Swift.print("scrollHeight: " + "\(scrollHeight)")
+        if(scrollHeight < 0){
+            //scrollHeight = scrollHeight * -1//Swift.max(scrollHeight,0)
+        }
         
         //continue here: get both directions working, clip the values in sliderlist only
         

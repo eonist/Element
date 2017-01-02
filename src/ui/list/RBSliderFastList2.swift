@@ -54,7 +54,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
     }
     func scrollWheelEnter(){//2. spring to refreshStatePosition
         //Swift.print("RBSliderFastList.scrollWheelEnter()" + "\(progressValue)")
-        slider!.thumb!.fadeIn()/*fades in the slider*/
+        if(){}slider!.thumb!.fadeIn()/*fades in the slider*/
     }
     func scrollWheelExit(){
         //Swift.print("RBSliderFastList.scrollWheelExit()")

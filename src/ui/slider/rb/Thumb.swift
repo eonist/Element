@@ -35,7 +35,7 @@ class Thumb:Button{
     override func getSkinState() -> String {//may not work
         var state:String = ""
         if(isDisabled) {state += SkinStates.disabled + " "}
-        return state + super.getSkinState();
+        return state + super.getSkinState()
     }
     /**
     * Sets the _isDisabled variable (Toggles between two states)

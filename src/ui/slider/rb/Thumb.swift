@@ -37,6 +37,14 @@ class Thumb:Button{
         if(isDisabled) {state += SkinStates.disabled + " "}
         return state + super.getSkinState();
     }
+    /**
+    * Sets the _isDisabled variable (Toggles between two states)
+    */
+    func setDisabled(isDisabled:Bool) {
+        self.isDisabled = isDisabled
+        super.setSkinState(getSkinState())
+        //set button mode to not hand here
+    }
     override func getClassType() -> String {
         return String(Button)
     }

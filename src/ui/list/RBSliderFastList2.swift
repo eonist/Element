@@ -32,19 +32,10 @@ class RBSliderFastList2:FastList2,IRBSliderList{
      * PARAM value: is the final y value for the lableContainer
      */
     override func setProgress(value:CGFloat){
-        Swift.print("setProgress: " + "\(value)")
-        //TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
-        
-        let itemsHeight = ListParser.itemsHeight(self)
-        
-        progressValue = value / (itemsHeight < height ? height : -(itemsHeight - height))/*get the the scalar values from value.*/
-        Swift.print("progressValue: " + "\(progressValue)")
-        //continue here: 🏀
-            //you need to use a different value than itemsHeight, because it becomes negative if itemsheight is less than height
-        
+        let itemsHeight = ListParser.itemsHeight(self)//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
+        progressValue = value / (itemsHeight < height ? height : -(itemsHeight - height))/*calc scalar from value, if itemsHeight is to small then use height instead*/
         super.setProgress(progressValue!)
         slider!.setProgressValue(progressValue!)
-        /**/
     }
     /**
      * NOTE: this method overides the Native NSView scrollWheel method

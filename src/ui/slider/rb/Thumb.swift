@@ -43,8 +43,8 @@ class Thumb:Button{
         return state + super.getSkinState()
     }
     /**
-    * Sets the _isDisabled variable (Toggles between two states)
-    */
+     * Sets the _isDisabled variable (Toggles between two states)
+     */
     func setDisabled(isDisabled:Bool) {
         self.isDisabled = isDisabled
         super.setSkinState(getSkinState())

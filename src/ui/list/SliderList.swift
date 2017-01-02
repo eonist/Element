@@ -16,11 +16,11 @@ class SliderList:List,ISliderList{
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     override func scrollWheel(theEvent:NSEvent) {
-        scroll(theEvent)//forward the event to the extension
-        super.scrollWheel(theEvent)//forward the event other delegates higher up in the stack
+        scroll(theEvent)/*forward the event to the extension*/
+        super.scrollWheel(theEvent)/*forward the event other delegates higher up in the stack*/
     }
     func setProgress(progress:CGFloat){
-        ListModifier.scrollTo(self,progress) /*Sets the target item to correct y, according to the current scrollBar progress*/
+        ListModifier.scrollTo(self,progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
@@ -30,7 +30,7 @@ class SliderList:List,ISliderList{
         super.onEvent(event)
     }
     /**
-     * // :TODO: must update the float somehow
+     * TODO: must update the float somehow
      * Sets the list to correct height, the scrollbar thumb to correct size and the scrollbar interval to correct interval
      */
     override func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong

@@ -28,8 +28,7 @@ class ListModifier {
      * Returns the y position of a "virtual" list
      */
     static func scrollTo(progress:CGFloat,_ maskHeight:CGFloat,_ itemsHeight:CGFloat)->CGFloat{
-        var scrollHeight:CGFloat = itemsHeight - maskHeight/*allItems.height - mask.height*/
-        scrollHeight = Swift.max(scrollHeight,0)
+        let scrollHeight:CGFloat = itemsHeight - maskHeight/*allItems.height - mask.height*/
         let y:CGFloat = round(progress * scrollHeight)//things may actually be smoother if you remove the round variable
         return -y
     }

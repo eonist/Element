@@ -31,10 +31,6 @@ class FastList2:Element,IList{
      *
      */
     func setProgress(progress:CGFloat){
-        //Continue here: the bug was using cur.end when you should use prev.end
-            //clean up the code🏀, make maxVisbible clearer, try other data lengths
-            //use min and max instead of shorthand if statements
-        
         //Swift.print("FastList2.setProgress() ")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let visibleItemsTop:CGFloat = abs(lableContainer!.y > 0 ? 0 : lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)

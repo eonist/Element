@@ -32,38 +32,13 @@ class Thumb:Button{
         }
         //Swift.print("applyOvershot.end")
     }
-    //continue here:🏀
-        //these overrides are not needed, just add a disbaled state to the css that has alpha set to 0
-    override func mouseOver(event: MouseEvent) {
-        if(!isDisabled){
-            super.mouseOver(event)
-        }
-    }
-    override func mouseOut(event: MouseEvent) {
-        if(!isDisabled){
-            super.mouseOut(event)
-        }
-    }
-    override func mouseDown(event: MouseEvent) {
-        if(!isDisabled){
-            super.mouseDown(event)
-        }
-    }
-    override func mouseUp(event: MouseEvent) {
-        if(!isDisabled){
-            super.mouseUp(event)
-        }
-    }
-    override func mouseUpOutside(event: MouseEvent) {
-        if(!isDisabled){
-            super.mouseUpOutside(event)
-        }
-    }
-    override func mouseUpInside(event: MouseEvent) {
-        if(!isDisabled){
-            super.mouseUpOutside(event)
-        }
-    }
+    //TODO: these overrides are not needed, just add a disbaled state to the css that has alpha set to 0
+    override func mouseOver(event:MouseEvent) {if(!isDisabled){super.mouseOver(event)}}
+    override func mouseOut(event:MouseEvent) {if(!isDisabled){super.mouseOut(event)}}
+    override func mouseDown(event:MouseEvent) {if(!isDisabled){super.mouseDown(event)}}
+    override func mouseUp(event:MouseEvent) {if(!isDisabled){super.mouseUp(event)}}
+    override func mouseUpOutside(event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
+    override func mouseUpInside(event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
     override func getSkinState() -> String {//may not work
         var state:String = ""
         if(isDisabled) {state += SkinStates.disabled + " "}

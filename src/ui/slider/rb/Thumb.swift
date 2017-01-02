@@ -5,14 +5,15 @@ import Cocoa
  * NOTE: the overshot part is to support "the-RubberBand-list-look"
  */
 class Thumb:Button{
-    
-    //implement isDisabled, see legacy code 🏀
-    
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/
     var framesToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
     var animator:Animator?
+    private var isDisabled:Bool
+    init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
+        _isDisabled = isDisabled;
+    }
     override func resolveSkin() {
         super.resolveSkin()
     }

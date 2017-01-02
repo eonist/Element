@@ -32,6 +32,11 @@ class Thumb:Button{
         }
         //Swift.print("applyOvershot.end")
     }
+    override func mouseOver(event: MouseEvent) {
+        if(!isDisabled){
+            super.mouseOver(event)
+        }
+    }
     override func getSkinState() -> String {//may not work
         var state:String = ""
         if(isDisabled) {state += SkinStates.disabled + " "}

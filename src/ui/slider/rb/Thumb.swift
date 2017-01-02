@@ -39,6 +39,9 @@ extension Thumb{
             self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(newValue))!
         }
     }
+    /**
+     * Animator method that interpolates the alpha between 0 and 1
+     */
     func interpolateAlpha(val:CGFloat){
         //Swift.print("interpolateAlpha()")
         alpha = val

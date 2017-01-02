@@ -20,9 +20,9 @@ class ListModifier {
      * Scrolls the list to a scalar position (value 0-1)
      */
     static func scrollTo(list:IList,_ progress:CGFloat){
-        let itemsHeight:CGFloat = ListParser.itemsHeight(list)
+        let itemsHeight:CGFloat = ListParser.itemsHeight(list)/*total height of all items*/
         let y:CGFloat = ListModifier.scrollTo(progress, (list as! IElement).height, itemsHeight)
-        list.lableContainer!.frame.y = y
+        list.lableContainer!.frame.y = y/*we offset the y position of the lableContainer*/
     }
     /**
      * Returns the y position of a "virtual" list

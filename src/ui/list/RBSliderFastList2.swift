@@ -13,6 +13,11 @@ class RBSliderFastList2:FastList2,IRBSliderList{
         super.resolveSkin()
         /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content //TODO: could be ranmed to maskRect*/
+        
+        //here is the problem: itemsRect is too small when itemsHeight is less than height. 
+            //take a look at the code in mover
+            //try forcing the itemsheight to be min height
+        
         let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/

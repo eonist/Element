@@ -19,6 +19,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
         /*slider*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))/*add vSlider to view*/
+        if(itemsHeight <= height){slider!.thumb!.alpha = 0}/*if there is no need for the slider, then hide it*/
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
         setProgress(0)/*<-not really needed, but nice to have while debugging*/

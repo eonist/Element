@@ -5,6 +5,9 @@ import Cocoa
  * NOTE: the overshot part is to support "the-RubberBand-list-look"
  */
 class Thumb:Button{
+    
+    //implement isDisabled, see legacy code 🏀
+    
     let fps:CGFloat = 60
     var duration:CGFloat?/*in seconds*/
     var framesToEnd:CGFloat?
@@ -36,7 +39,7 @@ extension Thumb{
         get{
             return self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
         }set{
-            self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(newValue))!
+            self.skin?.decoratables[0].getGraphic().fillStyle!.color = (self.skin?.decoratables[0].getGraphic().fillStyle!.color.alpha(newValue))!
         }
     }
     /**

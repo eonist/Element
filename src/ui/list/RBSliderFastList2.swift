@@ -34,7 +34,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
     override func setProgress(value:CGFloat){
         Swift.print("setProgress: " + "\(value)")
         //TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
-        /*
+        
         let itemsHeight = ListParser.itemsHeight(self)
         if(itemsHeight < height){
             progressValue = value/height/*get the the scalar values from value.*/
@@ -49,7 +49,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
         
         super.setProgress(progressValue!)
         slider!.setProgressValue(progressValue!)
-        */
+        /**/
     }
     /**
      * NOTE: this method overides the Native NSView scrollWheel method

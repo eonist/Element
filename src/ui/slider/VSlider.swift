@@ -1,7 +1,8 @@
 import Cocoa
 /**
  * VSlider is a simple vertical slider
- * @Note the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
+ * NOTE: the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
+ * NOTE: the overshot part is to support "the-RubberBand-list-look"
  * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  * // :TODO: rename thumbHeight to thumbWidth or?
  * // :TODO: remove refs to frame. you can use width and height directly

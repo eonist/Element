@@ -31,7 +31,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
         //TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         
-        //continue here: 
+        //continue here: 🏀
             //you need to use a different value than itemsHeight, because it becomes negative if itemsheight is less than height
         
         super.setProgress(progressValue!)

@@ -38,7 +38,6 @@ class RBSliderFastList2:FastList2,IRBSliderList{
             Swift.print("progressValue.b: " + "\(progressValue)")
         }
         
-        
         //continue here: 🏀
             //you need to use a different value than itemsHeight, because it becomes negative if itemsheight is less than height
         

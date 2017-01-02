@@ -56,7 +56,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
     }
     func scrollWheelExitedAndIsStationary(){
         //Swift.print("RBSliderFastList.scrollWheelExitedAndIsStationary() ")
-        if(slider?.thumb?.getSkinState() == SkinStates.none){
+        if(slider?.thumb?.getSkinState() == SkinStates.none){/*only fade out if the state is none, aka not over*/
             slider?.thumb?.fadeOut()
         }
     }

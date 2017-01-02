@@ -32,6 +32,10 @@ class Thumb:Button{
         }
         //Swift.print("applyOvershot.end")
     }
+    override func getSkinState() -> String {
+        if(isDisabled) {state += SkinStates.disabled + " "}
+        super.getSkinState()
+    }
     override func getClassType() -> String {
         return String(Button)
     }

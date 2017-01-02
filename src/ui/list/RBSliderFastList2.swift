@@ -18,13 +18,13 @@ class RBSliderFastList2:FastList2,IRBSliderList{
             //take a look at the code in mover
             //try forcing the itemsheight to be min height
         
-        let itemsRect = CGRect(0,0,width,max(ListParser.itemsHeight(self),height))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
+        let itemsRect = CGRect(0,0,width,max(itemsHeight,height))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
         /*slider*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))/*add vSlider to view*/
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
@@ -32,7 +32,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
      * PARAM value: is the final y value for the lableContainer
      */
     override func setProgress(value:CGFloat){
-        let itemsHeight = ListParser.itemsHeight(self)//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
+        let itemsHeight = self.itemsHeight//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
         progressValue = value / (itemsHeight < height ? height : -(itemsHeight - height))/*calc scalar from value, if itemsHeight is to small then use height instead*/
         super.setProgress(progressValue!)
         slider!.setProgressValue(progressValue!)
@@ -54,7 +54,7 @@ class RBSliderFastList2:FastList2,IRBSliderList{
     }
     func scrollWheelEnter(){//2. spring to refreshStatePosition
         //Swift.print("RBSliderFastList.scrollWheelEnter()" + "\(progressValue)")
-        if(){}slider!.thumb!.fadeIn()/*fades in the slider*/
+        if(itemsHeight < height){slider!.thumb!.fadeIn()}/*fades in the slider*/
     }
     func scrollWheelExit(){
         //Swift.print("RBSliderFastList.scrollWheelExit()")

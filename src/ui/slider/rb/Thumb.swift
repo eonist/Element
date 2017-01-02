@@ -13,9 +13,6 @@ class Thumb:Button{
     override func resolveSkin() {
         super.resolveSkin()
     }
-    override func getClassType() -> String {
-        return String(Button)
-    }
     /**
      * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
@@ -29,7 +26,10 @@ class Thumb:Button{
             (self.skin! as! Skin).frame.y = overshot
         }
         //Swift.print("applyOvershot.end")
-    }  
+    }
+    override func getClassType() -> String {
+        return String(Button)
+    }
 }
 extension Thumb{
     func interpolateAlpha(val:CGFloat){

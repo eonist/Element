@@ -10,9 +10,10 @@ class Thumb:Button{
     var framesToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
     var animator:Animator?
-    private var isDisabled:Bool
-    init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
-        _isDisabled = isDisabled;
+    var isDisabled:Bool
+    init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: IElement? = nil, _ id: String? = nil) {
+        self.isDisabled = isDisabled
+        super.init(width, height, parent, id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -34,6 +35,7 @@ class Thumb:Button{
     override func getClassType() -> String {
         return String(Button)
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension Thumb{
     var alpha:CGFloat{/*Convenience*/

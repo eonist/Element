@@ -36,14 +36,8 @@ class RBSliderFastList2:FastList2,IRBSliderList{
         //TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
         
         let itemsHeight = ListParser.itemsHeight(self)
-        if(itemsHeight < height){
-            progressValue = value/height/*get the the scalar values from value.*/
-            Swift.print("progressValue.a: " + "\(progressValue)")
-        }else{
-            progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
-            Swift.print("progressValue.b: " + "\(progressValue)")
-        }
-
+        
+        progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
         //continue here: 🏀
             //you need to use a different value than itemsHeight, because it becomes negative if itemsheight is less than height
         

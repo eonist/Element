@@ -20,13 +20,14 @@ class RBSliderFastList2:FastList2,IRBSliderList{
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))/*add vSlider to view*/
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
-        slider!.setThumbHeightValue(thumbHeight)
+        slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
         setProgress(0)/*<-not really needed, but nice to have while debugging*/
     }
     /**
      * PARAM value: is the final y value for the lableContainer
      */
     override func setProgress(value:CGFloat){
+        Swift.print("setProgress: " + "\(value)")
         //TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         super.setProgress(progressValue!)

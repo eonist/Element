@@ -10,7 +10,7 @@ import Cocoa
  */
 class VSlider:Element{
     var thumb:Thumb?
-    var globalMouseMovedHandeler:AnyObject?//rename to leftMouseDraggedEventListener or draggedEventListner
+    var globalMouseMovedHandler:AnyObject?//TODO: rename to leftMouseDraggedEventListener or draggedEventListner
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
     var thumbHeight:CGFloat
@@ -33,7 +33,7 @@ class VSlider:Element{
         //Swift.print("\(self.dynamicType)"+".onThumbDown() ")
         tempThumbMouseY = thumb!.localPos().y
         //Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove )//we add a global mouse move event listener
+        globalMouseMovedHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onThumbMove)/*we add a global mouse move event listener*/
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
@@ -44,7 +44,7 @@ class VSlider:Element{
     }
     func onThumbUp(){
         //Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(globalMouseMovedHandler != nil){NSEvent.removeMonitor(globalMouseMovedHandler!)}//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self).y, thumbHeight/2, height, thumbHeight)
@@ -60,11 +60,11 @@ class VSlider:Element{
         progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight)
         thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseMove )//we add a global mouse move event listener
+        globalMouseMovedHandler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseUp(event:MouseEvent) {
-        if(globalMouseMovedHandeler != nil){NSEvent.removeMonitor(globalMouseMovedHandeler!)}//we remove a global mouse move event listener
+        if(globalMouseMovedHandler != nil){NSEvent.removeMonitor(globalMouseMovedHandler!)}//we remove a global mouse move event listener
     }
     override func onEvent(event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

@@ -32,9 +32,16 @@ class Thumb:Button{
     }
 }
 extension Thumb{
+    var alpha:CGFloat{/*Convenience*/
+        get{
+            return self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
+        }set{
+            self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(newValue))!
+        }
+    }
     func interpolateAlpha(val:CGFloat){
         //Swift.print("interpolateAlpha()")
-        self.skin?.decoratables[0].getGraphic().fillStyle?.color = (self.skin?.decoratables[0].getGraphic().fillStyle?.color.alpha(val))!
+        alpha = val
         self.skin?.decoratables[0].draw()
     }
     /**
@@ -44,8 +51,7 @@ extension Thumb{
         //Swift.print("Thumb.fadeIn")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
-        animator = Animator(Animation.sharedInstance,0.2,curVal,1,interpolateAlpha,Easing.easeOutSine)
+        animator = Animator(Animation.sharedInstance,0.2,alpha,1,interpolateAlpha,Easing.easeOutSine)
         animator!.event = {(event:Event) -> Void in }
         animator!.start()
     }
@@ -56,8 +62,7 @@ extension Thumb{
         //Swift.print("Thumb.fadeOut")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        let curVal:CGFloat = self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
-        animator = Animator(Animation.sharedInstance,0.5,curVal,0,interpolateAlpha,Easing.easeInQuad)
+        animator = Animator(Animation.sharedInstance,0.5,alpha,0,interpolateAlpha,Easing.easeInQuad)
         animator!.event = {(event:Event) -> Void in }
         animator!.start()
     }

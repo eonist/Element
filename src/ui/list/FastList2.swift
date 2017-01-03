@@ -127,6 +127,8 @@ class FastList2:Element,IList{
                 let visibleItem = visibleItems[i]
                 spoof(visibleItem)
             }
+        }else if(idx > curVisibleRange.end){
+            
         }else{
             
         }

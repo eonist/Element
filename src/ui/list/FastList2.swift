@@ -125,7 +125,15 @@ class FastList2:Element,IList{
         return item
     }
     /**
-     * 
+     *
+     */
+    func insertAt(idx:Int){
+        //find visible item range
+        //is idx within visible range?
+            //then 
+    }
+    /**
+     *
      */
     func onDataProviderEvent(event:DataProviderEvent){
         switch(event.type){

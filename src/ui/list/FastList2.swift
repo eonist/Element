@@ -35,7 +35,7 @@ class FastList2:Element,IList{
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
         //Swift.print("curVisibleRange: " + "\(curVisibleRange)")
-        if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
+        if(curVisibleRange != prevVisibleRange){/*Optimizatioin: only set if it's not the same as prev range*/
             spoof(curVisibleRange)/*spoof items in the new range*/
             prevVisibleRange = curVisibleRange
         }

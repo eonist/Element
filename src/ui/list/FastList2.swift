@@ -152,7 +152,7 @@ private class Utils{
      */
     static func curVisibleItems(list:IList,_ maxVisibleItems:Int)->Range<Int>{
         let visibleItemsTop:CGFloat = abs(list.lableContainer!.y > 0 ? 0 : list.lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
-        //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
+        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}
@@ -160,11 +160,11 @@ private class Utils{
         var topItemIndex:Int = (visibleItemsTop / list.itemHeight).int
         topItemIndex = topItemIndex < 0 ? 0 :topItemIndex
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
-        //Swift.print("topItemIndex: " + "\(topItemIndex)")
+        Swift.print("topItemIndex: " + "\(topItemIndex)")
         var bottomItemIndex:Int = topItemIndex + maxVisibleItems-1
         bottomItemIndex = bottomItemIndex > list.dataProvider.count-1 ? list.dataProvider.count-1 : bottomItemIndex
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
-        //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
+        Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex
         return curVisibleRange

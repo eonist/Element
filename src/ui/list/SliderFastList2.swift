@@ -10,6 +10,9 @@ class SliderFastList2:FastList2,ISliderList {
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
     }
+    /**
+     *
+     */
     override func scrollWheel(event:NSEvent) {
         scroll(event)/*forwards the event to the extension method*/
         super.scrollWheel(event)/*forwards the event other delegates higher up in the stack*/

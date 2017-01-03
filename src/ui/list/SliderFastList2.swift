@@ -30,6 +30,7 @@ class SliderFastList2:FastList2,ISliderList {
     }
 }
 
-
-//how do you transition from one progress to another when the itemsHeight has changed?
-    //you 
+//🏀
+//how do you transition from one progress to another when the itemsHeight has changed? you want newProgress and have oldTotHeight and newTotHeight
+    //you calc the difference between the height outside visible area and then reverse calc the new progress
+    //you look at how progress moves lableContainer up and down to derive the correct formula

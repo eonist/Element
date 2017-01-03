@@ -119,9 +119,10 @@ class FastList2:Element,IList{
         if(RangeAsserter.within(curVisibleRange, idx)){
             //spoof every item in visibleRange including idx until last item
             let diff:Int = idx - curVisibleRange.start
-            let len:Int = curVisibleRange.end - idx
-            for i in idx..<curVisibleRange.end{
-                spoof(<#T##listItem: FastListItem##FastListItem#>)
+            let len:Int = curVisibleRange.length - diff
+            for i in diff..<len{
+                let visibleItem = visibleItems[i]
+                spoof(visibleItem)
             }
         }
     }

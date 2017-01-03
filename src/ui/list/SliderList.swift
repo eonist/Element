@@ -39,6 +39,6 @@ class SliderList:List,ISliderList{
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
         slider!.setThumbHeightValue(thumbHeight)
         super.setSize(width,height)
-        ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
+        ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*hides the slider if it is not needed anymore*///<--new adition
     }
 }

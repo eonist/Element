@@ -124,6 +124,15 @@ class FastList2:Element,IList{
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
         return item
     }
+    /**
+     * 
+     */
+    func onDataProviderEvent(event:DataProviderEvent){
+        switch(event.type){
+            case DataProviderEvent.add: Swift.print("item:\(event.item), startIndex:\(event.startIndex)");/*This is called when a new item is added to the DataProvider instance*/
+            default:fatalError("event type not supported"); break;
+        }
+    }
     override func getClassType() -> String {
         return String(List)
     }

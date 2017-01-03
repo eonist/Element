@@ -33,7 +33,7 @@ class FastList2:Element,IList{
     func setProgress(progress:CGFloat){
         //Swift.print("FastList2.setProgress() ")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems: <#T##Int#>)
+        let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
         //Swift.print("curVisibleRange: " + "\(curVisibleRange)")
         if(curVisibleRange != prevVisibleRange){//only set if it's not the same as prev range
             spoof(curVisibleRange)/*spoof items in the new range*/
@@ -114,7 +114,9 @@ class FastList2:Element,IList{
      */
     func insertAt(idx:Int){
         //find visible item range
+        let curVisibleRange = Utils.curVisibleItems(self, maxVisibleItems!)
         //is idx within visible range?
+            
             //spoof every item in visibleRange including idx until last item
     }
     /**

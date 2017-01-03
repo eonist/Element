@@ -130,8 +130,7 @@ class FastList2:Element,IList{
     func insertAt(idx:Int){
         //find visible item range
         //is idx within visible range?
-            //then grab last visibleItem, insert it at idx
-            //add 1 to each item.idx after the item you just inserted
+            //spoof every item in visibleRange including idx until last item
     }
     /**
      *

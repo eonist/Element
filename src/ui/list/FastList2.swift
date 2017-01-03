@@ -120,7 +120,9 @@ class FastList2:Element,IList{
         if(RangeAsserter.within(curVisibleRange, idx)){
             //spoof every item in visibleRange including idx until last item
             let diff:Int = idx - curVisibleRange.start
+            Swift.print("diff: " + "\(diff)")
             let len:Int = curVisibleRange.length - diff
+            Swift.print("len: " + "\(len)")
             for i in diff..<len{
                 let visibleItem = visibleItems[i]
                 spoof(visibleItem)
@@ -137,9 +139,11 @@ class FastList2:Element,IList{
             default:fatalError("event type not supported"); break;
         }
     }
-    override func getClassType() -> String {
-        return String(List)
+    override func onEvent(event:Event) {
+        if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
+        //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
+    override func getClassType() -> String {return String(List)}
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{

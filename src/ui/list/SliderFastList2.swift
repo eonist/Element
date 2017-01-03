@@ -17,8 +17,12 @@ class SliderFastList2:FastList2,ISliderList {
         scroll(event)/*forwards the event to the extension method*/
         super.scrollWheel(event)/*forwards the event other delegates higher up in the stack*/
     }
+    /**
+     * Captures SliderEvent.change and then adjusts the List accordingly
+     */
     func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
-        ListModifier.scrollTo(self,sliderEvent.progress)
+        setProgress(sliderEvent.progress)
+        //ListModifier.scrollTo(self,sliderEvent.progress)
     }
     override func onEvent(event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/

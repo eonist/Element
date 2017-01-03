@@ -139,6 +139,15 @@ class FastList2:Element,IList{
         /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
         let scrollHeight = (itemsHeight-height)
         let newProgress = -lableContainer!.y/scrollHeight
+        
+        /*
+        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
+        slider!.setThumbHeightValue(thumbHeight)
+        */
+        
+        //SliderList should be responsible fro adjusting sliderInterval, slider.thumb size/position
+        
     }
     /**
      *

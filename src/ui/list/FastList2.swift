@@ -18,12 +18,12 @@ class FastList2:Element,IList{
     override func resolveSkin() {
         //Swift.print("FastList2.resolveSkin()")
         super.resolveSkin()
-        Swift.print("FastList2.height: " + "\(height)")
-        maxVisibleItems = round(height / itemHeight).int + 1
-        Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
+        //Swift.print("FastList2.height: " + "\(height)")
+        maxVisibleItems = round(height / itemHeight).int + 1//the +1 makes the code harder to read, try to remove it
+        //Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
         prevVisibleRange = 0..<maxVisibleItems!
-        Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
+        //Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
         let numOfItems:Int = Swift.min(maxVisibleItems!, dataProvider.count)
         spawn(0..<numOfItems)
     }

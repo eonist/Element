@@ -29,3 +29,7 @@ class SliderFastList2:FastList2,ISliderList {
         super.onEvent(event)
     }
 }
+
+
+//how do you transition from one progress to another when the itemsHeight has changed?
+    //you 

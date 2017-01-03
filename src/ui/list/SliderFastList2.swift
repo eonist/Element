@@ -38,6 +38,6 @@ class SliderFastList2:FastList2,ISliderList {
 
 /*
 let scrollHeight = (itemsHeight-height)
-let newProgress = scrollHeight/oldProgress
+let newProgress = -lableContainer.y/oldProgress
 
 */

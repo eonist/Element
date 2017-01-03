@@ -128,10 +128,6 @@ class FastList2:Element,IList{
                 spoof(visibleItem)
             }
         }else if(idx < curVisibleRange.start){//above visible items
-            /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
-            let scrollHeight = (itemsHeight-height)
-            let newProgress = -lableContainer!.y/scrollHeight
-
             //try to re-adjust scroll progress after add/remove
             //re-adjust slider-thumb-size after add/remove
             //re-adjust lableContainer after add/remove
@@ -139,6 +135,9 @@ class FastList2:Element,IList{
         }else{//bellow visible items
             //re-adjust slider-thumb-size
         }
+        /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
+        let scrollHeight = (itemsHeight-height)
+        let newProgress = -lableContainer!.y/scrollHeight
     }
     /**
      *

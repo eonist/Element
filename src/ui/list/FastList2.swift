@@ -110,7 +110,7 @@ class FastList2:Element,IList{
         return item
     }
     /**
-     *
+     * Used when add/remove alterations happen to dp
      */
     func insertAt(idx:Int){
         //find visible item range

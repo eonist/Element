@@ -116,8 +116,10 @@ class FastList2:Element,IList{
         //find visible item range
         let curVisibleRange = Utils.curVisibleItems(self, maxVisibleItems!)
         //is idx within visible range?
-            RangeAsserter.within(curVisibleRange, idx)
+        if(RangeAsserter.within(curVisibleRange, idx)){
             //spoof every item in visibleRange including idx until last item
+            
+        }
     }
     /**
      *

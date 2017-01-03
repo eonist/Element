@@ -129,8 +129,13 @@ class FastList2:Element,IList{
     override func getClassType() -> String {
         return String(List)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
+    /**
+     *
+     */
+    static func (){
     
+    }
 }

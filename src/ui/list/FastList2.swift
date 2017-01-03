@@ -117,7 +117,7 @@ class FastList2:Element,IList{
         //find visible item range
         let curVisibleRange = Utils.curVisibleItems(self, maxVisibleItems!)
         //is idx within visible range?
-        if(RangeAsserter.within(curVisibleRange, idx)){
+        if(curVisibleRange.within(idx)){
             //spoof every item in visibleRange including idx until last item
             let diff:Int = idx - curVisibleRange.start
             //Swift.print("diff: " + "\(diff)")

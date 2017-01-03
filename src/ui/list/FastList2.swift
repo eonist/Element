@@ -22,7 +22,7 @@ class FastList2:Element,IList{
         maxVisibleItems = round(height / itemHeight).int + 1
         Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        prevVisibleRange = 0..<maxVisibleItems!-1
+        prevVisibleRange = 0..<maxVisibleItems!
         Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
         let numOfItems:Int = Swift.min(maxVisibleItems!, dataProvider.count)
         spawn(0..<numOfItems)
@@ -59,7 +59,7 @@ class FastList2:Element,IList{
             visibleItems = items + visibleItems/*prepend to list*/
         }else if(diff.negative){//cur.start is more than prev.start
             Swift.print("append")
-            var items = visibleItems.splice2(0, -1*diff)//grab items from the top
+            var items = visibleItems.splice2(0, -1*(diff))//grab items from the top
             //Swift.print("visibleItems.count: " + "\(visibleItems.count)")
             Swift.print("items.count: " + "\(items.count)")
             //Swift.print("cur.last: " + "\(cur.last)")

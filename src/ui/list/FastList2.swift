@@ -132,7 +132,7 @@ class FastList2:Element,IList{
      */
     func onDataProviderEvent(event:DataProviderEvent){
         switch(event.type){
-        case DataProviderEvent.add: Swift.print("item:\(event.item), startIndex:\(event.startIndex)");insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
+            case DataProviderEvent.add: Swift.print("item:\(event.item), startIndex:\(event.startIndex)");insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
             default:fatalError("event type not supported"); break;
         }
     }

@@ -163,7 +163,7 @@ class FastList2:Element,IList{
         
         //Continue here:🏀
             //add remove item button
-            //SliderList should somehow update the slider,sliderinterval etc -> onDataProviderEvent in SliderList -> 
+            //SliderList should somehow update the slider.thumb.height,slider.thumb.y and sliderInterval -> onDataProviderEvent in SliderList -> 
 
     }
     /**

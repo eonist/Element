@@ -202,4 +202,18 @@ private class Utils{
         let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex
         return curVisibleRange
     }
+    /**
+     * When you add/remove items from a list, the list changes size. This method returns a value that lets you keep the same position of the list after a add/remove items change
+     * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
+     */
+    static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldProgress:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
+        let oldLableContainerY = -(oldItemsHeight-maskHeight)*oldProgress
+        //
+        let newItemsHeight = newItemsHeight
+        let dist = abs(newItemsHeight-oldItemsHeight)//dist <-> old and new itemsHeight
+        let newProgress = (oldLableContainerY+dist)/(-(newItemsHeight-maskHeight))
+        let newLableContainerY = -(newItemsHeight-maskHeight)*newProgress
+        return (newLableContainerY,newProgress)
+    }
+
 }

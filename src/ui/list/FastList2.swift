@@ -146,7 +146,6 @@ class FastList2:Element,IList{
         //you want a 
         
         
-        
         /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
         let scrollHeight = (itemsHeight-height)
         let newProgress = -lableContainer!.y/scrollHeight

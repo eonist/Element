@@ -31,7 +31,8 @@ class FastList2:Element,IList{
      *
      */
     func setProgress(progress:CGFloat){
-        //Swift.print("FastList2.setProgress() ")
+        Swift.print("FastList2.setProgress() ")
+        Swift.print("lableContainer!.y: " + "\(lableContainer!.y)")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
         //Swift.print("curVisibleRange: " + "\(curVisibleRange)")

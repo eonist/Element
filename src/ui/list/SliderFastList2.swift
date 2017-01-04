@@ -37,5 +37,10 @@ class SliderFastList2:FastList2,ISliderList {
     }
 }
 private class Utils{
-    
+    /**
+     *
+     */
+    static func sliderInterval(){
+        
+    }
 }

@@ -24,8 +24,11 @@ class SliderFastList2:FastList2,ISliderList {
         setProgress(sliderEvent.progress)
         //ListModifier.scrollTo(self,sliderEvent.progress)
     }
+    override func onDataProviderEvent(event: DataProviderEvent) {
+        super.onDataProviderEvent(event)
+    }
     override func onEvent(event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
-        super.onEvent(event)
+        else {super.onEvent(event)}//forward dataProviderEvents etc, but not SliderEvents as they fire too rapidly
     }
 }

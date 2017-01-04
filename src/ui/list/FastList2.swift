@@ -136,20 +136,6 @@ class FastList2:Element,IList{
         }else{//bellow visible items
             //re-adjust slider-thumb-size
         }
-        /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
-        let scrollHeight = (itemsHeight-height)
-        let newProgress = -lableContainer!.y/scrollHeight
-        
-        /*
-        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
-        slider!.setThumbHeightValue(thumbHeight)
-        */
-        
-        //Continue here:🏀
-            //List should be responsible for adjusting the lableContainer.y
-            //SliderList should be responsible for adjusting sliderInterval, slider.thumb size/position
-        
     }
     /**
      *

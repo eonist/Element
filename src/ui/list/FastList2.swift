@@ -163,7 +163,7 @@ class FastList2:Element,IList{
         
         //Continue here:🏀
             //add remove item button
-            //SliderList should somehow update the slider,sliderinterval etc
+            //SliderList should somehow update the slider,sliderinterval etc ->
 
     }
     /**
@@ -192,7 +192,7 @@ class FastList2:Element,IList{
     }
     override func onEvent(event:Event) {
         if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
-        //super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
+        super.onEvent(event)
     }
     override func getClassType() -> String {return String(List)}
     required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}

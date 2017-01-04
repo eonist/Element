@@ -223,7 +223,7 @@ private class Utils{
      */
     static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
         let newItemsHeight = newItemsHeight
-        let dist = abs(newItemsHeight-oldItemsHeight)//dist <-> old and new itemsHeight
+        let dist = -(newItemsHeight-oldItemsHeight)//dist <-> old and new itemsHeight
         let newProgress = (oldLableContainerY+dist)/(-(newItemsHeight-maskHeight))
         let newLableContainerY = -(newItemsHeight-maskHeight)*newProgress
         return (newLableContainerY,newProgress)

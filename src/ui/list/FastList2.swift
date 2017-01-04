@@ -173,7 +173,7 @@ class FastList2:Element,IList{
                 Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
                 //insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
-                prevVisibleRange = 0..<0//reset the prevRange
+                prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY
             default:fatalError("event type not supported"); break;

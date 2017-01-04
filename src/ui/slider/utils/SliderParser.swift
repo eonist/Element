@@ -9,10 +9,10 @@ class SliderParser {
     }
     /**
      * Returns a slider thumbSize
-     * @param scalar
-     * @param sliderSize (thumbWidth or thumbHeight)
-     * @param scrollBarSize (scrollBarWidth/scrollBarHeight)
-     * @Note: Makes sure that the slider thumb is never to small or to big.
+     * PARAM: scalar
+     * PARAM: sliderSize (thumbWidth or thumbHeight)
+     * PARAM: scrollBarSize (scrollBarWidth/scrollBarHeight)
+     * NOTE: Makes sure that the slider thumb is never to small or to big.
      */
     class func thumbSize(var scalar:CGFloat, _ sliderSize:CGFloat) -> CGFloat {
         scalar = min(scalar,1)
@@ -28,7 +28,7 @@ class SliderParser {
      * NOTE: its tempting to just pass a list:IList here but treeList doesnt impliment IList  and TreeList uses this method
      */
     class func progress(y:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
-        return Swift.max(0,Swift.min(1,y / -(totalHeight - height)))
+        return max(0,min(1,y / -(totalHeight - height)))
     }
     /**
      * Returns the y value

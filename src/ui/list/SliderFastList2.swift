@@ -28,7 +28,7 @@ class SliderFastList2:FastList2,ISliderList {
         super.onDataProviderEvent(event)
         //
         sliderInterval = floor(itemsHeight - height)/itemHeight
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
         slider!.setThumbHeightValue(thumbHeight)
     }
     override func onEvent(event:Event) {

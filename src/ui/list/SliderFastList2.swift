@@ -44,10 +44,9 @@ private class Utils{
         return floor(itemsHeight - height)/itemHeight
     }
     /**
-     *
+     * TODO: use SliderParser.thumbHeight instead
      */
-    static func thumbHeight(){
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
-        return thumbHeight
+    static func thumbHeight(height:CGFloat,_ itemsHeight:CGFloat,_ sliderHeight:CGFloat)->CGFloat{
+        return SliderParser.thumbSize(height/itemsHeight, sliderHeight)
     }
 }

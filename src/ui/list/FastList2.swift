@@ -170,7 +170,8 @@ class FastList2:Element,IList{
         Swift.print("onDataProviderEvent")
         switch(event.type){
             case DataProviderEvent.add:
-                let oldItemsHeight:CGFloat = itemsHeight//<--this is wrong
+                //🏀
+                let oldItemsHeight:CGFloat = itemsHeight//<--this is wrong, the value is already updates at this stage, figure out a diferent way to get this value -> add/remove the amount of additions /deletions maybe
                 Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
                 //insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)

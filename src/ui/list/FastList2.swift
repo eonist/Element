@@ -142,7 +142,8 @@ class FastList2:Element,IList{
      */
     func refresh(){
         prevVisibleRange = 0..<0//invalidate the range
-        
+        //you need the oldItemsHeight
+        //you want a 
         /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
         let scrollHeight = (itemsHeight-height)
         let newProgress = -lableContainer!.y/scrollHeight

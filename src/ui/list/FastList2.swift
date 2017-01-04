@@ -174,6 +174,7 @@ class FastList2:Element,IList{
                 Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
                 //insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
+                Swift.print("newProgress.progress: " + "\(newProgress.progress)")
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY

@@ -36,3 +36,6 @@ class SliderFastList2:FastList2,ISliderList {
         else {super.onEvent(event)}//forward dataProviderEvents etc, but not SliderEvents as they fire too rapidly
     }
 }
+private class Utils{
+    
+}

@@ -78,12 +78,12 @@ class FastList2:Element,IList{
      */
     func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
         //if(listItem.idx >= 0 && listItem.idx < dataProvider.count){
-            Swift.print("spoof.item(\(listItem.idx))")
+            //Swift.print("spoof.item(\(listItem.idx))")
             let item:SelectTextButton = listItem.item as! SelectTextButton
             let idx:Int = listItem.idx/*the index of the data in dataProvider*/
             let dpItem = dataProvider.items[idx]
             let title:String = dpItem["title"]!
-            Swift.print("title: " + "\(title)")
+            //Swift.print("title: " + "\(title)")
             item.setTextValue(title)
             item.y = listItem.idx * itemHeight/*position the item*/
             //Swift.print("item.y: " + "\(item.y)")
@@ -175,6 +175,8 @@ class FastList2:Element,IList{
                 //insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
                 Swift.print("newProgress.progress: " + "\(newProgress.progress)")
+                Swift.print("newProgress.lableContainerY: " + "\(newProgress.lableContainerY)")
+                lableContainer!.y = newProgress.lableContainerY
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY

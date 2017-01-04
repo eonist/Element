@@ -157,10 +157,13 @@ class FastList2:Element,IList{
         slider!.setThumbHeightValue(thumbHeight)
         */
         
-        //Continue here:🏀
-        //List should be responsible for adjusting the lableContainer.y
-        //SliderList should be responsible for adjusting sliderInterval, slider.thumb size/position
+        //Continue here:
+            //List should be responsible for adjusting the lableContainer.y
+            //SliderList should be responsible for adjusting sliderInterval, slider.thumb size/position
         
+        //Continue here:🏀
+            //add remove item button
+            //SliderList should somehow update the slider,sliderinterval etc
 
     }
     /**

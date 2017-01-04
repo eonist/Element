@@ -171,9 +171,11 @@ class FastList2:Element,IList{
             case DataProviderEvent.add:
                 let oldItemsHeight:CGFloat = itemsHeight
                 Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
-                insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
+                //insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
+                let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
                 prevVisibleRange = 0..<0//reset the prevRange
-                Utils.progress(height, itemsHeight, <#T##oldProgress: CGFloat##CGFloat#>, <#T##oldItemsHeight: CGFloat##CGFloat#>)
+                setProgress(newProgress.progress)
+                //lableContainer!.y = newProgress.lableContainerY
             default:fatalError("event type not supported"); break;
         }
     }

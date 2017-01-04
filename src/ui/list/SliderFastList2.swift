@@ -5,9 +5,9 @@ class SliderFastList2:FastList2,ISliderList {
     var sliderInterval:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()
-        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use SliderParser.interval instead?// :TODO: explain what this is in a comment
+        sliderInterval = floor(itemsHeight - height)/itemHeight// :TODO: use SliderParser.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
     }
     /**

@@ -141,7 +141,7 @@ class FastList2:Element,IList{
      *
      */
     func refresh(){
-        prevVisibleRange = 0..<0//invalidate the range
+        
         //you need the oldItemsHeight
         //you want a 
         
@@ -168,7 +168,12 @@ class FastList2:Element,IList{
     func onDataProviderEvent(event:DataProviderEvent){
         Swift.print("onDataProviderEvent")
         switch(event.type){
-            case DataProviderEvent.add: Swift.print("item:\(event.item), startIndex:\(event.startIndex)");insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
+            case DataProviderEvent.add:
+                let oldItemsHeight:CGFloat = itemsHeight
+                Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
+                insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
+                prevVisibleRange = 0..<0//reset the prevRange
+                Utils.progress(height, itemsHeight, <#T##oldProgress: CGFloat##CGFloat#>, <#T##oldItemsHeight: CGFloat##CGFloat#>)
             default:fatalError("event type not supported"); break;
         }
     }
@@ -206,9 +211,7 @@ private class Utils{
      * When you add/remove items from a list, the list changes size. This method returns a value that lets you keep the same position of the list after a add/remove items change
      * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
      */
-    static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldProgress:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
-        let oldLableContainerY = -(oldItemsHeight-maskHeight)*oldProgress
-        //
+    static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
         let newItemsHeight = newItemsHeight
         let dist = abs(newItemsHeight-oldItemsHeight)//dist <-> old and new itemsHeight
         let newProgress = (oldLableContainerY+dist)/(-(newItemsHeight-maskHeight))

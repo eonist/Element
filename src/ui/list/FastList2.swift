@@ -52,13 +52,16 @@ class FastList2:Element,IList{
         Swift.print("diff: " + "\(diff)")
         if(abs(diff) >= maxVisibleItems){//spoof every item
             Swift.print("all")
-            let len:Int = min(visibleItems.count,dataProvider.count)//<--fix
-            Swift.print("len: " + "\(len)")
-            
-            for i in 0..<len {
-                visibleItems[i] = (visibleItems[i].item, cur.start + i)
-                spoof(visibleItems[i])
-                //you need to remove items as well🏀
+            for i in 0..<visibleItems.count {
+                let idx = cur.start + i
+                if(idx < dataProvider.count){
+                    visibleItems[i] = (visibleItems[i].item, idx)
+                    spoof(visibleItems[i])
+                }else{//you need to remove items as well <--temp fix
+                    let item = visibleItems[i]
+                    item.item.removeFromSuperview()
+                    visibleItems.removeAt(i)
+                }
             }
         }else if(diff.positive){//cur.start is less than prev.start
             Swift.print("prepend ")

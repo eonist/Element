@@ -106,7 +106,7 @@ class FastList2:Element,IList{
      * (spoof == apply/reuse)
      */
     func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
-        Swift.print("spoof")
+        Swift.print("spoof: " + "\(listItem.idx)")
         //if(listItem.idx >= 0 && listItem.idx < dataProvider.count){
             //Swift.print("spoof.item(\(listItem.idx))")
             let item:SelectTextButton = listItem.item as! SelectTextButton

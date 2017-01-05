@@ -138,7 +138,7 @@ class FastList2:Element,IList{
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 setProgress(newProgress.progress)
-                default:fatalError("event type not supported"); break;
+            default:fatalError("event type not supported"); break;
         }
     }
     override func onEvent(event:Event) {

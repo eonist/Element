@@ -156,13 +156,13 @@ class FastList2:Element,IList{
         */
         
         //Continue here:
-            //List should be responsible for adjusting the lableContainer.y
-            //SliderList should be responsible for adjusting sliderInterval, slider.thumb size/position
+            //List should be responsible for adjusting the lableContainer.y✅
+            //SliderList should be responsible for adjusting sliderInterval, slider.thumb size/position✅
         
         //Continue here:🏀
             //add remove item button
-            //SliderList should somehow update the slider.thumb.height,slider.thumb.y and sliderInterval -> onDataProviderEvent in SliderList -> bc we dont need to ypdate sliderinterval on every setprogress🔑
-
+            //SliderList should somehow update the slider.thumb.height,slider.thumb.y and sliderInterval -> onDataProviderEvent in SliderList -> bc we dont need to ypdate sliderinterval on every setprogress🔑 ✅
+        
     }
     /**
      *

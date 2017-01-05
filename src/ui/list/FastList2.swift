@@ -63,7 +63,7 @@ class FastList2:Element,IList{
                     visibleItems.removeAt(i)
                 }
             }
-            //also add items if there isnt enough visibleItems🏀
+            //also add items if there isn't enough visibleItems🏀
             
         }else if(diff.positive){//cur.start is less than prev.start
             Swift.print("prepend ")

@@ -224,7 +224,9 @@ private class Utils{
      * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
      */
     static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
-        if(oldLableContainerY <= 0){return (oldLableContainerY,0)}/*pins the list to the top if its already at the top*/
+        if(oldLableContainerY <= 0){
+            let progress = SliderParser.progress(oldLableContainerY, maskHeight, oldItemsHeight)
+            return (oldLableContainerY,progress)}/*pins the list to the top if its already at the top*/
         let newItemsHeight = newItemsHeight
         let dist = -(newItemsHeight-oldItemsHeight)//dist <-> old and new itemsHeight
         let newProgress = (oldLableContainerY+dist)/(-(newItemsHeight-maskHeight))

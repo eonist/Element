@@ -63,6 +63,8 @@ class FastList2:Element,IList{
                     visibleItems.removeAt(i)
                 }
             }
+            //also add items if there isnt enough visibleItems🏀
+            
         }else if(diff.positive){//cur.start is less than prev.start
             Swift.print("prepend ")
             var items = visibleItems.splice2(visibleItems.count-diff, diff)//grab the end items

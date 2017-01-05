@@ -54,6 +54,8 @@ class FastList2:Element,IList{
             Swift.print("all")
             
             //Re-think the bellow code, creation and termination of items shouldnt happen in a spoof method
+                //try to conceptualize around this subject in a brainstorm-log 🏀
+                //think of edge cases and future features as well
             
             for i in 0..<maxVisibleItems!-1 {
                 let idx = cur.start + i

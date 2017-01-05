@@ -30,6 +30,7 @@ class SliderFastList2:FastList2,ISliderList {
         sliderInterval = Utils.sliderInterval(itemsHeight, height, itemHeight)
         let thumbHeight:CGFloat = Utils.thumbHeight(height, itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
+        slider!.setProgressValue(progress)/*positions the slider.thumb*/
     }
     override func onEvent(event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/

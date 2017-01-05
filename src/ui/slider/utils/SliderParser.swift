@@ -43,7 +43,7 @@ class SliderParser {
      * Returns the interval relative to PARAM: pageHeight, PARAM: maskHeight and PARAM: pixelsPerScroll
      * PARAM: pixelsPerScroll The amount if pixels per scroll tick
      */
-    class func interval(pageHeight:CGFloat, _ maskHeight:CGFloat, _ pixelsPerScroll:CGFloat)->CGFloat{
+    class func interval(pageHeight:CGFloat, _ maskHeight:CGFloat, _ pixelsPerScroll:CGFloat) -> CGFloat{
         let interval:CGFloat = pageHeight <= maskHeight ? 1:floor((pageHeight - maskHeight)/pixelsPerScroll)// :TODO: use Math.min or Math.max?
         return interval
     }

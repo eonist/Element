@@ -224,6 +224,7 @@ private class Utils{
      * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
      */
     static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
+        
         let newItemsHeight = newItemsHeight
         let dist = -(newItemsHeight-oldItemsHeight)//dist <-> old and new itemsHeight
         let newProgress = (oldLableContainerY+dist)/(-(newItemsHeight-maskHeight))

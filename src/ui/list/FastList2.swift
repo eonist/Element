@@ -57,16 +57,23 @@ class FastList2:Element,IList{
                 let idx = cur.start + i
                 
                 
-                //1. reuse if already exist
-                //2. add if doesn't exist
-                //3. remove if shouldn't exist
                 
-                if(idx < dataProvider.count){
+                
+                
+                
+                //1. reuse if already exist
+                if(idx < dataProvider.count){//idx must exist
                     visibleItems[i] = (visibleItems[i].item, idx)
                     spoof(visibleItems[i])
-                }else if(i >= visibleItems.count){
-                    spawn(idx)
-                }else if(i < visibleItems.count){//you need to remove items as well <--temp fix
+                }
+                //2. add if doesn't exist
+                else if(i >= visibleItems.count){
+                    if(idx < dataProvider.count){//idx must exist
+                        spawn(idx)
+                    }
+                }
+                //3. remove if shouldn't exist
+                else if(i < visibleItems.count){//you need to remove items as well <--temp fix
                     let item = visibleItems[i]
                     item.item.removeFromSuperview()
                     visibleItems.removeAt(i)

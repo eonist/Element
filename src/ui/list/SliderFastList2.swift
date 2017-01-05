@@ -30,6 +30,7 @@ class SliderFastList2:FastList2,ISliderList {
         sliderInterval = Utils.sliderInterval(itemsHeight, height, itemHeight)
         let thumbHeight:CGFloat = Utils.thumbHeight(height, itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
+        let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)
         slider!.setProgressValue(progress)/*positions the slider.thumb*/
     }
     override func onEvent(event:Event) {

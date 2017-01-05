@@ -52,7 +52,8 @@ class FastList2:Element,IList{
         Swift.print("diff: " + "\(diff)")
         if(abs(diff) >= maxVisibleItems){//spoof every item
             Swift.print("all")
-            for i in 0..<visibleItems.count {
+            let len:Int = min(visibleItems.count,dataProvider.count)//<--fix
+            for i in 0..<len {
                 visibleItems[i] = (visibleItems[i].item, cur.start + i);
                 spoof(visibleItems[i])
             }

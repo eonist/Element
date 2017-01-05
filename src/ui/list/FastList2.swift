@@ -57,6 +57,7 @@ class FastList2:Element,IList{
             for i in 0..<len {
                 visibleItems[i] = (visibleItems[i].item, cur.start + i)
                 spoof(visibleItems[i])
+                //you need to remove items as well🏀
             }
         }else if(diff.positive){//cur.start is less than prev.start
             Swift.print("prepend ")

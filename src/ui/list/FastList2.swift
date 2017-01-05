@@ -224,7 +224,7 @@ private class Utils{
      * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
      */
     static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
-        if(oldLableContainerY >= 0){
+        if(oldLableContainerY >= 0){//this should be more advance, like assert wether an item was inserted in the visiblepart of the view, and position the list accordingly, to be continued
             let progress = SliderParser.progress(oldLableContainerY, maskHeight, oldItemsHeight)
             return (oldLableContainerY,progress)}/*pins the list to the top if its already at the top*/
         let newItemsHeight = newItemsHeight

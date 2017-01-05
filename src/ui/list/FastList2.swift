@@ -57,12 +57,14 @@ class FastList2:Element,IList{
                 let idx = cur.start + i
                 //2. add if doesn't exist
                 if(i >= visibleItems.count){
+                    Swift.print("a")
                     if(idx < dataProvider.count){//idx must exist
                         spawn(idx)
                     }
                 }
                 //1. reuse if already exist
                 else if(idx < dataProvider.count){//idx must exist
+                    Swift.print("b")
                     if(i < visibleItems.count){//item to be reused must already exist
                         visibleItems[i] = (visibleItems[i].item, idx)
                         spoof(visibleItems[i])
@@ -70,6 +72,7 @@ class FastList2:Element,IList{
                 }
                 //3. remove if shouldn't exist
                 else if(i < visibleItems.count){//you need to remove items as well <--temp fix
+                    Swift.print("c")
                     let item = visibleItems[i]
                     item.item.removeFromSuperview()
                     visibleItems.removeAt(i)

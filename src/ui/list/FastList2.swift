@@ -111,34 +111,6 @@ class FastList2:Element,IList{
         return item
     }
     /**
-     * Used when add/remove alterations happen to dp
-     * PARAM: idx: index in dataProvider
-     */
-    func insertAt(idx:Int){
-        //find visible item range
-        let curVisibleRange = Utils.curVisibleItems(self, maxVisibleItems!)
-        //is idx within visible range?
-        if(curVisibleRange.within(idx)){
-            //spoof every item in visibleRange including idx until last item
-            let diff:Int = idx - curVisibleRange.start
-            //Swift.print("diff: " + "\(diff)")
-            let len:Int = curVisibleRange.length
-            //Swift.print("len: " + "\(len)")
-            for i in diff..<len{
-                let visibleItem = visibleItems[i]
-                spoof(visibleItem)
-            }
-        }else if(idx < curVisibleRange.start){//above visible items
-            //try to re-adjust scroll progress after add/remove
-            //re-adjust slider-thumb-size after add/remove
-            
-            //re-adjust lableContainer after add/remove
-            //re-adjust y-positions of all items
-        }else{//bellow visible items
-            //re-adjust slider-thumb-size
-        }
-    }
-    /**
      *
      */
     func onDataProviderEvent(event:DataProviderEvent){

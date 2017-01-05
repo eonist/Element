@@ -174,7 +174,7 @@ private class Utils{
         //topItemIndex = NumberParser.minMax(topItemIndex, 0, dataProvider.count-maxVisibleItems!)//clamp the num between min and max
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
         var bottomItemIndex:Int = topItemIndex + maxVisibleItems
-        bottomItemIndex = bottomItemIndex > list.dataProvider.count-1 ? max(list.dataProvider.count-1,0) : bottomItemIndex
+        bottomItemIndex = bottomItemIndex > list.dataProvider.count-1 ? max(list.dataProvider.count-1,0) : bottomItemIndex//the max part forces the value to be no less than 0
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")

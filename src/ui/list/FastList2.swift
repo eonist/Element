@@ -54,6 +54,7 @@ class FastList2:Element,IList{
             Swift.print("all")
             let len:Int = min(visibleItems.count,dataProvider.count)//<--fix
             Swift.print("len: " + "\(len)")
+            
             for i in 0..<len {
                 visibleItems[i] = (visibleItems[i].item, cur.start + i)
                 spoof(visibleItems[i])

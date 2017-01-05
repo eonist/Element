@@ -59,7 +59,10 @@ class FastList2:Element,IList{
                 if(i >= visibleItems.count){
                     Swift.print("a")
                     if(idx < dataProvider.count){//idx must exist
-                        spawn(idx)
+                        let item:Element = spawn(idx)
+                        visibleItems.append((item,i))
+                        lableContainer!.addSubView(item)
+                        item.y = i * itemHeight
                     }
                 }
                 //1. reuse if already exist

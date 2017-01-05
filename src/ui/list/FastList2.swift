@@ -53,6 +53,8 @@ class FastList2:Element,IList{
         if(abs(diff) >= maxVisibleItems){//spoof every item
             Swift.print("all")
             
+            //Re-think the bellow code, creation and termination of items shouldnt happen in a spoof method
+            
             for i in 0..<maxVisibleItems!-1 {
                 let idx = cur.start + i
                 //2. add if doesn't exist

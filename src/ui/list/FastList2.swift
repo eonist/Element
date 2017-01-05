@@ -141,33 +141,6 @@ class FastList2:Element,IList{
     /**
      *
      */
-    func refresh(){
-        
-        //you need the oldItemsHeight
-        //you want a 
-        
-        
-        /*Transition from one oldProgress to newProgress after itemsHeight has changed*/
-        let scrollHeight = (itemsHeight-height)
-        let newProgress = -lableContainer!.y/scrollHeight
-        
-        /*
-        
-        */
-        
-        //Continue here:
-            //List should be responsible for adjusting the lableContainer.y✅
-            //SliderList should be responsible for adjusting sliderInterval, slider.thumb size/position✅
-        
-        //Continue here:
-            //add remove item button
-            //SliderList should somehow update the slider.thumb.height,slider.thumb.y and sliderInterval -> onDataProviderEvent in SliderList -> bc we dont need to ypdate sliderinterval on every setprogress🔑 ✅
-        
-        //There is a bug when y is 0 and you add tems. then everything moves one item down 🏀
-    }
-    /**
-     *
-     */
     func onDataProviderEvent(event:DataProviderEvent){
         Swift.print("onDataProviderEvent")
         switch(event.type){

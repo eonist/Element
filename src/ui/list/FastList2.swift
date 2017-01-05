@@ -117,21 +117,28 @@ class FastList2:Element,IList{
         Swift.print("onDataProviderEvent")
         switch(event.type){
             case DataProviderEvent.add:event.count
-                Swift.print("dataProvider.count: " + "\(dataProvider.count)")
+                //Swift.print("dataProvider.count: " + "\(dataProvider.count)")
                 let oldDPCount:Int = dataProvider.count - event.count
-                Swift.print("oldDPCount: " + "\(oldDPCount)")
+                //Swift.print("oldDPCount: " + "\(oldDPCount)")
                 let oldItemsHeight:CGFloat = oldDPCount * itemHeight/*the itemsHeight is already updates at this point, to get the old itemsHeight we substract the newly added/deleted items.count and recalc*/
-                Swift.print("oldItemsHeight: " + "\(oldItemsHeight)")
-                Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
+                //Swift.print("oldItemsHeight: " + "\(oldItemsHeight)")
+                //Swift.print("item:\(event.item), startIndex:\(event.startIndex)");
                 //insertAt(event.startIndex);/*This is called when a new item is added to the DataProvider instance*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
-                Swift.print("newProgress.progress: " + "\(newProgress.progress)")
-                Swift.print("newProgress.lableContainerY: " + "\(newProgress.lableContainerY)")
+                //Swift.print("newProgress.progress: " + "\(newProgress.progress)")
+                //Swift.print("newProgress.lableContainerY: " + "\(newProgress.lableContainerY)")
                 //lableContainer!.y = newProgress.lableContainerY
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY
-            default:fatalError("event type not supported"); break;
+            
+            case DataProviderEvent.remove:
+                let oldDPCount:Int = dataProvider.count + event.count
+                let oldItemsHeight:CGFloat = oldDPCount * itemHeight/*the itemsHeight is already updates at this point, to get the old itemsHeight we substract the newly added/deleted items.count and recalc*/
+                let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
+                prevVisibleRange = Int.max..<Int.max//reset the prevRange
+                setProgress(newProgress.progress)
+                default:fatalError("event type not supported"); break;
         }
     }
     override func onEvent(event:Event) {

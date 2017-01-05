@@ -55,6 +55,12 @@ class FastList2:Element,IList{
             
             for i in 0..<maxVisibleItems!-1 {
                 let idx = cur.start + i
+                
+                
+                //1. reuse if already exist
+                //2. add if doesn't exist
+                //3. remove if shouldn't exist
+                
                 if(idx < dataProvider.count){
                     visibleItems[i] = (visibleItems[i].item, idx)
                     spoof(visibleItems[i])

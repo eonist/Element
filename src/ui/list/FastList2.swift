@@ -64,9 +64,9 @@ class FastList2:Element,IList{
                 if(idx < dataProvider.count){
                     visibleItems[i] = (visibleItems[i].item, idx)
                     spoof(visibleItems[i])
-                }else if(i){
-                    
-                }else{//you need to remove items as well <--temp fix
+                }else if(i >= visibleItems.count){
+                    spawn(idx)
+                }else if(i < visibleItems.count){//you need to remove items as well <--temp fix
                     let item = visibleItems[i]
                     item.item.removeFromSuperview()
                     visibleItems.removeAt(i)

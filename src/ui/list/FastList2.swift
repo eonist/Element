@@ -138,11 +138,10 @@ class FastList2:Element,IList{
                 //Swift.print("newProgress.lableContainerY: " + "\(newProgress.lableContainerY)")
                 //lableContainer!.y = newProgress.lableContainerY
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
-                //empty visibleList
-                visibleItems.forEach{
-                    
+            
+                visibleItems.forEach{//empty visibleList
                     $0.item.removeFromSuperview()
-                    visibleItems.removeAt(i)
+                    visibleItems.removeFirst()
                 }
                 //spawn(range)
                 setProgress(newProgress.progress)

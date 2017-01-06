@@ -143,8 +143,10 @@ class FastList2:Element,IList{
                     $0.item.removeFromSuperview()
                     visibleItems.removeFirst()
                 }
-                //spawn(range)
-                setProgress(newProgress.progress)
+                ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
+                let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                spawn(curVisibleRange)
+                //setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY
             
             case DataProviderEvent.remove:

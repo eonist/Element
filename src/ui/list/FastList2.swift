@@ -149,14 +149,14 @@ class FastList2:Element,IList{
                     $0.item.removeFromSuperview()
                     visibleItems.removeFirst()
                 }
-                ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
+                lableContainer!.y = newProgress.lableContainerY
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
                 Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 Swift.print("dataProvider.count: " + "\(dataProvider.count)")
                 prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
                 spawn(curVisibleRange)
                 //setProgress(newProgress.progress)
-                //lableContainer!.y = newProgress.lableContainerY
+                //
             case DataProviderEvent.remove:
                 Swift.print("onDataProviderEvent.remove")
                 let oldDPCount:Int = dataProvider.count + event.count
@@ -169,7 +169,7 @@ class FastList2:Element,IList{
                     $0.item.removeFromSuperview()
                     visibleItems.removeFirst()
                 }
-                ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
+                lableContainer!.y = newProgress.lableContainerY
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
                 Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 Swift.print("dataProvider.count: " + "\(dataProvider.count)")

@@ -139,6 +139,11 @@ class FastList2:Element,IList{
                 //lableContainer!.y = newProgress.lableContainerY
                 //prevVisibleRange = Int.max..<Int.max//reset the prevRange
             
+            
+                //Continue here: 🏀
+                    //Test each step of adding items, what is the new visibleItems.count etc
+                    //Adding and removing items must be rock solid!...So spend time on it
+            
                 visibleItems.forEach{//empty visibleList
                     $0.item.removeFromSuperview()
                     visibleItems.removeFirst()

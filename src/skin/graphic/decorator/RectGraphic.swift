@@ -30,13 +30,10 @@ class RectGraphic:SizeableGraphic{
             //Swift.print("rect: " + String(rect))
             let lineOffsetRect = RectGraphicUtils.lineOffsetRect(CGRect(x,y,width,height), graphic.lineStyle!.thickness, graphic.lineOffsetType)
             //let offsetRects = RectGraphicUtil.offsetRect(graphic.fillShape.frame.copy(), graphic.lineStyle!, graphic.lineOffsetType)
-            
             //Swift.print("lineOffsetRect.lineFrameRect: " + "\(lineOffsetRect.lineFrameRect)")
             graphic.lineShape.frame = lineOffsetRect.lineFrameRect
-            
             //Swift.print("offsetRects.lineRect: " + "\(lineOffsetRect.lineRect)")
             graphic.lineShape.path = lineOffsetRect.lineRect.path//rect.path
-            
             //lineShape.graphics.drawRect(rect.x, rect.y, rect.width, rect.height);
             //let maskRect:CGRect = RectGraphicUtils.maskRect(CGRect(0,0, graphic.width,graphic.height), graphic.lineStyle!, graphic.lineOffsetType!);
             //lineMask.graphics.drawRect(maskRect.x, maskRect.y, maskRect.width, maskRect.height)/*draw the mask line*/

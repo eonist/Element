@@ -137,7 +137,7 @@ class FastList2:Element,IList{
                 //Swift.print("newProgress.progress: " + "\(newProgress.progress)")
                 //Swift.print("newProgress.lableContainerY: " + "\(newProgress.lableContainerY)")
                 //lableContainer!.y = newProgress.lableContainerY
-                prevVisibleRange = Int.max..<Int.max//reset the prevRange
+                //prevVisibleRange = Int.max..<Int.max//reset the prevRange
             
                 visibleItems.forEach{//empty visibleList
                     $0.item.removeFromSuperview()
@@ -145,6 +145,7 @@ class FastList2:Element,IList{
                 }
                 ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
                 spawn(curVisibleRange)
                 //setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY
@@ -153,8 +154,17 @@ class FastList2:Element,IList{
                 let oldDPCount:Int = dataProvider.count + event.count
                 let oldItemsHeight:CGFloat = oldDPCount * itemHeight/*the itemsHeight is already updates at this point, to get the old itemsHeight we substract the newly added/deleted items.count and recalc*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
-                prevVisibleRange = Int.max..<Int.max//reset the prevRange
-                setProgress(newProgress.progress)
+                //prevVisibleRange = Int.max..<Int.max//reset the prevRange
+                //setProgress(newProgress.progress)
+            
+                visibleItems.forEach{//empty visibleList
+                    $0.item.removeFromSuperview()
+                    visibleItems.removeFirst()
+                }
+                ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
+                let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
+                spawn(curVisibleRange)
             default:fatalError("event type not supported"); break;
         }
     }

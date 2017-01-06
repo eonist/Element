@@ -29,7 +29,7 @@ class SliderFastList2:FastList2,ISliderList {
         //update these values after 
         sliderInterval = Utils.sliderInterval(itemsHeight, height, itemHeight)
         let thumbHeight:CGFloat = Utils.thumbHeight(height, itemsHeight, slider!.height)
-        slider!.setThumbHeightValue(thumbHeight)
+        slider!.setThumbHeightValue(thumbHeight)/*updates the height of the slider.thumb*/
         let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)
         slider!.setProgressValue(progress)/*positions the slider.thumb*/
     }

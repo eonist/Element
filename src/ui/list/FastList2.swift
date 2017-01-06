@@ -167,6 +167,7 @@ class FastList2:Element,IList{
                 //Swift.print("newProgress.lableContainerY: " + "\(newProgress.lableContainerY)")
                 //lableContainer!.y = newProgress.lableContainerY
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
+                //empty visibleList
                 //spawn(range)
                 setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY

@@ -50,45 +50,16 @@ class FastList2:Element,IList{
         Swift.print("prev: " + "\(prev)")
         let diff = prev.start - cur.start
         Swift.print("diff: " + "\(diff)")
-        if(abs(diff) >= maxVisibleItems){//spoof every item
+        if(abs(diff) >= visibleItems.count){//spoof every item
             Swift.print("all")
-            
-            //Re-think the bellow code, creation and termination of items shouldnt happen in a spoof method
-                //try to conceptualize around this subject in a brainstorm-log 🏀
-                //think of edge cases and future features as well
-            
             for i in 0..<maxVisibleItems!-1 {
                 let idx = cur.start + i
-                //2. add if doesn't exist
-                if(i >= visibleItems.count){
-                    Swift.print("a")
-                    if(idx < dataProvider.count){//idx must exist
-                        let item:Element = spawn(idx)
-                        visibleItems.append((item,i))
-                        lableContainer!.addSubView(item)
-                        item.y = i * itemHeight
-                    }
-                }
-                //1. reuse if already exist
-                else if(idx < dataProvider.count){//idx must exist
+                if(idx < dataProvider.count){//idx must exist
                     Swift.print("b")
-                    if(i < visibleItems.count){//item to be reused must already exist
-                        visibleItems[i] = (visibleItems[i].item, idx)
-                        spoof(visibleItems[i])
-                    }
-                }
-                //3. remove if shouldn't exist
-                else if(i < visibleItems.count){//you need to remove items as well <--temp fix
-                    Swift.print("c")
-                    let item = visibleItems[i]
-                    item.item.removeFromSuperview()
-                    visibleItems.removeAt(i)
-                }else{
-                    fatalError("something went wrong")
+                    visibleItems[i] = (visibleItems[i].item, idx)
+                    spoof(visibleItems[i])
                 }
             }
-            //also add items if there isn't enough visibleItems🏀
-            
         }else if(diff.positive){//cur.start is less than prev.start
             Swift.print("prepend ")
             var items = visibleItems.splice2(visibleItems.count-diff, diff)//grab the end items

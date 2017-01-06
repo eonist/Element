@@ -22,4 +22,12 @@ class FastList3:Element,IList{
         prevVisibleRange = 0..<numOfItems//<--this should be the same range as we set bellow no?
         spawn(0..<numOfItems)
     }
+    func setProgress(progress:CGFloat){
+        ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
+        let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+        if(curVisibleRange != prevVisibleRange){/*Optimization: only set if it's not the same as prev range*/
+            spoof(curVisibleRange)/*spoof items in the new range*/
+            prevVisibleRange = curVisibleRange
+        }
+    }
 }

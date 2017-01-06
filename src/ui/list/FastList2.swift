@@ -50,9 +50,9 @@ class FastList2:Element,IList{
         Swift.print("prev: " + "\(prev)")
         let diff = prev.start - cur.start
         Swift.print("diff: " + "\(diff)")
-        if(abs(diff) >= visibleItems.count){//spoof every item
+        if(abs(diff) >= maxVisibleItems!){//spoof every item
             Swift.print("all")
-            for i in 0..<maxVisibleItems!-1 {
+            for i in 0..<visibleItems.count {
                 let idx = cur.start + i
                 if(idx < dataProvider.count){//idx must exist
                     Swift.print("b")
@@ -139,6 +139,11 @@ class FastList2:Element,IList{
                 //lableContainer!.y = newProgress.lableContainerY
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 //empty visibleList
+                visibleItems.forEach{
+                    
+                    $0.item.removeFromSuperview()
+                    visibleItems.removeAt(i)
+                }
                 //spawn(range)
                 setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY

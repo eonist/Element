@@ -123,9 +123,10 @@ class FastList2:Element,IList{
      *
      */
     func onDataProviderEvent(event:DataProviderEvent){
-        Swift.print("onDataProviderEvent")
+        //Swift.print("onDataProviderEvent")
         switch(event.type){
             case DataProviderEvent.add:event.count
+                Swift.print("onDataProviderEvent.add")
                 //Swift.print("dataProvider.count: " + "\(dataProvider.count)")
                 let oldDPCount:Int = dataProvider.count - event.count
                 //Swift.print("oldDPCount: " + "\(oldDPCount)")
@@ -154,8 +155,8 @@ class FastList2:Element,IList{
                 spawn(curVisibleRange)
                 //setProgress(newProgress.progress)
                 //lableContainer!.y = newProgress.lableContainerY
-            
             case DataProviderEvent.remove:
+                Swift.print("onDataProviderEvent.remove")
                 let oldDPCount:Int = dataProvider.count + event.count
                 let oldItemsHeight:CGFloat = oldDPCount * itemHeight/*the itemsHeight is already updates at this point, to get the old itemsHeight we substract the newly added/deleted items.count and recalc*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)

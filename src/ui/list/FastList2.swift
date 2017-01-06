@@ -22,7 +22,7 @@ class FastList2:Element,IList{
         maxVisibleItems = round(height / itemHeight).int + 1//the +1 makes the code harder to read, try to remove it
         //Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        prevVisibleRange = 0..<maxVisibleItems!
+        prevVisibleRange = 0..<maxVisibleItems!//<--this should be the same range as we set bellow no?
         //Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
         let numOfItems:Int = Swift.min(maxVisibleItems!, dataProvider.count)
         spawn(0..<numOfItems)

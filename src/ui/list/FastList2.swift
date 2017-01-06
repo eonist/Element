@@ -153,16 +153,16 @@ class FastList2:Element,IList{
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
                 Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 Swift.print("dataProvider.count: " + "\(dataProvider.count)")
-                prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
+                prevVisibleRange = Int.max..<Int.max//reset the prevRange//curVisibleRange
                 spawn(curVisibleRange)
-                //setProgress(newProgress.progress)
+                setProgress(newProgress.progress)
                 //
             case DataProviderEvent.remove:
                 Swift.print("onDataProviderEvent.remove")
                 let oldDPCount:Int = dataProvider.count + event.count
                 let oldItemsHeight:CGFloat = oldDPCount * itemHeight/*the itemsHeight is already updates at this point, to get the old itemsHeight we substract the newly added/deleted items.count and recalc*/
                 let newProgress = Utils.progress(height, itemsHeight, lableContainer!.y, oldItemsHeight)
-                //prevVisibleRange = Int.max..<Int.max//reset the prevRange
+                prevVisibleRange = Int.max..<Int.max//reset the prevRange
                 //setProgress(newProgress.progress)
             
                 visibleItems.forEach{//empty visibleList
@@ -173,8 +173,9 @@ class FastList2:Element,IList{
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
                 Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 Swift.print("dataProvider.count: " + "\(dataProvider.count)")
-                prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
+                //prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
                 spawn(curVisibleRange)
+                setProgress(newProgress.progress)
             default:fatalError("event type not supported"); break;
         }
     }

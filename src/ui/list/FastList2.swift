@@ -151,6 +151,7 @@ class FastList2:Element,IList{
                 }
                 ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
                 spawn(curVisibleRange)
                 //setProgress(newProgress.progress)
@@ -169,6 +170,7 @@ class FastList2:Element,IList{
                 }
                 ListModifier.scrollTo(self, newProgress.progress)/*moves the labelContainer up and down*/
                 let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
                 spawn(curVisibleRange)
             default:fatalError("event type not supported"); break;

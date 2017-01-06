@@ -144,6 +144,8 @@ class FastList2:Element,IList{
                 //Continue here: 🏀
                     //Test each step of adding items, what is the new visibleItems.count etc
                     //Adding and removing items must be rock solid!...So spend time on it
+                    //Officially lost the ship!!!!
+                        //make FatList3.swift and SliderFastList3.swift
             
                 visibleItems.forEach{//empty visibleList
                     $0.item.removeFromSuperview()

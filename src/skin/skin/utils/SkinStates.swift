@@ -4,7 +4,7 @@ import Foundation
  */
 class SkinStates {
     /*Core*/
-    static var none:String = ""/*aka idle*/
+    static var none:String = ""/*aka: idle*/
     static var over:String = "over"
     static var down:String = "down"
     /*Other*/

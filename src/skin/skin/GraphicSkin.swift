@@ -1,9 +1,9 @@
 import Cocoa
-//there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there. they are done thorugh the size call. and then it calls fill and line basically
 /**
  * TODO: you cant set the frame after you have called the display call on a layer. so you have to set it before.
  * TODO: See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
  * TODO: Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol. 
+ * TODO: there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there. they are done thorugh the size call. and then it calls fill and line basically!?!?
  * NOTE: Why do we add tracking areas to the parent: because all mouseenter / exit mousemoved should be handled by the element not the skin
  */
 class GraphicSkin:Skin{

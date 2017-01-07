@@ -1,8 +1,10 @@
 import Cocoa
-//we query with skin because we need to access element in the metrics method
+/**
+ * NOTE: We query with skin because we need to access element in the metrics method
+ */
 class StylePropertyParser{
     /**
-     * Returns a property from @param skin and @param property
+     * Returns a property from PARAM: skin and PARAM: property
      * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
      * TODO: should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
@@ -65,8 +67,8 @@ class StylePropertyParser{
     }
     /**
      * Returns a LineStyle instance
-     * // :TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
-     * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
+     * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
+     * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
     static func colorLineStyle(skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         //Swift.print("StylePropertyParser.colorLineStyle()")
@@ -88,7 +90,7 @@ class StylePropertyParser{
     }
     /**
      * Returns an Offset instance
-     * // :TODO: probably upgrade to TRBL
+     * TODO: probably upgrade to TRBL
      * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
     static func lineOffsetType(skin:ISkin, _ depth:Int = 0) -> OffsetType {
@@ -110,7 +112,7 @@ class StylePropertyParser{
     }
     /**
      * Returns a Fillet instance
-     * // :TODO: probably upgrade to TRBL
+     * TODO: probably upgrade to TRBL
      * TODO: needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc. 
      */
     static func fillet(skin:ISkin, _ depth:Int = 0) -> Fillet {
@@ -138,8 +140,8 @@ class StylePropertyParser{
     }
     /**
     * Returns a GradientLineStyle
-    * // :TODO: does this work? where is the creation of line-thickness etc
-    * @Note we use line-thickness because the property thickness is occupid by textfield.thickness
+    * TODO: Does this work? where is the creation of line-thickness etc
+    * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
     */
     static func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         //Swift.print("StylePropertParser.gradientLineStyle()")

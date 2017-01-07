@@ -210,8 +210,8 @@ class StylePropertyParser{
     }
     /**
      * Returns Offset
-     * TODO: merge ver/hor Offset into this one like you did with cornerRadius
-     * TODO: add support for % as it isnt implemented yet, see the margin implementation for guidance
+     * TODO: Merge ver/hor Offset into this one like you did with cornerRadius
+     * TODO: Add support for % as it isnt implemented yet, see the margin implementation for guidance
      */
     static func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth)
@@ -222,12 +222,12 @@ class StylePropertyParser{
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])
     }
     /**
-     * @Note TRBL
-     * // :TODO: should this have a failsafe if there is no Padding property in the style?
-     * // :TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
+     * NOTE: TRBL
+     * NOTE: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
+     * TODO: should this have a failsafe if there is no Padding property in the style?
+     * TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
+     * TODO: you may want to copy margin on this
      */
-    //Note to self: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
-    //you may want to copy margin on this
     static func padding(skin:ISkin,_ depth:Int = 0) -> Padding {
         let value:Any? = self.value(skin, CSSConstants.padding, depth)
         //Swift.print("StylePropertyParser.padding.value: " + "\(value)")
@@ -244,8 +244,8 @@ class StylePropertyParser{
         return padding
     }
     /**
-     * // :TODO: should this have a failsafe if there is no Margin property in the style?
-     * // :TODO: try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
+     * TODO: Should this have a failsafe if there is no Margin property in the style?
+     * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     static func margin(skin:ISkin, _ depth:Int = 0)->Margin {
         let value:Any? = self.value(skin, CSSConstants.margin,depth)

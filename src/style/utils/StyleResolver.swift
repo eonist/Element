@@ -1,13 +1,13 @@
 import Foundation
 
 class StyleResolver{
-    static var isStoringSelectors:Bool = false// This variable is for optimization debugging and can be deleted or commented out later
-    static var selectorsString:String = ""// This variable is for optimization debugging and can be deleted or commented out later
-    static var styleLookUpCount:Int = 0// This variable is for optimization debugging and can be deleted or commented out later
+    static var isStoringSelectors:Bool = false/*This variable is for optimization debugging and can be deleted or commented out later*/
+    static var selectorsString:String = ""/*This variable is for optimization debugging and can be deleted or commented out later*/
+    static var styleLookUpCount:Int = 0/*This variable is for optimization debugging and can be deleted or commented out later*/
     /**
      * Returns a style comprised of all the styleProperties element inherit from
-     * NOTE: creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
-     * // :TODO: should only inherit when property is marked inherit or from * universal selectors!?!?
+     * NOTE: Creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
+     * TODO: Should only inherit when property is marked inherit or from * universal selectors!?!?
      */
     static func style(element:IElement)->IStyle{
         let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
@@ -22,7 +22,7 @@ class StyleResolver{
      * NOTE: Parsing 192 elements with Basic styles with The tail trick: 0.00551801919937134 and w/o: 0.156262040138245 thats a 30x time difference, which is important when you parse lots of items and lots of styles
      * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
-    class func style(querySelectors:[ISelector],_ element:IElement?)->IStyle{
+    static func style(querySelectors:[ISelector],_ element:IElement?)->IStyle{
         var weightedStyles:Array<WeightedStyle> = []
         let styles = StyleManager.styles
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
@@ -52,7 +52,7 @@ class StyleResolver{
         return style2(querySelectors)
         */
     }
-    class func style2(querySelectors:[ISelector])->IStyle{
+    static func style2(querySelectors:[ISelector])->IStyle{
         fatalError("beta")
         /*
         var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
@@ -69,7 +69,6 @@ class StyleResolver{
         */
     }
 }
-
 private class Utils{
     /**
      * Helper method for parsing styles by comparing the tail of a style

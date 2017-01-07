@@ -3,7 +3,7 @@ import Foundation
 class StyleResolverUtils {
     /**
      * Return an array of WeightedStyle instances
-     * @Note while loading the Basic.css flat structure queries 97656  vs treestructure queries 13324 (this is why we use a treestructure querey technique)
+     * NOTE: while loading the Basic.css flat structure queries 97656  vs treestructure queries 13324 (this is why we use a treestructure querey technique)
      */
     static func query(querySelectors:[ISelector],_ searchTree:[String:Any],_ cursor:Int = 0) -> [WeightedStyle]{
         var weightedStyles:[WeightedStyle] = []

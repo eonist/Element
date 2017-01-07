@@ -7,9 +7,6 @@ class PolyLineGraphic:PathGraphic{
         let path:IPath = PolyLineGraphicUtils.path(points)/*convert points to a Path*/
         super.init(path, decoratable)
     }
-    //----------------------------------
-    //  implicit getters / setters
-    //----------------------------------
     func setPoints(points:Array<CGPoint>) {
         self.points = points
         draw()

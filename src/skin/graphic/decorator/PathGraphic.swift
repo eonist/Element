@@ -6,7 +6,7 @@ import Foundation
 class PathGraphic:SizeableDecorator{
     var path:IPath
     lazy var cgPath:CGMutablePathRef = CGPathUtils.compile(CGPathCreateMutable(), self.path)/*this is lazy because both drawFill and drawLine uses it, its risky but convenient*/
-    lazy var fillBoundingBox:CGRect = CGPathGetPathBoundingBox(self.cgPath)/*this is lazy because both drawFill and drawLine uses it, its risky but convenient*/
+    lazy var fillBoundingBox:CGRect = CGPathGetPathBoundingBox(self.cgPath)/*This is lazy because both drawFill and drawLine uses it, it's risky because it can cause unrelated errors that are hard to debug, but convenient*/
     init(_ path:IPath, _ decoratable: IGraphicDecoratable = BaseGraphic(nil,LineStyle())) {
         self.path = path
         super.init(decoratable)

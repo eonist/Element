@@ -18,10 +18,10 @@ class LineGraphic:SizeableDecorator {
         graphic.lineShape.path = CGPathParser.line(a, b)
     }
     override func drawFill() {
-        //must be overriden, there is no fill when using the LineGraphic
+        /*must be overriden, there is no fill when using the LineGraphic*/
     }
     /**
-     *π
+     * 
      */
     func setPoints(p1:CGPoint, _ p2:CGPoint) {
         self.p1 = p1

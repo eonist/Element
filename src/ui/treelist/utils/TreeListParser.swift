@@ -43,11 +43,11 @@ class TreeListParser{
     }
     /**
      * Returns the index of PARAM: item from PARAM: treeList
-     * // :TODO: this code could possibly be optimized Check similar function: XMLParser.index(xml,attribute) this has simpler syntax
+     * TODO: this code could possibly be optimized Check similar function: XMLParser.index(xml,attribute) this has simpler syntax
      */
     static func index(treeList:ITreeList,_ item:NSView)->Array<Int> {
         var index:Array<Int> = []
-        for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
+        for i in 0..<treeList.itemContainer!.subviews.count{//swift 3 upgrade
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
             if(view === item) {index = [i]}
             else if (view is ITreeList && (view as! ITreeList).itemContainer!.subviews.count > 0){
@@ -72,7 +72,7 @@ class TreeListParser{
             let treeItem:NSView = treeList.itemContainer!.getSubviewAt(i)
             if(treeItem is ISelectable && (treeItem as! ISelectable).getSelected()) {selectable = treeItem as? ISelectable}
             if(treeItem is ITreeListItem && !(treeItem as! ISelectable).getSelected()) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
-            if(selectable != nil) {break}//<--what does this break do?, well when the first selectable is found it breaks out of the loop, should probably find a better design for this
+            if(selectable != nil) {break}//<--What does this break do?, well when the first selectable is found it breaks out of the loop, should probably find a better design for this
         }
         return selectable
     }

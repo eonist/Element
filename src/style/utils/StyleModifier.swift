@@ -16,8 +16,8 @@ class StyleModifier {
      *
      */
     static func overrideStyleProperty(inout style:IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
-        let stylePropertiesLength:Int = style.styleProperties.count;
-        for (var i:Int=0; i<stylePropertiesLength; i++) { // :TODO: use for each
+        let stylePropertiesLength:Int = 
+        for i in 0..<style.styleProperties.count{/*we can't use for each here because it needs to break*/
             if(style.styleProperties[i].name == styleProperty.name){
                 style.styleProperties[i] = styleProperty
                 break//was return
@@ -33,8 +33,8 @@ class StyleModifier {
      */
     static func combine(inout a:IStyle,_ b:IStyle){
         //Swift.print("combining initiated")
-        for i in 0..<b.styleProperties.count
-            let stylePropB : IStyleProperty = b.styleProperties[i]
+        for i in 0..<b.styleProperties.count{
+            let stylePropB:IStyleProperty = b.styleProperties[i]
             let matchIndex = Utils.matchAt(a, stylePropB)
             if(matchIndex != -1){/*Asserts true if styleProperty exist in both styles*/
                 a.styleProperties[matchIndex] = stylePropB/*styleProperty already exist so overide it*/
@@ -57,7 +57,7 @@ class StyleModifier {
         Swift.print("----end----")*/
         for stylePropB:IStyleProperty in b.styleProperties {
             var hasStyleProperty:Bool = false
-            for stylePropA : IStyleProperty in a.styleProperties {
+            for stylePropA:IStyleProperty in a.styleProperties {
                 if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
                     hasStyleProperty = true
                     break/*breaks out of the loop*/
@@ -74,15 +74,15 @@ class StyleModifier {
      */
     static func filter(style:IStyle,_ filter:Array<String>)->IStyle {
         var styleProperties:Array<IStyleProperty> = []
-        for i in 0..<style.styleProperties.count//<--swift 3 support
+        for i in 0..<style.styleProperties.count{//<--swift 3 support
             if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {styleProperties.append(style.styleProperties[i])}/*we only keep items that are in both arrays*/
         }
         return Style(style.name,style.selectors,styleProperties)
     }
     /**
      * Adds PARAM: styleProperty to the end of the PARAM: style.styleProperties array
-     * NOTE: will throw an error if a styleProperty with the same name is allready added
-     * //TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
+     * NOTE: Will throw an error if a styleProperty with the same name is allready added
+     * TODO: Add a checkFlag, sometimes the cecking of existance is already done by the caller
      */
     static func append(inout style:IStyle,_ styleProperty:IStyleProperty){
         //Swift.print("append happended")
@@ -109,8 +109,7 @@ class StyleModifier {
 }
 private class Utils{
     static func matchAt(style:IStyle, _ styleProperty:IStyleProperty)->Int{
-        let len = style.styleProperties.count
-        for (var i:Int=0; i < len; i++) {
+        for i in 0..<style.styleProperties.count{
             let styleProp:IStyleProperty = style.styleProperties[i]
             if(styleProperty.name == styleProp.name){
                 return i

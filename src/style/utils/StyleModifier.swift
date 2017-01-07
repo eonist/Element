@@ -27,7 +27,7 @@ class StyleModifier {
     }
     /**
      * Combines PARAM: a and PARAM: b
-     * NOTE: if similar styleProperties are found @param b takes precedence
+     * NOTE: if similar styleProperties are found PARAM: b takes precedence
      * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
      * TODO: maybe use map or filter to speed this up?
      */
@@ -44,8 +44,8 @@ class StyleModifier {
         }
     }
     /**
-     * Merges @param a with @param b (does not override, but only prepends styleProperties that are not present in style @param a)
-     * @Note the prepend method is used because the styleProps that has priority should come later in the array)
+     * Merges PARAM: a with PARAM: b (does not override, but only prepends styleProperties that are not present in style PARAM: a)
+     * NOTE: the prepend method is used because the styleProps that has priority should come later in the array)
      * TODO: you can speed up this method by looping with a  better algo. don't check already checked b's etc
      * TODO: maybe use map or filter to speed this up?
      */
@@ -69,19 +69,19 @@ class StyleModifier {
         }
     }
     /**
-     * Returns @param style that has its styleProperties filtered by @param filter (removed any styleProperty by a name that is not in the filter array)
-     * @Note this method works faster than ArrayModifier.removeTheseByKey
+     * Returns PARAM: style that has its styleProperties filtered by PARAM: filter (removed any styleProperty by a name that is not in the filter array)
+     * NOTE: this method works faster than ArrayModifier.removeTheseByKey
      */
     static func filter(style:IStyle,_ filter:Array<String>)->IStyle {
         var styleProperties:Array<IStyleProperty> = []
-        for (var i : Int = 0; i < style.styleProperties.count; i++) {
+        for i in 0..<style.styleProperties.count//<--swift 3 support
             if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {styleProperties.append(style.styleProperties[i])}/*we only keep items that are in both arrays*/
         }
         return Style(style.name,style.selectors,styleProperties)
     }
     /**
-     * Adds @param styleProperty to the end of the @param style.styleProperties array
-     * @Note will throw an error if a styleProperty with the same name is allready added
+     * Adds PARAM: styleProperty to the end of the PARAM: style.styleProperties array
+     * NOTE: will throw an error if a styleProperty with the same name is allready added
      * //TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
      */
     static func append(inout style:IStyle,_ styleProperty:IStyleProperty){
@@ -94,8 +94,8 @@ class StyleModifier {
         style.styleProperties.append(styleProperty)
     }
     /**
-     * Adds @param styleProperty to the start of the @param style.styleProperties array
-     * //TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
+     * Adds PARAM: styleProperty to the start of the PARAM: style.styleProperties array
+     * TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
      */
     static func prepend(inout style:IStyle,_ styleProperty:IStyleProperty){
         //Swift.print("prepend happended: styleProperty: " + styleProperty.name)

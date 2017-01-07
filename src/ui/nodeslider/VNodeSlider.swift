@@ -31,13 +31,13 @@ class VNodeSlider:Element,INodeSlider{
     }
     func onStartNodeDown() {
         Swift.print("onStartNodeDown")
-//		DepthModifier.toFront(_startNode, this);// :TODO: this may now work since they are floating:none
+//		DepthModifier.toFront(_startNode, self)// :TODO: this may now work since they are floating:none
         tempNodeMouseY = startNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
         Swift.print("onEndNodeDown")
-//		DepthModifier.toFront(_endNode, this)// :TODO: this may now work since they are floating:none
+//		DepthModifier.toFront(_endNode, self)// :TODO: this may now work since they are floating:none
         tempNodeMouseY = endNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }
@@ -60,14 +60,14 @@ class VNodeSlider:Element,INodeSlider{
         if(globalMouseMovedHandeler != nil){
             NSEvent.removeMonitor(globalMouseMovedHandeler!)
             globalMouseMovedHandeler = nil
-        }//we remove a global mouse move event listener
+        }/*we remove a global mouse move event listener*/
     }
     func onEndNodeUp() {
         Swift.print("onEndNodeUp()")
         if(globalMouseMovedHandeler != nil){
             NSEvent.removeMonitor(globalMouseMovedHandeler!)
             globalMouseMovedHandeler = nil
-        }//we remove a global mouse move event listener
+        }/*we remove a global mouse move event listener*/
     }
     override func onEvent(event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
@@ -78,7 +78,7 @@ class VNodeSlider:Element,INodeSlider{
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**
-     * @param progress (0-1)
+     * PARAM: progress (0-1)
      */
     func setStartProgressValue(progress:CGFloat){
         startProgress = progress
@@ -107,7 +107,7 @@ private class Utils{
 	}
 	/**
 	 * Returns the progress derived from a node 
-	 * @return a number between 0 and 1
+	 * RETURN: a number between 0 and 1
 	 */
 	static func progress(mouseY:CGFloat,_ tempNodeMouseX:CGFloat,_ height:CGFloat,_ nodeHeight:CGFloat) -> CGFloat {
 		let progress:CGFloat = (mouseY-tempNodeMouseX) / (height-nodeHeight)

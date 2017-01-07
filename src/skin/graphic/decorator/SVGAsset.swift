@@ -10,13 +10,15 @@ class SVGAsset:InteractiveView2 {
         svg = SVGParser.svg(rootElement)
         super.init(frame: NSRect())
         isInteractive = false/*<--very important, as SVG interactivity is currently not supported*/
-        /*self.wantsLayer = true/*if true then view is layer backed*/
+        /*
+        self.wantsLayer = true/*if true then view is layer backed*/
         layer = CALayer()/*needs to be layer-hosted so that we dont get clipping of children, or not!*/
-        layer!.masksToBounds = false//this is needed!!!, seems not to be needed!*/
+        layer!.masksToBounds = false//this is needed!!!, seems not to be needed!
+        */
         addSubview(svg)
     }
     /**
-     * TODO: explain what this method does
+     * TODO: Explain what this method does
      */
     func draw(x:CGFloat, _ y:CGFloat, _ width:CGFloat, _ height:CGFloat) {
         //Swift.print("SVGAsset.drawFill() width: " + String(width) + " height: " + String(height) + " x: " + String(x) + " y: " + String(y))
@@ -42,9 +44,9 @@ class SVGAsset:InteractiveView2 {
 }
 private class Utils{
     /**
-     * NOTE: this method is here because This framework uses swift-utils and SVGLib. Neither of them uses either of them. Think coupling etc
+     * NOTE: This method is here because This framework uses swift-utils and SVGLib. Neither of them uses either of them. Think coupling etc
      */
-    class func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
+    static func svgStyle(fillStyle:IFillStyle?,_ lineStyle:ILineStyle?)->SVGStyle{
         let fill:Any? = fillStyle != nil ? fillStyle!.color.hexVal : nil
         let fillOpacity:CGFloat? = fillStyle != nil ? fillStyle!.color.alphaComponent : nil
         let fillRule:String? = nil

@@ -29,7 +29,7 @@ class TitleView:CustomView{
         //Swift.print("mouseUp")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
-            leftMouseDraggedEventListener = nil//<--this part may not be needed , seems to be needed
+            leftMouseDraggedEventListener = nil//<--This part may not be needed, seems to be needed
         }
     }
     func onMove(event:NSEvent) -> NSEvent? {

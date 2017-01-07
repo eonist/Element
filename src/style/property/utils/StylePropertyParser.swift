@@ -285,7 +285,7 @@ class StylePropertyParser{
         return (value(skin, CSSConstants.fill,depth) as! Array<Any>)[0] as! String
     }
     /**
-     * TODO: this method is asserted before its used, so you may ommit the optionality
+     * TODO: This method is asserted before its used, so you may ommit the optionality
      */
     static func dropShadow(skin:ISkin, _ depth:Int = 0)->DropShadow? {
         let dropShadow:Any? = value(skin, CSSConstants.drop_shadow,depth)
@@ -294,10 +294,10 @@ class StylePropertyParser{
 }
 private class Utils{
     /**
-     * // :TODO: explain what this method is doing
+     * TODO: Explain what this method is doing
      */
     static func metric(value:Any?,_ skin:ISkin)->CGFloat? {
-        if(value is Int){ return CGFloat(value as! Int)}//<-int really? shouldnt you use something with decimals?
+        if(value is Int){ return CGFloat(value as! Int)}/*<-- int really? shouldnt you use something with decimals?*/
         else if(value is CGFloat){return value as? CGFloat}
         else if(value is String){/*value is String*/
             let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//<--this can go into a static class variable since it is used twice in this class
@@ -306,8 +306,8 @@ private class Utils{
             let matches = stringValue.matches(pattern)
             //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
-                let valStr:String = match.value(stringValue, 1)//capturing group 1
-                let suffix:String = match.value(stringValue, 2)//capturing group 1
+                let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
+                let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
                 let valNum:CGFloat = valStr.cgFloat
                 if(suffix == "%") {
                     //Swift.print("Suffix is %")

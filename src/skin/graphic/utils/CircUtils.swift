@@ -1,5 +1,5 @@
 import Foundation
-
+//DEPRECATE THIS CLASS
 class CircUtils {
     /*
     /**

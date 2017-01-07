@@ -6,7 +6,7 @@ class RectGraphicUtil {
      * NOTE: works with different side offsetType (left,right,top,bottom)
      * NOTE: inset = hidden, center = visible, outside = visible
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect) {
+    static func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect) {
         let topLeft = Utils.corner(rect, lineStyle,offsetType,Alignment.topLeft);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
         //print("topLeft.frame: " + String(topLeft.frame));
         //print("topLeft.line: " + String(topLeft.line));
@@ -32,7 +32,7 @@ private class Converter{
     /**
      *
      */
-    class func pointToSpace(p:CGPoint, _ from:CGRect, _ to:CGRect)->CGPoint{
+    static func pointToSpace(p:CGPoint, _ from:CGRect, _ to:CGRect)->CGPoint{
         let difference = PointParser.difference(to.topLeft,from.topLeft)
         //Swift.print("difference: " + "\(difference)")
         return p + difference
@@ -40,7 +40,7 @@ private class Converter{
     /**
      * Converts topLeft corner and topRight corner to a CGRect instance
      */
-    class func convert(tl:CGPoint,_ br:CGPoint)->CGRect{
+    static func convert(tl:CGPoint,_ br:CGPoint)->CGRect{
         let x:CGFloat = tl.x;
         let y:CGFloat = tl.y;
         let width:CGFloat = br.x - tl.x;
@@ -53,7 +53,7 @@ private class Utils{
      * NOTE: only supports topLeft and bottomRight
      * TODO: This code isnt Optimized, to optimize see the old code. (Requires individual side calculation and also some sides use the same math so some sides can be squasehd etc. Also reuse similar math etc) you can optimize by storing halfsizes etc
      */
-    class func corner(rect:CGRect,_ lineStyle:ILineStyle,_ offsetType:OffsetType,_ cornerType:String)->(line:CGPoint,frame:CGPoint){
+    static func corner(rect:CGRect,_ lineStyle:ILineStyle,_ offsetType:OffsetType,_ cornerType:String)->(line:CGPoint,frame:CGPoint){
         if(cornerType == Alignment.topLeft){
             let topOffsetRect = offsetRect(rect, lineStyle, OffsetType(offsetType.top))
             let leftOffsetRect = offsetRect(rect, lineStyle, OffsetType(offsetType.left))
@@ -68,7 +68,7 @@ private class Utils{
      * Returns a Tuple with "frame and line rects" by offsetting @param rect with @param lineOffset
      * NOTE: only works when all sides are of the same offsetType
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect) {
+    static func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->(lineRect:CGRect, frameRect:CGRect) {
         var lineRect:CGRect = CGRect()
         var frameRect:CGRect = CGRect()
         let thickness:CGFloat = lineStyle.thickness

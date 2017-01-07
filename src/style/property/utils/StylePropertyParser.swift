@@ -191,13 +191,13 @@ class StylePropertyParser{
             let value:Any? = StylePropertyParser.value(skin,textFieldKey)
             if(value != nil) {
                 if(StringAsserter.metric(value as! String)){
-                    //TODO:you may need to set one of the inner groups to be non-catachple
+                    //TODO: You may need to set one of the inner groups to be non-catchable
                     let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
                     let stringValue:String = String(value)
                     let matches = stringValue.matches(pattern)
                     for match:NSTextCheckingResult in matches {
-                        var value:Any = (stringValue as NSString).substringWithRange(match.rangeAtIndex(1))//capturing group 1
-                        let suffix:String = (stringValue as NSString).substringWithRange(match.rangeAtIndex(2))//capturing group 1
+                        var value:Any = match.value(stringValue,1)/*Capturing group 1*/
+                        let suffix:String = match.value(stringValue,2)/*Capturing group 2*/
                         if(suffix == CSSConstants.ems) {value = String(value).cgFloat * CSSConstants.emsFontSize }
                     }
                 }
@@ -210,7 +210,7 @@ class StylePropertyParser{
     }
     /**
      * Returns Offset
-     * // :TODO: merge ver/hor Offset into this one like you did with cornerRadius
+     * TODO: merge ver/hor Offset into this one like you did with cornerRadius
      * TODO: add support for % as it isnt implemented yet, see the margin implementation for guidance
      */
     static func offset(skin:ISkin,_ depth:Int = 0)->CGPoint {

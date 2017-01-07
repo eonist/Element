@@ -5,7 +5,7 @@ class SelectParser {
      * Returns the  first selected ISelectable in an array of an NSView with ISelectables (returns nil if it doesn't exist)
      * TODO: Rename to firstSelected
      */
-    class func selected(view:NSView) -> ISelectable? {
+    static func selected(view:NSView) -> ISelectable? {
         let selectables:Array<ISelectable> = self.selectables(view)
         return selected(selectables)
     }
@@ -13,7 +13,7 @@ class SelectParser {
      * Returns the  first selected ISelectable in an array of ISelectables or a
      * TODO: Rename to firstSelected
      */
-    class func selected(selectables:Array<ISelectable>) -> ISelectable? {
+    static func selected(selectables:Array<ISelectable>) -> ISelectable? {
         for selectable:ISelectable in selectables {
             if(selectable.getSelected()) {
                 return selectable
@@ -24,13 +24,13 @@ class SelectParser {
     /**
      * Returns an array from every child that is an ISelectable in PARAM: displayObjectContainer
      */
-    class func selectables(view:NSView)->Array<ISelectable> {
+    static func selectables(view:NSView)->Array<ISelectable> {
         return NSViewParser.childrenOfType(view, ISelectable.self)
     }
     /**
      * Returns all selectables that are selected
      */
-    class func allSelected(selectables:Array<ISelectable>)->Array<ISelectable> {
+    static func allSelected(selectables:Array<ISelectable>)->Array<ISelectable> {
         var selected:Array<ISelectable> = []
         for selectable:ISelectable in selectables{ 
             if(selectable.getSelected()) {
@@ -44,7 +44,7 @@ class SelectParser {
      * TODO: make a similar method for Array instead of NSView
      * NOTE: you could return nil instead of -1
      */
-    class func index(view:NSView) -> Int{
+    static func index(view:NSView) -> Int{
         for i in 0..<view.numSubViews{//swift 3 support
             let child:NSView? = view.getSubViewAt(i)
             if(child is ISelectable && (child as! ISelectable).selected){ return i }

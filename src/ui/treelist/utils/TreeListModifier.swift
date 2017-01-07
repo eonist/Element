@@ -115,15 +115,15 @@ class TreeListModifier {
         return newIndex
     }
     /**
-     * Moves an item down 1 integer at @param index on the TreeList instance @param treeList
-     * @return the new index
-     * @param index the index to move from
-     * @Note the @param index is modified so make sure you pass a clone of the array
-     * // :TODO: fix the code so that it doesnt modifify the @param index
-     * // :TODO: what if its already at the bottom?
-     * // :TODO: could we have another method maybe? moveToIndex?
-     * // :TODO: what about moveUpLevel?
-     * // :TODO: do we really need to go from DisplayObject to xml and then again to DisplayObject?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
+     * Moves an item down 1 integer at PARAM: index on the TreeList instance PARAM: treeList
+     * RETURN: the new index
+     * PARAM: index the index to move from
+     * NOTE: the PARAM: index is modified so make sure you pass a clone of the array
+     * TODO: fix the code so that it doesnt modifify the @param index
+     * TODO: what if its already at the bottom?
+     * TODO: could we have another method maybe? moveToIndex?
+     * TODO: what about moveUpLevel?
+     * TODO: do we really need to go from DisplayObject to xml and then again to DisplayObject?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
      */
     static func moveDown(treeList:TreeList,var _ index:Array<Int>) -> Array<Int> {
         let removed:NSXMLElement = treeList.node.removeAt(index)

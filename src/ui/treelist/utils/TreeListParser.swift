@@ -5,7 +5,7 @@ class TreeListParser{
      * Returns the total height of the items
      * @Note another name for this could be getTotalItemsHeight?
      */
-    class func itemsHeight(treeList:ITreeList)->CGFloat{
+    static func itemsHeight(treeList:ITreeList)->CGFloat{
         var height:CGFloat = 0
         for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
             height += treeList.itemContainer!.getSubviewAt(i) is TreeListItem ? (treeList.itemContainer!.getSubviewAt(i) as! TreeListItem).getHeight() : (treeList.itemContainer!.getSubviewAt(i) as! Element).getHeight()
@@ -13,9 +13,9 @@ class TreeListParser{
         return height
     }
     /**
-     * Returns an array of descendants in @param treeList
+     * Returns an array of descendants in PARAM: treeList
      */
-    class func descendants(treeList:ITreeList)->Array<AnyObject>{
+    static func descendants(treeList:ITreeList)->Array<AnyObject>{
         var items:Array<AnyObject> = []
         let numChildren:Int = treeList.itemContainer!.subviews.count
         for (var i : Int = 0; i < numChildren; i++) {
@@ -29,7 +29,7 @@ class TreeListParser{
     /**
      *
      */
-    class func decendantsOfType<T>(treeList:ITreeList,_ type:T.Type? = nil)->Array<T> {
+    static func decendantsOfType<T>(treeList:ITreeList,_ type:T.Type? = nil)->Array<T> {
         //Swift.print("decendantsOfType()")
         var items:Array<T> = []
         for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
@@ -42,10 +42,10 @@ class TreeListParser{
         return items
     }
     /**
-     * Returns the index of @param item from @param treeList
+     * Returns the index of PARAM: item from PARAM: treeList
      * // :TODO: this code could possibly be optimized Check similar function: XMLParser.index(xml,attribute) this has simpler syntax
      */
-    class func index(treeList:ITreeList,_ item:NSView)->Array<Int> {
+    static func index(treeList:ITreeList,_ item:NSView)->Array<Int> {
         var index:Array<Int> = []
         for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
@@ -58,15 +58,15 @@ class TreeListParser{
         return index
     }
     /**
-     * Returns the index of the selected ISelectable instance in @param treeList
+     * Returns the index of the selected ISelectable instance in PARAM: treeList
      */
-    class func selectedIndex(treeList:ITreeList) -> Array<Int>{
+    static func selectedIndex(treeList:ITreeList) -> Array<Int>{
         return index(treeList, selected(treeList) as! NSView)
     }
     /**
-     * Returns the selected ISelectable instance in the @param treeList
+     * Returns the selected ISelectable instance in the PARAM: treeList
      */
-    class func selected(treeList:ITreeList)->ISelectable?{
+    static func selected(treeList:ITreeList)->ISelectable?{
         var selectable:ISelectable?
         for (var i : Int = 0; i < treeList.itemContainer!.subviews.count; i++) {
             let treeItem:NSView = treeList.itemContainer!.getSubviewAt(i)
@@ -77,9 +77,9 @@ class TreeListParser{
         return selectable
     }
     /**
-     * Returns an NSView instance at @param index in @param treeList
+     * Returns an NSView instance at PARAM: index in PARAM: treeList
      */
-    class func itemAt(treeList:ITreeList,_ index:Array<Int>) -> NSView{
+    static func itemAt(treeList:ITreeList,_ index:Array<Int>) -> NSView{
         if(index.count == 1 && treeList.itemContainer!.getSubViewAt(index[0]) != nil) {
             return treeList.itemContainer!.getSubViewAt(index[0])!
         }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {

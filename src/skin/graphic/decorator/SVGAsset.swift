@@ -1,7 +1,7 @@
 import Cocoa
 /**
  * TODO: Remember to add the cglayer settings so that this class can have children that is visible etc
- * TODO: you need to think how you can add trackingareas to all svg children aswell and subsequent hitTest, just get the bounds and assert isWithinPath in a tree-search
+ * TODO: You need to think how you can add trackingareas to all svg children aswell and subsequent hitTest, just get the bounds and assert isWithinPath in a tree-search
  */
 class SVGAsset:InteractiveView2 {
     var svg:SVG

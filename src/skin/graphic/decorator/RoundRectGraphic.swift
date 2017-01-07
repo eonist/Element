@@ -6,7 +6,7 @@ import Cocoa
  * NOTE: google for Drawing Circles with Rational Quadratic Bezier Curves.pdf or use a value named kappa which is basically kappa = 4 * (sqrt(2) - 1) / 3
  * NOTE: CGRect has a roundRect method with eliptical corners. You have this code in your research folder
  */
-class RoundRectGraphic:SizeableDecorator{//adds round-rectangular path
+class RoundRectGraphic:SizeableDecorator{/*adds round-rectangular path*/
     var fillet:Fillet
     init(_ decoratable: IGraphicDecoratable,_ fillet:Fillet) {//this shoul d be provided through an extension not here->  = BaseGraphic(FillStyle(NSColor.greenColor())
         self.fillet = fillet

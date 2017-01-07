@@ -51,7 +51,6 @@ private class Utils{
             //Swift.print("points.start: " + "\(points.start)")
             //Swift.print("points.end: " + "\(points.end)")
             return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
-            
         }else if(gradient is RadialGradient){
             let rg = RadialGradientUtils.radialGradient(boundingBox,gradient as! RadialGradient)/*Creates and configs the radial gradient*/
             return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)

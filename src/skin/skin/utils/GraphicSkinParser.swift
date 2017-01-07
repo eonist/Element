@@ -39,31 +39,31 @@ private class Utils{
     }
    
     /**
-     * @Note asset is svg for now but in the future it should support png
-     * // :TODO: this solution isnt perfect but it works for now
+     * NOTE: asset is svg for now but in the future it should support png
+     * TODO: this solution isnt perfect but it works for now
      */
     static func asset(decoratable:IGraphicDecoratable,_ asset:String)->IGraphicDecoratable {
         return AssetDecorator(decoratable, asset)
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance
-     * // :TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
+     * TODO: Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
     static func fillet(decoratable:IGraphicDecoratable,_ fillet:Fillet)->IGraphicDecoratable {
         //Swift.print("GraphicSkinParser.fillet()")
         return RoundRectGraphic(decoratable, fillet)
     }
     /**
-     * Returns a "GradientDecorator instance" wrapped around a @param decoratable
-     * @Note: to use a custom matrix, pass a matrix with the @param gradient or @param lineGradient
-     * @Note: doesnt drawLine by default, pass a Gradient instance with @param lineGradient to draw a gradientLine
+     * Returns a "GradientDecorator instance" wrapped around a PARAM: decoratable
+     * NOTE: to use a custom matrix, pass a matrix with the PARAM: gradient or PARAM: lineGradient
+     * NOTE: doesnt drawLine by default, pass a Gradient instance with PARAM: lineGradient to draw a gradientLine
      * // :TODO: support for GradientLineStyle, GradientFillStyle
      */
     static func gradient(decoratable:IGraphicDecoratable)->IGraphicDecoratable{
         return GradientGraphic(decoratable)
     }
     /**
-     * Wraps a DropShadowDecorator instance on @param decoratable
+     * Wraps a DropShadowDecorator instance on PARAM: decoratable
      */
     static func dropShadow(decoratable:IGraphicDecoratable, _ dropShadow:DropShadow?)->IGraphicDecoratable {
         return DropShadowDecorator(decoratable,dropShadow)

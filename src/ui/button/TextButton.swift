@@ -1,14 +1,14 @@
 import Cocoa
 
 class TextButton:Button {
-    var text:Text? = nil;
-    var textString:String;
-    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "defaultText", _ parent: IElement?, _ id: String? = nil) {
+    var text:Text? = nil
+    var textString:String
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:IElement?, _ id:String? = nil) {
         textString = text;
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         text = addSubView(Text(width,height,textString,self))
         text?.isInteractive = false
     }
@@ -17,7 +17,7 @@ class TextButton:Button {
         super.setSkinState(skinState)
         text!.setSkinState(skinState)/*why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
-    override func setSize(width: CGFloat, _ height: CGFloat) {
+    override func setSize(width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
         text!.setSize(width, height)
     }

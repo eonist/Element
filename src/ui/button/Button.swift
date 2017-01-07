@@ -1,8 +1,8 @@
 import Cocoa
-/*
- * // :TODO: it could be possible to merge the two skin lines in every event handler somehow
- * // :TODO: impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesnt hold, if you want a simpler button you can just make an alternate Button class
- * // :TODO: If the mouse gets stuck and wont fire the mouseUp after a mouseDown call, then the app should not fail when clicking down again somewhere else, this means we need to centralize the eventListner for mouseUp/mouseDown using global instead of locla could work
+/**
+ * TODO: It could be possible to merge the two skin lines in every event handler somehow
+ * TODO: Impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesnt hold, if you want a simpler button you can just make an alternate Button class
+ * TODO: If the mouse gets stuck and wont fire the mouseUp after a mouseDown call, then the app should not fail when clicking down again somewhere else, this means we need to centralize the eventListner for mouseUp/mouseDown using global instead of locla could work
  */
 class Button:Element {
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
@@ -11,7 +11,7 @@ class Button:Element {
         //addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
     /**
-     * Handles actions and drawing states for the mouseEntered event.
+     * Handles actions and drawing states for the mouseEntered event
      */
     override func mouseOver(event:MouseEvent) {
         //Swift.print("Button.mouseOver() ")
@@ -23,7 +23,7 @@ class Button:Element {
         }
     }
     /**
-     * Handles actions and drawing states for the mouseOut action.
+     * Handles actions and drawing states for the mouseOut action
      */
     override func mouseOut(event:MouseEvent) {
         //Swift.print("Button.mouseOut() ")
@@ -35,7 +35,7 @@ class Button:Element {
         }
     }
     /**
-     * Handles actions and drawing states for the down event.
+     * Handles actions and drawing states for the down event
      */
     override func mouseDown(event:MouseEvent) {
         //Swift.print("Button.mouseDown() ")
@@ -46,7 +46,7 @@ class Button:Element {
     }
     /**
      * Handles actions and drawing states for the release event.
-     * @Note: bubbling= true was added to make Stepper class dragable
+     * NOTE: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpInside(event:MouseEvent){
         //Swift.print("Button.mouseUpInside: ")
@@ -56,7 +56,7 @@ class Button:Element {
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event.
-     * @Note: bubbling = true was added to make Stepper class dragable
+     * NOTE: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpOutside(event:MouseEvent){
         //Swift.print("Button.mouseUpOutside: ")

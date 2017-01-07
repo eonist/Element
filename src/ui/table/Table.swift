@@ -16,9 +16,8 @@ class Table:Element{
     override func resolveSkin() {
         super.resolveSkin()
         columnContainer = addSubView(Container(width,height,self,"column"))
-        let childCount:Int = node.xml.children!.count
-        for var i = 0; i < childCount; ++i{
-            let child : NSXMLNode = node.xml.children![i]
+        for i in 0..<node.xml.children!.count{//<--swift 3 for loop
+            let child:NSXMLNode = node.xml.children![i]
             let itemData = XMLParser.attribs(child as! NSXMLElement)
             if(itemData["hasChildren"] == "true" || child.children!.count > 0) {
                 columns.append(columnContainer!.addSubView(Column(100,height,/*<--these should be NaN*/itemData["title"]!,DataProvider(child as? NSXMLElement),columnContainer,String(i))))

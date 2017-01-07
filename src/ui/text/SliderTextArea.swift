@@ -1,11 +1,11 @@
 import Foundation
 /**
  * 13.05.21 15:00 - Added support for mousewheel, and replaced scrollbars with sliders
- * @Note it seems difficult to align the HSlider thumb in a relative but correct way, since offsetting the HSlider it self is difficult when thumb is positioned by absolute values
- * // :TODO: could possible use a setHtmlText function??!?
- * // :TODO: you may need to access gestures to get hold of horzontal mouse delta, when you want to use gestures to scroll horizontally
- * // :TODO: the horizontal scroller isnt thourghouly testes. Make sure you set wordwrap to false to test this, and that the input text has break tags \n or br tags
- * // :TODO: Impliment a failsafe so that the slider.thumb doesnt get smaller than its width, do the same for both sliders
+ * NOTE: it seems difficult to align the HSlider thumb in a relative but correct way, since offsetting the HSlider it self is difficult when thumb is positioned by absolute values
+ * TODO: could possible use a setHtmlText function??!?
+ * TODO: you may need to access gestures to get hold of horzontal mouse delta, when you want to use gestures to scroll horizontally
+ * TODO: the horizontal scroller isnt thourghouly testes. Make sure you set wordwrap to false to test this, and that the input text has break tags \n or br tags
+ * TODO: Impliment a failsafe so that the slider.thumb doesnt get smaller than its width, do the same for both sliders
  */
 class SliderTextArea:TextArea{
     let linesPerScroll:UInt = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
@@ -68,15 +68,15 @@ class SliderTextArea:TextArea{
 	}
 	/**
 	 * Returns "TextArea"
-	 * @Note This function is used to find the correct class type when synthezing the element stack
+	 * NOTE: This function is used to find the correct class type when synthezing the element stack
 	 */
 	override func getClassType() -> String {
 		return String(TextArea)
 	}
 	/**
 	 * Sets the size of the ScrollTextArea
-	 * @Note:Horizontatal must be set first because of an unknown bug, if you do not use the maxScrollH before maxScrollV the maxScrollV gives old values (Adobe bug)
-	 * // :TODO: this may not work since thumbsizes is updated in sliders and in this class
+	 * NOTE: Horizontatal must be set first because of an unknown bug, if you do not use the maxScrollH before maxScrollV the maxScrollV gives old values (Adobe bug)
+	 * TODO: this may not work since thumbsizes is updated in sliders and in this class
 	 */
 	override func setSize(width:CGFloat, height:CGFloat) {
 		super.setSize(width, height)
@@ -94,11 +94,11 @@ private class Utils{
 	/**
 	 * 
 	 */
-	class func vSliderinterval(textField:TextField) -> Int {
+	static func vSliderinterval(textField:TextField) -> Int {
 		let verticalInterval:Int = /*textField.maxScrollV*/ -1
 		return verticalInterval
 	}
-	class func vSliderThumbHeight(textField:TextField, _ slider:VSlider, _ linesPerScroll:UInt = 1) -> CGFloat {
+	static func vSliderThumbHeight(textField:TextField, _ slider:VSlider, _ linesPerScroll:UInt = 1) -> CGFloat {
 		let numOfVisibleLines:Int = 0//(textField.numLines-textField.maxScrollV)
         numOfVisibleLines
 		let verticalScalar:CGFloat = 0//textField.maxScrollV == 1 ? 1:numOfVisibleLines/textField.numLines
@@ -106,13 +106,13 @@ private class Utils{
 		let verticalThumbSize:CGFloat = SliderParser.thumbSize(verticalScalar, slider.height)
 		return min(slider.height,verticalThumbSize)/*the Math.min is a temp fix*/
 	}
-	class func hScrollBarInterpolation(textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
+	static func hScrollBarInterpolation(textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
 		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance
 	}
 	/**
 	 * 
 	 */
-	class func hSliderThumbWidth(textField:TextField, _ slider:HSlider) -> CGFloat {
+	static func hSliderThumbWidth(textField:TextField, _ slider:HSlider) -> CGFloat {
 		let horizontalScalar:CGFloat = 0//textField.maxScrollH == 0 ? 1:textField.width/textField.maxScroll
         horizontalScalar
 //		var horizontalInterval:int = ScrollTextAreaUtil.hScrollBarInterpolation(textField);

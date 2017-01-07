@@ -139,9 +139,8 @@ class CSSPropertyParser {
             let property:String = properties[i]
             let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches {
-                //TODO: use the match.value(property,1) notation on the 2 lines bellow
-                let name:String = RegExp.value(property, match, 1)/*capturing group 1*/
-                var value:Any = RegExp.value(property, match, 2)/*capturing group 2*/
+                let name:String = match.value(property,1)/*capturing group 1*/
+                var value:Any = match.value(property,2)/*capturing group 2*/
                 if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.nsColor(value as! String)}
                 else if(value as! String == "true") { value = true }
                 else if(value as! String == "false") { value = false }
@@ -193,9 +192,9 @@ private class Utils{
      */
     static func gradient(properties:Array<String>)->IGradient {
         //print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));
-        let gradient:Gradient = Gradient();
-        for (var i : Int = 0; i < properties.count; i++) {// :TODO: add support for all Written Color. find list on w3c
-            let property:String = properties[i];
+        let gradient:Gradient = Gradient()
+        for (var i : Int = 0; i < properties.count; i++) {//TODO: add support for all Written Color. find list on w3c
+            let property:String = properties[i]
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
             let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
             //Swift.print("matches.count: " + "\(matches.count)")

@@ -2,7 +2,7 @@ import Foundation
 
 class SliderParser {
     /**
-     * Asserts and returns a boolean value that determines if slider should be visible.
+     * Asserts and returns a boolean value that determines if slider should be visible
      */
     class func assertSliderVisibility(scalar:CGFloat) -> Bool {
         return scalar < 1
@@ -12,7 +12,7 @@ class SliderParser {
      * PARAM: scalar
      * PARAM: sliderSize (thumbWidth or thumbHeight)
      * PARAM: scrollBarSize (scrollBarWidth/scrollBarHeight)
-     * NOTE: Makes sure that the slider thumb is never to small or to big.
+     * NOTE: Makes sure that the slider thumb is never to small or to big
      */
     class func thumbSize(var scalar:CGFloat, _ sliderSize:CGFloat) -> CGFloat {
         scalar = min(scalar,1)

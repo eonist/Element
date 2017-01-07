@@ -1,8 +1,8 @@
 import Cocoa
 /**
  * HSlider is a simple horizontal slider
- * @Note the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
- * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
+ * NOTE: the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
+ * TODO: consider having thumbWidth and thumbHeight, its just easier to understand
  */
 class HSlider:Element{
     var progress:CGFloat
@@ -55,7 +55,7 @@ class HSlider:Element{
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**
-     * @param progress (0-1)
+     * PARAM: progress (0-1)
      */
     func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
@@ -81,15 +81,15 @@ private class Utils{
     /**
      * Returns the x position of a nodes @param progress
      */
-    class func thumbPosition(progress:CGFloat, _ width:CGFloat, _ thumbWidth:CGFloat)->CGFloat {
+    static func thumbPosition(progress:CGFloat, _ width:CGFloat, _ thumbWidth:CGFloat)->CGFloat {
         let minThumbPos:CGFloat = width - thumbWidth/*Minimum thumb position*/
         return progress * minThumbPos
     }
     /**
      * Returns the progress derived from a node
-     * @return a number between 0 and 1
+     * RETURN: a number between 0 and 1
      */
-    class func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ thumbWidth:CGFloat)->CGFloat {
+    static func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ thumbWidth:CGFloat)->CGFloat {
         if(thumbWidth == width) {return 0;}/*if the thumbWidth is the same as the Width of the slider then return 0*/
         let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-thumbWidth)
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/

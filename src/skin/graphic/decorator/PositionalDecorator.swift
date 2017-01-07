@@ -2,7 +2,7 @@ import Foundation
 
 /**
  * The responsibility of this class is to provide access to the position of the PositionalGraphic
- * NOTE: the if else clauses doesnt look good, but swift doesnt allow setting values via protocols that uses extensions for its functionality, so its eigther this or implementing implicit setter method in each subclass conforming to IPositional
+ * NOTE: The if else clauses doesn't look good, but swift doesn't allow setting values via protocols that uses extensions for it's functionality, so its eigther this or implementing implicit setter method in each subclass conforming to IPositional
  */
 class PositionalDecorator:GraphicDecoratable,IPositional{
     var pos:CGPoint{

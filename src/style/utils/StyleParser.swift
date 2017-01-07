@@ -8,7 +8,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     /**
      * TODO: depthCount should probably be set when you are creating the Style instance, depthcount may change depending on the usage, think love preview or animation
      */
-    class func depthCount(style:IStyle)->Int{
+    static func depthCount(style:IStyle)->Int{
         let propertyNames:Array<String> = stylePropertyNames(style)
         //Swift.print("propertyNames: " + "\(propertyNames)")
         let fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0
@@ -20,11 +20,11 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     /**
      * TODO: write documentation
      */
-    class func describe(style:IStyle){
+    static func describe(style:IStyle){
         Swift.print("StyleParser.describe()")
         Swift.print("style.name: " + style.name)
         //Swift.print("style.styleProperties: " + "\(style.styleProperties)")
-        for styleProperty : IStyleProperty in style.styleProperties {
+        for styleProperty:IStyleProperty in style.styleProperties {
             var value:String = ""
             if(styleProperty.value is String || styleProperty.value is Double || styleProperty.value is Bool || styleProperty.value is UInt || styleProperty.value is Int){
                 value =  String(styleProperty.value)
@@ -37,15 +37,17 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     /**
      * Returns an array populated with style property names
      */
-    class func stylePropertyNames(style:IStyle) -> Array<String>{
+    static func stylePropertyNames(style:IStyle) -> Array<String>{
         var propertyNames:Array<String> = []
-        for styleProperty:IStyleProperty in style.styleProperties{ propertyNames.append(styleProperty.name)}
+        for styleProperty:IStyleProperty in style.styleProperties{ 
+            propertyNames.append(styleProperty.name)
+        }
         return propertyNames
     }
     /**
      * @param name the propertyname
      */
-    class func index(style:IStyle, _ name:String, _ depth:Int = 0) -> Int {
+    static func index(style:IStyle, _ name:String, _ depth:Int = 0) -> Int {
         let len:Int = style.styleProperties.count
         for (var i : Int = 0; i < len; i++) {
             let styleProperty : IStyleProperty  = style.styleProperties[i]

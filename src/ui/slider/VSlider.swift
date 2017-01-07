@@ -45,7 +45,7 @@ class VSlider:Element{
     }
     func onThumbUp(){
         //Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
-        if(globalMouseMovedHandler != nil){NSEvent.removeMonitor(globalMouseMovedHandler!)}//we remove a global mouse move event listener
+        if(globalMouseMovedHandler != nil){NSEvent.removeMonitor(globalMouseMovedHandler!)}/*we remove a global mouse move event listener*/
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self).y, thumbHeight/2, height, thumbHeight)
@@ -98,7 +98,7 @@ class VSlider:Element{
 }
 private class Utils{
     /**
-     * Returns the x position of a nodes @param progress
+     * Returns the x position of a nodes PARAM progress
      */
     class func thumbPosition(progress:CGFloat, _ height:CGFloat, _ thumbHeight:CGFloat)->CGFloat {
         let minThumbPos:CGFloat = height - thumbHeight/*Minimum thumb position*/
@@ -106,7 +106,7 @@ private class Utils{
     }
     /**
      * Returns the progress derived from a node
-     * @return a number between 0 and 1
+     * RETURN: a number between 0 and 1
      */
     class func progress(mouseY:CGFloat,_ tempNodeMouseY:CGFloat,_ height:CGFloat,_ thumbHeight:CGFloat)->CGFloat {
         if(thumbHeight == height) {return 0}/*if the thumbHeight is the same as the height of the slider then return 0*/

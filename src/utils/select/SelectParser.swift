@@ -32,7 +32,11 @@ class SelectParser {
      */
     class func allSelected(selectables:Array<ISelectable>)->Array<ISelectable> {
         var selected:Array<ISelectable> = []
-        for selectable : ISelectable in selectables{ if(selectable.getSelected()) {selected.append(selectable)} }
+        for selectable:ISelectable in selectables{ 
+            if(selectable.getSelected()) {
+                selected.append(selectable)
+            }
+        }
         return selected
     }
     /**
@@ -41,8 +45,7 @@ class SelectParser {
      * NOTE: you could return nil instead of -1
      */
     class func index(view:NSView) -> Int{
-        let numOfSubViews:Int = view.numSubViews/*CPU-optimization*/
-        for var i = 0; i < numOfSubViews; ++i{
+        for i in 0..<view.numSubViews{//swift 3 support
             let child:NSView? = view.getSubViewAt(i)
             if(child is ISelectable && (child as! ISelectable).selected){ return i }
         }

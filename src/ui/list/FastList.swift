@@ -18,11 +18,11 @@ import Cocoa
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 class FastList:Element,IList {
-    var selectedIdx:Int?/*this cooresponds to the "absolute" index in dp*/
+    var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
-    var dataProvider:DataProvider/*data storage*/
-    var lableContainer:Container?/*holds the list items*/
-    var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
+    var dataProvider:DataProvider/*Data storage*/
+    var lableContainer:Container?/*Holds the list items*/
+    var maxVisibleItems:Int?/*This will be calculated on init and on setSize calls*/
     var itemsHeight:CGFloat {return dataProvider.count * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
     var visibleItems:[FastListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
     var surplusItems:[FastListItem] = []/*Repurpose Items instead of removing and creating new ones*/
@@ -62,7 +62,7 @@ class FastList:Element,IList {
         //Swift.print("topLimit: " + "\(topLimit)")
         let bottomLimit:CGFloat = /*listY+*/ height
         //Swift.print("bottomLimit: " + "\(bottomLimit)")
-        for var i = 0; i < visibleItems.count; ++i{/*Stage.1: Remove items outside Limits*/
+        for i in 0..<visibleItems.count{/*Stage.1: Remove items outside Limits*/
             let listItem:FastListItem = visibleItems[i]
             let virtualY:CGFloat = listItem.idx*itemHeight - listY
             if(virtualY <= topLimit){/*above top limit*/

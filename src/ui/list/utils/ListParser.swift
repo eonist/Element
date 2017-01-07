@@ -49,7 +49,7 @@ class ListParser {
     /**
      * Returns the title of the currently selected
      */
-    static func selectedProperty(list:IList)->String {/*<--could be **/
+    static func selectedProperty(list:IList)->String {/*<--could be*/
         let index:Int = selectedIndex(list)
         return propertyAt(list,index)
     }

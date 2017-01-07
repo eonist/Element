@@ -27,7 +27,7 @@ class SelectorParser{
      */
     static func selectorsString(selectors:Array<ISelector>)->String{//TODO: rename to selectorsString
         var string:String = ""
-        for (var i : Int = 0; i < selectors.count; i++) {
+        for i in 0..<selectors.count{
             string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
         }
         return string
@@ -72,7 +72,6 @@ class SelectorParser{
             }
             let selectorClassIds:[String] = classIds()
             let selectorId = (match.rangeAtIndex(3).location != NSNotFound) ? match.value(string, 3) : ""
-            
             func states()->[String]{
                 if match.rangeAtIndex(4).location != NSNotFound {
                     let states:String = RegExp.value(string, match, 4)
@@ -121,18 +120,18 @@ private class Utils{
             let querrySelector:ISelector = querrySelectors[i]
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){/*Asserts if the selector in the style should influence the style of the element*/
                 let selectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1)
-                SelectorParser.cursor = i+1// :TODO: this could possibly also be solved by looping the style inside the stack, but this was a faster fix
+                SelectorParser.cursor = i+1//TODO: this could possibly also be solved by looping the style inside the stack, but this was a faster fix
                 return selectorWeight
             }
         }
         return nil/*if a selectors array in the style has an individual selector that doesn't have anything in common with none of the selector sin the cascade then return false*/
     }
     /**
-     * NOTE: lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
+     * NOTE: Lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
      */
     static func stateWeight(a:Array<String>,_ b:Array<String>)->Int{
         var weight:Int = 0
-        for state:String in a {weight += b.count - ArrayParser.index(b,state)/*<-is this really wise? what if it is -1 aka doesnt exist*/}
+    for state:String in a {weight += b.count - ArrayParser.index(b,state)/*<--Is this really wise? what if it is -1 aka doesnt exist*/}
         return weight
     }
 }

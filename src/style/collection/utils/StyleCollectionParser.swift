@@ -2,11 +2,11 @@ import Foundation
 
 class StyleCollectionParser {
     /**
-     * @return an array of style names
+     * Returns an array of style names
      */
-    class func styleNames(styleCollection:IStyleCollection) -> Array<String>{
+    static func styleNames(styleCollection:IStyleCollection) -> Array<String>{
         var styleNames:Array<String> = []
-        let numOfStyles:Int = styleCollection.styles.count/*cpu-optimization*/
+        let numOfStyles:Int = styleCollection.styles.count/*<--CPU-optimization*/
         for (var i : Int = 0;i < numOfStyles; i++) {styleNames.append(styleCollection.styles[i].name)}
         return styleNames
     }
@@ -14,7 +14,7 @@ class StyleCollectionParser {
      * Describes the stylecollection content
      * Note can you use the ObjectDescriber in place of this class?
      */
-    class func describe(styleCollection:IStyleCollection) {
+    static func describe(styleCollection:IStyleCollection) {
         func printStyleProperties(style:IStyle) {
             //Swift.print("printStyleProperties:")
             Swift.print("<style.name>:"+style.name)

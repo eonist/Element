@@ -6,7 +6,7 @@ import Foundation
 class StyleCollectionLinkageResolver {
     /**
      * Resolves linking on PARAM: styleCollection
-     * // :TODO: what if the link is not found? should we provide a default value? or remove the stylepropp maybe?
+     * TODO: what if the link is not found? should we provide a default value? or remove the stylepropp maybe?
      */
     //TODO: to finish the bellow you just copy the code from CSSLinkResolver
     /*

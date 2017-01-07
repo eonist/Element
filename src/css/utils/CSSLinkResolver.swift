@@ -1,7 +1,7 @@
 import Foundation
 /**
- * TODO: rename this class to CSSPointerResolver? Since it can be confused with resolving css View container urls?
  * EXAMPLE: Swift.print(CSSLinkResolver.resolveLinks("Button{fill:<ButtonBase>;} ButtonBase{fill:green;line:blue;} CheckButton{line:<ButtonBase>;}"))//Button{fill:green;} ButtonBase{fill:green;line:blue;} CheckButton{line:blue;}
+ * TODO: rename this class to CSSPointerResolver? Since it can be confused with resolving css View container urls?
  */
 class CSSLinkResolver {
     static let precedingWith:String = "(?<=\\;|^|\\{)"
@@ -15,11 +15,11 @@ class CSSLinkResolver {
      * Returns a CSS string with all css links resolved, a css link is where a key points to another key to obtain its value
      * NOTE: this method is recursive and traverses down through all its decendants. Think of a tree diagram
      * NOTE: also resolves the weight of each style and merges styles according to the CSS methodology
+     * NOTE: you could also do a forward for loop and then offset the range as your traverse the matches
      * TODO: the replaceRange method may slow things down research a better replace method
      * EXAMPLE: resolveLinks("CustomButton{fill:yellow;} CustomButton:down{fill:green;}")//This is the log if you log the name and values: Name: fill, Value: yellow, Name: fill,Value: green
-     * NOTE: you could also do a forward for loop and then offset the range as your traverse the matches
      */
-    class func resolveLinks(var string:String)->String{
+    static func resolveLinks(var string:String)->String{
         let matches = RegExp.matches(string, linkPropertyPattern)
         matches.count
         for var i = matches.count-1; i > -1; --i{
@@ -36,13 +36,13 @@ class CSSLinkResolver {
 private class Utils {
     /**
      * Replaces the value with the value from the key pointer
-     * // :TODO: write an example
+     * PARAM: cssString: is the original css string in its entirety (not a form of excerpt)
      * NOTE: there is no speed benefit of optimizing querrying for linkedStyleProperty
      * NOTE: the sansBracketPattern basically finds the content inside the "<" and the ">"
-     * PARAM: cssString: is the original css string in its entirety (not a form of excerpt)
      * NOTE: you could also maybe loop backwards an replace that way, then you wouldnt have to store a new index
+     * TODO: write an example
      */
-    class func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{
+    static func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{
         //Swift.print("replaceLinks.string: " + string);
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         //Swift.print("replaceLinks()" + String(matches.count))
@@ -67,10 +67,10 @@ private class Utils {
      * PARAM: linkName the linkname is style name to search for
      * PARAM: propertyName is the property name for the property value to be returned
      * PARAM: string is the entire css document combined into 1 string
-     * // :TODO: write an example
-     * // :TODO: you can write a more precise expression to match the content of a style block
+     * TODO: write an example
+     * TODO: you can write a more precise expression to match the content of a style block
      */
-    class func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
+    static func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
         var match:Array = RegExp.match(string, pattern)
         if(match.count > 0){/*this try catch method is here so its easier to debug which linkName threw */
@@ -85,12 +85,12 @@ private class Utils {
      * PARAM: string a style block
      * PARAM: propName the property name for the property value to be returned
      * write an example
-     * // :TODO: you can write a more precise expression to match the content of a style block
+     * TODO: you can write a more precise expression to match the content of a style block
      */
-    class func value(string:String,_ propName:String)->String{
+    static func value(string:String,_ propName:String)->String{
         let pattern:String = "(?<=" + propName + "\\:).+?(?=\\;)"
         var match:Array = RegExp.match(string, pattern)
-        if(match.count > 0){/*this try catch method is here so its easier to debug which propName threw an error*/
+        if(match.count > 0){/*This try catch method is here so its easier to debug which propName threw an error*/
             return match[0]
         }else{
             fatalError(" string:>"+string+"<"+" propName:>"+propName+"<")

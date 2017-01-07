@@ -19,7 +19,7 @@ class StyleManager{
         styles.append(style)
     }
     /**
-     *
+     * TODO: This method could probably be a candidate for functional programming: .map or .flatMap etc etc
      */
     static func removeStyle(name:String) -> IStyle? {
         for i in 0..<styles.count{//upgraded to swift 3 support
@@ -31,10 +31,10 @@ class StyleManager{
     }
     /**
      * Locates and returns a Style by the @param name.
-     * @return a Style
+     * RETURN: a Style
      */
     static func getStyle(name:String)->IStyle?{
-        for (_,style) in self.styles.enumerate(){
+        for (_,style) in self.styles.enumerate(){//forEach was not used because it doesn't allow return
             if(style.name == name) {return style}
         }
         return nil
@@ -46,7 +46,11 @@ extension StyleManager{
      * Adds every style in a styleCollection to the stylemanager
      */
     static func addStyle(styles:Array<IStyle>){
-        if(isHashingStyles){styles.forEach{StyleManagerUtils.hashStyle($0)}}
+        if(isHashingStyles){
+            styles.forEach{
+                StyleManagerUtils.hashStyle($0)
+            }
+        }
         self.styles += styles/*<- concats*/
     }
     /**

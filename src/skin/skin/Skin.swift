@@ -50,7 +50,7 @@ class Skin:InteractiveView2,ISkin{
     /**
      * Sets the skin state and forces a redraw
      * NOTE: forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
-     * TODO:rename to set_skinState() and blame swift for the underscore
+     * TODO: rename to set_skinState() and blame swift for the underscore
      * TODO: Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
      */
     func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
@@ -60,9 +60,9 @@ class Skin:InteractiveView2,ISkin{
         draw()
     }
     /**
-    * Sets the width and height of skin also forces a redraw.
-    * @Note similar to setStyle, this does not querry the styleManger when called
-    */
+     * Sets the width and height of skin also forces a redraw.
+     * NOTE: similar to setStyle, this does not querry the styleManger when called
+     */
     func setSize(width:CGFloat, _ height:CGFloat) {
         if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
             hasSizeChanged = true

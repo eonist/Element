@@ -4,7 +4,7 @@ import Foundation
  */
 class ButtonEvent:Event{
     static var down:String = "buttonEventDown"
-    static var up:String = "buttonEventUp"/*new*/
+    static var up:String = "buttonEventUp"/*<--New*/
     static var upInside:String = "buttonEventUpInside"
     static var upOutside:String = "buttonEventUpOutside"
     static var out:String = "buttonEventOut"

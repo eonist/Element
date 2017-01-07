@@ -1,7 +1,7 @@
 import Cocoa
 /**
- * @example see TestCheckBoxButton
- * @Note: Remember to use the setChecked(true) if you want to change the state and skin after initiating the instance, since it wont do this itself on initiate
+ * EXAMPLE: see TestCheckBoxButton
+ * NOTE: Remember to use the setChecked(true) if you want to change the state and skin after initiating the instance, since it wont do this itself on initiate
  */
 class SelectCheckBoxButton:CheckBoxButton,ISelectable {
     private var isSelected:Bool
@@ -15,7 +15,7 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
         super.onEvent(SelectEvent(SelectEvent.select,self))/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
     }
     /**
-     * @Note: do not add a dispatch event here, that is the responsibilyy of the caller
+     * NOTE: Do not add a dispatch event here, that is the responsibilyy of the caller
      */
     func setSelected(isSelected:Bool) {
         self.isSelected = isSelected

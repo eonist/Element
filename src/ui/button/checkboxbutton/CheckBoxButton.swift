@@ -21,7 +21,7 @@ class CheckBoxButton:Button,ICheckable{
     func setChecked(isChecked:Bool) {
         checkBox!.setChecked(isChecked)
     }
-    override func onEvent(event:Event) {//TODO: you could remove this method, as it doesnt add any functionality
+    override func onEvent(event:Event) {//TODO: You could remove this method, as it doesnt add any functionality
         super.onEvent(event)/*Forwards the event*/
     }
     func getChecked() -> Bool {
@@ -32,7 +32,7 @@ class CheckBoxButton:Button,ICheckable{
     }
     override func setSkinState(skinState:String) {
         super.setSkinState(skinState)
-        text!.setSkinState(skinState)/*why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
+        text!.setSkinState(skinState)/*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
     func setSize(width:CGFloat, height:CGFloat) {
         super.setSize(width, height)

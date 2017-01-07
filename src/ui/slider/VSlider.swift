@@ -3,10 +3,10 @@ import Cocoa
  * VSlider is a simple vertical slider
  * NOTE: the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
  * NOTE: the overshot part is to support "the-RubberBand-list-look"
- * // :TODO: consider having thumbWidth and thumbHeight, its just easier to understand
- * // :TODO: rename thumbHeight to thumbWidth or?
- * // :TODO: remove refs to frame. you can use width and height directly
- * // :TODO: onSkinDown, onSkinUp ?
+ * TODO: consider having thumbWidth and thumbHeight, its just easier to understand
+ * TODO: rename thumbHeight to thumbWidth or?
+ * TODO: remove refs to frame. you can use width and height directly
+ * TODO: onSkinDown, onSkinUp ?
  * TODO: Some extra asserts were added to HSlider for mouse up and down etc. consider adding them here aswell if bugs occure
  */
 class VSlider:Element{
@@ -74,7 +74,7 @@ class VSlider:Element{
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**
-     * @param progress (0-1)
+     * PARAM: progress (0-1)
      */
     func setProgressValue(progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/

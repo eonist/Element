@@ -67,7 +67,7 @@ class LeverSpinner:Element{
     }
     /**
      * Returns "Spinner"
-     * @Note This function is used to find the correct class type when synthezing the element stack
+     * NOTE: This function is used to find the correct class type when synthezing the element stack
      */
     override func getClassType() -> String {
         return String(Spinner)

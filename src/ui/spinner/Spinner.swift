@@ -1,3 +1,3 @@
 import Foundation
 
-class Spinner : Element{}
+class Spinner:Element{}//TODO: write an alias instead

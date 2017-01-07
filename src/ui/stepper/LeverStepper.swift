@@ -1,16 +1,16 @@
 import Cocoa
 /**
- * // :TODO: shouldnt this class extend Stepper?
+ * //TODO: shouldn't this class extend Stepper?
  */
 class LeverStepper:Element{
     var value:CGFloat
     var maxVal:CGFloat
     var minVal:CGFloat
     var	increment:CGFloat/*The amount of incrementation for each stepping*/
-    var decimals:Int/*decimal places*/
+    var decimals:Int/*Decimal places*/
     var onMouseDownMouseY:CGFloat = CGFloat.NaN
     var onMouseDownValue:CGFloat = CGFloat.NaN
-    var leverHeight:CGFloat// :TODO: write a description about this value
+    var leverHeight:CGFloat//TODO: write a description about this value
     var leverRange:CGFloat
     var leftMouseDraggedEventListener:AnyObject?
     var plusButton:Button?
@@ -21,12 +21,12 @@ class LeverStepper:Element{
         self.maxVal = max
         self.increment = increment
         self.decimals = decimals
-        self.leverHeight = leverHeight// :TODO: rename to something less ambiguous
+        self.leverHeight = leverHeight//TODO: rename to something less ambiguous
         self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         plusButton = addSubView(Button(height,height,self,"plus"))
         minusButton = addSubView(Button(height,height,self, "minus"))
     }

@@ -10,7 +10,7 @@ protocol IRBSliderList:class{
 }
 extension IRBSliderList{
     /**
-     * NOTE: you can use the event.deviceDeltaY to check which direction the gesture is moving in.
+     * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
      */
     func scroll(theEvent:NSEvent) {
         //Swift.print("RBScrollController.scrollWheel()")
@@ -18,9 +18,9 @@ extension IRBSliderList{
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
-            case NSEventPhase.Changed:onScrollWheelChange(theEvent)/*fires everytime there is direct scrollWheel gesture movment.*/
-            case NSEventPhase.MayBegin:onScrollWheelEnter()/*can be used to detect if two fingers are touching the trackpad*/
-            case NSEventPhase.Began:onScrollWheelEnter()/*the mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
+            case NSEventPhase.Changed:onScrollWheelChange(theEvent)/*Fires everytime there is direct scrollWheel gesture movment.*/
+            case NSEventPhase.MayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
+            case NSEventPhase.Began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
             case NSEventPhase.Ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
             case NSEventPhase.Cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
             case NSEventPhase.None:break;
@@ -28,7 +28,7 @@ extension IRBSliderList{
         }
     }
     /**
-     * Basically when you perform a scroll-gesture on the touch-pad
+     * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
     private func onScrollWheelChange(theEvent:NSEvent){
         //Swift.print("changed")
@@ -38,7 +38,7 @@ extension IRBSliderList{
         mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
     }
     /**
-     * NOTE: basically when you enter your scrollWheel gesture
+     * NOTE: Basically when you enter your scrollWheel gesture
      */
     private func onScrollWheelEnter(){
         //Swift.print("onScrollWheelDown")
@@ -46,8 +46,8 @@ extension IRBSliderList{
         mover!.stop()
         mover!.hasStopped = true/*set the stop flag to true*/
         prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
-        mover!.isDirectlyManipulating = true/*toggle to directManipulationMode*/
-        velocities = [0,0,0,0,0,0,0,0,0,0]/*reset the velocities*/
+        mover!.isDirectlyManipulating = true/*Toggle to directManipulationMode*/
+        velocities = [0,0,0,0,0,0,0,0,0,0]/*Reset the velocities*/
         scrollWheelEnter()
     }
     /**

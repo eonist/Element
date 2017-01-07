@@ -44,10 +44,10 @@ private class Utils{
     /**
      * Returns IGraphicsGradient for IGradient
      */
-    class func graphicsGradient(boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
+    static func graphicsGradient(boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
         if(gradient is LinearGradient){
             //Swift.print("gradient.rotation: " + "\(gradient.rotation)")
-            let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation) /*GradientBox*/
+            let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation)/*GradientBox*/
             //Swift.print("points.start: " + "\(points.start)")
             //Swift.print("points.end: " + "\(points.end)")
             return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)

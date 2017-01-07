@@ -5,12 +5,12 @@ import Foundation
  */
 class StyleCollectionLinkageResolver {
     /**
-     * Resolves linking on @param styleCollection
+     * Resolves linking on PARAM: styleCollection
      * // :TODO: what if the link is not found? should we provide a default value? or remove the stylepropp maybe?
      */
     //TODO: to finish the bellow you just copy the code from CSSLinkResolver
     /*
-    class func resolveLinkage(styleCollection:IStyleCollection) -> IStyleCollection {
+    static func resolveLinkage(styleCollection:IStyleCollection) -> IStyleCollection {
         var bracketPattern:RegExp = new RegExp("(?<=<).+?(?=>)","g");
         for var style : IStyle in styleCollection.styles {
             for var styleProperty : IStyleProperty in style.styleProperties {

@@ -3,9 +3,9 @@ import Cocoa
 class TreeListUtils {
     /**
      * Returns SelectTextButton or a TreeListItem from an xml
-     * @Note this method is used in the onDataBaseAddAt method in the TreeList class
+     * NOTE: this method is used in the onDataBaseAddAt method in the TreeList class
      */
-    class func item(xml:NSXMLElement,_ parent:IElement,_ size:CGPoint)->NSView {
+    static func item(xml:NSXMLElement,_ parent:IElement,_ size:CGPoint)->NSView {
         //Swift.print("item size: " + "\(size)")
         let itemData:ItemData = Utils.itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
@@ -13,12 +13,12 @@ class TreeListUtils {
         return item
     }
     /**
-     * @Note: This method is recursive
-     * @Note only use this method to add children to a new TreeList
-     * @param size is the size of each treeItem
-     * // :TODO: this should just return not modify?!? and be moved to TreeListParser
+     * NOTE: This method is recursive
+     * NOTE: only use this method to add children to a new TreeList
+     * PARAM: size is the size of each treeItem
+     * TODO: this should just return not modify?!? and be moved to TreeListParser
      */
-    class func treeItems(xml:NSXMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
+    static func treeItems(xml:NSXMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
         //Swift.print("treeItems size: " + "\(size)")
         for child in xml.children! as! Array<NSXMLElement>{
             let itemData:ItemData = Utils.itemData(child)
@@ -34,7 +34,7 @@ private class Utils{
     /**
      * // :TODO: write java doc
      */
-    class func treeItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> NSView {
+    static func treeItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> NSView {
         //Swift.print("treeItem size: " + "\(size)")
         let item:NSView = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
         //Swift.print("itemData.isVisible: " + "\(itemData.isVisible)")
@@ -44,7 +44,7 @@ private class Utils{
     /**
      * Creates a data instance to make it easier to work with the attributes in the xml
      */
-    class func itemData(xml:NSXMLElement)->ItemData {
+    static func itemData(xml:NSXMLElement)->ItemData {
         var attributes:Dictionary<String,String> = XMLParser.attribs(xml)
         let hasChildren:Bool = attributes["hasChildren"] == "true" || xml.children?.count > 0
         let title:String = attributes["title"]!
@@ -53,18 +53,18 @@ private class Utils{
         let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
         return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
     }
-    class func treeListItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
+    static func treeListItem(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
         //Swift.print("treeListItem size: " + "\(size)")
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
-    class func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
+    static func selectTextButton(itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
         //Swift.print("selectTextButton size: " + "\(size)" + " title: " + "\(itemData.title)")
         //Swift.print("parent: " + "\(parent)")
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }
 class ItemData{
-    private var title:String;
+    private var title:String
     private var hasChildren:Bool
     private var isOpen:Bool
     private var isVisible:Bool

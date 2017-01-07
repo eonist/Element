@@ -1,8 +1,8 @@
 import Foundation
 /**
- * @Note the StyleProperty instances are stored in _styleProperties, and then you querry them by name and depth
- * // :TODO: I think you need to move some of these methods into parsers and modifiers, this class is cognativly heavy to look at
- * TODO: you could probably add most of these methods to an extension, since nothing is subclassing this class
+ * NOTE: The StyleProperty instances are stored in _styleProperties, and then you querry them by name and depth
+ * TODO: I think you need to move some of these methods into parsers and modifiers, this class is cognativly heavy to look at
+ * TODO: You could probably add most of these methods to an extension, since nothing is subclassing this class
  */
 class Style:IStyle{
     var name:String

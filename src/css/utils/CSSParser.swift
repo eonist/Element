@@ -45,8 +45,8 @@ class CSSParser{
         let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
-            let propertyName:String = match.value(value, 1)//name
-            let propertyValue:String = match.value(value, 2)//value
+            let propertyName:String = match.value(value, 1)/*name*/
+            let propertyValue:String = match.value(value, 2)/*value*/
             let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
             style.addStyleProperties(styleProperties)
         }
@@ -60,11 +60,11 @@ class CSSParser{
         var styleProperties:Array<IStyleProperty> = []
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         for var name in names {
-            name = RegExpModifier.removeWrappingWhitespace(name);
+            name = RegExpModifier.removeWrappingWhitespace(name)
             let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:Array<String> = RegExp.match(propertyValue,pattern)
-            for (var i : Int = 0; i < values.count; i++) {
+            for i in 0..<values.count{//<--New: swift 3 support
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
                 //Swift.print(" value: " + value)
@@ -86,10 +86,10 @@ private class Utils{
     /**
      * Returns an array of style instances derived from PARAM: style (that has a name with 1 or more comma signs, or in combination with a group [])
      * PARAM: style: style.name has 1 or more comma seperated words
-     * // :TODO: write a better description
-     * // :TODO: optimize this function, we probably need to outsource the second loop in this function
-     * // :TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
-     * // :TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
+     * TODO: write a better description
+     * TODO: optimize this function, we probably need to outsource the second loop in this function
+     * TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
+     * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
     static func siblingStyles(styleName:String,_ value:String)->Array<IStyle> {
         //Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)

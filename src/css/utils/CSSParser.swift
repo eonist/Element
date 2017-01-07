@@ -96,7 +96,7 @@ private class Utils{
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:Array<IStyle> = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
-        let matches = RegExp.matches(styleName,siblingPattern)// :TODO: /*use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
+        let matches = RegExp.matches(styleName,siblingPattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         //Swift.print("matches: " + "\(matches.count)")
         for match:NSTextCheckingResult in matches {
             if(match.numberOfRanges > 0){

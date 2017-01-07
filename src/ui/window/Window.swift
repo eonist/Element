@@ -6,11 +6,11 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     override var canBecomeKeyWindow:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
     override var acceptsFirstResponder:Bool{return true}
     /**
-     * NOTE: remember to not set the width or height for the window in the css if you want the resizing working
+     * NOTE: Remember to not set the width or height for the window in the css if you want the resizing working
      * NOTE: self.opaque = false/*use this value in conjunction with a transperant color and you can make the window transperant*/
-     * TODO: implement the max and min sizes into the constructor arguments
-     * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
      * NOTE: self.acceptsMouseMovedEvents = true/*<--new, could enable you to use the overide mouseMoved*/
+     * TODO: Implement the max and min sizes into the constructor arguments
+     * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:Int = NSBorderlessWindowMask|NSResizableWindowMask/*represents the window attributes*/

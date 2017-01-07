@@ -19,8 +19,8 @@ class GradientPanel:Element,IGradientInput{
         let linearRadioButton = addSubView(RadioButton(NaN,NaN,"Linear",true,self))
         let radialRadioButton = addSubView(RadioButton(NaN,NaN,"Radial",false,self))
         gradientTypeSelectGroup = SelectGroup([linearRadioButton,radialRadioButton],linearRadioButton)
-        gradientTypeSelectGroup!.event = onEvent/*attach the selectGroup to self, to handle the events here*/
-        gradientSlider = addSubView(GradientSlider(width,12/*<--this should be NaN*/,20/*<--this should be NaN*/,gradient,0,1,self))
+        gradientTypeSelectGroup!.event = onEvent/*Attach the selectGroup to self, to handle the events here*/
+        gradientSlider = addSubView(GradientSlider(width,12/*<--This should be NaN*/,20/*<--this should be NaN*/,gradient,0,1,self))
         let nsColor:NSColor = gradientSlider!.gradient!.colors[0].nsColor
         colorInput = addSubView(ColorInput(width,NaN,"Color:",nsColor,self))
         alphaSpinner = addSubView(LeverSpinner(width, NaN,"Alpha:",1,0.01,0,1,2,1,200,self))
@@ -77,7 +77,7 @@ class GradientPanel:Element,IGradientInput{
     /**
      * //TODO:remember to add alpha into the fold here
      */
-    private func onColorInputChange(event : ColorInputEvent) {
+    private func onColorInputChange(event:ColorInputEvent) {
         Swift.print("onColorInputChange() ")
         //the onUpINside isnt working with svg based graphic at the moment so the bellow is a temp fix
         let isStartNodeSelected:Bool = /*SelectGroupParser.selected(gradientSlider!.selectGroup!)*/gradientSlider!.selectGroup!.selected === gradientSlider!.startNode
@@ -106,7 +106,7 @@ class GradientPanel:Element,IGradientInput{
         if(event.type == SelectGroupEvent.change && event.origin === gradientTypeSelectGroup){onGradientTypeSelectGroupChange(event as! SelectGroupEvent)}
     }
     /**
-     * @Note you can set matrix to nil in the @param gradient
+     * NOTE: you can set matrix to nil in the PARAM: gradient
      */
     func setGradient(var gradient:IGradient){
         gradientSlider!.setGradient(gradient)

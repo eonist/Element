@@ -7,7 +7,7 @@ protocol ISkin:class{
     func setSize(width:CGFloat, _ height:CGFloat)
     func getWidth()->CGFloat
     func getHeight()->CGFloat
-    /*getters / setters*/
+    /*Getters / Setters*/
     var decoratables:Array<IGraphicDecoratable>{get set}
     var style:IStyle?{get}
     var state:String{get set}

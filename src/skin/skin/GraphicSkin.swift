@@ -35,7 +35,7 @@ class GraphicSkin:Skin{
         super.draw()
     }
     /**
-     * TODO: Don't forget to add fillet, and asset here to , see old code
+     * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
     func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
         //Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
@@ -43,9 +43,9 @@ class GraphicSkin:Skin{
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             //Swift.print("has RectGraphic")
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
-            let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right/**/// :TODO: only querry this if the size has changed?
+            let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
             //Swift.print("width: " + "\(width)")
-            let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.top + padding.bottom/**/// :TODO: only querry this if the size has changed?
+            let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
             (DecoratorParser.decoratable(decoratable, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
         if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {(DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
@@ -66,7 +66,7 @@ private class Utils{
      * beta
      * TODO: move to DecoratorModifier.swift
      */
-    class func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
+    static func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }

@@ -33,8 +33,7 @@ class StyleModifier {
      */
     static func combine(inout a:IStyle,_ b:IStyle){
         //Swift.print("combining initiated")
-        let len:Int = b.styleProperties.count
-        for (var i:Int=0; i < len; i++) {
+        for i in 0..<b.styleProperties.count
             let stylePropB : IStyleProperty = b.styleProperties[i]
             let matchIndex = Utils.matchAt(a, stylePropB)
             if(matchIndex != -1){/*Asserts true if styleProperty exist in both styles*/

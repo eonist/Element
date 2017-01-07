@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * @Note you must supply the itemHeight, since we need it to calculate the interval
+ * NOTE: You must supply the itemHeight, since we need it to calculate the interval
  */
 class SliderTreeList:TreeList{
     var sliderInterval:CGFloat?
@@ -62,6 +62,6 @@ class SliderTreeList:TreeList{
     override func onEvent(event: Event) {
         if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
         if(event.type == TreeListEvent.change){onTreeListChange(event as! TreeListEvent)}
-        super.onEvent(event)//<--we need to forward the events to TreeList, or else TreeList will not work correctly
+        super.onEvent(event)//<--We need to forward the events to TreeList, or else TreeList will not work correctly
     }
 }

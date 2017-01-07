@@ -1,13 +1,13 @@
 import Cocoa
 /**
- * @Note the dispatchments of TreeListEvent.change is used to tell ScrollTreeList to update its scrollbar
- * @Note Use Database to modify the treeList
- * @Note ITreeList doesnt have access to database because, TreeListItem doesnt have a database
- * // :TODO: display:none and display:inline in the css shoud take care of the hiding and revealing of the elements not a method in this class (figure out how to do this)
- * // :TODO: there is a bug when setting the margin of any Text in this class that you have to counter meassure with a negative padding, this should be resolved
- * // :TODO: Why does ITreeListItem need to extend ITreeList, why does TreeList need ITreeList in the first place?
- * // :TODO: it may be wise to remove some of the floatChildren method sprinkled around, and only float after creation and after an event?, if possible, remeber that floatChildren doesnt float descendents aswell? Maybe create a float Decendants method?
- * // :TODO: create a close method that removes all items and eventlisteners
+ * NOTE: the dispatchments of TreeListEvent.change is used to tell ScrollTreeList to update its scrollbar
+ * NOTE: Use Database to modify the treeList
+ * NOTE: ITreeList doesnt have access to database because, TreeListItem doesnt have a database
+ * TODO: display:none and display:inline in the css shoud take care of the hiding and revealing of the elements not a method in this class (figure out how to do this)
+ * TODO: there is a bug when setting the margin of any Text in this class that you have to counter meassure with a negative padding, this should be resolved
+ * TODO: Why does ITreeListItem need to extend ITreeList, why does TreeList need ITreeList in the first place?
+ * TODO: it may be wise to remove some of the floatChildren method sprinkled around, and only float after creation and after an event?, if possible, remeber that floatChildren doesnt float descendents aswell? Maybe create a float Decendants method?
+ * TODO: create a close method that removes all items and eventlisteners
  */
 class TreeList:Element,ITreeList {
     var itemHeight:CGFloat
@@ -34,7 +34,7 @@ class TreeList:Element,ITreeList {
      */
     func setXML(xml:NSXMLElement){
         //Swift.print("setXML")
-        TreeListModifier.removeAll(self)/*clear the tree list first*/
+        TreeListModifier.removeAll(self)/*Clear the tree list first*/
         node.xml = xml
         TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
@@ -96,8 +96,8 @@ class TreeList:Element,ITreeList {
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     /**
-     * @Note the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
-     * @Note the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
+     * NOTE: the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
+     * NOTE: the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
      */
     private func onDatabaseAddAt(event : NodeEvent) {
         //Swift.print("onDatabaseAddAt() "+ this);
@@ -136,7 +136,7 @@ class TreeList:Element,ITreeList {
     }
     /**
      * Returns "TreeList"
-     * @Note This function is used to find the correct class type when synthezing the element cascade
+     * NOTE: This function is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
         return String(TreeList)

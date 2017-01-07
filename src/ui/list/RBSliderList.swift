@@ -1,8 +1,8 @@
 import Cocoa
 /**
+ * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
  * TODO: Add support for rubberband behaviour even if there is no need for scrolling
  * TODO: make the top and bottom values when scrolling absolutly pinned to 0 and 1. There should be a final tick that cooresponds to these values in the Mover class
- * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
  * TODO: Maybe create var's that store the enter and exit state.
  * TODO: Create the algorithm that calculates the actual throw speed. By looking at the time that each intervall travles. 
  */
@@ -20,8 +20,8 @@ class RBSliderList:List,IRBSliderList{
         Swift.print("RBSliderList.width: " + "\(width)")
         Swift.print("RBSliderList.height: " + "\(height)")
         /*RubberBand*/
-        let frame = CGRect(0,0,width,height)/*represents the visible part of the content //TODO: could be ranmed to maskRect*/
-        let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
+        let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
+        let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content *///TODO: could be ranmed to contentRect
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
         /*slider*/

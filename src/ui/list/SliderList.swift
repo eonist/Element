@@ -33,12 +33,12 @@ class SliderList:List,ISliderList{
      * TODO: must update the float somehow
      * Sets the list to correct height, the scrollbar thumb to correct size and the scrollbar interval to correct interval
      */
-    override func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
+    override func setSize(width:CGFloat, _ height:CGFloat) {//TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
         slider!.setSize(itemHeight, height)
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
         slider!.setThumbHeightValue(thumbHeight)
         super.setSize(width,height)
-        ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*hides the slider if it is not needed anymore*///<--new adition
+        ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*Hides the slider if it is not needed anymore*///<--new adition
     }
 }

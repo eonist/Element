@@ -37,7 +37,7 @@ class VNodeSlider:Element,INodeSlider{
     }
     func onEndNodeDown() {
         Swift.print("onEndNodeDown")
-//		DepthModifier.toFront(_endNode, this);// :TODO: this may now work since they are floating:none
+//		DepthModifier.toFront(_endNode, this)// :TODO: this may now work since they are floating:none
         tempNodeMouseY = endNode!.localPos().y
         globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
     }

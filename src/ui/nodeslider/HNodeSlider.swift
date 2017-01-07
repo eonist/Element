@@ -105,7 +105,7 @@ private class Utils{
 	}
 	/**
 	 * Returns the progress derived from a node 
-	 * @return a number between 0 and 1
+	 * RETURN: a number between 0 and 1
 	 */
 	static func progress(mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ nodeWidth:CGFloat)->CGFloat {
 		let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-nodeWidth)

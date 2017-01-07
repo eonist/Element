@@ -7,7 +7,7 @@ class SliderFastList2:FastList2,ISliderList {
         super.resolveSkin()
         sliderInterval = Utils.sliderInterval(itemsHeight, height, itemHeight)
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
-        let thumbHeight:CGFloat = Utils.thumbHeight(height, itemsHeight, slider!.height)/*<--this should probably be .getHeight()*/
+        let thumbHeight:CGFloat = Utils.thumbHeight(height, itemsHeight, slider!.height)/*<--This should probably be .getHeight()*/
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
     }
     /**

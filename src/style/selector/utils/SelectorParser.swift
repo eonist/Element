@@ -1,20 +1,20 @@
 import Foundation
 /**
- * @Note we could move this into an internal utils class of StyleResolver but since Selector class is a public class we might aswell keep this class as a public class aswell
+ * NOTE: We could move this into an internal utils class of StyleResolver but since Selector class is a public class we might aswell keep this class as a public class aswell
  */
 class SelectorParser{
-    static var cursor:Int = 0;// :TODO: temp solution, must be fixed, eigther by Creating a class that can hold the cursor, test this first, or by creatin ga method within a method and then reffing cursor
+    static var cursor:Int = 0;//TODO: temp solution, must be fixed, eigther by Creating a class that can hold the cursor, test this first, or by creatin ga method within a method and then reffing cursor
     /**
-     * Returns a weight value based on where aSelector is locaeted on the @param b array (higher values means higher priotiy)
-     * @param style: originally from the styleManager
-     * @param querrySelectors: an array comprised of Selectors (from the elements selectors)
-     * // :TODO: this the sub method of this class could still need some refactoring, and clearafication
-     * // :TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
+     * Returns a weight value based on where aSelector is locaeted on the PARAM: b array (higher values means higher priotiy)
+     * PARAM: style: originally from the styleManager
+     * PARAM: querrySelectors: an array comprised of Selectors (from the elements selectors)
+     * TODO: this the sub method of this class could still need some refactoring, and clearafication
+     * TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */
-    class func selectorWeights(style:IStyle,_ querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
+    static func selectorWeights(style:IStyle,_ querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
         var selectorWeights:Array<SelectorWeight> = []
         cursor = 0/*so that we skip testing the same selector again*/
-        for styleSel : ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
+        for styleSel:ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
             let selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors)
             if(selectorWeight == nil) {return nil}
             else {selectorWeights.append(selectorWeight!)}
@@ -23,9 +23,9 @@ class SelectorParser{
     }
     /**
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
-     * @Note this method can also be used for debuging purposes
+     * NOTE: this method can also be used for debuging purposes
      */
-    static func selectorsString(selectors:Array<ISelector>)->String{// :TODO: rename to selectorsString
+    static func selectorsString(selectors:Array<ISelector>)->String{//TODO: rename to selectorsString
         var string:String = ""
         for (var i : Int = 0; i < selectors.count; i++) {
             string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
@@ -44,20 +44,20 @@ class SelectorParser{
         return string
     }
     /**
-     * Returns an array of Selector instances from @param string (which is usually from the CSSParser.style function)
+     * Returns an array of Selector instances from PARAM: string (which is usually from the CSSParser.style function)
      */
-    class func selectors(string:String)->Array<ISelector>! {
+    static func selectors(string:String)->Array<ISelector>! {
         let selectorNames:Array<String> = StringAsserter.contains(string, " ") ? StringModifier.split(string," ") : [string]
         var styleSelectors:Array<ISelector> = []
         for selectorName  in selectorNames{ styleSelectors.append(selector(selectorName)) }
         return styleSelectors
     }
     /**
-     * Returns a Selector instance from @param string (string is usually a style name)
+     * Returns a Selector instance from PARAM: string (string is usually a style name)
      * NOTE: a Selector is a data container that contains element,classIds,ids and states
      * EXAMPLE: SelectorParser.selector("Button.tab#arrow:down")//element: >Button<classIds: >["tab"]<id: >arrow<states: >["down"]<
      */
-    class func selector(string:String)->ISelector {
+    static func selector(string:String)->ISelector {
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         var selectorElement:String = ""
         for match:NSTextCheckingResult in matches {
@@ -86,16 +86,16 @@ class SelectorParser{
         }
         return Selector()
     }
-    class func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
+    static func numOfSimilarStates(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0
     }
-    class func numOfSimilarClassIds(a:ISelector,_ b:ISelector)->Int {
+    static func numOfSimilarClassIds(a:ISelector,_ b:ISelector)->Int {
         return SelectorAsserter.hasBothSelectorsClassIds(a, b) ? ArrayParser.similar(a.classIds, b.classIds).count : 0
     }
     /**
      * Returns a Selector instance
      */
-    class func compileSelectorWeight(styleSel:ISelector,_ querrySelector:ISelector,_ weight:Int)->SelectorWeight{
+    static func compileSelectorWeight(styleSel:ISelector,_ querrySelector:ISelector,_ weight:Int)->SelectorWeight{
         let hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector)
         let hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector)
         let numOfSimilarClassIds:Int = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector)
@@ -113,10 +113,10 @@ class SelectorParser{
 private class Utils{
     /**
      * Returns a SelectorWeight instance (Asserts if a SelectorWeight should be created, if not it returns null)
-     * @param styleSel an Selector instance from styleSelectors
-     * @param querrySelectors: an array comprised of Selectors (from the element stack)
+     * PARAM: styleSel an Selector instance from styleSelectors
+     * PARAM: querrySelectors: an array comprised of Selectors (from the element stack)
      */
-    class func selectorWeight(styleSel:ISelector,_ querrySelectors:Array<ISelector>)->SelectorWeight?{
+    static func selectorWeight(styleSel:ISelector,_ querrySelectors:Array<ISelector>)->SelectorWeight?{
         for (var i : Int = SelectorParser.cursor; i < querrySelectors.count; i++) {/*loops through each selector in the stack*///Item Container Item Container Button Text
             let querrySelector:ISelector = querrySelectors[i]
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){/*Asserts if the selector in the style should influence the style of the element*/
@@ -128,9 +128,9 @@ private class Utils{
         return nil/*if a selectors array in the style has an individual selector that doesn't have anything in common with none of the selector sin the cascade then return false*/
     }
     /**
-     * @Note lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
+     * NOTE: lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
      */
-    class func stateWeight(a:Array<String>,_ b:Array<String>)->Int{
+    static func stateWeight(a:Array<String>,_ b:Array<String>)->Int{
         var weight:Int = 0
         for state:String in a {weight += b.count - ArrayParser.index(b,state)/*<-is this really wise? what if it is -1 aka doesnt exist*/}
         return weight

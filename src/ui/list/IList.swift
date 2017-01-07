@@ -13,9 +13,9 @@ protocol IList {
  */
 extension IList{
     /*Parsers*/
-    var selected:ISelectable?{return ListParser.selected(self)}/*convenience*/
-    var selectedIndex:Int{return ListParser.selectedIndex(self)}/*convenience*/
-    var itemsHeight:CGFloat {return ListParser.itemsHeight(self)}/*convenience*/
+    var selected:ISelectable?{return ListParser.selected(self)}/*Convenience*/
+    var selectedIndex:Int{return ListParser.selectedIndex(self)}/*Convenience*/
+    var itemsHeight:CGFloat {return ListParser.itemsHeight(self)}/*Convenience*/
     /*Modifiers*/
     func selectAt(index:Int){/*convenience*/
         ListModifier.selectAt(self, index)

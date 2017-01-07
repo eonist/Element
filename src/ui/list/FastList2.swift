@@ -2,9 +2,9 @@ import Foundation
 
 class FastList2:Element,IList{
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
-    var dataProvider:DataProvider/*data storage*/
-    var lableContainer:Container?/*holds the list items*/
-    var maxVisibleItems:Int?/*this will be calculated on init and on setSize calls*/
+    var dataProvider:DataProvider/*Data storage*/
+    var lableContainer:Container?/*Holds the list items*/
+    var maxVisibleItems:Int?/*This will be calculated on init and on setSize calls*/
     var prevVisibleRange:Range<Int>?
     var visibleItems:[FastListItem] = []
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
@@ -13,16 +13,16 @@ class FastList2:Element,IList{
         Swift.print("dataProvider.count: " + "\(dataProvider!.count)")
         super.init(width, height, parent, id)
         self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
-        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
+        layer!.masksToBounds = true/*Masks the children to the frame, I don't think this works, seem to work now*/
     }
     override func resolveSkin() {
         //Swift.print("FastList2.resolveSkin()")
         super.resolveSkin()
         //Swift.print("FastList2.height: " + "\(height)")
-        maxVisibleItems = round(height / itemHeight).int + 1//the +1 makes the code harder to read, try to remove it
+        maxVisibleItems = round(height / itemHeight).int + 1//The +1 makes the code harder to read, try to remove it
         //Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        prevVisibleRange = 0..<maxVisibleItems!//<--this should be the same range as we set bellow no?
+        prevVisibleRange = 0..<maxVisibleItems!//<--This should be the same range as we set bellow no?
         //Swift.print("prevVisibleRange: " + "\(prevVisibleRange)")
         let numOfItems:Int = Swift.min(maxVisibleItems!, dataProvider.count)
         spawn(0..<numOfItems)

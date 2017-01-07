@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * // :TODO: add an alpha-stepper?
+ * TODO: add an alpha-stepper?
  */
 class ColorPanel:Element,IColorPanel{
     static var title:String = "Color"
@@ -50,7 +50,7 @@ class ColorPanel:Element,IColorPanel{
         Swift.print("ColorPanel.onColorInputChange()")
         ColorPanelUtils.applyColor(self,event.color!)
         color = event.color!
-        super.onEvent(event)// :TODO: is thhis needed? cant we just propegate the original event
+        super.onEvent(event)//TODO: is this needed? cant we just propegate the original event
     }
     private func onSpinnerChange(event:SpinnerEvent) {
         //Swift.print("onSpinnerChange()")

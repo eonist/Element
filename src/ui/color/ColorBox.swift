@@ -24,7 +24,7 @@ class ColorBox:Button,IColorInput{
     }
     /**
      * Returns "ColorBox"
-     * @Note This function is used to find the correct class type when synthezing the element cascade
+     * NOTE: This function is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
         return String(ColorBox);

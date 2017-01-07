@@ -1,7 +1,7 @@
 import Cocoa
 /**
- * // :TODO: this could just extend TextInput right?
- * // :TODO: the input could be sans "0x" ?
+ * TODO: this could just extend TextInput right?
+ * TODO: the input could be sans "0x" ?
  * NOTE: even though creating an eventhandler in the parent class for when to open the ColorWin is tedious, including it in this class is not a good idea, consider when ColorInput is only used as an indicatar of color and not as opener for ColorWin
  */
 class ColorInput:Element,IColorInput {
@@ -20,7 +20,7 @@ class ColorInput:Element,IColorInput {
         self.colorBox = addSubView(ColorBox(height,height,color!,self))
     }
     func onColorBoxDown(event:ButtonEvent){
-        ColorSync.receiver = self/*cant we set this outside this class?, nopp probably shouldn't*/
+        ColorSync.receiver = self/*Can't we set this outside this class?, nopp probably shouldn't*/
         super.onEvent(ColorInputEvent(ColorInputEvent.colorBoxDown,self))
     }
     /**

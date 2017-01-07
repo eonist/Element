@@ -7,7 +7,7 @@ class StyleModifier {
      */
     static func clone(style:IStyle, _ newName:String? = nil, _ newSelectors:Array<ISelector>? = nil)->IStyle{
         let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[])
-        for styleProperty : IStyleProperty in style.styleProperties{
+        for styleProperty:IStyleProperty in style.styleProperties{
             returnStyle.addStyleProperty(StyleProperty(styleProperty.name, styleProperty.value, styleProperty.depth))
         }
         return returnStyle
@@ -17,7 +17,7 @@ class StyleModifier {
      */
     static func overrideStyleProperty(inout style:IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
         let stylePropertiesLength:Int = 
-        for i in 0..<style.styleProperties.count{/*we can't use for each here because it needs to break*/
+        for i in 0..<style.styleProperties.count{/*<--we can't use for each here because it needs to break*/
             if(style.styleProperties[i].name == styleProperty.name){
                 style.styleProperties[i] = styleProperty
                 break//was return

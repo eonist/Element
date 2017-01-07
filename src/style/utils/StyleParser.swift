@@ -1,12 +1,12 @@
 import Foundation
 /**
- * @Note: One could use  Vector<String> for speed etc, but that would make the framework less readable for now
- * @Note if you ever need to find the absolute herarchy path to an instance use this: StyleParser.hierarchicalStyleName(someInstance);//SomeClass someInstance AnotherClass anotherInstance etc
- * // :TODO: make support for int and uint values for styles that are not numbers
+ * NOTE: One could use  Vector<String> for speed etc, but that would make the framework less readable for now
+ * NOTE: if you ever need to find the absolute herarchy path to an instance use this: StyleParser.hierarchicalStyleName(someInstance);//SomeClass someInstance AnotherClass anotherInstance etc
+ * TODO: make support for int and uint values for styles that are not numbers
  */
 class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a normal parser class not all the functions here!?!?
     /**
-     * // :TODO: depthCount should probably be set when you are creating the Style instance, depthcount may change depending on the usage, think love preview or animation
+     * TODO: depthCount should probably be set when you are creating the Style instance, depthcount may change depending on the usage, think love preview or animation
      */
     class func depthCount(style:IStyle)->Int{
         let propertyNames:Array<String> = stylePropertyNames(style)
@@ -18,7 +18,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         return max(fillCount,lineCount)
     }
     /**
-     * // :TODO: write java doc
+     * TODO: write java doc
      */
     class func describe(style:IStyle){
         Swift.print("StyleParser.describe()")

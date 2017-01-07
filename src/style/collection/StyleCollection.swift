@@ -1,6 +1,6 @@
 import Foundation
 /**
- * @Note: a datastorage class ("bean") parsing should be done elsewhere!
+ * NOTE: a datastorage class ("bean") parsing should be done elsewhere!
  * // :TODO: get rid of name?!?
  */
 class StyleCollection:IStyleCollection{
@@ -9,14 +9,14 @@ class StyleCollection:IStyleCollection{
 extension StyleCollection{
     /**
      * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
-     * @Note the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
+     * NOTE: the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
      */
     func addStyles(styles:Array<IStyle>){
         for style in styles{ addStyle(style) }
     }
     /**
      * Adds a style to the StyleCollection instance
-     * @param style: IStyle
+     * PARAM: style: IStyle
      */
     func addStyle(style:IStyle){
         for var styleItem in styles {

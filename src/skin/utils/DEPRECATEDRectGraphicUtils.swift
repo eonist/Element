@@ -4,7 +4,7 @@ class DEPRECATEDRectGraphicUtils {
     /**
      *
      */
-    class func maskRect(var rect:CGRect,_ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
+    static func maskRect(var rect:CGRect,_ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
         if(offsetType.left == OffsetType.outside) { rect.width += lineStyle.thickness }
         if(offsetType.right == OffsetType.outside) {rect.width += lineStyle.thickness}
         if(offsetType.top == OffsetType.outside) {rect.height += lineStyle.thickness}
@@ -12,9 +12,9 @@ class DEPRECATEDRectGraphicUtils {
         return rect;
     }
     /**
-     * Returns a Rect by offsetting @param primitiveRect @param primitiveRect with @param lineOffset
+     * Returns a Rect by offsetting PARAM: primitiveRect PARAM: primitiveRect with PARAM: lineOffset
      */
-    class func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
+    static func offsetRect(rect:CGRect, _ lineStyle:ILineStyle, _ offsetType:OffsetType)->CGRect {
         let topLeft:CGPoint = Utils.corner(rect, lineStyle, Alignment.topLeft,offsetType);//cornerPoint(rect, Alignment.TOP_LEFT, offsetType.left, offsetType.top, lineStyle);
         //print("topLeft: " + String(topLeft));
         let bottomRight:CGPoint = Utils.corner(rect, lineStyle, Alignment.bottomRight,offsetType);//cornerPoint(rect, Alignment.BOTTOM_RIGHT, offsetType.right, offsetType.bottom, lineStyle);
@@ -31,7 +31,7 @@ private class Utils{
      * Returns a corner point
      * // :TODO: refactor
      */
-    class func corner(rect:CGRect,_ lineStyle:ILineStyle,_ cornerType:String,_ offsetType:OffsetType)->CGPoint{
+    static func corner(rect:CGRect,_ lineStyle:ILineStyle,_ cornerType:String,_ offsetType:OffsetType)->CGPoint{
         var rectangle:CGRect = rect.clone()
         rectangle.x = lineStyle.thickness/2;
         rectangle.y = lineStyle.thickness/2;

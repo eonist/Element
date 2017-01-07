@@ -6,7 +6,7 @@ import Foundation
 class SkinResolver{
     /**
      *  Returns a Skin instance
-     *  TODO future additions? //resolveSkinFromStylabaleParents(stylable) || resolveSkinByClass(stylable) || resolveSkinBySuperClass(stylable) || resolveSkinByDeafultStyling(stylable)
+     *  TODO: future additions? //resolveSkinFromStylabaleParents(stylable) || resolveSkinByClass(stylable) || resolveSkinBySuperClass(stylable) || resolveSkinByDeafultStyling(stylable)
      * 	TODO: enable these additions when you have more controll over the Element FrameWork for now you need to throw error to debug
      */
     static func skin(element:IElement)->ISkin?{

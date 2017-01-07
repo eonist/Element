@@ -34,7 +34,7 @@ class StyleManager{
      * RETURN: a Style
      */
     static func getStyle(name:String)->IStyle?{
-        for (_,style) in self.styles.enumerate(){//forEach was not used because it doesn't allow return
+        for (_,style) in self.styles.enumerate(){//<--forEach was not used because it doesn't allow return
             if(style.name == name) {return style}
         }
         return nil
@@ -89,7 +89,7 @@ extension StyleManager{
                 cssFiles[url] = cssString//<--I'm not sure how this works, but it works
             }
             addStyle(cssString)
-        }else{//not live
+        }else{/*not live*/
             /*1. assert if the styles.xml exists and if it has content*/
             let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
             Swift.print("xmlExists: " + "\(stylesXMLExists)")

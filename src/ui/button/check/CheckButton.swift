@@ -1,6 +1,6 @@
 import Foundation
 /**
- * @Note: to force the CheckButton to apply its Checked or unchecked skin, use the setChecked after the instance is created
+ * NOTE: to force the CheckButton to apply its Checked or unchecked skin, use the setChecked after the instance is created
  */
 class CheckButton:Button,ICheckable{
     private var isChecked:Bool;

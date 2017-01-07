@@ -139,8 +139,9 @@ class CSSPropertyParser {
             let property:String = properties[i]
             let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches {
-                let name:String = RegExp.value(property, match, 1)//capturing group 1
-                var value:Any = RegExp.value(property, match, 2)//capturing group 2
+                //TODO: use the match.value(property,1) notation on the 2 lines bellow
+                let name:String = RegExp.value(property, match, 1)/*capturing group 1*/
+                var value:Any = RegExp.value(property, match, 2)/*capturing group 2*/
                 if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.nsColor(value as! String)}
                 else if(value as! String == "true") { value = true }
                 else if(value as! String == "false") { value = false }
@@ -166,7 +167,7 @@ class CSSPropertyParser {
         let blurY:CGFloat = StringParser.digit(properties[5])
         //let strength:CGFloat = StringParser.digit(properties[6])
         //let quality:CGFloat = StringParser.digit(properties[7])
-        let inner:Bool = StringParser.boolean(properties[8]);/*isInnerShadow,isInsetShadowType etc*/
+        let inner:Bool = StringParser.boolean(properties[8])/*isInnerShadow,isInsetShadowType etc*/
         let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let angleInRadians = Trig.radians(angle)

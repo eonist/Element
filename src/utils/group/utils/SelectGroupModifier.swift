@@ -22,7 +22,7 @@ class SelectGroupModifier {
      * Removes the RadioButton passed through the PARAM: radioButton
      */
     static func removeSelectable(selectGroup:SelectGroup,_ item:ISelectable)->ISelectable? {
-        for (var i:Int = 0; i < selectGroup.selectables.count; i++) {
+        for i in 0..<selectGroup.selectables.count{
             if (selectGroup.selectables[i] === item) {
                 return selectGroup.selectables.splice2(i,1)[0]// :TODO: dispatch something?
             }

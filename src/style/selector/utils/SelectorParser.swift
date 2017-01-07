@@ -131,7 +131,9 @@ private class Utils{
      */
     static func stateWeight(a:Array<String>,_ b:Array<String>)->Int{
         var weight:Int = 0
-    for state:String in a {weight += b.count - ArrayParser.index(b,state)/*<--Is this really wise? what if it is -1 aka doesnt exist*/}
+        for state:String in a {
+            weight += b.count - ArrayParser.index(b,state)/*<--s this really wise? what if it is -1 aka doesn't exist*/
+        }
         return weight
     }
 }
@@ -141,13 +143,13 @@ private class Utils{
  * //TODO: research backreferencing
  */
 class SelectorPattern {
-    static var elementGroup:String = "^([\\w\\d]+?)?"//0 or 1 times.
-    static var subsededWith1:String = "(?=\\#|\\:|\\.|\040|$)"//must appear and is not included in the match
+    static var elementGroup:String = "^([\\w\\d]+?)?"/*0 or 1 times.*/
+    static var subsededWith1:String = "(?=\\#|\\:|\\.|\040|$)"/*must appear and is not included in the match*/
     static var classIdsGroup:String = "(?:\\.([\\w\\d]+?))?"
-    static var subsededWith2:String = "(?=\\#|\\:|\040|$)"//must appear and is not included in the match
+    static var subsededWith2:String = "(?=\\#|\\:|\040|$)"/*must appear and is not included in the match*/
     static var idsGroup:String = "(?:\\#([\\w\\d]+?))?"
-    static var subsededWith3:String = "(?=\\:|\040|$)"//must appear and is not included in the match
+    static var subsededWith3:String = "(?=\\:|\040|$)"/*must appear and is not included in the match*/
     static var statesGroup:String = "(?:\\:([\\w\\d\\:]+?))?"
-    static var end:String = "(?=$)"//must appear and is not included in the match
+    static var end:String = "(?=$)"/*must appear and is not included in the match*/
     static var pattern:String = elementGroup + subsededWith1 + classIdsGroup + subsededWith2 + idsGroup + subsededWith3 + statesGroup + end
 }

@@ -11,7 +11,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     override var graphic:BaseGraphic {return decoratable.graphic}
     init(_ decoratable:IGraphicDecoratable){
         self.decoratable = decoratable
-        super.init()/*this doesnt init anything, its ust needed to support the setting of self as delegate*/
+        super.init()/*This doesn't init anything, its ust needed to support the setting of self as delegate*/
         graphic.selector = self.handleSelector
     }
     /**

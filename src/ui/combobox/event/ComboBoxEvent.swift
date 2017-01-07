@@ -6,7 +6,7 @@ class ComboBoxEvent :Event{
     static var click:String = "comboBoxEventClick"
 	static var headerClick:String = "comboBoxEventHeaderClick"
 	static var listSelect:String = "comboBoxEventListSelect"
-    private var index : Int
+    private var index:Int
     init(_ type: String, _ index:Int, _ origin: AnyObject) {
         self.index = index
         super.init(type, origin)

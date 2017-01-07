@@ -1,11 +1,11 @@
 import Cocoa
 /**
- * write a method: dataProviderItemAt
+ * Write a method: dataProviderItemAt
  */
 class ListParser {
     /**
-     * Returns a NSView instance from @param dataProviderItem
-     * @Note: This is a way to get to the actual "Buttons" directly
+     * Returns a NSView instance from PARAM: dataProviderItem
+     * NOTE:: This is a way to get to the actual "Buttons" directly
      */
     static func label(list:IList,_ dataProviderItem:Dictionary<String,String>) -> NSView {// :TODO: rename to toItem and maybe move to Listparser, dataProviderItemToItem? ListUtils
         let itemIndex:Int = list.dataProvider.getItemIndex(dataProviderItem)
@@ -28,7 +28,7 @@ class ListParser {
     }
     /**
      * Returns the index of a "label"
-     * @param view is the Label
+     * PARAM: view is the Label
      */
     static func index(list:IList,_ view:NSView)->Int {
         return list.lableContainer!.indexOf(view)
@@ -49,8 +49,8 @@ class ListParser {
     /**
      * Returns the title of the currently selected
      */
-    static func selectedProperty(list:IList) -> String {/*<--could be **/
-        let index:Int = selectedIndex(list);
+    static func selectedProperty(list:IList)->String {/*<--could be **/
+        let index:Int = selectedIndex(list)
         return propertyAt(list,index)
     }
     /**

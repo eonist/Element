@@ -1,9 +1,9 @@
 import Foundation
 
-protocol IElement:class,IView{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol*/
-    /*core methods*/
+protocol IElement:class,IView{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
+    /*Core methods*/
     func resolveSkin()
-    /*implicit getters / setters*/
+    /*Implicit getters / setters*/
     func getSkinState() -> String
     func setSkinState(state:String)
     func getParent()->Any?//TODO: maybe use weak?
@@ -27,10 +27,12 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
  * TODO: add convenince methods for setting x and y independently?
  */
 extension IElement {
-    /*var width:CGFloat {return self.frame.width}
-    var height:CGFloat {return self.frame.height}*/
+    /*
+    var width:CGFloat {return self.frame.width}
+    var height:CGFloat {return self.frame.height}
+    */
     /**
-     * NOTE: this isnt fully implemented, see notes on the blog, see legacy code
+     * NOTE: This isn't fully implemented, see notes on the blog, see legacy code
      * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false
      */
     func getParent()->Any? {// :TODO: beta
@@ -38,7 +40,7 @@ extension IElement {
         return self.parent;
     }
     /**
-     * Positions the Element instance to @param point,
+     * Positions the Element instance to PARAM: point,
      * TODO: this could also be move to an utils class
      */
     func setPosition(point:CGPoint){

@@ -1,11 +1,11 @@
 import Cocoa
 /** 
- * @Note for multiSelect option make MultiCheckComboBox.as aand CheckComboBox?
- * @Note: to get the height while the list is pulled down: comboBox.height * comboBox.maxShowingItems
- * // :TODO: add isScrollBarVisible as an argument at the end, butbefore, parent and name
- * // :TODO: add a way to set the init selected list item, and have this update the header, (if headerText != null that is)
- * // :TODO: add height as an argument to the constructor
- * // :TODO: find a way to add a mask that can have rounded corners, if a TextButton has a square fill then it overlaps outside the combobox
+ * NOTE: For multiSelect option make MultiCheckComboBox.as aand CheckComboBox?
+ * NOTE: To get the height while the list is pulled down: comboBox.height * comboBox.maxShowingItems
+ * TODO: Add isScrollBarVisible as an argument at the end, butbefore, parent and name
+ * TODO: Add a way to set the init selected list item, and have this update the header, (if headerText != null that is)
+ * TODO: Add height as an argument to the constructor
+ * TODO: Find a way to add a mask that can have rounded corners, if a TextButton has a square fill then it overlaps outside the combobox
  * //closeOnClick
  * //defaultText
  * TODO: Upgrade the ComboBox to support popping open a window that hovers above the origin window. It needs to align it self to the screen correctly etc
@@ -26,7 +26,7 @@ class ComboBox:Element{
 	}
 	override func resolveSkin(){
 		super.resolveSkin()
-		headerButton = addSubView(TextButton(width, itemHeight,"", self))// :TODO: - _itemHeight should be something else
+		headerButton = addSubView(TextButton(width, itemHeight,"", self))//TODO: - _itemHeight should be something else
         let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
         //Swift.print("selectedTitle: " + "\(selectedTitle)")
         headerButton!.setTextValue(selectedTitle)

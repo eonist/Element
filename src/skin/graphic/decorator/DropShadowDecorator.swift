@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * NOTE: It isnt ideal that you have to extend PositionalDecorator instead of simply GraphicDecorable, but in the spirit of moving on we keep it as is
+ * NOTE: It isn't ideal that you have to extend PositionalDecorator instead of simply GraphicDecorable, but in the spirit of moving on we keep it as is
  * TODO: Why did you stop using the Graphics outer shadow and start using the layer outer shadow?
  */
 class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend SizeableDecorator, so that we can resize the entire Decorator structure 
@@ -10,18 +10,17 @@ class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend Sizea
         self.dropShadow = dropShadow
         super.init(decoratable)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     override func fill() {
         //Swift.print("DropShadowDecorator.fill()")
-        if(dropShadow != nil && dropShadow!.inner){/*inner*/
+        if(dropShadow != nil && dropShadow!.inner){/*Inner*/
             graphic.fillShape.graphics.dropShadow = dropShadow
-        }else if(dropShadow != nil && !dropShadow!.inner){/*outer*/
-            graphic.layer!.shadowColor = dropShadow!.color.cgColor//dont forget about the graphic.layer!.shadowPath
+        }else if(dropShadow != nil && !dropShadow!.inner){/*Outer*/
+            graphic.layer!.shadowColor = dropShadow!.color.cgColor//don't forget about the graphic.layer!.shadowPath
             graphic.layer!.shadowOpacity = dropShadow!.color.alphaComponent.float
             //Swift.print("dropShadow!.blurRadius: " + "\(dropShadow!.blurRadius)")
             graphic.layer!.shadowRadius = dropShadow!.blurRadius
             graphic.layer!.shadowOffset = dropShadow!.offset
-        }else{/*no shadow*/
+        }else{/*No shadow*/
             graphic.fillShape.graphics.dropShadow = nil
             graphic.layer!.shadowColor = NSColor.clearColor().CGColor
             graphic.layer!.shadowOpacity = 0.0
@@ -31,4 +30,5 @@ class DropShadowDecorator:SizeableDecorator{//TODO: probably should extend Sizea
         //Swift.print(graphic.graphics.dropShadow)
         super.fill()
     }
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -22,8 +22,11 @@ class StyleManager{
      *
      */
     static func removeStyle(name:String) -> IStyle? {
-        let numOfStyles:Int = styles.count;
-        for (var i:Int = 0; i < numOfStyles; i++){if(styles[i].name == name) {return styles.splice2(i,1)[0]}}
+        for i in 0..<styles.count{//upgraded to swift 3 support
+            if(styles[i].name == name) {
+                return styles.splice2(i,1)[0]
+            }
+        }
         return nil
     }
     /**

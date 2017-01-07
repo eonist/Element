@@ -146,7 +146,7 @@ class TreeList:Element,ITreeList {
      */
     override func setSize(width:CGFloat, _ height:CGFloat){
         super.setSize(width,height);
-        ElementModifier.size(itemContainer!, CGPoint(width,itemHeight));/*resizes all items in the itemContainer*/
+        ElementModifier.size(itemContainer!, CGPoint(width,itemHeight));/*Resizes all items in the itemContainer*/
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

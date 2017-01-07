@@ -1,7 +1,7 @@
 import Cocoa
 /**
- * @Note: Keep the TreeListItem name, since you might want to create TreeMenuItem one day
- * // :TODO: why doesnt the treeListItem extend a class that ultimatly extends a TextButton?, has it something to do with the indentation via css?
+ * NOTE: Keep the TreeListItem name, since you might want to create TreeMenuItem one day
+ * TODO: why doesnt the treeListItem extend a class that ultimatly extends a TextButton?, has it something to do with the indentation via css?
  */
 class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need an init method since its exactly the same as the one it extends
     var itemContainer:Container?
@@ -53,7 +53,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }
     /**
-     * event handler
+     * Event handler
      * NOTE: checked == true (then the list is open)
      */
     func onItemCheck(event : CheckEvent) {
@@ -63,7 +63,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         ElementModifier.floatChildren(itemContainer!)//<--temp fix, seems like you need to float when checked is true and false. Try to fix this, or figure out the intended logic around this subject
     }
     /**
-     * event listeners
+     * Event listeners
      */
     override func onEvent(event:Event) {
         super.onEvent(event)

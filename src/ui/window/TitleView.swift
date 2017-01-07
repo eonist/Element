@@ -5,7 +5,7 @@ import Cocoa
 class TitleView:CustomView{
     var textArea:TextArea?
     var leftMouseDraggedEventListener:AnyObject?
-    var mouseDownPos:CGPoint?/*store the mouseDown offset, when moving the window*/
+    var mouseDownPos:CGPoint?/*Store the mouseDown offset, when moving the window*/
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = "") {
         super.init(width, height, parent, id)
     }

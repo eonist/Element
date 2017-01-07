@@ -22,7 +22,7 @@ class PopupView:WindowView{
                 NSEvent.removeMonitor(leftMouseDownEventListener!)
                 leftMouseDownEventListener = nil
             }
-            //TODO: set the event to it self again here
+            //TODO: Set the event to it self again here
             self.window!.close()
         }
         return event

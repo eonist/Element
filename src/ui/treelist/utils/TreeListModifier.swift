@@ -10,7 +10,7 @@ class TreeListModifier {
         treeList.itemContainer!.y = SliderParser.y(progress, treeList.getHeight(),  TreeListParser.itemsHeight(treeList))
     }
     /**
-     * @Note: to explode the entire treeList pass an empty array as @param index
+     * NOTE: to explode the entire treeList pass an empty array as @param index
      */
     class func explodeAt(var treeList:ITreeList,_ index:Array<Int>) {
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
@@ -21,8 +21,8 @@ class TreeListModifier {
         }
     }
     /**
-     * @Note: to collapse the entire treeList pass an empty array as @param index
-     * @Note this method collapses all nodes from the @param index
+     * NOTE: to collapse the entire treeList pass an empty array as @param index
+     * NOTE: this method collapses all nodes from the @param index
      */
     class func collapseAt(var treeList:ITreeList,_ index:Array<Int>) {
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList

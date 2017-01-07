@@ -18,8 +18,8 @@ class TextInput:Element{
     }
     override func setSize(width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
-        inputTextArea!.setSize(width, height)//shouldnt this bet setSkin rather
-        text!.setSize(width, height)//shouldnt this bet setSkin rather
+        inputTextArea!.setSize(width, height)//shouldn't this be setSkin rather?
+        text!.setSize(width, height)//shouldn't this be setSkin rather?
     }
     override func setSkinState(state:String) {
         super.setSkinState(state)

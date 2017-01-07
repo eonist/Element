@@ -12,7 +12,7 @@ class Text:Element,IText {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      * Sets text to the textfield, remember to set textformat after
-     * @Note: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
+     * NOTE: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
      * NOTE: Apperently setText() is occupied by obj-c, use var text {get set} in the future
      */
     func setText(text:String){//<--- rename to setText, figure out away to either rename the text or rename setText, like setTheText or alike, setTextValue
@@ -29,7 +29,7 @@ class Text:Element,IText {
     }
     /**
      * Returns "Text"
-     * @Note This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
+     * NOTE: This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
      */
     override func getClassType() -> String {
         return String(Text)

@@ -2,8 +2,8 @@ import Foundation
 
 class PositionalGraphic:GraphicDecoratable,IPositional {
     var pos:CGPoint
-    init(_ position:CGPoint,_ decoratable: IGraphicDecoratable) {
-        self.pos = position
+    init(_ pos:CGPoint,_ decoratable: IGraphicDecoratable) {
+        self.pos = pos
         super.init(decoratable)
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

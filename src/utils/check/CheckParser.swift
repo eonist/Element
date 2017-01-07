@@ -10,6 +10,6 @@ class CheckParser {
         }else {
             fatalError("\(self)" + " no ICheckable at the index of: " + "\(index)")
         }
-        return nil
+        return nil//<--this won't ever fire
     }
 }

@@ -38,7 +38,7 @@ class ComboBox:Element{
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,selectedIndex,self))/*send this event*/
 	}
 	/**
-	 * the select event should be fired only onReleaseInside not as it is now onPress
+	 * The select event should be fired only onReleaseInside not as it is now onPress
 	 */
 	func onListSelect(event:ListEvent) {
         Swift.print("onListSelect")
@@ -47,11 +47,11 @@ class ComboBox:Element{
 		let text:String = ListParser.titleAt(list, selectedIndex)
         Swift.print("text: " + "\(text)")
 		headerButton!.setTextValue(text)
-        super.onEvent(ComboBoxEvent(ComboBoxEvent.listSelect,selectedIndex,self))/*send this event*/
-        popupWindow!.close()/*after we process the ListEvent, we close the PopupWindow*/
+        super.onEvent(ComboBoxEvent(ComboBoxEvent.listSelect,selectedIndex,self))/*Send this event*/
+        popupWindow!.close()/*After we process the ListEvent, we close the PopupWindow*/
 		setOpen(false)
 	}
-    func onClickOutside() {//onClickOutsidePopupWin
+    func onClickOutside() {//was->onClickOutsidePopupWin
         Swift.print("onClickOutsidePopupWin")
         if(!CGRect(CGPoint(),headerButton!.frame.size).contains(headerButton!.localPos())){/*hittest to avoid calling setOpen if the headerButton is clicked while the popupwin is open*/
             setOpen(false)
@@ -83,10 +83,10 @@ class ComboBox:Element{
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension ComboBox{
-    var selectedProperty:String{//convenience
+    var selectedProperty:String{/*convenience*/
         return ComboBoxParser.selectedProperty(self)
     }
-    var selectedTitle:String{//convenience
+    var selectedTitle:String{/*convenience*/
         return ComboBoxParser.selectedTitle(self)
     }
     

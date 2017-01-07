@@ -3,7 +3,7 @@ import Foundation
  * These are the methods the GraphicDecoratable must implement
  * Differs from IBaseGraphic in that IBaseGraphic has some variables that the decoratables isnt dependent on when it comes to the creation procedure
  */
-protocol IGraphicDecoratable:class{/*<--explain why this extends class*/
+protocol IGraphicDecoratable:class{/*<--Explain why this extends class*/
     func getDecoratable()->IGraphicDecoratable
     var graphic:BaseGraphic{get}
     func getGraphic() -> BaseGraphic/*Don't revert this variable to a protocol*/

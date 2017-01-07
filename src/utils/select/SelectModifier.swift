@@ -36,9 +36,11 @@ class SelectModifier {
      * // :TODO: use the Range class here!?!?
      */
     static func selectRange(selectables:Array<ISelectable>, _ from:Int, _ to:Int,_ isSelected:Bool = true) {
-        for (var i : Int = from; i <= to; i++) {
+        for i in from...to{//swift 3 support, was-> for (var i : Int = from; i <= to; i++) {
             let selectable:ISelectable = selectables[i]
-            if(!selectable.getSelected()) {selectable.setSelected(isSelected)}
+            if(!selectable.getSelected()) {
+                selectable.setSelected(isSelected)
+            }
         }
     }
 }

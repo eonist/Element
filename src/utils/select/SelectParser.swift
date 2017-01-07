@@ -2,7 +2,7 @@ import Cocoa
 
 class SelectParser {
     /**
-     * Returns the  first selected ISelectable in an array of an NSView with ISelectables (returns nil if it doesnt exist)
+     * Returns the  first selected ISelectable in an array of an NSView with ISelectables (returns nil if it doesn't exist)
      * TODO: Rename to firstSelected
      */
     class func selected(view:NSView) -> ISelectable? {
@@ -14,11 +14,15 @@ class SelectParser {
      * TODO: Rename to firstSelected
      */
     class func selected(selectables:Array<ISelectable>) -> ISelectable? {
-        for selectable : ISelectable in selectables {if(selectable.getSelected()) {return selectable}}
+        for selectable:ISelectable in selectables {
+            if(selectable.getSelected()) {
+                return selectable
+            }
+        }
         return nil
     }
     /**
-     * Returns an array from every child that is an ISelectable in @param displayObjectContainer
+     * Returns an array from every child that is an ISelectable in PARAM: displayObjectContainer
      */
     class func selectables(view:NSView)->Array<ISelectable> {
         return NSViewParser.childrenOfType(view, ISelectable.self)

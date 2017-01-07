@@ -18,7 +18,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         return max(fillCount,lineCount)
     }
     /**
-     * TODO: write java doc
+     * TODO: write documentation
      */
     class func describe(style:IStyle){
         Swift.print("StyleParser.describe()")
@@ -39,7 +39,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
      */
     class func stylePropertyNames(style:IStyle) -> Array<String>{
         var propertyNames:Array<String> = []
-        for styleProperty : IStyleProperty in style.styleProperties{ propertyNames.append(styleProperty.name) }
+        for styleProperty:IStyleProperty in style.styleProperties{ propertyNames.append(styleProperty.name)}
         return propertyNames
     }
     /**

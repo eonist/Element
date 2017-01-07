@@ -32,20 +32,18 @@ extension StyleCollection{
      * RETURNS: the removed Style
      */
     func removeStyle(name:String)->IStyle?{
-        let numOfStyles:Int = styles.count;
-        for (var i : Int = 0; i < numOfStyles; i++) {
+        for i in 0..<styles.count{//swift 3 for loop upgrade
             if((styles[i] as IStyle).name == name){
                 return ArrayModifier.splice2(&styles,i,1) as? IStyle
             }
         }
-        return nil//could also return the index i guess -1 instead of nil, do we need to return anything ? its nice to be able to assert if something was removed with nil coalesing as it is now
+        return nil/*could also return the index i guess -1 instead of nil, do we need to return anything ? its nice to be able to assert if something was removed with nil coalesing as it is now*/
     }
     /**
      * TODO: One could use a for each loop instead
      */
     func getStyle(name:String)->IStyle?{
-        let numOfStyles:Int = styles.count;
-        for(var i:Int = 0;i < numOfStyles;i++) {
+        for i in 0..<styles.count{//swift 3
             if((styles[i] as IStyle).name == name) {
                 return  styles[i];
             }
@@ -53,7 +51,7 @@ extension StyleCollection{
         return nil
     }
     /**
-     * convenience
+     * Convenience
      */
     func getStyleAt(index:Int)->IStyle?{
         return styles[index]

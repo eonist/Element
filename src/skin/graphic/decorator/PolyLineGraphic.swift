@@ -24,9 +24,9 @@ extension PolyLineGraphic{
 }
 class PolyLineGraphicUtils{
     /**
-     * NOTE: rename to pathByPoints?, as swift supports method overloading, you dont need that speccific naming
+     * NOTE: rename to pathByPoints?, as swift supports method overloading, you don't need that speccific naming
      */
-    class func path(points:Array<CGPoint>) -> IPath {
+    static func path(points:Array<CGPoint>) -> IPath {
         var commands:Array<Int> = [PathCommand.moveTo]
         var pathData:Array<CGFloat> = [points[0].x,points[0].y]
         for (var i : Int = 1; i < points.count; i++) {

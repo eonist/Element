@@ -8,6 +8,7 @@ class StyleManagerUtils{
     /**
      * We hash the tail of the style selectors
      * NOTE: Using if let won't work on the code bellow
+     * TODO: Tail trick is nice, but it complicates the code, try to pursue other avenues in optimization, bisect search comes to mind.
      */
     static func hashStyle(style:IStyle){
         if(style.selectors.last!.element != ""){

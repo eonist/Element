@@ -40,12 +40,12 @@ extension StyleCollection{
         return nil/*could also return the index i guess -1 instead of nil, do we need to return anything ? its nice to be able to assert if something was removed with nil coalesing as it is now*/
     }
     /**
-     * TODO: One could use a for each loop instead
+     * NOTE: We can't use a for each loop here since it returns inside the loop clause, and forEach doesn't allow for that
      */
     func getStyle(name:String)->IStyle?{
         for i in 0..<styles.count{//swift 3
             if((styles[i] as IStyle).name == name) {
-                return  styles[i];
+                return  styles[i]
             }
         }
         return nil

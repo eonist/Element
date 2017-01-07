@@ -1,6 +1,6 @@
 import Cocoa
 /*
- * @Note  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
+ * NOTE:  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
  * TODO: possibly add setPosition();
  * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
@@ -19,9 +19,9 @@ class Skin:InteractiveView2,ISkin{
         self.style = style
         self.state = state
         self.element = element
-        width = element!.width// :TODO: is this necessary?
-        height = element!.height// :TODO: is this necessary?
-        super.init(frame: NSRect())/*<-this doesnt need a size*/
+        width = element!.width//TODO: is this necessary?
+        height = element!.height//TODO: is this necessary?
+        super.init(frame:NSRect())/*<-this doesnt need a size*/
     }
     /**
      * Required by super class
@@ -40,7 +40,7 @@ class Skin:InteractiveView2,ISkin{
     }
     /**
      * Sets the style instance to apply to the skin also forces a redraw.
-     * @Note this is a great way to update an skin without querying StyleManager
+     * NOTE: this is a great way to update an skin without querying StyleManager
      */
     func setStyle(style:IStyle){
         hasStyleChanged = true
@@ -49,9 +49,9 @@ class Skin:InteractiveView2,ISkin{
     }
     /**
      * Sets the skin state and forces a redraw
-     * @Note forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
-     * //TODO:rename to set_skinState() and blame swift for the underscore
-     * //Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
+     * NOTE: forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
+     * TODO:rename to set_skinState() and blame swift for the underscore
+     * TODO: Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
      */
     func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
         hasStateChanged = true

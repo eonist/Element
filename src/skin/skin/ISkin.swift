@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ISkin:class{
-    /*implicit getters / setters*/
+    /*Implicit getters / setters*/
     func setStyle(style:IStyle)
     func setSkinState(state:String)
     func setSize(width:CGFloat, _ height:CGFloat)

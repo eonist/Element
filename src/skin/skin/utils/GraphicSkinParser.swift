@@ -3,11 +3,11 @@ import Foundation
 class GraphicSkinParser{
    static var rect:String = "rect"
    static var gradient:String = "gradient"
-   static var icon:String = "icon"// :TODO: rename to asset or svgasset or alike (keep in mind that you will need to support png assets soon enough)
-   static var fillet:String = "fillet"// :TODO: rename to rounded?
+   static var icon:String = "icon"//TODO: rename to asset or svgasset or alike (keep in mind that you will need to support png assets soon enough)
+   static var fillet:String = "fillet"//TODO: rename to rounded?
    static var dropshadow:String = "dropshadow"
     /**
-     * Configures a GraphicDecoratable instance based on what stylePropertyValues is found in @param skin at @param depth
+     * Configures a GraphicDecoratable instance based on what stylePropertyValues is found in PARAM: skin at PARAM: depth
      */
     static func configure(skin:ISkin,_ depth:Int)->IGraphicDecoratable{
         let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin,depth);//<-----TODO:this should be optional like lineStyle

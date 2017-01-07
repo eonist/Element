@@ -7,7 +7,7 @@ import Cocoa
  */
 class TextSkin:Skin,ITextSkin{
     var textField:TextField
-    //the bellow variable is a little more complex in the legacy code
+    /*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.width} set{textField.frame.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true;/*<-Why is is this true by default?*/
     //func setText(text:String)
@@ -37,10 +37,10 @@ class TextSkin:Skin,ITextSkin{
         super.draw()
     }
     func applyProperties(textField:TextField){
-        let padding:Padding = StylePropertyParser.padding(self);
-        let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right;// :TODO: only querry this if the size has changed?
+        let padding:Padding = StylePropertyParser.padding(self)
+        let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         //Swift.print("TextSkin.applyProperties() width: " + "\(width)")
-        let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom;// :TODO: only querry this if the size has changed?
+        let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         //Swift.print("TextSkin.applyProperties() height: " + "\(height)")
         textField.frame.width = width/*SkinParser.width(this)*/
         textField.frame.height = height/*SkinParser.height(this)*/
@@ -53,16 +53,14 @@ class TextSkin:Skin,ITextSkin{
         let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/
         textField.stringValue = " "
         textField.stringValue = temp
-        //
         */
-        
         let temp = textFormat.attributedStringValue(textField.stringValue)
         //textField.stringValue = " "
         textField.attributedStringValue = temp
     }
     /**
      * Set the text and updates the skin
-     * TODO: add more advance setText features like start and end etc
+     * TODO: Add more advance setText features like start and end etc
      */
     func setText(text:String){
         textField.stringValue = text
@@ -70,12 +68,12 @@ class TextSkin:Skin,ITextSkin{
         draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
     }
     /**
-     * // :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
+     * // :TODO: Make a similar funciton for getHeight, based on needed space for the height of the textfield
      */
     override func getWidth() -> CGFloat {
         //Swift.print("TextSkin.getWidth()")
         if((StylePropertyParser.value(self, TextFormatConstants.wordWrap) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
-            let padding:Padding = StylePropertyParser.padding(self);
+            let padding:Padding = StylePropertyParser.padding(self)
             return textField.frame.width + padding.left + padding.right
         }else {return super.getWidth()}
     }

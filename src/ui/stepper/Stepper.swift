@@ -7,7 +7,7 @@ class Stepper:Element{
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        super.resolveSkin();
+        super.resolveSkin()
         plusButton = addSubView(Button(height,height,self,"plus"))
         minusButton = addSubView(Button(height,height,self, "minus"))
     }

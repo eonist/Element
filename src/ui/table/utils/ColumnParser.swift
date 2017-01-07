@@ -4,7 +4,7 @@ class ColumnParser {
     /**
      * Returns the indices in a a spessific sort order
      */
-    class func sortOrder(column:Column,_ isAscending:Bool)->Array<Int> {
+    static func sortOrder(column:Column,_ isAscending:Bool)->Array<Int> {
         let list:IList = column.list!
         let children:Array<SelectTextButton> = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
         var sortList:Array<[String:AnyObject]> = []
@@ -17,7 +17,9 @@ class ColumnParser {
             sortList.sortInPlace({$1["text"] as! String > $0["text"] as! String})
         }
         var indices:Array<Int> = []
-        for (var i : Int = 0; i < sortList.count; i++) {indices.append(sortList[i]["index"] as! Int)}
+        for i in 0..<sortList.count{//<--swift 3.0 for-loop support
+            indices.append(sortList[i]["index"] as! Int)
+        }
         return indices
     }
 }

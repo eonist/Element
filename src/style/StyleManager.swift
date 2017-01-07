@@ -57,7 +57,9 @@ extension StyleManager{
      * Removes styles
      */
     static func removeStyle(styles:Array<IStyle>){
-        for style in styles{removeStyle(style.name)}
+        for style in styles{
+            removeStyle(style.name)
+        }
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)
@@ -88,21 +90,21 @@ extension StyleManager{
             }
             addStyle(cssString)
         }else{//not live
-            //1. assert if the styles.xml exists and if it has content
+            /*1. assert if the styles.xml exists and if it has content*/
             let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
             Swift.print("xmlExists: " + "\(stylesXMLExists)")
             let xml:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)//this should not be hardwired like this. use resource files or alike
             let cssFileDateList = StyleCache.cssFileDateList(xml)
-            //2. assert if the query url has been cached and assert if the cached css files are all up to date
+            /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
             let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
             Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached)")
             let isUpToDate = StyleCache.isUpToDate(cssFileDateList)
             Swift.print("isUpToDate: " + "\(isUpToDate)")
-            //if true then: read the styles from the xml
+            /*if true then: read the styles from the xml*/
             if(hasURLBeenCached && isUpToDate){
                 StyleCache.readStylesFromDisk(xml)/*Super fast loading of cached styles*/
             }
-            //else read and parse styles from the .css files and write a new cache to styles.xml
+            /*else read and parse styles from the .css files and write a new cache to styles.xml*/
             else{
                 let startTime = NSDate()
                 let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/

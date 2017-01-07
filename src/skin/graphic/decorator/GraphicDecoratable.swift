@@ -109,7 +109,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
     }
     /**
      * Returns _decoratable.graphic
-     * @Note: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.
+     * NOTE: we use decoratable.graphic to get to the graphics object, regardless of how many layers of decorators above.
      * TODO: remove this if applicaple
      */
     override func getGraphic() -> BaseGraphic{
@@ -119,7 +119,7 @@ class GraphicDecoratable:AbstractGraphicDecoratable {
 }
 
 /*
-//old methods that didnt make the cut, delete eventually
+//old methods that didn't make the cut, delete eventually
 override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
 //Swift.print("actionForLayer")
 return NSNull()

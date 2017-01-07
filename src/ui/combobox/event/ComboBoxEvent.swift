@@ -1,6 +1,6 @@
 import Foundation
 /**
- * NOTE: you can derive the slected via the combobox item it self. So no need to pass the selected along in the event
+ * NOTE: You can derive the slected via the combobox item it self. So no need to pass the selected along in the event
  */
 class ComboBoxEvent :Event{
     static var click:String = "comboBoxEventClick"

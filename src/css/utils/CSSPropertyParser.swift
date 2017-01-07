@@ -240,9 +240,9 @@ private class Utils{
      */
     static func ratio(var ratio:String)->Double{//<--Why not CGFloat?
         var ratioValue:Double = Double.NaN
-        if(RegExp.test(ratio,"\\d{1,3}%")){//i.e: 100%
+        if(RegExp.test(ratio,"\\d{1,3}%")){/*i.e: 100%*/
             ratio = RegExp.match(ratio,"\\d{1,3}")[0]
-            ratioValue = ratio.double / 100 /** 255*/
+            ratioValue = ratio.double / 100/*255*/
         }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = ratio.double /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         return ratioValue
     }

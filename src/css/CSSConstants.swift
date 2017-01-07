@@ -4,7 +4,7 @@ class CSSConstants{
     /*Font*/
     static var emsFontSize:CGFloat = 16
     static var ems:String = "ems"
-    /*layout*/
+    /*Layout*/
     static var display:String = "display"
     static var float:String = "float"
     static var inline:String = "inline"
@@ -35,11 +35,11 @@ class CSSConstants{
     static var lineOffsetTypeRight:String = "line-offset-type-right"
     static var lineOffsetTypeTop:String = "line-offset-type-top"
     static var lineOffsetTypeBottom:String = "line-offset-type-bottom"
-    /*these property names are inheritable, they are originally from textformat and textfieldconstants sans width and height since these should not inherit*/
+    /*These property names are inheritable, they are originally from textformat and textfieldconstants sans width and height since these should not inherit*/
     static var textPropertyNames:Array<String> = ["align","blockindent","bold","bullet","color","font","indent","italic","kerning","leading","leftmargin","letterspacing","rightmargin","size","tabstops","target","underline","url","alwaysshowselection","antialiastype","autosize","alpha","background","backgroundcolor","border","bordercolor","condensewhite","displayaspassword","embedfonts","gridfittype","htmltext","maxchars","mousewheelenabled","mouseenabled","multiline","restrict","sharpness","selectable","thickness","type","textcolor","userichtextclipboard","wordwrap"]
     static var width:String = "width"
     static var height:String = "height"
-    /*other*/
+    /*Other*/
     static var drop_shadow:String = "drop-shadow"
     static var offset:String = "offset"
     static var fill:String = "fill"

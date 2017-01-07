@@ -1,6 +1,6 @@
 import Cocoa
 /**
- * TODO: you cant set the frame after you have called the display call on a layer. so you have to set it before.
+ * TODO: You can't set the frame after you have called the display call on a layer. so you have to set it before.
  * TODO: See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
  * TODO: Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol. 
  * TODO: there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there. they are done thorugh the size call. and then it calls fill and line basically!?!?
@@ -11,7 +11,7 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         SkinModifier.float(self)
         let depthCount:Int = StyleParser.depthCount(style!)
-        for (var depth : Int = 0; depth < depthCount; depth++) {
+        for depth in 0..<depthCount{
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)
             SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
@@ -20,9 +20,9 @@ class GraphicSkin:Skin{
     }
     override func draw(){
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
-            let depthCount:Int = StyleParser.depthCount(style!);
+            let depthCount:Int = StyleParser.depthCount(style!)
             //if(hasSizeChanged)
-            for (var depth : Int = 0; depth < depthCount; depth++) {
+            for depth in 0..<depthCount{
                 if(hasSizeChanged){
                     let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
                     Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
@@ -35,7 +35,7 @@ class GraphicSkin:Skin{
         super.draw()
     }
     /**
-     * TODO: Dont forget to add fillet, and asset here to , see old code
+     * TODO: Don't forget to add fillet, and asset here to , see old code
      */
     func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
         //Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")

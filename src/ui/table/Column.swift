@@ -15,20 +15,17 @@ class Column:Element{
         header = addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))
         list = addSubView(List(width, height /*<--these should be NaN*/,NaN, dataProvider, self))
     }
-    //----------------------------------
-    //  event handlers
-    //----------------------------------
     private func onHeaderCheck(event:CheckEvent){
-        Swift.print("Column.onHeaderCheck");
-        super.onEvent(CheckEvent(CheckEvent.check,event.isChecked,self))//clone the event and send it, we need the origin to be Column
+        Swift.print("Column.onHeaderCheck")
+        super.onEvent(CheckEvent(CheckEvent.check,event.isChecked,self))/*Clone the event and send it, we need the origin to be Column*/
     }
-    private func onListSelect(event : ListEvent)  {
-        Swift.print("Column.onListSelect");
+    private func onListSelect(event:ListEvent)  {
+        Swift.print("Column.onListSelect")
         let rowIndex:Int = ListParser.index(list!, event.selected as! NSView)
         Swift.print("rowIndex: " + "\(rowIndex)")
 		super.onEvent(ColumnEvent(ColumnEvent.select,rowIndex,self))
     }
-    override func onEvent(event: Event) {
+    override func onEvent(event:Event) {
         if(event.type == CheckEvent.check && event.origin === header){onHeaderCheck(event as! CheckEvent)}
         if(event.type == ListEvent.select && event.origin === list){onListSelect(event as! ListEvent)}
     }

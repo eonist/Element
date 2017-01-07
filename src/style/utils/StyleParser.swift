@@ -1,6 +1,6 @@
 import Foundation
 /**
- * NOTE: One could use  Vector<String> for speed etc, but that would make the framework less readable for now
+ * NOTE: One could use Vector<String> for speed etc, but that would make the framework less readable for now
  * NOTE: if you ever need to find the absolute herarchy path to an instance use this: StyleParser.hierarchicalStyleName(someInstance);//SomeClass someInstance AnotherClass anotherInstance etc
  * TODO: make support for int and uint values for styles that are not numbers
  */

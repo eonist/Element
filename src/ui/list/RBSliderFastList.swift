@@ -12,8 +12,8 @@ class RBSliderFastList:FastList,IRBSliderList{
     override func resolveSkin() {
         super.resolveSkin()
         /*RubberBand*/
-        let frame = CGRect(0,0,width,height)/*represents the visible part of the content //TODO: could be ranmed to maskRect*/
-        let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content //TODO: could be ranmed to contentRect*/
+        let frame = CGRect(0,0,width,height)/*Represents the visible part of the content *///TODO: could be ranmed to maskRect
+        let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content *///TODO: could be ranmed to contentRect
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
         /*slider*/
@@ -21,7 +21,7 @@ class RBSliderFastList:FastList,IRBSliderList{
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
-        setProgress(0)/*<-not really needed, but nice to have while debugging*/
+        setProgress(0)/*<-Not really needed, but nice to have while debugging*/
     }
     /**
      * PARAM value: is the final y value for the lableContainer
@@ -33,7 +33,7 @@ class RBSliderFastList:FastList,IRBSliderList{
         slider!.setProgressValue(progressValue!)
     }
     /**
-     * NOTE: this method overides the Native NSView scrollWheel method
+     * NOTE: This method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(theEvent:NSEvent) {
         scroll(theEvent)//forward the event to the scrollExtension

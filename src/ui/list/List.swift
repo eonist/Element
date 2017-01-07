@@ -4,12 +4,12 @@ import Cocoa
 /**
  * NOTE: There is no setSize in this component, for this purpose create a dedicated component I.E: ResizeList.as
  * NOTE: ListParser and ListModifier are usefull utility classes
- * // :TODO: could List have a SelectGroup?<--dificult When using FastList probably, ?!?!?
- * // :TODO: xml should be able to hold a property named selected="true" and then the cooresponding Item should be selected
- * // :TODO: try to get rid of the lableContainer
- * // :TODO: try to make the mask an Element
  * NOTE: MultipleSelection could be implimented by creating a new Class like MultipleSelectionList, Other possible classes to make: CheckList, ToggleList etc
- * // :TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
+ * TODO: could List have a SelectGroup?<--dificult When using FastList probably, ?!?!?
+ * TODO: xml should be able to hold a property named selected="true" and then the cooresponding Item should be selected
+ * TODO: try to get rid of the lableContainer
+ * TODO: try to make the mask an Element
+ * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List:Element,IList{
     var itemHeight:CGFloat
@@ -32,18 +32,18 @@ class List:Element,IList{
     }
     /**
      * Creates and adds items to the _lableContainer
-     * // :TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
+     * TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
      */
-    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){// :TODO: possible rename to something better, placeAt? insertAt?
+    func mergeAt(objects:[Dictionary<String,String>], _ index:Int){//TODO: possible rename to something better, placeAt? insertAt?
         var i:Int = index
-        for object:Dictionary<String,String> in objects {// :TODO: use for i
+        for object:Dictionary<String,String> in objects {//TODO: use for i
             let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
             lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
             i++
         }
     }
     /**
-     * // :TODO: you need to update the float of the lables after an update
+     * TODO: you need to update the float of the lables after an update
      */
     func onDataProviderEvent(event:DataProviderEvent){
         switch(event.type){
@@ -57,7 +57,7 @@ class List:Element,IList{
                 mergeAt(event.items, event.startIndex)
             default:fatalError("event type not supported"); break;
         }
-        ElementModifier.floatChildren(lableContainer!)/*this call re-floats the list items*/
+        ElementModifier.floatChildren(lableContainer!)/*This call re-floats the list items*/
     }
     /**
      * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
@@ -88,4 +88,3 @@ class List:Element,IList{
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-

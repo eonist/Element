@@ -31,7 +31,7 @@ class CSSFileParser {
      * Returns import urls in an array (only the path part)
      * NOTE: Supports both syntax styles: @import url("style.css") and @import "style.css"
      * NOTE: this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
-     * // :TODO: this can probably be written a little better
+     * TODO: this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     static func importStrings(string:String)->Array<String> {

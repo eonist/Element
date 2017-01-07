@@ -14,7 +14,7 @@ class StyleResolverUtils {
             if(key == "style") {weightedStyles.append(WeightedStyle(searchTree[key] as! IStyle, StyleWeight([])))}
             else{
                 let keySelector:ISelector = SelectorParser.selector(key)/*expand the selectorString to a selector*/
-                for (var i : Int = cursor; i < querySelectorsCount; i++) {
+                for i in cursor..<querySelectorsCount{//<--swift 3 support, was--> for (var i : Int = cursor; i < querySelectorsCount; i++) {
                     StyleResolver.styleLookUpCount++
                     let querySelector:ISelector = querySelectors[i]
                     if(SelectorAsserter.hasCommonality(keySelector, querySelector)){
@@ -25,7 +25,6 @@ class StyleResolverUtils {
                 }
             }
         }
-        
         return weightedStyles
     }
 }

@@ -55,18 +55,18 @@ extension IRBSliderList{
      */
     private func onScrollWheelExit(){
         //Swift.print("onScrollWheelUp")
-        mover!.hasStopped = false/*reset this value to false, so that the FrameAnimatior can start again*/
+        mover!.hasStopped = false/*Reset this value to false, so that the FrameAnimatior can start again*/
         mover!.isDirectlyManipulating = false
-        mover!.value = mover!.result/*copy this back in again, as we used relative friction when above or bellow constraints*/
-        if(prevScrollingDeltaY != 1.0 && prevScrollingDeltaY != -1.0){/*not 1 and not -1 indicates that the wheel is not stationary*/
+        mover!.value = mover!.result/*Copy this back in again, as we used relative friction when above or bellow constraints*/
+        if(prevScrollingDeltaY != 1.0 && prevScrollingDeltaY != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
             var velocity:CGFloat = 0
-            if(prevScrollingDeltaY > 0){velocity = NumberParser.max(velocities)}/*find the most positive velocity value*/
-            else{velocity = NumberParser.min(velocities)}/*find the most negative velocity value*/
+            if(prevScrollingDeltaY > 0){velocity = NumberParser.max(velocities)}/*Find the most positive velocity value*/
+            else{velocity = NumberParser.min(velocities)}/*Find the most negative velocity value*/
             mover!.velocity = velocity/*set the mover velocity to the current mouse gesture velocity, the reason this can't be additive is because you need to be more immediate when you change direction, this could be done by assering last direction but its not a priority atm*///td try the += on the velocity with more rects to see its effect
-            mover!.start()//'start the frameTicker here, do this part in parent view or use event or Selector
+            mover!.start()/*start the frameTicker here, do this part in parent view or use event or Selector*/
         }else{/*stationary*/
-            mover!.start()//this needs to start if your in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick
-            scrollWheelExitedAndIsStationary()/*this is only called if you exit scrollWheel when in overshot areas in the slider, think above 0 and bellow 1 in progress*/
+            mover!.start()/*This needs to start if your in the overshoot areas, if its not in the overshoot area it will just stop after a frame tick*/
+            scrollWheelExitedAndIsStationary()/*This is only called if you exit scrollWheel when in overshot areas in the slider, think above 0 and bellow 1 in progress*/
         }
         scrollWheelExit()
     }

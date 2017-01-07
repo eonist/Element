@@ -1,7 +1,7 @@
 import Cocoa
 
 class CheckTextButton:TextButton,ICheckable {
-    var isChecked:Bool;
+    var isChecked:Bool
     init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isChecked : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
         self.isChecked = isChecked;
         super.init(width, height, text, parent, id)
@@ -14,8 +14,8 @@ class CheckTextButton:TextButton,ICheckable {
         self.event!(CheckEvent(CheckEvent.check,isChecked,self))//TODO:Remove the bool from the event. Similar to SelectEvent
     }
     /**
-     * Sets the _isChecked variable (Toggles between two states)
-     * @Note: do not add a dispatch event here, that is the responsibilyy of the caller
+     * Sets the isChecked variable (Toggles between two states)
+     * NOTE: do not add a dispatch event here, that is the responsibilyy of the caller
      */
     func setChecked(isChecked:Bool) {
         self.isChecked = isChecked

@@ -17,7 +17,7 @@ class SelectButton:Button,ISelectable {
         super.onEvent(SelectEvent(SelectEvent.select,self/*,self*/))
     }
     /**
-     * @Note: do not add a dispatch event here, that is the responsibilyy of the caller
+     * NOTE: do not add a dispatch event here, that is the responsibilyy of the caller
      */
     func setSelected(isSelected:Bool){
         self.isSelected = isSelected

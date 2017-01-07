@@ -12,7 +12,7 @@ class ListParser {
         return list.lableContainer!.subviews[itemIndex]
     }
     /**
-     * Returns the item from the list (NSView instance) from @param list at @param index
+     * Returns the item from the list (NSView instance) from PARAM: list at PARAM: index
      */
     static func labelAt(list:IList,_ index:Int)->NSView? {
         let dataProvderItem:Dictionary<String,String>? = list.dataProvider.getItemAt(index)

@@ -3,7 +3,7 @@ import Cocoa
 class Graph:Element {
     var hValues:[CGFloat] {return [4,2,3,7,5,0,1]}
     var hValNames:[String] {return ["A","B","C","D","E","F","G"]}/*horizontal items*/
-    var vCount:Int = 5/*number of vertical indicators*/
+    var vCount:Int = 5/*Number of vertical indicators*/
     var leftBar:Section?
     var leftBarItems:[TextArea] = []
     var bottomBar:Section?
@@ -147,11 +147,8 @@ class Graph:Element {
      * //height should be uniform to the width
      * //Realign components
      */
-    
     func alignUI(){
-        
         //this method is not in use
-        
         //Scale to ratio:
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         graphArea!.setSize(newSize.width,newSize.height)
@@ -159,11 +156,9 @@ class Graph:Element {
         graphArea?.setPosition(alignmentPoint)
         
     }
-  
     override func setSize(width: CGFloat, _ height: CGFloat) {
         //update different UI elements
     }
-    
     override func getClassType() -> String {
         return String(Graph)
     }

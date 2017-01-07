@@ -139,10 +139,10 @@ class StylePropertyParser{
         return GradientFillStyle(newGradient,NSColor.clearColor())
     }
     /**
-    * Returns a GradientLineStyle
-    * TODO: Does this work? where is the creation of line-thickness etc
-    * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
-    */
+     * Returns a GradientLineStyle
+     * TODO: Does this work? where is the creation of line-thickness etc
+     * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
+     */
     static func gradientLineStyle(skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         //Swift.print("StylePropertParser.gradientLineStyle()")
         let gradient = value(skin, CSSConstants.line,depth)
@@ -166,8 +166,8 @@ class StylePropertyParser{
                     let stringValue:String = String(value)
                     let matches = stringValue.matches(pattern)
                     for match:NSTextCheckingResult in matches {
-                        var value:Any = RegExp.value(stringValue, match, 1)//capturing group 1
-                        let suffix:String = RegExp.value(stringValue, match, 2)//capturing group 1
+                        var value:Any = match.value(stringValue, 1)/*capturing group 1*/
+                        let suffix:String = match.value(stringValue, 2)/*capturing group 2*/
                         if(suffix == CSSConstants.ems) {value = String(value).cgFloat * CSSConstants.emsFontSize }
                     }
                 }
@@ -183,8 +183,8 @@ class StylePropertyParser{
         return textFormat
     }
     /**
-     * @Note this is really a modifier method
-     * // :TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
+     * NOTE: this is really a modifier method
+     * TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
      */
     static func textField(skin:TextSkin) {
         for textFieldKey : String in TextFieldConstants.textFieldPropertyNames {

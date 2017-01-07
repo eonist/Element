@@ -21,7 +21,7 @@ class SelectGroup:EventSender{
         selectables.forEach{addSelectable($0)}
     }
     /**
-     * @Note use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
+     * NOTE: use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
     func addSelectable(selectable:ISelectable) {
         if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
@@ -35,6 +35,6 @@ class SelectGroup:EventSender{
             //for s in selectables{ Swift.print("s.isSelected: " + "\(s.getSelected())") }
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
         }
-        super.onEvent(event)//we don't want to block any event being passed through, so we forward all events right through the SelectGroup
+        super.onEvent(event)/*We don't want to block any event being passed through, so we forward all events right through the SelectGroup*/
     }
 }

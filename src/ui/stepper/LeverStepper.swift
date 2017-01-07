@@ -10,7 +10,7 @@ class LeverStepper:Element{
     var decimals:Int/*Decimal places*/
     var onMouseDownMouseY:CGFloat = CGFloat.NaN
     var onMouseDownValue:CGFloat = CGFloat.NaN
-    var leverHeight:CGFloat//TODO: write a description about this value
+    var leverHeight:CGFloat//TODO: Write a description about this value
     var leverRange:CGFloat
     var leftMouseDraggedEventListener:AnyObject?
     var plusButton:Button?
@@ -21,7 +21,7 @@ class LeverStepper:Element{
         self.maxVal = max
         self.increment = increment
         self.decimals = decimals
-        self.leverHeight = leverHeight//TODO: rename to something less ambiguous
+        self.leverHeight = leverHeight//TODO: Rename to something less ambiguous
         self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
@@ -50,7 +50,7 @@ class LeverStepper:Element{
     func onPlusButtonUpInside() {
         //Swift.print("onPlusButtonUpInside")
         let val:CGFloat = NumberModifier.increment(value, increment);
-        value = NumberParser.minMax(val, minVal, maxVal);// :TODO: dont set the value
+        value = NumberParser.minMax(val, minVal, maxVal);// :TODO: Don't set the value
         self.event!(StepperEvent(StepperEvent.change,value,self,self))
     }
     func onMinusButtonUpInside() {
@@ -65,7 +65,7 @@ class LeverStepper:Element{
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
             leftMouseDraggedEventListener = nil//<--this part may not be needed
-        }//we remove a global mouse move event listener
+        }/*We remove a global mouse move event listener*/
         //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
@@ -79,10 +79,10 @@ class LeverStepper:Element{
         var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight)
         let multiplier:CGFloat = leaverPos / leverHeight
-        let leverValue:CGFloat = leverRange * multiplier/*the lever value fluctuates, sometimes with decimals so we round it*/
-        var val:CGFloat =  onMouseDownValue + leverValue
-        val = NumberParser.minMax(val, minVal, maxVal)/*cap the value from min to max*/
-        val = NumberModifier.toFixed(val,decimals)/*the value must have no more than the value of the _decimals*/
+        let leverValue:CGFloat = leverRange * multiplier/*The lever value fluctuates, sometimes with decimals so we round it*/
+        var val:CGFloat = onMouseDownValue + leverValue
+        val = NumberParser.minMax(val, minVal, maxVal)/*Cap the value from min to max*/
+        val = NumberModifier.toFixed(val,decimals)/*The value must have no more than the value of the _decimals*/
         value = val
         //Swift.print("value: " + "\(value)")
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))//probably use the onEvent here not the event
@@ -105,7 +105,7 @@ class LeverStepper:Element{
     }
     /**
      * Returns "Stepper"
-     * @Note This function is used to find the correct class type when synthezing the element stack
+     * NOTE: This function is used to find the correct class type when synthezing the element stack
      */
     override func getClassType() -> String {
         return String(Stepper)

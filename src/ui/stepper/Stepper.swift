@@ -1,9 +1,9 @@
 import Foundation
 
-class Stepper : Element{
+class Stepper:Element{
     var plusButton:Button?
     var minusButton:Button?
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement?, _ id: String?) {
+    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement?, _ id:String?) {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {

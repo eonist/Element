@@ -38,7 +38,7 @@ class CSSPropertyParser {
         var properties:Array<String> = StringModifier.split(propertyString, ",")
         let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties))/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
-        gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*/// :TODO: rotations should be applied in the matrix
+        gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
         //Swift.print("CSSPropertyParser.linearGradient.rotation: " + "\(gradient.rotation)")
         return gradient
     }
@@ -58,11 +58,11 @@ class CSSPropertyParser {
      * NOTE: somehow also add support for: reflect and repeat
      * NOTE: the reason we do it this way is that this approach can make any 2 point radial gradient. some scaling may be needed
      * IMPORTANT:
-     * //SpreadMethod.REFLECT
-     //SpreadMethod.REPEAT
-     //SpreadMethod.PAD for the spread
-     * // :TODO: create a small app that generates the radial-gradient from an svg
-     * // :TODO: possibly use the RegExp.exec to loop the properties!!
+     * SpreadMethod.REFLECT
+     * SpreadMethod.REPEAT
+     * SpreadMethod.PAD for the spread
+     * TODO: create a small app that generates the radial-gradient from an svg
+     * TODO: possibly use the RegExp.exec to loop the properties!!
      */
      static func radialGradient(string:String)->IGradient{
         let propertyString:String = string.match("(?<=radial-gradient\\().+?(?=\\);?)")[0]
@@ -70,8 +70,8 @@ class CSSPropertyParser {
         let setupString:String = properties.shift()
         let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         //gradient.colors[0]
-        let setup:Array<String> = setupString.split(" ")/*the gradient settings*/
-        let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// :TODO: make this optional aswell as per css pdf specs
+        let setup:Array<String> = setupString.split(" ")/*The gradient settings*/
+        let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// TODO: make this optional aswell as per css pdf specs
         let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/
         let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1
         let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1
@@ -80,13 +80,13 @@ class CSSPropertyParser {
         gradient.startCenter = /*<-focalPointRatio*/ CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
         gradient.startRadius = CGSize(0,0)
         gradient.endCenter = CGPoint(x,y)
-        gradient.endRadius = CGSize(yScale,xScale)/*<---we reorder the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
+        gradient.endRadius = CGSize(yScale,xScale)/*<---We re-order the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
         return gradient
      }
     /**
      * Returns an array comprised of values if the individual value is a digit then it is processed as a digit if its not a digit then its just processed as a string
-     * // :TODO: does this support comma delimited lists?
      * EXAMPLE: a corner-radius "10 20 10 20"
+     * TODO: does this support comma delimited lists?
      */
     static func array(string:String)->Array<Any>{//<--Any because type can be CGFloat, String or NSColor
         //Swift.print("CSSPropertyParser.array()")
@@ -129,7 +129,7 @@ class CSSPropertyParser {
     }
     /**
      * Textfield
-     * // :TODO: should possibly return a TextField class instance or alike
+     * TODO: should possibly return a TextField class instance or alike
      */
     static func textField(input:String)->Dictionary<String,Any>{
         var textField:Dictionary<String,Any> = Dictionary<String,Any>()

@@ -100,8 +100,7 @@ class ProgressIndicator:Element {
      *
      */
     func stop(){
-        //stop animator
-        animator!.stop()
+        animator!.stop()//stop animator
     }
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

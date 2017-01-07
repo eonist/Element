@@ -1,6 +1,6 @@
 import Foundation
 /**
- * The progress was refrenced in an extension at first, but it seems more precise to include it in the event. Think multi threaded cpu etc
+ * The progress was refrenced in an extension at first, but it seems more precise to include it in the event. Think multi threaded CPU etc
  */
 class SliderEvent :Event{
     static var change:String = "sliderEventChange"

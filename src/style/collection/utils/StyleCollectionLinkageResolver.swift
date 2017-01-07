@@ -1,7 +1,7 @@
 import Foundation
 /**
- * @Note StyleLinkageResolver is a better name than StyleLinkingParser
- * TODO: remove this class, as this is handled somewhere else now
+ * NOTE: StyleLinkageResolver is a better name than StyleLinkingParser
+ * TODO: Remove this class, as this is handled somewhere else now
  */
 class StyleCollectionLinkageResolver {
     /**

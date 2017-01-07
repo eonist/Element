@@ -1,8 +1,8 @@
 import Cocoa
 
 class ColorInputEvent:Event {
-    static var change:String = "colorBoxChange"//probably should be ColorInputChange
-    static var colorBoxDown:String = "colorBoxDown"//this shouldnt exist?
+    static var change:String = "colorBoxChange"//TODO: probably should be ColorInputChange
+    static var colorBoxDown:String = "colorBoxDown"//TODO: this shouldn't exist?
     override init(_ type:String = "", _ origin:AnyObject){
         super.init(type, origin)
     }

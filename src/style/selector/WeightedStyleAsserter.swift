@@ -2,13 +2,13 @@ import Foundation
 
 class WeightedStyleAsserter {
     /**
-     * Asserts if @param a has priority over @param b (by looking at the variouse weight variables in the WheightStyles mentioned)
-     * // :TODO: an idea could be to assign 3 values to elementPriority, classPriority and the other priortity values, 0 for no priority, 1 for equal weight and 2 for priority (this could greatly simplify and speed up this method)
-     * // :TODO: this method must be simplified
-     * // :TODO: this method must be test with all possible combinations and rethought
+     * Asserts if PARAM: a has priority over PARAM: b (by looking at the variouse weight variables in the WheightStyles mentioned)
+     * TODO: an idea could be to assign 3 values to elementPriority, classPriority and the other priortity values, 0 for no priority, 1 for equal weight and 2 for priority (this could greatly simplify and speed up this method)
+     * TODO: this method must be simplified
+     * TODO: this method must be test with all possible combinations and rethought
      * TODO: You could just do specificity how w3c does it. with assigning points to the different types. 10,100,1000,10000 etc. it works for them, it can work for you
      */
-    class func priority(a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
+    static func priority(a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
         //var temp:String = "Window"//Box#tabBarBox SelectTextButton Text
         var priority:Bool = false
         let elementPriority:Bool = a.styleWeight.elementWeight >= b.styleWeight.elementWeight
@@ -67,19 +67,19 @@ class WeightedStyleAsserter {
     /**
      *
      */
-    private class func elementCount(selectors:Array<ISelector>)->Int{
+    private static func elementCount(selectors:Array<ISelector>)->Int{
         var elementCount:Int = 0
-        for (var i : Int = 0; i < selectors.count; i++) {
+        for i in 0..<selectors.count{//<--forEach candidate!?!?
             if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount++}
         }
         return elementCount
     }
     /**
      * Asserts that a "selector.stateWeight" in "a.styleWeight.selectorWeights" has a higher value than a "selector.stateWeight" in "b.styleWeight.selectorWeights"  (the style.weight.stateweight are equal)
-     * // :TODO: this may be wrong, what if a.selectorWights.length is more than b.selectorWeights.length????
-     * // :TODO: obviously this StyleResolver class is due for renovation so alot of trace code and debug code is left in
+     * TODO: this may be wrong, what if a.selectorWights.length is more than b.selectorWeights.length????
+     * TODO: obviously this StyleResolver class is due for renovation so alot of trace code and debug code is left in
      */
-    private class func assertStateWeight(a:WeightedStyle,_ b:WeightedStyle)->Bool{// :TODO: could use a better name
+    private static func assertStateWeight(a:WeightedStyle,_ b:WeightedStyle)->Bool{// :TODO: could use a better name
         //if(a.styleWeight.selectorWeights.length != b.styleWeight.selectorWeights.length) return false/*<--new code*/
         //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length)
         //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length)
@@ -96,12 +96,12 @@ class WeightedStyleAsserter {
         //loop through b and cal the total stateweight
         /*new code start*/// :TODO: not sure if Things like Button:over Text{fill:blue;} works yet
         var aTotStateWeight:Int = 0;
-        for aSelectorWeight : SelectorWeight in a.styleWeight.selectorWeights {
+        for aSelectorWeight:SelectorWeight in a.styleWeight.selectorWeights {
             aTotStateWeight += aSelectorWeight.stateWeight
         }
         //print("aTotStateWeight: " + aTotStateWeight)
         var bTotStateWeight:Int = 0
-        for bSelectorWeight : SelectorWeight in b.styleWeight.selectorWeights {
+        for bSelectorWeight:SelectorWeight in b.styleWeight.selectorWeights {
             bTotStateWeight += bSelectorWeight.stateWeight
         }
         //print("bTotStateWeight: " + bTotStateWeight)

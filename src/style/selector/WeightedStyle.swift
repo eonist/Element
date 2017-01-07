@@ -1,5 +1,5 @@
 import Foundation
-class WeightedStyle:Style/*,Comparable*/{// :TODO: move into its own class?
+class WeightedStyle:Style/*,Comparable*/{
     /*private(set) internal */var styleWeight: StyleWeight
     init(_ style:IStyle, _ styleWeight:StyleWeight) {
         self.styleWeight = styleWeight;

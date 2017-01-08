@@ -13,6 +13,9 @@ class FastList3:Element,IList{
         super.init(width, height, parent, id)
         self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame, I don't think this works...seem to work now*/
+        
+        //Next: 
+            //add a red rect above the 
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -100,7 +103,7 @@ private class Utils{
      */
     static func curVisibleItems(list:IList,_ maxVisibleItems:Int)->Range<Int>{
         let visibleItemsTop:CGFloat = abs(list.lableContainer!.y > 0 ? 0 : list.lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
-        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
+        //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}

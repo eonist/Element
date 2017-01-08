@@ -28,6 +28,8 @@ class FastList3:Element,IList{
         
         //Ideas:
             //update the pool of items depending on how big the visible area is (but no more than dp.count)
+            //When you remove an item that falls outside the perimeter, then move it to the "pool"
+            //
     }
     override func resolveSkin() {
         super.resolveSkin()

@@ -33,7 +33,8 @@ class FastList3:Element,IList{
             //if an item is not available in pool and you need it, then create a new one
             //Pool can only have 1 surplus item at the time, you dont want to hold many items that are not in use -> after resize for instance
             //Figure out the pooling in the context that db.count may change while scrolling🏀
-                //only move items to buffer when it moves outside 
+                //only move items to buffer when it moves outside top or bottom limit
+                
     }
     override func resolveSkin() {
         super.resolveSkin()

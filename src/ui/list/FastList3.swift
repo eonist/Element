@@ -17,7 +17,7 @@ class FastList3:Element,IList{
         //Next: 
             //add a red rect above where the mask is
             //Add a blue rect above all the items in the itemContainer (use itemsHeight)
-            //
+            //Add a green rect that represents the range to render (everything inside this rect must be rendered)
     }
     override func resolveSkin() {
         super.resolveSkin()

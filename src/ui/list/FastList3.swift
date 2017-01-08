@@ -19,6 +19,7 @@ class FastList3:Element,IList{
             //Add a blue rect above all the items in the itemContainer (use itemsHeight)
             //Add a green rect that represents the range to render (everything inside this rect must be rendered) (it goes in the itemContainer)
                 //The green rect can never be 
+            //Add a purple rect that represents the buffer area, 1-item above top and 1-item bellow bottom
         
         //Rules:
             //Always try to show 1 item above topLimit

@@ -22,9 +22,12 @@ class FastList3:Element,IList{
         //Rules:
             //Always try to show 1 item above topLimit
             //Always try to show 1 item bellow bottomLimit
-            
+        
         //Tests:
             //Continusly and randomly try to add items to the list on repeate, while you scroll up and down
+        
+        //Ideas:
+            //update the pool of items depending on how big the visible area is (but no more than dp.count)
     }
     override func resolveSkin() {
         super.resolveSkin()

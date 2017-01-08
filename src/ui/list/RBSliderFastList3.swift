@@ -22,7 +22,7 @@ class RBSliderFastList3:FastList3,IRBSliderList{
         if(itemsHeight <= height){slider!.thumb!.setDisabled(true);slider!.thumb!.alpha = 0}/*if there is no need for the slider, then hide it*/
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)/*Calc the thumbHeight*/
         slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
-        setProgress(0)/*<-not really needed, but nice to have while debugging*/
+        setProgress(0)/*<--Not really needed, but nice to have while debugging*/
     }
     /**
      * PARAM value: is the final y value for the lableContainer

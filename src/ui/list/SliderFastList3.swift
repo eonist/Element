@@ -1,6 +1,6 @@
 import Cocoa
 
-class SliderFastList3:FastList2,ISliderList {
+class SliderFastList3:FastList3,ISliderList {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {

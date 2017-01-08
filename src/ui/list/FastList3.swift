@@ -27,8 +27,9 @@ class FastList3:Element,IList{
             //Continusly and randomly try to add items to the list on repeate, while you scroll up and down
         
         //Ideas:
-            //update the pool of items depending on how big the visible area is (but no more than dp.count)
             //When you remove an item that falls outside the perimeter, then move it to the "pool"
+            //if an item is not available in pool and you need it, then create a new one
+            //Pool can only have 1 surplus item at the time, you dont want to hold many items that are not in use -> after resize for instance
             //
     }
     override func resolveSkin() {

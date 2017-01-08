@@ -15,7 +15,9 @@ class FastList3:Element,IList{
         //layer!.masksToBounds = true/*masks the children to the frame, I don't think this works...seem to work now*/
         
         //Next: 
-            //add a red rect above the 
+            //add a red rect above where the mask is
+            //Add a blue rect above all the items in the itemContainer (use itemsHeight)
+            //
     }
     override func resolveSkin() {
         super.resolveSkin()

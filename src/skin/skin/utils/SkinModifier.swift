@@ -174,10 +174,12 @@ private class Utils{
     static func lastIndex(elements:Array<IElement>,_ range:Range<Int>,_ floatType:String,_ exception:((ISkin)->Bool)? = nil)->Int {
         Swift.print("range.start: " + "\(range.start)")
         Swift.print("range.end: " + "\(range.end)")
-        for i in (range.start..<range.end).reverse(){//was: for(var i:Int = range.end; i >= range.start; i--){
+        var i:Int = range.end
+        while(i >= range.start){//was: for(var i:Int = range.end; i >= range.start; i--){
             let skin:ISkin = elements[i].skin!
             if(exception != nil && exception!(skin)) {return -1}
             if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none) {return i}
+            i--
         }
         return -1
     }

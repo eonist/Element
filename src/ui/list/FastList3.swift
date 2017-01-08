@@ -18,6 +18,13 @@ class FastList3:Element,IList{
             //add a red rect above where the mask is
             //Add a blue rect above all the items in the itemContainer (use itemsHeight)
             //Add a green rect that represents the range to render (everything inside this rect must be rendered)
+        
+        //Rules:
+            //Always try to show 1 item above topLimit
+            //Always try to show 1 item bellow bottomLimit
+        
+        //Tests:
+            //Continuasly and randomly try to add items to the list on repeate, while you scroll up and down
     }
     override func resolveSkin() {
         super.resolveSkin()

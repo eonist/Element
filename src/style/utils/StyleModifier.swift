@@ -16,7 +16,6 @@ class StyleModifier {
      *
      */
     static func overrideStyleProperty(inout style:IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
-        let stylePropertiesLength:Int = 
         for i in 0..<style.styleProperties.count{/*<--we can't use for each here because it needs to break*/
             if(style.styleProperties[i].name == styleProperty.name){
                 style.styleProperties[i] = styleProperty

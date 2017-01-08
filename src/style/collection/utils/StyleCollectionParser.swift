@@ -19,13 +19,13 @@ class StyleCollectionParser {
             //Swift.print("printStyleProperties:")
             Swift.print("<style.name>:"+style.name)
             var propertyNames:Array = StyleParser.stylePropertyNames(style);
-            for e in 0..<style.styleProperties.count//<--swift 3 for loop upgrade
+            for e in 0..<style.styleProperties.count{//<--swift 3 for loop upgrade
                 let property:Any = style.getValueAt(e)
                 let name:String = propertyNames[e]
                 Swift.print("name:" + name + ", property: " +  String(property))
             }
         }
-        for i in 0..<styleCollection.styles.count//<--swift 3 for loop upgrade
+        for i in 0..<styleCollection.styles.count{//<--swift 3 for loop upgrade
             let style:IStyle = styleCollection.styles[i]
             printStyleProperties(style)
         }

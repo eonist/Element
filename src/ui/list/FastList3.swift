@@ -100,7 +100,7 @@ private class Utils{
      */
     static func curVisibleItems(list:IList,_ maxVisibleItems:Int)->Range<Int>{
         let visibleItemsTop:CGFloat = abs(list.lableContainer!.y > 0 ? 0 : list.lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
-        //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
+        Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
         //Swift.print("visibleBottom: " + "\(visibleBottom)")
         //var topItemY:CGFloat {let remainder = visibleItemsTop % itemHeight;return visibleItemsTop-itemHeight+remainder}

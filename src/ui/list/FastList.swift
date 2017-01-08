@@ -91,7 +91,7 @@ class FastList:Element,IList {
         let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0//if the visibleItems arr is empty then replenish it w/ items by appending items to thirdPart in the loop. This is triggered by setting this value to 0
         let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0
         var visibleItemIdx:Int = 0
-        for i in 0..<maxVisibleItems{/*Stage.2: stack items to cover the visible area*/
+        for i in 0..<maxVisibleItems!{/*Stage.2: stack items to cover the visible area*/
             let itemIdx:Int = (firstItemIdx + i)
             if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.count && surplusItems.count > 0){//1. item is above visibleItems, 2. y is bellow topLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
                 firstPart.append(reveal(itemIdx,y))
@@ -105,7 +105,7 @@ class FastList:Element,IList {
             }
             y += itemHeight
         }
-        visibleItems = firstPart + visibleItems + thirdPart/*combine the arrays together*/
+        visibleItems = firstPart + visibleItems + thirdPart/*Combine the arrays together*/
     }
     /**
      * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 2 places)

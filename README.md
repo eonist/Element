@@ -23,4 +23,4 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Flex-box layout alignment
 - Sketch import
 - Video tutorials
-- Swift 3.0 support
+- Swift 3.0.1 support

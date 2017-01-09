@@ -31,7 +31,7 @@ class SelectorAsserter {
       return a.id == b.id
     }
     static func hasMatchingClassIds(a:ISelector,_ b:ISelector)->Bool {
-      return ArrayAsserter.contains(a.classIds, b.classIds, true)//<----this may be wrong as it compares if the instance has the same variables, but the original code compared reference, which seemed wrong to me
+      return ArrayAsserter.contains(a.classIds, b.classIds, false)//<----this may be wrong as it compares if the instance has the same variables, but the original code compared reference, which seemed wrong to me
     }
     static func hasBothSelectorsIds(a:ISelector,_ b:ISelector)->Bool {
       return a.id != ""/*nil*/ && b.id != ""/*nil*/

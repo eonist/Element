@@ -18,11 +18,11 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Centralized app styling
 - Open-Source (MIT)
 
-## Coming soon:
+## Working on:
 - Swift 3.0.1 support (70% complete) 
-- iOS support
-- Flex-box layout alignment
-- Sketch import
-- Video tutorials
 - Metal support (Swift 3.0.1)
 - Hot Reloading (Native)🔥 
+- Flex-box layout alignment
+- iOS support
+- Sketch import
+- Video tutorials

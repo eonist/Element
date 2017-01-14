@@ -47,11 +47,13 @@ private class Utils{
     static func graphicsGradient(boundingBox:CGRect,_ gradient:IGradient)->IGraphicsGradient{
         if(gradient is LinearGradient){
             //Swift.print("gradient.rotation: " + "\(gradient.rotation)")
+            //TODO:// Extract the bellow lines to GradientUtils in IGradient
             let points:(start:CGPoint,end:CGPoint) = GradientBoxUtils.points(boundingBox, gradient.rotation)/*GradientBox*/
             //Swift.print("points.start: " + "\(points.start)")
             //Swift.print("points.end: " + "\(points.end)")
             return LinearGraphicsGradient(gradient.colors,gradient.locations,nil,points.start,points.end)
         }else if(gradient is RadialGradient){
+            //TODO:// Extract the bellow lines to GradientUtils in IGradient
             let rg = RadialGradientUtils.radialGradient(boundingBox,gradient as! RadialGradient)/*Creates and configs the radial gradient*/
             return RadialGraphicsGradient(gradient.colors,gradient.locations,rg.transform,rg.startCenter,rg.endCenter,rg.startRadius,rg.endRadius)
         }else{/*future support for Canonical gradient*/

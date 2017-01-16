@@ -19,10 +19,10 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Open-Source (MIT)
 
 ## Working on:
-- Swift 3.0.1 support (65% complete) 👈
-- Metal support (Swift 3.0.1)
+- Swift 3.0.1 support (75% complete) 👈
 - Hot Reloading (Native)🔥 
 - Flex-box layout alignment
 - iOS support
 - Sketch import
 - Video tutorials
+- Metal support 

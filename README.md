@@ -20,7 +20,7 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 
 ## Working on:
 - Swift 3.0.1 support (95% complete) 👈
-- Hot Reloading (Native)🔥 
+- Hot Reloading (100% complete)🔥 
 - Flex-box layout alignment
 - iOS support
 - Sketch import

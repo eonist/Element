@@ -12,10 +12,10 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  🎈
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
-- Hot Reloading 🔥 
+- [Hot Reloading](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  🔥 
 - [Live-edit](https://github.com/eonist/Element/wiki/live) 
 - Live Theme switching
-- Themes via CSS and [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/) 
+- Themes via [CSS](http://stylekit.org/blog/2016/02/18/Cascading-Style-Sheets-System/)  and [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/) 
 - [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
 - Centralized app styling
 - Open-Source (MIT)

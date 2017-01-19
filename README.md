@@ -8,7 +8,7 @@ Element is a **graphics** and **animation** framework that lets you create beaut
 More info in the [Wiki](https://github.com/eonist/Element/wiki) 
 
 ## Features:
-- [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  👈
+- [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  🔶
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  🎈
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 

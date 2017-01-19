@@ -7,8 +7,8 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 <img width="558" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/gitsync_take_3.mov.gif">
 
 ## Features:
-- [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  🔶
-- [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  🎈
+- [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  
+- [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
 - [Hot Reloading](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  🔥 
@@ -20,7 +20,7 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 ## Working on:
 
 - [Video tutorials](https://github.com/eonist/Element/wiki/tutorials)  
-- [iOS support](https://github.com/eonist/Element-iOS)  📱
+- [iOS support](https://github.com/eonist/Element-iOS)  
 - Carthage & CocoaPod support
 - Sketch import
 - Live Theme switching

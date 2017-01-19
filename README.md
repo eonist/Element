@@ -9,6 +9,7 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 
 ## Features:
 - 100% Swift 3.0.1 👈
+- Playground support 🎈
 - 50+ Components
 - 60FPS Interactive Animation
 - Hot Reloading 🔥 
@@ -20,8 +21,8 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Open-Source (MIT)
 
 ## Working on:
-- Video tutorials
+- Video tutorials 
 - Sketch import
-- iOS support
+- iOS support 📱
 - Metal support 
 - Flex-box layout alignment

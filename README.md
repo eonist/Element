@@ -5,7 +5,10 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 
 <img width="558" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/gitsync_take_3.mov.gif">
 
-More info in the [Wiki](https://github.com/eonist/Element/wiki) 
+## Installation:
+
+Installation instructions for Xcode & Playground here:
+http://stylekit.org/blog/2017/01/16/playground-and-framework/
 
 ## Features:
 - [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  🔶

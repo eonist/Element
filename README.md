@@ -21,8 +21,8 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Open-Source (MIT)
 
 ## Working on:
-- Video tutorials 
+- [Video tutorials](https://github.com/eonist/Element/wiki/tutorials)  
 - Sketch import
-- iOS support 📱
+- [iOS support](https://github.com/eonist/Element-iOS)  📱
 - Metal support 
 - Flex-box layout alignment

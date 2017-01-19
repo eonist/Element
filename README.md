@@ -10,8 +10,8 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 ## Features:
 - 100% Swift 3.0.1 👈
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  🎈
-- 50+ Components
-- 60FPS Interactive Animation
+- [50+ Components](https://github.com/eonist/Element/wiki/overview) 
+- [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
 - Hot Reloading 🔥 
 - Live-edit
 - Live Theme switching
@@ -21,6 +21,7 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Open-Source (MIT)
 
 ## Working on:
+- [Demo app](https://github.com/stylekit/stash) 
 - [Video tutorials](https://github.com/eonist/Element/wiki/tutorials)  
 - Sketch import
 - [iOS support](https://github.com/eonist/Element-iOS)  📱

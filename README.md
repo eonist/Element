@@ -42,7 +42,7 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 
 - [Video tutorials](https://github.com/eonist/Element/wiki/tutorials)  
 - [iOS support](https://github.com/eonist/Element-iOS)  
-- Playground example code
+- [Playground example code](https://gist.github.com/eonist/0aa86f28aaec7f94729f3cbfdab83636) 
 - Carthage & CocoaPod support
 - Sketch import
 - Live Theme switching

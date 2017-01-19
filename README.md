@@ -9,7 +9,7 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 
 ## Features:
 - 100% Swift 3.0.1 👈
-- Playground support 🎈
+- [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  🎈
 - 50+ Components
 - 60FPS Interactive Animation
 - Hot Reloading 🔥 

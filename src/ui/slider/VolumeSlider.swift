@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class VolumeSlider:HSlider{
     lazy var volumeGraphic:Element = Element(1,1,self,"volumeGraphic")
@@ -8,17 +9,17 @@ class VolumeSlider:HSlider{
     }
     override func onMouseMove(event: NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())//TODO: this should be set after super
-        return super.onMouseMove(event)
+        return super.onMouseMove(event: event)
     }
     override func onThumbMove(event: NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())//TODO: this should be set after super
-        return super.onThumbMove(event)
+        return super.onThumbMove(event: event)
     }
-    override func setProgressValue(progress: CGFloat) {
+    override func setProgressValue(_ progress: CGFloat) {
         super.setProgressValue(progress)
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())
     }
-    override func setSize(width: CGFloat, _ height: CGFloat) {
+    override func setSize(_ width: CGFloat, _ height: CGFloat) {
         super.setSize(width,height)
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())
     }

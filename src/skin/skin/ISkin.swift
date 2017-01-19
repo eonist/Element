@@ -1,10 +1,11 @@
 import Foundation
+@testable import Utils
 
 protocol ISkin:class{
     /*Implicit getters / setters*/
-    func setStyle(style:IStyle)
-    func setSkinState(state:String)
-    func setSize(width:CGFloat, _ height:CGFloat)
+    func setStyle(_ style:IStyle)
+    func setSkinState(_ state:String)
+    func setSize(_ width:CGFloat, _ height:CGFloat)
     func getWidth()->CGFloat
     func getHeight()->CGFloat
     /*Getters / Setters*/

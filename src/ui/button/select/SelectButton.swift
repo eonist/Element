@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class SelectButton:Button,ISelectable {
     private var isSelected:Bool
@@ -6,11 +7,10 @@ class SelectButton:Button,ISelectable {
         self.isSelected = isSelected
         super.init(width, height, parent, id)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      * Select state should only take place when there is a mouseUpInside event
      */
-    override func mouseUpInside(event: MouseEvent) {
+    override func mouseUpInside(_ event:MouseEvent) {
         //Swift.print("SelectButton.mouseUpInside()")
         isSelected = true
         super.mouseUpInside(event)/*Forward the event*/
@@ -19,7 +19,7 @@ class SelectButton:Button,ISelectable {
     /**
      * NOTE: do not add a dispatch event here, that is the responsibilyy of the caller
      */
-    func setSelected(isSelected:Bool){
+    func setSelected(_ isSelected:Bool){
         self.isSelected = isSelected
         setSkinState(getSkinState())
     }
@@ -27,4 +27,5 @@ class SelectButton:Button,ISelectable {
     override func getSkinState() -> String {
         return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState()
     }
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

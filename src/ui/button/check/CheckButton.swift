@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * NOTE: to force the CheckButton to apply its Checked or unchecked skin, use the setChecked after the instance is created
  */
@@ -8,7 +9,7 @@ class CheckButton:Button,ICheckable{
         self.isChecked = isChecked
         super.init(width,height,parent,id);
     }
-    override func mouseUpInside(event: MouseEvent) {
+    override func mouseUpInside(_ event:MouseEvent) {
         //Swift.print("CheckButton.mouseUpInside()")
         isChecked = !isChecked
         super.mouseUpInside(event)
@@ -17,7 +18,7 @@ class CheckButton:Button,ICheckable{
     /**
      * Sets the _isChecked variable (Toggles between two states)
      */
-    func setChecked(isChecked:Bool) {
+    func setChecked(_ isChecked:Bool) {
         self.isChecked = isChecked
         setSkinState(getSkinState())
     }
@@ -27,5 +28,5 @@ class CheckButton:Button,ICheckable{
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

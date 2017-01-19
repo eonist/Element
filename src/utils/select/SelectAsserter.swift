@@ -4,13 +4,13 @@ class SelectAsserter {
     /**
      *
      */
-    static func hasSelected(view:NSView) -> Bool {
+    static func hasSelected(_ view:NSView) -> Bool {
         return SelectParser.selected(view) != nil
     }
     /**
      *
      */
-    static func hasSelected(selectables:Array<ISelectable>) -> Bool {
+    static func hasSelected(_ selectables:Array<ISelectable>) -> Bool {
         return SelectParser.selected(selectables) != nil
     }
 }

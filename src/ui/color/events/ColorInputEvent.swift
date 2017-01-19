@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class ColorInputEvent:Event {
     static var change:String = "colorBoxChange"//TODO: probably should be ColorInputChange

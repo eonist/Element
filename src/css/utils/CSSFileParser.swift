@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * NOTE: it may be tempting to move this into CSSFIle class as an internal class since noone else uses this class but CSSFile is simpler to understand as a standalone class (Number of classes != ease of use)
  */
@@ -11,7 +12,7 @@ class CSSFileParser {
      * PARAM: url The url to load the css file from (must include the path + file-name + file-extension)
      * PARAM: cssString the recursive string passed down the hierarchy
      */
-    static func cssString(url:String)->String {
+    static func cssString(_ url:String)->String {
         StyleManager.cssFileURLS.append(url)//<--new
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
         //cssString = string//temp fix until you implement the recusrive import stuff bellow
@@ -34,7 +35,7 @@ class CSSFileParser {
      * TODO: this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
-    static func importStrings(string:String)->Array<String> {
+    static func importStrings(_ string:String)->Array<String> {
         var importStrings:Array<String> = []
         let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
         let matches = RegExp.matches(string, pattern)
@@ -50,7 +51,7 @@ class CSSFileParser {
      * NOTE: supports cssString that has only import or style or both
      * Example: "@import url(\"mainContent.css\");"
      */
-    static func separateImportsAndStyles(cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
+    static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         //was: \\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*
         let styleCharSet:String = "[^$]"//all possible chars that can be found in a stylesheet, except the end. the capture all dot variable didnt work so this is the alternate wway of doing it
         var pattern:String = "^"
@@ -73,8 +74,8 @@ class CSSFileParser {
             //}
             //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
             //Swift.print("content: " + "\(content)")
-            result.imports = match.rangeAtIndex(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
-            result.style = match.rangeAtIndex(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
+            result.imports = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
+            result.style = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
         }
         return result
     }

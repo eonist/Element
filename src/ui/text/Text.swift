@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class Text:Element,IText {
     var initText:String;//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
@@ -9,13 +10,12 @@ class Text:Element,IText {
         initText = text
         super.init(width, height, parent, id)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     /**
      * Sets text to the textfield, remember to set textformat after
      * NOTE: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
      * NOTE: Apperently setText() is occupied by obj-c, use var text {get set} in the future
      */
-    func setText(text:String){//<--- rename to setText, figure out away to either rename the text or rename setText, like setTheText or alike, setTextValue
+    func setText(_ text:String){//<--- rename to setText, figure out away to either rename the text or rename setText, like setTheText or alike, setTextValue
         (skin as! TextSkin).setText(text)
     }
     /**
@@ -32,6 +32,7 @@ class Text:Element,IText {
      * NOTE: This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
      */
     override func getClassType() -> String {
-        return String(Text)
+        return "\(Text.self)"
     }
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

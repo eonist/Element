@@ -14,9 +14,9 @@ class WindowView:Element{
      * Returns the class type of the Class instance
      */
     override func getClassType()->String{
-        return String(Window)/*Window can be targeted via the id so we use Window for all Window subclasses, although this can be overriden in said subclasses*/
+        return "\(Window.self)"/*Window can be targeted via the id so we use Window for all Window subclasses, although this can be overriden in said subclasses*/
     }
-    override func setSize(width: CGFloat, _ height: CGFloat) {
+    override func setSize(_ width: CGFloat, _ height: CGFloat) {
         super.setSize(width, height)
     }
 }

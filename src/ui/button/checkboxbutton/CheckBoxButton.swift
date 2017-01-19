@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * TODO: Implement a way to also include the text in being in a checked status
  */
@@ -18,10 +19,10 @@ class CheckBoxButton:Button,ICheckable{
         text = addSubView(Text(width,height,textString,self)) 
         text!.isInteractive = false
     }
-    func setChecked(isChecked:Bool) {
+    func setChecked(_ isChecked:Bool) {
         checkBox!.setChecked(isChecked)
     }
-    override func onEvent(event:Event) {//TODO: You could remove this method, as it doesnt add any functionality
+    override func onEvent(_ event:Event) {//TODO: You could remove this method, as it doesnt add any functionality
         super.onEvent(event)/*Forwards the event*/
     }
     func getChecked() -> Bool {
@@ -30,7 +31,7 @@ class CheckBoxButton:Button,ICheckable{
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
-    override func setSkinState(skinState:String) {
+    override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)
         text!.setSkinState(skinState)/*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
@@ -39,5 +40,5 @@ class CheckBoxButton:Button,ICheckable{
         checkBox!.setSkinState(checkBox!.skin!.state)
         text!.setSkinState(checkBox!.skin!.state)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

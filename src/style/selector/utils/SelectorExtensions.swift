@@ -1,10 +1,11 @@
 import Foundation
+@testable import Utils
 
 extension Selector:UnWrappable{
     /**
      * Converts xml to a Selector instance
      */
-    static func unWrap<T>(xml:XML) -> T? {
+    static func unWrap<T>(_ xml:XML) -> T? {
         //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
         let element:String = unWrap(xml, "element") ?? ""
         //Swift.print("element: " + "\(element)")

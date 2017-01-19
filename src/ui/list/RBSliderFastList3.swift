@@ -27,7 +27,7 @@ class RBSliderFastList3:FastList3,IRBSliderList{
     /**
      * PARAM value: is the final y value for the lableContainer
      */
-    override func setProgress(value:CGFloat){
+    override func setProgress(_ value:CGFloat){
         let itemsHeight = self.itemsHeight//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call
         progressValue = value / (itemsHeight < height ? height : -(itemsHeight - height))/*calc scalar from value, if itemsHeight is to small then use height instead*/
         super.setProgress(progressValue!)
@@ -36,15 +36,15 @@ class RBSliderFastList3:FastList3,IRBSliderList{
     /**
      * NOTE: this method overides the Native NSView scrollWheel method
      */
-    override func scrollWheel(theEvent:NSEvent) {
-        scroll(theEvent)//forward the event to the scrollExtension
-        if(theEvent.phase == NSEventPhase.Changed){setProgress(mover!.result)}/*direct manipulation*/
-        super.scrollWheel(theEvent)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
+    override func scrollWheel(with event:NSEvent) {
+        scroll(event)//forward the event to the scrollExtension
+        if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
+        super.scrollWheel(with:event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
     /**
      * EventHandler for the Slider change event
      */
-    func onSliderChange(sliderEvent:SliderEvent){
+    func onSliderChange(_ sliderEvent:SliderEvent){
         ListModifier.scrollTo(self, sliderEvent.progress)
         mover!.value = lableContainer!.frame.y
     }
@@ -65,7 +65,7 @@ class RBSliderFastList3:FastList3,IRBSliderList{
         //Swift.print("RBSliderList.scrollAnimStopped()")
         slider!.thumb!.fadeOut()
     }
-    override func onEvent(event:Event) {
+    override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())
         }else if(event.assert(AnimEvent.stopped, mover!)){

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class ColorBoxEvent:Event {
     static var change:String = "colorBoxChange"

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * NOTE: the slider keeps track of the progress
  * TODO: you may need to add an update method like SliderTreeList has, imagine if your scrolled to the bottom nd then an item is removed what happens? you should update the slider and y.position of the itemsContainer
@@ -15,17 +16,17 @@ class SliderList:List,ISliderList{
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
-    override func scrollWheel(theEvent:NSEvent) {
-        scroll(theEvent)/*forward the event to the extension*/
-        super.scrollWheel(theEvent)/*forward the event other delegates higher up in the stack*/
+    override func scrollWheel(with event: NSEvent) {//swift 3 update
+        scroll(event)/*forward the event to the extension*/
+        super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
-    func setProgress(progress:CGFloat){
+    func setProgress(_ progress:CGFloat){
         ListModifier.scrollTo(self,progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
-    func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
+    func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
     }
-    override func onEvent(event: Event) {
+    override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)
     }
@@ -33,7 +34,7 @@ class SliderList:List,ISliderList{
      * TODO: must update the float somehow
      * Sets the list to correct height, the scrollbar thumb to correct size and the scrollbar interval to correct interval
      */
-    override func setSize(width:CGFloat, _ height:CGFloat) {//TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {//TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
         slider!.setSize(itemHeight, height)
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * TODO: add an alpha-stepper?
  */
@@ -17,7 +18,7 @@ class ColorPanel:Element,IColorPanel{
     var spinner3:LeverSpinner?
     var itemHeight:CGFloat
     var colorTypeSelectGroup:SelectGroup?
-    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ color:NSColor = NSColor.redColor(), _ title:String = "Color", _ parent:IElement? = nil, _ id:String = "") {
+    init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ color:NSColor = NSColor.red, _ title:String = "Color", _ parent:IElement? = nil, _ id:String = "") {
         self.itemHeight = itemHeight
         self.color = color
         super.init(width, height, parent, id)
@@ -40,19 +41,19 @@ class ColorPanel:Element,IColorPanel{
         spinner3 = addSubView(LeverSpinner(width, itemHeight,"Blue:",rgb.b.cgFloat,1,0,255,1,200,200,self))/*LeaverStepper instance ->Blue (0 - 255) (Read/write)*/
         ColorSync.broadcaster = self
     }
-    private func onColorTypeSelectGroupChange(event:SelectGroupEvent) {
+    private func onColorTypeSelectGroupChange(_ event:SelectGroupEvent) {
         //Swift.print("onColorTypeSelectGroupChange()")
         let colorType:String = (event.selectable as! TextButton).getText()//TODO: you can also use: getColorType() here
         ColorPanelUtils.toggleColorType(self,colorType)
         ColorPanelUtils.applyColor(self,color!)
     }
-    private func onColorInputChange(event : ColorInputEvent) {
+    private func onColorInputChange(_ event:ColorInputEvent) {
         Swift.print("ColorPanel.onColorInputChange()")
         ColorPanelUtils.applyColor(self,event.color!)
         color = event.color!
         super.onEvent(event)//TODO: is this needed? cant we just propegate the original event
     }
-    private func onSpinnerChange(event:SpinnerEvent) {
+    private func onSpinnerChange(_ event:SpinnerEvent) {
         //Swift.print("onSpinnerChange()")
         var color:NSColor//<--was UInt
         let colorType:String = (SelectGroupParser.selected(colorTypeSelectGroup!) as! TextButton).getText()// :TODO: just call getColorType
@@ -74,24 +75,24 @@ class ColorPanel:Element,IColorPanel{
         self.color = color
         super.onEvent(ColorInputEvent(ColorInputEvent.change,self))
     }
-    override func onEvent(event: Event) {
+    override func onEvent(_ event:Event) {
         super.onEvent(event)
         if(event.type == SelectGroupEvent.change && event.origin === colorTypeSelectGroup){onColorTypeSelectGroupChange(event as! SelectGroupEvent)}
         if(event.type == ColorInputEvent.change && event.origin === colorInput){onColorInputChange(event as! ColorInputEvent)}
         if(event.type == SpinnerEvent.change){onSpinnerChange(event as! SpinnerEvent)}// :TODO: cant we just listen for one event in this.?, could be usefull to assert origin, just to be safe
         //if(event.type == ColorInputEvent.change){ColorSync.onColorChange(event as! ColorInputEvent)}
     }
-    func setColorValue(color:NSColor){
+    func setColorValue(_ color:NSColor){
         ColorPanelUtils.applyColor(self,color)
         colorInput!.setColorValue(color)
         self.color = color
     }
-    override func setSize(width : CGFloat, _ height : CGFloat)  {
+    override func setSize(_ width : CGFloat, _ height : CGFloat)  {
         super.setSize(width, height)
         ElementModifier.refresh(self)
     }
     func getColorType()->String {
         return (SelectGroupParser.selected(colorTypeSelectGroup!) as! RadioButton).getText()
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

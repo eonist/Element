@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * HorizontalNodeSlider is used when 2 sliders are need, as in section definition or zoom, or gradient values
  * // :TODO: to get the toFront method working you need to support relative positioning, currently the Element framework doesnt support this
@@ -13,7 +14,7 @@ class VNodeSlider:Element,INodeSlider{
     var tempNodeMouseY:CGFloat?
     var startProgress:CGFloat
     var endProgress:CGFloat
-    var globalMouseMovedHandeler:AnyObject? = nil
+    var globalMouseMovedHandeler:Any? = nil
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ nodeHeight:CGFloat = NaN, _ startProgress:CGFloat = 0, _ endProgress:CGFloat = 1, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.startProgress = startProgress
         self.endProgress = endProgress
@@ -33,13 +34,13 @@ class VNodeSlider:Element,INodeSlider{
         Swift.print("onStartNodeDown")
 //		DepthModifier.toFront(_startNode, self)// :TODO: this may now work since they are floating:none
         tempNodeMouseY = startNode!.localPos().y
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onStartNodeMove)//we add a global mouse move event listener
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onStartNodeMove)//we add a global mouse move event listener
     }
     func onEndNodeDown() {
         Swift.print("onEndNodeDown")
 //		DepthModifier.toFront(_endNode, self)// :TODO: this may now work since they are floating:none
         tempNodeMouseY = endNode!.localPos().y
-        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:onEndNodeMove)//we add a global mouse move event listener
+        globalMouseMovedHandeler = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onEndNodeMove)//we add a global mouse move event listener
     }
     func onStartNodeMove(event:NSEvent)-> NSEvent? {
         Swift.print("onStartNodeMove()")
@@ -69,7 +70,7 @@ class VNodeSlider:Element,INodeSlider{
             globalMouseMovedHandeler = nil
         }/*we remove a global mouse move event listener*/
     }
-    override func onEvent(event: Event) {
+    override func onEvent(_ event: Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.type == ButtonEvent.down && event.origin === startNode){onStartNodeDown()}
         else if(event.type == ButtonEvent.up && event.origin === startNode){onStartNodeUp()}
@@ -80,28 +81,28 @@ class VNodeSlider:Element,INodeSlider{
     /**
      * PARAM: progress (0-1)
      */
-    func setStartProgressValue(progress:CGFloat){
+    func setStartProgressValue(_ progress:CGFloat){
         startProgress = progress
         startNode!.y = Utils.nodePosition(progress, height, nodeHeight)
     }
-    func setEndProgressValue(progress:CGFloat){
+    func setEndProgressValue(_ progress:CGFloat){
         endProgress = progress
         endNode!.y = Utils.nodePosition(progress, height, nodeHeight)
     }
-    override func setSize(width:CGFloat, _ height:CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
         setEndProgressValue(endProgress)
         setStartProgressValue(startProgress)
         startNode!.setSize(width, startNode!.height)
         endNode!.setSize(width, startNode!.height)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
 	/**
 	 * Returns the x position of a nodes @param progress
 	 */
-	static func nodePosition(progress:CGFloat, _ height:CGFloat, _ nodeHeight:CGFloat) -> CGFloat {
+	static func nodePosition(_ progress:CGFloat, _ height:CGFloat, _ nodeHeight:CGFloat) -> CGFloat {
 		let minThumbPos:CGFloat = height - nodeHeight/*Minimum thumb position*/
 		return progress * minThumbPos
 	}
@@ -109,7 +110,7 @@ private class Utils{
 	 * Returns the progress derived from a node 
 	 * RETURN: a number between 0 and 1
 	 */
-	static func progress(mouseY:CGFloat,_ tempNodeMouseX:CGFloat,_ height:CGFloat,_ nodeHeight:CGFloat) -> CGFloat {
+	static func progress(_ mouseY:CGFloat,_ tempNodeMouseX:CGFloat,_ height:CGFloat,_ nodeHeight:CGFloat) -> CGFloat {
 		let progress:CGFloat = (mouseY-tempNodeMouseX) / (height-nodeHeight)
 		return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
 	}

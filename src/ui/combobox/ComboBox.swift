@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /** 
  * NOTE: For multiSelect option make MultiCheckComboBox.as aand CheckComboBox?
  * NOTE: To get the height while the list is pulled down: comboBox.height * comboBox.maxShowingItems
@@ -32,7 +33,7 @@ class ComboBox:Element{
         headerButton!.setTextValue(selectedTitle)
         //setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
 	}
-	func onHeaderMouseDown(event:ButtonEvent) {
+	func onHeaderMouseDown(_ event:ButtonEvent) {
         Swift.print("onHeaderMouseDown")
         setOpen(!isOpen)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.headerClick,selectedIndex,self))/*send this event*/
@@ -40,7 +41,7 @@ class ComboBox:Element{
 	/**
 	 * The select event should be fired only onReleaseInside not as it is now onPress
 	 */
-	func onListSelect(event:ListEvent) {
+	func onListSelect(_ event:ListEvent) {
         Swift.print("onListSelect")
         let list:IList = event.origin as! List
         selectedIndex = ListParser.selectedIndex(list)
@@ -57,16 +58,17 @@ class ComboBox:Element{
             setOpen(false)
         }
     }
-	override func onEvent(event:Event){
+	override func onEvent(_ event:Event){
         if(event.type == Event.update && event.origin === popupWindow!.contentView){onClickOutside()}
 		if(event.type == ListEvent.select && event.origin === (popupWindow!.contentView as! ComboBoxView).list) {onListSelect(event as! ListEvent)}
 		if(event.type == ButtonEvent.down && event.origin === headerButton){onHeaderMouseDown(event as! ButtonEvent)}
 	}
-	func setOpen(isOpen:Bool) {
+	func setOpen(_ isOpen:Bool) {
         Swift.print("setOpen: " + "\(isOpen)")
         if(isOpen){
             popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
-            var comboBoxPos:CGPoint = convertPoint(CGPoint(0,0), toView: self.window!.contentView)/*POV of the window*/
+            //swift 3 update on the bellow line
+            var comboBoxPos:CGPoint = convert(NSPoint(0,0), to: self.window!.contentView)/*POV of the window*/
             comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
             let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
             WinModifier.position(popupWindow!, winPos)
@@ -76,11 +78,11 @@ class ComboBox:Element{
         }
         self.isOpen = isOpen
 	}
-	override func setSize(width:CGFloat, _ height:CGFloat)  {
+	override func setSize(_ width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)
 		headerButton!.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
 	}
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension ComboBox{
     var selectedProperty:String{/*convenience*/
@@ -89,7 +91,6 @@ extension ComboBox{
     var selectedTitle:String{/*convenience*/
         return ComboBoxParser.selectedTitle(self)
     }
-    
 }
 
 

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * This is a list that can support infinite list items, while still being fast, memory-convervative and responsive. To support 1000's of data items, just use DataProvider, To support millions, consider using a DataProvider that derive its data from a database (SQLite or other)
  * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future
@@ -55,7 +56,7 @@ class FastList:Element,IList {
      * Stage.1: Remove items outside Limits
      * Stage.2: stack items to cover the visible area
      */
-    func setProgress(progress:CGFloat){
+    func setProgress(_ progress:CGFloat){
         let listY:CGFloat = -1 * ListModifier.scrollTo(progress, height, itemsHeight)//this is the list y offset, we add the substraction sign to get positive value
         //Swift.print("listY: " + "\(listY)")
         let topLimit:CGFloat = /*listY*/ -itemHeight
@@ -68,11 +69,11 @@ class FastList:Element,IList {
             if(virtualY <= topLimit){/*above top limit*/
                 //Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
                 Utils.hide(listItem.item, true)
-                surplusItems += visibleItems.removeAtIndex(i)
+                _ = surplusItems += visibleItems.remove(at: i)
             }else if(virtualY >= bottomLimit){
                 //Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
                 Utils.hide(listItem.item, true)
-                surplusItems += visibleItems.removeAtIndex(i)
+                _ = surplusItems += visibleItems.remove(at: i)
             }else{
                 //Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
             }
@@ -101,7 +102,7 @@ class FastList:Element,IList {
                 thirdPart.append(reveal(itemIdx,y))
             }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
                 visibleItems[visibleItemIdx].item.y = y
-                visibleItemIdx++
+                visibleItemIdx += 1
             }
             y += itemHeight
         }
@@ -111,8 +112,8 @@ class FastList:Element,IList {
      * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 2 places)
      * NOTE: This method is only called if surplusItems.count > 0
      */
-    private func reveal(idx:Int, _ y:CGFloat) -> (item:Element,idx:Int){
-        var listItem = surplusItems.removeAtIndex(0)
+    private func reveal(_ idx:Int, _ y:CGFloat) -> (item:Element,idx:Int){
+        var listItem = surplusItems.remove(at: 0)
         listItem.idx = idx
         spoof(listItem)
         Utils.hide(listItem.item, false)
@@ -122,13 +123,14 @@ class FastList:Element,IList {
     /**
      * Creates the init items
      */
-    private func spawn(range:Range<Int>){
+    private func spawn(_ range:CountableRange<Int>){
         var y:CGFloat = 0
+        //swift 3 update, may not work
         for i in range{/*we need an extra item to cover the entire area*/
             //visibleItemIndecies.append(i)
             let item:Element = spawn(i)
             visibleItems.append((item,i))
-            lableContainer!.addSubView(item)
+            _ = lableContainer!.addSubView(item)
             item.y = y
             y += itemHeight
         }
@@ -138,7 +140,7 @@ class FastList:Element,IList {
      * PARAM: idx: the index that coorespond to data items (spawn == create something)
      * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */
-    func spawn(idx:Int)->Element{/*override this to use custom ItemList items*/
+    func spawn(_ idx:Int)->Element{/*override this to use custom ItemList items*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
@@ -148,7 +150,7 @@ class FastList:Element,IList {
      * Applies data to a pre-exisiting item (spoof == apply/reuse)
      * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
      */
-    func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
+    func spoof(_ listItem:FastListItem){/*override this to use custom ItemList items*/
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]
@@ -160,7 +162,7 @@ class FastList:Element,IList {
     /**
      * This is called when a item in the lableContainer has send the ButtonEvent.upInside event
      */
-    func onListItemUpInside(buttonEvent:ButtonEvent) {
+    func onListItemUpInside(_ buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
         visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
@@ -170,7 +172,7 @@ class FastList:Element,IList {
      * EventHandler for the items in the list
      * TODO: We should really use a SelectEvent here as SelectTextItem sends this event on ButtonEvent.upInside occurs
      */
-    override func onEvent(event:Event) {
+    override func onEvent(_ event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
@@ -178,9 +180,9 @@ class FastList:Element,IList {
      * So that we can use the List.css styles (This is because FastList doesn't extend List so we need to manually set the getClassType var)
      */
     override func getClassType() -> String {
-        return String(List)
+        return "\(List.self)"
     }
-    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
     /**
@@ -188,11 +190,11 @@ private class Utils{
      * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
      * NOTE: maybe we can avoid hiding by just placing the view outside the mask item.y = top - item.height should to
      */
-    static func hide(view:NSView, _ isHidden:Bool){
+    static func hide(_ view:NSView, _ isHidden:Bool){
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         //Change properties here without animation
-        view.hidden = isHidden
+        view.isHidden = isHidden
         CATransaction.commit()
     }
 }

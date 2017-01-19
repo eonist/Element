@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * CSS: line-alpha:0.5;line:Gray;line-thickness:2px;width:60px;height:60px;
  */
@@ -14,7 +15,7 @@ class ProgressIndicator:Element {
     override func resolveSkin() {
         skin = SkinResolver.skin(self)
         lineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
-        lineStyle.lineCap = CGLineCap.Round//add round end style
+        lineStyle.lineCap = CGLineCap.round//add round end style
         let center:CGPoint = CGRect(CGPoint(),CGSize(w,h)).center//center of element
         //Swift.print("center: " + "\(center)")
         let radius:CGFloat = w/2 - lineStyle.thickness/2
@@ -26,7 +27,7 @@ class ProgressIndicator:Element {
             let endP = center.polarPoint(radius, angle)
             let line:LineGraphic = LineGraphic(startP,endP,lineStyle.copy())
             lines.append(line)
-            addSubView(line.graphic)
+            _ = addSubView(line.graphic)
             line.draw()
         }
     }
@@ -34,7 +35,7 @@ class ProgressIndicator:Element {
      * Modulate the progress indicator (For iterative progress or looping animation)
      * PARAM: value: 0 - 1
      */
-    func progress(value:CGFloat){
+    func progress(_ value:CGFloat){
         //Swift.print("progress: " + "\(value)")
         //Could the bellow be done simpler: think sequence looping in a video.
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
@@ -60,7 +61,7 @@ class ProgressIndicator:Element {
      * NOTE: You also want to set the alpha gradually from half to full alpha in a half circle
      * TODO: The final tick should be 0, to make this happen you need to offset the i, possibly
      */
-    func reveal(value:CGFloat){//value goes from 0 to 1
+    func reveal(_ value:CGFloat){//value goes from 0 to 1
         //Swift.print("ProgressIndicator.reveal() value: " + "\(value)")
         revealProgress = value
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
@@ -102,5 +103,5 @@ class ProgressIndicator:Element {
     func stop(){
         animator!.stop()//stop animator
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

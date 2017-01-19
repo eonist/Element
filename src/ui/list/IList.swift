@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 protocol IList {
     //func getItemsHeight()->CGFloat
@@ -6,7 +7,7 @@ protocol IList {
     //var height : CGFloat{get}  //TODO:you can extend IElement
     var itemHeight:CGFloat{get}
     var dataProvider:DataProvider{get}
-    var lableContainer :Container? {get}
+    var lableContainer:Container? {get}
 }
 /**
  * TODO: Continue adding methods here
@@ -17,7 +18,7 @@ extension IList{
     var selectedIndex:Int{return ListParser.selectedIndex(self)}/*Convenience*/
     var itemsHeight:CGFloat {return ListParser.itemsHeight(self)}/*Convenience*/
     /*Modifiers*/
-    func selectAt(index:Int){/*convenience*/
+    func selectAt(_ index:Int){/*convenience*/
         ListModifier.selectAt(self, index)
     }
 }

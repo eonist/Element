@@ -1,10 +1,11 @@
 import Foundation
+@testable import Utils
 
 class SkinParser {
     /**
      *
      */
-    static func totalWidth(skin:ISkin)->CGFloat {
+    static func totalWidth(_ skin:ISkin)->CGFloat {
         let margin:Margin = self.margin(skin)
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
@@ -13,7 +14,7 @@ class SkinParser {
     /**
      *
      */
-    static func totalHeight(skin:ISkin)->CGFloat {
+    static func totalHeight(_ skin:ISkin)->CGFloat {
         let margin:Margin = self.margin(skin)
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
@@ -22,7 +23,7 @@ class SkinParser {
     /*
      * TODO: I think this is the same as totalHeight now, so remove it, its not. see the height variable
      */
-    static func totalHeight2(skin:ISkin)->CGFloat {/*beta*/
+    static func totalHeight2(_ skin:ISkin)->CGFloat {/*beta*/
         let margin:Margin = self.margin(skin)
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
@@ -32,7 +33,7 @@ class SkinParser {
     /**
      *
      */
-    static func width(skin:ISkin)->CGFloat {
+    static func width(_ skin:ISkin)->CGFloat {
         //Swift.print("skin.element!.getWidth(): " + "\(skin.element!.getWidth())")
         //Swift.print("skin.getWidth(): " + "\(skin.getWidth())")
         return !skin.element!.getWidth().isNaN ? skin.element!.getWidth() : skin.getWidth()
@@ -40,13 +41,13 @@ class SkinParser {
     /**
      *
      */
-    static func height(skin:ISkin)->CGFloat {
+    static func height(_ skin:ISkin)->CGFloat {
         return !skin.element!.getHeight().isNaN ? skin.element!.getHeight() : skin.getHeight()
     }
     /**
      * Returns the position when margin and padding is taken into account
      */
-    static func relativePosition(skin:ISkin/*<--recently hanged from Skin to ISKin*/)->CGPoint {
+    static func relativePosition(_ skin:ISkin/*<--recently hanged from Skin to ISKin*/)->CGPoint {
         let margin:Margin = self.margin(skin)
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
@@ -59,13 +60,13 @@ class SkinParser {
     /**
      *
      */
-    static func margin(skin:ISkin)->Margin{// :TODO: possibly rename to relativeMargin
+    static func margin(_ skin:ISkin)->Margin{// :TODO: possibly rename to relativeMargin
         return StylePropertyParser.margin(skin)
     }
     /**
      *
      */
-    static func border(skin:ISkin)->Border {
+    static func border(_ skin:ISkin)->Border {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
         let value:Any? = StylePropertyParser.value(skin, "line-thickness")
         //Swift.print("SkinParser.border.value: " + "\(value)")
@@ -75,31 +76,31 @@ class SkinParser {
     /**
      *
      */
-    static func padding(skin:ISkin)->Padding{// :TODO: possibly rename to relativePadding
+    static func padding(_ skin:ISkin)->Padding{// :TODO: possibly rename to relativePadding
         return StylePropertyParser.padding(skin)
     }
     /**
      *
      */
-    static func offset(skin:ISkin)->CGPoint{// :TODO: possibly rename to relativeOffset
+    static func offset(_ skin:ISkin)->CGPoint{// :TODO: possibly rename to relativeOffset
         return StylePropertyParser.offset(skin)
     }
     /**
      *
      */
-    static func float(skin:ISkin,_ depth:Int = 0)->String?{
+    static func float(_ skin:ISkin,_ depth:Int = 0)->String?{
         return StylePropertyParser.value(skin,CSSConstants.float,depth) as? String
     }
     /**
      *
      */
-    static func clear(skin:ISkin)->String? {
+    static func clear(_ skin:ISkin)->String? {
         return StylePropertyParser.value(skin,CSSConstants.clear) as? String
     }
     /**
      *
      */
-    static func display(skin:ISkin)->String? {
+    static func display(_ skin:ISkin)->String? {
         return StylePropertyParser.value(skin,CSSConstants.display) as? String
     }
 }

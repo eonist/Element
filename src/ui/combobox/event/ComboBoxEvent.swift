@@ -1,12 +1,13 @@
 import Foundation
+@testable import Utils
 /**
  * NOTE: You can derive the slected via the combobox item it self. So no need to pass the selected along in the event
  */
-class ComboBoxEvent :Event{
+class ComboBoxEvent:Event{
     static var click:String = "comboBoxEventClick"
 	static var headerClick:String = "comboBoxEventHeaderClick"
 	static var listSelect:String = "comboBoxEventListSelect"
-    private var index:Int
+    /*private*/ var index:Int//swift 3 update
     init(_ type: String, _ index:Int, _ origin: AnyObject) {
         self.index = index
         super.init(type, origin)

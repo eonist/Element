@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
  * TODO: Add support for rubberband behaviour even if there is no need for scrolling
@@ -33,7 +34,7 @@ class RBSliderList:List,IRBSliderList{
     /**
      * PARAM value: is the final y value for the lableContainer
      */
-    func setProgress(value:CGFloat){
+    func setProgress(_ value:CGFloat){
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         //TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
@@ -45,15 +46,15 @@ class RBSliderList:List,IRBSliderList{
     /**
      * NOTE: this method overides the Native NSView scrollWheel method
      */
-    override func scrollWheel(theEvent:NSEvent) {
-        scroll(theEvent)//forward the event to the scrollExtension
-        if(theEvent.phase == NSEventPhase.Changed){setProgress(mover!.result)}/*direct manipulation*/
-        super.scrollWheel(theEvent)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
+    override func scrollWheel(with event: NSEvent) {
+        scroll(event)//forward the event to the scrollExtension
+        if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
+        super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
     /**
      * EventHandler for the Slider change event
      */
-    func onSliderChange(sliderEvent:SliderEvent){
+    func onSliderChange(_ sliderEvent:SliderEvent){
         ListModifier.scrollTo(self,sliderEvent.progress)
         mover!.value = lableContainer!.frame.y
     }
@@ -74,7 +75,7 @@ class RBSliderList:List,IRBSliderList{
         //Swift.print("RBSliderList.scrollAnimStopped()")
         slider!.thumb!.fadeOut()
     }
-    override func onEvent(event:Event) {
+    override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())
         }else if(event.assert(AnimEvent.stopped, mover!)){

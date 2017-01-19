@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class SliderFastList:FastList,ISliderList {
     var slider:VSlider?
@@ -10,21 +11,21 @@ class SliderFastList:FastList,ISliderList {
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
     }
-    override func scrollWheel(event:NSEvent) {
+    override func scrollWheel(with event:NSEvent) {
         scroll(event)/*Forwards the event to the extension method*/
-        super.scrollWheel(event)/*Forwards the event other delegates higher up in the stack*/
+        super.scrollWheel(with:event)/*Forwards the event other delegates higher up in the stack*/
     }
-    func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
+    func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         ListModifier.scrollTo(self,sliderEvent.progress)
     }
-    override func onEvent(event:Event) {
+    override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)
     }
     /**
      * TODO: This must be implemented in the future, see SliderList for instructions
      */
-    override func setSize(width:CGFloat, _ height:CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
     }
 }

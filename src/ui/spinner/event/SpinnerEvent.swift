@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class SpinnerEvent:Event{
     static var change:String = "spinnerEventChange"

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class CustomView:WindowView{
     var section:Section?
@@ -26,7 +27,7 @@ class CustomView:WindowView{
     /**
      *
      */
-    override func setSize(width:CGFloat,_ height:CGFloat){
+    override func setSize(_ width:CGFloat,_ height:CGFloat){
         //Swift.print("CustomView.setSize() size: " + "\(size)")
         //self.skin!.setSize(size.width, size.height)
         super.setSize(width, height)
@@ -61,8 +62,8 @@ class CustomView:WindowView{
         
         //NSWindowCollectionBehaviorFullScreenAuxiliary or NSWindowCollectionBehaviorFullScreenPrimary
         
-        self.window!.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
-        window!.setFrame(NSScreen.mainScreen()!.visibleFrame, display: true, animate: true)
+        self.window!.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
+        window!.setFrame(NSScreen.main()!.visibleFrame, display: true, animate: true)
         //[self.window setFrame:screenFrame display:YES];
 
         self.window?.toggleFullScreen(self.window)
@@ -76,7 +77,7 @@ class CustomView:WindowView{
     /**
      *
      */
-    override func onEvent(event: Event) {
+    override func onEvent(_ event:Event) {
         //Swift.print( "CustomView.onEvent() event:" + "\(event)")
         //Swift.print("CustomView.onEvent: " + "\(event)" + " event.origin: " + "\(event.origin)")
         if(event.origin === closeButton && event.type == ButtonEvent.upInside){onCloseButtonReleaseInside()}

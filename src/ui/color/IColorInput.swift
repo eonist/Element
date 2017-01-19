@@ -1,6 +1,7 @@
 import Cocoa
+@testable import Utils
 
 protocol IColorInput:IEventSender{
     var color:NSColor?{get}
-    func setColorValue(color:NSColor)
+    func setColorValue(_ color:NSColor)
 }

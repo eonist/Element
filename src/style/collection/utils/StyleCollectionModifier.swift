@@ -4,7 +4,7 @@ class StyleCollectionModifier {
     /**
      * Merges PARAM: a with PARAM: b (Adds styles that are not present in PARAM: a, and merges but does not override styles that have the same name)
      */
-    static func merge(a:IStyleCollection,b:IStyleCollection) {
+    static func merge(_ a:IStyleCollection,_ b:IStyleCollection) {
         for styleB:IStyle in b.styles {
             var hasStyle:Bool = false
             for var styleA:IStyle in a.styles {

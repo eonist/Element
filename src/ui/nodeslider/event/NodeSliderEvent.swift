@@ -1,6 +1,7 @@
 import Foundation
+@testable import Utils
 
-class NodeSliderEvent :Event{
+class NodeSliderEvent:Event{
     static var change:String = "nodeSliderEventChange"
 }
 extension NodeSliderEvent{

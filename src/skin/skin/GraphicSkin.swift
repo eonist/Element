@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * TODO: You can't set the frame after you have called the display call on a layer. so you have to set it before.
  * TODO: See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
@@ -14,7 +15,7 @@ class GraphicSkin:Skin{
         for depth in 0..<depthCount{
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)
-            SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+            _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
         }
     }
@@ -28,7 +29,7 @@ class GraphicSkin:Skin{
                     Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
                 }//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
-                /*decoratable = */SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
+                /*decoratable = */_ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
                 if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
             }
         }
@@ -37,9 +38,9 @@ class GraphicSkin:Skin{
     /**
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
-    func applyProperties(inout decoratable:IGraphicDecoratable,_ depth:Int){
+    func applyProperties(_ decoratable:inout IGraphicDecoratable,_ depth:Int){
         //Swift.print("GraphicSkin.applyProperties() decoratable: " + "\(decoratable)")
-        GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
+        _ = GraphicModifier.applyProperties(&decoratable, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(decoratable, RectGraphic.self)){
             //Swift.print("has RectGraphic")
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
@@ -56,7 +57,7 @@ class GraphicSkin:Skin{
     /*override func updateTrackingAreas() {
     Swift.print("updateTrackingAreas: " + "\(self)")
     }*/
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 /**
  *
@@ -66,7 +67,7 @@ private class Utils{
      * beta
      * TODO: move to DecoratorModifier.swift
      */
-    static func size(sizableDecorator:IGraphicDecoratable,_ size:CGSize){
+    static func size(_ sizableDecorator:IGraphicDecoratable,_ size:CGSize){
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }

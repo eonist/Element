@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 protocol IRBSliderList:class{
     var mover:RubberBand?{get}
@@ -12,28 +13,28 @@ extension IRBSliderList{
     /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
      */
-    func scroll(theEvent:NSEvent) {
+    func scroll(_ theEvent:NSEvent) {
         //Swift.print("RBScrollController.scrollWheel()")
-        if(theEvent.phase != NSEventPhase.None){
+        if(theEvent.phase != []){//swift 3 update, was -> NSEventPhase.none
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
-            case NSEventPhase.Changed:onScrollWheelChange(theEvent)/*Fires everytime there is direct scrollWheel gesture movment.*/
-            case NSEventPhase.MayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
-            case NSEventPhase.Began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
-            case NSEventPhase.Ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
-            case NSEventPhase.Cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
-            case NSEventPhase.None:break;
+            case NSEventPhase.changed:onScrollWheelChange(theEvent)/*Fires everytime there is direct scrollWheel gesture movment.*/
+            case NSEventPhase.mayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
+            case NSEventPhase.began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
+            case NSEventPhase.ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
+            case NSEventPhase.cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
+            case []:break;//swift 3 update, was -> NSEventPhase.none
             default:break;
         }
     }
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
-    private func onScrollWheelChange(theEvent:NSEvent){
+    private func onScrollWheelChange(_ theEvent:NSEvent){
         //Swift.print("changed")
         prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
-        velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
+        _ = velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
         mover!.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
         mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
     }

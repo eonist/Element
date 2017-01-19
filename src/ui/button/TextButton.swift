@@ -1,5 +1,5 @@
 import Cocoa
-
+@testable import Utils
 class TextButton:Button {
     var text:Text? = nil
     var textString:String
@@ -12,12 +12,12 @@ class TextButton:Button {
         text = addSubView(Text(width,height,textString,self))
         text?.isInteractive = false
     }
-    override func setSkinState(skinState:String) {
+    override func setSkinState(_ skinState:String) {
         //Swift.print("\(self.dynamicType)" + " setSkinState() skinState: " + "\(skinState)")
         super.setSkinState(skinState)
         text!.setSkinState(skinState)/*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
-    override func setSize(width:CGFloat, _ height:CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
         text!.setSize(width, height)
     }
@@ -31,10 +31,10 @@ class TextButton:Button {
      * Sets the text in the _text instance
      * NOTE: cant be named setText as its blocked by objc
      */
-    func setTextValue(text:String){
+    func setTextValue(_ text:String){
         self.text!.setText(text)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /*
 extension TextButton{

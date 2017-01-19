@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * NOTE: The reason we use array instead of object: a problem may be that the order will be different every time you read this object, random
  * EXAMPLE: print("StyleManager.getInstance().getStyle(Button): " + StyleManager.getInstance().getStyle("someText").getPropertyNames());//prints style names
@@ -15,13 +16,13 @@ class StyleManager{
      * Adds a style to the styleManager class
      * PARAM: style: IStyle
      */
-    static func addStyle(style:IStyle){
+    static func addStyle(_ style:IStyle){
         styles.append(style)
     }
     /**
      * TODO: This method could probably be a candidate for functional programming: .map or .flatMap etc etc
      */
-    static func removeStyle(name:String) -> IStyle? {
+    static func removeStyle(_ name:String) -> IStyle? {
         for i in 0..<styles.count{//upgraded to swift 3 support
             if(styles[i].name == name) {
                 return styles.splice2(i,1)[0]
@@ -33,8 +34,8 @@ class StyleManager{
      * Locates and returns a Style by the @param name.
      * RETURN: a Style
      */
-    static func getStyle(name:String)->IStyle?{
-        for (_,style) in self.styles.enumerate(){//<--forEach was not used because it doesn't allow return
+    static func getStyle(_ name:String)->IStyle?{
+        for (_,style) in self.styles.enumerated(){//<--forEach was not used because it doesn't allow return
             if(style.name == name) {return style}
         }
         return nil
@@ -45,10 +46,11 @@ extension StyleManager{
     /**
      * Adds every style in a styleCollection to the stylemanager
      */
-    static func addStyle(styles:Array<IStyle>){
+    static func addStyle(_ styles:Array<IStyle>){
         if(isHashingStyles){
             styles.forEach{
-                StyleManagerUtils.hashStyle($0)
+                //swift 3 update, now checks .count > 0
+                if($0.selectors.count > 0){StyleManagerUtils.hashStyle($0)}
             }
         }
         self.styles += styles/*<- concats*/
@@ -56,16 +58,17 @@ extension StyleManager{
     /**
      * Removes styles
      */
-    static func removeStyle(styles:Array<IStyle>){
+    static func removeStyle(_ styles:Array<IStyle>){
         for style in styles{
-            removeStyle(style.name)
+            _ = removeStyle(style.name)
         }
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)
      * // :TODO: add support for CSS import statement in the @param string
      */
-    static func addStyle(var cssString:String){
+    static func addStyle(_ cssString:String){
+        var cssString = cssString//swift 3 update
         cssString = CSSLinkResolver.resolveLinks(cssString)
         cssString = RegExpModifier.removeComments(cssString)
         addStyle(CSSParser.styleCollection(cssString).styles)
@@ -78,7 +81,7 @@ extension StyleManager{
      * TODO: Implement support for subFile watching aka watch children files that are imported into a parent css file
      * TODO: Implement running the css resolve process on a background thread
      */
-    static func addStylesByURL(url:String,_ liveEdit:Bool = false) {
+    static func addStylesByURL(_ url:String,_ liveEdit:Bool = false) {
         if(liveEdit){
             let cssString:String = CSSFileParser.cssString(url)
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
@@ -103,9 +106,7 @@ extension StyleManager{
             /*if true then: read the styles from the xml*/
             if(hasURLBeenCached && isUpToDate){
                 StyleCache.readStylesFromDisk(xml)/*Super fast loading of cached styles*/
-            }
-            /*else read and parse styles from the .css files and write a new cache to styles.xml*/
-            else{
+            }else{/*else read and parse styles from the .css files and write a new cache to styles.xml*/
                 let startTime = NSDate()
                 let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/
                 addStyle(cssString)
@@ -114,7 +115,7 @@ extension StyleManager{
             }
         }
     }
-    static func getStyleAt(index:Int)->IStyle{
+    static func getStyleAt(_ index:Int)->IStyle{
         return styles[index]
     }
 }

@@ -1,10 +1,11 @@
 import Cocoa
+@testable import Utils
 /**
  * NOTE: the titleView has a working model for centering things in css
  */
 class TitleView:CustomView{
     var textArea:TextArea?
-    var leftMouseDraggedEventListener:AnyObject?
+    var leftMouseDraggedEventListener:Any?
     var mouseDownPos:CGPoint?/*Store the mouseDown offset, when moving the window*/
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = "") {
         super.init(width, height, parent, id)
@@ -17,15 +18,15 @@ class TitleView:CustomView{
         textArea = addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))
         textArea!.text?.isInteractive = false/*Disable interactivity on the text*/
     }
-    override func mouseDown(event: MouseEvent) {
+    override func mouseDown(_ event:MouseEvent) {
         //Swift.print("TitleView.mouseDown event.immediate: \(event.immediate)" + " event.origin: \(event.origin)")
         if(event.immediate === textArea){
             mouseDownPos = self.winMousePos
-            if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMove ) }//we add a global mouse move event listener
+            if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:self.onMove ) }//we add a global mouse move event listener
             else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
         }
     }
-    override func mouseUp(event: MouseEvent) {
+    override func mouseUp(_ event:MouseEvent) {
         //Swift.print("mouseUp")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
@@ -38,5 +39,5 @@ class TitleView:CustomView{
         WinModifier.position(self.window!, winPos)
         return event
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

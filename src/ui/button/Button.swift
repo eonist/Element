@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * TODO: It could be possible to merge the two skin lines in every event handler somehow
  * TODO: Impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesnt hold, if you want a simpler button you can just make an alternate Button class
@@ -13,7 +14,7 @@ class Button:Element {
     /**
      * Handles actions and drawing states for the mouseEntered event
      */
-    override func mouseOver(event:MouseEvent) {
+    override func mouseOver(_ event:MouseEvent) {
         //Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
@@ -25,7 +26,7 @@ class Button:Element {
     /**
      * Handles actions and drawing states for the mouseOut action
      */
-    override func mouseOut(event:MouseEvent) {
+    override func mouseOut(_ event:MouseEvent) {
         //Swift.print("Button.mouseOut() ")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
@@ -37,7 +38,7 @@ class Button:Element {
     /**
      * Handles actions and drawing states for the down event
      */
-    override func mouseDown(event:MouseEvent) {
+    override func mouseDown(_ event:MouseEvent) {
         //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over
         setSkinState(getSkinState())
@@ -48,7 +49,7 @@ class Button:Element {
      * Handles actions and drawing states for the release event.
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
-    override func mouseUpInside(event:MouseEvent){
+    override func mouseUpInside(_ event:MouseEvent){
         //Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over// :TODO: why in two lines like this?
         setSkinState(getSkinState())
@@ -58,7 +59,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseUpOutside event.
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
-    override func mouseUpOutside(event:MouseEvent){
+    override func mouseUpOutside(_ event:MouseEvent){
         //Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState())
@@ -69,13 +70,13 @@ class Button:Element {
      * NOTE: This method is important to the behaviour of the LeverStepper for instance
      * LEGACY NOTE: This method was turned off temporarily, because it could fire after, this could be resolved by moving the mouseUp call in INteractiveView2 to before the mouseUpInside and mouseUpOutside calls.
      */
-    override func mouseUp(event: MouseEvent) {
+    override func mouseUp(_ event:MouseEvent) {
         //Swift.print("Button.mouseUp: ")
         super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
-    override func hitTest(aPoint: NSPoint) -> NSView? {//TODO: this method can be removed
+    override func hitTest(_ aPoint:NSPoint) -> NSView? {//TODO: this method can be removed
         //Swift.print("\(self.dynamicType)"+".hitTest() aPoint: " + "\(aPoint)")
         return super.hitTest(aPoint)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

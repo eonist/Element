@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class StepperEvent:Event{
     static var change:String = "stepperEventChange"

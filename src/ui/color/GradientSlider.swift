@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class GradientSlider:HNodeSlider{
     var gradient:IGradient?
@@ -6,7 +7,7 @@ class GradientSlider:HNodeSlider{
         super.init(width, height, nodeWidth, startProgress, endProgress, parent, id)
         setGradient(gradient!)
     }
-    func setGradient(gradient:IGradient){
+    func setGradient(_ gradient:IGradient){
         //print("setGradient"+gradient.colors)
         self.gradient = gradient
         //print("_gradient: " + _gradient)
@@ -28,7 +29,7 @@ class GradientSlider:HNodeSlider{
         //Swift.print("ratio: " + "\(ratio)")
         gradient!.locations = [ratio,gradient!.locations[1]]
         setGradient(gradient!)
-        return super.onStartNodeMove(event)
+        return super.onStartNodeMove(event:event)
     }
     override func onEndNodeMove(event:NSEvent)-> NSEvent? {
         //Swift.print("GradientSlider.onEndNodeMove() ")
@@ -36,7 +37,7 @@ class GradientSlider:HNodeSlider{
         //Swift.print("ratio: " + "\(ratio)")
         gradient!.locations = [gradient!.locations[0],ratio]
         setGradient(gradient!)
-        return super.onEndNodeMove(event)
+        return super.onEndNodeMove(event:event)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

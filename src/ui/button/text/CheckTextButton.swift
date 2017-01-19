@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class CheckTextButton:TextButton,ICheckable {
     var isChecked:Bool
@@ -6,8 +7,7 @@ class CheckTextButton:TextButton,ICheckable {
         self.isChecked = isChecked;
         super.init(width, height, text, parent, id)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    override func mouseUpInside(event: MouseEvent) {
+    override func mouseUpInside(_ event:MouseEvent) {
         //Swift.print("CheckTextButton.mouseUpInside()")
         isChecked = !isChecked
         super.mouseUpInside(event)
@@ -17,7 +17,7 @@ class CheckTextButton:TextButton,ICheckable {
      * Sets the isChecked variable (Toggles between two states)
      * NOTE: do not add a dispatch event here, that is the responsibilyy of the caller
      */
-    func setChecked(isChecked:Bool) {
+    func setChecked(_ isChecked:Bool) {
         self.isChecked = isChecked
         setSkinState(getSkinState())
     }
@@ -25,4 +25,5 @@ class CheckTextButton:TextButton,ICheckable {
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

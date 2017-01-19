@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
@@ -21,7 +22,7 @@ class Thumb:Button{
     /**
      * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
-    func applyOvershot(progress:CGFloat){
+    func applyOvershot(_ progress:CGFloat){
         //Swift.print("applyOvershot.start")
         if(progress < 0){/*top overshot*/
             self.skin!.setSize(width, height-(height*abs(progress)))
@@ -33,12 +34,12 @@ class Thumb:Button{
         //Swift.print("applyOvershot.end")
     }
     //TODO: these overrides are not needed, just add a disbaled state to the css that has alpha set to 0
-    override func mouseOver(event:MouseEvent) {if(!isDisabled){super.mouseOver(event)}}
-    override func mouseOut(event:MouseEvent) {if(!isDisabled){super.mouseOut(event)}}
-    override func mouseDown(event:MouseEvent) {if(!isDisabled){super.mouseDown(event)}}
-    override func mouseUp(event:MouseEvent) {if(!isDisabled){super.mouseUp(event)}}
-    override func mouseUpOutside(event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
-    override func mouseUpInside(event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
+    override func mouseOver(_ event:MouseEvent) {if(!isDisabled){super.mouseOver(event)}}
+    override func mouseOut(_ event:MouseEvent) {if(!isDisabled){super.mouseOut(event)}}
+    override func mouseDown(_ event:MouseEvent) {if(!isDisabled){super.mouseDown(event)}}
+    override func mouseUp(_ event:MouseEvent) {if(!isDisabled){super.mouseUp(event)}}
+    override func mouseUpOutside(_ event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
+    override func mouseUpInside(_ event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
     override func getSkinState() -> String {//may not work
         var state:String = ""
         if(isDisabled) {state += SkinStates.disabled + " "}
@@ -47,15 +48,15 @@ class Thumb:Button{
     /**
      * Sets the _isDisabled variable (Toggles between two states)
      */
-    func setDisabled(isDisabled:Bool) {
+    func setDisabled(_ isDisabled:Bool) {
         self.isDisabled = isDisabled
         super.setSkinState(getSkinState())
         //TODO: Set button mode to not hand here
     }
     override func getClassType() -> String {
-        return String(Button)
+        return "\(Button.self)"
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension Thumb{
     var alpha:CGFloat{/*Convenience*/
@@ -68,7 +69,7 @@ extension Thumb{
     /**
      * Animator method that interpolates the alpha between 0 and 1
      */
-    func interpolateAlpha(val:CGFloat){
+    func interpolateAlpha(_ val:CGFloat){
         //Swift.print("interpolateAlpha()")
         alpha = val
         self.skin?.decoratables[0].draw()

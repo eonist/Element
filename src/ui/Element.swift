@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * This class serves as a base class for the Element GUI framework
  * NOTE: It seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
@@ -28,7 +29,7 @@ class Element:InteractiveView2,IElement {
      * NOTE: This method was embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
      */
     func resolveSkin() {
-        skin = addSubView(SkinResolver.skin(self) as! Skin)
+        self.skin = addSubView((SkinResolver.skin(self) as! Skin) as NSView) as? ISkin//swift 3 update, TODO: please make it simpler!
     }
     /**
      * NOTE: This is the function that we need to toggle between css style sheets and have them applied to all Element instances
@@ -42,13 +43,13 @@ class Element:InteractiveView2,IElement {
      * NOTE: This can't be moved to an util class, as it may need to be over-ridden
      * NOTE: You cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
      */
-    func setSkinState(state:String) {
+    func setSkinState(_ state:String) {
         skin!.setSkinState(state)
     }
     /**
      * Sets the width and height of the skin and this instance.
      */
-    func setSize(width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
+    func setSize(_ width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
         self.width = width//<--I'm not sure these are correct? i get that we have to store size somewhere but frame is such a central variable fro appkit
         self.height = height
         self.skin!.setSize(width, height)
@@ -72,9 +73,9 @@ class Element:InteractiveView2,IElement {
      * NOTE: to return a specific class type: String(TextEditor)
      */
     func getClassType()->String{
-        return String(self.dynamicType)
+        return "\(type(of: self))"
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
 extension Element{
     /**

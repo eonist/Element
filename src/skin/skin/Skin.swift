@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /*
  * NOTE:  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
  * TODO: possibly add setPosition();
@@ -24,12 +25,6 @@ class Skin:InteractiveView2,ISkin{
         super.init(frame:NSRect())/*<-this doesnt need a size*/
     }
     /**
-     * Required by super class
-     */
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    /**
      * Resets skinState
      */
     func draw(){
@@ -42,7 +37,7 @@ class Skin:InteractiveView2,ISkin{
      * Sets the style instance to apply to the skin also forces a redraw.
      * NOTE: this is a great way to update an skin without querying StyleManager
      */
-    func setStyle(style:IStyle){
+    func setStyle(_ style:IStyle){
         hasStyleChanged = true
         self.style = style
         draw()
@@ -53,7 +48,7 @@ class Skin:InteractiveView2,ISkin{
      * TODO: rename to set_skinState() and blame swift for the underscore
      * TODO: Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
      */
-    func setSkinState(state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
+    func setSkinState(_ state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
         hasStateChanged = true
         self.state = state
         style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
@@ -63,7 +58,7 @@ class Skin:InteractiveView2,ISkin{
      * Sets the width and height of skin also forces a redraw.
      * NOTE: similar to setStyle, this does not querry the styleManger when called
      */
-    func setSize(width:CGFloat, _ height:CGFloat) {
+    func setSize(_ width:CGFloat, _ height:CGFloat) {
         if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
             hasSizeChanged = true
             self.width = width
@@ -81,4 +76,5 @@ class Skin:InteractiveView2,ISkin{
     func getHeight()->CGFloat{
         return StylePropertyParser.height(self) ?? self.height!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin)
     }
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }

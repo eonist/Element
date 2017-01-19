@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * NOTE: this is a basic Table, its not fully featured yet
  * TODO: Obviously more stuff need to be added To TableModifier and TableParser  this is just the basic design, we need to connect the database to update the table on changes to the database etc
@@ -17,10 +18,10 @@ class Table:Element{
         super.resolveSkin()
         columnContainer = addSubView(Container(width,height,self,"column"))
         for i in 0..<node.xml.children!.count{//<--swift 3 for loop
-            let child:NSXMLNode = node.xml.children![i]
-            let itemData = XMLParser.attribs(child as! NSXMLElement)
+            let child:XMLNode = node.xml.children![i]
+            let itemData = XMLParser.attribs(child as! XMLElement)
             if(itemData["hasChildren"] == "true" || child.children!.count > 0) {
-                columns.append(columnContainer!.addSubView(Column(100,height,/*<--these should be NaN*/itemData["title"]!,DataProvider(child as? NSXMLElement),columnContainer,String(i))))
+                columns.append(columnContainer!.addSubView(Column(100,height,/*<--these should be NaN*/itemData["title"]!,DataProvider(child as? XMLElement),columnContainer,String(i))))
             }/*we add the columns index to the id so we can set individual css properties to each column*/
         }
     }
@@ -28,7 +29,7 @@ class Table:Element{
      * When a header of a column is clicked then sort that column and sibling columns to the same sort order
      * TODO: Research how UNIQUE sort works see legacy code help docs or google, it might be faster!?!?
      */
-    private func onColumnHeaderCheck(event:CheckEvent) {
+    private func onColumnHeaderCheck(_ event:CheckEvent) {
         Swift.print("Table.onColumnHeaderCheck()" + "\(event.origin)")
         if(event.origin is Column) {//ClassAsserter.ofType(event.origin, Column.self)
             let indices:Array<Int> = ColumnParser.sortOrder(event.origin as! Column, event.isChecked)// :TODO: maybe we can add the NUMERIC sort so that if a text starts with a number etc
@@ -41,13 +42,13 @@ class Table:Element{
     /**
      * Selects the other rows to the current selected row index of the current pressed column item
      */
-    private func onColumnSelect(event : ColumnEvent) {
+    private func onColumnSelect(_ event : ColumnEvent) {
         Swift.print("Tavle.onColumnSelect() event.origin: " + "\(event)")
         TableModifier.selectRow(self,event.rowIndex!,event.origin as? Column)
     }
-    override func onEvent(event: Event) {
+    override func onEvent(_ event: Event) {
         if(event.type == CheckEvent.check) {onColumnHeaderCheck(event as! CheckEvent)}
         if(event.type == ColumnEvent.select) {onColumnSelect(event as! ColumnEvent)}
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

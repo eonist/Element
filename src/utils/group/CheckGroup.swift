@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /*
  * NOTE: remeber to add the group to the view or else the eventBubbling may make errors in other components
  * NOTE: this class would be more logical if it extended EventSender but it extends View so that the event bubbling on the ICheckable objects works
@@ -14,17 +15,17 @@ class CheckGroup:EventSender {
         addCheckables(checkables)
         self.checked = checked!
     }
-    func addCheckables(checkables:Array<ICheckable>) {
+    func addCheckables(_ checkables:Array<ICheckable>) {
         for checkable:ICheckable in checkables{ addCheckable(checkable)}
     }
     /**
      * NOTE: Use a weak ref so that we don't have to remove the event if the selectable is removed from the SelectGroup or view
      */
-    func addCheckable(checkable:ICheckable) {
+    func addCheckable(_ checkable:ICheckable) {
         if(checkable is IEventSender){(checkable as! IEventSender).event = onEvent}
         checkables.append(checkable);
     }
-    override func onEvent(event:Event) {// :TODO: make protected see SelectGroup
+    override func onEvent(_ event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == CheckEvent.check){
             Swift.print("CheckGroup.onEvent() immediate: " + "\(event.immediate)" + " type: " + "\(event.type)")
             self.event!(CheckGroupEvent(CheckGroupEvent.check,checked,self))

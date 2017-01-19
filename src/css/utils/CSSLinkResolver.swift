@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * EXAMPLE: Swift.print(CSSLinkResolver.resolveLinks("Button{fill:<ButtonBase>;} ButtonBase{fill:green;line:blue;} CheckButton{line:<ButtonBase>;}"))//Button{fill:green;} ButtonBase{fill:green;line:blue;} CheckButton{line:blue;}
  * TODO: rename this class to CSSPointerResolver? Since it can be confused with resolving css View container urls?
@@ -19,16 +20,17 @@ class CSSLinkResolver {
      * TODO: the replaceRange method may slow things down research a better replace method
      * EXAMPLE: resolveLinks("CustomButton{fill:yellow;} CustomButton:down{fill:green;}")//This is the log if you log the name and values: Name: fill, Value: yellow, Name: fill,Value: green
      */
-    static func resolveLinks(var string:String)->String{
+    static func resolveLinks(_ string:String)->String{
+        var string = string
         let matches = RegExp.matches(string, linkPropertyPattern)
-        matches.count
-        for var i = matches.count-1; i > -1; --i{
+        //matches.count
+        for i in (0..<matches.count).reversed(){//swift 3 update -> was: //for var i = matches.count-1; i > -1; --i{
             let match:NSTextCheckingResult = matches[i]
             let name = match.value(string, CSSElementType.name.rawValue)
             let value = match.value(string, CSSElementType.value.rawValue)
             let replacementString:String = Utils.replaceLinks(value,name,string)
-            let range:NSRange = match.rangeAtIndex(2)//the range of the value
-            string = (string as NSString).stringByReplacingCharactersInRange(range, withString: replacementString)
+            let range:NSRange = match.rangeAt(2)//the range of the value
+            string = (string as NSString).replacingCharacters(in: range, with: replacementString)
         }
         return string
     }
@@ -42,7 +44,8 @@ private class Utils {
      * NOTE: you could also maybe loop backwards an replace that way, then you wouldnt have to store a new index
      * TODO: write an example
      */
-    static func replaceLinks(var string:String,_ linkPropName:String,_ cssString:String)->String{
+    static func replaceLinks(_ string:String,_ linkPropName:String,_ cssString:String)->String{
+        var string:String = string
         //Swift.print("replaceLinks.string: " + string);
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         //Swift.print("replaceLinks()" + String(matches.count))
@@ -50,14 +53,14 @@ private class Utils {
         var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             if(match.numberOfRanges > 0){/*match = the link name>*/
-                var range:NSRange = match.rangeAtIndex(0)//StringRangeParser.stringRange(string, start, end)
+                var range:NSRange = match.rangeAt(0)//StringRangeParser.stringRange(string, start, end)
                 range.location = range.location + difference
-                let linkNameSansBrackets:String = (string as NSString).substringWithRange(range)/*the link name>*/
+                let linkNameSansBrackets:String = (string as NSString).substring(with: range)/*the link name>*/
                 let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
                 range.location = range.location-1//add the < char
                 range.length = range.length+2//add the > char
                 difference += (linkedStyleProperty.count - range.length)
-                string = (string as NSString).stringByReplacingCharactersInRange(range, withString: linkedStyleProperty)
+                string = (string as NSString).replacingCharacters(in: range, with: linkedStyleProperty)
             }
         }
         return string
@@ -70,7 +73,7 @@ private class Utils {
      * TODO: write an example
      * TODO: you can write a more precise expression to match the content of a style block
      */
-    static func propertyValue(string:String,_ linkName:String,_ propertyName:String)->String{
+    static func propertyValue(_ string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
         var match:Array = RegExp.match(string, pattern)
         if(match.count > 0){/*this try catch method is here so its easier to debug which linkName threw */
@@ -87,7 +90,7 @@ private class Utils {
      * write an example
      * TODO: you can write a more precise expression to match the content of a style block
      */
-    static func value(string:String,_ propName:String)->String{
+    static func value(_ string:String,_ propName:String)->String{
         let pattern:String = "(?<=" + propName + "\\:).+?(?=\\;)"
         var match:Array = RegExp.match(string, pattern)
         if(match.count > 0){/*This try catch method is here so its easier to debug which propName threw an error*/

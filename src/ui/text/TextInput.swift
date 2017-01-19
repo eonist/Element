@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class TextInput:Element{
     var text:Text?
@@ -16,15 +17,15 @@ class TextInput:Element{
         text = addSubView(Text(width,height,textString,self))
         inputTextArea = addSubView(TextArea(width,height,inputString,self))
     }
-    override func setSize(width:CGFloat, _ height:CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
         inputTextArea!.setSize(width, height)//shouldn't this be setSkin rather?
         text!.setSize(width, height)//shouldn't this be setSkin rather?
     }
-    override func setSkinState(state:String) {
+    override func setSkinState(_ state:String) {
         super.setSkinState(state)
         inputTextArea!.setSkinState(state)
         text!.setSkinState(state)
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

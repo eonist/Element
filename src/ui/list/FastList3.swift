@@ -45,7 +45,7 @@ class FastList3:Element,IList{
         prevVisibleRange = 0..<numOfItems//<--this should be the same range as we set bellow no?
         spawn(0..<numOfItems)
     }
-    func setProgress(progress:CGFloat){
+    func setProgress(_ progress:CGFloat){
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!+1)
         if(curVisibleRange != prevVisibleRange){/*Optimization: only set if it's not the same as prev range*/
@@ -56,7 +56,7 @@ class FastList3:Element,IList{
     /**
      * (spoof == apply/reuse)
      */
-    func spoof(cur:Range<Int>){
+    func spoof(_ cur:Range<Int>){
         let prev = prevVisibleRange!
         let diff = prev.start - cur.start
         if(abs(diff) >= maxVisibleItems!+1){//spoof every item
@@ -84,7 +84,7 @@ class FastList3:Element,IList{
     /**
      * (spoof == apply/reuse)
      */
-    func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
+    func spoof(_ listItem:FastListItem){/*override this to use custom ItemList items*/
         Swift.print("spoof: " + "\(listItem.idx)")
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
@@ -96,32 +96,32 @@ class FastList3:Element,IList{
     /**
      * (spawn == create something)
      */
-    private func spawn(range:Range<Int>){
+    private func spawn(_ range:CountableRange<Int>){
         for i in range{/*we need an extra item to cover the entire area*/
             let item:Element = spawn(i)
             visibleItems.append((item,i))
-            lableContainer!.addSubView(item)
+            _ = lableContainer!.addSubView(item)
             item.y = i * itemHeight
         }
     }
     /**
      * (spawn == create something)
      */
-    func spawn(idx:Int)->Element{/*override this to use custom ItemList items*/
+    func spawn(_ idx:Int)->Element{/*override this to use custom ItemList items*/
         Swift.print("spawn: " + "\(idx)")
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
         return item
     }
-    override func getClassType() -> String {return String(List)}
-    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+    override func getClassType() -> String {return "\(List.self)"}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
     /**
      *
      */
-    static func curVisibleItems(list:IList,_ maxVisibleItems:Int)->Range<Int>{
+    static func curVisibleItems(_ list:IList,_ maxVisibleItems:Int)->Range<Int>{
         let visibleItemsTop:CGFloat = abs(list.lableContainer!.y > 0 ? 0 : list.lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
         //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
@@ -144,7 +144,7 @@ private class Utils{
      * When you add/remove items from a list, the list changes size. This method returns a value that lets you keep the same position of the list after a add/remove items change
      * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
      */
-    static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
+    static func progress(_ maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
         if(oldLableContainerY >= 0){//this should be more advance, like assert wether an item was inserted in the visiblepart of the view, and position the list accordingly, to be continued
             let progress = SliderParser.progress(oldLableContainerY, maskHeight, oldItemsHeight)
             return (oldLableContainerY,progress)}/*pins the list to the top if its already at the top*/

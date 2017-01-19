@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class ColumnEvent:Event{
     static var select:String = "columnEventSelect"

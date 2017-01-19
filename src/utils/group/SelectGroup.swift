@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * NOTE: this class also works great with RadioBullets
  * NOTE: Remember to add the selectGroup instance to the view so that the event works correctly // :TODO: this is a bug try to fix it
@@ -17,17 +18,17 @@ class SelectGroup:EventSender{
         self.selected = selected
         addSelectables(selectables)
     }
-    func addSelectables(selectables:Array<ISelectable>){
+    func addSelectables(_ selectables:Array<ISelectable>){
         selectables.forEach{addSelectable($0)}
     }
     /**
      * NOTE: use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
-    func addSelectable(selectable:ISelectable) {
+    func addSelectable(_ selectable:ISelectable) {
         if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
         selectables.append(selectable)
     }
-    override func onEvent(event:Event){
+    override func onEvent(_ event:Event){
         if(event.type == SelectEvent.select){
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
             selected = event.immediate as? ISelectable

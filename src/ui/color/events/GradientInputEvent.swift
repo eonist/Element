@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class GradientInputEvent:Event{
     enum GradientInputEventType: String {case Change = "gradientInputChange"}

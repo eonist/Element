@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * TODO: if you strip the inital css data for spaces then you won't need to removeWrappingWhiteSpace all the time
  */
@@ -14,7 +15,7 @@ class CSSParser{
      * PARAM: cssString: a string comprised by css data h1{color:blue;} etc
      * NOTE: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
-    static func styleCollection(cssString:String)->IStyleCollection{
+    static func styleCollection(_ cssString:String)->IStyleCollection{
         //Swift.print("CSSParser.styleCollection()")
         let styleCollection:IStyleCollection = StyleCollection();
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
@@ -37,7 +38,8 @@ class CSSParser{
      * PARAM: name: the name of the style
      * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
-    static func style(var name:String,_ value:String)->IStyle!{
+    static func style(_ name:String,_ value:String)->IStyle!{
+        var name:String = name
         //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:Array<ISelector> = SelectorParser.selectors(name)
@@ -56,7 +58,7 @@ class CSSParser{
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
      * NOTE: now supports StyleProperty2 that can have many property values
      */
-    static func styleProperties(propertyName:String, _ propertyValue:String)->Array<IStyleProperty>{
+    static func styleProperties(_ propertyName:String, _ propertyValue:String)->Array<IStyleProperty>{
         var styleProperties:Array<IStyleProperty> = []
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         for var name in names {
@@ -91,7 +93,7 @@ private class Utils{
      * TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
      * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
-    static func siblingStyles(styleName:String,_ value:String)->Array<IStyle> {
+    static func siblingStyles(_ styleName:String,_ value:String)->Array<IStyle> {
         //Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:Array<IStyle> = []

@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * TODO: Maybe we should Extend Spinner and create an Interface for Spinnner named ISpinner that we can work with in a SpinnerModifier class which could handle setting text and input text and setting value And another class Named SpinnerParser which could handle retriving inputText, text and value etc, this would unclutter this class and it would be easier to modify and extend in the future that is the agenda!
  * TODO: This should maybe be a decorator style pattern that wraps Stepper, then also make RepeatStepper ?
@@ -17,7 +18,7 @@ class LeverSpinner:Element{
     var leverRange:CGFloat
     var textInput:TextInput?
     var stepper:LeverStepper?
-    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.val = value
         self.text = text
         self.minVal = min
@@ -33,7 +34,7 @@ class LeverSpinner:Element{
         textInput = addSubView(TextInput(100,20,text,String(val),self))
         stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self))
     }
-    func onStepperChange(event:StepperEvent) {
+    func onStepperChange(_ event:StepperEvent) {
         val = event.value
         textInput!.inputTextArea?.setTextValue(String(val))
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
@@ -41,26 +42,27 @@ class LeverSpinner:Element{
     /**
      * //TODO: Also resolve decimal here?
      */
-    func onInputTextChange(event:Event) {
+    func onInputTextChange(_ event:Event) {
         let valStr:String = textInput!.inputTextArea!.text!.getText()
         val = NumberParser.minMax(valStr.cgFloat, minVal, maxVal)
         stepper!.value = val
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
-    override func onEvent(event: Event) {
+    override func onEvent(_ event: Event) {
         if(event.assert(StepperEvent.change, stepper)){
             onStepperChange(event as! StepperEvent)
         }else if(event.assert(Event.update, textInput!.inputTextArea!.text!.textField)){//You could use immediate here to shorten the if statement
             onInputTextChange(event)
         }
     }
-    func setValue(var value:CGFloat) {
+    func setValue(_ value:CGFloat) {
+        var value:CGFloat = value//swift 3 update
         value = NumberParser.minMax(value, minVal, maxVal)
-        self.val = NumberModifier.toFixed(value,decimals)
+        self.val = CGFloatModifier.toFixed(value,decimals)
         textInput!.inputTextArea?.setTextValue(String(self.val))
         stepper!.value = self.val
     }
-    override func setSkinState(skinState:String) {
+    override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)
         textInput!.setSkinState(skinState)
         stepper!.setSkinState(skinState)
@@ -70,7 +72,7 @@ class LeverSpinner:Element{
      * NOTE: This function is used to find the correct class type when synthezing the element stack
      */
     override func getClassType() -> String {
-        return String(Spinner)
+        return "\(Spinner.self)"
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

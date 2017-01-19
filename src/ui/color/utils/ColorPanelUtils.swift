@@ -1,10 +1,11 @@
 import Cocoa
+@testable import Utils
 
 class ColorPanelUtils {
     /**
      * Applies the color value to the current steppers
      */
-    static func applyColor(colorPanel:IColorPanel,_ color:NSColor ) {
+    static func applyColor(_ colorPanel:IColorPanel,_ color:NSColor ) {
         let colorType:String = colorPanel.getColorType()
         switch(colorType){
             case ColorPanel.rgb:
@@ -34,7 +35,7 @@ class ColorPanelUtils {
     /**
      * 
      */
-    static func toggleColorType(colorPanel:IColorPanel,_ colorType:String){
+    static func toggleColorType(_ colorPanel:IColorPanel,_ colorType:String){
         let steppers:Array<LeverSpinner> = [colorPanel.spinner1!,colorPanel.spinner2!,colorPanel.spinner3!]
         switch(colorType){
             case ColorPanel.rgb:

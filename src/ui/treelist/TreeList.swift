@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * NOTE: the dispatchments of TreeListEvent.change is used to tell ScrollTreeList to update its scrollbar
  * NOTE: Use Database to modify the treeList
@@ -32,39 +33,39 @@ class TreeList:Element,ITreeList {
     /**
      *
      */
-    func setXML(xml:NSXMLElement){
+    func setXML(_ xml:XMLElement){
         //Swift.print("setXML")
         TreeListModifier.removeAll(self)/*Clear the tree list first*/
         node.xml = xml
-        TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
+        _ = TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
-    func addItem(item:NSView){// :TODO: rename to add
+    func addItem(_ item:NSView){// :TODO: rename to add
         //Swift.print("addItem() item: " + "\(item)")
-        itemContainer!.addSubView(item)
+        _ = itemContainer!.addSubView(item)
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * NOTE: Use TreeList.node.addAt method if you want to add things to the TreeList, this method is then eventually used internally
      */
-    func addItemAt(item:NSView,_ index:Int){// :TODO: rename to addAt
+    func addItemAt(_ item:NSView,_ index:Int){// :TODO: rename to addAt
         itemContainer!.addSubviewAt(item, index)/*used to be DisplayObjectModifier.addAt(_itemContainer, item, index);*/
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
      */
-    func removeAt(index:Int){
+    func removeAt(_ index:Int){
         itemContainer!.removeSubviewAt(index)
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
      * NOTE: This method gets all SelectEvent's from all decending ICheckable instances
      */
-    private func onItemSelect(event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
+    private func onItemSelect(_ event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
         Swift.print("onItemSelect()")
         let descendants:Array<AnyObject> = TreeListParser.descendants(self)
         let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
@@ -73,25 +74,25 @@ class TreeList:Element,ITreeList {
         SelectModifier.unSelectAllExcept(selected, selectables)
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)//<--new
         //Swift.print("event.isSelected: " + "\(event.isSelected)")
-        XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))//<--new
+        _ = XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))//<--new
         super.onEvent(event)
     }
     /**
      * NOTE: This method gets all CheckEvent's from all decending ICheckable instances
      */
-    private func onItemCheck(event:CheckEvent) {
+    private func onItemCheck(_ event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
         //Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
-        XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
+        _ = XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
-    private func onDatabaseRemoveAt(event:NodeEvent)  {
+    private func onDatabaseRemoveAt(_ event:NodeEvent)  {
         TreeListModifier.removeAt(self, event.index)
         ElementModifier.floatChildren(itemContainer!)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
-    private func onDatabaseRemoveAll(event:NodeEvent){
+    private func onDatabaseRemoveAll(_ event:NodeEvent){
         TreeListModifier.removeAll(self)
         super.onEvent(TreeListEvent(TreeListEvent.change,self))
     }
@@ -99,7 +100,7 @@ class TreeList:Element,ITreeList {
      * NOTE: the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
      * NOTE: the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
      */
-    private func onDatabaseAddAt(event : NodeEvent) {
+    private func onDatabaseAddAt(_ event : NodeEvent) {
         //Swift.print("onDatabaseAddAt() "+ this);
         let parentIndex:Array = event.index.slice2(0,event.index.count-1)
         let parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as! ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
@@ -112,17 +113,17 @@ class TreeList:Element,ITreeList {
     /**
      * NOTE: if an attribute changes in any child in node.xml, this handles the cooresponding action
      */
-    private func onDatabaseSetAttributeAt(event : NodeEvent) {
+    private func onDatabaseSetAttributeAt(_ event : NodeEvent) {
         TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
     }
-    private func onBackgroundMouseClick(event:MouseEvent){
+    private func onBackgroundMouseClick(_ event:MouseEvent){
         //Swift.print("onBackgroundMouseClick")
         TreeListModifier.unSelectAll(self)
     }
     /**
      * EventListeners
      */
-    override func onEvent(event: Event) {
+    override func onEvent(_ event: Event) {
         if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
         else if(event.type == SelectEvent.select /*&& event.immediate === itemContainer*/){onItemSelect(event as! SelectEvent)}
         else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}
@@ -139,14 +140,14 @@ class TreeList:Element,ITreeList {
      * NOTE: This function is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
-        return String(TreeList)
+        return "\(TreeList.self)"
     }
     /**
      *
      */
-    override func setSize(width:CGFloat, _ height:CGFloat){
+    override func setSize(_ width:CGFloat, _ height:CGFloat){
         super.setSize(width,height);
         ElementModifier.size(itemContainer!, CGPoint(width,itemHeight));/*Resizes all items in the itemContainer*/
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

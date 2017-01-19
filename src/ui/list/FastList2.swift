@@ -5,7 +5,7 @@ class FastList2:Element,IList{
     var dataProvider:DataProvider/*Data storage*/
     var lableContainer:Container?/*Holds the list items*/
     var maxVisibleItems:Int?/*This will be calculated on init and on setSize calls*/
-    var prevVisibleRange:Range<Int>?
+    var prevVisibleRange:CountableRange<Int>?
     var visibleItems:[FastListItem] = []
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
@@ -30,11 +30,11 @@ class FastList2:Element,IList{
     /**
      *
      */
-    func setProgress(progress:CGFloat){
+    func setProgress(_ progress:CGFloat){
         Swift.print("FastList2.setProgress() ")
         //Swift.print("lableContainer!.y: " + "\(lableContainer!.y)")
         ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+        let curVisibleRange:CountableRange<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
         Swift.print("curVisibleRange: " + "\(curVisibleRange)")
         if(curVisibleRange != prevVisibleRange){/*Optimization: only set if it's not the same as prev range*/
             spoof(curVisibleRange)/*spoof items in the new range*/
@@ -44,7 +44,7 @@ class FastList2:Element,IList{
     /**
      * (spoof == apply/reuse)
      */
-    func spoof(cur:Range<Int>){
+    func spoof(_ cur:CountableRange<Int>){
         Swift.print("cur: " + "\(cur)")
         let prev = prevVisibleRange!
         Swift.print("prev: " + "\(prev)")
@@ -83,7 +83,7 @@ class FastList2:Element,IList{
     /**
      * (spoof == apply/reuse)
      */
-    func spoof(listItem:FastListItem){/*override this to use custom ItemList items*/
+    func spoof(_ listItem:FastListItem){/*override this to use custom ItemList items*/
         Swift.print("spoof: " + "\(listItem.idx)")
         //if(listItem.idx >= 0 && listItem.idx < dataProvider.count){
             //Swift.print("spoof.item(\(listItem.idx))")
@@ -100,19 +100,19 @@ class FastList2:Element,IList{
     /**
      * (spawn == create something)
      */
-    private func spawn(range:Range<Int>){
+    private func spawn(_ range:CountableRange<Int>){
         for i in range{/*we need an extra item to cover the entire area*/
             //visibleItemIndecies.append(i)
             let item:Element = spawn(i)
             visibleItems.append((item,i))
-            lableContainer!.addSubView(item)
+            _ = lableContainer!.addSubView(item)
             item.y = i * itemHeight
         }
     }
     /**
      * (spawn == create something)
      */
-    func spawn(idx:Int)->Element{/*override this to use custom ItemList items*/
+    func spawn(_ idx:Int)->Element{/*override this to use custom ItemList items*/
         Swift.print("spawn: " + "\(idx)")
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
@@ -122,10 +122,11 @@ class FastList2:Element,IList{
     /**
      *
      */
-    func onDataProviderEvent(event:DataProviderEvent){
+    func onDataProviderEvent(_ event:DataProviderEvent){
         //Swift.print("onDataProviderEvent")
         switch(event.type){
-            case DataProviderEvent.add:event.count
+            case DataProviderEvent.add:
+                //event.count
                 Swift.print("onDataProviderEvent.add")
                 //Swift.print("dataProvider.count: " + "\(dataProvider.count)")
                 let oldDPCount:Int = dataProvider.count - event.count
@@ -152,7 +153,7 @@ class FastList2:Element,IList{
                     visibleItems.removeFirst()
                 }
                 lableContainer!.y = newProgress.lableContainerY
-                let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                let curVisibleRange = Utils.curVisibleItems(self, maxVisibleItems!)
                 Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 Swift.print("dataProvider.count: " + "\(dataProvider.count)")
                 prevVisibleRange = Int.max..<Int.max//reset the prevRange//curVisibleRange
@@ -172,7 +173,7 @@ class FastList2:Element,IList{
                     visibleItems.removeFirst()
                 }
                 lableContainer!.y = newProgress.lableContainerY
-                let curVisibleRange:Range<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
+                let curVisibleRange:CountableRange<Int> = Utils.curVisibleItems(self, maxVisibleItems!)
                 Swift.print("curVisibleRange: " + "\(curVisibleRange)")
                 Swift.print("dataProvider.count: " + "\(dataProvider.count)")
                 //prevVisibleRange = curVisibleRange//Int.max..<Int.max//reset the prevRange
@@ -181,18 +182,18 @@ class FastList2:Element,IList{
             default:fatalError("event type not supported"); break;
         }
     }
-    override func onEvent(event:Event) {
+    override func onEvent(_ event:Event) {
         if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)
     }
-    override func getClassType() -> String {return String(List)}
-    required init?(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+    override func getClassType() -> String {return "\(List.self)"}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
     /**
      *
      */
-    static func curVisibleItems(list:IList,_ maxVisibleItems:Int)->Range<Int>{
+    static func curVisibleItems(_ list:IList,_ maxVisibleItems:Int)->CountableRange<Int>{
         let visibleItemsTop:CGFloat = abs(list.lableContainer!.y > 0 ? 0 : list.lableContainer!.y)//NumberParser.minMax(-1*lableContainer!.y, 0, itemHeight * dataProvider.count - height)
         //Swift.print("visibleItemsTop: " + "\(visibleItemsTop)")
         //let visibleBottom:CGFloat = visibleItemsTop + height
@@ -208,14 +209,14 @@ private class Utils{
         //if(bottomItemIndex >= dataProvider.count){bottomItemIndex = dataProvider.count-1}
         //Swift.print("bottomItemIndex: " + "\(bottomItemIndex)")
         //Swift.print("topItemIndex: " + "\(topItemIndex)")
-        let curVisibleRange:Range<Int> = topItemIndex..<bottomItemIndex
+        let curVisibleRange:CountableRange<Int> = topItemIndex..<bottomItemIndex
         return curVisibleRange
     }
     /**
      * When you add/remove items from a list, the list changes size. This method returns a value that lets you keep the same position of the list after a add/remove items change
      * EXAMPLE: let p = progress(100, 500, 0, 700)//(200,0.5)
      */
-    static func progress(maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
+    static func progress(_ maskHeight:CGFloat,_ newItemsHeight:CGFloat, _ oldLableContainerY:CGFloat, _ oldItemsHeight:CGFloat)->(lableContainerY:CGFloat,progress:CGFloat){
         if(oldLableContainerY >= 0){//this should be more advance, like assert wether an item was inserted in the visiblepart of the view, and position the list accordingly, to be continued
             let progress = SliderParser.progress(oldLableContainerY, maskHeight, oldItemsHeight)
             return (oldLableContainerY,progress)}/*pins the list to the top if its already at the top*/

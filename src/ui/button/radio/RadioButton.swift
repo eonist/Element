@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * TODO: Impliment IDisableable also and extend DisableTextButton
  */
@@ -17,7 +18,7 @@ class RadioButton:TextButton,ISelectable{
         super.resolveSkin()
         radioBullet = addSubView(RadioBullet(NaN,NaN,isSelected,self))
     }
-    func setSelected(isSelected:Bool) {
+    func setSelected(_ isSelected:Bool) {
         radioBullet!.setSelected(isSelected)
     }
     /**
@@ -26,5 +27,5 @@ class RadioButton:TextButton,ISelectable{
     func getSelected()->Bool {
         return radioBullet != nil ? radioBullet!.getSelected() : isSelected;/*Temp fix*/
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

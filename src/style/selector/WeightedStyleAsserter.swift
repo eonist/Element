@@ -8,7 +8,7 @@ class WeightedStyleAsserter {
      * TODO: this method must be test with all possible combinations and rethought
      * TODO: You could just do specificity how w3c does it. with assigning points to the different types. 10,100,1000,10000 etc. it works for them, it can work for you
      */
-    static func priority(a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
+    static func priority(_ a:WeightedStyle,_ b:WeightedStyle)->Bool {// :TODO: rename to assertSpecificity
         //var temp:String = "Window"//Box#tabBarBox SelectTextButton Text
         var priority:Bool = false
         let elementPriority:Bool = a.styleWeight.elementWeight >= b.styleWeight.elementWeight
@@ -67,10 +67,10 @@ class WeightedStyleAsserter {
     /**
      *
      */
-    private static func elementCount(selectors:Array<ISelector>)->Int{
+    private static func elementCount(_ selectors:Array<ISelector>)->Int{
         var elementCount:Int = 0
         for i in 0..<selectors.count{//<--forEach candidate!?!?
-            if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount++}
+            if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount+=1}
         }
         return elementCount
     }
@@ -79,7 +79,7 @@ class WeightedStyleAsserter {
      * TODO: this may be wrong, what if a.selectorWights.length is more than b.selectorWeights.length????
      * TODO: obviously this StyleResolver class is due for renovation so alot of trace code and debug code is left in
      */
-    private static func assertStateWeight(a:WeightedStyle,_ b:WeightedStyle)->Bool{// :TODO: could use a better name
+    private static func assertStateWeight(_ a:WeightedStyle,_ b:WeightedStyle)->Bool{// :TODO: could use a better name
         //if(a.styleWeight.selectorWeights.length != b.styleWeight.selectorWeights.length) return false/*<--new code*/
         //print("a.styleWeight.selectorWeights.length: " + a.styleWeight.selectorWeights.length)
         //print("b.styleWeight.selectorWeights.length: " + b.styleWeight.selectorWeights.length)
@@ -95,7 +95,7 @@ class WeightedStyleAsserter {
         //loop through a and calc the total stateWeight
         //loop through b and cal the total stateweight
         /*new code start*/// :TODO: not sure if Things like Button:over Text{fill:blue;} works yet
-        var aTotStateWeight:Int = 0;
+        var aTotStateWeight:Int = 0
         for aSelectorWeight:SelectorWeight in a.styleWeight.selectorWeights {
             aTotStateWeight += aSelectorWeight.stateWeight
         }

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class Graph:Element {
     var hValues:[CGFloat] {return [4,2,3,7,5,0,1]}
@@ -47,14 +48,14 @@ class Graph:Element {
     /**
      *
      */
-    func createGraphArea(size:CGSize,_ position:CGPoint){
+    func createGraphArea(_ size:CGSize,_ position:CGPoint){
         graphArea = addSubView(Section(size.width,size.height,self,"graphArea"))
         graphArea?.setPosition(position)
     }
     /**
      *
      */
-    func createLeftBar(size:CGSize,_ position:CGPoint)->(itemYSpace:CGFloat,maxValue:CGFloat){
+    func createLeftBar(_ size:CGSize,_ position:CGPoint)->(itemYSpace:CGFloat,maxValue:CGFloat){
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
@@ -62,7 +63,7 @@ class Graph:Element {
         //Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         //Swift.print("itemYSpace: " + "\(itemYSpace)")
-        if(NumberAsserter.odd(maxValue)){
+        if(CGFloatAsserter.odd(maxValue)){
             maxValue += 1//We need even values when we devide later
         }
         //Swift.print("maxValue: " + "\(maxValue)")
@@ -74,7 +75,7 @@ class Graph:Element {
         strings.forEach{
             let textArea:TextArea = TextArea(NaN,NaN,$0,leftBar!)
             leftBarItems.append(textArea)
-            leftBar!.addSubView(textArea)
+            _ = leftBar!.addSubView(textArea)
             textArea.setPosition(CGPoint(0,y))
             y += itemYSpace
         }
@@ -83,7 +84,7 @@ class Graph:Element {
     /**
      *
      */
-    func createBottomBar(size:CGSize,_ position:CGPoint)->CGFloat{
+    func createBottomBar(_ size:CGSize,_ position:CGPoint)->CGFloat{
         //Swift.print("createBottomBar")
         //Swift.print("size: " + "\(size)")
         //Swift.print("position: " + "\(position)")
@@ -100,7 +101,7 @@ class Graph:Element {
             let str:String = hValNames[i]
             //Swift.print("str: " + "\(str)")
             let textArea:TextArea = TextArea(NaN,NaN,str,bottomBar!)
-            bottomBar!.addSubView(textArea)
+            _ = bottomBar!.addSubView(textArea)
             //Swift.print("CGPoint(x,0): " + "\(CGPoint(x,0))")
             textArea.setPosition(CGPoint(x,0))
             x += itemXSpace
@@ -110,7 +111,7 @@ class Graph:Element {
     /**
      *
      */
-    func createGraphPoints(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
+    func createGraphPoints(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         //Swift.print("createGraphPoints:")
         //Swift.print("graphPts: " + "\(graphPts)")
         //Swift.print("graphPts.count: " + "\(graphPts.count)")
@@ -123,7 +124,7 @@ class Graph:Element {
         }
     }
     
-    func createGraphLine(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
+    func createGraphLine(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
         
@@ -131,7 +132,7 @@ class Graph:Element {
     /**
      *
      */
-    func createVLines(size:CGSize,_ position:CGPoint,_ spacing:CGSize){
+    func createVLines(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize){
         let count:Int = hValNames.count
         var x:CGFloat = spacing.width
         for _ in 0..<count{
@@ -152,21 +153,21 @@ class Graph:Element {
         //Scale to ratio:
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         graphArea!.setSize(newSize.width,newSize.height)
-        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.width,graphArea!.frame.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.size.width,graphArea!.frame.size.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         graphArea?.setPosition(alignmentPoint)
         
     }
-    override func setSize(width: CGFloat, _ height: CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         //update different UI elements
     }
     override func getClassType() -> String {
-        return String(Graph)
+        return "\(Graph.self)"
     }
 }
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
     var path:IPath
-    init(_ width: CGFloat, _ height: CGFloat,_ path:IPath, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat,_ path:IPath, _ parent:IElement? = nil, _ id:String? = nil) {
         self.path = path
         super.init(width, height, parent, id)
     }
@@ -179,22 +180,22 @@ class GraphLine:Element{
         //LineStyleParser.describe(lineStyle)
         let baseGraphic = BaseGraphic(nil,lineStyle)
         line = PathGraphic(path,baseGraphic)
-        addSubView(line!.graphic)
+        _ = addSubView(line!.graphic)
         line!.draw()
     }
-    override func setSkinState(skinState: String) {
+    override func setSkinState(_ skinState:String) {
         //update the line, implement this if you want to be able to set the theme of this component
     }
-    override func setSize(width: CGFloat, _ height: CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         //update the line, implement this if you need win resize support for this component
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented") }
 }
 class GraphUtils{
     /**
      * Returns graph points
      */
-    static func points(size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
+    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
         let hCount:Int = hValues.count
         let x:CGFloat = /*position.x*/ spacing.width
@@ -210,9 +211,9 @@ class GraphUtils{
     /**
      *
      */
-    static func verticalIndicators(vCount:Int,_ maxValue:CGFloat)->[String]{
+    static func verticalIndicators(_ vCount:Int,_ maxValue:CGFloat)->[String]{
         var strings:[String] = []
-        for i in (0..<vCount).reverse() {
+        for i in (0..<vCount).reversed() {//swift 3 update
             //Swift.print("i: " + "\(i)")
             var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
             //Swift.print("num: " + "\(num)")

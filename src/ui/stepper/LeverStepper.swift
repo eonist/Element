@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * //TODO: shouldn't this class extend Stepper?
  */
@@ -8,14 +9,14 @@ class LeverStepper:Element{
     var minVal:CGFloat
     var	increment:CGFloat/*The amount of incrementation for each stepping*/
     var decimals:Int/*Decimal places*/
-    var onMouseDownMouseY:CGFloat = CGFloat.NaN
-    var onMouseDownValue:CGFloat = CGFloat.NaN
+    var onMouseDownMouseY:CGFloat = CGFloat.nan
+    var onMouseDownValue:CGFloat = CGFloat.nan
     var leverHeight:CGFloat//TODO: Write a description about this value
     var leverRange:CGFloat
-    var leftMouseDraggedEventListener:AnyObject?
+    var leftMouseDraggedEventListener:Any?
     var plusButton:Button?
     var minusButton:Button?
-    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = CGFloat.min , _ max:CGFloat = CGFloat.max, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.value = value
         self.minVal = min
         self.maxVal = max
@@ -35,7 +36,7 @@ class LeverStepper:Element{
         //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
         onMouseDownMouseY = plusButton!.localPos().y
         onMouseDownValue = self.value
-        if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onPlusButtonMove )}//we add a global mouse move event listener
+        if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDragged], handler: self.onPlusButtonMove)}//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     func onMinusButtonDown() {
@@ -44,18 +45,18 @@ class LeverStepper:Element{
         onMouseDownMouseY  = minusButton!.localPos().y
         //Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
-        if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEventsMatchingMask([.LeftMouseDraggedMask], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
+        if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     func onPlusButtonUpInside() {
         //Swift.print("onPlusButtonUpInside")
-        let val:CGFloat = NumberModifier.increment(value, increment);
+        let val:CGFloat = CGFloatModifier.increment(value, increment);
         value = NumberParser.minMax(val, minVal, maxVal);// :TODO: Don't set the value
         self.event!(StepperEvent(StepperEvent.change,value,self,self))
     }
     func onMinusButtonUpInside() {
         //Swift.print("onMinusButtonUpInside")
-        let val:CGFloat = NumberModifier.decrement(value, increment);
+        let val:CGFloat = CGFloatModifier.decrement(value, increment);
         value = NumberParser.minMax(val, minVal, maxVal);
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))
     }
@@ -74,7 +75,7 @@ class LeverStepper:Element{
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{
          return onButtonMove(event,minusButton!)
     }
-    func onButtonMove(event:NSEvent,_ button:Button)-> NSEvent?{
+    func onButtonMove(_ event:NSEvent,_ button:Button)-> NSEvent?{
         //Swift.print("onButtonMove")
         var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight)
@@ -82,7 +83,7 @@ class LeverStepper:Element{
         let leverValue:CGFloat = leverRange * multiplier/*The lever value fluctuates, sometimes with decimals so we round it*/
         var val:CGFloat = onMouseDownValue + leverValue
         val = NumberParser.minMax(val, minVal, maxVal)/*Cap the value from min to max*/
-        val = NumberModifier.toFixed(val,decimals)/*The value must have no more than the value of the _decimals*/
+        val = CGFloatModifier.toFixed(val,decimals)/*The value must have no more than the value of the _decimals*/
         value = val
         //Swift.print("value: " + "\(value)")
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))//probably use the onEvent here not the event
@@ -91,7 +92,7 @@ class LeverStepper:Element{
     /**
      *
      */
-    override func onEvent(event: Event) {
+    override func onEvent(_ event: Event) {
         //Swift.print("onEvent() event: " + "\(event)")
         if(event.origin === plusButton && event.type == ButtonEvent.down){onPlusButtonDown()}
         else if(event.origin === minusButton && event.type == ButtonEvent.down){onMinusButtonDown()}
@@ -108,7 +109,7 @@ class LeverStepper:Element{
      * NOTE: This function is used to find the correct class type when synthezing the element stack
      */
     override func getClassType() -> String {
-        return String(Stepper)
+        return "\(Stepper.self)"
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

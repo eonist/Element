@@ -1,13 +1,13 @@
 import Foundation
+@testable import Utils
 
-class StyleCache {
-}
+class StyleCache {}
 /*Parser*/
 extension StyleCache{
     /**
      * Compiles a list of css files derived from an xml
      */
-    static func cssFileDateList(dataXML:XML)->[String:String]{
+    static func cssFileDateList(_ dataXML:XML)->[String:String]{
         var cssFileDates = [String:String]()
         let cssFileDatesXML = dataXML.firstNode("cssFileDates")
         cssFileDatesXML!.children?.forEach{
@@ -40,18 +40,23 @@ extension StyleCache{
     /**
      * Read pre-parsed styles
      */
-    static func readStylesFromDisk(xml:XML){
+    static func readStylesFromDisk(_ xml:XML){
+        //Swift.print("StyleCache.readStylesFromDisk()")
         let startTime = NSDate()
         var styles:[IStyle] = []
         //Swift.print("xml.children?.count: " + "\(xml.children?.count)")
         let stylesXML:XML = xml.firstNode("styles")!
+        //Swift.print("stylesXML.children?.count: " + "\(stylesXML.children?.count)")
         stylesXML.children?.forEach{
             let style:Style? = Style.unWrap($0 as! XML)
-            if(style != nil) {styles.append(style!)}
+            if(style != nil) {
+                styles.append(style!)
+            }
         }
         //Swift.print("styles.count: " + "\(styles.count)")//then check the count
-        Swift.print("parse xml time: " + "\(abs(startTime.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
+        Swift.print("parse xml styles time: " + "\(abs(startTime.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
         let startTime2 = NSDate()
+        Swift.print("styles.count: " + "\(styles.count)")
         StyleManager.addStyle(styles)
         Swift.print("addStyle time: " + "\(abs(startTime2.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
     }
@@ -61,7 +66,7 @@ extension StyleCache{
     /**
      * Asserts if the cssFiles that are cached have the same modified date as the cssFile that are querried
      */
-    static func isUpToDate(cssFileDateList:[String:String])->Bool{
+    static func isUpToDate(_ cssFileDateList:[String:String])->Bool{
         for (filePath,date) in cssFileDateList{
             let filePath:String = filePath
             let modificationDate:String = String(FileParser.modificationDate(filePath.tildePath).timeIntervalSince1970)
@@ -73,7 +78,7 @@ extension StyleCache{
     /**
      *
      */
-    static func hasFileBeenCached(cssFileDateList:[String:String], _ filePath:String)->Bool{
+    static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
         var hasBeenCached:Bool = false
         cssFileDateList.forEach{
             if($0.0 == filePath){
@@ -86,7 +91,7 @@ extension StyleCache{
 /*Modifier*/
 extension StyleCache{
     /**
-     *
+     * Store the styles as xml for faster load times
      */
     static func writeStylesToDisk(){
         let data:XML = "<data></data>".xml
@@ -97,10 +102,10 @@ extension StyleCache{
         StyleManager.styles.forEach{
             let xml = Reflection.toXML($0)
             styles.appendChild(xml)
-            //Swift.print("xml.XMLString: " + "\(xml.XMLString)")
+            //Swift.print("xml.XMLString: " + "\(xml.xmlString)")
         }
         data.appendChild(styles)
-        let contentToWriteToDisk = data.XMLString
-        FileModifier.write("~/Desktop/styles.xml".tildePath, contentToWriteToDisk)
+        let contentToWriteToDisk = data.xmlString
+        _ = FileModifier.write("~/Desktop/styles.xml".tildePath, contentToWriteToDisk)
     }
 }

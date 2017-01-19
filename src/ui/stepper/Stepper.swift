@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class Stepper:Element{
     var plusButton:Button?
@@ -11,5 +12,5 @@ class Stepper:Element{
         plusButton = addSubView(Button(height,height,self,"plus"))
         minusButton = addSubView(Button(height,height,self, "minus"))
     }
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

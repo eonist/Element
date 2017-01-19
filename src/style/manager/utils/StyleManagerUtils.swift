@@ -10,7 +10,7 @@ class StyleManagerUtils{
      * NOTE: Using if let won't work on the code bellow
      * TODO: Tail trick is nice, but it complicates the code, try to pursue other avenues in optimization, bisect search comes to mind.
      */
-    static func hashStyle(style:IStyle){
+    static func hashStyle(_ style:IStyle){
         if(style.selectors.last!.element != ""){
             if (stylesByElement[style.selectors.last!.element] != nil){
                 stylesByElement[style.selectors.last!.element]!.append(style)

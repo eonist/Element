@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class CheckGroupEvent:Event {
     static var change:String = "checkGroupChange"/*this event is dispatched after the checked variable is set in the CheckGroup instance*///

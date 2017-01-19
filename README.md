@@ -11,13 +11,13 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - 100% Swift 3.0.1 👈
 - 50+ Components
 - 60FPS Interactive Animation
+- Hot Reloading 🔥 
 - Live-edit
 - Live Theme switching
 - Themes via CSS and SVG
 - Vector graphics
 - Centralized app styling
 - Open-Source (MIT)
-- Hot Reloading 🔥 
 
 ## Working on:
 - Video tutorials

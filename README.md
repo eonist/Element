@@ -6,6 +6,27 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 
 <img width="558" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/gitsync_take_3.mov.gif">
 
+## Installation:
+
+**Playground:**   
+- Package Element as "Element.framework" [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
+- Package [Swift-utils](https://github.com/eonist/swift-utils) as "Utils.framework"  
+
+<img width="530" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/PlaygroundFrameworkLoop_20FPS_half_size.mp4.gif">
+
+**Xcode:**  
+- Either package [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) as .framework  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
+- Or drag and drop the source of [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) into XCode  
+
+**Themes:**  
+Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also create styles programmatically if CSS isn't your thing.    
+
+**Example code:**  
+[50+ macOS components](https://github.com/stylekit/explorer) and [Demo app](https://github.com/stylekit/stash) 
+
+⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   
+
+
 ## Features:
 - [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  
@@ -28,20 +49,3 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 - Metal support 
 - Flex-box layout alignment
 
-## Installation:
-
-**Xcode:**  
-- Either package [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) as .framework  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
-- Or drag and drop the source of [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) into XCode  
-
-**Playground:**   
-- Package Element as "Element.framework" [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
-- Package [Swift-utils](https://github.com/eonist/swift-utils) as "Utils.framework"  
-
-**Themes:**  
-Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also create styles programmatically if CSS isn't your thing.    
-
-**Example code:**  
-[50+ macOS components](https://github.com/stylekit/explorer) and [Demo app](https://github.com/stylekit/stash) 
-
-⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   

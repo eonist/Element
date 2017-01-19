@@ -8,7 +8,7 @@ Element is a **graphics** and **animation** framework that lets you create beaut
 More info in the [Wiki](https://github.com/eonist/Element/wiki) 
 
 ## Features:
-- 100% Swift
+- 100% Swift 3.0.1 👈
 - 50+ Components
 - 60FPS Interactive Animation
 - Live-edit
@@ -17,12 +17,11 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Vector graphics
 - Centralized app styling
 - Open-Source (MIT)
+- Hot Reloading 🔥 
 
 ## Working on:
-- Swift 3.0.1 support (95% complete) 👈
-- Hot Reloading (100% complete)🔥 
-- Flex-box layout alignment
-- iOS support
-- Sketch import
 - Video tutorials
+- Sketch import
+- iOS support
 - Metal support 
+- Flex-box layout alignment

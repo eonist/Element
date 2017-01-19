@@ -21,6 +21,7 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 
 - [Video tutorials](https://github.com/eonist/Element/wiki/tutorials)  
 - [iOS support](https://github.com/eonist/Element-iOS)  
+- Playground example code
 - Carthage & CocoaPod support
 - Sketch import
 - Live Theme switching

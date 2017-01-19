@@ -13,7 +13,7 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
 - Hot Reloading 🔥 
-- Live-edit
+- [Live-edit](https://github.com/eonist/Element/wiki/live) 
 - Live Theme switching
 - Themes via CSS and SVG
 - Vector graphics

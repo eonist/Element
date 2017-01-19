@@ -15,8 +15,8 @@ More info in the [Wiki](https://github.com/eonist/Element/wiki)
 - Hot Reloading 🔥 
 - [Live-edit](https://github.com/eonist/Element/wiki/live) 
 - Live Theme switching
-- Themes via CSS and SVG
-- Vector graphics
+- Themes via CSS and [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/) 
+- [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
 - Centralized app styling
 - Open-Source (MIT)
 

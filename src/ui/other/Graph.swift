@@ -20,8 +20,6 @@ class Graph:Element {
     var spacing:CGSize?
     override func resolveSkin() {
         super.resolveSkin()
-       
-        
         newSize = Resizer.fit(CGSize(w,h),4/3)
         //Swift.print("newSize: " + "\(newSize)")
         newPostition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))

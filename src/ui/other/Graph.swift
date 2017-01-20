@@ -172,8 +172,7 @@ class GraphLine:Element{
         //Somehow derive the style data and make a basegraphic with it
         let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         //LineStyleParser.describe(lineStyle)
-        let baseGraphic = BaseGraphic(nil,lineStyle)
-        line = PathGraphic(path,baseGraphic)
+        line = PathGraphic(path,nil,lineStyle)
         _ = addSubView(line!.graphic)
         line!.draw()
     }

@@ -28,7 +28,7 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 
 
 ## Features:
-- [Swift 3.0.1](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  
+- [Swift 3.0.1](http://stylekit.org/blog/2017/01/12/swift-3-migration/)  
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 

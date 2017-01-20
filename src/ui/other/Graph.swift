@@ -104,6 +104,7 @@ class Graph:Element {
     }
     /**
      * Creates The visual Graph points that hover above the Graph line
+     * NOTE: We could create something called GraphPoint, but it would be another thing to manager so instead we just use an Element with id: graphPoint
      */
     func createGraphPoints(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         //Swift.print("createGraphPoints:")

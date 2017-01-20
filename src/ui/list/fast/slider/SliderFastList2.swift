@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class SliderFastList2:FastList2,ISliderList {
     var slider:VSlider?

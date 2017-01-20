@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class SliderFastList3:FastList3,ISliderList {
     var slider:VSlider?
@@ -13,33 +14,33 @@ class SliderFastList3:FastList3,ISliderList {
     /**
      * Captures the Native scrollWheel event, and relays the event to the extension method 'scroll'
      */
-    override func scrollWheel(event:NSEvent) {
+    override func scrollWheel(with event:NSEvent) {
         scroll(event)/*forwards the event to the extension method*/
-        super.scrollWheel(event)/*forwards the event other delegates higher up in the stack*/
+        super.scrollWheel(with:event)/*forwards the event other delegates higher up in the stack*/
     }
     /**
      * Captures SliderEvent.change and then adjusts the List accordingly
      */
-    func onSliderChange(sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
+    func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
         //ListModifier.scrollTo(self,sliderEvent.progress)
     }
-    override func onEvent(event:Event) {
+    override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         else {super.onEvent(event)}//forward dataProviderEvents etc, but not SliderEvents as they fire too rapidly
     }
 }
 private class Utils{
     /**
-     * // :TODO: use SliderParser.interval instead?// :TODO: explain what this is in a comment
+     * TODO: use SliderParser.interval instead?// :TODO: explain what this is in a comment
      */
-    static func sliderInterval(itemsHeight:CGFloat, _ height:CGFloat,_ itemHeight:CGFloat)->CGFloat{
+    static func sliderInterval(_ itemsHeight:CGFloat, _ height:CGFloat,_ itemHeight:CGFloat)->CGFloat{
         return floor(itemsHeight - height)/itemHeight
     }
     /**
      * TODO: use SliderParser.thumbHeight instead
      */
-    static func thumbHeight(height:CGFloat,_ itemsHeight:CGFloat,_ sliderHeight:CGFloat)->CGFloat{
+    static func thumbHeight(_ height:CGFloat,_ itemsHeight:CGFloat,_ sliderHeight:CGFloat)->CGFloat{
         return SliderParser.thumbSize(height/itemsHeight, sliderHeight)
     }
 }

@@ -21,10 +21,6 @@ class Graph:Element {
     override func resolveSkin() {
         super.resolveSkin()
        
-        //Continue here: try making DayGraph which has Day names (remember to return Graph as identifier)
-        //contemplate removing the top value and centering the graph a bit more. Basically the graph would stil be contained in a perfect frame.
-        //also use 5/3 ratio for a more widescreen look
-        //add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors (should also be able to filter commits & codeLine.additions & codeLine.deletions), also filter project via repo browser.
         
         newSize = Resizer.fit(CGSize(w,h),4/3)
         //Swift.print("newSize: " + "\(newSize)")
@@ -225,6 +221,14 @@ class GraphUtils{
         return strings
     }
 }
+
+//try making DayGraph which has Day names (remember to return Graph as identifier)
+//contemplate removing the top value and centering the graph a bit more. Basically the graph would stil be contained in a perfect frame.
+//also use 5/3 ratio for a more widescreen look
+//add a user-icon (google material kit icon) that works as a dropdown menu, where you can select users and compare commit linegraphs that then gets different colors (should also be able to filter commits & codeLine.additions & codeLine.deletions), also filter project via repo browser.
+
+
+
 /**
  * the values are the collected values from 1 to end of month
  */

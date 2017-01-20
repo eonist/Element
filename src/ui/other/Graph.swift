@@ -194,7 +194,7 @@ class GraphLine:Element{
 }
 class GraphUtils{
     /**
-     * Returns graph points
+     * Returns graph points (Basically the coordinates of where to place the visual graph points)
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
@@ -210,7 +210,7 @@ class GraphUtils{
         return points
     }
     /**
-     *
+     * Generates 
      */
     static func verticalIndicators(_ vCount:Int,_ maxValue:CGFloat)->[String]{
         var strings:[String] = []

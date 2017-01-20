@@ -22,7 +22,7 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also create styles programmatically if CSS isn't your thing.    
 
 **Example code:**  
-[50+ macOS components](https://github.com/stylekit/explorer) and [Demo app](https://github.com/stylekit/stash) 
+[50+ macOS UI components](https://github.com/stylekit/explorer) and [Demo app](https://github.com/stylekit/stash) 
 
 ⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   
 

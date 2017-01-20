@@ -34,10 +34,13 @@ class Graph:Element {
         createVLines(newSize!,newPostition!,spacing!)
         
         let graphPts:[CGPoint] = GraphUtils.points(newSize!, newPostition!, spacing!, hValues,spaceData!.maxValue)
-        createGraphLine(newSize!,newPostition!,spacing!,graphPts)
-        createGraphPoints(newSize!,newPostition!,spacing!,graphPts)
+        createGraph(graphPts)
         
         //alignUI()
+    }
+    func createGraph(_ graphPts:[CGPoint]){
+        createGraphLine(newSize!,newPostition!,spacing!,graphPts)
+        createGraphPoints(newSize!,newPostition!,spacing!,graphPts)
     }
     /**
      * Creats the container that graphLine and graphPoint is added to

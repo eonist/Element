@@ -164,7 +164,7 @@ class Graph:Element {
 /**
  * GraphLine represents the Visual Graph line int the Graph component. 
  * NOTE: GraphLine avoids adding the skin to its view, and then passes on the StyleProperty to the custom PathLine. This enables you to set the style via CSS
- * TODO: Contemplate Adding a new Skin type 
+ * TODO: Contemplate Adding a new Skin type that you manually add instead of resolve, this way you dont have to add PathGraphic etc
  */
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future

@@ -210,7 +210,7 @@ class GraphUtils{
         return points
     }
     /**
-     * Generates 
+     * Generates value indicators that match up with the (data set)
      */
     static func verticalIndicators(_ vCount:Int,_ maxValue:CGFloat)->[String]{
         var strings:[String] = []

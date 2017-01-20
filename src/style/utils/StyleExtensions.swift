@@ -69,6 +69,9 @@ extension Style:UnWrappable{
     func getValueAt(_ index:Int)->Any{
         return getStylePropertyAt(index).value
     }
+    convenience init(_ id:String,_ styleProperty:IStyleProperty){/*Convenience*/
+        self.init(id,[],[styleProperty])
+    }
 }
 
 extension Style{

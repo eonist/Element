@@ -161,7 +161,10 @@ class Graph:Element {
         return "\(Graph.self)"
     }
 }
-
+/**
+ * GraphLine represents the Visual Graph line int the Graph component. 
+ * 
+ */
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
     var path:IPath

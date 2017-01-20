@@ -40,7 +40,7 @@ class Graph:Element {
         //alignUI()
     }
     /**
-     *
+     * Creats the container that graphLine and graphPoint is added to
      */
     func createGraphArea(_ size:CGSize,_ position:CGPoint){
         graphArea = addSubView(Section(size.width,size.height,self,"graphArea"))

@@ -124,7 +124,7 @@ class Graph:Element {
         
     }
     /**
-     *
+     * Vertical lines (static)
      */
     func createVLines(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize){
         let count:Int = hValNames.count
@@ -158,6 +158,7 @@ class Graph:Element {
         return "\(Graph.self)"
     }
 }
+
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
     var path:IPath

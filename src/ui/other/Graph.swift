@@ -47,7 +47,7 @@ class Graph:Element {
         graphArea?.setPosition(position)
     }
     /**
-     *
+     * Creates the Text items that represents data in the y-axis
      */
     func createLeftBar(_ size:CGSize,_ position:CGPoint)->(itemYSpace:CGFloat,maxValue:CGFloat){
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
@@ -76,7 +76,7 @@ class Graph:Element {
         return (itemYSpace:itemYSpace,maxValue:maxValue)
     }
     /**
-     * 
+     * Creates the Text items that represents data in the x-axis
      */
     func createBottomBar(_ size:CGSize,_ position:CGPoint)->CGFloat{
         //Swift.print("createBottomBar")

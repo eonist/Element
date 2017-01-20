@@ -76,13 +76,13 @@ class Graph:Element {
         return (itemYSpace:itemYSpace,maxValue:maxValue)
     }
     /**
-     *
+     * 
      */
     func createBottomBar(_ size:CGSize,_ position:CGPoint)->CGFloat{
         //Swift.print("createBottomBar")
         //Swift.print("size: " + "\(size)")
         //Swift.print("position: " + "\(position)")
-        bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))//create bottom bar
+        bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))/*Create bottom bar*/
         bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
         
         let hCount:Int = hValNames.count
@@ -103,7 +103,7 @@ class Graph:Element {
         return itemXSpace
     }
     /**
-     *
+     * Creates The visual Graph points that hover above the Graph line
      */
     func createGraphPoints(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         //Swift.print("createGraphPoints:")
@@ -117,7 +117,9 @@ class Graph:Element {
             //set the size as 12px and offset to -6 (so that its centered)
         }
     }
-    
+    /**
+     * Creates the Visual Graph line that represents the Metric Data
+     */
     func createGraphLine(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))

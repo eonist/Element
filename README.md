@@ -16,7 +16,7 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 
 ### Xcode:
 - Either package [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) as .framework  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
-- Or drag and drop the source of [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) into XCode  
+- Or drag and drop the source of [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) into XCode  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
 
 ### Themes:
 Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also create styles programmatically if CSS isn't your thing.    

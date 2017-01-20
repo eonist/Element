@@ -124,7 +124,6 @@ class Graph:Element {
     func createGraphLine(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
-        
     }
     /**
      * Vertical lines (static)
@@ -138,7 +137,6 @@ class Graph:Element {
             x += spacing.width
         }
     }
-    
     /**
      * //onResize
      * //recalc spacing
@@ -152,7 +150,6 @@ class Graph:Element {
         graphArea!.setSize(newSize.width,newSize.height)
         let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.size.width,graphArea!.frame.size.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         graphArea?.setPosition(alignmentPoint)
-        
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         //update different UI elements

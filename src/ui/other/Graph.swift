@@ -55,6 +55,7 @@ class Graph:Element {
     }
     /**
      * Creats the container that graphLine and graphPoint is added to
+     * TODO: combine size and pos into rect
      */
     func createGraphArea(_ size:CGSize,_ position:CGPoint){
         graphArea = addSubView(Section(size.width,size.height,self,"graphArea"))

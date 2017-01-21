@@ -207,15 +207,15 @@ class GraphUtils{
     /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
      */
-    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ hValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
+    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
-        let hCount:Int = hValues.count
+        let vValCount:Int = vValues.count
         let x:CGFloat = /*position.x*/ spacing.width
         let y:CGFloat = /*position.y +*/ size.height - spacing.height
-        for i in 0..<hCount{//calc the graphPoints:
+        for i in 0..<vValCount{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)
-            p.y = y - ((size.height-(spacing.height*2))/maxValue * hValues[i])
+            p.y = y - ((size.height-(spacing.height*2))/maxValue * vValues[i])
             points.append(p)
         }
         return points

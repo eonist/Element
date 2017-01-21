@@ -8,7 +8,7 @@ class Graph:Element {
     var leftBar:Section?
     var leftBarItems:[TextArea] = []
     var bottomBar:Section?
-    var graphArea:Section?
+    var graphArea:Section?/*Holds the GraphLine and GraphPoint*/
     var graphLine:GraphLine?
     var graphPoints:[Element] = []
     /*layoutData:*/

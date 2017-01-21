@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 
 class Graph:Element {
-    var hValues:[CGFloat] {return [4,2,3,7,5,0,1]}
+    var vValues:[CGFloat] {return [4,2,3,7,5,0,1]}/*vertical amount*/
     var hValNames:[String] {return ["A","B","C","D","E","F","G"]}/*horizontal items*/
     var vCount:Int = 5/*Number of vertical indicators*/
     var leftBar:Section?
@@ -22,7 +22,7 @@ class Graph:Element {
         super.resolveSkin()
         createUI()
         
-        let graphPts:[CGPoint] = GraphUtils.points(newSize!, newPostition!, spacing!, hValues,spaceData!.maxValue)
+        let graphPts:[CGPoint] = GraphUtils.points(newSize!, newPostition!, spacing!, vValues,spaceData!.maxValue)
         createGraph(graphPts)
         
         //alignUI()
@@ -68,7 +68,7 @@ class Graph:Element {
         leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,position.y))
         
-        var maxValue:CGFloat = NumberParser.max(hValues)//you need to map these and ceil them. as you need int values!?!?
+        var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
         //Swift.print("maxValue: " + "\(maxValue)")
         let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
         //Swift.print("itemYSpace: " + "\(itemYSpace)")

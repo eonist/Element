@@ -117,6 +117,18 @@ class Graph:Element {
         return itemXSpace
     }
     /**
+     * Vertical lines (static)
+     */
+    func createVLines(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize){
+        let count:Int = hValNames.count
+        var x:CGFloat = spacing.width
+        for _ in 0..<count{
+            let vLine = graphArea!.addSubView(Element(NaN,size.height-(spacing.height*2),graphArea,"vLine"))
+            vLine.setPosition(CGPoint(x,spacing.height))
+            x += spacing.width
+        }
+    }
+    /**
      * Creates The visual Graph points that hover above the Graph line
      * NOTE: We could create something called GraphPoint, but it would be another thing to manager so instead we just use an Element with id: graphPoint
      */
@@ -138,18 +150,6 @@ class Graph:Element {
     func createGraphLine(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
-    }
-    /**
-     * Vertical lines (static)
-     */
-    func createVLines(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize){
-        let count:Int = hValNames.count
-        var x:CGFloat = spacing.width
-        for _ in 0..<count{
-            let vLine = graphArea!.addSubView(Element(NaN,size.height-(spacing.height*2),graphArea,"vLine"))
-            vLine.setPosition(CGPoint(x,spacing.height))
-            x += spacing.width
-        }
     }
     /**
      * //onResize

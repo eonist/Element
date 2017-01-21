@@ -12,8 +12,8 @@ class Graph:Element {
     var graphLine:GraphLine?
     var graphPoints:[Element] = []
     /*layoutData:*/
-    var newSize:CGSize?
-    var newPostition:CGPoint?
+    var newSize:CGSize?/*the size that contains the graph components*/
+    var newPostition:CGPoint?/*the point that the graph components starts from*/
     var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?
     var itemYSpace:CGFloat?
     var itemXSpace:CGFloat?

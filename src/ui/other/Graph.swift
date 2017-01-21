@@ -77,7 +77,6 @@ class Graph:Element {
         }
         //Swift.print("maxValue: " + "\(maxValue)")
         
-        
         let strings:[String] = GraphUtils.verticalIndicators(vCount, maxValue)
 
         var y:CGFloat = itemYSpace

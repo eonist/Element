@@ -38,6 +38,10 @@ class Graph:Element {
         
         //alignUI()
     }
+    /**
+     * Creates the graph components
+     * NOTE: override this method if you want to make another graph design etc
+     */
     func createGraph(_ graphPts:[CGPoint]){
         createGraphLine(newSize!,newPostition!,spacing!,graphPts)
         createGraphPoints(newSize!,newPostition!,spacing!,graphPts)

@@ -21,7 +21,7 @@ class GraphUtils{
             let dist:CGFloat = h*ratio
             Swift.print("dist: " + "\(dist)")
             p.x = x + (i * spacing.width)
-            p.y = y - dist
+            p.y = y //- dist
             points.append(p)
         }
         return points

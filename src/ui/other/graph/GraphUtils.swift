@@ -9,7 +9,7 @@ class GraphUtils{
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
         let x:CGFloat = /*position.x*/ spacing.width
-        let y:CGFloat = /*position.y +*/ size.height - (spacing.height*2)
+        let y:CGFloat = /*position.y +*/ size.height - (spacing.height)
         let h:CGFloat = size.height-(spacing.height*2)
         Swift.print("maxValue: " + "\(maxValue)")
         Swift.print("vValues: " + "\(vValues)")
@@ -21,7 +21,7 @@ class GraphUtils{
             let dist:CGFloat = h*ratio
             Swift.print("dist: " + "\(dist)")
             p.x = x + (i * spacing.width)
-            p.y = y //- dist
+            p.y = y - dist
             points.append(p)
         }
         return points

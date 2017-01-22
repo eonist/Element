@@ -150,11 +150,9 @@ class Graph:Element {
     /**
      * //onResize, recalc spacing,Realign components,height should be uniform to the width
      */
-    func alignUI(){
-        //this method is not in use
-        //Scale to ratio:
+    func alignUI(){//this method is not in use
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
-        graphArea!.setSize(newSize.width,newSize.height)
+        graphArea!.setSize(newSize.width,newSize.height)//Scale to ratio:
         let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.size.width,graphArea!.frame.size.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         graphArea?.setPosition(alignmentPoint)
     }

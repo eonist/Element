@@ -51,8 +51,8 @@ class Graph:Element {
      * NOTE: override this method if you want to make another graph design etc
      */
     func createGraph(){
-        createGraphLine(newSize!,newPostition!,spacing!,graphPts)
-        createGraphPoints(newSize!,newPostition!,spacing!,graphPts)
+        createGraphLine()
+        createGraphPoints()
     }
     /**
      * Creats the container that graphLine and graphPoint is added to
@@ -133,7 +133,7 @@ class Graph:Element {
      * Creates The visual Graph points that hover above the Graph line
      * NOTE: We could create something called GraphPoint, but it would be another thing to manager so instead we just use an Element with id: graphPoint
      */
-    func createGraphPoints(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
+    func createGraphPoints(){
         //Swift.print("createGraphPoints:")
         //Swift.print("graphPts: " + "\(graphPts)")
         //Swift.print("graphPts.count: " + "\(graphPts.count)")
@@ -148,7 +148,7 @@ class Graph:Element {
     /**
      * Creates the Visual Graph line that represents the Metric Data
      */
-    func createGraphLine(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ graphPts:[CGPoint]){
+    func createGraphLine(){
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
     }

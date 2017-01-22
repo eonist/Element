@@ -31,16 +31,12 @@ class Graph:Element {
      */
     func createUI(){
         newSize = Resizer.fit(CGSize(w,h),4/3)
-        //Swift.print("newSize: " + "\(newSize)")
         newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
-        //Swift.print("newPostition: " + "\(newPostition)")
-        
         createGraphArea()
         spaceData = createLeftBar()
         itemYSpace = spaceData!.itemYSpace
         itemXSpace = createBottomBar()
         spacing = CGSize(itemXSpace!,itemYSpace!)
-        
         createVLines(newSize!,newPosition!,spacing!)
     }
     /**
@@ -161,4 +157,3 @@ class Graph:Element {
         return "\(Graph.self)"
     }
 }
-

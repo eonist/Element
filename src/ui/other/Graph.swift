@@ -10,7 +10,8 @@ class Graph:Element {
     var bottomBar:Section?
     var graphArea:Section?/*Holds the GraphLine and GraphPoint*/
     var graphLine:GraphLine?
-    var graphPoints:[Element] = []
+    var graphPoints:[Element] = []//Visual points
+    var graphPts:[CGPoint] = []
     /*layoutData:*/
     var newSize:CGSize?/*the size that contains the graph components*/
     var newPostition:CGPoint?/*the point that the graph components starts from*/
@@ -22,8 +23,8 @@ class Graph:Element {
         super.resolveSkin()
         createUI()
         
-        let graphPts:[CGPoint] = GraphUtils.points(newSize!, newPostition!, spacing!, vValues,spaceData!.maxValue)
-        createGraph(graphPts)
+        graphPts = GraphUtils.points(newSize!, newPostition!, spacing!, vValues,spaceData!.maxValue)
+        createGraph()
         
         //alignUI()
     }
@@ -49,7 +50,7 @@ class Graph:Element {
      * Creates the graph components (line and points)
      * NOTE: override this method if you want to make another graph design etc
      */
-    func createGraph(_ graphPts:[CGPoint]){
+    func createGraph(){
         createGraphLine(newSize!,newPostition!,spacing!,graphPts)
         createGraphPoints(newSize!,newPostition!,spacing!,graphPts)
     }

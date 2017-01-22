@@ -22,11 +22,8 @@ class Graph:Element {
     override func resolveSkin() {
         super.resolveSkin()
         createUI()
-        
         graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues,spaceData!.maxValue)
         createGraph()
-        
-        //alignUI()
     }
     /**
      * Creates the Ui sorounding the graph (x,y indicators, background, etc)
@@ -39,9 +36,9 @@ class Graph:Element {
         //Swift.print("newPostition: " + "\(newPostition)")
         
         createGraphArea()
-        spaceData = createLeftBar(newSize!,newPosition!)
+        spaceData = createLeftBar()
         itemYSpace = spaceData!.itemYSpace
-        itemXSpace = createBottomBar(newSize!,newPosition!)
+        itemXSpace = createBottomBar()
         spacing = CGSize(itemXSpace!,itemYSpace!)
         
         createVLines(newSize!,newPosition!,spacing!)
@@ -103,7 +100,7 @@ class Graph:Element {
         let hCount:Int = hValNames.count
         //Swift.print("hCount: " + "\(hCount)")
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
-        let itemXSpace:CGFloat = newSize!.width/(hCount.cgFloat + 1)
+        let itemXSpace:CGFloat = newSize!.width/(hCount.cgFloat + 1.0)
         //Swift.print("itemXSpace: " + "\(itemXSpace)")
         var x:CGFloat = itemXSpace
         for i in 0..<hCount{

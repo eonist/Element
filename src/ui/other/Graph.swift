@@ -38,7 +38,7 @@ class Graph:Element {
         newPostition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         //Swift.print("newPostition: " + "\(newPostition)")
         
-        createGraphArea(newSize!,newPostition!)
+        createGraphArea()
         spaceData = createLeftBar(newSize!,newPostition!)
         itemYSpace = spaceData!.itemYSpace
         itemXSpace = createBottomBar(newSize!,newPostition!)
@@ -58,16 +58,16 @@ class Graph:Element {
      * Creats the container that graphLine and graphPoint is added to
      * TODO: combine size and pos into rect
      */
-    func createGraphArea(_ size:CGSize,_ position:CGPoint){
-        graphArea = addSubView(Section(size.width,size.height,self,"graphArea"))
-        graphArea?.setPosition(position)
+    func createGraphArea(){
+        graphArea = addSubView(Section(newSize!.width,newSize!.height,self,"graphArea"))
+        graphArea?.setPosition(newPostition!)
     }
     /**
      * Creates the Text items that represents data in the y-axis
      */
-    func createLeftBar(_ size:CGSize,_ position:CGPoint)->(itemYSpace:CGFloat,maxValue:CGFloat){
-        leftBar = addSubView(Section(NaN,size.height,self,"leftBar"))//create left bar
-        leftBar!.setPosition(CGPoint(0,position.y))
+    func createLeftBar()->(itemYSpace:CGFloat,maxValue:CGFloat){
+        leftBar = addSubView(Section(NaN,newSize!.height,self,"leftBar"))//create left bar
+        leftBar!.setPosition(CGPoint(0,newPostition!.y))
         
         var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
         //Swift.print("maxValue: " + "\(maxValue)")

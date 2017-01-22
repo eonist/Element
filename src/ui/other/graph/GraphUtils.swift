@@ -11,11 +11,15 @@ class GraphUtils{
         let x:CGFloat = /*position.x*/ spacing.width
         let y:CGFloat = /*position.y +*/ size.height - (spacing.height*2)
         let h:CGFloat = size.height-(spacing.height*2)
+        Swift.print("maxValue: " + "\(maxValue)")
+        Swift.print("vValues: " + "\(vValues)")
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             let value:CGFloat = vValues[i]
             let ratio:CGFloat = maxValue/value/*a value between 0-1*/
+            Swift.print("ratio: " + "\(ratio)")
             let dist:CGFloat = h*ratio
+            Swift.print("dist: " + "\(dist)")
             p.x = x + (i * spacing.width)
             p.y = y - dist
             points.append(p)

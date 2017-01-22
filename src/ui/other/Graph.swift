@@ -14,7 +14,7 @@ class Graph:Element {
     var graphPts:[CGPoint] = []
     /*layoutData:*/
     var newSize:CGSize?/*the size that contains the graph components*/
-    var newPostition:CGPoint?/*the point that the graph components starts from*/
+    var newPosition:CGPoint?/*the point that the graph components starts from*/
     var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?
     var itemYSpace:CGFloat?
     var itemXSpace:CGFloat?
@@ -23,7 +23,7 @@ class Graph:Element {
         super.resolveSkin()
         createUI()
         
-        graphPts = GraphUtils.points(newSize!, newPostition!, spacing!, vValues,spaceData!.maxValue)
+        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues,spaceData!.maxValue)
         createGraph()
         
         //alignUI()
@@ -35,16 +35,16 @@ class Graph:Element {
     func createUI(){
         newSize = Resizer.fit(CGSize(w,h),4/3)
         //Swift.print("newSize: " + "\(newSize)")
-        newPostition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         //Swift.print("newPostition: " + "\(newPostition)")
         
         createGraphArea()
-        spaceData = createLeftBar(newSize!,newPostition!)
+        spaceData = createLeftBar(newSize!,newPosition!)
         itemYSpace = spaceData!.itemYSpace
-        itemXSpace = createBottomBar(newSize!,newPostition!)
+        itemXSpace = createBottomBar(newSize!,newPosition!)
         spacing = CGSize(itemXSpace!,itemYSpace!)
         
-        createVLines(newSize!,newPostition!,spacing!)
+        createVLines(newSize!,newPosition!,spacing!)
     }
     /**
      * Creates the graph components (line and points)
@@ -60,18 +60,18 @@ class Graph:Element {
      */
     func createGraphArea(){
         graphArea = addSubView(Section(newSize!.width,newSize!.height,self,"graphArea"))
-        graphArea?.setPosition(newPostition!)
+        graphArea?.setPosition(newPosition!)
     }
     /**
      * Creates the Text items that represents data in the y-axis
      */
     func createLeftBar()->(itemYSpace:CGFloat,maxValue:CGFloat){
         leftBar = addSubView(Section(NaN,newSize!.height,self,"leftBar"))//create left bar
-        leftBar!.setPosition(CGPoint(0,newPostition!.y))
+        leftBar!.setPosition(CGPoint(0,newPosition!.y))
         
         var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
         //Swift.print("maxValue: " + "\(maxValue)")
-        let itemYSpace:CGFloat = size.height/(vCount.cgFloat+1)
+        let itemYSpace:CGFloat = newSize!.height/(vCount.cgFloat + 1.0)
         //Swift.print("itemYSpace: " + "\(itemYSpace)")
         if(CGFloatAsserter.odd(maxValue)){
             maxValue += 1//We need even values when we devide later
@@ -93,17 +93,17 @@ class Graph:Element {
     /**
      * Creates the Text items that represents data in the x-axis
      */
-    func createBottomBar(_ size:CGSize,_ position:CGPoint)->CGFloat{
+    func createBottomBar()->CGFloat{
         //Swift.print("createBottomBar")
         //Swift.print("size: " + "\(size)")
         //Swift.print("position: " + "\(position)")
-        bottomBar = addSubView(Section(size.width,NaN,self,"bottomBar"))/*Create bottom bar*/
-        bottomBar!.setPosition(CGPoint(position.x,position.y+size.height-bottomBar!.getHeight()))
+        bottomBar = addSubView(Section(newSize!.width,NaN,self,"bottomBar"))/*Create bottom bar*/
+        bottomBar!.setPosition(CGPoint(newPosition!.x,newPosition!.y+newSize!.height-bottomBar!.getHeight()))
         
         let hCount:Int = hValNames.count
         //Swift.print("hCount: " + "\(hCount)")
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
-        let itemXSpace:CGFloat = size.width/(hCount.cgFloat + 1)
+        let itemXSpace:CGFloat = newSize!.width/(hCount.cgFloat + 1)
         //Swift.print("itemXSpace: " + "\(itemXSpace)")
         var x:CGFloat = itemXSpace
         for i in 0..<hCount{

@@ -9,14 +9,15 @@ class GraphUtils{
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
         let x:CGFloat = /*position.x*/ spacing.width
-        let y:CGFloat = /*position.y +*/ size.height// - (spacing.height*2)
+        let y:CGFloat = /*position.y +*/ size.height - (spacing.height*2)
         let h:CGFloat = size.height-(spacing.height*2)
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             let value:CGFloat = vValues[i]
             let ratio:CGFloat = maxValue/value/*a value between 0-1*/
+            let dist:CGFloat = h*ratio
             p.x = x + (i * spacing.width)
-            p.y = y - 
+            p.y = y - dist
             points.append(p)
         }
         return points

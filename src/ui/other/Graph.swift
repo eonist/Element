@@ -132,8 +132,6 @@ class Graph:Element {
      */
     func createGraphPoints(){
         //Swift.print("createGraphPoints:")
-        //Swift.print("graphPts: " + "\(graphPts)")
-        //Swift.print("graphPts.count: " + "\(graphPts.count)")
         graphPts.forEach{
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
             graphPoints.append(graphPoint)
@@ -150,10 +148,7 @@ class Graph:Element {
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
     }
     /**
-     * //onResize
-     * //recalc spacing
-     * //height should be uniform to the width
-     * //Realign components
+     * //onResize, recalc spacing,Realign components,height should be uniform to the width
      */
     func alignUI(){
         //this method is not in use

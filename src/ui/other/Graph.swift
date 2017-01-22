@@ -2,7 +2,10 @@ import Cocoa
 @testable import Utils
 
 class Graph:Element {
-    var vValues:[CGFloat] = {return Array<CGFloat>([4,2,3,7,5,0,1])}/*vertical amount*///TODO: rename to y-values?
+    var vValues:[CGFloat] = {
+        let vVals:[CGFloat] = [4,2,3,7,5,0,1]
+        return vVals
+    }/*vertical amount*///TODO: rename to y-values?
     var hValNames:[String] {return ["A","B","C","D","E","F","G"]}/*horizontal items*///TODO: rename to x-values? 
     var vCount:Int = 5/*Number of vertical indicators*/
     var leftBar:Section?

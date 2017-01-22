@@ -16,14 +16,13 @@ class Graph:Element {
     var newSize:CGSize?/*the size that contains the graph components*/
     var newPosition:CGPoint?/*the point that the graph components starts from*/
     var itemYSpace:CGFloat?
-    var maxValue:CGFloat//maxValue represents the max value among the values
-    var itemYSpace:CGFloat?
+    var maxValue:CGFloat?//maxValue represents the max value among the values
     var itemXSpace:CGFloat?
     var spacing:CGSize?
     override func resolveSkin() {
         super.resolveSkin()
         createUI()
-        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues,maxValue)//creates the init positions of where the points should lay
+        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)//creates the init positions of where the points should lay
         createGraph()
     }
     /**
@@ -35,8 +34,10 @@ class Graph:Element {
         newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea()
         
-        createLeftBar()
         itemYSpace = newSize!.height/(vCount.cgFloat + 1.0)
+        maxValue = GraphUtils.maxValue(vValues)
+        createLeftBar()
+        
         itemXSpace = createBottomBar()
         spacing = CGSize(itemXSpace!,itemYSpace!)
         createVLines(newSize!,newPosition!,spacing!)
@@ -74,7 +75,6 @@ class Graph:Element {
             textArea.setPosition(CGPoint(0,y))
             y += itemYSpace
         }
-        return (itemYSpace:itemYSpace,maxValue:maxValue)
     }
     /**
      * Creates the Text items that represents data in the x-axis

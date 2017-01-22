@@ -45,7 +45,7 @@ class GraphUtils{
     /**
      *
      */
-    static func maxValue(vValues:[CGFloat]){
+    static func maxValue(_ vValues:[CGFloat]){
         var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
         //Swift.print("maxValue: " + "\(maxValue)")
         

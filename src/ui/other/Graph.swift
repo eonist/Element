@@ -136,8 +136,6 @@ class Graph:Element {
             let graphPoint:Element = graphArea!.addSubView(Element(NaN,NaN,graphArea,"graphPoint"))
             graphPoints.append(graphPoint)
             graphPoint.setPosition($0)
-            //style the button similar to VolumSlider knob (with a blue center, a shadow and white border, test different designs)
-            //set the size as 12px and offset to -6 (so that its centered)
         }
     }
     /**
@@ -163,5 +161,4 @@ class Graph:Element {
         return "\(Graph.self)"
     }
 }
-
 

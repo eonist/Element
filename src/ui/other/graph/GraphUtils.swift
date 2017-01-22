@@ -16,7 +16,7 @@ class GraphUtils{
             let value:CGFloat = vValues[i]
             let ratio:CGFloat = maxValue/value/*a value between 0-1*/
             p.x = x + (i * spacing.width)
-            p.y = y - h*ratio
+            p.y = y - 
             points.append(p)
         }
         return points

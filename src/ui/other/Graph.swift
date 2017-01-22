@@ -22,7 +22,6 @@ class Graph:Element {
     
     override func resolveSkin() {
         super.resolveSkin()
-        
         createUI()
         graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)//creates the init positions of where the points should lay
         createGraph()

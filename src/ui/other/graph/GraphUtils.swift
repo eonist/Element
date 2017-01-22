@@ -8,10 +8,11 @@ class GraphUtils{
         var points:[CGPoint] = []
         let x:CGFloat = /*position.x*/ spacing.width
         let y:CGFloat = /*position.y +*/ size.height// - (spacing.height*2)
+        let h:CGFloat = size.height-(spacing.height*2)
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)
-            p.y = y - ((size.height-(spacing.height*2))/maxValue * vValues[i])
+            p.y = y - (()/maxValue * vValues[i])
             points.append(p)
         }
         return points

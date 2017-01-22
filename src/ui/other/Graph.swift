@@ -34,8 +34,9 @@ class Graph:Element {
         newSize = Resizer.fit(CGSize(w,h),4/3)
         newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea()
-        spaceData = createLeftBar()
-        itemYSpace = spaceData!.itemYSpace
+        
+        createLeftBar()
+        itemYSpace = newSize!.height/(vCount.cgFloat + 1.0)
         itemXSpace = createBottomBar()
         spacing = CGSize(itemXSpace!,itemYSpace!)
         createVLines(newSize!,newPosition!,spacing!)
@@ -59,12 +60,9 @@ class Graph:Element {
     /**
      * Creates the Text items that represents data in the y-axis
      */
-    func createLeftBar()->(itemYSpace:CGFloat,maxValue:CGFloat){
+    func createLeftBar(){
         leftBar = addSubView(Section(NaN,newSize!.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,newPosition!.y))
-        
-        
-        //Swift.print("maxValue: " + "\(maxValue)")
         
         let strings:[String] = GraphUtils.verticalIndicators(vCount, maxValue)
 

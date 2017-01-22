@@ -45,7 +45,7 @@ class GraphUtils{
     /**
      *
      */
-    static func maxValue(_ vValues:[CGFloat]){
+    static func maxValue(_ vValues:[CGFloat]) -> CGFloat{
         var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
         //Swift.print("maxValue: " + "\(maxValue)")
         
@@ -53,5 +53,6 @@ class GraphUtils{
         if(CGFloatAsserter.odd(maxValue)){
             maxValue += 1//We need even values when we divide later
         }
+        return maxValue
     }
 }

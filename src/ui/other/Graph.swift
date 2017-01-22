@@ -65,15 +65,15 @@ class Graph:Element {
         leftBar = addSubView(Section(NaN,newSize!.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,newPosition!.y))
         
-        let strings:[String] = GraphUtils.verticalIndicators(vCount, maxValue)
+        let strings:[String] = GraphUtils.verticalIndicators(vCount, maxValue!)
 
-        var y:CGFloat = itemYSpace
+        var y:CGFloat = itemYSpace!
         strings.forEach{
             let textArea:TextArea = TextArea(NaN,NaN,$0,leftBar!)
             leftBarItems.append(textArea)
             _ = leftBar!.addSubView(textArea)
             textArea.setPosition(CGPoint(0,y))
-            y += itemYSpace
+            y += itemYSpace!
         }
     }
     /**

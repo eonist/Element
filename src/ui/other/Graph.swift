@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 
 class Graph:Element {
-    var vValues:[CGFloat] {return [4,2,3,7,5,0,1]}/*vertical amount*///TODO: rename to y-values?
+    var vValues:[CGFloat]?/*vertical amount*///TODO: rename to y-values?
     var hValNames:[String] {return ["A","B","C","D","E","F","G"]}/*horizontal items*///TODO: rename to x-values? 
     var vCount:Int = 5/*Number of vertical indicators*/
     var leftBar:Section?
@@ -21,6 +21,7 @@ class Graph:Element {
     var spacing:CGSize?
     override func resolveSkin() {
         super.resolveSkin()
+        vValues = [4,2,3,7,5,0,1]
         createUI()
         graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)//creates the init positions of where the points should lay
         createGraph()

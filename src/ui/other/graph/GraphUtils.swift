@@ -13,7 +13,7 @@ class GraphUtils{
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             p.x = x + (i * spacing.width)
-            p.y = y - (()/maxValue * vValues[i])
+            p.y = y - (()/ maxValue * vValues[i])
             points.append(p)
         }
         return points

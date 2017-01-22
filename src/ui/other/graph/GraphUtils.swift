@@ -16,7 +16,7 @@ class GraphUtils{
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             let value:CGFloat = vValues[i]
-            let ratio:CGFloat = maxValue/value/*a value between 0-1*/
+            let ratio:CGFloat = value/maxValue/*a value between 0-1*/
             Swift.print("ratio: " + "\(ratio)")
             let dist:CGFloat = h*ratio
             Swift.print("dist: " + "\(dist)")

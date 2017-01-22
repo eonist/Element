@@ -15,14 +15,15 @@ class Graph:Element {
     /*layoutData:*/
     var newSize:CGSize?/*the size that contains the graph components*/
     var newPosition:CGPoint?/*the point that the graph components starts from*/
-    var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?//maxValue represents the max value among the values
+    var itemYSpace:CGFloat?
+    var maxValue:CGFloat//maxValue represents the max value among the values
     var itemYSpace:CGFloat?
     var itemXSpace:CGFloat?
     var spacing:CGSize?
     override func resolveSkin() {
         super.resolveSkin()
         createUI()
-        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues,spaceData!.maxValue)//creates the init positions of where the points should lay
+        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues,maxValue)//creates the init positions of where the points should lay
         createGraph()
     }
     /**
@@ -62,13 +63,7 @@ class Graph:Element {
         leftBar = addSubView(Section(NaN,newSize!.height,self,"leftBar"))//create left bar
         leftBar!.setPosition(CGPoint(0,newPosition!.y))
         
-        var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
-        //Swift.print("maxValue: " + "\(maxValue)")
-        let itemYSpace:CGFloat = newSize!.height/(vCount.cgFloat + 1.0)
-        //Swift.print("itemYSpace: " + "\(itemYSpace)")
-        if(CGFloatAsserter.odd(maxValue)){
-            maxValue += 1//We need even values when we devide later
-        }
+        
         //Swift.print("maxValue: " + "\(maxValue)")
         
         let strings:[String] = GraphUtils.verticalIndicators(vCount, maxValue)

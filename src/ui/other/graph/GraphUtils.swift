@@ -42,4 +42,16 @@ class GraphUtils{
         }
         return strings
     }
+    /**
+     *
+     */
+    static func maxValue(vValues:[CGFloat]){
+        var maxValue:CGFloat = NumberParser.max(vValues)//you need to map these and ceil them. as you need int values!?!?
+        //Swift.print("maxValue: " + "\(maxValue)")
+        
+        //Swift.print("itemYSpace: " + "\(itemYSpace)")
+        if(CGFloatAsserter.odd(maxValue)){
+            maxValue += 1//We need even values when we divide later
+        }
+    }
 }

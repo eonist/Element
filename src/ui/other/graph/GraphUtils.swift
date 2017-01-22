@@ -3,7 +3,8 @@ import Foundation
 class GraphUtils{
     /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
-     * PARAM: vValues (values from 0-1)
+     * PARAM: vValues y-axis values
+     * PARAM: maxValue (the max value among the y-axis values)
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []
@@ -12,8 +13,10 @@ class GraphUtils{
         let h:CGFloat = size.height-(spacing.height*2)
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
+            let value:CGFloat = vValues[i]
+            let ratio:CGFloat = maxValue/value/*a value between 0-1*/
             p.x = x + (i * spacing.width)
-            p.y = y - (()/ maxValue * vValues[i])
+            p.y = y - h*ratio
             points.append(p)
         }
         return points

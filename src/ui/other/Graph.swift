@@ -15,7 +15,7 @@ class Graph:Element {
     /*layoutData:*/
     var newSize:CGSize?/*the size that contains the graph components*/
     var newPosition:CGPoint?/*the point that the graph components starts from*/
-    var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?
+    var spaceData:(itemYSpace:CGFloat,maxValue:CGFloat)?//maxValue represents the max value among the values
     var itemYSpace:CGFloat?
     var itemXSpace:CGFloat?
     var spacing:CGSize?

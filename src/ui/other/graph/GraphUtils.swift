@@ -3,6 +3,7 @@ import Foundation
 class GraphUtils{
     /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
+     * PARAM: vValues (values from 0-1)
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         var points:[CGPoint] = []

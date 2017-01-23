@@ -5,6 +5,7 @@ class Graph:Element {
     var vValues:[CGFloat] {return [4,2,3,7,5,0,1]}/*vertical amount*///TODO: rename to y-values?
     var hValNames:[String] {return ["A","B","C","D","E","F","G"]}/*horizontal items*///TODO: rename to x-values? 
     var vCount:Int = 5/*Number of vertical indicators*/
+    var hCount:Int {return hValNames.count}
     var leftBar:Section?
     var leftBarItems:[TextArea] = []
     var bottomBar:Section?
@@ -16,8 +17,8 @@ class Graph:Element {
     var newSize:CGSize?/*the size that contains the graph components*/
     var newPosition:CGPoint?/*the point that the graph components starts from*/
     var itemYSpace:CGFloat?
-    var maxValue:CGFloat?//maxValue represents the max value among the values
     var itemXSpace:CGFloat?
+    var maxValue:CGFloat?//maxValue represents the max value among the values
     var spacing:CGSize?
     
     override func resolveSkin() {
@@ -39,7 +40,8 @@ class Graph:Element {
         maxValue = GraphUtils.maxValue(vValues)
         createLeftBar()
         
-        itemXSpace = createBottomBar()
+        itemXSpace = newSize!.width/(hCount.cgFloat + 1.0)
+        createBottomBar()
         spacing = CGSize(itemXSpace!,itemYSpace!)
         createVLines(newSize!,newPosition!,spacing!)
     }
@@ -87,12 +89,10 @@ class Graph:Element {
         bottomBar = addSubView(Section(newSize!.width,NaN,self,"bottomBar"))/*Create bottom bar*/
         bottomBar!.setPosition(CGPoint(newPosition!.x,newPosition!.y+newSize!.height-bottomBar!.getHeight()))
         
-        let hCount:Int = hValNames.count
-        //Swift.print("hCount: " + "\(hCount)")
+        
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
-        let itemXSpace:CGFloat = newSize!.width/(hCount.cgFloat + 1.0)
-        //Swift.print("itemXSpace: " + "\(itemXSpace)")
-        var x:CGFloat = itemXSpace
+        
+        var x:CGFloat = itemXSpace!
         for i in 0..<hCount{
             let str:String = hValNames[i]
             //Swift.print("str: " + "\(str)")
@@ -100,9 +100,8 @@ class Graph:Element {
             _ = bottomBar!.addSubView(textArea)
             //Swift.print("CGPoint(x,0): " + "\(CGPoint(x,0))")
             textArea.setPosition(CGPoint(x,0))
-            x += itemXSpace
+            x += itemXSpace!
         }
-        return itemXSpace
     }
     /**
      * Vertical lines (static)

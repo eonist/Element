@@ -152,6 +152,15 @@ class BarGraph:Graph {
     }
     override func touchesEnded(with event:NSEvent) {//for debugging
         Swift.print("touchesEndedWithEvent: " + "\(event)")
+        
+        
+        let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
+        
+        if(debugCircDict.count > anyTouches.count){
+            
+        }
+        
+        
         let endingTouches:Set<NSTouch> = event.touches(matching:.ended, in: self)
         //Swift.print("endingTouches.count: " + "\(endingTouches.count)")
         for endingTouch in endingTouches {
@@ -160,9 +169,7 @@ class BarGraph:Graph {
             ellipse?.graphic.removeFromSuperview()
         }
         
-        let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
         
-        debugCircDict.count > anyTouches.count
     }
     override func touchesCancelled(with event:NSEvent) {//for debugging
         Swift.print("touchesCancelledWithEvent: " + "\(event)")

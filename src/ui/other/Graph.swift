@@ -32,7 +32,7 @@ class Graph:Element {
      * NOTE: override this method if you want ot make a different UI look
      */
     func createUI(){
-        newSize = Resizer.fit(CGSize(w,h),4/3)
+        newSize = Resizer.fit(CGSize(w,h),4/4)
         newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea()
         

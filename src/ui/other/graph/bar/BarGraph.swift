@@ -17,6 +17,7 @@ class BarGraph:Graph {
         tempVValues = Utils.vValues()//random data is set on init
         super.init(width, height, parent, id)
         self.acceptsTouchEvents = true/*Enables gestures*/
+        self.wantsRestingTouches = true
     }
     override func createGraph() {
         createBars()

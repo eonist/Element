@@ -159,6 +159,9 @@ class BarGraph:Graph {
             let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:id)
             ellipse?.graphic.removeFromSuperview()
         }
+        
+        let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
+        
     }
     override func touchesCancelled(with event:NSEvent) {//for debugging
         Swift.print("touchesCancelledWithEvent: " + "\(event)")

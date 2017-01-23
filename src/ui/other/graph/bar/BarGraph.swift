@@ -156,7 +156,7 @@ class BarGraph:Graph {
         
         let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
         
-        /*if(debugCircDict.count > anyTouches.count){
+        if(debugCircDict.count > anyTouches.count){//Cleans up surplus debugCircs (Stuck debugCircs)
             for key in debugCircDict.keys{
                 var anyTouch:NSTouch? = nil
                 for touch in anyTouches{
@@ -170,7 +170,7 @@ class BarGraph:Graph {
                     ellipse?.graphic.removeFromSuperview()
                 }
             }
-        }*/
+        }
         
         
         let endingTouches:Set<NSTouch> = event.touches(matching:.ended, in: self)

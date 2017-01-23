@@ -157,7 +157,7 @@ class BarGraph:Graph {
         let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
         
         if(debugCircDict.count > anyTouches.count){
-            for key in debugCircDict.keys.reversed(){
+            for key in debugCircDict.keys{
                 var anyTouch:NSTouch? = nil
                 for touch in anyTouches{
                     if(key == "\(touch.identity)"){

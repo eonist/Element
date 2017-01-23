@@ -155,8 +155,11 @@ class BarGraph:Graph {
         
         
         let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
-        Swift.print("anyTouches: " + "\(anyTouches)")
+        Swift.print("anyTouches: " + "\(anyTouches.count)")
         Swift.print("debugCircDict.count: " + "\(debugCircDict.count)")
+        
+        //Continue here: print the touch type and try playground again
+        
         if(debugCircDict.count > anyTouches.count){//Cleans up surplus debugCircs (Stuck debugCircs)
             for key in debugCircDict.keys{
                 var anyTouch:NSTouch? = nil

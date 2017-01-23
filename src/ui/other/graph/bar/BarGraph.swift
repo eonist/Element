@@ -158,7 +158,13 @@ class BarGraph:Graph {
         
         if(debugCircDict.count > anyTouches.count){
             for key in debugCircDict.keys{
-                let anyTouch = anyTouches.forEach{key == "\($0.identity)"}
+                var anyTouch:NSTouch? = nil
+                for touch in anyTouches{
+                    if(key == "\(touch.identity)"){
+                        anyTouch = touch
+                        break;//Found a match, no need to search further
+                    }
+                }
                 if(anyTouch == nil){//debugCirc not among active touches, remove
                     
                 }

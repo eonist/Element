@@ -265,6 +265,7 @@ private class Utils{
     //remove leftBar and bottomBar✅
     //try to make some nice colors
     //try to add to playground ✅
+    //investigate the touch capture method you read about yesterday
     //Add heat map mapped to the alpha of each bar
     //find the right color 
     //add window move capabilities

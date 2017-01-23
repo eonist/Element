@@ -152,13 +152,13 @@ class BarGraph:Graph {
     }
     override func touchesEnded(with event:NSEvent) {//for debugging
         Swift.print("touchesEndedWithEvent: " + "\(event)")
-        Swift.print("event.phase: " + "\(event.phase)")
+        Swift.print("event.phase.type: " + "\(event.phase.type)")
         
         let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
         Swift.print("anyTouches: " + "\(anyTouches.count)")
         Swift.print("debugCircDict.count: " + "\(debugCircDict.count)")
         anyTouches.forEach{
-            Swift.print("$0.touchType: " + "\($0.touchType)")
+            Swift.print("$0.phase.type: " + "\($0.phase.type)")
         }
         //Continue here: print the touch type and try playground again
         

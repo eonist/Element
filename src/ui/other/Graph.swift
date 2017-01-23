@@ -80,7 +80,7 @@ class Graph:Element {
     /**
      * Creates the Text items that represents data in the x-axis
      */
-    func createBottomBar()->CGFloat{
+    func createBottomBar(){
         //Swift.print("createBottomBar")
         //Swift.print("size: " + "\(size)")
         //Swift.print("position: " + "\(position)")

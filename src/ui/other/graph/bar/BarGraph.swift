@@ -155,7 +155,8 @@ class BarGraph:Graph {
         
         
         let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
-        
+        Swift.print("anyTouches: " + "\(anyTouches)")
+        Swift.print("debugCircDict.count: " + "\(debugCircDict.count)")
         if(debugCircDict.count > anyTouches.count){//Cleans up surplus debugCircs (Stuck debugCircs)
             for key in debugCircDict.keys{
                 var anyTouch:NSTouch? = nil

@@ -14,6 +14,7 @@ class Graph:Element {
     var graphPoints:[Element] = []//Visual points
     var graphPts:[CGPoint] = []
     /*layoutData:*/
+    var ratio:CGFloat {return 4/3}
     var newSize:CGSize?/*the size that contains the graph components*/
     var newPosition:CGPoint?/*the point that the graph components starts from*/
     var itemYSpace:CGFloat?
@@ -32,7 +33,7 @@ class Graph:Element {
      * NOTE: override this method if you want ot make a different UI look
      */
     func createUI(){
-        newSize = Resizer.fit(CGSize(w,h),4/4)
+        newSize = Resizer.fit(CGSize(w,h),ratio)
         newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea()
         

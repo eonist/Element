@@ -162,7 +162,7 @@ class BarGraph:Graph {
     }
     override func touchesCancelled(with event:NSEvent) {//for debugging
         Swift.print("touchesCancelledWithEvent: " + "\(event)")
-        super.touchesCancelled(with:event)
+        //super.touchesCancelled(with:event)
     }
     override func createVLines(_ size:CGSize, _ position:CGPoint, _ spacing:CGSize) {//we don't want VLines in the BarGraph
         //createHLines()//instead of vLines we create hLines

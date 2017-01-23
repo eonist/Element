@@ -162,6 +162,7 @@ class BarGraph:Graph {
         
         let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
         
+        debugCircDict.count > anyTouches.count
     }
     override func touchesCancelled(with event:NSEvent) {//for debugging
         Swift.print("touchesCancelledWithEvent: " + "\(event)")

@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 
 class BarGraph:Graph {
+    static var playgroundMode:Bool = false
     var bars:[Bar] = []
     var tempVValues:[CGFloat]/*we need a temp storage for the random data*/
     override var vValues:[CGFloat] {return tempVValues}
@@ -188,7 +189,12 @@ class BarGraph:Graph {
             ellipse?.graphic.removeFromSuperview()
         }
         
-        
+        if(BarGraph.playgroundMode && anyTouches.count == 2 ){//temp solution
+            for key in debugCircDict.keys{
+                let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:key)
+                ellipse?.graphic.removeFromSuperview()
+            }
+        }
     }
     override func touchesCancelled(with event:NSEvent) {//for debugging
         Swift.print("touchesCancelledWithEvent: " + "\(event)")

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class RBSliderFastList3:FastList3,IRBSliderList{
     /*RubberBand*/

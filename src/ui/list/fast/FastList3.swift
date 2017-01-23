@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class FastList3:Element,IList{
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/

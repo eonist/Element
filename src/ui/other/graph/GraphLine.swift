@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 /**
  * GraphLine represents the Visual Graph line int the Graph component.

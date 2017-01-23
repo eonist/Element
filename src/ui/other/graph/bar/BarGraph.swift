@@ -18,7 +18,7 @@ class BarGraph:Graph {
         tempVValues = Utils.vValues()//random data is set on init
         super.init(width, height, parent, id)
         self.acceptsTouchEvents = true/*Enables gestures*/
-        self.wantsRestingTouches = true
+        self.wantsRestingTouches = true//doesnt register when used in playground
     }
     override func createGraph() {
         createBars()
@@ -104,8 +104,6 @@ class BarGraph:Graph {
         }
     }
     
-
-    
     /**
      * Detects when touches are made
      * NOTE: event.localPos(self) equals the pos of the mouseCursor
@@ -189,7 +187,7 @@ class BarGraph:Graph {
             ellipse?.graphic.removeFromSuperview()
         }
         
-        if(BarGraph.playgroundMode && anyTouches.count == 2 ){//temp solution
+        if(BarGraph.playgroundMode && anyTouches.count == 2 ){//playground doesnt fire a touch up when there is only one otuch detected. this is a workaround
             for key in debugCircDict.keys{
                 let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:key)
                 ellipse?.graphic.removeFromSuperview()

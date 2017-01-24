@@ -40,8 +40,9 @@ class Switch:HSlider,ICheckable{
 }
 class SwitchButton:Button{
     
-    //
-    
+    override func mouseDown(_ event: MouseEvent) {
+        super.mouseDown(event)
+    }
     override func getClassType() -> String {
         return "\(Button.self)"
     }

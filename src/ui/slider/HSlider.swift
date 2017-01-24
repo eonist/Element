@@ -18,6 +18,12 @@ class HSlider:Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
+        createThumb()
+    }
+    /**
+     * Override this method if you want to add a custom thumb
+     */
+    func createThumb(){
         thumb = addSubView(Thumb(thumbWidth, height,false,self))
         setProgressValue(progress)
     }

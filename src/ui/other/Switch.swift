@@ -2,6 +2,10 @@ import Foundation
 
 class Switch:HSlider,ICheckable{
     private var isChecked:Bool = true
+    override func createThumb() {
+        thumb = addSubView(SwitchButton(thumbWidth, height,self))
+        setProgressValue(progress)
+    }
     /**
      * Sets the self.isChecked variable (Toggles between two states)
      */
@@ -17,5 +21,7 @@ class Switch:HSlider,ICheckable{
     }
 }
 class SwitchButton:Button{
-    
+    override func getClassType() -> String {
+        return "\(Button.self)"
+    }
 }

@@ -14,6 +14,16 @@ class Switch:HSlider,ICheckable{
         }else if(progress > 0.5 && !isChecked){
             setChecked(true)//set enable
         }*/
+        let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+        //StyleParser.describe(style)
+        var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
+        //Swift.print("styleProperty: " + "\(styleProperty)")
+        //Swift.print("color.hex: " + "\(color.hexString)")
+        if(styleProperty != nil){//temp
+            let color = NSColorParser.color(<#T##hexColor: String##String#>)
+            styleProperty!.value = color//("0x" + color.hexString).uint
+            skin!.setStyle(style)/*updates the skin*/
+        }
         
         return event
     }

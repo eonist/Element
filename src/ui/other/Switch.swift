@@ -1,7 +1,7 @@
 import Foundation
 
 class Switch:HSlider,ICheckable{
-    private var isChecked:Bool = false
+    private var isChecked:Bool = true
     /**
      * Sets the self.isChecked variable (Toggles between two states)
      */

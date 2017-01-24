@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 class Switch:HSlider,ICheckable{
     private var isChecked:Bool = true
@@ -6,12 +6,11 @@ class Switch:HSlider,ICheckable{
         thumb = addSubView(SwitchButton(thumbWidth, height,self))
         setProgressValue(progress)
     }
-    
-    override func onThumbMove(event:NSEvent)-> NSEvent?{
-        
-        return super.onThumbMove(event)
+    override func onThumbMove(event:NSEvent)-> NSEvent{
+        let event = super.onThumbMove(event: event)
+        Swift.print("progress: " + "\(progress)")
+        return event
     }
-    
     /**
      * Sets the self.isChecked variable (Toggles between two states)
      */

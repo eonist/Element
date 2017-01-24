@@ -16,13 +16,13 @@ class Switch:HSlider,ICheckable{
         }*/
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         //StyleParser.describe(style)
-        var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
+        var styleProperty = style.getStyleProperty("fill") /*edits the style*/
         //Swift.print("styleProperty: " + "\(styleProperty)")
         //Swift.print("color.hex: " + "\(color.hexString)")
         if(styleProperty != nil){//temp
             let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
-            let color = NSColor.white.blended(withFraction: progress, of: green)
-            styleProperty!.value = color//("0x" + color.hexString).uint
+            let color:NSColor = NSColor.white.blended(withFraction: progress, of: green)!
+            styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
         

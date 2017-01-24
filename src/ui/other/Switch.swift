@@ -1,9 +1,13 @@
 import Cocoa
 
 class Switch:HSlider,ICheckable{
-    var tempThumbWidth:CGFloat = NaN
+    var tempThumbWidth:CGFloat
     override var thumbWidth: CGFloat {get{return thumb?.getWidth() ?? tempThumbWidth}set{tempThumbWidth = newValue}}
     private var isChecked:Bool = true
+    override init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
+        self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
+        super.init(width,height,thumbWidth,progress,parent,id)
+    }
     override func createThumb() {
         thumb = addSubView(SwitchButton(thumbWidth, height,self))
         setProgressValue(progress)
@@ -39,6 +43,7 @@ class Switch:HSlider,ICheckable{
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 class SwitchButton:Button{
     

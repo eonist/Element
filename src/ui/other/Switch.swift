@@ -6,7 +6,7 @@ class Switch:HSlider,ICheckable{
         thumb = addSubView(SwitchButton(thumbWidth, height,self))
         setProgressValue(progress)
     }
-    override func onThumbMove(event:NSEvent)-> NSEvent{
+    override func onThumbMove(event:NSEvent) -> NSEvent{
         let event = super.onThumbMove(event: event)
         Swift.print("progress: " + "\(progress)")
         return event

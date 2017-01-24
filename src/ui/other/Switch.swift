@@ -8,8 +8,8 @@ class Switch:HSlider,ICheckable{
     }
     
     override func onThumbMove(event:NSEvent)-> NSEvent?{
-        super.onEvent(SliderEvent(SliderEvent.change,progress,self))
-        return event
+        
+        return super.onThumbMove(event)
     }
     
     /**

@@ -33,7 +33,7 @@ class HSlider:Element{
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//avoids potential bugs
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove )
     }
-    func onThumbMove(event:NSEvent)-> NSEvent?{
+    func onThumbMove(event:NSEvent)-> NSEvent{
         progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
         let thumbX:CGFloat = Utils.thumbPosition(progress, width, thumbWidth)
         thumb!.x = thumbX

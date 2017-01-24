@@ -1,6 +1,6 @@
 import Foundation
 
-class Switch:VolumeSlider,ICheckable{
+class Switch:HSlider,ICheckable{
     private var isChecked:Bool = false
     /**
      * Sets the self.isChecked variable (Toggles between two states)
@@ -15,7 +15,4 @@ class Switch:VolumeSlider,ICheckable{
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
-    /*override func getClassType() -> String {
-     return "\(VolumeSlider.self)"//borrow the VolumSlider look for now
-     }*/
 }

@@ -6,6 +6,12 @@ class Switch:HSlider,ICheckable{
         thumb = addSubView(SwitchButton(thumbWidth, height,self))
         setProgressValue(progress)
     }
+    
+    override func onThumbMove(event:NSEvent)-> NSEvent?{
+        super.onEvent(SliderEvent(SliderEvent.change,progress,self))
+        return event
+    }
+    
     /**
      * Sets the self.isChecked variable (Toggles between two states)
      */

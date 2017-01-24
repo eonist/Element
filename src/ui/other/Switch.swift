@@ -16,3 +16,6 @@ class Switch:HSlider,ICheckable{
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
 }
+class SwitchButton:Button{
+    
+}

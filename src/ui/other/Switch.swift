@@ -20,7 +20,8 @@ class Switch:HSlider,ICheckable{
         //Swift.print("styleProperty: " + "\(styleProperty)")
         //Swift.print("color.hex: " + "\(color.hexString)")
         if(styleProperty != nil){//temp
-            let color = NSColorParser.color(<#T##hexColor: String##String#>)
+            let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
+            let color = NSColor.white.blended(withFraction: progress, of: green)
             styleProperty!.value = color//("0x" + color.hexString).uint
             skin!.setStyle(style)/*updates the skin*/
         }

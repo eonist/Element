@@ -9,11 +9,12 @@ class Switch:HSlider,ICheckable{
     override func onThumbMove(event:NSEvent) -> NSEvent{
         let event = super.onThumbMove(event: event)
         Swift.print("progress: " + "\(progress)")
-        if(progress < 0.5 && isChecked){
+        /*if(progress < 0.5 && isChecked){
             setChecked(false)//set disable
         }else if(progress > 0.5 && !isChecked){
             setChecked(true)//set enable
-        }
+        }*/
+        
         return event
     }
     /**

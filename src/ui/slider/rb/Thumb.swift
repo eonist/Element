@@ -4,6 +4,7 @@ import Cocoa
  * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  * NOTE: the overshot part is to support "the-RubberBand-list-look"
+ * TODO: Rename this to RBThumb and override createThumb in vSlider instead, then revert this class to the simpler class
  */
 class Thumb:Button{
     let fps:CGFloat = 60

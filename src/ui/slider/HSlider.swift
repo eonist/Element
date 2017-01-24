@@ -8,7 +8,7 @@ import Cocoa
 class HSlider:Element{
     var progress:CGFloat
     var thumbWidth:CGFloat
-    var thumb:Thumb?
+    var thumb:Button?
     var tempThumbMouseX:CGFloat = 0/*This value holds the onDown position when you click the thumb*/
     var leftMouseDraggedEventListener:Any? = nil
     init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
@@ -24,7 +24,7 @@ class HSlider:Element{
      * Override this method if you want to add a custom thumb
      */
     func createThumb(){
-        thumb = addSubView(Thumb(thumbWidth, height,false,self))
+        thumb = addSubView(Button(thumbWidth, height,self))
         setProgressValue(progress)
     }
     func onThumbDown(){
@@ -67,7 +67,7 @@ class HSlider:Element{
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*If the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
         thumb!.x = Utils.thumbPosition(self.progress, width, thumbWidth)
-        thumb?.applyOvershot(progress)/*<--We use the unclipped scalar value*/
+        //thumb?.applyOvershot(progress)/*<--We use the unclipped scalar value*/
     }
     /**
      * Sets the thumbs width and repositions the thumb accordingly
@@ -86,7 +86,7 @@ class HSlider:Element{
 }
 private class Utils{
     /**
-     * Returns the x position of a nodes @param progress
+     * Returns the x position of a nodes PARAM: progress
      */
     static func thumbPosition(_ progress:CGFloat, _ width:CGFloat, _ thumbWidth:CGFloat)->CGFloat {
         let minThumbPos:CGFloat = width - thumbWidth/*Minimum thumb position*/

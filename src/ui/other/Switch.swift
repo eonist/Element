@@ -2,7 +2,7 @@ import Cocoa
 
 class Switch:HSlider,ICheckable{
     var tempThumbWidth:CGFloat = NaN
-    override var thumbWidth: CGFloat {get{return thumb!.getWidth()}set{tempThumbWidth = newValue}}
+    override var thumbWidth: CGFloat {get{return thumb?.getWidth() ?? tempThumbWidth}set{tempThumbWidth = newValue}}
     private var isChecked:Bool = true
     override func createThumb() {
         thumb = addSubView(SwitchButton(thumbWidth, height,self))

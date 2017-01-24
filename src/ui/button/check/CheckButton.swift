@@ -4,7 +4,7 @@ import Foundation
  * NOTE: to force the CheckButton to apply its Checked or unchecked skin, use the setChecked after the instance is created
  */
 class CheckButton:Button,ICheckable{
-    private var isChecked:Bool;
+    private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil){
         self.isChecked = isChecked
         super.init(width,height,parent,id);
@@ -16,7 +16,7 @@ class CheckButton:Button,ICheckable{
         super.onEvent(CheckEvent(CheckEvent.check, isChecked, self/*,self*/))
     }
     /**
-     * Sets the _isChecked variable (Toggles between two states)
+     * Sets the self.isChecked variable (Toggles between two states)
      */
     func setChecked(_ isChecked:Bool) {
         self.isChecked = isChecked

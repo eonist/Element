@@ -13,23 +13,20 @@ class BarGraph:Graph {
     var animator:Animator?
     var initGraphPts:[CGPoint] = []/*Animates from these points*/
     /*Debugging*/
-    var debugCircDict = [String:EllipseGraphic]()
+    var gestureHUD:GestureHUD?
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement?, _ id: String? = nil) {
         tempVValues = Utils.vValues()//random data is set on init
         super.init(width, height, parent, id)
         self.acceptsTouchEvents = true/*Enables gestures*/
         self.wantsRestingTouches = true//doesnt register when used in playground
+        gestureHUD = GestureHUD(self)
     }
     override func createGraph() {
         createBars()
         //createGraphPoints()
     }
-    override func createLeftBar() {
-        //dont create the leftBar
-    }
-    override func createBottomBar() {
-        //dont create the bottomBar
-    }
+    override func createLeftBar() {}/*dont create the leftBar*/
+    override func createBottomBar() {}/*dont create the bottomBar*/
     /**
      * Creates the Bars
      */
@@ -68,16 +65,10 @@ class BarGraph:Graph {
         Swift.print("tempVValues: " + "\(tempVValues)")
         //recalc the maxValue
         maxValue = GraphUtils.maxValue(vValues)//NumberParser.max(vValues)//Finds the largest number in among vValues
-        
-        //initGraphPts = self.graphPts.map{$0}//grabs the location of where the pts are now
-        //self.graphPts = GraphUtils.points(newSize!, newPostition!, spacing!, vValues, maxValue)
-        
+      
         initGraphPts = bars.map{$0.frame.origin}//grabs the location of where the pts are now
         graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)
-        //Swift.print("initGraphPts: " + "\(initGraphPts)")
-        //Swift.print("graphPts: " + "\(graphPts)")
-        /*GraphPoints*/
-        
+       
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         animator = Animator(Animation.sharedInstance,0.5,0,1,interpolateValue,Easing.easeInQuad)
         animator!.start()
@@ -86,12 +77,6 @@ class BarGraph:Graph {
      * Interpolates between 0 and 1 while the duration of the animation
      */
     func interpolateValue(_ val:CGFloat){
-        
-        /*GraphPoints*/
-        /*for i in 0..<graphPts.count{
-            let pos:CGPoint = initGraphPts[i].interpolate(graphPts[i], val)/*interpolates from one point to another*/
-            graphPoints[i].setPosition(pos)//moves the points
-        }*/
         //Swift.print("interpolateValue() val: \(val)")
         for e in 0..<graphPts.count{
             let pos:CGPoint = initGraphPts[e].interpolate(graphPts[e], val)/*interpolates from one point to another*/
@@ -103,41 +88,21 @@ class BarGraph:Graph {
             bar.graphic!.draw()
         }
     }
-    
     /**
      * Detects when touches are made
      * NOTE: event.localPos(self) equals the pos of the mouseCursor
      */
     override func touchesBegan(with event:NSEvent) {
-        Swift.print("touchesBeganWithEvent: " + "\(event)")
+        //Swift.print("touchesBeganWithEvent: " + "\(event)")
         twoFingersTouches = GestureUtils.twoFingersTouches(self, event)
-        /*DebugCirc*/
-        let touches:Set<NSTouch> = event.touches(matching:.began, in: self)
-        for touch in touches {//
-            //Swift.print("id: "+"\((touch as! NSTouch).identity)")
-            let id:String = "\(touch.identity)"
-            let touchPos = touch.pos(self) - CGPoint(20,20)//set to pivot of circ
-            let ellipse = EllipseGraphic(touchPos.x,touchPos.y,40,40,FillStyle(NSColor.white.alpha(0.5)),nil)
-            debugCircDict[id] = ellipse//add the debugCirc to a dictionary that uses the touch.id for key
-            addSubview(ellipse.graphic)
-            ellipse.draw()
-        }
+        /*Debug*/
+        gestureHUD!.touchesBegan(event)
     }
     /**
      * Detects if a two finger left or right swipe has occured
      */
     override func touchesMoved(with event:NSEvent) {
         //Swift.print("touchesMovedWithEvent: " + "\(event)")
-        /*DebugCirc*/
-        let touches:Set<NSTouch> = event.touches(matching:NSTouchPhase.any, in: self)//touchesMatchingPhase:NSTouchPhaseAny inView:self
-        //Swift.print("touches.count: " + "\(touches.count)")
-        for touch in touches {
-            let id:String = "\(touch.identity)"
-            let touchPos = touch.pos(self) - CGPoint(20,20)//offset pos // touch.normalizedPosition
-            let ellipse:EllipseGraphic? = debugCircDict[id]
-            ellipse?.setPosition(touchPos)
-            ellipse?.draw()
-        }
         /*swipe detection*/
         let swipeType:SwipeType = GestureUtils.swipe(self, event, twoFingersTouches)
         if (swipeType == .right){
@@ -149,57 +114,24 @@ class BarGraph:Graph {
         }else{
             //Swift.print("swipe none")
         }
+        /*Debug*/
+        gestureHUD!.touchesMoved(event)
     }
+    /**
+     * NOTE: playground doesnt fire a touch up when there is only one touch detected. to work aroudn this limitation you have to detect any touch and then when there are only 2, delete all debugCircs
+     */
     override func touchesEnded(with event:NSEvent) {//for debugging
         Swift.print("touchesEndedWithEvent: " + "\(event)")
         //Swift.print("event.phase.type: " + "\(event.phase.type)" + " event.phase: " + "\(event.phase)")
-        
-        let anyTouches:Set<NSTouch> = event.touches(matching:.any, in: self)
-        Swift.print("anyTouches: " + "\(anyTouches.count)")
-        Swift.print("debugCircDict.count: " + "\(debugCircDict.count)")
-        anyTouches.forEach{
-            Swift.print("$0.phase.type: " + "\($0.phase.type)")
-        }
-        //Continue here: print the touch type and try playground again
-        
-        /*
-        if(debugCircDict.count > anyTouches.count){//Cleans up surplus debugCircs (Stuck debugCircs)
-            for key in debugCircDict.keys{
-                var anyTouch:NSTouch? = nil
-                for touch in anyTouches{
-                    if(key == "\(touch.identity)"){
-                        anyTouch = touch
-                        break;//Found a match, no need to search further
-                    }
-                }
-                if(anyTouch == nil){//debugCirc not among active touches, remove
-                    let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:key)
-                    ellipse?.graphic.removeFromSuperview()
-                }
-            }
-        }*/
-        
-        let endingTouches:Set<NSTouch> = event.touches(matching:.ended, in: self)
-        //Swift.print("endingTouches.count: " + "\(endingTouches.count)")
-        for endingTouch in endingTouches {
-            let id:String = "\(endingTouch.identity)"
-            let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:id)
-            ellipse?.graphic.removeFromSuperview()
-        }
-        
-        if(BarGraph.playgroundMode && anyTouches.count == 2 ){//playground doesnt fire a touch up when there is only one otuch detected. this is a workaround
-            for key in debugCircDict.keys{
-                let ellipse:EllipseGraphic? = debugCircDict.removeValue(forKey:key)
-                ellipse?.graphic.removeFromSuperview()
-            }
-        }
+        /*Debug*/
+        gestureHUD!.touchesEnded(event)
     }
     override func touchesCancelled(with event:NSEvent) {//for debugging
         Swift.print("touchesCancelledWithEvent: " + "\(event)")
-        //super.touchesCancelled(with:event)
+        
     }
     override func createVLines(_ size:CGSize, _ position:CGPoint, _ spacing:CGSize) {//we don't want VLines in the BarGraph
-        //createHLines()//instead of vLines we create hLines
+        //createHLines()//instead of vLines we create hLines if needed
     }
     override func getClassType() -> String {return "\(Graph.self)"}
     required init(coder:NSCoder) { fatalError("init(coder:) has not been implemented")}
@@ -232,7 +164,7 @@ class Bar:Element{
      */
     func setBarHeight(_ height:CGFloat){
         let w = getWidth()
-        if(height < w && height > 0){//clamps the height to width unless its 0 at which point it doesn't render
+        if(height < w && height > 0){/*clamps the height to width unless its 0 at which point it doesn't render*/
             graphic?.setSizeValue(CGSize(w,w))
         }else{ //h >= w || h == 0
             graphic?.setSizeValue(CGSize(w,height))

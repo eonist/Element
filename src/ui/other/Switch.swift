@@ -25,7 +25,6 @@ class Switch:HSlider,ICheckable{
             styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
-        
         return event
     }
     /**

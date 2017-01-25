@@ -8,12 +8,12 @@ class Switch:HSlider,ICheckable{
         //self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
         self.isChecked = isChecked
         Swift.print("isChecked: " + "\(isChecked)")
-        super.init(width,height,thumbWidth,0,parent,id)
+        super.init(width,height,thumbWidth,isChecked ? 1:0,parent,id)
     }
     override func createThumb() {
         thumb = addSubView(SwitchButton(thumbWidth, height,self))
         Swift.print("isChecked: " + "\(isChecked)")
-        setProgressValue(/*isChecked ? 1:0*/0)
+        setProgressValue(isChecked ? 1:0)
     }
     override func onThumbMove(event:NSEvent) -> NSEvent{
         let event = super.onThumbMove(event: event)

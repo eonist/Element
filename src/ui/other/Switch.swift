@@ -3,7 +3,7 @@ import Cocoa
 class Switch:HSlider,ICheckable{
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? tempThumbWidth}set{tempThumbWidth = newValue}}
-    private var isChecked:Bool = true
+    private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN,_ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         //self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
         self.isChecked = isChecked

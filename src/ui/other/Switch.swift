@@ -1,6 +1,7 @@
 import Cocoa
 
 class Switch:HSlider,ICheckable{
+    var thumbAnimator:Animator?
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool
@@ -52,6 +53,11 @@ class Switch:HSlider,ICheckable{
         thumb!.skin!.setStyle(thumbStyle)
         Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         
+        thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
+        
+        thumbAnimator!.start()
+    }
+    func thumbAnim(value:CGFloat){
         
     }
     /**

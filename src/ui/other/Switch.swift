@@ -51,6 +51,8 @@ class Switch:HSlider,ICheckable{
         thumbStyleProperty!.value = 0
         thumb!.skin!.setStyle(thumbStyle)
         Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+        
+        
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 

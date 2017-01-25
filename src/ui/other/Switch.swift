@@ -80,6 +80,8 @@ class SwitchButton:Button{
         Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         self.skin!.setStyle(thumbStyle)/*updates the skin*/
         
+        //Continue here:
+            //move the setStyle 
 
     }
     /*override func getClassType() -> String {

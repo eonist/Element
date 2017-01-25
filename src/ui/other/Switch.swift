@@ -62,6 +62,8 @@ class Switch:HSlider,ICheckable{
         let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
         var thumbLineStyleProperty = thumbStyle.getStyleProperty("line",1)
         thumbLineStyleProperty!.value = progress == 1 ? green : grey
+        //Continue here: 
+            //set the init margin and with, so that the anim doesnt jitter
         thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
         /*Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}

@@ -46,15 +46,15 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbUp() {
         Swift.print("onThumbUp")
-        super.onThumbUp()
+        
         
         let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        thumbStyleProperty!.value = progress == 1 ? 20 : 0
+        var thumbStyleProperty = thumbStyle.getStyleProperty("fill",1) /*edits the style*/
+        thumbStyleProperty!.value = NSColor.blue//progress == 1 ? 20 : 0
         Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
   
-
+super.onThumbUp()
         
     }
     /*override func onThumbDown() {

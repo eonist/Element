@@ -47,10 +47,7 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbDown() {
         super.onThumbDown()
-        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        thumbStyleProperty!.value = 0
-        thumb!.skin!.setStyle(thumbStyle)
+        
         Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
@@ -59,6 +56,10 @@ class Switch:HSlider,ICheckable{
     }
     func thumbAnim(value:CGFloat){
         
+        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        thumbStyleProperty!.value = 0
+        thumb!.skin!.setStyle(thumbStyle)
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 

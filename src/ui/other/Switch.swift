@@ -33,7 +33,7 @@ class Switch:HSlider,ICheckable{
             skin!.setStyle(style)/*updates the skin*/
         }
         /*Thumb*/
-        let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var thumbStyleProperty = thumbStyle.getStyleProperty("line",1) /*edits the style*/
         if(thumbStyleProperty != nil){//temp
             let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
@@ -44,10 +44,36 @@ class Switch:HSlider,ICheckable{
         }
         return event
     }
-    
-    /*override func onThumbDown() {
-     super.onThumbDown()
-     }*/
+    override func onThumbDown() {
+        super.onThumbDown()
+        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        thumbStyleProperty!.value = 0
+        thumb!.skin!.setStyle(thumbStyle)
+        Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+    }
+    /**
+     * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
+     * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
+     */
+    func onThumbUpInsideOrOutside() {
+        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        thumbStyleProperty!.value = progress == 1 ? 20 : 0
+        let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
+        let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
+        var thumbLineStyleProperty = thumbStyle.getStyleProperty("line",1)
+        thumbLineStyleProperty!.value = progress == 1 ? green : grey
+        thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
+        Swift.print("val: " + "\(thumb!.skin!.style!.getStyleProperty("margin-left",1)?.value)")
+        Swift.print("thumbStyle.getStyleProperty(line,1): " + "\(thumb!.skin!.style!.getStyleProperty("line",1)?.value)")
+    }
+    override func onEvent(_ event:Event) {
+        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
+        if(event.origin === thumb && event.type == ButtonEvent.upInside){onThumbUpInsideOrOutside()}
+        else if(event.origin === thumb && event.type == ButtonEvent.upOutside){onThumbUpInsideOrOutside()}
+        super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
+    }
     /**
      * Sets the self.isChecked variable (Toggles between two states)
      */
@@ -64,7 +90,6 @@ class Switch:HSlider,ICheckable{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 class SwitchButton:Button{
-    
     override func mouseDown(_ event: MouseEvent) {
         super.mouseDown(event)
     }
@@ -73,17 +98,8 @@ class SwitchButton:Button{
     }
     override func mouseUpInside(_ event: MouseEvent) {
         super.mouseUpInside(event)
-        
-        let thumbStyle:IStyle = StyleModifier.clone(self.skin!.style!, self.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        thumbStyleProperty!.value = 20//progress == 1 ? 20 : 0
-        Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        self.skin!.setStyle(thumbStyle)/*updates the skin*/
-        
-        //Continue here:
-            //move the setStyle on mouseUpInside and mouseUpOutside in Switch, or just don't clone the style. And then rather clone each style for each component, which should be the default way of doing things
-
     }
+    
     /*override func getClassType() -> String {
      return "\(Button.self)"
      }*/

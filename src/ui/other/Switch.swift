@@ -48,8 +48,8 @@ class Switch:HSlider,ICheckable{
     override func onThumbDown() {
         super.onThumbDown()
         
-        Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        
+        //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+        if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
         
         thumbAnimator!.start()
@@ -58,6 +58,8 @@ class Switch:HSlider,ICheckable{
         
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        let from = thumbStyleProperty!.value
+        let to = 20
         thumbStyleProperty!.value = 0
         thumb!.skin!.setStyle(thumbStyle)
     }

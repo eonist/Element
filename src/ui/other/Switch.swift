@@ -44,19 +44,7 @@ class Switch:HSlider,ICheckable{
         }
         return event
     }
-    override func onThumbUp() {
-        Swift.print("onThumbUp")
-        
-        
-        let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("fill",1) /*edits the style*/
-        thumbStyleProperty!.value = NSColor.blue//progress == 1 ? 20 : 0
-        Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
-  
-super.onThumbUp()
-        
-    }
+    
     /*override func onThumbDown() {
      super.onThumbDown()
      }*/
@@ -82,6 +70,17 @@ class SwitchButton:Button{
     }
     override func mouseUp(_ event: MouseEvent) {
         super.mouseUp(event)
+    }
+    override func mouseUpInside(_ event: MouseEvent) {
+        super.mouseUpInside(event)
+        
+        let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("fill",1) /*edits the style*/
+        thumbStyleProperty!.value = NSColor.blue//progress == 1 ? 20 : 0
+        Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+        thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
+        
+
     }
     /*override func getClassType() -> String {
      return "\(Button.self)"

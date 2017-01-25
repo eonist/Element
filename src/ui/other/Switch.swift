@@ -7,11 +7,13 @@ class Switch:HSlider,ICheckable{
     init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN,_ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         //self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
         self.isChecked = isChecked
-        super.init(width,height,thumbWidth,isChecked ? 1:0,parent,id)
+        Swift.print("isChecked: " + "\(isChecked)")
+        super.init(width,height,thumbWidth,0,parent,id)
     }
     override func createThumb() {
         thumb = addSubView(SwitchButton(thumbWidth, height,self))
-        setProgressValue(isChecked ? 1:0)
+        Swift.print("isChecked: " + "\(isChecked)")
+        setProgressValue(/*isChecked ? 1:0*/0)
     }
     override func onThumbMove(event:NSEvent) -> NSEvent{
         let event = super.onThumbMove(event: event)

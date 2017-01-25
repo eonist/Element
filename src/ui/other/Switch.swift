@@ -67,6 +67,7 @@ class Switch:HSlider,ICheckable{
         var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
         marginProp!.value = progress == 1 ? 20 : 0
         
+        
         thumb!.skin!.setStyle(style)/*updates the skin*/
         /*Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}

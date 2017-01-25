@@ -47,6 +47,11 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbDown() {
         super.onThumbDown()
+        let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var widthProp = style.getStyleProperty("width",1)
+        widthProp!.value = 80
+        thumb!.skin!.setStyle(style)/*updates the skin*/
+        
         /*Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
@@ -64,9 +69,10 @@ class Switch:HSlider,ICheckable{
         lineProp!.value = progress == 1 ? green : grey
         //Continue here: 
             //set the init margin and with, so that the anim doesnt jitter
-        var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
-        marginProp!.value = progress == 1 ? 20 : 0
-        
+        /*var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
+         marginProp!.value = progress == 1 ? 20 : 0*/
+        var widthProp = style.getStyleProperty("width",1)
+        widthProp!.value = 100
         
         thumb!.skin!.setStyle(style)/*updates the skin*/
         /*Anim*/

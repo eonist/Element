@@ -65,6 +65,10 @@ class SwitchButton:Button{
         //
         super.mouseDown(event)
     }
+    override func mouseUp(_ event: MouseEvent) {
+        //
+        super.mouseUp(event)
+    }
     /*override func getClassType() -> String {
      return "\(Button.self)"
      }*/

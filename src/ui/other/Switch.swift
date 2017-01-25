@@ -66,10 +66,12 @@ class SwitchButton:Button{
         super.mouseDown(event)
     }
     override func mouseUp(_ event: MouseEvent) {
+        //change styleProp at depth:1 to width: 80px
         //if progress is 1
             //change styleProp at depth:1 to margin-left:20px
-            //change styleProp at depth:1 to width: 80px
         //if progress is 0
+            //change stypeProp at depth:1 to margin-left:0px
+        
         super.mouseUp(event)
     }
     /*override func getClassType() -> String {

@@ -71,10 +71,12 @@ class Switch:HSlider,ICheckable{
     func thumbAnim(value:CGFloat){
         Swift.print("thumbAnim: " + "\(value)")
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        /*let from = thumbStyleProperty!.value
-         let to = 20*/
-        thumbStyleProperty!.value = 20 * value
+        if(progress == 1){
+            var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+            /*let from = thumbStyleProperty!.value
+             let to = 20*/
+            thumbStyleProperty!.value = 20 * value
+        }
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         thumb!.skin!.setStyle(thumbStyle)
     }

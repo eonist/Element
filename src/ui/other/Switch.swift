@@ -54,30 +54,27 @@ class Switch:HSlider,ICheckable{
         
         thumbAnimator!.start()
     }
-    func thumbAnim(value:CGFloat){
-        
-        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        let from = thumbStyleProperty!.value
-        let to = 20
-        thumbStyleProperty!.value = 0
-        thumb!.skin!.setStyle(thumbStyle)
-    }
+    
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
      */
     func onThumbUpInsideOrOutside() {
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        thumbStyleProperty!.value = progress == 1 ? 20 : 0
         let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
         let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
         var thumbLineStyleProperty = thumbStyle.getStyleProperty("line",1)
         thumbLineStyleProperty!.value = progress == 1 ? green : grey
         thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
-        Swift.print("val: " + "\(thumb!.skin!.style!.getStyleProperty("margin-left",1)?.value)")
-        Swift.print("thumbStyle.getStyleProperty(line,1): " + "\(thumb!.skin!.style!.getStyleProperty("line",1)?.value)")
+        
+    }
+    func thumbAnim(value:CGFloat){
+        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        /*let from = thumbStyleProperty!.value
+         let to = 20*/
+        thumbStyleProperty!.value = 20 * value
+        thumb!.skin!.setStyle(thumbStyle)
     }
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

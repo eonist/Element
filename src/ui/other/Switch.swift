@@ -67,6 +67,11 @@ class SwitchButton:Button{
     }
     override func mouseUp(_ event: MouseEvent) {
         //change styleProp at depth:1 to width: 80px
+        if(progress == 1){
+            
+        }else if(){
+            
+        }
         //if progress is 1
             //change styleProp at depth:1 to margin-left:20px
         //if progress is 0

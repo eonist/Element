@@ -66,7 +66,7 @@ class SwitchButton:Button{
         super.mouseDown(event)
     }
     override func mouseUp(_ event: MouseEvent) {
-        //
+        //change margin-left:20px if 
         super.mouseUp(event)
     }
     /*override func getClassType() -> String {

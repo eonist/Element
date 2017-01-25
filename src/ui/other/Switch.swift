@@ -1,11 +1,12 @@
 import Cocoa
 
 class Switch:HSlider,ICheckable{
-    var tempThumbWidth:CGFloat
-    override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? tempThumbWidth}set{tempThumbWidth = newValue}}
+    //var tempThumbWidth:CGFloat
+    //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? tempThumbWidth}set{tempThumbWidth = newValue}}
     private var isChecked:Bool = true
-    override init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
-        self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
+    init(_ width:CGFloat, _ height:CGFloat,_ isChecked:Bool = false, _ thumbWidth:CGFloat = NaN, _ progress:CGFloat = 0, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
+        //self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
+        self.isChecked = isChecked
         super.init(width,height,thumbWidth,progress,parent,id)
     }
     override func createThumb() {

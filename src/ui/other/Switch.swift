@@ -74,11 +74,11 @@ class SwitchButton:Button{
     override func mouseUpInside(_ event: MouseEvent) {
         super.mouseUpInside(event)
         
-        let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("fill",1) /*edits the style*/
-        thumbStyleProperty!.value = NSColor.blue//progress == 1 ? 20 : 0
+        let thumbStyle:IStyle = StyleModifier.clone(self.skin!.style!, self.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        thumbStyleProperty!.value = 20//progress == 1 ? 20 : 0
         Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
+        self.skin!.setStyle(thumbStyle)/*updates the skin*/
         
 
     }

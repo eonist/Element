@@ -34,11 +34,11 @@ class Switch:HSlider,ICheckable{
         var thumbStyleProperty = thumbStyle.getStyleProperty("line") /*edits the style*/
         if(thumbStyleProperty != nil){//temp
             let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
-            let color:NSColor = NSColor.white.blended(withFraction: progress, of: green)!
+            let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
+            let color:NSColor = grey.blended(withFraction: progress, of: green)!
             thumbStyleProperty!.value = color
-            thumb!.skin!.setStyle(thumbStyleProperty)/*updates the skin*/
+            thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
         }
-
         return event
     }
     /**

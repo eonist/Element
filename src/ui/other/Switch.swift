@@ -72,6 +72,8 @@ class Switch:HSlider,ICheckable{
         
         var widthProp = style.getStyleProperty("width",1)
         widthProp!.value = 100
+        var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
+        marginProp!.value = 0
         
         
         thumb!.skin!.setStyle(style)/*updates the skin*/

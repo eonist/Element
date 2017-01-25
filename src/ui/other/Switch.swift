@@ -47,27 +47,16 @@ class Switch:HSlider,ICheckable{
     override func onThumbUp() {
         
         let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("line",1) /*edits the style*/
-        if(thumbStyleProperty != nil){//temp
-            thumbStyleProperty!.value = color
-            thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
-        }
-        if(progress == 1){
-            
-        }else if(progress == 0){
-            
-        }
-        //if progress is 1
-        //change styleProp at depth:1 to margin-left:20px
-        //if progress is 0
-        //change stypeProp at depth:1 to margin-left:0px
-        
+        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
+        thumbStyleProperty?.value = progress == 1 ? 20 : 0
+        thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
+  
 
         super.onThumbUp()
     }
-    override func onThumbDown() {
-        super.onThumbDown()
-    }
+    /*override func onThumbDown() {
+     super.onThumbDown()
+     }*/
     /**
      * Sets the self.isChecked variable (Toggles between two states)
      */
@@ -86,7 +75,6 @@ class Switch:HSlider,ICheckable{
 class SwitchButton:Button{
     
     override func mouseDown(_ event: MouseEvent) {
-        //
         super.mouseDown(event)
     }
     override func mouseUp(_ event: MouseEvent) {

@@ -81,7 +81,7 @@ class SwitchButton:Button{
         self.skin!.setStyle(thumbStyle)/*updates the skin*/
         
         //Continue here:
-            //move the setStyle 
+            //move the setStyle on mouseUpInside and mouseUpOutside in Switch, or just don't clone the style. And then rather clone each style for each component, which should be the default way of doing things
 
     }
     /*override func getClassType() -> String {

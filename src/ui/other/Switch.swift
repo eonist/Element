@@ -47,14 +47,11 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbDown() {
         super.onThumbDown()
-        
-        //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+        /*Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
-        
         thumbAnimator!.start()
     }
-    
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
@@ -66,14 +63,19 @@ class Switch:HSlider,ICheckable{
         var thumbLineStyleProperty = thumbStyle.getStyleProperty("line",1)
         thumbLineStyleProperty!.value = progress == 1 ? green : grey
         thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
-        
+        /*Anim*/
+        if(thumbAnimator != nil){thumbAnimator!.stop()}
+        thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
+        thumbAnimator!.start()
     }
     func thumbAnim(value:CGFloat){
+        Swift.print("thumbAnim: " + "\(value)")
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
         /*let from = thumbStyleProperty!.value
          let to = 20*/
         thumbStyleProperty!.value = 20 * value
+        //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         thumb!.skin!.setStyle(thumbStyle)
     }
     override func onEvent(_ event:Event) {

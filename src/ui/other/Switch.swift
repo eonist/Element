@@ -34,7 +34,7 @@ class Switch:HSlider,ICheckable{
         }
         /*Thumb*/
         let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("line") /*edits the style*/
+        var thumbStyleProperty = thumbStyle.getStyleProperty("line",1) /*edits the style*/
         if(thumbStyleProperty != nil){//temp
             let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
             let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
@@ -43,6 +43,30 @@ class Switch:HSlider,ICheckable{
             thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
         }
         return event
+    }
+    override func onThumbUp() {
+        
+        let thumbStyle:IStyle = StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var thumbStyleProperty = thumbStyle.getStyleProperty("line",1) /*edits the style*/
+        if(thumbStyleProperty != nil){//temp
+            thumbStyleProperty!.value = color
+            thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
+        }
+        if(progress == 1){
+            
+        }else if(progress == 0){
+            
+        }
+        //if progress is 1
+        //change styleProp at depth:1 to margin-left:20px
+        //if progress is 0
+        //change stypeProp at depth:1 to margin-left:0px
+        
+
+        super.onThumbUp()
+    }
+    override func onThumbDown() {
+        super.onThumbDown()
     }
     /**
      * Sets the self.isChecked variable (Toggles between two states)
@@ -66,17 +90,6 @@ class SwitchButton:Button{
         super.mouseDown(event)
     }
     override func mouseUp(_ event: MouseEvent) {
-        //change styleProp at depth:1 to width: 80px
-        if(progress == 1){
-            
-        }else if(){
-            
-        }
-        //if progress is 1
-            //change styleProp at depth:1 to margin-left:20px
-        //if progress is 0
-            //change stypeProp at depth:1 to margin-left:0px
-        
         super.mouseUp(event)
     }
     /*override func getClassType() -> String {

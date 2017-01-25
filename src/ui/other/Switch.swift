@@ -57,14 +57,17 @@ class Switch:HSlider,ICheckable{
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
      */
     func onThumbUpInsideOrOutside() {
-        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
         let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
-        var thumbLineStyleProperty = thumbStyle.getStyleProperty("line",1)
-        thumbLineStyleProperty!.value = progress == 1 ? green : grey
+        var lineProp = style.getStyleProperty("line",1)
+        lineProp!.value = progress == 1 ? green : grey
         //Continue here: 
             //set the init margin and with, so that the anim doesnt jitter
-        thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
+        var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
+        marginProp!.value = progress == 1 ? 20 : 0
+        
+        thumb!.skin!.setStyle(style)/*updates the skin*/
         /*Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
@@ -72,13 +75,13 @@ class Switch:HSlider,ICheckable{
     }
     func thumbAnim(value:CGFloat){
         Swift.print("thumbAnim: " + "\(value)")
-        let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        var thumbStyleProperty = thumbStyle.getStyleProperty("margin-left",1) /*edits the style*/
-        thumbStyleProperty!.value = progress == 1 ? 20 * value : 0
-        var thumbStylePropertyWidth = thumbStyle.getStyleProperty("width",1)
-        thumbStylePropertyWidth!.value = 80 + (20 * value)
+        let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
+        marginProp!.value = progress == 1 ? 20 * value : 0
+        var widthProp = style.getStyleProperty("width",1)
+        widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        thumb!.skin!.setStyle(thumbStyle)
+        thumb!.skin!.setStyle(style)
     }
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

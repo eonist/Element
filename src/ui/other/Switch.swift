@@ -115,7 +115,7 @@ class Switch:HSlider,ICheckable{
         Swift.print("thumbAnim: " + "\(value)")
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
-        marginProp!.value = progress == 1 ? 20 * (1-value) : 0
+        marginProp!.value = isChecked ? 20 * (1-value) : 0
         var widthProp = style.getStyleProperty("width",1)
         widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")

@@ -34,8 +34,8 @@ class HSlider:Element{
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove )
     }
     func onThumbMove(event:NSEvent)-> NSEvent{
-        progress = Utils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
-        let thumbX:CGFloat = Utils.thumbPosition(progress, width, thumbWidth)
+        progress = HSliderUtils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
+        let thumbX:CGFloat = HSliderUtils.thumbPosition(progress, width, thumbWidth)
         thumb!.x = thumbX
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
@@ -44,8 +44,8 @@ class HSlider:Element{
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//we remove a global mouse move event listener
     }
     func onMouseMove(event:NSEvent) -> NSEvent?{
-        progress = Utils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
-        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
+        progress = HSliderUtils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
+        thumb!.x = HSliderUtils.thumbPosition(progress, width, thumbWidth)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -66,7 +66,7 @@ class HSlider:Element{
      */
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*If the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb!.x = Utils.thumbPosition(self.progress, width, thumbWidth)
+        thumb!.x = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
         //thumb?.applyOvershot(progress)/*<--We use the unclipped scalar value*/
     }
     /**
@@ -75,16 +75,16 @@ class HSlider:Element{
     func setThumbWidthValue(_ thumbWidth:CGFloat) {/*Can't be named setThumbHeight because of objc*/
         self.thumbWidth = thumbWidth
         thumb!.setSize(thumbWidth, thumb!.getHeight())
-        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
+        thumb!.x = HSliderUtils.thumbPosition(progress, width, thumbWidth)
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height)
         thumb!.setSize(thumb!.width, height)
-        thumb!.x = Utils.thumbPosition(progress, width, thumbWidth)
+        thumb!.x = HSliderUtils.thumbPosition(progress, width, thumbWidth)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-private class HSliderUtils{
+class HSliderUtils{
     /**
      * Returns the x position of a nodes PARAM: progress
      */

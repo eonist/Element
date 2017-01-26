@@ -56,6 +56,7 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbDown() {
         super.onThumbDown()
+        Swift.print("onThumbDown: isChecked: " + "\(isChecked)")
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",1)
         widthProp!.value = 80

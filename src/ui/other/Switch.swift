@@ -32,8 +32,7 @@ class Switch:HSlider,ICheckable{
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var styleProperty = style.getStyleProperty("fill") /*edits the style*/
         if(styleProperty != nil){//temp
-            let curColor:NSColor = styleProperty!.value as! NSColor
-            let color:NSColor = curColor.blended(withFraction: progress, of: green)!
+            let color:NSColor = offColor.blended(withFraction: progress, of: green)!
             styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
@@ -102,8 +101,8 @@ class Switch:HSlider,ICheckable{
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill") /*edits the style*/
         //let curColor:NSColor = fillProp!.value as! NSColor
-        let color:NSColor = NSColor.white.blended(withFraction: value, of: grey)!
-        fillProp!.value = color
+        offColor = NSColor.white.blended(withFraction: value, of: grey)!
+        fillProp!.value = offColor
         skin!.setStyle(style)
     }
     func thumbAnim(value:CGFloat){

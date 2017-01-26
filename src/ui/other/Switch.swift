@@ -120,6 +120,7 @@ class Switch:HSlider,ICheckable{
         thumb!.skin!.setStyle(style)
     }
     func progressAnim(value:CGFloat){
+        Swift.print("progressAnim.value: " + "\(value)")
         setProgressValue(value)
     }
     override func onEvent(_ event:Event) {
@@ -132,6 +133,7 @@ class Switch:HSlider,ICheckable{
      * Sets the self.isChecked variable (Toggles between two states)
      */
     func setChecked(_ isChecked:Bool) {
+        Swift.print("setChecked: " + "\(isChecked)")
         if(progressAnimator != nil){thumbAnimator!.stop()}
         if(isChecked){/*Animate setProgress from 1 - 0*/
             progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,progressAnim,Easing.easeLinear)

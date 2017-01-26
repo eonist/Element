@@ -7,7 +7,7 @@ class Switch:HSlider,ICheckable{
     let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
     let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
     var offColor:NSColor = NSColor.white
-    var hasThressholdBeenCrossed:Bool = false/*0.5*/
+    var prevSide:CGFloat
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool
@@ -57,6 +57,7 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbDown() {
         super.onThumbDown()
+        prevSide = progress
         Swift.print("onThumbDown: isChecked: " + "\(isChecked)")
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",1)

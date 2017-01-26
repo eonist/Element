@@ -66,9 +66,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,0,1,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
             
-            /*
-             
-             }*/
+            
         }
     }
     /**

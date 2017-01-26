@@ -48,9 +48,9 @@ class Switch:HSlider,ICheckable{
         Swift.print("onThumbMove() progress: " + "\(progress)")
         //interpolateColor()
         if(progress == 1 && !isChecked){
-            
-        }else if(){
-            
+            setChecked(true)
+        }else if(progress == 0 && isChecked){
+            setChecked(false)
         }
         return event
     }

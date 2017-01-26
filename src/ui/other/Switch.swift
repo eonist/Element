@@ -7,6 +7,7 @@ class Switch:HSlider,ICheckable{
     let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
     let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
     var offColor:NSColor = NSColor.white
+    var hasThresh
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool
@@ -115,7 +116,7 @@ class Switch:HSlider,ICheckable{
         Swift.print("onThumbUpInside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
         
-        //don't setChecked 
+        //don't setChecked if progress threshold has been crossed: 0.5
         
         setChecked(!isChecked)
     }

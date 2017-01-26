@@ -123,9 +123,8 @@ class Switch:HSlider,ICheckable{
         
         if(!disableMouseUp){
             setChecked(!isChecked)
-        }else{
-            disableMouseUp = false//reset
         }
+        disableMouseUp = false//reset
     }
     /**
      *

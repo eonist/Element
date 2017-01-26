@@ -124,6 +124,7 @@ class Switch:HSlider,ICheckable{
     func progressAnim(value:CGFloat){
         Swift.print("progressAnim.value: " + "\(value)")
         setProgressValue(value)
+        interpolateColor()
     }
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

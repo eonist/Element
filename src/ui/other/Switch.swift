@@ -91,7 +91,7 @@ class Switch:HSlider,ICheckable{
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         
         var lineProp = style.getStyleProperty("line",1)
-        lineProp!.value = progress == 1 ? green : grey
+        lineProp!.value = isChecked ? green : grey
         
         var widthProp = style.getStyleProperty("width",1)
         widthProp!.value = 100

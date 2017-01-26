@@ -5,6 +5,7 @@ class Switch:HSlider,ICheckable{
     var bgAnimator:Animator?
     let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
     let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
+    var offColor:NSColor = NSColor.white
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool

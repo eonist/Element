@@ -14,6 +14,7 @@ class Switch:HSlider,ICheckable{
     init(_ width:CGFloat, _ height:CGFloat, _ thumbWidth:CGFloat = NaN,_ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         //self.tempThumbWidth = thumbWidth.isNaN ? height:thumbWidth
         self.isChecked = isChecked
+        self.prevSide = isChecked ? 1:0
         Swift.print("isChecked: " + "\(isChecked)")
         super.init(width,height,thumbWidth,isChecked ? 1:0,parent,id)
     }
@@ -57,7 +58,7 @@ class Switch:HSlider,ICheckable{
     }
     override func onThumbDown() {
         super.onThumbDown()
-        prevSide = progress
+        prevSide = isChecked ? 1:0
         Swift.print("onThumbDown: isChecked: " + "\(isChecked)")
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",1)

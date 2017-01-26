@@ -69,7 +69,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,0,1,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
- 
+        interpolateColor()
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 

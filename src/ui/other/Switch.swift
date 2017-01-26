@@ -7,7 +7,7 @@ class Switch:HSlider,ICheckable{
     let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
     let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
     var offColor:NSColor = NSColor.white
-    var prevSide:CGFloat = NaN
+    var disableMouseUp:Bool = false
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool
@@ -48,16 +48,18 @@ class Switch:HSlider,ICheckable{
         self.progress = HSliderUtils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
         //Swift.print("onThumbMove() progress: " + "\(progress)")
         //interpolateColor()
+        
         if(progress == 1 && !isChecked){
             setChecked(true)
+            disableMouseUp = true
         }else if(progress == 0 && isChecked){
             setChecked(false)
+            disableMouseUp = true
         }
         return event
     }
     override func onThumbDown() {
         super.onThumbDown()
-        prevSide = progress
         Swift.print("onThumbDown: isChecked: " + "\(isChecked)")
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",1)
@@ -119,7 +121,11 @@ class Switch:HSlider,ICheckable{
         
         //don't setChecked if progress threshold has been crossed: 0.5
         
-        setChecked(!isChecked)
+        if(!disableMouseUp){
+            setChecked(!isChecked)
+        }else{
+            disableMouseUp = false//reset
+        }
     }
     /**
      *

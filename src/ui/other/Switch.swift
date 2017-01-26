@@ -114,7 +114,10 @@ class Switch:HSlider,ICheckable{
     func onThumbUpInside(){
         Swift.print("onThumbUpInside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
-        if(progress == 0 || progress == 1){setChecked(!isChecked)}
+        
+        //don't setChecked 
+        
+        setChecked(!isChecked)
     }
     /**
      *

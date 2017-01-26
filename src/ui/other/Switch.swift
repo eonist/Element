@@ -3,6 +3,8 @@ import Cocoa
 class Switch:HSlider,ICheckable{
     var thumbAnimator:Animator?
     var bgAnimator:Animator?
+    let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
+    let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool
@@ -29,8 +31,8 @@ class Switch:HSlider,ICheckable{
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var styleProperty = style.getStyleProperty("fill") /*edits the style*/
         if(styleProperty != nil){//temp
-            let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
-            let color:NSColor = NSColor.white.blended(withFraction: progress, of: green)!
+            let curColor:NSColor = styleProperty!.value as! NSColor
+            let color:NSColor = curColor.blended(withFraction: progress, of: green)!
             styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
@@ -38,8 +40,6 @@ class Switch:HSlider,ICheckable{
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var thumbStyleProperty = thumbStyle.getStyleProperty("line",1) /*edits the style*/
         if(thumbStyleProperty != nil){//temp
-            let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
-            let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
             let color:NSColor = grey.blended(withFraction: progress, of: green)!
             thumbStyleProperty!.value = color
             thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
@@ -62,10 +62,11 @@ class Switch:HSlider,ICheckable{
         
         /*BG Anim*/
         if(progress == 0){//must be in off state
-            let bgStyle:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+            if(bgAnimator != nil){bgAnimator!.stop()}
+            bgAnimator = Animator(Animation.sharedInstance,0.2,0,1,bgAnim,Easing.easeLinear)
+            bgAnimator!.start()
             
-            /*var fillProp = bgStyle.getStyleProperty("fill") /*edits the style*/
-             if(fillProp != nil){//temp
+            /*
              
              }*/
         }
@@ -76,8 +77,7 @@ class Switch:HSlider,ICheckable{
      */
     func onThumbUpInsideOrOutside() {
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
-        let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
-        let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
+        
         var lineProp = style.getStyleProperty("line",1)
         lineProp!.value = progress == 1 ? green : grey
         
@@ -92,6 +92,14 @@ class Switch:HSlider,ICheckable{
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
         thumbAnimator!.start()
+    }
+    func bgAnim(value:CGFloat){
+        Swift.print("bgAnim: " + "\(value)")
+        let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+        var fillProp = style.getStyleProperty("fill") /*edits the style*/
+        
+        skin!.setStyle(style)
+            
     }
     func thumbAnim(value:CGFloat){
         Swift.print("thumbAnim: " + "\(value)")

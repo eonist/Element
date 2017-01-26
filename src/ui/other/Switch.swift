@@ -117,6 +117,9 @@ class Switch:HSlider,ICheckable{
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         thumb!.skin!.setStyle(style)
     }
+    func progressAnim(value:CGFloat){
+        setProgressValue(value)
+    }
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.upInside){onThumbUpInsideOrOutside()}

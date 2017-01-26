@@ -2,6 +2,7 @@ import Cocoa
 
 class Switch:HSlider,ICheckable{
     var thumbAnimator:Animator?
+    var bgAnimator:Animator?
     //var tempThumbWidth:CGFloat
     //override var thumbWidth:CGFloat {get{return thumb?.getWidth() ?? 0}set{_ = newValue}}
     private var isChecked:Bool
@@ -62,8 +63,11 @@ class Switch:HSlider,ICheckable{
         /*BG Anim*/
         if(progress == 0){//must be in off state
             let bgStyle:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-            var styleProperty = style.getStyleProperty("fill") /*edits the style*/
-            if(styleProperty != nil){//temp
+            
+            /*var fillProp = bgStyle.getStyleProperty("fill") /*edits the style*/
+             if(fillProp != nil){//temp
+             
+             }*/
         }
     }
     /**

@@ -132,6 +132,7 @@ class Switch:HSlider,ICheckable{
     func onThumbUpOutside(){
         Swift.print("onThumbUpOutside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
+        disableMouseUp = false//reset
     }
     func bgAnim(value:CGFloat){
         //Swift.print("bgAnim: " + "\(value)")

@@ -45,7 +45,7 @@ class Switch:HSlider,ICheckable{
     override func onThumbMove(event:NSEvent) -> NSEvent{
         //let event = super.onThumbMove(event: event)
         self.progress = HSliderUtils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
-        Swift.print("onThumbMove() progress: " + "\(progress)")
+        //Swift.print("onThumbMove() progress: " + "\(progress)")
         //interpolateColor()
         if(progress == 1 && !isChecked){
             setChecked(true)
@@ -111,6 +111,7 @@ class Switch:HSlider,ICheckable{
      *
      */
     func onThumbUpInside(){
+        Swift.print("onThumbUpInside")
         onThumbUpAfter()
         setChecked(!isChecked)
     }
@@ -118,10 +119,11 @@ class Switch:HSlider,ICheckable{
      *
      */
     func onThumbUpOutside(){
+        Swift.print("onThumbUpOutside")
         onThumbUpAfter()
     }
     func bgAnim(value:CGFloat){
-        Swift.print("bgAnim: " + "\(value)")
+        //Swift.print("bgAnim: " + "\(value)")
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill") /*edits the style*/
         //let curColor:NSColor = fillProp!.value as! NSColor
@@ -130,7 +132,7 @@ class Switch:HSlider,ICheckable{
         skin!.setStyle(style)
     }
     func thumbAnim(value:CGFloat){
-        Swift.print("thumbAnim: " + "\(value)")
+        //Swift.print("thumbAnim: " + "\(value)")
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
         marginProp!.value = isChecked ? 20 * (1-value) : 0
@@ -140,7 +142,7 @@ class Switch:HSlider,ICheckable{
         thumb!.skin!.setStyle(style)
     }
     func progressAnim(value:CGFloat){
-        Swift.print("progressAnim.value: " + "\(value)")
+        //Swift.print("progressAnim.value: " + "\(value)")
         setProgressValue(value)
         interpolateColor()
     }

@@ -111,7 +111,7 @@ class Switch:HSlider,ICheckable{
      *
      */
     func onThumbUpInside(){
-        Swift.print("onThumbUpInside")
+        Swift.print("onThumbUpInside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
         setChecked(!isChecked)
     }
@@ -119,7 +119,7 @@ class Switch:HSlider,ICheckable{
      *
      */
     func onThumbUpOutside(){
-        Swift.print("onThumbUpOutside")
+        Swift.print("onThumbUpOutside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
     }
     func bgAnim(value:CGFloat){

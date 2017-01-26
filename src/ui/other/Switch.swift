@@ -99,8 +99,19 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
- 
+    }
+    /**
+     *
+     */
+    func onThumbUpInside(){
+        onThumbUpInsideOrOutside()
         setChecked(!isChecked)
+    }
+    /**
+     *
+     */
+    func onThumbUpOutside(){
+        onThumbUpInsideOrOutside()
     }
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")
@@ -128,8 +139,8 @@ class Switch:HSlider,ICheckable{
     }
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
-        if(event.origin === thumb && event.type == ButtonEvent.upInside){onThumbUpInsideOrOutside()}
-        else if(event.origin === thumb && event.type == ButtonEvent.upOutside){onThumbUpInsideOrOutside()}
+        if(event.origin === thumb && event.type == ButtonEvent.upInside){onThumbUpInside()}
+        else if(event.origin === thumb && event.type == ButtonEvent.upOutside){onThumbUpOutside()}
         super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**

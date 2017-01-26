@@ -74,8 +74,9 @@ class Switch:HSlider,ICheckable{
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
+     * NOTE: onThumbUp is fired before ..inside and ...outside, thats why this method exists, it fires after
      */
-    func onThumbUpInsideOrOutside() {
+    func onThumbUpAfter() {
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         
         var lineProp = style.getStyleProperty("line",1)
@@ -104,14 +105,14 @@ class Switch:HSlider,ICheckable{
      *
      */
     func onThumbUpInside(){
-        onThumbUpInsideOrOutside()
+        onThumbUpAfter()
         setChecked(!isChecked)
     }
     /**
      *
      */
     func onThumbUpOutside(){
-        onThumbUpInsideOrOutside()
+        onThumbUpAfter()
     }
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")

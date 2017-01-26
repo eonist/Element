@@ -46,7 +46,12 @@ class Switch:HSlider,ICheckable{
         //let event = super.onThumbMove(event: event)
         self.progress = HSliderUtils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
         Swift.print("onThumbMove() progress: " + "\(progress)")
-        interpolateColor()
+        //interpolateColor()
+        if(progress == 1 && !isChecked){
+            
+        }else if(){
+            
+        }
         return event
     }
     override func onThumbDown() {

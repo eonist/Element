@@ -69,7 +69,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,0,1,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
-        interpolateColor()
+        interpolateColor()//ticks the thumb line to be the correct color, or else the line would be derived from css
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
@@ -185,7 +185,6 @@ class SwitchButton:Button{
     override func mouseUpInside(_ event: MouseEvent) {
         super.mouseUpInside(event)
     }
-    
     /*override func getClassType() -> String {
      return "\(Button.self)"
      }*/

@@ -94,7 +94,7 @@ class Switch:HSlider,ICheckable{
         thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
         thumbAnimator!.start()
         
-        /*BG Anim*/
+        /*Bg Anim*/
         if(progress == 0){//must be in off state
             if(bgAnimator != nil){bgAnimator!.stop()}
             bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Easing.easeLinear)

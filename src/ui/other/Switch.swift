@@ -3,6 +3,7 @@ import Cocoa
 class Switch:HSlider,ICheckable{
     var thumbAnimator:Animator?
     var bgAnimator:Animator?
+    var progressAnimator:Animator?
     let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
     let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
     var offColor:NSColor = NSColor.white
@@ -96,7 +97,6 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
-        
     }
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")
@@ -127,12 +127,16 @@ class Switch:HSlider,ICheckable{
      * Sets the self.isChecked variable (Toggles between two states)
      */
     func setChecked(_ isChecked:Bool) {
-        self.isChecked = isChecked
-        if(progress == 0){
-            //animate setProgress from 0 - 1
+        if(progressAnimator != nil){thumbAnimator!.stop()}
+        if(isChecked){
+            //animate setProgress from 1 - 0
+            progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
         }else if (progress == 1){
-            
+            //animate setProgress from 0 - 1
+            progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
         }
+        progressAnimator!.start()
+        self.isChecked = isChecked
         //setSkinState(getSkinState())
     }
     func getChecked() -> Bool {

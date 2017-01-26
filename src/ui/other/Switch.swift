@@ -58,7 +58,7 @@ class Switch:HSlider,ICheckable{
         thumb!.skin!.setStyle(style)/*updates the skin*/
         
         /*Thumb Anim*/
-        /*
+        /**/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
         thumbAnimator!.start()
@@ -69,7 +69,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,0,1,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
-        */
+ 
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
@@ -86,7 +86,7 @@ class Switch:HSlider,ICheckable{
         var marginProp = style.getStyleProperty("margin-left",1) /*edits the style*/
         marginProp!.value = 0
         
-        /*
+        /**/
         thumb!.skin!.setStyle(style)/*updates the skin*/
         /*Thumb Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
@@ -99,7 +99,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
-        */
+ 
         
         setChecked(!isChecked)
     }

@@ -133,11 +133,9 @@ class Switch:HSlider,ICheckable{
      */
     func setChecked(_ isChecked:Bool) {
         if(progressAnimator != nil){thumbAnimator!.stop()}
-        if(isChecked){
-            //animate setProgress from 1 - 0
+        if(isChecked){/*Animate setProgress from 1 - 0*/
             progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,progressAnim,Easing.easeLinear)
-        }else if (progress == 1){
-            //animate setProgress from 0 - 1
+        }else if (progress == 1){/*Animate setProgress from 0 - 1*/
             progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,progressAnim,Easing.easeLinear)
         }
         progressAnimator!.start()

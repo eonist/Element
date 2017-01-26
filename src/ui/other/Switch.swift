@@ -97,6 +97,8 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Easing.easeLinear)
             bgAnimator!.start()
         }
+        
+        setChecked(!isChecked)
     }
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")
@@ -133,10 +135,10 @@ class Switch:HSlider,ICheckable{
         if(progressAnimator != nil){thumbAnimator!.stop()}
         if(isChecked){
             //animate setProgress from 1 - 0
-            progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
+            progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,progressAnim,Easing.easeLinear)
         }else if (progress == 1){
             //animate setProgress from 0 - 1
-            progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
+            progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,progressAnim,Easing.easeLinear)
         }
         progressAnimator!.start()
         self.isChecked = isChecked

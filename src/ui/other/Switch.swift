@@ -137,10 +137,10 @@ class Switch:HSlider,ICheckable{
      */
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
-        if(progressAnimator != nil){thumbAnimator!.stop()}
-        if(isChecked){/*Animate setProgress from 1 - 0*/
+        if(progressAnimator != nil){progressAnimator!.stop()}
+        if(self.isChecked && !isChecked){/*Animate setProgress from 1 - 0*/
             progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,progressAnim,Easing.easeLinear)
-        }else if (progress == 1){/*Animate setProgress from 0 - 1*/
+        }else if (!self.isChecked && isChecked){/*Animate setProgress from 0 - 1*/
             progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,progressAnim,Easing.easeLinear)
         }
         progressAnimator!.start()

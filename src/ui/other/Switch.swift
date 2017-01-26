@@ -54,10 +54,13 @@ class Switch:HSlider,ICheckable{
         marginProp!.value = progress == 1 ? 20  : 0
         thumb!.skin!.setStyle(style)/*updates the skin*/
         
-        /*Anim*/
+        /*Thumb Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
         thumbAnimator!.start()
+        
+        /*BG Anim*/
+        
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 

@@ -129,7 +129,7 @@ class Switch:HSlider,ICheckable{
     func setChecked(_ isChecked:Bool) {
         self.isChecked = isChecked
         if(progress == 0){
-            
+            //animate prog
         }else if (progress == 1){
             
         }

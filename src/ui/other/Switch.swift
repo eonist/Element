@@ -100,7 +100,6 @@ class Switch:HSlider,ICheckable{
             bgAnimator!.start()
         }
  
-        
         setChecked(!isChecked)
     }
     func bgAnim(value:CGFloat){

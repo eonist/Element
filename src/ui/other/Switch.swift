@@ -44,13 +44,11 @@ class Switch:HSlider,ICheckable{
         heightProp!.value = initH * sizeMultiplier
         var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
         cornerRadiusProp!.value = initFillet * sizeMultiplier
-        var offsetProp = style.getStyleProperty("offset",1)
+        var offsetProp = style.getStyleProperty("offset",1)//center align the scaling of the white bg graphic
         offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
         skin!.setStyle(style)/*updates the skin*/
         
-        //Continue here: 
-            //We also needs to center align the scaling of the white bg graphic
-            //through padding,margin etc
+        
         
         /*if(styleProperty != nil){//temp
          let color:NSColor = offColor.blended(withFraction: progress, of: green)!

@@ -34,7 +34,7 @@ class Switch:HSlider,ICheckable{
     /**
      * Progress changes from 0 - 1
      */
-    func interpolateColor(value:CGFloat){
+    func interpolateColor(_ value:CGFloat){
         let progress = value//self.progress.clip(0,1)//avoids bounce
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0
@@ -102,7 +102,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgAnim,Linear.ease)
             bgAnimator!.start()
         }
-        interpolateColor()//ticks the thumb line to be the correct color, or else the line would be derived from css
+        interpolateColor(progress)//ticks the thumb line to be the correct color, or else the line would be derived from css
     }
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 

@@ -42,8 +42,8 @@ class Switch:HSlider,ICheckable{
         heightProp!.value = initH * sizeMultiplier
         var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
         cornerRadiusProp!.value = initFillet * sizeMultiplier
-        var offsetXProp = style.getStyleProperty("offset",1)
-        cornerRadiusProp!.value = initFillet * sizeMultiplier
+        var offsetProp:[CGFloat] = style.getStyleProperty("offset",1) as! [CGFloat]
+        offsetProp!.value = [offsetProp[0] * sizeMultiplier, offsetProp[1] * sizeMultiplier]
         skin!.setStyle(style)/*updates the skin*/
         
         //Continue here: 

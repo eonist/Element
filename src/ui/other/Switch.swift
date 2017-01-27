@@ -37,6 +37,9 @@ class Switch:HSlider,ICheckable{
             styleProperty!.value = color
             skin!.setStyle(style)/*updates the skin*/
         }
+        
+        
+        
         /*Thumb*/
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var thumbStyleProperty = thumbStyle.getStyleProperty("line",1) /*edits the style*/

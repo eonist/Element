@@ -24,11 +24,7 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 **Example code:**  
 [50+ macOS UI components](https://github.com/stylekit/explorer) and [Demo app](https://github.com/stylekit/stash) 
 
-⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   
-
-
 ## Features:
-- [Swift 3.0.1](http://stylekit.org/blog/2017/01/12/swift-3-migration/)  
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
@@ -36,16 +32,13 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 - [Live-edit](https://github.com/eonist/Element/wiki/live) 
 - Themes via [CSS](http://stylekit.org/blog/2016/02/18/Cascading-Style-Sheets-System/)  and [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/) 
 - [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
-- [Open-Source (MIT)](https://no.wikipedia.org/wiki/MIT-lisensen) 
 
-## Working on:
-
-- [Video tutorials](https://github.com/eonist/Element/wiki/tutorials)  
-- [iOS support](https://github.com/eonist/Element-iOS)  
-- [Playground example code](https://gist.github.com/eonist/0aa86f28aaec7f94729f3cbfdab83636) 
+## Working on:  
+- [iOS support](https://github.com/eonist/Element-iOS) 
 - Carthage & CocoaPod support
 - Sketch import
 - Live Theme switching
-- Metal support 
-- Flex-box layout alignment
+- Flex-box layout alignment  
 
+
+⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   

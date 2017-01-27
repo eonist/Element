@@ -28,8 +28,8 @@ class Switch:HSlider,ICheckable{
     let initW = 140
     let initH = 80
     let initFillet = 40
-    let initOffsetX = initW/2
-    let initOffsetY = initH/2
+    let initOffsetX = 140/2
+    let initOffsetY = 80/2
     /**
      * Progress changes from 0 - 1
      */
@@ -45,7 +45,7 @@ class Switch:HSlider,ICheckable{
         var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
         cornerRadiusProp!.value = initFillet * sizeMultiplier
         var offsetProp = style.getStyleProperty("offset",1)
-        offsetProp!.value = [offsetProp[0] * sizeMultiplier, offsetProp[1] * sizeMultiplier]
+        offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
         skin!.setStyle(style)/*updates the skin*/
         
         //Continue here: 

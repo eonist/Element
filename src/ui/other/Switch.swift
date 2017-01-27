@@ -166,6 +166,13 @@ class Switch:HSlider,ICheckable{
         super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     /**
+     * PARAM: progress (0-1)
+     */
+    override func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
+        //self.progress = progress.clip(0,1)/*If the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
+        thumb!.x = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
+        //thumb?.applyOvershot(progress)/*<--We use the unclipped scalar value*/
+    }    /**
      * Sets the self.isChecked variable (Toggles between two states)
      */
     func setChecked(_ isChecked:Bool) {

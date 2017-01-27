@@ -10,7 +10,7 @@ class ProgressIndicator:Element {
     var revealProgress:CGFloat = 0
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
-        animator = LoopingAnimator(Animation.sharedInstance,3,1,0,1,progress,Easing.easeLinear)
+        animator = LoopingAnimator(Animation.sharedInstance,3,1,0,1,progress,Linear.easeLinear)
     }
     override func resolveSkin() {
         skin = SkinResolver.skin(self)

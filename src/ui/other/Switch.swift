@@ -101,13 +101,13 @@ class Switch:HSlider,ICheckable{
         thumb!.skin!.setStyle(style)/*updates the skin*/
         /*Thumb Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
-        thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Easing.easeLinear)
+        thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Linear.easeLinear)
         thumbAnimator!.start()
         
         /*Bg Anim*/
         if(progress == 0){//must be in off state
             if(bgAnimator != nil){bgAnimator!.stop()}
-            bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Easing.easeLinear)
+            bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Linear.easeLinear)
             bgAnimator!.start()
         }else{
             offColor = NSColor.white//temp fix
@@ -172,9 +172,9 @@ class Switch:HSlider,ICheckable{
         Swift.print("setChecked: " + "\(isChecked)")
         if(progressAnimator != nil){progressAnimator!.stop()}
         if(self.isChecked && !isChecked){/*Animate setProgress from 1 - 0*/
-            progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,progressAnim,Easing.easeLinear)
+            progressAnimator = Animator(Animation.sharedInstance,0.2,1,0,progressAnim,Linear.easeLinear)
         }else if (!self.isChecked && isChecked){/*Animate setProgress from 0 - 1*/
-            progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,progressAnim,Easing.easeLinear)
+            progressAnimator = Animator(Animation.sharedInstance,0.2,0,1,progressAnim,Linear.easeLinear)
         }
         progressAnimator!.start()
         self.isChecked = isChecked

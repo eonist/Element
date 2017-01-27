@@ -82,7 +82,7 @@ extension Thumb{
         //Swift.print("Thumb.fadeIn")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        animator = Animator(Animation.sharedInstance,0.2,alpha,1,interpolateAlpha,Easing.easeOutSine)
+        animator = Animator(Animation.sharedInstance,0.2,alpha,1,interpolateAlpha,Sine.easeOutSine)
         animator!.event = {(event:Event) -> Void in }
         animator!.start()
     }
@@ -93,7 +93,7 @@ extension Thumb{
         //Swift.print("Thumb.fadeOut")
         //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        animator = Animator(Animation.sharedInstance,0.5,alpha,0,interpolateAlpha,Easing.easeInQuad)
+        animator = Animator(Animation.sharedInstance,0.5,alpha,0,interpolateAlpha,Quad.easeInQuad)
         animator!.event = {(event:Event) -> Void in }
         animator!.start()
     }

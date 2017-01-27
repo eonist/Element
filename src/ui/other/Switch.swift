@@ -25,20 +25,22 @@ class Switch:HSlider,ICheckable{
         Swift.print("isChecked: " + "\(isChecked)")
         setProgressValue(isChecked ? 1:0)
     }
+    static var initW = 
     /**
      * Progress changes from 0 - 1
      */
     func interpolateColor(){
         /*bg*/
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        var styleProperty = style.getStyleProperty("fill",1) /*Edits the style*/
-        if(styleProperty != nil){//temp
-            let color:NSColor = offColor.blended(withFraction: progress, of: green)!
-            styleProperty!.value = color
-            skin!.setStyle(style)/*updates the skin*/
-        }
-        
-        
+        var widthProp = style.getStyleProperty("width",1)
+        var heightProp = style.getStyleProperty("height",1)
+        var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
+        skin!.setStyle(style)/*updates the skin*/
+        /*if(styleProperty != nil){//temp
+         let color:NSColor = offColor.blended(withFraction: progress, of: green)!
+         styleProperty!.value = color
+         
+         }*/
         
         /*Thumb*/
         let thumbStyle:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)

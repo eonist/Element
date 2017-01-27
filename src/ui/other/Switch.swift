@@ -32,16 +32,22 @@ class Switch:HSlider,ICheckable{
      * Progress changes from 0 - 1
      */
     func interpolateColor(){
-        let progress = self.progress.clip(0,5)
+        let progress = self.progress.clip(0,1)//avoids bounce
         /*bg*/
+        let sizeMultiplier = 1 - progress//we need values from 1 to 0
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var widthProp = style.getStyleProperty("width",1)
-        widthProp!.value = initW * progress
+        widthProp!.value = initW * sizeMultiplier
         var heightProp = style.getStyleProperty("height",1)
-        heightProp!.value = initH * progress
+        heightProp!.value = initH * sizeMultiplier
         var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
-        cornerRadiusProp!.value = initFillet * progress
+        cornerRadiusProp!.value = initFillet * sizeMultiplier
         skin!.setStyle(style)/*updates the skin*/
+        
+        //Continue here: 
+            //We also needs to center align the scaling of the white bg graphic
+            //through padding,margin etc
+        
         /*if(styleProperty != nil){//temp
          let color:NSColor = offColor.blended(withFraction: progress, of: green)!
          styleProperty!.value = color

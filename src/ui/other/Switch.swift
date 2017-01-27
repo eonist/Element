@@ -25,9 +25,9 @@ class Switch:HSlider,ICheckable{
         Swift.print("isChecked: " + "\(isChecked)")
         setProgressValue(isChecked ? 1:0)
     }
-    static var initW = 80
-    static var initH = 80
-    static var initFillet = 40
+    let initW = 80
+    let initH = 80
+    let initFillet = 40
     /**
      * Progress changes from 0 - 1
      */

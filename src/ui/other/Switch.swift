@@ -25,13 +25,14 @@ class Switch:HSlider,ICheckable{
         Swift.print("isChecked: " + "\(isChecked)")
         setProgressValue(isChecked ? 1:0)
     }
-    let initW = 80
+    let initW = 140
     let initH = 80
     let initFillet = 40
     /**
      * Progress changes from 0 - 1
      */
     func interpolateColor(){
+        let progress = self.progress.clip(0,5)
         /*bg*/
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var widthProp = style.getStyleProperty("width",1)

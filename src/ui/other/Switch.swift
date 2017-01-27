@@ -219,7 +219,7 @@ class Switch:HSlider,ICheckable{
             bgProgressAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgProgressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
         }else if (!self.isChecked && isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.4,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
-            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgProgressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.7,0,1,bgProgressAnim,Back.easeIn)/*Animate setProgress from 0 - 1*/
         }
         progressAnimator!.start()
         bgProgressAnimator!.start()

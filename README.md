@@ -36,10 +36,11 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 ## Working on:  
 - [iOS support](https://github.com/eonist/Element-iOS) 
 - Carthage & CocoaPod support
-- HackerNews example app (w/ AlomFire)
+- HackerNews example app (w/ AlamoFire)
 - Sketch import
 - Live Theme switching
 - Flex-box layout alignment  
 
+* * *
 
 ⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   

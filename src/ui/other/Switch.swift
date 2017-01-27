@@ -31,7 +31,7 @@ class Switch:HSlider,ICheckable{
     func interpolateColor(){
         /*bg*/
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        var styleProperty = style.getStyleProperty("fill") /*Edits the style*/
+        var styleProperty = style.getStyleProperty("fill",1) /*Edits the style*/
         if(styleProperty != nil){//temp
             let color:NSColor = offColor.blended(withFraction: progress, of: green)!
             styleProperty!.value = color

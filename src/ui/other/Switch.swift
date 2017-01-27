@@ -130,7 +130,7 @@ class Switch:HSlider,ICheckable{
             bgAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgAnim,Linear.ease)
             bgAnimator!.start()
         }else{
-            offColor = NSColor.white//temp fix
+            offColor = NSColor.red//temp fix
         }
     }
     /**

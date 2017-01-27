@@ -34,8 +34,8 @@ class Switch:HSlider,ICheckable{
     /**
      * Progress changes from 0 - 1
      */
-    func interpolateColor(){
-        let progress = self.progress.clip(0,1)//avoids bounce
+    func interpolateColor(value:CGFloat){
+        let progress = value//self.progress.clip(0,1)//avoids bounce
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
@@ -190,7 +190,7 @@ class Switch:HSlider,ICheckable{
      *
      */
     func bgProgressAnim(value:CGFloat){
-        interpolateColor()
+        interpolateColor(value)
     }
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")

@@ -7,6 +7,7 @@ class Switch:HSlider,ICheckable{
     var thumbAnimator:Animator?
     var bgAnimator:Animator?
     var progressAnimator:Animator?
+    var bgProgressAnimator:Animator?
     let green:NSColor = NSColorParser.nsColor(UInt(0x39D149))
     let grey:NSColor = NSColorParser.nsColor(UInt(0xDCDCDC))
     var offColor:NSColor = NSColor.white
@@ -181,6 +182,12 @@ class Switch:HSlider,ICheckable{
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
         setProgressValue(value)//moves the thumb
+        
+    }
+    /**
+     *
+     */
+    func bgProgressAnim(value:CGFloat){
         interpolateColor()
     }
     override func onEvent(_ event:Event) {
@@ -204,12 +211,16 @@ class Switch:HSlider,ICheckable{
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
         if(progressAnimator != nil){progressAnimator!.stop()}
+        if(bgProgressAnimator != nil){bgProgressAnimator!.stop()}
         if(self.isChecked && !isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.4,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgProgressAnim,Linear.ease)/*Animate setProgress from 1 - 0*/
         }else if (!self.isChecked && isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.4,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgProgressAnim,Linear.ease)/*Animate setProgress from 1 - 0*/
         }
         progressAnimator!.start()
+        bgProgressAnimator!.start()
         self.isChecked = isChecked
         //setSkinState(getSkinState())
     }

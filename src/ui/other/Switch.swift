@@ -35,7 +35,7 @@ class Switch:HSlider,ICheckable{
      * Progress changes from 0 - 1
      */
     func interpolateColor(_ value:CGFloat){
-        let progress = value//self.progress.clip(0,1)//avoids bounce
+        let progress = value.clip(0,1)//avoids bounce
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
@@ -216,10 +216,10 @@ class Switch:HSlider,ICheckable{
         if(bgProgressAnimator != nil){bgProgressAnimator!.stop()}
         if(self.isChecked && !isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.4,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
-            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgProgressAnim,Linear.ease)/*Animate setProgress from 1 - 0*/
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgProgressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
         }else if (!self.isChecked && isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.4,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
-            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgProgressAnim,Linear.ease)/*Animate setProgress from 0 - 1*/
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgProgressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
         }
         progressAnimator!.start()
         bgProgressAnimator!.start()

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * Try to make SwitchSlider and SwitchCheckButton and SwitchButton, with each having seperate parts of the Component logic. Inspired by CheckButton,HSlider and Button, but less complex
  */

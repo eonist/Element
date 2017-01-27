@@ -27,8 +27,8 @@ protocol IElement:class,IView{/*:class <--- derive only classes for the protocol
  * TODO: add convenince methods for setting x and y independently?
  */
 extension IElement {
-    var x:CGFloat {get{return self.frame.x}set{self.frame.x = newValue}}
-    var y:CGFloat {get{return self.frame.y}set{self.frame.y = newValue}}
+    //var x:CGFloat {get{return self.frame.x}set{self.frame.x = newValue}}
+    //var y:CGFloat {get{return self.frame.y}set{self.frame.y = newValue}}
     /*
     var width:CGFloat {return self.frame.width}
     var height:CGFloat {return self.frame.height}

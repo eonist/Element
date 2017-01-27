@@ -69,7 +69,6 @@ class Switch:HSlider,ICheckable{
         thumb!.skin!.setStyle(style)/*updates the skin*/
         
         /*Thumb Anim*/
-        /**/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Easing.easeLinear)
         thumbAnimator!.start()

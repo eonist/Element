@@ -26,7 +26,7 @@ class Switch:HSlider,ICheckable{
         setProgressValue(isChecked ? 1:0)
     }
     /**
-     *
+     * Progress changes from 0 - 1
      */
     func interpolateColor(){
         /*bg*/
@@ -159,7 +159,7 @@ class Switch:HSlider,ICheckable{
     }
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
-        setProgressValue(value)
+        setProgressValue(value)//moves the thumb
         interpolateColor()
     }
     override func onEvent(_ event:Event) {

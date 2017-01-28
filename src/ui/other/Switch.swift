@@ -67,7 +67,6 @@ class Switch:HSlider,ICheckable{
             thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
         }
     }
-    /*
     override func onThumbMove(event:NSEvent) -> NSEvent{
         //let event = super.onThumbMove(event: event)
         self.progress = HSliderUtils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
@@ -83,8 +82,6 @@ class Switch:HSlider,ICheckable{
         }
         return event
     }
- */
-    /*
     override func onThumbDown() {
         super.onThumbDown()
         Swift.print("onThumbDown: isChecked: " + "\(isChecked)")
@@ -108,13 +105,11 @@ class Switch:HSlider,ICheckable{
         
         interpolateColor(progress)//ticks the thumb line to be the correct color, or else the line would be derived from css
     }
-    */
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
      * NOTE: onThumbUp is fired before ..inside and ...outside, thats why this method exists, it fires after
      */
-    /*
     func onThumbUpAfter() {
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         
@@ -142,11 +137,9 @@ class Switch:HSlider,ICheckable{
             offColor = NSColor.red//temp fix
         }
     }
- */
     /**
      *
      */
-    /*
     func onThumbUpInside(){
         Swift.print("onThumbUpInside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
@@ -158,17 +151,17 @@ class Switch:HSlider,ICheckable{
         }
         disableMouseUp = false//reset
     }
-    */
+    
     /**
      *
      */
-    /*
+    
     func onThumbUpOutside(){
         Swift.print("onThumbUpOutside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
         disableMouseUp = false//reset
     }
- */
+ 
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")
         
@@ -211,14 +204,13 @@ class Switch:HSlider,ICheckable{
     func bgProgressAnim(value:CGFloat){
         interpolateColor(value)
     }
-    /*
+    
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.upInside){onThumbUpInside()}
         else if(event.origin === thumb && event.type == ButtonEvent.upOutside){onThumbUpOutside()}
         super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
- */
     /**
      * PARAM: progress (0-1)
      */
@@ -228,7 +220,8 @@ class Switch:HSlider,ICheckable{
         self.progress = progress//.clip(0,1)/*If the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
         thumb!.x = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
         //thumb?.applyOvershot(progress)/*<--We use the unclipped scalar value*/
-    }    /**
+    }
+    /**
      * Sets the self.isChecked variable (Toggles between two states)
      */
     func setChecked(_ isChecked:Bool) {

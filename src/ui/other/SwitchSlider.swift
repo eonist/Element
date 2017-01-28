@@ -1,4 +1,5 @@
-import Foundation
+import Cocoa
+@testable import Utils
 
 class SwitchSlider:Element {
     var progress:CGFloat
@@ -8,8 +9,8 @@ class SwitchSlider:Element {
         super.init(width,height,parent,id)
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
-        progress = HSliderUtils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
-        thumb!.x = HSliderUtils.thumbPosition(progress, width, thumbWidth)
+        Swift.print("SwitchSlider.onMouseMove")
+        progress = HSliderUtils.progress(event.localPos(self).x, 0/*thumbWidth/2*/, width, /*thumbWidth*/ 0)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -17,7 +18,8 @@ class SwitchSlider:Element {
      * Handles actions and drawing states for the down event
      */
     override func mouseDown(_ event:MouseEvent) {
-        progress = HSliderUtils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
+        Swift.print("SwitchSlider.mouseDown")
+        progress = HSliderUtils.progress(event.event!.localPos(self).x, /*thumbWidth/2*/0, width, /*thumbWidth*/0)
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }

@@ -12,7 +12,7 @@ import Cocoa
  */
 class VSlider:Element{
     var thumb:Thumb?
-    var leftMouseDraggedEventListener:Any?//TODO: rename to leftMouseDraggedEventListener or draggedEventListner
+    var leftMouseDraggedEventListener:Any?
     var progress:CGFloat/*0-1*/
     var tempThumbMouseY:CGFloat = 0
     var thumbHeight:CGFloat

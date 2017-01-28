@@ -166,14 +166,14 @@ class Switch:HSlider,ICheckable{
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
         //let curColor:NSColor = fillProp!.value as! NSColor
         if(isChecked){
-            Swift.print("initColor : green")
-            Swift.print("endColor : green")
+            Swift.print("initColor : grey")
+            Swift.print("endColor : grey")
         }else{
             Swift.print("initColor : white")
             Swift.print("endColor : grey")
         }
-        let initColor = isChecked ? green : NSColor.white
-        let endColor = isChecked ? green : grey
+        let initColor = isChecked ? grey : NSColor.white
+        let endColor = isChecked ? NSColor.white : grey
         offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         skin!.setStyle(style)

@@ -170,7 +170,8 @@ class Switch:HSlider,ICheckable{
         offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         skin!.setStyle(style)
-        /**/
+        //continue here:
+            //set some print flags and figure it out
     }
     func thumbAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")

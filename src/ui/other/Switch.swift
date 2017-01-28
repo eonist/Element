@@ -110,6 +110,7 @@ class Switch:HSlider,ICheckable{
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug
      * NOTE: onThumbUp is fired before ..inside and ...outside, thats why this method exists, it fires after
      */
+    /*
     func onThumbUpAfter() {
         let style:IStyle = thumb!.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         
@@ -137,9 +138,11 @@ class Switch:HSlider,ICheckable{
             offColor = NSColor.red//temp fix
         }
     }
+ */
     /**
      *
      */
+    /*
     func onThumbUpInside(){
         Swift.print("onThumbUpInside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
@@ -151,14 +154,17 @@ class Switch:HSlider,ICheckable{
         }
         disableMouseUp = false//reset
     }
+    */
     /**
      *
      */
+    /*
     func onThumbUpOutside(){
         Swift.print("onThumbUpOutside isChecked: " + "\(isChecked)")
         onThumbUpAfter()
         disableMouseUp = false//reset
     }
+ */
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")
         
@@ -201,12 +207,14 @@ class Switch:HSlider,ICheckable{
     func bgProgressAnim(value:CGFloat){
         interpolateColor(value)
     }
+    /*
     override func onEvent(_ event:Event) {
         //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.upInside){onThumbUpInside()}
         else if(event.origin === thumb && event.type == ButtonEvent.upOutside){onThumbUpOutside()}
         super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
+ */
     /**
      * PARAM: progress (0-1)
      */

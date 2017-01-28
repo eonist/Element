@@ -8,24 +8,21 @@ class SwitchSlider:Element {
         super.init(width,height,parent,id)
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
-        progress = Utils.progress(event.localPos(self).y, thumbHeight/2, height, thumbHeight)
-        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
+        progress = HSliderUtils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
+        thumb!.x = HSliderUtils.thumbPosition(progress, width, thumbWidth)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
     /**
-     * Handles actions and drawing states for the down event.
+     * Handles actions and drawing states for the down event
      */
-    override func mouseDown(_ event:MouseEvent) {/*onSkinDown*/
-        //Swift.print("\(self.dynamicType)" + ".mouseDown() ")
+    override func mouseDown(_ event:MouseEvent) {
         progress = HSliderUtils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
-        
-        
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseUp(_ event:MouseEvent) {
-        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//we remove a global mouse move event listener
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

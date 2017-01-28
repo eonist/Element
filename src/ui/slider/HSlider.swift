@@ -4,6 +4,7 @@ import Cocoa
  * HSlider is a simple horizontal slider
  * NOTE: the reason we have two sliders instead of 1 is because otherwise the math and variable naming scheme becomes too complex (same goes for the idea of extending a Slider class)
  * TODO: consider having thumbWidth and thumbHeight, its just easier to understand
+ * TODO: HSlider hasn't implemented mouseDown yet. see VSlider for instructions
  */
 class HSlider:Element{
     var progress:CGFloat
@@ -28,7 +29,6 @@ class HSlider:Element{
         setProgressValue(progress)
     }
     func onThumbDown(){
-        //Swift.print("HSlider.onThumbDown")
         tempThumbMouseX = thumb!.localPos().x
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//avoids potential bugs
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove )

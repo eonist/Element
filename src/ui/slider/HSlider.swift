@@ -99,6 +99,7 @@ class HSliderUtils{
     static func progress(_ mouseX:CGFloat,_ tempNodeMouseX:CGFloat,_ width:CGFloat,_ thumbWidth:CGFloat)->CGFloat {
         if(thumbWidth == width) {return 0;}/*if the thumbWidth is the same as the Width of the slider then return 0*/
         let progress:CGFloat = (mouseX-tempNodeMouseX) / (width-thumbWidth)
+        //TODO: do progress.clip(0,1) on the bellow line
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
     }
 }

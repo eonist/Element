@@ -97,7 +97,7 @@ class VSlider:Element{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*required by all NSView subclasses*/
 }
-private class Utils{
+private class Utils{//TODO:rename to VSliderUtils and make it not private
     /**
      * Returns the x position of a nodes PARAM progress
      */

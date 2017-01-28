@@ -1,5 +1,6 @@
 import Foundation
 @testable import Utils
+typealias RadioBullet = SelectButton/*RadioBullet is targeted in CSS, but is essentially the same as a SelectButton*/
 /**
  * TODO: Impliment IDisableable also and extend DisableTextButton
  */

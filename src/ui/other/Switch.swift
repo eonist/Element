@@ -27,10 +27,10 @@ class Switch:HSlider,ICheckable{
         setProgressValue(isChecked ? 1:0)
     }
     let initW:CGFloat = 140
-    let endW:CGFloat = 140 - 80
+    //let endW:CGFloat = 140 - 80
     let initH = 80
     let initFillet = 40
-    let initOffsetX = (140)/2
+    let initOffsetX = 140/2
     let initOffsetY = 80/2
     /**
      * Progress changes from 0 - 1
@@ -41,7 +41,7 @@ class Switch:HSlider,ICheckable{
         let sizeMultiplier = 1 - progress//we need values from 1 to 0
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var widthProp = style.getStyleProperty("width",1)
-        widthProp!.value = CGFloatParser.interpolate(initW,0,progress)
+        widthProp!.value = initW * sizeMultiplier//CGFloatParser.interpolate(initW,0,progress)
         var heightProp = style.getStyleProperty("height",1)
         heightProp!.value = initH * sizeMultiplier
         var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
@@ -161,7 +161,7 @@ class Switch:HSlider,ICheckable{
     }
     func bgAnim(value:CGFloat){
         //Swift.print("bgAnim: " + "\(value)")
-        /*
+        
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill") /*edits the style*/
         //let curColor:NSColor = fillProp!.value as! NSColor
@@ -170,7 +170,7 @@ class Switch:HSlider,ICheckable{
         offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         skin!.setStyle(style)
-        */
+        /**/
     }
     func thumbAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")

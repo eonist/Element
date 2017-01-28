@@ -67,6 +67,7 @@ class Switch:HSlider,ICheckable{
             thumb!.skin!.setStyle(thumbStyle)/*updates the skin*/
         }
     }
+    /*
     override func onThumbMove(event:NSEvent) -> NSEvent{
         //let event = super.onThumbMove(event: event)
         self.progress = HSliderUtils.progress(event.localPos(self).x, tempThumbMouseX, width, thumbWidth)
@@ -82,6 +83,8 @@ class Switch:HSlider,ICheckable{
         }
         return event
     }
+ */
+    /*
     override func onThumbDown() {
         super.onThumbDown()
         Swift.print("onThumbDown: isChecked: " + "\(isChecked)")
@@ -105,6 +108,7 @@ class Switch:HSlider,ICheckable{
         
         interpolateColor(progress)//ticks the thumb line to be the correct color, or else the line would be derived from css
     }
+    */
     /**
      * NOTE: We need to get the event after mouseUpEvent, which is either upInside or upOutside. 
      * NOTE: If we use up event then another call gets made to the style and the properties we set doesn't attach, this is a bug

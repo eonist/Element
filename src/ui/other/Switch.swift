@@ -98,11 +98,11 @@ class Switch:HSlider,ICheckable{
         thumbAnimator!.start()
         
         /*bg Anim*/
-        if(progress == 0){//must be in off state
+        //if(progress == 0){//must be in off state
             if(bgAnimator != nil){bgAnimator!.stop()}
             bgAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgAnim,Linear.ease)
             bgAnimator!.start()
-        }
+        //}
         interpolateColor(progress)//ticks the thumb line to be the correct color, or else the line would be derived from css
     }
     /**

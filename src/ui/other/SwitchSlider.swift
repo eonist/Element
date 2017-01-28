@@ -18,7 +18,7 @@ class SwitchSlider:Element {
      */
     override func mouseDown(_ event:MouseEvent) {/*onSkinDown*/
         //Swift.print("\(self.dynamicType)" + ".mouseDown() ")
-        progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight)
+        progress = HSliderUtils.progress(event.localPos(self).x, thumbWidth/2, width, thumbWidth)
         
         
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener

@@ -27,6 +27,7 @@ class Switch:HSlider,ICheckable{
         setProgressValue(isChecked ? 1:0)
     }
     let initW = 140
+    let endW = 140 - 80
     let initH = 80
     let initFillet = 40
     let initOffsetX = 140/2

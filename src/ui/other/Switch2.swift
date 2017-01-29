@@ -46,15 +46,17 @@ class Switch2:SwitchSlider,ICheckable{
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
         marginProp!.value = progress == 1 ? 20  : 0
         self.skin!.setStyle(style)/*updates the skin*/
-        /*Thumb width Anim*/
-        if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
-        thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbWidthAnim,Linear.ease)/*from 0 to 1*/
-        thumbWidthAnimator!.start()
         
         /*bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}
         bgColorAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgColorAnim,Linear.ease)/*from 0 to 1*/
         bgColorAnimator!.start()
+        
+        /*Thumb width Anim*/
+        if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
+        thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbWidthAnim,Linear.ease)/*from 0 to 1*/
+        thumbWidthAnimator!.start()
+        
         
         super.mouseDown(event)
     }
@@ -152,6 +154,11 @@ extension Switch2{
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+        var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
+        let initColor = getChecked() ? grey : white
+        let endColor = getChecked() ? white : isMouseDown ? grey : white
+        tempBGColor = initColor.blended(withFraction: value, of: endColor)!
+        fillProp!.value = tempBGColor!
         skin!.setStyle(style)
     }
     func bgColorAnim(value:CGFloat){
@@ -159,14 +166,6 @@ extension Switch2{
         
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
-        //let curColor:NSColor = fillProp!.value as! NSColor
-        if(getChecked()){
-            Swift.print("initColor : grey")
-            Swift.print("endColor : grey")
-        }else{
-            Swift.print("initColor : white")
-            Swift.print("endColor : grey")
-        }
         let initColor = getChecked() ? grey : white
         let endColor = getChecked() ? white : isMouseDown ? grey : white
         tempBGColor = initColor.blended(withFraction: value, of: endColor)!

@@ -62,6 +62,7 @@ class Switch:SwitchSlider,ICheckable{
         }
         disableMouseUp = false//reset
         super.mouseUpInside(event)
+        super.onEvent(CheckEvent(CheckEvent.check, isChecked, self))
     }
     override func mouseUpOutside(_ event: MouseEvent) {
         Swift.print("Switch2.mouseUpOutside")

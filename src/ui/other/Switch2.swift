@@ -11,6 +11,7 @@ import Foundation
     //a problem is that you set the skinStyle in two animators that have different duartions.
         //a solution is to be able to directly set style to skin layers
         //investigate if this is possible and if not use temp variables
+        //or use 3 different elements to get things working.
 
 class Switch2:SwitchSlider,ICheckable{
     var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
@@ -168,8 +169,8 @@ extension Switch2{
         }
         let initColor = getChecked() ? grey : white
         let endColor = getChecked() ? white : isMouseDown ? grey : white
-        let offColor = initColor.blended(withFraction: value, of: endColor)!
-        fillProp!.value = offColor
+        tempBGColor = initColor.blended(withFraction: value, of: endColor)!
+        fillProp!.value = tempBGColor!
         
         skin!.setStyle(style)
     }

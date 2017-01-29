@@ -50,13 +50,19 @@ class Switch2:SwitchSlider,ICheckable{
     }
     override func mouseUpInside(_ event: MouseEvent) {
         Swift.print("Switch2.mouseUpInside")
+        if(!disableMouseUp){
+            setChecked(!isChecked)
+        }
+        disableMouseUp = false//reset
         super.mouseUpInside(event)
     }
     override func mouseUpOutside(_ event: MouseEvent) {
         Swift.print("Switch2.mouseUpOutside")
+        disableMouseUp = false//reset
         super.mouseUpOutside(event)
     }
     override func mouseUp(_ event: MouseEvent) {
+        Swift.print("Switch2.mouseUp")
         /*Thumb Anim*/
         if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
         thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbWidthAnim,Linear.ease)/*from 1 to 0*/

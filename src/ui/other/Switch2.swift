@@ -4,7 +4,7 @@ import Foundation
 //Continue here: 
     //add the third layer with the same style as SwitchThumb
     //try to move it onMouseMove
-    ////keep adding interaction + anim code from Switch1
+    //keep adding interaction + anim code from Switch1
 
 class Switch2:SwitchSlider,ICheckable{
     private var isChecked:Bool

@@ -123,10 +123,14 @@ extension Switch2{
         }
         let initColor = isChecked ? grey : NSColor.white
         let endColor = isChecked ? NSColor.white : grey
-        offColor = initColor.blended(withFraction: value, of: endColor)!
-        fillProp!.value = offColor
+        //offColor = initColor.blended(withFraction: value, of: endColor)!
+        //fillProp!.value = offColor
         skin!.setStyle(style)
         //continue here:
         //set some print flags and figure it out
     }
+}
+extension Switch2{
+    var green:NSColor {return NSColorParser.nsColor(UInt(0x39D149))}
+    var grey:NSColor {return NSColorParser.nsColor(UInt(0xDCDCDC))}
 }

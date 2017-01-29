@@ -9,7 +9,7 @@ import Foundation
 class Switch2:SwitchSlider,ICheckable{
     var thumbAnimator:Animator?
     var progressAnimator:Animator?
-    var bgAnimator:Animator?
+    var bgColorAnimator:Animator?
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
@@ -40,9 +40,9 @@ class Switch2:SwitchSlider,ICheckable{
         thumbAnimator!.start()
         
         /*bg Anim*/
-        if(bgAnimator != nil){bgAnimator!.stop()}
-        bgAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgAnim,Linear.ease)/*from 0 to 1*/
-        bgAnimator!.start()
+        if(bgColorAnimator != nil){bgColorAnimator!.stop()}
+        bgColorAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgColorAnim,Linear.ease)/*from 0 to 1*/
+        bgColorAnimator!.start()
         
         super.mouseDown(event)
     }
@@ -61,9 +61,9 @@ class Switch2:SwitchSlider,ICheckable{
         thumbAnimator!.start()
         /*Bg Anim*/
         if(!isChecked){//must be in off state
-            if(bgAnimator != nil){bgAnimator!.stop()}
-            bgAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgAnim,Linear.ease)/*from 1 to 0*/
-            bgAnimator!.start()
+            if(bgColorAnimator != nil){bgColorAnimator!.stop()}
+            bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
+            bgColorAnimator!.start()
         }
         super.mouseUp(event)
     }
@@ -114,8 +114,8 @@ extension Switch2{
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         skin!.setStyle(style)
     }
-    func bgAnim(value:CGFloat){
-        Swift.print("bgAnim: " + "\(value)")
+    func bgColorAnim(value:CGFloat){
+        Swift.print("bgColorAnim: " + "\(value)")
         
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/

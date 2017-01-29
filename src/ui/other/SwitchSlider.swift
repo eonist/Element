@@ -10,7 +10,7 @@ class SwitchSlider:Element {
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = HSliderUtils.progress(event.localPos(self).x, 0/*thumbWidth/2*/, width, /*thumbWidth*/ 0)
-        Swift.print("SwitchSlider.onMouseMove progress: " + "\(progress)")
+        //Swift.print("SwitchSlider.onMouseMove progress: " + "\(progress)")
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }

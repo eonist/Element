@@ -92,11 +92,11 @@ class Switch2:SwitchSlider,ICheckable{
 extension Switch2{
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
-        self.progress = progress
+        progress = value
         let style:IStyle = skin!.style!
         var offsetProp = skin!.style!.getStyleProperty("offset",2)
         let thumbWidth:CGFloat = 100//thumbWidth is always 100
-        let thumbX = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
+        let thumbX = HSliderUtils.thumbPosition(progress, width, thumbWidth)
         offsetProp!.value = [thumbX, 0]
         skin!.setStyle(style)
     }

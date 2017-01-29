@@ -62,7 +62,7 @@ class Switch2:SwitchSlider,ICheckable{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /**
- * We have the animation stuff in an extension so that the code becomes more modular
+ * We have the animation stuff in an extension to make the code becomes more modular
  */
 extension Switch2{
     func thumbAnim(value:CGFloat){

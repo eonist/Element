@@ -27,9 +27,11 @@ class Switch:SwitchSlider,ICheckable{
         let event = super.onMouseMove(event:event)
         if(progress == 1 && !isChecked){
             setChecked(true)
+            super.onEvent(CheckEvent(CheckEvent.check, isChecked, self))
             disableMouseUp = true
         }else if(progress == 0 && isChecked){
             setChecked(false)
+            super.onEvent(CheckEvent(CheckEvent.check, isChecked, self))
             disableMouseUp = true
         }
         return event

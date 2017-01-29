@@ -91,8 +91,8 @@ class Switch2:SwitchSlider,ICheckable{
 extension Switch2{
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
-        setProgressValue(value)//moves the thumb
-        
+        self.progress = progress
+        thumb!.x = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
     }
     func thumbAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")

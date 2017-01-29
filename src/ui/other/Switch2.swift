@@ -8,6 +8,7 @@ import Foundation
 
 class Switch2:SwitchSlider,ICheckable{
     var thumbAnimator:Animator?
+    var progressAnimator:Animator?
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
@@ -92,6 +93,8 @@ extension Switch2{
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
         self.progress = progress
+        var offsetProp = style.getStyleProperty("offset",2)//center align the scaling of the white bg graphic
+        offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
         thumb!.x = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
     }
     func thumbAnim(value:CGFloat){

@@ -154,8 +154,6 @@ extension Switch2{
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
-        fillProp!.value = tempBGColor!
         skin!.setStyle(style)
     }
     func bgColorAnim(value:CGFloat){
@@ -163,8 +161,9 @@ extension Switch2{
         
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
-        let initColor = getChecked() ? grey : grey
-        let endColor = getChecked() ? white : isMouseDown ? grey : white
+        let initColor = getChecked() ? grey : white
+        
+        let endColor = getChecked() ? white : grey
         tempBGColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = tempBGColor!
         

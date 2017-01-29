@@ -180,8 +180,8 @@ extension Switch2{
         cornerRadiusProp!.value = initFillet * sizeMultiplier
         var offsetProp = style.getStyleProperty("offset",1)//center align the scaling of the white bg graphic
         offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
-        var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
-        fillProp!.value = isMouseDown ? grey : white
+        //var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
+        //fillProp!.value = isMouseDown ? grey : white
         skin!.setStyle(style)/*updates the skin*/
     }
 }

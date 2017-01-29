@@ -10,6 +10,7 @@ class Switch2:SwitchSlider,ICheckable{
     var thumbAnimator:Animator?
     var progressAnimator:Animator?
     var bgColorAnimator:Animator?
+    var bgProgressAnimator:Animator?
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
@@ -70,10 +71,13 @@ class Switch2:SwitchSlider,ICheckable{
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
         if(progressAnimator != nil){progressAnimator!.stop()}
+        if(bgProgressAnimator != nil){bgProgressAnimator!.stop()}
         if(self.isChecked && !isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.5,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgProgressAnim,Quad.easeOut)/*Animate setProgress from 1 - 0*/
         }else if (!self.isChecked && isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
+            bgProgressAnimator!.start()
         }
         progressAnimator!.start()
         self.isChecked = isChecked
@@ -132,8 +136,9 @@ extension Switch2{
         let offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         skin!.setStyle(style)
-        //continue here:
-        //set some print flags and figure it out
+    }
+    func bgProgressAnim(value:CGFloat){
+        interpolateColor(value)
     }
 }
 extension Switch2{

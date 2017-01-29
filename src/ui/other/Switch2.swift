@@ -94,6 +94,13 @@ class Switch2:SwitchSlider,ICheckable{
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    
+    let initW:CGFloat = 140
+    //let endW:CGFloat = 140 - 80
+    let initH = 80
+    let initFillet = 40
+    let initOffsetX = 140/2
+    let initOffsetY = 80/2
 }
 /**
  * We have the animation stuff in an extension to make the code becomes more modular
@@ -147,14 +154,25 @@ extension Switch2{
         
         skin!.setStyle(style)
     }
-    let initW:CGFloat = 140
-    //let endW:CGFloat = 140 - 80
-    let initH = 80
-    let initFillet = 40
-    let initOffsetX = 140/2
-    let initOffsetY = 80/2
+    
     func bgProgressAnim(value:CGFloat){
         //interpolateColor(value)
+        let progress = value.clip(0,1)//avoids bounce
+        /*bg*/
+        let sizeMultiplier = 1 - progress//we need values from 1 to 0
+        let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+        var widthProp = style.getStyleProperty("width",1)
+        widthProp!.value = initW * sizeMultiplier//CGFloatParser.interpolate(initW,0,progress)
+        var heightProp = style.getStyleProperty("height",1)
+        heightProp!.value = initH * sizeMultiplier
+        var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
+        cornerRadiusProp!.value = initFillet * sizeMultiplier
+        var offsetProp = style.getStyleProperty("offset",1)//center align the scaling of the white bg graphic
+        offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
+        skin!.setStyle(style)/*updates the skin*/
+        
+        
+
     }
 }
 extension Switch2{

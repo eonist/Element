@@ -135,10 +135,20 @@ extension Switch2{
         let endColor = getChecked() ? NSColor.white : grey
         let offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
+        
+        /*Thumb*/
+        var thumbLineProp = style.getStyleProperty("line",2) /*edits the style*/
+        if(thumbLineProp != nil){//temp
+            let color:NSColor = grey.blended(withFraction: value, of: green)!
+            thumbLineProp!.value = color
+        }
+        
         skin!.setStyle(style)
+        
+        
     }
     func bgProgressAnim(value:CGFloat){
-        interpolateColor(value)
+        //interpolateColor(value)
     }
 }
 extension Switch2{

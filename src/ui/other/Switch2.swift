@@ -147,6 +147,12 @@ extension Switch2{
         
         skin!.setStyle(style)
     }
+    let initW:CGFloat = 140
+    //let endW:CGFloat = 140 - 80
+    let initH = 80
+    let initFillet = 40
+    let initOffsetX = 140/2
+    let initOffsetY = 80/2
     func bgProgressAnim(value:CGFloat){
         //interpolateColor(value)
     }
@@ -155,12 +161,4 @@ extension Switch2{
     var green:NSColor {return NSColorParser.nsColor(UInt(0x39D149))}
     var grey:NSColor {return NSColorParser.nsColor(UInt(0xDCDCDC))}
     var white:NSColor {return NSColor.white}
-}
-extension Switch2{
-    var initW:CGFloat = {return 140.0.}
-    //let endW:CGFloat = 140 - 80
-    var initH:CGFloat = {return CGFloat(80)}
-    var initFillet:CGFloat = {return 40}
-    var initOffsetX:CGFloat = {return 140/2}
-    var initOffsetY:CGFloat = {return 80/2}
 }

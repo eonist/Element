@@ -157,9 +157,9 @@ extension Switch2{
     var white:NSColor {return NSColor.white}
 }
 extension Switch2{
-    var initW:CGFloat = {return 140}
+    var initW:CGFloat = {return 140.0.}
     //let endW:CGFloat = 140 - 80
-    var initH:CGFloat = {return 80}
+    var initH:CGFloat = {return CGFloat(80)}
     var initFillet:CGFloat = {return 40}
     var initOffsetX:CGFloat = {return 140/2}
     var initOffsetY:CGFloat = {return 80/2}

@@ -80,11 +80,11 @@ class Switch2:SwitchSlider,ICheckable{
         if(thumbXAnimator != nil){thumbXAnimator!.stop()}
         if(bgIrisAnimator != nil){bgIrisAnimator!.stop()}
         if(self.isChecked && !isChecked){
-            thumbXAnimator = Animator(Animation.sharedInstance,0.5,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
-            bgIrisAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgIrisAnim,Quad.easeOut)/*Animate setProgress from 1 - 0*/
+            thumbXAnimator = Animator(Animation.sharedInstance,0.5,1,0,thumbXAnim,Back.easeOut)/*from 1 - 0*/
+            bgIrisAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgIrisAnim,Quad.easeOut)/*from 1 - 0*/
         }else if (!self.isChecked && isChecked){
-            thumbXAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
-            bgIrisAnimator = Animator(Animation.sharedInstance,0.3,0,1,bgIrisAnim,Quad.easeOut)/*Animate setProgress from 0 - 1*/
+            thumbXAnimator = Animator(Animation.sharedInstance,0.5,0,1,thumbXAnim,Back.easeOut)/*from 0 - 1*/
+            bgIrisAnimator = Animator(Animation.sharedInstance,0.3,0,1,bgIrisAnim,Quad.easeOut)/*from 0 - 1*/
         }
         bgIrisAnimator!.start()
         thumbXAnimator!.start()
@@ -114,7 +114,7 @@ class Switch2:SwitchSlider,ICheckable{
  * We have the animation stuff in an extension to make the code becomes more modular
  */
 extension Switch2{
-    func progressAnim(value:CGFloat){
+    func thumbXAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
         progress = value
         let style:IStyle = skin!.style!

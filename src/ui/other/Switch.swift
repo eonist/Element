@@ -10,7 +10,7 @@ import Foundation
  * 2. investigate if this is possible and if not possibly use temp variables
  * 3. or use 3 different elements to get things working
  */
-class Switch2:SwitchSlider,ICheckable{
+class Switch:SwitchSlider,ICheckable{
     var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
@@ -98,9 +98,6 @@ class Switch2:SwitchSlider,ICheckable{
         self.isChecked = isChecked
         //setSkinState(getSkinState())
     }
-    override func getClassType() -> String {//temp
-        return "\(Switch.self)"
-    }
     func getChecked() -> Bool {
         return isChecked
     }
@@ -172,7 +169,7 @@ extension Switch{
         skin!.setStyle(style)/*updates the skin*/
     }
 }
-extension Switch2{/*Conveniently store colors used*/
+extension Switch{/*Conveniently store colors used*/
     var green:NSColor {return NSColorParser.nsColor(UInt(0x39D149))}
     var grey:NSColor {return NSColorParser.nsColor(UInt(0xDCDCDC))}
     var white:NSColor {return NSColor.white}

@@ -161,7 +161,7 @@ extension Switch2{
     }
     func bgIrisAnim(value:CGFloat){
         //interpolateColor(value)
-        let progress = value//value.clip(0,1)//avoids bounce
+        let progress = value
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin

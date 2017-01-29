@@ -6,6 +6,12 @@ import Foundation
  * Layer 1: blends from white to grey, and animates like an iris dilating.
  * Layer 2: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
  */
+
+//Continue here: 
+    //a problem is that you set the skinStyle in two animators that have different duartions.
+        //a solution is to be able to directly set style to skin layers
+        //investigate if this is possible and if not use temp variables
+
 class Switch2:SwitchSlider,ICheckable{
     var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/

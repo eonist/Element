@@ -35,7 +35,7 @@ class Switch:SwitchSlider,ICheckable{
         return event
     }
     override func mouseDown(_ event:MouseEvent) {
-        Swift.print("Switch2.mouseDown isChecked: \(isChecked)")
+        Swift.print("Switch.mouseDown isChecked: \(isChecked)")
         let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80
@@ -56,7 +56,7 @@ class Switch:SwitchSlider,ICheckable{
         super.mouseDown(event)
     }
     override func mouseUpInside(_ event: MouseEvent) {
-        Swift.print("Switch2.mouseUpInside")
+        Swift.print("Switch.mouseUpInside")
         if(!disableMouseUp){
             setChecked(!isChecked)
         }
@@ -65,13 +65,12 @@ class Switch:SwitchSlider,ICheckable{
         super.onEvent(CheckEvent(CheckEvent.check, isChecked, self))
     }
     override func mouseUpOutside(_ event: MouseEvent) {
-        Swift.print("Switch2.mouseUpOutside")
+        Swift.print("Switch.mouseUpOutside")
         disableMouseUp = false//reset
         super.mouseUpOutside(event)
     }
     override func mouseUp(_ event: MouseEvent) {
-        Swift.print("Switch2.mouseUp")
-        //isMouseDown = false
+        Swift.print("Switch.mouseUp")
         
         /*Bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}

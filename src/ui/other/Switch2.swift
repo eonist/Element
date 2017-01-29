@@ -109,13 +109,7 @@ class Switch2:SwitchSlider,ICheckable{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
-    //temp
-    let initW:CGFloat = 140
-    //let endW:CGFloat = 140 - 80
-    let initH = 80
-    let initFillet = 40
-    let initOffsetX = 140/2
-    let initOffsetY = 80/2
+
 }
 
 /**
@@ -163,6 +157,8 @@ extension Switch2{
     }
     func bgIrisAnim(value:CGFloat){
         //interpolateColor(value)
+        let initOffsetX = 140/2
+        let initOffsetY = 80/2
         let progress = value
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0

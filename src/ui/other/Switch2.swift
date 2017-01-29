@@ -20,8 +20,9 @@ class Switch2:SwitchSlider,ICheckable{
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
-    var isMouseDown:Bool = false
+    //var isMouseDown:Bool = false
     private var isChecked:Bool
+    
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
         super.init(width,height,isChecked ? 1:0,parent,id)
@@ -39,7 +40,7 @@ class Switch2:SwitchSlider,ICheckable{
     }
     override func mouseDown(_ event:MouseEvent) {
         Swift.print("Switch2.mouseDown isChecked: \(isChecked)")
-        isMouseDown = true
+        //isMouseDown = true
         let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80
@@ -74,7 +75,7 @@ class Switch2:SwitchSlider,ICheckable{
     }
     override func mouseUp(_ event: MouseEvent) {
         Swift.print("Switch2.mouseUp")
-        isMouseDown = false
+        //isMouseDown = false
         
         /*Bg Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}

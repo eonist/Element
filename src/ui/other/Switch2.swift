@@ -61,7 +61,18 @@ class Switch2:SwitchSlider,ICheckable{
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
         self.isChecked = isChecked
-        setSkinState(getSkinState())
+        if(progressAnimator != nil){progressAnimator!.stop()}
+        
+        if(self.isChecked && !isChecked){
+            progressAnimator = Animator(Animation.sharedInstance,0.5,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
+            
+        }else if (!self.isChecked && isChecked){
+            progressAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
+            
+        }
+        progressAnimator!.start()
+        
+        //setSkinState(getSkinState())
     }
     override func getClassType() -> String {
         return "\(Switch.self)"
@@ -78,6 +89,11 @@ class Switch2:SwitchSlider,ICheckable{
  * We have the animation stuff in an extension to make the code becomes more modular
  */
 extension Switch2{
+    func progressAnim(value:CGFloat){
+        //Swift.print("progressAnim.value: " + "\(value)")
+        setProgressValue(value)//moves the thumb
+        
+    }
     func thumbAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")
         let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)

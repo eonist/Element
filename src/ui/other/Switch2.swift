@@ -2,6 +2,9 @@ import Foundation
 @testable import Utils
 /**
  * This UIComponent consist of 3 skin layers
+ * Layer 1: Background is always green and has a grey stroke
+ * Layer 2: blends from white to grey, and animates like an iris dilating. 
+ * Layer 3: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
  */
 class Switch2:SwitchSlider,ICheckable{
     var thumbWidthAnimator:Animator?/**/

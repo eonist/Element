@@ -41,7 +41,7 @@ class Switch2:SwitchSlider,ICheckable{
         
         /*bg Anim*/
         if(bgAnimator != nil){bgAnimator!.stop()}
-        bgAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgAnim,Linear.ease)
+        bgAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgAnim,Linear.ease)/*from 0 to 1*/
         bgAnimator!.start()
         
         super.mouseDown(event)
@@ -59,6 +59,12 @@ class Switch2:SwitchSlider,ICheckable{
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Linear.ease)/*from 1 to 0*/
         thumbAnimator!.start()
+        /*Bg Anim*/
+        if(!isChecked){//must be in off state
+            if(bgAnimator != nil){bgAnimator!.stop()}
+            bgAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgAnim,Linear.ease)/*from 1 to 0*/
+            bgAnimator!.start()
+        }
         super.mouseUp(event)
     }
     func setChecked(_ isChecked:Bool) {

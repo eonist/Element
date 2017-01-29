@@ -121,10 +121,10 @@ extension Switch2{
             Swift.print("initColor : white")
             Swift.print("endColor : grey")
         }
-        let initColor = isChecked ? grey : NSColor.white
-        let endColor = isChecked ? NSColor.white : grey
-        //offColor = initColor.blended(withFraction: value, of: endColor)!
-        //fillProp!.value = offColor
+        let initColor = getChecked() ? grey : NSColor.white
+        let endColor = getChecked() ? NSColor.white : grey
+        let offColor = initColor.blended(withFraction: value, of: endColor)!
+        fillProp!.value = offColor
         skin!.setStyle(style)
         //continue here:
         //set some print flags and figure it out

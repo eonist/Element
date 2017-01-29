@@ -151,11 +151,9 @@ class Switch:HSlider,ICheckable{
         }
         disableMouseUp = false//reset
     }
-    
     /**
      *
      */
-    
     func onThumbUpOutside(){
         Swift.print("onThumbUpOutside isChecked: " + "\(isChecked)")
         onThumbUpAfter()

@@ -116,6 +116,9 @@ class Switch2:SwitchSlider,ICheckable{
     let initOffsetX = 140/2
     let initOffsetY = 80/2
 }
+struct SwitchData{
+    
+}
 /**
  * We have the animation stuff in an extension to separate different parts of the code and make it more readable
  */

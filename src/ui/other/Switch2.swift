@@ -160,7 +160,7 @@ extension Switch2{
             Swift.print("endColor : grey")
         }
         let initColor = getChecked() ? grey : white
-        let endColor = getChecked() ? white : grey
+        let endColor = getChecked() ? white : isMouseDown ? grey : white
         let offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         

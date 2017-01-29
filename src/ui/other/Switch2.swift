@@ -16,6 +16,7 @@ class Switch2:SwitchSlider,ICheckable{
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
+    var initData
     private var isChecked:Bool
     
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
@@ -116,9 +117,7 @@ class Switch2:SwitchSlider,ICheckable{
     let initOffsetX = 140/2
     let initOffsetY = 80/2
 }
-struct SwitchData{
-    
-}
+
 /**
  * We have the animation stuff in an extension to separate different parts of the code and make it more readable
  */

@@ -13,6 +13,19 @@ class Switch2:SwitchSlider,ICheckable{
         self.isChecked = isChecked
         super.init(width,height,isChecked ? 1:0,parent,id)
     }
+    
+    override func onMouseMove(event:NSEvent)-> NSEvent?{
+        let event = super.onMouseMove(event:event)
+        
+        if(progress == 1 && !isChecked){
+            setChecked(true)
+            //disableMouseUp = true
+        }else if(progress == 0 && isChecked){
+            setChecked(false)
+            //disableMouseUp = true
+        }
+        return event
+    }
     override func mouseDown(_ event:MouseEvent) {
         Swift.print("Switch2.mouseDown isChecked: \(isChecked)")
         let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)

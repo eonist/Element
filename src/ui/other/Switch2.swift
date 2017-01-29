@@ -32,6 +32,9 @@ class Switch2:SwitchSlider,ICheckable{
         Swift.print("Switch2.mouseUpOutside")
         super.mouseUpOutside(event)
     }
+    override func mouseUp(_ event: MouseEvent) {
+        super.mouseUp(event)
+    }
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
         self.isChecked = isChecked

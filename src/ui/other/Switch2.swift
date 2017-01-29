@@ -95,7 +95,7 @@ extension Switch2{
         self.progress = progress
         let style:IStyle = skin!.style!
         var offsetProp = skin!.style!.getStyleProperty("offset",2)
-        let thumbWidth:CGFloat = 100
+        let thumbWidth:CGFloat = 100//thumbWidth is always 100
         let thumbX = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
         offsetProp!.value = [thumbX, 0]
         skin!.setStyle(style)

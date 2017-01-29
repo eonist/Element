@@ -61,7 +61,7 @@ class Switch2:SwitchSlider,ICheckable{
     }
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
-        self.isChecked = isChecked
+        
         if(progressAnimator != nil){progressAnimator!.stop()}
         
         if(self.isChecked && !isChecked){
@@ -72,7 +72,7 @@ class Switch2:SwitchSlider,ICheckable{
             
         }
         progressAnimator!.start()
-        
+        self.isChecked = isChecked
         //setSkinState(getSkinState())
     }
     override func getClassType() -> String {

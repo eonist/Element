@@ -14,10 +14,8 @@ class Switch2:SwitchSlider,ICheckable{
         self.isChecked = isChecked
         super.init(width,height,isChecked ? 1:0,parent,id)
     }
-    
     override func onMouseMove(event:NSEvent)-> NSEvent?{
         let event = super.onMouseMove(event:event)
-        
         if(progress == 1 && !isChecked){
             setChecked(true)
             //disableMouseUp = true
@@ -35,12 +33,10 @@ class Switch2:SwitchSlider,ICheckable{
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
         marginProp!.value = progress == 1 ? 20  : 0
         self.skin!.setStyle(style)/*updates the skin*/
-        
         /*Thumb Anim*/
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Linear.ease)/*from 0 to 1*/
         thumbAnimator!.start()
-        
         super.mouseDown(event)
     }
     override func mouseUpInside(_ event: MouseEvent) {
@@ -56,20 +52,15 @@ class Switch2:SwitchSlider,ICheckable{
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Linear.ease)/*from 1 to 0*/
         thumbAnimator!.start()
-        
         super.mouseUp(event)
     }
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
-        
         if(progressAnimator != nil){progressAnimator!.stop()}
-        
         if(self.isChecked && !isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.5,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
-            
         }else if (!self.isChecked && isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
-            
         }
         progressAnimator!.start()
         self.isChecked = isChecked

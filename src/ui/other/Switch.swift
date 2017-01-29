@@ -15,7 +15,7 @@ class Switch:SwitchSlider,ICheckable{
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
-    var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
+    var disableMouseUp:Bool = false//Don't setChecked if progress threshold has been crossed: 0.5
     var irisData:(size:CGSize,fillet:CGFloat,center:CGPoint) = (CGSize(140,80),40,CGPoint(140/2,80/2))//Stores the dimensions for the iris animation
     private var isChecked:Bool
     
@@ -150,7 +150,6 @@ extension Switch{
         skin!.setStyle(style)
     }
     func bgIrisAnim(value:CGFloat){
-        //interpolateColor(value)
         let progress = value
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0

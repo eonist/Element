@@ -6,10 +6,9 @@ import Foundation
  * Layer 1: blends from white to grey, and animates like an iris dilating.
  * Layer 2: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
  * TODO: a problem is that you set the skinStyle in two animators that have different duartions.
- * a solution is to be able to directly set style to skin layers
- * investigate if this is possible and if not possibly use temp variables
- * or use 3 different elements to get things working
- *
+ * 1. a solution is to be able to directly set style to skin layers
+ * 2. investigate if this is possible and if not possibly use temp variables
+ * 3. or use 3 different elements to get things working
  */
 class Switch2:SwitchSlider,ICheckable{
     var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
@@ -36,7 +35,6 @@ class Switch2:SwitchSlider,ICheckable{
     }
     override func mouseDown(_ event:MouseEvent) {
         Swift.print("Switch2.mouseDown isChecked: \(isChecked)")
-        //isMouseDown = true
         let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80

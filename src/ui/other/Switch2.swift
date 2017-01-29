@@ -16,7 +16,7 @@ class Switch2:SwitchSlider,ICheckable{
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
-    var initData:(rect:CGSize,fillet:CGFloat) = (CGSize(140,80),40)
+    var initData:(size:CGSize,fillet:CGFloat,center:CGPoint) = (CGSize(140,80),40,CGPoint(140/2,80/2))
     private var isChecked:Bool
     
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
@@ -157,20 +157,18 @@ extension Switch2{
     }
     func bgIrisAnim(value:CGFloat){
         //interpolateColor(value)
-        let initOffsetX = 140/2
-        let initOffsetY = 80/2
         let progress = value
         /*bg*/
         let sizeMultiplier = 1 - progress//we need values from 1 to 0
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var widthProp = style.getStyleProperty("width",1)
-        widthProp!.value = initW * sizeMultiplier//CGFloatParser.interpolate(initW,0,progress)
+        widthProp!.value = initData.size.width * sizeMultiplier//CGFloatParser.interpolate(initW,0,progress)
         var heightProp = style.getStyleProperty("height",1)
-        heightProp!.value = initH * sizeMultiplier
+        heightProp!.value = initData.size.height * sizeMultiplier
         var cornerRadiusProp = style.getStyleProperty("corner-radius",1)
-        cornerRadiusProp!.value = initFillet * sizeMultiplier
+        cornerRadiusProp!.value = initData.fillet * sizeMultiplier
         var offsetProp = style.getStyleProperty("offset",1)//center align the scaling of the white bg graphic
-        offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
+        offsetProp!.value = [initData.center.x * progress, initData.center.y * progress]
         skin!.setStyle(style)/*updates the skin*/
     }
 }

@@ -7,7 +7,7 @@ import Foundation
  * Layer 2: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
  */
 class Switch2:SwitchSlider,ICheckable{
-    var bgColorAnimator:Animator?/*layer 0: grey to white anim*/
+    var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/

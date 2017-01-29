@@ -14,11 +14,8 @@ class SwitchSlider:Element {
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
-    /**
-     * Handles actions and drawing states for the down event
-     */
     override func mouseDown(_ event:MouseEvent) {
-        Swift.print("SwitchSlider.mouseDown")
+        //Swift.print("SwitchSlider.mouseDown")
         progress = HSliderUtils.progress(event.event!.localPos(self).x, /*thumbWidth/2*/0, width, /*thumbWidth*/0)
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/

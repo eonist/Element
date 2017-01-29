@@ -140,7 +140,6 @@ extension Switch2{
             let color:NSColor = grey.blended(withFraction: value, of: green)!
             thumbLineProp!.value = color
         }
-        
         skin!.setStyle(style)
     }
     func thumbWidthAnim(value:CGFloat){
@@ -160,8 +159,8 @@ extension Switch2{
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
         let initColor = white
         let endColor = grey
-        tempBGColor = initColor.blended(withFraction: value, of: endColor)!
-        fillProp!.value = tempBGColor!
+        let color = initColor.blended(withFraction: value, of: endColor)!
+        fillProp!.value = color
         
         skin!.setStyle(style)
     }

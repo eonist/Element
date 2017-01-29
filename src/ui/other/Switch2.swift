@@ -155,9 +155,6 @@ extension Switch2{
         widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
-        let initColor = getChecked() ? grey : white
-        let endColor = getChecked() ? white : isMouseDown ? grey : white
-        tempBGColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = tempBGColor!
         skin!.setStyle(style)
     }

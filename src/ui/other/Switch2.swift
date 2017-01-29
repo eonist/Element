@@ -154,7 +154,6 @@ extension Switch2{
         
         skin!.setStyle(style)
     }
-    
     func bgProgressAnim(value:CGFloat){
         //interpolateColor(value)
         let progress = value//value.clip(0,1)//avoids bounce
@@ -170,12 +169,9 @@ extension Switch2{
         var offsetProp = style.getStyleProperty("offset",1)//center align the scaling of the white bg graphic
         offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
         skin!.setStyle(style)/*updates the skin*/
-        
-        
-
     }
 }
-extension Switch2{
+extension Switch2{/*Conveniently store colors used*/
     var green:NSColor {return NSColorParser.nsColor(UInt(0x39D149))}
     var grey:NSColor {return NSColorParser.nsColor(UInt(0xDCDCDC))}
     var white:NSColor {return NSColor.white}

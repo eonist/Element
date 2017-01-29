@@ -106,6 +106,14 @@ extension Switch2{
         let thumbWidth:CGFloat = 100//thumbWidth is always 100
         let thumbX = HSliderUtils.thumbPosition(progress, width, thumbWidth)
         offsetProp!.value = [thumbX, 0]
+        
+        /*ThumbLine*/
+        var thumbLineProp = style.getStyleProperty("line",2) /*edits the style*/
+        if(thumbLineProp != nil){//temp
+            let color:NSColor = grey.blended(withFraction: value, of: green)!
+            thumbLineProp!.value = color
+        }
+        
         skin!.setStyle(style)
     }
     func thumbAnim(value:CGFloat){
@@ -136,12 +144,7 @@ extension Switch2{
         let offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         
-        /*Thumb*/
-        var thumbLineProp = style.getStyleProperty("line",2) /*edits the style*/
-        if(thumbLineProp != nil){//temp
-            let color:NSColor = grey.blended(withFraction: value, of: green)!
-            thumbLineProp!.value = color
-        }
+        
         
         skin!.setStyle(style)
         

@@ -66,16 +66,17 @@ class Switch2:SwitchSlider,ICheckable{
     override func mouseUp(_ event: MouseEvent) {
         Swift.print("Switch2.mouseUp")
         isMouseDown = false
-        /*Thumb Anim*/
-        if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
-        thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbWidthAnim,Linear.ease)/*from 1 to 0*/
-        thumbWidthAnimator!.start()
+        
         /*Bg Anim*/
         if(!isChecked){//must be in off state
             if(bgColorAnimator != nil){bgColorAnimator!.stop()}
             bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
             bgColorAnimator!.start()
         }
+        /*Thumb Anim*/
+        if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
+        thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbWidthAnim,Linear.ease)/*from 1 to 0*/
+        thumbWidthAnimator!.start()
         super.mouseUp(event)
     }
     func setChecked(_ isChecked:Bool) {

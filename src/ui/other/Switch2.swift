@@ -71,11 +71,11 @@ class Switch2:SwitchSlider,ICheckable{
         Swift.print("Switch2.mouseUp")
         //isMouseDown = false
         
-        /*Bg Anim*/
+        /*Bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}
         bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
         bgColorAnimator!.start()
-        /*Thumb Anim*/
+        /*Thumb width Anim*/
         if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
         thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbWidthAnim,Linear.ease)/*from 1 to 0*/
         thumbWidthAnimator!.start()
@@ -117,7 +117,7 @@ class Switch2:SwitchSlider,ICheckable{
     let initOffsetY = 80/2
 }
 /**
- * We have the animation stuff in an extension to make the code becomes more modular
+ * We have the animation stuff in an extension to separate different parts of the code and make it more readable
  */
 extension Switch2{
     func thumbXAnim(value:CGFloat){

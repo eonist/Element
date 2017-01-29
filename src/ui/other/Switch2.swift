@@ -13,6 +13,7 @@ import Foundation
         //investigate if this is possible and if not use temp variables
         //or use 3 different elements to get things working.
 
+
 class Switch2:SwitchSlider,ICheckable{
     var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/

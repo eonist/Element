@@ -93,20 +93,21 @@ extension Switch2{
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
         self.progress = progress
-        var offsetProp = skin!.style!.getStyleProperty("offset",2)//center align the scaling of the white bg graphic
-        let thumbWidth = 100
+        let style:IStyle = skin!.style!
+        var offsetProp = skin!.style!.getStyleProperty("offset",2)
+        let thumbWidth:CGFloat = 100
         let thumbX = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
         offsetProp!.value = [thumbX, 0]
-        
+        skin!.setStyle(style)
     }
     func thumbAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")
-        let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        let style:IStyle = skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
         marginProp!.value = getChecked() ? 20 * (1-value) : 0
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
-        self.skin!.setStyle(style)
+        skin!.setStyle(style)
     }
 }

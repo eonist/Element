@@ -20,7 +20,6 @@ class Switch2:SwitchSlider,ICheckable{
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
     var isMouseDown:Bool = false
-    var tempBGColor:NSColor?
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
@@ -56,7 +55,6 @@ class Switch2:SwitchSlider,ICheckable{
         if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
         thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbWidthAnim,Linear.ease)/*from 0 to 1*/
         thumbWidthAnimator!.start()
-        
         
         super.mouseDown(event)
     }
@@ -180,8 +178,6 @@ extension Switch2{
         cornerRadiusProp!.value = initFillet * sizeMultiplier
         var offsetProp = style.getStyleProperty("offset",1)//center align the scaling of the white bg graphic
         offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
-        //var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
-        //fillProp!.value = isMouseDown ? grey : white
         skin!.setStyle(style)/*updates the skin*/
     }
 }

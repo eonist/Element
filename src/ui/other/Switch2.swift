@@ -7,10 +7,21 @@ import Foundation
     //keep adding interaction + anim code from Switch1
 
 class Switch2:SwitchSlider,ICheckable{
+    var thumbAnimator:Animator?
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
         super.init(width,height,isChecked ? 1:0,parent,id)
+    }
+    func thumbAnim(value:CGFloat){
+        //Swift.print("thumbAnim: " + "\(value)")
+        let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
+        var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
+        marginProp!.value = isChecked ? 20 * (1-value) : 0
+        var widthProp = style.getStyleProperty("width",2)
+        widthProp!.value = 80 + (20 * value)
+        //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
+        self.skin!.setStyle(style)
     }
     override func mouseDown(_ event:MouseEvent) {
         Swift.print("Switch2.mouseDown isChecked: \(isChecked)")
@@ -21,6 +32,10 @@ class Switch2:SwitchSlider,ICheckable{
         marginProp!.value = progress == 1 ? 20  : 0
         self.skin!.setStyle(style)/*updates the skin*/
         
+        /*Thumb Anim*/
+        if(thumbAnimator != nil){thumbAnimator!.stop()}
+        thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Linear.ease)/*from 0 to 1*/
+        thumbAnimator!.start()
         
         super.mouseDown(event)
     }
@@ -33,6 +48,11 @@ class Switch2:SwitchSlider,ICheckable{
         super.mouseUpOutside(event)
     }
     override func mouseUp(_ event: MouseEvent) {
+        /*Thumb Anim*/
+        if(thumbAnimator != nil){thumbAnimator!.stop()}
+        thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Linear.ease)/*from 1 to 0*/
+        thumbAnimator!.start()
+        
         super.mouseUp(event)
     }
     func setChecked(_ isChecked:Bool) {

@@ -77,8 +77,9 @@ class Switch2:SwitchSlider,ICheckable{
             bgProgressAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgProgressAnim,Quad.easeOut)/*Animate setProgress from 1 - 0*/
         }else if (!self.isChecked && isChecked){
             progressAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
-            bgProgressAnimator!.start()
+            bgProgressAnimator = Animator(Animation.sharedInstance,0.3,0,1,bgProgressAnim,Quad.easeOut)/*Animate setProgress from 0 - 1*/
         }
+        bgProgressAnimator!.start()
         progressAnimator!.start()
         self.isChecked = isChecked
         //setSkinState(getSkinState())
@@ -144,11 +145,7 @@ extension Switch2{
         let offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         
-        
-        
         skin!.setStyle(style)
-        
-        
     }
     func bgProgressAnim(value:CGFloat){
         //interpolateColor(value)

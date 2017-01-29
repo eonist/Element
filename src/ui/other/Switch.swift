@@ -115,7 +115,7 @@ class Switch2:SwitchSlider,ICheckable{
 /**
  * We have the animation stuff in an extension to separate different parts of the code and make it more readable
  */
-extension Switch2{
+extension Switch{
     func thumbXAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
         progress = value

@@ -7,7 +7,7 @@ import Foundation
     //keep adding interaction + anim code from Switch1
 
 class Switch2:SwitchSlider,ICheckable{
-    var thumbAnimator:Animator?
+    var thumbWidthAnimator:Animator?
     var progressAnimator:Animator?
     var bgColorAnimator:Animator?
     var bgProgressAnimator:Animator?
@@ -35,12 +35,12 @@ class Switch2:SwitchSlider,ICheckable{
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
         marginProp!.value = progress == 1 ? 20  : 0
         self.skin!.setStyle(style)/*updates the skin*/
-        /*Thumb Anim*/
-        if(thumbAnimator != nil){thumbAnimator!.stop()}
-        thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Linear.ease)/*from 0 to 1*/
-        thumbAnimator!.start()
+        /*Thumb width Anim*/
+        if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
+        thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbWidthAnim,Linear.ease)/*from 0 to 1*/
+        thumbWidthAnimator!.start()
         
-        /*bg Anim*/
+        /*bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}
         bgColorAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgColorAnim,Linear.ease)/*from 0 to 1*/
         bgColorAnimator!.start()
@@ -57,9 +57,9 @@ class Switch2:SwitchSlider,ICheckable{
     }
     override func mouseUp(_ event: MouseEvent) {
         /*Thumb Anim*/
-        if(thumbAnimator != nil){thumbAnimator!.stop()}
-        thumbAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbAnim,Linear.ease)/*from 1 to 0*/
-        thumbAnimator!.start()
+        if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
+        thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbWidthAnim,Linear.ease)/*from 1 to 0*/
+        thumbWidthAnimator!.start()
         /*Bg Anim*/
         if(!isChecked){//must be in off state
             if(bgColorAnimator != nil){bgColorAnimator!.stop()}
@@ -84,7 +84,7 @@ class Switch2:SwitchSlider,ICheckable{
         self.isChecked = isChecked
         //setSkinState(getSkinState())
     }
-    override func getClassType() -> String {
+    override func getClassType() -> String {//temp
         return "\(Switch.self)"
     }
     func getChecked() -> Bool {
@@ -95,6 +95,7 @@ class Switch2:SwitchSlider,ICheckable{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
+    //temp
     let initW:CGFloat = 140
     //let endW:CGFloat = 140 - 80
     let initH = 80
@@ -124,7 +125,7 @@ extension Switch2{
         
         skin!.setStyle(style)
     }
-    func thumbAnim(value:CGFloat){
+    func thumbWidthAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")
         let style:IStyle = skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/

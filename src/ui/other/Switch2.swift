@@ -93,9 +93,10 @@ extension Switch2{
     func progressAnim(value:CGFloat){
         //Swift.print("progressAnim.value: " + "\(value)")
         self.progress = progress
-        var offsetProp = style.getStyleProperty("offset",2)//center align the scaling of the white bg graphic
-        offsetProp!.value = [initOffsetX * progress, initOffsetY * progress]
-        thumb!.x = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
+        var offsetProp = skin!.style!.getStyleProperty("offset",2)//center align the scaling of the white bg graphic
+        let thumbX = HSliderUtils.thumbPosition(self.progress, width, thumbWidth)
+        offsetProp!.value = [initOffsetX * progress, 0]
+        
     }
     func thumbAnim(value:CGFloat){
         //Swift.print("thumbAnim: " + "\(value)")

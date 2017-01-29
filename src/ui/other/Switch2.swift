@@ -1,16 +1,13 @@
 import Foundation
 @testable import Utils
-
-//Continue here: 
-    //add the third layer with the same style as SwitchThumb
-    //try to move it onMouseMove
-    //keep adding interaction + anim code from Switch1
-
+/**
+ * This UIComponent consist of 3 skin layers
+ */
 class Switch2:SwitchSlider,ICheckable{
-    var thumbWidthAnimator:Animator?
-    var thumbXAnimator:Animator?
-    var bgColorAnimator:Animator?
-    var bgIrisAnimator:Animator?
+    var thumbWidthAnimator:Animator?/**/
+    var thumbXAnimator:Animator?/*moves the thumb in the x-axis*/
+    var bgColorAnimator:Animator?/*grey to white anim*/
+    var bgIrisAnimator:Animator?/*dilate iris animation*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {

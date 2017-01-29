@@ -2,15 +2,15 @@ import Foundation
 @testable import Utils
 /**
  * This UIComponent consist of 3 skin layers
- * Layer 1: Background is always green and has a grey stroke
- * Layer 2: blends from white to grey, and animates like an iris dilating. 
- * Layer 3: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
+ * Layer 0: Background is always green and has a grey stroke
+ * Layer 1: blends from white to grey, and animates like an iris dilating.
+ * Layer 2: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
  */
 class Switch2:SwitchSlider,ICheckable{
-    var thumbWidthAnimator:Animator?/**/
-    var thumbXAnimator:Animator?/*moves the thumb in the x-axis*/
-    var bgColorAnimator:Animator?/*grey to white anim*/
-    var bgIrisAnimator:Animator?/*dilate iris animation*/
+    var bgColorAnimator:Animator?/*layer 0: grey to white anim*/
+    var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/
+    var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
+    var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {

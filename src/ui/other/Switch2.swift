@@ -78,11 +78,9 @@ class Switch2:SwitchSlider,ICheckable{
         isMouseDown = false
         
         /*Bg Anim*/
-        if(!isChecked){//must be in off state
-            if(bgColorAnimator != nil){bgColorAnimator!.stop()}
-            bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
-            bgColorAnimator!.start()
-        }
+        if(bgColorAnimator != nil){bgColorAnimator!.stop()}
+        bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
+        bgColorAnimator!.start()
         /*Thumb Anim*/
         if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
         thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,1,0,thumbWidthAnim,Linear.ease)/*from 1 to 0*/

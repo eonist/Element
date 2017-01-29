@@ -8,9 +8,9 @@ import Foundation
 
 class Switch2:SwitchSlider,ICheckable{
     var thumbWidthAnimator:Animator?
-    var progressAnimator:Animator?
+    var thumbXAnimator:Animator?
     var bgColorAnimator:Animator?
-    var bgProgressAnimator:Animator?
+    var bgIrisAnimator:Animator?
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
@@ -77,17 +77,17 @@ class Switch2:SwitchSlider,ICheckable{
     }
     func setChecked(_ isChecked:Bool) {
         Swift.print("setChecked: " + "\(isChecked)")
-        if(progressAnimator != nil){progressAnimator!.stop()}
-        if(bgProgressAnimator != nil){bgProgressAnimator!.stop()}
+        if(thumbXAnimator != nil){thumbXAnimator!.stop()}
+        if(bgIrisAnimator != nil){bgIrisAnimator!.stop()}
         if(self.isChecked && !isChecked){
-            progressAnimator = Animator(Animation.sharedInstance,0.5,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
-            bgProgressAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgProgressAnim,Quad.easeOut)/*Animate setProgress from 1 - 0*/
+            thumbXAnimator = Animator(Animation.sharedInstance,0.5,1,0,progressAnim,Back.easeOut)/*Animate setProgress from 1 - 0*/
+            bgIrisAnimator = Animator(Animation.sharedInstance,0.2,1,0,bgIrisAnim,Quad.easeOut)/*Animate setProgress from 1 - 0*/
         }else if (!self.isChecked && isChecked){
-            progressAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
-            bgProgressAnimator = Animator(Animation.sharedInstance,0.3,0,1,bgProgressAnim,Quad.easeOut)/*Animate setProgress from 0 - 1*/
+            thumbXAnimator = Animator(Animation.sharedInstance,0.5,0,1,progressAnim,Back.easeOut)/*Animate setProgress from 0 - 1*/
+            bgIrisAnimator = Animator(Animation.sharedInstance,0.3,0,1,bgIrisAnim,Quad.easeOut)/*Animate setProgress from 0 - 1*/
         }
-        bgProgressAnimator!.start()
-        progressAnimator!.start()
+        bgIrisAnimator!.start()
+        thumbXAnimator!.start()
         self.isChecked = isChecked
         //setSkinState(getSkinState())
     }
@@ -162,7 +162,7 @@ extension Switch2{
         
         skin!.setStyle(style)
     }
-    func bgProgressAnim(value:CGFloat){
+    func bgIrisAnim(value:CGFloat){
         //interpolateColor(value)
         let progress = value//value.clip(0,1)//avoids bounce
         /*bg*/

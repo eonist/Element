@@ -140,8 +140,8 @@ extension Switch2{
             Swift.print("initColor : white")
             Swift.print("endColor : grey")
         }
-        let initColor = getChecked() ? grey : NSColor.white
-        let endColor = getChecked() ? NSColor.white : grey
+        let initColor = getChecked() ? grey : white
+        let endColor = getChecked() ? white : grey
         let offColor = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = offColor
         
@@ -154,4 +154,5 @@ extension Switch2{
 extension Switch2{
     var green:NSColor {return NSColorParser.nsColor(UInt(0x39D149))}
     var grey:NSColor {return NSColorParser.nsColor(UInt(0xDCDCDC))}
+    var white:NSColor {return NSColor.white}
 }

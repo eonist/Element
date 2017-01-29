@@ -16,16 +16,7 @@ class Switch2:SwitchSlider,ICheckable{
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
     var disableMouseUp:Bool = false//don't setChecked if progress threshold has been crossed: 0.5
-    
-    //temp
-    let initW:CGFloat = 140
-    //let endW:CGFloat = 140 - 80
-    let initH = 80
-    let initFillet = 40
-    let initOffsetX = 140/2
-    let initOffsetY = 80/2
-    
-    var initData:(rect:CGRect,fillet:CGFloat) = (CGRect(140,80))
+    var initData:(rect:CGSize,fillet:CGFloat) = (CGSize(140,80),40)
     private var isChecked:Bool
     
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {

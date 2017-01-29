@@ -161,7 +161,6 @@ class Switch:HSlider,ICheckable{
         onThumbUpAfter()
         disableMouseUp = false//reset
     }
- 
     func bgAnim(value:CGFloat){
         Swift.print("bgAnim: " + "\(value)")
         

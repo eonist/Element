@@ -9,6 +9,7 @@ import Foundation
 class Switch2:SwitchSlider,ICheckable{
     var thumbAnimator:Animator?
     var progressAnimator:Animator?
+    var bgAnimator:Animator?
     private var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
@@ -37,6 +38,12 @@ class Switch2:SwitchSlider,ICheckable{
         if(thumbAnimator != nil){thumbAnimator!.stop()}
         thumbAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbAnim,Linear.ease)/*from 0 to 1*/
         thumbAnimator!.start()
+        
+        /*bg Anim*/
+        if(bgAnimator != nil){bgAnimator!.stop()}
+        bgAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgAnim,Linear.ease)
+        bgAnimator!.start()
+        
         super.mouseDown(event)
     }
     override func mouseUpInside(_ event: MouseEvent) {
@@ -100,5 +107,26 @@ extension Switch2{
         widthProp!.value = 80 + (20 * value)
         //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         skin!.setStyle(style)
+    }
+    func bgAnim(value:CGFloat){
+        Swift.print("bgAnim: " + "\(value)")
+        
+        let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
+        var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
+        //let curColor:NSColor = fillProp!.value as! NSColor
+        if(isChecked){
+            Swift.print("initColor : grey")
+            Swift.print("endColor : grey")
+        }else{
+            Swift.print("initColor : white")
+            Swift.print("endColor : grey")
+        }
+        let initColor = isChecked ? grey : NSColor.white
+        let endColor = isChecked ? NSColor.white : grey
+        offColor = initColor.blended(withFraction: value, of: endColor)!
+        fillProp!.value = offColor
+        skin!.setStyle(style)
+        //continue here:
+        //set some print flags and figure it out
     }
 }

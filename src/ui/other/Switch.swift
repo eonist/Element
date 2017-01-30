@@ -5,7 +5,7 @@ import Foundation
  * Layer 0: Background is always green and has a grey stroke
  * Layer 1: blends from white to grey, and animates like an iris dilating.
  * Layer 2: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
- * TODO: a problem is that you set the skinStyle in two animators that have different duartions.
+ * TODO: a problem is that you set the skinStyle in two animators that have different durations
  * 1. a solution is to be able to directly set style to skin layers
  * 2. investigate if this is possible and if not possibly use temp variables
  * 3. or use 3 different elements to get things working

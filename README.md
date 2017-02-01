@@ -28,7 +28,6 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 - [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  
 - [50+ Components](https://github.com/eonist/Element/wiki/overview) 
 - [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
-- [Hot Reloading](http://stylekit.org/blog/2017/01/16/playground-and-framework/)  🔥 
 - [Live-edit](https://github.com/eonist/Element/wiki/live) 
 - Themes via [CSS](http://stylekit.org/blog/2016/02/18/Cascading-Style-Sheets-System/)  and [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/) 
 - [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 

@@ -34,8 +34,9 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 - [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
 
 ## Working on:  
+- Carthage support 👈
 - [iOS support](https://github.com/eonist/Element-iOS) 
-- Carthage & CocoaPod support
+- CocoaPod
 - HackerNews example app (w/ AlamoFire)
 - Sketch import
 - Live Theme switching

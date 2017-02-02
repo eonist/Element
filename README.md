@@ -34,6 +34,7 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 
 ## Working on:  
 - Carthage support 👈
+- CI support
 - [iOS support](https://github.com/eonist/Element-iOS) 
 - CocoaPod
 - HackerNews example app (w/ AlamoFire)

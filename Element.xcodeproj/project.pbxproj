@@ -177,6 +177,7 @@
 		34702AB41E43912400D15AF5 /* SelectAsserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34702A0A1E43912400D15AF5 /* SelectAsserter.swift */; };
 		34702AB51E43912400D15AF5 /* SelectModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34702A0B1E43912400D15AF5 /* SelectModifier.swift */; };
 		34702AB61E43912400D15AF5 /* SelectParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34702A0C1E43912400D15AF5 /* SelectParser.swift */; };
+		34A966421E44923B001DE640 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A966411E44923B001DE640 /* Utils.framework */; };
 		34C336161E2FE2E200CA3727 /* Element.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C336141E2FE2E200CA3727 /* Element.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -351,6 +352,7 @@
 		34702A0A1E43912400D15AF5 /* SelectAsserter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAsserter.swift; sourceTree = "<group>"; };
 		34702A0B1E43912400D15AF5 /* SelectModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectModifier.swift; sourceTree = "<group>"; };
 		34702A0C1E43912400D15AF5 /* SelectParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectParser.swift; sourceTree = "<group>"; };
+		34A966411E44923B001DE640 /* Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Utils.framework; path = Carthage/Build/Mac/Utils.framework; sourceTree = "<group>"; };
 		34C336111E2FE2E200CA3727 /* Element.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Element.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C336141E2FE2E200CA3727 /* Element.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
 		34C336151E2FE2E200CA3727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34A966421E44923B001DE640 /* Utils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,6 +1118,7 @@
 		34C336071E2FE2E200CA3727 = {
 			isa = PBXGroup;
 			children = (
+				34A966411E44923B001DE640 /* Utils.framework */,
 				3470291B1E43912300D15AF5 /* src */,
 				34C336131E2FE2E200CA3727 /* Element */,
 				34C336121E2FE2E200CA3727 /* Products */,

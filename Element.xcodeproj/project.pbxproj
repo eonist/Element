@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		342187741E43D4CD004EC243 /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342187731E43D4CD004EC243 /* Utils.framework */; };
 		34702A0D1E43912400D15AF5 /* CSSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470291D1E43912300D15AF5 /* CSSConstants.swift */; };
 		34702A0E1E43912400D15AF5 /* CSSFileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470291F1E43912300D15AF5 /* CSSFileParser.swift */; };
 		34702A0F1E43912400D15AF5 /* CSSLinkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347029201E43912300D15AF5 /* CSSLinkResolver.swift */; };
@@ -182,7 +181,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		342187731E43D4CD004EC243 /* Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Utils.framework; sourceTree = "<group>"; };
 		3470291D1E43912300D15AF5 /* CSSConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSSConstants.swift; sourceTree = "<group>"; };
 		3470291F1E43912300D15AF5 /* CSSFileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSSFileParser.swift; sourceTree = "<group>"; };
 		347029201E43912300D15AF5 /* CSSLinkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSSLinkResolver.swift; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				342187741E43D4CD004EC243 /* Utils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1118,7 +1115,6 @@
 		34C336071E2FE2E200CA3727 = {
 			isa = PBXGroup;
 			children = (
-				342187731E43D4CD004EC243 /* Utils.framework */,
 				3470291B1E43912300D15AF5 /* src */,
 				34C336131E2FE2E200CA3727 /* Element */,
 				34C336121E2FE2E200CA3727 /* Products */,

@@ -19,6 +19,9 @@ Element is a programatic UI framework that lets you create beautiful mac apps in
 - Either package [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) as .framework  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
 - Or drag and drop the source of [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) into XCode  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
 
+### Carthage installation:  
+Element is dependent on the repository [swift-utils](https://github.com/eonist/swift-utils) If your new to using carthage with nested frameworks then read [this](http://stylekit.org/blog/2017/02/03/Carthage-and-nested-frameworks/) 
+
 ### Themes:
 Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also create styles programmatically if CSS isn't your thing. here is a simple [Hello world](https://github.com/eonist/Element/wiki/hello-world) example    
 

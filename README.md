@@ -37,8 +37,7 @@ Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also 
 - [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
 
 ## Working on:  
-- SPM support 👈
-- CI support
+- CI support 👈
 - [iOS support](https://github.com/eonist/Element-iOS) 
 - CocoaPod
 - HackerNews example app (w/ AlamoFire)

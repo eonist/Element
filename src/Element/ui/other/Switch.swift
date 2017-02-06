@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 /**
  * This UIComponent consist of 3 skin layers

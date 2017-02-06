@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-typealias RadioBullet = SelectButton/*RadioBullet is targeted in CSS, but is essentially the same as a SelectButton*/
 /**
  * TODO: Impliment IDisableable also and extend DisableTextButton
  */
@@ -30,3 +29,4 @@ class RadioButton:TextButton,ISelectable{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+class RadioBullet:SelectButton{}/*RadioBullet is targeted in CSS, but is essentially the same as a SelectButton*/

@@ -39,6 +39,10 @@ btn.event = onClick
 ## Resources: 
 Here is a simple example app made with Element: [Stash](https://github.com/stylekit/stash), here is a library of example code for each component that is available in Element: [Explorer](https://github.com/stylekit/explorer) and [here](https://github.com/stylekit/ElCapitan) are the macOS styles to get you started. 
 
+## iOS:
+Element for iOS coming soon [here](https://github.com/eonist/Element-iOS) 
+<img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
+
 
 ## Need help?
 Open an issue or message me on [twitter](https://twitter.com/stylekit_org) 

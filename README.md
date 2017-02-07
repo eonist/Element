@@ -1,7 +1,6 @@
 [![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://en.wikipedia.org/wiki/MIT_License) [![platform](https://img.shields.io/badge/Platform-macOS-blue.svg)](https://en.wikipedia.org/wiki/MacOS) [![Lang](https://img.shields.io/badge/Language-Swift 3.0.1-orange.svg)](https://en.wikipedia.org/wiki/Swift_(programming_language) [![codebeat](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) [![SPM  compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) [![Build Status](https://travis-ci.org/stylekit/Element-tests.svg?branch=master)](https://travis-ci.org/stylekit/Element-tests)
 
 ## Description:
-
 Element is a programmatic UI framework that lets you create beautiful mac apps in 100% swift code.
 
 <img width="558" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/gitsync_take_3.mov.gif">

@@ -6,7 +6,7 @@ The best use of your time/resources is to re-use code via frameworks. Importing 
 <img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
 
 ## How does it work?
-In simple terms: A typical Element app consists of 90% Swift code and 10% CSS and SVG. CSS Handles design and alignment and swift handles functionality and animation.   
+A typical Element app consists of 90% Swift code and 10% CSS and SVG. CSS Handles design and alignment and swift handles functionality and animation.   
 
 <img width="700" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Style_diagram.svg">
 
@@ -37,5 +37,8 @@ btn.event = onClick
 ```
 
 ## Resources: 
+Here is a simple example app made with Element: [Stash](https://github.com/stylekit/stash), here is a library of example code for each component that is available in Element: [Explorer](https://github.com/stylekit/explorer) and [here](https://github.com/stylekit/ElCapitan) are the macOS styles to get you started. 
 
-Here is a simple example app made with Element: [Stash](https://github.com/stylekit/stash), here is a library of example code for each component that is available in Element: [Explorer](https://github.com/stylekit/explorer) and here are the macOS styles to get you started. 
+
+## Need help?
+Open an issue or message me on [twitter](https://twitter.com/stylekit_org) 

@@ -38,8 +38,8 @@ btn.event = onClick
 
 ## Resources: 
 - Here is a simple example app made with Element: [Stash](https://github.com/stylekit/stash) 
-- Library of example code for each component in Element: [here](https://github.com/stylekit/explorer)  
-- Default macOS styles to get you started: [here](https://github.com/stylekit/ElCapitan)  
+- Library of example code for each component in Element: [Explorer](https://github.com/stylekit/explorer)  
+- Default macOS styles to get you started: [ElCapitan](https://github.com/stylekit/ElCapitan)  
 
 ## iOS:
 Element for iOS coming soon [here](https://github.com/eonist/Element-iOS)   

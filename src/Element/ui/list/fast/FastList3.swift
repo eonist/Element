@@ -38,7 +38,9 @@ class FastList3:Element,IList{
             //spoof(range) could use an array.diff method and generate individual spoof(fastlistitem) that way
         
         //Continue here:
-            //move fastlist3 and rb....3 to private folder while working on them for faster debugging. 
+            //Add debug rects
+            //move fastlist3 and rb....3 to private folder while working on them for faster debugging.
+        
     }
     override func resolveSkin() {
         super.resolveSkin()

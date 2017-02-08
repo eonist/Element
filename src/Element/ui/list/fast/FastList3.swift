@@ -36,7 +36,9 @@ class FastList3:Element,IList{
             //Figure out the pooling in the context that db.count may change while scrolling🏀
                 //only move items to buffer when it moves outside top or bottom limit
             //spoof(range) could use an array.diff method and generate individual spoof(fastlistitem) that way
-                
+        
+        //Continue here:
+            //move fastlist3 and rb....3 to private folder while working on them for faster debugging. 
     }
     override func resolveSkin() {
         super.resolveSkin()

@@ -1,7 +1,7 @@
 ![mit Status](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-macOS-blue.svg) ![Lang](https://img.shields.io/badge/Language-Swift 3.0.1-orange.svg) [![codebeat](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) [![SPM  compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) [![Build Status](https://travis-ci.org/stylekit/Element-tests.svg?branch=master)](https://travis-ci.org/stylekit/Element-tests)
 
 ## Why programmatic UI?
-The best use of your time/resources is to re-use code via frameworks. Importing Element allows you add customizable GUI to your app. 
+Big companies can afford to roll their own Programmatic UI frameworks. Element is an attempt at providing such capabilities to every one. The closest thing to compare it to would be Twitter [TWUI](https://github.com/twitter/twui) in obj-c
 
 <img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
 

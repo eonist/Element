@@ -31,7 +31,7 @@ StyleManager.addStyle("Button{fill:blue;}")
 let btn = Button(100,20)
 window.contentView!.addSubview(btn)
 func onClick(event:Event){
-	if(event.type == ButtonEvent.click){Swift.print("hello world")} 
+	if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
 }
 btn.event = onClick
 ```
@@ -47,4 +47,4 @@ Element for iOS coming soon [here](https://github.com/eonist/Element-iOS)
 
 
 ## Need help?
-Open an issue or message me on [twitter](https://twitter.com/stylekit_org) 
+Open an [issue](https://github.com/eonist/Element/issues) or message me on [twitter](https://twitter.com/stylekit_org) 

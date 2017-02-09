@@ -21,5 +21,5 @@ extension IList{
     func selectAt(_ index:Int){/*convenience*/
         ListModifier.selectAt(self, index)
     }
-    var dp:DataProvider {return dataProvider}/*convenience*/
+    var dp:DataProvider {return self.dataProvider}/*convenience*/
 }

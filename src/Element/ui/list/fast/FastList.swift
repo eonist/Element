@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * This is a list that can support infinite list items, while still being fast, memory-convervative and responsive. To support 1000's of data items, just use DataProvider, To support millions, consider using a DataProvider that derive its data from a database (SQLite or other)
- * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future
+ * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
  * NOTE: Conceptually the first index is calculated with modulo, then subsecuent items have their index by adding 1
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
@@ -11,7 +11,7 @@ import Cocoa
  * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
  * NOTE: to debug you can: remove the mask and use an outline that is above the itemContainer ✅
  * NOTE: FastList supports select and unSelect w/o querrying dataProvider as dp is cpu intensive
- * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays thumbup    
+ * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays thumbup 👍
  * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self 🚫
  * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
  * TODO: test if resize works, by spawning new items etc

@@ -6,16 +6,16 @@ import Cocoa
  * NOTE: Conceptually the first index is calculated with modulo, then subsecuent items have their index by adding 1
  * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
  * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
- * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
- * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
+ * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time 👌
+ * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights.📚 The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
  * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
- * NOTE: to debug you can: remove the mask and use an outline that is above the itemContainer
+ * NOTE: to debug you can: remove the mask and use an outline that is above the itemContainer ✅
  * NOTE: FastList supports select and unSelect w/o querrying dataProvider as dp is cpu intensive
- * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays
- * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self
+ * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays thumbup    
+ * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self 🚫
  * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
  * TODO: test if resize works, by spawning new items etc
- * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
+ * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler ✅
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 class FastList:Element,IList {

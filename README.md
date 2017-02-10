@@ -3,7 +3,7 @@
 ## Why programmatic UI?
 Big companies can afford to roll their own Programmatic UI frameworks. Element is an attempt at providing such capabilities to the open-source community. The closest thing to compare it to would be Twitter [TWUI](https://github.com/twitter/twui) in obj-c
 
-<img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
+<img width="558" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/gitsync_take_3.mov.gif">
 
 ## How does it work?
 A typical Element app consists of 90% Swift code and 10% CSS and SVG. CSS Handles design and alignment and swift handles functionality and animation.   

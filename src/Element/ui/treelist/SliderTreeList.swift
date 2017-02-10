@@ -61,8 +61,8 @@ class SliderTreeList:TreeList{
         super.scrollWheel(with:event)
     }
     override func onEvent(_ event: Event) {
-        if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event as! SliderEvent)}
-        if(event.type == TreeListEvent.change){onTreeListChange(event as! TreeListEvent)}
+        if(event.type == SliderEvent.change && event.origin === slider){onSliderChange(event.cast())}
+        if(event.type == TreeListEvent.change){onTreeListChange(event.cast())}
         super.onEvent(event)//<--We need to forward the events to TreeList, or else TreeList will not work correctly
     }
 }

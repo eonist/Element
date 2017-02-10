@@ -2,7 +2,7 @@
 
 ## Why programmatic UI?
 
-Programmatic UI's makes it simple to add custom design to your apps. Twitter's [TWUI](https://github.com/twitter/twui) is another example of a similar framework.
+Programmatic UI's makes it simple to add **custom design** to your apps. Twitter's [TWUI](https://github.com/twitter/twui) is another example of a similar framework.
 
 <img width="558" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/gitsync_take_3.mov.gif">
 

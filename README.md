@@ -1,7 +1,8 @@
 ![MIT Status](https://img.shields.io/badge/License-MIT-lightgrey.svg?maxAge=2592000) ![platform](https://img.shields.io/badge/os-macOS-blue.svg) ![Lang](https://img.shields.io/badge/Swift- 3.0.1-orange.svg) [![SPM  compatible](https://img.shields.io/badge/SPM-compatible-orange.svg)](https://github.com/apple/swift-package-manager) [![codebeat](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) [![Build Status](https://travis-ci.org/stylekit/Element-tests.svg?branch=master)](https://travis-ci.org/stylekit/Element-tests)
 
 ## Why programmatic UI?
-Big companies can afford to roll their own Programmatic UI frameworks. Element is an attempt at providing such capabilities to the open-source community. The closest thing to compare it to would be Twitter [TWUI](https://github.com/twitter/twui) in obj-c
+
+A Programmatic UI is great because everything is in 100% swift code. Which makes it really simple to collaborate via github. Programmatic UI's also makes it really simple to create new UI experiences. Twitter's [TWUI](https://github.com/twitter/twui) is another example of similar framework.
 
 <img width="558" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/gitsync_take_3.mov.gif">
 

@@ -2,7 +2,7 @@
 
 ## Why programmatic UI?
 
-A Programmatic UI is great because everything is in swift code. Which makes your app simpler to version control. Twitter's [TWUI](https://github.com/twitter/twui) is another example of a similar framework.
+Programmatic UI's makes it simple to add custom design to your apps. Twitter's [TWUI](https://github.com/twitter/twui) is another example of a similar framework.
 
 <img width="558" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/gitsync_take_3.mov.gif">
 

@@ -12,7 +12,7 @@ class SliderList:List,ISliderList{
         super.resolveSkin()
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
@@ -37,7 +37,7 @@ class SliderList:List,ISliderList{
     override func setSize(_ width:CGFloat, _ height:CGFloat) {//TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
         slider!.setSize(itemHeight, height)
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height/*<--this should probably be .getHeight()*/);
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
         slider!.setThumbHeightValue(thumbHeight)
         super.setSize(width,height)
         ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*Hides the slider if it is not needed anymore*///<--new adition

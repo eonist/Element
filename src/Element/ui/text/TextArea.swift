@@ -22,11 +22,5 @@ class TextArea:Element {
     func setTextValue(_ text:String) {
         self.text!.setText(text)
     }
-    /**
-     *
-     */
-    func setText(){
-        
-    }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

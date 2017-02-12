@@ -24,11 +24,3 @@ class TextArea:Element {
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension TextArea{
-    /**
-     *
-     */
-    func setText(){
-        
-    }
-}

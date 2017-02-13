@@ -12,6 +12,7 @@ extension ISliderList{
      */
     func scroll(_ theEvent:NSEvent) {
         let progress:CGFloat = Utils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
+        Swift.print("progress: " + "\(progress)")
         setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
         self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/
         if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}

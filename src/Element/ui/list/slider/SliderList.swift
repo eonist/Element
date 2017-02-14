@@ -21,7 +21,9 @@ class SliderList:List,ISliderList{
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
     func setProgress(_ progress:CGFloat){
-        ListModifier.scrollTo(self,progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
+        let progressValue = self.itemsHeight < height ? 0 : progress
+        //Swift.print("progressValue: " + "\(progressValue)")
+        ListModifier.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
     func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)

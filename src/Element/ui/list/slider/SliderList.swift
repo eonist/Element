@@ -28,8 +28,12 @@ class SliderList:List,ISliderList{
     func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
     }
+    var prevItemsHeight:CGFloat?
     override func onDataProviderEvent(_ event: DataProviderEvent) {
+        prevItemsHeight = itemsHeight
         super.onDataProviderEvent(event)
+        let diff:CGFloat = itemsHeight - prevItemsHeight!
+        lableContainer!.y = diff
         //if(event.type == DataProviderEvent.add){}
         
         /*Updates the slider interval and the sliderThumbSize*/

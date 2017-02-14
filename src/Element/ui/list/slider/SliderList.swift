@@ -28,6 +28,19 @@ class SliderList:List,ISliderList{
     func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
     }
+    override func onDataProviderEvent(_ event: DataProviderEvent) {
+        super.onDataProviderEvent(event)
+        //if(event.type == DataProviderEvent.add){}
+        
+        /*Updates the slider interval and the sliderThumbSize*/
+        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
+        slider!.setThumbHeightValue(thumbHeight)
+        let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
+        slider!.setProgressValue(progress)
+        
+        //TODO: Add hide slider asssert here see SliderList for implementation
+    }
     override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)

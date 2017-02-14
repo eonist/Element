@@ -28,13 +28,14 @@ class SliderList:List,ISliderList{
     func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
     }
-    var prevItemsHeight:CGFloat?
+    var prevLableContainerHeight:CGFloat?
     override func onDataProviderEvent(_ event: DataProviderEvent) {
-        prevItemsHeight = lableContainer!.numSubViews * itemHeight
-        Swift.print("prevItemsHeight: " + "\(prevItemsHeight)")
+        prevLableContainerHeight = lableContainer!.numSubViews * itemHeight
+        Swift.print("prevLableContainerHeight: " + "\(prevLableContainerHeight)")
         super.onDataProviderEvent(event)
-        Swift.print("itemsHeight: " + "\(itemsHeight)")
-        let diff:CGFloat = itemsHeight - prevItemsHeight!
+        let lableContainerHeight:CGFloat = lableContainer!.numSubViews * itemHeight
+        Swift.print("lableContainerHeight: " + "\(lableContainerHeight)")
+        let diff:CGFloat = lableContainerHeight - prevLableContainerHeight!
         Swift.print("diff: " + "\(diff)")
         lableContainer!.y += diff
         //if(event.type == DataProviderEvent.add){}

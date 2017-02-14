@@ -18,6 +18,7 @@ class SliderList:List,ISliderList{
     }
     override func scrollWheel(with event: NSEvent) {//swift 3 update
         scroll(event)/*forward the event to the extension*/
+        Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
     func setProgress(_ progress:CGFloat){
@@ -28,21 +29,31 @@ class SliderList:List,ISliderList{
     func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
         setProgress(sliderEvent.progress)
     }
-    var prevLableContainerHeight:CGFloat?
+    /**
+     * TODO: Add hide slider asssert here see SliderList for implementation
+     */
     override func onDataProviderEvent(_ event: DataProviderEvent) {
-        prevLableContainerHeight = lableContainer!.numSubViews * itemHeight
-        Swift.print("prevLableContainerHeight: " + "\(prevLableContainerHeight)")
         super.onDataProviderEvent(event)
-        let lableContainerHeight:CGFloat = lableContainer!.numSubViews * itemHeight
-        Swift.print("lableContainerHeight: " + "\(lableContainerHeight)")
-        let diff:CGFloat = prevLableContainerHeight! - lableContainerHeight
-        Swift.print("diff: " + "\(diff)")
-        lableContainer!.y += diff
+        Swift.print("event.startIndex: " + "\(event.startIndex)")
+        Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
+        if(event.type == DataProviderEvent.remove){
+            if(event.startIndex < firstVisibleItem){
+                lableContainer!.y += itemHeight
+                Swift.print("offset.y + 24")
+            }
+        }else if(event.type == DataProviderEvent.add){
+            if(event.startIndex < firstVisibleItem){
+                lableContainer!.y -= itemHeight
+                Swift.print("offset.y - 24")
+            }
+        }
         
-        //visualize on paper how lists grow when adding items to the top,bottom,center and laso ht happens when you remove
+        if(dp.count <= numOfItemsCanFit){
+            lableContainer!.y = 0
+        }
         
-        
-        //if(event.type == DataProviderEvent.add){}
+        //When items are removed bellow lastVisibleItem -> offset needs to take effect. 
+            //As we should never have a list that isnt pinned to the bottom
         
         /*Updates the slider interval and the sliderThumbSize*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
@@ -51,7 +62,6 @@ class SliderList:List,ISliderList{
         let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
         slider!.setProgressValue(progress)
         
-        //TODO: Add hide slider asssert here see SliderList for implementation
     }
     override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
@@ -68,5 +78,22 @@ class SliderList:List,ISliderList{
         slider!.setThumbHeightValue(thumbHeight)
         super.setSize(width,height)
         ElementModifier.hide(slider!, itemsHeight > slider!.height)/*Hides the slider if it is not needed anymore*///<--new adition
+    }
+}
+
+extension SliderList{
+    /**
+     *
+     */
+    var firstVisibleItem:Int{
+        let a = abs(lableContainer!.y)//force positive value with abs
+        let b = a/itemHeight//how many items fit into "a"
+        let c = floor(b)//Continue here
+        let firstVisibleItem:Int = c.int
+        Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
+        return firstVisibleItem
+    }
+    var numOfItemsCanFit:Int {
+        return floor(height/itemHeight).int
     }
 }

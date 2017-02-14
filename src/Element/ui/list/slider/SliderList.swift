@@ -35,7 +35,7 @@ class SliderList:List,ISliderList{
         super.onDataProviderEvent(event)
         let lableContainerHeight:CGFloat = lableContainer!.numSubViews * itemHeight
         Swift.print("lableContainerHeight: " + "\(lableContainerHeight)")
-        let diff:CGFloat = lableContainerHeight - prevLableContainerHeight!
+        let diff:CGFloat = prevLableContainerHeight! - lableContainerHeight
         Swift.print("diff: " + "\(diff)")
         lableContainer!.y += diff
         //if(event.type == DataProviderEvent.add){}

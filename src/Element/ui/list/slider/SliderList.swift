@@ -38,6 +38,10 @@ class SliderList:List,ISliderList{
         let diff:CGFloat = prevLableContainerHeight! - lableContainerHeight
         Swift.print("diff: " + "\(diff)")
         lableContainer!.y += diff
+        
+        //visualize on paper how lists grow when adding items to the top,bottom,center and laso ht happens when you remove
+        
+        
         //if(event.type == DataProviderEvent.add){}
         
         /*Updates the slider interval and the sliderThumbSize*/

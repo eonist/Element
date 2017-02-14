@@ -30,7 +30,7 @@ class SliderList:List,ISliderList{
     }
     var prevItemsHeight:CGFloat?
     override func onDataProviderEvent(_ event: DataProviderEvent) {
-        prevItemsHeight = itemsHeight
+        prevItemsHeight = lableContainer!.numSubViews * itemHeight
         Swift.print("prevItemsHeight: " + "\(prevItemsHeight)")
         super.onDataProviderEvent(event)
         Swift.print("itemsHeight: " + "\(itemsHeight)")

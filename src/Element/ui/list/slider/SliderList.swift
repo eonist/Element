@@ -31,9 +31,12 @@ class SliderList:List,ISliderList{
     var prevItemsHeight:CGFloat?
     override func onDataProviderEvent(_ event: DataProviderEvent) {
         prevItemsHeight = itemsHeight
+        Swift.print("prevItemsHeight: " + "\(prevItemsHeight)")
         super.onDataProviderEvent(event)
+        Swift.print("itemsHeight: " + "\(itemsHeight)")
         let diff:CGFloat = itemsHeight - prevItemsHeight!
-        lableContainer!.y = diff
+        Swift.print("diff: " + "\(diff)")
+        lableContainer!.y += diff
         //if(event.type == DataProviderEvent.add){}
         
         /*Updates the slider interval and the sliderThumbSize*/

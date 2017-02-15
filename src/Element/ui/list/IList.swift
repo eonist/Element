@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol IList {
+protocol IList:IElement {
     //func getItemsHeight()->CGFloat
     //func setSize(width : CGFloat, height : CGFloat)
     //var height : CGFloat{get}  //TODO:you can extend IElement
@@ -22,7 +22,4 @@ extension IList{
         ListModifier.selectAt(self, index)
     }
     var dp:DataProvider {return self.dataProvider}/*convenience*/
-}
-var numOfItemsThatCanFit:Int {
-    return floor(height/itemHeight).int
 }

@@ -65,7 +65,7 @@ class SliderList:List,ISliderList{
     }
 }
 
-extension IList:IElement{
+extension IList{
     /**
      *
      */
@@ -77,6 +77,9 @@ extension IList:IElement{
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         return firstVisibleItem
     }
+    /**
+     * Returns number of items that can fit height
+     */
     var numOfItemsThatCanFit:Int {
         return floor(height/itemHeight).int
     }

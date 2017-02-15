@@ -67,7 +67,7 @@ class SliderList:List,ISliderList{
 
 extension IList{
     /**
-     * Returns the first item that crosses the top of view. (item.bottom must cross top of view to count as visible)
+     * Returns the first item that visible within view. (item.bottom must cross top of view to count as visible)
      */
     var firstVisibleItem:Int{
         let a = abs(lableContainer!.y)//force positive value with abs
@@ -76,6 +76,16 @@ extension IList{
         let firstVisibleItem:Int = c.int
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         return firstVisibleItem
+    }
+    /**
+     * Returns the last item that is visible within view (item top has not crossed bottom of view)
+     */
+    var lastVisibleItem:Int{
+        let a = abs(lableContainer!.y)
+        let b = a + height
+        let c = floor(b/itemHeight)
+        let lastVisibleItem:Int = c.int
+        return lastVisibleItem
     }
     /**
      * Returns number of items that can fit height

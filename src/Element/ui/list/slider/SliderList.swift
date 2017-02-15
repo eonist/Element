@@ -32,7 +32,7 @@ class SliderList:List,ISliderList{
     /**
      * TODO: Add hide slider asssert here see SliderList for implementation
      */
-    override func onDataProviderEvent(_ event: DataProviderEvent) {
+    override func onDataProviderEvent(_ event:DataProviderEvent) {
         super.onDataProviderEvent(event)
         Swift.print("event.startIndex: " + "\(event.startIndex)")
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
@@ -57,9 +57,6 @@ class SliderList:List,ISliderList{
                 lableContainer!.y = -(itemsHeight - height)
             }
         }
-        
-        //When items are removed bellow lastVisibleItem -> offset needs to take effect. 
-            //As we should never have a list that isnt pinned to the bottom
         
         /*Updates the slider interval and the sliderThumbSize*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight

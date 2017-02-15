@@ -67,7 +67,7 @@ class SliderList:List,ISliderList{
 
 extension IList{
     /**
-     * 
+     * Returns the first item that crosses the top of view. (item.bottom must cross top of view to count as visible)
      */
     var firstVisibleItem:Int{
         let a = abs(lableContainer!.y)//force positive value with abs

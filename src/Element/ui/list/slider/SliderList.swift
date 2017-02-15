@@ -53,8 +53,8 @@ class SliderList:List,ISliderList{
         }
         /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
         else if(itemsHeight > height){
-            if((lableContainer.y + itemsHeight) < ){
-                
+            if((lableContainer!.y + itemsHeight) < height){
+                lableContainer!.y = -(itemsHeight - height)
             }
         }
         

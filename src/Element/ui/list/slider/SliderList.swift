@@ -38,26 +38,7 @@ class SliderList:List,ISliderList{
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         
         
-        /*Pin to top if itemsHeight is less than height*/
-        if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
-            lableContainer!.y = 0
-        }
-        /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
-        else if(itemsHeight > height){
-            if((lableContainer!.y + itemsHeight) < height){
-                lableContainer!.y = -(itemsHeight - height)
-            }
-        }
-        /**/
-        else if(event.startIndex < firstVisibleItem){
-            if(event.type == DataProviderEvent.remove){
-                lableContainer!.y += itemHeight
-                Swift.print("offset.y + 24")
-            }else if(event.type == DataProviderEvent.add){
-                lableContainer!.y -= itemHeight
-                Swift.print("offset.y - 24")
-            }
-        }
+        
         
         /*Updates the slider interval and the sliderThumbSize*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
@@ -99,5 +80,30 @@ extension SliderList{
     }
     var numOfItemsThatCanFit:Int {
         return floor(height/itemHeight).int
+    }
+    /**
+     *
+     */
+    func alignLableContainer(){
+        /*Pin to top if itemsHeight is less than height*/
+        if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
+            lableContainer!.y = 0
+        }
+        /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
+        else if(itemsHeight > height){
+            if((lableContainer!.y + itemsHeight) < height){
+                lableContainer!.y = -(itemsHeight - height)
+            }
+        }
+        /*If an item is added / removed above the first visible item*/
+        else if(event.startIndex < firstVisibleItem){
+            if(event.type == DataProviderEvent.remove){
+                lableContainer!.y += itemHeight
+                Swift.print("offset.y + 24")
+            }else if(event.type == DataProviderEvent.add){
+                lableContainer!.y -= itemHeight
+                Swift.print("offset.y - 24")
+            }
+        }
     }
 }

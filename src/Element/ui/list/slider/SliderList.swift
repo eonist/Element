@@ -77,9 +77,7 @@ extension SliderList{
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         return firstVisibleItem
     }
-    var numOfItemsThatCanFit:Int {
-        return floor(height/itemHeight).int
-    }
+    
     /**
      *
      */

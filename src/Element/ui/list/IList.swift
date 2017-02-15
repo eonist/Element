@@ -23,3 +23,6 @@ extension IList{
     }
     var dp:DataProvider {return self.dataProvider}/*convenience*/
 }
+var numOfItemsThatCanFit:Int {
+    return floor(height/itemHeight).int
+}

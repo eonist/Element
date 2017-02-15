@@ -47,11 +47,11 @@ class SliderList:List,ISliderList{
                 Swift.print("offset.y - 24")
             }
         }
-        
+        /*Pin to top if itemsHeight is less than height*/
         if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
             lableContainer!.y = 0
         }
-        
+        /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height)*/
         
         //When items are removed bellow lastVisibleItem -> offset needs to take effect. 
             //As we should never have a list that isnt pinned to the bottom

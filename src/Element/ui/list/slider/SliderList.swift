@@ -67,7 +67,7 @@ class SliderList:List,ISliderList{
 
 extension IList{
     /**
-     *
+     * 
      */
     var firstVisibleItem:Int{
         let a = abs(lableContainer!.y)//force positive value with abs

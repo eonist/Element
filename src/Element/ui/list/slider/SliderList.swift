@@ -48,7 +48,7 @@ class SliderList:List,ISliderList{
             }
         }
         
-        if(dp.count <= numOfItemsCanFit){
+        if(dp.count <= numOfItemsThatCanFit){//basically when itemsHeight is less than height
             lableContainer!.y = 0
         }
         
@@ -93,7 +93,7 @@ extension SliderList{
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         return firstVisibleItem
     }
-    var numOfItemsCanFit:Int {
+    var numOfItemsThatCanFit:Int {
         return floor(height/itemHeight).int
     }
 }

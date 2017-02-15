@@ -37,8 +37,7 @@ class SliderList:List,ISliderList{
         Swift.print("event.startIndex: " + "\(event.startIndex)")
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         
-        
-        
+        alignLableContainer(event)
         
         /*Updates the slider interval and the sliderThumbSize*/
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
@@ -84,7 +83,7 @@ extension SliderList{
     /**
      *
      */
-    func alignLableContainer(){
+    func alignLableContainer(_ event:DataProviderEvent){
         /*Pin to top if itemsHeight is less than height*/
         if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
             lableContainer!.y = 0

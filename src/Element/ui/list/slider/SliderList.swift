@@ -51,8 +51,12 @@ class SliderList:List,ISliderList{
         if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
             lableContainer!.y = 0
         }
-        /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height)*/
-        if((lableContainer.y + itemsHeight) < )
+        /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
+        else if(itemsHeight > height){
+            if((lableContainer.y + itemsHeight) < ){
+                
+            }
+        }
         
         //When items are removed bellow lastVisibleItem -> offset needs to take effect. 
             //As we should never have a list that isnt pinned to the bottom

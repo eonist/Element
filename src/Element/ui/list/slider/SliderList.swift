@@ -36,17 +36,8 @@ class SliderList:List,ISliderList{
         super.onDataProviderEvent(event)
         Swift.print("event.startIndex: " + "\(event.startIndex)")
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
-        if(event.type == DataProviderEvent.remove){
-            if(event.startIndex < firstVisibleItem){
-                lableContainer!.y += itemHeight
-                Swift.print("offset.y + 24")
-            }
-        }else if(event.type == DataProviderEvent.add){
-            if(event.startIndex < firstVisibleItem){
-                lableContainer!.y -= itemHeight
-                Swift.print("offset.y - 24")
-            }
-        }
+        
+        
         /*Pin to top if itemsHeight is less than height*/
         if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
             lableContainer!.y = 0
@@ -55,6 +46,16 @@ class SliderList:List,ISliderList{
         else if(itemsHeight > height){
             if((lableContainer!.y + itemsHeight) < height){
                 lableContainer!.y = -(itemsHeight - height)
+            }
+        }
+        /**/
+        else if(event.startIndex < firstVisibleItem){
+            if(event.type == DataProviderEvent.remove){
+                lableContainer!.y += itemHeight
+                Swift.print("offset.y + 24")
+            }else if(event.type == DataProviderEvent.add){
+                lableContainer!.y -= itemHeight
+                Swift.print("offset.y - 24")
             }
         }
         

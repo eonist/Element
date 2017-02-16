@@ -82,7 +82,7 @@ extension IList{
     var lastVisibleItem:Int{
         let a = abs(lableContainer!.y)
         let b = a + height
-        let c = floor(b/itemHeight)
+        let c = ceil(b/itemHeight)
         let lastVisibleItem:Int = c.int
         return lastVisibleItem
     }

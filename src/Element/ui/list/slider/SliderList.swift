@@ -64,7 +64,6 @@ class SliderList:List,ISliderList{
         ElementModifier.hide(slider!, itemsHeight > slider!.height)/*Hides the slider if it is not needed anymore*///<--new adition
     }
 }
-
 extension IList{
     /**
      * Returns the first item that visible within view. (item.bottom must cross top of view to count as visible)

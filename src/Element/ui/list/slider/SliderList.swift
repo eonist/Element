@@ -74,7 +74,7 @@ extension IList{
         let b = a/itemHeight//how many items fit into "a"
         let c = floor(b)//Continue here
         let firstVisibleItem:Int = c.int
-        Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
+        //Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         return firstVisibleItem
     }
     /**

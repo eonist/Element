@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
 
+//DEPRECATED
+
 class RBSliderFastList2:FastList2,IRBSliderList{
     /*RubberBand*/
     var mover:RubberBand?

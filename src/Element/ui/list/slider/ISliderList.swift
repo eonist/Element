@@ -3,7 +3,7 @@ import Cocoa
 
 protocol ISliderList:IList {
     var slider:VSlider?{get}
-    var sliderInterval:CGFloat?{get}
+    var sliderInterval:CGFloat?{get set}
     func setProgress(_ progress:CGFloat)
 }
 extension ISliderList{
@@ -17,6 +17,16 @@ extension ISliderList{
         self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/
         if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
         else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
+    }
+    /**
+     * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
+     */
+    func updateSlider(){
+        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
+        slider!.setThumbHeightValue(thumbHeight)
+        let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
+        slider!.setProgressValue(progress)
     }
 }
 private class Utils{

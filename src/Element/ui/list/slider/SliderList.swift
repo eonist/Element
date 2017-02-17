@@ -10,6 +10,9 @@ class SliderList:List,ISliderList{
     var sliderInterval:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()
+        
+        //TODO:It could be possible to remove the bellow code and just call updateSlider as it contains almost the same code
+        
         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
@@ -36,11 +39,8 @@ class SliderList:List,ISliderList{
         super.onDataProviderEvent(event)
         Swift.print("event.startIndex: " + "\(event.startIndex)")
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
-        
         alignLableContainer(event)
-        
         updateSlider()
-        
     }
     override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/

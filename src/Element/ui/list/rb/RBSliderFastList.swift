@@ -9,7 +9,7 @@ class RBSliderFastList:FastList,IRBSliderList{
     var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
     /*Slider*/
     var slider:VSlider?
-    private var sliderInterval:CGFloat?
+    var sliderInterval:CGFloat?
     override func resolveSkin() {
         super.resolveSkin()
         /*RubberBand*/

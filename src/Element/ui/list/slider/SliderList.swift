@@ -78,6 +78,7 @@ extension IList{
     }
     /**
      * Returns the last item that is visible within view (item top has not crossed bottom of view)
+     * NOTE: the existens of item at this index is not garantued. Its the virtual idx of such an item
      */
     var lastVisibleItem:Int{
         let a = abs(lableContainer!.y)

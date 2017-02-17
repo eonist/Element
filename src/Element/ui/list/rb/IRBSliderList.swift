@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol IRBSliderList:class{//TODO: extend ISliderList
+protocol IRBSliderList:ISliderList{//TODO: extend ISliderList
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:Array<CGFloat>{get set}

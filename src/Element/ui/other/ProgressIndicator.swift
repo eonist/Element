@@ -41,7 +41,6 @@ class ProgressIndicator:Element {
         let initAlpha = lineStyle.color.alphaComponent//<--can be moved to a global scope
         Swift.print("initAlpha: " + "\(initAlpha)")
         let restAlpha = 1 - initAlpha//<--can be moved to a global scope
-        Swift.print("restAlpha: " + "\(restAlpha)")
         for i in 0..<12{//reset all values
             let line = lines[i]
             line.graphic.lineStyle!.color = line.graphic.lineStyle!.color.alpha(initAlpha)

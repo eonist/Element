@@ -1,7 +1,7 @@
 import Foundation
 @testable import Utils
 
-extension Style{
+extension Style:UnWrappable{
     static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this won't work since it doesnt have any selectors
     /**
     * Adds styleProperties
@@ -74,7 +74,7 @@ extension Style{
     }
 }
 
-extension Style:UnWrappable{
+extension Style{
     /**
      * Converts xml to a Style instance
      * IMPORTANT: this must be located here because it belongs in the Element lib but uses the swift-utils lib

@@ -76,12 +76,18 @@ extension IList{
      * NOTE: the existens of item at this index is not garantued. Its the virtual idx of such an item
      */
     var lastVisibleItem:Int{
-        let a = abs(lableContainer!.y)
-        let b = a + height
-        let c = ceil(b/itemHeight)
-        let lastVisibleItem:Int = c.int
+        let a:Int = firstVisibleItem
+        let b = height/itemHeight
+        //Swift.print("b: " + "\(b)")
+        let c = ceil(b)
+        //Swift.print("c: " + "\(c)")
+        let d = c == 0 ? 0 : c + 1//add an extra item to cover the area. should be dealt with in the render method really
+        //Swift.print("d: " + "\(d)")
+        let lastVisibleItem:Int = a + d.int
+        //Swift.print("lastVisibleItem: " + "\(lastVisibleItem)")
         return lastVisibleItem
     }
+    
     /**
      * Returns number of items that can fit height
      */

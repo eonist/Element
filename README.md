@@ -49,4 +49,4 @@ Element for iOS coming soon [here](https://github.com/eonist/Element-iOS)
 Open an [issue](https://github.com/eonist/Element/issues) or message me on [twitter](https://twitter.com/stylekit_org) 
  
 ## Contributions?
-Have an idea for Element? Create an issue with your idea then PR.
+Idea for Element? Create an issue with your idea then PR.

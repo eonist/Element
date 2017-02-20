@@ -45,7 +45,7 @@ btn.event = onClick
 Element for iOS coming soon [here](https://github.com/eonist/Element-iOS)   
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
-## Need assistance getting started?
+## Questions?
 Open an [issue](https://github.com/eonist/Element/issues) or message me on [twitter](https://twitter.com/stylekit_org) 
  
 ## Contributions?

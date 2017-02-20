@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * This class serves as a base class for the Element GUI framework
- * NOTE: It seems NSViews arent drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
+ * NOTE: It seems NSViews aren't drawn until their NSView parent gets the drawRect call (Everything is drawn in one go)
  * NOTE: Currently we use InteractiveView, we could complicate things by making it only extend View, but for simplicity we use InteractiveView. (Optimization may be required, thus this may be revocated and maybe we will make a method named InteractiveElement etc.)
  * NOTE: Subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
  * NOTE: w,h,x,y are stored in the frame instance

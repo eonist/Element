@@ -29,7 +29,6 @@ class CustomView:WindowView{
      */
     override func setSize(_ width:CGFloat,_ height:CGFloat){
         //Swift.print("CustomView.setSize() size: " + "\(size)")
-        //self.skin!.setSize(size.width, size.height)
         super.setSize(width, height)
         section!.setSize(width, section!.height)
     }

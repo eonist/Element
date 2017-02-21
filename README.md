@@ -42,7 +42,7 @@ btn.event = onClick
 - Default macOS styles to get you started: [ElCapitan](https://github.com/stylekit/ElCapitan)  
 
 ## iOS:
-Element for iOS coming soon [here](https://github.com/eonist/Element-iOS)   
+Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)   
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
 ## Questions?

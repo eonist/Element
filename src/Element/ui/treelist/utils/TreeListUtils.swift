@@ -23,10 +23,10 @@ class TreeListUtils {
         //Swift.print("treeItems size: " + "\(size)")
         for child in xml.children! as! Array<XMLElement>{
             let itemData:ItemData = Utils.itemData(child)
-            let treeItem:NSView = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
+            let treeItem:Element = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             //Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")
             if(itemData.hasChildren) {
-                _ = TreeListUtils.treeItems(child,treeItem as! ITreeList,size)
+                _ = TreeListUtils.treeItems(child, treeItem as! ITreeList,size)
             }// :TODO: move this line into treeitem?
             treeList.addItem(treeItem)/*Adds the item to the treeList*/
         }
@@ -37,9 +37,9 @@ private class Utils{
     /**
      * // :TODO: write java doc
      */
-    static func treeItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> NSView {
+    static func treeItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> Element {
         //Swift.print("treeItem size: " + "\(size)")
-        let item:NSView = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
+        let item:Element = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
         //Swift.print("itemData.isVisible: " + "\(itemData.isVisible)")
         item.isHidden = !itemData.isVisible// :TODO: should this be here and do we need isVisible?
         return item

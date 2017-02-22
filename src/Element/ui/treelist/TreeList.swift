@@ -19,7 +19,7 @@ class TreeList:Element,ITreeList {
         self.node = node
         super.init(width, height, parent, id)
         self.node.event = onEvent//Add event handler for the node
-        layer!.masksToBounds = false
+        //layer!.masksToBounds = false
     }
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")

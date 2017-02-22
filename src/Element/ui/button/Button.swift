@@ -18,7 +18,6 @@ class Button:Element {
         //Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
-            //Swift.print("skinstate: " + getSkinState())
             setSkinState(getSkinState())
             super.onEvent(ButtonEvent(ButtonEvent.over,self))
         }
@@ -39,7 +38,6 @@ class Button:Element {
      * Handles actions and drawing states for the down event
      */
     override func mouseDown(_ event:MouseEvent) {
-        //Swift.print("Button.mouseDown() ")
         state = SkinStates.down+" "+SkinStates.over
         setSkinState(getSkinState())
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
@@ -50,7 +48,6 @@ class Button:Element {
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpInside(_ event:MouseEvent){
-        //Swift.print("Button.mouseUpInside: ")
         state = SkinStates.over// :TODO: why in two lines like this?
         setSkinState(getSkinState())
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
@@ -60,7 +57,6 @@ class Button:Element {
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpOutside(_ event:MouseEvent){
-        //Swift.print("Button.mouseUpOutside: ")
         state = SkinStates.none
         setSkinState(getSkinState())
         super.onEvent(ButtonEvent(ButtonEvent.upOutside,self))
@@ -71,7 +67,6 @@ class Button:Element {
      * LEGACY NOTE: This method was turned off temporarily, because it could fire after, this could be resolved by moving the mouseUp call in INteractiveView2 to before the mouseUpInside and mouseUpOutside calls.
      */
     override func mouseUp(_ event:MouseEvent) {
-        //Swift.print("Button.mouseUp: ")
         super.onEvent(ButtonEvent(ButtonEvent.up,self/*,self*/))
     }
     override func hitTest(_ aPoint:NSPoint) -> NSView? {//TODO: this method can be removed

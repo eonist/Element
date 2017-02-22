@@ -61,7 +61,7 @@ class List:Element,IList{
         ElementModifier.floatChildren(lableContainer!)/*This call re-floats the list items*/
     }
     /**
-     * This is called when a item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
+     * This is called when an item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
      */
     func onListItemUpInside(_ buttonEvent:ButtonEvent) {
         let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)

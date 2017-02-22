@@ -2,54 +2,42 @@ import Cocoa
 @testable import Utils
 /**
  * This is a list that can support infinite list items, while still being fast, memory-convervative and responsive. To support 1000's of data items, just use DataProvider, To support millions, consider using a DataProvider that derive its data from a database (SQLite or other)
- * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future
+ * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights.📚 The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
  * NOTE: Conceptually the first index is calculated with modulo, then subsecuent items have their index by adding 1
- * NOTE: Tearing in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
- * NOTE: Another approach would be to use a really long view and shuffle items while we scroll, this seems superfluous though
- * NOTE: Placing items to the bottom of the above item is the only way to avoid gaps from apearing from time to time
- * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
- * NOTE: When inserting list items at new indecies is needed, then update the dataprovider and it will in turn spoof the change visually
- * NOTE: to debug you can: remove the mask and use an outline that is above the itemContainer
- * NOTE: FastList supports select and unSelect w/o querrying dataProvider as dp is cpu intensive
- * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays
- * TODO: the dataProvider.items.count should probably be cached if the count is high, maybe even do this in the dataprovider it self
- * TODO: try the 1 loop setProgress idea (where you do the adding and appending the same place where you do the hiding)
- * TODO: test if resize works, by spawning new items etc
- * TODO: Consider doing the really tall NSView idea because it might be faster and way simpler
+ * NOTE: Flickering in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
+ * NOTE: We use a really long view and shuffle items while we scroll
+ * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights.📚 The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
+ * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays thumbup 👍
+ * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
+ * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 class FastList:Element,IList {
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
-    var dataProvider:DataProvider/*Data storage*/
-    var lableContainer:Container?/*Holds the list items*/
-    var maxVisibleItems:Int?/*This will be calculated on init and on setSize calls*/
-    var itemsHeight:CGFloat {return dataProvider.count * itemHeight}//<--TODO: the tot items height can be calculated at init, and on list data refresh
-    var visibleItems:[FastListItem] = []/*Item's that are within the mask, since itemContainer has surplus items and visible items we need this array to hold visible items*/
-    var surplusItems:[FastListItem] = []/*Repurpose Items instead of removing and creating new ones*/
-    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil) {
+    var dataProvider:DataProvider/*data storage*/
+    var lableContainer:Container?/*holds the list items*/
+    var pool:[FastListItem] = []/*Stores the FastListItems*/
+    var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
+    
+    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
-        self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/
-        layer!.masksToBounds = true/*masks the children to the frame*///mask 100x400
+        self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
+        layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
-        Swift.print("FastList.resolveSkin()")
         super.resolveSkin()
-        Swift.print("itemsHeight: " + "\(itemsHeight)")
-        Swift.print("FastList.height: " + "\(height)")
-        maxVisibleItems = round(height / itemHeight).int + 1
-        Swift.print("maxVisibleItems: " + "\(maxVisibleItems)")
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        spawn(0..<maxVisibleItems!)
+        let visibleRange:Range<Int> = visibleItemRange/*visible ItemRange Within View, calcs visibleItems based on lableContainer.y and height*/
+        let range:Range<Int> = visibleRange.start..<min(dp.count,visibleRange.end)/*clip the range*/
+        renderItems(range)
     }
     /**
-     * PARAM: progress: 0 to 1
-     * NOTE: why the complicated code in this method? Keep in mind that we must support going from progress: 0.1 to 0.9 in one cycle, which then recreates all items basically
-     * TODO: An idea would be to append when items are above top limit, and prepend if items are bellow bottom limit, this would lead to simpler code and 1 less for loop (so removing and appending in the same for-loop, hover it will be harder to reason about) (another way to optimize this algo is to rebuild the component and use a long nsView, which will be easier to reason about and then apply virtual values later)
-     * 1. set the virtualY to every item based on the progress
-     * 2. remove and then shuffle items above and bellow on each iteration (like lego)
+     * PARAM: progress (0-1)
+     * NOTE: setProgress is in this class because RBFastSliderList doesnt extend SliderList, and both classes needs to extend this method
+     * NOTE: override this method in SliderFastList and RBSliderFastList
      * 
      * The concept is simple, you only show items that are within the limits as you scroll up and down. (these items only exists virtually, untill they are revealed if they are within the limits)
      * With these two rules: you should be able to create the algorithm that lay out items at a progress value
@@ -57,107 +45,48 @@ class FastList:Element,IList {
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(_ progress:CGFloat){
-        let listY:CGFloat = -1 * ListModifier.scrollTo(progress, height, itemsHeight)//this is the list y offset, we add the substraction sign to get positive value
-        //Swift.print("listY: " + "\(listY)")
-        let topLimit:CGFloat = /*listY*/ -itemHeight
-        //Swift.print("topLimit: " + "\(topLimit)")
-        let bottomLimit:CGFloat = /*listY+*/ height
-        //Swift.print("bottomLimit: " + "\(bottomLimit)")
-        for i in 0..<visibleItems.count{/*Stage.1: Remove items outside Limits*/
-            let listItem:FastListItem = visibleItems[i]
-            let virtualY:CGFloat = listItem.idx*itemHeight - listY
-            if(virtualY <= topLimit){/*above top limit*/
-                //Swift.print("item: \(listItem.idx) at: \(virtualY) is above top limit")
-                Utils.hide(listItem.item, true)
-                _ = surplusItems += visibleItems.remove(at: i)
-            }else if(virtualY >= bottomLimit){
-                //Swift.print("item: \(listItem.idx) at: \(virtualY) is bellow bottom limit")
-                Utils.hide(listItem.item, true)
-                _ = surplusItems += visibleItems.remove(at: i)
-            }else{
-                //Swift.print("item: \(listItem.idx) is within at: \(virtualY)")
-            }
-        }
-        //Swift.print("surplusItems.count: " + "\(surplusItems.count)")
-        
-        var firstPart:[FastListItem] = []
-        var thirdPart:[FastListItem] = []
-        //Swift.print("listY: " + "\(listY)")
-        let firstItemIdx:Int = floor(listY / itemHeight).int.minMax(0, dataProvider.count - visibleItems.count)//find the "virtual" first item
-        //Swift.print("firstItemIdx: " + "\(firstItemIdx)")
-        let topY:CGFloat =  (firstItemIdx * itemHeight) - listY//the y pos of the first item//-(listY % itemHeight)
-        //Swift.print("topY: " + "\(topY)")
-        var y:CGFloat = topY/*By iterativly setting items to the bottom of the above item, we avoid gaps. Gaps can apear if we base the positioning on other types of calculation*/
-        
-        let firstVisibleItemIdx:Int = visibleItems.first?.idx ?? 0//if the visibleItems arr is empty then replenish it w/ items by appending items to thirdPart in the loop. This is triggered by setting this value to 0
-        let lastVisibleItemIdx:Int = visibleItems.last?.idx ?? 0
-        var visibleItemIdx:Int = 0
-        for i in 0..<maxVisibleItems!{/*Stage.2: stack items to cover the visible area*/
-            let itemIdx:Int = (firstItemIdx + i)
-            if(itemIdx < firstVisibleItemIdx && y > topLimit && itemIdx < dataProvider.count && surplusItems.count > 0){//1. item is above visibleItems, 2. y is bellow topLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
-                firstPart.append(reveal(itemIdx,y))
-                //Swift.print("append to firstPart")
-            }else if(itemIdx > lastVisibleItemIdx && y < bottomLimit && itemIdx < dataProvider.count && surplusItems.count > 0){//1. item is bellow visibleItems,2. y is above bottomLimit, 3. We make sure the index actually exist 4. make sure there is available items in surplus
-                //Swift.print("append to thirdPart")
-                thirdPart.append(reveal(itemIdx,y))
-            }else if(visibleItemIdx < visibleItems.count){//item is visibleItem
-                visibleItems[visibleItemIdx].item.y = y
-                visibleItemIdx += 1
-            }
-            y += itemHeight
-        }
-        visibleItems = firstPart + visibleItems + thirdPart/*Combine the arrays together*/
-    }
-    /**
-     * Unhides, sets y, sets index (Its more convenient to do it in a method as the same code is in 2 places)
-     * NOTE: This method is only called if surplusItems.count > 0
-     */
-    private func reveal(_ idx:Int, _ y:CGFloat) -> (item:Element,idx:Int){
-        var listItem = surplusItems.remove(at: 0)
-        listItem.idx = idx
-        spoof(listItem)
-        Utils.hide(listItem.item, false)
-        listItem.item.y = y
-        return listItem
-    }
-    /**
-     * Creates the init items
-     */
-    private func spawn(_ range:CountableRange<Int>){
-        var y:CGFloat = 0
-        //swift 3 update, may not work
-        for i in range{/*we need an extra item to cover the entire area*/
-            //visibleItemIndecies.append(i)
-            let item:Element = spawn(i)
-            visibleItems.append((item,i))
-            _ = lableContainer!.addSubView(item)
-            item.y = y
-            y += itemHeight
+        ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
+        let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
+        if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
+            renderItems(range)
         }
     }
     /**
-     * Creates the items needed to cover the visible area. (This method will also be used when you resize the component, to add more items to cover the resized visible area)
-     * PARAM: idx: the index that coorespond to data items (spawn == create something)
-     * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
+     * Apply new data / align items
+     * NOTE: override this to use custom ItemList items
      */
-    func spawn(_ idx:Int)->Element{/*override this to use custom ItemList items*/
-        let dpItem = dataProvider.items[idx]
-        let title:String = dpItem["title"]!
-        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,title, false, lableContainer)
-        return item
-    }
-    /**
-     * Applies data to a pre-exisiting item (spoof == apply/reuse)
-     * NOTE: Overide this method when you want to add your own Custom List Items (as long as the item extends Element)
-     */
-    func spoof(_ listItem:FastListItem){/*override this to use custom ItemList items*/
+    func reUse(_ listItem:FastListItem){
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         let dpItem = dataProvider.items[idx]
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
         if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable
-        item.setTextValue(title)
+        item.setTextValue(idx.string + " " + title)
+        item.y = listItem.idx * itemHeight/*position the item*/
+    }
+    /**
+     * CreatesItem
+     * NOTE: override this to create custom ListItems
+     */
+    func createItem(_ index:Int) -> Element{
+        Swift.print("createItem index: " + "\(index)")
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,"", false, lableContainer)
+        lableContainer!.addSubview(item)
+        return item
+    }
+    /**
+     * DP has changed
+     * override this method if dp change can affect the super class
+     */
+    func onDataProviderEvent(_ event:DataProviderEvent){
+        alignLableContainer(event)
+        let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
+        if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
+            renderItems(range)/*the visible range has changed, render it*/
+        }else{
+            reUseFromIdx(event.startIndex)/*the visible range hasn't changed, but the data has changed, apply new data*/
+        }
     }
     /**
      * This is called when a item in the lableContainer has send the ButtonEvent.upInside event
@@ -165,25 +94,136 @@ class FastList:Element,IList {
     func onListItemUpInside(_ buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
-        visibleItems.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
+        pool.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
     }
-    /**
-     * EventHandler for the items in the list
-     * TODO: We should really use a SelectEvent here as SelectTextItem sends this event on ButtonEvent.upInside occurs
-     */
     override func onEvent(_ event:Event) {
-        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
+        if(event.type == ButtonEvent.upInside && event.origin.superview === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
+        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
-    /**
-     * So that we can use the List.css styles (This is because FastList doesn't extend List so we need to manually set the getClassType var)
-     */
-    override func getClassType() -> String {
-        return "\(List.self)"
-    }
-    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+    override func getClassType() -> String {return "\(List.self)"}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+extension FastList{
+    /**
+     * Creates, applies data and aligns items defined in PARAM: range
+     * TODO: You can optimize the range stuff later when all cases work (it would be possible to creat a custom diff method that is simpler and faster than using generic intersection,diff and exclude)
+     * NOTE: this method is inside an extension because it doesn't need to be overriden by super classes
+     */
+    func renderItems(_ range:Range<Int>){
+        let old = currentVisibleItemRange
+        let firstOldIdx:Int = old.start
+        /*⚠️️⚠️️⚠️️Figure out which items to remove from pool⚠️️⚠️️⚠️️*/
+        let diff = RangeParser.difference(range, old)//may return 1 or 2 ranges
+        if(diff.1 != nil){
+            let start = diff.1!.start - firstOldIdx
+            inActive += pool.splice2(start, diff.1!.length)
+        }
+        if(diff.0 != nil){
+            let start = diff.0!.start - firstOldIdx
+            inActive += pool.splice2(start, diff.0!.length)
+        }
+        /*⚠️️⚠️️⚠️️Figure out which items to add to pool⚠️️⚠️️⚠️️*/
+        let diff2 = RangeParser.difference(old,range)
+        if(diff2.1 != nil){
+            let startIdx = diff2.1!.start
+            let endIdx = diff2.1!.end
+            var items:[FastListItem] = []
+            for i in (startIdx..<endIdx){
+                let item:Element = inActive.count > 0 ? inActive.popLast()!.item : createItem(i)
+                let fastListItem:FastListItem = (item:item,idx:i)
+                reUse(fastListItem)/*applies data and position*/
+                items.append(fastListItem)
+            }
+            if(items.count > 0){
+                var idx:Int = items.first!.idx - firstOldIdx//index in pool
+                idx = idx.clip(0, pool.count)
+                _ = ArrayModifier.mergeInPlaceAt(&pool, &items, idx)
+            }
+        }
+        if(diff2.0 != nil){
+            let startIdx = diff2.0!.start
+            let endIdx = diff2.0!.end
+            var items:[FastListItem] = []
+            for i in (startIdx..<endIdx){
+                let item:Element = inActive.count > 0 ? inActive.popLast()!.item : createItem(i)
+                let fastListItem:FastListItem = (item:item,idx:i)
+                reUse(fastListItem)//applies data and position
+                items.append(fastListItem)
+            }
+            if(items.count > 0){
+                var idx:Int = items.first!.idx - firstOldIdx//index in pool
+                idx = idx.clip(0, pool.count)
+                _ = ArrayModifier.mergeInPlaceAt(&pool, &items, idx)
+            }
+        }
+        
+    }
+    /**
+     * Returns the range to render (based on items in DP and how the lableContainer is positioned)
+     */
+    var visibleItemRange:Range<Int>{
+        let firstVisibleItemThatCrossTopOfView = firstVisibleItem
+        let lastVisibleItemThatIsWithinBottomOfView = lastVisibleItem
+        let visibleItemRange:Range<Int> = firstVisibleItemThatCrossTopOfView..<lastVisibleItemThatIsWithinBottomOfView
+        return visibleItemRange
+    }
+    /**
+     * Returns the current visible item range in List
+     */
+    var currentVisibleItemRange:Range<Int>{
+        let firstIdx:Int = pool.count > 0 ? pool.first!.idx : 0
+        let lastIdx:Int = pool.count > 0 ? pool.first!.idx + pool.count : 0
+        let currentVisibleItemRange:Range<Int> = firstIdx..<lastIdx
+        return currentVisibleItemRange
+    }
+    /**
+     * reUses all items from idx, to end idx in pool
+     * NOTE: this method is called after dp change: add/remove
+     */
+    func reUseFromIdx(_ idx:Int){
+        if(idx >= firstVisibleItem && idx <= lastVisibleItem){
+            let startIdx = idx - firstVisibleItem
+            var endIdx = lastVisibleItem - firstVisibleItem
+            endIdx = Swift.min(dp.count,endIdx)
+            for i in startIdx..<endIdx{/*reUse affected items if item is within visible view*/
+                let fastListItem = pool[i]
+                reUse(fastListItem)
+            }
+        }
+    }
+    /**
+     * Sets an item to selected, deselects other items, works with dp indecies
+     */
+    func selectAt(dpIdx:Int){/*convenience*/
+        let idx:Int? = ArrayParser.first(pool, dpIdx, {$0.idx == $1})?.item.idx/*Converts dpIndex to lableContainerIdx*/
+        if(idx != nil){ListModifier.selectAt(self, idx!)}
+        else{SelectModifier.selectAll(lableContainer!, false)}/*unSelect all if an item outside visible view is selected*/
+        selectedIdx = dpIdx
+    }
+    /**
+     * force a refresh of all items
+     */
+    func reUseAll(){
+        pool.forEach{reUse($0)}
+    }
+}
+
+/*
+ //call this method after resize etc
+ //clear inActive array, if any are left, can happen after resize etc
+ //This could be usefull when size of view changes from big to small etc, or when going from many items to few
+ 
+ inActive.forEach{
+    Swift.print("remove inactive")
+    $0.item.removeFromSuperview()
+ }
+ inActive.removeAll()
+ 
+ */
+
+/*
 private class Utils{
     /**
      * Temp solution
@@ -198,3 +238,4 @@ private class Utils{
         CATransaction.commit()
     }
 }
+*/

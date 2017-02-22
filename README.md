@@ -1,51 +1,51 @@
-![mit](https://img.shields.io/badge/License-MIT-brightgreen.svg) ![platform](https://img.shields.io/badge/Platform-macOS-blue.svg) ![Lang](https://img.shields.io/badge/Language-Swift 3.0.1-orange.svg)
-[![codebeat](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) [![SPM  compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+![MIT Status](https://img.shields.io/badge/License-MIT-lightgrey.svg?maxAge=2592000) ![platform](https://img.shields.io/badge/os-macOS-blue.svg) ![Lang](https://img.shields.io/badge/Swift- 3.0.1-orange.svg) [![SPM  compatible](https://img.shields.io/badge/SPM-compatible-orange.svg)](https://github.com/apple/swift-package-manager) [![codebeat](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) [![Build Status](https://travis-ci.org/stylekit/Element-tests.svg?branch=master)](https://travis-ci.org/stylekit/Element-tests)
 
-## Description:
+## What is it?
+Independent UI framework with zero AppKit dependencies. Element let's you add rich UI interaction to your app.
 
-Element is a programatic UI framework that lets you create beautiful mac apps in 100% swift code.
+<img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
 
-<img width="558" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/gitsync_take_3.mov.gif">
+## How does it work?
+A typical Element app consists of 90% Swift code and 10% CSS and SVG. CSS Handles design and alignment and swift handles functionality and animation.   
+
+<img width="700" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Style_diagram.svg">
 
 ## Installation:
+- Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager
+- Add this to your Package.swift file
 
-### Playground:
-- Package Element as "Element.framework" [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
-- Package [Swift-utils](https://github.com/eonist/swift-utils) as "Utils.framework"  
+```swift
+import PackageDescription
+let package = Package(
+    name: "AwesomeApp",
+    dependencies: [
+		.Package(url: "https://github.com/eonist/Element.git", Version(0, 0, 0, prereleaseIdentifiers: ["alpha", "5"]))
+    ]
+)
+```
 
-<img width="530" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/PlaygroundFrameworkLoop_20FPS_half_size.mp4.gif">
+- In AppDelegate.swift add this to the top ``@testable import Element`` and this inside the ``applicationDidFinishLaunching`` method:
 
-### Xcode:
-- Either package [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) as .framework  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
-- Or drag and drop the source of [Element](https://github.com/eonist/Element)  and [Swift-utils](https://github.com/eonist/swift-utils) into XCode  [instructions](http://stylekit.org/blog/2017/01/16/playground-and-framework/)   
+```swift
+StyleManager.addStyle("Button{fill:blue;}")
+let btn = Button(100,20)
+window.contentView!.addSubview(btn)
+func onClick(event:Event){
+	if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
+}
+btn.event = onClick
+```
 
-### Carthage support:  
-Element is dependent on the repository [swift-utils](https://github.com/eonist/swift-utils) to work. If your new to using carthage with nested frameworks then read [this tutorial](http://stylekit.org/blog/2017/02/03/Carthage-and-nested-frameworks/) 
+## Resources: 
+- Simple example app made with Element: [Stash](https://github.com/stylekit/stash) 
+- Library of example code for each component in Element: [Explorer](https://github.com/stylekit/explorer)  
+- Default macOS styles to get you started: [ElCapitan](https://github.com/stylekit/ElCapitan)  
 
-### Themes:
-Themes can be found [here](https://github.com/stylekit/ElCapitan)  You can also create styles programmatically if CSS isn't your thing. here is a simple [Hello world](https://github.com/eonist/Element/wiki/hello-world) example    
+## iOS:
+Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)   
+<img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
-**Example code:**  
-[50+ macOS UI components](https://github.com/stylekit/explorer) and [Demo app](https://github.com/stylekit/stash) 
+## Progress:
 
-## Features:
-- [Playground support](https://github.com/eonist/Element/wiki#prototyping-ui-in-xcode-playground)  
-- [50+ Components](https://github.com/eonist/Element/wiki/overview) 
-- [60FPS Interactive Animation](https://github.com/eonist/Element/wiki/RBSliderFastList) 
-- [Live-edit](https://github.com/eonist/Element/wiki/live) 
-- Themes via [CSS](http://stylekit.org/blog/2016/02/18/Cascading-Style-Sheets-System/)  and [SVG](http://stylekit.org/blog/2016/01/07/Basic-SVG-support/) 
-- [Vector graphics](http://stylekit.org/blog/2015/12/30/Graphic-framework-for-OSX/) 
-
-## Working on:  
-- SPM support 👈
-- CI support
-- [iOS support](https://github.com/eonist/Element-iOS) 
-- CocoaPod
-- HackerNews example app (w/ AlamoFire)
-- Sketch import
-- Live Theme switching
-- Flex-box layout alignment  
-
-* * *
-
-⚠️️ This project is under rapid development. Refer to stable versions [here](https://github.com/eonist/Element/releases)  and [here](https://github.com/eonist/swift-utils/releases)   
+**2017-02-22**  
+- Significant improvements to RBSliderFastList, SliderFastList and FastList

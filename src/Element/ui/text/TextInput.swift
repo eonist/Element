@@ -29,3 +29,8 @@ class TextInput:Element{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+extension TextInput{
+    func setInputText(_ text:String){/*Convenience*/
+        inputTextArea!.setTextValue(text)
+    }
+}

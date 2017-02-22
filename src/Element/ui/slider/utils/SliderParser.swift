@@ -16,7 +16,7 @@ class SliderParser {
      */
     static func thumbSize(_ scalar:CGFloat, _ sliderSize:CGFloat) -> CGFloat {
         var scalar = scalar
-        scalar = min(scalar,1)
+        scalar = min(scalar,1)/*clamp value to no more than 1*/
         var size:CGFloat = round(sliderSize * scalar)
         size = max(size,round(sliderSize/10))/*Makes sure thumbsize isn't smaller than a 10th of the slidersize*/
         return size

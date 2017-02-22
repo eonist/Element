@@ -21,8 +21,7 @@ class ListModifier {
      * Scrolls the list to a scalar position (value 0-1)
      */
     static func scrollTo(_ list:IList,_ progress:CGFloat){
-        let itemsHeight:CGFloat = ListParser.itemsHeight(list)/*total height of all items*/
-        let y:CGFloat = ListModifier.scrollTo(progress, (list as! IElement).height, itemsHeight)
+        let y:CGFloat = ListModifier.scrollTo(progress, list.height, list.itemsHeight)
         list.lableContainer!.y = y/*we offset the y position of the lableContainer*/
     }
     /**

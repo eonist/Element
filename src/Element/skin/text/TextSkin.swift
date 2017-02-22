@@ -12,9 +12,7 @@ class TextSkin:Skin,ITextSkin{
     //the bellow line was update to swift 3, may break things
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     private var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
-    //func setText(text:String)
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
-        //Swift.print("TextSkin.init()")
         textField = TextField(frame: NSRect())
         //textField.sizeToFit()
         textField.stringValue = text
@@ -41,9 +39,7 @@ class TextSkin:Skin,ITextSkin{
     func applyProperties(_ textField:TextField){
         let padding:Padding = StylePropertyParser.padding(self)
         let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
-        //Swift.print("TextSkin.applyProperties() width: " + "\(width)")
         let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
-        //Swift.print("TextSkin.applyProperties() height: " + "\(height)")
         textField.frame.width = width/*SkinParser.width(this)*/
         textField.frame.height = height/*SkinParser.height(this)*/
         super.frame.width = width//quick fix

@@ -11,7 +11,8 @@ import Cocoa
  * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
  * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
-class FastList4:Element,IList {
+typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
+class FastList:Element,IList {
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
@@ -104,7 +105,7 @@ class FastList4:Element,IList {
     override func getClassType() -> String {return "\(List.self)"}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension FastList4{
+extension FastList{
     /**
      * Creates, applies data and aligns items defined in PARAM: range
      * TODO: You can optimize the range stuff later when all cases work (it would be possible to creat a custom diff method that is simpler and faster than using generic intersection,diff and exclude)

@@ -19,14 +19,14 @@ class TreeList:Element,ITreeList {
         self.node = node
         super.init(width, height, parent, id)
         self.node.event = onEvent//Add event handler for the node
-        //layer!.masksToBounds = false
+        layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
-        let maskContainer = addSubView(Container(width,height-2/*<--quick fix*/,self,"maskContainer"))
+        //let maskContainer = addSubView(Container(width,height-2/*<--quick fix*/,self,"maskContainer"))
         //maskContainer.layer!.masksToBounds = true/*masks the children to the frame*/
-        itemContainer = maskContainer.addSubView(Container(width,height,maskContainer,"lable"))
+        itemContainer = addSubView(Container(width,height,self,"lable"))
         //itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
         setXML(node.xml)
     }

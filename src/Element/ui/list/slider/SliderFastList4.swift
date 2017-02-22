@@ -51,6 +51,12 @@ class SliderFastList4:FastList4,ISliderList {
         if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
         else {super.onEvent(event)}
     }
+    /**
+     * TODO: This must be implemented in the future, see SliderList for instructions
+     */
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
+        super.setSize(width, height)
+    }
 }
 private class Utils{
     /**

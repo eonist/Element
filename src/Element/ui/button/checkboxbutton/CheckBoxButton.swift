@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-typealias CheckBox = CheckButton/*CheckBox purly exists to differentiate between types in css*/
 /**
  * TODO: Implement a way to also include the text in being in a checked status
  */
@@ -43,3 +42,4 @@ class CheckBoxButton:Button,ICheckable{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+class CheckBox:CheckButton{}/*CheckBox purly exists to differentiate between types in css*/

@@ -216,3 +216,20 @@ extension FastList4{
  inActive.removeAll()
  
  */
+
+/*
+private class Utils{
+    /**
+     * Temp solution
+     * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
+     * NOTE: maybe we can avoid hiding by just placing the view outside the mask item.y = top - item.height should to
+     */
+    static func hide(_ view:NSView, _ isHidden:Bool){
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        //Change properties here without animation
+        view.isHidden = isHidden
+        CATransaction.commit()
+    }
+}
+*/

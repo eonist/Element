@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 /**
  * TODO: Implement setSize, see SliderList for implementation
  */

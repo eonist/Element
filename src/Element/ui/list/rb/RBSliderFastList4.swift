@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 /**
  * TODO: You need to update slider and mover on DP event: see SliderList for implementation
  */

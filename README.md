@@ -44,3 +44,8 @@ btn.event = onClick
 ## iOS:
 Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)   
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
+
+## Progress:
+
+**2017-02-22**  
+- Significant improvements to RBSliderFastList, SliderFastList and FastList

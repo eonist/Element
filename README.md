@@ -49,6 +49,10 @@ Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)
 
 ## Progress:
 **2017-02-23**  
-- Fixed margin error in TreeList
+- Fixed slider positioning in sliderTreeList  
+
+**2017-02-23**  
+- Fixed margin error in TreeList  
+
 **2017-02-22**  
 - Significant improvements to RBSliderFastList, SliderFastList and FastList

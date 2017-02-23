@@ -131,7 +131,8 @@ extension TreeList{
 }
 extension ITreeList{
     /**
-     * Adds an instance that impliments ITreeListItem to the itemContainer
+     * Takes care of adding items to the itemContainer
+     * NOTE: Adds an instance that impliments ITreeListItem to the itemContainer
      */
     func addItem(_ item:NSView){// :TODO: rename to add
         //Swift.print("addItem() item: " + "\(item)")
@@ -139,6 +140,7 @@ extension ITreeList{
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
+     * Takes care of adding items to the itemContainer at a specific index
      * NOTE: Use TreeList.node.addAt method if you want to add things to the TreeList, this method is then eventually used internally
      */
     func addItemAt(_ item:NSView,_ index:Int){// :TODO: rename to addAt
@@ -146,6 +148,7 @@ extension ITreeList{
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
+     * Takes care of removing items to the itemContainer at a specific index
      * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally
      */
     func removeAt(_ index:Int){

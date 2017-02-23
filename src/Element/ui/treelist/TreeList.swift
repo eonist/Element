@@ -32,6 +32,7 @@ class TreeList:Element,ITreeList {
      * EventListeners
      */
     override func onEvent(_ event: Event) {
+        Swift.print("onEvent: " + "\(event.type)")
         if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
         else if(event.type == SelectEvent.select /*&& event.immediate === itemContainer*/){onItemSelect(event as! SelectEvent)}
         else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}

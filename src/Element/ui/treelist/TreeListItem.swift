@@ -21,7 +21,6 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         super.onEvent(event)
         if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
     }
-    
     override func getHeight() -> CGFloat {
         //Swift.print("TreeListItem.getHeight(): ")
         var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
@@ -46,8 +45,8 @@ extension ITreeListItem{
      */
     func open(){
         //Swift.print("TreeListItem.open()")
-        setChecked(true)
-        checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
+        self.setChecked(true)
+        self.checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
     }
     /**
      * Simulates what happens when the user clicks on the CheckBox instanance
@@ -55,8 +54,8 @@ extension ITreeListItem{
      */
     func close(){
         //Swift.print("TreeListItem.close()")
-        setChecked(false)
-        checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
+        self.setChecked(false)
+        self.checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }
     /**
      * Event handler

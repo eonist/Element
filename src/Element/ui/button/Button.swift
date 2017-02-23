@@ -69,8 +69,9 @@ class Button:Element {
     /**
      * New
      * IMPORTANT: we forward the original NSEvent, because NSEvent cant be programaticly created, or at least its difficult, but it is a requsit when promting contxt menu etc
+     * We also don't need to forward the rightMouseDOwn NSevent as it can be spawned from the ButtonEvent if needed
      */
-    override func rightMouseDown(with event: NSEvent) {
+    override func rightMouseDown(with event:NSEvent) {
         super.onEvent(ButtonEvent(ButtonEvent.rightMouseDown,self,event))
         //super.rightMouseDown(with: event)
     }

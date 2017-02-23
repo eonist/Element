@@ -120,19 +120,6 @@ class TreeList:Element,ITreeList {
         //Swift.print("onBackgroundMouseClick")
         TreeListModifier.unSelectAll(self)
     }
-    func popUpMenu(_ event: NSEvent) {
-        var theMenu = NSMenu(title: "Contextual menu")
-        theMenu.addItemWithTitle("Action 1", action: Selector("action1:"), keyEquivalent: "")
-        theMenu.addItemWithTitle("Action 2", action: Selector("action2:"), keyEquivalent: "")
-        
-        for item: AnyObject in theMenu.itemArray {
-            if let menuItem = item as? NSMenuItem {
-                menuItem.target = self
-            }
-        }
-        
-        NSMenu.popUpContextMenu(theMenu, withEvent:event, forView:self.view)
-    }
     /**
      * EventListeners
      */
@@ -144,7 +131,6 @@ class TreeList:Element,ITreeList {
         else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
         else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
         //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
-        else{onEvent(event)}//forward other events
     }
     func getCount() -> Int{
         return itemContainer!.subviews.count

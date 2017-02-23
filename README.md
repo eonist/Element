@@ -11,7 +11,7 @@ A typical Element app consists of 90% Swift code and 10% CSS and SVG. CSS Handle
 <img width="700" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Style_diagram.svg">
 
 ## Installation:
-- Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager
+- Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager.
 - Add this to your Package.swift file
 
 ```swift
@@ -35,6 +35,8 @@ func onClick(event:Event){
 }
 btn.event = onClick
 ```
+  
+You can also compile Element as a regular .framework, requires swift-utils .framework  
 
 ## Resources: 
 - Simple example app made with Element: [Stash](https://github.com/stylekit/stash) 

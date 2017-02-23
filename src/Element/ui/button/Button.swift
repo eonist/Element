@@ -7,7 +7,6 @@ import Cocoa
  */
 class Button:Element {
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
-        //Swift.print("Button.init()")
         super.init(width, height, parent, id)
         //addTrackingRect(self.bounds, owner: self, userData: nil, assumeInside: true)//This enables entered and exited events to fire //let focusTrackingAreaOptions:NSTrackingAreaOptions = [NSTrackingActiveInActiveApp,NSTrackingMouseEnteredAndExited,NSTrackingAssumeInside,NSTrackingInVisibleRect,NSTrackingEnabledDuringMouseDrag]//NSTrackingEnabledDuringMouseDrag to mine to make sure the rollover behaves still when dragging in and out of the area.//TODO: you may need to update trackingarea: - (void)updateTrackingAreas
     }
@@ -15,7 +14,6 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event
      */
     override func mouseOver(_ event:MouseEvent) {
-        //Swift.print("Button.mouseOver() ")
         if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             setSkinState(getSkinState())
@@ -26,7 +24,6 @@ class Button:Element {
      * Handles actions and drawing states for the mouseOut action
      */
     override func mouseOut(_ event:MouseEvent) {
-        //Swift.print("Button.mouseOut() ")
         //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
             state = SkinStates.none

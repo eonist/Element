@@ -10,9 +10,9 @@ class ButtonEvent:Event{
     static var upOutside:String = "buttonEventUpOutside"
     static var out:String = "buttonEventOut"
     static var over:String = "buttonEventOut"
-    weak var event:NSEvent?
-    init(_ type:String = "", _ origin:AnyObject,_ event:NSEvent?){
-        self.event = event
-        super.init(type, origin)
-    }
+    /*weak var event:NSEvent?
+     init(_ type:String = "", _ origin:AnyObject,_ event:NSEvent? = nil){
+     self.event = event
+     super.init(type, origin)
+     }*/
 }

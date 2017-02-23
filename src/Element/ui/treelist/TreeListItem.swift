@@ -69,4 +69,6 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-ITreeListItem
+extension ITreeListItem{
+    
+}

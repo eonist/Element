@@ -72,6 +72,7 @@ class Button:Element {
      * We also don't need to forward the rightMouseDOwn NSevent as it can be spawned from the ButtonEvent if needed
      */
     override func rightMouseDown(with event:NSEvent) {
+        Swift.print("rightMouseDown: " + "\(event)")
         super.onEvent(ButtonEvent(ButtonEvent.rightMouseDown,self,event))
         //super.rightMouseDown(with: event)
     }

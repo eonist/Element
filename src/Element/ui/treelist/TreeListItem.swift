@@ -15,27 +15,6 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         itemContainer!.isHidden = !getChecked()
     }
     /**
-     * Takes care of adding items to the itemContainer
-     */
-    func addItem(_ item:NSView){
-        _ = itemContainer!.addSubView(item)
-        ElementModifier.floatChildren(itemContainer!)
-    }
-    /**
-     * Takes care of adding items to the itemContainer at a specific index
-     */
-    func addItemAt(_ item:NSView,_ index:Int){
-        itemContainer!.addSubviewAt(item, index)
-        ElementModifier.floatChildren(itemContainer!)
-    }
-    /**
-     * Takes care of removing items to the itemContainer at a specific index
-     */
-    func removeAt(_ index:Int){
-        itemContainer!.removeSubviewAt(index)
-        ElementModifier.floatChildren(itemContainer!)
-    }
-    /**
      * Simulates what happens when the user clicks on the CheckBox instanance
      * NOTE: this method is used in conjunction with the explode method
      */

@@ -30,7 +30,6 @@ class TreeList:Element,ITreeList {
         //itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
         setXML(node.xml)
     }
-    
     /**
      * EventListeners
      */
@@ -42,9 +41,6 @@ class TreeList:Element,ITreeList {
         else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
         else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
         //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
-    }
-    func getCount() -> Int{
-        return itemContainer!.subviews.count
     }
     /**
      * Returns "TreeList"
@@ -73,6 +69,67 @@ extension TreeList{
         _ = TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
     }
+    
+    /**
+     * NOTE: This method gets all SelectEvent's from all decending ICheckable instances
+     */
+    func onItemSelect(_ event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
+        Swift.print("onItemSelect()")
+        let descendants:Array<AnyObject> = TreeListParser.descendants(self)
+        let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
+        //Swift.print("event.origin: " + "\(event.origin)")
+        let selected:ISelectable = event.origin as! ISelectable
+        SelectModifier.unSelectAllExcept(selected, selectables)
+        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)//<--new
+        //Swift.print("event.isSelected: " + "\(event.isSelected)")
+        _ = XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))//<--new
+        super.onEvent(event)
+    }
+    /**
+     * NOTE: This method gets all CheckEvent's from all decending ICheckable instances
+     */
+    func onItemCheck(_ event:CheckEvent) {
+        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
+        //Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
+        _ = XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
+        ElementModifier.floatChildren(itemContainer!)
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+    }
+    func onDatabaseRemoveAt(_ event:NodeEvent)  {
+        TreeListModifier.removeAt(self, event.index)
+        ElementModifier.floatChildren(itemContainer!)
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+    }
+    func onDatabaseRemoveAll(_ event:NodeEvent){
+        TreeListModifier.removeAll(self)
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+    }
+    /**
+     * NOTE: the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
+     * NOTE: the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
+     */
+    func onDatabaseAddAt(_ event : NodeEvent) {
+        //Swift.print("onDatabaseAddAt() "+ this);
+        let parentIndex:Array = event.index.slice2(0,event.index.count-1)
+        let parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as! ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
+        let item:NSView = TreeListUtils.item(event.xml!, parentTreeList.itemContainer!, CGPoint(width, itemHeight))
+        let itemIndex:Int = event.index[event.index.count-1]
+        parentTreeList.addItemAt(item,itemIndex);/*We could use TreeListModifier.addAt(parentTreeList, index, item) here but since we already have the parent since we need it when creating the item we can just use the addAt method directly*/
+        ElementModifier.floatChildren(itemContainer!)/*Re aligns the entire treesturcture*/
+        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+    }
+    /**
+     * NOTE: if an attribute changes in any child in node.xml, this handles the cooresponding action
+     */
+    func onDatabaseSetAttributeAt(_ event : NodeEvent) {
+        TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
+    }
+    func onBackgroundMouseClick(_ event:MouseEvent){
+        //Swift.print("onBackgroundMouseClick")
+        TreeListModifier.unSelectAll(self)
+    }
+}
+extension ITreeList{
     /**
      * Adds an instance that impliments ITreeListItem to the itemContainer
      */
@@ -95,62 +152,7 @@ extension TreeList{
         itemContainer!.removeSubviewAt(index)
         ElementModifier.floatChildren(itemContainer!)
     }
-    /**
-     * NOTE: This method gets all SelectEvent's from all decending ICheckable instances
-     */
-    private func onItemSelect(_ event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
-        Swift.print("onItemSelect()")
-        let descendants:Array<AnyObject> = TreeListParser.descendants(self)
-        let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
-        //Swift.print("event.origin: " + "\(event.origin)")
-        let selected:ISelectable = event.origin as! ISelectable
-        SelectModifier.unSelectAllExcept(selected, selectables)
-        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)//<--new
-        //Swift.print("event.isSelected: " + "\(event.isSelected)")
-        _ = XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))//<--new
-        super.onEvent(event)
-    }
-    /**
-     * NOTE: This method gets all CheckEvent's from all decending ICheckable instances
-     */
-    private func onItemCheck(_ event:CheckEvent) {
-        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        //Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
-        _ = XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
-        ElementModifier.floatChildren(itemContainer!)
-        super.onEvent(TreeListEvent(TreeListEvent.change,self))
-    }
-    private func onDatabaseRemoveAt(_ event:NodeEvent)  {
-        TreeListModifier.removeAt(self, event.index)
-        ElementModifier.floatChildren(itemContainer!)
-        super.onEvent(TreeListEvent(TreeListEvent.change,self))
-    }
-    private func onDatabaseRemoveAll(_ event:NodeEvent){
-        TreeListModifier.removeAll(self)
-        super.onEvent(TreeListEvent(TreeListEvent.change,self))
-    }
-    /**
-     * NOTE: the idea is that the databaseevent.addAt is propogated up until the TreeList instance, then it looks at what index it came from, and tries to addAt that index
-     * NOTE: the TreeList.addAt is for the internal workings of the Class, use TreeList.database.addAt to add new items
-     */
-    private func onDatabaseAddAt(_ event : NodeEvent) {
-        //Swift.print("onDatabaseAddAt() "+ this);
-        let parentIndex:Array = event.index.slice2(0,event.index.count-1)
-        let parentTreeList:ITreeList = TreeListParser.itemAt(self, parentIndex) as! ITreeList//DisplayObjectParser.getAt(_itemContainer,event.index.slice(0,event.index.length-1)) as ITreeList;//this;//TreeListParser.itemAt(this,event.index) as ITreeList;
-        let item:NSView = TreeListUtils.item(event.xml!, parentTreeList.itemContainer!, CGPoint(width, itemHeight))
-        let itemIndex:Int = event.index[event.index.count-1]
-        parentTreeList.addItemAt(item,itemIndex);/*We could use TreeListModifier.addAt(parentTreeList, index, item) here but since we already have the parent since we need it when creating the item we can just use the addAt method directly*/
-        ElementModifier.floatChildren(itemContainer!)/*Re aligns the entire treesturcture*/
-        super.onEvent(TreeListEvent(TreeListEvent.change,self))
-    }
-    /**
-     * NOTE: if an attribute changes in any child in node.xml, this handles the cooresponding action
-     */
-    private func onDatabaseSetAttributeAt(_ event : NodeEvent) {
-        TreeListModifier.setTitleAt(self, event.index, event.xml!["title"]!)
-    }
-    private func onBackgroundMouseClick(_ event:MouseEvent){
-        //Swift.print("onBackgroundMouseClick")
-        TreeListModifier.unSelectAll(self)
+    func getCount() -> Int{
+        return itemContainer!.subviews.count
     }
 }

@@ -30,6 +30,39 @@ class TreeList:Element,ITreeList {
         //itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
         setXML(node.xml)
     }
+    
+    /**
+     * EventListeners
+     */
+    override func onEvent(_ event: Event) {
+        if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
+        else if(event.type == SelectEvent.select /*&& event.immediate === itemContainer*/){onItemSelect(event as! SelectEvent)}
+        else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}
+        else if(event.type == NodeEvent.removeAll && event.origin === node){onDatabaseRemoveAll(event as! NodeEvent)}
+        else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
+        else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
+        //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
+    }
+    func getCount() -> Int{
+        return itemContainer!.subviews.count
+    }
+    /**
+     * Returns "TreeList"
+     * NOTE: This function is used to find the correct class type when synthezing the element cascade
+     */
+    override func getClassType() -> String {
+        return "\(TreeList.self)"
+    }
+    /**
+     *
+     */
+    override func setSize(_ width:CGFloat, _ height:CGFloat){
+        super.setSize(width,height);
+        ElementModifier.size(itemContainer!, CGPoint(width,itemHeight));/*Resizes all items in the itemContainer*/
+    }
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension TreeList{
     /**
      *
      */
@@ -56,7 +89,7 @@ class TreeList:Element,ITreeList {
         ElementModifier.floatChildren(itemContainer!)
     }
     /**
-     * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
+     * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally
      */
     func removeAt(_ index:Int){
         itemContainer!.removeSubviewAt(index)
@@ -120,34 +153,4 @@ class TreeList:Element,ITreeList {
         //Swift.print("onBackgroundMouseClick")
         TreeListModifier.unSelectAll(self)
     }
-    /**
-     * EventListeners
-     */
-    override func onEvent(_ event: Event) {
-        if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
-        else if(event.type == SelectEvent.select /*&& event.immediate === itemContainer*/){onItemSelect(event as! SelectEvent)}
-        else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}
-        else if(event.type == NodeEvent.removeAll && event.origin === node){onDatabaseRemoveAll(event as! NodeEvent)}
-        else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
-        else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
-        //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
-    }
-    func getCount() -> Int{
-        return itemContainer!.subviews.count
-    }
-    /**
-     * Returns "TreeList"
-     * NOTE: This function is used to find the correct class type when synthezing the element cascade
-     */
-    override func getClassType() -> String {
-        return "\(TreeList.self)"
-    }
-    /**
-     *
-     */
-    override func setSize(_ width:CGFloat, _ height:CGFloat){
-        super.setSize(width,height);
-        ElementModifier.size(itemContainer!, CGPoint(width,itemHeight));/*Resizes all items in the itemContainer*/
-    }
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

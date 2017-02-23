@@ -10,7 +10,7 @@ class SliderTreeList:TreeList{
         super.resolveSkin()
         let itemsHeight:CGFloat = TreeListParser.itemsHeight(self)
         sliderInterval = SliderParser.interval(itemsHeight, getHeight(), itemHeight)//Math.floor(itemsHeight - getHeight())/itemHeight;// :TODO: use ScrollBarUtils.interval instead?
-        slider = addSubView(VSlider(itemHeight,getHeight(),0,0,self))
+        slider = addSubView(VSlider(NaN,getHeight(),0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/TreeListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
         

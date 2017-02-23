@@ -38,7 +38,7 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension ITreeListItem{
+extension ITreeListItem:ICheckable{
     /**
      * Simulates what happens when the user clicks on the CheckBox instanance
      * NOTE: this method is used in conjunction with the explode method
@@ -46,7 +46,7 @@ extension ITreeListItem{
     func open(){
         //Swift.print("TreeListItem.open()")
         self.setChecked(true)
-        self.checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
+        CheckBoxckBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))
     }
     /**
      * Simulates what happens when the user clicks on the CheckBox instanance
@@ -55,7 +55,7 @@ extension ITreeListItem{
     func close(){
         //Swift.print("TreeListItem.close()")
         self.setChecked(false)
-        self.checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
+        CheckBoxckBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))
     }
     /**
      * Event handler

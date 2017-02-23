@@ -24,8 +24,6 @@ class TreeList:Element,ITreeList {
     override func resolveSkin() {
         //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
-        //let maskContainer = addSubView(Container(width,height-2/*<--quick fix*/,self,"maskContainer"))
-        //maskContainer.layer!.masksToBounds = true/*masks the children to the frame*/
         itemContainer = addSubView(Container(width,height,self,"lable"))
         //itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
         setXML(node.xml)
@@ -43,18 +41,18 @@ class TreeList:Element,ITreeList {
         //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
     }
     /**
-     * Returns "TreeList"
-     * NOTE: This function is used to find the correct class type when synthezing the element cascade
-     */
-    override func getClassType() -> String {
-        return "\(TreeList.self)"
-    }
-    /**
      *
      */
     override func setSize(_ width:CGFloat, _ height:CGFloat){
         super.setSize(width,height);
         ElementModifier.size(itemContainer!, CGPoint(width,itemHeight));/*Resizes all items in the itemContainer*/
+    }
+    /**
+     * Returns "TreeList"
+     * NOTE: This function is used to find the correct class type when synthezing the element cascade
+     */
+    override func getClassType() -> String {
+        return "\(TreeList.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
@@ -69,7 +67,6 @@ extension TreeList{
         _ = TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         ElementModifier.floatChildren(itemContainer!)
     }
-    
     /**
      * NOTE: This method gets all SelectEvent's from all decending ICheckable instances
      */

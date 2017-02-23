@@ -36,7 +36,7 @@ class TreeListUtils {
     /**
      * Creates a data instance to make it easier to work with the attributes in the xml
      */
-    static func itemData(_ xml:XMLElement)->ItemData {
+    static func itemData(_ xml:XML)->ItemData {
         var attributes:Dictionary<String,String> = XMLParser.attribs(xml)
         let hasChildren:Bool = (attributes["hasChildren"] != nil && attributes["hasChildren"]! == "true") || (xml.children != nil && xml.children!.count > 0)//swift 3 update, simplify this line please
         let title:String = attributes["title"]!

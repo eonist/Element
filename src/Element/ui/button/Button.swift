@@ -73,8 +73,9 @@ class Button:Element {
      */
     override func rightMouseDown(with event:NSEvent) {
         Swift.print("Button.rightMouseDown: ")
-        super.onEvent(ButtonEvent(ButtonEvent.rightMouseDown,self,event))
-        super.rightMouseDown(with: event)
+        //super.onEvent(ButtonEvent(ButtonEvent.down,self,event))
+        super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
+        //super.rightMouseDown(with: event)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

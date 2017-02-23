@@ -56,6 +56,7 @@ private class Utils{
         let isOpen:Bool = attributes["isOpen"] != nil ? attributes["isOpen"] == "true" : false//<- you can shorten this by doing ??
         let isSelected:Bool = attributes["isSelected"] != nil ? attributes["isSelected"] == "true" : false//<- you can shorten this by doing ??
         let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
+        let isFolder:Bool? = attributes["isFolder"] != nil ? attributes["isFolder"] == "true" : false
         return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
     }
     static func treeListItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {

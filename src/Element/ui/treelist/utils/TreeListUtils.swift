@@ -23,7 +23,8 @@ class TreeListUtils {
      */
     static func treeItems(_ xml:XMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
         //Swift.print("treeItems size: " + "\(size)")
-        for child in xml.children! as! Array<XMLElement>{
+        xml.children?.forEach {
+            let child:XML = $0 as! XML
             let itemData:ItemData = Utils.itemData(child)
             let treeItem:Element = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             //Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")

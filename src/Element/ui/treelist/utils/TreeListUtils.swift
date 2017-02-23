@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-typealias ItemData = (title:String,hasChildren:Bool,isOpen:Bool,isVisible:Bool,isSelected:Bool,isFolder:Bool?)
+typealias ItemData = (title:String,hasChildren:Bool,isOpen:Bool,isVisible:Bool,isSelected:Bool)
 
 class TreeListUtils {
     /**
@@ -55,8 +55,7 @@ private class Utils{
         let isOpen:Bool = attributes["isOpen"] != nil ? attributes["isOpen"] == "true" : false//<- you can shorten this by doing ??
         let isSelected:Bool = attributes["isSelected"] != nil ? attributes["isSelected"] == "true" : false//<- you can shorten this by doing ??
         let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
-        let isFolder:Bool? = attributes["isFolder"] != nil ? attributes["isFolder"] == "true" : nil//new
-        return ItemData(title, hasChildren, isOpen, isVisible, isSelected, isFolder)
+        return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
     }
     static func treeListItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
         //Swift.print("treeListItem size: " + "\(size)")

@@ -69,17 +69,6 @@ private class Utils{
 /**
  * You could probably make this a tuple with an typealias named ItemData? or a struct?
  */
-class ItemData{
-    var title:String
-    var hasChildren:Bool
-    var isOpen:Bool
-    var isVisible:Bool
-    var isSelected:Bool
-    init(_ title:String, _ hasChildren:Bool, _ isOpen:Bool, _ isVisible:Bool , _ isSelected:Bool) {
-        self.title = title
-        self.hasChildren = hasChildren
-        self.isOpen = isOpen
-        self.isVisible = isVisible
-        self.isSelected = isSelected
-    }
-}
+typealias ItemData = (title:String,hasChildren:Bool,isOpen:Bool,isVisible:Bool,isSelected:Bool)
+
+

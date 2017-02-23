@@ -68,10 +68,11 @@ class Button:Element {
     }
     /**
      * New
+     * IMPORTANT: we forward the original NSEvent, because NSEvent cant be programaticly created, or at least its difficult, but it is a requsit when promting contxt menu etc
      */
     override func rightMouseDown(with event: NSEvent) {
-        
-        super.rightMouseDown(with: event)
+        super.onEvent(ButtonEvent(ButtonEvent.rightMouseDown,self,event))
+        //super.rightMouseDown(with: event)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

@@ -10,7 +10,7 @@ class TreeListUtils {
      */
     static func item(_ xml:XML,_ parent:IElement,_ size:CGPoint)->NSView {
         //Swift.print("item size: " + "\(size)")
-        let itemData:ItemData = Utils.itemData(xml)
+        let itemData:ItemData = itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
         if(itemData.hasChildren) {_ = treeItems(xml,item as! ITreeList,CGPoint(size.x, size.y)) as! NSView}/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         return item
@@ -24,7 +24,7 @@ class TreeListUtils {
     static func treeItems(_ xml:XML, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
         xml.children?.forEach {
             let child:XML = $0 as! XML
-            let itemData:ItemData = Utils.itemData(child)
+            let itemData:ItemData = itemData(child)
             let treeItem:Element = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             if(itemData.hasChildren) {
                 _ = TreeListUtils.treeItems(child, treeItem as! ITreeList,size)
@@ -32,18 +32,6 @@ class TreeListUtils {
             treeList.addItem(treeItem)/*Adds the item to the treeList*/
         }
         return treeList
-    }
-}
-private class Utils{
-    /**
-     * // :TODO: write java doc
-     */
-    static func treeItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> Element {
-        //Swift.print("treeItem size: " + "\(size)")
-        let item:Element = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
-        //Swift.print("itemData.isVisible: " + "\(itemData.isVisible)")
-        item.isHidden = !itemData.isVisible// :TODO: should this be here and do we need isVisible?
-        return item
     }
     /**
      * Creates a data instance to make it easier to work with the attributes in the xml
@@ -57,6 +45,19 @@ private class Utils{
         let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
         return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
     }
+}
+private class Utils{
+    /**
+     * // :TODO: write java doc
+     */
+    static func treeItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> Element {
+        //Swift.print("treeItem size: " + "\(size)")
+        let item:Element = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
+        //Swift.print("itemData.isVisible: " + "\(itemData.isVisible)")
+        item.isHidden = !itemData.isVisible// :TODO: should this be here and do we need isVisible?
+        return item
+    }
+    
     static func treeListItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
         //Swift.print("treeListItem size: " + "\(size)")
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)

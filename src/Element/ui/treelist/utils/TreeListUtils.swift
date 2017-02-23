@@ -8,7 +8,7 @@ class TreeListUtils {
      * Returns SelectTextButton or a TreeListItem from an xml
      * NOTE: this method is used in the onDataBaseAddAt method in the TreeList class
      */
-    static func item(_ xml:XMLElement,_ parent:IElement,_ size:CGPoint)->NSView {
+    static func item(_ xml:XML,_ parent:IElement,_ size:CGPoint)->NSView {
         //Swift.print("item size: " + "\(size)")
         let itemData:ItemData = Utils.itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
@@ -21,13 +21,11 @@ class TreeListUtils {
      * PARAM: size is the size of each treeItem
      * TODO: this should just return not modify?!? and be moved to TreeListParser
      */
-    static func treeItems(_ xml:XMLElement, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
-        //Swift.print("treeItems size: " + "\(size)")
+    static func treeItems(_ xml:XML, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
         xml.children?.forEach {
             let child:XML = $0 as! XML
             let itemData:ItemData = Utils.itemData(child)
             let treeItem:Element = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
-            //Swift.print("itemData.hasChildren: " + "\(itemData.hasChildren)")
             if(itemData.hasChildren) {
                 _ = TreeListUtils.treeItems(child, treeItem as! ITreeList,size)
             }// :TODO: move this line into treeitem?

@@ -10,7 +10,7 @@ class TreeListUtils {
      */
     static func item(_ xml:XML,_ parent:IElement,_ size:CGPoint)->NSView {
         //Swift.print("item size: " + "\(size)")
-        let itemData:ItemData = itemData(xml)
+        let itemData:ItemData = TreeListUtils.itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
         if(itemData.hasChildren) {_ = treeItems(xml,item as! ITreeList,CGPoint(size.x, size.y)) as! NSView}/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
         return item
@@ -24,7 +24,7 @@ class TreeListUtils {
     static func treeItems(_ xml:XML, _ treeList:ITreeList, _ size:CGPoint) -> ITreeList {//TODO:use CGSize
         xml.children?.forEach {
             let child:XML = $0 as! XML
-            let itemData:ItemData = itemData(child)
+            let itemData:ItemData = TreeListUtils.itemData(child)
             let treeItem:Element = Utils.treeItem(itemData,treeList.itemContainer as! IElement,size)
             if(itemData.hasChildren) {
                 _ = TreeListUtils.treeItems(child, treeItem as! ITreeList,size)

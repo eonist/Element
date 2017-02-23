@@ -153,6 +153,6 @@ extension ITreeList{
         ElementModifier.floatChildren(itemContainer!)
     }
     func getCount() -> Int{
-        return itemContainer!.subviews.count
+        return itemContainer!.numSubViews
     }
 }

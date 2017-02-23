@@ -15,6 +15,32 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         itemContainer!.isHidden = !getChecked()
     }
     /**
+     * Event listeners
+     */
+    override func onEvent(_ event:Event) {
+        super.onEvent(event)
+        if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
+    }
+    
+    override func getHeight() -> CGFloat {
+        //Swift.print("TreeListItem.getHeight(): ")
+        var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
+        if(getChecked()) {
+            for i in 0..<itemContainer!.subviews.count{
+                height += SkinParser.totalHeight((itemContainer!.getSubviewAt(i) as! IElement).skin!)
+            }
+            //Swift.print("extraHeight: " + "\(extraHeight)")
+        }
+        return height
+    }
+    override func setSize(_ width:CGFloat, _ height:CGFloat){
+        super.setSize(width,height)
+        ElementModifier.size(itemContainer!, CGPoint(width,height))/*so that descendants is updated when the TreeList is resized*/
+    }
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension ITreeListItem{
+    /**
      * Simulates what happens when the user clicks on the CheckBox instanance
      * NOTE: this method is used in conjunction with the explode method
      */
@@ -42,33 +68,4 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         if(!event.isChecked) {}/*this is called from any decending treeListItem*/
         ElementModifier.floatChildren(itemContainer!)//<--temp fix, seems like you need to float when checked is true and false. Try to fix this, or figure out the intended logic around this subject
     }
-    /**
-     * Event listeners
-     */
-    override func onEvent(_ event:Event) {
-        super.onEvent(event)
-        if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
-    }
-    func getCount()->Int{
-        return itemContainer!.subviews.count
-    }
-    override func getHeight() -> CGFloat {
-        //Swift.print("TreeListItem.getHeight(): ")
-        var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
-        if(getChecked()) {
-            for i in 0..<itemContainer!.subviews.count{
-                height += SkinParser.totalHeight((itemContainer!.getSubviewAt(i) as! IElement).skin!)
-            }
-            //Swift.print("extraHeight: " + "\(extraHeight)")
-        }
-        return height
-    }
-    override func setSize(_ width:CGFloat, _ height:CGFloat){
-        super.setSize(width,height)
-        ElementModifier.size(itemContainer!, CGPoint(width,height))/*so that descendants is updated when the TreeList is resized*/
-    }
-    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
-}
-extension ITreeListItem{
-    
 }

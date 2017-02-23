@@ -32,7 +32,6 @@ class TreeList:Element,ITreeList {
      * EventListeners
      */
     override func onEvent(_ event: Event) {
-        Swift.print("TreeList.onEvent: " + "\(event.type)")
         if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
         else if(event.type == SelectEvent.select /*&& event.immediate === itemContainer*/){onItemSelect(event as! SelectEvent)}
         else if(event.type == NodeEvent.removeAt && event.origin === node){onDatabaseRemoveAt(event as! NodeEvent)}
@@ -40,6 +39,7 @@ class TreeList:Element,ITreeList {
         else if(event.type == NodeEvent.addAt && event.origin === node){onDatabaseAddAt(event as! NodeEvent)}
         else if(event.type == NodeEvent.setAttributeAt && event.origin === node){onDatabaseSetAttributeAt(event as! NodeEvent)}
         //TODO: you also need to implement: onBackgroundMouseClick when the skin of self is clicked
+        else{super.onEvent(event)}//forward other event
     }
     /**
      *

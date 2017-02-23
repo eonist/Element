@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
 
+typealias ItemData = (title:String,hasChildren:Bool,isOpen:Bool,isVisible:Bool,isSelected:Bool)
+
 class TreeListUtils {
     /**
      * Returns SelectTextButton or a TreeListItem from an xml
@@ -66,9 +68,7 @@ private class Utils{
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }
-/**
- * You could probably make this a tuple with an typealias named ItemData? or a struct?
- */
-typealias ItemData = (title:String,hasChildren:Bool,isOpen:Bool,isVisible:Bool,isSelected:Bool)
+
+
 
 

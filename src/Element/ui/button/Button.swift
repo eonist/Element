@@ -70,6 +70,7 @@ class Button:Element {
      * New
      */
     override func rightMouseDown(with event: NSEvent) {
+        
         super.rightMouseDown(with: event)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

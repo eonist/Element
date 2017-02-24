@@ -55,6 +55,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
     }
     func onTreeListChange(_ event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
+        setProgress(slider!.progress)//temp solution
         updateSlider()
     }
     override func scrollWheel(with event: NSEvent) {

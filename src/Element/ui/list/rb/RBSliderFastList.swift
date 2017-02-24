@@ -34,14 +34,12 @@ class RBSliderFastList:FastList,IRBSliderList{
         slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
         setProgress(0)/*<--Not really needed, but nice to have while debugging*/
     }
-    
     /**
      * PARAM value: is the final y value for the lableContainer
      */
     override func setProgress(_ value:CGFloat){
         //Swift.print("value: " + "\(value)")
         let itemsHeight = self.itemsHeight//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
-        
         if(itemsHeight < height){//when there is few items in view, different overshoot rules apply, this should be written more elegant
             progressValue = value / height
             //Swift.print("progressValue: " + "\(progressValue)")

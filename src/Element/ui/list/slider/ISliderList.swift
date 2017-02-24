@@ -11,7 +11,7 @@ extension ISliderList{
      * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ theEvent:NSEvent) {
-        let progress:CGFloat = Utils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
+        let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
         //Swift.print("progress: " + "\(progress)")
         setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
         self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/
@@ -29,7 +29,7 @@ extension ISliderList{
         slider!.setProgressValue(progress)
     }
 }
-private class Utils{
+class SliderListUtils{
     /**
      * Returns the progress og the sliderList (used when we scroll with the scrollwheel/touchpad)
      */

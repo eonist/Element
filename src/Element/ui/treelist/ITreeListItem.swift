@@ -7,3 +7,6 @@ protocol ITreeListItem:ITreeList{
     func setChecked(_ isChecked:Bool)
     func getChecked() -> Bool
 }
+extension ITreeListItem{
+    var itemHeight:CGFloat{return height}
+}

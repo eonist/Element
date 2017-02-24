@@ -67,9 +67,7 @@ class RBSliderList:List,IRBSliderList{
     }
     func scrollWheelExitedAndIsStationary(){
         Swift.print("RBSliderList.scrollWheelExitedAndIsStationary() ")
-        if(slider?.thumb?.getSkinState() == SkinStates.none){
-            slider?.thumb?.fadeOut()
-        }
+        if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}  
     }
     func scrollAnimStopped(){
         //Swift.print("RBSliderList.scrollAnimStopped()")

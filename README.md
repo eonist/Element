@@ -48,6 +48,10 @@ Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
 ## Progress:
+
+**2017-02-24**  
+- Improvements to SliderTreeList
+
 **2017-02-23**  
 - Fixed slider positioning in sliderTreeList  
 

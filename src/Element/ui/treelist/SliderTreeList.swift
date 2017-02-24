@@ -47,7 +47,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
         itemsHeight > height ? slider!.thumb!.fadeIn() : slider!.thumb!.fadeOut()/*<--new adition*/
     }
     override func scrollWheel(with event:NSEvent) {
-        Swift.print("SliderTreeList.event: " + "\(event)")
+        //Swift.print("SliderTreeList.scrollWheel(): " + "\(event)")
         scroll(event)/*forward the event to the extension*/
         super.scrollWheel(with:event)
     }

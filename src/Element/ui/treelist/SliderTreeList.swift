@@ -22,7 +22,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
      */
     func update(){
         Swift.print("SliderTreeList.update()");
-        let itemsHeight:CGFloat = TreeListParser.itemsHeight(self)/*total height of the items*/
+        
         /*
         Swift.print("itemsHeight: " + itemsHeight)
         Swift.print("itemHeight: " + itemHeight)
@@ -36,11 +36,11 @@ class SliderTreeList:TreeList,ISliderTreeList{
         let progressValue = itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         slider!.setProgressValue(progressValue)
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
-        TreeListModifier.scrollTo(self, progressValue)
+        
     }
     func setProgress(_ progress: CGFloat) {
         let progressValue = itemsHeight < height ? 0 : value
-        ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
+        TreeListModifier.scrollTo(self, progressValue)/*moves the labelContainer up and down*/
     }
 
     /**

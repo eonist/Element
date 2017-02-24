@@ -3,7 +3,8 @@ import Cocoa
 /**
  * NOTE: You must supply the itemHeight, since we need it to calculate the interval
  */
-class SliderTreeList:TreeList{
+class SliderTreeList:TreeList,ISliderTreeList{
+    
     var sliderInterval:CGFloat?
     var slider:VSlider?
     override func resolveSkin() {
@@ -37,6 +38,10 @@ class SliderTreeList:TreeList{
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
         TreeListModifier.scrollTo(self, progressValue)
     }
+    func setProgress(_ progress: CGFloat) {
+        <#code#>
+    }
+
     /**
      * Captures SliderEvent.change and then adjusts the List accordingly
      */
@@ -49,6 +54,9 @@ class SliderTreeList:TreeList{
     }
     override func scrollWheel(with event: NSEvent) {
         //Swift.print("theEvent: " + "\(theEvent)")
+        scroll(event)/*forward the event to the extension*/
+        
+        /*
         let scrollAmount:CGFloat = (event.deltaY/30)/sliderInterval!/*_scrollBar.interval*/
         var currentScroll:CGFloat = slider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
         currentScroll = NumberParser.minMax(currentScroll, 0, 1)
@@ -62,6 +70,8 @@ class SliderTreeList:TreeList{
             Swift.print("the scroll motion began")
             slider!.thumb!.setSkinState(SkinStates.none)
         }
+        */
+        
         super.scrollWheel(with:event)
     }
     override func onEvent(_ event: Event) {
@@ -80,7 +90,7 @@ extension ISliderTreeList{
      * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ theEvent:NSEvent) {
-        let progress:CGFloat = Utils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
+        let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
         //Swift.print("progress: " + "\(progress)")
         setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
         self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/

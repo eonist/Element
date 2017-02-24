@@ -38,8 +38,11 @@ class SliderTreeList:TreeList,ISliderTreeList{
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
         
     }
+    /**
+     * Moves the itemContainer up and down
+     */
     func setProgress(_ progress: CGFloat) {
-        let progressValue = itemsHeight < height ? 0 : value
+        let progressValue = itemsHeight < height ? 0 : progress
         TreeListModifier.scrollTo(self, progressValue)/*moves the labelContainer up and down*/
     }
 
@@ -47,7 +50,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
      * Captures SliderEvent.change and then adjusts the List accordingly
      */
     func onSliderChange(_ sliderEvent:SliderEvent){
-        TreeListModifier.scrollTo(self,sliderEvent.progress)
+        setProgress(sliderEvent.progress)//TreeListModifier.scrollTo(self,sliderEvent.progress)
     }
     func onTreeListChange(_ event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")

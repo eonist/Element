@@ -55,7 +55,13 @@ class SliderTreeList:TreeList,ISliderTreeList{
     }
     func onTreeListChange(_ event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
-        setProgress(slider!.progress)//temp solution
+        
+        /*temp solution - begins*/
+        let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)
+        let progressValue = itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+        setProgress(progressValue)
+        /*temp solution - ends*/
+        
         updateSlider()
     }
     override func scrollWheel(with event: NSEvent) {

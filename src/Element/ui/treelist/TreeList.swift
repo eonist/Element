@@ -88,10 +88,10 @@ extension TreeList{
      */
     func onItemCheck(_ event:CheckEvent) {
         let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
-        //Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
+        Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
         _ = XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
         ElementModifier.floatChildren(itemContainer!)
-        super.onEvent(TreeListEvent(TreeListEvent.change,self))
+        onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     func onDatabaseRemoveAt(_ event:NodeEvent)  {
         TreeListModifier.removeAt(self, event.index)

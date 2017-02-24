@@ -20,6 +20,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
     /**
      * Updates the thumb position and the position of the itemsContainer
      */
+    /*
     func update(){
         Swift.print("SliderTreeList.update()");
         
@@ -38,6 +39,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
         
     }
+    */
     /**
      * Moves the itemContainer up and down
      */
@@ -45,7 +47,6 @@ class SliderTreeList:TreeList,ISliderTreeList{
         let progressValue = itemsHeight < height ? 0 : progress
         TreeListModifier.scrollTo(self, progressValue)/*moves the labelContainer up and down*/
     }
-
     /**
      * Captures SliderEvent.change and then adjusts the List accordingly
      */
@@ -54,7 +55,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
     }
     func onTreeListChange(_ event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
-        update()
+        updateSlider()
     }
     override func scrollWheel(with event: NSEvent) {
         //Swift.print("theEvent: " + "\(theEvent)")

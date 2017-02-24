@@ -56,8 +56,7 @@ private class Utils{
         //Swift.print("itemData.isVisible: " + "\(itemData.isVisible)")
         item.isHidden = !itemData.isVisible// :TODO: should this be here and do we need isVisible?
         return item
-    }
-    
+    }    
     static func treeListItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
         //Swift.print("treeListItem size: " + "\(size)")
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)

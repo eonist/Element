@@ -39,7 +39,8 @@ class SliderTreeList:TreeList,ISliderTreeList{
         TreeListModifier.scrollTo(self, progressValue)
     }
     func setProgress(_ progress: CGFloat) {
-        <#code#>
+        let progressValue = itemsHeight < height ? 0 : value
+        ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
     }
 
     /**

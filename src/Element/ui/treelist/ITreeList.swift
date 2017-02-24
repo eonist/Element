@@ -7,3 +7,6 @@ protocol ITreeList:IElement {
     func getCount() -> Int
     func removeAt(_ index:Int)
 }
+extension ITreeList{
+    var itemsHeight:CGFloat {return TreeListParser.itemsHeight(self)}/*Convenience*/
+}

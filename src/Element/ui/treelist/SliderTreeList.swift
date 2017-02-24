@@ -53,6 +53,9 @@ class SliderTreeList:TreeList,ISliderTreeList{
     func onSliderChange(_ sliderEvent:SliderEvent){
         setProgress(sliderEvent.progress)//TreeListModifier.scrollTo(self,sliderEvent.progress)
     }
+    /**
+     *
+     */
     func onTreeListChange(_ event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
         

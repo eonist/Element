@@ -34,7 +34,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
      * TreeListEvent's happen when the TreeList has changed, aka items are added/removed/edited
      */
     func onTreeListChange(_ event:TreeListEvent) {
-        Swift.print("SliderTreeList.onTreeListChange()")
+        Swift.print("SliderTreeList.onTreeListChange() ")
         
         /*test solution - begins*/
         let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)

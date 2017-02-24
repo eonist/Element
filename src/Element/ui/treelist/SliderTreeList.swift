@@ -27,14 +27,15 @@ class SliderTreeList:TreeList{
         Swift.print("itemHeight: " + itemHeight)
         Swift.print("getHeight(): " +  getHeight())
         */
-        sliderInterval = SliderParser.interval(itemsHeight, getHeight(), itemHeight)
+        sliderInterval = floor(itemsHeight - height)/itemHeight//2SliderParser.interval(itemsHeight, getHeight(), itemHeight)
         //Swift.print("update() _sliderInterval: " + _sliderInterval);
-        let thumbHeight:CGFloat = SliderParser.thumbSize(getHeight()/itemsHeight, slider!.getHeight())
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.getHeight())
         slider!.setThumbHeightValue(thumbHeight)
-        let progress:CGFloat = SliderParser.progress(itemContainer!.y, getHeight(), itemsHeight)
-        slider!.setProgressValue(progress)
+        let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)
+        let progressValue = itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+        slider!.setProgressValue(progressValue)
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
-        TreeListModifier.scrollTo(self, progress)
+        TreeListModifier.scrollTo(self, progressValue)
     }
     /**
      * Captures SliderEvent.change and then adjusts the List accordingly

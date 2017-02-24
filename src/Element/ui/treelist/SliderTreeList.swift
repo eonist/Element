@@ -2,6 +2,8 @@ import Cocoa
 @testable import Utils
 /**
  * NOTE: You must supply the itemHeight, since we need it to calculate the interval
+ * TODO: Unify code that is duplicate across sliding components
+ * TODO: Make the slider fade out / fade in more like the RBSliderFastList component.
  */
 class SliderTreeList:TreeList,ISliderTreeList{
     var sliderInterval:CGFloat?
@@ -13,7 +15,6 @@ class SliderTreeList:TreeList,ISliderTreeList{
         slider = addSubView(VSlider(NaN,getHeight(),0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/TreeListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
-        
         itemsHeight > height ? slider!.thumb!.fadeIn() : slider!.thumb!.fadeOut()
     }
     /**
@@ -33,7 +34,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
      * TreeListEvent's happen when the TreeList has changed, aka items are added/removed/edited
      */
     func onTreeListChange(_ event:TreeListEvent) {
-        Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
+        Swift.print("SliderTreeList.onTreeListChange()")
         
         /*test solution - begins*/
         let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)
@@ -47,23 +48,6 @@ class SliderTreeList:TreeList,ISliderTreeList{
     override func scrollWheel(with event: NSEvent) {
         //Swift.print("theEvent: " + "\(theEvent)")
         scroll(event)/*forward the event to the extension*/
-        
-        /*
-        let scrollAmount:CGFloat = (event.deltaY/30)/sliderInterval!/*_scrollBar.interval*/
-        var currentScroll:CGFloat = slider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
-        currentScroll = NumberParser.minMax(currentScroll, 0, 1)
-        //Swift.print("currentScroll: " + "\(currentScroll)")
-        TreeListModifier.scrollTo(self,currentScroll)  /*Sets the target item to correct y, according to the current scrollBar progress*/
-        slider?.setProgressValue(currentScroll)
-        if(event.momentumPhase == NSEventPhase.ended){
-            Swift.print("the scroll motion ended")
-            slider!.thumb!.setSkinState("inActive")
-        }else if(event.momentumPhase == NSEventPhase.began){//include maybegin here
-            Swift.print("the scroll motion began")
-            slider!.thumb!.setSkinState(SkinStates.none)
-        }
-        */
-        
         super.scrollWheel(with:event)
     }
     override func onEvent(_ event: Event) {

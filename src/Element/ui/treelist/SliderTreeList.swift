@@ -14,8 +14,8 @@ class SliderTreeList:TreeList,ISliderTreeList{
         slider = addSubView(VSlider(NaN,getHeight(),0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/TreeListParser.itemsHeight(self), slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
-        
-        //slider!.hidden = !SliderParser.assertSliderVisibility(thumbHeight/slider!.getHeight())
+        //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
+        slider!.hidden = !SliderParser.assertSliderVisibility(thumbHeight/slider!.getHeight())
     }
     /**
      * Updates the thumb position and the position of the itemsContainer
@@ -59,11 +59,11 @@ class SliderTreeList:TreeList,ISliderTreeList{
     func onTreeListChange(_ event:TreeListEvent) {
         Swift.print("SliderTreeList.onTreeListChange - _sliderInterval:" + "\(sliderInterval)")
         
-        /*temp solution - begins*/
+        /*test solution - begins*/
         let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)
         let progressValue = itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         setProgress(progressValue)
-        /*temp solution - ends*/
+        /*test solution - ends*/
         
         updateSlider()
     }

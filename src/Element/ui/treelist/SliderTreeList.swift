@@ -10,7 +10,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
     var slider:VSlider?
     override func resolveSkin() {
         super.resolveSkin()
-        let itemsHeight:CGFloat = TreeListParser.itemsHeight(self)
+        let itemsHeight:CGFloat = self.itemsHeight
         sliderInterval = SliderParser.interval(itemsHeight, getHeight(), itemHeight)//Math.floor(itemsHeight - getHeight())/itemHeight;// :TODO: use ScrollBarUtils.interval instead?
         slider = addSubView(VSlider(NaN,getHeight(),0,0,self))
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/TreeListParser.itemsHeight(self), slider!.height)
@@ -21,6 +21,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
      * Moves the itemContainer up and down
      */
     func setProgress(_ progress: CGFloat) {
+        Swift.print("SliderTreeList.setProgress: " + "\(progress)")
         let progressValue = itemsHeight < height ? 0 : progress
         TreeListModifier.scrollTo(self, progressValue)/*moves the labelContainer up and down*/
     }

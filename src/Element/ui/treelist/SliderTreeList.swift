@@ -70,3 +70,23 @@ class SliderTreeList:TreeList{
         super.onEvent(event)//<--We need to forward the events to TreeList, or else TreeList will not work correctly
     }
 }
+protocol ISliderTreeList:ITreeList {
+    var slider:VSlider?{get}
+    var sliderInterval:CGFloat?{get set}
+    func setProgress(_ progress:CGFloat)
+}
+extension ISliderTreeList{
+    
+    
+}
+/**
+ * NOTE: Slider list and SliderFastList uses this method
+ */
+func scroll(_ theEvent:NSEvent) {
+    let progress:CGFloat = Utils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
+    //Swift.print("progress: " + "\(progress)")
+    setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
+    self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/
+    if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
+    else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
+}

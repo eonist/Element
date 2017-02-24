@@ -36,6 +36,9 @@ class SliderTreeList:TreeList{
         //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
         TreeListModifier.scrollTo(self, progress)
     }
+    /**
+     * Captures SliderEvent.change and then adjusts the List accordingly
+     */
     func onSliderChange(_ sliderEvent:SliderEvent){
         TreeListModifier.scrollTo(self,sliderEvent.progress)
     }

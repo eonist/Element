@@ -16,7 +16,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
         slider!.setThumbHeightValue(thumbHeight)
         let hide:Bool = itemsHeight > height
         Swift.print("hide: " + "\(hide)")
-        ElementModifier.hide(slider!.thumb!, itemsHeight > height)/*<--new adition*/
+        ElementModifier.hide(slider!.thumb!, false)/*<--new adition*/
         slider!.isHidden = !SliderParser.assertSliderVisibility(thumbHeight/slider!.getHeight())
     }
     /**
@@ -68,7 +68,7 @@ class SliderTreeList:TreeList,ISliderTreeList{
         /*test solution - ends*/
         
         updateSlider()
-        ElementModifier.hide(slider!.thumb!, itemsHeight > height)/*<--new adition*/
+        ElementModifier.hide(slider!.thumb!, false)/*<--new adition*/
     }
     override func scrollWheel(with event: NSEvent) {
         //Swift.print("theEvent: " + "\(theEvent)")

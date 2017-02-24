@@ -118,3 +118,24 @@ func update(){
     
 }
  */
+
+/*
+override func scrollWheel(with event: NSEvent) {
+    //Swift.print("theEvent: " + "\(theEvent)")
+ 
+     let scrollAmount:CGFloat = (event.deltaY/30)/sliderInterval!/*_scrollBar.interval*/
+     var currentScroll:CGFloat = slider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
+     currentScroll = NumberParser.minMax(currentScroll, 0, 1)
+     //Swift.print("currentScroll: " + "\(currentScroll)")
+     TreeListModifier.scrollTo(self,currentScroll)  /*Sets the target item to correct y, according to the current scrollBar progress*/
+     slider?.setProgressValue(currentScroll)
+     if(event.momentumPhase == NSEventPhase.ended){
+     Swift.print("the scroll motion ended")
+     slider!.thumb!.setSkinState("inActive")
+     }else if(event.momentumPhase == NSEventPhase.began){//include maybegin here
+     Swift.print("the scroll motion began")
+     slider!.thumb!.setSkinState(SkinStates.none)
+     }
+
+}
+ */

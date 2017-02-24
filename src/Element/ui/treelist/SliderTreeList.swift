@@ -4,7 +4,6 @@ import Cocoa
  * NOTE: You must supply the itemHeight, since we need it to calculate the interval
  */
 class SliderTreeList:TreeList,ISliderTreeList{
-    
     var sliderInterval:CGFloat?
     var slider:VSlider?
     override func resolveSkin() {
@@ -17,29 +16,6 @@ class SliderTreeList:TreeList,ISliderTreeList{
         
         itemsHeight > height ? slider!.thumb!.fadeIn() : slider!.thumb!.fadeOut()
     }
-    /**
-     * Updates the thumb position and the position of the itemsContainer
-     */
-    /*
-    func update(){
-        Swift.print("SliderTreeList.update()");
-        
-        /*
-        Swift.print("itemsHeight: " + itemsHeight)
-        Swift.print("itemHeight: " + itemHeight)
-        Swift.print("getHeight(): " +  getHeight())
-        */
-        sliderInterval = floor(itemsHeight - height)/itemHeight//2SliderParser.interval(itemsHeight, getHeight(), itemHeight)
-        //Swift.print("update() _sliderInterval: " + _sliderInterval);
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.getHeight())
-        slider!.setThumbHeightValue(thumbHeight)
-        let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)
-        let progressValue = itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
-        slider!.setProgressValue(progressValue)
-        //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
-        
-    }
-    */
     /**
      * Moves the itemContainer up and down
      */
@@ -96,11 +72,6 @@ class SliderTreeList:TreeList,ISliderTreeList{
         super.onEvent(event)//<--We need to forward the events to TreeList, or else TreeList will not work correctly
     }
 }
-protocol ISliderTreeList:ITreeList {
-    var slider:VSlider?{get}
-    var sliderInterval:CGFloat?{get set}
-    func setProgress(_ progress:CGFloat)
-}
 extension ISliderTreeList{
     /**
      * NOTE: Slider list and SliderFastList uses this method
@@ -124,3 +95,26 @@ extension ISliderTreeList{
         slider!.setProgressValue(progress)
     }
 }
+/**
+ * Updates the thumb position and the position of the itemsContainer
+ */
+/*
+func update(){
+    Swift.print("SliderTreeList.update()");
+    
+ 
+     Swift.print("itemsHeight: " + itemsHeight)
+     Swift.print("itemHeight: " + itemHeight)
+     Swift.print("getHeight(): " +  getHeight())
+ 
+    sliderInterval = floor(itemsHeight - height)/itemHeight//2SliderParser.interval(itemsHeight, getHeight(), itemHeight)
+    //Swift.print("update() _sliderInterval: " + _sliderInterval);
+    let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.getHeight())
+    slider!.setThumbHeightValue(thumbHeight)
+    let progress:CGFloat = SliderParser.progress(itemContainer!.y, height, itemsHeight)
+    let progressValue = itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+    slider!.setProgressValue(progressValue)
+    //slider.hidden = !SliderParser.assertSliderVisibility(_slider.thumb.getHeight()/slider.getHeight())
+    
+}
+ */

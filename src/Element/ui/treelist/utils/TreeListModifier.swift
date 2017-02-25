@@ -107,14 +107,14 @@ class TreeListModifier {
     }
     /**
      * NOTE: the PARAM: index is modified so its wise to clone the array if you wish to use it later
-     * // :TODO: use the newIndex to your advantage with slice and the index doesnt have to be modified
+     * // :TODO: use the newIndex to your advantage with slice and the index doesn't have to be modified
      */
-    static func moveUp(_ treeList:TreeList, _ index:Array<Int>) -> Array<Int> {
+    static func moveUp(_ treeList:TreeList, _ index:[Int]) -> [Int] {
         var index = index
-        let removed:XMLElement = treeList.node.removeAt(index)
+        let removed:XML = treeList.node.removeAt(index)
         var integer:Int = index.pop()!
         integer = integer > 0 ? integer-1:0
-        let newIndex:Array<Int> = index + [integer]
+        let newIndex:[Int] = index + [integer]
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }

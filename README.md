@@ -44,7 +44,7 @@ You can also compile Element as a regular .framework, requires [swift-utils](htt
 - Default macOS styles to get you started: [ElCapitan](https://github.com/stylekit/ElCapitan)  
 
 ## iOS:
-Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)   
+Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)   
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
 ## Progress:

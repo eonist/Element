@@ -60,3 +60,8 @@ Element for iOS is in the works [here](https://github.com/eonist/Element-iOS)
 
 **2017-02-22**  
 - Significant improvements to RBSliderFastList, SliderFastList and FastList
+
+## MileStones:
+- FlexBox support
+- FastTreeList component
+- Smarter CSS caching algorithm

@@ -129,13 +129,13 @@ class TreeListModifier {
      * TODO: what about moveUpLevel?
      * TODO: do we really need to go from DisplayObject to xml and then again to DisplayObject?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
      */
-    static func moveDown(_ treeList:TreeList, _ index:Array<Int>) -> Array<Int> {
+    static func moveDown(_ treeList:TreeList, _ index:[Int]) -> [Int] {
         var index = index
-        let removed:XMLElement = treeList.node.removeAt(index)
+        let removed:XML = treeList.node.removeAt(index)
         let childrenCount:Int = NodeParser.childrenCount(treeList.node, index.slice2(0,index.count-1))
         var integer:Int = index.pop()!
         integer = integer < childrenCount ? integer+1:childrenCount
-        let newIndex:Array<Int> = index + [integer]
+        let newIndex:[Int] = index + [integer]
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }
@@ -143,8 +143,8 @@ class TreeListModifier {
      *
      */
     static func moveToTop(_ treeList:TreeList,_ index:Array<Int>) -> Array<Int> {
-        let removed:XMLElement = treeList.node.removeAt(index)
-        let newIndex:Array<Int> = index.slice2(0,index.count-1) + [0]
+        let removed:XML = treeList.node.removeAt(index)
+        let newIndex:[Int] = index.slice2(0,index.count-1) + [0]
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }
@@ -152,9 +152,9 @@ class TreeListModifier {
      *
      */
     static func moveToBottom(_ treeList:TreeList,_ index:Array<Int>) -> Array<Int> {
-        let removed:XMLElement = treeList.node.removeAt(index)
+        let removed:XML = treeList.node.removeAt(index)
         let childrenCount:Int = NodeParser.childrenCount(treeList.node, index.slice2(0,index.count-1))
-        let newIndex:Array<Int> = index.slice2(0,index.count-1) + [childrenCount]
+        let newIndex:[Int] = index.slice2(0,index.count-1) + [childrenCount]
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }

@@ -48,7 +48,7 @@ class TreeListUtils {
     /**
      * New
      */
-    static func itemDataAt(_ xml:XML,_ idx:[Int])->ItemData {
+    static func itemData(_ xml:XML,_ idx:[Int])->ItemData {
         let child:XML = XMLParser.childAt(xml, idx)!
         let itemData = TreeListUtils.itemData(child)
         return itemData

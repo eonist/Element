@@ -45,6 +45,14 @@ class TreeListUtils {
         let isVisible:Bool = attributes["isVisible"] != nil ?  attributes["isVisible"] == "true" : true//<- you can shorten this by doing ??
         return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
     }
+    /**
+     * New
+     */
+    static func itemDataAt(_ xml:XML,_ idx:[Int])->ItemData {
+        let child:XML = XMLParser.childAt(xml, idx)!
+        let itemData = TreeListUtils.itemData(child)
+        return itemData
+    }
 }
 private class Utils{
     /**

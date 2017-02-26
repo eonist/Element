@@ -13,7 +13,7 @@ class TreeListModifier {
     /**
      * NOTE: To explode the entire treeList pass an empty array as PARAM: index
      */
-    static func explodeAt(_ treeList:ITreeList,_ index:Array<Int>) {
+    static func explodeAt(_ treeList:ITreeList,_ index:[Int]) {
         var treeList = treeList
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
         if(treeList is ITreeListItem){(treeList as! ITreeListItem).open()}
@@ -26,7 +26,7 @@ class TreeListModifier {
      * NOTE: To collapse the entire treeList pass an empty array as PARAM: index
      * NOTE: This method collapses all nodes from the PARAM: index
      */
-    static func collapseAt(_ treeList:ITreeList,_ index:Array<Int>) {
+    static func collapseAt(_ treeList:ITreeList,_ index:[Int]) {
         var treeList = treeList
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
         let decendants:Array<ITreeListItem> = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
@@ -40,7 +40,7 @@ class TreeListModifier {
      * NOTE: this method is recursive
      * NOTE: Use TreeList.node.addAt method if you want to add things to the TreeList, this method is then eventually used internally
      */
-    static func addAt(_ treeList:ITreeList,_ index:Array<Int>,_ item:NSView) {
+    static func addAt(_ treeList:ITreeList,_ index:[Int],_ item:NSView) {
         if(index.count == 1) {treeList.addItemAt(item,index[0])}
         else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
             addAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),item)
@@ -50,7 +50,7 @@ class TreeListModifier {
      * Sets a selectable in PARAM: treeList at PARAM: index (array index)
      * NOTE: this does not unselect previously selected items. 
      */
-    static func selectAt(_ treeList:ITreeList, _ index:Array<Int>,_ isSelected:Bool = true) {
+    static func selectAt(_ treeList:ITreeList, _ index:[Int],_ isSelected:Bool = true) {
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ISelectable) {
             (treeList.itemContainer!.getSubViewAt(index[0]) as! ISelectable).setSelected(isSelected)
         }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
@@ -60,7 +60,7 @@ class TreeListModifier {
     /**
      *
      */
-    static func setTitleAt(_ treeList:ITreeList, _ index:Array<Int>, _ name:String){
+    static func setTitleAt(_ treeList:ITreeList, _ index:[Int], _ name:String){
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is TextButton) {
             treeList.itemContainer!.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer!.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer!.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name)
         }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
@@ -71,7 +71,7 @@ class TreeListModifier {
      * Removes an NSView instance at @param index in PARAM: treeList
      * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
      */
-    static func removeAt(_ treeList:ITreeList,_ index:Array<Int>) {
+    static func removeAt(_ treeList:ITreeList,_ index:[Int]) {
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) != nil) {
             treeList.removeAt(index[0])
         }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
@@ -82,7 +82,7 @@ class TreeListModifier {
      * Removes an NSView instance in PARAM: treeList
      */
     static func remove(_ treeList:ITreeList,_ item:NSView) {
-        let index:Array<Int> = TreeListParser.index(treeList, item)
+        let index:[Int] = TreeListParser.index(treeList, item)
         removeAt(treeList, index)
     }
     /**
@@ -102,7 +102,7 @@ class TreeListModifier {
      * NOTE:: this function works as long as multiple selection is not allowed in the treeList
      */
     static func unSelectAll(_ treeList:ITreeList){
-        let selectedIndex:Array<Int> = TreeListParser.selectedIndex(treeList)
+        let selectedIndex:[Int] = TreeListParser.selectedIndex(treeList)
         if(selectedIndex.count > 0) {selectAt(treeList, selectedIndex, false)}
     }
     /**

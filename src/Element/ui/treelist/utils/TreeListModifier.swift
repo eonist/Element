@@ -95,7 +95,7 @@ class TreeListModifier {
      * // :TODO: can this work?
      */
     static func setSelected(_ treeList:TreeList, _ key:String, _ value:String) {
-        let index:Array<Int> = XMLParser.index(treeList.node.xml, key, value)!
+        let index:[Int] = XMLParser.index(treeList.node.xml, key, value)!
         selectAt(treeList, index)
     }
     /**

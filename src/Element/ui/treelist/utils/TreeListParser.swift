@@ -60,8 +60,8 @@ class TreeListParser{
     /**
      * Returns the index of the selected ISelectable instance in PARAM: treeList
      */
-    static func selectedIndex(_ treeList:ITreeList) -> Array<Int>{
-        let selected = selected(treeList)
+    static func selectedIndex(_ treeList:ITreeList) -> [Int]{
+        let selected = self.selected(treeList)
         return index(treeList, selected as! NSView)
     }
     /**

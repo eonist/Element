@@ -25,6 +25,7 @@ class Graph:Element {
     override func resolveSkin() {
         super.resolveSkin()
         createUI()
+        //Swift.print("vValues: " + "\(vValues)")
         graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)//creates the init positions of where the points should lay
         createGraph()
     }
@@ -132,9 +133,18 @@ class Graph:Element {
      * Creates the Visual Graph line that represents the Metric Data
      */
     func createGraphLine(){
+        Swift.print("createGraphLine graphPts: \(graphPts)" )
         let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
     }
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
+        //update different UI elements
+    }
+    override func getClassType() -> String {
+        return "\(Graph.self)"
+    }
+}
+extension Graph{
     /**
      * //onResize, recalc spacing,Realign components,height should be uniform to the width
      */
@@ -143,11 +153,5 @@ class Graph:Element {
         graphArea!.setSize(newSize.width,newSize.height)//Scale to ratio:
         let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.size.width,graphArea!.frame.size.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         graphArea?.setPosition(alignmentPoint)
-    }
-    override func setSize(_ width:CGFloat, _ height:CGFloat) {
-        //update different UI elements
-    }
-    override func getClassType() -> String {
-        return "\(Graph.self)"
     }
 }

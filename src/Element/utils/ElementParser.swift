@@ -3,26 +3,23 @@ import Cocoa
 
 class ElementParser{
     /**
-     * Returns all children in @param element that is of type IElement
-     * NOTE: if this doesnt work just use the array casting technique with the NSParser.children method
+     * Returns all children in PARAM: element that is of type IElement
+     * NOTE: If this doesnt work just use the array casting technique with the NSParser.children method
      */
-    static func children<T>(_ view:NSView,_ type:T.Type)->Array<T> {
+    static func children<T>(_ view:NSView,_ type:T.Type)->[T] {
         return NSViewParser.childrenOfType(view, type)
     }
     /**
      * Returns an Array instance comprised of Selector instances for each (element,classId,id and state) in the element "cascade" (the spesseficity)
-     * NOTE: to get the stackString use: ElementParser.stackString(button) and StyleParser.describe(StyleResolver.style(button))
+     * NOTE: To get the stackString use: ElementParser.stackString(button) and StyleParser.describe(StyleResolver.style(button))
      */
-    static func selectors(_ element:IElement)->Array<ISelector>{
+    static func selectors(_ element:IElement)->[ISelector]{
         //Swift.print("ElementParser.selectors()")
-        let elements:Array<IElement> = ArrayModifier.append(parents(element),element)
-        var selectors:Array<ISelector> = []
+        let elements:[IElement] = ArrayModifier.append(parents(element),element)
+        var selectors:[ISelector] = []
         elements.forEach {selectors.append(selector($0))}
         return selectors
     }
-    /**
-     *
-     */
     static func selector(_ element:IElement)->ISelector{
         let elmnt:String = element.getClassType()
         //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId]
@@ -33,8 +30,8 @@ class ElementParser{
     /**
      * Returns an array populated with IElement parents of the target (Basically the ancestry)
      */
-    static func parents(_ element:IElement)->Array<IElement> {
-        var parents:Array<IElement> = []
+    static func parents(_ element:IElement)->[IElement] {
+        var parents:[IElement] = []
         var parent:IElement? = element.getParent() as? IElement// :TODO: seperate this into a check if its DO then that, if its Window then do that
         while(parent != nil) {/*loops up the object hierarchy as long as the parent is a Element supertype*/
             _ = ArrayModifier.unshift(&parents,parent!)

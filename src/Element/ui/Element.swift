@@ -54,15 +54,9 @@ class Element:InteractiveView2,IElement {
         self.height = height
         self.skin!.setSize(width, height)
     }
-    /**
-     * 
-     */
     func getWidth()->CGFloat{
         return skin != nil ? skin!.getWidth() : NaN
     }
-    /**
-     *
-     */
     func getHeight()->CGFloat{
         return skin != nil ? skin!.getHeight() : NaN
     }

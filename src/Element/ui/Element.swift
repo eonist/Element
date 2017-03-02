@@ -75,12 +75,11 @@ class Element:InteractiveView2,IElement {
     func getClassType()->String{
         return "\(type(of: self))"
     }
-    
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
 extension Element{
-    convenience init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
     /**
-     * 
+     * Convenience
      */
     convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
         self.init(width,height,parent,id)

@@ -78,7 +78,7 @@ class Element:InteractiveView2,IElement {
     
 }
 extension Element{
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
+    convenience init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
     /**
      * 
      */

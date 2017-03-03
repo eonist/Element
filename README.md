@@ -65,3 +65,6 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 - FlexBox support
 - FastTreeList component
 - Smarter CSS caching algorithm
+
+## More...
+Wan't to see more about Element? Check the[wiki's](https://github.com/eonist/Element/wiki) 

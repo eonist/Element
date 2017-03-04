@@ -23,7 +23,8 @@ class SliderList:List,ISliderList{
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
     /**
-     * 
+     * Moves the itemContainer.y up and down
+     * NOTE: Scrollwheel uses this method.
      */
     func setProgress(_ progress:CGFloat){
         let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/

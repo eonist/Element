@@ -60,9 +60,9 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 - FastTreeList component
 - Smarter CSS caching algorithm
 
+## More...
+More about Element 👉 [wiki](https://github.com/eonist/Element/wiki) 
+
 ## Sponsors:
 [<img width="150" alt="img" src="https://rawgit.com/stylekit/img/master/appcode-logo.svg">
 ](https://www.jetbrains.com/objc/) 
-
-## More...
-Wan't to see more about Element? Check the [wiki's](https://github.com/eonist/Element/wiki) 

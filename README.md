@@ -49,16 +49,10 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 
 ## Progress:
 
-**2017-02-24**  
-- Improvements to SliderTreeList
-
-**2017-02-23**  
+**2017-feb**  
+- Improvements to SliderTreeList 
 - Fixed slider positioning in sliderTreeList  
-
-**2017-02-23**  
 - Fixed margin error in TreeList  
-
-**2017-02-22**  
 - Significant improvements to RBSliderFastList, SliderFastList and FastList
 
 ## MileStones:
@@ -66,5 +60,9 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 - FastTreeList component
 - Smarter CSS caching algorithm
 
+## Sponsors:
+[<img width="150" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/appcode-logo.svg">
+](https://www.jetbrains.com/objc/) 
+
 ## More...
-Wan't to see more about Element? Check the[wiki's](https://github.com/eonist/Element/wiki) 
+Wan't to see more about Element? Check the [wiki's](https://github.com/eonist/Element/wiki) 

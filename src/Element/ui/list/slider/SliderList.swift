@@ -22,6 +22,9 @@ class SliderList:List,ISliderList{
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
+    /**
+     * 
+     */
     func setProgress(_ progress:CGFloat){
         let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")

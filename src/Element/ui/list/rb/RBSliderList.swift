@@ -40,9 +40,7 @@ class RBSliderList:List,IRBSliderList{
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
-        // Swift.print("setProgressValue.start")
         slider!.setProgressValue(progressValue!)
-        //Swift.print("setProgressValue.end")
     }
     /**
      * NOTE: this method overides the Native NSView scrollWheel method
@@ -59,19 +57,14 @@ class RBSliderList:List,IRBSliderList{
         ListModifier.scrollTo(self,sliderEvent.progress)
         mover!.value = lableContainer!.frame.y
     }
-    func scrollWheelEnter(){//2. spring to refreshStatePosition
-        //Swift.print("RBSliderList.scrollWheelEnter()" + "\(progressValue)")
+    func scrollWheelEnter(){
         slider!.thumb!.fadeIn()
     }
-    func scrollWheelExit(){
-        //Swift.print("RBSliderList.scrollWheelExit()")
-    }
+    func scrollWheelExit(){}
     func scrollWheelExitedAndIsStationary(){
-        //Swift.print("RBSliderList.scrollWheelExitedAndIsStationary() ")
         if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}  
     }
     func scrollAnimStopped(){
-        //Swift.print("RBSliderList.scrollAnimStopped()")
         slider!.thumb!.fadeOut()
     }
     override func onEvent(_ event:Event) {

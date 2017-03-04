@@ -17,8 +17,9 @@ class SliderList:List,ISliderList{
         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
+    jd
     override func scrollWheel(with event: NSEvent) {//swift 3 update
-        scroll(event)/*forward the event to the extension*/
+        scroll(event)/*forward the event to the extension which adjust Slider and calls setProgress in this method*/
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }

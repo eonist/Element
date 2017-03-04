@@ -61,7 +61,7 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 - Smarter CSS caching algorithm
 
 ## Sponsors:
-[<img width="150" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/appcode-logo.svg">
+[<img width="150" alt="img" src="https://rawgit.com/stylekit/img/master/appcode-logo.svg">
 ](https://www.jetbrains.com/objc/) 
 
 ## More...

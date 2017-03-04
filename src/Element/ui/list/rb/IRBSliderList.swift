@@ -9,6 +9,10 @@ protocol IRBSliderList:ISliderList{//TODO: extend ISliderList
     func scrollWheelExit()
     func scrollWheelExitedAndIsStationary()
 }
+
+//Continue here:
+    //Make the bellow into IRBScrollable 🚀
+
 extension IRBSliderList{
     /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in

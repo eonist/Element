@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * NOTE: the mover instance in scrollController moves the labelContainer by calling the setProgress on each tick of the frame animation in the mover object
+ * NOTE: Alternate name for RubberBand is ElasticDrag. But conceptually Rubber band is Eleastic. RubberBand™
  * TODO: Add support for rubberband behaviour even if there is no need for scrolling
  * TODO: make the top and bottom values when scrolling absolutly pinned to 0 and 1. There should be a final tick that cooresponds to these values in the Mover class
  * TODO: Maybe create var's that store the enter and exit state.

@@ -3,7 +3,7 @@ import Foundation
 protocol IRBScrollableSlidable:class,ISlidable,IRBScrollable{}//Convenience, almost like a typalias
 extension IRBScrollableSlidable{
     /**
-     * When two fingers are touches the track-pad this method is called
+     * When two fingers touches the track-pad this method is called
      */
     func scrollWheelEnter(){//2. spring to refreshStatePosition
         //Swift.print("RBSliderFastList.scrollWheelEnter()" + "\(progressValue)")

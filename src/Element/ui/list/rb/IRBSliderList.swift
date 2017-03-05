@@ -1,5 +1,3 @@
 import Foundation
 
-class IRBSlider {
-
-}
+protocol IRBSliderList:class,ISlidable,IRBScrollable{}//Convenience, almost like a typalias

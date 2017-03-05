@@ -34,10 +34,10 @@ extension IRBScrollable{
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
-    private func onScrollWheelChange(_ theEvent:NSEvent){
+    func onScrollWheelChange(_ theEvent:NSEvent){
         //Swift.print("changed")
         prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
-        _ = velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
+        _ = self.velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
         mover!.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
         mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
     }

@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 /**
- * THis protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
+ * This protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
  */
 protocol IRBScrollable:class{
     var mover:RubberBand?{get}

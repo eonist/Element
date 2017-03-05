@@ -59,12 +59,3 @@ class RBSliderList:List, IRBScrollableSlidable {
         super.onEvent(event)
     }
 }
-extension RBSliderList{
-    /**
-     * EventHandler for the Slider change event
-     */
-    func onSliderChange(_ sliderEvent:SliderEvent){
-        ListModifier.scrollTo(self,sliderEvent.progress)
-        mover!.value = lableContainer!.frame.y
-    }
-}

@@ -109,7 +109,7 @@ extension RBSliderFastList{//TODO:rather extend IRBSliderFastList
      * EventHandler for the Slider change event
      */
     func onSliderChange(_ sliderEvent:SliderEvent){
-        ListModifier.scrollTo(self, sliderEvent.progress)
+        SlideableUtils.scrollTo(self, sliderEvent.progress)
         mover!.value = lableContainer!.frame.y
     }
 }

@@ -24,8 +24,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseOut action
      */
     override func mouseOut(_ event:MouseEvent) {
-        //Swift.print("event.pressedMouseButtons(): " + String(NSEvent.pressedMouseButtons()))/*0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
-        if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons*/
+        if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons, 0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
             state = SkinStates.none
             setSkinState(getSkinState())
             super.onEvent(ButtonEvent(ButtonEvent.out,self))

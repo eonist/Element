@@ -3,9 +3,6 @@ import Cocoa
 /**
  * TODO: You need to update slider and mover on DP event: see SliderList for implementation
  */
-extension RBSliderFastList:IRBScrollable{
-    
-}
 class RBSliderFastList:FastList,IRBSliderList{
     /*RubberBand*/
     var mover:RubberBand?

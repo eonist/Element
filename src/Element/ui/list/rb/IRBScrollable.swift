@@ -1,7 +1,6 @@
 import Cocoa
 @testable import Utils
-protocol IRBSliderList:class,ISliderList{}//Convenience, almost like a typalias
-
+protocol IRBSliderList:class,ISliderList,IRBScrollable{}//Convenience, almost like a typalias
 protocol IRBScrollable:class{
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
@@ -10,7 +9,6 @@ protocol IRBScrollable:class{
     func scrollWheelExit()
     func scrollWheelExitedAndIsStationary()
 }
-
 extension IRBScrollable{
     /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in

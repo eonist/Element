@@ -9,6 +9,7 @@ extension IRBScrollableSlidable{
     func scrollWheelExit() {defaultScrollWheelEntersScrollWheelExit()}
     func scrollWheelEnter() {defaultScrollWheelEnter()}
     func scrollWheelEnterScrollWheelExitedAndIsStationary(){defaultScrollWheelEnterScrollWheelExitedAndIsStationary()}
+    func scrollAnimStopped(){defaultScrollAnimStopped()}
     /**
      * When two fingers touches the track-pad this method is called
      * NOTE: this method is called from: onScrollWheelEnter
@@ -24,7 +25,7 @@ extension IRBScrollableSlidable{
     func defaultScrollWheelEnterScrollWheelExitedAndIsStationary(){
         if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}/*only fade out if the state is none, aka not over*/
     }
-    func scrollWheelEnterScrollAnimStopped(){
+    func defaultScrollAnimStopped(){
         slider!.thumb!.fadeOut()
     }
 }

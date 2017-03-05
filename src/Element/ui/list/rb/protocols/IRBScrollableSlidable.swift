@@ -3,7 +3,6 @@ import Foundation
 
 //you probably also need Scrollable
 protocol IRBScrollableSlidable:ISlidable,IRBScrollable{
-    
 }
 
 //Convenience, almost like a typalias

@@ -1,18 +1,12 @@
 import Cocoa
 @testable import Utils
 
-class RBSliderView:Element,IRBScrollableSlidable {
-    var lableContainer:Container?
+class RBSliderView:SliderView,IRBScrollableSlidable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat] = Array(repeating: 0, count: 10)/*represents the velocity resolution of the gesture movment*/
     var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
-    /*Slider*/
-    var slider:VSlider?
-    var sliderInterval:CGFloat?
-    var itemsHeight:CGFloat = 600//override this
-    var itemHeight:CGFloat = 24//override this
     override func resolveSkin() {
         self.skin = SkinResolver.skin(self)//super.resolveSkin()
         lableContainer = addSubView(Container(width,height,self,"lable"))
@@ -43,7 +37,7 @@ extension RBSliderView{
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
-    func setProgress(_ value:CGFloat){
+    override func setProgress(_ value:CGFloat){
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/

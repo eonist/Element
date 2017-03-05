@@ -1,8 +1,8 @@
 import Foundation
-
-
-//you probably also need Scrollable
-protocol IRBScrollableSlidable:ISlidable,IRBScrollable{
+/**
+ * For Elements that are both scrollable and slideable
+ */
+protocol IRBScrollableSlidable:IRBScrollable,ISlidable{
 }
 
 //Convenience, almost like a typalias

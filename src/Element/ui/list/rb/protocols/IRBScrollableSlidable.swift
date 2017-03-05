@@ -2,7 +2,6 @@ import Foundation
 
 //you probably also need Scrollable
 protocol IRBScrollableSlidable:class,ISlidable,IRBScrollable{
-
 }//Convenience, almost like a typalias
 extension IRBScrollableSlidable{
     func scrollWheelExit() {defaultScrollWheelEntersScrollWheelExit()}

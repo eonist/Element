@@ -14,6 +14,7 @@ protocol IRBScrollable:class{
 extension IRBScrollable{
     /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
+     * NOTE: These methods later call methods that are overridable.
      */
     func scroll(_ theEvent:NSEvent) {
         //Swift.print("RBScrollController.scrollWheel()")
@@ -72,4 +73,5 @@ extension IRBScrollable{
         }
         scrollWheelExit()
     }
+    
 }

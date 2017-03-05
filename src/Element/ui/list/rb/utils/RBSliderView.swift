@@ -14,6 +14,7 @@ class RBSliderView:Element {
     var itemsHeight:CGFloat = 600
     var itemHeight:CGFloat = 24
     override func resolveSkin() {
+        self.skin = SkinResolver.skin(self)//super.resolveSkin()
         lableContainer = addSubView(Container(width,height,self,"items"))
         /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect

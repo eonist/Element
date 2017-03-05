@@ -1,6 +1,7 @@
 import Foundation
 /**
  * For Elements that are both scrollable and slideable
+ * //TODO: rename to RBSlidable, as Slideable is scrollable
  */
 protocol IRBScrollableSlidable:IRBScrollable,ISlidable{
 }

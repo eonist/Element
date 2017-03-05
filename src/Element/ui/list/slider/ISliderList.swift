@@ -2,6 +2,10 @@ import Cocoa
 @testable import Utils
 
 protocol ISlidable:class{
+    var itemHeight:CGFloat{get}
+    
+    var container:Container? {get}
+    
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
     func setProgress(_ progress:CGFloat)

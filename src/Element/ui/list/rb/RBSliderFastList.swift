@@ -112,9 +112,7 @@ extension RBSliderFastList{//TODO:rather extend IRBSliderFastList
         //Swift.print("RBSliderFastList.scrollWheelEnter()" + "\(progressValue)")
         if(itemsHeight >= height){slider!.thumb!.fadeIn()}/*fades in the slider*/
     }
-    func scrollWheelExit(){
-        //Swift.print("RBSliderFastList.scrollWheelExit()")
-    }
+    func scrollWheelExit(){}
     func scrollWheelExitedAndIsStationary(){
         //Swift.print("RBSliderFastList.scrollWheelExitedAndIsStationary() ")
         if(slider?.thumb?.getSkinState() == SkinStates.none){/*only fade out if the state is none, aka not over*/

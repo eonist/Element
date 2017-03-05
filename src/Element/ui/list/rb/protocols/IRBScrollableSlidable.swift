@@ -1,6 +1,10 @@
 import Foundation
+//continue here:
+    //Make defaultScrollWheelEnter()?
+//you probably also need Scrollable
+protocol IRBScrollableSlidable:class,ISlidable,IRBScrollable{
 
-protocol IRBScrollableSlidable:class,ISlidable,IRBScrollable{}//Convenience, almost like a typalias
+}//Convenience, almost like a typalias
 extension IRBScrollableSlidable{
     /**
      * When two fingers touches the track-pad this method is called

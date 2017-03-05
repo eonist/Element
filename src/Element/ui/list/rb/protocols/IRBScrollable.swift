@@ -3,8 +3,8 @@ import Cocoa
 /**
  * This protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
  */
-public protocol IRBScrollable:class{
-    public var mover:RubberBand?{get set}
+protocol IRBScrollable:class{
+    var mover:RubberBand?{get set}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:[CGFloat]{get set}
     func scrollWheelEnter()

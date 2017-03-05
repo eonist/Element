@@ -1,6 +1,5 @@
 import Foundation
-//continue here:
-    //Make defaultScrollWheelEnter()?
+
 //you probably also need Scrollable
 protocol IRBScrollableSlidable:class,ISlidable,IRBScrollable{
 

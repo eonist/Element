@@ -6,9 +6,22 @@ protocol ISlidable:class{
     var sliderInterval:CGFloat?{get set}
     func setProgress(_ progress:CGFloat)
     func updateSlider()
-    //func scroll(_ theEvent:NSEvent)
 }
-protocol ISliderList:IList,ISlidable {}/*Convenience*/
+extension ISlidable{
+    /**
+     * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
+     */
+    func updateSlider(){
+        sliderInterval = floor(self.itemsHeight - height)/itemHeight
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
+        slider!.setThumbHeightValue(thumbHeight)
+        let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
+        slider!.setProgressValue(progress)
+    }
+}
+protocol ISliderList:IList,ISlidable {/*Convenience*/
+    func scroll(_ theEvent:NSEvent)
+}
 extension ISliderList{
     /**
      * NOTE: Slider list and SliderFastList uses this method
@@ -21,16 +34,7 @@ extension ISliderList{
         if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
         else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
     }
-    /**
-     * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
-     */
-    func updateSlider(){
-        sliderInterval = floor(self.itemsHeight - height)/itemHeight
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
-        slider!.setThumbHeightValue(thumbHeight)
-        let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
-        slider!.setProgressValue(progress)
-    }
+    
 }
 class SliderListUtils{
     /**

@@ -13,13 +13,6 @@ protocol IRBScrollable:class{
 }
 extension IRBScrollable{
     /**
-     * EventHandler for the Slider change event
-     */
-    func onSliderChange(_ sliderEvent:SliderEvent){
-        //SlideableUtils.scrollTo(self,sliderEvent.progress)
-        mover!.value = 3//lableContainer!.frame.y
-    }
-    /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
      * NOTE: These methods later call methods that are overridable.
      */

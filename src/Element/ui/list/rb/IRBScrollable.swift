@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-protocol IRBSliderList:class,ISlidable,IRBScrollable{}//Convenience, almost like a typalias
+/**
+ * THis protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
+ */
 protocol IRBScrollable:class{
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}

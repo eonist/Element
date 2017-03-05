@@ -45,7 +45,7 @@ class FastList:Element,IList {
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(_ progress:CGFloat){
-        ListModifier.scrollTo(self, progress)/*moves the labelContainer up and down*/
+        SlideableUtils.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
         if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
             renderItems(range)

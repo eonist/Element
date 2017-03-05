@@ -50,14 +50,6 @@ class RBSliderList:List, IRBScrollableSlidable {
         if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
         super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
-    /**
-     * EventHandler for the Slider change event
-     */
-    func onSliderChange(_ sliderEvent:SliderEvent){
-        ListModifier.scrollTo(self,sliderEvent.progress)
-        mover!.value = lableContainer!.frame.y
-    }
-    
     override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())
@@ -65,5 +57,14 @@ class RBSliderList:List, IRBScrollableSlidable {
             scrollAnimStopped()
         }
         super.onEvent(event)
+    }
+}
+extension RBSliderList{
+    /**
+     * EventHandler for the Slider change event
+     */
+    func onSliderChange(_ sliderEvent:SliderEvent){
+        ListModifier.scrollTo(self,sliderEvent.progress)
+        mover!.value = lableContainer!.frame.y
     }
 }

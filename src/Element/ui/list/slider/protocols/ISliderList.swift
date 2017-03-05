@@ -16,7 +16,6 @@ extension ISliderList{
         if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
         else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
     }
-    
 }
 class SliderListUtils{
     /**

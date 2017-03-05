@@ -11,8 +11,8 @@ class RBSliderView:Element,IRBScrollableSlidable {
     /*Slider*/
     var slider:VSlider?
     var sliderInterval:CGFloat?
-    var itemsHeight:CGFloat = 600
-    var itemHeight:CGFloat = 24
+    var itemsHeight:CGFloat = 600//override this
+    var itemHeight:CGFloat = 24//override this
     override func resolveSkin() {
         self.skin = SkinResolver.skin(self)//super.resolveSkin()
         lableContainer = addSubView(Container(width,height,self,"items"))

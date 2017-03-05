@@ -1,11 +1,12 @@
 import Cocoa
 @testable import Utils
 
-protocol ISliderList:IList {
+protocol ISlidable:class{
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
     func setProgress(_ progress:CGFloat)
 }
+protocol ISliderList:IList,ISlidable {}/*Convenience*/
 extension ISliderList{
     /**
      * NOTE: Slider list and SliderFastList uses this method

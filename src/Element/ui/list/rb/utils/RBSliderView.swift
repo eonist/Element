@@ -5,4 +5,7 @@ class RBSliderView:Element {
         
     }
 }
-extensin 
+extension RBSliderView{
+    
+    
+}

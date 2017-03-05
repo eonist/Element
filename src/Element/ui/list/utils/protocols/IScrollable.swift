@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Scrollable is for scroling things, basically content within a mask
+ */
 protocol IScrollable {
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval

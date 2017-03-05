@@ -1,7 +1,8 @@
 import Foundation
-
+/**
+ *
+ */
 protocol ISlidable:class,IScrollable{
-    /**/
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
     func setProgress(_ progress:CGFloat)

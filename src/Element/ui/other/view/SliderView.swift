@@ -13,4 +13,8 @@ class SliderView:ScrollView,ISlidable {
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
         slider!.setThumbHeightValue(thumbHeight)
     }
+    override func onEvent(_ event:Event) {
+        if(event == SliderEvent.change){onSliderChange(event.cast())}/*events from the slider*/
+        super.onEvent(event)
+    }
 }

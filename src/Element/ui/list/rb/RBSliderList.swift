@@ -51,7 +51,7 @@ class RBSliderList:List, IRBScrollableSlidable {
         super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
     override func onEvent(_ event:Event) {
-        if(event.assert(SliderEvent.change,slider)){
+        if(event === (SliderEvent.change,slider!)){
             onSliderChange(event.cast())
         }else if(event.assert(AnimEvent.stopped, mover!)){
             scrollAnimStopped()

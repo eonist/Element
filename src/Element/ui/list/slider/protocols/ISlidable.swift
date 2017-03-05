@@ -1,6 +1,6 @@
 import Foundation
 /**
- *
+ * Slidable 
  */
 protocol ISlidable:class,IScrollable{
     var slider:VSlider?{get}

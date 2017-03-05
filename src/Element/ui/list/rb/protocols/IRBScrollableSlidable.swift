@@ -12,7 +12,7 @@ extension IRBScrollableSlidable{
      * EventHandler for the Slider change event
      */
     func onSliderChange(_ sliderEvent:SliderEvent){
-        SlideableUtils.scrollTo(self,sliderEvent.progress)
+        ScrollableUtils.scrollTo(self,sliderEvent.progress)
         //mover!.value = lableContainer!.frame.y
     }
     func scrollWheelExit() {defaultScrollWheelEntersScrollWheelExit()}

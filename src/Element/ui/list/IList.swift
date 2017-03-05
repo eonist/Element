@@ -1,13 +1,13 @@
 import Cocoa
 @testable import Utils
 
-protocol IList:IElement {
+protocol IList:IElement,IScrollable {
     //func getItemsHeight()->CGFloat
     //func setSize(width : CGFloat, height : CGFloat)
     //var height : CGFloat{get}  //TODO:you can extend IElement
-    var itemHeight:CGFloat{get}
+    /*var itemHeight:CGFloat{get}*/
+    /*var lableContainer:Container? {get}*/
     var dataProvider:DataProvider{get}
-    var lableContainer:Container? {get}
 }
 /**
  * TODO: Continue adding methods here

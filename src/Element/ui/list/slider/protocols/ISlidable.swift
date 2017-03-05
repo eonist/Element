@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ISlidable:class{
+protocol ISlidable:class,IScrollable{
     /**/
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
@@ -21,6 +21,6 @@ extension ISlidable{
     func defaultSetProgress(_ progress:CGFloat){
         let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")
-        SlideableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
+        ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
 }

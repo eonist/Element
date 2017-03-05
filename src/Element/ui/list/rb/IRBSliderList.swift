@@ -1,10 +1,8 @@
 import Cocoa
 @testable import Utils
 
-protocol IRBSliderList:ISliderList,IRBScrollable{//TODO: extend ISliderList
-    
-}
-protocol IRBScrollable{
+protocol IRBSliderList:ISliderList,IRBScrollable{}//Convenience, almost like a typalias
+protocol IRBScrollable:class{
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:[CGFloat]{get set}

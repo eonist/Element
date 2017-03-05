@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-
 protocol IRBSliderList:ISliderList,IRBScrollable{}//Convenience, almost like a typalias
 protocol IRBScrollable:class{
     var mover:RubberBand?{get}

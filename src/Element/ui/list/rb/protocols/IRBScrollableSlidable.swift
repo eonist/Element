@@ -8,7 +8,7 @@ protocol IRBScrollableSlidable:class,ISlidable,IRBScrollable{
 extension IRBScrollableSlidable{
     func scrollWheelExit() {defaultScrollWheelEntersScrollWheelExit()}
     func scrollWheelEnter() {defaultScrollWheelEnter()}
-    func scrollWheelEnterScrollWheelExitedAndIsStationary(){defaultScrollWheelEnterScrollWheelExitedAndIsStationary()}
+    func scrollWheelExitedAndIsStationary(){defaultScrollWheelEnterScrollWheelExitedAndIsStationary()}
     func scrollAnimStopped(){defaultScrollAnimStopped()}
     /**
      * When two fingers touches the track-pad this method is called

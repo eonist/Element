@@ -47,7 +47,7 @@ class SliderList:List,ISliderList{
         updateSlider()
     }
     override func onEvent(_ event:Event) {
-        if(event.assert(SliderEvent.change, slider)){onSliderChange(event.cast())}/*events from the slider*/
+        if(event == SliderEvent.change){onSliderChange(event.cast())}/*events from the slider*/
         super.onEvent(event)
     }
     /**

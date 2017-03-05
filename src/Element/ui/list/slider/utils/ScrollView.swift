@@ -1,5 +1,5 @@
 import Foundation
 
-class ScrollView {
+class ScrollView:IScrollable{
 
 }

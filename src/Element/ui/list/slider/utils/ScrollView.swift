@@ -6,7 +6,7 @@ class ScrollView:Element,IScrollable{
     var itemHeight:CGFloat = 24//override this
     override func resolveSkin() {
         self.skin = SkinResolver.skin(self)//super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self,"lable"))
+        //lableContainer = addSubView(Container(width,height,self,"lable"))
     }
 }
 extension ScrollView{

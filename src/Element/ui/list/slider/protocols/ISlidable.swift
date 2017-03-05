@@ -8,7 +8,6 @@ protocol ISlidable:class{
     /**/
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
-    func setProgress(_ progress:CGFloat)
     func updateSlider()
 }
 extension ISlidable{

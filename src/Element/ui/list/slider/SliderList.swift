@@ -27,15 +27,11 @@ class SliderList:List,ISliderList{
     }
     /**
      * Moves the itemContainer.y up and down
-     * NOTE: Scrollwheel uses this method.
      */
-    func setProgress(_ progress:CGFloat){
-        let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+    func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
+        let progressValue = self.itemsHeight < height ? 0 : sliderEvent.progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")
         ListModifier.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
-    }
-    func onSliderChange(_ sliderEvent:SliderEvent){/*Handler for the SliderEvent.change*/
-        setProgress(sliderEvent.progress)
     }
     /**
      * TODO: Add hide slider asssert here see SliderList for implementation

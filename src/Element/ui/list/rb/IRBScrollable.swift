@@ -1,6 +1,7 @@
 import Cocoa
 @testable import Utils
-protocol IRBSliderList:ISliderList,IRBScrollable{}//Convenience, almost like a typalias
+protocol IRBSliderList:class,ISliderList{}//Convenience, almost like a typalias
+
 protocol IRBScrollable:class{
     var mover:RubberBand?{get}
     var prevScrollingDeltaY:CGFloat{get set}
@@ -9,6 +10,7 @@ protocol IRBScrollable:class{
     func scrollWheelExit()
     func scrollWheelExitedAndIsStationary()
 }
+
 extension IRBScrollable{
     /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
@@ -19,13 +21,13 @@ extension IRBScrollable{
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch theEvent.phase{
-        case NSEventPhase.changed:onScrollWheelChange(theEvent)/*Fires everytime there is direct scrollWheel gesture movment.*/
-        case NSEventPhase.mayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
-        case NSEventPhase.began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
-        case NSEventPhase.ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
-        case NSEventPhase.cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
-        case []:break;//swift 3 update, was -> NSEventPhase.none
-        default:break;
+            case NSEventPhase.changed:onScrollWheelChange(theEvent)/*Fires everytime there is direct scrollWheel gesture movment.*/
+            case NSEventPhase.mayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
+            case NSEventPhase.began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
+            case NSEventPhase.ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
+            case NSEventPhase.cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
+            case []:break;//swift 3 update, was -> NSEventPhase.none
+            default:break;
         }
     }
     /**

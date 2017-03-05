@@ -1,5 +1,7 @@
 import Foundation
 
-class RBSliderView {
-
+class RBSliderView:Element {
+    override func resolveSkin() {
+        
+    }
 }

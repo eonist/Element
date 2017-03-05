@@ -3,7 +3,7 @@ import Cocoa
 /**
  * TODO: You need to update slider and mover on DP event: see SliderList for implementation
  */
-class RBSliderFastList:FastList,IRBSliderList{
+class RBSliderFastList:FastList, IRBScrollableSlidable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

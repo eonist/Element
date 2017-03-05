@@ -8,7 +8,7 @@ import Cocoa
  * TODO: Maybe create var's that store the enter and exit state.
  * TODO: Create the algorithm that calculates the actual throw speed. By looking at the time that each intervall travles. 
  */
-class RBSliderList:List,IRBSliderList{
+class RBSliderList:List, IRBScrollableSlidable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
@@ -57,16 +57,7 @@ class RBSliderList:List,IRBSliderList{
         ListModifier.scrollTo(self,sliderEvent.progress)
         mover!.value = lableContainer!.frame.y
     }
-    func scrollWheelEnter(){
-        slider!.thumb!.fadeIn()
-    }
-    func scrollWheelExit(){}
-    func scrollWheelExitedAndIsStationary(){
-        if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}  
-    }
-    func scrollAnimStopped(){
-        slider!.thumb!.fadeOut()
-    }
+    
     override func onEvent(_ event:Event) {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())

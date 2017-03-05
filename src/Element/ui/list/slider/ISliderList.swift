@@ -5,6 +5,8 @@ protocol ISlidable:class{
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
     func setProgress(_ progress:CGFloat)
+    func updateSlider()
+    //func scroll(_ theEvent:NSEvent)
 }
 protocol ISliderList:IList,ISlidable {}/*Convenience*/
 extension ISliderList{

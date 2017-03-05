@@ -15,7 +15,7 @@ class RBSliderView:Element,IRBScrollableSlidable {
     var itemHeight:CGFloat = 24//override this
     override func resolveSkin() {
         self.skin = SkinResolver.skin(self)//super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self,"items"))
+        lableContainer = addSubView(Container(width,height,self,"lable"))
         /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
         let itemsRect = CGRect(0,0,width,itemsHeight)/*represents the total size of the content *///TODO: could be ranmed to contentRect

@@ -32,6 +32,7 @@ class RBSliderView:Element,IRBScrollableSlidable {
      * NOTE: this method overides the Native NSView scrollWheel method
      */
      override func scrollWheel(with event:NSEvent) {
+        Swift.print("RBSliderView.scrollWheel")
         scroll(event)//forward the event to the scrollExtension
         if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
         super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/

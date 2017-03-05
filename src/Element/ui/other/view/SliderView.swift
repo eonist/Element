@@ -14,7 +14,9 @@ class SliderView:ScrollView,ISlidable {
         slider!.setThumbHeightValue(thumbHeight)
     }
     override func onEvent(_ event:Event) {
-        if(event == SliderEvent.change){onSliderChange(event.cast())}/*events from the slider*/
+        if(event === (SliderEvent.change,slider!)){
+            setProgress((event as! SliderEvent).progress)
+        }/*events from the slider*/
         super.onEvent(event)
     }
 }

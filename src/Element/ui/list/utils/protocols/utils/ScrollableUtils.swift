@@ -4,9 +4,9 @@ class ScrollableUtils {
     /**
      * Scrolls the list to a scalar position (value 0-1)
      */
-    static func scrollTo(_ list:ISlidable,_ progress:CGFloat){
-        let y:CGFloat = SlideableUtils.scrollTo(progress, list.height, list.itemsHeight)
-        list.lableContainer!.y = y/*we offset the y position of the lableContainer*/
+    static func scrollTo(_ scrollable:IScrollable,_ progress:CGFloat){
+        let y:CGFloat = ScrollableUtils.scrollTo(progress, scrollable.height, scrollable.itemsHeight)
+        scrollable.lableContainer!.y = y/*we offset the y position of the lableContainer*/
     }
     /**
      * Returns the y position of a "virtual" list

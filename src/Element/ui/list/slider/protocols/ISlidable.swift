@@ -19,6 +19,9 @@ extension ISlidable{
         let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
         slider!.setProgressValue(progress)
     }
+    /**
+     * TODO: move this into to IScrollable extension
+     */
     func defaultSetProgress(_ progress:CGFloat){
         let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")

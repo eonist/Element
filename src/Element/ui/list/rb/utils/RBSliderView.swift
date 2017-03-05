@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class RBSliderView:Element {
     var lableContainer:Container?

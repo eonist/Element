@@ -5,7 +5,10 @@ import Cocoa
  */
 
 //Continue here: 
-    //make RBScrollView, no need to have duplicate code everywhere
+    //make RBScrollView, no need to have duplicate code everywhere, 
+    //essentially i think you may be able to add it to rbsliderfastlist and rbsliderlist etc. 
+    //also SliderList etc can have SlideView etc.
+    //it will simplify refactorings etc. 
 
 class RBSliderFastList:FastList, IRBScrollableSlidable {
     /*RubberBand*/

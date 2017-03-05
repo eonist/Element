@@ -17,12 +17,4 @@ class ListModifier {
         if(!selectable.getSelected()) {selectable.setSelected(true)}
         SelectModifier.unSelectAllExcept(selectable, list.lableContainer!)
     }
-    /**
-     * Scrolls the list to a scalar position (value 0-1)
-     */
-    static func scrollTo(_ list:IList,_ progress:CGFloat){
-        let y:CGFloat = ListModifier.scrollTo(progress, list.height, list.itemsHeight)
-        list.lableContainer!.y = y/*we offset the y position of the lableContainer*/
-    }
-    
 }

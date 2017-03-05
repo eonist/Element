@@ -8,19 +8,12 @@ class RBSliderView:SliderView,IRBScrollableSlidable {
     var velocities:[CGFloat] = Array(repeating: 0, count: 10)/*represents the velocity resolution of the gesture movment*/
     var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
     override func resolveSkin() {
-        self.skin = SkinResolver.skin(self)//super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self,"lable"))
+        super.resolveSkin()
         /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
         let itemsRect = CGRect(0,0,width,itemsHeight)/*represents the total size of the content *///TODO: could be ranmed to contentRect
         mover = RubberBand(Animation.sharedInstance,setProgress,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
-        /*slider*/
-        let itemHeight:CGFloat = 24
-        sliderInterval = floor(itemsHeight - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        slider = addSubView(VSlider(itemHeight,height,0,0,self))
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
-        slider!.setThumbHeightValue(thumbHeight)
     }
     /**
      * NOTE: this method overides the Native NSView scrollWheel method

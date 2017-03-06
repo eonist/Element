@@ -25,6 +25,9 @@ class SliderList:List,ISliderList{
         Swift.print("firstVisibleItem: " + "\(firstVisibleItem)")
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
+    
+    //the method bellow is exactly the same as in IScrollable.setProgress. The method bellow can be deleted
+    
     /**
      * Moves the itemContainer.y up and down
      */

@@ -1,5 +1,5 @@
 import Foundation
 
-class RBScrollView {
-
+class RBScrollView:ScrollView{
+    
 }

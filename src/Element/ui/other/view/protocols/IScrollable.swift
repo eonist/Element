@@ -15,8 +15,8 @@ extension IScrollable{
      */
     func scroll(_ theEvent:NSEvent) {
         let interval:CGFloat = floor(itemsHeight - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        let curProgress:CGFloat = 
-        let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, interval, self.slider!.progress)
+        let curProgress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)
+        let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, interval, curProgress)
         //Swift.print("progress: " + "\(progress)")
         setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
         self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/

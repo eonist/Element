@@ -31,9 +31,8 @@ extension RBScrollView{
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
     func setProgress(_ value:CGFloat){
-        //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
+        Swift.print("RBScrollView.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
-        /*slider!.setProgressValue(progressValue!)*/
     }
 }

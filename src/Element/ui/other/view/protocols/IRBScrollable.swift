@@ -73,5 +73,8 @@ extension IRBScrollable{
         }
         scrollWheelExit()
     }
-    
+    func scrollWheelExit() {}
+    func scrollWheelEnter() {}
+    func scrollWheelExitedAndIsStationary(){}
+    func scrollAnimStopped(){}
 }

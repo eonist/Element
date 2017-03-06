@@ -14,6 +14,7 @@ extension IScrollable{
      * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ theEvent:NSEvent) {
+        let interval:CGFloat = floor(itemsHeight - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
         //Swift.print("progress: " + "\(progress)")
         setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/

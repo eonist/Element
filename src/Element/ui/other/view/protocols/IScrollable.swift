@@ -19,9 +19,6 @@ extension IScrollable{
         let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, interval, curProgress)
         //Swift.print("progress: " + "\(progress)")
         setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
-        self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/
-        if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
-        else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
     }
     /**
      * Moves the itemContainer.y up and down

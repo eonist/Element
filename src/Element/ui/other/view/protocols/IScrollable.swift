@@ -11,7 +11,6 @@ protocol IScrollable:class {
     var lableContainer:Container? {get set}
     func setProgress(_ progress:CGFloat)
 }
-
 extension IScrollable{
     /**/
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment

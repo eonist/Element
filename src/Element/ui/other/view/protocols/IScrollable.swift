@@ -15,6 +15,9 @@ protocol IScrollable:class {
 extension IScrollable{
     var itemsHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var itemHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
+    var height:CGFloat {fatalError("Must override in subClass")}//override this for custom value
+    var lableContainer:Container? {fatalError("Must override in subClass")}
+    /**/
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
     var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
     /**

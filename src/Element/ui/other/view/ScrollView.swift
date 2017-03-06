@@ -6,7 +6,7 @@ class ScrollView:Element,IScrollable{
     var itemsHeight:CGFloat = 600//override this for custom value
     var itemHeight:CGFloat = 24//override this for custom value
     override func resolveSkin() {
-        self.skin = SkinResolver.skin(self)//super.resolveSkin()
+        super.resolveSkin()//self.skin = SkinResolver.skin(self)//
         lableContainer = self.addSubView(Container(width,height,self,"lable"))
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }

@@ -5,6 +5,10 @@ protocol ISliderList:IList,ISlidable {/*Convenience*/
     func scroll(_ theEvent:NSEvent)
 }
 extension ISliderList{
+    
+    //Continue here:
+        //move this into Scrollable
+    
     /**
      * NOTE: Slider list and SliderFastList uses this method
      */

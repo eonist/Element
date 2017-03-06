@@ -1,6 +1,11 @@
 import Cocoa
 @testable import Utils
 
+//COntinue here: 
+    //Add RBScroll with slider next
+    //then make sure the other components adher to the new protocol system
+
+
 class RBScrollView:ScrollView,IRBScrollable{
     /*RubberBand*/
     var mover:RubberBand?

@@ -4,7 +4,7 @@ import Cocoa
 class ScrollView:Element,IScrollable{
     var lableContainer:Container?
     var itemsHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
-    var itemHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
+    var itemHeight:CGFloat {get {fatalError("Must override in subClass")}set{_ = newValue}}//override this for custom value
     override func resolveSkin() {
         super.resolveSkin()//self.skin = SkinResolver.skin(self)//
         lableContainer = self.addSubView(Container(width,height,self,"lable"))

@@ -7,6 +7,9 @@ protocol IRBScrollableSlidable:IRBScrollable,ISlidable{
 }
 
 //Convenience, almost like a typalias
+
+//The bellow can probably be moved into the SlidableExtension. as it also applies to ISlidable
+
 extension IRBScrollableSlidable{
     /**
      * EventHandler for the Slider change event

@@ -6,10 +6,13 @@ protocol IScrollable:class {
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
+    func setProgress(_ progress:CGFloat)
+    var interval:CGFloat {get}
     var lableContainer:Container? {get set}
 }
 
 extension IScrollable{
+    var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}
     /**
      * NOTE: Slider list and SliderFastList uses this method
      */

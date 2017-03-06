@@ -23,4 +23,12 @@ extension IScrollable{
         if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
         else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
     }
+    /**
+     * Moves the itemContainer.y up and down
+     */
+    func setProgress(_ progress:CGFloat){
+        let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+        //Swift.print("progressValue: " + "\(progressValue)")
+        ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
+    }
 }

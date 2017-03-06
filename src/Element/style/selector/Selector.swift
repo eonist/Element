@@ -4,10 +4,10 @@ import Foundation
  */
 struct Selector:ISelector{// :TODO: you should probably use a struct instead of class in the future
     let element:String/*Button*///should be nil
-    let classIds:Array<String>/*.customButton*///should be nil
+    let classIds:[String]/*.customButton*///should be nil
     let id:String/*#customButton*///should be nil
-    let states:Array<String>/*:down*///should be nil
-    init(_ element:String = "",_ classIds:Array<String> = [],_ id:String = "",_ states:Array<String> = []/*TODO: ""<-init with idle state?*/) {
+    let states:[String]/*:down*///should be nil
+    init(_ element:String = "",_ classIds:[String] = [],_ id:String = "",_ states:[String] = []/*TODO: ""<-init with idle state?*/) {
         self.element = element
         self.classIds = classIds
         self.id = id

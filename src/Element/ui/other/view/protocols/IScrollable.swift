@@ -8,20 +8,20 @@ protocol IScrollable:class {
     var itemsHeight:CGFloat{get}//total height of the items
     func setProgress(_ progress:CGFloat)
     var interval:CGFloat {get}
+    var progress:CGFloat {get}
     var lableContainer:Container? {get set}
 }
 
 extension IScrollable{
-    var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}
+    var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+    var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
     /**
      * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ theEvent:NSEvent) {
-        let interval:CGFloat = floor(itemsHeight - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        let curProgress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)
-        let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, interval, curProgress)
+        let progressVal:CGFloat = SliderListUtils.progress(theEvent.deltaY, interval, progress)
         //Swift.print("progress: " + "\(progress)")
-        setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
+        setProgress(progressVal)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
     /**
      * Moves the itemContainer.y up and down

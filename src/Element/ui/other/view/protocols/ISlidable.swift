@@ -5,9 +5,9 @@ import Cocoa
 protocol ISlidable:class,IScrollable{
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
-    func setProgress(_ progress:CGFloat)//this could go in IScrollable
+    //func setProgress(_ progress:CGFloat)//this could go in IScrollable
     func updateSlider()
-    func scroll(_ theEvent:NSEvent)
+    //func scroll(_ theEvent:NSEvent)
 }
 extension ISlidable{
     /**

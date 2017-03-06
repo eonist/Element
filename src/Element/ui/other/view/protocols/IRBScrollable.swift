@@ -10,8 +10,18 @@ protocol IRBScrollable:class,IScrollable{
     func scrollWheelEnter()
     func scrollWheelExit()
     func scrollWheelExitedAndIsStationary()
+    var progressValue:CGFloat?{get set}//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
 }
 extension IRBScrollable{
+    /**
+     * PARAM value: is the final y value for the lableContainer
+     * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
+     */
+    func setProgress(_ value:CGFloat){
+        //Swift.print("RBScrollView.setProgress() value: " + "\(value)")
+        lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
+        progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
+    }
     /**
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
      * NOTE: These methods later call methods that are overridable.

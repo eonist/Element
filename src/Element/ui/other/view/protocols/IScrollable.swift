@@ -20,7 +20,7 @@ extension IScrollable{
      */
     func scroll(_ theEvent:NSEvent) {
         let progressVal:CGFloat = SliderListUtils.progress(theEvent.deltaY, interval, progress)
-        //Swift.print("progress: " + "\(progress)")
+        Swift.print("Scrollable.scroll() progress: " + "\(progress)")
         setProgress(progressVal)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
     /**

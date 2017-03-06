@@ -8,6 +8,7 @@ class ScrollView:Element,IScrollable{
     override func resolveSkin() {
         self.skin = SkinResolver.skin(self)//super.resolveSkin()
         lableContainer = self.addSubView(Container(width,height,self,"lable"))
+        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
 }
 extension ScrollView{

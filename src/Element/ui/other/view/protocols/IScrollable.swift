@@ -29,10 +29,9 @@ extension IScrollable{
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
     func setProgress(_ progress:CGFloat){
-        Swift.print("IScrollable.setProgress() progress: \(progress)")
+        //Swift.print("IScrollable.setProgress() progress: \(progress)")
         let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")
         ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
-        fatalError("debug")
     }
 }

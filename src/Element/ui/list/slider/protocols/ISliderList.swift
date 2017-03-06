@@ -7,7 +7,7 @@ protocol ISliderList:IList,ISlidable {/*Convenience*/
 extension ISliderList{
     
     //Continue here:
-        //move this into Scrollable
+        //move the scroll into Scrollable
     
     /**
      * NOTE: Slider list and SliderFastList uses this method

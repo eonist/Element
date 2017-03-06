@@ -3,7 +3,7 @@ import Cocoa
 /**
  * This protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
  */
-protocol IRBScrollable:class{
+protocol IRBScrollable:class,IScrollable{
     var mover:RubberBand?{get set}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:[CGFloat]{get set}

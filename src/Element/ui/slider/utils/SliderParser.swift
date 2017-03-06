@@ -1,6 +1,9 @@
 import Foundation
 
 class SliderParser {
+    
+    //TODO:move into ScrollableUtils
+    
     /**
      * Asserts and returns a boolean value that determines if slider should be visible
      */
@@ -15,12 +18,15 @@ class SliderParser {
      * NOTE: Makes sure that the slider thumb is never to small or to big
      */
     static func thumbSize(_ scalar:CGFloat, _ sliderSize:CGFloat) -> CGFloat {
-        var scalar = scalar
-        scalar = min(scalar,1)/*clamp value to no more than 1*/
+        let scalar = min(scalar,1)/*clamp value to no more than 1*/
         var size:CGFloat = round(sliderSize * scalar)
         size = max(size,round(sliderSize/10))/*Makes sure thumbsize isn't smaller than a 10th of the slidersize*/
         return size
     }
+    
+    //TODO:move into ScrollableUtils
+    
+    
     /**
      * Returns the progress
      * PARAM: y in most cases the itemContainer.y value
@@ -31,6 +37,10 @@ class SliderParser {
     static func progress(_ y:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
         return max(0,min(1,y / -(totalHeight - height)))
     }
+    
+    //TODO:move into ScrollableUtils
+    
+    
     /**
      * Returns the y value
      * PARAM: height in most cases the list.height
@@ -40,6 +50,10 @@ class SliderParser {
         let scrollHeight:CGFloat = totalHeight - height
         return -round(progress * scrollHeight)
     }
+    
+    //TODO:move into ScrollableUtils
+    
+    
     /**
      * Returns the interval relative to PARAM: pageHeight, PARAM: maskHeight and PARAM: pixelsPerScroll
      * PARAM: pixelsPerScroll The amount if pixels per scroll tick

@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class RBScrollView:ScrollView{
+class RBScrollView:ScrollView,IRBScrollable{
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
@@ -34,6 +34,6 @@ extension RBScrollView{
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
-        slider!.setProgressValue(progressValue!)
+        /*slider!.setProgressValue(progressValue!)*/
     }
 }

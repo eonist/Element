@@ -4,10 +4,8 @@ import Foundation
  * For Elements that are both scrollable and slideable
  * //TODO: rename to RBSlidable, as Slideable is scrollable
  */
-protocol IRBScrollableSlidable:IRBScrollable,ISlidable{
+protocol IRBScrollableSlidable:IRBScrollable,ISlidable{//Convenience, almost like a typalias
 }
-
-//Convenience, almost like a typalias
 
 //The bellow can probably be moved into the SlidableExtension. as it also applies to ISlidable
 

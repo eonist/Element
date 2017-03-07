@@ -2,7 +2,6 @@ import Foundation
 @testable import Utils
 /**
  * For Elements that are both scrollable and slideable
- * //TODO: rename to RBSlidable, as Slideable is scrollable
  */
 protocol IRBSlidable:IRBScrollable,ISlidable{//Convenience, almost like a typalias
 }

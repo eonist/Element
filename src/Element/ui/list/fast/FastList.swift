@@ -25,7 +25,7 @@ class FastList:Element,IList {
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
         self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
-        layer!.masksToBounds = true/*masks the children to the frame*/
+        //layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
         super.resolveSkin()

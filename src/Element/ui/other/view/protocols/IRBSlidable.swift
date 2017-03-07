@@ -36,7 +36,7 @@ extension IRBSlidable {
      * NOTE: this method is called from: onScrollWheelEnter
      */
     func defaultScrollWheelEnter(){//2. spring to refreshStatePosition
-        //Swift.print("RBSliderFastList.scrollWheelEnter()" + "\(progressValue)")
+        Swift.print("IRBSlidable.defaultScrollWheelEnter()" + "\(progressValue)")
         if(itemsHeight >= height){slider!.thumb!.fadeIn()}/*fades in the slider*/
     }
     /**

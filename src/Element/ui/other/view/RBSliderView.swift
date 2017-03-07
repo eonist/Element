@@ -26,4 +26,10 @@ class RBSliderView:SliderView,IRBScrollableSlidable/*:SliderView,*/ {
         //IMPORTANT: for now let's not pass on the scrollWheel.if this backfires, aka we need scroolwheel for NSView at another level, then make a scheme that calls the correct scroll, aka make scroll inheritable and overridable and then call doScroll with the extension method attached
         //super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
+    override func onEvent(_ event:Event) {
+        if(event.assert(AnimEvent.stopped, mover!)){
+            scrollAnimStopped()
+        }
+        super.onEvent(event)
+    }
 }

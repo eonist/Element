@@ -36,12 +36,12 @@ class RBSliderList:List, IRBSlidable {
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
-    /*func setProgress(_ value:CGFloat){
+    /**/func setProgress(_ value:CGFloat){
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
         slider!.setProgressValue(progressValue!)
-    }*/
+    }
     /**
      * NOTE: this method overides the Native NSView scrollWheel method
      */

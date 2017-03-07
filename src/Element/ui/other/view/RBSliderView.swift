@@ -26,5 +26,6 @@ class RBSliderView:RBScrollView,IRBScrollableSlidable/*:SliderView,*/ {
         //IMPORTANT: for now let's not pass on the scrollWheel.if this backfires, aka wee need scroolwheel for NSView at another level, then make a scheme that calls the correct scroll, aka make scroll inheritable and overridable and then call doScroll with the extension method attached
         //super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
+    
 }
 

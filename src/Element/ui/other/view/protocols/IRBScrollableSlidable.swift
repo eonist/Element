@@ -12,6 +12,16 @@ protocol IRBScrollableSlidable:IRBScrollable,ISlidable{
 
 extension IRBScrollableSlidable{
     /**
+     * PARAM value: is the final y value for the lableContainer
+     * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
+     */
+    func setProgress(_ value:CGFloat){
+        //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
+        lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
+        progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
+        slider!.setProgressValue(progressValue!)
+    }
+    /**
      * EventHandler for the Slider change event
      */
     func onSliderChange(_ sliderEvent:SliderEvent){

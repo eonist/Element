@@ -1,6 +1,9 @@
 import Cocoa
 @testable import Utils
 
+//Continue here: 
+    //
+
 class RBScrollView:ScrollView,IRBScrollable{
     /*RubberBand*/
     var mover:RubberBand?
@@ -25,4 +28,15 @@ class RBScrollView:ScrollView,IRBScrollable{
         //IMPORTANT: for now let's not pass on the scrollWheel.if this backfires, aka wee need scroolwheel for NSView at another level, then make a scheme that calls the correct scroll, aka make scroll inheritable and overridable and then call doScroll with the extension method attached
         //super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
+}
+extension RBScrollView{
+    /**
+     * PARAM value: is the final y value for the lableContainer
+     * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
+     */
+    /*func setProgress(_ value:CGFloat){
+     //Swift.print("RBScrollView.setProgress() value: " + "\(value)")
+     lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
+     progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
+     }*/
 }

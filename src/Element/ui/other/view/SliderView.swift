@@ -17,7 +17,7 @@ class SliderView:ScrollView,ISlidable {
         slider!.thumb!.fadeOut()//inits fade out anim on init
     }
     override func onEvent(_ event:Event) {
-        Swift.print("event: " + "\(event)")
+        //Swift.print("event: " + "\(event)")
         if(event === (SliderEvent.change,slider!)){
             setProgress((event as! SliderEvent).progress)
         }/*events from the slider*/

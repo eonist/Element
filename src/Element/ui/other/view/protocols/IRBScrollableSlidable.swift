@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 /**
  * For Elements that are both scrollable and slideable
  * //TODO: rename to RBSlidable, as Slideable is scrollable
@@ -18,7 +19,7 @@ extension IRBScrollableSlidable{
     func setProgress(_ value:CGFloat){
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
-        progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
+        progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
         slider!.setProgressValue(progressValue!)
     }
     /**

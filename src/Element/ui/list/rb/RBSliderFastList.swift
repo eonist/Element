@@ -97,6 +97,9 @@ class RBSliderFastList:FastList, IRBSlidable {
         super.onEvent(event)
     }
 }
+
+//TODO: remove the bellow eventually
+
 extension RBSliderFastList{//TODO:rather extend IRBSliderFastList
     /**
      * EventHandler for the Slider change event

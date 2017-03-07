@@ -44,9 +44,11 @@ extension IRBSlidable {
      */
     func defaultScrollWheelEntersScrollWheelExit(){}
     func defaultScrollWheelEnterScrollWheelExitedAndIsStationary(){
+        Swift.print("IRBSlidable.defaultScrollWheelEnterScrollWheelExitedAndIsStationary()")
         if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}/*only fade out if the state is none, aka not over*/
     }
     func defaultScrollAnimStopped(){
+        Swift.print("IRBSlidable.defaultScrollAnimStopped")
         slider!.thumb!.fadeOut()
     }
 }

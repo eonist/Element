@@ -1,9 +1,6 @@
 import Cocoa
 @testable import Utils
 
-//fix the progressindicator, its not showing anymore
-//add RBSliderView to Prefs
-
 class SliderView:ScrollView,ISlidable {
     /*Slider*/
     var slider:VSlider?

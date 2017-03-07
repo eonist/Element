@@ -4,12 +4,12 @@ import Foundation
  * For Elements that are both scrollable and slideable
  * //TODO: rename to RBSlidable, as Slideable is scrollable
  */
-protocol IRBScrollableSlidable:IRBScrollable,ISlidable{//Convenience, almost like a typalias
+protocol IRBSlidable:IRBScrollable,ISlidable{//Convenience, almost like a typalias
 }
 
 //The bellow can probably be moved into the SlidableExtension. as it also applies to ISlidable
 
-extension IRBScrollableSlidable{
+extension IRBSlidable {
     /**
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists

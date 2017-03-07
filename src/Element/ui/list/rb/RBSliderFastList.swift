@@ -10,7 +10,7 @@ import Cocoa
     //also SliderList etc can have SlideView etc.
     //it will simplify refactorings etc. 
 
-class RBSliderFastList:FastList, IRBScrollableSlidable {
+class RBSliderFastList:FastList, IRBSlidable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

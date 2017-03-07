@@ -8,7 +8,7 @@ import Cocoa
  * TODO: Maybe create var's that store the enter and exit state.
  * TODO: Create the algorithm that calculates the actual throw speed. By looking at the time that each intervall travles. 
  */
-class RBSliderList:List, IRBScrollableSlidable {
+class RBSliderList:List, IRBSlidable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

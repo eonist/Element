@@ -12,6 +12,9 @@ import Cocoa
  * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
+
+//TODO: write a protocol for FastList
+
 class FastList:Element,IList {
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/

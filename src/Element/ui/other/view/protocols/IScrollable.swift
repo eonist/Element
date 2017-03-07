@@ -10,7 +10,7 @@ protocol IScrollable:class {
     var progress:CGFloat {get}
     var lableContainer:Container? {get set}
     func setProgress(_ progress:CGFloat)
-    //func scroll(_ theEvent:NSEvent)
+    //func scroll(_ theEvent:NSEvent)//caution, if you uncomment this then RBScrollable extension scroll cant be called, strangly enough
 }
 extension IScrollable{
     /**/

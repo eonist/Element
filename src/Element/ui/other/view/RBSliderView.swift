@@ -28,7 +28,7 @@ class RBSliderView:SliderView,IRBScrollableSlidable/*:SliderView,*/ {
     }
     override func onEvent(_ event:Event) {
         if(event.assert(AnimEvent.stopped, mover!)){
-            scrollAnimStopped()
+            scrollAnimStopped()//hides the slider when bounce back anim stopps
         }
         super.onEvent(event)
     }

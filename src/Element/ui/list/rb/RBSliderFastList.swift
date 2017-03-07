@@ -3,13 +3,6 @@ import Cocoa
 /**
  * TODO: You need to update slider and mover on DP event: see SliderList for implementation
  */
-
-//Continue here: 
-    //make RBScrollView, no need to have duplicate code everywhere, 
-    //essentially i think you may be able to add it to rbsliderfastlist and rbsliderlist etc. 
-    //also SliderList etc can have SlideView etc.
-    //it will simplify refactorings etc. 
-
 class RBSliderFastList:FastList, IRBSlidable {
     /*RubberBand*/
     var mover:RubberBand?

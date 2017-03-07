@@ -99,7 +99,7 @@ class RBSliderFastList:FastList, IRBScrollableSlidable {
         if(event.assert(SliderEvent.change,slider)){
             onSliderChange(event.cast())
         }else if(event.assert(AnimEvent.stopped, mover!)){
-            scrollAnimStopped()
+            scrollAnimStopped()/*hides the slider when bounce back anim stopps*/
         }
         super.onEvent(event)
     }

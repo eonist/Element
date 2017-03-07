@@ -33,6 +33,7 @@ class RBSliderFastList:FastList, IRBSlidable {
         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)/*Calc the thumbHeight*/
         slider!.setThumbHeightValue(thumbHeight)/*set the init thumbHeight*/
         setProgress(0)/*<--Not really needed, but nice to have while debugging*/
+        slider!.thumb!.fadeOut()//inits fade out anim on init
     }
     /**
      * PARAM value: is the final y value for the lableContainer

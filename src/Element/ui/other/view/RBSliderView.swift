@@ -12,7 +12,7 @@ class RBSliderView:RBScrollView,IRBScrollableSlidable/*:SliderView,*/ {
         slider!.setThumbHeightValue(thumbHeight)
     }
     override func onEvent(_ event:Event) {
-        Swift.print("event: " + "\(event)")
+        Swift.print("RBSliderView.event: " + "\(event)")
         if(event === (SliderEvent.change,slider!)){
             setProgress((event as! SliderEvent).progress)
         }/*events from the slider*/

@@ -18,7 +18,7 @@ extension IRBScrollable{
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
     func setProgress(_ value:CGFloat){
-        Swift.print("RBScrollView.setProgress() value: " + "\(value)")
+        //Swift.print("RBScrollView.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
     }
@@ -27,7 +27,7 @@ extension IRBScrollable{
      * NOTE: These methods later call methods that are overridable.
      */
     func scroll(_ theEvent:NSEvent) {
-        Swift.print("RBScrollController.scrollWheel()")
+        //Swift.print("IRBScrollable.scrollWheel()")
         if(theEvent.phase != []){//swift 3 update, was -> NSEventPhase.none
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
@@ -45,7 +45,7 @@ extension IRBScrollable{
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
     func onScrollWheelChange(_ theEvent:NSEvent){
-        Swift.print("IRBScrollable.onScrollWheelChange")
+        //Swift.print("IRBScrollable.onScrollWheelChange")
         prevScrollingDeltaY = theEvent.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         _ = self.velocities.pushPop(theEvent.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
         mover!.value += theEvent.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/

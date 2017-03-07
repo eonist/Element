@@ -20,7 +20,7 @@ class RBSliderView:SliderView, IRBSlidable/*:SliderView,*/ {
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(with event: NSEvent) {
-        Swift.print("RBSliderView.scrollWheel() event.deltaY: \(event.deltaY) mover!.result: \(mover!.result)")
+        //Swift.print("RBSliderView.scrollWheel() event.deltaY: \(event.deltaY) mover!.result: \(mover!.result)")
         (self as IRBScrollable).scroll(event)//forward the event to the scrollExtension
         if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
         //IMPORTANT: for now let's not pass on the scrollWheel.if this backfires, aka we need scroolwheel for NSView at another level, then make a scheme that calls the correct scroll, aka make scroll inheritable and overridable and then call doScroll with the extension method attached

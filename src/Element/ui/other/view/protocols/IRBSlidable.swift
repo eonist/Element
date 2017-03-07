@@ -50,4 +50,3 @@ extension IRBSlidable {
         slider!.thumb!.fadeOut()
     }
 }
-

@@ -18,6 +18,7 @@ extension IRBSlidable {
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
         slider!.setProgressValue(progressValue!)
+        
     }
     /**
      * EventHandler for the Slider change event

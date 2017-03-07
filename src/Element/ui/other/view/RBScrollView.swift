@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 
 //Continue here: 
-    //
+    //get dierect transmission again
 
 class RBScrollView:ScrollView,IRBScrollable{
     /*RubberBand*/

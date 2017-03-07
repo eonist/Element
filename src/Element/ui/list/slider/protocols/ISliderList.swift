@@ -2,14 +2,8 @@ import Cocoa
 @testable import Utils
 
 protocol ISliderList:IList,ISlidable {/*Convenience*/
-    func scroll(_ theEvent:NSEvent)
-}
+    }
 extension ISliderList{
-    
-    //Continue here:
-        //move the scroll into Scrollable
-    
-    
 }
 class SliderListUtils{
     /**

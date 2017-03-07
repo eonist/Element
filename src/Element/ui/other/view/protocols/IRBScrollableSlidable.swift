@@ -27,6 +27,7 @@ extension IRBSlidable {
         ScrollableUtils.scrollTo(self,sliderEvent.progress)
         //mover!.value = lableContainer!.frame.y
     }
+    //im not sure the default scheme was needed, remove later if unused
     func scrollWheelExit() {defaultScrollWheelEntersScrollWheelExit()}
     func scrollWheelEnter() {defaultScrollWheelEnter()}
     func scrollWheelExitedAndIsStationary(){defaultScrollWheelEnterScrollWheelExitedAndIsStationary()}

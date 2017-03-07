@@ -14,7 +14,7 @@ extension IRBSlidable {
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
     func setProgress(_ value:CGFloat){
-        Swift.print("IRBSlidable.setProgress() value: " + "\(value)")
+        //Swift.print("IRBSlidable.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
         slider!.setProgressValue(progressValue!)

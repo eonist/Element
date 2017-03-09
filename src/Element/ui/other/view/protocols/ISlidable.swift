@@ -23,11 +23,11 @@ extension ISlidable{
     /**
      * TODO: move this into to IScrollable extension
      */
-    func defaultSetProgress(_ progress:CGFloat){
-        let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
-        //Swift.print("progressValue: " + "\(progressValue)")
-        ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
-    }
+    /*func defaultSetProgress(_ progress:CGFloat){
+     let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+     //Swift.print("progressValue: " + "\(progressValue)")
+     ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
+     }*/
     /**
      * NOTE: Slider list and SliderFastList uses this method
      */

@@ -34,7 +34,8 @@ extension Scrollable2{
      */
     func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("📜 Scrollable.onScrollWheelChange: \(event)")
-        setProgress(0.5)/*<-faux progress, its caluclated via delta noramlly*/
+        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
+        setProgress(progressVal)/*<-faux progress, its caluclated via delta noramlly*/
     }
     /**
      * NOTE: Basically when you enter your scrollWheel gesture

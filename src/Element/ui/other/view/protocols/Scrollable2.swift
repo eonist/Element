@@ -40,13 +40,13 @@ extension Scrollable2{
     /**
      * NOTE: Basically when you enter your scrollWheel gesture
      */
-    func onScrollWheelEnter() {
+    func onScrollWheelEnter() {//optional override in subClasses
         Swift.print("📜 Scrollable.onScrollWheelEnter")
     }
     /**
      * NOTE: Basically when you release your scrollWheel gesture
      */
-    func onScrollWheelExit() {
+    func onScrollWheelExit() {//optional override in subClasses
         Swift.print("📜 Scrollable.onScrollWheelExit")
     }
 }

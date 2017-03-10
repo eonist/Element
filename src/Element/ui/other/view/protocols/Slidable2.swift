@@ -9,7 +9,6 @@ protocol Slidable2:Displacable2{
  * ⚠️️ IMPORTANT: Slidable does not override scroll because a SlideView cant detect scroll. SlideScrollView however can access scroll and call hide and show slider. And then use protocol ambiguity to call scroll on the Scrollable after
  */
 extension Slidable2{
-    
     /**
      * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
      */

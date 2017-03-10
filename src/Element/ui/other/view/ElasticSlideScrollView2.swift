@@ -36,7 +36,7 @@ class ElasticSlideScrollView2:SlideView2,ElasticSlidableScrollable2{
             Swift.print("anim stopped")
             hideSlider()/*hides the slider when bounce back anim stopps*/
         }else if(event === (SliderEvent.change,slider!)){
-            mover!.value = lableContainer!.frame.y
+            mover!.value = lableContainer!.frame.y//quick fix, move into onSliderEvent in Slidable
         }
         super.onEvent(event)
     }

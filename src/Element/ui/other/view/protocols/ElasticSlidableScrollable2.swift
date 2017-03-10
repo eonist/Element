@@ -1,5 +1,5 @@
 import Foundation
 
-class ElasticSlidableScrollable {
+class ElasticSlidableScrollable2 {
 
 }

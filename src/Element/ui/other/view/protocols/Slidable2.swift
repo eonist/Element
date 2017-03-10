@@ -6,6 +6,9 @@ protocol Slidable2:Displacable2{
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}//i think this is the same as intervall, remove
 }
+/**
+ * IMPORTANT: Slidable does not override scroll because a SlideView cant detect scroll. SlideScrollView however can access scroll and call hide and show slider. And then use protocol ambiguity to 
+ */
 extension Slidable2{
     /**
      * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
@@ -22,16 +25,5 @@ extension Slidable2{
     }
     func showSlider(){
         Swift.print("🏂 show slider")
-    }
-    /**
-     * NOTE: Slider list and SliderFastList uses this method
-     */
-    func scroll(_ theEvent:NSEvent) {
-        let progress:CGFloat = SliderListUtils.progress(theEvent.deltaY, self.sliderInterval!, self.slider!.progress)
-        //Swift.print("Slideable.scroll() progress: " + "\(progress)")
-        setProgress(progress)/*Sets the target item to correct y, according to the current scrollBar progress*/
-        self.slider?.setProgressValue(progress)/*Positions the slider.thumb*/
-        if(theEvent.momentumPhase == NSEventPhase.ended){self.slider!.thumb!.setSkinState("inActive")}
-        else if(theEvent.momentumPhase == NSEventPhase.began){self.slider!.thumb!.setSkinState(SkinStates.none)}//include may begin here
     }
 }

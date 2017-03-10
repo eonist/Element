@@ -13,6 +13,7 @@ extension Scrollable2{
      * IMPORTANT: as long as this method doesnt recide in the baseClass it can be reached with protocol ambiguity
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
      * NOTE: These methods later call methods that are overridable.
+     * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ event:NSEvent) {
         Swift.print("Scrollable2.scroll()")

@@ -12,7 +12,7 @@ extension ElasticSlidableScrollable2{
         slider!.setProgressValue(progress)//<- scalar value 0-1
     }
     
-    //Continue here: 
+    //Continue here: add non scalar values to slider!!!!! 🏀
     
     /**
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream

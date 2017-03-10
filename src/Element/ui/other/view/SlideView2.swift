@@ -1,3 +1,3 @@
 import Foundation
 
-class SlideView2:View,Slidable2{}
+class SlideView2:DisplaceView2,Slidable2{}

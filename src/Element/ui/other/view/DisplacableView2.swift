@@ -1,6 +1,6 @@
 import Cocoa
 
-class DisplacableView2:NSView,Displacable2 {
+class DisplaceView2:NSView,Displacable2 {
     var height:CGFloat = 0
     var interval:CGFloat = 0
     var progress:CGFloat = 0

@@ -15,7 +15,7 @@ extension Scrollable2{
      * NOTE: These methods later call methods that are overridable.
      */
     func scroll(_ theEvent:NSEvent) {
-        Swift.print("IRBScrollable.scrollWheel()")
+        Swift.print("Scrollable2.scroll()")
         if(theEvent.phase != []){//swift 3 update, was -> NSEventPhase.none
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
@@ -29,16 +29,22 @@ extension Scrollable2{
             default:break;
         }
     }
+    /**
+     * NOTE: Basically when you perform a scroll-gesture on the touch-pad
+     */
     func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("📜 Scrollable.onScrollWheelChange: \(event)")
         setProgress(0.5)/*<-faux progress, its caluclated via delta noramlly*/
     }
-    /*func setProgress(_ progress:CGFloat){
-     Swift.print("📜 Scrollable.setProgress(\(progress)) move the lableContainer.y up and down")
-     }*/
+    /**
+     * NOTE: Basically when you enter your scrollWheel gesture
+     */
     func onScrollWheelEnter() {
         Swift.print("📜 Scrollable.onScrollWheelEnter")
     }
+    /**
+     * NOTE: Basically when you release your scrollWheel gesture
+     */
     func onScrollWheelExit() {
         Swift.print("📜 Scrollable.onScrollWheelExit")
     }

@@ -10,7 +10,7 @@ extension ElasticScrollable2{
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
     func onScrollWheelChange(_ event:NSEvent){
-        Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event)")
+        Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event.type)")
         //Swift.print("IRBScrollable.onScrollWheelChange")
         prevScrollingDeltaY = event.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         _ = self.velocities.pushPop(event.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
@@ -33,7 +33,7 @@ extension ElasticScrollable2{
     /**
      * NOTE: Basically when you release your scrollWheel gesture
      */
-    private func onScrollWheelExit(){
+    func onScrollWheelExit(){
         Swift.print("👻📜 (ElasticScrollable).onScrollWheelExit")
         //Swift.print("IRBScrollable.onScrollWheelUp")
         mover!.hasStopped = false/*Reset this value to false, so that the FrameAnimatior can start again*/

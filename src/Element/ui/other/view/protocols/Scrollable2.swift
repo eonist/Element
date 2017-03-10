@@ -15,7 +15,7 @@ extension Scrollable2{
      */
     func scroll(_ event:NSEvent) {
         Swift.print("Scrollable2.scroll()")
-        if(theEvent.phase != []){//swift 3 update, was -> NSEventPhase.none
+        if(event.phase != []){//swift 3 update, was -> NSEventPhase.none
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
         switch event.phase{

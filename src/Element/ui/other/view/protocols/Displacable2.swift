@@ -4,12 +4,12 @@ protocol Displacable2:class {
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
-    var progress:CGFloat {get}
-    var interval:CGFloat {get}
+    var progress:CGFloat {get}//0-1 atBegining <-> atEnd
+    var interval:CGFloat {get}//describes the speed when scrolling (distance per scroll tick)
     var lableContainer:Element? {get}
 }
 extension Displacable2{
-    //TODO:these values can be stored, does not need to be recalculated on every tick
+    //TODO:these values can be stored, but are computed now because of simplicity, does not need to be recalculated on every tick, set them when you interact, setSize, onItemChange, onScroll etc
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
     var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
     /**

@@ -14,6 +14,9 @@ extension ElasticSlidableScrollable2{
         }
         (self as Scrollable2).scroll(event)//👈 calls from shallow can overide downstream
     }
+    
+    //TODO: some experimenting required when implementing setProgress
+    
 }
 /*
 extension Slidable where Self:ElasticScrollable{

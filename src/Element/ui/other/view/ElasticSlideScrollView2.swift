@@ -2,7 +2,6 @@ import Cocoa
 @testable import Utils
 
 
-//copy comments from legacy code
 //try with CommitList
 //rename files
 //deperecate old files
@@ -35,7 +34,7 @@ class ElasticSlideScrollView2:SlideView2,ElasticSlidableScrollable2{
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
     override func onEvent(_ event:Event) {
-        if(event.assert(AnimEvent.stopped, mover!)){
+        if(event === (AnimEvent.stopped, mover!)){
             Swift.print("anim stopped")
             hideSlider()/*hides the slider when bounce back anim stopps*/
         }else if(event === (SliderEvent.change,slider!)){

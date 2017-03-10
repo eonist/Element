@@ -19,6 +19,6 @@ extension Displacable2{
         //Swift.print("IScrollable.setProgress() progress: \(progress)")
         let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")
-        ScrollableUtils.scrollTo(self as! ScrollableUtils.CommonScrollable,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
+        ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
 }

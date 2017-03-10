@@ -1,11 +1,10 @@
 import Foundation
 
 class ScrollableUtils {
-    typealias CommonScrollable = IScrollable & Scrollable2
     /**
      * Scrolls the list to a scalar position (value 0-1)
      */
-    static func scrollTo(_ scrollable:CommonScrollable,_ progress:CGFloat){
+    static func scrollTo(_ scrollable:Scrollable2,_ progress:CGFloat){
         let y:CGFloat = ScrollableUtils.scrollTo(progress, scrollable.height, scrollable.itemsHeight)
         scrollable.lableContainer!.y = y/*we offset the y position of the lableContainer*/
     }
@@ -26,5 +25,15 @@ class ScrollableUtils {
         
         let y:CGFloat = round(progress * scrollHeight)//Things may actually be smoother if you remove the round variable
         return -y
+    }
+}
+//⚠️️ DEPRECATED; remove
+extension ScrollableUtils{
+    /**
+     * Scrolls the list to a scalar position (value 0-1)
+     */
+    static func scrollTo(_ scrollable:IScrollable,_ progress:CGFloat){
+        let y:CGFloat = ScrollableUtils.scrollTo(progress, scrollable.height, scrollable.itemsHeight)
+        scrollable.lableContainer!.y = y/*we offset the y position of the lableContainer*/
     }
 }

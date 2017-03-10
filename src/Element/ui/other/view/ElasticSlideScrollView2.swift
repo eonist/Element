@@ -17,10 +17,6 @@ class ElasticSlideScrollView2:SlideView2,ElasticSlidableScrollable2{
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat] = Array(repeating: 0, count: 10)/*represents the velocity resolution of the gesture movment*/
     var progressValue:CGFloat?//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
-    override func scrollWheel(with event: NSEvent) {//you can probably remove this method and do it in base?"!?
-        Swift.print("ElasticSlideScrollView2.scrollWheel()")
-        scroll(event)
-    }
     override func resolveSkin() {
         super.resolveSkin()
         /*RubberBand*/
@@ -28,6 +24,15 @@ class ElasticSlideScrollView2:SlideView2,ElasticSlidableScrollable2{
         let itemsRect = CGRect(0,0,width,itemsHeight)/*represents the total size of the content *///TODO: could be ranmed to contentRect
         mover = RubberBand(Animation.sharedInstance,setProgress/*👈important*/,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/
+    }
+    /**
+     * When the the user scrolls
+     * NOTE: this method overides the Native NSView scrollWheel method
+     */
+    override func scrollWheel(with event: NSEvent) {//you can probably remove this method and do it in base?"!?
+        //Swift.print("ElasticSlideScrollView2.scrollWheel()")
+        scroll(event)
+        super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
     override func onEvent(_ event:Event) {
         if(event.assert(AnimEvent.stopped, mover!)){

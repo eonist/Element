@@ -4,7 +4,7 @@ protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
 
 extension ElasticSlidableScrollable2{
     /**
-     *
+     * setProgress comes from shallow
      */
     func setProgress(_ value: CGFloat) {//<-directtransmission value 💥
         (self as Elastic2).setProgress(value)

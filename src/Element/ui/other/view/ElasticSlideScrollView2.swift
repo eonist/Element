@@ -1,5 +1,14 @@
 import Cocoa
 @testable import Utils
+
+//store progress on slide
+//copy comments from legacy code
+//try with CommitList
+//rename files
+//deperecate old files
+
+
+
 /**
  * Might be better to not extend SlideView2
  */

@@ -1,7 +1,7 @@
 import Cocoa
 
 protocol Scrollable2:Displacable2{
-    func onScrollWheelChange(_ event:String)
+    func onScrollWheelChange(_ event:NSEvent)
     func onScrollWheelEnter()
     func onScrollWheelExit()
 }

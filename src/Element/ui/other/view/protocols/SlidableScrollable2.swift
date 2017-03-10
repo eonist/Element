@@ -1,9 +1,9 @@
-import Foundation
+import Cocoa
 
 protocol SlidableScrollable2:Slidable2,Scrollable2{}
 
 extension SlidableScrollable2{
-    func scroll(_ event: String) {
+    func scroll(_ event: NSView) {
         if(event == "change"){
             Swift.print("🏂📜 SlidableScrollable slider.setProgress(\(event))")
         }

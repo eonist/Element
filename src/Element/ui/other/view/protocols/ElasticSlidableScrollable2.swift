@@ -9,6 +9,6 @@ extension ElasticSlidableScrollable2{
         }else if(event == "enter"){
             showSlider()
         }
-        (self as Scrollable2).scroll(event)//protocol ambiguity
+        (self as Scrollable2).scroll(event)//protocol ambiguity, code reuse across inheritance, shared inheritance
     }
 }

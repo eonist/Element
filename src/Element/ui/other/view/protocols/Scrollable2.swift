@@ -8,6 +8,9 @@ protocol Scrollable2:Displacable2{
 
 
 extension Scrollable2{
+    /**
+     * IMPORTANT: as long as this method doesnt recide in the baseClass it can be reached with protocol ambiguity
+     */
     func scroll(_ event:String){//from scrollWheel
         if(event == "change"){
             onScrollWheelChange(event)

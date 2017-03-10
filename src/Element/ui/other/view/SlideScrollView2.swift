@@ -1,5 +1,5 @@
 import Foundation
 
-class SlidableScrollableView2 {
+class SlideScrollView2 {
 
 }

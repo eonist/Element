@@ -7,7 +7,7 @@ extension SlidableScrollable2{
         if(event == "change"){
             Swift.print("🏂📜 SlidableScrollable slider.setProgress(\(event))")
         }
-        (self as Scrollable).scroll(event)
+        (self as Scrollable2).scroll(event)//protocol ambiguity, side-ways inheritance
     }
     func onScrollWheelEnter() {
         showSlider()

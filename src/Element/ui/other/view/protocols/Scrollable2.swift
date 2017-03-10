@@ -7,7 +7,7 @@ protocol Scrollable2:Displacable2{
 }
 
 
-extension Scrollable{
+extension Scrollable2{
     func scroll(_ event:String){//from scrollWheel
         if(event == "change"){
             onScrollWheelChange(event)

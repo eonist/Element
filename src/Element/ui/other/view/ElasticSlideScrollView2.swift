@@ -9,7 +9,7 @@ import Cocoa
 
 
 //mover!.value = lableContainer!.frame.y
-//
+//add onSliderEvent, as you need to tap into 
 
 /**
  * Might be better to not extend SlideView2

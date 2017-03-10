@@ -5,3 +5,29 @@ protocol Scrollable2:Displacable2{
     func onScrollWheelEnter()
     func onScrollWheelExit()
 }
+
+
+extension Scrollable{
+    func scroll(_ event:String){//from scrollWheel
+        if(event == "change"){
+            onScrollWheelChange(event)
+        }else if(event == "enter"){
+            onScrollWheelEnter()
+        }else if(event == "exit"){
+            onScrollWheelExit()
+        }
+    }
+    func onScrollWheelChange(_ event:String) {
+        Swift.print("📜 Scrollable.onScrollWheelChange: \(event)")
+        setProgress(0.5)/*<-faux progress, its caluclated via delta noramlly*/
+    }
+    /*func setProgress(_ progress:CGFloat){
+     Swift.print("📜 Scrollable.setProgress(\(progress)) move the lableContainer.y up and down")
+     }*/
+    func onScrollWheelEnter() {
+        Swift.print("📜 Scrollable.onScrollWheelEnter")
+    }
+    func onScrollWheelExit() {
+        Swift.print("📜 Scrollable.onScrollWheelExit")
+    }
+}

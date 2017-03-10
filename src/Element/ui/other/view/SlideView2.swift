@@ -1,5 +1,3 @@
 import Foundation
 
-class SlideView2 {
-
-}
+class SlideView2:View,Slidable2{}

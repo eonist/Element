@@ -9,7 +9,7 @@ class DisplaceView2:Element,Displacable2 {
     var itemContainer:Container
     override func resolveSkin() {
         super.resolveSkin()//self.skin = SkinResolver.skin(self)//
-        lableContainer = self.addSubView(Container(width,height,self,"lable"))
+        itemContainer = addSubView(Container(width,height,self,"lable"))
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
 }

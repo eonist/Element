@@ -1,10 +1,11 @@
 import Foundation
 
 class ScrollableUtils {
+    typealias CommonScrollable = IScrollable & Scrollable2
     /**
      * Scrolls the list to a scalar position (value 0-1)
      */
-    static func scrollTo(_ scrollable:IScrollable,_ progress:CGFloat){
+    static func scrollTo(_ scrollable:CommonScrollable,_ progress:CGFloat){
         let y:CGFloat = ScrollableUtils.scrollTo(progress, scrollable.height, scrollable.itemsHeight)
         scrollable.lableContainer!.y = y/*we offset the y position of the lableContainer*/
     }

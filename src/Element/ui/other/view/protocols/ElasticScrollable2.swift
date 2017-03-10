@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 protocol ElasticScrollable2:Elastic2,Scrollable2{}
 
@@ -8,9 +9,6 @@ extension ElasticScrollable2{
     }
     func onScrollWheelExit() {
         Swift.print("👻📜 (ElasticScrollable).onScrollWheelExit")
-    }
-    func onScrollWheelChange(_ event: String) {
-        
     }
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad

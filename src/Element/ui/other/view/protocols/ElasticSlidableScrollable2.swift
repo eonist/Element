@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * For Elements that are both elastic, scrollable and slideable
+ */
 protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
 
 extension ElasticSlidableScrollable2{

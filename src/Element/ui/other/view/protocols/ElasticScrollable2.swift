@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * This protocol exist because other than Lists may want to be Elastic scrollable, like A container of things
+ */
 protocol ElasticScrollable2:Elastic2,Scrollable2{
     func scrollWheelExitedAndIsStationary()
 }

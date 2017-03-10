@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Slidable is for Elements that has a slider attached
+ */
 protocol Slidable2:Displacable2{
     func updateSlider()
     var slider:VSlider?{get}

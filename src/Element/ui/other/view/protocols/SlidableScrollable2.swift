@@ -9,10 +9,10 @@ extension SlidableScrollable2{
         slider!.setProgressValue(progress)
         setProgress(progressVal)/*<-faux progress, its caluclated via delta noramlly*/
     }
-    func onScrollWheelEnter() {
+    func onScrollWheelEnter() {//IMPORTANT: methods that are called from deep can only override upstream
         showSlider()
     }
-    func onScrollWheelExit() {
+    func onScrollWheelExit() {//IMPORTANT: methods that are called from deep can only override upstream
         hideSlider()
     }
 }

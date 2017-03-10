@@ -7,6 +7,10 @@ import Cocoa
 //rename files
 //deperecate old files
 
+
+//mover!.value = lableContainer!.frame.y
+//
+
 /**
  * Might be better to not extend SlideView2
  */

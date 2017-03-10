@@ -1,9 +1,9 @@
-import Foundation
+import Cocoa
 
 protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
 
 extension ElasticSlidableScrollable2{
-    func scroll(_ event: String) {
+    func scroll(_ event: NSEvent) {
         if(event == "exit"){
             hideSlider()
         }else if(event == "enter"){

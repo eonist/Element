@@ -13,13 +13,13 @@ extension Scrollable2{
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in
      * NOTE: These methods later call methods that are overridable.
      */
-    func scroll(_ theEvent:NSEvent) {
+    func scroll(_ event:NSEvent) {
         Swift.print("Scrollable2.scroll()")
         if(theEvent.phase != []){//swift 3 update, was -> NSEventPhase.none
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }
-        switch theEvent.phase{
-            case NSEventPhase.changed:onScrollWheelChange(theEvent)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
+        switch event.phase{
+            case NSEventPhase.changed:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
             case NSEventPhase.mayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
             case NSEventPhase.began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
             case NSEventPhase.ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
@@ -40,12 +40,12 @@ extension Scrollable2{
      * NOTE: Basically when you enter your scrollWheel gesture
      */
     func onScrollWheelEnter() {//optional override in subClasses
-        Swift.print("📜 Scrollable.onScrollWheelEnter")
+        Swift.print("📜 Scrollable.onScrollWheelEnter ⚠️️-DEFAULT-DO-NOTHING-⚠️️")
     }
     /**
      * NOTE: Basically when you release your scrollWheel gesture
      */
     func onScrollWheelExit() {//optional override in subClasses
-        Swift.print("📜 Scrollable.onScrollWheelExit")
+        Swift.print("📜 Scrollable.onScrollWheelExit ⚠️️-DEFAULT-DO-NOTHING-⚠️️")
     }
 }

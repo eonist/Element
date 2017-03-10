@@ -1,5 +1,5 @@
 import Foundation
 
-class Slidable {
+class Slidable2 {
 
 }

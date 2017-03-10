@@ -1,5 +1,5 @@
 import Foundation
 
-class Elastic {
+class Elastic2 {
     //continue making classes
 }

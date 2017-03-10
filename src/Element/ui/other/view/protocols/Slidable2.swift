@@ -7,7 +7,7 @@ protocol Slidable2:Displacable2{
     var sliderInterval:CGFloat?{get set}//i think this is the same as intervall, remove
 }
 /**
- * IMPORTANT: Slidable does not override scroll because a SlideView cant detect scroll. SlideScrollView however can access scroll and call hide and show slider. And then use protocol ambiguity to 
+ * ⚠️️ IMPORTANT: Slidable does not override scroll because a SlideView cant detect scroll. SlideScrollView however can access scroll and call hide and show slider. And then use protocol ambiguity to call scroll on the Scrollable after
  */
 extension Slidable2{
     /**
@@ -22,8 +22,10 @@ extension Slidable2{
     }
     func hideSlider(){
         Swift.print("🏂 hide slider")
+        self.slider!.thumb!.setSkinState("inActive")
     }
     func showSlider(){
         Swift.print("🏂 show slider")
+        self.slider!.thumb!.setSkinState(SkinStates.none)
     }
 }

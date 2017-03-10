@@ -1,5 +1,11 @@
-import Foundation
+import Cocoa
 
-class ContainerView2 {
-
+class DisplacableView2:NSView,Displacable2 {
+    var height:CGFloat = 0
+    var interval:CGFloat = 0
+    var progress:CGFloat = 0
+    var itemHeight:CGFloat = 0
+    var itemsHeight:CGFloat = 0
+    var itemContainer:String = ""
+    func scrollWheel(_ event:String){}
 }

@@ -8,7 +8,7 @@ extension SlidableScrollable2{
      */
     func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("🏂📜 SlidableScrollable2.onScrollWheelChange: \(event)")
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
+        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, (self as Slidable2).interval, progress)
         slider!.setProgressValue(progress)
         setProgress(progressVal)
     }

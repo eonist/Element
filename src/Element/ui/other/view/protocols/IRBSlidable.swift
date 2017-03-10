@@ -21,6 +21,9 @@ extension IRBSlidable {
         slider!.setProgressValue(progressValue!)
         
     }
+    
+    //Continue here: onSliderChange copy into elasticslideablescrollable2
+    
     /**
      * EventHandler for the Slider change event
      */

@@ -29,3 +29,20 @@ extension Slidable2{
         self.slider!.thumb!.setSkinState(SkinStates.none)
     }
 }
+
+/**
+ * When two fingers touches the track-pad this method is called
+ * NOTE: this method is called from: onScrollWheelEnter
+ */
+func defaultScrollWheelEnter(){//2. spring to refreshStatePosition
+    Swift.print("IRBSlidable.defaultScrollWheelEnter()" + "\(progressValue)")
+    if(itemsHeight >= height){slider!.thumb!.fadeIn()}/*fades in the slider*/
+}
+/**
+ * NOTE: This method is called from onScrollWheelExit
+ */
+func defaultScrollWheelEntersScrollWheelExit(){}
+func defaultScrollWheelEnterScrollWheelExitedAndIsStationary(){
+    Swift.print("IRBSlidable.defaultScrollWheelEnterScrollWheelExitedAndIsStationary()")
+    if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}/*only fade out if the state is none, aka not over*/
+}

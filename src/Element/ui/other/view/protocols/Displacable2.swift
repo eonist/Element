@@ -4,10 +4,13 @@ protocol Displacable2:class {
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
-    //var progress:CGFloat {get}//<--⚠️️try to remove this⚠️️
+    var progress:CGFloat {get}
+    var interval:CGFloat {get}
     var lableContainer:Element? {get}
 }
 extension Displacable2{
+    var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+    var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
     /**
      * ⚠️️ You might want to have one setProgress in scroll and one in slider and use protocol ambiguity to differentiate, but then you cant have this method in base like it is now
      * PARAM value: is the final y value for the lableContainer

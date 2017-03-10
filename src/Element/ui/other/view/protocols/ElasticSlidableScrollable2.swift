@@ -12,3 +12,13 @@ extension ElasticSlidableScrollable2{
         (self as Scrollable2).scroll(event)//protocol ambiguity, code reuse across inheritance, shared inheritance
     }
 }
+
+/*
+ extension Slidable where Self:ElasticScrollable{
+ func scroll(_ event: String) {
+ if(event == "change"){
+ print("🏂")
+ }
+ (self as Scrollable).scroll(event)
+ }
+ }*/

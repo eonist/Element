@@ -9,8 +9,8 @@ extension ElasticSlidableScrollable2{
      */
     func setProgress(_ value:CGFloat) {//<-direct transmission value 💥
         (self as Elastic2).setProgress(value)
-        let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)
-        slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
+        progressValue = ElasticUtils.progress(value,itemsHeight,height)
+        slider!.setProgressValue(progressValue!)//<- scalar value 0-1
     }
     
     /**

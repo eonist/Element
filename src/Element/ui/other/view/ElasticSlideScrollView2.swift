@@ -7,8 +7,6 @@ import Cocoa
 //rename files
 //deperecate old files
 
-
-
 /**
  * Might be better to not extend SlideView2
  */

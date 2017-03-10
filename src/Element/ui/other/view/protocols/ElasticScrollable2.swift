@@ -1,7 +1,9 @@
 import Cocoa
 @testable import Utils
 
-protocol ElasticScrollable2:Elastic2,Scrollable2{}
+protocol ElasticScrollable2:Elastic2,Scrollable2{
+    func scrollWheelExitedAndIsStationary()
+}
 
 extension ElasticScrollable2{
     func onScrollWheelEnter() {
@@ -21,4 +23,5 @@ extension ElasticScrollable2{
         mover!.value += event.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
         mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
     }
+    func scrollWheelExitedAndIsStationary(){/*override when you need this call*/}
 }

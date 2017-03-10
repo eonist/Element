@@ -4,7 +4,7 @@ protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
 
 extension ElasticSlidableScrollable2{
     func scroll(_ event: NSEvent) {
-        if(event.phase == NSEventPhase.ended || NSEventPhase.cancelled){
+        if(event.phase == NSEventPhase.ended || event == NSEventPhase.cancelled){
             hideSlider()
         }else if(event == "enter"){
             showSlider()

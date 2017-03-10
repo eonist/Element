@@ -10,3 +10,14 @@ protocol Elastic2:Displacable2{
     //⚠️️ you may be able to remove progressvalue in the future. as it works differently now!=!=?
     var progressValue:CGFloat?{get set}//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
 }
+extension Elastic2{
+    /**
+     * PARAM value: is the final y value for the lableContainer
+     * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
+     */
+    func setProgress(_ value:CGFloat){//DIRECT TRANSMISSION 💥
+        //Swift.print("RBScrollView.setProgress() value: " + "\(value)")
+        lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
+        progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
+    }
+}

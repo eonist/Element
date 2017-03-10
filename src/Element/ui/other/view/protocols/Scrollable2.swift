@@ -1,5 +1,7 @@
 import Cocoa
-
+/**
+ * Scrollable is for scroling things, basically content within a mask
+ */
 protocol Scrollable2:Displacable2{
     func onScrollWheelChange(_ event:NSEvent)
     func onScrollWheelEnter()
@@ -7,7 +9,6 @@ protocol Scrollable2:Displacable2{
 }
 
 extension Scrollable2{
-    
     /**
      * IMPORTANT: as long as this method doesnt recide in the baseClass it can be reached with protocol ambiguity
      * NOTE: You can use the event.deviceDeltaY to check which direction the gesture is moving in

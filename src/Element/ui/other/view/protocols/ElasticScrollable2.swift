@@ -1,5 +1,3 @@
 import Foundation
 
-class ElasticScrollable2 {
-
-}
+protocol ElasticScrollable2:Elastic2,Scrollable2{}

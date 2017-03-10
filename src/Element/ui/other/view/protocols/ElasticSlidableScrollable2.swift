@@ -11,6 +11,9 @@ extension ElasticSlidableScrollable2{
         (self as Elastic2).setProgress(value)
         slider!.setProgressValue(progress)//<- scalar value 0-1
     }
+    
+    //Continue here: 
+    
     /**
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream
      */

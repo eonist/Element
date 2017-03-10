@@ -1,6 +1,9 @@
 import Cocoa
 @testable import Utils
 
+//continue here: 🏀
+    //onSlide should store progress to be used when scrolling with scrollwheel later
+
 class SliderView:ScrollView,ISlidable {
     /*Slider*/
     var slider:VSlider?

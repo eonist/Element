@@ -9,7 +9,7 @@ protocol Displacable2:class {
     var lableContainer:Element? {get}
 }
 extension Displacable2{
-    //these values can be stored
+    //TODO:these values can be stored, does not need to be recalculated on every tick
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
     var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
     /**

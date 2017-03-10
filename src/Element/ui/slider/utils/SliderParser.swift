@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class SliderParser {
     
@@ -28,14 +29,14 @@ class SliderParser {
     
     
     /**
-     * Returns the progress
+     * Returns the progress (clamped between 0 and 1)
      * PARAM: y in most cases the itemContainer.y value
      * PARAM: height in most cases the list.height
      * PARAM: totalHeight the total height of all visible items (items.count*itemHeight)
      * NOTE: its tempting to just pass a list:IList here but treeList doesn't impliment IList and TreeList uses this method
      */
     static func progress(_ y:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
-        return max(0,min(1,y / -(totalHeight - height)))
+        return (y / -(totalHeight - height)).clip(0,1)
     }
     
     //TODO:move into ScrollableUtils

@@ -18,6 +18,7 @@ extension Elastic2{
     func setProgress(_ value:CGFloat){//DIRECT TRANSMISSION 💥
         Swift.print("Elastic2.setProgress() value: " + "\(value)")
         lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
+        //the bellow var may not be need to be set
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
     }
 }

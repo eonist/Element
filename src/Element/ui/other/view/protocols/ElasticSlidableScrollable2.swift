@@ -4,6 +4,13 @@ protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
 
 extension ElasticSlidableScrollable2{
     /**
+     *
+     */
+    func setProgress(_ value: CGFloat) {//<-directtransmission value 💥
+        (self as Elastic2).setProgress(value)
+        slider!.setProgressValue(progress)//<- scalar value 0-1
+    }
+    /**
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream
      */
     func scroll(_ event: NSEvent) {

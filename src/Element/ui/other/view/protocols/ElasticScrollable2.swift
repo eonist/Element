@@ -17,7 +17,7 @@ extension ElasticScrollable2{
             _ = self.velocities.pushPop(event.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
             mover!.value += event.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
             mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
-            setProgress(mover!.result)//👈NEW, this mgith need to be inSize scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
+            setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
         }
     }
     /**

@@ -3,7 +3,7 @@ import Cocoa
 
 
 //try with CommitList
-//deperecate old files
+//deperecate old files  
 
 //add onSliderEvent, as you need to tap into 
 

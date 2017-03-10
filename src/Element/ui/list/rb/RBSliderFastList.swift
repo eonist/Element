@@ -21,7 +21,7 @@ class RBSliderFastList:FastList, IRBSlidable {
         /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be renamed to maskRect
         let itemsRect = CGRect(0,0,width,max(itemsHeight,height))/*represents the total size of the content *///TODO: could be ranmed to contentRect
-        mover = RubberBand(Animation.sharedInstance,setProgress/*👈*/,frame,itemsRect)
+        mover = RubberBand(Animation.sharedInstance,setProgress/*👈IMPORTANT*/,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
         
         //TODO:It could be possible to just call updateSlider() instead of the bellow calculations

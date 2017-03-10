@@ -7,5 +7,5 @@ class DisplaceView2:NSView,Displacable2 {
     var itemHeight:CGFloat = 0
     var itemsHeight:CGFloat = 0
     var itemContainer:String = ""
-    func scrollWheel(_ event:String){}
+    //func scrollWheel(_ event:String){}
 }

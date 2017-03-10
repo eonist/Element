@@ -23,7 +23,8 @@ extension Slidable2{
     func hideSlider(){
         Swift.print("🏂 hide slider")
         //self.slider!.thumb!.setSkinState("inActive")
-        slider?.thumb?.fadeOut()
+        if(slider?.thumb?.getSkinState() == SkinStates.none){slider?.thumb?.fadeOut()}/*only fade out if the state is none, aka not over*/
+        //slider?.thumb?.fadeOut()
     }
     func showSlider(){
         Swift.print("🏂 show slider")

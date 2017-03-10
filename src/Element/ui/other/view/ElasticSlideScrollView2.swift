@@ -8,7 +8,7 @@ import Cocoa
 //deperecate old files
 
 
-//mover!.value = lableContainer!.frame.y
+//
 //add onSliderEvent, as you need to tap into 
 
 /**
@@ -35,6 +35,8 @@ class ElasticSlideScrollView2:SlideView2,ElasticSlidableScrollable2{
         if(event.assert(AnimEvent.stopped, mover!)){
             Swift.print("anim stopped")
             hideSlider()/*hides the slider when bounce back anim stopps*/
+        }else if(event === (SliderEvent.change,slider!)){
+            mover!.value = lableContainer!.frame.y
         }
         super.onEvent(event)
     }

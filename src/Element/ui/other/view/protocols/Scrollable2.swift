@@ -6,14 +6,13 @@ protocol Scrollable2:Displacable2{
     func onScrollWheelExit()
 }
 
-
 extension Scrollable2{
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
     var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
     /**
      * IMPORTANT: as long as this method doesnt recide in the baseClass it can be reached with protocol ambiguity
      */
-    func scroll(_ event:String){//from scrollWheel
+    func scroll(_ event:NSEvent){//from scrollWheel
         if(event == "change"){
             onScrollWheelChange(event)
         }else if(event == "enter"){

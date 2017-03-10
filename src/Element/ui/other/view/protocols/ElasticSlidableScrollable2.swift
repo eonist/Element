@@ -7,6 +7,7 @@ extension ElasticSlidableScrollable2{
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream
      */
     func scroll(_ event: NSEvent) {
+        Swift.print("👻🏂📜 ElasticSlidableScrollable2.scroll()")
         if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
             hideSlider()
         }else if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){

@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
 
@@ -15,7 +16,11 @@ extension ElasticSlidableScrollable2{
      */
     func scroll(_ event: NSEvent) {
         Swift.print("👻🏂📜 ElasticSlidableScrollable2.scroll()")
-        if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
+        if(event.phase == NSEventPhase.changed){
+            if(mover!.isDirectlyManipulating){
+                setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
+            }
+        }else if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
             hideSlider()
         }else if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){
             showSlider()

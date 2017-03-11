@@ -1,9 +1,6 @@
 import Cocoa
 @testable import Utils
 
-
-
-
 class SlideScrollFastList2:FastList2,SlidableScrollableFast {
     var slider:VSlider?
     var sliderInterval:CGFloat?

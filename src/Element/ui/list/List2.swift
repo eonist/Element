@@ -35,9 +35,9 @@ class List2:DisplaceView,IList2{
      * Creates and adds items to the _lableContainer
      * TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
      */
-    func mergeAt(_ objects:[Dictionary<String,String>], _ index:Int){//TODO: possible rename to something better, placeAt? insertAt?
+    func mergeAt(_ objects:[[String:String]], _ index:Int){//TODO: possible rename to something better, placeAt? insertAt?
         var i:Int = index
-        for object:Dictionary<String,String> in objects {//TODO: use for i
+        for object:[String:String] in objects {//TODO: use for i
             let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
             lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
             i += 1

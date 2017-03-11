@@ -96,6 +96,3 @@ class FastList2:DisplaceView,IFastList2 {
     override func getClassType() -> String {return "\(List.self)"}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension FastList2{
-    
-}

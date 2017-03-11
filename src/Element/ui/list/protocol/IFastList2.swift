@@ -1,7 +1,9 @@
 import Foundation
+@testable import Utils
 
 protocol IFastList2:IList2{
     func reUse(_ listItem:FastListItem)
+    func createItem(_ index:Int) -> Element
 }
 
 /**
@@ -22,7 +24,7 @@ extension IFastList2{
     func setProgress(_ progress:CGFloat){
         Swift.print("🐎 FastList2.setProgress() ")
         //ScrollableUtils.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        super.setProgress(progress)//moves lableContainer
+        //super.setProgress(progress)//moves lableContainer
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
         if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
             renderItems(range)

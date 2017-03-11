@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 
 protocol SlidableScrollableFast:Fast, SlidableScrollable{}
 extension SlidableScrollableFast{
@@ -7,5 +7,4 @@ extension SlidableScrollableFast{
         slider!.setProgressValue(progressVal)
         (self as Fast).setProgress(progressVal)
     }
-    
 }

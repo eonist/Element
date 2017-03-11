@@ -21,7 +21,7 @@ class SliderFastList:FastList,ISliderList {
         super.scrollWheel(with:event)/*forwards the event other delegates higher up in the stack*/
     }
     override func setProgress(_ value:CGFloat){
-        let progressValue = self.itemsHeight < height ? 0 : value
+        let progressValue = self.itemsHeight < height ? 0 : value//dont scroll if not needed
         //Swift.print("progressValue: " + "\(progressValue)")
         super.setProgress(progressValue)
     }

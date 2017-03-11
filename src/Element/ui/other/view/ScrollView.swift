@@ -1,7 +1,7 @@
 import Cocoa
 /**
  * When the the user scrolls
- * NOTE: this Method is totally academic, can be removed ,less is more
+ * NOTE: this Method is totally academic, can be usefull for UI where you dont want or need slider. 
  */
 class ScrollView: DisplaceView, Scrollable {
     override func scrollWheel(with event: NSEvent) {//TODO: move to displaceview

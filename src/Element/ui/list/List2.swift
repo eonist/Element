@@ -88,7 +88,7 @@ class List2:DisplaceView,IList2{
      * NOTE: This method is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
-        return "\(List.self)"
+        return "\(DEPRECATED_List.self)"
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

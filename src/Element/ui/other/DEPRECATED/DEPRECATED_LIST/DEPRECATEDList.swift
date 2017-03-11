@@ -12,7 +12,7 @@ import Cocoa
  * TODO: try to make the mask an Element
  * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
-class List:Element,IList{
+class DEPRECATED_List:Element, DEPRECATED_IList {
     var itemHeight:CGFloat
     var dataProvider:DataProvider
     var lableContainer:Container?
@@ -85,7 +85,7 @@ class List:Element,IList{
      * NOTE: This method is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
-        return "\(List.self)"
+        return "\(DEPRECATED_List.self)"
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

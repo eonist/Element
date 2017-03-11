@@ -11,7 +11,7 @@ import Cocoa
  * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
  * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
-class FastList:Element,IList {
+class DEPRECATED_FastList:Element, DEPRECATED_IList {
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
@@ -101,10 +101,10 @@ class FastList:Element,IList {
         else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
-    override func getClassType() -> String {return "\(List.self)"}
+    override func getClassType() -> String {return "\(DEPRECATED_List.self)"}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-extension FastList{
+extension DEPRECATED_FastList {
     /**
      * Creates, applies data and aligns items defined in PARAM: range
      * TODO: You can optimize the range stuff later when all cases work (it would be possible to creat a custom diff method that is simpler and faster than using generic intersection,diff and exclude)

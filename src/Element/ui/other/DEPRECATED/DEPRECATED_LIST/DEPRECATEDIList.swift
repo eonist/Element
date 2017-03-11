@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol IList:IElement, DEPRECATEDIScrollable {
+protocol DEPRECATED_IList:IElement, DEPRECATEDIScrollable {
     //func getItemsHeight()->CGFloat
     //func setSize(width : CGFloat, height : CGFloat)
     //var height : CGFloat{get}  //TODO:you can extend IElement
@@ -12,7 +12,7 @@ protocol IList:IElement, DEPRECATEDIScrollable {
 /**
  * TODO: Continue adding methods here
  */
-extension IList{
+extension DEPRECATED_IList {
     /*Parsers*/
     var selected:ISelectable?{return ListParser.selected(self)}/*Convenience*/
     var selectedIndex:Int{return ListParser.selectedIndex(self)}/*Convenience*/

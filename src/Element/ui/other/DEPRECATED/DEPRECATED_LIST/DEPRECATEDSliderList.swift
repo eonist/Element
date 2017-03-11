@@ -5,7 +5,7 @@ import Cocoa
  * TODO: you may need to add an update method like SliderTreeList has, imagine if your scrolled to the bottom nd then an item is removed what happens? you should update the slider and y.position of the itemsContainer
  * TODO: Do more research into the scroller speed. as its now an  arbetrary value of 30. Do you pull this from the user profile or?
  */
-class SliderList:List,ISliderList{
+class DEPRECATED_SliderList: DEPRECATED_List, DEPRECATED_ISliderList {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {
@@ -71,7 +71,7 @@ class SliderList:List,ISliderList{
 /**
  * TODO: ⚠️️: These should really not be here. Move to fastlist
  */
-extension IList{
+extension DEPRECATED_IList {
     /**
      * Returns the first item that visible within view. (item.bottom must cross top of view to count as visible)
      */

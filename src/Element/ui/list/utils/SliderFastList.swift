@@ -3,7 +3,7 @@ import Cocoa
 /**
  * TODO: Implement setSize, see SliderList for implementation
  */
-class SliderFastList:FastList,ISliderList {
+class SliderFastList: DEPRECATED_FastList, DEPRECATED_ISliderList {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {

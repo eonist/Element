@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol ISliderList:IList, DEPRECATEDISlidable {/*Convenience*/
+protocol DEPRECATED_ISliderList: DEPRECATED_IList, DEPRECATEDISlidable {/*Convenience*/
 }
-extension ISliderList{
+extension DEPRECATED_ISliderList {
 }

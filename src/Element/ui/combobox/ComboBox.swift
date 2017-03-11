@@ -43,7 +43,7 @@ class ComboBox:Element{
 	 */
 	func onListSelect(_ event:ListEvent) {
         Swift.print("onListSelect")
-        let list:IList = event.origin as! List
+        let list: DEPRECATED_IList = event.origin as! DEPRECATED_List
         selectedIndex = ListParser.selectedIndex(list)
 		let text:String = ListParser.titleAt(list, selectedIndex)
         Swift.print("text: " + "\(text)")

@@ -1,5 +1,5 @@
 import Foundation
 
-class ElasticSlidableScrollableFast {
+class ElasticSlidableScrollableFast:IFastList,ElasticSlidableScrollable {
 
 }

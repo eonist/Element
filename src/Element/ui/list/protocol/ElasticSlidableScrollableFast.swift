@@ -1,10 +1,28 @@
-import Foundation
+import Cocoa
 @testable import Utils
 
-protocol ElasticSlidableScrollableFast:IFastList2,ElasticSlidableScrollable {
+protocol ElasticSlidableScrollableFast:IFastList2,ElasticScrollable, Slidable {
     var rbContainer:Container?{get set}
 }
 extension ElasticSlidableScrollableFast{
+    /**
+     * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream in POP
+     */
+    func scroll(_ event: NSEvent) {
+        Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.scroll()")
+        (self as Scrollable).scroll(event)//👈 calls from shallow can overide downstream
+        /*the following must be after the call above or else the thumb is hidden because of anim.end*/
+        if(event.phase == NSEventPhase.changed){
+            if(mover!.isDirectlyManipulating){
+                //also manipulates slider, but only on directTransmission, as mover calls setProgress from shallow in indirectTransmission
+                setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
+            }
+        }else if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
+            //hideSlider()
+        }else if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){
+            showSlider()
+        }
+    }
     /**
      * PARAM value: is the final y value for the lableContainer
      */
@@ -22,7 +40,7 @@ extension ElasticSlidableScrollableFast{
             progressValue = value /  -(itemsHeight - height)/*calc scalar from value, if itemsHeight is to small then use height instead*/
             let progress = progressValue!.clip(0, 1)
             (self as IFastList2).setProgress(progress)/*moves the lableContainer up and down*/
-            //⚠️️ TODO:  setProgress on the slider aswell
+            //⚠️️ TODO: use the new slider progress algo that is more accurate ⚠️️
             slider!.setProgressValue(progressValue!)
             /*finds the values that is outside 0 and 1*/
             //Swift.print("progressValue!: " + "\(progressValue!)")

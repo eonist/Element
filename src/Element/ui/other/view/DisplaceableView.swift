@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * TODO: Consider renaming to ContainerView and Containable
+ */
 class DisplaceView:Element, Displaceable {
     //var height:CGFloat {fatalError("Must override in subClass")}
     //var interval:CGFloat {fatalError("Must override in subClass")}

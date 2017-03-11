@@ -11,7 +11,6 @@ import Cocoa
  * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
  * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
-typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 
 //TODO: write a protocol for FastList
 

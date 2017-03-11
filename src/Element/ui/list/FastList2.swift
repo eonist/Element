@@ -12,8 +12,7 @@ import Cocoa
  * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
 /*Alias for the Tuple used to store list items and "absolute" indecies*/
-
-//TODO: write a protocol for FastList
+typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 
 class FastList2:DisplaceView,IFastList2 {
     var _itemHeight:CGFloat//⚠️️ temp fix

@@ -8,5 +8,6 @@ class SlideScrollFastList2:SlideFastList2,SlidableScrollableFast {
      */
     override func scrollWheel(with event: NSEvent) {
         scroll(event)
+        //TODO: ⚠️️ you want to do super.scrollWhe...here, as NSView may need it up hirarchy etc
     }
 }

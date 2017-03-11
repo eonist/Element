@@ -1,6 +1,8 @@
-import Foundation
+import Cocoa
+@testable import Utils
 
 class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
+    /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat] = Array(repeating: 0, count: 10)/*represents the velocity resolution of the gesture movment*/
@@ -17,7 +19,7 @@ class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
      * When the the user scrolls
      * NOTE: this method overides the Native NSView scrollWheel method
      */
-    override func scrollWheel(with event: NSEvent) {//you can probably remove this method and do it in base?"!?
+    override func scrollWheel(with event:NSEvent) {//you can probably remove this method and do it in base?"!?
         //Swift.print("ElasticSlideScrollView2.scrollWheel()")
         scroll(event)
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/

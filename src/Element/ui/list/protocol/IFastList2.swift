@@ -2,9 +2,10 @@ import Foundation
 @testable import Utils
 
 protocol IFastList2:IList2{
-    var pool:[FastListItem]
+    var pool:[FastListItem] {get}
     func reUse(_ listItem:FastListItem)
     func createItem(_ index:Int) -> Element
+    var inActive:[FastListItem] {get}
 }
 
 /**

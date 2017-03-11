@@ -1,25 +1,8 @@
 import Cocoa
 @testable import Utils
 
-protocol Fast{}
 
-//Continue here:
-    //move the FastListSetProgress into the fast protocol!
 
-extension Fast{
-    func setProgress(_ progress:CGFloat){
-        Swift.print("🍌 setProgress: progress")
-    }
-}
-protocol SlidableScrollableFast:Fast, SlidableScrollable{}
-extension SlidableScrollableFast{
-    func onScrollWheelChange(_ event:NSEvent) {
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
-        slider!.setProgressValue(progressVal)
-        (self as Fast).setProgress(progressVal)
-    }
-    
-}
 
 class SlideScrollFastList2:FastList2,SlidableScrollableFast {
     var slider:VSlider?

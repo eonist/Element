@@ -1,5 +1,5 @@
 import Foundation
 
-class IList2 {
+protocol IList2 {
 
 }

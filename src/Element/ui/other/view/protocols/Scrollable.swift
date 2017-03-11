@@ -3,9 +3,10 @@ import Cocoa
  * Scrollable is for scroling things, basically content within a mask
  */
 protocol Scrollable: Displaceable {
-    func onScrollWheelChange(_ event:NSEvent)
+    func onScrollWheelChange(_ event:NSEvent)//non-momentum change aka direct change via scrollWheel
     func onScrollWheelEnter()
     func onScrollWheelExit()
+    func onInDirectScrollWheelChange()
 }
 
 extension Scrollable {
@@ -26,7 +27,7 @@ extension Scrollable {
             case NSEventPhase.began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
             case NSEventPhase.ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
             case NSEventPhase.cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
-            case NSEventPhase(rawValue:0):/*Swift.print("none");*/break;//swift 3 update, was -> NSEventPhase.none
+            case NSEventPhase(rawValue:0):onInDirectScrollWheelChange(event)/*Swift.print("none");*/break;//swift 3 update, was -> NSEventPhase.none
             default:break;
         }
     }

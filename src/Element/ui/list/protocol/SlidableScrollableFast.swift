@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol SlidableScrollableFast:Fast, SlidableScrollable{}
+protocol SlidableScrollableFast:IFastList2, SlidableScrollable{}
 extension SlidableScrollableFast{
     
 }

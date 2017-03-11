@@ -16,10 +16,6 @@ class SlideScrollFastList2:FastList2,SlidableScrollable {
         slider!.setThumbHeightValue(thumbHeight)
         slider!.thumb!.fadeOut()//inits fade out anim on init
     }
-    override func setProgress(_ progress: CGFloat) {
-        Swift.print("🍌 setProgress: ")
-        super.setProgress(progress)
-    }
     override func onEvent(_ event:Event) {
         //Swift.print("event: " + "\(event)")
         if(event === (SliderEvent.change,slider!)){

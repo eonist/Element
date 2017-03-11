@@ -28,7 +28,7 @@ class List2:DisplaceView,IList2{
      */
     override func resolveSkin() {
         super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self,"lable"))
+        //lableContainer = addSubView(Container(width,height,self,"lable"))
         mergeAt(dataProvider.items, 0)
     }
     /**

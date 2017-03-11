@@ -1,6 +1,12 @@
 import Cocoa
 @testable import Utils
 
+protocol Fast{}
+extension Fast{
+    func setProgress(_ progress:CGFloat){
+        Swift.print("🍌 setProgress")
+    }
+}
 class SlideScrollFastList2:FastList2,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?

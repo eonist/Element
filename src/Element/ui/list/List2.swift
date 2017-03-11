@@ -12,7 +12,7 @@ import Cocoa
  * TODO: try to make the mask an Element
  * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
-class List2:DisplacableView,IList2{
+class List2:DisplaceView,IList2{
     var itemHeight:CGFloat
     var dataProvider:DataProvider
     //var lableContainer:Container?

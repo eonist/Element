@@ -18,7 +18,7 @@ extension Scrollable {
     func scroll(_ event:NSEvent) {
         Swift.print("Scrollable2.scroll() event.phase: \(event.phase)")
         if(event.phase != []){//swift 3 update, was -> NSEventPhase.none
-            Swift.print("theEvent.phase: " + "\(event.phase)")
+            //Swift.print("theEvent.phase: " + "\(event.phase)")
         }
         switch event.phase{
             case NSEventPhase.changed:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
@@ -26,7 +26,7 @@ extension Scrollable {
             case NSEventPhase.began:onScrollWheelEnter()/*The mayBegin phase doesnt fire if you begin the scrollWheel gesture very quickly*/
             case NSEventPhase.ended:onScrollWheelExit();//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
             case NSEventPhase.cancelled:onScrollWheelExit();//Swift.print("cancelled")/*this trigers if the scrollWhell gestures goes off the trackpad etc*/
-            case []:break;//swift 3 update, was -> NSEventPhase.none
+            case NSEventPhase(rawValue:0):Swift.print("none");break;//swift 3 update, was -> NSEventPhase.none
             default:break;
         }
     }

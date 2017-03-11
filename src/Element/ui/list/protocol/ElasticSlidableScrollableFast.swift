@@ -15,7 +15,7 @@ extension ElasticSlidableScrollableFast{
         if(event.phase == NSEventPhase.changed){
             if(mover!.isDirectlyManipulating){
                 //also manipulates slider, but only on directTransmission, as mover calls setProgress from shallow in indirectTransmission
-                (self as Scrollable).setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
+                setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
             }
         }else if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){
             showSlider()
@@ -37,7 +37,13 @@ extension ElasticSlidableScrollableFast{
         }else{
             progressValue = value /  -(itemsHeight - height)/*calc scalar from value, if itemsHeight is to small then use height instead*/
             let progress = progressValue!.clip(0, 1)
-            (self as IFastList2).setProgress(progress)/*moves the lableContainer up and down*/
+            
+            //continue here: 
+                //tone down the ellastic effect. similar to ElasticView
+            
+            //⚠️️🔨the bellow needs refactoring
+            (self as Scrollable).setProgress(progress)/*moves the lableContainer up and down*/
+            (self as IFastList2).setProgress(progress)
             //⚠️️ TODO: use the new slider progress algo that is more accurate ⚠️️
             slider!.setProgressValue(progressValue!)
             /*finds the values that is outside 0 and 1*/

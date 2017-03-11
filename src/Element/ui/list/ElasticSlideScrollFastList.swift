@@ -7,6 +7,8 @@ class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat] = Array(repeating: 0, count: 10)/*represents the velocity resolution of the gesture movment*/
     var progressValue:CGFloat?//<--👈Might not need this anymore, same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
+    /*rbContainer*/
+    var rbContainer:Container?/*needed for the overshot animation*/
     override func resolveSkin() {
         super.resolveSkin()
         /*rbContainer*/

@@ -2,13 +2,13 @@ import Foundation
 @testable import Utils
 
 protocol ElasticSlidableScrollableFast:IFastList2,ElasticSlidableScrollable {
-
+    var rbContainer:Container?{get set}
 }
 extension ElasticSlidableScrollableFast{
     /**
      * PARAM value: is the final y value for the lableContainer
      */
-    override func setProgress(_ value:CGFloat){
+    func setProgress(_ value:CGFloat){
         //Swift.print("value: " + "\(value)")
         let itemsHeight = self.itemsHeight//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
         if(itemsHeight < height){//when there is few items in view, different overshoot rules apply, this should be written more elegant
@@ -20,7 +20,8 @@ extension ElasticSlidableScrollableFast{
         }else{
             progressValue = value /  -(itemsHeight - height)/*calc scalar from value, if itemsHeight is to small then use height instead*/
             let progress = progressValue!.clip(0, 1)
-            super.setProgress(progress)/*moves the lableContainer up and down*/
+            (self as IFastList2).setProgress(progress)/*moves the lableContainer up and down*/
+            //⚠️️ TODO:  setProgress on the slider aswell
             slider!.setProgressValue(progressValue!)
             /*finds the values that is outside 0 and 1*/
             //Swift.print("progressValue!: " + "\(progressValue!)")

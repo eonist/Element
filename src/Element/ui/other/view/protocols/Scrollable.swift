@@ -2,13 +2,12 @@ import Cocoa
 /**
  * Scrollable is for scroling things, basically content within a mask
  */
-protocol Scrollable: Displaceable {
+protocol Scrollable:Displaceable {
     func onScrollWheelChange(_ event:NSEvent)//non-momentum change aka direct change via scrollWheel
     func onScrollWheelEnter()
     func onScrollWheelExit()
     func onInDirectScrollWheelChange(_ event:NSEvent)//momentum change, aka indirect scrollWheel aka virtual momentum
 }
-
 extension Scrollable {
     /**
      * IMPORTANT: as long as this method doesnt recide in the baseClass it can be reached with protocol ambiguity

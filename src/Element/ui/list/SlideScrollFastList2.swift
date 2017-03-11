@@ -4,6 +4,7 @@ import Cocoa
 class SlideScrollFastList2:FastList2,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
+    override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension
     override func resolveSkin() {
         super.resolveSkin()
         /*slider*/

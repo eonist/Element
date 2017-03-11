@@ -7,14 +7,13 @@ protocol ElasticSlidableScrollable: ElasticScrollable, Slidable {}
 
 extension ElasticSlidableScrollable {
     /**
-     * setProgress comes from shallow
+     * IMPORTANT: This setProgress comes from shallow not deep. Check Callers to see the shallow calls
      */
     func setProgress(_ value:CGFloat) {//<-direct transmission value 💥
         (self as Elastic).setProgress(value)
         let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)
         slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
     }
-    
     /**
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream
      */

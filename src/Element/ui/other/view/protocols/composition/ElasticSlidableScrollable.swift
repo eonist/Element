@@ -15,7 +15,7 @@ extension ElasticSlidableScrollable {
         slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
     }
     /**
-     * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream
+     * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream in POP
      */
     func scroll(_ event: NSEvent) {
         Swift.print("👻🏂📜 ElasticSlidableScrollable2.scroll()")

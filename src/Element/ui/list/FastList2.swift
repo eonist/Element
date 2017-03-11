@@ -16,23 +16,26 @@ import Cocoa
 //TODO: write a protocol for FastList
 
 class FastList2:DisplaceView,IList2 {
+    var _itemHeight:CGFloat//⚠️️ temp fix
+    override var itemHeight:CGFloat {return _itemHeight}
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
-    var itemHeight:CGFloat/*The list item height, each item must have the same height*/
+    //var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
-    var lableContainer:Container?/*holds the list items*/
+    //var lableContainer:Container?/*holds the list items*/
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
     
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
-        self.itemHeight = itemHeight
+        self._itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
         self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
-        layer!.masksToBounds = true/*masks the children to the frame*/
+        //layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
         super.resolveSkin()
-        lableContainer = addSubView(Container(width,height,self,"lable"))
+        
+        //lableContainer = addSubView(Container(width,height,self,"lable"))
         let visibleRange:Range<Int> = visibleItemRange/*visible ItemRange Within View, calcs visibleItems based on lableContainer.y and height*/
         let range:Range<Int> = visibleRange.start..<min(dp.count,visibleRange.end)/*clip the range*/
         renderItems(range)

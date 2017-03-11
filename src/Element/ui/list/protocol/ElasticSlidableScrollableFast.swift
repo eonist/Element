@@ -1,6 +1,7 @@
 import Foundation
+@testable import Utils
 
-class ElasticSlidableScrollableFast:IFastList,ElasticSlidableScrollable {
+protocol ElasticSlidableScrollableFast:IFastList2,ElasticSlidableScrollable {
 
 }
 extension ElasticSlidableScrollableFast{

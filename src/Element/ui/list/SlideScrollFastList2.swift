@@ -29,11 +29,11 @@ class SlideScrollFastList2:FastList2,SlidableScrollableFast {
      */
     override func scrollWheel(with event: NSEvent) {
        //⚠️️ temp solution
-        if(event.phase == NSEventPhase.changed || event.phase == NSEventPhase(rawValue:0)){
-            let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
-            slider!.setProgressValue(progressVal)
-            setProgress(progress)
-        }
+        /*if(event.phase == NSEventPhase.changed || event.phase == NSEventPhase(rawValue:0)){
+         let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
+         slider!.setProgressValue(progressVal)
+         setProgress(progress)
+         }*/
         scroll(event)
     }
 }

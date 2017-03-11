@@ -45,7 +45,8 @@ extension ElasticSlidableScrollableFast{
             (self as Scrollable).setProgress(progress)/*moves the lableContainer up and down*/
             (self as IFastList2).setProgress(progress)
             //⚠️️ TODO: use the new slider progress algo that is more accurate ⚠️️
-            slider!.setProgressValue(progressValue!)
+            let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)
+            slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
             /*finds the values that is outside 0 and 1*/
             //Swift.print("progressValue!: " + "\(progressValue!)")
             if(progressValue! < 0){

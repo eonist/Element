@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Fast{}
+protocol Fast:IList2{}
 
 /**
  * Basically the Fast protocol allows you to reuse Items in a "carousell-like-list"
@@ -132,3 +132,35 @@ extension Fast{
         pool.forEach{reUse($0)}
     }
 }
+
+
+
+/*
+ //call this method after resize etc
+ //clear inActive array, if any are left, can happen after resize etc
+ //This could be usefull when size of view changes from big to small etc, or when going from many items to few
+ 
+ inActive.forEach{
+ Swift.print("remove inactive")
+ $0.item.removeFromSuperview()
+ }
+ inActive.removeAll()
+ 
+ */
+
+/*
+ private class Utils{
+ /**
+ * Temp solution
+ * NOTE: There is a more permanent way to disable animation with the actionForLayer, but it requires a change in InteractiveView etc
+ * NOTE: maybe we can avoid hiding by just placing the view outside the mask item.y = top - item.height should to
+ */
+ static func hide(_ view:NSView, _ isHidden:Bool){
+ CATransaction.begin()
+ CATransaction.setDisableActions(true)
+ //Change properties here without animation
+ view.isHidden = isHidden
+ CATransaction.commit()
+ }
+ }
+ */

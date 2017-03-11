@@ -16,7 +16,7 @@ extension Scrollable {
      * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ event:NSEvent) {
-        Swift.print("Scrollable2.scroll()")
+        Swift.print("Scrollable2.scroll() event.phase: \(event.phase)")
         if(event.phase != []){//swift 3 update, was -> NSEventPhase.none
             //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
         }

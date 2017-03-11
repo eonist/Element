@@ -1,5 +1,8 @@
 import Cocoa
 @testable import Utils
+/**
+ * NOTE: this Method is totally academic, can be removed, less is more
+ */
 
 class ElasticScrollView: DisplaceView, ElasticScrollable {
     /*RubberBand*/

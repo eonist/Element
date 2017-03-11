@@ -49,7 +49,7 @@ extension ElasticSlidableScrollableFast{
             slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
             /*finds the values that is outside 0 and 1*/
             //Swift.print("progressValue!: " + "\(progressValue!)")
-            if(sliderProgress < 0){
+            if(sliderProgress < 0){//
                 let y1 = height * -sliderProgress
                 //Swift.print("y1: " + "\(y1)")
                 rbContainer!.y = y1/*the half height is to limit the rubber effect, should probably be done else where*/

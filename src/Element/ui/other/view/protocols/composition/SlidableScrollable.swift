@@ -12,6 +12,9 @@ extension SlidableScrollable {
         slider!.setProgressValue(progressVal)
         setProgress(progressVal)
     }
+    func onInDirectScrollWheelChange(_ event: NSEvent) {
+        onScrollWheelChange(event)
+    }
     func onScrollWheelEnter() {//IMPORTANT: methods that are called from deep can only override upstream
         showSlider()
     }

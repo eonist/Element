@@ -2,7 +2,7 @@ import Foundation
 /**
  * Slidable is for Elements that has a slider attached
  */
-protocol Slidable2: Displaceable {
+protocol Slidable: Displaceable {
     func updateSlider()
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}//i think this is the same as intervall, remove
@@ -10,7 +10,7 @@ protocol Slidable2: Displaceable {
 /**
  * ⚠️️ IMPORTANT: Slidable does not override scroll because a SlideView cant detect scroll. SlideScrollView however can access scroll and call hide and show slider. And then use protocol ambiguity to call scroll on the Scrollable after
  */
-extension Slidable2{
+extension Slidable {
     /**
      * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
      */

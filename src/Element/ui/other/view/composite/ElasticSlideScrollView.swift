@@ -3,7 +3,7 @@ import Cocoa
 /**
  * Might be better to not extend SlideView2
  */
-class ElasticSlideScrollView2:SlideView2,ElasticSlidableScrollable2{
+class ElasticSlideScrollView2: SlideView, ElasticSlidableScrollable {
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat] = Array(repeating: 0, count: 10)/*represents the velocity resolution of the gesture movment*/

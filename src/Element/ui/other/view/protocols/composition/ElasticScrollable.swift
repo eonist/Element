@@ -3,11 +3,11 @@ import Cocoa
 /**
  * This protocol exist because other than Lists may want to be Elastic scrollable, like A container of things
  */
-protocol ElasticScrollable2:Elastic2,Scrollable2{
+protocol ElasticScrollable: Elastic, Scrollable {
     func scrollWheelExitedAndIsStationary()
 }
 
-extension ElasticScrollable2{
+extension ElasticScrollable {
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */

@@ -3,14 +3,14 @@ import Cocoa
 /**
  * For Elements that are both elastic, scrollable and slideable
  */
-protocol ElasticSlidableScrollable2:ElasticScrollable2,Slidable2{}
+protocol ElasticSlidableScrollable: ElasticScrollable, Slidable {}
 
-extension ElasticSlidableScrollable2{
+extension ElasticSlidableScrollable {
     /**
      * setProgress comes from shallow
      */
     func setProgress(_ value:CGFloat) {//<-direct transmission value 💥
-        (self as Elastic2).setProgress(value)
+        (self as Elastic).setProgress(value)
         let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)
         slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
     }
@@ -20,7 +20,7 @@ extension ElasticSlidableScrollable2{
      */
     func scroll(_ event: NSEvent) {
         Swift.print("👻🏂📜 ElasticSlidableScrollable2.scroll()")
-        (self as Scrollable2).scroll(event)//👈 calls from shallow can overide downstream
+        (self as Scrollable).scroll(event)//👈 calls from shallow can overide downstream
         /*the following must be after the call above or else the thumb is hidden because of anim.end*/
         if(event.phase == NSEventPhase.changed){
             if(mover!.isDirectlyManipulating){

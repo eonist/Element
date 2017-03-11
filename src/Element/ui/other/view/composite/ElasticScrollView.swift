@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class ElasticScrollView2:DisplaceView2,ElasticScrollable2{
+class ElasticScrollView2: DisplaceView, ElasticScrollable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

@@ -15,7 +15,7 @@ import Cocoa
 
 //TODO: write a protocol for FastList
 
-class FastList2:Element,IList {
+class FastList2:DisplaceView,IList2 {
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/

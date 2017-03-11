@@ -1,12 +1,12 @@
 import Foundation
 
-protocol Fast:IList2{}
+protocol IFastList2:IList2{}
 
 /**
  * Basically the Fast protocol allows you to reuse Items in a "carousell-like-list"
  * NOTE: The Fast name is because if you dont reuse items in a long list it will be slow.
  */
-extension Fast{
+extension IFastList2{
     /**
      * PARAM: progress (0-1)
      * NOTE: setProgress is in this class because RBFastSliderList doesn't extend SliderList, and both classes needs to extend this method

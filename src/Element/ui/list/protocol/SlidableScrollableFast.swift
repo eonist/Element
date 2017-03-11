@@ -9,6 +9,7 @@ extension SlidableScrollableFast{
         Swift.print("🏂📜🐎 SlidableScrollable2.onScrollWheelChange: \(event)")
         let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
         slider!.setProgressValue(progressVal)
-        (self as IFastList2).setProgress(progressVal)
+        (self as SlidableScrollable).setProgress(progressVal)//move the lableContainer
+        (self as IFastList2).setProgress(progressVal)//update the reuse algo
     }
 }

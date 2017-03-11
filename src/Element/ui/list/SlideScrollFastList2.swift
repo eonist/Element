@@ -3,13 +3,16 @@ import Cocoa
 
 protocol Fast{}
 extension Fast{
-    func setProgress(_ progress:CGFloat){
-        Swift.print("🍌 setProgress")
-    }
+    
 }
 protocol SlidableScrollableFast:Fast, Slidable, Scrollable{}
+extension SlidableScrollableFast{
+    func setProgress(_ progress:CGFloat){
+        Swift.print("🍌 setProgress: progress")
+    }
+}
 
-class SlideScrollFastList2:FastList2,SlidableScrollable {
+class SlideScrollFastList2:FastList2,SlidableScrollableFast {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension, if possible

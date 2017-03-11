@@ -18,7 +18,7 @@ extension Scrollable {
     func scroll(_ event:NSEvent) {
         Swift.print("Scrollable2.scroll() event.phase: \(event.phase)")
         if(event.phase != []){//swift 3 update, was -> NSEventPhase.none
-            //Swift.print("theEvent.phase: " + "\(theEvent.phase)")
+            Swift.print("theEvent.phase: " + "\(event.phase)")
         }
         switch event.phase{
             case NSEventPhase.changed:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/

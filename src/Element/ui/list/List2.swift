@@ -14,6 +14,7 @@ import Cocoa
  */
 class List2:DisplaceView,IList2{
     override var itemHeight:CGFloat {return 24}
+    override var itemsHeight: CGFloat {dataProvider.count * itemHeight}
     var dataProvider:DataProvider
     //var lableContainer:Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {

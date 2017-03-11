@@ -22,5 +22,5 @@ extension IList2{
         fatalError("not implemented yet")
     }
     var dp:DataProvider {return self.dataProvider}/*convenience*/
-    override var itemsHeight: CGFloat {dp.count * itemHeight}//👈 new
+    var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 new
 }

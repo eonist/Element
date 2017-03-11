@@ -66,7 +66,8 @@ class List2:DisplaceView,IList2{
     func onListItemUpInside(_ buttonEvent:ButtonEvent) {
         let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
         //Swift.print("selectedIndex: " + "\(selectedIndex)")
-        ListModifier.selectAt(self,selectedIndex)
+        fatalError("uncomment the line bellow")
+        //ListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
     override func onEvent(_ event:Event) {

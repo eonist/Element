@@ -28,6 +28,12 @@ class SlideScrollFastList2:FastList2,SlidableScrollableFast {
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(with event: NSEvent) {
+       //⚠️️ temp solution
+        if(event.phase == NSEventPhase.changed || event.phase == NSEventPhase(rawValue:0)){
+            let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
+            slider!.setProgressValue(progressVal)
+            setProgress(progress)
+        }
         scroll(event)
     }
 }

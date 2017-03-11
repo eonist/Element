@@ -39,7 +39,7 @@ class FastList:Element,IList {
     }
     /**
      * PARAM: progress (0-1)
-     * NOTE: setProgress is in this class because RBFastSliderList doesnt extend SliderList, and both classes needs to extend this method
+     * NOTE: setProgress is in this class because RBFastSliderList doesn't extend SliderList, and both classes needs to extend this method
      * NOTE: override this method in SliderFastList and RBSliderFastList
      * 
      * The concept is simple, you only show items that are within the limits as you scroll up and down. (these items only exists virtually, untill they are revealed if they are within the limits)

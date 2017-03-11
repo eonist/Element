@@ -2,7 +2,7 @@ import Cocoa
 /**
  * Scrollable is for scroling things, basically content within a mask
  */
-protocol Scrollable2:Displacable2{
+protocol Scrollable2: Displaceable {
     func onScrollWheelChange(_ event:NSEvent)
     func onScrollWheelEnter()
     func onScrollWheelExit()

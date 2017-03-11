@@ -2,7 +2,7 @@ import Foundation
 /**
  * Slidable is for Elements that has a slider attached
  */
-protocol Slidable2:Displacable2{
+protocol Slidable2: Displaceable {
     func updateSlider()
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}//i think this is the same as intervall, remove

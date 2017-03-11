@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class DisplaceView2:Element,Displacable2 {
+class DisplaceView2:Element, Displaceable {
     //var height:CGFloat {fatalError("Must override in subClass")}
     //var interval:CGFloat {fatalError("Must override in subClass")}
     //var progress:CGFloat {fatalError("Must override in subClass")}

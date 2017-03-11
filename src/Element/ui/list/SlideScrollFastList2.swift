@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class SlideScrollFastList2:FastList2,SlidableScrollableFast {
+class SlideScrollFastList2:IFastList2,SlidableScrollableFast {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension, if possible

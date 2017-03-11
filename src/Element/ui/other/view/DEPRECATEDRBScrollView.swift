@@ -4,7 +4,7 @@ import Cocoa
 //Continue here: 
     //get dierect transmission again
 
-class DEPRECATEDRBScrollView:ScrollView, DEPRECATEDIRBScrollable {
+class DEPRECATEDRBScrollView:DEPRECATEDScrollView, DEPRECATEDIRBScrollable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

@@ -1,6 +1,9 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * ⚠️️ TODO: Copy over the setsize and dataprovider stuff, consider making some of it protocol based rather than inheritable, IDataProvidable?, IResizeable?
+ * ⚠️️ TODO: Copy over commentary from legacy
+ */
 class SlideScrollList2:List2,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?

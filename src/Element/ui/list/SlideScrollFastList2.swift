@@ -20,4 +20,11 @@ class SlideScrollFastList2:FastList2,SlidableScrollable {
         }/*events from the slider*/
         super.onEvent(event)
     }
+    /**
+     * When the the user scrolls
+     * NOTE: this method overides the Native NSView scrollWheel method
+     */
+    override func scrollWheel(with event: NSEvent) {
+        scroll(event)
+    }
 }

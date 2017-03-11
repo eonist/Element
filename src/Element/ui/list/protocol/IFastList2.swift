@@ -2,6 +2,7 @@ import Foundation
 @testable import Utils
 
 protocol IFastList2:IList2{
+    var pool:[FastListItem]
     func reUse(_ listItem:FastListItem)
     func createItem(_ index:Int) -> Element
 }

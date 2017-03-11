@@ -14,12 +14,10 @@ import Cocoa
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 
 class FastList2:DisplaceView,IFastList2 {
-    var _itemHeight:CGFloat//⚠️️ temp fix
+    var _itemHeight:CGFloat//⚠️️ temp fix /*The list item height, each item must have the same height*/
     override var itemHeight:CGFloat {return _itemHeight}
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
-    //var itemHeight:CGFloat/*The list item height, each item must have the same height*/
     var dataProvider:DataProvider/*data storage*/
-    //var lableContainer:Container?/*holds the list items*/
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
     

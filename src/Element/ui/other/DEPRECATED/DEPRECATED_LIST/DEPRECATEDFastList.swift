@@ -11,9 +11,6 @@ import Cocoa
  * IMPORTANT: Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
  * TODO: Add resize support (test if resize works, by spawning new items etc)
  */
-
-//TODO: write a protocol for FastList
-
 class FastList:Element,IList {
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var itemHeight:CGFloat/*The list item height, each item must have the same height*/

@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * TODO: You need to update slider and mover on DP event: see SliderList for implementation
+ */
 class SlideScrollFastList2:SlideFastList2,SlidableScrollableFast {
     /**
      * When the the user scrolls

@@ -15,7 +15,7 @@ extension ElasticSlidableScrollableFast{
         if(event.phase == NSEventPhase.changed){
             if(mover!.isDirectlyManipulating){
                 //also manipulates slider, but only on directTransmission, as mover calls setProgress from shallow in indirectTransmission
-                setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
+                (self as Scrollable).setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
             }
         }else if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){
             showSlider()

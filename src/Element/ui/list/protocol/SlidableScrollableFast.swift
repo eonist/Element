@@ -9,6 +9,6 @@ extension SlidableScrollableFast{
         Swift.print("🏂📜🐎 SlidableScrollable2.onScrollWheelChange: \(event)")
         let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
         slider!.setProgressValue(progressVal)
-        setProgress(progressVal)
+        (self as IFastList2).setProgress(progressVal)
     }
 }

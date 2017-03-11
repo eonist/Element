@@ -51,7 +51,7 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 
 **2017-mar** 
 - Elastic, Slidable and Scrollable protocols are introduced
-- Converting from OOP to POP (aka shared inheritance)
+- Converting from OOP to POP (aka shared inheritance)  
 **2017-feb**  
 - Improvements to SliderTreeList 
 - Fixed slider positioning in sliderTreeList  

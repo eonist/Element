@@ -51,8 +51,9 @@ class FastList2:DisplaceView,IList2 {
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(_ progress:CGFloat){
+        Swift.print("FastList2.setProgress()")
         //ScrollableUtils.scrollTo(self, progress)/*moves the labelContainer up and down*/
-        setProgress(progress)
+        //setProgress(progress)
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
         if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
             renderItems(range)

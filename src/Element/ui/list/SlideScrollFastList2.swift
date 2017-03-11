@@ -7,6 +7,8 @@ class SlideScrollFastList2:FastList2,SlidableScrollable {
     override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension, if possible
     override func resolveSkin() {
         super.resolveSkin()
+        Swift.print("itemsHeight: " + "\(itemsHeight)")
+        Swift.print("height: " + "\(height)")
         /*slider*/
         sliderInterval = floor(itemsHeight - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
         slider = addSubView(VSlider(itemHeight,height,0,0,self))

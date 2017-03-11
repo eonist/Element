@@ -1,5 +1,5 @@
 import Foundation
 
-class ElasticSlidableScrollableFast {
-
+protocol ElasticSlidableScrollableFast:IFastList2,ElasticScrollable, Slidable {
+    var rbContainer:Container?{get set}
 }

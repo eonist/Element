@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class SlideScrollList:List2,SlidableScrollable {
+class SlideScrollList2:List2,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {

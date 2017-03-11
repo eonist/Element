@@ -9,6 +9,10 @@ class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
     var progressValue:CGFloat?//<--👈Might not need this anymore, same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
     override func resolveSkin() {
         super.resolveSkin()
+        /*rbContainer*/
+        rbContainer = addSubView(Container(width,height,self,"rb"))
+        rbContainer!.addSubview(lableContainer!)//add lable Container inside rbContainer
+        lableContainer!.parent = rbContainer!
         /*RubberBand*/
         let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
         let itemsRect = CGRect(0,0,width,itemsHeight)/*represents the total size of the content *///TODO: could be ranmed to contentRect

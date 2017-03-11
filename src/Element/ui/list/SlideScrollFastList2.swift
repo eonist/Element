@@ -3,13 +3,18 @@ import Cocoa
 
 protocol Fast{}
 extension Fast{
-    
-}
-protocol SlidableScrollableFast:Fast, Slidable, Scrollable{}
-extension SlidableScrollableFast{
     func setProgress(_ progress:CGFloat){
         Swift.print("🍌 setProgress: progress")
     }
+}
+protocol SlidableScrollableFast:Fast, SlidableScrollable{}
+extension SlidableScrollableFast{
+    func onScrollWheelChange(_ event:NSEvent) {
+        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
+        slider!.setProgressValue(progressVal)
+        (self as Fast).setProgress(progressVal)
+    }
+    
 }
 
 class SlideScrollFastList2:FastList2,SlidableScrollableFast {

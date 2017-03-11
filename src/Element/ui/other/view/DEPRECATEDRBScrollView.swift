@@ -4,7 +4,7 @@ import Cocoa
 //Continue here: 
     //get dierect transmission again
 
-class RBScrollView:ScrollView,IRBScrollable{
+class DEPRECATEDRBScrollView:ScrollView, DEPRECATEDIRBScrollable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
@@ -23,13 +23,13 @@ class RBScrollView:ScrollView,IRBScrollable{
      */
     override func scrollWheel(with event:NSEvent) {
         //Swift.print("RBScrollView.scrollWheel")
-        (self as IRBScrollable).scroll(event)//forward the event to the scrollExtension
+        (self as DEPRECATEDIRBScrollable).scroll(event)//forward the event to the scrollExtension
         if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
         //IMPORTANT: for now let's not pass on the scrollWheel.if this backfires, aka wee need scroolwheel for NSView at another level, then make a scheme that calls the correct scroll, aka make scroll inheritable and overridable and then call doScroll with the extension method attached
         //super.scrollWheel(with: event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }
 }
-extension RBScrollView{
+extension DEPRECATEDRBScrollView {
     /**
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists

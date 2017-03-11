@@ -2,14 +2,14 @@ import Cocoa
 /**
  * Slidable is for Elements that has a slider attached
  */
-protocol ISlidable:class,IScrollable{
+protocol DEPRECATEDISlidable:class, DEPRECATEDIScrollable {
     var slider:VSlider?{get}
     var sliderInterval:CGFloat?{get set}
     //func setProgress(_ progress:CGFloat)//this could go in IScrollable
     func updateSlider()
     //func scroll(_ theEvent:NSEvent)
 }
-extension ISlidable{
+extension DEPRECATEDISlidable {
     /**
      * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
      */

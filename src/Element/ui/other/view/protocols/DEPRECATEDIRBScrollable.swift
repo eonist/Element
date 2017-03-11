@@ -3,7 +3,7 @@ import Cocoa
 /**
  * This protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
  */
-protocol IRBScrollable:class,IScrollable{
+protocol DEPRECATEDIRBScrollable:class, DEPRECATEDIScrollable {
     var mover:RubberBand?{get set}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:[CGFloat]{get set}
@@ -12,7 +12,7 @@ protocol IRBScrollable:class,IScrollable{
     func scrollWheelExitedAndIsStationary()
     var progressValue:CGFloat?{get set}//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
 }
-extension IRBScrollable{
+extension DEPRECATEDIRBScrollable {
     /**
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists

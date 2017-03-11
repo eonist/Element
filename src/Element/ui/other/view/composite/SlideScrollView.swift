@@ -1,6 +1,6 @@
 import Cocoa
 
-class SlideScrollView2: SlideView, SlidableScrollable {
+class SlideScrollView: SlideView, SlidableScrollable {
     override func scrollWheel(with event: NSEvent) {
         scroll(event)
     }

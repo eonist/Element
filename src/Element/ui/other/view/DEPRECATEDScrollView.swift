@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class ScrollView:Element,IScrollable{
+class DEPRECATEDScrollView:Element, DEPRECATEDIScrollable {
     var lableContainer:Container?
     var itemsHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var itemHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value

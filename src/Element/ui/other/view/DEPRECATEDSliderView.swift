@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class SliderView:ScrollView,ISlidable {
+class DEPRECATEDSliderView:ScrollView, DEPRECATEDISlidable {
     /*Slider*/
     var slider:VSlider?
     var sliderInterval:CGFloat?

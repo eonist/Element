@@ -3,7 +3,7 @@ import Cocoa
 /**
  * TODO: You need to update slider and mover on DP event: see SliderList for implementation
  */
-class RBSliderFastList:FastList, IRBSlidable {
+class RBSliderFastList:FastList, DEPRECATEDIRBSlidable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
@@ -71,7 +71,7 @@ class RBSliderFastList:FastList, IRBSlidable {
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(with event:NSEvent) {
-        (self as IRBScrollable).scroll(event)/*forward the event to the scrollExtension*/
+        (self as DEPRECATEDIRBScrollable).scroll(event)/*forward the event to the scrollExtension*/
         if(event.phase == NSEventPhase.changed){setProgress(mover!.result)}/*direct manipulation*/
         super.scrollWheel(with:event)/*keep forwarding the scrollWheel event for NSViews higher up the hierarcy to listen to*/
     }

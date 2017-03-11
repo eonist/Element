@@ -2,7 +2,7 @@ import Cocoa
 /**
  * Scrollable is for scroling things, basically content within a mask
  */
-protocol IScrollable:class {
+protocol DEPRECATEDIScrollable:class {
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
@@ -12,7 +12,7 @@ protocol IScrollable:class {
     func setProgress(_ progress:CGFloat)
     //func scroll(_ theEvent:NSEvent)//caution, if you uncomment this then RBScrollable extension scroll cant be called, strangly enough
 }
-extension IScrollable{
+extension DEPRECATEDIScrollable {
     /**/
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
     var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}

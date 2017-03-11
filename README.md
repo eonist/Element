@@ -52,7 +52,7 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 **2017-mar** 
 - List UI's are now POP (aka Protocol Oriented Programming)
 - Elastic, Slidable and Scrollable protocols are introduced
-- Converting from OOP to POP (aka shared inheritance)  
+- Converting from OOP to POP (aka shared inheritance) Aka no duplicate code!  
 
 **2017-feb**  
 - Improvements to SliderTreeList 

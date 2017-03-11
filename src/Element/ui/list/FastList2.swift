@@ -15,7 +15,7 @@ import Cocoa
 
 //TODO: write a protocol for FastList
 
-class FastList2:DisplaceView,IList2 {
+class FastList2:DisplaceView,IFastList2 {
     var _itemHeight:CGFloat//⚠️️ temp fix
     override var itemHeight:CGFloat {return _itemHeight}
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/

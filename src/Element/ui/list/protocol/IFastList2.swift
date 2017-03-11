@@ -1,6 +1,8 @@
 import Foundation
 
-protocol IFastList2:IList2{}
+protocol IFastList2:IList2{
+    func reUse(_ listItem:FastListItem)
+}
 
 /**
  * Basically the Fast protocol allows you to reuse Items in a "carousell-like-list"

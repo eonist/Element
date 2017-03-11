@@ -7,6 +7,7 @@ protocol Displaceable:class {//TODO: RENAME TO displaceable
     var progress:CGFloat {get}//0-1 atBegining <-> atEnd
     var interval:CGFloat {get}//describes the speed when scrolling (distance per scroll tick)
     var lableContainer:Element? {get}
+    func setProgress(_ progress:CGFloat)
 }
 extension Displaceable {
     //TODO:these values can be stored, but are computed now because of simplicity, does not need to be recalculated on every tick, set them when you interact, setSize, onItemChange, onScroll etc

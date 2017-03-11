@@ -10,7 +10,7 @@ extension ElasticSlidableScrollable {
      * IMPORTANT: This setProgress comes from shallow not deep. Check Callers to see the shallow calls
      */
     func setProgress(_ value:CGFloat) {//<-direct transmission value 💥
-        Swift.print("👻🏂📜 ElasticSlidableScrollable.setProgress(\(value))")
+        Swift.print("👻🏂📜 ElasticSlidableScrollable.setProgress(\(value)) 💥")
         (self as Elastic).setProgress(value)
         let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)
         slider!.setProgressValue(sliderProgress)//<- scalar value 0-1

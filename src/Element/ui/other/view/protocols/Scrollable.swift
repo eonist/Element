@@ -6,7 +6,7 @@ protocol Scrollable: Displaceable {
     func onScrollWheelChange(_ event:NSEvent)//non-momentum change aka direct change via scrollWheel
     func onScrollWheelEnter()
     func onScrollWheelExit()
-    func onInDirectScrollWheelChange()//momentum change, aka indirect scrollWheel aka virtual momentum
+    func onInDirectScrollWheelChange(_ event:NSEvent)//momentum change, aka indirect scrollWheel aka virtual momentum
 }
 
 extension Scrollable {
@@ -33,6 +33,7 @@ extension Scrollable {
     }
     /**
      * NOTE: momentum change, aka indirect scrollWheel aka virtual momentum
+     * TODO: you could refactor this into just a bool flag onScrollWheelChange instead?
      */
     func onInDirectScrollWheelChange(_ event:NSEvent) {
         Swift.print("📜 Scrollable.onInDirectScrollWheelChange: \(event.type)")

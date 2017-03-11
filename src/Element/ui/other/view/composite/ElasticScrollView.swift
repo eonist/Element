@@ -15,6 +15,10 @@ class ElasticScrollView: DisplaceView, ElasticScrollable {
         mover = RubberBand(Animation.sharedInstance,setProgress/*👈important*/,frame,itemsRect)
         mover!.event = onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/
     }
+    /**
+     * When the the user scrolls
+     * NOTE: this method overides the Native NSView scrollWheel method
+     */
     override func scrollWheel(with event: NSEvent) {
         scroll(event)
     }

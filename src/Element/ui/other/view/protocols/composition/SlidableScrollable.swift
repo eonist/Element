@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol SlidableScrollable: Slidable, Scrollable {}
+protocol SlidableScrollable:Slidable, Scrollable {}
 
 extension SlidableScrollable {
     /**

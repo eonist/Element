@@ -7,6 +7,8 @@ extension Fast{
         Swift.print("🍌 setProgress")
     }
 }
+protocol SlidableScrollableFast:Fast, Slidable, Scrollable{}
+
 class SlideScrollFastList2:FastList2,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?

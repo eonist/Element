@@ -13,11 +13,11 @@ import Cocoa
  * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List2:DisplaceView,IList2{
-    var itemHeight:CGFloat
+    override var itemHeight:CGFloat {return 24}
     var dataProvider:DataProvider
     //var lableContainer:Container?
     init(_ width: CGFloat, _ height: CGFloat, _ itemHeight:CGFloat = NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
-        self.itemHeight = itemHeight
+        //self.itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width,height,parent,id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/

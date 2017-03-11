@@ -50,6 +50,7 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 ## Progress:
 
 **2017-mar** 
+- List Components are now POP (Protocol oriented programming)
 - Elastic, Slidable and Scrollable protocols are introduced
 - Converting from OOP to POP (aka shared inheritance)  
 

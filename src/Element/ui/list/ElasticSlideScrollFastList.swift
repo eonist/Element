@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
+class ElasticSlideScrollFastList: SlideFastList,ElasticSlidableScrollableFast {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

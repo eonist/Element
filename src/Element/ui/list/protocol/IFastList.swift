@@ -1,7 +1,7 @@
 import Foundation
 @testable import Utils
 
-protocol IFastList2:IList2{
+protocol IFastList: IList {
     var pool:[FastListItem] {get set}
     func reUse(_ listItem:FastListItem)
     func createItem(_ index:Int) -> Element
@@ -11,7 +11,7 @@ protocol IFastList2:IList2{
  * Basically the Fast protocol allows you to reuse Items in a "carousell-like-list"
  * NOTE: The Fast name is because if you dont reuse items in a long list it will be slow.
  */
-extension IFastList2{
+extension IFastList{
     /**
      * PARAM: progress (0-1)
      * NOTE: setProgress is in this class because RBFastSliderList doesn't extend SliderList, and both classes needs to extend this method

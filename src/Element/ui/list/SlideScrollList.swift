@@ -7,7 +7,7 @@ import Cocoa
  * ⚠️️ TODO: Copy over the setsize and dataprovider stuff, consider making some of it protocol based rather than inheritable, IDataProvidable?, IResizeable?
  * ⚠️️ TODO: Copy over commentary from legacy
  */
-class SlideScrollList2:List2,SlidableScrollable {
+class SlideScrollList2: List,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {
@@ -49,7 +49,7 @@ class SlideScrollList2:List2,SlidableScrollable {
 /**
  * TODO: ⚠️️: These should really not be here. Move to fastlist2 etc
  */
-extension IList2{
+extension IList {
     /**
      * Returns the first item that visible within view. (item.bottom must cross top of view to count as visible)
      */

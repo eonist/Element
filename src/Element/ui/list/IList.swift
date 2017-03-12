@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol IList2:Displaceable {
+protocol IList:Displaceable {
     //func getItemsHeight()->CGFloat
     //func setSize(width : CGFloat, height : CGFloat)
     //var height : CGFloat{get}  //TODO:you can extend IElement
@@ -12,7 +12,7 @@ protocol IList2:Displaceable {
 /**
  * TODO: Continue adding methods here
  */
-extension IList2{
+extension IList {
     /*Parsers*/
     var selected:ISelectable?{fatalError("not implemented yet")}/*Convenience*/
     var selectedIndex:Int{return 0}/*Convenience*/

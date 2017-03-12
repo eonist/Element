@@ -12,7 +12,7 @@ import Cocoa
  * TODO: try to make the mask an Element
  * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
-class List2:DisplaceView,IList2{
+class List:DisplaceView, IList {
     var _itemHeight:CGFloat//⚠️️ temp fix
     override var itemHeight:CGFloat {return _itemHeight}
     override var itemsHeight: CGFloat {return dataProvider.count * itemHeight}

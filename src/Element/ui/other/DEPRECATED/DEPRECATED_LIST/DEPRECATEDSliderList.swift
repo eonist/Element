@@ -11,10 +11,11 @@ class DEPRECATED_SliderList: DEPRECATED_List, DEPRECATED_ISliderList {
     override func resolveSkin() {
         super.resolveSkin()
         //TODO:It could be possible to remove the bellow code and just call updateSlider as it contains almost the same code
-        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        slider = addSubView(VSlider(itemHeight,height,0,0,self))
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
-        slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?
+        fatalError("⚠️️ DEPRECATED")
+        /*sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+         slider = addSubView(VSlider(itemHeight,height,0,0,self))
+         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height)
+         slider!.setThumbHeightValue(thumbHeight)//<--TODO: Rather set the thumbHeight on init?*/
         //ElementModifier.hide(slider!, ListParser.itemsHeight(self) > slider!.height)/*<--new adition*/
     }
     /**
@@ -60,12 +61,13 @@ class DEPRECATED_SliderList: DEPRECATED_List, DEPRECATED_ISliderList {
      * Sets the list to correct height, the scrollbar thumb to correct size and the scrollbar interval to correct interval
      */
     override func setSize(_ width:CGFloat, _ height:CGFloat) {//TODO: when max showing is set to 3 and there are 4 items the sliderTHumbsize is wrong
-        slider!.setSize(itemHeight, height)
-        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
-        slider!.setThumbHeightValue(thumbHeight)
-        super.setSize(width,height)
-        ElementModifier.hide(slider!, itemsHeight > slider!.height)/*Hides the slider if it is not needed anymore*///<--new adition
+        fatalError("⚠️️ DEPRECATED")
+        /*slider!.setSize(itemHeight, height)
+         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight
+         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
+         slider!.setThumbHeightValue(thumbHeight)
+         super.setSize(width,height)
+         ElementModifier.hide(slider!, itemsHeight > slider!.height)/*Hides the slider if it is not needed anymore*///<--new adition*/
     }
 }
 /**

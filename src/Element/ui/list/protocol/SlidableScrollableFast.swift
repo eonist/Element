@@ -10,6 +10,6 @@ extension SlidableScrollableFast{
         let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
         slider!.setProgressValue(progressVal)
         (self as SlidableScrollable).setProgress(progressVal)//move the lableContainer
-        (self as IFastList2).setProgress(progressVal)//update the reuse algo
+        (self as IFastList).setProgress(progressVal)//update the reuse algo
     }
 }

@@ -14,12 +14,13 @@ protocol DEPRECATED_IList:IElement, DEPRECATEDIScrollable {
  */
 extension DEPRECATED_IList {
     /*Parsers*/
-    var selected:ISelectable?{return ListParser.selected(self)}/*Convenience*/
-    var selectedIndex:Int{return ListParser.selectedIndex(self)}/*Convenience*/
-    var itemsHeight:CGFloat {return ListParser.itemsHeight(self)}/*Convenience*/
+    var selected:ISelectable?{fatalError("⚠️️DEPRECATED")/*return ListParser.selected(self)*/}/*Convenience*/
+    var selectedIndex:Int{fatalError("⚠️️DEPRECATED")/*return ListParser.selectedIndex(self)*/}/*Convenience*/
+    var itemsHeight:CGFloat {fatalError("⚠️️DEPRECATED")/*return ListParser.itemsHeight(self)*/}/*Convenience*/
     /*Modifiers*/
     func selectAt(_ index:Int){/*convenience*/
-        ListModifier.selectAt(self, index)
+        fatalError("⚠️️DEPRECATED")
+        //ListModifier.selectAt(self, index)
     }
     var dp:DataProvider {return self.dataProvider}/*convenience*/
 }

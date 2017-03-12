@@ -8,7 +8,7 @@ import Foundation
  */
 class Table:Element{
     var node:Node
-    var columns:Array<Column> = []
+    var columns:[Column] = []
     var columnContainer:Container?
     init(_ width:CGFloat, _ height:CGFloat, _ node:Node, _ parent:IElement? = nil, _ id:String = "") {
         self.node = node

@@ -3,7 +3,7 @@ import Cocoa
 /**
  * TODO: You need to update slider and mover on DP event: see SliderList for implementation
  */
-class SlideScrollFastList: SlideFastList,SlidableScrollableFast {
+class SlideScrollFastList:SlideFastList,SlidableScrollableFast {
     /**
      * When the the user scrolls
      * NOTE: this method overides the Native NSView scrollWheel method

@@ -26,12 +26,12 @@ extension ComboBoxEvent{
         //return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
     }
     var selectedProperty:String{
-        let list: DEPRECATED_IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
-        let property:String = ListParser.propertyAt(list, index)
+        let list: IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
+        let property:String = ListParser.propertyAt(list as! IList, index)
         return property
     }
     var selectedTitle:String{
-        let list: DEPRECATED_IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
+        let list: IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
         let title:String = ListParser.titleAt(list, index)
         return title
     }

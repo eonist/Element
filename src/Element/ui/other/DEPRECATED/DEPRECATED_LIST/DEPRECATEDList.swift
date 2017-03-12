@@ -64,10 +64,11 @@ class DEPRECATED_List:Element, DEPRECATED_IList {
      * This is called when an item in the _lableContainer has dispatched the ButtonEvent.TRIGGER_DOWN event
      */
     func onListItemUpInside(_ buttonEvent:ButtonEvent) {
-        let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
-        //Swift.print("selectedIndex: " + "\(selectedIndex)")
-        ListModifier.selectAt(self,selectedIndex)
-        super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
+        fatalError("⚠️️DEPRECATED")
+        /*let selectedIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
+         //Swift.print("selectedIndex: " + "\(selectedIndex)")
+         ListModifier.selectAt(self,selectedIndex)
+         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))*/
     }
     override func onEvent(_ event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here

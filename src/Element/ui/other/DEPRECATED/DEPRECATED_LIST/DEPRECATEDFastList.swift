@@ -92,9 +92,11 @@ class DEPRECATED_FastList:Element, DEPRECATED_IList {
      */
     func onListItemUpInside(_ buttonEvent:ButtonEvent) {
         let viewIndex:Int = lableContainer!.indexOf(buttonEvent.origin as! NSView)
-        ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
-        pool.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
-        super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
+        _  = viewIndex
+        fatalError("⚠️️ DEPERECATED")
+        //ListModifier.selectAt(self,viewIndex)//unSelect all other visibleItems
+        //pool.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
+        //super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
     }
     override func onEvent(_ event:Event) {
         if(event.type == ButtonEvent.upInside && event.origin.superview === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
@@ -196,10 +198,11 @@ extension DEPRECATED_FastList {
      * Sets an item to selected, deselects other items, works with dp indecies
      */
     func selectAt(dpIdx:Int){/*convenience*/
-        let idx:Int? = ArrayParser.first(pool, dpIdx, {$0.idx == $1})?.item.idx/*Converts dpIndex to lableContainerIdx*/
-        if(idx != nil){ListModifier.selectAt(self, idx!)}
-        else{SelectModifier.selectAll(lableContainer!, false)}/*unSelect all if an item outside visible view is selected*/
-        selectedIdx = dpIdx
+        fatalError("⚠️️ DEPRECATED")
+        /*let idx:Int? = ArrayParser.first(pool, dpIdx, {$0.idx == $1})?.item.idx/*Converts dpIndex to lableContainerIdx*/
+         if(idx != nil){ListModifier.selectAt(self, idx!)}
+         else{SelectModifier.selectAll(lableContainer!, false)}/*unSelect all if an item outside visible view is selected*/
+         selectedIdx = dpIdx*/
     }
     /**
      * force a refresh of all items

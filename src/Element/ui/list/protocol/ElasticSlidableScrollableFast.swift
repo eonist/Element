@@ -1,6 +1,6 @@
 import Cocoa
 @testable import Utils
-protocol ElasticSlidableScrollableFast:IFastList2,ElasticScrollable, Slidable {
+protocol ElasticSlidableScrollableFast:IFastList,ElasticScrollable, Slidable {
     var rbContainer:Container?{get set}
     func frameTick(_ value:CGFloat)
 }
@@ -40,7 +40,7 @@ extension ElasticSlidableScrollableFast{
             
             //⚠️️🔨the bellow needs refactoring
             (self as Scrollable).setProgress(progress)/*moves the lableContainer up and down*/
-            (self as IFastList2).setProgress(progress)
+            (self as IFastList).setProgress(progress)
             //
             let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)//doing some double calculations here
             slider!.setProgressValue(sliderProgress)//<- scalar value 0-1

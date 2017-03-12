@@ -5,7 +5,7 @@ class Column:Element{
     var title:String
     var dataProvider:DataProvider
     var header:CheckTextButton?
-    var list: DEPRECATED_List?
+    var list: IList?
     init(_ width:CGFloat, _ height:CGFloat, _ title:String, _ dataProvider:DataProvider, _ parent:IElement? = nil, _ id:String = "") {
         self.title = title
         self.dataProvider = dataProvider
@@ -14,7 +14,7 @@ class Column:Element{
     override func resolveSkin() {
         super.resolveSkin()
         header = addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))
-        list = addSubView(DEPRECATED_List(width, height /*<--these should be NaN*/,NaN, dataProvider, self))
+        list = addSubView(List(width, height /*<--these should be NaN*/,NaN, dataProvider, self))
     }
     private func onHeaderCheck(_ event:CheckEvent){
         Swift.print("Column.onHeaderCheck")

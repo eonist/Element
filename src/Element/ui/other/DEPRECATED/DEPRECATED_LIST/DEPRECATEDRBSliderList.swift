@@ -21,16 +21,17 @@ class DEPRECATED_RBSliderList: DEPRECATED_List, DEPRECATEDIRBSlidable {
         super.resolveSkin()
         Swift.print("RBSliderList.width: " + "\(width)")
         Swift.print("RBSliderList.height: " + "\(height)")
+        fatalError("⚠️️ DEPRECATED")
         /*RubberBand*/
-        let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
-        let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content *///TODO: could be ranmed to contentRect
-        mover = RubberBand(Animation.sharedInstance,setProgress/*👈*/,frame,itemsRect)
-        mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
-        /*slider*/
-        sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-        slider = addSubView(VSlider(itemHeight,height,0,0,self))
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
-        slider!.setThumbHeightValue(thumbHeight)
+        /* let frame = CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
+         let itemsRect = CGRect(0,0,width,ListParser.itemsHeight(self))/*represents the total size of the content *///TODO: could be ranmed to contentRect
+         mover = RubberBand(Animation.sharedInstance,setProgress/*👈*/,frame,itemsRect)
+         mover!.event = onEvent/*Add an eventHandler for the mover object, avoids logging missing eventHandler, this has no functionality in this class, but may have in classes that extends this class*/
+         /*slider*/
+         sliderInterval = floor(ListParser.itemsHeight(self) - height)/itemHeight// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+         slider = addSubView(VSlider(itemHeight,height,0,0,self))
+         let thumbHeight:CGFloat = SliderParser.thumbSize(height/ListParser.itemsHeight(self), slider!.height)
+         slider!.setThumbHeightValue(thumbHeight)*/
     }
     /**
      * PARAM value: is the final y value for the lableContainer
@@ -38,9 +39,10 @@ class DEPRECATED_RBSliderList: DEPRECATED_List, DEPRECATEDIRBSlidable {
      */
     /**/func setProgress(_ value:CGFloat){
         //Swift.print("RBSliderList.setProgress() value: " + "\(value)")
-        lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
-        progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
-        slider!.setProgressValue(progressValue!)
+        fatalError("⚠️️ DEPRECATED")
+        /*lableContainer!.frame.y = value/*<--this is where we actully move the labelContainer*/
+         progressValue = value / -(ListParser.itemsHeight(self) - height)/*get the the scalar values from value.*/
+         slider!.setProgressValue(progressValue!)*/
     }
     /**
      * NOTE: this method overides the Native NSView scrollWheel method

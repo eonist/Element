@@ -7,7 +7,6 @@ protocol IFastList2:IList2{
     func createItem(_ index:Int) -> Element
     var inActive:[FastListItem] {get set}
 }
-
 /**
  * Basically the Fast protocol allows you to reuse Items in a "carousell-like-list"
  * NOTE: The Fast name is because if you dont reuse items in a long list it will be slow.

@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol IList:Displaceable {
+protocol IList: Containable {
     //func getItemsHeight()->CGFloat
     //func setSize(width : CGFloat, height : CGFloat)
     //var height : CGFloat{get}  //TODO:you can extend IElement

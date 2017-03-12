@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Displaceable:class {//TODO: RENAME TO displaceable
+protocol Containable:class {//TODO: RENAME TO displaceable
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
@@ -9,7 +9,7 @@ protocol Displaceable:class {//TODO: RENAME TO displaceable
     var lableContainer:Element? {get}
     //func setProgress(_ progress:CGFloat)
 }
-extension Displaceable {
+extension Containable {
     //TODO:these values can be stored, but are computed now because of simplicity, does not need to be recalculated on every tick, set them when you interact, setSize, onItemChange, onScroll etc
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
     var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}

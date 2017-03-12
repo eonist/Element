@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: this Method is totally academic, can be usefull for UI where you dont want or need slider. 
  */
 
-class ElasticScrollView:DisplaceView, ElasticScrollable {
+class ElasticScrollView: ContainerView, ElasticScrollable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

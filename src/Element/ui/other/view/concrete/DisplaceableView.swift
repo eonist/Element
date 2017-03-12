@@ -3,7 +3,7 @@ import Cocoa
 /**
  * TODO: ⚠️️ Consider renaming to ContainerView and Containable
  */
-class DisplaceView:Element, Displaceable {
+class ContainerView:Element, Displaceable {
     //var height:CGFloat {fatalError("Must override in subClass")}
     //var interval:CGFloat {fatalError("Must override in subClass")}
     //var progress:CGFloat {fatalError("Must override in subClass")}

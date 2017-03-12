@@ -31,6 +31,14 @@ extension Scrollable {
         }
     }
     /**
+     * NOTE: Basically when you perform a scroll-gesture on the touch-pad
+     */
+    func onScrollWheelChange(_ event:NSEvent) {/*Direct scroll, not momentum*/
+        Swift.print("📜 Scrollable.onScrollWheelChange: \(event.type)")
+        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
+        setProgress(progressVal)
+    }
+    /**
      * NOTE: momentum change, aka indirect scrollWheel aka virtual momentum
      * TODO: ⚠️️⚠️️⚠️️ 🔨 you could refactor this into just a bool flag onScrollWheelChange instead?
      */
@@ -38,14 +46,6 @@ extension Scrollable {
         Swift.print("📜 Scrollable.onInDirectScrollWheelChange: \(event.type)")
         /*let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
          setProgress(progressVal)/*<-faux progress, its caluclated via delta noramlly*/*/
-    }
-    /**
-     * NOTE: Basically when you perform a scroll-gesture on the touch-pad
-     */
-    func onScrollWheelChange(_ event:NSEvent) {
-        Swift.print("📜 Scrollable.onScrollWheelChange: \(event.type)")
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
-        setProgress(progressVal)
     }
     /**
      * NOTE: Basically when you enter your scrollWheel gesture

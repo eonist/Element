@@ -4,7 +4,7 @@ protocol Displaceable:class {//TODO: RENAME TO displaceable
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
-    var progress:CGFloat {get}//0-1 atBegining <-> atEnd
+    var progress:CGFloat {get}//0-1 atBegining <-> atEnd (Stores the current progress)
     var interval:CGFloat {get}//describes the speed when scrolling (distance per scroll tick)
     var lableContainer:Element? {get}
     //func setProgress(_ progress:CGFloat)

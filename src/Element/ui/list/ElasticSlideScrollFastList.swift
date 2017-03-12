@@ -40,6 +40,3 @@ class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
         super.onEvent(event)
     }
 }
-
-//you need SlideFastList
-// and ElasticSlidableScrollable

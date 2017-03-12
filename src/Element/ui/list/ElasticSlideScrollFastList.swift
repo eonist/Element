@@ -27,7 +27,7 @@ class ElasticSlideScrollFastList:SlideFastList2,ElasticSlidableScrollableFast {
      */
     override func scrollWheel(with event:NSEvent) {//you can probably remove this method and do it in base?"!?
         Swift.print("ElasticSlideScrollFastList.scrollWheel()")
-        (self).scroll(event)
+        (self as ElasticSlidableScrollableFast).scroll(event)
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }
     override func onEvent(_ event:Event) {

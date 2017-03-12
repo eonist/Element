@@ -71,8 +71,3 @@ More about Element 👉 [wiki](https://github.com/eonist/Element/wiki)
 ## Sponsors:
 [<img width="150" alt="img" src="https://rawgit.com/stylekit/img/master/appcode-logo.svg">
 ](https://www.jetbrains.com/objc/) 
-
-## NOTE:
-```swift
-let btn = Button<Focusable>(100,20)
-```

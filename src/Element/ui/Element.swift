@@ -78,9 +78,9 @@ extension Element{
      * Convenience
      */
     convenience init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool, _ isFocused:Bool = false, _ parent:IElement? = nil,_ id:String? = nil){
+        self.init(width,height,parent,id)
         self.isDisabled = isDisabled
         self.isFocused = isFocused
-        self.init(width,height,parent,id)
     }
     /**
      * Convenience

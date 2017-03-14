@@ -15,16 +15,14 @@ class Element:InteractiveView2,IElement {
     var skin:ISkin?
     var parent:IElement?
     var id:String?/*css selector id*/
-    var isDisabled:Bool
-    var isFocused:Bool
+    var isDisabled:Bool = false
+    var isFocused:Bool = false
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame*/
-    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil,_ isDisabled:Bool = false, _ isFocused:Bool = false){
+    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent
         self.id = id
         self.width = width
         self.height = height
-        self.isDisabled = isDisabled
-        self.isFocused = isFocused
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
         resolveSkin()
     }
@@ -76,6 +74,14 @@ class Element:InteractiveView2,IElement {
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
 extension Element{
+    /**
+     * Convenience
+     */
+    convenience init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool, _ isFocused:Bool = false, _ parent:IElement? = nil,_ id:String? = nil){
+        self.isDisabled = isDisabled
+        self.isFocused = isFocused
+        self.init(width,height,parent,id)
+    }
     /**
      * Convenience
      */

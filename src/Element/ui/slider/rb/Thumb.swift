@@ -12,10 +12,10 @@ class Thumb:Button{
     var framesToEnd:CGFloat?
     var currentFrameCount:CGFloat = 0
     var animator:Animator?
-    var isDisabled:Bool
+    //var isDisabled:Bool
     init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: IElement? = nil, _ id: String? = nil) {
-        self.isDisabled = isDisabled
         super.init(width, height, parent, id)
+        self.isDisabled = isDisabled
     }
     override func resolveSkin() {
         super.resolveSkin()

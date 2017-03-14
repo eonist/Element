@@ -27,7 +27,7 @@ extension ComboBoxEvent{
     }
     var selectedProperty:String{
         let list: IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
-        let property:String = ListParser.propertyAt(list as! IList, index)
+        let property:String = ListParser.propertyAt(list , index)
         return property
     }
     var selectedTitle:String{

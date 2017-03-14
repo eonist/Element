@@ -6,7 +6,7 @@ import Cocoa
  * NOTE: Currently we use InteractiveView, we could complicate things by making it only extend View, but for simplicity we use InteractiveView. (Optimization may be required, thus this may be revocated and maybe we will make a method named InteractiveElement etc.)
  * NOTE: Subclasing over 1 or 2 deep is hard so try to simplify the dependencies !KISS!
  * NOTE: w,h,x,y are stored in the frame instance
- * TODO: The width,height,x,y could be stored in a deeper super class. As its not related to Styling per se
+ * TODO: The width,height,x,y could be stored in a deeper super class. As it's not related to Styling per se
  */
 class Element:InteractiveView2,IElement {
     var width:CGFloat

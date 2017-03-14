@@ -23,8 +23,8 @@ class Element:InteractiveView2,IElement {
         self.id = id
         self.width = width
         self.height = height
-        self.isFocused = isFocused
         self.isDisabled = isDisabled
+        self.isFocused = isFocused
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
         resolveSkin()
     }

@@ -15,12 +15,16 @@ class Element:InteractiveView2,IElement {
     var skin:ISkin?
     var parent:IElement?
     var id:String?/*css selector id*/
+    var isDisabled:Bool
+    var isFocused:Bool
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame*/
-    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
+    init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool, _ isFocused:Bool, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent
         self.id = id
         self.width = width
         self.height = height
+        self.isFocused = isFocused
+        self.isDisabled = isDisabled
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
         resolveSkin()
     }
@@ -72,6 +76,9 @@ class Element:InteractiveView2,IElement {
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
 extension Element{
+    convenience init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
+        
+    }
     /**
      * Convenience
      */

@@ -1,6 +1,7 @@
 import Foundation
 
-class IState {
+protocol StateChangeable:class {
+    var state:String {get set}
     func getSkinState() -> String
     func setSkinState(_ state:String)
 }

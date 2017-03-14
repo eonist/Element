@@ -1,6 +1,6 @@
     import Foundation
 @testable import Utils
-protocol IElement:class,IView{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
+protocol IElement:class,IView/*,Disablable,Focusable*/{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
     func resolveSkin()
     /*Implicit getters / setters*/

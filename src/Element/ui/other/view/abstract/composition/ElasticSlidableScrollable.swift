@@ -22,12 +22,12 @@ extension ElasticSlidableScrollable {
         Swift.print("👻🏂📜 ElasticSlidableScrollable.scroll()")
         (self as Scrollable).scroll(event)//👈 calls from shallow can overide downstream
         /*the following must be after the call above or else the thumb is hidden because of anim.end*/
-        if(event.phase == NSEventPhase.changed){
+        /*if(event.phase == NSEventPhase.changed){
             if(mover!.isDirectlyManipulating){
                 //also manipulates slider, but only on directTransmission, as mover calls setProgress from shallow in indirectTransmission
                 setProgress(mover!.result)//👈NEW, this migth need to be inSide scrollWheel call, as it needs to be shallow to reach inside setProgress in ElasticFastList.setProgress, but maybe not, To be continued
             }
-        }else if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
+        }else */if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
             //hideSlider()
         }else if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){
             showSlider()

@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: ⚠️️ Consider renaming to ContainerView and Containable
+ * ContainerView holds other UI elements
  */
 class ContainerView:Element,Containable {
     //var height:CGFloat {fatalError("Must override in subClass")}
@@ -15,4 +15,7 @@ class ContainerView:Element,Containable {
         lableContainer = addSubView(Container(width,height,self,"lable"))
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
+    /*override func getClassType()->String{
+     return "\(ContainerView.self)"
+     }*/
 }

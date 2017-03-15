@@ -3,7 +3,7 @@ import Foundation
 /**
  * This protocol exist because other that Lists may want to be Elastic scrollable, like A container of things
  */
-protocol Elastic: Containable {
+protocol Elastic:Containable {
     var mover:RubberBand?{get set}
     var prevScrollingDeltaY:CGFloat{get set}
     var velocities:[CGFloat]{get set}

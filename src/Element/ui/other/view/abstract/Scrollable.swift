@@ -39,7 +39,7 @@ extension Scrollable {
         setProgress(progressVal)
     }
     /**
-     * NOTE: momentum change, aka indirect scrollWheel aka virtual momentum
+     * NOTE: momentum change, aka indirect scrollWheel aka virtual momentum w/ decay
      * TODO: ⚠️️⚠️️⚠️️ 🔨 you could refactor this into just a bool flag onScrollWheelChange instead?
      */
     func onInDirectScrollWheelChange(_ event:NSEvent) {

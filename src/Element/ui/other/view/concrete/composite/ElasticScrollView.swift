@@ -23,6 +23,7 @@ class ElasticScrollView:ContainerView,ElasticScrollable {
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(with event: NSEvent) {
+        Swift.print("👻📜.ScrollWheel")
         scroll(event)
         //TODO: you want to pass the scrollWheel method on here ⚠️️ NS up hirarchy may need it
     }

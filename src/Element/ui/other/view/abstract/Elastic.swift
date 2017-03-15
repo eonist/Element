@@ -27,3 +27,7 @@ extension Elastic {
     var progressValue:CGFloat?{get{return iterimScroll.progressValue}set{iterimScroll.progressValue = newValue}}
     var velocities:[CGFloat]{get{return iterimScroll.velocities}set{iterimScroll.velocities = newValue}}
 }
+
+
+//Continue here:
+    //figure out how to bring X into the setProgress

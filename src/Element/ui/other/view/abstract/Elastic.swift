@@ -12,6 +12,10 @@ protocol Elastic: Containable {
     var iterimScroll:InterimScroll{get set}
 }
 extension Elastic {
+    var prevScrollingDeltaY:CGFloat{get{return iterimScroll.prevScrollingDeltaY}set{iterimScroll.prevScrollingDeltaY = newValue}}
+    var progressValue:CGFloat?{get{return iterimScroll.progressValue}set{iterimScroll.progressValue = newValue}}
+    var velocities:[CGFloat]?{get{return iterimScroll.velocities}set{iterimScroll.velocities = newValue}}
+
     /**
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists

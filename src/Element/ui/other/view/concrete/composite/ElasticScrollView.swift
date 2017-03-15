@@ -7,7 +7,7 @@ import Cocoa
 class ElasticScrollView:ContainerView,ElasticScrollable {
     /*RubberBand*/
     var mover:RubberBand?
-    var iterimScroll
+    var iterimScroll:InterimScroll = InterimScroll()
     override func resolveSkin() {
         super.resolveSkin()
         /*RubberBand*/

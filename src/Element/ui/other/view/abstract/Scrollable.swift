@@ -17,9 +17,9 @@ extension Scrollable {
      */
     func scroll(_ event:NSEvent) {
         Swift.print("📜 Scrollable.scroll() event.phase: \(event.phase)")
-        if(event.phase != []){//swift 3 update, was -> NSEventPhase.none, TODO: ⚠️️ you can probably do: !NSEventPhase(rawValue:0) here
+        //if(event.phase != []){//swift 3 update, was -> NSEventPhase.none, TODO: ⚠️️ you can probably do: !NSEventPhase(rawValue:0) here
             //Swift.print("theEvent.phase: " + "\(event.phase)")
-        }
+        //}
         switch event.phase{
             case NSEventPhase.changed:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
             case NSEventPhase.mayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/

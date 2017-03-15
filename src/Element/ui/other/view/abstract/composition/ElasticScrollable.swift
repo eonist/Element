@@ -13,8 +13,8 @@ extension ElasticScrollable {
      */
     func onScrollWheelChange(_ event:NSEvent){
         Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event.type)")
-        //Swift.print("IRBScrollable.onScrollWheelChange")
         prevScrollingDeltaY = event.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
+        Swift.print("mover!.isDirectlyManipulating: " + "\(mover!.isDirectlyManipulating)")
         if(mover!.isDirectlyManipulating){//👈NEW
             _ = self.velocities.pushPop(event.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
             mover!.value += event.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/

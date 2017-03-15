@@ -1,6 +1,7 @@
 import Foundation
 /**
  * Temporary scroll values are stored here
+ * Definition of interim: meanwhile, temporary, inbetween time
  */
 struct InterimScroll {
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/

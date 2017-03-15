@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * Temporary scroll values are stored here
+ */
 struct InterimScroll {
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat]/*represents the velocity resolution of the gesture movment*/

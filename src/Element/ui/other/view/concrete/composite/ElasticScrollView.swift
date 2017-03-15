@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: this Method is totally academic, can be usefull for UI where you dont want or need slider. 
  */
 
-class ElasticScrollView: ContainerView, ElasticScrollable {
+class ElasticScrollView:ContainerView,ElasticScrollable {
     /*RubberBand*/
     var mover:RubberBand?
     var prevScrollingDeltaY:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
@@ -24,5 +24,6 @@ class ElasticScrollView: ContainerView, ElasticScrollable {
      */
     override func scrollWheel(with event: NSEvent) {
         scroll(event)
+        //TODO: you want to pass the scrollWheel method on here ⚠️️ NS up hirarchy may need it
     }
 }

@@ -23,7 +23,7 @@ extension Elastic {
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
     }
     /*DEPRECATED,Legacy support*/
-    var prevScrollingDeltaY:CGFloat{get{return iterimScroll.prevScrollingDeltaY}set{iterimScroll.prevScrollingDeltaY = newValue}}
+    var prevScrollingDeltaY:CGFloat{get{return iterimScroll.prevScrollingDelta}set{iterimScroll.prevScrollingDelta = newValue}}
     var progressValue:CGFloat?{get{return iterimScroll.progressValue}set{iterimScroll.progressValue = newValue}}
     var velocities:[CGFloat]{get{return iterimScroll.velocities}set{iterimScroll.velocities = newValue}}
 }

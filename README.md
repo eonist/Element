@@ -8,7 +8,7 @@ Independent UI framework with zero AppKit dependencies. Element lets you add ric
 ## How does it work?
 A typical Element app consists of 90% Swift code and 10% CSS and SVG. CSS Handles design and alignment and swift handles functionality and animation.   
 
-<img width="700" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Style_diagram.svg">
+<img width="700" alt="img" src="https://rawgit.com/stylekit/img/master/Style_diagram.svg">
 
 ## Installation:
 - Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager.

@@ -6,7 +6,6 @@ import Cocoa
 protocol ElasticScrollable: Elastic, Scrollable {
     func scrollWheelExitedAndIsStationary()
 }
-
 extension ElasticScrollable {
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad

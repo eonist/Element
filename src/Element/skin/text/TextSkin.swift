@@ -62,10 +62,10 @@ extension TextSkin{
         let padding:Padding = StylePropertyParser.padding(self)
         let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
-        textField.frame.width = width/*SkinParser.width(this)*/
-        textField.frame.height = height/*SkinParser.height(this)*/
-        super.frame.width = width//quick fix
-        super.frame.height = height//quick fix
+        textField.frame.w = width/*SkinParser.width(this)*/
+        textField.frame.h = height/*SkinParser.height(this)*/
+        super.frame.w = width//quick fix
+        super.frame.h = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)/*creates the textFormat*/
         //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat)/*applies the textFormat*/

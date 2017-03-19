@@ -12,11 +12,11 @@ class ElementModifier {
         styleProperty != nil ? styleProperty!.value = display : element.skin!.style!.addStyleProperty(StyleProperty("display", display))
         element.skin!.setStyle(element.skin!.style!)
     }
-    static func hideAll(_ elements:Array<IElement>,_ exception:IElement) {
+    static func hideAll(_ elements:[IElement],_ exception:IElement) {
         for element : IElement in elements {ElementModifier.hide(element, (element === exception))}  
     }
     static func hideChildren(_ view:NSView,_ exception:IElement) {
-        let elements:Array<IElement> = ElementParser.children(view,IElement.self)
+        let elements:[IElement] = ElementParser.children(view,IElement.self)
         hideAll(elements, exception)
     }
     /**

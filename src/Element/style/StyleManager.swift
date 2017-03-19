@@ -8,9 +8,9 @@ import Foundation
  * TODO: the tail trick could possibly be even faster if you sorted the hashed styles and used a halfed algo when querrying (but its a dictionary so maybe not, maybe if you stored it in an array etc)
  */
 class StyleManager{
-    static var cssFiles:Dictionary<String,String> = [:]
+    static var cssFiles:[String:String] = [:]
     static var cssFileURLS:[String] = []//<--new
-    static var styles:Array<IStyle> = []
+    static var styles:[IStyle] = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
     /**
      * Adds a style to the styleManager class
@@ -46,7 +46,7 @@ extension StyleManager{
     /**
      * Adds every style in a styleCollection to the stylemanager
      */
-    static func addStyle(_ styles:Array<IStyle>){
+    static func addStyle(_ styles:[IStyle]){
         if(isHashingStyles){
             styles.forEach{
                 //swift 3 update, now checks .count > 0
@@ -58,7 +58,7 @@ extension StyleManager{
     /**
      * Removes styles
      */
-    static func removeStyle(_ styles:Array<IStyle>){
+    static func removeStyle(_ styles:[IStyle]){
         for style in styles{
             _ = removeStyle(style.name)
         }

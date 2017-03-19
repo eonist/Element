@@ -32,10 +32,7 @@ class StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      */
     static func colorFillStyle(_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
-        //print("StylePropertyParser.colorFillStyle()")
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
-        //Swift.print("colorValue.dynamicType: " + "\(colorValue.dynamicType)")
-        //Swift.print("colorValue: " + "\(colorValue)" + " depth: " + "\(depth)");
         var nsColor:NSColor?
         if(colorValue is NSColor){/*colorValue is NSColor*/
             nsColor = colorValue as? NSColor
@@ -54,11 +51,8 @@ class StylePropertyParser{
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")
         }
-        //Swift.print("color: " + "\(color)")
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
-        //print("alpha: " + "\(alpha)")
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
-        //Swift.print("alphaValue: " + "\(alphaValue)")
         if(nsColor == nil){/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
             nsColor = NSColor.clear//clear is white with alpha 0.0
         }else{
@@ -72,7 +66,6 @@ class StylePropertyParser{
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
     static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        //Swift.print("StylePropertyParser.colorLineStyle()")
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
         let colorValue:NSColor? = color(skin, CSSConstants.line,depth)
@@ -86,7 +79,6 @@ class StylePropertyParser{
      */
     static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
-        //Swift.print("color: " + "\(color)")
         return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
     }
     /**
@@ -95,13 +87,10 @@ class StylePropertyParser{
      * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
     static func lineOffsetType(_ skin:ISkin, _ depth:Int = 0) -> OffsetType {
-        //Swift.print("StylePropertyparser.lineOffsetType()")
         let val:Any? = value(skin, CSSConstants.lineOffsetType,depth)
         var offsetType:OffsetType = OffsetType()
         if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
-        //LayoutUtils.describe(offsetType)
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth)
-        //Swift.print("lineOffsetTypeIndex: " + "\(lineOffsetTypeIndex)")
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight,depth)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop,depth)}
@@ -216,10 +205,8 @@ class StylePropertyParser{
      */
     static func offset(_ skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth)
-        //Swift.print("StylePropertyParser.offset.value: " + "\(value)")
         if(value == nil){return CGPoint(0,0)}//<---temp solution
-        var array:Array<CGFloat> = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).cast() /*map {String($0).cgFloat}*/ //the map method is cool. But it isnt needed, since this array will always have a count of 2
-        //Swift.print("StylePropertyParser.offset.array.count: " + "\(array.count)")
+        var array:[CGFloat] = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).cast() /*map {String($0).cgFloat}*/ //the map method is cool. But it isnt needed, since this array will always have a count of 2
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])
     }
     /**
@@ -234,7 +221,7 @@ class StylePropertyParser{
         //Swift.print("StylePropertyParser.padding.value: " + "\(value)")
         var padding:Padding = Padding()
         if(value != nil){
-            let array:Array<CGFloat> = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
+            let array:[CGFloat] = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
             padding = Padding(array)
         }
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
@@ -259,15 +246,9 @@ class StylePropertyParser{
         margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom,depth)! : Utils.metric(margin.bottom, skin)!
         return margin
     }
-    /**
-     *
-     */
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.width,depth)
     }
-    /**
-     *
-     */
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height,depth)
     }
@@ -303,27 +284,22 @@ private class Utils{
         else if(value is String){/*value is String*/
             let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//<--this can go into a static class variable since it is used twice in this class
             let stringValue:String = value as! String
-            //Swift.print("stringValue: " + "\(stringValue)")
             let matches = stringValue.matches(pattern)
-            //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
                 let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
                 let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
                 let valNum:CGFloat = valStr.cgFloat
                 if(suffix == "%") {
-                    //Swift.print("Suffix is %")
                     let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
                     //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
                     //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
                     return val
                 }else {
-                    //print("ems")
                     return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
                 }
             }
         }
-        //fatalError("NOT IMPLEMENTED YET")
-        //be warned this method is far from complete
+        //⚠️️ be warned this method is far from complete
         return nil//<---this should be 0, it will require some reprograming
     }
     /**

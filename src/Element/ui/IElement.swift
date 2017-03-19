@@ -1,4 +1,4 @@
-    import Foundation
+import Foundation
 @testable import Utils
 protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
@@ -38,7 +38,6 @@ extension IElement {
      * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false
      */
     func getParent()->Any? {// :TODO: beta
-        //Swift.print("_parent: " + _parent);
         return self.parent
     }
     /**

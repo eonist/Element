@@ -11,7 +11,7 @@ import Cocoa
 class Element:InteractiveView2,IElement {
     var width:CGFloat
     var height:CGFloat
-    var state:String = SkinStates.none/*This is protected so that sub-classes can access it when setting the initial state*/
+    var state:String = SkinStates.none
     var skin:ISkin?
     var parent:IElement?
     var id:String?/*css selector id*/

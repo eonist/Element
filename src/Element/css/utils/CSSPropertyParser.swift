@@ -36,7 +36,7 @@ class CSSPropertyParser {
     static func linearGradient(_ string:String)->IGradient{
         //Swift.print("CSSPropertyparser.linearGradient")
         let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
-        var properties:Array<String> = StringModifier.split(propertyString, ",")
+        var properties:[String] = StringModifier.split(propertyString, ",")
         let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties))/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
@@ -67,11 +67,11 @@ class CSSPropertyParser {
      */
      static func radialGradient(_ string:String)->IGradient{
         let propertyString:String = string.match("(?<=radial-gradient\\().+?(?=\\);?)")[0]
-        var properties:Array<String> = StringModifier.split(propertyString, ",")
+        var properties:[String] = StringModifier.split(propertyString, ",")
         let setupString:String = properties.shift()
         let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         //gradient.colors[0]
-        let setup:Array<String> = setupString.split(" ")/*The gradient settings*/
+        let setup:[String] = setupString.split(" ")/*The gradient settings*/
         let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// TODO: make this optional aswell as per css pdf specs
         let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/
         let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1
@@ -89,10 +89,10 @@ class CSSPropertyParser {
      * EXAMPLE: a corner-radius "10 20 10 20"
      * TODO: does this support comma delimited lists?
      */
-    static func array(_ string:String)->Array<Any>{//<--Any because type can be CGFloat, String or NSColor
+    static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
         //Swift.print("CSSPropertyParser.array()")
-        let matches:Array<String> = StringModifier.split(string, " ")
-        var array:Array<Any> = []
+        let matches:[String] = StringModifier.split(string, " ")
+        var array:[Any] = []
         for str:String in matches {
             if(StringAsserter.digit(str)){
                 array.append(StringParser.digit(str))
@@ -112,9 +112,9 @@ class CSSPropertyParser {
         let textFormat:TextFormat = TextFormat()
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
         let propertyString:String = RegExp.match(input,pattern)[0]
-        let properties:Array<String> = StringParser.split(propertyString, ",")
+        let properties:[String] = StringParser.split(propertyString, ",")
         for property:String in properties{
-            let matches:Array<NSTextCheckingResult> = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
+            let matches:[NSTextCheckingResult] = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
             for match:NSTextCheckingResult in matches{
                 let name:String = (property as NSString).substring(with: match.rangeAt(1))//capturing group 1
                 var value:Any = (property as NSString).substring(with: match.rangeAt(2))//capturing group 2
@@ -138,7 +138,7 @@ class CSSPropertyParser {
         var properties:Array = propertyString.split(",")
         for i in 0..<properties.count{//swift 3 update
             let property:String = properties[i]
-            let matches:Array<NSTextCheckingResult> = property.matches("^(\\w+?)\\:(.+?)$")
+            let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches {
                 let name:String = match.value(property,1)/*capturing group 1*/
                 var value:Any = match.value(property,2)/*capturing group 2*/
@@ -156,33 +156,21 @@ class CSSPropertyParser {
      */
     static func dropShadow(_ string:String)->DropShadow {
         let propertyString:String = string.match("(?<=drop-shadow\\().+?(?=\\);?)")[0]
-        //print("propertyString: " + propertyString)
         var properties:Array = propertyString.split(" ")
-        //print("properties: " + properties)
         let distance:CGFloat = StringParser.digit(properties[0])
         let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
         let colorValue:UInt = StringParser.color(properties[2])/*hex color*/
         let alpha:CGFloat = StringParser.digit(properties[3])
         let blurX:CGFloat = StringParser.digit(properties[4])
         let blurY:CGFloat = StringParser.digit(properties[5])
-        //let strength:CGFloat = StringParser.digit(properties[6])
-        //let quality:CGFloat = StringParser.digit(properties[7])
         let inner:Bool = StringParser.boolean(properties[8])/*isInnerShadow,isInsetShadowType etc*/
         let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let angleInRadians = Trig.radians(angle)
-        //Swift.print("angleInRadians: " + "\(angleInRadians)")
         let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
         let offsetX:CGFloat = polarPoint.x
         let offsetY:CGFloat = polarPoint.y
-        /*Swift.print("color: " + "\(color)")
-        Swift.print("offsetX: " + "\(offsetX)")
-        Swift.print("offsetY: " + "\(offsetY)")
-        Swift.print("blur: " + "\(blur)")
-        Swift.print("inner: " + "\(inner)")
-        */
         let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
-        //Swift.print("dropshadowfilter: " + dropshadowfilter)
         return dropShadow
     }
 }
@@ -191,13 +179,13 @@ private class Utils{
      * Returns a Gradient instance derived from PARAM: properties
      * NOTE: adds colors, opacities and ratios
      */
-    static func gradient(_ properties:Array<String>)->IGradient {
+    static func gradient(_ properties:[String])->IGradient {
         //print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));
         let gradient:Gradient = Gradient()
         for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
             let property:String = properties[i]
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
-            let matches:Array<NSTextCheckingResult> = RegExp.matches(property, pattern)
+            let matches:[NSTextCheckingResult] = RegExp.matches(property, pattern)
             //Swift.print("matches.count: " + "\(matches.count)")
             for match:NSTextCheckingResult in matches {
                 //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")

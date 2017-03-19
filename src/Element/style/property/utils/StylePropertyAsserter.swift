@@ -6,10 +6,7 @@ class StylePropertyAsserter {
      * Test if fillet is nil instead, 0 should return true actually. Think over state vs idle state etc
      */
     static func hasFillet(_ skin:ISkin,_ depth:Int = 0)->Bool {
-        let fillet:Fillet = StylePropertyParser.fillet(skin,depth);
-        //Swift.print("StylePropertyAsserter.hasFillet() " + String(fillet))
-        //Swift.print(fillet.topLeft)
-        //Swift.print(fillet.topRight)
+        let fillet:Fillet = StylePropertyParser.fillet(skin,depth)
         return !(fillet.topLeft == 0 && fillet.topRight == 0 && fillet.bottomLeft == 0 && fillet.bottomRight == 0)
     }
     static func hasGradient(_ skin:ISkin,_ depth:Int = 0)->Bool {

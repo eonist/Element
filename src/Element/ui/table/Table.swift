@@ -32,7 +32,7 @@ class Table:Element{
     private func onColumnHeaderCheck(_ event:CheckEvent) {
         Swift.print("Table.onColumnHeaderCheck()" + "\(event.origin)")
         if(event.origin is Column) {//ClassAsserter.ofType(event.origin, Column.self)
-            let indices:Array<Int> = ColumnParser.sortOrder(event.origin as! Column, event.isChecked)// :TODO: maybe we can add the NUMERIC sort so that if a text starts with a number etc
+            let indices:[Int] = ColumnParser.sortOrder(event.origin as! Column, event.isChecked)// :TODO: maybe we can add the NUMERIC sort so that if a text starts with a number etc
             for column in columns {
                 DepthModifier.sortByIndices(column.list!.lableContainer!, indices)
                 ElementModifier.floatChildren(column.list!.lableContainer!)

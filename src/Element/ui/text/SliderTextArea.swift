@@ -92,9 +92,6 @@ class SliderTextArea:TextArea{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
-	/**
-	 * 
-	 */
 	static func vSliderinterval(_ textField:TextField) -> Int {
 		let verticalInterval:Int = /*textField.maxScrollV*/ -1
 		return verticalInterval
@@ -110,9 +107,6 @@ private class Utils{
 	static func hScrollBarInterpolation(_ textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
 		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance
 	}
-	/**
-	 * 
-	 */
 	static func hSliderThumbWidth(_ textField:TextField, _ slider:HSlider) -> CGFloat {
 		let horizontalScalar:CGFloat = 0//textField.maxScrollH == 0 ? 1:textField.width/textField.maxScroll
         _ = horizontalScalar

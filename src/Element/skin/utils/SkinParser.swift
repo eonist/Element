@@ -67,33 +67,18 @@ class SkinParser {
         let lineThickness:CGFloat =  value != nil ? value as! CGFloat : 0
         return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0])
     }
-    /**
-     *
-     */
     static func padding(_ skin:ISkin)->Padding{// :TODO: possibly rename to relativePadding
         return StylePropertyParser.padding(skin)
     }
-    /**
-     *
-     */
     static func offset(_ skin:ISkin)->CGPoint{// :TODO: possibly rename to relativeOffset
         return StylePropertyParser.offset(skin)
     }
-    /**
-     *
-     */
     static func float(_ skin:ISkin,_ depth:Int = 0)->String?{
         return StylePropertyParser.value(skin,CSSConstants.float,depth) as? String
     }
-    /**
-     *
-     */
     static func clear(_ skin:ISkin)->String? {
         return StylePropertyParser.value(skin,CSSConstants.clear) as? String
     }
-    /**
-     *
-     */
     static func display(_ skin:ISkin)->String? {
         return StylePropertyParser.value(skin,CSSConstants.display) as? String
     }

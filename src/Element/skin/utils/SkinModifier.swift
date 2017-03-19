@@ -9,14 +9,13 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * Aligns PARAM: view
      */
     static func align(_ skin:ISkin, _ positional:IPositional,_ depth:Int = 0)->IPositional {
-        //Swift.print("SkinModifier.align() positional: " + "\(positional)")
         let offset:CGPoint = StylePropertyParser.offset(skin,depth)
         let padding:Padding = StylePropertyParser.padding(skin,depth)
         let margin:Margin = StylePropertyParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
         if(floatType == CSSConstants.left || floatType == "" || floatType == nil) { positional.setPosition(CGPoint(margin.left + offset.x, margin.top + offset.y)) }
         else if(floatType == CSSConstants.right) {positional.setPosition(CGPoint(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y))}
-        else /*floatType == CSSConstants.NONE*/ {positional.setPosition(CGPoint(margin.left + offset.x/**/, margin.top + offset.y/**/))}// :TODO: this is temp for testing
+        else /*floatType == CSSConstants.NONE*/ {positional.setPosition(CGPoint(margin.left + offset.x, margin.top + offset.y))}// :TODO: this is temp for testing
         return positional
     }
     /**

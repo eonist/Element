@@ -20,9 +20,8 @@ class CSSFileParser {
         string = RegExpModifier.removeComments(string)
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)
         //Swift.print("importsAndStyles.imports: " + "\(importsAndStyles.imports)")
-        let importStrings:Array<String> = CSSFileParser.importStrings(importsAndStyles.imports)
+        let importStrings:[String] = CSSFileParser.importStrings(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
-        //Swift.print("path: " + "\(path)")
         var cssString:String = ""
         for importString in importStrings{cssString += CSSFileParser.cssString(path + importString)}/*<--imports css from other css files*/// :TODO: make an if clause that makes sure it doesn't import it self like path+import != url
         cssString += importsAndStyles.style/*<--Add the styles in the current css file*/
@@ -36,8 +35,8 @@ class CSSFileParser {
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     static func importStrings(_ string:String)->Array<String> {
-        var importStrings:Array<String> = []
-        let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative) // :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
+        var importStrings:[String] = []
+        let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
         let matches = RegExp.matches(string, pattern)
         matches.forEach {
             let url = $0.value(string, 1)//capturing group 1

@@ -11,7 +11,7 @@ class StyleResolver{
      * TODO: Should only inherit when property is marked inherit or from * universal selectors!?!?
      */
     static func style(_ element:IElement)->IStyle{
-        let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
+        let querySelectors:[ISelector] = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         if(isStoringSelectors){
             var selectorsXMLString:String = ""
             querySelectors.forEach{selectorsXMLString += Reflection.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
@@ -24,14 +24,14 @@ class StyleResolver{
      * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
     static func style(_ querySelectors:[ISelector],_ element:IElement?)->IStyle{
-        var weightedStyles:Array<WeightedStyle> = []
+        var weightedStyles:[WeightedStyle] = []
         let styles = StyleManager.styles
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
         for style:IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/
             //styleLookUpCount++
             if(style.selectors.count > querySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)
-            let selectorWeights:Array<SelectorWeight>? = SelectorParser.selectorWeights(style,querySelectors)
+            let selectorWeights:[SelectorWeight]? = SelectorParser.selectorWeights(style,querySelectors)
             if(selectorWeights != nil) {weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))}
         }
         //Swift.print("weightedStyles: " + weightedStyles.count)

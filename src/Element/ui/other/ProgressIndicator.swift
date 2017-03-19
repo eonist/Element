@@ -98,9 +98,6 @@ class ProgressIndicator:Element {
         if(animator != nil){animator!.stop()}//stop any previous running animation
         animator!.start()/*start animator*/
     }
-    /**
-     *
-     */
     func stop(){
         //Swift.print("❤️️ ProgressIndicator.stop")
         animator!.stop()/*stop animator*/

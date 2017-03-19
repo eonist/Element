@@ -62,18 +62,17 @@ class Switch:SwitchSlider,ICheckable{
         if(!disableMouseUp){
             setChecked(!isChecked)
         }
-        disableMouseUp = false//reset
+        disableMouseUp = false/*reset*/
         super.mouseUpInside(event)
         super.onEvent(CheckEvent(CheckEvent.check, isChecked, self))
     }
     override func mouseUpOutside(_ event: MouseEvent) {
         Swift.print("Switch.mouseUpOutside")
-        disableMouseUp = false//reset
+        disableMouseUp = false/*reset*/
         super.mouseUpOutside(event)
     }
     override func mouseUp(_ event: MouseEvent) {
         Swift.print("Switch.mouseUp")
-        
         /*Bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}
         bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
@@ -113,7 +112,6 @@ class Switch:SwitchSlider,ICheckable{
  */
 extension Switch{
     func thumbXAnim(value:CGFloat){
-        //Swift.print("progressAnim.value: " + "\(value)")
         progress = value
         let style:IStyle = skin!.style!
         var offsetProp = skin!.style!.getStyleProperty("offset",2)
@@ -130,18 +128,14 @@ extension Switch{
         skin!.setStyle(style)
     }
     func thumbWidthAnim(value:CGFloat){
-        //Swift.print("thumbAnim: " + "\(value)")
         let style:IStyle = skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
         marginProp!.value = getChecked() ? 20 * (1-value) : 0
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80 + (20 * value)
-        //Swift.print("thumbStyleProperty!.value: " + "\(thumbStyleProperty!.value)")
         skin!.setStyle(style)
     }
     func bgColorAnim(value:CGFloat){
-        //Swift.print("bgColorAnim: " + "\(value)")
-        
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
         var fillProp = style.getStyleProperty("fill",1) /*edits the style*/
         let initColor = white
@@ -181,12 +175,10 @@ class SwitchSlider:Element {/*Incorporates the sliding part of the Switch*/
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = HSliderUtils.progress(event.localPos(self).x, 0/*thumbWidth/2*/, width, /*thumbWidth*/ 0)
-        //Swift.print("SwitchSlider.onMouseMove progress: " + "\(progress)")
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
     override func mouseDown(_ event:MouseEvent) {
-        //Swift.print("SwitchSlider.mouseDown")
         progress = HSliderUtils.progress(event.event!.localPos(self).x, /*thumbWidth/2*/0, width, /*thumbWidth*/0)
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/

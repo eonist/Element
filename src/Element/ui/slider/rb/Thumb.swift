@@ -24,7 +24,6 @@ class Thumb:Button{
      * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
     func applyOvershot(_ progress:CGFloat){
-        //Swift.print("applyOvershot.start")
         if(progress < 0){/*top overshot*/
             self.skin!.setSize(width, height-(height*abs(progress)))
         }else if(progress > 1){/*bottom overshot*/
@@ -32,7 +31,6 @@ class Thumb:Button{
             self.skin!.setSize(width, height - overshot)
             (self.skin! as! Skin).frame.y = overshot
         }
-        //Swift.print("applyOvershot.end")
     }
     //TODO: these overrides are not needed, just add a disbaled state to the css that has alpha set to 0
     override func mouseOver(_ event:MouseEvent) {if(!isDisabled){super.mouseOver(event)}}

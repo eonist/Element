@@ -22,30 +22,23 @@ class VSlider:Element{
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
-        //Swift.print("\(self.dynamicType)" + "resolveSkin(): ")
         super.resolveSkin()
         //skin.isInteractive = false// :TODO: explain why in a comment
         //skin.useHandCursor = false;// :TODO: explain why in a comment
-        //Swift.print("width: " + "\(width)")
-        //Swift.print("thumbHeight: " + "\(thumbHeight)")
         thumb = addSubView(Thumb(width, thumbHeight,false,self))
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
-        //Swift.print("\(self.dynamicType)"+".onThumbDown() ")
         tempThumbMouseY = thumb!.localPos().y
-        //Swift.print("tempThumbMouseY: " + "\(tempThumbMouseY)")
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove)/*we add a global mouse move event listener*/
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
-        //Swift.print("\(self.dynamicType)"+".onThumbMove() " + "localPos: " + "\(event.localPos(self))")
         progress = Utils.progress(event.localPos(self).y, tempThumbMouseY, height/*<--this is the problem, dont use frame*/, thumbHeight)
         thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
     func onThumbUp(){
-        //Swift.print("\(self.dynamicType)" + ".onThumbUp() ")
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}/*we remove a global mouse move event listener*/
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
@@ -58,7 +51,6 @@ class VSlider:Element{
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(_ event:MouseEvent) {/*onSkinDown*/
-        //Swift.print("\(self.dynamicType)" + ".mouseDown() ")
         progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight)
         thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
@@ -69,7 +61,6 @@ class VSlider:Element{
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
     }
     override func onEvent(_ event:Event) {
-        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/

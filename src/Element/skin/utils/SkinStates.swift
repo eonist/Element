@@ -1,6 +1,7 @@
 import Foundation
 /**
  * TODO: These will probably be upgraded to enums soon, since swift has awesome syntactic support for enums
+ * TODO: Or you could extens String and set receiving params to take SkinStates and then do: .over etc
  */
 class SkinStates {
     /*Core*/

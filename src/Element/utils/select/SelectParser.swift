@@ -7,14 +7,14 @@ class SelectParser {
      * TODO: Rename to firstSelected
      */
     static func selected(_ view:NSView) -> ISelectable? {
-        let selectables:Array<ISelectable> = self.selectables(view)
+        let selectables:[ISelectable] = self.selectables(view)
         return selected(selectables)
     }
     /**
      * Returns the  first selected ISelectable in an array of ISelectables or a
      * TODO: Rename to firstSelected
      */
-    static func selected(_ selectables:Array<ISelectable>) -> ISelectable? {
+    static func selected(_ selectables:[ISelectable]) -> ISelectable? {
         for selectable:ISelectable in selectables {
             if(selectable.getSelected()) {
                 return selectable
@@ -25,14 +25,14 @@ class SelectParser {
     /**
      * Returns an array from every child that is an ISelectable in PARAM: displayObjectContainer
      */
-    static func selectables(_ view:NSView)->Array<ISelectable> {
+    static func selectables(_ view:NSView)->[ISelectable] {
         return NSViewParser.childrenOfType(view, ISelectable.self)
     }
     /**
      * Returns all selectables that are selected
      */
-    static func allSelected(_ selectables:Array<ISelectable>)->Array<ISelectable> {
-        var selected:Array<ISelectable> = []
+    static func allSelected(_ selectables:[ISelectable])->[ISelectable] {
+        var selected:[ISelectable] = []
         for selectable:ISelectable in selectables{ 
             if(selectable.getSelected()) {
                 selected.append(selectable)

@@ -10,7 +10,7 @@ class SelectAsserter {
     /**
      *
      */
-    static func hasSelected(_ selectables:Array<ISelectable>) -> Bool {
+    static func hasSelected(_ selectables:[ISelectable]) -> Bool {
         return SelectParser.selected(selectables) != nil
     }
 }

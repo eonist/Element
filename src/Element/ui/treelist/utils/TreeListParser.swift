@@ -16,8 +16,8 @@ class TreeListParser{
     /**
      * Returns an array of descendants in PARAM: treeList
      */
-    static func descendants(_ treeList:ITreeList)->Array<AnyObject>{
-        var items:Array<AnyObject> = []
+    static func descendants(_ treeList:ITreeList)->[AnyObject]{
+        var items:[AnyObject] = []
         for i in 0..<treeList.itemContainer!.subviews.count{
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
             //Swift.print("view: " + "\(view)")
@@ -29,9 +29,9 @@ class TreeListParser{
     /**
      *
      */
-    static func decendantsOfType<T>(_ treeList:ITreeList,_ type:T.Type? = nil)->Array<T> {
+    static func decendantsOfType<T>(_ treeList:ITreeList,_ type:T.Type? = nil)->[T] {
         //Swift.print("decendantsOfType()")
-        var items:Array<T> = []
+        var items:[T] = []
         for i in 0..<treeList.itemContainer!.subviews.count{
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
             if(type == nil || (type != nil && view as? T != nil)) {//<--Inspired from the ClassParser.ofType() method
@@ -45,13 +45,13 @@ class TreeListParser{
      * Returns the index of PARAM: item from PARAM: treeList
      * TODO: this code could possibly be optimized Check similar function: XMLParser.index(xml,attribute) this has simpler syntax
      */
-    static func index(_ treeList:ITreeList,_ item:NSView)->Array<Int> {
-        var index:Array<Int> = []
+    static func index(_ treeList:ITreeList,_ item:NSView)->[Int] {
+        var index:[Int] = []
         for i in 0..<treeList.itemContainer!.subviews.count{//swift 3 upgrade
             let view:NSView = treeList.itemContainer!.getSubviewAt(i)
             if(view === item) {index = [i]}
             else if (view is ITreeList && (view as! ITreeList).itemContainer!.subviews.count > 0){
-                let tempIndex:Array<Int> = (TreeListParser.index(view as! ITreeList, item))
+                let tempIndex:[Int] = (TreeListParser.index(view as! ITreeList, item))
                 if(tempIndex.count > 0) {index = [i] + tempIndex}
             }
         }
@@ -80,7 +80,7 @@ class TreeListParser{
     /**
      * Returns an NSView instance at PARAM: index in PARAM: treeList
      */
-    static func itemAt(_ treeList:ITreeList,_ index:Array<Int>) -> NSView{
+    static func itemAt(_ treeList:ITreeList,_ index:[Int]) -> NSView{
         if(index.count == 1 && treeList.itemContainer!.getSubViewAt(index[0]) != nil) {
             return treeList.itemContainer!.getSubViewAt(index[0])!
         }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {

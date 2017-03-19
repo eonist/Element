@@ -7,12 +7,9 @@ class DecoratorParser {
      * NOTE: Parses through the hirarchy of decorators to see if there is a match, then returns this match, 
      */
     static func decoratable(_ decoratable:IGraphicDecoratable,_ theClassType:AnyClass)->IGraphicDecoratable? {
-        //Swift.print("DecoratorParser.decoratable() theClassType: " + String(theClassType))
-        //Swift.print(String(decoratable.dynamicType))
         if(Utils.isInstanceOfClass(decoratable, theClassType)) {return decoratable}
         var current:IGraphicDecoratable = decoratable
         while(current.getDecoratable() !== current) {
-            //Swift.print(String(current.getDecoratable().dynamicType))
             if(Utils.isInstanceOfClass(current.getDecoratable(), theClassType)) {return current.getDecoratable()}
             current = current.getDecoratable()
         }
@@ -25,8 +22,6 @@ private class Utils{
      * NOTE: However this method supports...
      */
     static func isInstanceOfClass(_ instanceType:IGraphicDecoratable,_ theClassType:AnyClass)->Bool{
-        //Swift.print(String(instanceType.dynamicType))
-        //Swift.print(String(theClassType))
         return "\(theClassType)" == "\(type(of:instanceType))"//swift 3 update
     }
 }

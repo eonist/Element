@@ -7,7 +7,7 @@ class StyleModifier {
      * CSSParser.as, StyleHeritageResolver.as uses this function
      * TODO: explain what newSelectors does
      */
-    static func clone(_ style:IStyle, _ newName:String? = nil, _ newSelectors:Array<ISelector>? = nil)->IStyle{
+    static func clone(_ style:IStyle, _ newName:String? = nil, _ newSelectors:[ISelector]? = nil)->IStyle{
         let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[])
         for styleProperty:IStyleProperty in style.styleProperties{
             returnStyle.addStyleProperty(StyleProperty(styleProperty.name, styleProperty.value, styleProperty.depth))
@@ -73,7 +73,7 @@ class StyleModifier {
      * Returns PARAM: style that has its styleProperties filtered by PARAM: filter (removed any styleProperty by a name that is not in the filter array)
      * NOTE: this method works faster than ArrayModifier.removeTheseByKey
      */
-    static func filter(_ style:IStyle,_ filter:Array<String>)->IStyle {
+    static func filter(_ style:IStyle,_ filter:[String])->IStyle {
         var styleProperties:Array<IStyleProperty> = []
         for i in 0..<style.styleProperties.count{//<--swift 3 support
             if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {styleProperties.append(style.styleProperties[i])}/*we only keep items that are in both arrays*/

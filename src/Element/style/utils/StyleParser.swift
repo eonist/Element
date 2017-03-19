@@ -10,7 +10,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
      * TODO: depthCount should probably be set when you are creating the Style instance, depthcount may change depending on the usage, think love preview or animation
      */
     static func depthCount(_ style:IStyle)->Int{
-        let propertyNames:Array<String> = stylePropertyNames(style)
+        let propertyNames:[String] = stylePropertyNames(style)
         //Swift.print("propertyNames: " + "\(propertyNames)")
         let fillCount:Int = ArrayAsserter.has(propertyNames, "fill") ? style.getStyleProperties("fill").count : 0
         //Swift.print(style.getStyleProperties("fill"))
@@ -38,8 +38,8 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     /**
      * Returns an array populated with style property names
      */
-    static func stylePropertyNames(_ style:IStyle) -> Array<String>{
-        var propertyNames:Array<String> = []
+    static func stylePropertyNames(_ style:IStyle) -> [String]{
+        var propertyNames:[String] = []
         for styleProperty:IStyleProperty in style.styleProperties{ 
             propertyNames.append(styleProperty.name)
         }

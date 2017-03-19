@@ -6,7 +6,7 @@ extension Style:UnWrappable{
     /**
     * Adds styleProperties
     */
-    func addStyleProperties(_ styleProperties:Array<IStyleProperty>){
+    func addStyleProperties(_ styleProperties:[IStyleProperty]){
         for styleProperty in styleProperties {
             addStyleProperty(styleProperty)
         }
@@ -23,7 +23,7 @@ extension Style:UnWrappable{
     /**
      * Adds styleProperties
      */
-    func addStyleProperty(_ styleProperties:Array<IStyleProperty>){
+    func addStyleProperty(_ styleProperties:[IStyleProperty]){
         for styleProperty:IStyleProperty in styleProperties{
             addStyleProperty(styleProperty)
         }
@@ -45,7 +45,7 @@ extension Style:UnWrappable{
     /**
      * NOTE: StyleParser.depthCount() uses this method
      */
-    func getStyleProperties(_ name:String)->Array<IStyleProperty>{
+    func getStyleProperties(_ name:String)->[IStyleProperty]{
         var styleProperties:Array<IStyleProperty> = []
         for styleProperty : IStyleProperty in self.styleProperties{if(styleProperty.name == name) {styleProperties.append(styleProperty)}}
         return styleProperties
@@ -73,7 +73,6 @@ extension Style:UnWrappable{
         self.init(id,[],[styleProperty])
     }
 }
-
 extension Style{
     /**
      * Converts xml to a Style instance

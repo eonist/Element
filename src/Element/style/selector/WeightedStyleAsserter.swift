@@ -67,10 +67,10 @@ class WeightedStyleAsserter {
     /**
      *
      */
-    private static func elementCount(_ selectors:Array<ISelector>)->Int{
+    private static func elementCount(_ selectors:[ISelector])->Int{
         var elementCount:Int = 0
         for i in 0..<selectors.count{//<--forEach candidate!?!?
-            if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount+=1}
+            if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount += 1}
         }
         return elementCount
     }

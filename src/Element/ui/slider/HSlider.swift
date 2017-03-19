@@ -56,7 +56,6 @@ class HSlider:Element{
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!);leftMouseDraggedEventListener = nil}//we remove a global mouse move event listener
     }
     override func onEvent(_ event:Event) {
-        //Swift.print("\(self.dynamicType)" + ".onEvent() event: " + "\(event)")
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
         else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/

@@ -2,9 +2,7 @@ import Foundation
 @testable import Utils
 
 class SliderParser {
-    
-    //TODO:move into ScrollableUtils
-    
+    //TODO:move into ScrollableUtils ⚠️️ 
     /**
      * Asserts and returns a boolean value that determines if slider should be visible
      */
@@ -25,8 +23,7 @@ class SliderParser {
         return size
     }
     
-    //TODO:move into ScrollableUtils
-    
+    //TODO:move into ScrollableUtils ⚠️️
     
     /**
      * Returns the progress (clamped between 0 and 1)
@@ -39,7 +36,7 @@ class SliderParser {
         return (y / -(totalHeight - height)).clip(0,1)
     }
     
-    //TODO:move into ScrollableUtils
+    //TODO:move into ScrollableUtils ⚠️️
     
     
     /**
@@ -52,7 +49,7 @@ class SliderParser {
         return -round(progress * scrollHeight)
     }
     
-    //TODO:move into ScrollableUtils
+    //TODO:move into ScrollableUtils ⚠️️
     
     
     /**

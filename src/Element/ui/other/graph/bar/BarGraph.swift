@@ -185,20 +185,3 @@ private class Utils{
         return values
     }
 }
-//Continue here:
-    //Extract the gesture out of CommitGraph✅
-    //override createGraph✅
-    //create dummy methods with sudo code that calcs the bars and draws them etc✅
-    //dashed line support in css for that ultimate BarGraph look
-    //create the touch point visualisations✅
-    //don't do the rounded look before you have the square look working✅
-    //download AppleWatch mockup image (optionally .SVG)
-    //try to make a small rect
-    //remove leftBar and bottomBar✅
-    //try to make some nice colors
-    //try to add to playground ✅
-    //investigate the touch capture method you read about yesterday
-    //Add heat map mapped to the alpha of each bar
-    //find the right color 
-    //add window move capabilities
-    //record vid -> gif -> add to element readme

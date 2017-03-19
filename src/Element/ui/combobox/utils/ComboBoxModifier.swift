@@ -1,9 +1,6 @@
 import Foundation
 @testable import Utils
 class ComboBoxModifier{
-	/**
-	 * 
-	 */
 	static func selectByProperty(_ comboBox:ComboBox,_ property:String) {
         let index:Int = comboBox.dataProvider!.index("property", property)!
         let title:String = comboBox.dataProvider!.getItemAt(index)!["title"]!

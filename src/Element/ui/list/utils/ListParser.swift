@@ -9,7 +9,7 @@ class ListParser {
      * Returns a NSView instance from PARAM: dataProviderItem
      * NOTE:: This is a way to get to the actual "Buttons" directly
      */
-    static func label(_ list: IList, _ dataProviderItem:Dictionary<String,String>) -> NSView {// :TODO: rename to toItem and maybe move to Listparser, dataProviderItemToItem? ListUtils
+    static func label(_ list: IList, _ dataProviderItem:[String:String]) -> NSView {// :TODO: rename to toItem and maybe move to Listparser, dataProviderItemToItem? ListUtils
         let itemIndex:Int = list.dataProvider.getItemIndex(dataProviderItem)
         return list.lableContainer!.subviews[itemIndex]
     }
@@ -17,7 +17,7 @@ class ListParser {
      * Returns the item from the list (NSView instance) from PARAM: list at PARAM: index
      */
     static func labelAt(_ list: IList, _ index:Int)->NSView? {
-        let dataProvderItem:Dictionary<String,String>? = list.dataProvider.getItemAt(index)
+        let dataProvderItem:[String:String]? = list.dataProvider.getItemAt(index)
         if(dataProvderItem != nil){return ListParser.label(list,dataProvderItem!)}
         return nil
     }
@@ -38,7 +38,7 @@ class ListParser {
     /**
      * Returns the title of the currently selected
      */
-    static func selectedTitle(_ list: IList)->String {
+    static func selectedTitle(_ list:IList)->String {
         let index:Int = selectedIndex(list);
         return titleAt(list, index)
     }

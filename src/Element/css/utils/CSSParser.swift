@@ -42,14 +42,14 @@ class CSSParser{
         var name:String = name
         //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
-        let selectors:Array<ISelector> = SelectorParser.selectors(name)
+        let selectors:[ISelector] = SelectorParser.selectors(name)
         let style:IStyle = Style(name,selectors, [])
         let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
         let matches = RegExp.matches(value, pattern)
         for match:NSTextCheckingResult in matches {
             let propertyName:String = match.value(value, 1)/*name*/
             let propertyValue:String = match.value(value, 2)/*value*/
-            let styleProperties:Array<IStyleProperty> = CSSParser.styleProperties(propertyName,propertyValue)
+            let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
             style.addStyleProperties(styleProperties)
         }
         return style
@@ -59,13 +59,13 @@ class CSSParser{
      * NOTE: now supports StyleProperty2 that can have many property values
      */
     static func styleProperties(_ propertyName:String, _ propertyValue:String)->Array<IStyleProperty>{
-        var styleProperties:Array<IStyleProperty> = []
+        var styleProperties:[IStyleProperty] = []
         let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name)
             let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
-            var values:Array<String> = RegExp.match(propertyValue,pattern)
+            var values:[String] = RegExp.match(propertyValue,pattern)
             for i in 0..<values.count{//<--New: swift 3 support
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
@@ -96,7 +96,7 @@ private class Utils{
     static func siblingStyles(_ styleName:String,_ value:String)->Array<IStyle> {
         //Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
-        var sibblingStyles:Array<IStyle> = []
+        var sibblingStyles:[IStyle] = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = RegExp.matches(styleName,siblingPattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         //Swift.print("matches: " + "\(matches.count)")

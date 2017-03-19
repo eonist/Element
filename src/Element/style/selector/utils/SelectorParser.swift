@@ -108,7 +108,7 @@ class SelectorParser{
     }
     //deprecated
     static func selectorToString(_ selector:ISelector)->String{return selectorString(selector)}
-    static func string(_ selectors:Array<ISelector>)->String{return selectorsString(selectors)}
+    static func string(_ selectors:[ISelector])->String{return selectorsString(selectors)}
 }
 private class Utils{
     /**
@@ -116,7 +116,7 @@ private class Utils{
      * PARAM: styleSel an Selector instance from styleSelectors
      * PARAM: querrySelectors: an array comprised of Selectors (from the element stack)
      */
-    static func selectorWeight(_ styleSel:ISelector,_ querrySelectors:Array<ISelector>)->SelectorWeight?{
+    static func selectorWeight(_ styleSel:ISelector,_ querrySelectors:[ISelector])->SelectorWeight?{
         //swift 3 update
         for i in 0..<querrySelectors.count{/*loops through each selector in the stack*///Item Container Item Container Button Text
             let querrySelector:ISelector = querrySelectors[i]
@@ -131,7 +131,7 @@ private class Utils{
     /**
      * NOTE: Lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
      */
-    static func stateWeight(_ a:Array<String>,_ b:Array<String>)->Int{
+    static func stateWeight(_ a:[String],_ b:[String])->Int{
         var weight:Int = 0
         for state:String in a {
             weight += b.count - ArrayParser.index(b,state)/*<--s this really wise? what if it is -1 aka doesn't exist*/

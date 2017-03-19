@@ -1,10 +1,10 @@
 import Foundation
 
 class StyleManagerUtils{
-    static var stylesByElement:Dictionary<String,[IStyle]> = [:]
-    static var stylesByID:Dictionary<String,[IStyle]> = [:]
-    static var stylesByClassId:Dictionary<String,[IStyle]> = [:]
-    static var stylesByState:Dictionary<String,[IStyle]> = [:]
+    static var stylesByElement:[String:[IStyle]] = [:]
+    static var stylesByID:[String:[IStyle]] = [:]
+    static var stylesByClassId:[String:[IStyle]] = [:]
+    static var stylesByState:[String:[IStyle]] = [:]
     /**
      * We hash the tail of the style selectors
      * NOTE: Using if let won't work on the code bellow

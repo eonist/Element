@@ -5,14 +5,14 @@ import Foundation
  * TODO: get rid of name?!?
  */
 class StyleCollection:IStyleCollection{
-    var styles:Array<IStyle> = []//use obj instead?
+    var styles:[IStyle] = []//use obj instead?
 }
 extension StyleCollection{
     /**
      * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
      * NOTE: the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
      */
-    func addStyles(_ styles:Array<IStyle>){
+    func addStyles(_ styles:[IStyle]){
         for style in styles{ addStyle(style) }
     }
     /**

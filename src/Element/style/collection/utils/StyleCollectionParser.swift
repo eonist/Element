@@ -5,8 +5,8 @@ class StyleCollectionParser {
     /**
      * Returns an array of style names
      */
-    static func styleNames(_ styleCollection:IStyleCollection) -> Array<String>{
-        var styleNames:Array<String> = []
+    static func styleNames(_ styleCollection:IStyleCollection) -> [String]{
+        var styleNames:[String] = []
         for i in 0..<styleCollection.styles.count{//TODO:use forEach instead
             styleNames.append(styleCollection.styles[i].name)
         }

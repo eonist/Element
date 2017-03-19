@@ -17,7 +17,7 @@ class TreeListModifier {
         var treeList = treeList
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
         if(treeList is ITreeListItem){(treeList as! ITreeListItem).open()}
-        let decendants:Array<ITreeListItem> = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
+        let decendants:[ITreeListItem] = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
         for treeListItem:ITreeListItem in decendants{
             if(!(treeListItem as! ICheckable).getChecked()) {treeListItem.open()}
         }
@@ -29,7 +29,7 @@ class TreeListModifier {
     static func collapseAt(_ treeList:ITreeList,_ index:[Int]) {
         var treeList = treeList
         treeList = TreeListParser.itemAt(treeList, index) as! ITreeList
-        let decendants:Array<ITreeListItem> = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
+        let decendants:[ITreeListItem] = TreeListParser.decendantsOfType(treeList,ITreeListItem.self)
         //Swift.print("decendants.count: " + "\(decendants.count)")
         for treeListItem : ITreeListItem in decendants {
             //Swift.print("treeListItem: " + "\(treeListItem)")
@@ -85,9 +85,6 @@ class TreeListModifier {
         let index:[Int] = TreeListParser.index(treeList, item)
         removeAt(treeList, index)
     }
-    /**
-     *
-     */
     static func removeAll(_ treeList:ITreeList) {
         while(treeList.itemContainer!.subviews.count > 0) {removeAt(treeList, [0])}
     }
@@ -139,19 +136,13 @@ class TreeListModifier {
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }
-    /**
-     *
-     */
-    static func moveToTop(_ treeList:TreeList,_ index:Array<Int>) -> Array<Int> {
+    static func moveToTop(_ treeList:TreeList,_ index:[Int]) -> [Int] {
         let removed:XML = treeList.node.removeAt(index)
         let newIndex:[Int] = index.slice2(0,index.count-1) + [0]
         treeList.node.addAt(newIndex, removed)
         return newIndex
     }
-    /**
-     *
-     */
-    static func moveToBottom(_ treeList:TreeList,_ index:Array<Int>) -> Array<Int> {
+    static func moveToBottom(_ treeList:TreeList,_ index:[Int]) -> [Int] {
         let removed:XML = treeList.node.removeAt(index)
         let childrenCount:Int = NodeParser.childrenCount(treeList.node, index.slice2(0,index.count-1))
         let newIndex:[Int] = index.slice2(0,index.count-1) + [childrenCount]

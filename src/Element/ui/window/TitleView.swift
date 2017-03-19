@@ -19,7 +19,6 @@ class TitleView:CustomView{
         textArea!.text?.isInteractive = false/*Disable interactivity on the text*/
     }
     override func mouseDown(_ event:MouseEvent) {
-        //Swift.print("TitleView.mouseDown event.immediate: \(event.immediate)" + " event.origin: \(event.origin)")
         if(event.immediate === textArea){
             mouseDownPos = self.winMousePos
             if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:self.onMove ) }//we add a global mouse move event listener
@@ -27,14 +26,12 @@ class TitleView:CustomView{
         }
     }
     override func mouseUp(_ event:MouseEvent) {
-        //Swift.print("mouseUp")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
             leftMouseDraggedEventListener = nil//<--This part may not be needed, seems to be needed
         }
     }
     func onMove(event:NSEvent) -> NSEvent? {
-        //Swift.print("PageController.onMove()")
         let winPos:CGPoint = self.window!.unFlipScreenPosition(self.window!.flippedScreenPosition - mouseDownPos!)
         WinModifier.position(self.window!, winPos)
         return event

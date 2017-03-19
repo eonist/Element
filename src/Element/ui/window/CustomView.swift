@@ -10,7 +10,6 @@ class CustomView:WindowView{
      * Add content here
      */
     override func resolveSkin() {
-        //Swift.print("CustomView.resolveSkin()")
         super.resolveSkin()
         createTitleBar()
     }
@@ -18,17 +17,12 @@ class CustomView:WindowView{
      * Adds close button, min, max
      */
     func createTitleBar(){
-        //Swift.print("createTitleBar() ")
         section = addSubView(Section(75,22,self,"titleBar"))/*height was 26 but we added 4px as padding-top*/
         closeButton = section!.addSubView(Button(NaN,NaN,section!,"close")) /*<--TODO: the w and h should be NaN, test if it supports this*/
         minimizeButton = section!.addSubView(Button(NaN,NaN,section!,"minimize"))
         maximizeButton = section!.addSubView(Button(NaN,NaN,section!,"maximize"))
     }
-    /**
-     *
-     */
     override func setSize(_ width:CGFloat,_ height:CGFloat){
-        //Swift.print("CustomView.setSize() size: " + "\(size)")
         super.setSize(width, height)
         section!.setSize(width, section!.height)
     }
@@ -39,9 +33,6 @@ class CustomView:WindowView{
         Swift.print("onCloseButtonReleaseInside")
         self.window?.close()/*this closes the window*/
     }
-    /**
-     *
-     */
     func onMinimizeButtonReleaseInside(){
         Swift.print("onMinimizeButtonReleaseInside")
         //minimize the window here
@@ -67,15 +58,9 @@ class CustomView:WindowView{
 
         self.window?.toggleFullScreen(self.window)
     }
-    /**
-     *
-     */
     func onTestButtonDown(){
         Swift.print("onTestButtonDown")
     }
-    /**
-     *
-     */
     override func onEvent(_ event:Event) {
         //Swift.print( "CustomView.onEvent() event:" + "\(event)")
         //Swift.print("CustomView.onEvent: " + "\(event)" + " event.origin: " + "\(event.origin)")

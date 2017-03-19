@@ -28,8 +28,6 @@ class PopupView:WindowView{
         return event
     }
 }
-
-
 /*
 
 Implement this if you want the popupwin to be closed if the app looses focus:

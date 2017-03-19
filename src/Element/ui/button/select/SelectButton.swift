@@ -11,7 +11,6 @@ class SelectButton:Button,ISelectable {
      * Select state should only take place when there is a mouseUpInside event
      */
     override func mouseUpInside(_ event:MouseEvent) {
-        //Swift.print("SelectButton.mouseUpInside()")
         isSelected = true
         super.mouseUpInside(event)/*Forward the event*/
         super.onEvent(SelectEvent(SelectEvent.select,self/*,self*/))

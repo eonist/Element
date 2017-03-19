@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * TODO: It could be possible to merge the two skin lines in every event handler somehow
- * TODO: Impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesnt hold, if you want a simpler button you can just make an alternate Button class
+ * TODO: Impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesn't hold, if you want a simpler button you can just make an alternate Button class
  * TODO: If the mouse gets stuck and wont fire the mouseUp after a mouseDown call, then the app should not fail when clicking down again somewhere else, this means we need to centralize the eventListner for mouseUp/mouseDown using global instead of locla could work
  */
 class Button:Element {
@@ -14,7 +14,7 @@ class Button:Element {
      * Handles actions and drawing states for the mouseEntered event
      */
     override func mouseOver(_ event:MouseEvent) {
-        if(NSEvent.pressedMouseButtons() == 0){/*Dont call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
+        if(NSEvent.pressedMouseButtons() == 0){/*Don't call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             setSkinState(getSkinState())
             super.onEvent(ButtonEvent(ButtonEvent.over,self))
@@ -40,7 +40,7 @@ class Button:Element {
         super.onEvent(ButtonEvent(ButtonEvent.down,self))
     }
     /**
-     * Handles actions and drawing states for the release event.
+     * Handles actions and drawing states for the release event
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpInside(_ event:MouseEvent){
@@ -49,7 +49,7 @@ class Button:Element {
         super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
     }
     /**
-     * Handles actions and drawing states for the mouseUpOutside event.
+     * Handles actions and drawing states for the mouseUpOutside event
      * NOTE: bubbling = true was added to make Stepper class dragable
      */
     override func mouseUpOutside(_ event:MouseEvent){

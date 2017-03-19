@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * TODO: Implement setSize, see SliderList for implementation
+ * ⚠️️ This is deperecated, move to deperecated folder
  */
 class SliderFastList: DEPRECATED_FastList, DEPRECATED_ISliderList {
     var slider:VSlider?

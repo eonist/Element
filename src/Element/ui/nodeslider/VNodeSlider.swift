@@ -5,6 +5,7 @@ import Cocoa
  * // :TODO: to get the toFront method working you need to support relative positioning, currently the Element framework doesnt support this
  * // :TODO: support for custom node shape design
  * // :TODO: when implimenting selectgroup functionality you need to be able to change set the selection on press not on release (You might need to impliment NodeButton that impliments iselectable in order to make this happen)
+ * ⚠️️ Deprecate? These wont be used, if needed then just grab from history?
  */
 class VNodeSlider:Element,INodeSlider{
     var startNode:SelectButton?

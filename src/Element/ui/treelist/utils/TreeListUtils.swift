@@ -9,7 +9,6 @@ class TreeListUtils {
      * NOTE: this method is used in the onDataBaseAddAt method in the TreeList class
      */
     static func item(_ xml:XML,_ parent:IElement,_ size:CGPoint)->NSView {
-        //Swift.print("item size: " + "\(size)")
         let itemData:ItemData = TreeListUtils.itemData(xml)
         let item:NSView = Utils.treeItem(itemData, parent, size)
         if(itemData.hasChildren) {_ = treeItems(xml,item as! ITreeList,CGPoint(size.x, size.y)) as! NSView}/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
@@ -59,19 +58,14 @@ private class Utils{
      * // :TODO: write java doc
      */
     static func treeItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> Element {
-        //Swift.print("treeItem size: " + "\(size)")
         let item:Element = itemData.hasChildren ? Utils.treeListItem(itemData, parent, size) : Utils.selectTextButton(itemData, parent, size)
-        //Swift.print("itemData.isVisible: " + "\(itemData.isVisible)")
         item.isHidden = !itemData.isVisible// :TODO: should this be here and do we need isVisible?
         return item
     }    
     static func treeListItem(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> TreeListItem {
-        //Swift.print("treeListItem size: " + "\(size)")
         return TreeListItem(size.x,size.y,itemData.title,itemData.isOpen,itemData.isSelected,parent)
     }
     static func selectTextButton(_ itemData:ItemData,_ parent:IElement,_ size:CGPoint) -> SelectTextButton {
-        //Swift.print("selectTextButton size: " + "\(size)" + " title: " + "\(itemData.title)")
-        //Swift.print("parent: " + "\(parent)")
         return SelectTextButton(size.x,size.y,itemData.title,itemData.isSelected,parent)
     }
 }

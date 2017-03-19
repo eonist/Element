@@ -22,7 +22,6 @@ class TreeList:Element,ITreeList {
         layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
-        //Swift.print("TreeList.resolveSkin() width: " + "\(width)" + " height: " + "\(height)")
         super.resolveSkin()
         itemContainer = addSubView(Container(width,height,self,"lable"))
         //itemContainer!.layer!.masksToBounds = true/*masks the children to the frame*/
@@ -62,7 +61,6 @@ extension TreeList{
      *
      */
     func setXML(_ xml:XMLElement){
-        //Swift.print("setXML")
         TreeListModifier.removeAll(self)/*Clear the tree list first*/
         node.xml = xml
         _ = TreeListUtils.treeItems(node.xml,self,CGPoint(width, itemHeight))/*Utils.treeItems(xml) and add each DisplayObject in treeItems*/
@@ -73,12 +71,12 @@ extension TreeList{
      */
     func onItemSelect(_ event:SelectEvent){// :TODO: make public since we may want to have differ functionality, like multi select
         Swift.print("onItemSelect()")
-        let descendants:Array<AnyObject> = TreeListParser.descendants(self)
-        let selectables:Array<ISelectable> = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
+        let descendants:[AnyObject] = TreeListParser.descendants(self)
+        let selectables:[ISelectable] = descendants.map {($0 as! ISelectable)}//<--temp solution this should ideally be handled by the descendant call
         //Swift.print("event.origin: " + "\(event.origin)")
         let selected:ISelectable = event.origin as! ISelectable
         SelectModifier.unSelectAllExcept(selected, selectables)
-        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)//<--new
+        let index:[Int] = TreeListParser.index(self, (event.origin as! NSView).superview!)//<--new
         //Swift.print("event.isSelected: " + "\(event.isSelected)")
         _ = XMLModifier.setAttributeAt(node.xml, index, "isSelected",String(event.isSelected))//<--new
         super.onEvent(event)
@@ -87,7 +85,7 @@ extension TreeList{
      * NOTE: This method gets all CheckEvent's from all decending ICheckable instances
      */
     func onItemCheck(_ event:CheckEvent) {
-        let index:Array<Int> = TreeListParser.index(self, (event.origin as! NSView).superview!)
+        let index:[Int] = TreeListParser.index(self, (event.origin as! NSView).superview!)
         Swift.print("TreeList.onItemCheck() index:" + "\(index)" + " event.isChecked: " + "\(event.isChecked)")
         _ = XMLModifier.setAttributeAt(node.xml, index, "isOpen",String(event.isChecked))
         ElementModifier.floatChildren(itemContainer!)

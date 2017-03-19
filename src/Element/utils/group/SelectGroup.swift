@@ -11,14 +11,14 @@ import Cocoa
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
 class SelectGroup:EventSender{
-    var selectables:Array<ISelectable> = []
+    var selectables:[ISelectable] = []
     var selected:ISelectable?
-    init(_ selectables:Array<ISelectable>, _ selected:ISelectable? = nil){
+    init(_ selectables:[ISelectable], _ selected:ISelectable? = nil){
         super.init()
         self.selected = selected
         addSelectables(selectables)
     }
-    func addSelectables(_ selectables:Array<ISelectable>){
+    func addSelectables(_ selectables:[ISelectable]){
         selectables.forEach{addSelectable($0)}
     }
     /**

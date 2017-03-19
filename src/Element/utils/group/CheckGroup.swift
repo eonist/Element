@@ -8,14 +8,14 @@ import Foundation
  * TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
  */
 class CheckGroup:EventSender {
-    var checkables:Array<ICheckable> = []
+    var checkables:[ICheckable] = []
     var checked:ICheckable?
-    init(_ checkables:Array<ICheckable>, _ checked:ICheckable? = nil){
+    init(_ checkables:[ICheckable], _ checked:ICheckable? = nil){
         super.init()
         addCheckables(checkables)
         self.checked = checked!
     }
-    func addCheckables(_ checkables:Array<ICheckable>) {
+    func addCheckables(_ checkables:[ICheckable]) {
         for checkable:ICheckable in checkables{ addCheckable(checkable)}
     }
     /**

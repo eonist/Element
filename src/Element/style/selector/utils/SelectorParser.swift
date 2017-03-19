@@ -12,8 +12,8 @@ class SelectorParser{
      * TODO: this the sub method of this class could still need some refactoring, and clearafication
      * TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */
-    static func selectorWeights(_ style:IStyle,_ querrySelectors:Array<ISelector>)->Array<SelectorWeight>? {//
-        var selectorWeights:Array<SelectorWeight> = []
+    static func selectorWeights(_ style:IStyle,_ querrySelectors:[ISelector])->[SelectorWeight]? {//
+        var selectorWeights:[SelectorWeight] = []
         cursor = 0/*so that we skip testing the same selector again*/
         for styleSel:ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
             let selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors)
@@ -26,7 +26,7 @@ class SelectorParser{
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
      * NOTE: this method can also be used for debuging purposes
      */
-    static func selectorsString(_ selectors:Array<ISelector>)->String{//TODO: rename to selectorsString
+    static func selectorsString(_ selectors:[ISelector])->String{//TODO: rename to selectorsString
         var string:String = ""
         for i in 0..<selectors.count{
             string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
@@ -48,8 +48,8 @@ class SelectorParser{
      * Returns an array of Selector instances from PARAM: string (which is usually from the CSSParser.style function)
      */
     static func selectors(_ string:String)->Array<ISelector>! {
-        let selectorNames:Array<String> = StringAsserter.contains(string, " ") ? StringModifier.split(string," ") : [string]
-        var styleSelectors:Array<ISelector> = []
+        let selectorNames:[String] = StringAsserter.contains(string, " ") ? StringModifier.split(string," ") : [string]
+        var styleSelectors:[ISelector] = []
         for selectorName  in selectorNames{ styleSelectors.append(selector(selectorName)) }
         return styleSelectors
     }

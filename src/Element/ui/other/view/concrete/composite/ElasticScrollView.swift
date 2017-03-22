@@ -3,7 +3,6 @@ import Cocoa
 /**
  * NOTE: this Method is totally academic, can be usefull for UI where you dont want or need slider. 
  */
-
 class ElasticScrollView:ContainerView,ElasticScrollable {
     /*RubberBand*/
     var mover:RubberBand?

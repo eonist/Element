@@ -3,7 +3,7 @@ import Cocoa
 /**
  * This protocol exist because other than Lists may want to be Elastic scrollable, like A container of things
  */
-protocol ElasticScrollable: Elastic, Scrollable {
+protocol ElasticScrollable:Elastic, Scrollable {
     func scrollWheelExitedAndIsStationary()
 }
 extension ElasticScrollable {

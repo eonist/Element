@@ -2,7 +2,7 @@ import Cocoa
 /**
  * Scrollable is for scroling things, basically content within a mask
  */
-protocol Scrollable: Containable {
+protocol Scrollable:Containable {
     func onScrollWheelChange(_ event:NSEvent)//non-momentum change aka direct change via scrollWheel
     func onScrollWheelEnter()
     func onScrollWheelExit()

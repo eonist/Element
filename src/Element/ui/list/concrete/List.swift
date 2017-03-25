@@ -44,10 +44,10 @@ class List:ContainerView, IList {
             i += 1
         }
     }
-    func mergeAt(_ dict:[String:String], _ index:Int) -> NSView{
+    func mergeAt(_ dict:[String:String], _ i:Int) -> NSView{
         let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,dict["title"]!, false, lableContainer)
         lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
-        item
+        return item
     }
     override func onEvent(_ event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here

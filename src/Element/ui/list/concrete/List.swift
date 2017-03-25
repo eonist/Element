@@ -37,13 +37,17 @@ class List:ContainerView, IList {
      * Creates and adds items to the _lableContainer
      * TODO: possibly move into ListModifier, TreeList has its mergeAt in an Utils class see how it does it
      */
-    func mergeAt(_ objects:[[String:String]], _ index:Int){//TODO: possible rename to something better, placeAt? insertAt?
+    func mergeAt(_ dictionaries:[[String:String]], _ index:Int){//TODO: possible rename to something better, placeAt? insertAt?
         var i:Int = index
-        for object:[String:String] in objects {//TODO: use for i
-            let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,object["title"]!, false, lableContainer)
-            lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+        for dict:[String:String] in dictionaries {//TODO: use for i
+            _ = mergeAt(dict,i)
             i += 1
         }
+    }
+    func mergeAt(_ dict:[String:String], _ index:Int) -> NSView{
+        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,dict["title"]!, false, lableContainer)
+        lableContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+        item
     }
     override func onEvent(_ event:Event) {
         if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here

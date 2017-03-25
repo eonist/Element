@@ -13,7 +13,7 @@ import Cocoa
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 
-class FastList: ContainerView,IFastList {
+class FastList:ContainerView,IFastList {
     var _itemHeight:CGFloat//⚠️️ temp fix /*The list item height, each item must have the same height*/
     override var itemHeight:CGFloat {return _itemHeight}
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
@@ -36,7 +36,6 @@ class FastList: ContainerView,IFastList {
         let range:Range<Int> = visibleRange.start..<min(dp.count,visibleRange.end)/*clip the range*/
         renderItems(range)
     }
-    
     /**
      * Apply new data / align items
      * NOTE: override this to use custom ItemList items

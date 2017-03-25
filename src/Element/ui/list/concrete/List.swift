@@ -12,7 +12,7 @@ import Cocoa
  * TODO: try to make the mask an Element
  * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
-class List: ContainerView, IList {
+class List:ContainerView, IList {
     var _itemHeight:CGFloat//⚠️️ temp fix
     override var itemHeight:CGFloat {return _itemHeight}
     override var itemsHeight: CGFloat {return dataProvider.count * itemHeight}
@@ -45,6 +45,27 @@ class List: ContainerView, IList {
             i += 1
         }
     }
+    override func onEvent(_ event:Event) {
+        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
+        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
+        super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
+    }
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
+        super.setSize(width, height)
+        //skin.setState(skin.state)
+        //self.mask.setSize(width, height)
+        ElementModifier.refresh(lableContainer!)//was --> SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
+    }
+    /**
+     * Returns "List"
+     * NOTE: This method is used to find the correct class type when synthezing the element cascade
+     */
+    override func getClassType() -> String {
+        return "\(DEPRECATED_List.self)"
+    }
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension List{
     /**
      * TODO: you need to update the float of the lables after an update
      */
@@ -71,23 +92,4 @@ class List: ContainerView, IList {
         ListModifier.selectAt(self,selectedIndex)
         super.onEvent(ListEvent(ListEvent.select,selectedIndex,self))
     }
-    override func onEvent(_ event:Event) {
-        if(event.type == ButtonEvent.upInside && event.immediate === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
-        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
-        super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
-    }
-    override func setSize(_ width:CGFloat, _ height:CGFloat) {
-        super.setSize(width, height)
-        //skin.setState(skin.state)
-        //self.mask.setSize(width, height)
-        ElementModifier.refresh(lableContainer!)//was --> SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
-    }
-    /**
-     * Returns "List"
-     * NOTE: This method is used to find the correct class type when synthezing the element cascade
-     */
-    override func getClassType() -> String {
-        return "\(DEPRECATED_List.self)"
-    }
-    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

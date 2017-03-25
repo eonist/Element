@@ -84,7 +84,6 @@ extension IFastList{
                 _ = ArrayModifier.mergeInPlaceAt(&pool, &items, idx)
             }
         }
-        
     }
     /**
      * Returns the range to render (based on items in DP and how the lableContainer is positioned)

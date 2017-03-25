@@ -61,7 +61,7 @@ class List:ContainerView, IList {
      * NOTE: This method is used to find the correct class type when synthezing the element cascade
      */
     override func getClassType() -> String {
-        return "\(DEPRECATED_List.self)"
+        return "\(List.self)"
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

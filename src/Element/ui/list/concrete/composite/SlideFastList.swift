@@ -1,7 +1,7 @@
 import Foundation
 @testable import Utils
 
-class SlideFastList: FastList,Slidable {
+class SlideFastList:FastList,Slidable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension, if possible

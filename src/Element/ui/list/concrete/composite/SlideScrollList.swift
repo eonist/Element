@@ -77,7 +77,6 @@ extension IList {
         //Swift.print("lastVisibleItem: " + "\(lastVisibleItem)")
         return lastVisibleItem
     }
-    
     /**
      * Returns number of items that can fit height
      */
@@ -98,7 +97,7 @@ extension IList {
                 lableContainer!.y = -(itemsHeight - height)
             }
         }
-            /*If an item is added / removed above the first visible item*/
+        /*If an item is added / removed above the first visible item*/
         else if(event.startIndex < firstVisibleItem){
             if(event.type == DataProviderEvent.remove){
                 lableContainer!.y += itemHeight

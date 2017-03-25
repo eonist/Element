@@ -7,7 +7,7 @@ import Cocoa
  * ⚠️️ TODO: Copy over the setsize and dataprovider stuff, consider making some of it protocol based rather than inheritable, IDataProvidable?, IResizeable?
  * ⚠️️ TODO: Copy over commentary from legacy
  */
-class SlideScrollList: List,SlidableScrollable {
+class SlideScrollList:List,SlidableScrollable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {

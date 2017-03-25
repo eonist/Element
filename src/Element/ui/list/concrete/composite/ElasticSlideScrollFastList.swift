@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class ElasticSlideScrollFastList: SlideFastList,ElasticSlidableScrollableFast {
+class ElasticSlideScrollFastList:SlideFastList,ElasticSlidableScrollableFast {
     /*RubberBand*/
     var mover:RubberBand?
     var iterimScroll:InterimScroll = InterimScroll()

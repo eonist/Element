@@ -60,6 +60,15 @@ class FastList:ContainerView,IFastList {
         lableContainer!.addSubview(item)
         return item
     }
+    override func onEvent(_ event:Event) {
+        if(event.type == ButtonEvent.upInside && event.origin.superview === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
+        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
+        super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
+    }
+    override func getClassType() -> String {return "\(List.self)"}
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension FastList{
     /**
      * DP has changed
      * override this method if dp change can affect the super class
@@ -82,11 +91,4 @@ class FastList:ContainerView,IFastList {
         pool.forEach{if($0.item === buttonEvent.origin){selectedIdx = $0.idx}}/*We extract the index by searching for the origin among the visibleItems, the view doesn't store the index it self, but the visibleItems store absolute indecies*/
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
     }
-    override func onEvent(_ event:Event) {
-        if(event.type == ButtonEvent.upInside && event.origin.superview === lableContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
-        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
-        super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
-    }
-    override func getClassType() -> String {return "\(List.self)"}
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

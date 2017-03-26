@@ -49,7 +49,7 @@ extension IFastList {
                 lableContainer!.y = -(itemsHeight - height)
             }
         }
-            /*If an item is added / removed above the first visible item*/
+        /*If an item is added / removed above the first visible item*/
         else if(event.startIndex < firstVisibleItem){
             if(event.type == DataProviderEvent.remove){
                 lableContainer!.y += itemHeight

@@ -65,7 +65,7 @@ class FastList:ContainerView,IFastList {
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     override func getClassType() -> String {return "\(List.self)"}
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension FastList{
     /**

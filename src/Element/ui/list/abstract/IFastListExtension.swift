@@ -37,6 +37,7 @@ extension IFastList {
     }
     /**
      * Alignes the lableContainer after it's content has been changed (add/remove of item)
+     * NOTE: This method makes the Fast list look good when item sout of view vanish. Scroll is realigned and you can continue from where you are 
      * NOTE: called by FastList.onDataProviderEvent
      */
     func alignLableContainer(_ event:DataProviderEvent){

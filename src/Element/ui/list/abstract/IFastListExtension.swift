@@ -43,7 +43,7 @@ extension IFastList {
         if(itemsHeight < height){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
             lableContainer!.y = 0
         }
-            /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
+        /*Pin to bottom if (lableContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
         else if(itemsHeight > height){
             if((lableContainer!.y + itemsHeight) < height){
                 lableContainer!.y = -(itemsHeight - height)

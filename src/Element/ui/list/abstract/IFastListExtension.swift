@@ -37,6 +37,7 @@ extension IFastList {
     }
     /**
      * Alignes the lableContainer after it's content has been changed (add/remove of item)
+     * NOTE: called by FastList.onDataProviderEvent
      */
     func alignLableContainer(_ event:DataProviderEvent){
         /*Pin to top if itemsHeight is less than height*/

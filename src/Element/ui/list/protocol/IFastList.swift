@@ -131,7 +131,7 @@ extension IFastList{
          */
     }
     /**
-     * force a refresh of all items
+     * Force a refresh of all items
      */
     func reUseAll(){
         pool.forEach{reUse($0)}

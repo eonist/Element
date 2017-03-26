@@ -64,10 +64,11 @@ class FastList:ContainerView,IFastList {
         else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
-    override func getClassType() -> String {return "\(List.self)"}
+    
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension FastList{
+    override func getClassType() -> String {return "\(List.self)"}
     /**
      * DP has changed
      * override this method if dp change can affect the super class

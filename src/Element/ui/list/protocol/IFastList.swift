@@ -1,7 +1,7 @@
 import Foundation
 @testable import Utils
 
-protocol IFastList: IList {
+protocol IFastList:IList {
     var selectedIdx:Int? {get set}
     var pool:[FastListItem] {get set}
     func reUse(_ listItem:FastListItem)

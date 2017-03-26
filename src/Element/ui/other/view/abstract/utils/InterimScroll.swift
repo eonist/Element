@@ -4,7 +4,7 @@ import Foundation
  * Definition of interim: meanwhile, temporary, inbetween time
  * NOTE: supports both X and Y axis
  */
-struct InterimScroll {
+class InterimScroll {
     var prevScrollingDelta:CGFloat = 0/*this is needed in order to figure out which direction the scrollWheel is going in*/
     var velocities:[CGFloat]/*represents the velocity resolution of the gesture movment*/
     //⚠️️ you may be able to remove progressvalue in the future. as it works differently now!=!=?

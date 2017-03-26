@@ -36,7 +36,7 @@ extension IFastList {
         return floor(height/itemHeight).int
     }
     /**
-     * Alignes the lableContainer after its content has been changed (add/remove of item)
+     * Alignes the lableContainer after it's content has been changed (add/remove of item)
      */
     func alignLableContainer(_ event:DataProviderEvent){
         /*Pin to top if itemsHeight is less than height*/

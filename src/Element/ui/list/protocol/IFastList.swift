@@ -88,8 +88,8 @@ extension IFastList{
      * Returns the range to render (based on items in DP and how the lableContainer is positioned)
      */
     var visibleItemRange:Range<Int>{
-        let firstVisibleItemThatCrossTopOfView = firstVisibleItem
-        let lastVisibleItemThatIsWithinBottomOfView = lastVisibleItem
+        let firstVisibleItemThatCrossTopOfView = firstVisibleItem(.ver)
+        let lastVisibleItemThatIsWithinBottomOfView = lastVisibleItem(.ver)
         let visibleItemRange:Range<Int> = firstVisibleItemThatCrossTopOfView..<lastVisibleItemThatIsWithinBottomOfView
         return visibleItemRange
     }
@@ -107,9 +107,9 @@ extension IFastList{
      * NOTE: this method is called after dp change: add/remove
      */
     func reUseFromIdx(_ idx:Int){
-        if(idx >= firstVisibleItem && idx <= lastVisibleItem){
-            let startIdx = idx - firstVisibleItem
-            var endIdx = lastVisibleItem - firstVisibleItem
+        if(idx >= firstVisibleItem(.ver) && idx <= lastVisibleItem(.ver)){
+            let startIdx = idx - firstVisibleItem(.ver)
+            var endIdx = lastVisibleItem(.ver) - firstVisibleItem(.ver)
             endIdx = Swift.min(dp.count,endIdx)
             for i in startIdx..<endIdx{/*reUse affected items if item is within visible view*/
                 let fastListItem = pool[i]

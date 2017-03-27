@@ -4,7 +4,6 @@ import Foundation
 class SlideFastList:FastList,Slidable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
-    override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension, if possible
     override func resolveSkin() {
         super.resolveSkin()
         Swift.print("itemsHeight: " + "\(itemsHeight)")

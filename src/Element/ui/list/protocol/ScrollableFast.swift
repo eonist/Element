@@ -13,6 +13,9 @@ extension ScrollableFast{
         (self as Containable).setProgress(progressVal)
         (self as IFastList).setProgress(progressVal)//update the reuse algo
     }
+    func onInDirectScrollWheelChange(_ event: NSEvent) {//enables momentum
+        onScrollWheelChange(event)
+    }
 }
 
 

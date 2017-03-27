@@ -7,7 +7,7 @@ extension SlidableScrollableFast{
      */
     func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("🏂📜🐎 SlidableScrollable2.onScrollWheelChange: \(event)")
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)
+        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, slider!.progress)//TODO: Should we really store the progress value here?
         slider!.setProgressValue(progressVal)
         (self as SlidableScrollable).setProgress(progressVal)//move the lableContainer
         (self as IFastList).setProgress(progressVal)//update the reuse algo

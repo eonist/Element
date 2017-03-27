@@ -10,6 +10,10 @@ extension ScrollableFast{
         Swift.print("📜🐎 ScrollableFast.onScrollWheelChange: \(event)")
         Swift.print("progress: " + "\(progress)")
         let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
+        (self as Containable).setProgress(progressVal)
         (self as IFastList).setProgress(progressVal)//update the reuse algo
     }
 }
+
+
+//check if the other also has indirect. 

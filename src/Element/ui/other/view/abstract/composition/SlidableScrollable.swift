@@ -12,7 +12,7 @@ extension SlidableScrollable {
         slider!.setProgressValue(progressVal)
         setProgress(progressVal)
     }
-    func onInDirectScrollWheelChange(_ event: NSEvent) {
+    func onInDirectScrollWheelChange(_ event: NSEvent) {//enables momentum
         onScrollWheelChange(event)
     }
     func onScrollWheelEnter() {//IMPORTANT: methods that are called from deep can only override upstream

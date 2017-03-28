@@ -36,7 +36,7 @@ func onClick(event:Event){
 btn.event = onClick
 ```
   
-You can also compile Element as a regular .framework, requires [swift-utils](https://github.com/eonist/swift-utils)  .framework  
+You can also compile Element as a regular .framework instructions [here](https://github.com/eonist/Element/wiki/framework-instructions) 
 
 ## Resources: 
 - Simple example app made with Element: [Stash](https://github.com/stylekit/stash) 

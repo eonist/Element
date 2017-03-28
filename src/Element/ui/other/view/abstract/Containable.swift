@@ -19,9 +19,7 @@ protocol Containable:class {//TODO: RENAME TO displaceable
 }
 extension Containable {
     var contentContainer:Element? {return lableContainer}
-    var maskSize:CGSize {return CGSize(width,height)}/*represents the visible part of the content *///TODO: could be ranmed to maskRect
-    var contentSize:CGSize {return CGSize(itemsHeight,itemsHeight)}
-    var itemSize:CGSize {return CGSize(itemHeight,itemHeight)}
+    
     /**/
     //TODO:these values can be stored, but are computed now because of simplicity, does not need to be recalculated on every tick, set them when you interact, setSize, onItemChange, onScroll etc
     var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment

@@ -11,6 +11,10 @@ class ContainerView:Element,Containable {
     var itemsHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var itemHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var lableContainer:Element?
+    
+    var maskSize:CGSize {return CGSize(width,height)}/*represents the visible part of the content *///TODO: could be ranmed to maskRect
+    var contentSize:CGSize {return CGSize(itemsHeight,itemsHeight)}
+    var itemSize:CGSize {return CGSize(itemHeight,itemHeight)}
     override func resolveSkin() {
         super.resolveSkin()//self.skin = SkinResolver.skin(self)//
         lableContainer = addSubView(Container(width,height,self,"lable"))

@@ -2,9 +2,9 @@ import Cocoa
 @testable import Utils
 
 class ScrollList:List,Scrollable{
-    var itemSize:CGSize {return CGSize(itemHeight,itemHeight)}/**///override this for custom value
-    var maskSize:CGSize { get{return CGSize(width,height)}set{_ = newValue} }
-    var contentSize:CGSize { get{return CGSize(dp.count * itemSize.width ,height) } set{_ = newValue}}
+    override var itemSize:CGSize {return CGSize(itemHeight,itemHeight)}/**///override this for custom value
+    override var maskSize:CGSize { get{return CGSize(width,height)}set{_ = newValue} }
+    override var contentSize:CGSize { get{return CGSize(dp.count * itemSize.width ,height) } set{_ = newValue}}
     /**
      *
      */

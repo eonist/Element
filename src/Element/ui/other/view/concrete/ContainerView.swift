@@ -4,6 +4,7 @@ import Cocoa
  * ContainerView holds other UI elements
  */
 class ContainerView:Element,Containable {
+    
     //var height:CGFloat {fatalError("Must override in subClass")}
     //var interval:CGFloat {fatalError("Must override in subClass")}
     //var progress:CGFloat {fatalError("Must override in subClass")}

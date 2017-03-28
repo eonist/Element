@@ -15,15 +15,15 @@ typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to st
 
 class FastList:ContainerView,IFastList {
     var dir:Dir = .ver//new
-    override var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 temp, move into protocol extension, if possible
+    override var itemsHeight: CGFloat {return dp.count * itemSize[dir]}//👈 temp, move into protocol extension, if possible
     var _itemHeight:CGFloat//⚠️️ temp fix /*The list item height, each item must have the same height*/
     override var itemHeight:CGFloat {return _itemHeight}
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var dataProvider:DataProvider/*data storage*/
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
-    
-    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil){
+
+    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil, _ dir:Dir = .ver){
         self._itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width, height, parent, id)
@@ -49,7 +49,7 @@ class FastList:ContainerView,IFastList {
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
         if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable
         item.setTextValue(idx.string + " " + title)
-        item.y = listItem.idx * itemHeight/*position the item*/
+        item.point[dir] = listItem.idx * itemSize[dir]/*position the item*/
     }
     /**
      * CreatesItem

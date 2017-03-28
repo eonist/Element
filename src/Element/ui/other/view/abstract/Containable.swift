@@ -14,9 +14,11 @@ protocol Containable:class {//TODO: RENAME TO displaceable
     var progress:CGFloat {get}//0-1 atBegining <-> atEnd (Stores the current progress)
     var interval:CGFloat {get}//describes the speed when scrolling (distance per scroll tick)
     var lableContainer:Element? {get}
+    var contentContainer:Element? {get}
     //func setProgress(_ progress:CGFloat)
 }
 extension Containable {
+    var contentContainer:Element? {return lableContainer}
     var maskSize:CGSize {return CGSize(width,height)}/*represents the visible part of the content *///TODO: could be ranmed to maskRect
     var contentSize:CGSize {return CGSize(itemsHeight,itemsHeight)}
     var itemSize:CGSize {return CGSize(itemHeight,itemHeight)}

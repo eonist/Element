@@ -24,4 +24,7 @@ class ScrollList:List,Scrollable{
     override func scrollWheel(with event:NSEvent) {
         scroll(event)
     }
+    override func getClassType() -> String {
+        return "VList"//"\(VList.self)"
+    }
 }

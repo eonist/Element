@@ -8,6 +8,7 @@ protocol Containable:class {//TODO: RENAME TO displaceable
     /**/
     var width:CGFloat{get}//new
     var height:CGFloat{get}//used to represent the maskHeight aka the visible part.
+    //itemHeight is not needed, Its for List, intervall can be calculated with a default interval for ContentViewers, like 10th of content represents one intervall tick etc., percentage 👈
     var itemHeight:CGFloat{get}//item of one item, used to calculate interval
     var itemsHeight:CGFloat{get}//total height of the items
     var progress:CGFloat {get}//0-1 atBegining <-> atEnd (Stores the current progress)

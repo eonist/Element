@@ -17,6 +17,8 @@ class ScrollFastList:FastList,ScrollableFast {
         Swift.print("maskVal: " + "\(maskVal)")
         let contentVal:CGFloat = contentSize[dir]
         Swift.print("contentVal: " + "\(contentVal)")
+        let delta:CGFloat = event.delta[dir]
+        Swift.print("delta: " + "\(delta)")
         let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], intrvl, prgrs)
         setProgress(progressVal)
     }

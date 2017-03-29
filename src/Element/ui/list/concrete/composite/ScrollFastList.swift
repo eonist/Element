@@ -7,7 +7,7 @@ class ScrollFastList:FastList,ScrollableFast {
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
-    func onScrollWheelChange(_ event:NSEvent) {/*Direct scroll, not momentum*/
+    /*func onScrollWheelChange(_ event:NSEvent) {/*Direct scroll, not momentum*/
         Swift.print("ScrollFastList.onScrollWheelChange: \(event.type)")
         let intrvl = interval
         Swift.print("intrvl: " + "\(intrvl)")
@@ -23,7 +23,7 @@ class ScrollFastList:FastList,ScrollableFast {
         Swift.print("delta: " + "\(delta)")
         let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], intrvl, prgrs)
         setProgress(progressVal)
-    }
+    }*/
     /**
      * When the the user scrolls
      * NOTE: this method overides the Native NSView scrollWheel method

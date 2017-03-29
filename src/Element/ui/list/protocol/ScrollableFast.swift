@@ -10,15 +10,13 @@ extension ScrollableFast{
     func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("📜🐎 ScrollableFast.onScrollWheelChange: \(event)")
         Swift.print("progress: " + "\(progress)")
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
+        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, progress)
         (self as Containable).setProgress(progressVal)
         (self as IFastList).setProgress(progressVal)//update the reuse algo
     }
     func onInDirectScrollWheelChange(_ event: NSEvent) {//enables momentum
         onScrollWheelChange(event)
     }
-    
-    
 }
 
 

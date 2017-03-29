@@ -1,7 +1,7 @@
 import Foundation
 @testable import Utils
 
-class SliderListUtils{//⚠️️ This can probably be removed, as the same code is in SliderParser or alike
+class SliderListUtils{//⚠️️ This can probably be removed, as the same code is in SliderParser or alike, at least move to SliderParser
     /**
      * Returns the progress og the sliderList (used when we scroll with the scrollwheel/touchpad)
      */

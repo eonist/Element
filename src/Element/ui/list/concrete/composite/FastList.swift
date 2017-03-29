@@ -14,7 +14,7 @@ import Cocoa
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 
 class FastList:ContainerView,IFastList {
-    var dir:Dir = .ver//new
+    var dir:Dir// = .ver//new
     override var itemsHeight: CGFloat {return dp.count * itemSize[dir]}//👈 temp, move into protocol extension, if possible
     var _itemHeight:CGFloat//⚠️️ temp fix /*The list item height, each item must have the same height*/
     override var itemHeight:CGFloat {return _itemHeight}
@@ -26,6 +26,7 @@ class FastList:ContainerView,IFastList {
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil, _ dir:Dir = .ver){
         self._itemHeight = itemHeight
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
+        self.dir = dir
         super.init(width, height, parent, id)
         self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*/
@@ -66,7 +67,9 @@ class FastList:ContainerView,IFastList {
         else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
-    override func getClassType() -> String {return "\(List.self)"}
+    override func getClassType() -> String {
+        return dir == .ver ? "\(List.self)" : "VList"
+    }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension FastList{

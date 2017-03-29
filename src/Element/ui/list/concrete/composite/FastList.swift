@@ -62,7 +62,7 @@ class FastList:ContainerView,IFastList {
      */
     func createItem(_ index:Int) -> Element{
         Swift.print("createItem index: " + "\(index)")
-        let item:SelectTextButton = SelectTextButton(getWidth(), itemHeight ,"", false, lableContainer)
+        let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,"", false, lableContainer)
         lableContainer!.addSubview(item)
         return item
     }

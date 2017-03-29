@@ -9,24 +9,25 @@ extension ScrollableFast{
      */
     func onScrollWheelChange(_ event:NSEvent) {//⚠️️ It could be that we would need to use progress rather than progressVal, might be annomalies between these
         Swift.print("📜🐎 ScrollableFast.onScrollWheelChange: \(event)")
-        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, progress)
-        Swift.print("progressVal: " + "\(progressVal)")
-        Swift.print("progress: " + "\(progress)")
-        /**/
-        let val:CGFloat = ScrollableUtils.scrollTo(progressVal, maskSize[dir], contentSize[dir])
-        Swift.print("val: " + "\(val)")
-        contentContainer!.point[dir] = val
-        /**/
-        (self as IFastList).setProgress(progressVal)//update the reuse algo
+   
+        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, progress)//TODO: Should we really store the progress value here?
         
-        
-        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, slider!.progress)//TODO: Should we really store the progress value here?
-        slider!.setProgressValue(progressVal)
-        (self as SlidableScrollable).setProgress(progressVal)//move the lableContainer
+        (self as ScrollableFast).setProgress(progressVal)//move the lableContainer
         (self as IFastList).setProgress(progressVal)//update the reuse algo
         
         
     }
+    /**
+     * 🚗 SetProgress
+     */
+    func setProgress(_ progress:CGFloat){
+        Swift.print("ScrollVList.setProgress progress: \(progress)")
+        Swift.print("contentSize: " + "\(contentSize)")
+        let val:CGFloat = ScrollableUtils.scrollTo(progress, maskSize[dir], contentSize[dir])
+        Swift.print("val: " + "\(val)")
+        contentContainer!.point[dir] = val
+    }
+    
     func onInDirectScrollWheelChange(_ event:NSEvent) {//enables momentum
         onScrollWheelChange(event)
     }

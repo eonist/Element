@@ -10,8 +10,11 @@ class ScrollFastList:FastList,ScrollableFast {
     func onScrollWheelChange(_ event:NSEvent) {/*Direct scroll, not momentum*/
         Swift.print("ScrollFastList.onScrollWheelChange: \(event.type)")
        
-        
-        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, progress)
+        let intrvl = interval
+        Swift.print("intrvl: " + "\(intrvl)")
+        let prgrs = progress
+        Swift.print("prgrs: " + "\(prgrs)")
+        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], intrvl, prgrs)
         setProgress(progressVal)
     }
     /**

@@ -23,8 +23,7 @@ class FastList:ContainerView,IFastList {
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
     /*new/temp*/
-    override var interval:CGFloat{return floor(contentSize[dir] - maskSize[dir])/itemSize[dir]}
-    override var progress:CGFloat{return SliderParser.progress(contentContainer!.point[dir], maskSize[dir], contentSize[dir])}
+   
 
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil, _ dir:Dir = .ver){
         self._itemHeight = itemHeight

@@ -9,4 +9,7 @@ protocol IList:Containable {
     /*var lableContainer:Container? {get}*/
     var dataProvider:DataProvider{get}
     var dir:Dir {get}
+    /*new*/
+    var progress:CGFloat {get}//0-1 atBegining <-> atEnd (Stores the current progress)
+    var interval:CGFloat {get}
 }

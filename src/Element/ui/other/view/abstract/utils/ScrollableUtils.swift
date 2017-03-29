@@ -10,7 +10,7 @@ class ScrollableUtils {
     }
     /**
      * Returns the y position of a "virtual" list
-     
+     * PARAM: progress: 0-1
      */
     static func scrollTo(_ progress:CGFloat,_ maskHeight:CGFloat,_ itemsHeight:CGFloat)->CGFloat{
         let scrollHeight:CGFloat = itemsHeight - maskHeight/*allItems.height - mask.height*/

@@ -5,8 +5,8 @@ import Cocoa
  */
 class ContainerView:Element,Containable {
     var maskSize:CGSize {return CGSize(width,height)}/*represents the visible part of the content *///TODO: could be ranmed to maskRect
-    var contentSize:CGSize {return CGSize(itemsHeight,itemsHeight)}
-    var itemSize:CGSize {return CGSize(itemHeight,itemHeight)}
+    var contentSize:CGSize {return CGSize(NaN,itemsHeight)}
+    var itemSize:CGSize {return CGSize(NaN,itemHeight)}
     //var height:CGFloat {fatalError("Must override in subClass")}
     //var interval:CGFloat {fatalError("Must override in subClass")}
     //var progress:CGFloat {fatalError("Must override in subClass")}

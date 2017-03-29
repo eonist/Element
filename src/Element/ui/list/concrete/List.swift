@@ -13,13 +13,17 @@ import Cocoa
  * TODO: how did you solve the clipping issue in Element? can it be used to mask? make a mask test??!?
  */
 class List:ContainerView, IList {
+    override var itemSize:CGSize {return CGSize(_itemWidth,_itemHeight)}/**///override this for custom value
+    /**/
+    var _itemWidth:CGFloat
     var _itemHeight:CGFloat/*⚠️️ temp fix*/
     override var itemHeight:CGFloat {return _itemHeight}
     override var itemsHeight: CGFloat {return dataProvider.count * itemHeight}
     var dataProvider:DataProvider
     var dir:Dir = .ver//TODO: implement via init
-    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "") {
+    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "", _ itemWidth:CGFloat = NaN) {
         self._itemHeight = itemHeight
+        self._itemWidth = itemWidth
         self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         super.init(width,height,parent,id)
         self.dataProvider.event = onEvent/*Add event handler for the dataProvider*/

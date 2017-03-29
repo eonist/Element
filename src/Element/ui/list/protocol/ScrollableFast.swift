@@ -14,14 +14,12 @@ extension ScrollableFast{
         
         (self as ScrollableFast).setProgress(progressVal)//move the lableContainer
         (self as IFastList).setProgress(progressVal)//update the reuse algo
-        
-        
     }
     /**
      * 🚗 SetProgress
      */
     func setProgress(_ progress:CGFloat){
-        Swift.print("ScrollVList.setProgress progress: \(progress)")
+        Swift.print("ScrollableFast.setProgress progress: \(progress)")
         Swift.print("contentSize: " + "\(contentSize)")
         let val:CGFloat = ScrollableUtils.scrollTo(progress, maskSize[dir], contentSize[dir])
         Swift.print("val: " + "\(val)")

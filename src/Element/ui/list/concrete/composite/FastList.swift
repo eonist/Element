@@ -26,13 +26,13 @@ class FastList:ContainerView,IFastList {
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
     /*new/temp*/
-    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil, _ dir:Dir = .ver, _ itemWidth:CGFloat = NaN){
+    init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dp:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil, _ dir:Dir = .ver, _ itemWidth:CGFloat = NaN){
         self._itemWidth = itemWidth
         self._itemHeight = itemHeight
-        self.dataProvider = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
+        self.dataProvider = dp ?? DataProvider()/*<--if it's nil then a DB is created*/
         self.dir = dir
         super.init(width, height, parent, id)
-        self.dataProvider.event = self.onEvent/*Add event handler for the dataProvider*/
+        self.dp.event = self.onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*/
     }
     override func resolveSkin() {
@@ -49,7 +49,7 @@ class FastList:ContainerView,IFastList {
     func reUse(_ listItem:FastListItem){
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
-        let dpItem = dataProvider.items[idx]
+        let dpItem = dp.items[idx]
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
         if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable

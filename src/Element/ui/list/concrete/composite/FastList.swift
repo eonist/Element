@@ -49,7 +49,7 @@ class FastList:ContainerView,IFastList {
     func reUse(_ listItem:FastListItem){
         let item:SelectTextButton = listItem.item as! SelectTextButton
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
-        let dpItem = dp.items[idx]
+        let dpItem = dp.item(idx)
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
         if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable

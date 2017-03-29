@@ -22,8 +22,8 @@ extension Containable {
     
     /**/
     //TODO:these values can be stored, but are computed now because of simplicity, does not need to be recalculated on every tick, set them when you interact, setSize, onItemChange, onScroll etc
-    var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-    var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
+    var interval:CGFloat{fatalError("uncomment")/*return floor(itemsHeight - height)/itemHeight*/}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+    var progress:CGFloat{fatalError("uncomment")/*return SliderParser.progress(lableContainer!.y, height, itemsHeight)*/}
     /**
      * ⚠️️ You might want to have one setProgress in scroll and one in slider and use protocol ambiguity to differentiate, but then you cant have this method in base like it is now
      * PARAM value: is the final y value for the lableContainer

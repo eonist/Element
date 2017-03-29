@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 protocol ScrollableFast:IFastList, Scrollable{}
 extension ScrollableFast{
@@ -16,6 +17,8 @@ extension ScrollableFast{
     func onInDirectScrollWheelChange(_ event: NSEvent) {//enables momentum
         onScrollWheelChange(event)
     }
+    
+   
 }
 
 

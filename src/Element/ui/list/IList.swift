@@ -8,5 +8,5 @@ protocol IList:Containable {
     /*var itemHeight:CGFloat{get}*/
     /*var lableContainer:Container? {get}*/
     var dataProvider:DataProvider{get}
-    var dir:Dir
+    var dir:Dir {get}
 }

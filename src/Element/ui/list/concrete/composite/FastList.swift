@@ -24,8 +24,6 @@ class FastList:ContainerView,IFastList {
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
     /*new/temp*/
-   
-
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN,_ dataProvider:DataProvider? = nil, _ parent:IElement?, _ id:String? = nil, _ dir:Dir = .ver, _ itemWidth:CGFloat = NaN){
         self._itemWidth = itemWidth
         self._itemHeight = itemHeight

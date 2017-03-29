@@ -13,6 +13,7 @@ extension ScrollableFast{
         //Swift.print("progress: " + "\(progress)")
         /**/
         let val:CGFloat = ScrollableUtils.scrollTo(progressVal, maskSize[dir], contentSize[dir])
+        Swift.print("val: " + "\(val)")
         contentContainer!.point[dir] = val
         /**/
         (self as IFastList).setProgress(progressVal)//update the reuse algo

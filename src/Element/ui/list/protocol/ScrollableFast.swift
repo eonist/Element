@@ -10,7 +10,7 @@ extension ScrollableFast{
     func onScrollWheelChange(_ event:NSEvent) {//⚠️️ It could be that we would need to use progress rather than progressVal, might be annomalies between these
         Swift.print("📜🐎 ScrollableFast.onScrollWheelChange: \(event)")
    
-        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, progress)//TODO: Should we really store the progress value here?
+        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, (self as IList).progress)//TODO: Should we really store the progress value here?
         
         (self as ScrollableFast).setProgress(progressVal)//move the lableContainer
         (self as IFastList).setProgress(progressVal)//update the reuse algo

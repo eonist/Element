@@ -20,3 +20,4 @@ extension IList {
     var interval:CGFloat{return floor(contentSize[dir] - maskSize[dir])/itemSize[dir]}
     var progress:CGFloat{return SliderParser.progress(contentContainer!.point[dir], maskSize[dir], contentSize[dir])}
 }
+

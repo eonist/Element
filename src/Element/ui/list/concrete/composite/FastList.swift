@@ -17,8 +17,10 @@ class FastList:ContainerView,IFastList {
     var dir:Dir// = .ver//new
     override var itemsHeight: CGFloat {return dp.count * itemSize[dir]}//👈 temp, move into protocol extension, if possible
     var _itemWidth:CGFloat
+    var itemWidth:CGFloat {return _itemWidth}
     var _itemHeight:CGFloat//⚠️️ temp fix /*The list item height, each item must have the same height*/
     override var itemHeight:CGFloat {return _itemHeight}
+    override var itemSize:CGSize {return CGSize(itemWidth,itemHeight)}
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var dataProvider:DataProvider/*data storage*/
     var pool:[FastListItem] = []/*Stores the FastListItems*/

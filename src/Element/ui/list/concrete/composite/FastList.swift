@@ -83,6 +83,7 @@ extension FastList{
      * override this method if dp change can affect the super class
      */
     func onDataProviderEvent(_ event:DataProviderEvent){
+        Swift.print("FastList.onDataProviderEvent: " + "\(event)")
         alignLableContainer(event)
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
         if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/

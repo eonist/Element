@@ -53,7 +53,7 @@ class FastList:ContainerView,IFastList {
         let title:String = dpItem["title"]!
         let selected:Bool = idx == selectedIdx//dpItem["selected"]!.bool
         if(item.selected != selected){ item.setSelected(selected)}//only set this if the selected state is different from the current selected state in the ISelectable
-        item.setTextValue(idx.string + " " + title)
+        item.setTextValue(/*idx.string + " " + */title)
         item.point[dir] = listItem.idx * itemSize[dir]/*position the item*/
     }
     /**
@@ -61,7 +61,7 @@ class FastList:ContainerView,IFastList {
      * NOTE: override this to create custom ListItems
      */
     func createItem(_ index:Int) -> Element{
-        Swift.print("createItem index: " + "\(index)")
+        Swift.print("FastList.createItem index: " + "\(index)")
         let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,"", false, lableContainer)
         lableContainer!.addSubview(item)
         return item

@@ -39,8 +39,9 @@ class FastList:ContainerView,IFastList {
         super.resolveSkin()
         //lableContainer = addSubView(Container(width,height,self,"lable"))
         let visibleRange:Range<Int> = visibleItemRange/*visible ItemRange Within View, calcs visibleItems based on lableContainer.y and height*/
+        Swift.print("visibleRange.end: " + "\(visibleRange.end)")
         let range:Range<Int> = visibleRange.start..<min(dp.count,visibleRange.end)/*clip the range*/
-        Swift.print("FastList.resolveSkin() range: " + "\(range)")
+        Swift.print("👉 FastList.resolveSkin() range: " + "\(range)")
         renderItems(range)
     }
     /**

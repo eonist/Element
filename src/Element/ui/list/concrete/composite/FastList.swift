@@ -40,6 +40,7 @@ class FastList:ContainerView,IFastList {
         //lableContainer = addSubView(Container(width,height,self,"lable"))
         let visibleRange:Range<Int> = visibleItemRange/*visible ItemRange Within View, calcs visibleItems based on lableContainer.y and height*/
         let range:Range<Int> = visibleRange.start..<min(dp.count,visibleRange.end)/*clip the range*/
+        Swift.print("FastList.resolveSkin() range: " + "\(range)")
         renderItems(range)
     }
     /**
@@ -61,7 +62,7 @@ class FastList:ContainerView,IFastList {
      * NOTE: override this to create custom ListItems
      */
     func createItem(_ index:Int) -> Element{
-        Swift.print("FastList.createItem index: " + "\(index)")
+        //Swift.print("FastList.createItem index: " + "\(index)")
         let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,"", false, lableContainer)
         lableContainer!.addSubview(item)
         return item

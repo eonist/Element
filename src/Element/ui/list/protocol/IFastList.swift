@@ -25,7 +25,7 @@ extension IFastList{
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(_ progress:CGFloat){
-        Swift.print("🐎 FastList2.setProgress(\(progress)) ")
+        Swift.print("🐎 IFastList.setProgress(\(progress)) ")
         //ScrollableUtils.scrollTo(self, progress)/*moves the labelContainer up and down*/
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
         if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
@@ -38,6 +38,7 @@ extension IFastList{
      * NOTE: this method is inside an extension because it doesn't need to be overriden by super classes
      */
     func renderItems(_ range:Range<Int>){
+        Swift.print("IFastlist.renderItems()")
         let old = currentVisibleItemRange
         let firstOldIdx:Int = old.start
         /*⚠️️⚠️️⚠️️Figure out which items to remove from pool⚠️️⚠️️⚠️️*/

@@ -29,8 +29,9 @@ extension Scrollable {
     }
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
+     * IMPORTANT: Direct scroll, not momentum
      */
-    func onScrollWheelChange(_ event:NSEvent) {/*Direct scroll, not momentum*/
+    func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("📜 Scrollable.onScrollWheelChange: \(event.type)")
         let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
         setProgress(progressVal)

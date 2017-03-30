@@ -21,7 +21,7 @@ extension IFastList {
         let a:Int = firstVisibleItem
         Swift.print("🍐 IFastList.lastVisibleItem.firstVisibleItem: " + "\(firstVisibleItem)")
         Swift.print("itemSize[dir]: " + "\(itemSize[dir])")
-        let b = contentSize[dir]/itemSize[dir]
+        let b = maskSize[dir]/itemSize[dir]
         Swift.print("b: " + "\(b)")
         let c = ceil(b)
         Swift.print("c: " + "\(c)")
@@ -34,7 +34,7 @@ extension IFastList {
      * Returns number of items that can fit height
      */
     private var numOfItemsThatCanFit:Int {
-        return floor(contentSize[dir]/itemSize[dir]).int
+        return floor(maskSize[dir]/itemSize[dir]).int
     }
     /**
      * Alignes the lableContainer after it's content has been changed (add/remove of item)

@@ -17,16 +17,10 @@ extension IFastList {
      * NOTE: the existens of item at this index is not garantued. Its the virtual idx of such an item
      */
     var lastVisibleItem:Int{
-        
         let a:Int = firstVisibleItem
-        Swift.print("🍐 IFastList.lastVisibleItem.firstVisibleItem: " + "\(firstVisibleItem)")
-        Swift.print("itemSize[dir]: " + "\(itemSize[dir])")
         let b = maskSize[dir]/itemSize[dir]
-        Swift.print("b: " + "\(b)")
         let c = ceil(b)
-        Swift.print("c: " + "\(c)")
         let d = c == 0 ? 0 : c + 1//add an extra item to cover the area. should be dealt with in the render method really
-        Swift.print("d: " + "\(d)")
         let lastVisibleItem:Int = a + d.int
         return lastVisibleItem
     }
@@ -56,10 +50,10 @@ extension IFastList {
         else if(event.startIndex < firstVisibleItem){
             if(event.type == DataProviderEvent.remove){
                 lableContainer!.point[dir] += itemSize[dir]
-                Swift.print("offset.y + 24")
+                //Swift.print("offset.y + 24")
             }else if(event.type == DataProviderEvent.add){
                 lableContainer!.point[dir] -= itemSize[dir]
-                Swift.print("offset.y - 24")
+                //Swift.print("offset.y - 24")
             }
         }
     }

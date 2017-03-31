@@ -16,7 +16,7 @@ typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to st
 class FastList:ContainerView,IFastList {
     var dir:Dir// = .ver//new
     override var itemsHeight: CGFloat {return dp.count * itemSize[dir]}//👈 temp, move into protocol extension, if possible
-    var _itemWidth:CGFloat
+    var _itemWidth:CGFloat/*⚠️️temp*/
     var itemWidth:CGFloat {return _itemWidth}
     var _itemHeight:CGFloat//⚠️️ temp fix /*The list item height, each item must have the same height*/
     override var itemHeight:CGFloat {return _itemHeight}

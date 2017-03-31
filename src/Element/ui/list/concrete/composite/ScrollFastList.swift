@@ -11,6 +11,7 @@ class ScrollFastList:FastList,ScrollableFast {
      */
     override func scrollWheel(with event:NSEvent) {
         scroll(event)
+        super.scrollWheel(with: event)
         //TODO: ⚠️️ you want to do super.scrollWhe...here, as NSView may need it up hirarchy etc
     }
 }

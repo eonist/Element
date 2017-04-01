@@ -3,8 +3,7 @@ import Cocoa
 /**
  * For Elements that are both elastic, scrollable and slideable
  */
-protocol ElasticSlidableScrollable: ElasticScrollable, Slidable {}
-
+protocol ElasticSlidableScrollable:ElasticScrollable, Slidable {}
 extension ElasticSlidableScrollable {
     /**
      * IMPORTANT: This setProgress comes from shallow not deep. Check Callers to see the shallow calls
@@ -12,7 +11,7 @@ extension ElasticSlidableScrollable {
     func setProgress(_ value:CGFloat) {//<-direct transmission value 💥
         Swift.print("👻🏂📜 ElasticSlidableScrollable.setProgress(\(value)) 💥")
         (self as Elastic).setProgress(value)
-        let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)
+        let sliderProgress = ElasticUtils.progress(value,contentSize[dir],maskSize[dir])
         slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
     }
     /**

@@ -12,7 +12,7 @@ extension ElasticScrollable {
      */
     func onScrollWheelChange(_ event:NSEvent){
         Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event.type)")
-        prevScrollingDeltaY = event.scrollingDelta[dir]/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
+        prevScrollingDelta = event.scrollingDelta[dir]/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         Swift.print("mover!.isDirectlyManipulating: " + "\(mover!.isDirectlyManipulating)")
         _ = self.velocities.shiftAppend(event.scrollingDelta[dir])/*insert new velocity at the begining and remove the last velocity to make room for the new*/
         mover!.value += event.scrollingDelta[dir]/*directly manipulate the value 1 to 1 control*/
@@ -27,7 +27,7 @@ extension ElasticScrollable {
         //Swift.print("IRBScrollable.onScrollWheelDown")
         mover!.stop()
         mover!.hasStopped = true/*set the stop flag to true*/
-        prevScrollingDeltaY = 0/*set last wheel speed delta to stationary, aka not spinning*/
+        prevScrollingDelta = 0/*set last wheel speed delta to stationary, aka not spinning*/
         mover!.isDirectlyManipulating = true/*Toggle to directManipulationMode*/
         velocities = Array(repeating: 0, count: 10)/*Reset the velocities*/
         //⚠️️scrollWheelEnter()
@@ -42,7 +42,7 @@ extension ElasticScrollable {
         mover!.isDirectlyManipulating = false
         mover!.value = mover!.result/*Copy this back in again, as we used relative friction when above or bellow constraints*/
         Swift.print("prevScrollingDeltaY: " + "\(prevScrollingDeltaY)")
-        if(prevScrollingDeltaY != 1.0 && prevScrollingDeltaY != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
+        if(prevScrollingDelta != 1.0 && prevScrollingDeltaY != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
             var velocity:CGFloat = 0
             velocity = CGFloatParser.average(velocities.filter{$0 != 0})
             mover!.velocity = velocity/*set the mover velocity to the current mouse gesture velocity, the reason this can't be additive is because you need to be more immediate when you change direction, this could be done by assering last direction but its not a priority atm*///td try the += on the velocity with more rects to see its effect

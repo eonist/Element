@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-class SlideView: ContainerView, Slidable {
+class SlideView:ContainerView, Slidable {
     var slider:VSlider?
     var sliderInterval:CGFloat?
     override func resolveSkin() {

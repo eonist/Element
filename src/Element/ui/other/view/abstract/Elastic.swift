@@ -5,7 +5,7 @@ import Foundation
  */
 protocol Elastic:Containable {
     var mover:RubberBand?{get set}
-    var prevScrollingDeltaY:CGFloat{get set}//rename to to: prevScrollingDelta 
+    var prevScrollingDelta:CGFloat{get set}//rename to to: prevScrollingDelta
     var velocities:[CGFloat]{get set}
     //⚠️️ you may be able to remove progressvalue in the future. as it works differently now!=!=?
     var progressValue:CGFloat?{get set}//<--same as progress but unclamped (because RBSliderList may go beyond 0 to 1 values etc)
@@ -24,7 +24,7 @@ extension Elastic {
         progressValue = value / -(itemsHeight - height)/*get the the scalar values from value.*/
     }
     /*DEPRECATED,Legacy support*/
-    var prevScrollingDeltaY:CGFloat{get{return iterimScroll.prevScrollingDelta}set{iterimScroll.prevScrollingDelta = newValue}}
+    var prevScrollingDelta:CGFloat{get{return iterimScroll.prevScrollingDelta}set{iterimScroll.prevScrollingDelta = newValue}}
     var progressValue:CGFloat?{get{return iterimScroll.progressValue}set{iterimScroll.progressValue = newValue}}
     var velocities:[CGFloat]{get{return iterimScroll.velocities}set{iterimScroll.velocities = newValue}}
 }

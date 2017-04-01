@@ -3,7 +3,7 @@ import Cocoa
 /**
  * Might be better to not extend SlideView2
  */
-class ElasticSlideScrollView: SlideView, ElasticSlidableScrollable {
+class ElasticSlideScrollView:SlideView, ElasticSlidableScrollable {
     var mover:RubberBand?
     var iterimScroll:InterimScroll = InterimScroll()
     override func resolveSkin() {

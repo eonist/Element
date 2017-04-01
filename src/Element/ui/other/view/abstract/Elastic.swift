@@ -5,6 +5,7 @@ import Foundation
  */
 protocol Elastic:Containable {
     var mover:RubberBand?{get set}
+    var prveScrollingDelta:CGFloat{get set}
     var prevScrollingDeltaY:CGFloat{get set}//rename to to: prevScrollingDelta 
     var velocities:[CGFloat]{get set}
     //⚠️️ you may be able to remove progressvalue in the future. as it works differently now!=!=?
@@ -12,6 +13,7 @@ protocol Elastic:Containable {
     var iterimScroll:InterimScroll{get set}
 }
 extension Elastic {
+    var prveScrollingDelta:CGFloat{get{return prevScrollingDeltaY}set{prevScrollingDeltaY = newValue}}
     /**
      * PARAM value: is the final y value for the lableContainer
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists

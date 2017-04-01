@@ -13,7 +13,11 @@ class ContainerView:Element,Containable {
     var itemsHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var itemHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var lableContainer:Element?
-    var dir:Dir = .ver
+    var dir:Dir
+    init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil, _ dir:Dir = .ver) {
+        self.dir = dir
+        super.init(width, height, parent, id)
+    }
     override func resolveSkin() {
         super.resolveSkin()//self.skin = SkinResolver.skin(self)//
         lableContainer = addSubView(Container(width,height,self,"lable"))
@@ -22,4 +26,5 @@ class ContainerView:Element,Containable {
     /*override func getClassType()->String{
      return "\(ContainerView.self)"
      }*/
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

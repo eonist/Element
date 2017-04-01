@@ -29,8 +29,7 @@ class FastList:ContainerView,IFastList {
         self._itemWidth = itemWidth
         self._itemHeight = itemHeight
         self.dataProvider = dp ?? DataProvider()/*<--if it's nil then a DB is created*/
-        super.init(width, height, parent, id)
-        self.dir = dir
+        super.init(width, height, parent, id, dir)
         self.dp.event = self.onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*/
     }

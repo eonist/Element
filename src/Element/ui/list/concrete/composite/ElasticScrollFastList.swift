@@ -2,6 +2,6 @@ import Foundation
 @testable import Utils
 @testable import Element
 
-class ElasticScrollFastList:ScrollFastList {
+class ElasticScrollFastList:ScrollFastList,Elastic {
     
 }

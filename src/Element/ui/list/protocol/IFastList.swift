@@ -38,7 +38,7 @@ extension IFastList{
      * NOTE: this method is inside an extension because it doesn't need to be overriden by super classes
      */
     func renderItems(_ range:Range<Int>){
-        Swift.print("IFastlist.renderItems()")
+        Swift.print("IFastlist.renderItems(\(range))")
         let old = currentVisibleItemRange
         let firstOldIdx:Int = old.start
         /*⚠️️⚠️️⚠️️Figure out which items to remove from pool⚠️️⚠️️⚠️️*/
@@ -90,8 +90,10 @@ extension IFastList{
      * Returns the range to render (based on items in DP and how the lableContainer is positioned)
      */
     var visibleItemRange:Range<Int>{
-        let firstVisibleItemThatCrossTopOfView = firstVisibleItem
-        let lastVisibleItemThatIsWithinBottomOfView = lastVisibleItem
+        let firstVisibleItemThatCrossTopOfView:Int = firstVisibleItem
+        let lastVisibleItemThatIsWithinBottomOfView:Int = lastVisibleItem
+        //Swift.print("🔵 visibleItemRange.lastVisibleItemThatIsWithinBottomOfView: " + "\(lastVisibleItemThatIsWithinBottomOfView)")
+        //Swift.print("🔴 self.dp.count: \(self.dp.count)")
         let visibleItemRange:Range<Int> = firstVisibleItemThatCrossTopOfView..<lastVisibleItemThatIsWithinBottomOfView
         return visibleItemRange
     }

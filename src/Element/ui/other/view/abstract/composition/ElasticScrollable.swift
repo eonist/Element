@@ -12,10 +12,10 @@ extension ElasticScrollable {
      */
     func onScrollWheelChange(_ event:NSEvent){
         Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event.type)")
-        prevScrollingDeltaY = event.scrollingDeltaY/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
+        prevScrollingDeltaY = event.scrollingDelta[dir]/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
         Swift.print("mover!.isDirectlyManipulating: " + "\(mover!.isDirectlyManipulating)")
-        _ = self.velocities.pushPop(event.scrollingDeltaY)/*insert new velocity at the begining and remove the last velocity to make room for the new*/
-        mover!.value += event.scrollingDeltaY/*directly manipulate the value 1 to 1 control*/
+        _ = self.velocities.shiftAppend(event.scrollingDelta[dir])/*insert new velocity at the begining and remove the last velocity to make room for the new*/
+        mover!.value += event.scrollingDelta[dir]/*directly manipulate the value 1 to 1 control*/
         mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
         setProgress(mover!.result)//new ⚠️️
     }
@@ -44,8 +44,7 @@ extension ElasticScrollable {
         Swift.print("prevScrollingDeltaY: " + "\(prevScrollingDeltaY)")
         if(prevScrollingDeltaY != 1.0 && prevScrollingDeltaY != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
             var velocity:CGFloat = 0
-            if(prevScrollingDeltaY > 0){velocity = NumberParser.max(velocities)}/*Find the most positive velocity value*/
-            else{velocity = NumberParser.min(velocities)}/*Find the most negative velocity value*/
+            velocity = CGFloatParser.average(velocities.filter{$0 != 0})
             mover!.velocity = velocity/*set the mover velocity to the current mouse gesture velocity, the reason this can't be additive is because you need to be more immediate when you change direction, this could be done by assering last direction but its not a priority atm*///td try the += on the velocity with more rects to see its effect
             mover!.start()/*start the frameTicker here, do this part in parent view or use event or Selector*/
         }else{/*stationary*/

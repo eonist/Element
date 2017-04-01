@@ -16,6 +16,9 @@ protocol Containable:class {//TODO: RENAME TO displaceable
     var lableContainer:Element? {get}
     var contentContainer:Element? {get}
     //func setProgress(_ progress:CGFloat)
+    var dir:Dir {get}
+    //Continue here: 
+        //add dir var. with some fatal error if its not implemented etc
 }
 extension Containable {
     var contentContainer:Element? {return lableContainer}

@@ -27,35 +27,32 @@ extension ElasticSlidableScrollableFast{
     func setProgress(_ value:CGFloat){
         Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.setProgress(\(value))")
         //Swift.print("value: " + "\(value)")
-        let itemsHeight = self.itemsHeight//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
-        if(itemsHeight < height){//when there is few items in view, different overshoot rules apply, this should be written more elegant
-            progressValue = value / height
+        let contentSide:CGFloat = contentSize[dir]//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
+        if(contentSide < maskSize[dir]){//when there is few items in view, different overshoot rules apply, this should be written more elegant
+            progressValue = value / maskSize[dir]
             //Swift.print("progressValue: " + "\(progressValue)")
-            let y = progressValue! * height
+            let val = progressValue! * maskSize[dir]
             //Swift.print("y: " + "\(y)")
-            rbContainer!.y = y
+            rbContainer!.point[dir] = val
         }else{
-            progressValue = value /  -(itemsHeight - height)/*calc scalar from value, if itemsHeight is to small then use height instead*/
+            progressValue = value /  -(contentSide - maskSize[dir])/*calc scalar from value, if itemsHeight is to small then use height instead*/
             let progress = progressValue!.clip(0, 1)
             
             //⚠️️🔨the bellow needs refactoring
             (self as Scrollable).setProgress(progress)/*moves the lableContainer up and down*/
             (self as IFastList).setProgress(progress)
             //
-            let sliderProgress = ElasticUtils.progress(value,itemsHeight,height)//doing some double calculations here
+            let sliderProgress = ElasticUtils.progress(value,contentSide,maskSize[dir])//doing some double calculations here
             slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
             /*finds the values that is outside 0 and 1*/
-            //Swift.print("progressValue!: " + "\(progressValue!)")
             if(sliderProgress < 0){//⚠️️ You could also just do if value is bellow 0 -> y = value, and if y  < itemsheight - height -> y = the sapce above itemsheight - leftover
-                let y1 = height * -sliderProgress
-                //Swift.print("y1: " + "\(y1)")
-                rbContainer!.y = y1/*the half height is to limit the rubber effect, should probably be done else where*/
+                let v1 = maskSize[dir] * -sliderProgress
+                rbContainer!.point[dir] = v1/*the half height is to limit the rubber effect, should probably be done else where*/
             }else if(sliderProgress > 1){
-                let y2 = height * -(sliderProgress-1)
-                //Swift.print("y2: " + "\(y2)")
-                rbContainer!.y = y2
+                let v2 = maskSize[dir] * -(sliderProgress-1)
+                rbContainer!.point[dir] = v2
             }else{
-                rbContainer!.y = 0/*default position*/
+                rbContainer!.point[dir] = 0/*default position*/
             }
         }
     }

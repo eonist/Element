@@ -13,6 +13,7 @@ class ContainerView:Element,Containable {
     var itemsHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var itemHeight:CGFloat {fatalError("Must override in subClass")}//override this for custom value
     var lableContainer:Element?
+    var dir:Dir = .ver
     override func resolveSkin() {
         super.resolveSkin()//self.skin = SkinResolver.skin(self)//
         lableContainer = addSubView(Container(width,height,self,"lable"))

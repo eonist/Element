@@ -14,7 +14,6 @@ import Cocoa
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 
 class FastList:ContainerView,IFastList {
-    var dir:Dir// = .ver//new
     override var itemsHeight: CGFloat {return dp.count * itemSize[dir]}//👈 temp, move into protocol extension, if possible
     var _itemWidth:CGFloat/*⚠️️temp*/
     var itemWidth:CGFloat {return _itemWidth}
@@ -30,8 +29,8 @@ class FastList:ContainerView,IFastList {
         self._itemWidth = itemWidth
         self._itemHeight = itemHeight
         self.dataProvider = dp ?? DataProvider()/*<--if it's nil then a DB is created*/
-        self.dir = dir
         super.init(width, height, parent, id)
+        self.dir = dir
         self.dp.event = self.onEvent/*Add event handler for the dataProvider*/
         //layer!.masksToBounds = true/*masks the children to the frame*/
     }
@@ -40,7 +39,7 @@ class FastList:ContainerView,IFastList {
         //lableContainer = addSubView(Container(width,height,self,"lable"))
         let visibleRange:Range<Int> = visibleItemRange/*visible ItemRange Within View, calcs visibleItems based on lableContainer.y and height*/
         let range:Range<Int> = visibleRange.start..<min(dp.count,visibleRange.end)/*clip the range*/
-        Swift.print("👉 FastList.resolveSkin() range: " + "\(range)")
+        //Swift.print("👉 FastList.resolveSkin() range: " + "\(range)")
         renderItems(range)
     }
     /**

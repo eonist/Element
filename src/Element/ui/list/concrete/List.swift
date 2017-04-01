@@ -20,7 +20,7 @@ class List:ContainerView, IList {
     override var itemHeight:CGFloat {return _itemHeight}
     override var itemsHeight: CGFloat {return dataProvider.count * itemHeight}
     var dataProvider:DataProvider
-    var dir:Dir = .ver//TODO: implement via init
+    //var dir:Dir = .ver//TODO: implement via init
     init(_ width:CGFloat, _ height:CGFloat, _ itemHeight:CGFloat = NaN, _ dataProvider:DataProvider? = nil, _ parent: IElement?, _ id: String? = "", _ itemWidth:CGFloat = NaN) {
         self._itemHeight = itemHeight
         self._itemWidth = itemWidth

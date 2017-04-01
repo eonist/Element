@@ -36,7 +36,7 @@ class ElasticSlideScrollFastList:SlideFastList,ElasticSlidableScrollableFast {
             Swift.print("anim stopped")
             hideSlider()/*hides the slider when bounce back anim stopps*/
         }else if(event === (SliderEvent.change,slider!)){
-            mover!.value = lableContainer!.frame.y//quick fix, ⚠️️⚠️️⚠️️TODO:  move into onSliderEvent in Slidable, and in ElasticSlidableScrollable
+            mover!.value = lableContainer!.point[dir]//quick fix, ⚠️️⚠️️⚠️️TODO:  move into onSliderEvent in Slidable, and in ElasticSlidableScrollable
         }
         super.onEvent(event)
     }

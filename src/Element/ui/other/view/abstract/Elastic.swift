@@ -21,7 +21,7 @@ extension Elastic {
         Swift.print("Elastic2.setProgress() value: " + "\(value)")
         lableContainer!.point[dir] = value/*<--this is where we actully move the labelContainer*/
         //the bellow var may not be need to be set
-        progressValue = value / -(contentSize[dir] - height)/*get the the scalar values from value.*/
+        progressValue = value / -(contentSize[dir] - maskSize[dir])/*get the the scalar values from value.*/
     }
     /*DEPRECATED,Legacy support*/
     var prevScrollingDelta:CGFloat{get{return iterimScroll.prevScrollingDelta}set{iterimScroll.prevScrollingDelta = newValue}}

@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 @testable import Element
 
-class ElasticScrollFastList:FastList, ElasticScrollFast {
+class ElasticScrollFastList:FastList, ElasticScrollableFast {
     /*RubberBand*/
     var mover:RubberBand?
     var iterimScroll:InterimScroll = InterimScroll()
@@ -35,9 +35,6 @@ class ElasticScrollFastList:FastList, ElasticScrollFast {
     override func onEvent(_ event:Event) {
         if(event === (AnimEvent.stopped, mover!)){
             Swift.print("anim stopped")
-            hideSlider()/*hides the slider when bounce back anim stopps*/
-        }else if(event === (SliderEvent.change,slider!)){
-            mover!.value = lableContainer!.point[dir]//quick fix, ⚠️️⚠️️⚠️️TODO:  move into onSliderEvent in Slidable, and in ElasticSlidableScrollable
         }
         super.onEvent(event)
     }

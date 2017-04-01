@@ -33,7 +33,7 @@ extension Scrollable {
      */
     func onScrollWheelChange(_ event:NSEvent) {
         Swift.print("📜 Scrollable.onScrollWheelChange: \(event.type)")
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
+        let progressVal:CGFloat = SliderListUtils.progress(event.delta[dir], interval, progress)
         setProgress(progressVal)
     }
     /**

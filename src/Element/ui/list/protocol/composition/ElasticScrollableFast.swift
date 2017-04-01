@@ -1,5 +1,7 @@
 import Foundation
+@testable import Element
+@testable import Utils
 
-class ElasticScrollableFast {
-
-}
+/*class ElasticScrollableFast:IFastList,ElasticScrollable {
+    
+}*/

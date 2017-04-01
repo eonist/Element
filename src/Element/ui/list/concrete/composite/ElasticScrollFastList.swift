@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 @testable import Element
 
@@ -22,5 +22,23 @@ class ElasticScrollFastList:FastList, ElasticScrollFast {
     }
     func frameTick(_ value:CGFloat){//real value
         setProgress(value)
+    }
+    /**
+     * When the the user scrolls
+     * NOTE: this method overides the Native NSView scrollWheel method
+     */
+    override func scrollWheel(with event:NSEvent) {//you can probably remove this method and do it in base?"!?
+        Swift.print("ElasticSlideScrollFastList.scrollWheel()")
+        (self as ElasticScrollableFast).scroll(event)
+        super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
+    }
+    override func onEvent(_ event:Event) {
+        if(event === (AnimEvent.stopped, mover!)){
+            Swift.print("anim stopped")
+            hideSlider()/*hides the slider when bounce back anim stopps*/
+        }else if(event === (SliderEvent.change,slider!)){
+            mover!.value = lableContainer!.point[dir]//quick fix, ⚠️️⚠️️⚠️️TODO:  move into onSliderEvent in Slidable, and in ElasticSlidableScrollable
+        }
+        super.onEvent(event)
     }
 }

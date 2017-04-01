@@ -41,8 +41,8 @@ extension ElasticScrollable {
         mover!.hasStopped = false/*Reset this value to false, so that the FrameAnimatior can start again*/
         mover!.isDirectlyManipulating = false
         mover!.value = mover!.result/*Copy this back in again, as we used relative friction when above or bellow constraints*/
-        Swift.print("prevScrollingDeltaY: " + "\(prevScrollingDeltaY)")
-        if(prevScrollingDelta != 1.0 && prevScrollingDeltaY != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
+        Swift.print("prevScrollingDeltaY: " + "\(prevScrollingDelta)")
+        if(prevScrollingDelta != 1.0 && prevScrollingDelta != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
             var velocity:CGFloat = 0
             velocity = CGFloatParser.average(velocities.filter{$0 != 0})
             mover!.velocity = velocity/*set the mover velocity to the current mouse gesture velocity, the reason this can't be additive is because you need to be more immediate when you change direction, this could be done by assering last direction but its not a priority atm*///td try the += on the velocity with more rects to see its effect
@@ -53,6 +53,5 @@ extension ElasticScrollable {
         }
         //⚠️️scrollWheelExit()
     }
-    
     func scrollWheelExitedAndIsStationary(){/*⚠️️override when you need this call⚠️️*/}
 }

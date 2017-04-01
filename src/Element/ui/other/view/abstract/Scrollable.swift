@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 /**
  * Scrollable is for scroling things, basically content within a mask
  */

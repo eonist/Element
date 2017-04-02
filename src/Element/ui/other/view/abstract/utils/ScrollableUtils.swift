@@ -1,12 +1,13 @@
 import Foundation
+@testable import Utils
 
 class ScrollableUtils {
     /**
      * Scrolls the list to a scalar position (value 0-1)
      */
-    static func scrollTo(_ scrollable:Containable, _ progress:CGFloat){
-        let y:CGFloat = ScrollableUtils.scrollTo(progress, scrollable.height, scrollable.itemsHeight)
-        scrollable.lableContainer!.y = y/*we offset the y position of the lableContainer*/
+    static func scrollTo(_ scrollable:Containable, _ progress:CGFloat, _ dir:Dir = .ver){
+        let val:CGFloat = ScrollableUtils.scrollTo(progress, scrollable.height, scrollable.itemsHeight)
+        scrollable.lableContainer!.point[dir] = val/*we offset the y position of the lableContainer*/
     }
     /**
      * Returns the y position of a "virtual" list

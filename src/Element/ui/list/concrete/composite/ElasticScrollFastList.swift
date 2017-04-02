@@ -11,7 +11,7 @@ class ElasticScrollFastList:FastList, ElasticScrollableFast {
     override func resolveSkin() {
         super.resolveSkin()
         /*rbContainer*/
-        rbContainer = addSubView(Container(width,height,self,"rb"))
+        rbContainer = addSubView(Container(w,h,self,"rb"))
         rbContainer!.addSubview(lableContainer!)//add lable Container inside rbContainer
         lableContainer!.parent = rbContainer!
         /*RubberBand*/

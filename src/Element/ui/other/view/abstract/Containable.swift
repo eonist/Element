@@ -23,10 +23,9 @@ protocol Containable:class {//TODO: RENAME TO displaceable
 extension Containable {
     var contentContainer:Element? {return lableContainer}
     
-    /**/
     //TODO:these values can be stored, but are computed now because of simplicity, does not need to be recalculated on every tick, set them when you interact, setSize, onItemChange, onScroll etc
-    var interval:CGFloat{return floor(itemsHeight - height)/itemHeight}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
-    var progress:CGFloat{return SliderParser.progress(lableContainer!.y, height, itemsHeight)}
+    var interval:CGFloat{return floor(contentSize[dir] - maskSize[dir])/itemSize[dir]}// :TODO: use ScrollBarUtils.interval instead?// :TODO: explain what this is in a comment
+    var progress:CGFloat{return SliderParser.progress(lableContainer!.point[dir], maskSize[dir], contentSize[dir])}
     /**
      * ⚠️️ You might want to have one setProgress in scroll and one in slider and use protocol ambiguity to differentiate, but then you cant have this method in base like it is now
      * PARAM value: is the final y value for the lableContainer

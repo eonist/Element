@@ -14,6 +14,8 @@ class ElasticScrollFastList:FastList, ElasticScrollableFast {
         rbContainer = addSubView(Container(w,h,self,"rb"))
         rbContainer!.addSubview(lableContainer!)//add lable Container inside rbContainer
         lableContainer!.parent = rbContainer!
+    }
+    func createMover(){
         /*RubberBand*/
         let frame:RubberBand.Frame = (min:0,len:maskSize[dir])//CGRect(0,0,width,height)/*represents the visible part of the content *///TODO: could be ranmed to maskRect
         let itemsRect:RubberBand.Frame = (min:0,len:contentSize[dir])/*represents the total size of the content *///TODO: could be ranmed to contentRect

@@ -4,7 +4,7 @@ import Cocoa
 
 protocol ElasticScrollableFast:IFastList,ElasticScrollable {
     var rbContainer:Container?{get set}
-    func frameTick(_ value:CGFloat)
+    //func frameTick(_ value:CGFloat)
 }
 extension ElasticScrollableFast{
     /**

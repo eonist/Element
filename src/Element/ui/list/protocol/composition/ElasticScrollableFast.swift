@@ -35,7 +35,7 @@ extension ElasticScrollableFast{
             //Swift.print("y: " + "\(y)")
             rbContainer!.point[dir] = val
         }else{
-            progressValue = value /  -(contentSide - maskSize[dir])/*calc scalar from value, if itemsHeight is to small then use height instead*/
+            progressValue = value / -(contentSide - maskSize[dir])/*calc scalar from value, if itemsHeight is to small then use height instead*/
             let progress = progressValue!.clip(0, 1)
             
             //⚠️️🔨the bellow needs refactoring

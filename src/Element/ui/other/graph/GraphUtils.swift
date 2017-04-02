@@ -29,7 +29,6 @@ class GraphUtils{
             p.y = y - dist
             points.append(p)
         }
-        
         //Swift.print("points: " + "\(points)")
         return points
     }

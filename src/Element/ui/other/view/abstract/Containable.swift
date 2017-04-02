@@ -36,7 +36,7 @@ extension Containable {
     func setProgress(_ progress:CGFloat){
         print("🖼️ moving lableContainer up and down progress: \(progress)")
         //Swift.print("IScrollable.setProgress() progress: \(progress)")
-        let progressValue = self.itemsHeight < height ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
+        let progressValue = self.contentSize[dir] < maskSize[dir] ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")
         ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }

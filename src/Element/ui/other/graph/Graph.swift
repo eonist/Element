@@ -91,7 +91,6 @@ class Graph:Element {
         bottomBar = addSubView(Section(newSize!.width,NaN,self,"bottomBar"))/*Create bottom bar*/
         bottomBar!.setPosition(CGPoint(newPosition!.x,newPosition!.y+newSize!.height-bottomBar!.getHeight()))
         
-        
         //let itemWidth:CGFloat = size.width / hCount.cgFloat
         
         var x:CGFloat = itemXSpace!

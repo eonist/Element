@@ -34,7 +34,7 @@ class ElasticScrollFastList:FastList, ElasticScrollableFast {
     }
     override func onEvent(_ event:Event) {
         if(event === (AnimEvent.stopped, mover!)){
-            Swift.print("anim stopped")
+            Swift.print("ElasticScrollFastList.anim stopped")
         }
         super.onEvent(event)
     }

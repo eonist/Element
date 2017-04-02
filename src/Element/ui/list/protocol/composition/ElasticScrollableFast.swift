@@ -6,6 +6,10 @@ protocol ElasticScrollableFast:IFastList,ElasticScrollable {
     var rbContainer:Container?{get set}
     //func frameTick(_ value:CGFloat)
 }
+
+//Continue here:
+    //figure out why progress isnt stored when you set it vie setProgress, i believe that your storing progress somewhere. make this a computed var maybe, or set it somewhere?
+
 extension ElasticScrollableFast{
     /**
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream in POP

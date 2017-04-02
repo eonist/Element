@@ -38,6 +38,6 @@ extension Containable {
         //Swift.print("IScrollable.setProgress() progress: \(progress)")
         let progressValue = self.contentSize[dir] < maskSize[dir] ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         //Swift.print("progressValue: " + "\(progressValue)")
-        ScrollableUtils.scrollTo(self,progressValue)/*Sets the target item to correct y, according to the current scrollBar progress*/
+        ScrollableUtils.scrollTo(self,progressValue,dir)/*Sets the target item to correct y, according to the current scrollBar progress*/
     }
 }

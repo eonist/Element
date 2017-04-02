@@ -56,7 +56,7 @@ extension ElasticScrollableFast{
                 rbContainer!.point[dir] = 0/*default position*/
             }
         }
-        Swift.print("rbContainer!.point[dir]: " + "\(rbContainer!.point[dir])")
-        Swift.print("contentContainer.point[dir]: " + "\(contentContainer!.point[dir])")
+        //Swift.print("rbContainer!.point[dir]: " + "\(rbContainer!.point[dir])")
+        //Swift.print("contentContainer.point[dir]: " + "\(contentContainer!.point[dir])")
     }
 }

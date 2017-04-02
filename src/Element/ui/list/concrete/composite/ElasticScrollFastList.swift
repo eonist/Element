@@ -28,7 +28,7 @@ class ElasticScrollFastList:FastList, ElasticScrollableFast {
      * NOTE: this method overides the Native NSView scrollWheel method
      */
     override func scrollWheel(with event:NSEvent) {//you can probably remove this method and do it in base?"!?
-        Swift.print("ElasticSlideScrollFastList.scrollWheel()")
+        //Swift.print("ElasticSlideScrollFastList.scrollWheel()")
         (self as ElasticScrollableFast).scroll(event)
         super.scrollWheel(with: event)/*forward the event other delegates higher up in the stack*/
     }

@@ -17,7 +17,7 @@ extension Scrollable {
      * NOTE: Slider list and SliderFastList uses this method
      */
     func scroll(_ event:NSEvent) {
-        Swift.print("📜 Scrollable.scroll() event.phase: \(event.phase)")
+        //Swift.print("📜 Scrollable.scroll() event.phase: \(event.phase)")
         switch event.phase{
             case NSEventPhase.changed:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
             case NSEventPhase.mayBegin:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
@@ -42,7 +42,7 @@ extension Scrollable {
      * TODO: ⚠️️⚠️️⚠️️ 🔨 you could refactor this into just a bool flag onScrollWheelChange instead?
      */
     func onInDirectScrollWheelChange(_ event:NSEvent) {
-        Swift.print("📜 Scrollable.onInDirectScrollWheelChange: \(event.type)")
+        //Swift.print("📜 Scrollable.onInDirectScrollWheelChange: \(event.type)")
         /*let progressVal:CGFloat = SliderListUtils.progress(event.deltaY, interval, progress)
          setProgress(progressVal)/*<-faux progress, its caluclated via delta noramlly*/*/
     }
@@ -50,12 +50,12 @@ extension Scrollable {
      * NOTE: Basically when you enter your scrollWheel gesture
      */
     func onScrollWheelEnter() {//optional override in subClasses
-        Swift.print("📜 Scrollable.onScrollWheelEnter ⚠️️-DEFAULT-DO-NOTHING-⚠️️")
+        //Swift.print("📜 Scrollable.onScrollWheelEnter ⚠️️-DEFAULT-DO-NOTHING-⚠️️")
     }
     /**
      * NOTE: Basically when you release your scrollWheel gesture
      */
     func onScrollWheelExit() {//optional override in subClasses
-        Swift.print("📜 Scrollable.onScrollWheelExit ⚠️️-DEFAULT-DO-NOTHING-⚠️️")
+        //Swift.print("📜 Scrollable.onScrollWheelExit ⚠️️-DEFAULT-DO-NOTHING-⚠️️")
     }
 }

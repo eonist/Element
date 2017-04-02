@@ -9,7 +9,7 @@ extension ElasticSlidableScrollableFast{
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream in POP
      */
     func scroll(_ event:NSEvent) {
-        Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.scroll()")
+        //Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.scroll()")
         (self as Scrollable).scroll(event)//👈 calls from shallow can overide downstream
         /*the following must be after the call above or else the thumb is hidden because of anim.end*/
         if(event.phase == NSEventPhase.changed){

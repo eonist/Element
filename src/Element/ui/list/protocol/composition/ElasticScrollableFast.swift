@@ -11,7 +11,7 @@ extension ElasticScrollableFast{
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream in POP
      */
     func scroll(_ event:NSEvent) {
-        Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.scroll()")
+        //Swift.print("👻🏂📜🐎 ElasticScrollableFast.scroll()")
         (self as Scrollable).scroll(event)//👈 calls from shallow can overide downstream
         /*the following must be after the call above or else the thumb is hidden because of anim.end*/
         if(event.phase == NSEventPhase.changed){
@@ -26,7 +26,7 @@ extension ElasticScrollableFast{
      * ⚠️️ Do not use scalar value here (0-1) well you know...
      */
     func setProgress(_ value:CGFloat){
-        Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.setProgress(\(value))")
+        //Swift.print("👻🏂📜🐎 ElasticScrollableFast.setProgress(\(value))")
         //Swift.print("value: " + "\(value)")
         let contentSide:CGFloat = contentSize[dir]//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
         if(contentSide < maskSize[dir]){//when there is few items in view, different overshoot rules apply, this should be written more elegant

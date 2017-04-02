@@ -28,8 +28,6 @@ extension ElasticScrollableFast{
         Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.setProgress(\(value))")
         //Swift.print("value: " + "\(value)")
         let contentSide:CGFloat = contentSize[dir]//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
-        Swift.print("contentSide: " + "\(contentSide)")
-        Swift.print("maskSize[dir]: " + "\(maskSize[dir])")
         if(contentSide < maskSize[dir]){//when there is few items in view, different overshoot rules apply, this should be written more elegant
             progressValue = value / maskSize[dir]
             //Swift.print("progressValue: " + "\(progressValue)")

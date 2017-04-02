@@ -22,7 +22,8 @@ extension ElasticScrollableFast{
         }
     }
     /**
-     * PARAM value: is the final y value for the lableContainer
+     * PARAM value: is the final y value for the lableContainer 
+     * ⚠️️ Do not use scalar value here (0-1) well you know...
      */
     func setProgress(_ value:CGFloat){
         Swift.print("👻🏂📜🐎 ElasticSlidableScrollableFast.setProgress(\(value))")

@@ -27,7 +27,7 @@ extension IFastList {
     /**
      * Returns number of items that can fit height
      */
-    private var numOfItemsThatCanFit:Int {
+    var numOfItemsThatCanFit:Int {
         return floor(maskSize[dir]/itemSize[dir]).int
     }
     /**

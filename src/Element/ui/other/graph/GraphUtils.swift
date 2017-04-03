@@ -4,6 +4,7 @@ import Foundation
 class GraphUtils{
     /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
+     * NOTE: Conforms the vValues to fit a predefined rect. 
      * PARAM: vValues y-axis values
      * PARAM: maxValue (the max value among the y-axis values)
      */

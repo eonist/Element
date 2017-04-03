@@ -12,7 +12,7 @@ class Graph:Element {
     var graphArea:Section?/*Holds the GraphLine and GraphPoint*/
     var graphLine:GraphLine?
     var graphPoints:[Element] = []//Visual points
-    var graphPts:[CGPoint] = []
+    var graphPts:[CGPoint] = []//curGrphPnts
     /*layoutData:*/
     var ratio:CGFloat {return 4/3}
     var newSize:CGSize?/*the size that contains the graph components*/

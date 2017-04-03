@@ -88,6 +88,7 @@ extension IFastList{
     }
     /**
      * Returns the range to render (based on items in DP and how the lableContainer is positioned)
+     * NOTE: actual idx range
      */
     var visibleItemRange:Range<Int>{
         let firstVisibleItemThatCrossTopOfView:Int = firstVisibleItem
@@ -99,6 +100,7 @@ extension IFastList{
     }
     /**
      * Returns the current visible item range in List
+     * NOTE: relative idx range
      */
     var currentVisibleItemRange:Range<Int>{
         let firstIdx:Int = pool.count > 0 ? pool.first!.idx : 0

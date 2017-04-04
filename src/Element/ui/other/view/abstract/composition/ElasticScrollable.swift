@@ -41,7 +41,7 @@ extension ElasticScrollable {
         mover!.hasStopped = false/*Reset this value to false, so that the FrameAnimatior can start again*/
         mover!.isDirectlyManipulating = false
         mover!.value = mover!.result/*Copy this back in again, as we used relative friction when above or bellow constraints*/
-        Swift.print("prevScrollingDeltaY: " + "\(prevScrollingDelta)")
+        Swift.print("ElasticScrollable.prevScrollingDelta: " + "\(prevScrollingDelta)")
         if(prevScrollingDelta != 1.0 && prevScrollingDelta != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
             var velocity:CGFloat = 0
             velocity = CGFloatParser.average(velocities.filter{$0 != 0})

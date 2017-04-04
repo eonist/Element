@@ -25,6 +25,7 @@ extension ElasticScrollable {
     func onScrollWheelEnter(){
         Swift.print("👻📜 (ElasticScrollable).onScrollWheelEnter")
         //Swift.print("IRBScrollable.onScrollWheelDown")
+        Swift.print("mover!.value: " + "\(mover!.value)")
         mover!.stop()
         mover!.hasStopped = true/*set the stop flag to true*/
         prevScrollingDelta = 0/*set last wheel speed delta to stationary, aka not spinning*/

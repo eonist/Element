@@ -35,7 +35,7 @@ class Graph:Element {
      */
     func createUI(){
         newSize = Resizer.fit(CGSize(w,h),ratio)
-        newPosition = Align.alignmentPoint(newSize!, CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        newPosition = Align.alignmentPoint(newSize!, CGSize(width,height), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea()
         
         itemYSpace = newSize!.height/(vCount.cgFloat + 1.0)

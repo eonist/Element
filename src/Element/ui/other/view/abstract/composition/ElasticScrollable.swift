@@ -11,9 +11,9 @@ extension ElasticScrollable {
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
     func onScrollWheelChange(_ event:NSEvent){
-        Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event.type)")
+        //Swift.print("👻📜 (ElasticScrollable).onScrollWheelChange : \(event.type)")
         prevScrollingDelta = event.scrollingDelta[dir]/*is needed when figuring out which dir the wheel is spinning and if its spinning at all*/
-        Swift.print("mover!.isDirectlyManipulating: " + "\(mover!.isDirectlyManipulating)")
+        //Swift.print("mover!.isDirectlyManipulating: " + "\(mover!.isDirectlyManipulating)")
         _ = self.velocities.shiftAppend(event.scrollingDelta[dir])/*insert new velocity at the begining and remove the last velocity to make room for the new*/
         mover!.value += event.scrollingDelta[dir]/*directly manipulate the value 1 to 1 control*/
         mover!.updatePosition()/*the mover still governs the resulting value, in order to get the displacement friction working*/
@@ -23,9 +23,9 @@ extension ElasticScrollable {
      * NOTE: Basically when you enter your scrollWheel gesture
      */
     func onScrollWheelEnter(){
-        Swift.print("👻📜 (ElasticScrollable).onScrollWheelEnter")
+        //Swift.print("👻📜 (ElasticScrollable).onScrollWheelEnter")
         //Swift.print("IRBScrollable.onScrollWheelDown")
-        Swift.print("mover!.value: " + "\(mover!.value)")
+        //Swift.print("mover!.value: " + "\(mover!.value)")
         mover!.stop()
         mover!.hasStopped = true/*set the stop flag to true*/
         prevScrollingDelta = 0/*set last wheel speed delta to stationary, aka not spinning*/
@@ -37,12 +37,12 @@ extension ElasticScrollable {
      * NOTE: Basically when you release your scrollWheel gesture
      */
     func onScrollWheelExit(){
-        Swift.print("👻📜 (ElasticScrollable).onScrollWheelExit")
+        //Swift.print("👻📜 (ElasticScrollable).onScrollWheelExit")
         //Swift.print("IRBScrollable.onScrollWheelUp")
         mover!.hasStopped = false/*Reset this value to false, so that the FrameAnimatior can start again*/
         mover!.isDirectlyManipulating = false
         mover!.value = mover!.result/*Copy this back in again, as we used relative friction when above or bellow constraints*/
-        Swift.print("ElasticScrollable.prevScrollingDelta: " + "\(prevScrollingDelta)")
+        //Swift.print("ElasticScrollable.prevScrollingDelta: " + "\(prevScrollingDelta)")
         if(prevScrollingDelta != 1.0 && prevScrollingDelta != -1.0){/*Not 1 and not -1 indicates that the wheel is not stationary*/
             var velocity:CGFloat = 0
             velocity = CGFloatParser.average(velocities.filter{$0 != 0})

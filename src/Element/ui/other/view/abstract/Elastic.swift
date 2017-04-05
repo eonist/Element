@@ -18,7 +18,7 @@ extension Elastic {
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */
     func setProgress(_ value:CGFloat){//DIRECT TRANSMISSION 💥
-        Swift.print("Elastic2.setProgress() value: " + "\(value)")
+        //Swift.print("Elastic1.setProgress() value: " + "\(value)")
         lableContainer!.point[dir] = value/*<--this is where we actully move the labelContainer*/
         //the bellow var may not be need to be set
         progressValue = value / -(contentSize[dir] - maskSize[dir])/*get the the scalar values from value.*/

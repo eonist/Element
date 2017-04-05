@@ -22,39 +22,32 @@ class SliderParser {
         size = max(size,round(sliderSize/10))/*Makes sure thumbsize isn't smaller than a 10th of the slidersize*/
         return size
     }
-    
-    //TODO:move into ScrollableUtils ⚠️️
-    
     /**
      * Returns the progress (clamped between 0 and 1)
      * PARAM: y in most cases the itemContainer.y value
      * PARAM: height in most cases the list.height
      * PARAM: totalHeight the total height of all visible items (items.count*itemHeight)
      * NOTE: its tempting to just pass a list:IList here but treeList doesn't impliment IList and TreeList uses this method
+     * TODO:move into ScrollableUtils ⚠️️
      */
     static func progress(_ y:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
         return (y / -(totalHeight - height)).clip(0,1)
     }
     
-    //TODO:move into ScrollableUtils ⚠️️
-    
-    
     /**
      * Returns the y value
      * PARAM: height in most cases the list.height
      * PARAM: totalHeight the total height of all visible items
+     * TODO:move into ScrollableUtils ⚠️️
      */
     static func y(_ progress:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
         let scrollHeight:CGFloat = totalHeight - height
         return -round(progress * scrollHeight)
     }
-    
-    //TODO:move into ScrollableUtils ⚠️️
-    
-    
     /**
      * Returns the interval relative to PARAM: pageHeight, PARAM: maskHeight and PARAM: pixelsPerScroll
      * PARAM: pixelsPerScroll The amount if pixels per scroll tick
+     * TODO:move into ScrollableUtils ⚠️️
      */
     static func interval(_ pageHeight:CGFloat, _ maskHeight:CGFloat, _ pixelsPerScroll:CGFloat) -> CGFloat{
         let interval:CGFloat = pageHeight <= maskHeight ? 1:floor((pageHeight - maskHeight)/pixelsPerScroll)// :TODO: use Math.min or Math.max?

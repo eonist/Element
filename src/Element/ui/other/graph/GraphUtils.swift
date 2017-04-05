@@ -5,10 +5,11 @@ class GraphUtils{
     /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
      * NOTE: Conforms the vValues to fit a predefined rect. 
-     * PARAM: vValues y-axis values
-     * PARAM: maxValue (the max value among the y-axis values)
+     * PARAM: vValues: y-axis values
+     * PARAM: maxValue: (the max value among the y-axis values)
      * PARAM: spacing: (itemSpacing for both axis)
-     * PARAM: position: (out of service)
+     * PARAM: position: Supposedly its the topLeft anchor of the graph (out of service)
+     * PARAM: size: represents
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         //Swift.print("size.height: " + "\(size.height)")

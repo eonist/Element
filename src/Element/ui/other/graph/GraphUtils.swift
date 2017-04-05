@@ -11,13 +11,13 @@ class GraphUtils{
      * PARAM: position: Supposedly its the topLeft anchor of the graph (⚠️️ out of service)
      * PARAM: size: represents the width and height of the graph
      */
-    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
+    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{
         //Swift.print("size.height: " + "\(size.height)")
         //Swift.print("spacing.height: " + "\(spacing.height)")
         var points:[CGPoint] = []
-        let x:CGFloat = /*position.x*/ spacing.width
-        let y:CGFloat = /*position.y +*/ size.height - (spacing.height)//the y point to start from, basically bottom
-        let h:CGFloat = size.height-(spacing.height*2)//the height to work within
+        let x:CGFloat = /*position.x*/ leftMargin//spacing.width
+        let y:CGFloat = /*position.y +*/ size.height - (topMargin)//the y point to start from, basically bottom
+        let h:CGFloat = size.height-(topMargin*2)//the height to work within
         //Swift.print("h: " + "\(h)")
         //Swift.print("maxValue: " + "\(maxValue)")
         //Swift.print("vValues: " + "\(vValues)")
@@ -37,9 +37,8 @@ class GraphUtils{
         return points
     }
     
-    //continue here: 
-        //write a better points method, that has margin , and make the above method call it so not to break legacy
-        
+   
+    
     /**
      * Generates value indicators that match up with the (data set)
      */

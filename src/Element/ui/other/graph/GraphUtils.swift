@@ -31,7 +31,7 @@ class GraphUtils{
             //Swift.print("dist: " + "\(dist)")
             p.x = x + (i * spacing.width)
             p.y = y - dist
-            p.y = p.y.isNaN ? size.height - (topMargin) : p.y//⚠️️ quick fix
+            p.y = p.y.isNaN ? size.height - (topMargin) : p.y//⚠️️ quick fix, for when vValue is 0
             points.append(p)
         }
         //Swift.print("points: " + "\(points)")

@@ -36,6 +36,10 @@ class GraphUtils{
         //Swift.print("points: " + "\(points)")
         return points
     }
+    
+    //continue here: 
+        //write a better points method, that has margin , and make the above method call it so not to break legacy
+        
     /**
      * Generates value indicators that match up with the (data set)
      */

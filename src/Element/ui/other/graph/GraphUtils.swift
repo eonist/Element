@@ -7,6 +7,8 @@ class GraphUtils{
      * NOTE: Conforms the vValues to fit a predefined rect. 
      * PARAM: vValues y-axis values
      * PARAM: maxValue (the max value among the y-axis values)
+     * PARAM: spacing: (itemSpacing for both axis)
+     * PARAM: position: (out of service)
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat) -> [CGPoint]{
         //Swift.print("size.height: " + "\(size.height)")

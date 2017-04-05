@@ -11,7 +11,7 @@ class GraphUtils{
      * PARAM: position: Supposedly its the topLeft anchor of the graph (⚠️️ out of service)
      * PARAM: size: represents the width and height of the graph
      */
-    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{
+    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, _ leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{
         //Swift.print("size.height: " + "\(size.height)")
         //Swift.print("spacing.height: " + "\(spacing.height)")
         var points:[CGPoint] = []

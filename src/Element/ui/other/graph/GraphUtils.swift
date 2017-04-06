@@ -37,9 +37,6 @@ class GraphUtils{
         //Swift.print("points: " + "\(points)")
         return points
     }
-    
-   
-    
     /**
      * Generates value indicators that match up with the (data set)
      */

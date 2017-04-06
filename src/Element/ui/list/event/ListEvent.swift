@@ -16,6 +16,6 @@ extension ListEvent{
      * NOTE: You may have to reconsider this as the selected item may have de-selected before the event arrives (think cpu threads etc)
      */
     var selected:ISelectable{
-        return (origin as! DEPRECATED_IList).lableContainer!.subviews[index] as! ISelectable
+        return (origin as! IList).lableContainer!.subviews[index] as! ISelectable
     }
 }

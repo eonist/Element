@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 
 protocol ElasticScrollableFast:IFastList,ElasticScrollable {

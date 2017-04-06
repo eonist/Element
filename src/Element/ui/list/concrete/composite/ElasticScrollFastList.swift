@@ -1,6 +1,6 @@
 import Cocoa
 @testable import Utils
-@testable import Element
+
 
 class ElasticScrollFastList:FastList, ElasticScrollableFast {
     /*RubberBand*/

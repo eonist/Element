@@ -30,7 +30,7 @@ class ScrollableUtils {
     }
 }
 //⚠️️ DEPRECATED; remove
-extension ScrollableUtils{
+/*extension ScrollableUtils{
     /**
      * Scrolls the list to a scalar position (value 0-1)
      */
@@ -39,3 +39,4 @@ extension ScrollableUtils{
         scrollable.lableContainer!.y = y/*we offset the y position of the lableContainer*/
     }
 }
+*/

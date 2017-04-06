@@ -3,6 +3,7 @@ import Cocoa
 /**
  * NOTE: Container does not add the skin to the stage, Use Section if you need a skin added to
  * TODO: Rename to Div,Division,Section,Segment? or? Div sounds best and is closley related to css, too closley reletate. Container is a good name!
+ * IMPRTANT: ⚠️️ May have probs with interactions like scrollWhell. use Section instead, which has a background
  */
 class Container:Element{
     override func resolveSkin() {

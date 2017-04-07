@@ -8,6 +8,7 @@ class ScrollFastList:FastList,ScrollableFast {
     /**
      * When the the user scrolls
      * NOTE: this method overides the Native NSView scrollWheel method
+     * TODO: ⚠️️ This method can be moved to a where clause extension probably
      */
     override func scrollWheel(with event:NSEvent) {
         scroll(event)

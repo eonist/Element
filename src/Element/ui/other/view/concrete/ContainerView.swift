@@ -21,7 +21,7 @@ class ContainerView:Element,Containable {
     override func resolveSkin() {
         super.resolveSkin()//self.skin = SkinResolver.skin(self)//
         lableContainer = addSubView(Container(width,height,self,"lable"))
-        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
+        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍*/
     }
     /*override func getClassType()->String{
      return "\(ContainerView.self)"

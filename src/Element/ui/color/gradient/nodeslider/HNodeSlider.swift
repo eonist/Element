@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * HorizontalNodeSlider is used when 2 sliders are need, as in section definition or zoom, or gradient values
- * IMPORTANT: Do not deprecate this GradientPanel uses these classes
+ * IMPORTANT: ⚠️️ Do not deprecate this GradientPanel uses these classes (Consider removing GradientPanel from Element core, add it as its own project?)
  */
 class HNodeSlider:Element,INodeSlider {
     var startNode:SelectButton?

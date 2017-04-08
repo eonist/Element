@@ -29,6 +29,7 @@ extension Containable {
     /**
      * ⚠️️ You might want to have one setProgress in scroll and one in slider and use protocol ambiguity to differentiate, but then you cant have this method in base like it is now
      * PARAM value: is the final y value for the lableContainer
+     * PARAM: progress: 0-1
      * Moves the itemContainer.y up and down
      * TODO: Try to use a preCalculated itemsHeight, as this can be heavy to calculate for lengthy lists
      */

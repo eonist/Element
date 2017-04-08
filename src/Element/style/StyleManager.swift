@@ -31,7 +31,7 @@ class StyleManager{
         return nil
     }
     /**
-     * Locates and returns a Style by the @param name.
+     * Locates and returns a Style by the PARAM: name.
      * RETURN: a Style
      */
     static func getStyle(_ name:String)->IStyle?{

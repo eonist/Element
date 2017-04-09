@@ -14,11 +14,11 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
 }
 extension SliderListUtils{
     /**
-     *
+     * new
      */
     static func progress(_ delta:CGPoint, _ interval:CGPoint, _ sliderProgress:CGPoint)->CGPoint{
         let x:CGFloat = progress(delta.x, interval.x, sliderProgress.x)
         let y:CGFloat = progress(delta.y, interval.y, sliderProgress.y)
-        return .init(x,y)
+        return CGPoint(x,y)
     }
 }

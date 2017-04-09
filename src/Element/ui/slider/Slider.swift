@@ -8,6 +8,7 @@ class Slider:Element{
     var thumbSize:CGSize
     var dir:Dir
     var leftMouseDraggedEventListener:Any?
+    var tempThumbMousePos:CGFloat = 0
     init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ progress:CGFloat = 0, _ thumbSize:CGSize? = nil, _ parent:IElement? = nil, id:String? = nil){
         self.progress = progress
         self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(width,width) : CGSize(height,height))
@@ -22,10 +23,17 @@ class Slider:Element{
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     func onThumbDown(){
-        
+        tempThumbMousePos = thumb!.localPos()[dir]
+        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove)/*we add a global mouse move event listener*/
+    }
+    func onThumbMove(event:NSEvent)-> NSEvent?{
+        progress = Utils.progress(event.localPos(self).y, tempThumbMousePos!, height/*<--this is the problem, dont use frame*/, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbSize[dir])
+        super.onEvent(SliderEvent(SliderEvent.change,progress,self))
+        return event
     }
     func onThumbUp(){
-        
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}/*we remove a global mouse move event listener*/
     }
     func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self)[dir], thumbSize[dir]/2, size[dir], thumbSize[dir])

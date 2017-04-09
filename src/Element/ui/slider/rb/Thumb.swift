@@ -26,12 +26,12 @@ class Thumb:Button{
     func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
         if(progress < 0){/*top overshot*/
             let size:CGSize = dir == .ver ? CGSize(width, height-(height*progress.positive)) : CGSize(width - (width*progress.positive),height)
-            self.skin!.setSize(size.width,size.height)
+            self.skin!.setSize(size.w,size.h)
         }else if(progress > 1){/*bottom overshot*/
             let overshot = self.size[dir] * (progress-1)
-            let size:CGSize = dir == .ver ? CGSize() : CGSize()
-            self.skin!.setSize(width, height - overshot)
-            (self.skin! as! Skin).frame.y = overshot
+            let size:CGSize = dir == .ver ? CGSize(width, height - overshot) : CGSize(width - overshot, height)
+            self.skin!.setSize(size.w,size.h)
+            (self.skin! as! Skin).point[dir] = overshot
         }
     }
     //TODO: these overrides are not needed, just add a disbaled state to the css that has alpha set to 0

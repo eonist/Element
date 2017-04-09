@@ -12,3 +12,6 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
         return currentScroll
     }
 }
+extension SliderListUtils{
+    
+}

@@ -11,8 +11,6 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
         currentScroll = currentScroll.clip(0, 1)/*Clamps the num between 0 and 1*/
         return currentScroll
     }
-}
-extension SliderListUtils{
     /**
      * new
      */

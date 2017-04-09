@@ -7,7 +7,7 @@ class Slider:Element{
     var progress:CGFloat
     var thumbSize:CGSize
     var dir:Dir
-    init(_ width:CGFloat, _ height:CGFloat,_ thumbSize:CGSize, _ progress:CGFloat = 0, _ dir:Dir, _ parent:IElement? = nil, id:String? = nil){
+    init(_ width:CGFloat, _ height:CGFloat,_ thumbSize:CGSize, _ progress:CGFloat = 0, _ dir:Dir = .ver, _ parent:IElement? = nil, id:String? = nil){
         self.progress = progress
         self.thumbSize = thumbSize
         self.dir = dir

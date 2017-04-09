@@ -1,7 +1,9 @@
 import Cocoa
 @testable import Utils
 @testable import Element
-
+/**
+ * Slider works in both the horizontal and vertical axis
+ */
 class Slider:Element{
     var thumb:Thumb?
     var progress:CGFloat

@@ -27,17 +27,17 @@ extension Slider{
      * PARAM: progress (0-1)
      */
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
-        self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb!.y = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize.height)
+        self.progress = progress.clip(0,1)/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
+        thumb!.point[dir] = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize[dir])
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
 }
 private class Utils{//TODO:rename to VSliderUtils and make it not private
     /**
-     * Returns the x position of a nodes PARAM progress
+     * Returns the position of a thumbs PARAM progress
      */
-    class func thumbPosition(_ progress:CGFloat, _ height:CGFloat, _ thumbHeight:CGFloat)->CGFloat {
-        let minThumbPos:CGFloat = height - thumbHeight/*Minimum thumb position*/
+    class func thumbPosition(_ progress:CGFloat, _ side:CGFloat, _ thumbSide:CGFloat)->CGFloat {
+        let minThumbPos:CGFloat = side - thumbSide/*Minimum thumb position*/
         return progress * minThumbPos
     }
 }

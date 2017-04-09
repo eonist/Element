@@ -48,7 +48,7 @@ class Slider:Element{
         let thumbSize:CGSize = dir == .hor ? CGSize(thumb!.w,height) : CGSize(width,thumb!.h)
         thumb!.setSize(thumbSize.w, thumbSize.h)
         thumb!.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
-        fatalError("debug")
+        
     }
     override func getClassType() -> String {
         return dir == .ver ? "\(VSlider.self)" : "\(HSlider.self)"

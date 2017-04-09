@@ -27,8 +27,8 @@ class Slider:Element{
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove)/*we add a global mouse move event listener*/
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
-        progress = Utils.progress(event.localPos(self).y, tempThumbMousePos!, height/*<--this is the problem, dont use frame*/, thumbHeight)
-        thumb!.position = Utils.thumbPosition(progress, height, thumbSize[dir])
+        progress = Utils.progress(event.localPos(self)[dir], tempThumbMousePos, size[dir], thumbSize[dir])
+        thumb!.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }

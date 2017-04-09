@@ -28,7 +28,7 @@ class Slider:Element{
     }
     func onThumbMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self).y, tempThumbMousePos!, height/*<--this is the problem, dont use frame*/, thumbHeight)
-        thumb!.y = Utils.thumbPosition(progress, height, thumbSize[dir])
+        thumb!.position = Utils.thumbPosition(progress, height, thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }

@@ -48,6 +48,9 @@ class Slider:Element{
         thumb!.setSize(thumbSize.w, thumbSize.h)
         thumb!.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
     }
+    override func getClassType() -> String {
+        return dir == .ver ? "\(VSlider.self)" : "\(HSlider.self)"
+    }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 /*Event handlers*/

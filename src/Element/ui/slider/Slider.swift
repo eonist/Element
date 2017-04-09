@@ -11,7 +11,7 @@ class Slider:Element{
     var dir:Dir
     var leftMouseDraggedEventListener:Any?
     var tempThumbMousePos:CGFloat = 0
-    init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ progress:CGFloat = 0, _ thumbSize:CGSize? = nil, _ parent:IElement? = nil, id:String? = nil){
+    init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ thumbSize:CGSize? = nil,_ progress:CGFloat = 0,  _ parent:IElement? = nil, id:String? = nil){
         self.progress = progress
         self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(width,width) : CGSize(height,height))
         self.dir = dir

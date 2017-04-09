@@ -10,7 +10,7 @@ class ScrollList:List,Scrollable{
      */
     func onScrollWheelChange(_ event:NSEvent) {/*Direct scroll, not momentum*/
         Swift.print("ScrollVList.onScrollWheelChange")
-        let progressVal:CGFloat = SliderListUtils.progress(event.deltaX, interval, progress)
+        let progressVal:CGFloat = SliderListUtils.progress(event.deltaX/*<-deltaX WHAT?*/, interval, progress)
         setProgress(progressVal)
     }
     /**

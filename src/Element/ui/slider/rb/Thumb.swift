@@ -27,9 +27,9 @@ class Thumb:Button{
         if(progress < 0){/*top overshot*/
             let size:CGSize = {
                 if(dir == .ver){
-                    return CGSize(width, height-(height*abs(progress)))
+                    return CGSize(width, height-(height*progress.positive))
                 }else{
-                    return CGSize()
+                    return CGSize(width - (width*progress.posetive),height)
                 }
             }()
             self.skin!.setSize(size.width,size.height)

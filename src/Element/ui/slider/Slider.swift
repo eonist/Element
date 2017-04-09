@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 @testable import Element
 
@@ -7,6 +7,7 @@ class Slider:Element{
     var progress:CGFloat
     var thumbSize:CGSize
     var dir:Dir
+    var leftMouseDraggedEventListener:Any?
     init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ progress:CGFloat = 0, _ thumbSize:CGSize? = nil, _ parent:IElement? = nil, id:String? = nil){
         self.progress = progress
         self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(width,width) : CGSize(height,height))
@@ -19,6 +20,12 @@ class Slider:Element{
         //skin.useHandCursor = false;// :TODO: explain why in a comment
         thumb = addSubView(Thumb(thumbSize.width, thumbSize.height,false,self))
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
+    }
+    func onThumbDown(){
+        
+    }
+    func onThumbUp(){
+        
     }
     /**
      * Handles actions and drawing states for the down event.

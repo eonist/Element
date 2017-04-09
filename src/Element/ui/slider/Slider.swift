@@ -84,7 +84,7 @@ extension Slider{
     func setThumbSide(_ thumbSide:CGFloat) {
         self.thumbSize[dir] = thumbSide
         let thumbSize:CGSize = dir == .hor ? CGSize(self.thumbSize.width,thumb!.getHeight()) : CGSize(thumb!.getWidth(), self.thumbSize.height)
-        //thumb!.setSize(thumbSize.w,thumbSize.h)
+        thumb!.setSize(thumbSize.w,thumbSize.h)
         thumb!.point[dir] = Utils.thumbPosition(progress, height, self.thumbSize[dir])
     }
     /**

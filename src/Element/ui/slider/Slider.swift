@@ -6,9 +6,11 @@ class Slider:Element{
     var thumb:Thumb?
     var progress:CGFloat
     var thumbSize:CGSize
+    var dir:Dir
     init(_ width:CGFloat, _ height:CGFloat,_ thumbSize:CGSize, _ progress:CGFloat = 0, _ dir:Dir, _ parent:IElement? = nil, id:String? = nil){
         self.progress = progress
         self.thumbSize = thumbSize
+        self.dir = dir
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
@@ -26,7 +28,7 @@ extension Slider{
      */
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb!.y = Utils.thumbPosition(self.progress, height, thumbSize.height)
+        thumb!.y = Utils.thumbPosition(self.progress, point[dir], thumbSize.height)
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
 }

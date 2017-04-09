@@ -72,9 +72,9 @@ extension Slider{
 }
 extension Slider{
     /**
-     * Sets the thumbs height and repositions the thumb accordingly
+     * Sets the thumbs side and repositions the thumb accordingly
      */
-    func setThumbSide(_ thumbSide:CGFloat) {/*Can't be named setThumbHeight because of objc*/
+    func setThumbSide(_ thumbSide:CGFloat) {
         self.thumbSize[dir] = thumbSide
         let thumbSize:CGSize = dir == .hor ? CGSize(self.thumbSize.width,thumb!.getHeight()) : CGSize(thumb!.getWidth(), self.thumbSize.height)
         thumb!.setSize(thumbSize.w,thumbSize.h)

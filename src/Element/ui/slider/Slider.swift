@@ -74,8 +74,8 @@ extension Slider{
     /**
      * Sets the thumbs height and repositions the thumb accordingly
      */
-    func setThumbHeightValue(_ thumbHeight:CGFloat) {/*Can't be named setThumbHeight because of objc*/
-        self.thumbHeight = thumbHeight
+    func setThumbSide(_ thumbSide:CGFloat) {/*Can't be named setThumbHeight because of objc*/
+        self.thumbSize[dir] = thumbSide
         thumb!.setSize(thumb!.getWidth(), thumbHeight)
         thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
     }

@@ -100,9 +100,9 @@ private class Utils{//TODO:rename to VSliderUtils and make it not private
      * Returns the progress derived from a node
      * RETURN: a number between 0 and 1
      */
-    /*class func progress(_ mouseY:CGFloat,_ tempNodeMouseY:CGFloat,_ height:CGFloat,_ thumbHeight:CGFloat)->CGFloat {
+    class func progress(_ mouseY:CGFloat,_ tempNodeMouseY:CGFloat,_ height:CGFloat,_ thumbHeight:CGFloat)->CGFloat {
         if(thumbHeight == height) {return 0}/*if the thumbHeight is the same as the height of the slider then return 0*/
         let progress:CGFloat = (mouseY-tempNodeMouseY) / (height-thumbHeight)
         return max(0,min(progress,1))/*Ensures that progress is between 0 and 1 and if its beyond 0 or 1 then it is 0 or 1*/
-    }*/
+    }
 }

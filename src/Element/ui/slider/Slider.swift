@@ -20,6 +20,24 @@ class Slider:Element{
         thumb = addSubView(Thumb(thumbSize.width, thumbSize.height,false,self))
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
+    /**
+     * Handles actions and drawing states for the down event.
+     */
+    override func mouseDown(_ event:MouseEvent) {/*onSkinDown*/
+        progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight)
+        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
+        super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
+        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener
+        //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
+    }
+    override func mouseUp(_ event:MouseEvent) {
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
+    }
+    override func onEvent(_ event:Event) {
+        if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
+        else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
+        //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
+    }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension Slider{

@@ -54,3 +54,13 @@ class SliderParser {
         return interval
     }
 }
+extension SliderParser{
+    /**
+     * Converts real position x,y to progress val 0-1
+     */
+    static func progress(_ point:CGPoint,_ maskSize:CGSize,_ contentSize:CGSize) -> CGPoint {
+        let x:CGFloat = progress(point.x, maskSize.width, contentSize.width)
+        let y:CGFloat = progress(point.y, maskSize.height, contentSize.height)
+        return CGPoint(x,y)
+    }
+}

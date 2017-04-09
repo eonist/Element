@@ -7,7 +7,7 @@ class Slider:Element{
     var progress:CGFloat
     var thumbSize:CGSize
     var dir:Dir
-    init(_ width:CGFloat, _ height:CGFloat,_ thumbSize:CGSize, _ progress:CGFloat = 0, _ dir:Dir = .ver, _ parent:IElement? = nil, id:String? = nil){
+    init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ progress:CGFloat = 0, _ thumbSize:CGSize, _ parent:IElement? = nil, id:String? = nil){
         self.progress = progress
         self.thumbSize = thumbSize
         self.dir = dir
@@ -28,7 +28,7 @@ extension Slider{
      */
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = Swift.max(0,Swift.min(1,progress))/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb!.y = Utils.thumbPosition(self.progress, point[dir], thumbSize.height)
+        thumb!.y = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize.height)
         thumb?.applyOvershot(progress)/*<--we use the unclipped scalar value*/
     }
 }

@@ -43,10 +43,12 @@ class Slider:Element{
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
+        
         super.setSize(width,height)
         let thumbSize:CGSize = dir == .hor ? CGSize(thumb!.w,height) : CGSize(width,thumb!.h)
         thumb!.setSize(thumbSize.w, thumbSize.h)
         thumb!.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
+        fatalError("debug")
     }
     override func getClassType() -> String {
         return dir == .ver ? "\(VSlider.self)" : "\(HSlider.self)"
@@ -82,7 +84,7 @@ extension Slider{
     func setThumbSide(_ thumbSide:CGFloat) {
         self.thumbSize[dir] = thumbSide
         let thumbSize:CGSize = dir == .hor ? CGSize(self.thumbSize.width,thumb!.getHeight()) : CGSize(thumb!.getWidth(), self.thumbSize.height)
-        thumb!.setSize(thumbSize.w,thumbSize.h)
+        //thumb!.setSize(thumbSize.w,thumbSize.h)
         thumb!.point[dir] = Utils.thumbPosition(progress, height, self.thumbSize[dir])
     }
     /**

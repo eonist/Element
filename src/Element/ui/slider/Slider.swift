@@ -27,6 +27,15 @@ class Slider:Element{
     func onThumbUp(){
         
     }
+    func onMouseMove(event:NSEvent)-> NSEvent?{
+        progress = Utils.progress(event.localPos(self)[dir], thumbSize[dir]/2, size[dir], thumbSize[dir])
+        thumb!.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
+        super.onEvent(SliderEvent(SliderEvent.change,progress,self))
+        return event
+    }
+    override func mouseUp(_ event:MouseEvent) {
+        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
+    }
     /**
      * Handles actions and drawing states for the down event.
      */
@@ -36,9 +45,6 @@ class Slider:Element{
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove)//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
-    }
-    override func mouseUp(_ event:MouseEvent) {
-        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
     }
     override func onEvent(_ event:Event) {
         if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown

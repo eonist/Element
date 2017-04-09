@@ -7,10 +7,6 @@ import Cocoa
  * TODO: Rename this to RBThumb and override createThumb in vSlider instead, then revert this class to the simpler class
  */
 class Thumb:Button{
-    let fps:CGFloat = 60
-    var duration:CGFloat?/*in seconds*/
-    var framesToEnd:CGFloat?
-    var currentFrameCount:CGFloat = 0
     var animator:Animator?
     //var isDisabled:Bool
     init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: IElement? = nil, _ id: String? = nil) {
@@ -19,20 +15,6 @@ class Thumb:Button{
     }
     override func resolveSkin() {
         super.resolveSkin()
-    }
-    /**
-     * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
-     */
-    func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
-        if(progress < 0){/*top overshot*/
-            let size:CGSize = dir == .ver ? CGSize(width, height-(height*progress.positive)) : CGSize(width - (width*progress.positive),height)
-            self.skin!.setSize(size.w,size.h)
-        }else if(progress > 1){/*bottom overshot*/
-            let overshot = self.size[dir] * (progress-1)
-            let size:CGSize = dir == .ver ? CGSize(width, height - overshot) : CGSize(width - overshot, height)
-            self.skin!.setSize(size.w,size.h)
-            (self.skin! as! Skin).point[dir] = overshot
-        }
     }
     //TODO: these overrides are not needed, just add a disbaled state to the css that has alpha set to 0
     override func mouseOver(_ event:MouseEvent) {if(!isDisabled){super.mouseOver(event)}}
@@ -60,6 +42,20 @@ class Thumb:Button{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 extension Thumb{
+    /**
+     * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
+     */
+    func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
+        if(progress < 0){/*top overshot*/
+            let size:CGSize = dir == .ver ? CGSize(width, height-(height*progress.positive)) : CGSize(width - (width*progress.positive),height)
+            self.skin!.setSize(size.w,size.h)
+        }else if(progress > 1){/*bottom overshot*/
+            let overshot = self.size[dir] * (progress-1)
+            let size:CGSize = dir == .ver ? CGSize(width, height - overshot) : CGSize(width - overshot, height)
+            self.skin!.setSize(size.w,size.h)
+            (self.skin! as! Skin).point[dir] = overshot
+        }
+    }
     var alpha:CGFloat{/*Convenience*/
         get{
             return self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent

@@ -42,8 +42,9 @@ class Slider:Element{
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height)
-        thumb!.setSize(thumb!.width, height)
-        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
+        let thumbSize:CGSize = dir == .hor ? CGSize(thumb!.w,height) : CGSize(width,thumb!.h)
+        thumb!.setSize(thumbSize.w, thumbSize.h)
+        thumb!.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

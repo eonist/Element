@@ -31,10 +31,10 @@ class Slider:Element{
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(_ event:MouseEvent) {/*onSkinDown*/
-        progress = Utils.progress(event.event!.localPos(self).y, thumbHeight/2, height, thumbHeight)
-        thumb!.y = Utils.thumbPosition(progress, height, thumbHeight)
+        progress = Utils.progress(event.event!.localPos(self)[dir], thumbSize[dir]/2, size[dir], thumbSize[dir])
+        thumb!.y = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
-        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove )//we add a global mouse move event listener
+        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove)//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseUp(_ event:MouseEvent) {

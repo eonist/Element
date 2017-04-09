@@ -25,11 +25,11 @@ class Thumb:Button{
      */
     func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
         if(progress < 0){/*top overshot*/
-            let size:CGSize = dir == .ver ? (CGSize(width, height-(height*progress.positive)) : (CGSize(width - (width*progress.positive),height))
-            
-                self.skin!.setSize(size.width,size.height)
+            let size:CGSize = dir == .ver ? CGSize(width, height-(height*progress.positive)) : CGSize(width - (width*progress.positive),height)
+            self.skin!.setSize(size.width,size.height)
         }else if(progress > 1){/*bottom overshot*/
-            let overshot = height*(progress-1)
+            let overshot = self.size[dir] * (progress-1)
+            let size:CGSize = dir == .ver ? CGSize() : CGSize()
             self.skin!.setSize(width, height - overshot)
             (self.skin! as! Skin).frame.y = overshot
         }

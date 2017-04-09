@@ -16,8 +16,9 @@ extension SliderListUtils{
     /**
      *
      */
-    static func progress(_ delta:CGPoint, _ interval:CGPoint, _ sliderProgress:CGPoint){
+    static func progress(_ delta:CGPoint, _ interval:CGPoint, _ sliderProgress:CGPoint)->CGPoint{
         let x:CGFloat = progress(delta.x, interval.x, sliderProgress.x)
-        let y:CGFloat = progress(delta.x, interval.x, sliderProgress.x)
+        let y:CGFloat = progress(delta.y, interval.y, sliderProgress.y)
+        return .init(x,y)
     }
 }

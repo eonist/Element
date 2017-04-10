@@ -18,4 +18,7 @@ class ElasticUtils {
         }
         return progress
     }
+    static func progress(_ point:CGPoint,_ )->CGPoint{
+        
+    }
 }

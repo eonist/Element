@@ -91,6 +91,7 @@ extension Slider{
      * PARAM: progress (0-1)
      */
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
+        Swift.print("Slider.setProgressValue \(progress)")
         self.progress = progress.clip(0,1)/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
         thumb!.point[dir] = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize[dir])
         thumb!.applyOvershot(progress,dir)/*<--we use the unclipped scalar value*/

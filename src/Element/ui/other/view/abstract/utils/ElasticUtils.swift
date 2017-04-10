@@ -18,7 +18,8 @@ class ElasticUtils {
         }
         return progress
     }
-    static func progress(_ point:CGPoint,_ )->CGPoint{
-        
+    static func progress(_ point:CGPoint,_ contentSize:CGSize, _ maskSize:CGSize)->CGPoint{
+        let x:CGFloat = 
+        let y:CGFloat =
     }
 }

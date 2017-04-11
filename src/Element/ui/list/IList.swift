@@ -8,8 +8,8 @@ protocol IList:Containable {
     /*var itemHeight:CGFloat{get}*/
     /*var lableContainer:Container? {get}*/
     var dataProvider:DataProvider{get}
-    var dir:Dir {get}
-    /*new, ⚠️️these must be here or the call defaults to containable progress and interval⚠️️*/
+    var dir:Dir {get}/*represents the primary dir the List flows in*/
+    /*new, ⚠️️these must be here or the call defaults to containable progress and interval, this is strange ⚠️️*/
     var progress:CGFloat {get}//0-1 atBegining <-> atEnd (Stores the current progress)
     var interval:CGFloat {get}
 }

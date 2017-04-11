@@ -73,6 +73,7 @@ extension Thumb{
     }
     /**
      * Call this when you want to fade-in the thumb
+     * IMPORTANT:⚠️️ Use fadeIn as oppose to setting alpha your self. Because then animation doesnt stutter etc. Set time low if you need the instantaniouse feel
      */
     func fadeIn(){
         //Swift.print("Thumb.fadeIn")

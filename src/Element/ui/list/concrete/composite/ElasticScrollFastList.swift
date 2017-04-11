@@ -1,7 +1,6 @@
 import Cocoa
 @testable import Utils
 
-
 class ElasticScrollFastList:FastList, ElasticScrollableFast {
     /*RubberBand*/
     var mover:RubberBand?

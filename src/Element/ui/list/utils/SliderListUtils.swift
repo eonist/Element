@@ -23,8 +23,8 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
      * new (0-1)
      */
     static func progress(_ event:NSEvent, _ dir:Dir, _ interval:CGFloat, _ progress:CGFloat)->CGFloat{
-        let primaryDelta:CGFloat = dir == .ver ? event.deltaY : event.deltaX
-        let primaryProgress:CGFloat = SliderListUtils.progress(primaryDelta, interval, progress)
-        return primaryProgress
+        let delta:CGFloat = dir == .ver ? event.deltaY : event.deltaX
+        let progress:CGFloat = SliderListUtils.progress(delta, interval, progress)
+        return progress
     }
 }

@@ -88,7 +88,7 @@ extension Slider{
         thumb!.point[dir] = Utils.thumbPosition(progress, height, self.thumbSize[dir])
     }
     /**
-     * PARAM: progress (0-1)
+     * PARAM: progress (scalar, but unclipped so can be: -0.5 to 1.5 etc)
      */
     func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         //Swift.print("Slider.setProgressValue \(progress)")

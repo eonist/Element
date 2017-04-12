@@ -12,7 +12,7 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
         return currentScroll
     }
     /**
-     * new
+     * new (0-1)
      */
     static func progress(_ delta:CGPoint, _ interval:CGPoint, _ sliderProgress:CGPoint)->CGPoint{
         let x:CGFloat = progress(delta.x, interval.x, sliderProgress.x)

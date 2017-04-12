@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 
 class SliderListUtils{//⚠️️ This can probably be removed, as the same code is in SliderParser or alike, at least move to SliderParser
@@ -18,5 +18,13 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
         let x:CGFloat = progress(delta.x, interval.x, sliderProgress.x)
         let y:CGFloat = progress(delta.y, interval.y, sliderProgress.y)
         return CGPoint(x,y)
+    }
+    /**
+     * new (0-1)
+     */
+    static func progress(_ event:NSEvent, _ dir:Dir, _ interval:CGFloat, _ progress:CGFloat)->CGFloat{
+        let primaryDelta:CGFloat = dir == .ver ? event.deltaY : event.deltaX
+        let primaryProgress:CGFloat = SliderListUtils.progress(primaryDelta, interval, progress)
+        return primaryProgress
     }
 }

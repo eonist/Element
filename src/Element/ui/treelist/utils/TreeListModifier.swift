@@ -68,7 +68,7 @@ class TreeListModifier {
         }
     }
     /**
-     * Removes an NSView instance at @param index in PARAM: treeList
+     * Removes an NSView instance at PARAM: index in PARAM: treeList
      * NOTE: Use TreeList.node.removeAt method if you want to add things to the TreeList, this method is then eventually used internally 
      */
     static func removeAt(_ treeList:ITreeList,_ index:[Int]) {
@@ -120,7 +120,7 @@ class TreeListModifier {
      * RETURN: the new index
      * PARAM: index the index to move from
      * NOTE: the PARAM: index is modified so make sure you pass a clone of the array
-     * TODO: fix the code so that it doesnt modifify the @param index
+     * TODO: fix the code so that it doesnt modifify the PARAM: index
      * TODO: what if its already at the bottom?
      * TODO: could we have another method maybe? moveToIndex?
      * TODO: what about moveUpLevel?

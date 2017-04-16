@@ -101,7 +101,7 @@ class VNodeSlider:Element,INodeSlider{
 }
 private class Utils{
 	/**
-	 * Returns the x position of a nodes @param progress
+	 * Returns the x position of a nodes PARAM: progress
 	 */
 	static func nodePosition(_ progress:CGFloat, _ height:CGFloat, _ nodeHeight:CGFloat) -> CGFloat {
 		let minThumbPos:CGFloat = height - nodeHeight/*Minimum thumb position*/

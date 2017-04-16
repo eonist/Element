@@ -65,7 +65,7 @@ extension StyleManager{
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)
-     * // :TODO: add support for CSS import statement in the @param string
+     * // :TODO: add support for CSS import statement in the PARAM: string
      */
     static func addStyle(_ cssString:String){
         var cssString = cssString//swift 3 update

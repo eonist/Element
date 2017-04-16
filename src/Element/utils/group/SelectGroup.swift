@@ -24,7 +24,7 @@ class SelectGroup:EventSender{
     /**
      * NOTE: use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
-    func addSelectable(_ selectable:ISelectable) {
+    func addSelectable<T:ISelectable>(_ selectable:ISelectable) {
         if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
         selectables.append(selectable)
     }

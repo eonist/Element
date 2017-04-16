@@ -10,22 +10,24 @@ import Cocoa
  * NSNotificationCenter.defaultCenter().addObserver(radioButtonGroup, selector: "onSelect:", name: SelectGroupEvent.select, object: radioButtonGroup)
  * func onSelect(sender: AnyObject) { Swift.print("Event: " + ((sender as! NSNotification).object as ISelectable).isSelected}
  */
-class SelectGroup:EventSender{
+class SelectGroup<T:ISelectable & IEventSender>:EventSender{
     var selectables:[ISelectable] = []
     var selected:ISelectable?
     init(_ selectables:[ISelectable], _ selected:ISelectable? = nil){
         super.init()
         self.selected = selected
-        addSelectables(selectables)
+        addSelectables(&selectables)
     }
-    func addSelectables(_ selectables:[ISelectable]){
-        selectables.forEach{addSelectable($0)}
+    func addSelectables(_ selectables:inout [T]){
+        selectables.forEach {
+            addSelectable(&$0)
+        }
     }
     /**
      * NOTE: use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
-    func addSelectable<T:ISelectable & IEventSender>(_ selectable:T) {
-        if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
+    func addSelectable(_ selectable:inout T) {
+        selectable.event = onEvent
         selectables.append(selectable)
     }
     override func onEvent(_ event:Event){

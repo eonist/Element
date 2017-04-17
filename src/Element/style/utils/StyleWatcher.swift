@@ -5,7 +5,7 @@ class StyleWatcher {
     /**
      * IMPORTANT: StyleManger.addStylesByURL("",true)<--liveEdit flag must be true to use this watch feature
      */
-    static func watch(_ folderURL:String,_ fileURL:String, _ view:NSView) -> FileWatcher{
+    static func watch(_ folderURL:String,_ fileURL:String, _ view:NSView) /*-> FileWatcher*/{
         let fileWatcher = FileWatcher([folderURL.tildePath])
         fileWatcher.event = { event in
             //Swift.print(self)
@@ -18,6 +18,6 @@ class StyleWatcher {
             }
         }
         fileWatcher.start()
-        return fileWatcher
+        //return fileWatcher
     }
 }

@@ -42,4 +42,4 @@ class CheckBoxButton:Button,ICheckable{
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-class CheckBox:CheckButton{}/*CheckBox purly exists to differentiate between types in css*/
+class CheckBox:CheckButton{}/*CheckBox purly exists to differentiate between types in CSS*/

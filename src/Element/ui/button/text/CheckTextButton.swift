@@ -8,7 +8,6 @@ class CheckTextButton:TextButton,ICheckable {
         super.init(width, height, text, parent, id)
     }
     override func mouseUpInside(_ event:MouseEvent) {
-        //Swift.print("CheckTextButton.mouseUpInside()")
         isChecked = !isChecked
         super.mouseUpInside(event)
         self.event!(CheckEvent(CheckEvent.check,isChecked,self))//TODO:Remove the bool from the event. Similar to SelectEvent

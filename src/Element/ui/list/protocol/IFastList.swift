@@ -149,7 +149,7 @@ extension IFastList{
  //call this method after resize etc
  //clear inActive array, if any are left, can happen after resize etc
  //This could be usefull when size of view changes from big to small etc, or when going from many items to few
- 
+ //or removal of items from the user POV
  inActive.forEach{
  Swift.print("remove inactive")
  $0.item.removeFromSuperview()

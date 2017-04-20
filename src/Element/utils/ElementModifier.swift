@@ -28,7 +28,7 @@ class ElementModifier {
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
         method(element)
         let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
-        container.subviews.forEach{//<- we could do a .filter here and assert is IElement
+        container.subviews.filter(){//<- we could do a .filter here and assert is IElement
             if($0 is IElement) {
                 refresh($0 as! IElement,method)/*<--this line makes it recursive*/
             }

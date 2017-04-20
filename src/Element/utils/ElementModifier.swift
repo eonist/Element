@@ -26,7 +26,7 @@ class ElementModifier {
         ElementModifier.refresh(element, Utils.setSkinState)
     }
     /**
-     * IMPORTANT: ⚠️️ 
+     * IMPORTANT: ⚠️️ Refreshing style is cheaper than calling refresh skin
      */
     static func refreshStyle(_ element:IElement){
         ElementModifier.refresh(element, Utils.setStyle)

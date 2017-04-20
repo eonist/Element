@@ -32,13 +32,14 @@ class ElementModifier {
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
-        method(element)
-        let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
-        container.subviews.forEach{
-            if($0 is IElement) {
-                refresh($0 as! IElement,method)/*<--this line makes it recursive*/
+        method(element)//Apply on it self first
+        if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
+            container.subviews.forEach{
+                if($0 is IElement) {
+                    refresh($0 as! IElement,method)/*<--this line makes it recursive*/
+                }
             }
-        }
+        }else{fatalError("element is not NSView")}
     }
     /**
      * Resizes many elements in PARAM: view

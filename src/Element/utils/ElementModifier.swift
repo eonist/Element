@@ -31,7 +31,7 @@ class ElementModifier {
      * NOTE: keep in mind that this can be Window
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
-        if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
+        guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none else{return}/*Skip refreshing*/
         method(element)//Apply on it self first
         if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
             container.subviews.forEach{

@@ -8,9 +8,8 @@ class ElementModifier {
     static func hide(_ element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an original style must be applied to every skin*/
-        var styleProperty:IStyleProperty? = element.skin!.style!.getStyleProperty("display")
-        if styleProperty != nil {
-            styleProperty!.value = display
+        if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty("display") {
+            styleProperty.value = display
         }else{
             element.skin!.style!.addStyleProperty(StyleProperty("display", display))
         }

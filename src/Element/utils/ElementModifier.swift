@@ -9,9 +9,9 @@ class ElementModifier {
         let display:String = isVisible ? "" : CSSConstants.none//defines the dispaly param to be set
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty("display") {
-            styleProperty.value = display
+            styleProperty.value = display/*prop already exists just add value*/
         }else{
-            element.skin!.style!.addStyleProperty(StyleProperty("display", display))
+            element.skin!.style!.addStyleProperty(StyleProperty("display", display))/*prop doesnt exist add StyleProp to style*/
         }
         element.skin!.setStyle(element.skin!.style!)
     }

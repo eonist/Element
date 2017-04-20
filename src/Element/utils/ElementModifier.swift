@@ -38,8 +38,6 @@ class ElementModifier {
                 if let child = $0 as? IElement{
                     refresh(child,method)/*<--this line makes it recursive*/
                 }
-                /*if($0 is IElement) {
-                 }*/
             }
         }else{fatalError("element is not NSView")}
     }

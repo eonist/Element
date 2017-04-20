@@ -55,7 +55,7 @@ class ElementModifier {
      */
     static func size(_ view:NSView,_ size:CGPoint) {
         view.subviews.forEach{
-            if let element:IElement = $0 as? IElement {element.setSize(size.x, size.y)}
+            if let element = $0 as? IElement {element.setSize(size.x, size.y)}
         }
     }
     /**
@@ -64,10 +64,7 @@ class ElementModifier {
      */
     static func floatChildren(_ view:NSView) {
         view.subviews.forEach{
-            if($0 is IElement) {
-                //Swift.print("text: " + "\((child as! SelectTextButton).getText())")
-                SkinModifier.float(($0 as! IElement).skin!)
-            }
+            if let element = $0 as? IElement {SkinModifier.float(element.skin!)}
         }
     }
 }

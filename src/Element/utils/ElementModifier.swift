@@ -10,7 +10,7 @@ class ElementModifier {
     }
     /**
      * New
-     * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work
+     * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be 
      */
     static func apply(_ element:IElement,_ key:String,_ value:Any){
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/

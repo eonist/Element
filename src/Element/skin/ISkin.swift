@@ -16,6 +16,6 @@ protocol ISkin:class{
     var width:CGFloat?{get}
     var height:CGFloat?{get}
     var hasStyleChanged:Bool{get}
-    var hasStateChanged:Bool{get set}
+    var hasStateChanged:Bool{get}
     var hasSizeChanged:Bool{get}
 }

@@ -20,13 +20,13 @@ class ElementModifier {
         hideAll(elements, exception)
     }
     /**
-     * new
+     * IMPORTANT: ⚠️️ Refreshing the skin also calls StyleResolver.resolve which is an expensive call. because it have to parse through StyleManger for the correct Style
      */
     static func refreshSkin(_ element:IElement){
         ElementModifier.refresh(element, Utils.setSkinState)
     }
     /**
-     *
+     * IMPORTANT: ⚠️️ 
      */
     static func refreshStyle(_ element:IElement){
         ElementModifier.refresh(element, Utils.setStyle)

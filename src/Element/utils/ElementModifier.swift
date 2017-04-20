@@ -6,8 +6,8 @@ class ElementModifier {
      * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state wont work
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
-        let display:String = isVisible ? "" : CSSConstants.none
-        element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an original style must be applied to every skin*/
+        let display:String = isVisible ? "" : CSSConstants.none//defines the dispaly param to be set
+        element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty("display") {
             styleProperty.value = display
         }else{

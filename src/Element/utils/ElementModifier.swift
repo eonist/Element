@@ -13,7 +13,7 @@ class ElementModifier {
         }else{
             element.skin!.style!.addStyleProperty(StyleProperty("display", display))/*prop doesnt exist add StyleProp to style*/
         }
-        element.skin!.setStyle(element.skin!.style!)
+        element.skin!.setStyle(element.skin!.style!)/*Apply the altered style*/
     }
     static func hideAll(_ elements:[IElement],_ exception:IElement) {
         elements.forEach{ElementModifier.hide($0, ($0 === exception))}

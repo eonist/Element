@@ -26,13 +26,19 @@ class ElementModifier {
         ElementModifier.refresh(element, Utils.setSkinState)
     }
     /**
+     *
+     */
+    static func refreshStyle(_ element:IElement){
+        ElementModifier.refresh(element, Utils.setStyle)
+    }
+    /**
      * Refreshes many elements in PARAM: displayObjectContainer
      * // :TODO: skin should have a dedicated redraw method or a simple workaround
      * NOTE: keep in mind that this can be Window
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none else{return}/*Skip refreshing*/
-        method(element)//Apply on it self first
+        method(element)//apply the method
         if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
             container.subviews.forEach{
                 if let child = $0 as? IElement{

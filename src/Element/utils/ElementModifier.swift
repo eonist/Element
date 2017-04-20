@@ -6,13 +6,14 @@ class ElementModifier {
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none//defines the dispaly param to be set
-        apply(element, "display", display)
+        applyStyleProperty(element, "display", display)
     }
     /**
      * New
-     * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be 
+     * TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
+     * TODO: Also make a method that uses the actualy StyleProperty class
      */
-    static func apply(_ element:IElement,_ key:String,_ value:Any){
+    static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty(key) {
             styleProperty.value = value/*prop already exists just add value*/

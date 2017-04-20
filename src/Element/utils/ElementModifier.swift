@@ -3,15 +3,21 @@ import Cocoa
 class ElementModifier {
     /**
      * Changes the visibility of PARAM: element by PARAM: isVisible
-     * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state wont work
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none//defines the dispaly param to be set
+        apply(element, "display", display)
+    }
+    /**
+     * New
+     * // :TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work
+     */
+    static func apply(_ element:IElement,_ key:String,_ value:Any){
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/
-        if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty("display") {
-            styleProperty.value = display/*prop already exists just add value*/
+        if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty(key) {
+            styleProperty.value = value/*prop already exists just add value*/
         }else{
-            element.skin!.style!.addStyleProperty(StyleProperty("display", display))/*prop doesnt exist add StyleProp to style*/
+            element.skin!.style!.addStyleProperty(StyleProperty(key, value))/*prop doesnt exist add StyleProp to style*/
         }
         element.skin!.setStyle(element.skin!.style!)/*Apply the altered style*/
     }

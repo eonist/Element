@@ -35,9 +35,11 @@ class ElementModifier {
         method(element)//Apply on it self first
         if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
             container.subviews.forEach{
-                if($0 is IElement) {
-                    refresh($0 as! IElement,method)/*<--this line makes it recursive*/
+                if let child = $0 as? IElement{
+                    refresh(child,method)/*<--this line makes it recursive*/
                 }
+                /*if($0 is IElement) {
+                 }*/
             }
         }else{fatalError("element is not NSView")}
     }

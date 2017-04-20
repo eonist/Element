@@ -30,6 +30,7 @@ class ElementModifier {
     }
     /**
      * IMPORTANT: ⚠️️ Refreshing the skin also calls StyleResolver.resolve which is an expensive call. because it have to parse through StyleManger for the correct Style
+     * NOTE: Sometimes its better to use element.setSkin(element.getSkin()) 
      */
     static func refreshSkin(_ element:IElement){
         ElementModifier.refresh(element, Utils.setSkinState)

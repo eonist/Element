@@ -9,7 +9,11 @@ class ElementModifier {
         let display:String = isVisible ? "" : CSSConstants.none
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an original style must be applied to every skin*/
         var styleProperty:IStyleProperty? = element.skin!.style!.getStyleProperty("display")
-        styleProperty != nil ? styleProperty!.value = display : element.skin!.style!.addStyleProperty(StyleProperty("display", display))
+        if styleProperty != nil {
+            styleProperty!.value = display
+        }else{
+            element.skin!.style!.addStyleProperty(StyleProperty("display", display))
+        }
         element.skin!.setStyle(element.skin!.style!)
     }
     static func hideAll(_ elements:[IElement],_ exception:IElement) {

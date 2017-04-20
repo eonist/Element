@@ -19,8 +19,7 @@ class ElementModifier {
         elements.forEach{ElementModifier.hide($0, ($0 === exception))}
     }
     static func hideChildren(_ view:NSView,_ exception:IElement) {
-        let elements:[IElement] = ElementParser.children(view,IElement.self)
-        hideAll(elements, exception)
+        hideAll(ElementParser.children(view,IElement.self), exception)
     }
     /**
      * IMPORTANT: ⚠️️ Refreshing the skin also calls StyleResolver.resolve which is an expensive call. because it have to parse through StyleManger for the correct Style
@@ -56,7 +55,7 @@ class ElementModifier {
      */
     static func size(_ view:NSView,_ size:CGPoint) {
         view.subviews.forEach{
-            if($0 is IElement) {($0 as! IElement).setSize(size.x, size.y)}
+            if let element:IElement = $0 as? IElement {element.setSize(size.x, size.y)}
         }
     }
     /**

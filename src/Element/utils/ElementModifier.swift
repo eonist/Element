@@ -20,25 +20,25 @@ class ElementModifier {
         hideAll(elements, exception)
     }
     /**
-     * Refreshes many elements in PARAM: displayObjectContainer
-     * // :TODO: skin should have a dedicated redraw method or a simple workaround
-     * NOTE: keep in mind that this can be Window
-     */
-    static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
-        if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
-        method(element)
-        let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
-        container.subviews.filter(){//<- we could do a .filter here and assert is IElement
-            if($0 is IElement) {
-                refresh($0 as! IElement,method)/*<--this line makes it recursive*/
-            }
-        }
-    }
-    /**
      * new
      */
     static func refreshSkin(_ element:IElement){
         ElementModifier.refresh(element, Utils.setSkinState)
+    }
+    /**
+     * Refreshes many elements in PARAM: displayObjectContainer
+     * // :TODO: skin should have a dedicated redraw method or a simple workaround
+     * NOTE: keep in mind that this can be Window
+     */
+    private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
+        if(element.skin!.style!.getStyleProperty("display") != nil && (element.skin!.style!.getStyleProperty("display")!.value as! String) == CSSConstants.none) {return} /*Skip refreshing*/
+        method(element)
+        let container:NSView = element as! NSView//element is Window ? Window(element).view : element as NSView;
+        container.subviews.forEach{
+            if($0 is IElement) {
+                refresh($0 as! IElement,method)/*<--this line makes it recursive*/
+            }
+        }
     }
     /**
      * Resizes many elements in PARAM: view

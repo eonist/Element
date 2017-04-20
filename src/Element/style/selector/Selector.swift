@@ -2,7 +2,7 @@ import Foundation
 /**
  * NOTE: ObjectC already has a class named Selector that may conflict with this one, use: this syntax instead if you need to use the ObjC Selector: ObjectiveC.Selector
  */
-struct Selector:ISelector{// :TODO: you should probably use a struct instead of class in the future
+struct Selector:ISelector{//TODO: ⚠️️ this definitly needs to be converted to a struct
     let element:String/*Button*///should be nil
     let classIds:[String]/*.customButton*///should be nil
     let id:String/*#customButton*///should be nil

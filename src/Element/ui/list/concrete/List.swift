@@ -62,7 +62,7 @@ class List:ContainerView, IList {
         super.setSize(width, height)
         //skin.setState(skin.state)
         //self.mask.setSize(width, height)
-        ElementModifier.refresh(lableContainer!)//was --> SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
+        ElementModifier.refreshStyle(lableContainer!)//was --> SkinModifier.size(_lableContainer,  CGPoint(width,self.itemHeight));
     }
     /**
      * Returns "List"

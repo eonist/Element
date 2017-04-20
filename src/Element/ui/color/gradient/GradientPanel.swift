@@ -130,7 +130,7 @@ class GradientPanel:Element,IGradientInput{
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width, height)
-        ElementModifier.refresh(self)
+        ElementModifier.refreshStyle(self)
         gradientSlider!.setSize(width, StylePropertyParser.height(gradientSlider!.skin!)!)
     }
     /**

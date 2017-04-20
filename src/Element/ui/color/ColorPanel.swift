@@ -89,7 +89,7 @@ class ColorPanel:Element,IColorPanel{
     }
     override func setSize(_ width : CGFloat, _ height : CGFloat)  {
         super.setSize(width, height)
-        ElementModifier.refresh(self)
+        ElementModifier.refreshStyle(self)
     }
     func getColorType()->String {
         return (SelectGroupParser.selected(colorTypeSelectGroup!) as! RadioButton).getText()

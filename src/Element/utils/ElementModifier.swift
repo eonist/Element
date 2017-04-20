@@ -16,7 +16,7 @@ class ElementModifier {
         element.skin!.setStyle(element.skin!.style!)
     }
     static func hideAll(_ elements:[IElement],_ exception:IElement) {
-        for element : IElement in elements {ElementModifier.hide(element, (element === exception))}  
+        elements.forEach{ElementModifier.hide($0, ($0 === exception))}
     }
     static func hideChildren(_ view:NSView,_ exception:IElement) {
         let elements:[IElement] = ElementParser.children(view,IElement.self)

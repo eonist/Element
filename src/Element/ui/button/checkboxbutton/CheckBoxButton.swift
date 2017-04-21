@@ -3,11 +3,26 @@ import Foundation
 /**
  * TODO: Implement a way to also include the text in being in a checked status
  */
-class CheckBoxButton:Button,ICheckable{
+class CheckBoxButton:Button,ICheckable,LableKind{
     private var isChecked:Bool
     var textString:String
     var checkBox:CheckBox?
     var text:Text?
+    
+    /**
+     * Returns the text in the _text.textField.text
+     */
+    func getText()->String{
+        return text!.getText()
+    }
+    /**
+     * Sets the text in the _text instance
+     * NOTE: cant be named setText as its blocked by objc
+     */
+    func setTextValue(_ text:String){
+        self.text!.setText(text)
+    }
+    
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
         self.textString = text
         self.isChecked = isChecked

@@ -1,5 +1,4 @@
 import Foundation
-@testable import Utils
 
 protocol LableKind{
     var text:Text? {get set}

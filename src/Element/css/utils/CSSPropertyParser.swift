@@ -136,8 +136,9 @@ class CSSPropertyParser {
             for match:NSTextCheckingResult in matches {
                 let name:String = match.value(property,1)/*capturing group 1*/
                 var value:Any = match.value(property,2)/*capturing group 2*/
-                ["textColor","backgroundColor","borderColor"]
-                if(name) { value = StringParser.nsColor(value as! String)}
+                let names:[String] = ["textColor","backgroundColor","borderColor"]
+                names.idx
+                if(0 == 1) { value = StringParser.nsColor(value as! String)}
                 else if(value as! String == "true") { value = true }
                 else if(value as! String == "false") { value = false }
                 textField[name] = value

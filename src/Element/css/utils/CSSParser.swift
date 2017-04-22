@@ -8,6 +8,7 @@ class CSSParser{
     static let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
     static let valueGroup:String = "((?:.|\\n)*?)"
     static let CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
+    static var stylePattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
     enum CSSElementType:Int{ case name = 1, value}
     /**
      * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
@@ -16,7 +17,6 @@ class CSSParser{
      * NOTE: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     static func styleCollection(_ cssString:String)->IStyleCollection{
-        //Swift.print("CSSParser.styleCollection()")
         let styleCollection:IStyleCollection = StyleCollection();
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
@@ -44,8 +44,7 @@ class CSSParser{
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let style:IStyle = Style(name,selectors, [])
-        let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
-        let matches = RegExp.matches(value, pattern)
+        let matches = value.matches(stylePattern)
         for match:NSTextCheckingResult in matches {
             let propertyName:String = match.value(value, 1)/*name*/
             let propertyValue:String = match.value(value, 2)/*value*/
@@ -79,6 +78,7 @@ class CSSParser{
         return styleProperties
     }
 }
+
 private class Utils{
     static var precedingWith:String = "(?<=\\,|^)"
     static var prefixGroup:String = "([\\w\\d\\s\\:\\#]*?)?"
@@ -93,7 +93,7 @@ private class Utils{
      * TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
      * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
-    static func siblingStyles(_ styleName:String,_ value:String)->Array<IStyle> {
+    static func siblingStyles(_ styleName:String,_ value:String)->[IStyle] {
         //Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:[IStyle] = []

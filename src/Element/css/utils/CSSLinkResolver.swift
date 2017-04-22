@@ -91,9 +91,9 @@ private class Utils {
      */
     static func value(_ string:String,_ propName:String)->String{
         let pattern:String = "(?<=" + propName + "\\:).+?(?=\\;)"
-        var match:Array = RegExp.match(string, pattern)
-        if(match.count > 0){/*This try catch method is here so its easier to debug which propName threw an error*/
-            return match[0]
+        let match:[String] = RegExp.match(string, pattern)
+        if let matchStr = match[safe:0]{/*This try catch method is here so its easier to debug which propName threw an error*/
+            return matchStr
         }else{
             fatalError(" string:>"+string+"<"+" propName:>"+propName+"<")
         }

@@ -9,6 +9,7 @@ class CSSParser{
     static let valueGroup:String = "((?:.|\\n)*?)"
     static let CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
     static var stylePattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
+    static var stylePropertyValuePattern:String = "\\w\\.\\-%#\\040<>\\/~"
     enum CSSElementType:Int{ case name = 1, value}
     /**
      * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
@@ -62,7 +63,7 @@ class CSSParser{
         let names = propertyName.contains(",") ? propertyName.split(propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name)
-            let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
+            let valExp:String = stylePropertyValuePattern/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:[String] = propertyValue.match(pattern)
             for i in 0..<values.count{

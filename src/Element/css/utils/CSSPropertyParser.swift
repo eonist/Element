@@ -92,7 +92,7 @@ class CSSPropertyParser {
             if(StringAsserter.digit(str)){
                 return StringParser.digit(str)
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
-                return StringParser.nsColor(str)
+                return str.nsColor
             }else{
                 return str
             }

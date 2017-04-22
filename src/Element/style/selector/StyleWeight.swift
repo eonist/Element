@@ -2,7 +2,7 @@ import Foundation
 /**
  * // :TODO: move into its own class? if other classses uses this code yes if not then no!
  */
-class StyleWeight {
+struct StyleWeight {
     var selectorWeights:[SelectorWeight]
     var idWeight:Int = 0
     var elementWeight:Int = 0

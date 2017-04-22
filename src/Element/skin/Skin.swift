@@ -7,7 +7,7 @@ import Cocoa
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
 class Skin:InteractiveView2,ISkin{
-    var decoratables:[IGraphicDecoratable] = []
+    var decoratables:[IGraphicDecoratable] = []/*The layers in the skin*/
     var style:IStyle?
     var state:String
     var width:CGFloat?

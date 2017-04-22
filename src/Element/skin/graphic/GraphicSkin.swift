@@ -29,7 +29,7 @@ class GraphicSkin:Skin{
                     Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
                 }//do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
-                /*decoratable = */_ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/* as! IGraphicDecoratable;*/
+                _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
                 if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
             }
         }

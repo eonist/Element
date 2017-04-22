@@ -26,7 +26,7 @@ class CSSParser{
                 let style:IStyle = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style)/*If the styleName has 1 name*/
             }else{
-                let siblingStyles:Array<IStyle> = Utils.siblingStyles(styleName, value)
+                let siblingStyles:[IStyle] = Utils.siblingStyles(styleName, value)
                 styleCollection.addStyles(siblingStyles)/*If the styleName has multiple comma-seperated names*/
             }
         }
@@ -66,7 +66,7 @@ class CSSParser{
             let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:[String] = RegExp.match(propertyValue,pattern)
-            for i in 0..<values.count{//<--New: swift 3 support
+            for i in 0..<values.count{
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
                 //Swift.print(" value: " + value)
@@ -114,7 +114,7 @@ private class Utils{
                     let endingWith:String = "(?=\\])"
                     let bracketPattern:String = precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
                     let namesInsideBrackets:String = RegExp.match(group, bracketPattern)[0]
-                    let names:Array<String> = StringModifier.split(namesInsideBrackets, ",")
+                    let names:[String] = StringModifier.split(namesInsideBrackets, ",")
                     for name in names {
                         let condiditonalPrefix:String = prefix != "" ? prefix + " " : ""
                         let conditionalSuffix:String = suffix != "" ? " " + suffix : ""

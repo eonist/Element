@@ -47,6 +47,7 @@ class Skin:InteractiveView2,ISkin{
      * NOTE: forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
      * TODO: rename to set_skinState() and blame swift for the underscore
      * TODO: Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
+     * ⚠️️ IMPORTANT: ⚠️️ This is an expensive call: "loops through the entire styleManager" (Use setStyle for light-weight call)
      */
     func setSkinState(_ state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
         hasStateChanged = true

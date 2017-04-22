@@ -11,6 +11,7 @@ extension CSSPropertyParser{
     static var linearGradientPattern:String = "(?<=linear-gradient\\().+?(?=\\);?)"
     static var radialGradientPattern:String = "(?<=radial-gradient\\().+?(?=\\);?)"
     static var textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
+    static var dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
 }
 class CSSPropertyParser {
     /**
@@ -132,7 +133,7 @@ class CSSPropertyParser {
      * Returns a DropShadowFilter instance
      */
     static func dropShadow(_ string:String)->DropShadow {
-        let propertyString:String = string.match("(?<=drop-shadow\\().+?(?=\\);?)")[0]
+        let propertyString:String = string.match(dropShadowPattern)[0]
         var properties:Array = propertyString.split(" ")
         let distance:CGFloat = StringParser.digit(properties[0])
         let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
@@ -152,6 +153,8 @@ class CSSPropertyParser {
     }
 }
 private class Utils{
+    static var gradientPattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
+    static var directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left"
     /**
      * Returns a Gradient instance derived from PARAM: properties
      * NOTE: adds colors, opacities and ratios
@@ -160,8 +163,7 @@ private class Utils{
         let gradient:Gradient = Gradient()
         for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
             let property:String = properties[i]
-            let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
-            let matches:[NSTextCheckingResult] = property.matches(pattern)
+            let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
             for match:NSTextCheckingResult in matches {
                 let color:String = match.value(property,1)
                 let alpha:String = match.value(property, 2)
@@ -180,7 +182,7 @@ private class Utils{
      */
     static func rotation(_ rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
         var rotation:CGFloat
-        let directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?
+         // :TODO: support for tl tr br bk l r t b?
         if(rotationMatch.test("^\\d+?deg|\\d+$")) {
             rotation = rotationMatch.match("^\\d+?$|^\\d+?(?=deg$)")[0].cgFloat
         }

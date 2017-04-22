@@ -15,15 +15,12 @@ class CSSFileParser {
     static func cssString(_ url:String)->String {
         StyleManager.cssFileURLS.append(url)//<--new
         var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
-        //cssString = string//temp fix until you implement the recusrive import stuff bellow
-        //Swift.print("string: " + "\(string)")
         string = RegExpModifier.removeComments(string)
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)
-        //Swift.print("importsAndStyles.imports: " + "\(importsAndStyles.imports)")
         let importStrings:[String] = CSSFileParser.importStrings(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         var cssString:String = ""
-        for importString in importStrings{cssString += CSSFileParser.cssString(path + importString)}/*<--imports css from other css files*/// :TODO: make an if clause that makes sure it doesn't import it self like path+import != url
+        importStrings.forEach {cssString += CSSFileParser.cssString(path + $0)}/*<--imports css from other css files*/// :TODO: make an if clause that makes sure it doesn't import it self like path+import != url
         cssString += importsAndStyles.style/*<--Add the styles in the current css file*/
         return cssString
     }
@@ -35,11 +32,7 @@ class CSSFileParser {
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     static func importStrings(_ string:String)->[String]{
-        let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
-        let matches = RegExp.matches(string, pattern)
-        let importStrings:[String] = matches.map {
-            $0.value(string, 1)/*capturing group 1*/
-        }
+        let importStrings:[String] = string.matches(importStringPattern).map {$0.value(string, 1)}/*capturing group 1*/
         return importStrings
     }
     /**
@@ -49,9 +42,23 @@ class CSSFileParser {
      * Example: "@import url(\"mainContent.css\");"
      */
     static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
-        //was: \\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*
+        var result:(imports:String,style:String) = ("","")
+        let matches = cssString.matches(styleImportSeperationPattern)
+        matches.forEach { match in
+            result.imports = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
+            result.style = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
+        }
+        return result
+    }
+}
+extension CSSFileParser{
+    /**
+     * //was: \\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*
+     */
+    static var styleImportSeperationPattern:String = {
         let styleCharSet:String = "[^$]"//all possible chars that can be found in a stylesheet, except the end. the capture all dot variable didnt work so this is the alternate wway of doing it
-        var pattern:String = "^"
+        var pattern:String = ""
+        pattern += "^"
         pattern += "("
         pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
         pattern +=      "(?="
@@ -61,19 +68,8 @@ class CSSFileParser {
         pattern +=      ")"
         pattern +=  ")?"
         pattern +=  "(" + styleCharSet + "+?$)?"
-        //Swift.print("pattern: " + "\(pattern)")
-        var result:(imports:String,style:String) = ("","")
-        let matches = RegExp.matches(cssString, pattern)
-        for match:NSTextCheckingResult in matches {
-            //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-            //for var i = 0; i < match.numberOfRanges; ++i{
-                //Swift.print("loc: " + "\(match.rangeAtIndex(i).location)" + " length: " + "\(match.rangeAtIndex(i).length)")
-            //}
-            //let content = (cssString as NSString).substringWithRange(match.rangeAtIndex(0))//the entire match
-            //Swift.print("content: " + "\(content)")
-            result.imports = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
-            result.style = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
-        }
-        return result
-    }
+        return pattern
+    }()
+    
+    static var importStringPattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
 }

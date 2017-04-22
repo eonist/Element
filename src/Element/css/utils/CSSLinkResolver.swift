@@ -75,7 +75,7 @@ private class Utils {
      */
     static func propertyValue(_ string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
-        let match:[String] = RegExp.match(string, pattern)
+        let match:[String] = string.match(pattern)
         if let matchStr = match[safe:0]{/*this try catch method is here so its easier to debug which linkName threw */
             return value(matchStr,propertyName)
         }else{
@@ -91,7 +91,7 @@ private class Utils {
      */
     static func value(_ string:String,_ propName:String)->String{
         let pattern:String = "(?<=" + propName + "\\:).+?(?=\\;)"
-        let match:[String] = RegExp.match(string, pattern)
+        let match:[String] = string.match(pattern)
         if let matchStr = match[safe:0]{/*This try catch method is here so its easier to debug which propName threw an error*/
             return matchStr
         }else{

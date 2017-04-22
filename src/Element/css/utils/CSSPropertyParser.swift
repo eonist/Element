@@ -7,23 +7,23 @@ import Cocoa
  */
 class CSSPropertyParser {
     /**
-     * Retuns a css property to a property that can be read by the Swift API
-     * TODO: Long switch statments can be replaced by polymorphism?!?
+     * Returns a CSS property to a property that can be read by the Swift API
+     * TODO: Long switch statments can be replaced by polymorphism?!? maybe enum?
      */
     static func property(_ string:String) -> Any{
         switch(true) {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
-            case StringAsserter.boolean(string):return StringParser.boolean(string)/*true or false*/
-            case StringAsserter.color(string):return StringParser.nsColor(string)/*#00ff00 or 00ff00*/
+            case StringAsserter.boolean(string):return string.bool/*true or false*/
+            case StringAsserter.color(string):return string.nsColor/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.nsColor(string)/*green red etc*/
-            case RegExp.test(string,"^linear-gradient\\b"):return linearGradient(string)/*linear-gradient*/// :TODO: create a more complte exprrison for this test
-            case RegExp.test(string,"^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
-            case RegExp.test(string,"^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
-            case RegExp.test(string,"^textFormat\\b"):return textFormat(string)
-            case RegExp.test(string,"^textField\\b"):return textField(string)
-            case RegExp.test(string,"^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"):/*Swift.print("isArray");*/return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
-            case RegExp.test(string,"(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):/*Swift.print("isString");*/return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
+            case string.test("^linear-gradient\\b"):return linearGradient(string)/*linear-gradient*/// :TODO: create a more complte exprrison for this test
+            case string.test("^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
+            case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
+            case string.test("^textFormat\\b"):return textFormat(string)
+            //case RegExp.test(string,"^textField\\b"):return textField(string)
+            case string.test("^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"):/*Swift.print("isArray");*/return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
+            case string.test("(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):/*Swift.print("isString");*/return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
     }
@@ -33,9 +33,9 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
     static func linearGradient(_ string:String)->IGradient{
-        let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
-        var properties:[String] = StringModifier.split(propertyString, ",")
-        let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties))/*the first item is always the rotation, top or left or top left etc*/
+        let propertyString:String = string.match("(?<=linear-gradient\\().+?(?=\\);?)")[0]
+        var properties:[String] = propertyString.split(",")
+        let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
         return gradient
@@ -64,7 +64,7 @@ class CSSPropertyParser {
      */
      static func radialGradient(_ string:String)->IGradient{
         let propertyString:String = string.match("(?<=radial-gradient\\().+?(?=\\);?)")[0]
-        var properties:[String] = StringModifier.split(propertyString, ",")
+        var properties:[String] = propertyString.split(",")
         let setupString:String = properties.shift()
         let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         //gradient.colors[0]
@@ -106,10 +106,10 @@ class CSSPropertyParser {
     static func textFormat(_ input:String) -> TextFormat {
         let textFormat:TextFormat = TextFormat()
         let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
-        let propertyString:String = RegExp.match(input,pattern)[0]
-        let properties:[String] = StringParser.split(propertyString, ",")
+        let propertyString:String = input.match(pattern)[0]
+        let properties:[String] = propertyString.split(",")
         for property:String in properties{
-            let matches:[NSTextCheckingResult] = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
+            let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
             for match:NSTextCheckingResult in matches{
                 let name:String = match.value(property, 1)/*Capturing group 1*/
                 var value:Any = match.value(property, 2)/*Capturing group 2*/
@@ -121,30 +121,6 @@ class CSSPropertyParser {
             }
         }
         return textFormat
-    }
-    /**
-     * Textfield
-     * TODO: should possibly return a TextField class instance or alike
-     */
-    static func textField(_ input:String)->Dictionary<String,Any>{
-        var textField:Dictionary<String,Any> = Dictionary<String,Any>()
-        let propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
-        var properties:Array = propertyString.split(",")
-        for i in 0..<properties.count{//swift 3 update
-            let property:String = properties[i]
-            let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
-            for match:NSTextCheckingResult in matches {
-                let name:String = match.value(property,1)/*capturing group 1*/
-                var value:Any = match.value(property,2)/*capturing group 2*/
-                let isColorVal:Bool = ["textColor","backgroundColor","borderColor"].index(value: name) != -1
-                if(isColorVal) { value = StringParser.nsColor(value as! String)}
-                else if(value as! String == "true") { value = true }
-                else if(value as! String == "false") { value = false }
-                textField[name] = value
-            }
-        }
-        fatalError("out of order")
-        //return textField
     }
     /**
      * Returns a DropShadowFilter instance
@@ -175,30 +151,20 @@ private class Utils{
      * NOTE: adds colors, opacities and ratios
      */
     static func gradient(_ properties:[String])->IGradient {
-        //print("CSSPropertyparser: Utils.gradient.properties: " + String(properties));
         let gradient:Gradient = Gradient()
         for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
             let property:String = properties[i]
             let pattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
-            let matches:[NSTextCheckingResult] = RegExp.matches(property, pattern)
-            //Swift.print("matches.count: " + "\(matches.count)")
+            let matches:[NSTextCheckingResult] = property.matches(pattern)
             for match:NSTextCheckingResult in matches {
-                //Swift.print("match.numberOfRanges: " + "\(match.numberOfRanges)")
-                //let content = RegExp.value(property, match, 0)//the entire match
                 let color:String = match.value(property,1)
-                //Swift.print("color: " + color)
                 let alpha:String = match.value(property, 2)
-                //Swift.print("alpha: " + alpha)
                 let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat
-                //Swift.print("alphaVal: " + "\(alphaVal)")
                 gradient.colors.append(CGColorParser.cgColor(StringParser.color(color),alphaVal))//append color
-                let ratio:String = RegExp.value(property, match, 3)
-                //Swift.print("ratio: " + ratio)
+                let ratio:String = match.value(property,3)
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (i.double / (properties.count.double-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                //Swift.print("gradient.locations start: " + "\(gradient.locations.count)")
-                gradient.locations.append(ratioValue.cgFloat)//append ratioValue
-                //Swift.print("gradient.locations end: " + "\(gradient.locations.count)")
+                gradient.locations.append(ratioValue.cgFloat)/*append ratioValue*/
             }
         }
         return gradient
@@ -207,16 +173,15 @@ private class Utils{
      *
      */
     static func rotation(_ rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
-        var rotation:CGFloat;
+        var rotation:CGFloat
         let directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left" // :TODO: support for tl tr br bk l r t b?
-        if(RegExp.test(rotationMatch,"^\\d+?deg|\\d+$")) {
-            rotation = CGFloat(Double(RegExp.match(rotationMatch, "^\\d+?$|^\\d+?(?=deg$)")[0])!)
+        if(rotationMatch.test("^\\d+?deg|\\d+$")) {
+            rotation = rotationMatch.match("^\\d+?$|^\\d+?(?=deg$)")[0].cgFloat
         }
-        else if(RegExp.test(rotationMatch,directionPattern)){
-            let angleType:String = RegExp.match(rotationMatch,directionPattern)[0]
+        else if(rotationMatch.test(directionPattern)){
+            let angleType:String = rotationMatch.match(directionPattern)[0]
             rotation = Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}
-        //Swift.print("rotation: " + rotation)
         return rotation
     }
     /**
@@ -225,10 +190,10 @@ private class Utils{
     static func ratio(_ ratio:String)->Double{//<--Why not CGFloat?
         var ratio = ratio
         var ratioValue:Double = Double.nan
-        if(RegExp.test(ratio,"\\d{1,3}%")){/*i.e: 100%*/
-            ratio = RegExp.match(ratio,"\\d{1,3}")[0]
+        if(ratio.test("\\d{1,3}%")){/*i.e: 100%*/
+            ratio = ratio.match("\\d{1,3}")[0]
             ratioValue = ratio.double / 100/*255*/
-        }else if(RegExp.test(ratio,"\\d\\.\\d{1,3}|\\d")){ ratioValue = ratio.double /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+        }else if(ratio.test("\\d\\.\\d{1,3}|\\d")){ratioValue = ratio.double /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         return ratioValue
     }
     /**
@@ -237,13 +202,41 @@ private class Utils{
     static func alpha(_ alpha:String)->Double{
         var alpha = alpha
         var alphaValue:Double = 1
-        if(RegExp.test(alpha,"\\d{1,3}%")){/*i.e: 100%*/
-            alpha = RegExp.match(alpha,"\\d{1,3}")[0]
+        if(alpha.test("\\d{1,3}%")){/*i.e: 100%*/
+            alpha = alpha.match("\\d{1,3}")[0]
             alphaValue = alpha.double/100
-        }else if(RegExp.test(alpha,"\\d\\.\\d{1,3}|\\d")) {alphaValue = alpha.double}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
-        else if(RegExp.test(alpha,"^$")) {alphaValue = 1}//no value present
+        }else if(alpha.test("\\d\\.\\d{1,3}|\\d")) {alphaValue = alpha.double}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+        else if(alpha.test("^$")) {alphaValue = 1}//no value present
         return alphaValue
     }
+}
+//DEPRECATED
+extension CSSPropertyParser{
+    /**
+     * Textfield
+     * TODO: should possibly return a TextField class instance or alike
+     */
+    /*
+    static func textField(_ input:String)->[String:Any]{
+        var textField:[String:Any] = [String:Any]()
+        let propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
+        var properties:[String] = propertyString.split(",")
+        for i in 0..<properties.count{//swift 3 update
+            let property:String = properties[i]
+            let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
+            for match:NSTextCheckingResult in matches {
+                let name:String = match.value(property,1)/*capturing group 1*/
+                var value:Any = match.value(property,2)/*capturing group 2*/
+                if(value as! String == "true") { value = true }
+                else if(value as! String == "false") { value = false }
+                else if ["textColor","backgroundColor","borderColor"].has(name) {value = StringParser.nsColor(value as! String)}
+                textField[name] = value
+            }
+        }
+        fatalError("out of order")
+        //return textField
+    }
+    */
 }
 /*
 // :TODO: Maybe support for color values like: 0x00ff00 and 00ff00

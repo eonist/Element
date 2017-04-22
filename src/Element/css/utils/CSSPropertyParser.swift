@@ -112,13 +112,10 @@ class CSSPropertyParser {
             let matches:[NSTextCheckingResult] = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
             for match:NSTextCheckingResult in matches{
                 let name:String = match.value(property, 1)/*Capturing group 1*/
-                let value = {
-                    let val:String = match.value(property, 2)/*Capturing group 2*/
-                    if(name == "color") { return StringParser.nsColor(val) }
-                    else if("\(val)" == "true") {return true }
-                    else if("\(val)" == "false") {return false }
-                    else return val
-                }
+                var value:Any = match.value(property, 2)/*Capturing group 2*/
+                if(name == "color") { value = StringParser.nsColor(value as! String) }
+                else if("\(value)" == "true") {value = true }
+                else if("\(value)" == "false") {value = false }
                 //else {StringParser.boolean(String(value))}
                 textFormat[name] = value
             }
@@ -139,7 +136,8 @@ class CSSPropertyParser {
             for match:NSTextCheckingResult in matches {
                 let name:String = match.value(property,1)/*capturing group 1*/
                 var value:Any = match.value(property,2)/*capturing group 2*/
-                if(name == "textColor" || name == "backgroundColor" || name ==  "borderColor") { value = StringParser.nsColor(value as! String)}
+                ["textColor","backgroundColor","borderColor"]
+                if(name) { value = StringParser.nsColor(value as! String)}
                 else if(value as! String == "true") { value = true }
                 else if(value as! String == "false") { value = false }
                 textField[name] = value

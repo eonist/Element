@@ -5,15 +5,36 @@ extension IStyle{
      * Convenience method since apple doesn't support default values in protocols
      * NOTE: Default argument not permitted in a protocol method
      */
-    func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
+    /*func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
         return getStyleProperty(name, depth)
+     }*/
+    /**
+     * Returns a style property by the name given
+     * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?
+     */
+    func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
+        //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
+        for styleProperty : IStyleProperty in styleProperties {
+            //Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
+            if(styleProperty.name == name && styleProperty.depth == depth){
+                return styleProperty
+            }
+        }
+        return nil
     }
     /**
      * Convenience method since apple doesnt support default values in protocols
      * NOTE: Default argument not permitted in a protocol method
      */
-    func getValue(_ name:String,_ depth:Int = 0)->Any?{
+    /*func getValue(_ name:String,_ depth:Int = 0)->Any?{
         return getValue(name, depth)
+     }*/
+    /**
+     * NOTE: this function is not redundant, its usefull for qucik access in some methods
+     */
+    func getValue(_ name:String,_ depth:Int = 0)->Any?{
+        var styleProperty:IStyleProperty? = getStyleProperty(name,depth)
+        return styleProperty != nil ? styleProperty?.value : nil
     }
     func describe(){
         StyleParser.describe(self)
@@ -43,20 +64,7 @@ extension IStyle{
             addStyleProperty(styleProperty)
         }
     }
-    /**
-     * Returns a style property by the name given
-     * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?
-     */
-    func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
-        //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
-        for styleProperty : IStyleProperty in styleProperties {
-            //Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
-            if(styleProperty.name == name && styleProperty.depth == depth){
-                return styleProperty
-            }
-        }
-        return nil
-    }
+   
     /**
      * NOTE: StyleParser.depthCount() uses this method
      */
@@ -71,13 +79,7 @@ extension IStyle{
     func getStylePropertyAt(_ index:Int)->IStyleProperty{
         return styleProperties[index]
     }
-    /**
-     * NOTE: this function is not redundant, its usefull for qucik access in some methods
-     */
-    func getValue(_ name:String,_ depth:Int = 0)->Any?{
-        var styleProperty:IStyleProperty? = getStyleProperty(name,depth)
-        return styleProperty != nil ? styleProperty?.value : nil
-    }
+    
     /**
      * NOTE: this method is here for convenience (methods that should be contained in an Utils class are thous that are seldom used)
      */

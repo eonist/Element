@@ -1,9 +1,10 @@
 import Foundation
-class WeightedStyle:Style/*,Comparable*/{
+struct WeightedStyle:IStyle/*,Comparable*/{
     /*private(set) internal */var styleWeight: StyleWeight
+    var style:IStyle
     init(_ style:IStyle, _ styleWeight:StyleWeight) {
         self.styleWeight = styleWeight;
-        super.init(style.name,style.selectors,style.styleProperties);
+        self.style = style//super.init(style.name,style.selectors,style.styleProperties);
     }
 }
 /*

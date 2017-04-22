@@ -19,11 +19,11 @@ class CheckBoxButton:Button,ICheckable,LableKind{
         text = addSubView(Text(width,height,textString,self)) 
         text!.isInteractive = false
     }
-    func setChecked(_ isChecked:Bool) {
-        checkBox!.setChecked(isChecked)
-    }
     override func onEvent(_ event:Event) {//TODO: You could remove this method, as it doesnt add any functionality
         super.onEvent(event)/*Forwards the event*/
+    }
+    func setChecked(_ isChecked:Bool) {
+        checkBox!.setChecked(isChecked)
     }
     func getChecked() -> Bool {
         return checkBox != nil ? checkBox!.getChecked() : self.isChecked/*<--Temp fix*/

@@ -1,7 +1,7 @@
-import Foundation
+/*import Foundation
 //DEPRECATE THIS CLASS
 class CircUtils {
-    /*
+ 
     /**
      * Returns an PrimitiveCirc, with correct position according to lineOffsetType
      */
@@ -17,5 +17,6 @@ class CircUtils {
     else if(offsetType.offsetType == OffsetType.INSIDE) return -1 *(lineStyle.thickness/2);
     else return 0;
     }
-    */
+ 
 }
+ */

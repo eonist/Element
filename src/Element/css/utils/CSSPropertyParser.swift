@@ -11,7 +11,6 @@ class CSSPropertyParser {
      * TODO: Long switch statments can be replaced by polymorphism?!?
      */
     static func property(_ string:String) -> Any{
-        //Swift.print("CSSPropertyParser.property() string: >" + string + "<")
         switch(true) {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
@@ -34,13 +33,11 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
     static func linearGradient(_ string:String)->IGradient{
-        //Swift.print("CSSPropertyparser.linearGradient")
         let propertyString:String = RegExp.match(string, "(?<=linear-gradient\\().+?(?=\\);?)")[0]
         var properties:[String] = StringModifier.split(propertyString, ",")
         let rotation:CGFloat = Utils.rotation(ArrayModifier.shift(&properties))/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
         gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
-        //Swift.print("CSSPropertyParser.linearGradient.rotation: " + "\(gradient.rotation)")
         return gradient
     }
     /**
@@ -58,7 +55,7 @@ class CSSPropertyParser {
      * NOTE: A better css syntax would be: radial-gradient(x1 y1 w1 h1 x2 y2 w2 h2,color alpha ratio) and if supply only the first 4 % variables then the center and the focal point is the same and you get an "uniform spread"
      * NOTE: somehow also add support for: reflect and repeat
      * NOTE: the reason we do it this way is that this approach can make any 2 point radial gradient. some scaling may be needed
-     * IMPORTANT:
+     * IMPORTANT:⚠️️
      * SpreadMethod.REFLECT
      * SpreadMethod.REPEAT
      * SpreadMethod.PAD for the spread
@@ -78,7 +75,7 @@ class CSSPropertyParser {
         let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1
         let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
         gradient.rotation = rotation
-        gradient.startCenter = /*<-focalPointRatio*/ CGPoint(0,setup.count == 6 ? CGFloat((Double(setup[5])!)) : 0);/*the last item is always the focalPointRatio always between -1 to 1*/
+        gradient.startCenter = CGPoint(0,setup.count == 6 ? setup[5].cgFloat : 0)/*the last item is always the focalPointRatio always between -1 to 1*/
         gradient.startRadius = CGSize(0,0)
         gradient.endCenter = CGPoint(x,y)
         gradient.endRadius = CGSize(yScale,xScale)/*<---We re-order the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
@@ -90,16 +87,14 @@ class CSSPropertyParser {
      * TODO: does this support comma delimited lists?
      */
     static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
-        //Swift.print("CSSPropertyParser.array()")
         let matches:[String] = StringModifier.split(string, " ")
-        var array:[Any] = []
-        for str:String in matches {
+        let array:[Any] = matches.map { str in
             if(StringAsserter.digit(str)){
-                array.append(StringParser.digit(str))
+                return StringParser.digit(str)
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
-                array.append(StringParser.nsColor(str))
+                return StringParser.nsColor(str)
             }else{
-                array.append(str)
+                return str
             }
         }
         return array

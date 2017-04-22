@@ -236,8 +236,11 @@ class StylePropertyParser{
      * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
-        let value:Any? = self.value(skin, CSSConstants.margin,depth)
-        let margin:Margin = value != nil ? Margin(value!) : Margin()
+        if let val = self.value(skin, CSSConstants.margin,depth), let margin:Margin = Margin(value){
+            
+        }
+        
+        let margin:Margin = value != nil ?  : Margin()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth)
         //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
         margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/

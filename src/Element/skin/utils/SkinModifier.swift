@@ -146,7 +146,7 @@ private class Utils{
     }
     /**
      * NOTE:-1 -> Not found
-     * TODO: Upgrade this method with functional programming: subViews.map.lazy.first(){elmt == $1}
+     * TODO: Upgrade this method with functional programming: subViews.map.lazy.first(){elmt == $1} etc etc
      */
     static func elementIndex(_ parent:NSView,_ element:Element)->Int {
         return ArrayParser.indx(ElementParser.children(parent,Element.self), element)

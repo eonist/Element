@@ -9,7 +9,7 @@ extension ElasticSlidableScrollable {
      * IMPORTANT: This setProgress comes from shallow not deep. Check Callers to see the shallow calls
      */
     func setProgress(_ value:CGFloat) {//<-direct transmission value 💥
-        Swift.print("👻🏂📜 ElasticSlidableScrollable.setProgress(\(value)) 💥")
+        //Swift.print("👻🏂📜 ElasticSlidableScrollable.setProgress(\(value)) 💥")
         (self as Elastic).setProgress(value)
         let sliderProgress = ElasticUtils.progress(value,contentSize[dir],maskSize[dir])
         slider!.setProgressValue(sliderProgress)//<- scalar value 0-1
@@ -18,7 +18,7 @@ extension ElasticSlidableScrollable {
      * ⚠️️⚠️️⚠️️SUPER IMPORTANT CONCEPT⚠️️⚠️️⚠️️: methods that are called from shallow can overide downstream in POP
      */
     func scroll(_ event: NSEvent) {
-        Swift.print("👻🏂📜 ElasticSlidableScrollable.scroll()")
+        //Swift.print("👻🏂📜 ElasticSlidableScrollable.scroll()")
         (self as Scrollable).scroll(event)//👈 calls from shallow can overide downstream
         /*the following must be after the call above or else the thumb is hidden because of anim.end*/
         if(event.phase == NSEventPhase.changed){
@@ -33,7 +33,7 @@ extension ElasticSlidableScrollable {
         }
     }
     func scrollWheelExitedAndIsStationary() {
-        Swift.print("👻🏂📜 ElasticSlidableScrollable2.scrollWheelExitedAndIsStationary()")
+        //Swift.print("👻🏂📜 ElasticSlidableScrollable2.scrollWheelExitedAndIsStationary()")
         hideSlider()
     }
     //TODO: some experimenting required when implementing setProgress

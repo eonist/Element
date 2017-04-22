@@ -16,22 +16,4 @@ protocol IStyle {
     func getStyleProperties(_ name:String)->[IStyleProperty]
     func getStylePropertyAt(_ index:Int)->IStyleProperty
 }
-extension IStyle{
-    /**
-     * Convenience method since apple doesn't support default values in protocols
-     * NOTE: Default argument not permitted in a protocol method
-     */
-    func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
-        return getStyleProperty(name, depth)
-    }
-    /**
-     * Convenience method since apple doesnt support default values in protocols
-     * NOTE: Default argument not permitted in a protocol method
-     */
-    func getValue(_ name:String,_ depth:Int = 0)->Any?{
-        return getValue(name, depth)
-    }
-    func describe(){
-        StyleParser.describe(self)
-    }
-}
+

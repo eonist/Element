@@ -8,7 +8,7 @@ protocol IStyle {
     /*Core methods*/
     func addStyleProperty(_ styleProperty:IStyleProperty)
     func addStyleProperty(_ styleProperties:[IStyleProperty])
-    func addStyleProperties(_ styleProperties:[IStyleProperty])
+    //func addStyleProperties(_ styleProperties:[IStyleProperty])
     /*Implicit getters / setters*/
     func getStyleProperty(_ name:String,_ depth:Int)->IStyleProperty?
     func getValueAt(_ index:Int)->Any

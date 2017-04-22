@@ -64,7 +64,6 @@ extension IStyle{
             addStyleProperty(styleProperty)
         }
     }
-   
     /**
      * NOTE: StyleParser.depthCount() uses this method
      */

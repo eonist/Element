@@ -75,7 +75,7 @@ private class Utils {
      */
     static func propertyValue(_ string:String,_ linkName:String,_ propertyName:String)->String{
         let pattern:String = "(?<=" + linkName + "\\{)(.|\\n)+?(?=\\})"
-        var match:Array = RegExp.match(string, pattern)
+        var match:[String] = RegExp.match(string, pattern)
         if(match.count > 0){/*this try catch method is here so its easier to debug which linkName threw */
             let matchString:String =  match[0]
             return value(matchString,propertyName)

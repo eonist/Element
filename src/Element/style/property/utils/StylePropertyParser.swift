@@ -261,10 +261,13 @@ class StylePropertyParser{
         return Utils.metric(value,skin)
     }
     /**
-     * Beta
+     * Retuns asser url
      */
-    static func asset(_ skin:ISkin, _ depth:Int = 0)-> String {
-        return (value(skin, CSSConstants.fill,depth) as! Array<Any>)[0] as! String
+    static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {
+        if let val = value(skin, CSSConstants.fill,depth), let arr = val as? [Any], let str = arr[0] as? String{
+            return str
+        }
+        fatalError("no asset in \(skin) at depth: \(depth)")
     }
     /**
      * TODO: This method is asserted before its used, so you may ommit the optionality

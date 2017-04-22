@@ -111,13 +111,12 @@ class CSSPropertyParser {
         for property:String in properties{
             let matches:[NSTextCheckingResult] = RegExp.matches(property,"^(\\w+?)\\:(.+?)$");
             for match:NSTextCheckingResult in matches{
-                let name:String = (property as NSString).substring(with: match.rangeAt(1))//capturing group 1
-                var value:Any = (property as NSString).substring(with: match.rangeAt(2))//capturing group 2
+                let name:String = match.value(property, 1)/*capturing group 1*/
+                var value:Any = match.value(property, 2)/*capturing group 2*/
                 if(name == "color") { value = StringParser.nsColor(value as! String) }
                 else if("\(value)" == "true") {value = true }
                 else if("\(value)" == "false") {value = false }
                 //else {StringParser.boolean(String(value))}
-                //Swift.print("CSSPropertyParser.textFormat() value: " + "\(value)")
                 textFormat[name] = value
             }
         }

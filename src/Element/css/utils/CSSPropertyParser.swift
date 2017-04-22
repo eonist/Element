@@ -5,6 +5,13 @@ import Cocoa
  * TODO: Support for radialGradient: css w3c
  * TODO: Make a pattern for all the w3c color shortcuts svg colors 116 colors
  */
+extension CSSPropertyParser{
+    static var arrayPattern:String = "^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"
+    static var stringPattern:String = "(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"
+    static var linearGradientPattern:String = "(?<=linear-gradient\\().+?(?=\\);?)"
+    static var radialGradientPattern:String = "(?<=radial-gradient\\().+?(?=\\);?)"
+    static var textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
+}
 class CSSPropertyParser {
     /**
      * Returns a CSS property to a property that can be read by the Swift API
@@ -22,8 +29,8 @@ class CSSPropertyParser {
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
             //case RegExp.test(string,"^textField\\b"):return textField(string)
-            case string.test("^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"):/*Swift.print("isArray");*/return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
-            case string.test("(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"):/*Swift.print("isString");*/return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
+            case string.test(arrayPattern):/*Swift.print("isArray");*/return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
+            case string.test(stringPattern):/*Swift.print("isString");*/return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
     }
@@ -33,7 +40,7 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
     static func linearGradient(_ string:String)->IGradient{
-        let propertyString:String = string.match("(?<=linear-gradient\\().+?(?=\\);?)")[0]
+        let propertyString:String = string.match(linearGradientPattern)[0]
         var properties:[String] = propertyString.split(",")
         let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
         var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
@@ -63,7 +70,7 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
      static func radialGradient(_ string:String)->IGradient{
-        let propertyString:String = string.match("(?<=radial-gradient\\().+?(?=\\);?)")[0]
+        let propertyString:String = string.match(radialGradientPattern)[0]
         var properties:[String] = propertyString.split(",")
         let setupString:String = properties.shift()
         let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
@@ -105,8 +112,7 @@ class CSSPropertyParser {
      */
     static func textFormat(_ input:String) -> TextFormat {
         let textFormat:TextFormat = TextFormat()
-        let pattern:String = "(?<=textFormat\\().+?(?=\\);?)"
-        let propertyString:String = input.match(pattern)[0]
+        let propertyString:String = input.match(textFormatPattern)[0]
         let properties:[String] = propertyString.split(",")
         for property:String in properties{
             let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")

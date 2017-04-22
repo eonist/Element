@@ -236,10 +236,12 @@ class StylePropertyParser{
      * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
-        let value:Any? = self.value(skin, CSSConstants.margin,depth)
-        let margin:Margin = value != nil ? Margin(value!) : Margin()
+        let margin:Margin = {
+            guard let value = self.value(skin, CSSConstants.margin,depth) else{
+                return Margin()
+            };return Margin(value)
+        }()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth)
-        //Swift.print(StyleParser.index(skin.style!, CSSConstants.marginLeft))
         margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
         margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight,depth) > marginIndex ? metric(skin, CSSConstants.marginRight,depth) : Utils.metric(margin.right, skin))!
         margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop,depth) > marginIndex ? metric(skin, CSSConstants.marginTop,depth) : Utils.metric(margin.top, skin))!
@@ -257,7 +259,6 @@ class StylePropertyParser{
      */
     static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)
-        //Swift.print("value: " + "\(value)")
         return Utils.metric(value,skin)
     }
     /**

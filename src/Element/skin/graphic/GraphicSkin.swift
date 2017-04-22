@@ -27,7 +27,7 @@ class GraphicSkin:Skin{
                 if(hasSizeChanged){
                     let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
                     Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
-                }//do sizing of the sizable here
+                }//Do sizing of the sizable here
                 if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
                 _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
                 if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/

@@ -16,7 +16,7 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
         super.onEvent(SelectEvent(SelectEvent.select,self))/*bubbles:true because i.e: radioBulet may be added to RadioButton and radioButton needs to dispatch Select event if the SelectGroup is to work*/
     }
     /**
-     * NOTE: Do not add a dispatch event here, that is the responsibilyy of the caller
+     * NOTE: Do not add a dispatch event here, that is the responsibily of the caller
      */
     func setSelected(_ isSelected:Bool) {
         self.isSelected = isSelected
@@ -26,5 +26,5 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
     override func getSkinState() -> String {
         return self.isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState()
     }
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

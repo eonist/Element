@@ -58,14 +58,14 @@ class CSSParser{
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
      * NOTE: now supports StyleProperty2 that can have many property values
      */
-    static func styleProperties(_ propertyName:String, _ propertyValue:String)->Array<IStyleProperty>{
+    static func styleProperties(_ propertyName:String, _ propertyValue:String)->[IStyleProperty]{
         var styleProperties:[IStyleProperty] = []
-        let names = StringAsserter.contains(propertyName, ",") ? StringModifier.split(propertyName, propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
+        let names = propertyName.contains(",") ? propertyName.split(propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         for var name in names {
             name = RegExpModifier.removeWrappingWhitespace(name)
             let valExp:String = "\\w\\.\\-%#\\040<>\\/~";/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
-            var values:[String] = RegExp.match(propertyValue,pattern)
+            var values:[String] = propertyValue.match(pattern)
             for i in 0..<values.count{
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)

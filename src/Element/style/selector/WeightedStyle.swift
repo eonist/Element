@@ -7,6 +7,11 @@ struct WeightedStyle:IStyle/*,Comparable*/{
         self.style = style//super.init(style.name,style.selectors,style.styleProperties);
     }
 }
+extension WeightedStyle{
+    var name:String {return style.name}
+    var selectors:[ISelector] {return style.selectors}
+    var styleProperties:[IStyleProperty] {get{return styleProperties}set{styleProperties = newValue}}
+}
 /*
 func < (lhs: WeightedStyle, rhs: WeightedStyle) -> Bool {
     return lhs.someNumber < rhs.someNumber

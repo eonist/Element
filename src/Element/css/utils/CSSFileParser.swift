@@ -34,13 +34,11 @@ class CSSFileParser {
      * TODO: this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
-    static func importStrings(_ string:String)->Array<String> {
-        var importStrings:[String] = []
+    static func importStrings(_ string:String)->[String]{
         let pattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
         let matches = RegExp.matches(string, pattern)
-        matches.forEach {
-            let url = $0.value(string, 1)//capturing group 1
-            importStrings.append(url)
+        let importStrings:[String] = matches.map {
+            $0.value(string, 1)/*capturing group 1*/
         }
         return importStrings
     }

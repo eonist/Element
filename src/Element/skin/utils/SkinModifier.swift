@@ -177,7 +177,7 @@ private class Utils{
      * PARAM: range is the range within the possible rightfloating skin can be in
      * CAUTION: the reason we dont use range or for in range {} is because the methods that call this doesnt assert for empty arrays. Fix this later. for now the code is clumpsy but works 
      */
-    static func lastIndex(_ elements:Array<IElement>,_ rangeStart:Int,_ rangeEnd:Int,_ floatType:String,_ exception:((ISkin)->Bool)? = nil)->Int {
+    static func lastIndex(_ elements:[IElement],_ rangeStart:Int,_ rangeEnd:Int,_ floatType:String,_ exception:((ISkin)->Bool)? = nil)->Int {
         var i:Int = rangeEnd
         while(i >= rangeStart){//was: for(var i:Int = range.end; i >= range.start; i--){
             let skin:ISkin = elements[i].skin!

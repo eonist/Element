@@ -25,15 +25,13 @@ class SkinParser {
         return margin.top + border.top + padding.top + height + padding.bottom + border.bottom + margin.bottom
     }
     /**
-     *
+     * Returns width
      */
     static func width(_ skin:ISkin)->CGFloat {
-        //Swift.print("skin.element!.getWidth(): " + "\(skin.element!.getWidth())")
-        //Swift.print("skin.getWidth(): " + "\(skin.getWidth())")
         return !skin.element!.getWidth().isNaN ? skin.element!.getWidth() : skin.getWidth()
     }
     /**
-     *
+     * Returns height
      */
     static func height(_ skin:ISkin)->CGFloat {
         return !skin.element!.getHeight().isNaN ? skin.element!.getHeight() : skin.getHeight()

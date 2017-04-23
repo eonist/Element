@@ -6,14 +6,7 @@ extension IStyle{
      * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?
      */
     func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
-        //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
-        for styleProperty : IStyleProperty in styleProperties {
-            //Swift.print("styleProperty.name: " + "\(styleProperty.name)" + " depth: " + "\(styleProperty.depth)")
-            if(styleProperty.name == name && styleProperty.depth == depth){
-                return styleProperty
-            }
-        }
-        return nil
+        return styleProperties.first(where: {$0.name == name && $0.depth == depth})
     }
     /**
      * NOTE: this function is not redundant, it's usefull for qucik access in some methods
@@ -22,14 +15,8 @@ extension IStyle{
         var styleProperty:IStyleProperty? = getStyleProperty(name,depth)
         return styleProperty != nil ? styleProperty?.value : nil
     }
-    func describe(){
-        StyleParser.describe(self)
-    }
     /**
      * Add styleProperty
-     * NOTE: will throw an error if a styleProperty with the same name is allready added
-     * NOTE: the reason that the following methods are not moved into StyleModifier is because they arent that complex, a minimal set of core methods are ok in a bean style class like this, more advance methods can go into StyleModifier
-     * TODO: but this method is cognativly taxing just look how long it is, makes more sense to move it to a modifier class, only simple methods should be in Type classes
      */
     mutating func addStyleProperty(_ styleProperty:IStyleProperty) {
         styleProperties.append(styleProperty)//TODO:this method is more elaborate, it checks if the item is original, if its not throw error, implement this when its time
@@ -38,9 +25,7 @@ extension IStyle{
      * Adds styleProperties
      */
     mutating func addStyleProperty(_ styleProperties:[IStyleProperty]){
-        for styleProperty:IStyleProperty in styleProperties{
-            self.addStyleProperty(styleProperty)
-        }
+        self.styleProperties = styleProperties.map{$0}
     }
     /**
      * NOTE: StyleParser.depthCount() uses this method
@@ -61,6 +46,9 @@ extension IStyle{
      */
     func getValueAt(_ index:Int)->Any{
         return getStylePropertyAt(index).value
+    }
+    func describe(){
+        StyleParser.describe(self)
     }
 }
 

@@ -115,19 +115,24 @@ class CSSPropertyParser {
         
         let propertyString:String = input.match(textFormatPattern)[0]
         let properties:[String] = propertyString.split(",")
-        let textFormat:TextFormat = properties.map { property in
+        /*let textFormat:TextFormat*/
+        _ = properties.map { property in
             let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
-            matches.map {  match in
+            return matches
+            }.map{  match in
+                
                 let name:String = match.value(property, 1)/*Capturing group 1*/
                 var value:Any = match.value(property, 2)/*Capturing group 2*/
                 if(name == "color") { value = StringParser.nsColor(value as! String) }
                 else if("\(value)" == "true") {value = true }
                 else if("\(value)" == "false") {value = false }
                 //else {StringParser.boolean(String(value))}
+            }.reduce(TextFormat()){
                 textFormat[name] = value
-            }
         }
-        return textFormat
+        
+        
+        return TextFormat()
     }
     /**
      * Returns a DropShadowFilter instance

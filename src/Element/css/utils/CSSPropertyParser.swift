@@ -116,14 +116,14 @@ class CSSPropertyParser {
         let propertyString:String = input.match(textFormatPattern)[0]
         let properties:[String] = propertyString.split(",")
         /**/
-        let textFormat:TextFormat = properties.lazy.map { property -> [NSTextCheckingResult] in
+        let textFormat:TextFormat = properties.lazy.map { property -> NSTextCheckingResult in
                 //let property:String = $0
                 let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
                 return matches
             }.map{ matchVal -> (name:String,value:Any) in
-                //let match:NSTextCheckingResult = $0
-                let name:String = match.value(property, 1)/*Capturing group 1*/
-                var value:Any = match.value(property, 2)/*Capturing group 2*/
+                let match:NSTextCheckingResult = matchVal
+                let name:String = matchVal.value(property, 1)/*Capturing group 1*/
+                var value:Any = matchVal.value(property, 2)/*Capturing group 2*/
                 if(name == "color") { value = StringParser.nsColor(value as! String) }
                 else if("\(value)" == "true") {value = true }
                 else if("\(value)" == "false") {value = false }

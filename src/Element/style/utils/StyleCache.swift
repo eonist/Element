@@ -67,7 +67,7 @@ extension StyleCache{
         return true
     }
     /**
-     * Asserts if files has been caches
+     * Asserts if files has been caches, looks a bit buggy
      */
     static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
         var hasBeenCached:Bool = false
@@ -88,12 +88,10 @@ extension StyleCache{
         let data:XML = "<data></data>".xml
         let cssFileDates:XML = StyleCache.cssFileDates()
         data.appendChild(cssFileDates)
-        let styles:XML = "<styles></styles>".xml
-        //Swift.print("StyleManager.styles.count: " + "\(StyleManager.styles.count)")
-        StyleManager.styles.forEach{
-            let xml = Reflection.toXML($0)
-            styles.appendChild(xml)
-            //Swift.print("xml.XMLString: " + "\(xml.xmlString)")
+        let styles:XML = StyleManager.styles.reduce("<styles></styles>".xml){
+            let xml = Reflection.toXML($1)
+            $0.appendChild(xml)
+            return $0
         }
         data.appendChild(styles)
         let contentToWriteToDisk = data.xmlString

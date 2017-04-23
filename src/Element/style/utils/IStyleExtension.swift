@@ -30,13 +30,9 @@ extension IStyle{
      * NOTE: StyleParser.depthCount() uses this method
      */
     func getStyleProperties(_ name:String)->[IStyleProperty]{
-        var styleProperties:[IStyleProperty] = []
-        for styleProperty : IStyleProperty in self.styleProperties{
-            if(styleProperty.name == name) {
-                styleProperties.append(styleProperty)
-            }
+        return self.styleProperties.filter(){ styleProperty in
+            styleProperty.name == name
         }
-        return styleProperties
     }
     /**
      * NOTE: a benefit of having this method is that when used you can use the interface of the return type instantly

@@ -53,8 +53,8 @@ class CSSParser{
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
             return styleProperties
             }.reduce(initStyle){
-                var style:IStyle = $1
-                style.addStyleProperty(styleProperties)
+                var style:IStyle = initStyle
+                style.addStyleProperty($1)
                 return style
         }
         

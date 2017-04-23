@@ -112,10 +112,7 @@ extension StyleManager{
      * RETURN: a Style
      */
     static func getStyle(_ name:String)->IStyle?{
-        for (_,style) in self.styles.enumerated(){//<--forEach was not used because it doesn't allow return
-            if(style.name == name) {return style}
-        }
-        return nil
+        return self.styles.first(where:{$0.name == name})
     }
     static func getStyleAt(_ index:Int)->IStyle{
         return styles[index]

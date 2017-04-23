@@ -18,6 +18,7 @@ class CSSParser{
      * NOTE: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      */
     static func styleCollection(_ cssString:String)->IStyleCollection{
+        Swift.print("styleCollection")
         let styleCollection:IStyleCollection = StyleCollection();
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
@@ -42,7 +43,6 @@ class CSSParser{
     static func style(_ name:String,_ value:String)->IStyle!{
         Swift.print("style")
         var name:String = name
-        //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)

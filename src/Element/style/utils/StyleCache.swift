@@ -45,8 +45,11 @@ extension StyleCache{
         //Swift.print("xml.children?.count: " + "\(xml.children?.count)")
         let stylesXML:XML = xml.firstNode("styles")!
         //Swift.print("stylesXML.children?.count: " + "\(stylesXML.children?.count)")
-        let styles:[IStyle] = stylesXML.children?.flatMap{
+        let styles:[IStyle] = stylesXML.children!.map{
             let style:Style? = Style.unWrap($0 as! XML)
+            return style
+        }.filter{
+            
             if(style != nil) {
                 return
             }

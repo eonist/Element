@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 extension IStyleCollection{
     /**
@@ -12,7 +13,7 @@ extension IStyleCollection{
      * Adds a style to the StyleCollection instance
      * PARAM: style: IStyle
      */
-    func addStyle(_ style:IStyle){
+    mutating func addStyle(_ style:IStyle){
         for var styleItem in styles {
             if(styleItem.name == style.name) {/*if there are duplicates merge them*/
                 StyleModifier.combine(&styleItem, style)/*<--was merge, but styles that comes later in the array with the same name should hard-override properties, not soft-override like it was previously*/

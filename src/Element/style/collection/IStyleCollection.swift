@@ -1,7 +1,7 @@
 import Foundation
 
 protocol IStyleCollection {
-    var styles:[IStyle] {get}
+    var styles:[IStyle] {get set}
 }
 /*func addStyle(_ style:IStyle)
  func addStyles(_ styles:[IStyle])

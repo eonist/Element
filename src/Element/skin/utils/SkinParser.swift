@@ -44,19 +44,16 @@ class SkinParser {
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
         let offset:CGPoint = self.offset(skin)
-        //Swift.print("padding.left: " + padding.left)
-        //Swift.print("margin.left: " + margin.left)
-        //Swift.print("skin.x: " + skin.x)
         return CGPoint(/*(skin.element as DisplayObject).x*/ margin.left + border.left + padding.left + offset.x, /*(skin.element as DisplayObject).y*/ margin.top + border.top + padding.top + offset.y)
     }
     /**
-     *
+     * Returns margin
      */
     static func margin(_ skin:ISkin)->Margin{// :TODO: possibly rename to relativeMargin
         return StylePropertyParser.margin(skin)
     }
     /**
-     *
+     * Returns border
      */
     static func border(_ skin:ISkin)->Border {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);

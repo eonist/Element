@@ -5,9 +5,9 @@ import Foundation
 */
 class SkinResolver{
     /**
-     *  Returns a Skin instance
-     *  TODO: future additions? //resolveSkinFromStylabaleParents(stylable) || resolveSkinByClass(stylable) || resolveSkinBySuperClass(stylable) || resolveSkinByDeafultStyling(stylable)
-     * 	TODO: enable these additions when you have more controll over the Element FrameWork for now you need to throw error to debug
+     * Returns a Skin instance
+     * TODO: future additions? //resolveSkinFromStylabaleParents(stylable) || resolveSkinByClass(stylable) || resolveSkinBySuperClass(stylable) || resolveSkinByDeafultStyling(stylable)
+     * TODO: enable these additions when you have more controll over the Element FrameWork for now you need to throw error to debug
      */
     static func skin(_ element:IElement)->ISkin?{
         let style:IStyle = StyleResolver.style(element)
@@ -18,9 +18,6 @@ class SkinResolver{
      * Throws an error message if a skin cant be resolved (with usefull information for debugging)
      */
     static func resolveError(_ style:IStyle, _ element:IElement)->ISkin {
-        //Swift.print("with parent: " + (element.parent || ""))
-        //Swift.print("with skin: "+element.skin || "")
-        //Swift.print("with style.selector: "+style.name || "")//could have to be altred
         fatalError("SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: "/* + element.id*/)
     }
 }

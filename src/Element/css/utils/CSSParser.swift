@@ -21,7 +21,8 @@ class CSSParser{
     static func styleCollection(_ cssString:String)->IStyleCollection{
         var styleCollection:IStyleCollection = StyleCollection()
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
-        for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
+        matches.mapReduce() {/*Loops through the pattern*/
+            for match:NSTextCheckingResult = $0
             let styleName:String = match.value(cssString, 1)/*name*/
             let value:String = match.value(cssString, 2)/*value*/
             if(StringAsserter.contains(styleName, ",") == false){

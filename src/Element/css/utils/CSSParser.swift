@@ -44,10 +44,9 @@ class CSSParser{
         //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
-        var style:IStyle = Style(name,selectors, [])
         let matches = value.matches(stylePattern)
-        
-        let s:IStyle = matches.mapReduce(style){ (style:IStyle,match:NSTextCheckingResult) in
+        let initStyle:IStyle = Style(name,selectors, [])
+        let style:IStyle = matches.mapReduce(initStyle){ (style:IStyle,match:NSTextCheckingResult) in
             var style:IStyle = style
             let propertyName:String = match.value(value, 1)/*name*/
             let propertyValue:String = match.value(value, 2)/*value*/
@@ -56,12 +55,12 @@ class CSSParser{
             return style
         }
         
-        for match:NSTextCheckingResult in matches {
-            let propertyName:String = match.value(value, 1)/*name*/
-            let propertyValue:String = match.value(value, 2)/*value*/
-            let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
-            style.addStyleProperty(styleProperties)
-        }
+        /*for match:NSTextCheckingResult in matches {
+         let propertyName:String = match.value(value, 1)/*name*/
+         let propertyValue:String = match.value(value, 2)/*value*/
+         let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
+         style.addStyleProperty(styleProperties)
+         }*/
         return style
     }
     /**

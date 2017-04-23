@@ -12,8 +12,7 @@ extension IStyle{
      * NOTE: this function is not redundant, it's usefull for qucik access in some methods
      */
     func getValue(_ name:String,_ depth:Int = 0)->Any?{
-        var styleProperty:IStyleProperty? = getStyleProperty(name,depth)
-        return styleProperty != nil ? styleProperty?.value : nil
+        return getStyleProperty(name,depth)?.value
     }
     /**
      * Add styleProperty
@@ -32,7 +31,11 @@ extension IStyle{
      */
     func getStyleProperties(_ name:String)->[IStyleProperty]{
         var styleProperties:[IStyleProperty] = []
-        for styleProperty : IStyleProperty in self.styleProperties{if(styleProperty.name == name) {styleProperties.append(styleProperty)}}
+        for styleProperty : IStyleProperty in self.styleProperties{
+            if(styleProperty.name == name) {
+                styleProperties.append(styleProperty)
+            }
+        }
         return styleProperties
     }
     /**

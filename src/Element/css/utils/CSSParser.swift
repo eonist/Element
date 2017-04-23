@@ -46,8 +46,7 @@ class CSSParser{
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches:[NSTextCheckingResult] = value.matches(stylePattern)
         var initStyle:IStyle = Style(name,selectors, [])
-        let style:IStyle = matches.lazy.map{
-            let match = $0
+        let style:IStyle = matches.lazy.map{ match:NSTextCheckingResult in
             let propertyName:String = match.value(value, 1)/*name*/
             let propertyValue:String = match.value(value, 2)/*value*/
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)

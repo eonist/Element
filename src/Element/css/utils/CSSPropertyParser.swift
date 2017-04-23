@@ -112,11 +112,12 @@ class CSSPropertyParser {
      * RETURNS a TextFormat class instance
      */
     static func textFormat(_ input:String) -> TextFormat {
-        let textFormat:TextFormat = TextFormat()
+        
         let propertyString:String = input.match(textFormatPattern)[0]
         let properties:[String] = propertyString.split(",")
-        for property:String in properties{
+        let textFormat:TextFormat = properties.map { property in
             let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
+            var textFormat = TextFormat()
             for match:NSTextCheckingResult in matches{
                 let name:String = match.value(property, 1)/*Capturing group 1*/
                 var value:Any = match.value(property, 2)/*Capturing group 2*/

@@ -8,15 +8,15 @@ extension StyleCache{
      * Compiles a list of css files derived from an xml
      */
     static func cssFileDateList(_ dataXML:XML)->[String:String]{
-        let cssFileDatesXML = dataXML.firstNode("cssFileDates")
-        if let cssFileDatesXML:XML, let children = cssFileDatesXML
-        let cssFileDates:[String:String] = cssFileDatesXML!.children!.reduce([String:String]()){
-            var cssFileDates:[String:String] = $0
-            let cssFilePath:String = $1.stringValue!
-            //Swift.print("cssFilePath: " + "\(cssFilePath)")
-            let date:String = ($1 as! XML)["date"]!
-            //Swift.print("date: " + "\(date)")
-            cssFileDates[cssFilePath] = date
+        let cssFileDates = [String:String]()
+        if let cssFileDatesXML:XML = dataXML.firstNode("cssFileDates"), let children = cssFileDatesXML.children{
+            let cssFileDates:[String:String] = children.reduce(cssFileDates){
+                var cssFileDates:[String:String] = $0
+                let cssFilePath:String = $1.stringValue!
+                let date:String = ($1 as! XML)["date"]!
+                cssFileDates[cssFilePath] = date
+                return cssFileDates
+            }
             return cssFileDates
         }
         return cssFileDates

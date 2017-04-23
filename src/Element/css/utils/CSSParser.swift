@@ -19,10 +19,11 @@ class CSSParser{
      * TODO: ⚠️️ Use mapReduce in the bellow method
      */
     static func styleCollection(_ cssString:String)->IStyleCollection{
-        var styleCollection:IStyleCollection = StyleCollection()
+        //var styleCollection:IStyleCollection = StyleCollection()
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
-        matches.mapReduce() {/*Loops through the pattern*/
-            for match:NSTextCheckingResult = $0
+        let styleCollection:IStyleCollection = matches.mapReduce(StyleCollection()) {/*Loops through the pattern*/
+            var styleCollection:IStyleCollection = $0
+            for match:NSTextCheckingResult = $1
             let styleName:String = match.value(cssString, 1)/*name*/
             let value:String = match.value(cssString, 2)/*value*/
             if(StringAsserter.contains(styleName, ",") == false){

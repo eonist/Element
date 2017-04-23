@@ -136,7 +136,7 @@ class CSSPropertyParser {
                 textFormat[$1.name] = $1.value
                 return textFormat
         }
-        return TextFormat()
+        return textFormat
     }
     /**
      * Returns a DropShadowFilter instance

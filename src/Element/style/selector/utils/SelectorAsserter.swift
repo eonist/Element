@@ -19,8 +19,8 @@ class SelectorAsserter {
        let numOfMatchingStates:Int = SelectorParser.numOfSimilarStates(styleSel, querrySelector)
        let hasSimilarState:Bool = SelectorAsserter.hasSimilarState(styleSel, querrySelector)
        let hasStyleSelStates:Bool = SelectorAsserter.hasStates(styleSel)
-       let a:Bool = (hasMatchingId || styleSel.id == ""/*nil*/)
-       let b:Bool = hasMatchingElement || styleSel.element == ""/*nil*/
+       let a:Bool = (hasMatchingId || styleSel.id == "")
+       let b:Bool = hasMatchingElement || styleSel.element == ""
        let c:Bool = (hasMatchingClassIds || !hasBothSelectorsClassIds)
        let d:Bool = (!hasStyleSelStates || (hasSimilarState && numOfMatchingStates <= querrySelector.states.count))
        return a && b && c && d
@@ -35,24 +35,24 @@ class SelectorAsserter {
       return ArrayAsserter.contains(a.classIds, b.classIds, false)//<----this may be wrong as it compares if the instance has the same variables, but the original code compared reference, which seemed wrong to me
     }
     static func hasBothSelectorsIds(_ a:ISelector,_ b:ISelector)->Bool {
-      return a.id != ""/*nil*/ && b.id != ""/*nil*/
+      return a.id != "" && b.id != ""
     }
     static func hasBothSelectorsClassIds(_ a:ISelector,_ b:ISelector)->Bool {
-      return a.classIds.count != 0  /*!= nil*/ && b.classIds.count != 0 /*!= nil*/
+      return a.classIds.count != 0  && b.classIds.count != 0
     }
     static func hasBothSelectorsStates(_ a:ISelector,_ b:ISelector)->Bool {
-      return a.states.count != 0/* != nil*/ && b.states.count != 0/* != nil*/
+      return a.states.count != 0 && b.states.count != 0
     }
     static func hasSimilarState(_ a:ISelector,_ b:ISelector)->Bool {
       return SelectorParser.numOfSimilarStates(a, b) > 0
     }
     static func hasStates(_ selector:ISelector)->Bool {
-      return selector.states.count != 0 /*!= nil*/
+      return selector.states.count != 0
     }
     static func hasElement(_ selector:ISelector)->Bool {
-      return selector.element != "" /*nil*/
+      return selector.element != ""
     }
     static func hasId(_ selector:ISelector)->Bool {
-      return selector.id != ""/*nil*/
+      return selector.id != ""
     }
 }

@@ -39,18 +39,17 @@ class SelectorParser{
     static func selectorString(_ selector:ISelector)->String{// :TODO: rename to selectorString
         var string:String = ""
         if(selector.element != "") { string += selector.element }
-        for classId:String in selector.classIds { string += ("."+classId) }
+        string = selector.classIds.reduce(string) { $0 + ("."+$1) }
         if(selector.id != "") { string += "#"+selector.id }
-        for state:String in selector.states { string += (":"+state) }
+        string = selector.states.reduce(string) { $0 + (":"+$1) }
         return string
     }
     /**
      * Returns an array of Selector instances from PARAM: string (which is usually from the CSSParser.style function)
      */
-    static func selectors(_ string:String)->Array<ISelector>! {
+    static func selectors(_ string:String)->[ISelector] {
         let selectorNames:[String] = StringAsserter.contains(string, " ") ? StringModifier.split(string," ") : [string]
-        var styleSelectors:[ISelector] = []
-        for selectorName  in selectorNames{ styleSelectors.append(selector(selectorName)) }
+        let styleSelectors:[ISelector] = selectorNames.map{ return selector($0) }
         return styleSelectors
     }
     /**
@@ -63,25 +62,9 @@ class SelectorParser{
         var selectorElement:String = ""
         for match:NSTextCheckingResult in matches {
             selectorElement = (match.rangeAt(1).location != NSNotFound) ? match.value(string, 1) : ""
-            func classIds()->[String]{
-                if match.rangeAt(2).location != NSNotFound {
-                    let classIds:String = match.value(string, 2)
-                    return classIds.contains(" ") ? StringModifier.split(classIds, " ") : [classIds]
-                }else{
-                    return []
-                }
-            }
-            let selectorClassIds:[String] = classIds()
+            let selectorClassIds:[String] = SelectorUtils.classIds(match,string)
             let selectorId = (match.rangeAt(3).location != NSNotFound) ? match.value(string, 3) : ""
-            func states()->[String]{
-                if match.rangeAt(4).location != NSNotFound {
-                    let states:String = RegExp.value(string, match, 4)
-                    return states.contains(":") ? StringModifier.split(states, ":") : [states]
-                }else{
-                    return []
-                }
-            }
-            let selectorStates:[String] = states()
+            let selectorStates:[String] = SelectorUtils.states(match,string)
             return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
         }
         return Selector()
@@ -106,7 +89,9 @@ class SelectorParser{
         let hasStateWeight:Bool = hasBothSelectorsStates && stateWeight > 0
         return SelectorWeight(weight, hasId, hasElement, hasClassId, hasStateWeight, numOfSimilarClassIds, stateWeight)
     }
-    //deprecated
+}
+//deprecated
+extension SelectorParser{
     static func selectorToString(_ selector:ISelector)->String{return selectorString(selector)}
     static func string(_ selectors:[ISelector])->String{return selectorsString(selectors)}
 }
@@ -132,9 +117,8 @@ private class Utils{
      * NOTE: Lower index equals more weight (index:0 equals the length of the array in weight, index:1 equals the length of the array minus the index)
      */
     static func stateWeight(_ a:[String],_ b:[String])->Int{
-        var weight:Int = 0
-        for state:String in a {
-            weight += b.count - ArrayParser.index(b,state)/*<--s this really wise? what if it is -1 aka doesn't exist*/
+        let weight:Int = a.reduce(0){
+            $0 + (b.count - ArrayParser.index(b,$1))/*<--s this really wise? what if it is -1 aka doesn't exist*/
         }
         return weight
     }
@@ -154,4 +138,22 @@ class SelectorPattern {
     static var statesGroup:String = "(?:\\:([\\w\\d\\:]+?))?"
     static var end:String = "(?=$)"/*must appear and is not included in the match*/
     static var pattern:String = elementGroup + subsededWith1 + classIdsGroup + subsededWith2 + idsGroup + subsededWith3 + statesGroup + end
+}
+private class SelectorUtils{
+    static func classIds(_ match:NSTextCheckingResult,_ string:String)->[String]{
+        if match.rangeAt(2).location != NSNotFound {
+            let classIds:String = match.value(string, 2)
+            return classIds.contains(" ") ? StringModifier.split(classIds, " ") : [classIds]
+        }else{
+            return []
+        }
+    }
+    static func states(_ match:NSTextCheckingResult,_ string:String)->[String]{
+        if match.rangeAt(4).location != NSNotFound {
+            let states:String = RegExp.value(string, match, 4)
+            return states.contains(":") ? StringModifier.split(states, ":") : [states]
+        }else{
+            return []
+        }
+    }
 }

@@ -119,15 +119,16 @@ class CSSPropertyParser {
         let textFormat:TextFormat = properties.map {
                 let property:String = $0
                 let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
-                let pairs:[(name:String,value:Any)] = matches.map{
-                    let match:NSTextCheckingResult = $0
+                let pairs:[(name:String,value:Any)] = []
+                matches.forEach{ match in
+                    //let match:NSTextCheckingResult = $0
                     let name:String = match.value(property, 1)/*Capturing group 1*/
                     var value:Any = match.value(property, 2)/*Capturing group 2*/
                     if(name == "color") { value = StringParser.nsColor(value as! String) }
                     else if("\(value)" == "true") {value = true }
                     else if("\(value)" == "false") {value = false }
                     //else {StringParser.boolean(String(value))}
-                    return (name:name,value:value)
+                    pairs.append((name:name,value:value))
                 }
                 return pairs
             }.reduce(TextFormat()){

@@ -25,19 +25,15 @@ extension StyleCache{
      * Compiles an xml of css files and its modified date
      */
     static func cssFileDates()->XML{
-        let cssFileDates = "<cssFileDates></cssFileDates>".xml
-        StyleManager.cssFileURLS.forEach{
-            //Swift.print("$0: " + "\($0)")
-            let filePath:String = $0.tildePath
+        return StyleManager.cssFileURLS.reduce("<cssFileDates></cssFileDates>".xml){
+            let filePath:String = $1.tildePath
             let modificationDate = FileParser.modificationDate(filePath)
-            //Swift.print("modificationDate: " + "\(modificationDate)")
-            //Swift.print("modificationDate.timeIntervalSince1970: " + "\(modificationDate.timeIntervalSince1970)")
             let cssFile = "<file></file>".xml
             cssFile["date"] = String(modificationDate.timeIntervalSince1970)
-            cssFile.stringValue = $0
-            cssFileDates.appendChild(cssFile)
+            cssFile.stringValue = $1
+            $0.appendChild(cssFile)
+            return $0
         }
-        return cssFileDates
     }
     /**
      * Read pre-parsed styles

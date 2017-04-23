@@ -67,7 +67,7 @@ extension StyleCache{
         return true
     }
     /**
-     *
+     * Asserts if files has been caches
      */
     static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
         var hasBeenCached:Bool = false

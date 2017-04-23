@@ -6,7 +6,7 @@ extension IStyleCollection{
      * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
      * NOTE: the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
      */
-    func addStyles(_ styles:[IStyle]){
+    mutating func addStyles(_ styles:[IStyle]){
         for style in styles{ addStyle(style) }
     }
     /**
@@ -26,7 +26,7 @@ extension IStyleCollection{
      * TODO: One Could change this to return nothing
      * RETURNS: the removed Style
      */
-    func removeStyle(_ name:String)->IStyle?{
+    mutating func removeStyle(_ name:String)->IStyle?{
         for i in 0..<styles.count{//swift 3 for loop upgrade
             if((styles[i] as IStyle).name == name){
                 return ArrayModifier.splice2(&styles,i,1) as? IStyle

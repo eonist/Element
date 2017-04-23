@@ -16,9 +16,10 @@ class CSSParser{
      * RETURN: StyleCollection populated with Styles
      * PARAM: cssString: a string comprised by css data h1{color:blue;} etc
      * NOTE: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
+     * TODO: ⚠️️ use mapReduce in the bellow method
      */
     static func styleCollection(_ cssString:String)->IStyleCollection{
-        let styleCollection:IStyleCollection = StyleCollection();
+        var styleCollection:IStyleCollection = StyleCollection()
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             let styleName:String = match.value(cssString, 1)/*name*/

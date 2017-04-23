@@ -48,11 +48,8 @@ extension StyleCache{
         let styles:[IStyle] = stylesXML.children!.map{
             let style:Style? = Style.unWrap($0 as! XML)
             return style
-        }.filter{
-            
-            if(style != nil) {
-                return
-            }
+        }.filter(){
+            $0 != nil
         }
         //Swift.print("styles.count: " + "\(styles.count)")//then check the count
         Swift.print("parse xml styles time: " + "\(abs(startTime.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors

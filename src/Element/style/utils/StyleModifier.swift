@@ -11,16 +11,12 @@ class StyleModifier {
         return Style(newName ?? style.name, newSelectors ?? style.selectors,style.styleProperties.map{$0})//maybe the clone part is not needed?
     }
     /**
-     *
+     * Overrides styleProperty if one exists with the same name
      */
     static func overrideStyleProperty(_ style:inout IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
-        for i in 0..<style.styleProperties.count{/*<--We can't use for each here because it needs to break*/
-            if(style.styleProperties[i].name == styleProperty.name){
-                style.styleProperties[i] = styleProperty
-                break//was return
-            }
-        }
-        //Swift.print("\(String(style))"+" PROPERTY BY THE NAME OF "+styleProperty.name+" WAS NOT FOUND IN THE PROPERTIES ")//this should throw error
+        if let idx = style.styleProperties.index(where: {$0.name == styleProperty.name}){
+            style.styleProperties[idx] = styleProperty
+        }//Swift.print("\(String(style))"+" PROPERTY BY THE NAME OF "+styleProperty.name+" WAS NOT FOUND IN THE PROPERTIES ")//this should throw error
     }
     /**
      * Combines PARAM: a and PARAM: b

@@ -82,11 +82,13 @@ extension StyleManager{
      * TODO: Implement running the css resolve process on a background thread
      */
     static func addStylesByURL(_ url:String,_ liveEdit:Bool = false) {
+        Swift.print("addStylesByURL")
         if(liveEdit){
             let cssString:String = CSSFileParser.cssString(url)
             if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
                 let cssString:String = CSSLinkResolver.resolveLinks(cssFiles[url]!)
                 let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
+                Swift.print("🍐")
                 removeStyle(styles)/*if url exists then remove the styles that it represents*/
             }else{/*if the url wasn't in the dictionary, then add it*/
                 cssFiles[url] = cssString//<--I'm not sure how this works, but it works

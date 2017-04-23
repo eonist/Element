@@ -41,14 +41,14 @@ extension StyleCache{
     static func readStylesFromDisk(_ xml:XML){
         //Swift.print("StyleCache.readStylesFromDisk()")
         let startTime = NSDate()
-        var styles:[IStyle] = []
+        // = []
         //Swift.print("xml.children?.count: " + "\(xml.children?.count)")
         let stylesXML:XML = xml.firstNode("styles")!
         //Swift.print("stylesXML.children?.count: " + "\(stylesXML.children?.count)")
-        stylesXML.children?.forEach{
+        let styles:[IStyle] = stylesXML.children?.flatMap{
             let style:Style? = Style.unWrap($0 as! XML)
             if(style != nil) {
-                styles.append(style!)
+                return
             }
         }
         //Swift.print("styles.count: " + "\(styles.count)")//then check the count

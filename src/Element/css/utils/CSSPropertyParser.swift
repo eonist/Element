@@ -120,7 +120,7 @@ class CSSPropertyParser {
                 //let property:String = $0
                 let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
                 return matches
-            }.map{ match -> (name:String,value:Any)
+            }.map{ matchVal -> (name:String,value:Any) in
                 //let match:NSTextCheckingResult = $0
                 let name:String = match.value(property, 1)/*Capturing group 1*/
                 var value:Any = match.value(property, 2)/*Capturing group 2*/
@@ -131,7 +131,7 @@ class CSSPropertyParser {
                 return (name:name,value:value)
             }.reduce(TextFormat()){
                 var textFormat = $0
-                textFormat[name] = $1.value
+                textFormat[$1.name] = $1.value
                 return textFormat
         }
         return TextFormat()

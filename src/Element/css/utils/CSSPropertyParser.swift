@@ -185,8 +185,7 @@ private class Utils{
          // :TODO: support for tl tr br bk l r t b?
         if(rotationMatch.test("^\\d+?deg|\\d+$")) {
             rotation = rotationMatch.match("^\\d+?$|^\\d+?(?=deg$)")[0].cgFloat
-        }
-        else if(rotationMatch.test(directionPattern)){
+        }else if(rotationMatch.test(directionPattern)){
             let angleType:String = rotationMatch.match(directionPattern)[0]
             rotation = Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
         }else{fatalError("Error")}

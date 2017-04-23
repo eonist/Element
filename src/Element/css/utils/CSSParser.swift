@@ -40,21 +40,19 @@ class CSSParser{
      * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
     static func style(_ name:String,_ value:String)->IStyle!{
-        Swift.print("style")
         var name:String = name
+        //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)
-        var initStyle:IStyle = Style(name,selectors, [])
-        let style:IStyle = matches.lazy.map{ match -> [IStyleProperty] in
+        let initStyle:IStyle = Style(name,selectors, [])
+        let style:IStyle = matches.mapReduce(initStyle){ (style:IStyle,match:NSTextCheckingResult) in
+            var style:IStyle = style
             let propertyName:String = match.value(value, 1)/*name*/
             let propertyValue:String = match.value(value, 2)/*value*/
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
-            return styleProperties
-            }.reduce(initStyle){
-                //var style:IStyle = initStyle
-                initStyle.addStyleProperty($1)
-                return initStyle
+            style.addStyleProperty(styleProperties)
+            return style
         }
         
         /*for match:NSTextCheckingResult in matches {

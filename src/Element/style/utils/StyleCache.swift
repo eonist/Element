@@ -9,12 +9,15 @@ extension StyleCache{
      */
     static func cssFileDateList(_ dataXML:XML)->[String:String]{
         let cssFileDatesXML = dataXML.firstNode("cssFileDates")
-        let cssFileDates:[String:String] = cssFileDatesXML!.children?.reduce(){
-            let cssFilePath:String = $0.stringValue!
+        if let cssFileDatesXML:XML, let children = cssFileDatesXML
+        let cssFileDates:[String:String] = cssFileDatesXML!.children!.reduce([String:String]()){
+            var cssFileDates:[String:String] = $0
+            let cssFilePath:String = $1.stringValue!
             //Swift.print("cssFilePath: " + "\(cssFilePath)")
-            let date:String = ($0 as! XML)["date"]!
+            let date:String = ($1 as! XML)["date"]!
             //Swift.print("date: " + "\(date)")
             cssFileDates[cssFilePath] = date
+            return cssFileDates
         }
         return cssFileDates
     }

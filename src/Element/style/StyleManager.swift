@@ -12,6 +12,9 @@ class StyleManager{
     static var cssFileURLS:[String] = []//<--new
     static var styles:[IStyle] = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
+}
+//convenince methods
+extension StyleManager{
     /**
      * Adds a style to the styleManager class
      * PARAM: style: IStyle
@@ -30,19 +33,6 @@ class StyleManager{
         }
         return nil
     }
-    /**
-     * Locates and returns a Style by the PARAM: name.
-     * RETURN: a Style
-     */
-    static func getStyle(_ name:String)->IStyle?{
-        for (_,style) in self.styles.enumerated(){//<--forEach was not used because it doesn't allow return
-            if(style.name == name) {return style}
-        }
-        return nil
-    }
-}
-//convenince methods
-extension StyleManager{
     /**
      * Adds every style in a styleCollection to the stylemanager
      */
@@ -114,6 +104,18 @@ extension StyleManager{
                 StyleCache.writeStylesToDisk()
             }
         }
+    }
+}
+extension StyleManager{
+    /**
+     * Locates and returns a Style by the PARAM: name.
+     * RETURN: a Style
+     */
+    static func getStyle(_ name:String)->IStyle?{
+        for (_,style) in self.styles.enumerated(){//<--forEach was not used because it doesn't allow return
+            if(style.name == name) {return style}
+        }
+        return nil
     }
     static func getStyleAt(_ index:Int)->IStyle{
         return styles[index]

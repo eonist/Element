@@ -119,7 +119,7 @@ class CSSPropertyParser {
         let textFormat:TextFormat = properties.map {
                 let property:String = $0
                 let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
-                let pairs:[(name:String,value:Any)] = []
+                var pairs:[(name:String,value:Any)] = []
                 matches.forEach{ match in
                     //let match:NSTextCheckingResult = $0
                     let name:String = match.value(property, 1)/*Capturing group 1*/

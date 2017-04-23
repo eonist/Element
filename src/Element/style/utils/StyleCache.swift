@@ -42,9 +42,9 @@ extension StyleCache{
         //Swift.print("💾 StyleCache.readStylesFromDisk()")
         let startTime = NSDate()
         let stylesXML:XML = xml.firstNode("styles")!
-        let styles:[IStyle] = stylesXML.children!.lazy.map{ child -> IStyle? in
+        let styles:[IStyle] = stylesXML.children?.lazy.map{ child -> IStyle? in
             Style.unWrap(child as! XML)
-        }.flatMap{$0}
+        }.flatMap{$0} ?? []
         Swift.print("parse xml styles time: " + "\(abs(startTime.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
         let startTime2 = NSDate()
         Swift.print("styles.count: " + "\(styles.count)")

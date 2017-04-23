@@ -45,14 +45,16 @@ class CSSParser{
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)
-        let initStyle:IStyle = Style(name,selectors, [])
-        let style:IStyle = matches.mapReduce(initStyle){ (style:IStyle,match:NSTextCheckingResult) in
-            var style:IStyle = style
+        
+        let style:IStyle = matches.lazy.map{ match -> [IStyleProperty] in
             let propertyName:String = match.value(value, 1)/*name*/
             let propertyValue:String = match.value(value, 2)/*value*/
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
-            style.addStyleProperty(styleProperties)
-            return style
+            return styleProperties
+            }.reduce(Style(name,selectors, [])){
+                var style:IStyle = $0
+                style.addStyleProperty($1)
+                return style
         }
         
         /*for match:NSTextCheckingResult in matches {

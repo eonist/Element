@@ -8,12 +8,7 @@ class StyleModifier {
      * TODO: explain what newSelectors does
      */
     static func clone(_ style:IStyle, _ newName:String? = nil, _ newSelectors:[ISelector]? = nil)->IStyle{
-        let returnStyle:IStyle = Style(newName ?? style.name, newSelectors ?? style.selectors,[])
-        return style.styleProperties.mapReduce(returnStyle){
-            $0.addStyleProperty(StyleProperty($1.name, $1.value, $1.depth))
-            return style
-        }
-        //return returnStyle
+        return Style(newName ?? style.name, newSelectors ?? style.selectors,style.styleProperties.map{$0})//maybe the clone part is not needed?
     }
     /**
      *

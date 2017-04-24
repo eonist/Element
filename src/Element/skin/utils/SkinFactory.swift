@@ -9,15 +9,15 @@ import Foundation
 class SkinFactory{
     static var graphicsSkin:String = "graphicSkin"//TODO: we could use Skin(GraphicSkin) instead of this variable
     static var textSkin:String = "textSkin"
-    /*
-    static func graphicSkin(element:IElement,style:IStyle)->ISkin {
-        return GraphicSkin(style, element.getSkinState(), element);
-    }
-    */
-    /*
-    static func textSkin(element:IElement,style:IStyle)->ISkin {
-        //fatalError("NOT IMPLEMENTED YET")
-        return TextSkin(style,(element as! IText).initText, element.getSkinState(),element);
-    }
-    */
 }
+/*
+ static func graphicSkin(element:IElement,style:IStyle)->ISkin {
+ return GraphicSkin(style, element.getSkinState(), element);
+ }
+ */
+/*
+ static func textSkin(element:IElement,style:IStyle)->ISkin {
+ //fatalError("NOT IMPLEMENTED YET")
+ return TextSkin(style,(element as! IText).initText, element.getSkinState(),element);
+ }
+ */

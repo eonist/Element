@@ -150,7 +150,7 @@ private class Utils{
      */
     static func elementIndex(_ parent:NSView,_ element:Element)->Int {
         //return ArrayParser.indx(ElementParser.children(parent,Element.self), element)
-        return parent.subviews.index(where: {$0 as? Element != nil && $0 === element}) ?? -1
+        return parent.subviews.index(where: {$0 as? IElement != nil && $0 === element}) ?? -1
     }
     /**
      *

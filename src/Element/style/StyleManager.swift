@@ -23,13 +23,11 @@ extension StyleManager{
         styles.append(style)
     }
     /**
-     * TODO: This method could probably be a candidate for functional programming: .map or .flatMap etc etc
+     * Removes the first style that has PARAM: name
      */
     static func removeStyle(_ name:String) -> IStyle? {
-        for i in 0..<styles.count{//upgraded to swift 3 support
-            if(styles[i].name == name) {
-                return styles.splice2(i,1)[0]
-            }
+        if let i:Int = styles.index(where: {$0.name == name}){
+            return styles.splice2(i,1)[0]
         }
         return nil
     }

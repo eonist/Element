@@ -7,9 +7,7 @@ class SelectModifier {
      */
     static func unSelectAllExcept(_ exceptionItem:ISelectable, _ selectables:[ISelectable]) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
         selectables.forEach{
-            if $0 !== exceptionItem && $0.getSelected() {
-                $0.setSelected(false)
-            }
+            if $0 !== exceptionItem && $0.getSelected() { $0.setSelected(false) }
         }
     }
     static func selectAll(_ selectables:[ISelectable],_ isSelected:Bool = true) {
@@ -17,7 +15,11 @@ class SelectModifier {
     }
     static func unSelectAllExceptThese(_ selectables:[ISelectable], exceptions:[ISelectable]) {
         let unSelectedItems:[ISelectable] = ArrayParser.difference(selectables, exceptions)
-        for unSelectedItem in unSelectedItems {if(unSelectedItem.getSelected()){unSelectedItem.setSelected(false)}}
+        for unSelectedItem in unSelectedItems {
+            if(unSelectedItem.getSelected()){
+                unSelectedItem.setSelected(false)
+            }
+        }
         for selectedItem in exceptions { 
             if(!selectedItem.getSelected()) {
                 selectedItem.setSelected(true)

@@ -23,9 +23,7 @@ class CSSLinkResolver {
     static func resolveLinks(_ string:String)->String{
         var string = string
         let matches = RegExp.matches(string, linkPropertyPattern)
-        //matches.count
-        for i in (0..<matches.count).reversed(){//swift 3 update -> was: //for var i = matches.count-1; i > -1; --i{
-            let match:NSTextCheckingResult = matches[i]
+        matches.reversed().forEach{ match in
             let name = match.value(string, CSSElementType.name.rawValue)
             let value = match.value(string, CSSElementType.value.rawValue)
             let replacementString:String = Utils.replaceLinks(value,name,string)

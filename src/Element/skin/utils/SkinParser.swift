@@ -14,7 +14,7 @@ class SkinParser {
         let padding:Padding = self.padding(skin)
         return margin.top + border.top + padding.top + height(skin) + padding.bottom + border.bottom + margin.bottom
     }
-    /*
+    /**
      * TODO: I think this is the same as totalHeight now, so remove it, its not. see the height variable
      */
     static func totalHeight2(_ skin:ISkin)->CGFloat {/*beta*/

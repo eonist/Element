@@ -30,11 +30,10 @@ class SelectGroup:EventSender{
     }
     override func onEvent(_ event:Event){
         if(event.type == SelectEvent.select){
-            self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self/*,self*/))
+            self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self))
             selected = event.immediate as? ISelectable
             SelectModifier.unSelectAllExcept(selected!, selectables)
-            //for s in selectables{ Swift.print("s.isSelected: " + "\(s.getSelected())") }
-            super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self/*,self*/))
+            super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self))
         }
         super.onEvent(event)/*We don't want to block any event being passed through, so we forward all events right through the SelectGroup*/
     }

@@ -12,15 +12,16 @@ class SelectGroupParser {
      * Returns the index of PARAM: selectable in _selectables
      */
     static func index(_ selectGroup:SelectGroup,_ selectable:ISelectable)->Int {
-        return ArrayParser.indx()
-        //return selectGroup.selectables.indexOf(selectable)
+        return selectGroup.selectables.index(where: {$0 === selectable}) ?? -1
     }
     /**
      * Returns the index of a selected ISelectable in PARAM: selectGroup
      */
     static func indexOfSelected(_ selectGroup:SelectGroup)->Int {
-        let selected:ISelectable? = SelectGroupParser.selected(selectGroup)
-        return selected != nil ? index(selectGroup, selected!) : -1
+        if let selected:ISelectable = SelectGroupParser.selected(selectGroup){
+            return index(selectGroup, selected)
+        }
+        return  -1
     }
     /**
      * Returns an RadioButton at a spessific index

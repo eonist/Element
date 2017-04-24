@@ -35,10 +35,6 @@ class SelectParser {
      * NOTE: you could return nil instead of -1
      */
     static func index(_ view:NSView) -> Int{
-        for i in 0..<view.numSubViews{//swift 3 support
-            let child:NSView? = view.getSubViewAt(i)
-            if(child is ISelectable && (child as! ISelectable).selected){ return i }
-        }
-        return -1
+        return view.subviews.filter() {$0 as? ISelectable != nil}.index(where: {($0 as! ISelectable).selected}) ?? -1
     }
 }

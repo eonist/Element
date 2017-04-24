@@ -6,11 +6,7 @@ class CheckModifier {
      * UnChecks all in PARAM: items exept PARAM: target
      */
     static func unCheckAllExcept(_ exceptionItem:ICheckable, _ checkables:[ICheckable]) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
-        checkables.forEach {
-            if($0 !== exceptionItem && $0.getChecked()) {
-                $0.setChecked(false)
-            }
-        }
+        checkables.forEach { if($0 !== exceptionItem && $0.getChecked()) { $0.setChecked(false)} }
     }
     /**
      * Removes the RadioButton passed through the PARAM: radioButton

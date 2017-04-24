@@ -9,7 +9,7 @@ class TreeListParser{
     static func itemsHeight(_ treeList:ITreeList)->CGFloat{
         var height:CGFloat = 0
         for i in 0..<treeList.itemContainer!.subviews.count{
-            height += treeList.itemContainer!.subviews[i] is TreeListItem ? (treeList.itemContainer!.getSubviewAt(i) as! TreeListItem).getHeight() : (treeList.itemContainer!.getSubviewAt(i) as! Element).getHeight()
+            height += treeList.itemContainer!.subviews[i] is TreeListItem ? (treeList.itemContainer!.subviews[i] as! TreeListItem).getHeight() : (treeList.itemContainer!.subviews[i] as! Element).getHeight()
         }
         return height
     }

@@ -32,6 +32,12 @@ extension StyleManager{
         return nil
     }
     /**
+     * Removes styles
+     */
+    static func removeStyle(_ styles:[IStyle]){
+        _ = styles.map{removeStyle($0.name)}
+    }
+    /**
      * Adds every style in a styleCollection to the stylemanager
      */
     static func addStyle(_ styles:[IStyle]){
@@ -42,14 +48,6 @@ extension StyleManager{
             }
         }
         self.styles += styles/*<- concats*/
-    }
-    /**
-     * Removes styles
-     */
-    static func removeStyle(_ styles:[IStyle]){
-        for style in styles{
-            _ = removeStyle(style.name)
-        }
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)

@@ -6,9 +6,9 @@ class SelectModifier {
      * Unselects all in PARAM: items except PARAM: target
      */
     static func unSelectAllExcept(_ exceptionItem:ISelectable, _ selectables:[ISelectable]) {// :TODO: refactor this function// :TODO: rename to unSelectAllExcept
-        for selectable:ISelectable in selectables {
-            if(selectable !== exceptionItem && selectable.getSelected()) {
-                selectable.setSelected(false)
+        selectables.forEach{
+            if $0 !== exceptionItem && $0.getSelected() {
+                $0.setSelected(false)
             }
         }
     }

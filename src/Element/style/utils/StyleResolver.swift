@@ -46,29 +46,6 @@ class StyleResolver{
         }
         return finalStyle
     }
-    static func style2(_ element:IElement)->IStyle{
-        fatalError("beta")
-        /*
-        let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
-        return style2(querySelectors)
-        */
-    }
-    static func style2(_ querySelectors:[ISelector])->IStyle{
-        fatalError("beta")
-        /*
-        var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
-        //print("weightedStyles: " + "\(weightedStyles.count)")
-        //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);
-        if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
-        //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
-        let styleName:String = SelectorParser.selectorsString(querySelectors)
-        var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
-        for weightStyle:WeightedStyle in weightedStyles{
-            StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
-        }
-        return finalStyle
-        */
-    }
 }
 private class Utils{
     /**
@@ -99,3 +76,28 @@ private class Utils{
         return styles
     }
 }
+/*
+static func style2(_ element:IElement)->IStyle{
+    fatalError("beta")
+ 
+     let querySelectors:Array<ISelector> = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
+     return style2(querySelectors)
+ 
+}
+static func style2(_ querySelectors:[ISelector])->IStyle{
+    fatalError("beta")
+ 
+     var weightedStyles:Array<WeightedStyle> = StyleResolverUtils.query(querySelectors,StyleManager.styleTree,0)
+     //print("weightedStyles: " + "\(weightedStyles.count)")
+     //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var ws : WeightedStyle in weightedStyles) trace("not.Sorted.ws.name: " + ws.name);
+     if(weightedStyles.count > 1) {weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)}//WeightStyleParser.sortByWeight(weightedStyles);/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
+     //if(StyleResolver.stackString(element) == "Window Box#tabBarBox SelectTextButton#first Text") for each (var wStyle : WeightedStyle in weightedStyles) trace("sorted.ws.name: " + wStyle.name);
+     let styleName:String = SelectorParser.selectorsString(querySelectors)
+     var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[]);/*find the exact styleName in the stylemanager or create a new style to merge partily matched styles*/
+     for weightStyle:WeightedStyle in weightedStyles{
+     StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+     }
+     return finalStyle
+ 
+}
+*/

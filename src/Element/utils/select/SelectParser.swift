@@ -15,12 +15,7 @@ class SelectParser {
      * TODO: Rename to firstSelected
      */
     static func selected(_ selectables:[ISelectable]) -> ISelectable? {
-        for selectable:ISelectable in selectables {
-            if(selectable.getSelected()) {
-                return selectable
-            }
-        }
-        return nil
+        return selectables.first(where: {$0.getSelected()})
     }
     /**
      * Returns an array from every child that is an ISelectable in PARAM: displayObjectContainer
@@ -32,13 +27,7 @@ class SelectParser {
      * Returns all selectables that are selected
      */
     static func allSelected(_ selectables:[ISelectable])->[ISelectable] {
-        var selected:[ISelectable] = []
-        for selectable:ISelectable in selectables{ 
-            if(selectable.getSelected()) {
-                selected.append(selectable)
-            }
-        }
-        return selected
+        return selectables.filter(){$0.getSelected()}
     }
     /**
      * Returns the index of the first selected ISelectable instance in a NSView instance (returns -1 if non is found)

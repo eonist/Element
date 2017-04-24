@@ -136,7 +136,7 @@ class CSSPropertyParser {
      */
     static func dropShadow(_ string:String)->DropShadow {
         let propertyString:String = string.match(dropShadowPattern)[0]
-        var properties:Array = propertyString.split(" ")
+        var properties:[String] = propertyString.split(" ")
         let distance:CGFloat = StringParser.digit(properties[0])
         let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
         let colorValue:UInt = StringParser.color(properties[2])/*hex color*/

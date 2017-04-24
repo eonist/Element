@@ -49,12 +49,6 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
      * PARAM: name the propertyname
      */
     static func index(_ style:IStyle, _ name:String, _ depth:Int = 0) -> Int {
-        for i in 0..<style.styleProperties.count{
-            let styleProperty : IStyleProperty  = style.styleProperties[i]
-            if(styleProperty.name == name && styleProperty.depth == depth){ 
-                return i 
-            }
-        }
-        return -1
+        return style.styleProperties.index(where: {$0.name == name && $0.depth == depth}) ?? -1
     }
 }

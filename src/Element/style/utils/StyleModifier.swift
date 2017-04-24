@@ -46,13 +46,7 @@ class StyleModifier {
         StyleParser.describe(b)
         Swift.print("----end----")*/
         for stylePropB:IStyleProperty in b.styleProperties {
-            var hasStyleProperty:Bool = false
-            for stylePropA:IStyleProperty in a.styleProperties {
-                if(stylePropB.name == stylePropA.name && stylePropB.depth == stylePropA.depth){
-                    hasStyleProperty = true
-                    break/*breaks out of the loop*/
-                }
-            }
+            let hasStyleProperty:Bool = a.styleProperties.first(where: {stylePropB.name == $0.name && stylePropB.depth == $0.depth}) != nil
             if(!hasStyleProperty) {//asserts true if the style from b doest exist in a
                 StyleModifier.prepend(&a, stylePropB)/*a.addStyleProperty(stylePropB)*/;/*only prepends the styleProperty if it doesnt already exist in the style instance a*/
             }

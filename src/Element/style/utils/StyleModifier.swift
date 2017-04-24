@@ -66,7 +66,7 @@ class StyleModifier {
      * NOTE: this method works faster than ArrayModifier.removeTheseByKey
      */
     static func filter(_ style:IStyle,_ filter:[String])->IStyle {
-        let styleProperties:[IStyleProperty] = styleProperties.filter(){ styleProperty in
+        let styleProperties:[IStyleProperty] = style.styleProperties.filter(){ styleProperty in
             filter.first(where: {styleProperty.name == $0}) != nil/*we only keep items that are in both arrays*/
         }
         return Style(style.name,style.selectors,styleProperties)
@@ -77,7 +77,6 @@ class StyleModifier {
      * TODO: Add a checkFlag, sometimes the cecking of existance is already done by the caller
      */
     static func append(_ style:inout IStyle,_ styleProperty:IStyleProperty){
-        //Swift.print("append happended")
         for styleProp:IStyleProperty in style.styleProperties{
             if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) {
                 fatalError("\(style) STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)/*checks if there is no duplicates in the list*/

@@ -25,11 +25,8 @@ class StyleModifier {
      * TODO: maybe use map or filter to speed this up?
      */
     static func combine(_ a:inout IStyle,_ b:IStyle){
-        //Swift.print("combining initiated")
-        for i in 0..<b.styleProperties.count{
-            let stylePropB:IStyleProperty = b.styleProperties[i]
-            let matchIndex = Utils.matchAt(a, stylePropB)
-            if(matchIndex != -1){/*Asserts true if styleProperty exist in both styles*/
+        b.styleProperties.forEach{ stylePropB in
+            if let matchIndex:Int = a.styleProperties.index(where: {$0.name == stylePropB.name}){/*Asserts true if styleProperty exist in both styles*/
                 a.styleProperties[matchIndex] = stylePropB/*styleProperty already exist so overide it*/
             }else{
                 StyleModifier.append(&a,stylePropB)/*Doesn't exist so just add the style prop*/
@@ -91,10 +88,5 @@ class StyleModifier {
             fatalError("\(style) STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)/*checks if there is no duplicates in the list*/
         }
         _ = ArrayModifier.unshift(&style.styleProperties, styleProperty)
-    }
-}
-private class Utils{
-    static func matchAt(_ style:IStyle, _ styleProperty:IStyleProperty)->Int{
-        return style.styleProperties.index(where: {$0.name == styleProperty.name}) ?? -1
     }
 }

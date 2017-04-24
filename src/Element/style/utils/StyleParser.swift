@@ -24,13 +24,12 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
     static func describe(_ style:IStyle){
         Swift.print("StyleParser.describe()")
         Swift.print("style.name: " + style.name)
-        //Swift.print("style.styleProperties: " + "\(style.styleProperties)")
-        for styleProperty:IStyleProperty in style.styleProperties {
+        style.styleProperties.forEach { styleProperty in
             var value:String = ""
             if(styleProperty.value is String || styleProperty.value is Double || styleProperty.value is Bool || styleProperty.value is UInt || styleProperty.value is Int){
                 value =  "\(styleProperty.value)"
             }else {
-                value = "\(styleProperty.value)"//ObjectParser.parse(styleProperty.value);//was if(styleProperty.value is Object)  //if the property is an object parse it
+                value = "\(styleProperty.value)"
             }
             Swift.print(" " + styleProperty.name + ":" + value + " depth:" + "\(styleProperty.depth)")
         }
@@ -39,11 +38,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
      * Returns an array populated with style property names
      */
     static func stylePropertyNames(_ style:IStyle) -> [String]{
-        var propertyNames:[String] = []
-        for styleProperty:IStyleProperty in style.styleProperties{ 
-            propertyNames.append(styleProperty.name)
-        }
-        return propertyNames
+        return style.styleProperties.map{$0.name}
     }
     /**
      * PARAM: name the propertyname

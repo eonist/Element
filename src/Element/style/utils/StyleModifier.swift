@@ -77,7 +77,7 @@ class StyleModifier {
      * TODO: Add a checkFlag, sometimes the cecking of existance is already done by the caller
      */
     static func append(_ style:inout IStyle,_ styleProperty:IStyleProperty){
-        if style.styleProperties.first(where: {$0.name == styleProperty.name && $0.depth == styleProperty.depth}) != nil{
+        if StyleAsserter.alreadyExists(style, styleProperty){
             fatalError("\(style) STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)/*checks if there is no duplicates in the list*/
         }
         style.styleProperties.append(styleProperty)

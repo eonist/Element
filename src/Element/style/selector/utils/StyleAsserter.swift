@@ -10,4 +10,7 @@ class StyleAsserter {
         }
         return false
     }
+    static func alreadyExists(_ style:IStyle,_ styleProperty:IStyleProperty) -> Bool{
+        return style.styleProperties.first(where: {$0.name == styleProperty.name && $0.depth == styleProperty.depth}) != nil
+    }
 }

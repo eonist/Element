@@ -12,10 +12,8 @@ class CheckModifier {
      * Removes the RadioButton passed through the PARAM: radioButton
      */
     static func removeCheckable(_ checkables:inout [ICheckable], _ item:ICheckable)->ICheckable? {
-        for i in 0..<checkables.count{
-            if (checkables[i] === item) {
-                return checkables.splice2(i, 1) as? ICheckable// :TODO: dispatch something?
-            }
+        if let i = checkables.index(where: {$0 === item}){
+            return checkables.splice2(i, 1) as? ICheckable// :TODO: dispatch something?
         }
         return nil
     }

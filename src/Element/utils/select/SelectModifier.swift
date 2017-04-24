@@ -48,6 +48,7 @@ extension SelectModifier{
         unSelectAllExcept(exceptionItem,selectables)
     }
     static func selectAll(_ view:NSView,_ isSelected:Bool = true) {
+        view.subviews.filter() {$0 is ISelectable}.map{($0 as! ISelectable).}
         let selectables:[ISelectable] = SelectParser.selectables(view)
         for selectable in selectables {selectable.setSelected(isSelected)}
     }

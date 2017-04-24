@@ -14,7 +14,7 @@ class SelectModifier {
         selectables.forEach{$0.setSelected(isSelected)}
     }
     /**
-     *
+     * TODO: I think this is more complicated than it needs to be. Try to clean it up
      */
     static func unSelectAllExceptThese(_ selectables:[ISelectable], exceptions:[ISelectable]) {
         let unSelectedItems:[ISelectable] = ArrayParser.difference(selectables, exceptions)
@@ -26,11 +26,9 @@ class SelectModifier {
      * // :TODO: use the Range class here!?!?
      */
     static func selectRange(_ selectables:[ISelectable], _ from:Int, _ to:Int,_ isSelected:Bool = true) {
-        for i in from...to{//swift 3 support, was-> for (var i : Int = from; i <= to; i++) {
+        for i in from...to{
             let selectable:ISelectable = selectables[i]
-            if(!selectable.getSelected()) {
-                selectable.setSelected(isSelected)
-            }
+            if(!selectable.getSelected()) { selectable.setSelected(isSelected) }
         }
     }
 }

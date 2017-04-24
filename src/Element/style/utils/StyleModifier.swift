@@ -66,14 +66,8 @@ class StyleModifier {
      * NOTE: this method works faster than ArrayModifier.removeTheseByKey
      */
     static func filter(_ style:IStyle,_ filter:[String])->IStyle {
-        var styleProperties:[IStyleProperty] = []
-        let sp = styleProperties.lazy.map{
-            
-        }
-        for i in 0..<style.styleProperties.count{//<--swift 3 support
-            if(ArrayParser.index(filter,(style.styleProperties[i] as IStyleProperty).name) != -1) {
-                styleProperties.append(style.styleProperties[i])
-            }/*we only keep items that are in both arrays*/
+        let styleProperties:[IStyleProperty] = styleProperties.filter(){ styleProperty in
+            filter.first(where: {styleProperty.name == $0}) != nil/*we only keep items that are in both arrays*/
         }
         return Style(style.name,style.selectors,styleProperties)
     }

@@ -12,7 +12,7 @@ class SelectGroupParser {
      * Returns the index of PARAM: selectable in _selectables
      */
     static func index(_ selectGroup:SelectGroup,_ selectable:ISelectable)->Int {
-        return ArrayParser.indx(selectGroup.selectables, selectable)
+        return ArrayParser.indx()
         //return selectGroup.selectables.indexOf(selectable)
     }
     /**

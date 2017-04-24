@@ -25,8 +25,8 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         //Swift.print("TreeListItem.getHeight(): ")
         var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
         if(getChecked()) {
-            for i in 0..<itemContainer!.subviews.count{
-                height += SkinParser.totalHeight((itemContainer!.getSubviewAt(i) as! IElement).skin!)
+            itemContainer!.subviews.forEach{ view in
+                height += SkinParser.totalHeight((view as! IElement).skin!)
             }
             //Swift.print("extraHeight: " + "\(extraHeight)")
         }

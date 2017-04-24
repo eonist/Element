@@ -9,7 +9,7 @@ class TreeListParser{
     static func itemsHeight(_ treeList:ITreeList)->CGFloat{
         var height:CGFloat = 0
         for i in 0..<treeList.itemContainer!.subviews.count{
-            height += treeList.itemContainer!.getSubviewAt(i) is TreeListItem ? (treeList.itemContainer!.getSubviewAt(i) as! TreeListItem).getHeight() : (treeList.itemContainer!.getSubviewAt(i) as! Element).getHeight()
+            height += treeList.itemContainer!.subviews[i] is TreeListItem ? (treeList.itemContainer!.getSubviewAt(i) as! TreeListItem).getHeight() : (treeList.itemContainer!.getSubviewAt(i) as! Element).getHeight()
         }
         return height
     }
@@ -19,7 +19,7 @@ class TreeListParser{
     static func descendants(_ treeList:ITreeList)->[AnyObject]{
         var items:[AnyObject] = []
         for i in 0..<treeList.itemContainer!.subviews.count{
-            let view:NSView = treeList.itemContainer!.getSubviewAt(i)
+            let view:NSView = treeList.itemContainer!.subviews[i]
             //Swift.print("view: " + "\(view)")
             items.append(view)
             if(view is ITreeList) {items += (descendants(view as! ITreeList))}
@@ -33,7 +33,7 @@ class TreeListParser{
         //Swift.print("decendantsOfType()")
         var items:[T] = []
         for i in 0..<treeList.itemContainer!.subviews.count{
-            let view:NSView = treeList.itemContainer!.getSubviewAt(i)
+            let view:NSView = treeList.itemContainer!.subviews[i]
             if(type == nil || (type != nil && view as? T != nil)) {//<--Inspired from the ClassParser.ofType() method
                 items.append(view as! T)
                 items += (decendantsOfType(view as! ITreeList,type))
@@ -48,7 +48,7 @@ class TreeListParser{
     static func index(_ treeList:ITreeList,_ item:NSView)->[Int] {
         var index:[Int] = []
         for i in 0..<treeList.itemContainer!.subviews.count{//swift 3 upgrade
-            let view:NSView = treeList.itemContainer!.getSubviewAt(i)
+            let view:NSView = treeList.itemContainer!.subviews[i]
             if(view === item) {index = [i]}
             else if (view is ITreeList && (view as! ITreeList).itemContainer!.subviews.count > 0){
                 let tempIndex:[Int] = (TreeListParser.index(view as! ITreeList, item))
@@ -70,7 +70,7 @@ class TreeListParser{
     static func selected(_ treeList:ITreeList)->ISelectable?{
         var selectable:ISelectable?
         for i in 0..<treeList.itemContainer!.subviews.count{
-            let treeItem:NSView = treeList.itemContainer!.getSubviewAt(i)
+            let treeItem:NSView = treeList.itemContainer!.subviews[i]
             if(treeItem is ISelectable && (treeItem as! ISelectable).getSelected()) {selectable = treeItem as? ISelectable}
             if(treeItem is ITreeListItem && !(treeItem as! ISelectable).getSelected()) {selectable = TreeListParser.selected(treeItem as! ITreeList)}
             if(selectable != nil) {break}//<--What does this break do?, well when the first selectable is found it breaks out of the loop, should probably find a better design for this

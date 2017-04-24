@@ -13,18 +13,13 @@ class SelectModifier {
     static func selectAll(_ selectables:[ISelectable],_ isSelected:Bool = true) {
         selectables.forEach{$0.setSelected(isSelected)}
     }
+    /**
+     *
+     */
     static func unSelectAllExceptThese(_ selectables:[ISelectable], exceptions:[ISelectable]) {
         let unSelectedItems:[ISelectable] = ArrayParser.difference(selectables, exceptions)
-        for unSelectedItem in unSelectedItems {
-            if(unSelectedItem.getSelected()){
-                unSelectedItem.setSelected(false)
-            }
-        }
-        for selectedItem in exceptions { 
-            if(!selectedItem.getSelected()) {
-                selectedItem.setSelected(true)
-            }
-        }
+        unSelectedItems.forEach {if($0.getSelected()){$0.setSelected(false)}}//deselect the selected
+        exceptions.forEach {if(!$0.getSelected()) {$0.setSelected(true)}}
     }
     /**
      * Selects all selectables within a range (from, to)

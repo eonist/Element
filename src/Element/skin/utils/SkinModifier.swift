@@ -149,14 +149,12 @@ private class Utils{
      * TODO: Upgrade this method with functional programming: subViews.map.lazy.first(){elmt == $1} etc etc
      */
     static func elementIndex(_ parent:NSView,_ element:Element)->Int {
-        return parent.subviews.first(where: {$0 is Element && ($0 as! Element) === element}) ?? -1
-        //return ArrayParser.indx(ElementParser.children(parent,Element.self), element)
+        return parent.subviews.index(where: {$0 is Element && ($0 as! Element) === element}) ?? -1
     }
     /**
      *
      */
-    static func leftFloatingElementSkin(_ elements:Array<IElement>,_ index:Int)->ISkin? {
-        //Swift.print("leftFloatingElementSkin: index: " + "\(index)")
+    static func leftFloatingElementSkin(_ elements:[IElement],_ index:Int)->ISkin? {
         let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.left)
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil/*the left element-sibling*/
     }

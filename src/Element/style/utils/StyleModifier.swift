@@ -87,23 +87,14 @@ class StyleModifier {
      * TODO: add a checkFlag, sometimes the cecking of existance is already done by the caller
      */
     static func prepend(_ style:inout IStyle,_ styleProperty:IStyleProperty){
-        //Swift.print("prepend happended: styleProperty: " + styleProperty.name)
-        for styleProp:IStyleProperty in style.styleProperties{
-            if(styleProp.name == styleProperty.name && styleProp.depth == styleProperty.depth) {
-                fatalError("\(style) STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)/*checks if there is no duplicates in the list*/
-            }
+        if StyleAsserter.alreadyExists(style, styleProperty) {
+            fatalError("\(style) STYLE PROPERTY BY THE NAME OF " + styleProperty.name + " IS ALREADY IN THE _styleProperties ARRAY: " + styleProperty.name)/*checks if there is no duplicates in the list*/
         }
         _ = ArrayModifier.unshift(&style.styleProperties, styleProperty)
     }
 }
 private class Utils{
     static func matchAt(_ style:IStyle, _ styleProperty:IStyleProperty)->Int{
-        for i in 0..<style.styleProperties.count{
-            let styleProp:IStyleProperty = style.styleProperties[i]
-            if(styleProperty.name == styleProp.name){
-                return i
-            }
-        }
-        return -1
+        return style.styleProperties.index(where: {$0.name == styleProperty.name}) ?? -1
     }
 }

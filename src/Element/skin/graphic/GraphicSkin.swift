@@ -42,7 +42,7 @@ class GraphicSkin:Skin{
      */
     func applyProperties(_ layer:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("applyProperties")
-        _ = GraphicModifier.applyProperties(&layer, fillStyle(depth), lineStyle(depth),lineOffsetType(depth))/*color or gradient*/
+        Utils.applyProps(&layer,self,depth)
         if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){
             GraphicModifier.applyRotation(&layer, rotation)
         }else{
@@ -76,18 +76,8 @@ private class Utils{
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }
-}
-/**
- * TODO: ⚠️️ add param skin, as self could be used in the future 👈 (Add rotation to config)
- */
-extension GraphicSkin{/*Convenience*/
-    func fillStyle(_ depth:Int) -> IFillStyle{
-        return StylePropertyParser.fillStyle(self,depth)
-    }
-    func lineStyle(_ depth:Int) -> ILineStyle?{
-        return StylePropertyParser.lineStyle(self,depth)
-    }
-    func lineOffsetType(_ depth:Int) -> OffsetType {
-        return StylePropertyParser.lineOffsetType(self,depth)
+    static func applyProps(_ layer:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
+        _ = GraphicModifier.applyProperties(&layer, StylePropertyParser.fillStyle(graphicSkin,depth), StylePropertyParser.lineStyle(graphicSkin,depth),StylePropertyParser.lineOffsetType(graphicSkin,depth))/*color or gradient*/
     }
 }
+

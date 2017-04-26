@@ -133,45 +133,49 @@ class CSSPropertyParser {
      * RETURNS a TextFormat class instance
      */
     static func textFormat(_ input:String) -> TextFormat {
-        let propertyString:String = input.match(textFormatPattern)[0]
-        let properties:[String] = propertyString.split(",")
-        return properties.mapReduce(TextFormat()){
-            let property:String = $1
-            let matches:[NSTextCheckingResult] = property.matches(textFormatItemPattern)
-            var textFormat:TextFormat = $0
-            matches.forEach{ match in
-                let name:String = match.value(property, 1)/*Capturing group 1*/
-                var value:Any = match.value(property, 2)/*Capturing group 2*/
-                if(name == "color") { value = StringParser.nsColor(value as! String) }
-                else if("\(value)" == "true") {value = true }
-                else if("\(value)" == "false") {value = false }
-                //else {StringParser.boolean(String(value))}
-                textFormat[name] = value
+        if let propertyString:String = input.match(textFormatPattern).first{
+            let properties:[String] = propertyString.split(",")
+            return properties.mapReduce(TextFormat()){
+                let property:String = $1
+                let matches:[NSTextCheckingResult] = property.matches(textFormatItemPattern)
+                var textFormat:TextFormat = $0
+                matches.forEach{ match in
+                    let name:String = match.value(property, 1)/*Capturing group 1*/
+                    var value:Any = match.value(property, 2)/*Capturing group 2*/
+                    if(name == "color") { value = StringParser.nsColor(value as! String) }
+                    else if("\(value)" == "true") {value = true }
+                    else if("\(value)" == "false") {value = false }
+                    //else {StringParser.boolean(String(value))}
+                    textFormat[name] = value
+                }
+                return textFormat
             }
-            return textFormat
         }
+        fatalError("illegal syntax")
     }
     /**
      * Returns a DropShadowFilter instance
      */
     static func dropShadow(_ string:String)->DropShadow {
-        let propertyString:String = string.match(dropShadowPattern)[0]
-        var properties:[String] = propertyString.split(" ")
-        let distance:CGFloat = StringParser.digit(properties[0])
-        let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
-        let colorValue:UInt = StringParser.color(properties[2])/*hex color*/
-        let alpha:CGFloat = StringParser.digit(properties[3])
-        let blurX:CGFloat = StringParser.digit(properties[4])
-        let blurY:CGFloat = StringParser.digit(properties[5])
-        let inner:Bool = StringParser.boolean(properties[8])/*isInnerShadow,isInsetShadowType etc*/
-        let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
-        let blur:CGFloat = max(blurX,blurY)
-        let angleInRadians = Trig.radians(angle)
-        let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
-        let offsetX:CGFloat = polarPoint.x
-        let offsetY:CGFloat = polarPoint.y
-        let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
-        return dropShadow
+        if let propertyString:String = string.match(dropShadowPattern).first{
+            var properties:[String] = propertyString.split(" ")
+            let distance:CGFloat = StringParser.digit(properties[0])
+            let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
+            let colorValue:UInt = StringParser.color(properties[2])/*hex color*/
+            let alpha:CGFloat = StringParser.digit(properties[3])
+            let blurX:CGFloat = StringParser.digit(properties[4])
+            let blurY:CGFloat = StringParser.digit(properties[5])
+            let inner:Bool = StringParser.boolean(properties[8])/*isInnerShadow,isInsetShadowType etc*/
+            let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
+            let blur:CGFloat = max(blurX,blurY)
+            let angleInRadians = Trig.radians(angle)
+            let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
+            let offsetX:CGFloat = polarPoint.x
+            let offsetY:CGFloat = polarPoint.y
+            let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
+            return dropShadow
+        }
+        fatalError("illegal syntax")
     }
 }
 private class Utils{

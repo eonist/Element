@@ -99,7 +99,7 @@ private class Utils{
      * TODO: optimize this function, we probably need to outsource the second loop in this function
      * TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
      * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
-     * TODO: You can use functional programming here: use lazy map and flatMap to flatten to 1 depth
+     * TODO: ⚠️️ You can use functional programming here 🤖: use lazy map and flatMap to flatten to 1 depth
      */
     static func siblingStyles(_ styleName:String,_ value:String)->[IStyle] {
         var sibblingStyles:[IStyle] = []
@@ -107,11 +107,15 @@ private class Utils{
         let matches = styleName.matches(siblingPattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         matches.forEach { match in
             if(match.numberOfRanges > 0){
-                var prefix:String = match.value(styleName,1)
-                prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix):prefix
+                let prefix:String = {
+                    let prefix = match.value(styleName,1)
+                    return prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix):prefix
+                }()
                 let group:String =  match.value(styleName,2)
-                var suffix:String = match.value(styleName,3)
-                suffix = suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix):suffix
+                let suffix:String = {
+                    let suffix = match.value(styleName,3)
+                    return suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix):suffix
+                }()
                 if(group == "") {
                     sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{

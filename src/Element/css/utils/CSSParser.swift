@@ -79,12 +79,13 @@ class CSSParser{
 }
 
 private class Utils{
-    static var precedingWith:String = "(?<=\\,|^)"
-    static var prefixGroup:String = "([\\w\\d\\s\\:\\#]*?)?"
-    static var group:String = "(\\[[\\w\\s\\,\\.\\#\\:]*?\\])?"
-    static var suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
-    static var siblingPattern:String = precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
-    
+    static var siblingPattern:String = {
+        let precedingWith:String = "(?<=\\,|^)"
+        let prefixGroup:String = "([\\w\\d\\s\\:\\#]*?)?"
+        let group:String = "(\\[[\\w\\s\\,\\.\\#\\:]*?\\])?"
+        let suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
+        return precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
+    }()
     static var bracketPattern:String = {
         let precedingWith:String = "(?<=\\[)"
         let endingWith:String = "(?=\\])"
@@ -99,13 +100,11 @@ private class Utils{
      * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      */
     static func siblingStyles(_ styleName:String,_ value:String)->[IStyle] {
-        //Swift.print("CSSParser.siblingStyles(): " + "styleName: " + styleName)
         enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:[IStyle] = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = styleName.matches(siblingPattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
-        //Swift.print("matches: " + "\(matches.count)")
-        for match:NSTextCheckingResult in matches {
+        matches.forEach { match in
             if(match.numberOfRanges > 0){
                 var prefix:String = match.value(styleName,1)
                 prefix = prefix != "" ? RegExpModifier.removeWrappingWhitespace(prefix):prefix
@@ -115,16 +114,12 @@ private class Utils{
                 if(group == "") {
                     sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{
-                    let precedingWith:String = "(?<=\\[)"
-                    let endingWith:String = "(?=\\])"
-                    let bracketPattern:String = precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
                     let namesInsideBrackets:String = RegExp.match(group, bracketPattern)[0]
                     let names:[String] = StringModifier.split(namesInsideBrackets, ",")
-                    for name in names {
+                    names.forEach {  name in
                         let condiditonalPrefix:String = prefix != "" ? prefix + " " : ""
                         let conditionalSuffix:String = suffix != "" ? " " + suffix : ""
                         let fullName:String =  condiditonalPrefix + name + conditionalSuffix
-                        //Swift.print("fullName: " + fullName)
                         sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)))
                     }
                 }

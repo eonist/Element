@@ -74,8 +74,7 @@ class CSSParser{
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:[String] = propertyValue.match(pattern)
             for i in 0..<values.count{
-                var value = values[i]
-                value = RegExpModifier.removeWrappingWhitespace(value)
+                let value = RegExpModifier.removeWrappingWhitespace(values[i])
                 let propertyValue:Any = CSSPropertyParser.property(value)
                 let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/
                 styleProperties.append(styleProperty)

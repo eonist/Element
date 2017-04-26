@@ -183,7 +183,7 @@ private class Utils{
         return gradient
     }
     /**
-     *
+     * Returns rotation value
      */
     static func rotation(_ rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
         var rotation:CGFloat

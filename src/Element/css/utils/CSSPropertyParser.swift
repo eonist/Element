@@ -12,6 +12,7 @@ extension CSSPropertyParser{
     static var radialGradientPattern:String = "(?<=radial-gradient\\().+?(?=\\);?)"
     static var textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
     static var dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
+    static var textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
 }
 class CSSPropertyParser {
     /**
@@ -116,7 +117,7 @@ class CSSPropertyParser {
         let properties:[String] = propertyString.split(",")
         let textFormat:TextFormat = properties.mapReduce(TextFormat()){
             let property:String = $1
-            let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
+            let matches:[NSTextCheckingResult] = property.matches(textFormatItemPattern)
             var textFormat:TextFormat = $0
             matches.forEach{ match in
                 let name:String = match.value(property, 1)/*Capturing group 1*/
@@ -157,6 +158,8 @@ class CSSPropertyParser {
 private class Utils{
     static var gradientPattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
     static var directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left"
+    static var rotationTestPattern:String = "^\\d+?deg|\\d+$"
+    static var rotationMatchPattern:String = "^\\d+?$|^\\d+?(?=deg$)"
     /**
      * Returns a Gradient instance derived from PARAM: properties
      * NOTE: adds colors, opacities and ratios
@@ -185,8 +188,8 @@ private class Utils{
     static func rotation(_ rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
         var rotation:CGFloat
          // :TODO: support for tl tr br bk l r t b?
-        if(rotationMatch.test("^\\d+?deg|\\d+$")) {
-            rotation = rotationMatch.match("^\\d+?$|^\\d+?(?=deg$)")[0].cgFloat
+        if(rotationMatch.test(rotationTestPattern)) {
+            rotation = rotationMatch.match(rotationMatchPattern)[0].cgFloat
         }else if(rotationMatch.test(directionPattern)){
             let angleType:String = rotationMatch.match(directionPattern)[0]
             rotation = Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
@@ -202,7 +205,7 @@ private class Utils{
         if(ratio.test("\\d{1,3}%")){/*i.e: 100%*/
             ratio = ratio.match("\\d{1,3}")[0]
             ratioValue = ratio.double / 100/*255*/
-        }else if(ratio.test("\\d\\.\\d{1,3}|\\d")){ratioValue = ratio.double /** 255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+        }else if(ratio.test("\\d\\.\\d{1,3}|\\d")){ratioValue = ratio.double /*255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
         return ratioValue
     }
     /**

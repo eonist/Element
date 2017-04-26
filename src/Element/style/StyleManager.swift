@@ -55,8 +55,11 @@ extension StyleManager{
      */
     static func addStyle(_ cssString:String){
         let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
+        Swift.print("resolvedLinksCSS: " + "\(resolvedLinksCSS)")
         let removedCommentsCSS = RegExpModifier.removeComments(resolvedLinksCSS)
-        addStyle(CSSParser.styleCollection(removedCommentsCSS).styles)
+        Swift.print("removedCommentsCSS: " + "\(removedCommentsCSS)")
+        let styles = CSSParser.styleCollection(removedCommentsCSS).styles
+        addStyle(styles)
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)

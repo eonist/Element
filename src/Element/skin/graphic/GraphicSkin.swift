@@ -39,7 +39,7 @@ class GraphicSkin:Skin{
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
     func applyProperties(_ layer:inout IGraphicDecoratable,_ depth:Int){
-        _ = GraphicModifier.applyProperties(&layer, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth));/*color or gradient*/
+        _ = GraphicModifier.applyProperties(&layer, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth))/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?

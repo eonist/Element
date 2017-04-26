@@ -24,6 +24,7 @@ class CSSPropertyParser {
     static func property(_ string:String) -> Any{
         Swift.print("string: " + "\(string)")
         switch(true) {
+            
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
             case StringAsserter.boolean(string):return string.bool/*true or false*/
@@ -33,7 +34,7 @@ class CSSPropertyParser {
             case string.test("^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
-            case string.test("^transform\\b"):return transform(string)
+            case string.test("^rotate\\b"):return transform(string)
             //case RegExp.test(string,"^textField\\b"):return textField(string)
             case string.test(arrayPattern):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
             case string.test(stringPattern):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?

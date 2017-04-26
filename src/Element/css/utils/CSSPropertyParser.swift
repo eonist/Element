@@ -22,9 +22,7 @@ class CSSPropertyParser {
      * TODO: ⚠️️ This should return optional
      */
     static func property(_ string:String) -> Any{
-        Swift.print("string: " + "\(string)")
         switch(true) {
-            
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
             case StringAsserter.boolean(string):return string.bool/*true or false*/
@@ -46,11 +44,8 @@ class CSSPropertyParser {
      * NOTE: in the future we will add more transforms
      */
     static func rotate(_ string:String)->CGFloat{
-        Swift.print("rotate()")
         if let propertyString = string.match(transformRotatePattern).first{
-            Swift.print("propertyString: " + "\(propertyString)")
             let rotation:CGFloat = Utils.rotation(propertyString)
-            Swift.print("rotation: " + "\(rotation)")
             return rotation
         }
         fatalError("illegal syntax")

@@ -62,23 +62,19 @@ class CSSParser{
      * NOTE: now supports StyleProperty2 that can have many property values
      */
     static func styleProperties(_ propertyName:String, _ propertyValue:String)->[IStyleProperty]{
-        var styleProperties:[IStyleProperty] = []
         let names = propertyName.contains(",") ? propertyName.split(propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         return names.lazy.map { name -> [IStyleProperty] in
             let name:String = RegExpModifier.removeWrappingWhitespace(name)
             let valExp:String = stylePropertyValuePattern/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:[String] = propertyValue.match(pattern)
-            return (0..<values.count).indices.map{ i in
-                let value = RegExpModifier.removeWrappingWhitespace($0)
+            return (0..<values.count).indices.map{ i -> IStyleProperty in
+                let value = RegExpModifier.removeWrappingWhitespace(values[i])
                 let propertyValue:Any = CSSPropertyParser.property(value)
                 let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/
                 return styleProperty
             }
-        }.flatMap{$0}
-        
-        }
-        //return styleProperties
+        }.flatMap{$0}//flattens 2 deep arr into 1 deep arr
     }
 }
 

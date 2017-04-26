@@ -43,7 +43,7 @@ class CSSPropertyParser {
      */
     static func transform(_ string:String)->String{
         Swift.print("transform: " + "\(transform)")
-        let propertyString:String = string.match(transformPattern)[0]
+        let propertyString = string.match(transformPattern)
         Swift.print("propertyString: " + "\(propertyString)")
         return ""
     }

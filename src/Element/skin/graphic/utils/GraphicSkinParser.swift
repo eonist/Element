@@ -28,10 +28,16 @@ private class Utils{
     static func rectGraphic(_ skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
         let width:CGFloat = {
-            let styleWidth:CGFloat? = StylePropertyParser.width(skin,depth)
-            if styleWidth == nil && skin.width == nil || skin.width!.isNaN
-            let padding:CGFloat = padding.left + padding.right
-        }
+            var padding:CGFloat = padding.left + padding.right
+            if let styleWidth:CGFloat = StylePropertyParser.width(skin,depth){
+                return styleWidth + padding
+            }else if !skin.width!.isNaN{
+                return skin.width! + padding
+            }
+           // else if styleWidth == nil &&  skin.width!.isNaN {}
+            
+            fatalError("not allowed")
+        }()
         
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?

@@ -54,15 +54,17 @@ class CSSParser{
             let propertyValue:String = match.value(value, 2)/*value*/
             //Swift.print("propertyValue: " + "\(propertyValue)")
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
-            Swift.print("styleProperties.count: " + "\(styleProperties.count)")
+            //Swift.print("styleProperties.count: " + "\(styleProperties.count)")
             return styleProperties
             }.reduce(Style(name,selectors, [])){
                 var style:IStyle = $0
                 let styleProps:[IStyleProperty] = $1
+                //Swift.print("styleProps.count: " + "\(styleProps.count)")
                 style.addStyleProperty(styleProps)
+                Swift.print("style.styleProperties.count: " + "\(style.styleProperties.count)")
                 return style
         }
-        Swift.print("s.styleProperties.count: " + "\(s.styleProperties.count)")
+        //Swift.print("s.styleProperties.count: " + "\(s.styleProperties.count)")
         return s
     }
     /**

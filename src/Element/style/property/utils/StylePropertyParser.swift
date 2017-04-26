@@ -34,12 +34,12 @@ class StylePropertyParser{
     static func colorFillStyle(_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
         var nsColor:NSColor?
-        if(colorValue is NSColor){/*colorValue is NSColor*/
-            nsColor = colorValue as? NSColor
+        if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
+            nsColor = colorValue
         }else if(colorValue == nil){
             nsColor = nil
-        }else if(colorValue! is Array<Any>) {
-            if let colorVal = (colorValue as? Array<Any>)?[1]{
+        }else if let colorValue = colorValue as? [Any] {
+            if let colorVal = colorValue[1]{
                 if(colorVal is String && (colorVal as! String) == CSSConstants.none){
                     nsColor = nil
                 }else if (colorVal is NSColor){

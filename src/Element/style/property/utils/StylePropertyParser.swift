@@ -246,7 +246,7 @@ class StylePropertyParser{
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height,depth)
     }
-    static func rotation(){
+    static func rotation(_ skin:ISkin, _ depth:Int = 0){
         
     }
     /**

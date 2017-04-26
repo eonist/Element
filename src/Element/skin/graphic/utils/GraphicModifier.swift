@@ -21,7 +21,7 @@ class GraphicModifier {
         
         //Continue here: 🏀
             //Look at drawlab. How it rotates shapes with pivot at center
-            //Also Reset the rotation so that you don't keep rotating
+            //Also Reset the rotation so that you don't keep rotating on every state change
             //
         
         decoratable.graphic.rotate(byDegrees:rotation)

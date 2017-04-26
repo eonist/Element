@@ -77,7 +77,9 @@ private class Utils{
         //sizableDecorator.draw()
     }
     static func applyProps(_ layer:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
-        _ = GraphicModifier.applyProperties(&layer, StylePropertyParser.fillStyle(graphicSkin,depth), StylePropertyParser.lineStyle(graphicSkin,depth),StylePropertyParser.lineOffsetType(graphicSkin,depth))/*color or gradient*/
+        let fillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
+        let lineStyle = StylePropertyParser.lineStyle(graphicSkin,depth)
+        let lineOffsetType = StylePropertyParser.lineOffsetType(graphicSkin,depth)
+        _ = GraphicModifier.applyProperties(&layer,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
     }
 }
-

@@ -117,7 +117,7 @@ class CSSPropertyParser {
      */
     static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
         let matches:[String] = StringModifier.split(string, " ")
-        let array:[Any] = matches.map { str in
+        return matches.map { str in
             if(StringAsserter.digit(str)){
                 return StringParser.digit(str)
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
@@ -126,7 +126,6 @@ class CSSPropertyParser {
                 return str
             }
         }
-        return array
     }
     /**
      * TextFormat
@@ -222,26 +221,22 @@ private class Utils{
      * // :TODO: add support for auto ratio values if they are not defined, you have implimented this functionality somewhere, so find this code
      */
     static func ratio(_ ratio:String)->Double{//<--Why not CGFloat?
-        var ratio = ratio
-        var ratioValue:Double = Double.nan
         if(ratio.test("\\d{1,3}%")){/*i.e: 100%*/
-            ratio = ratio.match("\\d{1,3}")[0]
-            ratioValue = ratio.double / 100/*255*/
-        }else if(ratio.test("\\d\\.\\d{1,3}|\\d")){ratioValue = ratio.double /*255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
-        return ratioValue
+            let ratioStr = ratio.match("\\d{1,3}")[0]
+            return ratioStr.double / 100/*255*/
+        }else if(ratio.test("\\d\\.\\d{1,3}|\\d")){return ratio.double /*255*/ } //i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+        return Double.nan
     }
     /**
      * TODO: We should use CGFloat here not Double
      */
     static func alpha(_ alpha:String)->Double{
-        var alpha = alpha
-        var alphaValue:Double = 1
         if(alpha.test("\\d{1,3}%")){/*i.e: 100%*/
-            alpha = alpha.match("\\d{1,3}")[0]
-            alphaValue = alpha.double/100
-        }else if(alpha.test("\\d\\.\\d{1,3}|\\d")) {alphaValue = alpha.double}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
-        else if(alpha.test("^$")) {alphaValue = 1}//no value present
-        return alphaValue
+            let alphaStr = alpha.match("\\d{1,3}")[0]
+            return alphaStr.double/100
+        }else if(alpha.test("\\d\\.\\d{1,3}|\\d")) {return alpha.double}//i.e: 0.9// :TODO: suport for .2 syntax (now only supports 0.2 syntax)
+        else if(alpha.test("^$")) {return 1}//no value present
+        return 1
     }
 }
 //DEPRECATED

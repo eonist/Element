@@ -120,7 +120,7 @@ class StylePropertyParser{
      * Returns a GradientFillStyle
      */
     static func gradientFillStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
-        let newGradient:Gradient/*IGradient*/ = value(skin, CSSConstants.fill, depth) as! Gradient/*IGradient*///GradientParser.clone()
+        if let newGradient:Gradient = value(skin, CSSConstants.fill, depth) as? Gradient/*IGradient*///GradientParser.clone()
         return GradientFillStyle(newGradient,NSColor.clear)
     }
     /**

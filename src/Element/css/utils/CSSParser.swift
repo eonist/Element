@@ -69,7 +69,7 @@ class CSSParser{
             let valExp:String = stylePropertyValuePattern/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:[String] = propertyValue.match(pattern)
-            for i in 0..<values.count{
+            (0..<values.count).indices.forEach{ i in
                 let value = RegExpModifier.removeWrappingWhitespace(values[i])
                 let propertyValue:Any = CSSPropertyParser.property(value)
                 let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/

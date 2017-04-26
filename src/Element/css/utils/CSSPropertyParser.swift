@@ -40,15 +40,17 @@ class CSSPropertyParser {
         }
     }
     /**
-     *
+     * EXAMPLE: transform:rotation(90deg);
      */
-    static func transform(_ string:String)->String{
+    static func transform(_ string:String)->CGFloat{
         Swift.print("transform: " + "\(transform)")
         if let propertyString = string.match(transformRotationPattern).first{
             Swift.print("propertyString: " + "\(propertyString)")
+            let rotation:CGFloat = Utils.rotation(propertyString)
+            Swift.print("rotation: " + "\(rotation)")
+            return rotation
         }
-        
-        fatalError("illegal transform syntax")
+        fatalError("illegal syntax")
     }
     /**
      * PARAM: string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
@@ -56,12 +58,14 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
     static func linearGradient(_ string:String)->IGradient{
-        let propertyString:String = string.match(linearGradientPattern)[0]
-        var properties:[String] = propertyString.split(",")
-        let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
-        var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
-        gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
-        return gradient
+        if let propertyString:String = string.match(linearGradientPattern).first{
+            var properties:[String] = propertyString.split(",")
+            let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
+            var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
+            gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
+            return gradient
+        }
+        fatalError("illegal syntax")
     }
     /**
      * PARAM: string radial-gradient(50% 50% 100% 100% 1,blue 1 0,red 1 1);//2 color radial-gradient, with focalPointRatio and with percentage of x,y,width and height
@@ -86,23 +90,25 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
      static func radialGradient(_ string:String)->IGradient{
-        let propertyString:String = string.match(radialGradientPattern)[0]
-        var properties:[String] = propertyString.split(",")
-        let setupString:String = properties.shift()
-        let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
-        //gradient.colors[0]
-        let setup:[String] = setupString.split(" ")/*The gradient settings*/
-        let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// TODO: make this optional aswell as per css pdf specs
-        let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/
-        let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1
-        let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1
-        let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
-        gradient.rotation = rotation
-        gradient.startCenter = CGPoint(0,setup.count == 6 ? setup[5].cgFloat : 0)/*the last item is always the focalPointRatio always between -1 to 1*/
-        gradient.startRadius = CGSize(0,0)
-        gradient.endCenter = CGPoint(x,y)
-        gradient.endRadius = CGSize(yScale,xScale)/*<---We re-order the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
-        return gradient
+        if let propertyString:String = string.match(radialGradientPattern).first{
+            var properties:[String] = propertyString.split(",")
+            let setupString:String = properties.shift()
+            let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
+            //gradient.colors[0]
+            let setup:[String] = setupString.split(" ")/*The gradient settings*/
+            let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// TODO: make this optional aswell as per css pdf specs
+            let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/
+            let xScale:CGFloat = setup.count > 2 ? StringParser.percentage(setup[2])/100:1
+            let yScale:CGFloat = setup.count > 3 ? StringParser.percentage(setup[3])/100:1
+            let rotation:CGFloat = setup.count > 4 ? CGFloat(Double(setup[4])!) * ㎭ : 0/*from rotation in degrees*/
+            gradient.rotation = rotation
+            gradient.startCenter = CGPoint(0,setup.count == 6 ? setup[5].cgFloat : 0)/*the last item is always the focalPointRatio always between -1 to 1*/
+            gradient.startRadius = CGSize(0,0)
+            gradient.endCenter = CGPoint(x,y)
+            gradient.endRadius = CGSize(yScale,xScale)/*<---We re-order the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
+            return gradient
+        }
+        fatalError("illegal syntax")
      }
     /**
      * Returns an array comprised of values if the individual value is a digit then it is processed as a digit if its not a digit then its just processed as a string

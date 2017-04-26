@@ -13,7 +13,7 @@ extension CSSPropertyParser{
     static var textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
     static var dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
     static var textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
-    static var transformPattern:String = "(?<=transform\\().+?(?=\\);?)"
+    static var transformRotationPattern:String = "(?<=rotation\\().+?(?=\\);?)"
 }
 class CSSPropertyParser {
     /**
@@ -43,7 +43,7 @@ class CSSPropertyParser {
      */
     static func transform(_ string:String)->String{
         Swift.print("transform: " + "\(transform)")
-        let propertyString = string.match(transformPattern)
+        let propertyString = string.match(transformRotationPattern)
         Swift.print("propertyString: " + "\(propertyString)")
         return ""
     }

@@ -27,7 +27,12 @@ private class Utils{
      */
     static func rectGraphic(_ skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
-        let width:CGFloat = (StylePropertyParser.width(skin,depth) ?? skin.width!)  + padding.left + padding.right
+        let width:CGFloat = {
+            let styleWidth:CGFloat? = StylePropertyParser.width(skin,depth)
+            if styleWidth == nil && skin.width
+            let padding:CGFloat = padding.left + padding.right
+        }
+        
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
         return RectGraphic(width,height,decoratable)

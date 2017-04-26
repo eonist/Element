@@ -4,22 +4,23 @@ import Foundation
  * TODO: if you strip the inital css data for spaces then you won't need to removeWrappingWhiteSpace all the time
  */
 class CSSParser{
-    static let precedingWith:String = "(?<=^|\\})"
-    static let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
-    static let valueGroup:String = "((?:.|\\n)*?)"
-    static let CSSElementPattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
+    static let CSSElementPattern:String = {
+        let precedingWith:String = "(?<=^|\\})"
+        let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
+        let valueGroup:String = "((?:.|\\n)*?)"
+        return precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
+    }()
     static var stylePattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
     static var stylePropertyValuePattern:String = "\\w\\.\\-%#\\040<>\\/~"
-    enum CSSElementType:Int{ case name = 1, value}
+    enum CSSElementType:Int{case name = 1, value}
     /**
      * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
      * RETURN: StyleCollection populated with Styles
      * PARAM: cssString: a string comprised by css data h1{color:blue;} etc
      * NOTE: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
-     * TODO: ⚠️️ Use mapReduce in the bellow method
+     * TODO: ⚠️️ Try to use lazy.map.reduce on the bellow
      */
     static func styleCollection(_ cssString:String)->IStyleCollection{
-        //var styleCollection:IStyleCollection = StyleCollection()
         let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         return matches.mapReduce(StyleCollection()) {/*Loops through the pattern*/
             var styleCollection:StyleCollection = $0
@@ -77,7 +78,6 @@ class CSSParser{
         }.flatMap{$0}//flattens 2 deep arr into 1 deep arr
     }
 }
-
 private class Utils{
     static var siblingPattern:String = {
         let precedingWith:String = "(?<=\\,|^)"

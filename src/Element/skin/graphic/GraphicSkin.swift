@@ -40,7 +40,7 @@ class GraphicSkin:Skin{
      */
     func applyProperties(_ layer:inout IGraphicDecoratable,_ depth:Int){
         _ = GraphicModifier.applyProperties(&layer, fillStyle(depth), lineStyle(depth),lineOffsetType(depth))/*color or gradient*/
-        GraphicModifier.applyTransform
+        if let transform:CGFloat = StylePropertyParser.rotation(self,depth){ GraphicModifier.applyTransform(&layer, transform) }
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?

@@ -91,6 +91,7 @@ private class Utils{
         let endingWith:String = "(?=\\])"
         return precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
     }()
+    enum styleNameParts:Int{case prefix = 1, group, suffix}
     /**
      * Returns an array of style instances derived from PARAM: style (that has a name with 1 or more comma signs, or in combination with a group [])
      * PARAM: style: style.name has 1 or more comma seperated words
@@ -98,9 +99,9 @@ private class Utils{
      * TODO: optimize this function, we probably need to outsource the second loop in this function
      * TODO: using the words suffix and prefix is the wrong use of their meaning, use something els
      * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
+     * TODO: You can use functional programming here: use lazy map and flatMap to flatten to 1 depth
      */
     static func siblingStyles(_ styleName:String,_ value:String)->[IStyle] {
-        enum styleNameParts:Int{case prefix = 1, group, suffix}
         var sibblingStyles:[IStyle] = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = styleName.matches(siblingPattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/

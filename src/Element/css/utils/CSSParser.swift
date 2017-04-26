@@ -28,12 +28,12 @@ class CSSParser{
             Swift.print("styleName: " + "\(styleName)")
             let value:String = match.value(cssString, 2)/*value*/
             Swift.print("value: " + "\(value)")
-            if(StringAsserter.contains(styleName, ",") == false){
-                let style:IStyle = CSSParser.style(styleName,value)
-                styleCollection.addStyle(style)/*If the styleName has 1 name*/
-            }else{
+            if(StringAsserter.contains(styleName, ",")){/*Sibling styles*/
                 let siblingStyles:[IStyle] = Utils.siblingStyles(styleName, value)
                 styleCollection.addStyles(siblingStyles)/*If the styleName has multiple comma-seperated names*/
+            }else{/*Single style*/
+                let style:IStyle = CSSParser.style(styleName,value)
+                styleCollection.addStyle(style)/*If the styleName has 1 name*/
             }
             return styleCollection
         }
@@ -46,7 +46,6 @@ class CSSParser{
      */
     static func style(_ name:String,_ value:String)->IStyle!{
         var name:String = name
-        //Swift.print("CSSParser.style() " + "name: " + name + " value: " + value)
         name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)

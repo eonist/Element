@@ -40,7 +40,8 @@ class CSSPropertyParser {
         }
     }
     /**
-     * EXAMPLE: transform:rotation(90deg);
+     * EXAMPLE: transform:rotation(90deg)
+     * NOTE: in the future we will add more transforms
      */
     static func transform(_ string:String)->CGFloat{
         Swift.print("transform: " + "\(transform)")

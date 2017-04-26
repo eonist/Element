@@ -12,9 +12,9 @@ class GraphicModifier {
         return decoratable
     }
     /**
-     *
+     * New
      */
     static func applyTransform(_ decoratable:inout IGraphicDecoratable,_ rotation:CGFloat){
-        
+        let rot:CGFloat = Trig.normalize2(rotation * ㎭)/*between -π and π*/
     }
 }

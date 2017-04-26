@@ -19,6 +19,7 @@ class CSSPropertyParser {
     /**
      * Returns a CSS property to a property that can be read by the Swift API
      * TODO: Long switch statments can be replaced by polymorphism?!? maybe enum?
+     * TODO: ⚠️️ This should return optional
      */
     static func property(_ string:String) -> Any{
         switch(true) {
@@ -43,7 +44,9 @@ class CSSPropertyParser {
      */
     static func transform(_ string:String)->String{
         Swift.print("transform: " + "\(transform)")
-        let propertyString = string.match(transformRotationPattern)
+        if let propertyString = string.match(transformRotationPattern).first{
+            
+        }
         Swift.print("propertyString: " + "\(propertyString)")
         return ""
     }

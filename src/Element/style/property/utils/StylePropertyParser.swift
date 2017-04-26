@@ -30,6 +30,7 @@ class StylePropertyParser{
     /**
      * Returns a FillStyle instance
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
+     * TODO: ⚠️️ Refactor this method
      */
     static func colorFillStyle(_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
         let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
@@ -39,11 +40,11 @@ class StylePropertyParser{
         }else if(colorValue == nil){
             nsColor = nil
         }else if let colorValue = colorValue as? [Any] {
-            if let colorVal = colorValue[1]{
-                if(colorVal is String && (colorVal as! String) == CSSConstants.none){
+            if let colorVal = colorValue[safe:1]{
+                if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
                     nsColor = nil
-                }else if (colorVal is NSColor){
-                    nsColor = colorVal as? NSColor
+                }else if let colorValNSColor = colorVal as? NSColor{
+                    nsColor = colorValNSColor
                 }else{
                     fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
                 }

@@ -44,13 +44,15 @@ class CSSParser{
      * PARAM: name: the name of the style
      * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
-    static func style(_ name:String,_ value:String)->IStyle!{
+    static func style(_ name:String,_ value:String)->IStyle{
         let name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)
-        let style:IStyle = matches.lazy.map{ match -> [IStyleProperty] in
+        return matches.lazy.map{ match -> [IStyleProperty] in
             let propertyName:String = match.value(value, 1)/*name*/
+            Swift.print("propertyName: " + "\(propertyName)")
             let propertyValue:String = match.value(value, 2)/*value*/
+            Swift.print("propertyValue: " + "\(propertyValue)")
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
             return styleProperties
             }.reduce(Style(name,selectors, [])){
@@ -58,7 +60,6 @@ class CSSParser{
                 style.addStyleProperty($1)
                 return style
         }
-        return style
     }
     /**
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
@@ -75,9 +76,7 @@ class CSSParser{
             for i in 0..<values.count{
                 var value = values[i]
                 value = RegExpModifier.removeWrappingWhitespace(value)
-                //Swift.print(" value: " + value)
                 let propertyValue:Any = CSSPropertyParser.property(value)
-                //Swift.print("propertyValue: " + "\(propertyValue)")
                 let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/
                 styleProperties.append(styleProperty)
             }

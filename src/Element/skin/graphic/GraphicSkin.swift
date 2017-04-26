@@ -39,7 +39,7 @@ class GraphicSkin:Skin{
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
     func applyProperties(_ layer:inout IGraphicDecoratable,_ depth:Int){
-        _ = GraphicModifier.applyProperties(&layer, StylePropertyParser.fillStyle(self,depth), StylePropertyParser.lineStyle(self,depth), StylePropertyParser.lineOffsetType(self,depth))/*color or gradient*/
+        _ = GraphicModifier.applyProperties(&layer, self.fillStyle(depth), self.lineStyle(depth), self.lineOffsetType(depth))/*color or gradient*/
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
@@ -67,5 +67,16 @@ private class Utils{
     static func size(_ sizableDecorator:IGraphicDecoratable,_ size:CGSize){
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
+    }
+}
+extension GraphicSkin{
+    func fillStyle(_ depth:Int) -> IFillStyle{
+        return StylePropertyParser.fillStyle(self,depth)
+    }
+    func lineStyle(_ depth:Int) -> ILineStyle{
+        return StylePropertyParser.lineStyle(self,depth)
+    }
+    func lineOffsetType(_ depth:Int) -> Any {
+        return StylePropertyParser.lineOffsetType(self,depth)
     }
 }

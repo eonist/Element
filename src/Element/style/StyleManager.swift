@@ -59,6 +59,7 @@ extension StyleManager{
         let removedCommentsCSS = RegExpModifier.removeComments(resolvedLinksCSS)
         Swift.print("removedCommentsCSS: " + "\(removedCommentsCSS)")
         let styles = CSSParser.styleCollection(removedCommentsCSS).styles
+        Swift.print("styles.count: " + "\(styles.count)")
         addStyle(styles)
     }
     /**

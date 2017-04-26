@@ -13,6 +13,7 @@ extension CSSPropertyParser{
     static var textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
     static var dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
     static var textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
+    static var transformPattern:String = "(?<=transform\\().+?(?=\\);?)"
 }
 class CSSPropertyParser {
     /**

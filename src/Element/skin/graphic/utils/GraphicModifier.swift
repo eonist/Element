@@ -19,9 +19,10 @@ class GraphicModifier {
         Swift.print("applyRotation: rotation")
         //let rot:CGFloat = Trig.normalize2(rotation * ㎭)/*between -π and π*/
         
-        //Continue here: 
+        //Continue here: 🏀
             //Look at drawlab. How it rotates shapes with pivot at center
-            //Also Reset the rotation so that you dont keep rotating
+            //Also Reset the rotation so that you don't keep rotating
+            //
         
         decoratable.graphic.rotate(byDegrees:rotation)
     }

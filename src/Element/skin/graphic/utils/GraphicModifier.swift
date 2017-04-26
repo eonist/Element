@@ -11,4 +11,10 @@ class GraphicModifier {
         decoratable.graphic.lineOffsetType = offsetType
         return decoratable
     }
+    /**
+     *
+     */
+    static func applyTransform(_ decoratable:inout IGraphicDecoratable,_ rotation:CGFloat){
+        
+    }
 }

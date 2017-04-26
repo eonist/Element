@@ -269,11 +269,10 @@ class StylePropertyParser{
      * TODO: This method is asserted before its used, so you may ommit the optionality
      */
     static func dropShadow(_ skin:ISkin, _ depth:Int = 0)->DropShadow? {
-        if let dropShadow:DropShadow = value(skin, CSSConstants.drop_shadow,depth), dropShadow as? DropShadow {
-            //let str = dropShadow as? String,  str == CSSConstants.none
-            return (dropShadow == nil || ) ? nil :
+        if let dropShadow:DropShadow = value(skin, CSSConstants.drop_shadow,depth) as? DropShadow {
+            return dropShadow
         }
-        return nil
+        return nil//dropShadow as? String,  str == CSSConstants.none
     }
 }
 private class Utils{

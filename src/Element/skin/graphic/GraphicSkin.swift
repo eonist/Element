@@ -73,10 +73,10 @@ extension GraphicSkin{
     func fillStyle(_ depth:Int) -> IFillStyle{
         return StylePropertyParser.fillStyle(self,depth)
     }
-    func lineStyle(_ depth:Int) -> ILineStyle{
+    func lineStyle(_ depth:Int) -> ILineStyle?{
         return StylePropertyParser.lineStyle(self,depth)
     }
-    func lineOffsetType(_ depth:Int) -> Any {
+    func lineOffsetType(_ depth:Int) -> OffsetType {
         return StylePropertyParser.lineOffsetType(self,depth)
     }
 }

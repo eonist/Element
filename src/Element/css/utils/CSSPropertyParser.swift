@@ -207,17 +207,16 @@ private class Utils{
     }
     /**
      * Returns rotation value
+     * TODO: ⚠️️ support for tl tr br bk l r t b?
      */
     static func rotation(_ rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
-        var rotation:CGFloat
-         // :TODO: support for tl tr br bk l r t b?
         if(rotationMatch.test(rotationTestPattern)) {
-            rotation = rotationMatch.match(rotationMatchPattern)[0].cgFloat
+            return rotationMatch.match(rotationMatchPattern)[0].cgFloat
         }else if(rotationMatch.test(directionPattern)){
             let angleType:String = rotationMatch.match(directionPattern)[0]
-            rotation = Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
-        }else{fatalError("Error")}
-        return rotation
+            return Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
+        }
+        fatalError("Error")
     }
     /**
      * // :TODO: add support for auto ratio values if they are not defined, you have implimented this functionality somewhere, so find this code

@@ -16,6 +16,7 @@ class GraphicSkin:Skin{
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)
             _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+            if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&decoratables[depth], rotation)}
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
         }
     }
@@ -43,11 +44,8 @@ class GraphicSkin:Skin{
     func applyProperties(_ layer:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("applyProperties")
         Utils.applyProps(&layer,self,depth)
-        if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){
-            GraphicModifier.applyRotation(&layer, rotation)
-        }else{
-            Swift.print("no rotation")
-        }
+        if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&layer, rotation)}
+        
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
             let width:CGFloat = (StylePropertyParser.width(self,depth) ?? self.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?

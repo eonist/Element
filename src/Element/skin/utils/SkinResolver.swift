@@ -11,7 +11,6 @@ class SkinResolver{
      */
     static func skin(_ element:IElement)->ISkin?{
         let style:IStyle = StyleResolver.style(element)
-        //style.describe()
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element)
         return SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element)
     }

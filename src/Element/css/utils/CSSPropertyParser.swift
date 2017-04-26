@@ -42,7 +42,10 @@ class CSSPropertyParser {
      *
      */
     static func transform(_ string:String)->String{
-        return string
+        Swift.print("transform: " + "\(transform)")
+        let propertyString:String = string.match(transformPattern)[0]
+        Swift.print("propertyString: " + "\(propertyString)")
+        return ""
     }
     /**
      * PARAM: string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient

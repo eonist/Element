@@ -22,6 +22,7 @@ class CSSPropertyParser {
      * TODO: ⚠️️ This should return optional
      */
     static func property(_ string:String) -> Any{
+        Swift.print("string: " + "\(string)")
         switch(true) {
             case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
             case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()

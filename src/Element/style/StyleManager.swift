@@ -43,8 +43,7 @@ extension StyleManager{
     static func addStyle(_ styles:[IStyle]){
         if(isHashingStyles){
             styles.forEach{
-                //swift 3 update, now checks .count > 0
-                if($0.selectors.count > 0){StyleManagerUtils.hashStyle($0)}
+                if($0.selectors.count > 0){StyleManagerUtils.hashStyle($0)}//swift 3 update, now checks .count > 0
             }
         }
         self.styles += styles/*<- concats*/

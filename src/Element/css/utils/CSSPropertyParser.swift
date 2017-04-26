@@ -31,8 +31,9 @@ class CSSPropertyParser {
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
             //case RegExp.test(string,"^textField\\b"):return textField(string)
-            case string.test(arrayPattern):/*Swift.print("isArray");*/return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
-            case string.test(stringPattern):/*Swift.print("isString");*/return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
+            case string.test(arrayPattern):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
+            case string.test(stringPattern):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
+            case string.test
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
     }

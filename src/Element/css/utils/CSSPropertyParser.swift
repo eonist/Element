@@ -41,8 +41,8 @@ class CSSPropertyParser {
     /**
      *
      */
-    static func transform(_ string:String){
-        
+    static func transform(_ string:String)->String{
+        return string
     }
     /**
      * PARAM: string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient

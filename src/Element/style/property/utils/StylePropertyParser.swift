@@ -10,9 +10,7 @@ class StylePropertyParser{
      * TODO: ⚠️️ should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
     static func value(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
-        //Swift.print("StylePropertyParser.value() propertyName: " + propertyName)
         let value:Any? = skin.style!.getValue(propertyName,depth)
-        //Swift.print("value: " + "\(value)")
         return value
     }
     /**
@@ -247,6 +245,9 @@ class StylePropertyParser{
     }
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height,depth)
+    }
+    static func rotation(){
+        
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)

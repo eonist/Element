@@ -246,8 +246,8 @@ class StylePropertyParser{
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height,depth)
     }
-    static func rotation(_ skin:ISkin, _ depth:Int = 0) -> {
-        
+    static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat{
+        return value(skin, <#T##propertyName: String##String#>, <#T##depth: Int##Int#>)
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
@@ -269,8 +269,10 @@ class StylePropertyParser{
      * TODO: This method is asserted before its used, so you may ommit the optionality
      */
     static func dropShadow(_ skin:ISkin, _ depth:Int = 0)->DropShadow? {
-        let dropShadow:Any? = value(skin, CSSConstants.drop_shadow,depth)
-        return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow
+        if let dropShadow:Any = value(skin, CSSConstants.drop_shadow,depth){
+            return (dropShadow == nil || dropShadow as? String == CSSConstants.none) ? nil : dropShadow as? DropShadow
+        }
+        
     }
 }
 private class Utils{

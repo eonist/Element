@@ -77,7 +77,10 @@ private class Utils{
         //sizableDecorator.draw()
     }
 }
-fileprivate extension GraphicSkin{/*Convenience*/
+/**
+ * TODO: add param skin, as self could be used in the future 👈 (Add rotation to config)
+ */
+extension GraphicSkin{/*Convenience*/
     func fillStyle(_ depth:Int) -> IFillStyle{
         return StylePropertyParser.fillStyle(self,depth)
     }

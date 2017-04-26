@@ -23,6 +23,7 @@ class StyleParser {// :TODO: rename to StyleResolver, it doesnt feel like a norm
         Swift.print("style.name: " + style.name)
         style.styleProperties.forEach { styleProperty in
             var value:String = ""
+            
             if(styleProperty.value is String || styleProperty.value is Double || styleProperty.value is Bool || styleProperty.value is UInt || styleProperty.value is Int){
                 value =  "\(styleProperty.value)"
             }else {

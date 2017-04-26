@@ -246,9 +246,14 @@ class StylePropertyParser{
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height,depth)
     }
+    /**
+     * New
+     */
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat{
-        let rotation = value(skin, CSSConstants.transform, depth)
-        return
+        if let rotation:CGFloat = value(skin, CSSConstants.transform, depth) as? CGFloat {
+            return rotation
+        }
+        fatalError("no supported yet")
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)

@@ -31,12 +31,18 @@ class CSSPropertyParser {
             case string.test("^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
-            case string.test(transformPattern): return transform(string)
+            case string.test("^transform\\b"):return transform(string)
             //case RegExp.test(string,"^textField\\b"):return textField(string)
             case string.test(arrayPattern):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
             case string.test(stringPattern):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
+    }
+    /**
+     *
+     */
+    static func transform(_ string:String){
+        
     }
     /**
      * PARAM: string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
@@ -117,7 +123,7 @@ class CSSPropertyParser {
     static func textFormat(_ input:String) -> TextFormat {
         let propertyString:String = input.match(textFormatPattern)[0]
         let properties:[String] = propertyString.split(",")
-        let textFormat:TextFormat = properties.mapReduce(TextFormat()){
+        return properties.mapReduce(TextFormat()){
             let property:String = $1
             let matches:[NSTextCheckingResult] = property.matches(textFormatItemPattern)
             var textFormat:TextFormat = $0
@@ -132,7 +138,6 @@ class CSSPropertyParser {
             }
             return textFormat
         }
-        return textFormat
     }
     /**
      * Returns a DropShadowFilter instance

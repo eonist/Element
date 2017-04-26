@@ -84,6 +84,12 @@ private class Utils{
     static var group:String = "(\\[[\\w\\s\\,\\.\\#\\:]*?\\])?"
     static var suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
     static var siblingPattern:String = precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
+    
+    static var bracketPattern:String = {
+        let precedingWith:String = "(?<=\\[)"
+        let endingWith:String = "(?=\\])"
+        return precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
+    }()
     /**
      * Returns an array of style instances derived from PARAM: style (that has a name with 1 or more comma signs, or in combination with a group [])
      * PARAM: style: style.name has 1 or more comma seperated words

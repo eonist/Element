@@ -69,7 +69,7 @@ private class Utils{
         //sizableDecorator.draw()
     }
 }
-fileprivate extension GraphicSkin{
+fileprivate extension GraphicSkin{/*Convenience*/
     func fillStyle(_ depth:Int) -> IFillStyle{
         return StylePropertyParser.fillStyle(self,depth)
     }

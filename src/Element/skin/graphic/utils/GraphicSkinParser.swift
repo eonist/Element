@@ -28,15 +28,13 @@ private class Utils{
     static func rectGraphic(_ skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
         let width:CGFloat = {
-            var padding:CGFloat = padding.left + padding.right
+            var padding:CGFloat {return padding.left + padding.right}
             if let styleWidth:CGFloat = StylePropertyParser.width(skin,depth){
                 return styleWidth + padding
             }else if !skin.width!.isNaN{
                 return skin.width! + padding
             }
-           // else if styleWidth == nil &&  skin.width!.isNaN {}
-            
-            fatalError("not allowed")
+            fatalError("not allowed: styleWidth: \(StylePropertyParser.width(skin,depth)) skinWidth: \(skin.width)")
         }()
         
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom

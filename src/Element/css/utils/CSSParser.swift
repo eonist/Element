@@ -48,18 +48,21 @@ class CSSParser{
         let name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)
-        return matches.lazy.map{ match -> [IStyleProperty] in
+        let s:IStyle = matches.lazy.map{ match -> [IStyleProperty] in
             let propertyName:String = match.value(value, 1)/*name*/
-            Swift.print("propertyName: " + "\(propertyName)")
+            //Swift.print("propertyName: " + "\(propertyName)")
             let propertyValue:String = match.value(value, 2)/*value*/
-            Swift.print("propertyValue: " + "\(propertyValue)")
+            //Swift.print("propertyValue: " + "\(propertyValue)")
             let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
             return styleProperties
             }.reduce(Style(name,selectors, [])){
                 var style:IStyle = $0
-                style.addStyleProperty($1)
+                let styleProps:[IStyleProperty] = $1
+                style.addStyleProperty(styleProps)
                 return style
         }
+        Swift.print("s.styleProperties.count: " + "\(s.styleProperties.count)")
+        return s
     }
     /**
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)

@@ -40,6 +40,7 @@ class CSSConstants{
     static var width:String = "width"
     static var height:String = "height"
     /*Other*/
+    static var rotation:String = "rotation"
     static var drop_shadow:String = "drop-shadow"
     static var offset:String = "offset"
     static var fill:String = "fill"

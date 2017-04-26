@@ -29,7 +29,7 @@ private class Utils{
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
         let width:CGFloat = {
             let styleWidth:CGFloat? = StylePropertyParser.width(skin,depth)
-            if styleWidth == nil && skin.width
+            if styleWidth == nil && skin.width?.isNaN
             let padding:CGFloat = padding.left + padding.right
         }
         

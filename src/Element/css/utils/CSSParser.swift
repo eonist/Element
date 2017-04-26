@@ -45,8 +45,7 @@ class CSSParser{
      * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
     static func style(_ name:String,_ value:String)->IStyle!{
-        var name:String = name
-        name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
+        let name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)
         let style:IStyle = matches.lazy.map{ match -> [IStyleProperty] in

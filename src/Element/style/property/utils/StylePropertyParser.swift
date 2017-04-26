@@ -89,7 +89,7 @@ class StylePropertyParser{
     static func lineOffsetType(_ skin:ISkin, _ depth:Int = 0) -> OffsetType {
         let val:Any? = value(skin, CSSConstants.lineOffsetType,depth)
         var offsetType:OffsetType = OffsetType()
-        if((val is String) || (val is Array<String>)) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
+        if((val is String) || (val is [String])) {/*(val is String) || */offsetType = LayoutUtils.instance(val!, OffsetType.self) as! OffsetType}
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth)
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight,depth)}
@@ -108,10 +108,7 @@ class StylePropertyParser{
     static func fillet(_ skin:ISkin, _ depth:Int = 0) -> Fillet {
         let val:Any? = value(skin, CSSConstants.cornerRadius,depth)
         var fillet:Fillet = Fillet()
-        //Swift.print(val)
         if((val is CGFloat) || (val is Array<Any>)) {/*(val is String) ||*/fillet = LayoutUtils.instance(val!, Fillet.self) as! Fillet}
-        //Swift.print("StylePropertyParser.fillet: " + String(ClassParser.classType(val!)))
-        //Swift.print(fillet.topRight)
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius, depth);//returns -1 if it doesnt exist
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, "corner-radius-top-left", depth) }//TODO: replace this with the constant: cornerRadiusIndex
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, "corner-radius-top-right", depth) }
@@ -124,8 +121,6 @@ class StylePropertyParser{
      */
     static func gradientFillStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
         let newGradient:Gradient/*IGradient*/ = value(skin, CSSConstants.fill, depth) as! Gradient/*IGradient*///GradientParser.clone()
-        //let sizeWidth:Double = skin.width!
-        //let sizeHeight:Double = skin.height!
         return GradientFillStyle(newGradient,NSColor.clear)
     }
     /**
@@ -134,7 +129,6 @@ class StylePropertyParser{
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
     static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
-        //Swift.print("StylePropertParser.gradientLineStyle()")
         let gradient = value(skin, CSSConstants.line,depth)
         if(!(gradient is IGradient)){return nil}//<--temp fix
         //gradient.rotation *= ㎭
@@ -148,7 +142,6 @@ class StylePropertyParser{
         var textFormat:TextFormat = TextFormat()
         for textFormatKey:String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
-            //Swift.print("StylePropertypParser.textFormat() value: " + "\(value.dynamicType)")
             //if(textFormatKey == "size") print("size: "+value+" "+(value is String))
             if(value != nil) {
                 if(StringAsserter.metric("\(value)")){//swift 3 update

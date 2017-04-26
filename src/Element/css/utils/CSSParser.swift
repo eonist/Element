@@ -49,14 +49,13 @@ class CSSParser{
         let selectors:[ISelector] = SelectorParser.selectors(name)
         let matches = value.matches(stylePattern)
         let styleProps:[IStyleProperty] = matches.lazy.map{ match -> [IStyleProperty] in
-            let propertyName:String = match.value(value, 1)/*name*/
-            let propertyValue:String = match.value(value, 2)/*value*/
-            let styleProperties:[IStyleProperty] = CSSParser.styleProperties(propertyName,propertyValue)
-            return styleProperties
+            let propName:String = match.value(value, 1)/*name*/
+            let propValue:String = match.value(value, 2)/*value*/
+            return CSSParser.styleProperties(propName,propValue)
             }.reduce([]){
                 return $0 + $1
         }
-        return Style(name,selectors, styleProps)
+        return Style(name,selectors,styleProps)
     }
     /**
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)

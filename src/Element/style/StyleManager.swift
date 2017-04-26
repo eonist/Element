@@ -54,10 +54,9 @@ extension StyleManager{
      * // :TODO: add support for CSS import statement in the PARAM: string
      */
     static func addStyle(_ cssString:String){
-        var cssString = cssString//swift 3 update
-        cssString = CSSLinkResolver.resolveLinks(cssString)
-        cssString = RegExpModifier.removeComments(cssString)
-        addStyle(CSSParser.styleCollection(cssString).styles)
+        let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
+        let removedCommentsCSS = RegExpModifier.removeComments(resolvedLinksCSS)
+        addStyle(CSSParser.styleCollection(removedCommentsCSS).styles)
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)

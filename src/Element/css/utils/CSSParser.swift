@@ -25,7 +25,9 @@ class CSSParser{
             var styleCollection:StyleCollection = $0
             let match:NSTextCheckingResult = $1
             let styleName:String = match.value(cssString, 1)/*name*/
+            Swift.print("styleName: " + "\(styleName)")
             let value:String = match.value(cssString, 2)/*value*/
+            Swift.print("value: " + "\(value)")
             if(StringAsserter.contains(styleName, ",") == false){
                 let style:IStyle = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style)/*If the styleName has 1 name*/

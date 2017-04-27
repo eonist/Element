@@ -25,7 +25,7 @@ class GraphicSkin:Skin{
      * Draws Skin (aka each "decoratable" in the skin)
      */
     override func draw(){
-        Swift.print("draw")
+        //Swift.print("draw")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}
@@ -52,10 +52,10 @@ extension GraphicSkin{
         }
     }
     /**
-     * Refreshes the look of the "layer"
+     * Refreshes the look of the "decoratable"
      */
     func updateAppearance(_ decoratable:inout IGraphicDecoratable,_ depth:Int){
-        Swift.print("refreshLayer")
+        //Swift.print("updateAppearance")
         Modifier.applyStyle(&decoratable,self,depth)/*derives and applies style to the decoratable*/
         decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
         decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/

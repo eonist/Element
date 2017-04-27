@@ -10,22 +10,20 @@ import Cocoa
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
-        SkinModifier.float(self)
+        SkinModifier.float(self)/*Floats the entire skin*/
         let depthCount:Int = StyleParser.depthCount(style!)
-        
-        //TODO: do lazy.map.map
-        //TODO: try to delete some of the inout stuff?
-        
-        decoratables = (0..<depthCount).indices.lazy.map{ depth -> IGraphicDecoratable in
-            return GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
-            }.map{
-                addSubview($0.graphic)
-                _ = SkinModifier.align(self,$0 as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-                Modifier.rotate(&$0, self, depth)
-                $0.draw()/*Setup the geometry and init the display process of fill and line*/
-                return $0
+        decoratables = (0..<depthCount).indices.map{ depth -> IGraphicDecoratable in
+            var decoratable = GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
+            addSubview(decoratable.graphic)
+            _ = SkinModifier.align(self,decoratable as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+            Modifier.rotate(&decoratable, self, depth)
+            decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
+            return decoratable
         }
     }
+    /**
+     * Draws each "layer" in the skin
+     */
     override func draw(){
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
@@ -33,10 +31,6 @@ class GraphicSkin:Skin{
         }
         super.draw()/*Sets flags etc*/
     }
-    
-    /*override func updateTrackingAreas() {
-    Swift.print("updateTrackingAreas: " + "\(self)")
-    }*/
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension GraphicSkin{
@@ -53,7 +47,7 @@ extension GraphicSkin{
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
     func updateLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
-        Modifier.applyStyle(&layer,self,depth)/*Applies style and lineOffset*/
+        Modifier.applyStyle(&layer,self,depth)
         Modifier.rotate(&layer, self, depth)
         
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
@@ -97,6 +91,9 @@ private class Modifier{
             GraphicModifier.applyRotation(&layer, rotation, rect.center)
         }
     }
+    /**
+     * Applies style and lineOffset
+     */
     static func applyStyle(_ layer:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
         let fillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
         let lineStyle = StylePropertyParser.lineStyle(graphicSkin,depth)
@@ -104,3 +101,8 @@ private class Modifier{
         _ = GraphicModifier.applyProperties(&layer,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
     }
 }
+
+
+/*override func updateTrackingAreas() {
+ Swift.print("updateTrackingAreas: " + "\(self)")
+ }*/

@@ -13,10 +13,10 @@ class GraphicSkin:Skin{
         SkinModifier.float(self)/*Floats the entire skin*/
         let depthCount:Int = StyleParser.depthCount(style!)
         decoratables = (0..<depthCount).indices.map{ depth -> IGraphicDecoratable in
-            var decoratable = GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
+            let decoratable = GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratable.graphic)
             _ = SkinModifier.align(self,decoratable as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-            Modifier.rotate(&decoratable, self, depth)
+            Modifier.rotate(decoratable, self, depth)
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
             return decoratable
         }
@@ -61,7 +61,7 @@ extension GraphicSkin{
         decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/
         decoratable.get(AssetDecorator.self)?.assetURL = StylePropertyParser.asset(self,depth)/*Svg*/
         decoratable.get(DropShadowDecorator.self)?.dropShadow = StylePropertyParser.dropShadow(self,depth)/*dropshadow*/
-        Modifier.rotate(&decoratable, self, depth)
+        Modifier.rotate(decoratable, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
     }
 }
@@ -96,12 +96,12 @@ private class Modifier{
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }
-    static func rotate(_ decoratable:inout IGraphicDecoratable,_ skin:ISkin,_ depth:Int){
+    static func rotate(_ decoratable:IGraphicDecoratable,_ skin:ISkin,_ depth:Int){
         if let rotation:CGFloat = StylePropertyParser.rotation(skin,depth){
             let size:CGSize = (decoratable as! ISizeable).size
             let pos:CGPoint = (decoratable as! IPositional).pos
             let rect:CGRect = CGRect(pos, size)
-            GraphicModifier.applyRotation(&decoratable, rotation, rect.center)
+            GraphicModifier.applyRotation(decoratable, rotation, rect.center)
         }
     }
     /**

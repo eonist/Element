@@ -16,7 +16,7 @@ class GraphicModifier {
      * PARAM: roation is in deg -90 90 180 0 etc
      * NOTE: possible future normalization: Trig.normalize2(rotation * ㎭)/*between -π and π*/
      */
-    static func applyRotation(_ decoratable:inout IGraphicDecoratable,_ rotation:CGFloat, _ pivot:CGPoint){
+    static func applyRotation(_ decoratable: IGraphicDecoratable,_ rotation:CGFloat, _ pivot:CGPoint){
         decoratable.graphic.layer?.rotate(rotation, pivot)
     }
 }

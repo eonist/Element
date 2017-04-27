@@ -19,7 +19,6 @@ class GraphicSkin:Skin{
             Swift.print("size: " + "\((decoratables[depth] as! ISizeable).size)")
             if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&decoratables[depth], rotation)}
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
-            
         }
     }
     override func draw(){
@@ -28,11 +27,27 @@ class GraphicSkin:Skin{
             Swift.print("state size style")
             let depthCount:Int = StyleParser.depthCount(style!)
             //if(hasSizeChanged)
-            for depth in 0..<depthCount{
-                
+            (0..<depthCount).indices.forEach{ depth in
+                drawLayer(depth)
             }
         }
         super.draw()
+    }
+    
+    /*override func updateTrackingAreas() {
+    Swift.print("updateTrackingAreas: " + "\(self)")
+    }*/
+    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
+}
+extension GraphicSkin{
+    func drawLayer(_ depth:Int){
+        if(hasSizeChanged){
+            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
+            Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
+        }//Do sizing of the sizable here
+        if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
+        _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
+        if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
     }
     /**
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
@@ -53,27 +68,12 @@ class GraphicSkin:Skin{
         if(DecoratorAsserter.hasDecoratable(layer, DropShadowDecorator.self)) {(DecoratorParser.decoratable(layer, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
         //decoratable.draw()
     }
-    /*override func updateTrackingAreas() {
-    Swift.print("updateTrackingAreas: " + "\(self)")
-    }*/
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
-/**
- *
- */
 private class Utils{
     /**
      *
      */
-    static func drawLayer(_ skin:GraphicSkin,_ depth:Int){
-        if(skin.hasSizeChanged){
-            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-            Utils.size(skin.decoratables[depth], CGSize(skin.width! + padding.left + padding.right, skin.height! + padding.top + padding.bottom))
-        }//Do sizing of the sizable here
-        if(skin.hasStateChanged || skin.hasStyleChanged) {skin.applyProperties(&skin.decoratables[depth],depth)}
-        _ = SkinModifier.align(self,skin.decoratables[depth] as! IPositional,depth)
-        if(skin.hasSizeChanged || skin.hasStateChanged || skin.hasStyleChanged){skin.decoratables[depth].draw()}/*<--you only want to draw once*/
-    }
+    
     /**
      * beta
      * TODO: move to DecoratorModifier.swift

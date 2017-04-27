@@ -56,13 +56,10 @@ extension GraphicSkin{
     func updateAppearance(_ decoratable:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("refreshLayer")
         Modifier.applyStyle(&decoratable,self,depth)/*derives and applies style to the decoratable*/
-        if(decoratable.has(RectGraphic.self)){(decoratable.get(RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))}
-        if(decoratable.has(RoundRectGraphic.self)) {(decoratable.get(RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
-        if(decoratable.has(AssetDecorator.self)) {(decoratable.get(AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
-        if let item:DropShadowDecorator = decoratable.get(DropShadowDecorator.self) {
-            item.dropShadow = StylePropertyParser.dropShadow(self,depth)
-        }/*dropshadow*/
-        
+        decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
+        decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/
+        decoratable.get(AssetDecorator.self)?.assetURL = StylePropertyParser.asset(self,depth)/*Svg*/
+        decoratable.get(DropShadowDecorator.self)?.dropShadow = StylePropertyParser.dropShadow(self,depth)/*dropshadow*/
         Modifier.rotate(&decoratable, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
     }

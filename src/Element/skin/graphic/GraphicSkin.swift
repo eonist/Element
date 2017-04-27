@@ -17,8 +17,9 @@ class GraphicSkin:Skin{
             addSubview(decoratables[depth].graphic)
             _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
             Swift.print("size: " + "\((decoratables[depth] as! ISizeable).size)")
-            decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
             if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&decoratables[depth], rotation)}
+            decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
+            
         }
     }
     override func draw(){

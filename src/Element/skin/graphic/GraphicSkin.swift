@@ -16,12 +16,14 @@ class GraphicSkin:Skin{
         //TODO: do lazy.map.map
         //TODO: try to delete some of the inout stuff?
         
-        for depth in 0..<depthCount{
-            decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
-            addSubview(decoratables[depth].graphic)
-            _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-            Modifier.rotate(&decoratables[depth], self, depth)
-            decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
+        decoratables = (0..<depthCount).indices.lazy.map{ depth -> IGraphicDecoratable in
+            return GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
+            }.map{
+                addSubview($0.graphic)
+                _ = SkinModifier.align(self,$0 as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+                Modifier.rotate(&$0, self, depth)
+                $0.draw()/*Setup the geometry and init the display process of fill and line*/
+                return $0
         }
     }
     override func draw(){

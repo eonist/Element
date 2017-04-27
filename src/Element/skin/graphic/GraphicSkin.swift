@@ -12,7 +12,7 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         SkinModifier.float(self)
         let depthCount:Int = StyleParser.depthCount(style!)
-         
+        
         //TODO: do lazy.map.map
         //TODO: try to delete some of the inout stuff?
         
@@ -20,7 +20,7 @@ class GraphicSkin:Skin{
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)
             _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-            Utils.rotate(&decoratables[depth], self, depth)
+            Modifier.rotate(&decoratables[depth], self, depth)
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
         }
     }
@@ -41,7 +41,7 @@ extension GraphicSkin{
     func drawLayer(_ depth:Int){
         if(hasSizeChanged){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-            Utils.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
+            Modifier.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
         }//Do sizing of the sizable here
         if(hasStateChanged || hasStyleChanged) {updateLayer(&decoratables[depth],depth)}
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
@@ -51,13 +51,13 @@ extension GraphicSkin{
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
     func updateLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
-        Utils.applyProps(&layer,self,depth)/*Applies style and lineOffset*/
-        Utils.rotate(&layer, self, depth)
+        Modifier.applyStyle(&layer,self,depth)/*Applies style and lineOffset*/
+        Modifier.rotate(&layer, self, depth)
         
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
-            let width:CGFloat = Utils.width(self,depth,padding)
-            let height:CGFloat = Utils.height(self,depth,padding)
+            let width:CGFloat = Parser.width(self,depth,padding)
+            let height:CGFloat = Parser.height(self,depth,padding)
             (DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
         if(DecoratorAsserter.hasDecoratable(layer, RoundRectGraphic.self)) {(DecoratorParser.decoratable(layer, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
@@ -70,13 +70,15 @@ extension GraphicSkin{
  * Utils for "layers"
  * TODO: Divide into Parser and Modifier 👈
  */
-private class Utils{
+private class Parser{
     static func width(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
         return (StylePropertyParser.width(skin,depth) ?? skin.width!) + padding.hor// :TODO: only querry this if the size has changed?
     }
     static func height(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
         return (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.ver// :TODO: only querry this if the size has changed?
     }
+}
+private class Modifier{
     /**
      * beta
      * TODO: move to DecoratorModifier.swift
@@ -93,7 +95,7 @@ private class Utils{
             GraphicModifier.applyRotation(&layer, rotation, rect.center)
         }
     }
-    static func applyProps(_ layer:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
+    static func applyStyle(_ layer:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
         let fillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
         let lineStyle = StylePropertyParser.lineStyle(graphicSkin,depth)
         let lineOffsetType = StylePropertyParser.lineOffsetType(graphicSkin,depth)

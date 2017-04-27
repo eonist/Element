@@ -53,15 +53,15 @@ extension GraphicSkin{
     /**
      * Refreshes the look of the "layer"
      */
-    func updateAppearance(_ layer:inout IGraphicDecoratable,_ depth:Int){
+    func updateAppearance(_ decoratable:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("refreshLayer")
-        Modifier.applyStyle(&layer,self,depth)/*derives and applies style to the decoratable*/
-        if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){(DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))}
-        if(DecoratorAsserter.hasDecoratable(layer, RoundRectGraphic.self)) {(DecoratorParser.decoratable(layer, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
-        if(DecoratorAsserter.hasDecoratable(layer, AssetDecorator.self)) {(DecoratorParser.decoratable(layer, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
-        if(DecoratorAsserter.hasDecoratable(layer, DropShadowDecorator.self)) {(DecoratorParser.decoratable(layer, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
+        Modifier.applyStyle(&decoratable,self,depth)/*derives and applies style to the decoratable*/
+        if(decoratable.has(RectGraphic.self)){(decoratable.get(RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))}
+        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {(DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
+        if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {(DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
+        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
         
-        Modifier.rotate(&layer, self, depth)
+        Modifier.rotate(&decoratable, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
     }
 }

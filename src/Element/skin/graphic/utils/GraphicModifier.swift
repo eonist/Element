@@ -25,6 +25,6 @@ class GraphicModifier {
             //
         
         //decoratable.graphic.frameCenterRotation = rotation//(byDegrees:rotation)
-        NSViewModifier.rotate(decoratable.graphic, rotation,decoratable.graphic.frame.center)
+        NSViewModifier.rotate(decoratable.graphic, rotation, decoratable.graphic.frame.center)
     }
 }

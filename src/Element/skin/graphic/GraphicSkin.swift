@@ -101,8 +101,9 @@ private class Modifier{
             let size:CGSize = (decoratable as! ISizeable).size
             let pos:CGPoint = (decoratable as! IPositional).pos
             let rect:CGRect = CGRect(pos, size)
-            NSViewParser
-            GraphicModifier.applyRotation(decoratable, rotation, rect.center)
+            disableAnim{
+                GraphicModifier.applyRotation(decoratable, rotation, rect.center)
+            }
         }
     }
     /**

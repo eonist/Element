@@ -213,7 +213,7 @@ class StylePropertyParser{
         //Swift.print("StylePropertyParser.padding.value: " + "\(value)")
         var padding:Padding = Padding()
         if(value != nil){
-            let array:[CGFloat] = value is Array<CGFloat> ? value as! Array<CGFloat> : [value as! CGFloat]
+            let array:[CGFloat] = value is [CGFloat] ? value as! [CGFloat] : [value as! CGFloat]
             padding = Padding(array)
         }
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
@@ -228,7 +228,7 @@ class StylePropertyParser{
      * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
     static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
-        let margin:Margin = {
+        var margin:Margin = {
             guard let value = self.value(skin, CSSConstants.margin,depth) else{
                 return Margin()
             };return Margin(value)

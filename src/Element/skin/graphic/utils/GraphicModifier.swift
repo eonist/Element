@@ -24,6 +24,7 @@ class GraphicModifier {
             //Also Reset the rotation so that you don't keep rotating on every state change
             //
         
-        decoratable.graphic.frameCenterRotation = rotation//(byDegrees:rotation)
+        //decoratable.graphic.frameCenterRotation = rotation//(byDegrees:rotation)
+        NSViewModifier.rotate(decoratable.graphic, rotation)
     }
 }

@@ -57,10 +57,7 @@ extension GraphicSkin{
         Swift.print("refreshLayer")
         Modifier.applyStyle(&layer,self,depth)/*derives and applies style to the decoratable*/
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
-            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
-            let width:CGFloat = Parser.width(self,depth,padding)
-            let height:CGFloat = Parser.height(self,depth,padding)
-            (DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
+            (DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))
         }
         if(DecoratorAsserter.hasDecoratable(layer, RoundRectGraphic.self)) {(DecoratorParser.decoratable(layer, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
         if(DecoratorAsserter.hasDecoratable(layer, AssetDecorator.self)) {(DecoratorParser.decoratable(layer, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
@@ -74,6 +71,16 @@ extension GraphicSkin{
  * Parser for "decoratable"
  */
 private class Parser{
+    /**
+     * TODO: should just use the instance setSize function
+     * TODO: should only be called if the size has actually changed
+     */
+    static func size(_ skin:ISkin,_ depth:Int)->CGSize{
+        let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
+        let width:CGFloat = Parser.width(skin,depth,padding)
+        let height:CGFloat = Parser.height(skin,depth,padding)
+        return CGSize(width,height)
+    }
     static func width(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
         return (StylePropertyParser.width(skin,depth) ?? skin.width!) + padding.hor// :TODO: only querry this if the size has changed?
     }

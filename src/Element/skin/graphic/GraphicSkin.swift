@@ -50,8 +50,8 @@ extension GraphicSkin{
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
     func updateLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
-        Utils.applyProps(&layer,self,depth)
-        Utils.rotate(&layer, depth, rotation)
+        Utils.applyProps(&layer,self,depth)/*Applies style and lineOffset*/
+        Utils.rotate(&layer, self, depth)
         
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
@@ -74,8 +74,8 @@ private class Utils{
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }
-    static func rotate(_ layer:inout IGraphicDecoratable,_ depth:CGFloat,_ rotation:CGFloat){
-        if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){
+    static func rotate(_ layer:inout IGraphicDecoratable,_ skin:ISkin,_ depth:Int){
+        if let rotation:CGFloat = StylePropertyParser.rotation(skin,depth){
             let size:CGSize = (layer as! ISizeable).size
             let pos:CGPoint = (layer as! IPositional).pos
             let rect:CGRect = CGRect(pos, size)

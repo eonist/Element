@@ -17,6 +17,6 @@ class GraphicModifier {
      * NOTE: possible future normalization: Trig.normalize2(rotation * ㎭)/*between -π and π*/
      */
     static func applyRotation(_ decoratable:inout IGraphicDecoratable,_ rotation:CGFloat, _ pivot:CGPoint){
-        decoratable.graphic.layer?.rotate(rotation, pivot
+        decoratable.graphic.layer?.rotate(rotation, pivot)
     }
 }

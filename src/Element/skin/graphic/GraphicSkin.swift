@@ -35,14 +35,21 @@ class GraphicSkin:Skin{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }
 extension GraphicSkin{
+    /**
+     *
+     */
     func drawLayer(_ depth:Int){
         if(hasSizeChanged){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
             Modifier.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
         }//Do sizing of the sizable here
-        if(hasStateChanged || hasStyleChanged) {updateLayer(&decoratables[depth],depth)}
+        if(hasStateChanged || hasStyleChanged) {
+            updateLayer(&decoratables[depth],depth)
+        }
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
-        if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
+        if(hasSizeChanged || hasStateChanged || hasStyleChanged){
+            decoratables[depth].draw()/*<--you only want to draw once*/
+        }
     }
     /**
      * TODO: Don't forget to add fillet, and asset here to , see legacy code

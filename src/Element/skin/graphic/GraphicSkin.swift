@@ -42,8 +42,7 @@ extension GraphicSkin{
      */
     func drawDecoratable(_ depth:Int){
         if(hasSizeChanged){
-            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-            Modifier.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
+            Modifier.reSize(decoratables[depth], Parser.size(self,depth))
         }//Do sizing of the sizable here
         if(hasStateChanged || hasStyleChanged) {
             updateAppearance(&decoratables[depth],depth)
@@ -58,7 +57,7 @@ extension GraphicSkin{
     func updateAppearance(_ decoratable:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("refreshLayer")
         Modifier.applyStyle(&decoratable,self,depth)/*derives and applies style to the decoratable*/
-        decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
+        //decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
         decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/
         decoratable.get(AssetDecorator.self)?.assetURL = StylePropertyParser.asset(self,depth)/*Svg*/
         decoratable.get(DropShadowDecorator.self)?.dropShadow = StylePropertyParser.dropShadow(self,depth)/*dropshadow*/
@@ -76,7 +75,7 @@ private class Parser{
      * TODO: should only be called if the size has actually changed
      */
     static func size(_ skin:ISkin,_ depth:Int)->CGSize{
-        let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
+        let padding:Padding = Padding()//StylePropertyParser.padding(self,depth) //StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
         let width:CGFloat = Parser.width(skin,depth,padding)
         let height:CGFloat = Parser.height(skin,depth,padding)
         return CGSize(width,height)

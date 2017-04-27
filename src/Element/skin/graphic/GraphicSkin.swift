@@ -26,12 +26,9 @@ class GraphicSkin:Skin{
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             Swift.print("state size style")
             let depthCount:Int = StyleParser.depthCount(style!)
-            //if(hasSizeChanged)
-            (0..<depthCount).indices.forEach{ depth in
-                drawLayer(depth)
-            }
+            for depth in (0..<depthCount){ drawLayer(depth)}
         }
-        super.draw()
+        super.draw()/*Sets flags etc*/
     }
     
     /*override func updateTrackingAreas() {
@@ -43,7 +40,7 @@ extension GraphicSkin{
     func drawLayer(_ depth:Int){
         if(hasSizeChanged){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-            Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
+            Utils.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
         }//Do sizing of the sizable here
         if(hasStateChanged || hasStyleChanged) {updateLayer(&decoratables[depth],depth)}
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
@@ -70,14 +67,10 @@ extension GraphicSkin{
 }
 private class Utils{
     /**
-     *
-     */
-    
-    /**
      * beta
      * TODO: move to DecoratorModifier.swift
      */
-    static func size(_ sizableDecorator:IGraphicDecoratable,_ size:CGSize){
+    static func reSize(_ sizableDecorator:IGraphicDecoratable,_ size:CGSize){
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }

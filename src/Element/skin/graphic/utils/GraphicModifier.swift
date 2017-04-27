@@ -24,6 +24,6 @@ class GraphicModifier {
             //Also Reset the rotation so that you don't keep rotating on every state change
             //
         
-        decoratable.graphic.rotate(byDegrees:rotation)
+        decoratable.graphic.frameCenterRotation = rotation//(byDegrees:rotation)
     }
 }

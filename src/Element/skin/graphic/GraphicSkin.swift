@@ -25,6 +25,7 @@ class GraphicSkin:Skin{
      * Draws each "layer" in the skin
      */
     override func draw(){
+        Swift.print("draw")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawLayer(depth)}

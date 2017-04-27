@@ -22,6 +22,6 @@ class GraphicModifier {
         let size:CGSize = (decoratable as! ISizeable).size
         let pos:CGPoint = (decoratable as! IPositional).pos
         let rect:CGRect = CGRect(pos, size)
-        NSViewModifier.rotate(decoratable.graphic, rotation, rect.center)
+        CALayerModifier.rotate(decoratable.graphic.layer!, rotation, rect.center)
     }
 }

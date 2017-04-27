@@ -17,6 +17,7 @@ class GraphicModifier {
      */
     static func applyRotation(_ decoratable:inout IGraphicDecoratable,_ rotation:CGFloat){
         Swift.print("applyRotation: rotation")
+        
         //let rot:CGFloat = Trig.normalize2(rotation * ㎭)/*between -π and π*/
         
         //Continue here: 🏀

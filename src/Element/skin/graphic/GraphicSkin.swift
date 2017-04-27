@@ -20,6 +20,7 @@ class GraphicSkin:Skin{
             decoratables[depth].draw()/*Setup the geometry and init the display process of fill and line*/
             if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&decoratables[depth], rotation)}
         }
+        Swift.print("self.size: " + "\(self.size)")
     }
     override func draw(){
         Swift.print("draw")

@@ -14,11 +14,8 @@ extension IStyleCollection{
      * PARAM: style: IStyle
      */
     mutating func addStyle(_ style:IStyle){
-        for var styleItem in styles {
-            if(styleItem.name == style.name) {/*if there are duplicates merge them*/
-                StyleModifier.combine(&styleItem, style)/*<--was merge, but styles that comes later in the array with the same name should hard-override properties, not soft-override like it was previously*/
-                return//you can also do break
-            }
+        if let matchIdx = styles.index(where: {$0.name == style.name}){
+            StyleModifier.combine(&styles[matchIdx], style)/*<--was merge, but styles that comes later in the array with the same name should hard-override properties, not soft-override like it was previously*/
         }
         styles.append(style)
     }

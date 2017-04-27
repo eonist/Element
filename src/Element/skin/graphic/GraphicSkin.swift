@@ -12,7 +12,7 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         SkinModifier.float(self)
         let depthCount:Int = StyleParser.depthCount(style!)
-        
+         
         //TODO: do lazy.map.map
         //TODO: try to delete some of the inout stuff?
         

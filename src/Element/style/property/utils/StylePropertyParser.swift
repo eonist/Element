@@ -209,13 +209,11 @@ class StylePropertyParser{
      * TODO: you may want to copy margin on this
      */
     static func padding(_ skin:ISkin,_ depth:Int = 0) -> Padding {
-        let value:Any? = self.value(skin, CSSConstants.padding, depth)
-        //Swift.print("StylePropertyParser.padding.value: " + "\(value)")
-        var padding:Padding = Padding()
-        if(value != nil){
-            let array:[CGFloat] = value is [CGFloat] ? value as! [CGFloat] : [value as! CGFloat]
-            padding = Padding(array)
-        }
+        var padding:Padding = {
+            guard let value = self.value(skin, CSSConstants.padding,depth) else{
+                return Padding()
+            };return Padding(value)
+        }()
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
         padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth) : Utils.metric(padding.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
         padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!

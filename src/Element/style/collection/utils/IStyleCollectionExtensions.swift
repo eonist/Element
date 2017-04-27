@@ -24,6 +24,15 @@ extension IStyleCollection{
      * RETURNS: the removed Style
      */
     mutating func removeStyle(_ name:String)->IStyle?{
+        
+        
+        //continue here:
+            //fix this
+            //try TestView again
+            //continue
+        
+        
+        
         for i in 0..<styles.count{//swift 3 for loop upgrade
             if((styles[i] as IStyle).name == name){
                 return ArrayModifier.splice2(&styles,i,1) as? IStyle

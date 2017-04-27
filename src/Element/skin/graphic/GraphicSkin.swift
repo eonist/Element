@@ -21,6 +21,8 @@ class GraphicSkin:Skin{
             if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&decoratables[depth], rotation)}
         }
         Swift.print("self.size: " + "\(self.size)")
+        
+        //ISizable must have size rihgt? 🏀
     }
     override func draw(){
         Swift.print("draw")

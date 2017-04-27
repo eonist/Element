@@ -22,13 +22,13 @@ class GraphicSkin:Skin{
         }
     }
     /**
-     * Draws each "layer" in the skin
+     * Draws Skin (aka each "decoratable" in the skin)
      */
     override func draw(){
         Swift.print("draw")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
-            for depth in (0..<depthCount){drawLayer(depth)}
+            for depth in (0..<depthCount){drawDecoratable(depth)}
         }
         super.draw()/*Sets flags etc*/
     }
@@ -36,9 +36,9 @@ class GraphicSkin:Skin{
 }
 extension GraphicSkin{
     /**
-     *
+     * Draws decoratable
      */
-    func drawLayer(_ depth:Int){
+    func drawDecoratable(_ depth:Int){
         if(hasSizeChanged){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
             Modifier.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))

@@ -57,9 +57,9 @@ extension GraphicSkin{
         Swift.print("refreshLayer")
         Modifier.applyStyle(&decoratable,self,depth)/*derives and applies style to the decoratable*/
         if(decoratable.has(RectGraphic.self)){(decoratable.get(RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))}
-        if(DecoratorAsserter.hasDecoratable(decoratable, RoundRectGraphic.self)) {(DecoratorParser.decoratable(decoratable, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
-        if(DecoratorAsserter.hasDecoratable(decoratable, AssetDecorator.self)) {(DecoratorParser.decoratable(decoratable, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
-        if(DecoratorAsserter.hasDecoratable(decoratable, DropShadowDecorator.self)) {(DecoratorParser.decoratable(decoratable, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
+        if(decoratable.has(RoundRectGraphic.self)) {(decoratable.get(RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
+        if(decoratable.has(AssetDecorator.self)) {(decoratable.get(AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
+        if(decoratable.has(DropShadowDecorator.self)) {(decoratable.get(DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
         
         Modifier.rotate(&decoratable, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)

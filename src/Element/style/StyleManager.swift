@@ -90,7 +90,7 @@ extension StyleManager{
             Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
             /*if true then: read the styles from the xml*/
             if(hasURLBeenCached && isUpToDate){
-                StyleCache.readStylesFromDisk(xml)/*Super fast loading of cached styles*/
+                StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
             }else{/*else read and parse styles from the .css files and write a new cache to styles.xml*/
                 let startTime = NSDate()
                 let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/

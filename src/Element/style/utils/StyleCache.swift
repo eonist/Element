@@ -38,7 +38,7 @@ extension StyleCache{
     /**
      * Read pre-parsed styles
      */
-    static func readStylesFromDisk(_ xml:XML){
+    static func readStylesFromXML(_ xml:XML){
         //Swift.print("💾 StyleCache.readStylesFromDisk()")
         let startTime = NSDate()
         let stylesXML:XML = xml.firstNode("styles")!

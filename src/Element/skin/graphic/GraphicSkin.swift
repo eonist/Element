@@ -29,13 +29,7 @@ class GraphicSkin:Skin{
             let depthCount:Int = StyleParser.depthCount(style!)
             //if(hasSizeChanged)
             for depth in 0..<depthCount{
-                if(hasSizeChanged){
-                    let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
-                    Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
-                }//Do sizing of the sizable here
-                if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
-                _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
-                if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
+                
             }
         }
         super.draw()
@@ -68,6 +62,18 @@ class GraphicSkin:Skin{
  *
  */
 private class Utils{
+    /**
+     *
+     */
+    static func drawLayer(_ skin:GraphicSkin,_ depth:Int){
+        if(skin.hasSizeChanged){
+            let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
+            Utils.size(skin.decoratables[depth], CGSize(skin.width! + padding.left + padding.right, skin.height! + padding.top + padding.bottom))
+        }//Do sizing of the sizable here
+        if(skin.hasStateChanged || skin.hasStyleChanged) {skin.applyProperties(&skin.decoratables[depth],depth)}
+        _ = SkinModifier.align(self,skin.decoratables[depth] as! IPositional,depth)
+        if(skin.hasSizeChanged || skin.hasStateChanged || skin.hasStyleChanged){skin.decoratables[depth].draw()}/*<--you only want to draw once*/
+    }
     /**
      * beta
      * TODO: move to DecoratorModifier.swift

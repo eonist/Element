@@ -44,20 +44,18 @@ extension GraphicSkin{
             Modifier.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
         }//Do sizing of the sizable here
         if(hasStateChanged || hasStyleChanged) {
-            refreshLayer(&decoratables[depth],depth)
+            updateAppearance(&decoratables[depth],depth)
         }
-        
         if(hasSizeChanged || hasStateChanged || hasStyleChanged){
-            decoratables[depth].draw()/*<--you only want to draw once*/
+            decoratables[depth].draw()/*<--Init the actual draw call, you only want to draw once bc performance*/
         }
     }
     /**
      * Refreshes the look of the "layer"
      */
-    func refreshLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
+    func updateAppearance(_ layer:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("refreshLayer")
-        Modifier.applyStyle(&layer,self,depth)
-        
+        Modifier.applyStyle(&layer,self,depth)/*derives and applies style to the decoratable*/
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
             let width:CGFloat = Parser.width(self,depth,padding)
@@ -70,12 +68,10 @@ extension GraphicSkin{
         
         Modifier.rotate(&layer, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
-        //decoratable.draw()
     }
 }
 /**
- * Utils for "layers"
- * TODO: Divide into Parser and Modifier 👈
+ * Parser for "decoratable"
  */
 private class Parser{
     static func width(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
@@ -94,22 +90,22 @@ private class Modifier{
         (sizableDecorator as! ISizeable).setSizeValue(size)
         //sizableDecorator.draw()
     }
-    static func rotate(_ layer:inout IGraphicDecoratable,_ skin:ISkin,_ depth:Int){
+    static func rotate(_ decoratable:inout IGraphicDecoratable,_ skin:ISkin,_ depth:Int){
         if let rotation:CGFloat = StylePropertyParser.rotation(skin,depth){
-            let size:CGSize = (layer as! ISizeable).size
-            let pos:CGPoint = (layer as! IPositional).pos
+            let size:CGSize = (decoratable as! ISizeable).size
+            let pos:CGPoint = (decoratable as! IPositional).pos
             let rect:CGRect = CGRect(pos, size)
-            GraphicModifier.applyRotation(&layer, rotation, rect.center)
+            GraphicModifier.applyRotation(&decoratable, rotation, rect.center)
         }
     }
     /**
      * Applies style and lineOffset
      */
-    static func applyStyle(_ layer:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
+    static func applyStyle(_ decoratable:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
         let fillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
         let lineStyle = StylePropertyParser.lineStyle(graphicSkin,depth)
         let lineOffsetType = StylePropertyParser.lineOffsetType(graphicSkin,depth)
-        _ = GraphicModifier.applyProperties(&layer,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
+        _ = GraphicModifier.applyProperties(&decoratable,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
     }
 }
 

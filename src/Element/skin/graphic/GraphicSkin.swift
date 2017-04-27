@@ -12,6 +12,10 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         SkinModifier.float(self)
         let depthCount:Int = StyleParser.depthCount(style!)
+        
+        //TODO: do lazy.map.map
+        //TODO: try to delete some of the inout stuff?
+        
         for depth in 0..<depthCount{
             decoratables.append(GraphicSkinParser.configure(self,depth))/*this call is here because CGContext is only accessible after drawRect is called*/
             addSubview(decoratables[depth].graphic)
@@ -64,6 +68,7 @@ extension GraphicSkin{
 }
 /**
  * Utils for "layers"
+ * TODO: Divide into Parser and Modifier 👈
  */
 private class Utils{
     static func width(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {

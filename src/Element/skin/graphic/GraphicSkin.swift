@@ -45,15 +45,14 @@ extension GraphicSkin{
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
             Utils.size(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
         }//Do sizing of the sizable here
-        if(hasStateChanged || hasStyleChanged) {applyProperties(&decoratables[depth],depth)}
+        if(hasStateChanged || hasStyleChanged) {updateLayer(&decoratables[depth],depth)}
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
         if(hasSizeChanged || hasStateChanged || hasStyleChanged){decoratables[depth].draw()}/*<--you only want to draw once*/
     }
     /**
      * TODO: Don't forget to add fillet, and asset here to , see legacy code
      */
-    func applyProperties(_ layer:inout IGraphicDecoratable,_ depth:Int){
-        Swift.print("applyProperties")
+    func updateLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
         Utils.applyProps(&layer,self,depth)
         if let rotation:CGFloat = StylePropertyParser.rotation(self,depth){GraphicModifier.applyRotation(&layer, rotation)}
         

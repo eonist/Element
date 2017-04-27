@@ -45,7 +45,7 @@ extension GraphicSkin{
             Modifier.reSize(decoratables[depth], Parser.size(self,depth))
         }//Do sizing of the sizable here
         if(hasStateChanged || hasStyleChanged) {
-            updateAppearance(&decoratables[depth],depth)
+            updateAppearance(decoratables[depth],depth)
         }
         if(hasSizeChanged || hasStateChanged || hasStyleChanged){
             decoratables[depth].draw()/*<--Init the actual draw call, you only want to draw once bc performance*/
@@ -54,9 +54,9 @@ extension GraphicSkin{
     /**
      * Refreshes the look of the "decoratable"
      */
-    func updateAppearance(_ decoratable:inout IGraphicDecoratable,_ depth:Int){
+    func updateAppearance(_ decoratable: IGraphicDecoratable,_ depth:Int){
         //Swift.print("updateAppearance")
-        Modifier.applyStyle(&decoratable,self,depth)/*derives and applies style to the decoratable*/
+        Modifier.applyStyle(decoratable,self,depth)/*derives and applies style to the decoratable*/
         decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
         decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/
         decoratable.get(AssetDecorator.self)?.assetURL = StylePropertyParser.asset(self,depth)/*Svg*/
@@ -107,11 +107,11 @@ private class Modifier{
     /**
      * Applies style and lineOffset
      */
-    static func applyStyle(_ decoratable:inout IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
+    static func applyStyle(_ decoratable: IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
         let fillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
         let lineStyle = StylePropertyParser.lineStyle(graphicSkin,depth)
         let lineOffsetType = StylePropertyParser.lineOffsetType(graphicSkin,depth)
-        _ = GraphicModifier.applyProperties(&decoratable,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
+        _ = GraphicModifier.applyProperties(decoratable,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
     }
 }
 

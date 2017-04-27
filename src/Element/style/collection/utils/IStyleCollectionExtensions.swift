@@ -7,7 +7,7 @@ extension IStyleCollection{
      * NOTE: the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
      */
     mutating func addStyles(_ styles:[IStyle]){
-        for style in styles{ addStyle(style) }
+        styles.forEach{style in addStyle(style)}
     }
     /**
      * Adds a style to the StyleCollection instance

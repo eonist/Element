@@ -55,8 +55,8 @@ extension GraphicSkin{
         
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
-            let width:CGFloat =
-            let height:CGFloat = (StylePropertyParser.height(self,depth) ?? self.height!) + padding.ver// :TODO: only querry this if the size has changed?
+            let width:CGFloat = Utils.width(self,depth,padding)
+            let height:CGFloat = Utils.height(self,depth,padding)
             (DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(CGSize(width,height))/*rect*/// :TODO: should just use the instance setSize function// :TODO: should only be called if the size has actually changed
         }
         if(DecoratorAsserter.hasDecoratable(layer, RoundRectGraphic.self)) {(DecoratorParser.decoratable(layer, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
@@ -65,9 +65,15 @@ extension GraphicSkin{
         //decoratable.draw()
     }
 }
+/**
+ * Utils for "layers"
+ */
 private class Utils{
-    static func width(_ skin:ISkin,_ depth:Int) -> CGFloat {
+    static func width(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
         return (StylePropertyParser.width(skin,depth) ?? skin.width!) + padding.hor// :TODO: only querry this if the size has changed?
+    }
+    static func height(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
+        return (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.ver// :TODO: only querry this if the size has changed?
     }
     /**
      * beta

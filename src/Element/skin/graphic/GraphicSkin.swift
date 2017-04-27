@@ -56,9 +56,7 @@ extension GraphicSkin{
     func updateAppearance(_ layer:inout IGraphicDecoratable,_ depth:Int){
         Swift.print("refreshLayer")
         Modifier.applyStyle(&layer,self,depth)/*derives and applies style to the decoratable*/
-        if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
-            (DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))
-        }
+        if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){(DecoratorParser.decoratable(layer, RectGraphic.self) as! RectGraphic).setSizeValue(Parser.size(self,depth))}
         if(DecoratorAsserter.hasDecoratable(layer, RoundRectGraphic.self)) {(DecoratorParser.decoratable(layer, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
         if(DecoratorAsserter.hasDecoratable(layer, AssetDecorator.self)) {(DecoratorParser.decoratable(layer, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
         if(DecoratorAsserter.hasDecoratable(layer, DropShadowDecorator.self)) {(DecoratorParser.decoratable(layer, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/

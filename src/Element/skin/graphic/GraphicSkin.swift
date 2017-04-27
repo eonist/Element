@@ -44,19 +44,19 @@ extension GraphicSkin{
             Modifier.reSize(decoratables[depth], CGSize(width! + padding.left + padding.right, height! + padding.top + padding.bottom))
         }//Do sizing of the sizable here
         if(hasStateChanged || hasStyleChanged) {
-            updateLayer(&decoratables[depth],depth)
+            refreshLayer(&decoratables[depth],depth)
         }
-        _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
+        
         if(hasSizeChanged || hasStateChanged || hasStyleChanged){
             decoratables[depth].draw()/*<--you only want to draw once*/
         }
     }
     /**
-     * TODO: Don't forget to add fillet, and asset here to , see legacy code
+     * Refreshes the look of the "layer"
      */
-    func updateLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
+    func refreshLayer(_ layer:inout IGraphicDecoratable,_ depth:Int){
+        Swift.print("refreshLayer")
         Modifier.applyStyle(&layer,self,depth)
-        Modifier.rotate(&layer, self, depth)
         
         if(DecoratorAsserter.hasDecoratable(layer, RectGraphic.self)){
             let padding:Padding = Padding()//StylePropertyParser.padding(self,depth)
@@ -67,6 +67,9 @@ extension GraphicSkin{
         if(DecoratorAsserter.hasDecoratable(layer, RoundRectGraphic.self)) {(DecoratorParser.decoratable(layer, RoundRectGraphic.self) as! RoundRectGraphic).fillet = StylePropertyParser.fillet(self,depth)}/*fillet*/
         if(DecoratorAsserter.hasDecoratable(layer, AssetDecorator.self)) {(DecoratorParser.decoratable(layer, AssetDecorator.self) as! AssetDecorator).assetURL = StylePropertyParser.asset(self,depth)/*Svg*/}
         if(DecoratorAsserter.hasDecoratable(layer, DropShadowDecorator.self)) {(DecoratorParser.decoratable(layer, DropShadowDecorator.self) as! DropShadowDecorator).dropShadow = StylePropertyParser.dropShadow(self,depth)}/*dropshadow*/
+        
+        Modifier.rotate(&layer, self, depth)
+        _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
         //decoratable.draw()
     }
 }

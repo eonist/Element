@@ -2,7 +2,7 @@ import Foundation
 @testable import Utils
 
 class StyleResolver{
-    static var isStoringSelectors:Bool = false/*This variable is for optimization debugging and can be deleted or commented out later*/
+    //static var isStoringSelectors:Bool = false/*This variable is for optimization debugging and can be deleted or commented out later*/
     static var selectorsString:String = ""/*This variable is for optimization debugging and can be deleted or commented out later*/
     static var styleLookUpCount:Int = 0/*This variable is for optimization debugging and can be deleted or commented out later*/
     /**
@@ -12,11 +12,7 @@ class StyleResolver{
      */
     static func style(_ element:IElement)->IStyle{
         let querySelectors:[ISelector] = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
-        if(isStoringSelectors){
-            var selectorsXMLString:String = ""
-            querySelectors.forEach{selectorsXMLString += Reflection.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
-            StyleResolver.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
-        }
+        //if isStoringSelectors {Debug.appendQuerySelectors(querySelectors)}
         return style(querySelectors,element)
     }
     /**
@@ -112,3 +108,10 @@ static func style2(_ querySelectors:[ISelector])->IStyle{
  
 }
 */
+private class Debug {
+    static func appendQuerySelectors(_ querySelectors:[ISelector] ) {
+        var selectorsXMLString:String = ""
+        querySelectors.forEach{selectorsXMLString += Reflection.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
+        StyleResolver.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
+    }
+}

@@ -24,7 +24,7 @@ class StyleResolver{
      * NOTE: Parsing 192 elements with Basic styles with The tail trick: 0.00551801919937134 and w/o: 0.156262040138245 thats a 30x time difference, which is important when you parse lots of items and lots of styles
      * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
-    static func style(_ querySelectors:[ISelector], styleName:String, _ element:IElement?)->IStyle{
+    static func style(_ querySelectors:[ISelector], _ styleName:String, _ element:IElement?)->IStyle{
         var weightedStyles:[WeightedStyle] = []
         let styles = StyleManager.styles
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick

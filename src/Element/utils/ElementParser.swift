@@ -15,7 +15,7 @@ class ElementParser{
      */
     static func selectors(_ element:IElement)->[ISelector]{
         let elements:[IElement] = parents(element) + [element]
-        return elements.map {selector($0)}
+        return elements.map{selector($0)}
     }
     static func selector(_ element:IElement)->ISelector{
         let elmnt:String = element.getClassType()
@@ -26,6 +26,7 @@ class ElementParser{
     }
     /**
      * Returns an array populated with IElement parents of the target (Basically the ancestry)
+     * NOTE: loops up hierarachy
      */
     static func parents(_ element:IElement)->[IElement] {
         var parents:[IElement] = []

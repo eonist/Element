@@ -9,7 +9,7 @@ protocol ISkin:class{
     func getWidth()->CGFloat
     func getHeight()->CGFloat
     /*Getters / Setters*/
-    var decoratables:Array<IGraphicDecoratable>{get set}
+    var decoratables:[IGraphicDecoratable]{get set}
     var style:IStyle?{get set}
     var state:String{get set}
     var element:IElement?{get}/*We use IElement here instead of Element because sometimes we need to use Window which is not an Element but impliments IElement*/

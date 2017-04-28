@@ -13,9 +13,24 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let padding:Padding = StylePropertyParser.padding(skin,depth)
         let margin:Margin = StylePropertyParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
-        if(floatType == CSSConstants.left || floatType == "" || floatType == nil) { positional.setPosition(CGPoint(margin.left + offset.x, margin.top + offset.y)) }
-        else if(floatType == CSSConstants.right) {positional.setPosition(CGPoint(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y))}
-        else /*floatType == CSSConstants.NONE*/ {positional.setPosition(CGPoint(margin.left + offset.x, margin.top + offset.y))}// :TODO: this is temp for testing
+        let pos:CGPoint = {
+            switch floatType{
+            case CSSConstants.left,"",nil:
+                print("one")
+            case CSSConstants.right:
+                print("range from 3 to 8")
+            default:
+                break;
+            }
+            if(floatType == CSSConstants.left || floatType == "" || floatType == nil) {
+                return CGPoint(margin.left + offset.x, margin.top + offset.y)
+            }else if(floatType == CSSConstants.right) {
+                return CGPoint(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y)
+            }else /*floatType == CSSConstants.NONE*/ {
+                return CGPoint(margin.left + offset.x, margin.top + offset.y)
+            }// :TODO: this is temp for testing
+        }()
+        positional.setPosition(pos)
         return positional
     }
     /**

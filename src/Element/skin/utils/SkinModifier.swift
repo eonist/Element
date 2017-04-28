@@ -8,7 +8,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
     /**
      * Aligns PARAM: view
      * Set the x and y of the decoratable
-     * IMPORTANT: ⚠️️ Does not 
+     * IMPORTANT: ⚠️️ Does not call draw on decoratable, only sets x,y
      */
     static func align(_ skin:ISkin, _ positional:IPositional,_ depth:Int = 0)->IPositional {
         let offset:CGPoint = StylePropertyParser.offset(skin,depth)

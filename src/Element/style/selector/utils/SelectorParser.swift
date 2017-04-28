@@ -35,10 +35,10 @@ class SelectorParser{
      * Returns a single selector (ie: Button#first:over)
      */
     static func selectorString(_ selector:ISelector)->String{// :TODO: rename to selectorString
-        var string:String = ""
-        if(selector.element != "") { string += selector.element }
-        string = selector.classIds.reduce(string) { $0 + ("."+$1) }
-        if(selector.id != "") { string += "#"+selector.id }
+        var string:String = selector.element + selector.classIds.reduce("") { $0 + ("."+$1) }
+        
+        
+        selector.id != "" ? "#"+selector.id : ""
         string = selector.states.reduce(string) { $0 + (":"+$1) }
         return string
     }

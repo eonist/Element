@@ -16,9 +16,7 @@ class ElementParser{
     static func selectors(_ element:IElement)->[ISelector]{
         //Swift.print("ElementParser.selectors()")
         let elements:[IElement] = ArrayModifier.append(parents(element),element)
-        var selectors:[ISelector] = []
-        elements.forEach {selectors.append(selector($0))}
-        return selectors
+        return elements.map {selector($0)}
     }
     static func selector(_ element:IElement)->ISelector{
         let elmnt:String = element.getClassType()

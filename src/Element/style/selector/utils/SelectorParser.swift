@@ -35,13 +35,11 @@ class SelectorParser{
      * Returns a single selector (ie: Button#first:over)
      */
     static func selectorString(_ selector:ISelector)->String{// :TODO: rename to selectorString
-        var string:String = {
-            selector.element != "" ? selector.element : ""
-        }() + selector.classIds.reduce("") { $0 + ("."+$1) }
-        
-        if(selector.id != "") { string += "#"+selector.id }
-        string = selector.states.reduce(string) { $0 + (":"+$1) }
-        return string
+        let element:String = selector.element != "" ? selector.element : ""
+        //let classIds:String = selector.classIds.reduce(string) { $0 + ("."+$1) }
+        let id:String = selector.id != "" ? "#"+selector.id : ""
+        let states:String = selector.states.reduce("") { $0 + (":"+$1) }
+        return element + /*classIds +*/ id + states
     }
     /**
      * Returns an array of Selector instances from PARAM: string (which is usually from the CSSParser.style function)

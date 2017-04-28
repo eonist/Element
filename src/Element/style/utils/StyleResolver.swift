@@ -5,6 +5,7 @@ class StyleResolver{
     //static var isStoringSelectors:Bool = false/*This variable is for optimization debugging and can be deleted or commented out later*/
     static var selectorsString:String = ""/*This variable is for optimization debugging and can be deleted or commented out later*/
     static var styleLookUpCount:Int = 0/*This variable is for optimization debugging and can be deleted or commented out later*/
+    static var cachedStyles:[(id:String,style:IStyle)] = []
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: Creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
@@ -13,7 +14,9 @@ class StyleResolver{
     static func style(_ element:IElement)->IStyle{
         let querySelectors:[ISelector] = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         //if isStoringSelectors {Debug.appendQuerySelectors(querySelectors)}
-        return style(querySelectors,element)
+        let s:IStyle = style(querySelectors,element)
+        cachedStyles
+        return s
     }
     /**
      * NOTE: Parsing 192 elements with Basic styles with The tail trick: 0.00551801919937134 and w/o: 0.156262040138245 thats a 30x time difference, which is important when you parse lots of items and lots of styles

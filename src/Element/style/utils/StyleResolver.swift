@@ -46,6 +46,9 @@ class StyleResolver{
         if(weightedStyles.count > 1) {
             weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         }
+        
+        //TODO: ⚠️️ make th ebellow method functional
+        
         let styleName:String = SelectorParser.string(querySelectors)/*returns the absolute selecter address of the element*/
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[])/*find the exact styleName in the stylemanager or if that doesn't exist then create a new style to merge partily matched styles*/
         

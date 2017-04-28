@@ -27,6 +27,9 @@ class StyleResolver{
         var weightedStyles:[WeightedStyle] = []
         let styles = StyleManager.styles
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
+        
+        //TODO: ⚠️️ Make this functional: lazy.map.filter
+        
         for style:IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/
             //styleLookUpCount++
             if(style.selectors.count > querySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
@@ -37,6 +40,9 @@ class StyleResolver{
             }
         }
         //Swift.print("weightedStyles: " + weightedStyles.count)
+        
+        //TODO: ⚠️️ use more modern sorter on the bellow:
+        
         if(weightedStyles.count > 1) {
             weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         }

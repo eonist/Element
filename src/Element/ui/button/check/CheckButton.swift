@@ -2,9 +2,10 @@ import Foundation
 @testable import Utils
 /**
  * NOTE: to force the CheckButton to apply its Checked or unchecked skin, use the setChecked after the instance is created
+ * NOTE: isChecked is not priv because setting it manually and then setting style is cheaper than using setSkinState. TreeList uses this scheme
  */
 class CheckButton:Button,ICheckable{
-    private var isChecked:Bool
+    var isChecked:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil){
         self.isChecked = isChecked
         super.init(width,height,parent,id);

@@ -7,6 +7,8 @@ import Cocoa
 class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better name)
     /**
      * Aligns PARAM: view
+     * Set the x and y of the decoratable
+     * IMPORTANT: ⚠️️ Does not 
      */
     static func align(_ skin:ISkin, _ positional:IPositional,_ depth:Int = 0)->IPositional {
         let offset:CGPoint = StylePropertyParser.offset(skin,depth)
@@ -14,21 +16,15 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let margin:Margin = StylePropertyParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
         let pos:CGPoint = {
-            switch floatType{
-            case CSSConstants.left,"",nil:
-                print("one")
-            case CSSConstants.right:
-                print("range from 3 to 8")
-            default:
-                break;
-            }
             if(floatType == CSSConstants.left || floatType == "" || floatType == nil) {
                 return CGPoint(margin.left + offset.x, margin.top + offset.y)
             }else if(floatType == CSSConstants.right) {
-                return CGPoint(padding.right + margin.right + offset.x, margin.top + padding.top + offset.y)
+                let x:CGFloat = padding.right + margin.right + offset.x
+                let y:CGFloat = margin.top + padding.top + offset.y
+                return CGPoint(x,y)
             }else /*floatType == CSSConstants.NONE*/ {
                 return CGPoint(margin.left + offset.x, margin.top + offset.y)
-            }// :TODO: this is temp for testing
+            }
         }()
         positional.setPosition(pos)
         return positional

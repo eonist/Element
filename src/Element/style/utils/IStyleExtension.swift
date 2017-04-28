@@ -49,6 +49,9 @@ extension IStyle{
     func describe(){
         StyleParser.describe(self)
     }
+    var clone:IStyle {
+        return StyleModifier.clone(self)
+    }
 }
 
 

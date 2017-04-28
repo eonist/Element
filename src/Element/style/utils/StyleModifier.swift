@@ -12,9 +12,10 @@ class StyleModifier {
     }
     /**
      * Overrides styleProperty if one exists with the same name
+     * IMPORTANT: ⚠️️ depth assert was recently added
      */
     static func overrideStyleProperty(_ style:inout IStyle, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
-        if let idx = style.styleProperties.index(where: {$0.name == styleProperty.name}){
+        if let idx = style.styleProperties.index(where: {$0.name == styleProperty.name && $0.depth == styleProperty.depth}){
             style.styleProperties[idx] = styleProperty
         }//Swift.print("\(String(style))"+" PROPERTY BY THE NAME OF "+styleProperty.name+" WAS NOT FOUND IN THE PROPERTIES ")//this should throw error
     }

@@ -30,10 +30,9 @@ let package = Package(
 StyleManager.addStyle("Button{fill:blue;}")
 let btn = Button(100,20)
 window.contentView!.addSubview(btn)
-func onClick(event:Event){
+btn.event{ event in
 	if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
 }
-btn.event = onClick
 ```
   
 You can also compile Element as a regular .framework instructions [here](https://github.com/eonist/Element/wiki/framework-instructions) 

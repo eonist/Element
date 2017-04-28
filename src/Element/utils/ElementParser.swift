@@ -31,10 +31,10 @@ class ElementParser{
         var parents:[IElement] = []
         var parent:IElement? = element.getParent() as? IElement// :TODO: seperate this into a check if its DO then that, if its Window then do that
         while(parent != nil) {/*loops up the object hierarchy as long as the parent is a Element supertype*/
-            _ = ArrayModifier.unshift(&parents,parent!)
+            parents.append(parent!)
             parent = parent!.getParent() as? IElement
         }
-        return parents
+        return parents.reversed()
     }
     /**
      * This method can be used to print the StyleSelector for an Element instance 

@@ -14,15 +14,17 @@ class StyleResolver{
     static func style(_ element:IElement)->IStyle{
         let querySelectors:[ISelector] = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         //if isStoringSelectors {Debug.appendQuerySelectors(querySelectors)}
-        let s:IStyle = style(querySelectors,element)
-        cachedStyles
+        let styleName:String = SelectorParser.string(querySelectors)/*returns the absolute selecter address of the element*/
+        let s:IStyle = style(querySelectors,styleName,element)
+        
+        //cachedStyles
         return s
     }
     /**
      * NOTE: Parsing 192 elements with Basic styles with The tail trick: 0.00551801919937134 and w/o: 0.156262040138245 thats a 30x time difference, which is important when you parse lots of items and lots of styles
      * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
-    static func style(_ querySelectors:[ISelector],_ element:IElement?)->IStyle{
+    static func style(_ querySelectors:[ISelector], styleName:String, _ element:IElement?)->IStyle{
         var weightedStyles:[WeightedStyle] = []
         let styles = StyleManager.styles
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
@@ -48,7 +50,7 @@ class StyleResolver{
         
         //TODO: ⚠️️ make th ebellow method functional
         
-        let styleName:String = SelectorParser.string(querySelectors)/*returns the absolute selecter address of the element*/
+        
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[])/*find the exact styleName in the stylemanager or if that doesn't exist then create a new style to merge partily matched styles*/
         
         for weightStyle:WeightedStyle in weightedStyles{/*compiles the finalStyle by making sure the last selector matches the last selector in the weightstyle, this works different for font etc. which are inheritable*/

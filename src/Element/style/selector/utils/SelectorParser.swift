@@ -27,11 +27,9 @@ class SelectorParser{
      * NOTE: this method can also be used for debuging purposes
      */
     static func selectorsString(_ selectors:[ISelector])->String{
-        var string:String = ""
-        selectors.map{
-            string += selectorToString(selectors[i]) + (i < selectors.count-1 ? " ":"")
+        return selectors.reduce(""){
+            $0 + selectorString($1)
         }
-        return string
     }
     /**
      * Returns a single selector (ie: Button#first:over)

@@ -21,7 +21,13 @@ class ElementParser{
         let elmnt:String = element.getClassType()
         //if(e.classId != null) selector.classIds = e.classId.indexOf(" ") != -1 ? e.classId.split(" ") : [e.classId]
         let id:String = element.id ?? ""
-        let states:[String] = (element.skin != nil ? element.skin!.state : element.getSkinState()).match("\\b\\w+\\b")/*Matches words with spaces between them*/
+        let states:[String] = {
+            if let skin = element.skin{
+                return skin.state
+            }else{
+                return element.getSkinState()).match("\\b\\w+\\b")/*Matches words with spaces between them*/
+            }
+        }()
         return Selector(elmnt,[],id,states)
     }
     /**

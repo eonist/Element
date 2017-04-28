@@ -25,7 +25,7 @@ extension DEPRECATEDIRBSlidable {
      * EventHandler for the Slider change event
      */
     func onSliderChange(_ sliderEvent:SliderEvent){
-        ScrollableUtils.scrollTo(self,sliderEvent.progress)
+        ScrollableUtils.scrollTo(self as! Containable,sliderEvent.progress)
         //mover!.value = lableContainer!.frame.y
     }
     //im not sure the default scheme was needed, remove later if unused

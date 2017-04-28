@@ -14,7 +14,6 @@ class ElementParser{
      * NOTE: To get the stackString use: ElementParser.stackString(button) and StyleParser.describe(StyleResolver.style(button))
      */
     static func selectors(_ element:IElement)->[ISelector]{
-        //Swift.print("ElementParser.selectors()")
         let elements:[IElement] = ArrayModifier.append(parents(element),element)
         return elements.map {selector($0)}
     }

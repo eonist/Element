@@ -5,7 +5,7 @@ class StyleResolver{
     //static var isStoringSelectors:Bool = false/*This variable is for optimization debugging and can be deleted or commented out later*/
     static var selectorsString:String = ""/*This variable is for optimization debugging and can be deleted or commented out later*/
     static var styleLookUpCount:Int = 0/*This variable is for optimization debugging and can be deleted or commented out later*/
-    static var cachedStyles:[(id:String,style:IStyle)] = []
+    static var cachedStyles:[String:IStyle] = [:]
     /**
      * Returns a style comprised of all the styleProperties element inherit from
      * NOTE: Creates a list with styles in the styleManger the styles with highest priority goes to the top, then each consequtive style in this priority list is merged into the first one (if a styleProperty exists it is not overriden, all others are added), styles in the stylemanager that has nothing to do with the current cascade are not included in the priorityList
@@ -15,10 +15,13 @@ class StyleResolver{
         let querySelectors:[ISelector] = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         //if isStoringSelectors {Debug.appendQuerySelectors(querySelectors)}
         let styleName:String = SelectorParser.string(querySelectors)/*returns the absolute selecter address of the element*/
-        let s:IStyle = style(querySelectors,styleName,element)
-        
-        //cachedStyles
-        return s
+        if let cachedStyle:IStyle = cachedStyles[styleName]{
+            return cachedStyle
+        }else{
+            let s:IStyle = style(querySelectors,styleName,element)
+            cachedStyles[styleName] = s
+            return s
+        }
     }
     /**
      * NOTE: Parsing 192 elements with Basic styles with The tail trick: 0.00551801919937134 and w/o: 0.156262040138245 thats a 30x time difference, which is important when you parse lots of items and lots of styles

@@ -32,7 +32,9 @@ class StyleResolver{
             if(style.selectors.count > querySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)
             let selectorWeights:[SelectorWeight]? = SelectorParser.selectorWeights(style,querySelectors)
-            if(selectorWeights != nil) {weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))}
+            if(selectorWeights != nil) {
+                weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))
+            }
         }
         //Swift.print("weightedStyles: " + weightedStyles.count)
         if(weightedStyles.count > 1) {

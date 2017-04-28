@@ -11,7 +11,7 @@ extension IList {
     //var itemsHeight:CGFloat {fatalError("not implemented yet")}/*Convenience*/
     /*Modifiers*/
     func selectAt(_ index:Int){/*convenience*/
-        fatalError("not implemented yet")
+        print("IList.selectAt(\(index)) not implemented yet")
     }
     var dp:DataProvider {return self.dataProvider}/*convenience*/
     var itemsHeight: CGFloat {return dp.count * itemHeight}//👈 new
@@ -20,4 +20,3 @@ extension IList {
     var interval:CGFloat{return floor(contentSize[dir] - maskSize[dir])/itemSize[dir]}
     var progress:CGFloat{return SliderParser.progress(contentContainer!.point[dir], maskSize[dir], contentSize[dir])}
 }
-

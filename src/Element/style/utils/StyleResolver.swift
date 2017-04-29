@@ -28,34 +28,15 @@ class StyleResolver{
      * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
     static func style(_ querySelectors:[ISelector], _ styleName:String, _ element:IElement?)->IStyle{
-        
         let styles = StyleManager.styles
-        //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
-        
-        //TODO: ⚠️️ Make this functional: lazy.map.filter
-        let weightedStyles:[WeightedStyle] = styles.lazy.map {/*This loop disregards styles that don't apply to the element Selectors*/
-            //styleLookUpCount++
+        let weightedStyles:[WeightedStyle] = styles.lazy.map { style -> WeightedStyle? in /*This loop disregards styles that don't apply to the element Selectors*/
             if style.selectors.count > querySelectors.count{/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
                 return nil
             }else{
                 let selectorWeights:[SelectorWeight]? = SelectorParser.selectorWeights(style,querySelectors)
-                if(selectorWeights != nil){
-                    return WeightedStyle(style, StyleWeight(selectorWeights!))
-                }
-                return nil
-            }.flatMap{$0}.sorted(by: WeightedStyleAsserter.priority) /*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
-        }
-        
-        
-        //Swift.print("weightedStyles: " + weightedStyles.count)
-        
-        //TODO: ⚠️️ use more modern sorter on the bellow:
-        
-        if(weightedStyles.count > 1) {
-            weightedStyles = weightedStyles
-        }
-        
-        //TODO: ⚠️️ make th ebellow method functional
+                return selectorWeights != nil ? WeightedStyle(style, StyleWeight(selectorWeights!)) : nil
+            }
+        }.flatMap{$0}.sorted(by: WeightedStyleAsserter.priority) /*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         
         
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[])/*find the exact styleName in the stylemanager or if that doesn't exist then create a new style to merge partily matched styles*/
@@ -127,3 +108,5 @@ private class Debug {
         StyleResolver.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
     }
 }
+//let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
+//styleLookUpCount++

@@ -37,11 +37,8 @@ class StyleResolver{
                 return selectorWeights != nil ? WeightedStyle(style, StyleWeight(selectorWeights!)) : nil
             }
         }.flatMap{$0}.sorted(by: WeightedStyleAsserter.priority) /*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
-        
-        
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[])/*find the exact styleName in the stylemanager or if that doesn't exist then create a new style to merge partily matched styles*/
-        
-        for weightStyle:WeightedStyle in weightedStyles{/*compiles the finalStyle by making sure the last selector matches the last selector in the weightstyle, this works different for font etc. which are inheritable*/
+        weightedStyles.forEach{ weightStyle in /*compiles the finalStyle by making sure the last selector matches the last selector in the weightstyle, this works different for font etc. which are inheritable*/
             StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle

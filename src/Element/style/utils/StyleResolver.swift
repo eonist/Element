@@ -15,12 +15,12 @@ class StyleResolver{
         let querySelectors:[ISelector] = ElementParser.selectors(element)/*Array instance comprised of Selector instances for each (element,classId,id and state) in the element*/
         //if isStoringSelectors {Debug.appendQuerySelectors(querySelectors)}
         let styleName:String = SelectorParser.string(querySelectors)/*returns the absolute selecter address of the element*/
-        if let cachedStyle:IStyle = cachedStyles[styleName]{//new caching feature
+        if let cachedStyle:IStyle = cachedStyles[styleName]{//new caching feature, was added so that FastTreeList would be smooth. also makes everything else smooth 🎉
             return cachedStyle
         }else{
-            let s:IStyle = style(querySelectors,styleName,element)
-            cachedStyles[styleName] = s
-            return s
+            let style:IStyle = StyleResolver.style(querySelectors,styleName,element)
+            cachedStyles[styleName] = style
+            return style
         }
     }
     /**

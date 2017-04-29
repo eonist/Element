@@ -33,13 +33,14 @@ class StyleResolver{
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
         
         //TODO: ⚠️️ Make this functional: lazy.map.filter
-        let weightedStyles:[WeightedStyle] = styles.lazy.filter {
-            style.selectors.count > querySelectors.count
-            }.filter{
+        let weightedStyles:[WeightedStyle] = styles.lazy.map {
+            if style.selectors.count <= querySelectors.count{
+                WeightedStyle(style, StyleWeight(selectorWeights!))
+            }
+            }.flatMap{
                  let selectorWeights:[SelectorWeight]? = SelectorParser.selectorWeights(style,querySelectors)
                 return selectorWeights != nil
-            }.map{
-                WeightedStyle(style, StyleWeight(selectorWeights!))
+                
         }
         
         

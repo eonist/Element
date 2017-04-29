@@ -28,19 +28,28 @@ class StyleResolver{
      * NOTE: style-lookup for BasicWin: 24148 vs 8134 when using the "tail trick"
      */
     static func style(_ querySelectors:[ISelector], _ styleName:String, _ element:IElement?)->IStyle{
-        var weightedStyles:[WeightedStyle] = []
+        
         let styles = StyleManager.styles
         //let styles:[IStyle] = element as? Text != nil ? StyleManager.styles : Utils.getStyles(querySelectors.last!)//<-this is the tail trick
         
         //TODO: ⚠️️ Make this functional: lazy.map.filter
+        let weightedStyles:[WeightedStyle] = styles.lazy.filter {
+            style.selectors.count > querySelectors.count
+            }.filter{
+                 let selectorWeights:[SelectorWeight]? = SelectorParser.selectorWeights(style,querySelectors)
+                return selectorWeights != nil
+            }.map{
+                WeightedStyle(style, StyleWeight(selectorWeights!))
+        }
+        
         
         for style:IStyle in styles {/*This loop disregards styles that don't apply to the element Selectors*/
             //styleLookUpCount++
             if(style.selectors.count > querySelectors.count) {continue;}/*if there are more selectors in style.selectors than in cascade the final styleWeight.weight is 0 and there for it is not included in the weightedStyles array*/
             //Swift.print("style: " + style.name)
-            let selectorWeights:[SelectorWeight]? = SelectorParser.selectorWeights(style,querySelectors)
-            if(selectorWeights != nil) {
-                weightedStyles.append(WeightedStyle(style, StyleWeight(selectorWeights!)))
+           
+            if() {
+                weightedStyles.append()
             }
         }
         //Swift.print("weightedStyles: " + weightedStyles.count)

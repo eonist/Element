@@ -48,7 +48,7 @@ class StyleResolver{
         //TODO: ⚠️️ use more modern sorter on the bellow:
         
         if(weightedStyles.count > 1) {
-            weightedStyles = ArrayParser.conditionSort(weightedStyles, WeightedStyleAsserter.priority)/*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
+            weightedStyles = weightedStyles.sorted(by: WeightedStyleAsserter.priority) /*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         }
         
         //TODO: ⚠️️ make th ebellow method functional

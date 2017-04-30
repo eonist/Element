@@ -67,7 +67,6 @@ extension Thumb{
      * Animator method that interpolates the alpha between 0 and 1
      */
     func interpolateAlpha(_ val:CGFloat){
-        //Swift.print("interpolateAlpha()")
         alpha = val
         self.skin?.decoratables[0].draw()
     }
@@ -76,8 +75,6 @@ extension Thumb{
      * IMPORTANT:⚠️️ Use fadeIn as oppose to setting alpha your self. Because then animation doesnt stutter etc. Set time low if you need the instantaniouse feel
      */
     func fadeIn(){
-        //Swift.print("Thumb.fadeIn")
-        //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         animator = Animator(Animation.sharedInstance,0.2,alpha,1,interpolateAlpha,Sine.easeOut)
         animator!.event = {(event:Event) -> Void in }
@@ -87,8 +84,6 @@ extension Thumb{
      * Call this when you want to fade-out the thumb
      */
     func fadeOut(){
-        //Swift.print("Thumb.fadeOut")
-        //let rbSliderListRef = self.superview?.superview as! RBSliderList
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         animator = Animator(Animation.sharedInstance,0.5,alpha,0,interpolateAlpha,Quad.easeIn)
         animator!.event = {(event:Event) -> Void in }

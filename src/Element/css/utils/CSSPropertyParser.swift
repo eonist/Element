@@ -185,10 +185,10 @@ private class Utils{
      * TODO: ⚠️️ I think you can reduce into colors and locations
      */
     static func gradient(_ properties:[String])->IGradient {
-        let gradient:Gradient = Gradient()
+        // = Gradient()
         
-        properties.reduce(Gradient()) {
-            let property:String = $1
+        let gradient:Gradient = properties.indices.reduce(Gradient()) {
+            let i:Int = $1
             let property:String = properties[i]
             let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
             for match:NSTextCheckingResult in matches {
@@ -200,7 +200,7 @@ private class Utils{
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (i.double / (properties.count.double-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
                 //gradient.locations.append()
-                $0.locations = $0.locations + ratioValue.cgFloat/*append ratioValue*/
+                $0.locations = properties[i].locations + ratioValue.cgFloat/*append ratioValue*/
             }
             
         }

@@ -9,7 +9,6 @@ class ElementModifier {
         applyStyleProperty(element, "display", display)
     }
     /**
-     * New
      * TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
      * TODO: Also make a method that uses the actualy StyleProperty class
      */
@@ -48,7 +47,7 @@ class ElementModifier {
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none else{return}/*Skip refreshing*/
-        method(element)//apply the method
+        method(element)/*apply the method*/
         if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
             container.subviews.forEach{
                 if let child = $0 as? IElement{

@@ -30,11 +30,11 @@ class CustomView:WindowView{
      * NOTE: for re-usable panels etc, override and use the orderOut and makeKeyandOrderInfront combo. Use visible to assert between the modes
      */
     func onCloseButtonReleaseInside() {
-        Swift.print("onCloseButtonReleaseInside")
+        //Swift.print("onCloseButtonReleaseInside")
         self.window?.close()/*this closes the window*/
     }
     func onMinimizeButtonReleaseInside(){
-        Swift.print("onMinimizeButtonReleaseInside")
+        //Swift.print("onMinimizeButtonReleaseInside")
         //minimize the window here
         //NSApp.miniaturizeAll(self)//minimizes all windows in the app
         self.window?.miniaturize(self)
@@ -44,7 +44,7 @@ class CustomView:WindowView{
      * TODO: add support for zooming back to normal size
      */
     func onMaximizeButtonReleaseInside(){
-        Swift.print("onMaximizeButtonReleaseInside")
+        //Swift.print("onMaximizeButtonReleaseInside")
         //maximize the window here
         //self.window?.zoom(self)//<--alt + click is the default behaviour to launch zoom
         
@@ -59,7 +59,7 @@ class CustomView:WindowView{
         self.window?.toggleFullScreen(self.window)
     }
     func onTestButtonDown(){
-        Swift.print("onTestButtonDown")
+        //Swift.print("onTestButtonDown")
     }
     override func onEvent(_ event:Event) {
         //Swift.print( "CustomView.onEvent() event:" + "\(event)")

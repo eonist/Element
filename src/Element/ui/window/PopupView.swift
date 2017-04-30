@@ -7,15 +7,15 @@ import Cocoa
 class PopupView:WindowView{
     var leftMouseDownEventListener:Any?
     override func resolveSkin() {
-        Swift.print("PopupView.resolveSkin")
+        //Swift.print("PopupView.resolveSkin")
         StyleManager.addStyle("Window#special{fill:green;}")
         super.resolveSkin()
         if(leftMouseDownEventListener == nil) {leftMouseDownEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:self.onMouseDown ) }//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     func onMouseDown(event:NSEvent) -> NSEvent? {
-        Swift.print("PopupView.onMouseDown()")
-        Swift.print("self.localPos: " + "\(self.localPos())")
+        //Swift.print("PopupView.onMouseDown()")
+        //Swift.print("self.localPos: " + "\(self.localPos())")
         if(!CGRect(CGPoint(),frame.size).contains(self.localPos())){/*click outside window, but must hit another app window*/
             super.onEvent(Event(Event.update,self))/*notifies the initiator of the PopupWin that it will close*/
             if(leftMouseDownEventListener != nil){

@@ -29,7 +29,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * Override this to add custom window resize code
      */
     func windowDidResize(_ notification: Notification) {
-        Swift.print("Window.windowDidResize")
+        //Swift.print("Window.windowDidResize")
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework
@@ -41,7 +41,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * I think this serves as a block for closing, i.e: prompt the user to save etc
      */
     func windowShouldClose(sender:AnyObject) -> Bool {
-        Swift.print("windowShouldClose")
+        //Swift.print("windowShouldClose")
         return true
     }
 }

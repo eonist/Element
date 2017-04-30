@@ -20,7 +20,6 @@ class TreeListParser{
         var items:[AnyObject] = []
         for i in 0..<treeList.itemContainer!.subviews.count{
             let view:NSView = treeList.itemContainer!.subviews[i]
-            //Swift.print("view: " + "\(view)")
             items.append(view)
             if(view is ITreeList) {items += (descendants(view as! ITreeList))}
         }
@@ -30,7 +29,6 @@ class TreeListParser{
      *
      */
     static func decendantsOfType<T>(_ treeList:ITreeList,_ type:T.Type? = nil)->[T] {
-        //Swift.print("decendantsOfType()")
         var items:[T] = []
         for i in 0..<treeList.itemContainer!.subviews.count{
             let view:NSView = treeList.itemContainer!.subviews[i]

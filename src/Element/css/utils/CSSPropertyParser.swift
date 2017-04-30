@@ -182,12 +182,12 @@ private class Utils{
     /**
      * Returns a Gradient instance derived from PARAM: properties
      * NOTE: adds colors, opacities and ratios
-     * TODO: ⚠️️ I think you can reduce into colors and locations
+     * TODO: ⚠️️ add support for all Written Color. find list on w3c
      */
     static func gradient(_ properties:[String])->IGradient {
-        let gradient:Gradient = properties.indices.reduce(Gradient()) {
-            let i:Int = $1
-            let property:String = properties[i]
+        let gradient:Gradient = properties.enumerated().reduce(Gradient()) {
+            let i:Int = $1.offset
+            let property:String = $1.element
             let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
             for match:NSTextCheckingResult in matches {
                 let color:String = match.value(property,1)
@@ -201,9 +201,6 @@ private class Utils{
             }
             return $0
         }
-        //for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
-            
-        //}
         return gradient
     }
     /**

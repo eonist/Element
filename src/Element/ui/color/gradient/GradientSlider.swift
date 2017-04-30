@@ -8,7 +8,6 @@ class GradientSlider:HNodeSlider{
         setGradient(gradient!)
     }
     func setGradient(_ gradient:IGradient){
-        //print("setGradient"+gradient.colors)
         self.gradient = gradient
         //print("_gradient: " + _gradient)
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*We clone the style so other Element instances doesn't get their style changed as well*/// :TODO: this won't do if the skin state changes, therefor we need something similar to DisplayObjectSkin

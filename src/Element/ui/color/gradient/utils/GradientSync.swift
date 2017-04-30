@@ -7,9 +7,6 @@ class GradientSync {
     static func onGradientChange(_ event:GradientInputEvent){
         print("GradientSync.onGradientChange receiver:" + "\(GradientSync.receiver)")
         if(GradientSync.receiver != nil) {
-            //print("_receiver: " + "\(GradientSync.receiver)")
-            //print("event.target: " + event.target);
-            //print("event.currentTarget: " + event.currentTarget);
             GradientSync.broadcaster = event.origin as? IGradientInput
             GradientSync.receiver!.setGradient(event.gradient!)
             GradientSync.receiver!.onEvent(GradientInputEvent(.Change,event.origin))//<--Not sure why you cant just forward the event as is!?

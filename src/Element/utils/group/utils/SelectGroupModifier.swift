@@ -3,7 +3,7 @@ import Foundation
 
 class SelectGroupModifier {
     /**
-     * 
+     *
      */
     static func selectedAt(_ selectGroup:SelectGroup,_ index:Int){// :TODO: move this to the SlectUtils since you mihgt not always want to unselectAllExcept when you select, and you may want to impose different functionality, like multi select etc
         let selectable:ISelectable = SelectGroupParser.selectableAt(selectGroup,index)!

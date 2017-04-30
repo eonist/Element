@@ -45,10 +45,6 @@ extension IElement {
      * TODO: this could also be move to an utils class
      */
     func setPosition(_ point:CGPoint){
-        /*
-        self.x = point.x;
-        self.y = point.y;
-        */
         frame.x = point.x
         frame.y = point.y
     }

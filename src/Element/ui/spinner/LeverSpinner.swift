@@ -56,8 +56,7 @@ class LeverSpinner:Element{
         }
     }
     func setValue(_ value:CGFloat) {
-        var value:CGFloat = value//swift 3 update
-        value = NumberParser.minMax(value, minVal, maxVal)
+        let value:CGFloat = NumberParser.minMax(value, minVal, maxVal)
         self.val = CGFloatModifier.toFixed(value,decimals)
         textInput!.inputTextArea?.setTextValue(String(self.val))
         stepper!.value = self.val

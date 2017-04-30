@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * //TODO: shouldn't this class extend Stepper?
+ * //TODO: Rename leverHeight to something less ambiguous
  */
 class LeverStepper:Element{
     var value:CGFloat
@@ -22,7 +23,7 @@ class LeverStepper:Element{
         self.maxVal = max
         self.increment = increment
         self.decimals = decimals
-        self.leverHeight = leverHeight//TODO: Rename to something less ambiguous
+        self.leverHeight = leverHeight
         self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
@@ -32,42 +33,32 @@ class LeverStepper:Element{
         minusButton = addSubView(Button(height,height,self, "minus"))
     }
     func onPlusButtonDown() {
-        //Swift.print("onPlusButtonDown()")
-        //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
         onMouseDownMouseY = plusButton!.localPos().y
         onMouseDownValue = self.value
         if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDragged], handler: self.onPlusButtonMove)}//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     func onMinusButtonDown() {
-        //Swift.print("onMinusButtonDown()")
-        //Swift.print("globalMouseMovedHandeler: " + "\(globalMouseMovedHandeler)")
         onMouseDownMouseY  = minusButton!.localPos().y
-        //Swift.print("onMinusButtonDown onMouseDownMouseY: " + "\(onMouseDownMouseY)")
         onMouseDownValue = value
         if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     func onPlusButtonUpInside() {
-        //Swift.print("onPlusButtonUpInside")
         let val:CGFloat = CGFloatModifier.increment(value, increment);
         value = NumberParser.minMax(val, minVal, maxVal);// :TODO: Don't set the value
         self.event!(StepperEvent(StepperEvent.change,value,self,self))
     }
     func onMinusButtonUpInside() {
-        //Swift.print("onMinusButtonUpInside")
         let val:CGFloat = CGFloatModifier.decrement(value, increment);
         value = NumberParser.minMax(val, minVal, maxVal);
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))
     }
     func onButtonUp(){
-        //Swift.print("LeverStepper.onButtonUp()" + "\(self)")
-        //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
         if(leftMouseDraggedEventListener != nil){
             NSEvent.removeMonitor(leftMouseDraggedEventListener!)
             leftMouseDraggedEventListener = nil//<--this part may not be needed
         }/*We remove a global mouse move event listener*/
-        //Swift.print("leftMouseDraggedEventListener: " + "\(leftMouseDraggedEventListener)")
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
         return onButtonMove(event,plusButton!)
@@ -76,7 +67,6 @@ class LeverStepper:Element{
          return onButtonMove(event,minusButton!)
     }
     func onButtonMove(_ event:NSEvent,_ button:Button)-> NSEvent?{
-        //Swift.print("onButtonMove")
         var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY
         leaverPos = NumberParser.minMax(leaverPos, -leverHeight, leverHeight)
         let multiplier:CGFloat = leaverPos / leverHeight
@@ -92,7 +82,6 @@ class LeverStepper:Element{
      *
      */
     override func onEvent(_ event: Event) {
-        //Swift.print("onEvent() event: " + "\(event)")
         if(event.origin === plusButton && event.type == ButtonEvent.down){onPlusButtonDown()}
         else if(event.origin === minusButton && event.type == ButtonEvent.down){onMinusButtonDown()}
         else if(event.origin === plusButton && event.type == ButtonEvent.upInside){onPlusButtonUpInside()}

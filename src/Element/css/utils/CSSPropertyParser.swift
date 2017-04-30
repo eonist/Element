@@ -186,7 +186,9 @@ private class Utils{
      */
     static func gradient(_ properties:[String])->IGradient {
         let gradient:Gradient = Gradient()
-        for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
+        
+        properties.reduce(Gradient()) {
+            let property:String = $1
             let property:String = properties[i]
             let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
             for match:NSTextCheckingResult in matches {
@@ -197,9 +199,14 @@ private class Utils{
                 let ratio:String = match.value(property,3)
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (i.double / (properties.count.double-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                gradient.locations.append(ratioValue.cgFloat)/*append ratioValue*/
+                //gradient.locations.append()
+                $0.locations = $0.locations + ratioValue.cgFloat/*append ratioValue*/
             }
+            
         }
+        //for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
+            
+        //}
         return gradient
     }
     /**

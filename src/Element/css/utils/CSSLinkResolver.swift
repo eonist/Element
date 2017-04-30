@@ -44,10 +44,7 @@ private class Utils {
      */
     static func replaceLinks(_ string:String,_ linkPropName:String,_ cssString:String)->String{
         var string:String = string
-        //Swift.print("replaceLinks.string: " + string);
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
-        //Swift.print("replaceLinks()" + String(matches.count))
-        //var index:Int = 0
         var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             if(match.numberOfRanges > 0){/*match = the link name>*/

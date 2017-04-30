@@ -36,7 +36,6 @@ private class Utils{
             }
             fatalError("not allowed: styleWidth: \(StylePropertyParser.width(skin,depth)) skinWidth: \(skin.width)")
         }()
-        
         let height:CGFloat = (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
         return RectGraphic(width,height,decoratable)

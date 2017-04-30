@@ -70,6 +70,5 @@ extension CSSFileParser{
         pattern +=  "(" + styleCharSet + "+?$)?"
         return pattern
     }()
-    
     static var importStringPattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
 }

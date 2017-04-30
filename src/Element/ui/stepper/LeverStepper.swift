@@ -85,7 +85,6 @@ class LeverStepper:Element{
         val = NumberParser.minMax(val, minVal, maxVal)/*Cap the value from min to max*/
         val = CGFloatModifier.toFixed(val,decimals)/*The value must have no more than the value of the _decimals*/
         value = val
-        //Swift.print("value: " + "\(value)")
         self.event!(StepperEvent(StepperEvent.change,self.value,self,self))//probably use the onEvent here not the event
         return event/*this return is required when you listen to the global mouse move event*/
     }

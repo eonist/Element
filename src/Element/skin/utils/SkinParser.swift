@@ -44,7 +44,7 @@ class SkinParser {
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
         let offset:CGPoint = self.offset(skin)
-        return CGPoint(/*(skin.element as DisplayObject).x*/ margin.left + border.left + padding.left + offset.x, /*(skin.element as DisplayObject).y*/ margin.top + border.top + padding.top + offset.y)
+        return CGPoint(/*(skin.element as NSView).x*/ margin.left + border.left + padding.left + offset.x, /*(skin.element as NSView).y*/ margin.top + border.top + padding.top + offset.y)
     }
     /**
      * Returns margin
@@ -58,7 +58,6 @@ class SkinParser {
     static func border(_ skin:ISkin)->Border {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin);
         let value:Any? = StylePropertyParser.value(skin, "line-thickness")
-        //Swift.print("SkinParser.border.value: " + "\(value)")
         let lineThickness:CGFloat =  value != nil ? value as! CGFloat : 0
         return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0])
     }

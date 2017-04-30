@@ -182,6 +182,7 @@ private class Utils{
     /**
      * Returns a Gradient instance derived from PARAM: properties
      * NOTE: adds colors, opacities and ratios
+     * TODO: ⚠️️ I think you can reduce into colors and locations
      */
     static func gradient(_ properties:[String])->IGradient {
         let gradient:Gradient = Gradient()

@@ -20,6 +20,7 @@ class CSSPropertyParser {
      * Returns a CSS property to a property that can be read by the Swift API
      * TODO: Long switch statments can be replaced by polymorphism?!? maybe enum?
      * TODO: ⚠️️ This should return optional
+     * TODO: ⚠️️ User where syntax and pass string not true
      */
     static func property(_ string:String) -> Any{
         switch(true) {
@@ -47,7 +48,7 @@ class CSSPropertyParser {
             let rotation:CGFloat = Utils.rotation(propertyString)
             return rotation
         }
-        fatalError("illegal syntax")
+        fatalError("illegal syntax \(string)")
     }
     /**
      * PARAM: string "linear-gradient(top,gray 1 0,white 1 1);"// 2 color gradient
@@ -62,7 +63,7 @@ class CSSPropertyParser {
             gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
             return gradient
         }
-        fatalError("illegal syntax")
+        fatalError("illegal syntax \(string)")
     }
     /**
      * PARAM: string radial-gradient(50% 50% 100% 100% 1,blue 1 0,red 1 1);//2 color radial-gradient, with focalPointRatio and with percentage of x,y,width and height
@@ -91,7 +92,6 @@ class CSSPropertyParser {
             var properties:[String] = propertyString.split(",")
             let setupString:String = properties.shift()
             let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
-            //gradient.colors[0]
             let setup:[String] = setupString.split(" ")/*The gradient settings*/
             let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// TODO: make this optional aswell as per css pdf specs
             let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/
@@ -105,7 +105,7 @@ class CSSPropertyParser {
             gradient.endRadius = CGSize(yScale,xScale)/*<---We re-order the values here, I think its best to do the correct order but as this is the way CSS does it we also do it this way, to support the correct order you will have to manually switch the css themes for these values*/
             return gradient
         }
-        fatalError("illegal syntax")
+        fatalError("illegal syntax \(string)")
      }
     /**
      * Returns an array comprised of values if the individual value is a digit then it is processed as a digit if its not a digit then its just processed as a string
@@ -147,7 +147,7 @@ class CSSPropertyParser {
                 return textFormat
             }
         }
-        fatalError("illegal syntax")
+        fatalError("illegal syntax: \(input)")
     }
     /**
      * Returns a DropShadowFilter instance
@@ -171,7 +171,7 @@ class CSSPropertyParser {
             let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
             return dropShadow
         }
-        fatalError("illegal syntax")
+        fatalError("illegal syntax \(string)")
     }
 }
 private class Utils{

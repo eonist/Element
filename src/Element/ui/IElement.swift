@@ -29,10 +29,6 @@ protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes 
 extension IElement {
     var x:CGFloat {get{return self.frame.x}set{self.frame.x = newValue}}
     var y:CGFloat {get{return self.frame.y}set{self.frame.y = newValue}}
-    /*
-    var width:CGFloat {return self.frame.width}
-    var height:CGFloat {return self.frame.height}
-    */
     /**
      * NOTE: This isn't fully implemented, see notes on the blog, see legacy code
      * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false

@@ -185,8 +185,6 @@ private class Utils{
      * TODO: ⚠️️ I think you can reduce into colors and locations
      */
     static func gradient(_ properties:[String])->IGradient {
-        // = Gradient()
-        
         let gradient:Gradient = properties.indices.reduce(Gradient()) {
             let i:Int = $1
             let property:String = properties[i]
@@ -195,14 +193,13 @@ private class Utils{
                 let color:String = match.value(property,1)
                 let alpha:String = match.value(property, 2)
                 let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat
-                gradient.colors.append(CGColorParser.cgColor(StringParser.color(color),alphaVal))//append color
+                $0.colors += [CGColorParser.cgColor(StringParser.color(color),alphaVal)]//append color
                 let ratio:String = match.value(property,3)
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (i.double / (properties.count.double-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                //gradient.locations.append()
-                $0.locations = properties[i].locations + ratioValue.cgFloat/*append ratioValue*/
+                $0.locations += [ratioValue.cgFloat]/*append ratioValue*/
             }
-            
+            return $0
         }
         //for i in 0..<properties.count{//swift 3 update//TODO: add support for all Written Color. find list on w3c
             

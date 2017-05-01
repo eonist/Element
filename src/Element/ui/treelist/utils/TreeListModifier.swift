@@ -108,11 +108,11 @@ class TreeListModifier {
      */
     static func moveUp(_ treeList:TreeList, _ index:[Int]) -> [Int] {
         var index = index
-        let removed:XML = treeList.node.removeAt(index)
-        var integer:Int = index.pop()!
-        integer = integer > 0 ? integer-1:0
-        let newIndex:[Int] = index + [integer]
-        treeList.node.addAt(newIndex, removed)
+        let removed:XML = treeList.node.removeAt(index)/*remove the item*/
+        var integer:Int = index.pop()!/*removes last item in the idx3d*/
+        integer = integer > 0 ? integer-1:0/*idx above*/
+        let newIndex:[Int] = index + [integer]/*add the new idx to form a new idx3d*/
+        treeList.node.addAt(newIndex, removed)/*add item back into the arr*/
         return newIndex
     }
     /**
@@ -124,7 +124,7 @@ class TreeListModifier {
      * TODO: what if its already at the bottom?
      * TODO: could we have another method maybe? moveToIndex?
      * TODO: what about moveUpLevel?
-     * TODO: do we really need to go from DisplayObject to xml and then again to DisplayObject?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
+     * TODO: do we really need to go from NSView to xml and then again to NSView?, is there a way to grab the DisplayObject, adjust the parent and so forth?, its probably easier for now, remember that the database must mirror the DisplayObject structure
      */
     static func moveDown(_ treeList:TreeList, _ index:[Int]) -> [Int] {
         var index = index

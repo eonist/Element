@@ -89,14 +89,14 @@ class TreeListModifier {
         while(treeList.itemContainer!.subviews.count > 0) {removeAt(treeList, [0])}
     }
     /**
-     * // :TODO: can this work?
+     * TODO: can this work?
      */
     static func setSelected(_ treeList:TreeList, _ key:String, _ value:String) {
         let index:[Int] = XMLParser.index(treeList.node.xml, key, value)!
         selectAt(treeList, index)
     }
     /**
-     * NOTE:: this function works as long as multiple selection is not allowed in the treeList
+     * NOTE: this function works as long as multiple selection is not allowed in the treeList
      */
     static func unSelectAll(_ treeList:ITreeList){
         let selectedIndex:[Int] = TreeListParser.selectedIndex(treeList)

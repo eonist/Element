@@ -9,7 +9,7 @@ class ContainerView3:Element,Containable3 {
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         //maskSize = CGSize(width,height)
         //contentSize = CGSize(width,height)
-        super.init(width, height)
+        super.init(width,height,parent,id)
     }
     override func resolveSkin() {
         super.resolveSkin()

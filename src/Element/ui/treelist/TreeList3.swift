@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 /**
  * NOTE: Indentation is the width of the checkBoxButton

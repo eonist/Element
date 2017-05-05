@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 protocol ElasticScrollable3:Elastic3,Scrollable3 {}
 extension ElasticScrollable3{

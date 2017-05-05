@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 class IterimScrollGroup{//rename to interim*
     var iterimScrollX:InterimScroll = InterimScroll()

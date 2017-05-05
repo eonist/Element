@@ -1,5 +1,4 @@
 import Foundation
-@testable import Element
 @testable import Utils
 
 protocol Elastic2:Containable2{

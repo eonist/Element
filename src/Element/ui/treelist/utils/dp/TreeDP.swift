@@ -1,5 +1,4 @@
 import Foundation
-@testable import Element
 @testable import Utils
 /**
  * TODO: Use DataProvidable don't extend DataProvider

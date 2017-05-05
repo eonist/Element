@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 class SlideView3:ContainerView3, Slidable3 {
     var horSlider:Slider?

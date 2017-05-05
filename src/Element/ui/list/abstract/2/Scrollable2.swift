@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 
 protocol Scrollable2:Containable2 {

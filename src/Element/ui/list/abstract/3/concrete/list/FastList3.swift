@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 /**
  * TODO: Add selectedIdx to the init arg list?
  */

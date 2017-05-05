@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 
 protocol SlideableScrollableFastListable3:FastListable3,SlidableScrollable3 {}

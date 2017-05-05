@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-@testable import Element
 
 class ElasticScrollFastList3:FastList3,ElasticScrollableFastListable3 {
     lazy var moverGroup:MoverGroup? = MoverGroup(self.setProgressVal,self.maskSize,self.contentSize)

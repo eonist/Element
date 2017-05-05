@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 protocol Elastic3:Progressable3{
     var moverGroup:MoverGroup? {get}

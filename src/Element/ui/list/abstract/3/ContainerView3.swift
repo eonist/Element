@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 class ContainerView3:Element,Containable3 {
     var maskSize:CGSize {return CGSize(super.width,super.height)}/*represents the visible part of the content *///TODO: could be ranmed to maskRect, say if you need x and y aswell

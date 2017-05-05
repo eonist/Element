@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 /**
  * Slidable is for Elements that has a slider attached
  */

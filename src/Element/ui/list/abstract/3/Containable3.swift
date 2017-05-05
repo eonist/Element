@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 protocol Containable3:class{/*We extend class because it will use NSView anyway*/
     var maskSize:CGSize {get}

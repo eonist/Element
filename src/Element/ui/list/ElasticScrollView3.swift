@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 
 class ElasticScrollView3:ContainerView3,ElasticScrollable3{

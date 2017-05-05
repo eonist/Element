@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 protocol Progressable3:Containable3{
     func progress(_ dir:Dir) -> CGFloat/*0-1 atBegining <-> atEnd*/

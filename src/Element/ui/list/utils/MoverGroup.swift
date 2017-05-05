@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-@testable import Element
 
 class MoverGroup{//rename to ElasticMoverGroup
     var xMover:RubberBand

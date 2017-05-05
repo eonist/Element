@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 /**
  * NOTE: override maskSize and contentSize in subclasses if you need customization
  */

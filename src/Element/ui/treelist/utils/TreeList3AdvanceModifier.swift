@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-@testable import Element
 /**
  * NOTE: To move things up and down hierarchy levels all you do is cut and paste the item, see legacy methods for how to do this
  */

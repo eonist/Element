@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-@testable import Element
 
 protocol FastListable3:Progressable3,Listable3{
     var selectedIdx:Int? {get set}/*TODO: ⚠️️ rename to just selected?*/

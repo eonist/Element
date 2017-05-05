@@ -1,6 +1,5 @@
 import Cocoa
 @testable import Utils
-@testable import Element
 
 class SlideList3:List3,Slidable3 {
     lazy var horSlider:Slider? = self.hSlider

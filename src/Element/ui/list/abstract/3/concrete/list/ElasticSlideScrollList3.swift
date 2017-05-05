@@ -1,6 +1,5 @@
 import Foundation
 @testable import Utils
-@testable import Element
 
 class ElasticSlideScrollList3:SlideList3,ElasticSlidableScrollable3 {
     lazy var moverGroup:MoverGroup? = self.moverGrp

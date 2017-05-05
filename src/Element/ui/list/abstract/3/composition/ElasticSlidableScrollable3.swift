@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 
 protocol ElasticSlidableScrollable3:Slidable3,ElasticScrollable3{}

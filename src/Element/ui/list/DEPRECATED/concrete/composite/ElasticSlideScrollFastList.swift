@@ -21,6 +21,7 @@ class ElasticSlideScrollFastList:SlideFastList,ElasticSlidableScrollableFast {
     }
     func frameTick(_ value:CGFloat){//real value
         setProgress(value)
+        super.getClassType()
     }
     /**
      * When the the user scrolls

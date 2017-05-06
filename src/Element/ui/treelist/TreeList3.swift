@@ -4,8 +4,7 @@ import Cocoa
  * NOTE: Indentation is the width of the checkBoxButton
  */
 class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastList3
-    var treeDP: TreeDP {return dp as! TreeDP
-    }
+    var treeDP: TreeDP {return dp as! TreeDP}
     /**
      * Recycles items rather than recrate them
      */

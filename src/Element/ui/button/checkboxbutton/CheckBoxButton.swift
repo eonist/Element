@@ -32,6 +32,7 @@ class CheckBoxButton:Button,ICheckable,LableKind{
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
     override func setSkinState(_ skinState:String) {
+        Swift.print("setSkinState")
         super.setSkinState(skinState)
         checkBox?.setSkinState(checkBox!.getSkinState())//new, more like refresh, worked 🎉
         text?.setSkinState(text!.getSkinState())//new, same as above /*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/

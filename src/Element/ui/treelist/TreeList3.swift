@@ -10,16 +10,16 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
      */
     override func reUse(_ listItem:FastListItem) {
         //Swift.print("🍊 \(listItem.idx)")
-        /*let idx3d:[Int] = treeDP.hashList[listItem.idx]
-         //Swift.print("idx3d: " + "\(idx3d)")
-         listItem.item.id = idx3d.count.string/*the indentation level (from 1 and up), should use classID*/
-         disableAnim{listItem.item.setSkinState(listItem.item.getSkinState())}/*Sets correct indent*/
-         let isOpenStr = TreeDPParser.getProp(treeDP, idx3d, "isOpen")
-         if let checkable = listItem.item as? CheckBoxButton{
-         let isChecked = isOpenStr == "true"
-         disableAnim{checkable.checkBox!.setChecked(isChecked)}/*Sets correct open/close icon*/
-         }
-         disableAnim{(listItem.item as! TreeList3Item).checkBox!.isHidden = !TreeDPAsserter.hasChildren(treeDP, idx3d)}/*Does item have children?,hides checkBox if item doesn't have children*/*/
+        let idx3d:[Int] = treeDP.hashList[listItem.idx]
+        //Swift.print("idx3d: " + "\(idx3d)")
+        listItem.item.id = idx3d.count.string/*the indentation level (from 1 and up), should use classID*/
+        disableAnim{listItem.item.setSkinState(listItem.item.getSkinState())}/*Sets correct indent*/
+        let isOpenStr = TreeDPParser.getProp(treeDP, idx3d, "isOpen")
+        if let checkable = listItem.item as? CheckBoxButton{
+            let isChecked = isOpenStr == "true"
+            disableAnim{checkable.checkBox!.setChecked(isChecked)}/*Sets correct open/close icon*/
+        }
+        disableAnim{(listItem.item as! TreeList3Item).checkBox!.isHidden = !TreeDPAsserter.hasChildren(treeDP, idx3d)}/*Does item have children?,hides checkBox if item doesn't have children*/
         super.reUse(listItem)/*sets text and position and select state*/
     }
     override func createItem(_ index:Int) -> Element {

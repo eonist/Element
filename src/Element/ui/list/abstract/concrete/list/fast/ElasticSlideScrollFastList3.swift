@@ -11,18 +11,19 @@ class ElasticSlideScrollFastList3:SlideFastList3,ElasticSlidableScrollableFastLi
         }
         super.onEvent(event)
     }
-}
-extension ElasticSlideScrollFastList3{
     var moverGrp:MoverGroup {
-        testing()
         let group = MoverGroup(self.setProgressValue,self.maskSize,self.contentSize)
         group.event = self.onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/
         return group
     }
-    /**
-     *
-     */
-    func testing(){
-        Swift.print("🏀 test 🏀")
-    }
 }
+/*extension ElasticSlideScrollFastList3{
+ 
+ /**
+ *
+ */
+ func testing(){
+ Swift.print("🏀 test 🏀")
+ }
+ }
+ */

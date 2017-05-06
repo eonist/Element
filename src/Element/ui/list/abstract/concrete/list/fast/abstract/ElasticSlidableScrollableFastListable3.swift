@@ -2,9 +2,6 @@ import Cocoa
 @testable import Utils
 
 
-//continue here: 
-    //you need to convert delta to
-
 protocol ElasticSlidableScrollableFastListable3:Slidable3,ElasticScrollableFastListable3 {}
 extension ElasticSlidableScrollableFastListable3{
     func setProgressValue(_ value: CGFloat, _ dir: Dir) {
@@ -16,17 +13,15 @@ extension ElasticSlidableScrollableFastListable3{
     func scroll(_ event: NSEvent) {
         Swift.print("ElasticSlidableScrollableFastListable3.scroll")
         (self as Scrollable3).scroll(event)//forward the event
-        
-        
         switch event.phase{
-        case NSEventPhase.changed://Direct scroll, ⚠️️That you need a hock here is not that great
-            let sliderProgress:CGPoint = ElasticUtils.progress(moverGroup!.result,contentSize,maskSize)
-            (self as Slidable3).setProgress(sliderProgress)
-        case NSEventPhase.mayBegin, NSEventPhase.began:/*same as onScrollWheelEnter()*/
-            showSlider()
-        case NSEventPhase.ended://same as onScrollWheelExit()
-            hideSlider()
-        default:break;
+            case NSEventPhase.changed://Direct scroll, ⚠️️That you need a hock here is not that great
+                let sliderProgress:CGPoint = ElasticUtils.progress(moverGroup!.result,contentSize,maskSize)
+                (self as Slidable3).setProgress(sliderProgress)
+            case NSEventPhase.mayBegin, NSEventPhase.began:/*same as onScrollWheelEnter()*/
+                showSlider()
+            case NSEventPhase.ended://same as onScrollWheelExit()
+                hideSlider()
+            default:break;
         }
         if(event.momentumPhase == NSEventPhase.began){//simulates: onScrollWheelMomentumBegan()
             showSlider()//cancels out the hide call when onScrollWheelExit is called when you release after pan gesture

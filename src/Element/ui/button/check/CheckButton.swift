@@ -19,9 +19,12 @@ class CheckButton:Button,ICheckable{
      * Sets the self.isChecked variable (Toggles between two states)
      */
     func setChecked(_ isChecked:Bool) {
-        Swift.print("setChecked")
         self.isChecked = isChecked
         setSkinState(getSkinState())
+    }
+    override func setSkinState(_ state:String) {
+        Swift.print("CheckButton.setSkinState()")
+        super.setSkinState(state)
     }
     func getChecked() -> Bool {
        return isChecked

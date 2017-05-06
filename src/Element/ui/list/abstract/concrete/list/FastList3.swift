@@ -31,17 +31,16 @@ class FastList3:ContainerView3,FastListable3{
      */
     func reUse(_ listItem:FastListItem){
         //let item:SelectTextButton = listItem.item as! SelectTextButton
-        let idx:Int = listItem.idx/*the index of the data in dataProvider*/
+        /*let idx:Int = listItem.idx/*the index of the data in dataProvider*/
         if let selectable = listItem.item as? ISelectable {
-            let selected:Bool = idx == selectedIdx
-            if selectable.selected != selected{
-                Swift.print("setSelected")
-                selectable.setSelected(selected)//only set this if the selected state is different from the current selected state in the ISelectable
-            }
-        }
-        if let textButton = listItem.item as? LableKind, let dpItem = dp.item(idx), let title:String = dpItem["title"]{
-            textButton.setTextValue(title)
-        }
+         let selected:Bool = idx == selectedIdx
+         if selectable.selected != selected{
+         selectable.setSelected(selected)//only set this if the selected state is different from the current selected state in the ISelectable
+         }
+         }
+         if let textButton = listItem.item as? LableKind, let dpItem = dp.item(idx), let title:String = dpItem["title"]{
+         textButton.setTextValue(title)
+         }*/
         listItem.item.point[dir] = listItem.idx * itemSize[dir]/*position the item*/
     }
     /**

@@ -10,10 +10,6 @@ class Thumb:Button{
     var animator:Animator?
     //var isDisabled:Bool
     init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: IElement? = nil, _ id: String? = nil) {
-        Swift.print("width: " + "\(width)")
-        Swift.print("height: " + "\(height)")
-        Swift.print("parent: " + "\(parent)")
-        Swift.print("id: " + "\(id)")
         super.init(width, height, parent, id)
         self.isDisabled = isDisabled
     }

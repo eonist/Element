@@ -21,7 +21,12 @@ class TreeList3Utils {
      * New
      */
     static func itemData(_ treeList:TreeList3,_ idx3d:[Int]) -> ItemData? {
+        if let tree:Tree = treeList.treeDP.tree[idx3d]{
+            if let props = tree.props{
+                
+            }
+        }
         
-        return
+        return nil
     }
 }

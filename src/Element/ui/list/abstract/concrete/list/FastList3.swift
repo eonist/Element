@@ -35,6 +35,7 @@ class FastList3:ContainerView3,FastListable3{
         if let selectable = listItem.item as? ISelectable {
             let selected:Bool = idx == selectedIdx
             if selectable.selected != selected{
+                Swift.print("setSelected")
                 selectable.setSelected(selected)//only set this if the selected state is different from the current selected state in the ISelectable
             }
         }

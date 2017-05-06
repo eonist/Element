@@ -4,7 +4,7 @@ import Foundation
 
 
 class TreeList3Utils {
-    typealias ItemData = (title:String,hasChildren:Bool,isOpen:Bool,isVisible:Bool,isSelected:Bool)
+    typealias ItemData = (title:String/*,hasChildren:Bool*/,isOpen:Bool,/*isVisible:Bool,*/isSelected:Bool)
     /**
      * Creates a data instance to make it easier to work with the attributes in the xml
      */
@@ -24,6 +24,8 @@ class TreeList3Utils {
         if let tree:Tree = treeList.treeDP.tree[idx3d]{
             if let props = tree.props{
                 let title:String = props["title"] ?? ""
+                let isOpen:Bool = props["isOpen"] == "true" : false//<- you can shorten this by doing ??
+                let isSelected:Bool = attributes["isSelected"] != nil ? props["isSelected"] == "true" : false//<- you can shorten this by doing ??
             }
         }
         

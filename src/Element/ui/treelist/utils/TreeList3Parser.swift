@@ -34,9 +34,12 @@ class TreeList3Parser {
         return treeList.treeDP.tree.child(idx3d)
     }
     /**
-     *
+     * Returns idx3d for nsView
      */
-    static func index(_ treeList:TreeListable3,_ nsView:NSView){
-        
+    static func index(_ treeList:TreeListable3,_ nsView:NSView) -> [Int]?{
+        if let match = treeList.pool.first(where: {$0.item === nsView}){
+            let idx2d:Int = match.idx
+            return idx3d(treeList,idx2d)
+        };return nil
     }
 }

@@ -15,7 +15,7 @@ class CheckBoxButton:Button,ICheckable,LableKind{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        checkBox = addSubView(CheckBox(13,13,isChecked,self))
+        //checkBox = addSubView(CheckBox(13,13,isChecked,self))
         text = addSubView(Text(width,height,textString,self)) 
         text!.isInteractive = false
     }
@@ -33,13 +33,13 @@ class CheckBoxButton:Button,ICheckable,LableKind{
     }
     override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)
-        checkBox!.setSkinState(checkBox!.getSkinState())//new, more like refresh, worked 🎉
-        text!.setSkinState(text!.getSkinState())//new, same as above /*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
+        checkBox?.setSkinState(checkBox!.getSkinState())//new, more like refresh, worked 🎉
+        text?.setSkinState(text!.getSkinState())//new, same as above /*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
     func setSize(width:CGFloat, height:CGFloat) {
         super.setSize(width, height)
-        checkBox!.setSkinState(checkBox!.skin!.state)
-        text!.setSkinState(checkBox!.skin!.state)
+        checkBox?.setSkinState(checkBox!.skin!.state)
+        text?.setSkinState(checkBox!.skin!.state)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

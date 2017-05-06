@@ -15,12 +15,6 @@ class SelectCheckBoxButton:CheckBoxButton,ISelectable {
         super.mouseDown(event)
         super.onEvent(SelectEvent(SelectEvent.select,self))
     }
-    override func mouseOver(_ event: MouseEvent) {
-        //mouseOver
-    }
-    override func mouseOut(_ event: MouseEvent) {
-        //mouseOut
-    }
     /**
      * NOTE: Do not add a dispatch event here, that is the responsibily of the caller
      */

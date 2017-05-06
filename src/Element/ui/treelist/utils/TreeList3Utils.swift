@@ -18,7 +18,7 @@ class TreeList3Utils {
      */
     static func itemData(_ treeList:TreeList3,_ idx3d:[Int]) -> ItemData3? {
         if let tree:Tree = treeList.treeDP.tree[idx3d]{
-            return ItemData3(tree)
+            return itemData3(tree)
         }
         return nil
     }

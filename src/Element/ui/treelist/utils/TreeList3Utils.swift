@@ -13,17 +13,16 @@ class TreeList3Utils {
             let title:String = props["title"] ?? ""
             let isOpen:Bool = props["isOpen"] != nil ? props["isOpen"] == "true" : false//<- you can shorten this by doing ??
             let isSelected:Bool = props["isSelected"] != nil ? props["isSelected"] == "true" : false//<- you can shorten this by doing ??
-            return ItemData(title, hasChildren, isOpen, isVisible, isSelected)
-        }
+            return ItemData(title, isOpen, isSelected)
+        };return nil
     }
     /**
      * New
      */
     static func itemData(_ treeList:TreeList3,_ idx3d:[Int]) -> ItemData? {
         if let tree:Tree = treeList.treeDP.tree[idx3d]{
-            itemData(tree)
+            return itemData(tree)
         }
-        
         return nil
     }
 }

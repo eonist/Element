@@ -14,7 +14,7 @@ class ElasticSlideScrollFastList3:SlideFastList3,ElasticSlidableScrollableFastLi
 }
 extension ElasticSlideScrollFastList3{
     var moverGrp:MoverGroup {
-        test()
+        testing()
         let group = MoverGroup(self.setProgressValue,self.maskSize,self.contentSize)
         group.event = self.onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/
         return group
@@ -22,7 +22,7 @@ extension ElasticSlideScrollFastList3{
     /**
      *
      */
-    func test(){
+    func testing(){
         Swift.print("🏀 test 🏀")
     }
 }

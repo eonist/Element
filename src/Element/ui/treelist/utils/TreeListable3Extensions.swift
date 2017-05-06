@@ -39,6 +39,9 @@ extension TreeListable3 {
     }
     var selectedIdx3d:[Int]? {return TreeList3Parser.selected(self)}
     var xml:XML {return self.treeDP.tree.xml}
+    /**
+     * Returns prop value for idx3d and key
+     */
     subscript(idx3d:[Int],key:String) -> String? {
         return TreeDPParser.getProp(self.treeDP, idx3d, key)
     }

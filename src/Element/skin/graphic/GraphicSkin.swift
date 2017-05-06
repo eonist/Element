@@ -41,7 +41,7 @@ extension GraphicSkin{
     func drawDecoratable(_ depth:Int){
         if(hasSizeChanged){
             Modifier.reSize(decoratables[depth], Parser.size(self,depth))
-        }//Do sizing of the sizable here
+        }/*Do sizing of the sizable here*/
         if(hasStateChanged || hasStyleChanged) {
             updateAppearance(decoratables[depth],depth)
         }

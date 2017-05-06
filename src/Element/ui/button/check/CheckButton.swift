@@ -22,10 +22,10 @@ class CheckButton:Button,ICheckable{
         self.isChecked = isChecked
         setSkinState(getSkinState())
     }
-    override func setSkinState(_ state:String) {
-        Swift.print("CheckButton.setSkinState()")
-        super.setSkinState(state)
-    }
+    /*override func setSkinState(_ state:String) {
+     Swift.print("CheckButton.setSkinState()")
+     super.setSkinState(state)
+     }*/
     func getChecked() -> Bool {
        return isChecked
     }

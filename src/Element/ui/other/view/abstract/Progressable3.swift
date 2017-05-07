@@ -28,10 +28,10 @@ extension Progressable3{
     /**
      * PARAM: progress: 0-1
      */
-    func setProgress(_ point:CGPoint){
+    func setProgress(_ p:CGPoint){
         //Swift.print("Progressable3.setProgress: " + "\(point)")
-        setProgress(point.x,.hor)
-        setProgress(point.y,.ver)
+        setProgress(p.x,.hor)
+        setProgress(p.y,.ver)
     }
 }
 private extension ScrollableUtils{//temp migration fix

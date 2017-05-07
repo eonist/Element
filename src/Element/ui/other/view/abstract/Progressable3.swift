@@ -1,6 +1,9 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * NOTE: itemSize is used in the calculations of the interval. 
+ * TODO: ⚠️️ In the future it could be considered optional so we can either set an intervall or base intervall on itemSize etc.
+ */
 protocol Progressable3:Containable3{
     func progress(_ dir:Dir) -> CGFloat/*0-1 atBegining <-> atEnd*/
     func interval(_ dir:Dir) -> CGFloat/*describes the speed when scrolling (distance per scroll tick)*/

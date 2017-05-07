@@ -17,13 +17,3 @@ class ElasticSlideScrollFastList3:SlideFastList3,ElasticSlidableScrollableFastLi
         return group
     }
 }
-/*extension ElasticSlideScrollFastList3{
- 
- /**
- *
- */
- func testing(){
- Swift.print("🏀 test 🏀")
- }
- }
- */

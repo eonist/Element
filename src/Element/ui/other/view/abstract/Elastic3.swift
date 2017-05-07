@@ -12,11 +12,17 @@ extension Elastic3{
     func setProgress(_ value:CGFloat,_ dir:Dir){
         //Swift.print("Elastic3.setProgress(value)")
         //contentContainer!.point[dir] = value
-        contentContainer?.layer?.position[dir] = value
+        disableAnim {
+            contentContainer?.layer?.position[dir] = value
+        }
+        
     }
     func setProgress(_ point:CGPoint){
         //Swift.print("Elastic3.setProgress(\(point))")
         //contentContainer!.point = point
-        contentContainer?.layer?.position = point
+        disableAnim {
+            contentContainer?.layer?.position = point
+        }
+        
     }
 }

@@ -60,7 +60,7 @@ extension TreeList3{
 private class Utils{
     /*create TreeItem*/
     static func createTreeListItem(_ itemSize:CGSize, _ parent:Element) -> TreeList3Item{
-        Swift.print("itemSize: " + "\(itemSize)")
+        //Swift.print("itemSize: " + "\(itemSize)")
         let item:TreeList3Item = TreeList3Item(itemSize.width, itemSize.height ,"", false, false, parent)
         parent.addSubview(item)
         return item

@@ -11,7 +11,7 @@ extension FastListable3 {
      * NOTE: This is the offset index
      */
     var firstVisibleItem:Int{
-        let a = abs(contentContainer!.point[dir])//force positive value with abs
+        let a = abs(contentContainer!.layer!.position[dir])//force positive value with abs
         let b = a/itemSize[dir]//how many items fit into "a"
         let c = floor(b)//Continue here
         let firstVisibleItem:Int = c.int
@@ -44,21 +44,21 @@ extension FastListable3 {
     func alignContentContainer(_ event:DataProviderEvent){
         /*Pin to top if itemsHeight is less than height*/
         if(contentSize[dir] < maskSize[dir]){//basically when itemsHeight is less than height was /*dp.count <= numOfItemsThatCanFit*/
-            contentContainer!.point[dir] = 0
+            contentContainer?.layer?.position[dir] = 0
         }
         /*Pin to bottom if (contentContainer.y + itemsHeight) is less than (height) and itemsHeight is more than height*/
         else if(contentSize[dir] > maskSize[dir]){
-            if((contentContainer!.point[dir] + contentSize[dir]) < maskSize[dir]){
-                contentContainer!.point[dir] = -(contentSize[dir] - maskSize[dir])
+            if((contentContainer!.layer!.position[dir] + contentSize[dir]) < maskSize[dir]){
+                contentContainer?.layer?.position[dir] = -(contentSize[dir] - maskSize[dir])
             }
         }
         /*If an item is added / removed above the first visible item*/
         else if(event.startIndex < firstVisibleItem){
             if(event.type == DataProviderEvent.remove){
-                contentContainer!.point[dir] += itemSize[dir]
+                contentContainer!.layer!.position[dir] += itemSize[dir]
                 //Swift.print("offset.y + 24")
             }else if(event.type == DataProviderEvent.add){
-                contentContainer!.point[dir] -= itemSize[dir]
+                contentContainer!.layer!.position[dir] -= itemSize[dir]
                 //Swift.print("offset.y - 24")
             }
         }

@@ -3,7 +3,6 @@ import Cocoa
 
 class ElasticSlideScrollView3:SlideView3,ElasticSlidableScrollable3 {
     lazy var moverGroup:MoverGroup? = MoverGroup(self.setProgress,self.maskSize,self.contentSize)
-
     override func resolveSkin() {
         super.resolveSkin()
         moverGroup!.xMover.event = onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/

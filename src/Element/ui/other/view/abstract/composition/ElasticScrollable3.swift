@@ -11,7 +11,7 @@ extension ElasticScrollable3{
         moverGroup!.value += event.scrollingDelta/*directly manipulate the value 1 to 1 control*/
         moverGroup!.updatePosition(true)/*the mover still governs the resulting value, in order to get the displacement friction working*/
         let p:CGPoint = moverGroup!.result
-        setProgress(p)
+        //setProgress(p)
     }
     /**
      * NOTE: Basically when you enter your scrollWheel gesture

@@ -33,10 +33,8 @@ extension ElasticScrollableFastListable3{
         let contentSide:CGFloat = contentSize[dir]//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
         if(contentSide < maskSize[dir]){//when there is few items in view, different overshoot rules apply, this should be written more elegant
             progressValue = value / maskSize[dir]
-            //Swift.print("progressValue: " + "\(progressValue)")
             let val = progressValue! * maskSize[dir]
-            //Swift.print("y: " + "\(y)")
-            disableAnim {rbContainer?.layer?.position[dir] = val}
+            posContainer(rbContainer!,dir,val)
         }else{
             progressValue = value / -(contentSide - maskSize[dir])/*calc scalar from value, if itemsHeight is to small then use height instead*/
             let progress = progressValue!.clip(0, 1)
@@ -49,13 +47,12 @@ extension ElasticScrollableFastListable3{
             /*finds the values that is outside 0 and 1*/
             if(sliderProgress < 0){//⚠️️ You could also just do if value is bellow 0 -> y = value, and if y  < itemsheight - height -> y = the sapce above itemsheight - leftover
                 let v1 = maskSize[dir] * -sliderProgress
-                disableAnim {rbContainer?.layer?.position[dir] = v1}/*the half height is to limit the rubber effect, should probably be done else where*/
+                posContainer(rbContainer!,dir,v1)/*the half height is to limit the rubber effect, should probably be done else where*/
             }else if(sliderProgress > 1){
                 let v2 = maskSize[dir] * -(sliderProgress-1)
-                disableAnim {rbContainer?.layer?.position[dir] = v2}
+                posContainer(rbContainer!,dir,v2)
             }else{
-                
-                disableAnim {rbContainer?.layer?.position[dir] = 0}/*default position*/
+                posContainer(rbContainer!,dir,0)/*default position*/
             }
         }
         //Swift.print("rbContainer!.point[dir]: " + "\(rbContainer!.point[dir])")
@@ -64,7 +61,7 @@ extension ElasticScrollableFastListable3{
     
 }
 extension ElasticScrollableFastListable3{
-    func positionRBContainer(_ rbContainer:Container,){
-        
+    func posContainer(_ rbContainer:Container,_ dir:Dir,_ value:CGFloat){/*Temp*/
+        disableAnim {rbContainer.layer?.position[dir] = value}/*default position*/
     }
 }

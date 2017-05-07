@@ -11,8 +11,7 @@ extension FastListable3 {
      * NOTE: This is the offset index
      */
     var firstVisibleItem:Int{
-        let a = abs(contentContainer!.point[dir])//force positive value with abs
-        //let a = abs(contentContainer!.layer!.position[dir])//force positive value with abs
+        let a = abs(contentContainer!.layer!.position[dir])//force positive value with abs
         let b = a/itemSize[dir]//how many items fit into "a"
         let c = floor(b)//Continue here
         let firstVisibleItem:Int = c.int

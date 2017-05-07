@@ -41,8 +41,7 @@ class FastList3:ContainerView3,FastListable3{
         if let textButton = listItem.item as? LableKind, let dpItem = dp.item(idx), let title:String = dpItem["title"]{
             textButton.setTextValue(title)
         }
-        listItem.item.point[dir] = listItem.idx * itemSize[dir]/*position the item*/
-        //disableAnim {listItem.item.layer?.position[dir] = listItem.idx * itemSize[dir]/*position the item*/}
+        disableAnim {listItem.item.layer?.position[dir] = listItem.idx * itemSize[dir]/*position the item*/}
     }
     /**
      * CreatesItem

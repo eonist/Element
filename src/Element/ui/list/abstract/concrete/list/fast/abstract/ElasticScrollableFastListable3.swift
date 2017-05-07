@@ -61,4 +61,10 @@ extension ElasticScrollableFastListable3{
         //Swift.print("rbContainer!.point[dir]: " + "\(rbContainer!.point[dir])")
         //Swift.print("contentContainer.point[dir]: " + "\(contentContainer!.point[dir])")
     }
+    
+}
+extension ElasticScrollableFastListable3{
+    func positionRBContainer(_ rbContainer:Container,){
+        
+    }
 }

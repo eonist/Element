@@ -54,6 +54,7 @@ extension ElasticScrollableFastListable3{
                 let v2 = maskSize[dir] * -(sliderProgress-1)
                 disableAnim {rbContainer?.layer?.position[dir] = v2}
             }else{
+                
                 disableAnim {rbContainer?.layer?.position[dir] = 0}/*default position*/
             }
         }

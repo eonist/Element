@@ -13,9 +13,8 @@ extension ElasticScrollableFastListable3{
         moverGroup!.updatePosition(true)/*the mover still governs the resulting value, in order to get the displacement friction working*/
         let p:CGPoint = moverGroup!.result
         //(self as ElasticScrollableFastListable3).setProgress(p)
-        /*setProgressVal(p.x,.hor)
-         setProgressVal(p.y,.ver)
-         */
+        setProgressVal(p.x,.hor)
+        setProgressVal(p.y,.ver)
     }
     /*func setProgress(_ point:CGPoint) {
      Swift.print("ElasticScrollableFastListable3.setProgress(p)")
@@ -41,7 +40,7 @@ extension ElasticScrollableFastListable3{
             
             //⚠️️🔨the bellow needs refactoring
             (self as Scrollable3).setProgress(progress,dir)/*moves the lableContainer up and down*/
-            (self as FastListable3).setProgress(progress)
+            (self as FastListable3).setProgress(progress)/*Updates the positions of the FastListItems*/
             //
             let sliderProgress = ElasticUtils.progress(value,contentSide,maskSize[dir])//doing some double calculations here
             /*finds the values that is outside 0 and 1*/

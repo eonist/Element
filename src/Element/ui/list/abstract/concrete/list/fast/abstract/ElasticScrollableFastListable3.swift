@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * TODO: ⚠️️ To solve the lag problem when scrolling really fast you have to simply tap into the FPS ticker and setProgress on a tick not via MouseInteraction tick as this tick is beyond 60FPS
+ */
 protocol ElasticScrollableFastListable3:FastListable3,ElasticScrollable3 {
     var rbContainer:Container?{get}
 }

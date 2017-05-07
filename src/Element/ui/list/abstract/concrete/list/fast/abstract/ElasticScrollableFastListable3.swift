@@ -16,11 +16,6 @@ extension ElasticScrollableFastListable3{
         setProgressVal(p.x,.hor)
         setProgressVal(p.y,.ver)
     }
-    /*func setProgress(_ point:CGPoint) {
-     Swift.print("ElasticScrollableFastListable3.setProgress(p)")
-     (self as FastListable3).setProgress(point[dir], dir)
-     //(self as ElasticScrollable3).setProgress(point[.hor], .hor)
-     }*/
     /**
      * PARAM value: is the final y value for the lableContainer
      * ⚠️️ Do not use scalar value here (0-1) well you know...
@@ -57,7 +52,6 @@ extension ElasticScrollableFastListable3{
         //Swift.print("rbContainer!.point[dir]: " + "\(rbContainer!.point[dir])")
         //Swift.print("contentContainer.point[dir]: " + "\(contentContainer!.point[dir])")
     }
-    
 }
 extension ElasticScrollableFastListable3{
     func posContainer(_ rbContainer:Container,_ dir:Dir,_ value:CGFloat){/*Temp*/

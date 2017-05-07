@@ -10,7 +10,7 @@ extension ElasticSlidableScrollable3{
         //Swift.print("👻🏂📜ElasticSlidableScrollable3.setProgress() dir: \(dir) value: \(value)")
         let sliderProgress = ElasticUtils.progress(value,contentSize[dir],maskSize[dir])
         slider(dir).setProgressValue(sliderProgress)//temp fix
-        contentContainer!.point[dir] = value
+        disableAnim{contentContainer!.layer?.position[dir] = value}
     }
     func scroll(_ event:NSEvent) {
         Swift.print("👻🏂📜 ElasticSlidableScrollable3.scroll()")
@@ -33,5 +33,5 @@ extension ElasticSlidableScrollable3{
         Swift.print("ElasticSlidableScrollable3.onScrollWheelCancelled")
         hideSlider()
     }
-    func onInDirectScrollWheelChange(_ event: NSEvent) {}//override to cancel out the event, put this more central
+    func onInDirectScrollWheelChange(_ event:NSEvent) {}/*override to cancel out the event, put this more central*/
 }

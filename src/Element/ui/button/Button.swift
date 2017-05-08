@@ -6,9 +6,6 @@ import Cocoa
  * TODO: If the mouse gets stuck and wont fire the mouseUp after a mouseDown call, then the app should not fail when clicking down again somewhere else, this means we need to centralize the eventListner for mouseUp/mouseDown using global instead of locla could work
  */
 class Button:Element {
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil){
-        super.init(width, height, parent, id)
-    }
     /**
      * Handles actions and drawing states for the mouseEntered event
      */
@@ -73,5 +70,4 @@ class Button:Element {
         super.onEvent(ButtonEvent(ButtonEvent.rightMouseDown,self,event))
         //super.rightMouseDown(with: event)
     }
-    required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

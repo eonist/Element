@@ -4,7 +4,7 @@ class TextButton:Button,LableKind {
     var text:Text? = nil
     var textString:String/*Interim value*/
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:IElement?, _ id:String? = nil) {
-        textString = text;
+        textString = text
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {

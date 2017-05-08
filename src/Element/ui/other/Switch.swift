@@ -44,21 +44,18 @@ class Switch:SwitchSlider,ICheckable{
         var marginProp = style.getStyleProperty("margin-left",2) /*edits the style*/
         marginProp!.value = progress == 1 ? 20  : 0
         self.skin!.setStyle(style)/*updates the skin*/
-        
         /*bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}
         bgColorAnimator = Animator(Animation.sharedInstance,0.4,0,1,bgColorAnim,Linear.ease)/*from 0 to 1*/
         bgColorAnimator!.start()
-        
         /*Thumb width Anim*/
         if(thumbWidthAnimator != nil){thumbWidthAnimator!.stop()}
         thumbWidthAnimator = Animator(Animation.sharedInstance,0.2,0,1,thumbWidthAnim,Linear.ease)/*from 0 to 1*/
         thumbWidthAnimator!.start()
-        
         super.mouseDown(event)
     }
     override func mouseUpInside(_ event: MouseEvent) {
-        Swift.print("Switch.mouseUpInside")
+        //Swift.print("Switch.mouseUpInside")
         if(!disableMouseUp){
             setChecked(!isChecked)
         }
@@ -67,12 +64,12 @@ class Switch:SwitchSlider,ICheckable{
         super.onEvent(CheckEvent(CheckEvent.check, isChecked, self))
     }
     override func mouseUpOutside(_ event: MouseEvent) {
-        Swift.print("Switch.mouseUpOutside")
+        //Swift.print("Switch.mouseUpOutside")
         disableMouseUp = false/*reset*/
         super.mouseUpOutside(event)
     }
     override func mouseUp(_ event: MouseEvent) {
-        Swift.print("Switch.mouseUp")
+        //Swift.print("Switch.mouseUp")
         /*Bg color Anim*/
         if(bgColorAnimator != nil){bgColorAnimator!.stop()}
         bgColorAnimator = Animator(Animation.sharedInstance,0.4,1,0,bgColorAnim,Linear.ease)/*from 1 to 0*/
@@ -84,7 +81,7 @@ class Switch:SwitchSlider,ICheckable{
         super.mouseUp(event)
     }
     func setChecked(_ isChecked:Bool) {
-        Swift.print("setChecked: " + "\(isChecked)")
+        //Swift.print("setChecked: " + "\(isChecked)")
         if(thumbXAnimator != nil){thumbXAnimator!.stop()}
         if(bgIrisAnimator != nil){bgIrisAnimator!.stop()}
         if(self.isChecked && !isChecked){
@@ -115,12 +112,11 @@ extension Switch{
         progress = value
         let style:IStyle = skin!.style!
         var offsetProp = skin!.style!.getStyleProperty("offset",2)
-        let thumbWidth:CGFloat = 100//thumbWidth is always 100
+        let thumbWidth:CGFloat = 100/*thumbWidth is always 100*/
         let thumbX = HSliderUtils.thumbPosition(progress, width, thumbWidth)
         offsetProp!.value = [thumbX, 0]
-        
         /*ThumbLine*/
-        var thumbLineProp = style.getStyleProperty("line",2) /*edits the style*/
+        var thumbLineProp = style.getStyleProperty("line",2) /*Edits the style*/
         if(thumbLineProp != nil){//temp
             let color:NSColor = grey.blended(withFraction: value, of: green)!
             thumbLineProp!.value = color

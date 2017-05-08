@@ -67,12 +67,12 @@ class ComboBox:Element{
         Swift.print("setOpen: " + "\(isOpen)")
         if(isOpen){
             popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
-            //swift 3 update on the bellow line
+            //🔶 swift 3 update on the bellow line
             var comboBoxPos:CGPoint = convert(NSPoint(0,0), to: self.window!.contentView)/*POV of the window*/
-            comboBoxPos += CGPoint(0 , itemHeight)/*bottomRight corner pos of the header button in the POV of the window*/
+            comboBoxPos += CGPoint(0 , itemHeight)/*BottomRight corner pos of the header button in the POV of the window*/
             let winPos:CGPoint = popupWindow!.unFlipScreenPosition(self.window!.topLeft + comboBoxPos)//comboBoxPos
             WinModifier.position(popupWindow!, winPos)
-            (popupWindow!.contentView as! WindowView).event = self.onEvent/*add event handler*/
+            (popupWindow!.contentView as! WindowView).event = self.onEvent/*Add event handler*/
         }else{
             //do nothing
         }

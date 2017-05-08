@@ -4,7 +4,7 @@ import Cocoa
 class ContainerView3:Element,Containable3 {
     var maskSize:CGSize {return CGSize(super.width,super.height)}/*Represents the visible part of the content *///TODO: could be ranmed to maskRect, say if you need x and y aswell
     var contentSize:CGSize {return CGSize(super.width,super.height)}
-    var contentContainer:Element?
+    var contentContainer:Element?//TODO: ⚠️️ make this into lazy
     
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width,height,parent,id)

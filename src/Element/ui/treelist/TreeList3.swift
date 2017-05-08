@@ -23,7 +23,7 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
         super.reUse(listItem)/*sets text and position and select state*/
     }
     override func createItem(_ index:Int) -> Element {
-        return Utils.createTreeListItem(itemSize,contentContainer!)
+        return Utils.createTreeListItem(itemSize,rbContainer!)
     }
     override func onEvent(_ event:Event) {
         if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}

@@ -15,7 +15,7 @@ class ContainerView3:Element,Containable3 {
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍*/
     }
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
-        let p:CGPoint = aPoint + CGPoint(-layer!.position.x,layer!.position.y)
+        let p:CGPoint = aPoint + CGPoint(-layer!.position.x,-layer!.position.y)
         Swift.print("ContainerView3.hitTest P: \(p) layer!.position: \(layer!.position)")
         
         //also add rbContainer and contentContainer offset

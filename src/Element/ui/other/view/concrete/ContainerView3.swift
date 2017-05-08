@@ -16,7 +16,7 @@ class ContainerView3:Element,Containable3 {
     }
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
         let p:CGPoint = aPoint + CGPoint(-layer!.position.x,layer!.position.y)
-        Swift.print("ContainerView3.hitTest \(p)")
+        Swift.print("ContainerView3.hitTest P: \(p) layer!.position: \(layer!.position)")
         return super.hitTest(p)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

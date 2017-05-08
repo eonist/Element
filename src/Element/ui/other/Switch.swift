@@ -18,7 +18,6 @@ class Switch:SwitchSlider,ICheckable{
     var disableMouseUp:Bool = false//Don't setChecked if progress threshold has been crossed: 0.5
     var irisData:(size:CGSize,fillet:CGFloat,center:CGPoint) = (CGSize(140,80),40,CGPoint(140/2,80/2))//Stores the dimensions for the iris animation
     private var isChecked:Bool
-    
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil, _ classId:String? = nil) {
         self.isChecked = isChecked
         super.init(width,height,isChecked ? 1:0,parent,id)

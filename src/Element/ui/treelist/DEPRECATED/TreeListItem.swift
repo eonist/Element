@@ -45,7 +45,7 @@ extension ITreeListItem{
     func open(){
         //Swift.print("TreeListItem.open()")
         setChecked(true)
-        checkBox?.onEvent(CheckEvent(CheckEvent.check, true, checkBox!))//TODO: use checkBox.setChecked here?
+        checkBox.onEvent(CheckEvent(CheckEvent.check, true, checkBox))//TODO: use checkBox.setChecked here?
     }
     /**
      * Simulates what happens when the user clicks on the CheckBox instanance
@@ -54,7 +54,7 @@ extension ITreeListItem{
     func close(){
         //Swift.print("TreeListItem.close()")
         setChecked(false)
-        checkBox?.onEvent(CheckEvent(CheckEvent.check, false, checkBox!))//TODO: use checkBox.setChecked here?
+        checkBox.onEvent(CheckEvent(CheckEvent.check, false, checkBox))//TODO: use checkBox.setChecked here?
     }
     /**
      * Event handler

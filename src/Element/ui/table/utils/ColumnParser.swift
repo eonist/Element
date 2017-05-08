@@ -10,7 +10,7 @@ class ColumnParser {
         let children:[SelectTextButton] = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
         var sortList:[[String:Any]] = []//Swift 3 update, use Any instead of AnyObject
         for selectTextButton  in children {
-            sortList.append(["text":selectTextButton.text!.getText() != "" ? selectTextButton.text!.getText() : "~","index":list.lableContainer!.indexOf(selectTextButton)])
+            sortList.append(["text":selectTextButton.text.getText() != "" ? selectTextButton.text.getText() : "~","index":list.lableContainer!.indexOf(selectTextButton)])
         }
         if(isAscending){
             sortList.sort(by: {$0["text"] as! String > $1["text"] as! String})

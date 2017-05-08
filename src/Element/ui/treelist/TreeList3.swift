@@ -17,9 +17,9 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
         let isOpenStr = TreeDPParser.getProp(treeDP, idx3d, "isOpen")
         if let checkable = listItem.item as? CheckBoxButton{
             let isChecked = isOpenStr == "true"
-            disableAnim{checkable.checkBox!.setChecked(isChecked)}/*Sets correct open/close icon*/
+            disableAnim{checkable.checkBox.setChecked(isChecked)}/*Sets correct open/close icon*/
         }
-        disableAnim{(listItem.item as! TreeList3Item).checkBox!.isHidden = !TreeDPAsserter.hasChildren(treeDP, idx3d)}/*Does item have children?,hides checkBox if item doesn't have children*/
+        disableAnim{(listItem.item as! TreeList3Item).checkBox.isHidden = !TreeDPAsserter.hasChildren(treeDP, idx3d)}/*Does item have children?,hides checkBox if item doesn't have children*/
         super.reUse(listItem)/*sets text and position and select state*/
     }
     override func createItem(_ index:Int) -> Element {

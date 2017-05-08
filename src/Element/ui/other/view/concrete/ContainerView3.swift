@@ -21,7 +21,8 @@ class ProgressContainer:Container{
      * A clever hack when using layer.position to move things
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
-        let aPoint = aPoint + CGPoint(layer!.position.x,layer!.position.y)
+        Swift.print("ProgressContainer.layer!.position: " + "\(layer!.position)")
+        let aPoint = aPoint + CGPoint(layer!.position.x,-layer!.position.y)
         return super.hitTest(aPoint)
     }
     override func getClassType() -> String {

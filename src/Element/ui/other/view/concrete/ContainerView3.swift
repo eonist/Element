@@ -14,14 +14,14 @@ class ContainerView3:Element,Containable3 {
         contentContainer = addSubView(Container(width,height,self,"lable"))//was content, but we want to use old css
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍*/
     }
-    override func hitTest(_ aPoint: NSPoint) -> NSView? {
-        let p:CGPoint = aPoint + CGPoint(-layer!.position.x,-layer!.position.y)
-        Swift.print("ContainerView3.hitTest P: \(p) layer!.position: \(layer!.position)")
-        
-        //also add rbContainer and contentContainer offset
-        
-        return super.hitTest(p)
-    }
+    /*override func hitTest(_ aPoint: NSPoint) -> NSView? {
+     let p:CGPoint = aPoint + CGPoint(-layer!.position.x,-layer!.position.y)
+     Swift.print("ContainerView3.hitTest P: \(p) layer!.position: \(layer!.position)")
+     
+     //also add rbContainer and contentContainer offset
+     
+     return super.hitTest(p)
+     }*/
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 

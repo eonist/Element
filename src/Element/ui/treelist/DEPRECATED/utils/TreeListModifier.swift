@@ -62,7 +62,7 @@ class TreeListModifier {
      */
     static func setTitleAt(_ treeList:ITreeList, _ index:[Int], _ name:String){
         if(index.count == 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is TextButton) {
-            treeList.itemContainer!.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer!.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer!.getSubViewAt(index[0]) as! TreeListItem).text!.setText(name)
+            treeList.itemContainer!.getSubViewAt(index[0]) is TextButton ? (treeList.itemContainer!.getSubViewAt(index[0]) as! TextButton).setTextValue(name) : (treeList.itemContainer!.getSubViewAt(index[0]) as! TreeListItem).text.setText(name)
         }else if(index.count > 1 && treeList.itemContainer!.subviews.count > 0 && treeList.itemContainer!.getSubViewAt(index[0]) is ITreeList) {
             setTitleAt(treeList.itemContainer!.getSubViewAt(index[0]) as! ITreeList, index.slice2(1,index.count),name)
         }

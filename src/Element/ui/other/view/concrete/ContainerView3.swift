@@ -18,13 +18,13 @@ class ContainerView3:Element,Containable3 {
 }
 class ProgressContainer:Container{
     /**
-     * A clever hack when using layer.position to move things
+     * A clever hack when using layer.position to move things, not so clever after all
      */
-    override func hitTest(_ aPoint:NSPoint) -> NSView? {
-        Swift.print("ProgressContainer.layer!.position: " + "\(layer!.position)")
-        let aPoint = aPoint + CGPoint(layer!.position.x,layer!.position.y)
-        return super.hitTest(aPoint)
-    }
+    /*override func hitTest(_ aPoint:NSPoint) -> NSView? {
+     Swift.print("ProgressContainer.layer!.position: " + "\(layer!.position)")
+     let aPoint = aPoint + CGPoint(layer!.position.x,layer!.position.y)
+     return super.hitTest(aPoint)
+     }*/
     override func getClassType() -> String {
         return "\(Container.self)"
     }

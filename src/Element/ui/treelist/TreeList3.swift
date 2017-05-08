@@ -23,7 +23,7 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
         super.reUse(listItem)/*sets text and position and select state*/
     }
     override func createItem(_ index:Int) -> Element {
-        return Utils.createTreeListItem(itemSize,rbContainer!)
+        return Utils.createTreeListItem(itemSize,contentContainer!)
     }
     override func onEvent(_ event:Event) {
         if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
@@ -60,9 +60,7 @@ extension TreeList3{
 private class Utils{
     /*create TreeItem*/
     static func createTreeListItem(_ itemSize:CGSize, _ parent:Element) -> TreeList3Item{
-        //Swift.print("itemSize: " + "\(itemSize)")
         let item:TreeList3Item = TreeList3Item(itemSize.width, itemSize.height ,"", false, false, parent)
-        parent.addSubview(item)
-        return item
+        return parent.addSubView(item)
     }
 }

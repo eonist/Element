@@ -1,8 +1,8 @@
 import Cocoa
 @testable import Utils
 /**
- * //TODO: shouldn't this class extend Stepper?
- * //TODO: Rename leverHeight to something less ambiguous
+ * TODO: ⚠️️ Shouldn't this class extend Stepper?
+ * TODO: ⚠️️ Rename leverHeight to something less ambiguous
  */
 class LeverStepper:Element{
     var value:CGFloat
@@ -79,7 +79,7 @@ class LeverStepper:Element{
         return event/*this return is required when you listen to the global mouse move event*/
     }
     /**
-     *
+     * Event handler
      */
     override func onEvent(_ event: Event) {
         if(event.origin === plusButton && event.type == ButtonEvent.down){onPlusButtonDown()}

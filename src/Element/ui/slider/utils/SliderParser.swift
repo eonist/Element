@@ -1,8 +1,9 @@
 import Foundation
 @testable import Utils
-
+/**
+ * TODO:move into ScrollableUtils ⚠️️
+ */
 class SliderParser {
-    //TODO:move into ScrollableUtils ⚠️️ 
     /**
      * Asserts and returns a boolean value that determines if slider should be visible
      */

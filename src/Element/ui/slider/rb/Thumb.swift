@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: This class is for the RBSliderList (RB = RubberBand)
  * NOTE: You might need to store the overshoot values for when you resize the button, could conflict if resize and progress changes at the same time, very edge case
  * NOTE: the overshot part is to support "the-RubberBand-list-look"
- * TODO: Rename this to RBThumb and override createThumb in vSlider instead, then revert this class to the simpler class
+ * TODO: ⚠️️ Rename this to RBThumb and override createThumb in vSlider instead, then revert this class to the simpler class
  */
 class Thumb:Button{
     var animator:Animator?
@@ -34,7 +34,7 @@ class Thumb:Button{
     func setDisabled(_ isDisabled:Bool) {
         self.isDisabled = isDisabled
         super.setSkinState(getSkinState())
-        //TODO: Set button mode to not hand here
+        //TODO: ⚠️️ Set button mode to not hand here
     }
     override func getClassType() -> String {
         return "\(Button.self)"
@@ -46,10 +46,10 @@ extension Thumb{
      * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
     func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
-        if(progress < 0){/*top overshot*/
+        if(progress < 0){/*Top overshot*/
             let size:CGSize = dir == .ver ? CGSize(width, height-(height*progress.positive)) : CGSize(width - (width*progress.positive),height)
             self.skin!.setSize(size.w,size.h)
-        }else if(progress > 1){/*bottom overshot*/
+        }else if(progress > 1){/*Bottom overshot*/
             let overshot = self.size[dir] * (progress-1)
             let size:CGSize = dir == .ver ? CGSize(width, height - overshot) : CGSize(width - overshot, height)
             self.skin!.setSize(size.w,size.h)
@@ -57,18 +57,15 @@ extension Thumb{
         }
     }
     var alpha:CGFloat{/*Convenience*/
-        get{
-            return self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent
-        }set{
-            self.skin?.decoratables[0].getGraphic().fillStyle!.color = (self.skin?.decoratables[0].getGraphic().fillStyle!.color.alpha(newValue))!
-        }
+        get{return self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent}
+        set{skin?.decoratables[0].getGraphic().fillStyle?.color = (skin?.decoratables[0].getGraphic().fillStyle!.color.alpha(newValue))!}
     }
     /**
      * Animator method that interpolates the alpha between 0 and 1
      */
     func interpolateAlpha(_ val:CGFloat){
         alpha = val
-        self.skin?.decoratables[0].draw()
+        skin?.decoratables[0].draw()
     }
     /**
      * Call this when you want to fade-in the thumb
@@ -77,8 +74,8 @@ extension Thumb{
     func fadeIn(){
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         animator = Animator(Animation.sharedInstance,0.2,alpha,1,interpolateAlpha,Sine.easeOut)
-        animator!.event = {(event:Event) -> Void in }
-        animator!.start()
+        animator?.event = {(event:Event) -> Void in }
+        animator?.start()
     }
     /**
      * Call this when you want to fade-out the thumb
@@ -86,7 +83,7 @@ extension Thumb{
     func fadeOut(){
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         animator = Animator(Animation.sharedInstance,0.5,alpha,0,interpolateAlpha,Quad.easeIn)
-        animator!.event = {(event:Event) -> Void in }
-        animator!.start()
+        animator?.event = {(event:Event) -> Void in }
+        animator?.start()
     }
 }

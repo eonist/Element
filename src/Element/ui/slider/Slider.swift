@@ -102,8 +102,8 @@ private class Utils{//TODO:rename to VSliderUtils and make it not private
         return progress * minThumbPos
     }
     /**
-     * Returns the progress derived from a node
-     * RETURN: a number between 0 and 1
+     * Returns The progress derived from a node
+     * RETURN: A number between 0 and 1
      */
     static func progress(_ mouseY:CGFloat,_ tempNodeMouseY:CGFloat,_ height:CGFloat,_ thumbHeight:CGFloat)->CGFloat {
         if(thumbHeight == height) {return 0}/*if the thumbHeight is the same as the height of the slider then return 0*/

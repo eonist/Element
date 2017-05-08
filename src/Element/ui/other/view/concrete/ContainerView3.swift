@@ -22,7 +22,7 @@ class ProgressContainer:Container{
      */
     override func hitTest(_ aPoint:NSPoint) -> NSView? {
         Swift.print("ProgressContainer.layer!.position: " + "\(layer!.position)")
-        let aPoint = aPoint + CGPoint(layer!.position.x,-layer!.position.y)
+        let aPoint = aPoint + CGPoint(layer!.position.x,layer!.position.y)
         return super.hitTest(aPoint)
     }
     override func getClassType() -> String {

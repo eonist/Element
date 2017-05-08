@@ -1,5 +1,9 @@
 import Foundation
 @testable import Utils
+/**
+ * Rename to ElementKind?
+ */
+
 protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
     func resolveSkin()

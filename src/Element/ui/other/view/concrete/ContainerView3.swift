@@ -11,15 +11,17 @@ class ContainerView3:Element,Containable3 {
     }
     override func resolveSkin() {
         super.resolveSkin()
-        contentContainer = addSubView(Container(width,height,self,"lable"))//was content, but we want to use old css
+        contentContainer = addSubView(ProgressContainer(width,height,self,"lable"))//was content, but we want to use old css
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍*/
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-
 class ProgressContainer:Container{
     override func hitTest(_ aPoint: NSPoint) -> NSView? {
         let aPoint = aPoint + CGPoint(-layer!.position.x,layer!.position.y)
         return super.hitTest(aPoint)
+    }
+    override func getClassType() -> String {
+        return "\(Container.self)"
     }
 }

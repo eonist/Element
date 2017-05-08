@@ -21,7 +21,7 @@ class ComboBoxWin:Window{
 }
 class ComboBoxView:PopupView{
     var dataProvider:DataProvider
-    var list: List?
+    var list:List?
     var initSelectedIndex:Int
     var itemHeight:CGFloat//TODO:this should be set in the css?
     init(_ width:CGFloat, _ height:CGFloat, _ dataProvider:DataProvider,_ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
@@ -38,8 +38,8 @@ class ComboBoxView:PopupView{
         list = addSubView(List(width, height, itemHeight, dataProvider, self))
         ListModifier.selectAt(list as! IList, initSelectedIndex)
     }
-    /*
-    override func onEvent(event: Event) {}
-    */
+    /**
+     * override func onEvent(event: Event) {}
+     */
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

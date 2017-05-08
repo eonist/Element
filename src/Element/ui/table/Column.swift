@@ -4,8 +4,8 @@ import Cocoa
 class Column:Element{
     var title:String
     var dataProvider:DataProvider
-    var header:CheckTextButton = {return self.addSubView(CheckTextButton(NaN, NaN,title,false,self,"header"))}()
-    var list:IList = {return self.addSubView(List(width, height /*<--these should be NaN*/,NaN, dataProvider, self))}()
+    lazy var header:CheckTextButton = { self.addSubView(CheckTextButton(NaN, NaN,self.title,false,self,"header"))}()
+    lazy var list:IList = {self.addSubView(List(self.width, self.height /*<--these should be NaN*/,NaN, self.dataProvider, self))}()
     init(_ width:CGFloat, _ height:CGFloat, _ title:String, _ dataProvider:DataProvider, _ parent:IElement? = nil, _ id:String = "") {
         self.title = title
         self.dataProvider = dataProvider

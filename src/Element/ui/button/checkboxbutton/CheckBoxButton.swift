@@ -6,7 +6,7 @@ import Foundation
 class CheckBoxButton:Button,ICheckable,LableKind{
     private var isChecked:Bool//TODO: This should be initChecked, and then we should use only checkBox as a state holder
     var textString:String
-    var checkBox:CheckBox?
+    lazy var checkBox:CheckBox = {self.addSubView(CheckBox(13,13,self.isChecked,self))}()
     var text:Text?
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
         self.textString = text
@@ -15,7 +15,7 @@ class CheckBoxButton:Button,ICheckable,LableKind{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        checkBox = addSubView(CheckBox(13,13,isChecked,self))
+        
         text = addSubView(Text(width,height,textString,self)) 
         text!.isInteractive = false
     }
@@ -23,23 +23,23 @@ class CheckBoxButton:Button,ICheckable,LableKind{
         super.onEvent(event)/*Forwards the event*/
     }
     func setChecked(_ isChecked:Bool) {
-        checkBox!.setChecked(isChecked)
+        checkBox.setChecked(isChecked)
     }
     func getChecked() -> Bool {
-        return checkBox != nil ? checkBox!.getChecked() : self.isChecked/*<--Temp fix*/
+        return checkBox.getChecked()
     }
     override func getSkinState() -> String {
         return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
     }
     override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)
-        checkBox?.setSkinState(checkBox!.getSkinState())//New, more like refresh, worked 🎉
+        checkBox.setSkinState(checkBox.getSkinState())//New, more like refresh, worked 🎉
         text?.setSkinState(text!.getSkinState())//New, same as above /*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/
     }
     func setSize(width:CGFloat, height:CGFloat) {
         super.setSize(width, height)
-        checkBox?.setSkinState(checkBox!.skin!.state)
-        text?.setSkinState(checkBox!.skin!.state)
+        checkBox.setSkinState(checkBox.skin!.state)
+        text?.setSkinState(checkBox.skin!.state)
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

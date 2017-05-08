@@ -5,7 +5,7 @@ import Cocoa
  */
 class FastList3:ContainerView3,FastListable3{
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
-    var dp:DataProvider/*data storage*/
+    var dp:DataProvider/*Data storage*/
     var itemSize:CGSize
     var dir:Dir
     var pool:[FastListItem] = []/*Stores the FastListItems*/

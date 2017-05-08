@@ -19,7 +19,7 @@ import PackageDescription
 let package = Package(
     name: "AwesomeApp",
     dependencies: [
-		.Package(url: "https://github.com/eonist/Element.git", Version(0, 0, 0, prereleaseIdentifiers: ["alpha", "5"]))
+	   .Package(url: "https://github.com/eonist/Element.git", Version(0, 0, 0, prereleaseIdentifiers: ["alpha", "5"]))
     ]
 )
 ```
@@ -30,8 +30,8 @@ let package = Package(
 StyleManager.addStyle("Button{fill:blue;}")
 let btn = Button(100,20)
 window.contentView!.addSubview(btn)
-btn.event{ event in
-	if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
+btn.event = { event in
+   if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
 }
 ```
   

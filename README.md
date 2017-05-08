@@ -29,7 +29,8 @@ let package = Package(
 ```swift
 StyleManager.addStyle("Button{fill:blue;}")
 let btn = Button(100,20)
-window.contentView!.addSubview(btn)
+window.contentView = FlippedView()/*TopLeft orientation*/
+window.contentView?.addSubview(btn)
 btn.event = { event in
    if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
 }

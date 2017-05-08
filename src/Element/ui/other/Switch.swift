@@ -23,7 +23,7 @@ class Switch:SwitchSlider,ICheckable{
         self.isChecked = isChecked
         super.init(width,height,isChecked ? 1:0,parent,id)
     }
-    override func onMouseMove(event:NSEvent)-> NSEvent?{
+    override func onMouseMove(event:NSEvent)->NSEvent?{
         let event = super.onMouseMove(event:event)
         if(progress == 1 && !isChecked){
             setChecked(true)
@@ -37,7 +37,7 @@ class Switch:SwitchSlider,ICheckable{
         return event
     }
     override func mouseDown(_ event:MouseEvent) {
-        Swift.print("Switch.mouseDown isChecked: \(isChecked)")
+        //Swift.print("Switch.mouseDown isChecked: \(isChecked)")
         let style:IStyle = self.skin!.style!//StyleModifier.clone(thumb!.skin!.style!, thumb!.skin!.style!.name)
         var widthProp = style.getStyleProperty("width",2)
         widthProp!.value = 80

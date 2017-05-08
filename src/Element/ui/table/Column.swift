@@ -17,13 +17,10 @@ class Column:Element{
         list = addSubView(List(width, height /*<--these should be NaN*/,NaN, dataProvider, self))
     }
     private func onHeaderCheck(_ event:CheckEvent){
-        //Swift.print("Column.onHeaderCheck")
         super.onEvent(CheckEvent(CheckEvent.check,event.isChecked,self))/*Clone the event and send it, we need the origin to be Column*/
     }
     private func onListSelect(_ event:ListEvent)  {
-        //Swift.print("Column.onListSelect")
         let rowIndex:Int = ListParser.index(list!, event.selected as! NSView)
-        //Swift.print("rowIndex: " + "\(rowIndex)")
 		super.onEvent(ColumnEvent(ColumnEvent.select,rowIndex,self))
     }
     override func onEvent(_ event:Event) {

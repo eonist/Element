@@ -8,9 +8,9 @@ class CheckBoxButton:Button,ICheckable,LableKind{
     var textString:String
     lazy var checkBox:CheckBox = {self.addSubView(CheckBox(13,13,self.isChecked,self))}()
     lazy var text:Text = {
-        return self.addSubView(Text(self.width,self.height,self.textString,self))
-        /*text.isInteractive = false
-         return text*/
+        let text = self.addSubView(Text(self.width,self.height,self.textString,self))
+        text.isInteractive = false
+        return text
     }()
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
         self.textString = text

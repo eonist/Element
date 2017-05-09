@@ -6,9 +6,9 @@ import Cocoa
  * NOTE: even though creating an eventhandler in the parent class for when to open the ColorWin is tedious, including it in this class is not a good idea, consider when ColorInput is only used as an indicatar of color and not as opener for ColorWin
  */
 class ColorInput:Element,IColorInput {
-    var colorBox:ColorBox?
-    var inputText:TextInput?
-    var text:String
+    lazy var colorBox:ColorBox = {self.addSubView(ColorBox(self.height,self.height,self.color!,self))}()
+    lazy var inputText:TextInput = {self.addSubView(TextInput(self.width - self.height,self.height,self.text,"0x" + self.color!.hexString,self))}()///*ColorParser.hexByNumericRgb(_color)*/
+    var text:String/*Interim value*/
     var color:NSColor?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ text:String = "Color: ", _ color:NSColor = NSColor.red,_ parent:IElement? = nil,_ id:String = ""){
         self.text = text
@@ -17,8 +17,8 @@ class ColorInput:Element,IColorInput {
     }
     override func resolveSkin(){
         super.resolveSkin()
-        self.inputText = addSubView(TextInput(width - height,height,text,"0x" + color!.hexString,self))//ColorParser.hexByNumericRgb(_color)
-        self.colorBox = addSubView(ColorBox(height,height,color!,self))
+        _ = inputText
+        _ = colorBox
     }
     func onColorBoxDown(_ event:ButtonEvent){
         ColorSync.receiver = self/*Can't we set this outside this class?, nopp probably shouldn't*/
@@ -28,10 +28,10 @@ class ColorInput:Element,IColorInput {
      * NOTE: asserts if the color is a valid color before it is applied
      */
     func onTextInputChange(_ event:TextFieldEvent){
-        let colorString:String = inputText!.inputTextArea!.text!.getText()//could also use: event.stringValue here
+        let colorString:String = inputText.inputTextArea!.text!.getText()//could also use: event.stringValue here
         if(ColorAsserter.isColor(colorString)){
             color = NSColorParser.nsColor(colorString.uint)
-            colorBox!.setColorValue(color!)
+            colorBox.setColorValue(color!)
             super.onEvent(ColorInputEvent(ColorInputEvent.change,self))//sends the event
         }
     }
@@ -41,14 +41,14 @@ class ColorInput:Element,IColorInput {
     }
     func setColorValue(_ color:NSColor){
         self.color = color
-        colorBox!.setColorValue(color)
-        inputText!.inputTextArea!.setTextValue("0x" + color.hexString.uppercased())//ColorParser.hexByNumericRgb(color).toUpperCase()
+        colorBox.setColorValue(color)
+        inputText.inputTextArea!.setTextValue("0x" + color.hexString.uppercased())//ColorParser.hexByNumericRgb(color).toUpperCase()
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat){
         super.setSize(width,height)
-        inputText!.setSize(width,inputText!.height)
+        inputText.setSize(width,inputText.height)
         /*<--should probably just refresh the state here*/
-        colorBox!.skin!.setSkinState(colorBox!.skin!.state)
+        colorBox.skin!.setSkinState(colorBox.skin!.state)
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

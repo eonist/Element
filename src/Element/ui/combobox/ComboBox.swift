@@ -12,9 +12,14 @@ import Cocoa
  * TODO: Upgrade the ComboBox to support popping open a window that hovers above the origin window. It needs to align it self to the screen correctly etc
  */
 class ComboBox:Element{
-    var headerButton:TextButton?
+    lazy var headerButton:TextButton = {
+        let headerButton = self.addSubView(TextButton(self.width, self.itemHeight,"", self))//TODO: - _itemHeight should be something else
+        let selectedTitle:String = self.dataProvider!.getItemAt(self.selectedIndex)!["title"]!
+        headerButton.setTextValue(selectedTitle)
+        return headerButton
+    }()
     var itemHeight:CGFloat// :TODO: this should be set in the css?
-    var dataProvider:DataProvider
+    var dataProvider:DataProvider?
     var isOpen:Bool = false
     var selectedIndex:Int
     var popupWindow:ComboBoxWin?
@@ -27,10 +32,7 @@ class ComboBox:Element{
 	}
 	override func resolveSkin(){
 		super.resolveSkin()
-		headerButton = addSubView(TextButton(width, itemHeight,"", self))//TODO: - _itemHeight should be something else
-        let selectedTitle:String = dataProvider!.getItemAt(selectedIndex)!["title"]!
-        //Swift.print("selectedTitle: " + "\(selectedTitle)")
-        headerButton!.setTextValue(selectedTitle)
+		
         //setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
 	}
 	func onHeaderMouseDown(_ event:ButtonEvent) {
@@ -47,14 +49,14 @@ class ComboBox:Element{
         selectedIndex = ListParser.selectedIndex(list)
 		let text:String = ListParser.titleAt(list, selectedIndex)
         Swift.print("text: " + "\(text)")
-		headerButton!.setTextValue(text)
+		headerButton.setTextValue(text)
         super.onEvent(ComboBoxEvent(ComboBoxEvent.listSelect,selectedIndex,self))/*Send this event*/
         popupWindow!.close()/*After we process the ListEvent, we close the PopupWindow*/
 		setOpen(false)
 	}
     func onClickOutside() {//was->onClickOutsidePopupWin
         Swift.print("onClickOutsidePopupWin")
-        if(!CGRect(CGPoint(),headerButton!.frame.size).contains(headerButton!.localPos())){/*hittest to avoid calling setOpen if the headerButton is clicked while the popupwin is open*/
+        if(!CGRect(CGPoint(),headerButton.frame.size).contains(headerButton.localPos())){/*hittest to avoid calling setOpen if the headerButton is clicked while the popupwin is open*/
             setOpen(false)
         }
     }
@@ -80,7 +82,7 @@ class ComboBox:Element{
 	}
 	override func setSize(_ width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)
-		headerButton!.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
+		headerButton.setSize(width, StylePropertyParser.height(headerButton!.skin!)!)/*temp solution*/
 	}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

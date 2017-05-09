@@ -10,4 +10,14 @@ class Container:Element{
     override func resolveSkin() {
         skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/   
     }
+    /**
+     * New
+     */
+    var layerPos:CGPoint?{
+        get{return self.layer?.position}
+        set{
+            Swift.print("setLayerPos: ")
+            self.layer?.position = newValue!
+        }
+    }
 }

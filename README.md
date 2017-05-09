@@ -48,8 +48,9 @@ Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
 ## Progress:
-**2017-may**
+**2017-apr**
 - FastTreeList is introduced
+
 **2017-mar** 
 - List UI's are now POP (aka Protocol Oriented Programming)
 - Elastic, Slidable and Scrollable protocols are introduced

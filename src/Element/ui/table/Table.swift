@@ -9,19 +9,18 @@ import Foundation
 class Table:Element{
     var node:Node
     var columns:[Column] = []
-    var columnContainer:Container?
+    lazy var columnContainer:Container = {self.addSubView(Container(self.width,self.height,self,"column"))}()
     init(_ width:CGFloat, _ height:CGFloat, _ node:Node, _ parent:IElement? = nil, _ id:String = "") {
         self.node = node
         super.init(width,height,parent,id)
     }
     override func resolveSkin() {
         super.resolveSkin()
-        columnContainer = addSubView(Container(width,height,self,"column"))
         for i in 0..<node.xml.children!.count{//<--swift 3 for loop
             let child:XMLNode = node.xml.children![i]
             let itemData = XMLParser.attribs(child as! XMLElement)
             if(itemData["hasChildren"] == "true" || child.children!.count > 0) {
-                columns.append(columnContainer!.addSubView(Column(100,height,/*<--these should be NaN*/itemData["title"]!,DataProvider(child as? XMLElement),columnContainer,String(i))))
+                columns.append(columnContainer.addSubView(Column(100,height,/*<--these should be NaN*/itemData["title"]!,DataProvider(child as? XMLElement),columnContainer,String(i))))
             }/*we add the columns index to the id so we can set individual css properties to each column*/
         }
     }

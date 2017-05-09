@@ -25,7 +25,7 @@ class ScrollableUtils {
          */
         //continue here: get both directions working, clip the values in sliderlist only
         
-        let y:CGFloat = round(progress * scrollHeight)//Things may actually be smoother if you remove the round variable
+        let y:CGFloat = (progress * scrollHeight)//Things may actually be smoother if you remove the round variable
         return -y
     }
 }

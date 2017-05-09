@@ -1,11 +1,16 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * TODO: ⚠️️ Upgrade this to use Slider
+ */
 class VolumeSlider:HSlider{
-    lazy var volumeGraphic:Element = Element(1,1,self,"volumeGraphic")//lazy so that its only created once, and we don't have to implement init
+    lazy var volumeGraphic:Element = {
+        self.addSubViewAt(Element(1,1,self,"volumeGraphic"),self.indexOf(self.thumb!))
+        
+    }()//lazy so that its only created once
     override func resolveSkin() {
         super.resolveSkin()
-        volumeGraphic = addSubViewAt(volumeGraphic,self.indexOf(thumb!))//TODO: add the volume graphic bellow the thumb
+        _ = volumeGraphic//TODO: add the volume graphic bellow the thumb
     }
     override func onMouseMove(event:NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb!.x+thumb!.width/2, getHeight())//TODO: this should be set after super

@@ -10,7 +10,7 @@ extension ElasticScrollableFastListable3{
     func onInDirectScrollWheelChange(_ event: NSEvent) {}//override to cancel out the event,move this more centerally, or remove
     func onScrollWheelChange(_ event:NSEvent){/*Direct scroll*/
         //Swift.print("event.type: " + "\(event.phase)")
-        Swift.print("ElasticScrollableFastListable3.onScrollWheelChange : \(event.type) event.scrollingDelta: \(event.scrollingDelta)")
+        Swift.print("ElasticScrollableFastListable3.onScrollWheelChange : \(event.type) event.delta: \(event.delta)")
         moverGroup!.value += event.scrollingDelta/*directly manipulate the value 1 to 1 control*/
         moverGroup!.updatePosition(true)/*the mover still governs the resulting value, in order to get the displacement friction working*/
         let p:CGPoint = moverGroup!.result

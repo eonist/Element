@@ -100,6 +100,9 @@ private class Utils{
      */
     static func selectorWeight(_ styleSel:ISelector,_ querrySelectors:[ISelector])->SelectorWeight?{
         //swift 3 update
+        
+        //TODO: ⚠️️ Do .lazy.flatMap.first on the bellow:  
+        
         for i in 0..<querrySelectors.count{/*loops through each selector in the stack*///Item Container Item Container Button Text
             let querrySelector:ISelector = querrySelectors[i]
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){/*Asserts if the selector in the style should influence the style of the element*/

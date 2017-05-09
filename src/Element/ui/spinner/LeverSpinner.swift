@@ -16,8 +16,8 @@ class LeverSpinner:Element{
     var text:String
     var leverHeight:CGFloat//TODO: write a description about this value
     var leverRange:CGFloat
-    var textInput:TextInput?
-    var stepper:LeverStepper?
+    lazy var textInput:TextInput = {self.addSubView(TextInput(100,20,self.text,self.val.string,self))}()
+    lazy var stepper:LeverStepper = {self.addSubView(LeverStepper(100,24,self.val,self.increment,self.minVal,self.maxVal,self.decimals,self.leverRange,self.leverHeight,self))}()
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent:IElement? = nil, _ id:String? = nil) {
         self.val = value
         self.text = text
@@ -31,40 +31,40 @@ class LeverSpinner:Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        textInput = addSubView(TextInput(100,20,text,String(val),self))
-        stepper = addSubView(LeverStepper(100,24,val,increment,minVal,maxVal,decimals,leverRange,leverHeight,self))
+        _ = textInput
+        _ = stepper
     }
     func onStepperChange(_ event:StepperEvent) {
         val = event.value
-        textInput!.inputTextArea?.setTextValue(String(val))
+        textInput.inputTextArea?.setTextValue(String(val))
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     /**
      * TODO: ⚠️️ Also resolve decimal here?
      */
     func onInputTextChange(_ event:Event) {
-        let valStr:String = textInput!.inputTextArea!.text!.getText()
+        let valStr:String = textInput.inputTextArea!.text!.getText()
         val = NumberParser.minMax(valStr.cgFloat, minVal, maxVal)
-        stepper!.value = val
+        stepper.value = val
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     override func onEvent(_ event: Event) {
         if(event.assert(StepperEvent.change, stepper)){
             onStepperChange(event as! StepperEvent)
-        }else if(event.assert(Event.update, textInput!.inputTextArea!.text!.textField)){//You could use immediate here to shorten the if statement
+        }else if(event.assert(Event.update, textInput.inputTextArea!.text!.textField)){//You could use immediate here to shorten the if statement
             onInputTextChange(event)
         }
     }
     func setValue(_ value:CGFloat) {
         let value:CGFloat = NumberParser.minMax(value, minVal, maxVal)
         self.val = CGFloatModifier.toFixed(value,decimals)
-        textInput!.inputTextArea?.setTextValue(String(self.val))
-        stepper!.value = self.val
+        textInput.inputTextArea?.setTextValue(String(self.val))
+        stepper.value = self.val
     }
     override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)
-        textInput!.setSkinState(skinState)
-        stepper!.setSkinState(skinState)
+        textInput.setSkinState(skinState)
+        stepper.setSkinState(skinState)
     }
     /**
      * Returns "Spinner"

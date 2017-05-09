@@ -13,11 +13,11 @@ class Container:Element{
     /**
      * New
      */
-    var layerPos:CGPoint?{
+    var layerPos2:CGPoint?{
         get{return self.layer?.position}
         set{
             Swift.print("setLayerPos: ")
-            self.layer?.position = newValue!
+            self.layer?.position = CGPoint(0,newValue!.y)
         }
     }
 }

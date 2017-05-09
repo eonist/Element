@@ -2,10 +2,10 @@ import Cocoa
 @testable import Utils
 
 class CustomView:WindowView{
-    var section:Section?
-    var closeButton:Button?
-    var minimizeButton:Button?
-    var maximizeButton:Button?
+    lazy var section:Section = {self.addSubView(Section(75,22,self,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
+    lazy var closeButton:Button = {self.section.addSubView(Button(NaN,NaN,self.section,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
+    lazy var minimizeButton:Button = {self.section.addSubView(Button(NaN,NaN,self.section,"minimize"))}()
+    lazy var maximizeButton:Button = {self.section.addSubView(Button(NaN,NaN,self.section,"maximize"))}()
     /**
      * Add content here
      */
@@ -17,14 +17,14 @@ class CustomView:WindowView{
      * Adds close button, min, max
      */
     func createTitleBar(){
-        section = addSubView(Section(75,22,self,"titleBar"))/*height was 26 but we added 4px as padding-top*/
-        closeButton = section!.addSubView(Button(NaN,NaN,section!,"close")) /*<--TODO: the w and h should be NaN, test if it supports this*/
-        minimizeButton = section!.addSubView(Button(NaN,NaN,section!,"minimize"))
-        maximizeButton = section!.addSubView(Button(NaN,NaN,section!,"maximize"))
+        _ = section
+        _ = closeButton
+        _ = minimizeButton
+        _ = maximizeButton
     }
     override func setSize(_ width:CGFloat,_ height:CGFloat){
         super.setSize(width, height)
-        section!.setSize(width, section!.height)
+        section.setSize(width, section.height)
     }
     /**
      * NOTE: for re-usable panels etc, override and use the orderOut and makeKeyandOrderInfront combo. Use visible to assert between the modes

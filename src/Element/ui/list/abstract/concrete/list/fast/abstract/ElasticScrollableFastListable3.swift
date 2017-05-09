@@ -57,9 +57,6 @@ extension ElasticScrollableFastListable3{
 }
 extension ElasticScrollableFastListable3{
     func posContainer(_ rbContainer:Container,_ dir:Dir,_ value:CGFloat){/*Temp*/
-        disableAnim {
-            let p:CGPoint = (rbContainer).layerPos!
-            (rbContainer).layerPos = dir == .hor ? CGPoint(value,p.y) : CGPoint(p.x,value)
-        }/*default position*/
+        disableAnim {rbContainer.layer?.position[dir] = value}/*default position*/
     }
 }

@@ -1,6 +1,8 @@
 import Foundation
 @testable import Utils
-
+/**
+ * TODO: make this a struct?
+ */
 class MoverGroup{//rename to ElasticMoverGroup
     var xMover:RubberBand
     var yMover:RubberBand

@@ -25,7 +25,7 @@ protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes 
     var height:CGFloat{get /*set*/}
     var x:CGFloat{get set}
     var y:CGFloat{get set}
-    var layerPos:CGPoint? {get set}
+    
 }
 /**
  * NOTE: some of these methods will probably be moved back into the class
@@ -49,14 +49,5 @@ extension IElement {
         frame.x = point.x
         frame.y = point.y
     }
-    /**
-     * New
-     */
-    var layerPos:CGPoint?{
-        get{return self.layer?.position}
-        set{
-            Swift.print("setLayerPos: ")
-            self.layer?.position = newValue!
-        }
-    }
+    
 }

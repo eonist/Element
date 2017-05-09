@@ -11,7 +11,7 @@ class ColorPanel:Element,IColorPanel{
     static var hsb:String = "HSB"
     static var hls:String = "HLS"
     static var hsv:String = "HSV"
-    var color:NSColor?
+    var color:NSColor?//TODO: ⚠️️ make lazy
     var colorInput:ColorInput?//TODO: ⚠️️ make lazy
     var spinner1:LeverSpinner?//TODO: ⚠️️ make lazy
     var spinner2:LeverSpinner?//TODO: ⚠️️ make lazy

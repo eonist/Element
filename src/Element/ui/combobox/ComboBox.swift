@@ -14,7 +14,7 @@ import Cocoa
 class ComboBox:Element{
     var headerButton:TextButton?
     var itemHeight:CGFloat// :TODO: this should be set in the css?
-    var dataProvider:DataProvider?
+    var dataProvider:DataProvider
     var isOpen:Bool = false
     var selectedIndex:Int
     var popupWindow:ComboBoxWin?

@@ -11,7 +11,7 @@ import Cocoa
  * 3. or use 3 different elements to get things working
  */
 class Switch:SwitchSlider,ICheckable{
-    var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
+    //var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/
@@ -137,7 +137,6 @@ extension Switch{
         let endColor = grey
         let color = initColor.blended(withFraction: value, of: endColor)!
         fillProp!.value = color
-        
         skin!.setStyle(style)
     }
     func bgIrisAnim(value:CGFloat){

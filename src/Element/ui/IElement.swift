@@ -48,4 +48,11 @@ extension IElement {
         frame.x = point.x
         frame.y = point.y
     }
+    /**
+     * New
+     */
+    var layerPos:CGPoint?{
+        get{return self.layer?.position}
+        set{self.layer?.position = newValue!}
+    }
 }

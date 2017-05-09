@@ -13,7 +13,7 @@ class SelectButton:Button,ISelectable {
     override func mouseUpInside(_ event:MouseEvent) {
         isSelected = true
         super.mouseUpInside(event)/*Forward the event*/
-        super.onEvent(SelectEvent(SelectEvent.select,self/*,self*/))
+        super.onEvent(SelectEvent(SelectEvent.select,self))
     }
     /**
      * NOTE: do not add a dispatch event here, that is the responsibilyy of the caller

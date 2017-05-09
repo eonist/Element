@@ -29,8 +29,8 @@ class LeverStepper:Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        _ = plusButton
-        _ = minusButton
+        _ = plusButton/*Init the UI*/
+        _ = minusButton/*Init the UI*/
     }
     func onPlusButtonDown() {
         onMouseDownMouseY = plusButton.localPos().y

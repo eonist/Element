@@ -17,6 +17,11 @@ class CheckBoxButton:Button,ICheckable,LableKind{
         self.isChecked = isChecked
         super.init(width,height,parent,id)
     }
+    override func resolveSkin() {
+        super.resolveSkin()
+        _ = plusButton/*Init the UI*/
+        _ = minusButton/*Init the UI*/
+    }
     override func onEvent(_ event:Event) {//TODO: You could remove this method, as it doesnt add any functionality
         super.onEvent(event)/*Forwards the event*/
     }

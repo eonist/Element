@@ -11,16 +11,26 @@ class ContainerView3:Element,Containable3 {
     }
     override func resolveSkin() {
         super.resolveSkin()
-        contentContainer = addSubView(ProgressContainer(width,height,self,"lable"))//was content, but we want to use old css
+        contentContainer = addSubView(Container(width,height,self,"lable"))//was content, but we want to use old css
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍*/
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
-class ProgressContainer:Container{
+extension ContainerView3 {//private maybe?
     /**
-     * A clever hack when using layer.position to move things, not so clever after all
+     * TODO: Try to override with generics ContainerView<VerticalScrollable>  etc
      */
-    override func getClassType() -> String {
-        return "\(Container.self)"
+    override open func scrollWheel(with event: NSEvent) {
+        // Swift.print("ContainerView3.scrollWheel")
+        if(self is ElasticSlidableScrollableFastListable3){
+            (self as! ElasticSlidableScrollableFastListable3).scroll(event)
+        }else if(self is ElasticSlidableScrollable3){
+            (self as! ElasticSlidableScrollable3).scroll(event)
+        }else if(self is Scrollable3){
+            (self as! Scrollable3).scroll(event)
+        }else{
+            fatalError("type not supported")
+        }
+        super.scrollWheel(with: event)
     }
 }

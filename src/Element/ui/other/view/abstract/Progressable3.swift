@@ -37,7 +37,6 @@ extension Progressable3{
 private extension ScrollableUtils{//temp migration fix
     static func scrollTo(_ containable:Containable3, _ progress:CGFloat, _ dir:Dir = .ver){
         let val:CGFloat = ScrollableUtils.scrollTo(progress, containable.maskSize[dir], containable.contentSize[dir])
-        //Swift.print("val: " + "\(val)")
         disableAnim {containable.contentContainer?.layer?.position[dir] = val}/*we offset the y position of the lableContainer*/
     }
 }

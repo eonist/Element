@@ -3,7 +3,7 @@ import Foundation
 /**
  * TODO: ⚠️️ make this a struct?
  */
-class MoverGroup{//rename to ElasticMoverGroup
+struct MoverGroup{//rename to ElasticMoverGroup
     var xMover:RubberBand
     var yMover:RubberBand
     typealias FrameTick = (CGFloat,Dir)->Void

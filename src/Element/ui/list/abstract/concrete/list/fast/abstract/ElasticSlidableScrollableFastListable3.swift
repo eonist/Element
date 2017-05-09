@@ -16,7 +16,7 @@ extension ElasticSlidableScrollableFastListable3{
         switch event.phase{
             case NSEventPhase.changed://Direct scroll, ⚠️️That you need a hock here is not that great
                 let sliderProgress:CGPoint = ElasticUtils.progress(moverGroup!.result,contentSize,maskSize)
-                (self as Slidable3).setProgress(sliderProgress)
+                (self as Slidable3).setProgress(sliderProgress)/*moves the sliders*/
             case NSEventPhase.mayBegin, NSEventPhase.began:/*same as onScrollWheelEnter()*/
                 showSlider()
             case NSEventPhase.ended://same as onScrollWheelExit()

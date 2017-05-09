@@ -14,6 +14,9 @@ class Container:Element{
      * New
      */
     func layerPos(_ val:CGFloat,_ dir:Dir){
-        self.layer?.position[dir] = val
+        if dir == .ver {
+            self.layer?.position[dir] = val
+        }
+        
     }
 }

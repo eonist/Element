@@ -76,7 +76,7 @@ class WeightedStyleAsserter {
     }
     /**
      * Asserts that a "selector.stateWeight" in "a.styleWeight.selectorWeights" has a higher value than a "selector.stateWeight" in "b.styleWeight.selectorWeights"  (the style.weight.stateweight are equal)
-     * TODO: this may be wrong, what if a.selectorWights.length is more than b.selectorWeights.length????
+     * TODO: this may be wrong, what if a.selectorWights.count is more than b.selectorWeights.count????
      * TODO: obviously this StyleResolver class is due for renovation so alot of trace code and debug code is left in
      */
     private static func assertStateWeight(_ a:WeightedStyle,_ b:WeightedStyle)->Bool{// :TODO: could use a better name
@@ -99,11 +99,8 @@ class WeightedStyleAsserter {
             aTotStateWeight + aSelectorWeight.stateWeight
         }
         //print("aTotStateWeight: " + aTotStateWeight)
-        let bTotStateWeight:Int = b.styleWeight.selectorWeights.reduce(0) {
-            
-        }
-        for bSelectorWeight:SelectorWeight in b.styleWeight.selectorWeights {
-            bTotStateWeight += bSelectorWeight.stateWeight
+        let bTotStateWeight:Int = b.styleWeight.selectorWeights.reduce(0) { bTotStateWeight,bSelectorWeight in
+            bTotStateWeight + bSelectorWeight.stateWeight
         }
         //print("bTotStateWeight: " + bTotStateWeight)
         return aTotStateWeight >= bTotStateWeight

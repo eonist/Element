@@ -13,11 +13,7 @@ class Container:Element{
     /**
      * New
      */
-    var layerPos:CGPoint?{
-        get{return self.layer?.position}
-        set{
-            Swift.print("setLayerPos: ")
-            self.layer?.position = CGPoint(0,newValue!.y)
-        }
+    func layerPos(_ val:CGFloat,_ dir:Dir){
+        self.layer?.position[dir] = val
     }
 }

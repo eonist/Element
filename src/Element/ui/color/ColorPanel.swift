@@ -12,10 +12,10 @@ class ColorPanel:Element,IColorPanel{
     static var hls:String = "HLS"
     static var hsv:String = "HSV"
     var color:NSColor?
-    var colorInput:ColorInput?
-    var spinner1:LeverSpinner?
-    var spinner2:LeverSpinner?
-    var spinner3:LeverSpinner?
+    var colorInput:ColorInput?//TODO: ⚠️️ make lazy
+    var spinner1:LeverSpinner?//TODO: ⚠️️ make lazy
+    var spinner2:LeverSpinner?//TODO: ⚠️️ make lazy
+    var spinner3:LeverSpinner?//TODO: ⚠️️ make lazy
     var itemHeight:CGFloat
     var colorTypeSelectGroup:SelectGroup?
     init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN, _ color:NSColor = NSColor.red, _ title:String = "Color", _ parent:IElement? = nil, _ id:String = "") {

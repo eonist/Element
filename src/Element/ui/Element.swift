@@ -14,18 +14,10 @@ class Element:InteractiveView2,IElement {
     var state:String = SkinStates.none
     var skin:ISkin?
     var parent:IElement?
-    var id:String?/*CSS selector id*/
+    var id:String?/*css selector id*/
     var isDisabled:Bool = false
     var isFocused:Bool = false
-    override var frame:CGRect {
-        get{
-            let x:CGFloat = super.frame.origin.x
-            let y:CGFloat = super.frame.origin.y
-            return CGRect(x,y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)
-        }set{
-            super.frame = newValue
-        }
-    }/*this allows you to store NaN values in the frame size props, is this still needed?*/
+    override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */
     init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent
         self.id = id

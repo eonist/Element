@@ -10,7 +10,7 @@ extension ElasticSlidableScrollable3{
         //Swift.print("👻🏂📜ElasticSlidableScrollable3.setProgress() dir: \(dir) value: \(value)")
         let sliderProgress = ElasticUtils.progress(value,contentSize[dir],maskSize[dir])
         slider(dir).setProgressValue(sliderProgress)//temp fix
-        disableAnim{contentContainer!.layer?.position[dir] = value}
+        disableAnim{contentContainer!.layer?.position[dir] = value}/*using layer.position is alot smoother than frame.origin*/
     }
     func scroll(_ event:NSEvent) {
         Swift.print("👻🏂📜 ElasticSlidableScrollable3.scroll()")

@@ -49,7 +49,7 @@ class FastList3:ContainerView3,FastListable3{
     func createItem(_ index:Int) -> Element{
         //Swift.print("⚠️️ FastList.createItem index: " + "\(index)")
         let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,"", false, contentContainer)
-        contentContainer!.addSubview(item)
+        contentContainer.addSubview(item)
         return item
     }
     override func onEvent(_ event:Event) {
@@ -62,7 +62,7 @@ class FastList3:ContainerView3,FastListable3{
      */
     func onListItemUpInside(_ buttonEvent:ButtonEvent) {
         Swift.print("FastList3.onListItemUpInside()")
-        let viewIndex:Int = contentContainer!.indexOf(buttonEvent.origin as! NSView)
+        let viewIndex:Int = contentContainer.indexOf(buttonEvent.origin as! NSView)
         List3Modifier.selectAt(self,viewIndex)//unSelect all other visibleItems
         selectedIdx = FastList3Parser.idx(self, buttonEvent.origin as! NSView) ?? selectedIdx
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future

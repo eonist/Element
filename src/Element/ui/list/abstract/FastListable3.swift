@@ -49,7 +49,7 @@ extension FastListable3{
             inActive += pool.splice2(start, diff.0!.length)
         }
         
-        if(contentContainer!.numSubViews > dp.count){//removes items if items dont fill the view anymore
+        if(contentContainer.numSubViews > dp.count){//removes items if items dont fill the view anymore
             //Swift.print("⚠️️ Clear out items ⚠️️")
             inActive.forEach{$0.item.removeFromSuperview()}
             inActive.removeAll()

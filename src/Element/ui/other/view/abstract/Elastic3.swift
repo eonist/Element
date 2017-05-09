@@ -9,9 +9,9 @@ extension Elastic3{
      * PARAM: value: contentContainer x/y value
      */
     func setProgress(_ value:CGFloat,_ dir:Dir){
-        disableAnim {contentContainer?.layer?.position[dir] = value}
+        disableAnim {contentContainer.layer?.position[dir] = value}
     }
     func setProgress(_ point:CGPoint){
-        disableAnim {contentContainer?.layer?.position = point}
+        disableAnim {contentContainer.layer?.position = point}
     }
 }

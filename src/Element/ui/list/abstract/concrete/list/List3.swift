@@ -35,7 +35,7 @@ class List3:ContainerView3,Listable3{
     }
     func createItem(_ dict:[String:String], _ i:Int) -> Element{
         let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,dict["title"]!, false, contentContainer)
-        contentContainer!.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+        contentContainer.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
         return item
     }
     override func getClassType() -> String {

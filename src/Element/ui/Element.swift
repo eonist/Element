@@ -31,7 +31,7 @@ class Element:InteractiveView2,IElement {
      * NOTE: This method was embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
      */
     func resolveSkin() {
-        self.skin = addSubView((SkinResolver.skin(self) as! Skin) as NSView) as? ISkin//swift 3 update, TODO: please make it simpler!
+        self.skin = addSubView((SkinResolver.skin(self) as! Skin) as NSView) as? ISkin// TODO:⚠️️ please make it simpler!
     }
     /**
      * NOTE: This is the function that we need to toggle between css style sheets and have them applied to all Element instances

@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 
 protocol Elastic3:Progressable3{
-    var moverGroup:MoverGroup? {get}
+    var moverGroup:MoverGroup? {get set}
 }
 extension Elastic3{
     /**

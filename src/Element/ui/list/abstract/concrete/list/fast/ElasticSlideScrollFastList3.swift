@@ -12,7 +12,7 @@ class ElasticSlideScrollFastList3:SlideFastList3,ElasticSlidableScrollableFastLi
         super.onEvent(event)
     }
     var moverGrp:MoverGroup {
-        let group = MoverGroup(self.setProgressValue,self.maskSize,self.contentSize)
+        var group = MoverGroup(self.setProgressValue,self.maskSize,self.contentSize)
         group.event = self.onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/
         return group
     }

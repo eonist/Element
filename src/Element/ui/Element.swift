@@ -28,14 +28,13 @@ class Element:InteractiveView2,IElement {
     }
     /**
      * Draws the graphics
-     * NOTE: This method was embedded in an extension so that class one can add functionality to Classes that cant extend Element (like NSButton)
      */
     func resolveSkin() {
-        self.skin = addSubView((SkinResolver.skin(self) as! Skin) as NSView) as? ISkin// TODO:⚠️️ please make it simpler!
+        self.skin = addSubView(SkinResolver.skin(self) as! Skin)
     }
     /**
      * NOTE: This is the function that we need to toggle between css style sheets and have them applied to all Element instances
-     * TODO: Explain the logic of havong this var in this class and also in the skin class, i think its because you need to access the skinstate before the skin is created or initiated in the element.
+     * TODO: ⚠️️ Explain the logic of having this var in this class and also in the skin class, I think its because you need to access the skinstate before the skin is created or initiated in the element.
      */
     func getSkinState() -> String {// :TODO: the skin should have this state not the element object!!!===???
         return state

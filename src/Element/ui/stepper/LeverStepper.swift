@@ -27,6 +27,11 @@ class LeverStepper:Element{
         self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
+    override func resolveSkin() {
+        super.resolveSkin()
+        _ = plusButton
+        _ = minusButton
+    }
     func onPlusButtonDown() {
         onMouseDownMouseY = plusButton.localPos().y
         onMouseDownValue = self.value

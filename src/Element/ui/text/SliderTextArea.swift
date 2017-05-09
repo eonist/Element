@@ -11,30 +11,33 @@ import Foundation
 class SliderTextArea:TextArea{
     let linesPerScroll:UInt = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
 	var scrollBarSize:CGFloat
-	var vSlider:VSlider?
-	var hSlider:HSlider?
+    lazy var vSlider:VSlider = {
+        self.vSliderInterval = Utils.vSliderinterval(self.text!.getTextField())
+        let vSlider = self.addSubView(VSlider(6/*_scrollBarSize*/,self.height,24,0,self))
+        let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text!.getTextField(), vSlider, self.linesPerScroll)
+        _ = vSliderThumbHeight
+        vSlider.setThumbHeightValue(45)
+        return vSlider
+        //vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
+    }()
+    lazy var hSlider:HSlider? = {
+        //hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
+        //hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
+        //let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+        //hSlider!.setThumbWidthValue(hSliderThumbWidth)
+        //hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
+        return nil
+    }()
 	var vSliderInterval:Int?
 	var hInterval:Int?
 	init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ scrollBarSize:CGFloat = 24, _ parent:IElement? = nil, _ id:String? = nil){
 		self.scrollBarSize = scrollBarSize
 		super.init(width,height,text,parent,id)
 	}
-	/**
-	 * // :TODO: Refactor this method
-	 */
 	override func resolveSkin() {
 		super.resolveSkin()
-		vSliderInterval = Utils.vSliderinterval(text!.getTextField())
-		vSlider = addSubView(VSlider(6/*_scrollBarSize*/,height,24,0,self))
-		let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
-        _ = vSliderThumbHeight
-		vSlider!.setThumbHeightValue(45)
-		//vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
-		//hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
-		//hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
-		//let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
-		//hSlider!.setThumbWidthValue(hSliderThumbWidth)
-		//hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
+		_ = vSlider
+        _ = hSlider
 	}
 	/**
 	 * Updates the sizes of the h and v sliders

@@ -39,7 +39,7 @@ private extension ScrollableUtils{//temp migration fix
         let val:CGFloat = ScrollableUtils.scrollTo(progress, containable.maskSize[dir], containable.contentSize[dir])
         disableAnim {
             let p:CGPoint = (containable.contentContainer as! Container).layerPos!
-            (containable.contentContainer as! Container).layerPos?[dir] = dir .hor ? CGPoint(val.x,p.y) : CGPoint(p.x,val.y)
+            (containable.contentContainer as! Container).layerPos = dir == .hor ? CGPoint(val,p.y) : CGPoint(p.x,val)
         }/*we offset the y position of the lableContainer*/
     }
 }

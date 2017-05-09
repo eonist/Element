@@ -6,11 +6,10 @@ import Foundation
 class ProgressIndicator:Element {
     var lines:[LineGraphic] = []
     var lineStyle:ILineStyle = LineStyle()
-    var animator:Animator?
+    var animator:Animator = LoopingAnimator(Animation.sharedInstance,Int.max,1,0,1,progress,Linear.ease)
     var revealProgress:CGFloat = 0
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
-        animator = LoopingAnimator(Animation.sharedInstance,Int.max,1,0,1,progress,Linear.ease)
     }
     override func resolveSkin() {
         skin = SkinResolver.skin(self)

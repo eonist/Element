@@ -68,11 +68,9 @@ class WeightedStyleAsserter {
      *
      */
     private static func elementCount(_ selectors:[ISelector])->Int{
-        var elementCount:Int = 0
-        (0..<selectors.count).indices.forEach{ i in
-            if((selectors[i] as ISelector).element != ""/*nil*/) {elementCount += 1}
+        return selectors.reduce(0){ elementCount,selector in
+            elementCount + (selector.element != "" ? 1 : 0)
         }
-        return elementCount
     }
     /**
      * Asserts that a "selector.stateWeight" in "a.styleWeight.selectorWeights" has a higher value than a "selector.stateWeight" in "b.styleWeight.selectorWeights"  (the style.weight.stateweight are equal)

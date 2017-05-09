@@ -19,8 +19,8 @@ class Element:InteractiveView2,IElement {
     var isFocused:Bool = false
     override var frame:CGRect {
         get{
-            let x:CGFloat = layer!.position.x
-            let y:CGFloat = layer!.position.y
+            let x:CGFloat = super.frame.origin.x
+            let y:CGFloat = super.frame.origin.y
             return CGRect(x,y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)
         }set{
             super.frame = newValue

@@ -41,8 +41,7 @@ extension Scrollable3{
     }
     func onScrollWheelChange(_ event:NSEvent){
         //Swift.print("Scrollable3.onScrollWheelChange()")
-        //let progress:CGFloat = SliderParser.progress(event.delta, maskSize, contentSize).y
-        let progressVal:CGPoint = SliderListUtils.progress(event.delta, interval, progress)
+        let progressVal:CGPoint = SliderListUtils.progress(event.delta, interval, progress)//let progress:CGFloat = SliderParser.progress(event.delta, maskSize, contentSize).y
         setProgress(progressVal)
     }
     func onInDirectScrollWheelChange(_ event:NSEvent){

@@ -11,9 +11,3 @@ class Container:Element{
         skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/   
     }
 }
-extension Container{
-    var layerPos:CGPoint?{
-        get{return super.layer?.position}
-        set{super.layer?.position = newValue!}
-    }
-}

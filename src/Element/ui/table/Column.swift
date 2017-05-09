@@ -11,6 +11,11 @@ class Column:Element{
         self.dataProvider = dataProvider
         super.init(width,height,parent,id)
     }
+    override func resolveSkin() {
+        super.resolveSkin()
+        _ = header
+        _ = list
+    }
     private func onHeaderCheck(_ event:CheckEvent){
         super.onEvent(CheckEvent(CheckEvent.check,event.isChecked,self))/*Clone the event and send it, we need the origin to be Column*/
     }

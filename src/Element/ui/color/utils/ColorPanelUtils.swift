@@ -40,55 +40,55 @@ class ColorPanelUtils {
         switch(colorType){
             case ColorPanel.rgb:
                 for rgbStepper in steppers {
-                    let stepper:LeverStepper = rgbStepper.stepper!
+                    let stepper:LeverStepper = rgbStepper.stepper
                     stepper.minVal = 0
                     stepper.maxVal = 255
                     stepper.increment = 1
                     stepper.decimals = 0
                     stepper.leverRange = 200
                 }
-                colorPanel.spinner1!.textInput!.text!.setText("Red:")
-                colorPanel.spinner2!.textInput!.text!.setText("Green:")
-                colorPanel.spinner3!.textInput!.text!.setText("Blue:")
+                colorPanel.spinner1!.textInput.text.setText("Red:")
+                colorPanel.spinner2!.textInput.text.setText("Green:")
+                colorPanel.spinner3!.textInput.text.setText("Blue:")
             case ColorPanel.hsb:
                 for hsbStepper in steppers {
-                    let stepper:LeverStepper = hsbStepper.stepper!
+                    let stepper:LeverStepper = hsbStepper.stepper
                     stepper.minVal = 0
                     stepper.maxVal = 100
                     stepper.increment = 1
                     stepper.decimals = 0
                     stepper.leverRange = 100
                 }
-                colorPanel.spinner1!.stepper!.maxVal = 360
+                colorPanel.spinner1!.stepper.maxVal = 360
                 colorPanel.spinner1!.maxVal = 360//temp fix
-                colorPanel.spinner1!.stepper!.leverRange = 200
-                colorPanel.spinner1!.textInput!.text!.setText("Hue: ")
-                colorPanel.spinner2!.textInput!.text!.setText("Saturate:")
-                colorPanel.spinner3!.textInput!.text!.setText("Brightness:")
+                colorPanel.spinner1!.stepper.leverRange = 200
+                colorPanel.spinner1!.textInput.text.setText("Hue: ")
+                colorPanel.spinner2!.textInput.text.setText("Saturate:")
+                colorPanel.spinner3!.textInput.text.setText("Brightness:")
             case ColorPanel.hls:
                 for hlsStepper in steppers {
-                    let stepper:LeverStepper = hlsStepper.stepper!
+                    let stepper:LeverStepper = hlsStepper.stepper
                     stepper.minVal = 0
                     stepper.maxVal = 240
                     stepper.increment = 1
                     stepper.decimals = 0
                     stepper.leverRange = 200
                 }
-                colorPanel.spinner1!.textInput!.text!.setText("Hue:");
-                colorPanel.spinner2!.textInput!.text!.setText("Lightness:");
-                colorPanel.spinner3!.textInput!.text!.setText("Saturation:");
+                colorPanel.spinner1!.textInput.text.setText("Hue:");
+                colorPanel.spinner2!.textInput.text.setText("Lightness:");
+                colorPanel.spinner3!.textInput.text.setText("Saturation:");
             case ColorPanel.hsv:
                 for hsvStepper in steppers {
-                    let stepper:LeverStepper = hsvStepper.stepper!
+                    let stepper:LeverStepper = hsvStepper.stepper
                     stepper.minVal = 0
                     stepper.maxVal = 240
                     stepper.increment = 1
                     stepper.decimals = 0
                     stepper.leverRange = 200
                 }
-                colorPanel.spinner1!.textInput!.text!.setText("Hue:");
-                colorPanel.spinner2!.textInput!.text!.setText("Saturation:");
-                colorPanel.spinner3!.textInput!.text!.setText("Value:");
+                colorPanel.spinner1!.textInput.text.setText("Hue:");
+                colorPanel.spinner2!.textInput.text.setText("Saturation:");
+                colorPanel.spinner3!.textInput.text.setText("Value:");
             default:
                 break;
         }

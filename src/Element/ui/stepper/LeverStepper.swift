@@ -15,8 +15,8 @@ class LeverStepper:Element{
     var leverHeight:CGFloat//TODO: Write a description about this value
     var leverRange:CGFloat
     var leftMouseDraggedEventListener:Any?
-    lazy var plusButton:Button = {self.addSubView(Button(self.height,self.height,self,"plus"))}()
-    lazy var minusButton:Button = {self.addSubView(Button(self.height,self.height,self, "minus"))}()
+     var plusButton:Button?
+     var minusButton:Button?
     init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
         self.value = value
         self.minVal = min
@@ -27,14 +27,19 @@ class LeverStepper:Element{
         self.leverRange = leverRange
         super.init(width, height, parent, id)
     }
+    override func resolveSkin() {
+        super.resolveSkin()
+        plusButton = {self.addSubView(Button(self.height,self.height,self,"plus"))}()
+        minusButton = {self.addSubView(Button(self.height,self.height,self, "minus"))}()
+    }
     func onPlusButtonDown() {
-        onMouseDownMouseY = plusButton.localPos().y
+        onMouseDownMouseY = plusButton!.localPos().y
         onMouseDownValue = self.value
         if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDragged], handler: self.onPlusButtonMove)}//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }
     func onMinusButtonDown() {
-        onMouseDownMouseY  = minusButton.localPos().y
+        onMouseDownMouseY  = minusButton!.localPos().y
         onMouseDownValue = value
         if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:self.onMinusButtonMove ) }//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
@@ -56,10 +61,10 @@ class LeverStepper:Element{
         }/*We remove a global mouse move event listener*/
     }
     func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
-        return onButtonMove(event,plusButton)
+        return onButtonMove(event,plusButton!)
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{
-         return onButtonMove(event,minusButton)
+         return onButtonMove(event,minusButton!)
     }
     func onButtonMove(_ event:NSEvent,_ button:Button)-> NSEvent?{
         var leaverPos:CGFloat = -button.localPos().y + onMouseDownMouseY

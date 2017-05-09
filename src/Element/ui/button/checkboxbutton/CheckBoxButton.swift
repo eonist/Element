@@ -22,7 +22,7 @@ class CheckBoxButton:Button,ICheckable,LableKind{
         _ = checkBox/*Init the UI*/
         _ = text/*Init the UI*/
     }
-    override func onEvent(_ event:Event) {//TODO: You could remove this method, as it doesnt add any functionality
+    override func onEvent(_ event:Event) {//TODO: You could remove this method, as it doesn't add any functionality
         super.onEvent(event)/*Forwards the event*/
     }
     func setChecked(_ isChecked:Bool) {

@@ -20,7 +20,7 @@ class Slider:Element{
         super.resolveSkin()
         //skin.isInteractive = false// :TODO: explain why in a comment
         //skin.useHandCursor = false;// :TODO: explain why in a comment
-        
+        _ = thumb
         setProgressValue(progress)// :TODO: explain why in a comment, because initially the thumb may be positioned wrongly  due to clear and float being none
     }
     /**

@@ -5,7 +5,7 @@ class ComboBoxModifier{
         let index:Int = comboBox.dataProvider!.index("property", property)!
         let title:String = comboBox.dataProvider!.getItemAt(index)!["title"]!
         comboBox.selectedIndex = index
-        comboBox.headerButton!.setTextValue(title)
+        comboBox.headerButton.setTextValue(title)
         
 	}
 	/**
@@ -15,6 +15,6 @@ class ComboBoxModifier{
 	static func select(_ comboBox:ComboBox,_ title:String) {
         let index:Int = comboBox.dataProvider!.getIndex(title)!
 		comboBox.selectedIndex = index
-		comboBox.headerButton!.setTextValue(title)
+		comboBox.headerButton.setTextValue(title)
 	}
 }

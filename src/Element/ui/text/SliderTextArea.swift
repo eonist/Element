@@ -12,9 +12,9 @@ class SliderTextArea:TextArea{
     let linesPerScroll:UInt = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
 	var scrollBarSize:CGFloat
     lazy var vSlider:VSlider = {
-        self.vSliderInterval = Utils.vSliderinterval(self.text!.getTextField())
+        self.vSliderInterval = Utils.vSliderinterval(self.text.getTextField())
         let vSlider = self.addSubView(VSlider(6/*_scrollBarSize*/,self.height,24,0,self))
-        let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text!.getTextField(), vSlider, self.linesPerScroll)
+        let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text.getTextField(), vSlider, self.linesPerScroll)
         _ = vSliderThumbHeight
         vSlider.setThumbHeightValue(45)
         return vSlider
@@ -44,12 +44,12 @@ class SliderTextArea:TextArea{
 	 * // :TODO: can be further refactored
 	 */
 	func updateScrollBarThumbSizes() {
-		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider!)
 		hSlider!.setThumbWidthValue(hSliderThumbWidth)
-		hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
-		let verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text!.getTextField(), vSlider!, linesPerScroll)
-		vSlider!.setThumbHeightValue(verticalThumbSize)
-		vSliderInterval = Utils.vSliderinterval(text!.getTextField())
+		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
+		let verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, linesPerScroll)
+		vSlider.setThumbHeightValue(verticalThumbSize)
+		vSliderInterval = Utils.vSliderinterval(text.getTextField())
 	}	
 	func onSliderChange(_ event:SliderEvent){
 		if(event.origin === vSlider) {
@@ -60,9 +60,9 @@ class SliderTextArea:TextArea{
 	}
 	func onMouseWheel(_ event:MouseEvent) {
 		let scrollAmount:CGFloat = 0//event.delta/vSliderInterval/*_scrollBar.interval*/;
-		var currentScroll:CGFloat = vSlider!.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
+		var currentScroll:CGFloat = vSlider.progress - scrollAmount/*the minus sign makes sure the scroll works like in OSX LION*/
 		currentScroll = NumberParser.minMax(currentScroll, 0, 1)
-		vSlider!.setProgressValue(currentScroll)
+		vSlider.setProgressValue(currentScroll)
 		//TextFieldModifier.vScrollTo(text.getTextField(), currentScroll) /*Sets the target item to correct y, according to the current scrollBar progress*/
 	}	
 	override func onEvent(_ event:Event){
@@ -85,7 +85,7 @@ class SliderTextArea:TextArea{
 	override func setSize(_ width:CGFloat, _ height:CGFloat) {
 		super.setSize(width, height)
 		hSlider!.setSize(width, scrollBarSize)
-		vSlider!.setSize(scrollBarSize, height)
+		vSlider.setSize(scrollBarSize, height)
 		updateScrollBarThumbSizes()
 	}
 	override func setTextValue(_ text:String) {

@@ -1,10 +1,9 @@
 import Cocoa
 @testable import Utils
 
-
 protocol ElasticSlidableScrollableFastListable3:Slidable3,ElasticScrollableFastListable3 {}
 extension ElasticSlidableScrollableFastListable3{
-    func setProgressValue(_ value:CGFloat, _ dir:Dir) {
+    func setProgressValue(_ value:CGFloat, _ dir:Dir) {/*Gets calls from MoverGroup*/
         //Swift.print("ElasticSlidableScrollableFastListable3.setProgressValue(val,dir)")
         setProgressVal(value, dir)//forward
         let sliderProgress = ElasticUtils.progress(value,contentSize[dir],maskSize[dir])//doing some double calculations here

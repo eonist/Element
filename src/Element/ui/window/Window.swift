@@ -1,7 +1,7 @@
 import Cocoa
 
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
-    var view:NSView?
+    lazy var view:NSView = {WindowView(self.frame.width,self.frame.height)}()/*Sets the mainview of the window*/
     override var canBecomeMain:Bool{return true}
     override var canBecomeKey:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
     override var acceptsFirstResponder:Bool{return true}
@@ -35,7 +35,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * We use the resolveSkin method since this is the common way to implement functionality in this framework
      */
     func resolveSkin(){
-        self.contentView = WindowView(frame.width,frame.height)/*Sets the mainview of the window*/
+        _ = contentView
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc

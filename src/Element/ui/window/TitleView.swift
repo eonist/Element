@@ -4,7 +4,7 @@ import Cocoa
  * NOTE: the titleView has a working model for centering things in css
  */
 class TitleView:CustomView{
-    var textArea:TextArea?
+    lazy var textArea:TextArea = {self.addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))}()
     var leftMouseDraggedEventListener:Any?
     var mouseDownPos:CGPoint?/*Store the mouseDown offset, when moving the window*/
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = "") {
@@ -15,8 +15,7 @@ class TitleView:CustomView{
     }
     override func createTitleBar() {
         super.createTitleBar()
-        textArea = addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))
-        textArea!.text?.isInteractive = false/*Disable interactivity on the text*/
+        textArea.text.isInteractive = false/*Disable interactivity on the text*/
     }
     override func mouseDown(_ event:MouseEvent) {
         if(event.immediate === textArea){

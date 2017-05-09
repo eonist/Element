@@ -17,7 +17,6 @@ class CustomView:WindowView{
      * Adds close button, min, max
      */
     func createTitleBar(){
-        _ = section
         _ = closeButton
         _ = minimizeButton
         _ = maximizeButton

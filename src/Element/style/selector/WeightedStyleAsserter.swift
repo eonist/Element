@@ -65,7 +65,7 @@ class WeightedStyleAsserter {
         return priority
     }
     /**
-     *
+     * Returns num of elements that are not empty
      */
     private static func elementCount(_ selectors:[ISelector])->Int{
         return selectors.reduce(0){ elementCount,selector in

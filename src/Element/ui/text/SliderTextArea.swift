@@ -5,7 +5,7 @@ import Foundation
  * NOTE: it seems difficult to align the HSlider thumb in a relative but correct way, since offsetting the HSlider it self is difficult when thumb is positioned by absolute values
  * TODO: ⚠️️ could possible use a setHtmlText function??!?
  * TODO: ⚠️️ you may need to access gestures to get hold of horzontal mouse delta, when you want to use gestures to scroll horizontally
- * TODO: ⚠️️ the horizontal scroller isnt thourghouly testes. Make sure you set wordwrap to false to test this, and that the input text has break tags \n or br tags
+ * TODO: ⚠️️ the horizontal scroller isn't thourghouly testes. Make sure you set wordwrap to false to test this, and that the input text has break tags \n or br tags
  * TODO: ⚠️️ Impliment a failsafe so that the slider.thumb doesnt get smaller than its width, do the same for both sliders
  */
 class SliderTextArea:TextArea{

@@ -6,7 +6,7 @@ import Foundation
 class ProgressIndicator:Element {
     var lines:[LineGraphic] = []
     var lineStyle:ILineStyle = LineStyle()
-    var animator:Animator = LoopingAnimator(Animation.sharedInstance,Int.max,1,0,1,progress,Linear.ease)
+    lazy var animator:Animator = {LoopingAnimator(Animation.sharedInstance,Int.max,1,0,1,self.progress,Linear.ease)}()
     var revealProgress:CGFloat = 0
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
@@ -94,12 +94,12 @@ class ProgressIndicator:Element {
         //assert if animator exist else create animator w/ repeatCount : 0 and 0 to 1 sec w/ progress as the call back method
         //start anim
         //lineStyle.color = lineStyle.color.alpha(0.5)
-        if(animator != nil){animator!.stop()}//stop any previous running animation
-        animator!.start()/*start animator*/
+        animator.stop()//stop any previous running animation
+        animator.start()/*start animator*/
     }
     func stop(){
         //Swift.print("❤️️ ProgressIndicator.stop")
-        animator!.stop()/*stop animator*/
+        animator.stop()/*stop animator*/
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

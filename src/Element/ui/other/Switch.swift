@@ -5,13 +5,13 @@ import Cocoa
  * Layer 0: Background is always green and has a grey stroke
  * Layer 1: blends from white to grey, and animates like an iris dilating.
  * Layer 2: Is the thumb  w/ Dropshadow, White fill and stroke blends from grey to green
- * TODO: a problem is that you set the skinStyle in two animators that have different durations
+ * TODO: warn   a problem is that you set the skinStyle in two animators that have different durations
  * 1. a solution is to be able to directly set style to skin layers
  * 2. investigate if this is possible and if not possibly use temp variables
  * 3. or use 3 different elements to get things working
  */
 class Switch:SwitchSlider,ICheckable{
-    //var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
+    var bgColorAnimator:Animator?/*layer 1: grey to white anim*/
     var bgIrisAnimator:Animator?/*layer 1: dilate iris animation*/
     var thumbWidthAnimator:Animator?/*Layer 2: expands and contracts the width of the thumb*/
     var thumbXAnimator:Animator?/*Layer 2: moves the thumb in the x-axis*/

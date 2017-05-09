@@ -54,6 +54,9 @@ extension IElement {
      */
     var layerPos:CGPoint?{
         get{return self.layer?.position}
-        set{self.layer?.position = newValue!}
+        set{
+            Swift.print("setLayerPos: ")
+            self.layer?.position = newValue!
+        }
     }
 }

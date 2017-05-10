@@ -185,20 +185,20 @@ private class Utils{
      * TODO: ⚠️️ add support for all Written Color. find list on w3c
      */
     static func gradient(_ properties:[String])->IGradient {
-        let gradient:Gradient = properties.enumerated().reduce(Gradient()) {
-            let i:Int = $1.offset
-            let property:String = $1.element
+        let gradient:Gradient = properties.enumerated().reduce(Gradient()) { gradient, val in
+            let i:Int = val.offset
+            let property:String = val.element
             let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
-            return matches.reduce($0) { result,match in //for match:NSTextCheckingResult in
+            return matches.reduce(gradient) { grad,match in //for match:NSTextCheckingResult in
                 let color:String = match.value(property,1)
                 let alpha:String = match.value(property, 2)
                 let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat
-                result.colors += [CGColorParser.cgColor(StringParser.color(color),alphaVal)]//append color
+                grad.colors += [CGColorParser.cgColor(StringParser.color(color),alphaVal)]//append color
                 let ratio:String = match.value(property,3)
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (i.double / (properties.count.double-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                result.locations += [ratioValue.cgFloat]/*append ratioValue*/
-                return result
+                grad.locations += [ratioValue.cgFloat]/*append ratioValue*/
+                return grad
             }
             //return $0
         }

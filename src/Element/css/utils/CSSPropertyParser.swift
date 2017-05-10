@@ -189,17 +189,18 @@ private class Utils{
             let i:Int = $1.offset
             let property:String = $1.element
             let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
-            for match:NSTextCheckingResult in matches {
+            return matches.reduce($0) { result,match in //for match:NSTextCheckingResult in
                 let color:String = match.value(property,1)
                 let alpha:String = match.value(property, 2)
                 let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat
-                $0.colors += [CGColorParser.cgColor(StringParser.color(color),alphaVal)]//append color
+                result.colors += [CGColorParser.cgColor(StringParser.color(color),alphaVal)]//append color
                 let ratio:String = match.value(property,3)
                 var ratioValue:Double = Utils.ratio(ratio)
                 if(ratioValue.isNaN) { ratioValue = (i.double / (properties.count.double-1.0)) /** 255.0*/ }/*if there is no ratio then set the ratio to its natural progress value and then multiply by 255 to get valid ratio values*/
-                $0.locations += [ratioValue.cgFloat]/*append ratioValue*/
+                result.locations += [ratioValue.cgFloat]/*append ratioValue*/
+                return result
             }
-            return $0
+            //return $0
         }
         return gradient
     }

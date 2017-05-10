@@ -42,7 +42,7 @@ extension StyleManager{
      */
     static func addStyle(_ styles:[IStyle]){
         if isHashingStyles {
-            styles.lazy.filter{$0.selectors.count > 0}.map{StyleManagerUtils.hashStyle($0)}
+            styles.lazy.filter{$0.selectors.count > 0}.forEach{StyleManagerUtils.hashStyle($0)}
         }
         self.styles += styles
     }

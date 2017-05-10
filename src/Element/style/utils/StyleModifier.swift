@@ -34,13 +34,13 @@ class StyleModifier {
             }
         }
     }
+    private static var mergeCondition:(IStyleProperty,IStyleProperty) -> Bool = {$0.name == $1.name && $0.depth == $1.depth}
     /**
      * Merges PARAM: a with PARAM: b (does not override, but only prepends styleProperties that are not present in style PARAM: a)
      * NOTE: the prepend method is used because the styleProps that has priority should come later in the array)
      * TODO: ⚠️️ You can speed up this method by looping with a  better algo. don't check already checked b's etc
      * TODO: ⚠️️ Maybe use map or filter to speed this up?
      */
-    private static var mergeCondition:(IStyleProperty,IStyleProperty) -> Bool = {$0.name == $1.name && $0.depth == $1.depth}
     static func merge(_ a:inout IStyle,_ b:IStyle){
         b.styleProperties.forEach { stylePropB in
             let hasMatch:Bool = a.styleProperties.first(stylePropB, mergeCondition) != nil

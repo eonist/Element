@@ -6,14 +6,16 @@ class StyleCollectionModifier {
      */
     static func merge(_ a:inout IStyleCollection,_ b:IStyleCollection) {
         for styleB:IStyle in b.styles {
-            var hasStyle:Bool = false
-            for var styleA:IStyle in a.styles {
-                if(styleB.name == styleA.name){//TODO: untested may not work
-                    hasStyle = true
-                    StyleModifier.merge(&styleA, styleB)
-                    break/*breaks out of the for-loop*/
-                }
-            }
+            var hasStyle:Bool = a.styles.first(where: { styleA in
+                styleB.name == styleA.name
+            }) != nil
+            /*for var styleA:IStyle in */
+            
+               
+            
+            
+            
+            
             if(!hasStyle) {a.addStyle(styleB)}
         }
     }

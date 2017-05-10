@@ -11,18 +11,19 @@ class CSSFileParser {
      * NOTE: alternative method name: cssStringByURL
      * PARAM: url The url to load the css file from (must include the path + file-name + file-extension)
      * PARAM: cssString the recursive string passed down the hierarchy
+     * TODO: ⚠️️ Make an if clause that makes sure it doesn't import it self like path+import != url
      */
     static func cssString(_ url:String)->String {
         StyleManager.cssFileURLS.append(url)//<--new
-        var string:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
-        string = RegExpModifier.removeComments(string)
+        let content:String = FileParser.content(url.tildePath)!//TODO: you need to make a tilePath assert
+        let string:String = RegExpModifier.removeComments(content)
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)
         let importStrings:[String] = CSSFileParser.importStrings(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
-        var cssString:String = ""
-        importStrings.forEach {cssString += CSSFileParser.cssString(path + $0)}/*<--imports css from other css files*/// :TODO: make an if clause that makes sure it doesn't import it self like path+import != url
-        cssString += importsAndStyles.style/*<--Add the styles in the current css file*/
-        return cssString
+        let cssString:String = importStrings.reduce(""){ cssString, importString in
+            cssString + CSSFileParser.cssString(path + importString)/*<--imports css from other css files*/
+        }
+        return cssString + importsAndStyles.style/*<--Add the styles in the current css file*/
     }
     /**
      * Returns import urls in an array (only the path part)

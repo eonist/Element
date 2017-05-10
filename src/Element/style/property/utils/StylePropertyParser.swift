@@ -16,15 +16,14 @@ class StylePropertyParser{
      * Returns an IFillStyle instance based on the Style attached to the skin
      */
     static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
-        if let gradient = value(skin,CSSConstants.fill,depth) as? IGradient {
+        let val = value(skin,CSSConstants.fill,depth)
+        
+        if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
         }else{
             return colorFillStyle(skin,depth)
         }
         
-        
-        
-        return
         
     }
     /**
@@ -125,7 +124,7 @@ class StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    static func gradientFillStyle(_ gradient:Gradient) -> GradientFillStyle {
+    static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
         return GradientFillStyle(gradient,NSColor.clear)
     }
     /**

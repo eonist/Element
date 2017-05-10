@@ -6,8 +6,8 @@ class StyleCollectionParser {
      * Returns an array of style names
      */
     static func styleNames(_ styleCollection:IStyleCollection) -> [String]{
-        return (0..<styleCollection.styles.count).indices.map{ i in
-            return styleCollection.styles[i].name
+        return styleCollection.styles.map{ style in
+            return style.name
         }
     }
     /**

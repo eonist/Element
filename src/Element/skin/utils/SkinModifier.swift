@@ -133,12 +133,7 @@ private class Utils{
      *  PARAM: right the x value to align against
      */
     static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, _ right:CGFloat){
-        /*if(skin.element!.id == "box1"){
-         Swift.print("floatRight right: " + "\(right)")
-         Swift.print("SkinParser.totalWidth(skin): " + "\(SkinParser.totalWidth(skin))")
-         }
-         */
-        var right = right//swift 3 update
+        var right = right
         if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = rightSiblingSkin!.element!.x}/*a previous element-sibling floats right*/
         skin.element!.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
     }

@@ -29,7 +29,7 @@ class CSSFileParser {
      * Returns import urls in an array (only the path part)
      * NOTE: Supports both syntax styles: @import url("style.css") and @import "style.css"
      * NOTE: this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
-     * TODO: this can probably be written a little better
+     * TODO: ⚠️️ this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     static func importStrings(_ string:String)->[String]{
@@ -44,15 +44,11 @@ class CSSFileParser {
      */
     static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         let matches = cssString.matches(styleImportSeperationPattern)
-         let result:(imports:String,style:String) = ("","")
-        
-        
-        let result: = matches.reduce() { result,match in
-           
-            result.0 = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
-            result.1 = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
-        }
-        return result
+        if let match = matches[safe:0] {
+            let imports:String = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
+            let style:String = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
+            return (imports,style)
+        };return ("","")/*else*/
     }
 }
 extension CSSFileParser{

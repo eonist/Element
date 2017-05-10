@@ -6,9 +6,8 @@ class StyleCollectionModifier {
      */
     static func merge(_ a:inout IStyleCollection,_ b:IStyleCollection) {
         b.styles.forEach { styleB in
-            let hasStyle:Bool = a.styles.first(where:{styleA in styleA.name == styleB.name}) != nil
-            if hasStyle{
-                StyleModifier.merge(&styleA, styleB)
+            if var match = a.styles.first(where:{styleA in styleA.name == styleB.name}){
+                StyleModifier.merge(&match, styleB)
             }else{
                 a.addStyle(styleB)
             }

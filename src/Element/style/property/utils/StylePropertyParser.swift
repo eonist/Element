@@ -16,8 +16,10 @@ class StylePropertyParser{
      * Returns an IFillStyle instance based on the Style attached to the skin
      */
     static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
-        if let value = value(skin,CSSConstants.fill,depth) as? IGradient {
-            gradientFillStyle(skin,depth) : colorFillStyle(skin,depth)
+        if let gradient = value(skin,CSSConstants.fill,depth) as? IGradient {
+            return gradientFillStyle(gradient)
+        }else{
+            return colorFillStyle(skin,depth)
         }
         
         
@@ -123,11 +125,8 @@ class StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    static func gradientFillStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientFillStyle {
-        if let newGradient:Gradient = value(skin, CSSConstants.fill, depth) as? Gradient {/*IGradient*///GradientParser.clone()
-            return GradientFillStyle(newGradient,NSColor.clear)
-        }
-        fatalError("gradient type not supported")
+    static func gradientFillStyle(_ gradient:Gradient) -> GradientFillStyle {
+        return GradientFillStyle(gradient,NSColor.clear)
     }
     /**
      * Returns a GradientLineStyle

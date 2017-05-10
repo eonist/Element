@@ -24,8 +24,8 @@ class CSSPropertyParser {
      */
     static func property(_ string:String) -> Any{
         switch(true) {
-            case StringAsserter.digit(string):/*Swift.print("isDigit");*/return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
-            case StringAsserter.metric(string):/*Swift.print("isMetric");*/return string//ems|%TODO: // should retirn a new type named EMS()
+            case StringAsserter.digit(string):return StringParser.digit(string)/*40 or -1 or 1.002 or 12px or 20% or .02px*/
+            case StringAsserter.metric(string):return string//ems|%TODO: // should retirn a new type named EMS()
             case StringAsserter.boolean(string):return string.bool/*true or false*/
             case StringAsserter.color(string):return string.nsColor/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.nsColor(string)/*green red etc*/

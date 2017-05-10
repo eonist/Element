@@ -18,7 +18,7 @@ extension IStyle{
      * Add styleProperty
      */
     mutating func addStyleProperty(_ styleProperty:IStyleProperty) {
-        styleProperties.append(styleProperty)//TODO:this method is more elaborate, it checks if the item is original, if its not throw error, implement this when its time
+        styleProperties.append(styleProperty)//TODO: ⚠️️ this method was more elaborate, it checks if the item is original, if its not throw error, implement this when its time
     }
     /**
      * Adds styleProperties

@@ -99,11 +99,12 @@ private class Utils{
      *
      */
     static func clearNone(_ skin:ISkin, _ floatType:String?, _ leftSibling:ISkin?,_ rightSibling:ISkin?, _ top:CGFloat){
-        var top = top
-        if(floatType == CSSConstants.left && leftSibling != nil) { top = leftSibling!.element!.y }
-        else if(floatType == CSSConstants.right && rightSibling != nil) { top = rightSibling!.element!.y}
-        else if(floatType == CSSConstants.none) { top = skin.element!.y}/*0*/
-        skin.element!.y = top
+        skin.element!.y = {
+            if(floatType == CSSConstants.left && leftSibling != nil) { return leftSibling!.element!.y }
+            else if(floatType == CSSConstants.right && rightSibling != nil) { return rightSibling!.element!.y}
+            else if(floatType == CSSConstants.none) { return skin.element!.y}
+            return top
+        }()
     }
     /**
      * Positions PARAM: skin by way of clearing it left & right (both)
@@ -121,8 +122,7 @@ private class Utils{
      *  PARAM: left the x value to align against
      */
     static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  _ left:CGFloat){
-        //Swift.print("SkinModifier.floatLeft: " )
-        var left = left//swift 3 update
+        var left = left
         if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = leftSiblingSkin!.element!.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
         skin.element!.x = left/*Sets the position of the skin.element*/
     }

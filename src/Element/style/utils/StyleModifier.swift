@@ -22,8 +22,8 @@ class StyleModifier {
     /**
      * Combines PARAM: a and PARAM: b
      * NOTE: if similar styleProperties are found PARAM: b takes precedence
-     * TODO: you can speed this method up by looping with a  better algo. dont check already checked b's etc
-     * TODO: maybe use map or filter to speed this up?
+     * TODO: ⚠️️ You can speed this method up by looping with a  better algo. dont check already checked b's etc
+     * TODO: ⚠️️ Maybe use map or filter to speed this up?
      */
     static func combine(_ a:inout IStyle,_ b:IStyle){
         b.styleProperties.forEach{ stylePropB in
@@ -37,15 +37,10 @@ class StyleModifier {
     /**
      * Merges PARAM: a with PARAM: b (does not override, but only prepends styleProperties that are not present in style PARAM: a)
      * NOTE: the prepend method is used because the styleProps that has priority should come later in the array)
-     * TODO: you can speed up this method by looping with a  better algo. don't check already checked b's etc
-     * TODO: maybe use map or filter to speed this up?
+     * TODO: ⚠️️ You can speed up this method by looping with a  better algo. don't check already checked b's etc
+     * TODO: ⚠️️ Maybe use map or filter to speed this up?
      */
     static func merge(_ a:inout IStyle,_ b:IStyle){
-        /*Swift.print("-----start---")
-        StyleParser.describe(a)
-        Swift.print("--------")
-        StyleParser.describe(b)
-        Swift.print("----end----")*/
         b.styleProperties.forEach { stylePropB in
             let condition:(IStyleProperty,IStyleProperty) -> Bool = {$0.name == $1.name && $0.depth == $1.depth}
             let hasMatch:Bool = a.styleProperties.first(stylePropB, condition) != nil

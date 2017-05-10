@@ -13,17 +13,7 @@ class SkinParser {
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
         return margin.top + border.top + padding.top + height(skin) + padding.bottom + border.bottom + margin.bottom
-    }
-    /**
-     * TODO: I think this is the same as totalHeight now, so remove it, its not. see the height variable
-     */
-    static func totalHeight2(_ skin:ISkin)->CGFloat {/*beta*/
-        let margin:Margin = self.margin(skin)
-        let border:Border = self.border(skin)
-        let padding:Padding = self.padding(skin)
-        let height:CGFloat = StylePropertyParser.height(skin)!
-        return margin.top + border.top + padding.top + height + padding.bottom + border.bottom + margin.bottom
-    }
+     }
     /**
      * Returns width
      */
@@ -39,7 +29,7 @@ class SkinParser {
     /**
      * Returns the position when margin and padding is taken into account
      */
-    static func relativePosition(_ skin:ISkin/*<--recently hanged from Skin to ISKin*/)->CGPoint {
+    static func relativePosition(_ skin:ISkin)->CGPoint {
         let margin:Margin = self.margin(skin)
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)

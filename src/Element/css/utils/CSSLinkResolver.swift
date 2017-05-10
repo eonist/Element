@@ -21,16 +21,14 @@ class CSSLinkResolver {
      * EXAMPLE: resolveLinks("CustomButton{fill:yellow;} CustomButton:down{fill:green;}")//This is the log if you log the name and values: Name: fill, Value: yellow, Name: fill,Value: green
      */
     static func resolveLinks(_ string:String)->String{
-        var string = string
         let matches = RegExp.matches(string, linkPropertyPattern)
         return matches.reversed().reduce(string){ string,match in
             let name = match.value(string, CSSElementType.name.rawValue)
             let value = match.value(string, CSSElementType.value.rawValue)
             let replacementString:String = Utils.replaceLinks(value,name,string)
             let range:NSRange = match.rangeAt(2)//the range of the value
-            string = (string as NSString).replacingCharacters(in: range, with: replacementString)
+            return (string as NSString).replacingCharacters(in: range, with: replacementString)
         }
-        return string
     }
 }
 private class Utils {

@@ -42,7 +42,7 @@ extension StyleManager{
      */
     static func addStyle(_ styles:[IStyle]){
         if(isHashingStyles){
-            styles.forEach{ style in
+            styles.filter { style in
                 if(style.selectors.count > 0){
                     StyleManagerUtils.hashStyle(style)
                 }//swift 3 update, now checks .count > 0

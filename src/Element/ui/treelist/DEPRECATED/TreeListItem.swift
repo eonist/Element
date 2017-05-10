@@ -22,14 +22,15 @@ class TreeListItem:SelectCheckBoxButton,ITreeListItem{//this class doesnt need a
         if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}/*this listens to all treeListItem decendants*/
     }
     override func getHeight() -> CGFloat {
-        var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
-        if(getChecked()) {
-            itemContainer!.subviews.forEach{ view in
-                height += SkinParser.totalHeight((view as! IElement).skin!)
-            }
-            //Swift.print("extraHeight: " + "\(extraHeight)")
-        }
-        return height
+        /*var height:CGFloat = SkinParser.totalHeight2(skin!)/*<--if we use totalHeight here it creates an infinite call loop*/
+         if(getChecked()) {
+         itemContainer!.subviews.forEach{ view in
+         height += SkinParser.totalHeight((view as! IElement).skin!)
+         }
+         //Swift.print("extraHeight: " + "\(extraHeight)")
+         }
+         return height*/
+        fatalError("SkinParser.totalHeight2 was removed")
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat){
         super.setSize(width,height)

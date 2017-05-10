@@ -1,9 +1,11 @@
 import Foundation
-
-struct StyleProperty:IStyleProperty {//TODO: ⚠️️ this definitly needs to be converted to a struct
+/**
+ * Depth should really be UInt, but since apple doesnt use/like UInt and the support isn't that great we use Int
+ */
+struct StyleProperty:IStyleProperty {
     var name:String
     var value:Any
-    var depth:Int/*Depth should really be UInt, but since apple doesnt use/like UInt and the support isn't that great we use Int*/
+    var depth:Int
     init(_ name:String,_ value:Any,_ depth:Int = 0){
         self.name = name
         self.value = value

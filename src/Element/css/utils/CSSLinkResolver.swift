@@ -45,7 +45,9 @@ private class Utils {
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
         var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
         
-        let result:(Int,String)
+        let result:(difference:Int,string:String) = matches.reduce((0,string)){
+            
+        }
         
         for match:NSTextCheckingResult in matches {/*Loops through the pattern*/
             if(match.numberOfRanges > 0){/*match = the link name>*/

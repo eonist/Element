@@ -46,7 +46,7 @@ extension StyleManager{
                 if($0.selectors.count > 0){StyleManagerUtils.hashStyle($0)}//swift 3 update, now checks .count > 0
             }
         }
-        self.styles += styles/*<- concats*/
+        self.styles += styles/*<-- Concats*/
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)

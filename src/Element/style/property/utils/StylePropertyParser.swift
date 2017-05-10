@@ -20,7 +20,8 @@ class StylePropertyParser{
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
         }else{
-            return colorFillStyle(val)
+            let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
+            return colorFillStyle(val,alpha)
         }
     }
     /**
@@ -34,7 +35,7 @@ class StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      * TODO: ⚠️️ Refactor this method
      */
-    private static func colorFillStyle(_ colorValue:Any?)->IFillStyle {
+    private static func colorFillStyle(_ colorValue:Any?,_ alpha:Any?)->IFillStyle {
         var nsColor:NSColor?
         if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
             nsColor = colorValue
@@ -53,7 +54,6 @@ class StylePropertyParser{
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")
         }
-        let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         if let nsCol = nsColor{
             nsColor = nsCol.alpha(alphaValue)
@@ -67,7 +67,7 @@ class StylePropertyParser{
      * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+    private static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
         let colorValue:NSColor? = color(skin, CSSConstants.line,depth)
@@ -78,7 +78,7 @@ class StylePropertyParser{
     /**
      * NOTE: makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
+    private static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
         return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
     }
@@ -120,7 +120,7 @@ class StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
+    private static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
         return GradientFillStyle(gradient,NSColor.clear)
     }
     /**
@@ -128,7 +128,7 @@ class StylePropertyParser{
      * TODO: Does this work? where is the creation of line-thickness etc
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
+    private static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         guard let gradient = value(skin, CSSConstants.line,depth) as? IGradient else {return nil}//<--temp fix
         //gradient.rotation *= ㎭
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
@@ -164,32 +164,7 @@ class StylePropertyParser{
         }
         return textFormat
     }
-    /**
-     * NOTE: this is really a modifier method
-     * TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
-     */
-    static func textField(_ skin:TextSkin) {
-        for textFieldKey : String in TextFieldConstants.textFieldPropertyNames {
-            let value:Any? = StylePropertyParser.value(skin,textFieldKey)
-            if(value != nil) {
-                if(StringAsserter.metric(value as! String)){
-                    //TODO: You may need to set one of the inner groups to be non-catchable
-                    let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
-                    let stringValue:String = "\(value)"//swift 3 update
-                    let matches = stringValue.matches(pattern)
-                    for match:NSTextCheckingResult in matches {
-                        var value:Any = match.value(stringValue,1)/*Capturing group 1*/
-                        let suffix:String = match.value(stringValue,2)/*Capturing group 2*/
-                        if(suffix == CSSConstants.ems) {value = "\(value)".cgFloat * CSSConstants.emsFontSize }
-                    }
-                }
-                //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently
-                fatalError("Not implemented yet")
-                //skin.textField[textFieldKey] = value
-            }
-        }
-        fatalError("out of order")
-    }
+    
     /**
      * Returns Offset
      * TODO: Merge ver/hor Offset into this one like you did with cornerRadius
@@ -336,3 +311,31 @@ extension StylePropertyParser{
         return "\(value(skin, propertyName,depth))"//swift 3 update
     }
 }
+
+
+/**
+ * NOTE: this is really a modifier method
+ * TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
+ */
+/*static func textField(_ skin:TextSkin) {
+    for textFieldKey:String in TextFieldConstants.textFieldPropertyNames {
+        let value:Any? = StylePropertyParser.value(skin,textFieldKey)
+        if(value != nil) {
+            if(StringAsserter.metric(value as! String)){
+                //TODO: You may need to set one of the inner groups to be non-catchable
+                let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+                let stringValue:String = "\(value)"//swift 3 update
+                let matches = stringValue.matches(pattern)
+                for match:NSTextCheckingResult in matches {
+                    var value:Any = match.value(stringValue,1)/*Capturing group 1*/
+                    let suffix:String = match.value(stringValue,2)/*Capturing group 2*/
+                    if(suffix == CSSConstants.ems) {value = "\(value)".cgFloat * CSSConstants.emsFontSize }
+                }
+            }
+            //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently
+            fatalError("Not implemented yet")
+            //skin.textField[textFieldKey] = value
+        }
+    }
+    fatalError("out of order")
+}*/

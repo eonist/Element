@@ -44,6 +44,9 @@ class CSSFileParser {
      */
     static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
         let matches = cssString.matches(styleImportSeperationPattern)
+         let result:(imports:String,style:String) = ("","")
+        
+        
         let result: = matches.reduce() { result,match in
            
             result.0 = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1

@@ -4,6 +4,12 @@ import Cocoa
  * NOTE: We query with skin because we need to access element in the metrics method
  */
 class StylePropertyParser{
+    
+    //Continue fixing this class
+        //privatise some methods in an Utils class
+        //make guards
+        //if lets etc
+    
     /**
      * Returns a property from PARAM: skin and PARAM: property
      * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
@@ -144,7 +150,7 @@ class StylePropertyParser{
             //if(textFormatKey == "size") print("size: "+value+" "+(value is String))
             if(value != nil) {
                 if(StringAsserter.metric("\(value)")){//swift 3 update
-                    let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+                    let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//TODO: ⚠️️ move patern to const
                     let stringValue:String = "\(value)"//swift 3 update
                     let matches = stringValue.matches(pattern)
                     for match:NSTextCheckingResult in matches {

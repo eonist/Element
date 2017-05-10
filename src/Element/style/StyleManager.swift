@@ -71,12 +71,12 @@ extension StyleManager{
                 let cssString:String = CSSLinkResolver.resolveLinks(cssFiles[url]!)
                 let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
                 removeStyle(styles)/*if url exists then remove the styles that it represents*/
-            }else{/*if the url wasn't in the dictionary, then add it*/
+            }else{/*If the url wasn't in the dictionary, then add it*/
                 cssFiles[url] = cssString//<--I'm not sure how this works, but it works
             }
             addStyle(cssString)
         }else{/*not live*/
-            /*1. assert if the styles.xml exists and if it has content*/
+            /*1. Assert if the styles.xml exists and if it has content*/
             let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
             Swift.print("xmlExists: " + "\(stylesXMLExists)")
             let xml:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)//this should not be hardwired like this. use resource files or alike
@@ -89,7 +89,7 @@ extension StyleManager{
             /*if true then: read the styles from the xml*/
             if(hasURLBeenCached && isUpToDate){
                 StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
-            }else{/*else read and parse styles from the .css files and write a new cache to styles.xml*/
+            }else{/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
                 let startTime = NSDate()
                 let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/
                 addStyle(cssString)

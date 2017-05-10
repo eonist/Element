@@ -5,7 +5,7 @@ import Cocoa
  */
 class StylePropertyParser{
     
-    //Continue fixing this class
+    //Continue fixing this class 🏀
         //privatise some methods in an Utils class
         //make guards
         //if lets etc
@@ -142,6 +142,7 @@ class StylePropertyParser{
     }
     /**
      * Returns TextFormat
+     * TODO: ⚠️️ Make functional 🤖
      */
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
@@ -170,7 +171,6 @@ class StylePropertyParser{
         }
         return textFormat
     }
-    
     /**
      * Returns Offset
      * TODO: Merge ver/hor Offset into this one like you did with cornerRadius
@@ -179,7 +179,7 @@ class StylePropertyParser{
     static func offset(_ skin:ISkin,_ depth:Int = 0)->CGPoint {
         let value:Any? = self.value(skin, CSSConstants.offset, depth)
         if(value == nil){return CGPoint(0,0)}//<---temp solution
-        var array:[CGFloat] = value is CGFloat ? [value as! CGFloat] : (value as! Array<Any>).cast() /*map {String($0).cgFloat}*/ //the map method is cool. But it isnt needed, since this array will always have a count of 2
+        var array:[CGFloat] = value is CGFloat ? [value as! CGFloat] : (value as! [Any]).cast() /*map {String($0).cgFloat}*/ //the map method is cool. But it isnt needed, since this array will always have a count of 2
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])
     }
     /**

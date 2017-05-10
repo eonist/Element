@@ -33,13 +33,12 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * Floats PARAM: skin
      * NOTE: if clear == "none" no clearing is performed
      * NOTE: if float == "none" no floating is performed
-     * TODO: Text instances are inline, button are block (impliment inline and block stuff)
-     * TODO: Impliment support for box-sizing?!?
-     * TODO: Add support for hiding the element if its float is none
-     * TODO: possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
+     * TODO: ⚠️️ Text instances are inline, button are block (impliment inline and block stuff)
+     * TODO: ⚠️️ Impliment support for box-sizing?!?
+     * TODO: ⚠️️ Add support for hiding the element if its float is none
+     * TODO: ⚠️️ possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
      */
     static func float(_ skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
-        //Swift.print("SkinModifier.float()")
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         let parent:NSView = skin.element!.getParent(/*true*/) as! NSView
         let elementParent:IElement = skin.element!.getParent() as! IElement
@@ -48,15 +47,6 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!)/*the top-left-corner of the parent*/
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
-        /*
-        if(skin.element is Text){
-            Swift.print("parentTopLeft: " + "\(parentTopLeft)")
-            Swift.print("leftSiblingSkin?.element.y: " + "\(leftSiblingSkin?.element!.y)")
-            Swift.print("leftSiblingSkin?.element!: " + "\(leftSiblingSkin?.element!)")
-            Swift.print("index: " + "\(index)")
-            Swift.print("elements.count: " + "\(elements.count)")
-        }
-        */
         //if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}//<--this is how you debug the floating system
         //if(skin is TextSkin){Swift.print("float() leftSiblingSkin.height:" + "\(leftSiblingSkin?.height)" + " clearType: " + "\(clearType)")}//<- or you can debug like this
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
@@ -94,9 +84,6 @@ private class Utils{
      */
     static func clearLeft(_ skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
         let y:CGFloat = leftSiblingSkin != nil ? leftSiblingSkin!.element!.y + SkinParser.totalHeight(leftSiblingSkin!) : top
-        /*if(leftSiblingSkin != nil){
-        Swift.print("clearLeft() y: " + "\((leftSiblingSkin!.element as! NSView).frame.y)")
-        }*/
         skin.element!.y = y
     }
     /**
@@ -112,7 +99,7 @@ private class Utils{
      *
      */
     static func clearNone(_ skin:ISkin, _ floatType:String?, _ leftSibling:ISkin?,_ rightSibling:ISkin?, _ top:CGFloat){
-        var top = top//swift 3 update
+        var top = top
         if(floatType == CSSConstants.left && leftSibling != nil) { top = leftSibling!.element!.y }
         else if(floatType == CSSConstants.right && rightSibling != nil) { top = rightSibling!.element!.y}
         else if(floatType == CSSConstants.none) { top = skin.element!.y}/*0*/

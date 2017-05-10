@@ -67,16 +67,10 @@ extension StyleCache{
         return true
     }
     /**
-     * Asserts if files has been caches, looks a bit buggy
+     * Asserts if files has been caches
      */
     static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
-        var hasBeenCached:Bool = false
-        cssFileDateList.forEach{
-            if($0.0 == filePath){
-                hasBeenCached = true
-            }
-        }
-        return hasBeenCached
+        return cssFileDateList.first(where: {$0.0 == filePath}) != nil//functional programming 🎉
     }
 }
 /*Modifier*/

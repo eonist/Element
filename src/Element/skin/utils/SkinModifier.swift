@@ -145,6 +145,10 @@ private class Utils{
         return ArrayParser.indx(ElementParser.children(parent,Element.self), element)
         //return parent.subviews.map{$0 as? Element}.first(where: {$0 === element}) ?? -1
         //where: {$0 as? IElement != nil && $0 === element}
+        
+        //view.subviews.filter() {$0 as? T != nil}.map{$0 as! T}
+        
+        
     }
     /**
      *

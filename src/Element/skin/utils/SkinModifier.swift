@@ -103,7 +103,7 @@ private class Utils{
             if(floatType == CSSConstants.left && leftSibling != nil) { return leftSibling!.element!.y }
             else if(floatType == CSSConstants.right && rightSibling != nil) { return rightSibling!.element!.y}
             else if(floatType == CSSConstants.none) { return skin.element!.y}
-            return top
+            else {return top}
         }()
     }
     /**

@@ -40,10 +40,10 @@ class StyleModifier {
      * TODO: ⚠️️ You can speed up this method by looping with a  better algo. don't check already checked b's etc
      * TODO: ⚠️️ Maybe use map or filter to speed this up?
      */
+    private static var mergeCondition:(IStyleProperty,IStyleProperty) -> Bool = {$0.name == $1.name && $0.depth == $1.depth}
     static func merge(_ a:inout IStyle,_ b:IStyle){
         b.styleProperties.forEach { stylePropB in
-            let condition:(IStyleProperty,IStyleProperty) -> Bool = {$0.name == $1.name && $0.depth == $1.depth}
-            let hasMatch:Bool = a.styleProperties.first(stylePropB, condition) != nil
+            let hasMatch:Bool = a.styleProperties.first(stylePropB, mergeCondition) != nil
             if(!hasMatch){//asserts true if the style from b doest exist in a
                 StyleModifier.prepend(&a, stylePropB)/*a.addStyleProperty(stylePropB) only prepends the styleProperty if it doesnt already exist in the style instance a*/
             }

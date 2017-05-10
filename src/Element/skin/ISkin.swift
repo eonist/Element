@@ -1,6 +1,8 @@
 import Foundation
 @testable import Utils
-
+/**
+ * TODO: ⚠️️ Rename to Skinable or SkinKind
+ */
 protocol ISkin:class{
     /*Implicit getters / setters*/
     func setStyle(_ style:IStyle)

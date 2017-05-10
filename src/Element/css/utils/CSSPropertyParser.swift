@@ -200,7 +200,6 @@ private class Utils{
                 grad.locations += [ratioValue.cgFloat]/*append ratioValue*/
                 return grad
             }
-            //return $0
         }
         return gradient
     }
@@ -239,49 +238,4 @@ private class Utils{
         return 1
     }
 }
-//DEPRECATED
-/*extension CSSPropertyParser{
-    /**
-     * Textfield
-     * TODO: should possibly return a TextField class instance or alike
-     */
-    
-    static func textField(_ input:String)->[String:Any]{
-        var textField:[String:Any] = [String:Any]()
-        let propertyString:String = input.match("(?<=textField\\().+?(?=\\);?)")[0]
-        var properties:[String] = propertyString.split(",")
-        for i in 0..<properties.count{//swift 3 update
-            let property:String = properties[i]
-            let matches:[NSTextCheckingResult] = property.matches("^(\\w+?)\\:(.+?)$")
-            for match:NSTextCheckingResult in matches {
-                let name:String = match.value(property,1)/*capturing group 1*/
-                var value:Any = match.value(property,2)/*capturing group 2*/
-                if(value as! String == "true") { value = true }
-                else if(value as! String == "false") { value = false }
-                else if ["textColor","backgroundColor","borderColor"].has(name) {value = StringParser.nsColor(value as! String)}
-                textField[name] = value
-            }
-        }
-        fatalError("out of order")
-        //return textField
-    }
- 
-}*/
-/*
-// :TODO: Maybe support for color values like: 0x00ff00 and 00ff00
-// :TODO: maybe support for rotation values in radiens? and scalar?
-// :TODO: radial-gradient support
-linear-gradient(90deg|90|left|right|top|bottom|, #B1D0DE 0.5|50%| 0.2|20%|, #F3F8F9 0.3|30%| 0.1|10%|);//rotation,firstStop(color,ratio,alpha),secondStop(color,ratio,alpha),and so on
 
-// :TODO: write similar syntax:
-<linear-gradient> = linear-gradient(
-[
-[ [top | bottom] || [left | right] ]
-|
-<angle>
-,]?
-<color-stop>[, <color-stop>]+
-);
-*/
-
-//case RegExp.test(string,"^textField\\b"):return textField(string)

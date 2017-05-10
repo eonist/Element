@@ -26,7 +26,7 @@ class CSSLinkResolver {
             let name = match.value(string, CSSElementType.name.rawValue)
             let value = match.value(string, CSSElementType.value.rawValue)
             let replacementString:String = Utils.replaceLinks(value,name,string)
-            let range:NSRange = match.rangeAt(2)//the range of the value
+            let range:NSRange = match.rangeAt(2)/*the range of the value*/
             return (string as NSString).replacingCharacters(in: range, with: replacementString)
         }
     }

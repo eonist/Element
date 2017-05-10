@@ -8,18 +8,18 @@ extension StyleCache{
      * Compiles a list of css files derived from an xml
      */
     static func cssFileDateList(_ dataXML:XML)->[String:String]{
-        let cssFileDates = [String:String]()
-        if let cssFileDatesXML:XML = dataXML.firstNode("cssFileDates"), let children = cssFileDatesXML.children{
-            let cssFileDates:[String:String] = children.reduce(cssFileDates){
-                var cssFileDates:[String:String] = $0
-                let cssFilePath:String = $1.stringValue!
-                let date:String = ($1 as! XML)["date"]!
-                cssFileDates[cssFilePath] = date
-                return cssFileDates
-            }
+        guard let cssFileDatesXML:XML = dataXML.firstNode("cssFileDates"), let children = cssFileDatesXML.children else{
+            return [String:String]()
+        }
+        let cssFileDates:[String:String] = children.reduce([String:String]()){
+            var cssFileDates:[String:String] = $0
+            let cssFilePath:String = $1.stringValue!
+            let date:String = ($1 as! XML)["date"]!
+            cssFileDates[cssFilePath] = date
             return cssFileDates
         }
         return cssFileDates
+        
     }
     /**
      * Compiles an xml of css files and its modified date
@@ -58,7 +58,7 @@ extension StyleCache{
      * Asserts if the cssFiles that are cached have the same modified date as the cssFile that are querried
      */
     static func isUpToDate(_ cssFileDateList:[String:String])->Bool{
-        for (filePath,date) in cssFileDateList{
+        cssFileDateList.forEach{ filePath,date in
             let filePath:String = filePath
             let modificationDate:String = String(FileParser.modificationDate(filePath.tildePath).timeIntervalSince1970)
             let cachedModificationDate:String = date

@@ -10,8 +10,7 @@ class StylePropertyParser{
      * TODO: ⚠️️ should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
     static func value(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
-        let value:Any? = skin.style!.getValue(propertyName,depth)
-        return value
+        return skin.style!.getValue(propertyName,depth)
     }
     /**
      * Returns an IFillStyle instance based on the Style attached to the skin

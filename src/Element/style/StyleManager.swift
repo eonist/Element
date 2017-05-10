@@ -41,14 +41,10 @@ extension StyleManager{
      * Adds every style in a styleCollection to the stylemanager
      */
     static func addStyle(_ styles:[IStyle]){
-        if(isHashingStyles){
-            styles.filter { style in
-                if(style.selectors.count > 0){
-                    StyleManagerUtils.hashStyle(style)
-                }//swift 3 update, now checks .count > 0
-            }
+        if isHashingStyles {
+            styles.lazy.filter{$0.selectors.count > 0}.map{StyleManagerUtils.hashStyle($0)}
         }
-        self.styles += styles/*<-- Concats*/
+        self.styles += styles
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)

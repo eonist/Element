@@ -153,7 +153,7 @@ private class Utils{
     /**
      * PARAM: index is the index of the skin being floated
      */
-    static func rightFloatingElementSkin(_ elements:Array<IElement>,_ index:Int)->ISkin? {
+    static func rightFloatingElementSkin(_ elements:[IElement],_ index:Int)->ISkin? {
         let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.right,exception)
         return lastIndexOfRightFloatingElement != -1 ? elements[lastIndexOfRightFloatingElement].skin! : nil/*the right-sibling-skin*/
     }
@@ -164,13 +164,13 @@ private class Utils{
         return (SkinParser.float(skin) == CSSConstants.left && (SkinParser.clear(skin) == CSSConstants.right || SkinParser.clear(skin) == CSSConstants.both))
     }
     /**
-     * NOTE: loops backwards
-     * PARAM: range is the range within the possible rightfloating skin can be in
-     * CAUTION: the reason we dont use range or for in range {} is because the methods that call this doesnt assert for empty arrays. Fix this later. for now the code is clumpsy but works 
+     * NOTE: Loops backwards
+     * PARAM: Tange is the range within the possible rightfloating skin can be in
+     * CAUTION: ⚠️️ The reason we dont use range or for in range {} is because the methods that call this doesnt assert for empty arrays. Fix this later. for now the code is clumpsy but works
      */
     static func lastIndex(_ elements:[IElement],_ rangeStart:Int,_ rangeEnd:Int,_ floatType:String,_ exception:((ISkin)->Bool)? = nil)->Int {
         var i:Int = rangeEnd
-        while(i >= rangeStart){//was: for(var i:Int = range.end; i >= range.start; i--){
+        while(i >= rangeStart){
             let skin:ISkin = elements[i].skin!
             if(exception != nil && exception!(skin)) {return -1}
             if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none) {return i}

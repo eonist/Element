@@ -139,16 +139,9 @@ private class Utils{
     }
     /**
      * NOTE:-1 -> Not found
-     * TODO: Upgrade this method with functional programming: subViews.map.lazy.first(){elmt == $1} etc etc
      */
     static func elementIndex(_ parent:NSView,_ element:Element)->Int {
-        return ArrayParser.indx(ElementParser.children(parent,Element.self), element)
-        //return parent.subviews.map{$0 as? Element}.first(where: {$0 === element}) ?? -1
-        //where: {$0 as? IElement != nil && $0 === element}
-        
-        //view.subviews.filter() {$0 as? T != nil}.map{$0 as! T}
-        
-        
+        return parent.subviews.lazy.filter{$0 is Element}.index(where:{$0 === element}) ?? -1// functional programming 🎉
     }
     /**
      *

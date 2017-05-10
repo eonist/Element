@@ -66,7 +66,6 @@ extension TextSkin{
         super.frame.w = width//quick fix
         super.frame.h = height//quick fix
         let textFormat:TextFormat = StylePropertyParser.textFormat(self)/*creates the textFormat*/
-        //Swift.print("TextSkin.applyProperties() textFormat.color: " + String(textFormat.color))
         TextFieldModifier.applyTextFormat(textField,textFormat)/*applies the textFormat*/
         /*
          let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/

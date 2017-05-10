@@ -17,14 +17,11 @@ class StylePropertyParser{
      */
     static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
         let val = value(skin,CSSConstants.fill,depth)
-        
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
         }else{
-            return colorFillStyle(skin,depth)
+            return colorFillStyle(val)
         }
-        
-        
     }
     /**
      * Returns an ILineStyle instance based on the Style attached to the skin
@@ -37,8 +34,7 @@ class StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      * TODO: ⚠️️ Refactor this method
      */
-    static func colorFillStyle(_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
-        let colorValue:Any? = StylePropertyParser.value(skin, CSSConstants.fill,depth)
+    private static func colorFillStyle(_ colorValue:Any?)->IFillStyle {
         var nsColor:NSColor?
         if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
             nsColor = colorValue

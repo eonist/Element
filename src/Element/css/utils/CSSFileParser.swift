@@ -43,11 +43,11 @@ class CSSFileParser {
      * Example: "@import url(\"mainContent.css\");"
      */
     static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
-        var result:(imports:String,style:String) = ("","")
         let matches = cssString.matches(styleImportSeperationPattern)
-        matches.forEach { match in
-            result.imports = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
-            result.style = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
+        let result: = matches.reduce() { result,match in
+           
+            result.0 = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
+            result.1 = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
         }
         return result
     }

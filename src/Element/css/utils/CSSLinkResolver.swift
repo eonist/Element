@@ -41,29 +41,21 @@ private class Utils {
      * TODO: write an example
      */
     static func replaceLinks(_ string:String,_ linkPropName:String,_ cssString:String)->String{
-        //var string:String = string
         let matches = RegExp.matches(string, CSSLinkResolver.sansBracketPattern)
-        //var difference:Int = 0/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
-        
-        let result:(difference:Int,string:String) = matches.filter{ match in
-            match.numberOfRanges > 0/*match = the link name>*/
-        }.reduce((0,string)){ result,match in/*Loops through the pattern*/
-            var range:NSRange = match.rangeAt(0)//StringRangeParser.stringRange(string, start, end)
-            range.location = range.location + result.0//difference
-            let linkNameSansBrackets:String = (string as NSString).substring(with: range)/*the link name>*/
-            let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
-            range.location = range.location-1//add the < char
-            range.length = range.length+2//add the > char
-            let difference = (linkedStyleProperty.count - range.length)
-            let str = (string as NSString).replacingCharacters(in: range, with: linkedStyleProperty)
-            return (result.0 + difference,str)
-        }
+        let result:(difference:Int,string:String) = matches.filter{ match in/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
+                match.numberOfRanges > 0/*match = the link name>*/
+            }.reduce((difference:0,string:string)){ result,match in/*Loops through the pattern*/
+                var range:NSRange = match.rangeAt(0)//StringRangeParser.stringRange(string, start, end)
+                range.location = range.location + result.difference//difference
+                let linkNameSansBrackets:String = (string as NSString).substring(with: range)/*the link name>*/
+                let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/
+                range.location = range.location-1//add the < char
+                range.length = range.length+2//add the > char
+                let difference = (linkedStyleProperty.count - range.length)
+                let str = (string as NSString).replacingCharacters(in: range, with: linkedStyleProperty)
+                return (result.difference + difference,str)
+            }
         return result.string
-        /*
-         for match:NSTextCheckingResult in matches {
-         
-         }
-         return string*/
     }
     /**
      * Returns a style property value by parsing through PARAM: string and tries to find a match that matches both PARAM: linkName and PARAM: propertyName

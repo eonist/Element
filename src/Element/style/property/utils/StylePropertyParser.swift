@@ -77,28 +77,23 @@ class StylePropertyParser{
      * Returns TextFormat
      * TODO: ⚠️️ Make functional 🤖
      */
+    private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
         for textFormatKey:String in TextFormatConstants.textFormatPropertyNames {
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
             //if(textFormatKey == "size") print("size: "+value+" "+(value is String))
             if(value != nil) {
-                if(StringAsserter.metric("\(value)")){//swift 3 update
-                    let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//TODO: ⚠️️ move patern to const
-                    let stringValue:String = "\(value)"//swift 3 update
-                    let matches = stringValue.matches(pattern)
-                    for match:NSTextCheckingResult in matches {
-                        var value:Any = match.value(stringValue, 1)/*capturing group 1*/
-                        let suffix:String = match.value(stringValue, 2)/*capturing group 2*/
+                if(StringAsserter.metric("\(value)")){
+                    let stringValue:String = "\(value)"
+                    let matches = stringValue.matches(metricPattern)
+                    matches.forEach { match in
+                        var value:Any = match.value(stringValue, 1)/*Capturing group 1*/
+                        let suffix:String = match.value(stringValue, 2)/*Capturing group 2*/
                         if(suffix == CSSConstants.ems) {value = "\(value)".cgFloat * CSSConstants.emsFontSize }
                     }
                 }
-                if(value is Array<String>) { value = StringModifier.combine(value as! Array<String>, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
-                /*else if(value is NSColor) {
-                    value = NSColorParser.nsColor(value as! UInt,1)
-                    //Swift.print("FOUND A COLOR: " + textFormatKey + " : " + "\(value)")
-                }//<--set the alpha in css aswell backgroundAlpha?
-                */
+                if(value is [String]) { value = StringModifier.combine(value as! [String], " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
                 textFormat[textFormatKey] = value!
             }
         }

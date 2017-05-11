@@ -75,6 +75,7 @@ class StylePropertyParser{
     private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * Returns TextFormat
+     * TODO: Needs more refactoring
      */
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()

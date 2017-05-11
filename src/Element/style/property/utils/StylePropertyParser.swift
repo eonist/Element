@@ -116,9 +116,9 @@ class StylePropertyParser{
     /**
      * NOTE: TRBL
      * NOTE: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
-     * TODO: should this have a failsafe if there is no Padding property in the style?
-     * TODO: try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
-     * TODO: you may want to copy margin on this
+     * TODO: ⚠️️ Should this have a failsafe if there is no Padding property in the style?
+     * TODO: ⚠️️ Try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
+     * TODO: ⚠️️ You may want to copy margin on this
      */
     static func padding(_ skin:ISkin,_ depth:Int = 0) -> Padding {
         var padding:Padding = {
@@ -160,10 +160,7 @@ class StylePropertyParser{
      * New
      */
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
-        if let rotation:CGFloat = value(skin, CSSConstants.transform, depth) as? CGFloat {
-            return rotation
-        }
-        return nil
+        return value(skin, CSSConstants.transform, depth) as? CGFloat
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)

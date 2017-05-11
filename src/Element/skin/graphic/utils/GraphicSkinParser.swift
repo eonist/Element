@@ -19,7 +19,7 @@ class GraphicSkinParser{
 }
 private class Utils{
     static func baseGraphic(_ skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle?,_ depth:Int = 0)->IGraphicDecoratable {
-        let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);
+        let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin,depth)
         return BaseGraphic(fillStyle,lineStyle,lineOffsetType)
     }
     /**

@@ -30,8 +30,10 @@ class StylePropertyParser{
         let val:Any? = value(skin,CSSConstants.line,depth)
         if let gradient = val as? IGradient {
             return gradientLineStyle(gradient,skin,depth)
+        }else if let color = val as? NSColor{
+            return colorLineStyle(color,skin,depth)
         }else{
-            return colorLineStyle(val as? NSColor,skin,depth)
+            return nil
         }
     }
     /**

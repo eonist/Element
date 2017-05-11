@@ -186,9 +186,10 @@ class StylePropertyParser{
     }
 }
 private class Utils{
-    static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+    private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * TODO: Explain what this method is doing
+     * TODO: ⚠️️ Needs some Functional programming 🤖
      */
     static func metric(_ value:Any?,_ skin:ISkin)->CGFloat? {
         if(value is Int){ return CGFloat(value as! Int)}/*<-- int really? shouldnt you use something with decimals?*/

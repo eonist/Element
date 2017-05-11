@@ -190,6 +190,7 @@ private class Utils{
             let property:String = val.element
             let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
             return matches.reduce(gradient) { grad,match in //for match:NSTextCheckingResult in
+                var grad = grad
                 let color:String = match.value(property,1)
                 let alpha:String = match.value(property, 2)
                 let alphaVal:CGFloat = Utils.alpha(alpha).cgFloat

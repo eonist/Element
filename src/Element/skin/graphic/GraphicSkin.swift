@@ -12,8 +12,10 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         SkinModifier.float(self)/*Floats the entire skin*/
         let depthCount:Int = StyleParser.depthCount(style!)
+        Swift.print("depthCount: " + "\(depthCount)")
         decoratables = (0..<depthCount).indices.map{ depth -> IGraphicDecoratable in
             let decoratable = GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
+            Swift.print("decoratable: " + "\(decoratable)")
             addSubview(decoratable.graphic)
             _ = SkinModifier.align(self,decoratable as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
             Modifier.rotate(decoratable, self, depth)
@@ -25,6 +27,7 @@ class GraphicSkin:Skin{
      * Draws Skin (aka each "decoratable" in the skin)
      */
     override func draw(){
+        Swift.print("draw")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}

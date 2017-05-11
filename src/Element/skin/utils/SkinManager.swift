@@ -10,6 +10,7 @@ class SkinManager{
         switch skinName{
             case SkinFactory.graphicsSkin :
                 Swift.print("graphicsSkin")
+                Swift.print("element.getSkinState(): " + "\(element.getSkinState())")
                 return GraphicSkin(style, element.getSkinState(), element)
             case SkinFactory.textSkin :
                 Swift.print("textSkin")

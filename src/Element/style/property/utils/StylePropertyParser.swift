@@ -7,9 +7,9 @@ class StylePropertyParser{
     /**
      * Returns a property from PARAM: skin and PARAM: property
      * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
-     * TODO: ⚠️️ should probably also support when state is know and depth is defaulted to 0 ?!?!?
+     * TODO: ⚠️️ Should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
-    static func value(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <- try to remove the ! char here
+    static func value(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <-- Try to remove the ! char here
         return skin.style!.getValue(propertyName,depth)
     }
     /**

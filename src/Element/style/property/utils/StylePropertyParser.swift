@@ -85,9 +85,9 @@ class StylePropertyParser{
                     let stringValue:String = "\(value)"
                     let matches = stringValue.matches(textMetricPattern)
                     matches.forEach { match in
-                        var value:Any = match.value(stringValue, 1)/*Capturing group 1*/
+                        let val:Any = match.value(stringValue, 1)/*Capturing group 1*/
                         let suffix:String = match.value(stringValue, 2)/*Capturing group 2*/
-                        if(suffix == CSSConstants.ems) {value = "\(value)".cgFloat * CSSConstants.emsFontSize }
+                        if(suffix == CSSConstants.ems) {value = "\(val)".cgFloat * CSSConstants.emsFontSize }
                     }
                 }
                 if(value is [String]) { value = StringModifier.combine(value as! [String], " ") }/*Some fonts are seperated by a space and thus are converted to an array*/

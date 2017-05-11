@@ -11,16 +11,14 @@ class StylePropertyAsserter {
     }
     static func hasGradient(_ skin:ISkin,_ depth:Int = 0)->Bool {
         let value = StylePropertyParser.value(skin, CSSConstants.fill,depth)
-        let hasGradient = value is Gradient
-        return hasGradient /*|| StylePropertyParser.value(skin, "line", depth) is Gradient*/
+        return value is Gradient/*|| StylePropertyParser.value(skin, "line", depth) is Gradient*/
     }
     static func hasAsset(_ skin:ISkin,_ depth:Int = 0)->Bool {
-        return StylePropertyParser.value(skin, CSSConstants.fill,depth) is Array<Any>
+        return StylePropertyParser.value(skin, CSSConstants.fill,depth) is [Any]
     }
     static func hasDropShadow(_ skin:ISkin,_ depth:Int = 0)->Bool {
         let value = StylePropertyParser.value(skin, CSSConstants.drop_shadow,depth)
         /*You may need to do something like this: getGraphic().fillStyle.dynamicType is GradientFillStyle.Type*/
-        let hasDropShadow = value != nil/*this differes slightly from the original code, but was needed to support "none" as a dropshadow param in css*/
-        return hasDropShadow
+        return value != nil/*this differes slightly from the original code, but was needed to support "none" as a dropshadow param in css*/
     }
 }

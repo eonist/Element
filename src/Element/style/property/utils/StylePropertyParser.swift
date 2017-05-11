@@ -282,19 +282,25 @@ extension StylePropertyParser{
      * TODO: ⚠️️ I don't think we need support for array anymore, consider removing it
      */
     fileprivate static func colorFillStyle(_ colorVal:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
-        var nsColor:NSColor? = colorVal as? NSColor
-        guard let colorValue = colorVal as? [Any] else {
-            fatalError("colorValue not supported: " + "\(colorVal)")
-        }
-        if let colorVal = colorValue[safe:1]{
-            if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
-                nsColor = nil
-            }else if let colorValNSColor = colorVal as? NSColor{
-                nsColor = colorValNSColor
+        var nsColor:NSColor? = {
+            if let colorVal = colorVal as? NSColor {
+                return colorVal
+            }else if let colorVals = colorVal as? [Any] {
+                if let colorVal = colorVals[safe:1]{
+                    if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
+                        return nil
+                    }else if let colorValNSColor = colorVal as? NSColor{
+                        return colorValNSColor
+                    }else{
+                        fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
+                    }
+                }else{
+                    fatalError("error: \(colorVals)")
+                }
             }else{
-                fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
+                fatalError("colorValue not supported: " + "\(colorVal)")
             }
-        }
+        }()
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         nsColor = nsColor != nil ? nsColor!.alpha(alphaValue) : NSColor.clear/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? clear is white with alpha 0.0*/

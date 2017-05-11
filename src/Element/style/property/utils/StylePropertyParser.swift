@@ -284,7 +284,7 @@ extension StylePropertyParser{
     /**
      * Returns a FillStyle instance
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
-     * TODO: ⚠️️ Refactor this method
+     * TODO: ⚠️️ I dont think we need support for array anymore, consider removing it
      */
     fileprivate static func colorFillStyle(_ colorValue:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
         var nsColor:NSColor? = colorValue as? NSColor
@@ -303,11 +303,7 @@ extension StylePropertyParser{
         }
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
-        if let nsCol = nsColor{
-            nsColor = nsCol.alpha(alphaValue)
-        }else{/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
-            nsColor = NSColor.clear//clear is white with alpha 0.0
-        }
+        nsColor = nsColor != nil ? nsColor!.alpha(alphaValue) : NSColor.clear/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? clear is white with alpha 0.0*/
         return FillStyle(nsColor!)
     }
 }

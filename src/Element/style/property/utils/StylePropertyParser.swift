@@ -72,12 +72,10 @@ class StylePropertyParser{
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right", depth) }
         return fillet
     }
-    
+    private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * Returns TextFormat
-     * TODO: ⚠️️ Make functional 🤖
      */
-    private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
         TextFormatConstants.textFormatPropertyNames.forEach { textFormatKey in

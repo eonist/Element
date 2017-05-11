@@ -105,7 +105,7 @@ private class Modifier{
      * Applies style and lineOffset
      */
     static func applyStyle(_ decoratable: IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
-        let fillStyle:IFillStyle? = StylePropertyParser.fillStyle(graphicSkin,depth)
+        let fillStyle:IFillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(graphicSkin,depth)
         let lineOffsetType = StylePropertyParser.lineOffsetType(graphicSkin,depth)
         _ = GraphicModifier.applyProperties(decoratable,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/

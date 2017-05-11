@@ -44,7 +44,7 @@ class StylePropertyParser{
         var offsetType:OffsetType = {
             if (val is String) || (val is [String]) {
                 return LayoutUtils.instance(val!, OffsetType.self) as! OffsetType
-            };return OffsetType(OffsetType.inside)
+            };return OffsetType()
         }()
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth)
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}

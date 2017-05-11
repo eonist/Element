@@ -283,18 +283,17 @@ extension StylePropertyParser{
      */
     fileprivate static func colorFillStyle(_ colorValue:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
         var nsColor:NSColor? = colorValue as? NSColor
-        if let colorValue = colorValue as? [Any] {
-            if let colorVal = colorValue[safe:1]{
-                if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
-                    nsColor = nil
-                }else if let colorValNSColor = colorVal as? NSColor{
-                    nsColor = colorValNSColor
-                }else{
-                    fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
-                }
-            }
-        }else{
+        guard let colorValue = colorValue as? [Any] else {
             fatalError("colorValue not supported: " + "\(colorValue)")
+        }
+        if let colorVal = colorValue[safe:1]{
+            if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
+                nsColor = nil
+            }else if let colorValNSColor = colorVal as? NSColor{
+                nsColor = colorValNSColor
+            }else{
+                fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
+            }
         }
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1

@@ -18,7 +18,9 @@ class GraphicSkin:Skin{
             Swift.print("decoratable: " + "\(decoratable)")
             addSubview(decoratable.graphic)
             _ = SkinModifier.align(self,decoratable as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
+           Swift.print("after align")
             Modifier.rotate(decoratable, self, depth)
+            Swift.print("after rotate")
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
             return decoratable
         }

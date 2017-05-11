@@ -12,7 +12,11 @@ class SkinResolver{
     static func skin(_ element:IElement)->ISkin?{
         let style:IStyle = StyleResolver.style(element)
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element)
-        return SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element)
+        Swift.print("before skin")
+        let skin = SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element)
+        Swift.print("after skin")
+        return skin
+        
     }
     /**
      * Throws an error message if a skin cant be resolved (with usefull information for debugging)

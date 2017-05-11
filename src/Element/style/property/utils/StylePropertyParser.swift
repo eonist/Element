@@ -239,7 +239,7 @@ extension StylePropertyParser{
      * Convenince method for deriving String values
      */
     static func string(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
-        return "\(value(skin, propertyName,depth))"//swift 3 update
+        return "\(value(skin, propertyName,depth))"
     }
 }
 //private

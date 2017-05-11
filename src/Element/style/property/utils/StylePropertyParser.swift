@@ -281,10 +281,10 @@ extension StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      * TODO: ⚠️️ I don't think we need support for array anymore, consider removing it
      */
-    fileprivate static func colorFillStyle(_ colorValue:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
-        var nsColor:NSColor? = colorValue as? NSColor
-        guard let colorValue = colorValue as? [Any] else {
-            fatalError("colorValue not supported: " + "\(colorValue)")
+    fileprivate static func colorFillStyle(_ colorVal:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
+        var nsColor:NSColor? = colorVal as? NSColor
+        guard let colorValue = colorVal as? [Any] else {
+            fatalError("colorValue not supported: " + "\(colorVal)")
         }
         if let colorVal = colorValue[safe:1]{
             if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{

@@ -284,7 +284,7 @@ extension StylePropertyParser{
     /**
      * Returns a FillStyle instance
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
-     * TODO: ⚠️️ I dont think we need support for array anymore, consider removing it
+     * TODO: ⚠️️ I don't think we need support for array anymore, consider removing it
      */
     fileprivate static func colorFillStyle(_ colorValue:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
         var nsColor:NSColor? = colorValue as? NSColor

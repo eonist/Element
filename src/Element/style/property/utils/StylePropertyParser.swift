@@ -106,8 +106,8 @@ class StylePropertyParser{
         guard let value:Any = self.value(skin, CSSConstants.offset, depth) else{
             return CGPoint(0,0)//<---temp solution
         }
-        if let arr:[CGFloat] = value as? [CGFloat]{
-            
+        let arr:[CGFloat] = {
+            if value as? [CGFloat]
         }
         var array:[CGFloat] = value is CGFloat ? [value as! CGFloat] : (value as! [Any]).cast() /*map {String($0).cgFloat}*/ //the map method is cool. But it isnt needed, since this array will always have a count of 2
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])

@@ -107,8 +107,8 @@ class StylePropertyParser{
             return CGPoint(0,0)//<---temp solution
         }
         let array:[CGFloat] = {
-            if let arr:[CGFloat] = value as? [CGFloat] {
-                return arr
+            if let value = value as? CGFloat {
+                return [value]
             };return (value as! [Any]).cast()
         }()
         return array.count == 1 ? CGPoint(array[0],0) : CGPoint(array[0], array[1])

@@ -296,10 +296,10 @@ extension StylePropertyParser{
                         fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
                     }
                 }else{
-                    fatalError("error: \(colorVals)")
+                    fatalError("colorValue not supported: " + "\(colorVal)")
                 }
             }else{
-                fatalError("colorValue not supported: " + "\(colorVal)")
+                return nil
             }
         }()
         let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)

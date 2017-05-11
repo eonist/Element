@@ -287,12 +287,8 @@ extension StylePropertyParser{
      * TODO: ⚠️️ Refactor this method
      */
     fileprivate static func colorFillStyle(_ colorValue:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
-        var nsColor:NSColor?
-        if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
-            nsColor = colorValue
-        }else if(colorValue == nil){
-            nsColor = nil
-        }else if let colorValue = colorValue as? [Any] {
+        var nsColor:NSColor? = colorValue as? NSColor
+        if let colorValue = colorValue as? [Any] {
             if let colorVal = colorValue[safe:1]{
                 if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
                     nsColor = nil

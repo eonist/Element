@@ -28,10 +28,20 @@ class StylePropertyParser{
      * Returns an ILineStyle instance based on the Style attached to the skin
      */
     static func lineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+        
+        
+        let val = value(skin,CSSConstants.line,depth)
+        if let gradient = val as? IGradient {
+            return gradientLineStyle(gradient)
+        }else{
+            let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
+            return colorLineStyle(val,alpha)
+        }
+        
+        
+        
         return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth)
     }
-    
-    
     /**
      * Returns an Offset instance
      * TODO: probably upgrade to TRBL

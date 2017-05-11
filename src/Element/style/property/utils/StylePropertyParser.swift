@@ -250,7 +250,7 @@ extension StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    private static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
+    fileprivate static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
         return GradientFillStyle(gradient,NSColor.clear)
     }
     /**
@@ -258,7 +258,7 @@ extension StylePropertyParser{
      * TODO: Does this work? where is the creation of line-thickness etc
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    private static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
+    fileprivate static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
         guard let gradient = value(skin, CSSConstants.line,depth) as? IGradient else {return nil}//<--temp fix
         //gradient.rotation *= ㎭
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
@@ -269,7 +269,7 @@ extension StylePropertyParser{
      * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    private static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+    fileprivate static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
         let colorValue:NSColor? = color(skin, CSSConstants.line,depth)
@@ -280,7 +280,7 @@ extension StylePropertyParser{
     /**
      * NOTE: makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    private static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
+    fileprivate static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
         return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
     }
@@ -289,7 +289,7 @@ extension StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      * TODO: ⚠️️ Refactor this method
      */
-    private static func colorFillStyle(_ colorValue:Any?,_ alpha:Any?)->IFillStyle {
+    fileprivate static func colorFillStyle(_ colorValue:Any?,_ alpha:Any?)->IFillStyle {
         var nsColor:NSColor?
         if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
             nsColor = colorValue

@@ -91,7 +91,7 @@ class CSSPropertyParser {
         if let propertyString:String = string.match(radialGradientPattern).first{
             var properties:[String] = propertyString.split(",")
             let setupString:String = properties.shift()
-            let gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
+            var gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
             let setup:[String] = setupString.split(" ")/*The gradient settings*/
             let x:CGFloat = StringParser.percentage(setup[0])/100/*percentage wise*/// TODO: make this optional aswell as per css pdf specs
             let y:CGFloat = StringParser.percentage(setup[1])/100/*percentage wise*/

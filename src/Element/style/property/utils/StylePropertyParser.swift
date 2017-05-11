@@ -32,9 +32,7 @@ class StylePropertyParser{
             return gradientLineStyle(gradient,skin,depth)
         }else if let color = val as? NSColor{
             return colorLineStyle(color,skin,depth)
-        }else{
-            return nil
-        }
+        };return nil
     }
     /**
      * Returns an Offset instance

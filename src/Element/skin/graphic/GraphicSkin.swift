@@ -12,17 +12,12 @@ class GraphicSkin:Skin{
         super.init(style, state, element)
         SkinModifier.float(self)/*Floats the entire skin*/
         let depthCount:Int = StyleParser.depthCount(style!)
-        Swift.print("depthCount: " + "\(depthCount)")
         decoratables = (0..<depthCount).indices.map{ depth -> IGraphicDecoratable in
             let decoratable = GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/
-            Swift.print("decoratable: " + "\(decoratable)")
             addSubview(decoratable.graphic)
             _ = SkinModifier.align(self,decoratable as! IPositional,depth)/*the argument now becomes a reference to the orgiginal instance, but it also becomes immutable unfortunatly,not to worry, the implicit setter method isn't defined by swift as mutable, even though it is. I guess indirectly, so the values are mutated on the orginal instance and all is well*/
-           Swift.print("after align")
             Modifier.rotate(decoratable, self, depth)
-            Swift.print("after rotate")
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
-            Swift.print("after draw")
             return decoratable
         }
     }
@@ -110,8 +105,8 @@ private class Modifier{
      * Applies style and lineOffset
      */
     static func applyStyle(_ decoratable: IGraphicDecoratable, _ graphicSkin:GraphicSkin,_ depth:Int){
-        let fillStyle = StylePropertyParser.fillStyle(graphicSkin,depth)
-        let lineStyle = StylePropertyParser.lineStyle(graphicSkin,depth)
+        let fillStyle:IFillStyle? = StylePropertyParser.fillStyle(graphicSkin,depth)
+        let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(graphicSkin,depth)
         let lineOffsetType = StylePropertyParser.lineOffsetType(graphicSkin,depth)
         _ = GraphicModifier.applyProperties(decoratable,fillStyle ,lineStyle ,lineOffsetType)/*color or gradient*/
     }

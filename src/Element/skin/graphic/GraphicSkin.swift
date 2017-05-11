@@ -22,6 +22,7 @@ class GraphicSkin:Skin{
             Modifier.rotate(decoratable, self, depth)
             Swift.print("after rotate")
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
+            Swift.print("after draw")
             return decoratable
         }
     }
@@ -29,7 +30,6 @@ class GraphicSkin:Skin{
      * Draws Skin (aka each "decoratable" in the skin)
      */
     override func draw(){
-        Swift.print("draw")
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}

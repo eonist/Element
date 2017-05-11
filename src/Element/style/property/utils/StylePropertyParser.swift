@@ -77,16 +77,15 @@ class StylePropertyParser{
      * Returns TextFormat
      * TODO: ⚠️️ Make functional 🤖
      */
-    private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
+    private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
-        for textFormatKey:String in TextFormatConstants.textFormatPropertyNames {
+        TextFormatConstants.textFormatPropertyNames.forEach { textFormatKey in
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
-            //if(textFormatKey == "size") print("size: "+value+" "+(value is String))
             if(value != nil) {
                 if(StringAsserter.metric("\(value)")){
                     let stringValue:String = "\(value)"
-                    let matches = stringValue.matches(metricPattern)
+                    let matches = stringValue.matches(textMetricPattern)
                     matches.forEach { match in
                         var value:Any = match.value(stringValue, 1)/*Capturing group 1*/
                         let suffix:String = match.value(stringValue, 2)/*Capturing group 2*/

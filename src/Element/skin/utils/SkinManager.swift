@@ -8,9 +8,11 @@ class SkinManager{
         Swift.print("element: " + "\(element)")
         Swift.print("style: " + "\(style)")
         switch skinName{
-            case skinName == SkinFactory.graphicsSkin :
+            case SkinFactory.graphicsSkin :
+                Swift.print("graphicsSkin")
                 return GraphicSkin(style, element.getSkinState(), element)
             case SkinFactory.textSkin :
+                Swift.print("textSkin")
                 return TextSkin(style, (element as! IText).initText, element.getSkinState(), element)
             default:
                 fatalError("NOT IMPLEMENTED YET")

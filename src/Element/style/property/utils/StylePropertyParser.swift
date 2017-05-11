@@ -30,58 +30,8 @@ class StylePropertyParser{
     static func lineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
         return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth)
     }
-    /**
-     * Returns a FillStyle instance
-     * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
-     * TODO: ⚠️️ Refactor this method
-     */
-    private static func colorFillStyle(_ colorValue:Any?,_ alpha:Any?)->IFillStyle {
-        var nsColor:NSColor?
-        if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
-            nsColor = colorValue
-        }else if(colorValue == nil){
-            nsColor = nil
-        }else if let colorValue = colorValue as? [Any] {
-            if let colorVal = colorValue[safe:1]{
-                if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
-                    nsColor = nil
-                }else if let colorValNSColor = colorVal as? NSColor{
-                    nsColor = colorValNSColor
-                }else{
-                    fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
-                }
-            }
-        }else{
-            fatalError("colorValue not supported: " + "\(colorValue)")
-        }
-        let alphaValue:CGFloat = alpha as? CGFloat ?? 1
-        if let nsCol = nsColor{
-            nsColor = nsCol.alpha(alphaValue)
-        }else{/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
-            nsColor = NSColor.clear//clear is white with alpha 0.0
-        }
-        return FillStyle(nsColor!)
-    }
-    /**
-     * Returns a LineStyle instance
-     * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
-     * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
-     */
-    private static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
-        let colorValue:NSColor? = color(skin, CSSConstants.line,depth)
-        let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha,depth) as? CGFloat ?? 1
-        let nsColor:NSColor = colorValue != nil ? colorValue!.alpha(lineAlpha) : NSColor.clear
-        return LineStyle(lineThickness, nsColor)
-    }
-    /**
-     * NOTE: makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
-     */
-    private static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
-        let color:Any? = value(skin, propertyName,depth)
-        return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
-    }
+    
+    
     /**
      * Returns an Offset instance
      * TODO: probably upgrade to TRBL
@@ -117,23 +67,7 @@ class StylePropertyParser{
         if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right", depth) }
         return fillet
     }
-    /**
-     * Returns a GradientFillStyle
-     */
-    private static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
-        return GradientFillStyle(gradient,NSColor.clear)
-    }
-    /**
-     * Returns a GradientLineStyle
-     * TODO: Does this work? where is the creation of line-thickness etc
-     * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
-     */
-    private static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
-        guard let gradient = value(skin, CSSConstants.line,depth) as? IGradient else {return nil}//<--temp fix
-        //gradient.rotation *= ㎭
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
-        return GradientLineStyle(gradient, lineThickness, NSColor.clear/*colorLineStyle(skin)*/)
-    }
+    
     /**
      * Returns TextFormat
      * TODO: ⚠️️ Make functional 🤖
@@ -309,6 +243,78 @@ extension StylePropertyParser{
      */
     static func string(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
         return "\(value(skin, propertyName,depth))"//swift 3 update
+    }
+}
+//private
+extension StylePropertyParser{
+    /**
+     * Returns a GradientFillStyle
+     */
+    private static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
+        return GradientFillStyle(gradient,NSColor.clear)
+    }
+    /**
+     * Returns a GradientLineStyle
+     * TODO: Does this work? where is the creation of line-thickness etc
+     * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
+     */
+    private static func gradientLineStyle(_ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle? {
+        guard let gradient = value(skin, CSSConstants.line,depth) as? IGradient else {return nil}//<--temp fix
+        //gradient.rotation *= ㎭
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
+        return GradientLineStyle(gradient, lineThickness, NSColor.clear/*colorLineStyle(skin)*/)
+    }
+    /**
+     * Returns a LineStyle instance
+     * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
+     * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
+     */
+    private static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+        if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
+        let colorValue:NSColor? = color(skin, CSSConstants.line,depth)
+        let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha,depth) as? CGFloat ?? 1
+        let nsColor:NSColor = colorValue != nil ? colorValue!.alpha(lineAlpha) : NSColor.clear
+        return LineStyle(lineThickness, nsColor)
+    }
+    /**
+     * NOTE: makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
+     */
+    private static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
+        let color:Any? = value(skin, propertyName,depth)
+        return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
+    }
+    /**
+     * Returns a FillStyle instance
+     * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
+     * TODO: ⚠️️ Refactor this method
+     */
+    private static func colorFillStyle(_ colorValue:Any?,_ alpha:Any?)->IFillStyle {
+        var nsColor:NSColor?
+        if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
+            nsColor = colorValue
+        }else if(colorValue == nil){
+            nsColor = nil
+        }else if let colorValue = colorValue as? [Any] {
+            if let colorVal = colorValue[safe:1]{
+                if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
+                    nsColor = nil
+                }else if let colorValNSColor = colorVal as? NSColor{
+                    nsColor = colorValNSColor
+                }else{
+                    fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
+                }
+            }
+        }else{
+            fatalError("colorValue not supported: " + "\(colorValue)")
+        }
+        let alphaValue:CGFloat = alpha as? CGFloat ?? 1
+        if let nsCol = nsColor{
+            nsColor = nsCol.alpha(alphaValue)
+        }else{/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? */
+            nsColor = NSColor.clear//clear is white with alpha 0.0
+        }
+        return FillStyle(nsColor!)
     }
 }
 

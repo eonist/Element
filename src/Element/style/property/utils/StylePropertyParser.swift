@@ -44,7 +44,7 @@ class StylePropertyParser{
         var offsetType:OffsetType = {
             if (val is String) || (val is [String]) {
                 return LayoutUtils.instance(val!, OffsetType.self) as! OffsetType
-            };return OffsetType()
+            };return OffsetType(OffsetType.inside)
         }()
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth)
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}
@@ -186,6 +186,7 @@ class StylePropertyParser{
     }
 }
 private class Utils{
+    static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * TODO: Explain what this method is doing
      */
@@ -193,9 +194,8 @@ private class Utils{
         if(value is Int){ return CGFloat(value as! Int)}/*<-- int really? shouldnt you use something with decimals?*/
         else if(value is CGFloat){return value as? CGFloat}
         else if(value is String){/*value is String*/
-            let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"//<--this can go into a static class variable since it is used twice in this class
             let stringValue:String = value as! String
-            let matches = stringValue.matches(pattern)
+            let matches = stringValue.matches(metricPattern)
             for match:NSTextCheckingResult in matches {
                 let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
                 let suffix:String = match.value(stringValue, 2)/*capturing group 1*/

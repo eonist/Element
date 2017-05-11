@@ -20,27 +20,19 @@ class StylePropertyParser{
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
         }else{
-            let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
-            return colorFillStyle(val,alpha)
+            return colorFillStyle(val,skin,depth)
         }
     }
     /**
      * Returns an ILineStyle instance based on the Style attached to the skin
      */
     static func lineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        
-        
-        let val = value(skin,CSSConstants.line,depth)
+        let val:Any? = value(skin,CSSConstants.line,depth)
         if let gradient = val as? IGradient {
             return gradientLineStyle(gradient,skin,depth)
         }else{
-            let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
-            return colorLineStyle(val,alpha)
+            return colorLineStyle(val as? NSColor,skin,depth)
         }
-        
-        
-        
-        return value(skin,CSSConstants.line,depth) is IGradient ? gradientLineStyle(skin,depth) : colorLineStyle(skin,depth)
     }
     /**
      * Returns an Offset instance
@@ -276,10 +268,8 @@ extension StylePropertyParser{
      * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    fileprivate static func colorLineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        if(value(skin, CSSConstants.line) == nil){return nil }//temp fix
+    fileprivate static func colorLineStyle(_ colorValue:NSColor?, _ skin:ISkin, _ depth:Int = 0) -> ILineStyle {
         let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
-        let colorValue:NSColor? = color(skin, CSSConstants.line,depth)
         let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha,depth) as? CGFloat ?? 1
         let nsColor:NSColor = colorValue != nil ? colorValue!.alpha(lineAlpha) : NSColor.clear
         return LineStyle(lineThickness, nsColor)
@@ -296,7 +286,7 @@ extension StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      * TODO: ⚠️️ Refactor this method
      */
-    fileprivate static func colorFillStyle(_ colorValue:Any?,_ alpha:Any?)->IFillStyle {
+    fileprivate static func colorFillStyle(_ colorValue:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
         var nsColor:NSColor?
         if let colorValue = colorValue as? NSColor{/*colorValue is NSColor*/
             nsColor = colorValue
@@ -315,6 +305,7 @@ extension StylePropertyParser{
         }else{
             fatalError("colorValue not supported: " + "\(colorValue)")
         }
+        let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         if let nsCol = nsColor{
             nsColor = nsCol.alpha(alphaValue)

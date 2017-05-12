@@ -16,7 +16,7 @@ class StylePropertyParser{
      * Returns an IFillStyle instance based on the Style attached to the skin
      */
     static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
-        let val = value(skin,CSSConstants.fill,depth)
+        let val = value(skin,CSSConstants.fill.rawValue,depth)
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
         }else{
@@ -104,7 +104,7 @@ class StylePropertyParser{
      * TODO: ⚠️️ Add support for % as it isnt implemented yet, see the margin implementation for guidance
      */
     static func offset(_ skin:ISkin,_ depth:Int = 0)->CGPoint {
-        guard let value:Any = self.value(skin, CSSConstants.offset, depth) else{
+        guard let value:Any = self.value(skin, CSSConstants.offset.rawValue, depth) else{
             return CGPoint(0,0)//<---temp solution
         }
         let array:[CGFloat] = {
@@ -123,15 +123,15 @@ class StylePropertyParser{
      */
     static func padding(_ skin:ISkin,_ depth:Int = 0) -> Padding {
         var padding:Padding = {
-            guard let value = self.value(skin, CSSConstants.padding,depth) else{
+            guard let value = self.value(skin, CSSConstants.padding.rawValue,depth) else{
                 return Padding()
             };return Padding(value)
         }()
-        let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding, depth)
-        padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft, depth) : Utils.metric(padding.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight, depth) : Utils.metric(padding.right, skin))!
-        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingTop, depth) : Utils.metric(padding.top, skin))!
-        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom,depth) > paddingIndex) ? StylePropertyParser.metric(skin, CSSConstants.paddingBottom, depth) : Utils.metric(padding.bottom, skin))!
+        let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding.rawValue, depth)
+        padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft.rawValue,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingLeft.rawValue, depth) : Utils.metric(padding.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight.rawValue,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingRight.rawValue, depth) : Utils.metric(padding.right, skin))!
+        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop.rawValue,depth) > paddingIndex ? StylePropertyParser.metric(skin, CSSConstants.paddingTop.rawValue, depth) : Utils.metric(padding.top, skin))!
+        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom.rawValue,depth) > paddingIndex) ? StylePropertyParser.metric(skin, CSSConstants.paddingBottom.rawValue, depth) : Utils.metric(padding.bottom, skin))!
         return padding
     }
     /**
@@ -140,28 +140,28 @@ class StylePropertyParser{
      */
     static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
         var margin:Margin = {
-            guard let value = self.value(skin, CSSConstants.margin,depth) else{
+            guard let value = self.value(skin, CSSConstants.margin.rawValue,depth) else{
                 return Margin()
             };return Margin(value)
         }()
-        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin,depth)
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight,depth) > marginIndex ? metric(skin, CSSConstants.marginRight,depth) : Utils.metric(margin.right, skin))!
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop,depth) > marginIndex ? metric(skin, CSSConstants.marginTop,depth) : Utils.metric(margin.top, skin))!
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom,depth)! : Utils.metric(margin.bottom, skin)!
+        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin.rawValue,depth)
+        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft.rawValue,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginRight.rawValue,depth) : Utils.metric(margin.right, skin))!
+        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginTop.rawValue,depth) : Utils.metric(margin.top, skin))!
+        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom.rawValue,depth)! : Utils.metric(margin.bottom, skin)!
         return margin
     }
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.width,depth)
+        return metric(skin,CSSConstants.width.rawValue,depth)
     }
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.height,depth)
+        return metric(skin,CSSConstants.height.rawValue,depth)
     }
     /**
      * New
      */
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
-        return value(skin, CSSConstants.transform, depth) as? CGFloat
+        return value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
@@ -174,7 +174,7 @@ class StylePropertyParser{
      * Returns assert url
      */
     static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {
-        guard let val = value(skin, CSSConstants.fill,depth), let arr = val as? [Any], let str = arr[0] as? String else {
+        guard let val = value(skin, CSSConstants.fill.rawValue,depth), let arr = val as? [Any], let str = arr[0] as? String else {
             fatalError("no asset in \(skin) at depth: \(depth)")
         }
         return str
@@ -183,7 +183,7 @@ class StylePropertyParser{
      * TODO: ⚠️️ This method is asserted before its used, so you may ommit the optionality
      */
     static func dropShadow(_ skin:ISkin, _ depth:Int = 0)->DropShadow? {
-        return value(skin, CSSConstants.drop_shadow,depth) as? DropShadow
+        return value(skin, CSSConstants.drop_shadow.rawValue,depth) as? DropShadow
     }
 }
 private class Utils{
@@ -257,7 +257,7 @@ extension StylePropertyParser{
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
     fileprivate static func gradientLineStyle(_ gradient:IGradient, _ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle {
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as! CGFloat
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness.rawValue,depth) as! CGFloat
         return GradientLineStyle(gradient, lineThickness, NSColor.clear)
     }
     /**
@@ -266,8 +266,8 @@ extension StylePropertyParser{
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
     fileprivate static func colorLineStyle(_ colorValue:NSColor?, _ skin:ISkin, _ depth:Int = 0) -> ILineStyle {
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness,depth) as? CGFloat ?? CGFloat.nan
-        let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha,depth) as? CGFloat ?? 1
+        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness.rawValue,depth) as? CGFloat ?? CGFloat.nan
+        let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha.rawValue,depth) as? CGFloat ?? 1
         let nsColor:NSColor = colorValue != nil ? colorValue!.alpha(lineAlpha) : NSColor.clear
         return LineStyle(lineThickness, nsColor)
     }
@@ -276,7 +276,7 @@ extension StylePropertyParser{
      */
     fileprivate static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
-        return color == nil || (color as? String) == CSSConstants.none ? nil : color as? NSColor
+        return color == nil || (color as? String) == CSSConstants.none.rawValue ? nil : color as? NSColor
     }
     /**
      * Returns a FillStyle instance
@@ -289,7 +289,7 @@ extension StylePropertyParser{
                 return colorVal
             }else if let colorVals = colorVal as? [Any] {
                 if let colorVal = colorVals[safe:1]{
-                    if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none{
+                    if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none.rawValue{
                         return nil
                     }else if let colorValNSColor = colorVal as? NSColor{
                         return colorValNSColor
@@ -303,7 +303,7 @@ extension StylePropertyParser{
                 return nil
             }
         }()
-        let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha,depth)
+        let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha.rawValue,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         nsColor = nsColor != nil ? nsColor!.alpha(alphaValue) : NSColor.clear/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? clear is white with alpha 0.0*/
         return FillStyle(nsColor!)

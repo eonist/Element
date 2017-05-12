@@ -16,9 +16,9 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let margin:Margin = StylePropertyParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
         let pos:CGPoint = {
-            if(floatType == CSSConstants.left || floatType == "" || floatType == nil) {
+            if(floatType == CSSConstants.left.rawValue || floatType == "" || floatType == nil) {
                 return CGPoint(margin.left + offset.x, margin.top + offset.y)
-            }else if(floatType == CSSConstants.right) {
+            }else if(floatType == CSSConstants.right.rawValue) {
                 let x:CGFloat = padding.right + margin.right + offset.x
                 let y:CGFloat = margin.top + padding.top + offset.y
                 return CGPoint(x,y)

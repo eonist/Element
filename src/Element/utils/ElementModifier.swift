@@ -5,7 +5,7 @@ class ElementModifier {
      * Changes the visibility of PARAM: element by PARAM: isVisible
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
-        let display:String = isVisible ? "" : CSSConstants.none//defines the dispaly param to be set
+        let display:String = isVisible ? "" : CSSConstants.none.rawValue//defines the dispaly param to be set
         applyStyleProperty(element, "display", display)
     }
     /**
@@ -46,7 +46,7 @@ class ElementModifier {
      * NOTE: keep in mind that this can be Window
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
-        guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none else{return}/*Skip refreshing*/
+        guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none.rawValue else{return}/*Skip refreshing*/
         method(element)/*apply the method*/
         if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
             container.subviews.forEach{

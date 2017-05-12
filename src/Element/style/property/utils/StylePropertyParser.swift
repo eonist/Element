@@ -79,7 +79,8 @@ class StylePropertyParser{
      */
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
-        TextFormatConstants.textFormatPropertyNames.forEach { textFormatKey in
+        let strings:[String] = TextFormatConstants.textFormatPropertyNames
+        strings.forEach { textFormatKey in
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
             if(value != nil) {
                 if(StringAsserter.metric("\(value)")){

@@ -58,12 +58,12 @@ class SkinParser {
         return StylePropertyParser.offset(skin)
     }
     static func float(_ skin:ISkin,_ depth:Int = 0)->String?{
-        return StylePropertyParser.value(skin,CSSConstants.float,depth) as? String
+        return StylePropertyParser.value(skin,CSSConstants.float.rawValue,depth) as? String
     }
     static func clear(_ skin:ISkin)->String? {
-        return StylePropertyParser.value(skin,CSSConstants.clear) as? String
+        return StylePropertyParser.value(skin,CSSConstants.clear.rawValue) as? String
     }
     static func display(_ skin:ISkin)->String? {
-        return StylePropertyParser.value(skin,CSSConstants.display) as? String
+        return StylePropertyParser.value(skin,CSSConstants.display.rawValue) as? String
     }
 }

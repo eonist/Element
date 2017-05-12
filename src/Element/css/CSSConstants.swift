@@ -2,7 +2,6 @@ import Foundation
 
 class CSSConstants{
     /*Font*/
-    
     static var ems:String = "ems"
     /*Layout*/
     static var display:String = "display"
@@ -36,7 +35,6 @@ class CSSConstants{
     static var lineOffsetTypeTop:String = "line-offset-type-top"
     static var lineOffsetTypeBottom:String = "line-offset-type-bottom"
     /*These property names are inheritable, they are originally from textformat and textfieldconstants sans width and height since these should not inherit*/
-    
     static var width:String = "width"
     static var height:String = "height"
     /*Other*/

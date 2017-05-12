@@ -48,9 +48,9 @@ class StylePropertyParser{
         }()
         let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType.rawValue,depth)
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft.rawValue,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft.rawValue)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight.rawValue,depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop.depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop.rawValue,depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom.rawValue,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight.rawValue,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight.rawValue,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop.rawValue,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop.rawValue,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom.rawValue,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom.rawValue,depth)}
         return offsetType
     }
     /**
@@ -59,17 +59,17 @@ class StylePropertyParser{
      * TODO: needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc. 
      */
     static func fillet(_ skin:ISkin, _ depth:Int = 0) -> Fillet {
-        let val:Any? = value(skin, CSSConstants.cornerRadius,depth)
+        let val:Any? = value(skin, CSSConstants.cornerRadius.rawValue,depth)
         let fillet:Fillet = {
             if (val is CGFloat) || (val is [Any]) {
                 return LayoutUtils.instance(val!, Fillet.self) as! Fillet
             };return Fillet()
         }()
-        let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius, depth);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, "corner-radius-top-left", depth) }//TODO: replace this with the constant: cornerRadiusIndex
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, "corner-radius-top-right", depth) }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, "corner-radius-bottom-left", depth) }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, "corner-radius-bottom-right", depth) }
+        let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius.rawValue, depth);//returns -1 if it doesnt exist
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft.rawValue, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, CSSConstants.cornerRadiusTopLeft.rawValue, depth) }//TODO: replace this with the constant: cornerRadiusIndex
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight.rawValue, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, CSSConstants.cornerRadiusTopRight.rawValue, depth) }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft.rawValue, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, CSSConstants.cornerRadiusBottomLeft.rawValue, depth) }
+        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight.rawValue, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, CSSConstants.cornerRadiusBottomRight.rawValue, depth) }
         return fillet
     }
     private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
@@ -89,7 +89,7 @@ class StylePropertyParser{
                     matches.forEach { match in
                         let val:Any = match.value(stringValue, 1)/*Capturing group 1*/
                         let suffix:String = match.value(stringValue, 2)/*Capturing group 2*/
-                        if(suffix == CSSConstants.ems) {value = "\(val)".cgFloat * CSSConstants.emsFontSize }
+                        if(suffix == CSSConstants.ems.rawValue) {value = "\(val)".cgFloat * CSSConstants.emsFontSize }
                     }
                 }
                 if(value is [String]) { value = StringModifier.combine(value as! [String], " ") }/*Some fonts are seperated by a space and thus are converted to an array*/

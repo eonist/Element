@@ -2,7 +2,7 @@ import Foundation
 
 class CSSConstants{
     /*Font*/
-    static var emsFontSize:CGFloat = 16
+    
     static var ems:String = "ems"
     /*Layout*/
     static var display:String = "display"
@@ -49,4 +49,7 @@ class CSSConstants{
     static var lineAlpha:String = "line-alpha"
     static var fillAlpha:String = "fill-alpha"
     static var lineThickness:String = "line-thickness"
+}
+extension CSSConstants{
+    static var emsFontSize:CGFloat {return 16}
 }

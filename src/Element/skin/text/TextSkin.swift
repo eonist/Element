@@ -40,7 +40,7 @@ class TextSkin:Skin,ITextSkin{
      * // :TODO: Make a similar funciton for getHeight, based on needed space for the height of the textfield
      */
     override func getWidth() -> CGFloat {
-        if((StylePropertyParser.value(self, TextFormatConstants.wordWrap) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
+        if((StylePropertyParser.value(self, TextFormatConstants.wordWrap.rawValue) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
             let padding:Padding = StylePropertyParser.padding(self)
             return textField.frame.size.width + padding.left + padding.right//swift 3 update happened
         }else {return super.getWidth()}

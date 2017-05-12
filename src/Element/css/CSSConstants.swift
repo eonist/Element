@@ -47,8 +47,6 @@ enum CSSConstants:String{
     case lineAlpha = "line-alpha"
     case fillAlpha = "fill-alpha"
     case lineThickness = "line-thickness"
-    
-    
 }
 extension CSSConstants{
     static var emsFontSize:CGFloat {return 16}

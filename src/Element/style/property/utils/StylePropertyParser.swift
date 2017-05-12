@@ -27,7 +27,7 @@ class StylePropertyParser{
      * Returns an ILineStyle instance based on the Style attached to the skin
      */
     static func lineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        let val:Any? = value(skin,CSSConstants.line,depth)
+        let val:Any? = value(skin,CSSConstants.line.rawValue,depth)
         if let gradient = val as? IGradient {
             return gradientLineStyle(gradient,skin,depth)
         }else if let color = val as? NSColor{
@@ -40,17 +40,17 @@ class StylePropertyParser{
      * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
     static func lineOffsetType(_ skin:ISkin, _ depth:Int = 0) -> OffsetType {
-        let val:Any? = value(skin, CSSConstants.lineOffsetType,depth)
+        let val:Any? = value(skin, CSSConstants.lineOffsetType.rawValue,depth)
         var offsetType:OffsetType = {
             if (val is String) || (val is [String]) {
                 return LayoutUtils.instance(val!, OffsetType.self) as! OffsetType
             };return OffsetType()
         }()
-        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType,depth)
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft)}
+        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType.rawValue,depth)
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft.rawValue,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft.rawValue)}
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight,depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop,depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop.depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop.rawValue,depth)}
+        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom.rawValue,depth)}
         return offsetType
     }
     /**

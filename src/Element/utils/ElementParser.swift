@@ -40,6 +40,7 @@ class ElementParser{
     /**
      * This method can be used to print the StyleSelector for an Element instance 
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
+     * TODO: ⚠️️ returns an trailing : could be a bug?
      */
     static func stackString(_ element:IElement)->String{
         return SelectorParser.string(selectors(element))

@@ -64,17 +64,17 @@ private class Utils{
      * Clear PARAM: skin to the left, right , both or none
      */
     static func clear(_ skin:ISkin,_ clearType:String?,_ floatType:String?,_ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
-        if(clearType == CSSConstants.left) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
-        else if(clearType == CSSConstants.right) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
-        else if(clearType == CSSConstants.both && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin ?? rightSiblingSkin,top)}/*Clear left & right*/
-        else if(clearType == CSSConstants.none || clearType == nil) {clearNone(skin, floatType,leftSiblingSkin,rightSiblingSkin, top)}/*Clear is none or null*/
+        if(clearType == CSSConstants.left.rawValue) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
+        else if(clearType == CSSConstants.right.rawValue) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
+        else if(clearType == CSSConstants.both.rawValue && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin ?? rightSiblingSkin,top)}/*Clear left & right*/
+        else if(clearType == CSSConstants.none.rawValue || clearType == nil) {clearNone(skin, floatType,leftSiblingSkin,rightSiblingSkin, top)}/*Clear is none or null*/
     }
     /**
      * Floats PARAM: skin to the left or right or none
      */
     static func float(_ skin:ISkin, _ clearType:String?, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
-        if(floatType == CSSConstants.left) { floatLeft(skin, clearType, leftSiblingSkin, left)}/*Float left*/
-        else if(floatType == CSSConstants.right) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
+        if(floatType == CSSConstants.left.rawValue) { floatLeft(skin, clearType, leftSiblingSkin, left)}/*Float left*/
+        else if(floatType == CSSConstants.right.rawValue) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
     }
     /**
      * Positions PARAM: skin by way of clearing it left
@@ -100,9 +100,9 @@ private class Utils{
      */
     static func clearNone(_ skin:ISkin, _ floatType:String?, _ leftSibling:ISkin?,_ rightSibling:ISkin?, _ top:CGFloat){
         skin.element!.y = {
-            if(floatType == CSSConstants.left && leftSibling != nil) { return leftSibling!.element!.y }
-            else if(floatType == CSSConstants.right && rightSibling != nil) { return rightSibling!.element!.y}
-            else if(floatType == CSSConstants.none) { return skin.element!.y}
+            if(floatType == CSSConstants.left.rawValue && leftSibling != nil) { return leftSibling!.element!.y }
+            else if(floatType == CSSConstants.right.rawValue && rightSibling != nil) { return rightSibling!.element!.y}
+            else if(floatType == CSSConstants.none.rawValue) { return skin.element!.y}
             else {return top}
         }()
     }
@@ -123,7 +123,7 @@ private class Utils{
      */
     static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  _ left:CGFloat){
         var left = left
-        if(leftSiblingSkin != nil && (clearType != CSSConstants.left && clearType != CSSConstants.both)) {left = leftSiblingSkin!.element!.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
+        if(leftSiblingSkin != nil && (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue)) {left = leftSiblingSkin!.element!.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
         skin.element!.x = left/*Sets the position of the skin.element*/
     }
     /**
@@ -134,7 +134,7 @@ private class Utils{
      */
     static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, _ right:CGFloat){
         var right = right
-        if(rightSiblingSkin != nil && (clearType != CSSConstants.right && clearType != CSSConstants.both)) {right = rightSiblingSkin!.element!.x}/*a previous element-sibling floats right*/
+        if(rightSiblingSkin != nil && (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue)) {right = rightSiblingSkin!.element!.x}/*a previous element-sibling floats right*/
         skin.element!.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
     }
     /**
@@ -147,21 +147,21 @@ private class Utils{
      *
      */
     static func leftFloatingElementSkin(_ elements:[IElement],_ index:Int)->ISkin? {
-        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.left)
+        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.left.rawValue)
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil/*the left element-sibling*/
     }
     /**
      * PARAM: index is the index of the skin being floated
      */
     static func rightFloatingElementSkin(_ elements:[IElement],_ index:Int)->ISkin? {
-        let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.right,exception)
+        let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.right.rawValue,exception)
         return lastIndexOfRightFloatingElement != -1 ? elements[lastIndexOfRightFloatingElement].skin! : nil/*the right-sibling-skin*/
     }
     /**
      * Exception method used to fix a problem where Elements would not float correctly to the right if a leftfloating Element that also cleared to the right or both, came before a Right floating Element
      */
     static func exception(_ skin:ISkin) -> Bool{
-        return (SkinParser.float(skin) == CSSConstants.left && (SkinParser.clear(skin) == CSSConstants.right || SkinParser.clear(skin) == CSSConstants.both))
+        return (SkinParser.float(skin) == CSSConstants.left.rawValue && (SkinParser.clear(skin) == CSSConstants.right.rawValue || SkinParser.clear(skin) == CSSConstants.both.rawValue))
     }
     /**
      * NOTE: Loops backwards
@@ -173,7 +173,7 @@ private class Utils{
         while(i >= rangeStart){
             let skin:ISkin = elements[i].skin!
             if(exception != nil && exception!(skin)) {return -1}
-            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none) {return i}
+            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none.rawValue) {return i}
             i -= 1
         }
         return -1

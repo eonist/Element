@@ -1,7 +1,16 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: Add selectedIdx to the init arg list?
+ * This is a list that can support infinite list items, while still being fast, memory-convervative and responsive. To support 1000's of data items, just use DataProvider, To support millions, consider using a DataProvider that derive its data from a database (SQLite or other)
+ * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
+ * NOTE: Conceptually the first index is calculated with modulo, then subsecuent items have their index by adding 1
+ * NOTE: Flickering in the graphics is caused by rapid adding and removing views, to avoid this rather hide views that are not visible, and move them into place when needed then unhide. Only create 1 surplus view for this purpouse. Hiding and revealing 1000 of items at once would hurt performance
+ * NOTE: We use a really long view and shuffle items while we scroll
+ * NOTE: Supporting variable item height will require advance caching system for keeping track of item heights. The challenge is to not have to loop through 1000's of items to get the correct .y coordinate (remember setProgress may be called 60 times per second)
+ * NOTE: [].count is a stored property in swift, no need to cache .count even for mutable arrays thumbup 
+ * IMPORTANT: ⚠️️ Only support for 1 itemHeight for now, see note about this bellow and how to work around it in the future ✅
+ * TODO: ⚠️️ Add resize support (test if resize works, by spawning new items etc)
+ * TODO: ⚠️️ Add selectedIdx to the init arg list?
  */
 typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
 class FastList3:ContainerView3,FastListable3{

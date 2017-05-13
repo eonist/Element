@@ -7,7 +7,7 @@ extension IStyle{
             return nil
         }
         set {
-            StyleModifier
+            StyleModifier.overrideStyleProperty(&<#T##style: IStyle##IStyle#>, <#T##styleProperty: IStyleProperty##IStyleProperty#>)
         }
     }
     /**

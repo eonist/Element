@@ -78,7 +78,7 @@ class FastList3:ContainerView3,FastListable3{
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
     }
     override func getClassType() -> String {
-        return dir == .ver ? "\(List.self)" : "VList"//<--VList really? isn't it more like HList atleast?
+        return dir == .ver ? "List" : "VList"//<--VList really? isn't it more like HList atleast?
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

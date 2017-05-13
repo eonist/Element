@@ -21,7 +21,7 @@ class ComboBoxWin:Window{
 }
 class ComboBoxView:PopupView{
     var dataProvider:DataProvider
-    var list:List?
+    var list:List3?
     var initSelectedIndex:Int
     var itemHeight:CGFloat//TODO:this should be set in the css?
     init(_ width:CGFloat, _ height:CGFloat, _ dataProvider:DataProvider,_ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
@@ -35,8 +35,8 @@ class ComboBoxView:PopupView{
         Swift.print("width: " + "\(width)")
         Swift.print("height: " + "\(height)")
         super.resolveSkin()
-        list = addSubView(List(width, height, itemHeight, dataProvider, self))
-        ListModifier.selectAt(list as! IList, initSelectedIndex)
+        list = addSubView(List3(width, height, itemHeight, dataProvider, self))
+        List3Modifier.selectAt(list as! Listable3, initSelectedIndex)
     }
     /**
      * override func onEvent(event: Event) {}

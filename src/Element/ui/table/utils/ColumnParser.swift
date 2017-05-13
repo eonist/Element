@@ -6,7 +6,7 @@ class ColumnParser {
      * Returns the indices in a a spessific sort order
      */
     static func sortOrder(_ column:Column,_ isAscending:Bool)->[Int] {
-        let list: IList = column.list
+        let list: Listable3 = column.list
         let children:[SelectTextButton] = NSViewParser.childrenOfType(list.lableContainer!, SelectTextButton.self)
         var sortList:[[String:Any]] = []//Swift 3 update, use Any instead of AnyObject
         for selectTextButton  in children {

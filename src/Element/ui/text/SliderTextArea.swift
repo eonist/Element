@@ -13,10 +13,10 @@ class SliderTextArea:TextArea{
 	var scrollBarSize:CGFloat
     lazy var vSlider:Slider = {
         self.vSliderInterval = Utils.vSliderinterval(self.text.getTextField())
-        let vSlider = self.addSubView(Slider(6/*_scrollBarSize*/,self.height,.ver,24,0,self))
+        let vSlider:Slider = self.addSubView(Slider(6/*_scrollBarSize*/,self.height,.ver,CGSize(24,24),0,self))
         let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text.getTextField(), vSlider, self.linesPerScroll)
         _ = vSliderThumbHeight
-        vSlider.setThumbHeightValue(45)
+        vSlider.setThumbSide(45)
         return vSlider
         //vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
     }()

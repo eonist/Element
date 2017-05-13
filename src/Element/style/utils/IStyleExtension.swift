@@ -1,6 +1,7 @@
 import Foundation
 
 extension IStyle{
+    
     /**
      * Returns a style property by the name given
      * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?

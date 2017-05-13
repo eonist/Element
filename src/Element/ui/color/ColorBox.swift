@@ -14,9 +14,8 @@ class ColorBox:Button,IColorInput{
     func setColorValue(_ color:NSColor){
         self.color = color
         let style:IStyle = StyleModifier.clone(skin!.style!,skin!.style!.name)/*we clone the style so other Element instances doesnt get their style changed aswell*/// :TODO: this wont do if the skin state changes, therefor we need something similar to DisplayObjectSkin
-        var styleProperty = style.getStyleProperty("fill",1) /*edits the style*/
-        if(styleProperty != nil){//temp
-            styleProperty!.value = color//("0x" + color.hexString).uint
+        if var styleProp:IStyleProperty = style.getStyleProperty("fill",1){ /*edits the style*/
+            styleProp.value = color//("0x" + color.hexString).uint
             skin!.setStyle(style)/*updates the skin*/
         }
     }

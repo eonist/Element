@@ -23,6 +23,6 @@ extension Style{
      * NOTE: you aperantly have to use Style 
      */
     mutating func setStyleProperty(_ styleProp:IStyleProperty){
-        StyleModifier.overrideStyleProperty(&self, styleProp)
+        StyleModifier.overrideStyleProperty(self as IStyle, styleProp)
     }
 }

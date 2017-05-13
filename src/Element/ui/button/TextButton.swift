@@ -1,5 +1,8 @@
 import Cocoa
 @testable import Utils
+/**
+ * TODO: get rid of LableKind and fix the bug were text isnt showing if you init the textbutton with text
+ */
 class TextButton:Button,LableKind {
     lazy var text:Text = {
         let text = self.addSubView(Text(self.width,self.height,self.textString,self))

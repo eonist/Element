@@ -1,14 +1,11 @@
 import Foundation
 
 extension IStyle{
-    subscript(key:String) -> String? {
-        get {
-            
-            return nil
-        }
-        set {
-            StyleModifier.overrideStyleProperty(&<#T##style: IStyle##IStyle#>, <#T##styleProperty: IStyleProperty##IStyleProperty#>)
-        }
+    /**
+     *
+     */
+    func setStyleProperty(){
+        
     }
     /**
      * Returns a style property by the name given

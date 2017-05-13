@@ -99,7 +99,7 @@ private class Utils{
 		let verticalInterval:Int = /*textField.maxScrollV*/ -1
 		return verticalInterval
 	}
-	static func vSliderThumbHeight(_ textField:TextField, _ slider:VSlider, _ linesPerScroll:UInt = 1) -> CGFloat {
+	static func vSliderThumbHeight(_ textField:TextField, _ slider:Slider, _ linesPerScroll:UInt = 1) -> CGFloat {
 		let numOfVisibleLines:Int = 0//(textField.numLines-textField.maxScrollV)
         _ = numOfVisibleLines
 		let verticalScalar:CGFloat = 0//textField.maxScrollV == 1 ? 1:numOfVisibleLines/textField.numLines
@@ -110,7 +110,7 @@ private class Utils{
 	static func hScrollBarInterpolation(_ textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
 		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance
 	}
-	static func hSliderThumbWidth(_ textField:TextField, _ slider:HSlider) -> CGFloat {
+	static func hSliderThumbWidth(_ textField:TextField, _ slider:Slider) -> CGFloat {
 		let horizontalScalar:CGFloat = 0//textField.maxScrollH == 0 ? 1:textField.width/textField.maxScroll
         _ = horizontalScalar
 //		var horizontalInterval:int = ScrollTextAreaUtil.hScrollBarInterpolation(textField);

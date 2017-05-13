@@ -39,8 +39,6 @@ class Skin:InteractiveView2,ISkin{
      */
     func setStyle(_ style:IStyle){
         hasStyleChanged = true
-        Swift.print("setStyle")
-        style.describe()
         self.style = style
         draw()
     }

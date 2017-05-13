@@ -18,6 +18,10 @@ extension Style{
         let selectors:[Selector?] = unWrap(xml, "selectors")
         return Style(name,selectors.flatMap{$0},styleProperties.flatMap{$0}) as? T
     }
+    /**
+     * New
+     * NOTE: you aperantly have to use Style 
+     */
     mutating func setStyleProperty(_ styleProp:IStyleProperty){
         StyleModifier.overrideStyleProperty(&self, styleProp)
     }

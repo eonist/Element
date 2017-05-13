@@ -27,4 +27,7 @@ class VolumeSlider:Slider{
         super.setSize(width,height)
         volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())
     }
+    override func getClassType() -> String {
+        return "\(VolumeSlider.self)"
+    }
 }

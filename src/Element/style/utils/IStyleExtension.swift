@@ -1,7 +1,15 @@
 import Foundation
 
 extension IStyle{
-    
+    subscript(key:String) -> String? {
+        get {
+            
+            return nil
+        }
+        set {
+            StyleModifier
+        }
+    }
     /**
      * Returns a style property by the name given
      * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?

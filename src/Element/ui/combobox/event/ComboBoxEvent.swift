@@ -26,13 +26,13 @@ extension ComboBoxEvent{
         //return (origin as! ComboBox).list!.lableContainer!.subviews[index] as! ISelectable
     }
     var selectedProperty:String{
-        let list: IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
-        let property:String = ListParser.propertyAt(list , index)
+        let list: Listable3 = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
+        let property:String = List3Parser.propertyAt(list , index)
         return property
     }
     var selectedTitle:String{
         let list: IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
-        let title:String = ListParser.titleAt(list, index)
+        let title:String = List3Parser.titleAt(list, index)
         return title
     }
 }

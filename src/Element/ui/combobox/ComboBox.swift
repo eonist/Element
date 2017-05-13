@@ -32,7 +32,7 @@ class ComboBox:Element{
 	}
 	override func resolveSkin(){
 		super.resolveSkin()
-		
+		_ = headerButton
         //setOpen(isOpen)//this isn't really needed as the combobox should never be open on creation, remove the initiater argument aswell i suppose
 	}
 	func onHeaderMouseDown(_ event:ButtonEvent) {

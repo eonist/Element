@@ -2,10 +2,10 @@ import Foundation
 
 extension IStyle{
     /**
-     *
+     * 
      */
-    func setStyleProperty(){
-        
+    mutating func setStyleProperty(styleProp:IStyleProperty){
+        StyleModifier.overrideStyleProperty(self, styleProp)
     }
     /**
      * Returns a style property by the name given

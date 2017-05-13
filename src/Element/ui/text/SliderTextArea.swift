@@ -11,16 +11,16 @@ import Foundation
 class SliderTextArea:TextArea{
     let linesPerScroll:UInt = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
 	var scrollBarSize:CGFloat
-    lazy var vSlider:VSlider = {
+    lazy var vSlider:Slider = {
         self.vSliderInterval = Utils.vSliderinterval(self.text.getTextField())
-        let vSlider = self.addSubView(VSlider(6/*_scrollBarSize*/,self.height,24,0,self))
+        let vSlider = self.addSubView(Slider(6/*_scrollBarSize*/,self.height,.ver,24,0,self))
         let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text.getTextField(), vSlider, self.linesPerScroll)
         _ = vSliderThumbHeight
         vSlider.setThumbHeightValue(45)
         return vSlider
         //vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
     }()
-    lazy var hSlider:HSlider? = {
+    lazy var hSlider:Slider? = {
         //hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
         //hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
         //let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
@@ -45,10 +45,10 @@ class SliderTextArea:TextArea{
 	 */
 	func updateScrollBarThumbSizes() {
 		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider!)
-		hSlider!.setThumbWidthValue(hSliderThumbWidth)
+		hSlider!.setThumbSide(hSliderThumbWidth)
 		hInterval = Utils.hScrollBarInterpolation(text.getTextField())
 		let verticalThumbSize:CGFloat =  Utils.vSliderThumbHeight(text.getTextField(), vSlider, linesPerScroll)
-		vSlider.setThumbHeightValue(verticalThumbSize)
+		vSlider.setThumbSide(verticalThumbSize)
 		vSliderInterval = Utils.vSliderinterval(text.getTextField())
 	}	
 	func onSliderChange(_ event:SliderEvent){

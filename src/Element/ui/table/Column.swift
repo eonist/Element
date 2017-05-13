@@ -5,7 +5,7 @@ class Column:Element{
     var title:String
     var dataProvider:DataProvider
     lazy var header:CheckTextButton = { self.addSubView(CheckTextButton(NaN, NaN,self.title,false,self,"header"))}()
-    lazy var list:Listable3 = {self.addSubView(List3(self.width, self.height /*<--these should be NaN*/,NaN, self.dataProvider, self))}()
+    lazy var list:Listable3 = {self.addSubView(List3(self.width, self.height /*<--these should be NaN*/,CGSize(NaN,NaN), self.dataProvider,.ver, self))}()
     init(_ width:CGFloat, _ height:CGFloat, _ title:String, _ dataProvider:DataProvider, _ parent:IElement? = nil, _ id:String = "") {
         self.title = title
         self.dataProvider = dataProvider

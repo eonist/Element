@@ -6,7 +6,6 @@ import Cocoa
 class VolumeSlider:Slider{
     lazy var volumeGraphic:Element = {
         self.addSubViewAt(Element(1,1,self,"volumeGraphic"),self.indexOf(self.thumb))
-        
     }()//lazy so that its only created once
     override func resolveSkin() {
         super.resolveSkin()
@@ -24,7 +23,7 @@ class VolumeSlider:Slider{
         super.setProgressValue(progress)
         volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())
     }
-    override func setSize(_ width: CGFloat, _ height:CGFloat) {
+    override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height)
         volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())
     }

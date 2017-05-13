@@ -7,12 +7,14 @@ class List3Parser {
      * PARAM: view is the Label
      */
     static func index(_ list: Listable3, _ view:NSView)->Int {
-        return list.contentContainer.indexOf(view)
+        fatalError("out of order atm")
+        //return list.contentContainer.indexOf(view)
     }
     /**
      * Returns the property for index
      */
     static func propertyAt(_ list:Listable3, _ index:Int)->String{
-        return list.db.getItemAt(index)!["property"]!
+        fatalError("out of order atm")
+        //return list.dp.getItemAt(index)!["property"]!
     }
 }

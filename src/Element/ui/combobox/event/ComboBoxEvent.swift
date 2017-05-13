@@ -31,7 +31,7 @@ extension ComboBoxEvent{
         return property
     }
     var selectedTitle:String{
-        let list: IList = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
+        let list: Listable3 = ((origin as! ComboBox).popupWindow!.contentView as! ComboBoxView).list!
         let title:String = List3Parser.titleAt(list, index)
         return title
     }

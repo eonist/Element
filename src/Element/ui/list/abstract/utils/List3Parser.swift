@@ -17,4 +17,19 @@ class List3Parser {
         fatalError("out of order atm")
         //return list.dp.getItemAt(index)!["property"]!
     }
+    /**
+     * Returns the title for index
+     */
+    static func titleAt(_ list: Listable3, _ index:Int)->String{
+        fatalError("out of order atm")
+        //return list.dataProvider.getItemAt(index)!["title"]!
+    }
+    /**
+     * Returns the index of the currentSelected
+     */
+    static func selectedIndex(_ list:Listable3) -> Int {
+        fatalError("out of order atm")
+        /* let selected:ISelectable? = self.selected(list)
+         return selected != nil ? list.lableContainer!.indexOf(selected as! NSView) : -1*/
+    }
 }

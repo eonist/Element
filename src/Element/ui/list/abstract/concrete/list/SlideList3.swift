@@ -11,6 +11,9 @@ class SlideList3:List3,Slidable3 {
         }
         super.onEvent(event)
     }
+    override func getClassType() -> String {
+        return "SlideList"
+    }
 }
 extension Slidable3{
     var hSlider:Slider {

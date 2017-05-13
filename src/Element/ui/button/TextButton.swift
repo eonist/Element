@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: get rid of LableKind and fix the bug were text isnt showing if you init the textbutton with text
+ * TODO: get rid of LableKind
  */
 class TextButton:Button,LableKind {
     lazy var text:Text = {
@@ -13,6 +13,10 @@ class TextButton:Button,LableKind {
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:IElement?, _ id:String? = nil) {
         textString = text
         super.init(width, height, parent, id)
+    }
+    override func resolveSkin() {
+        super.resolveSkin()
+        _ = text
     }
     override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)

@@ -20,9 +20,9 @@ extension Style{
     }
     /**
      * New
-     * NOTE: you aperantly have to use Style 
+     * IMPORTANT: ⚠️️ You aperantly have to use Style, protocols are not mutable apperantly
      */
     mutating func setStyleProperty(_ styleProp:IStyleProperty){
-        StyleModifier.overrideStyleProperty(self as IStyle, styleProp)
+        StyleModifier.overrideStyleProperty(&self, styleProp)
     }
 }

@@ -30,6 +30,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      */
     func windowDidResize(_ notification: Notification) {
         //Swift.print("Window.windowDidResize")
+        //(self.contentView as! Element).setSize(self.frame.size.width,self.frame.size.height)
     }
     /**
      * We use the resolveSkin method since this is the common way to implement functionality in this framework

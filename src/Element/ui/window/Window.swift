@@ -39,7 +39,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         //resolveSkin()
         self.contentView                 =   view1
         view1.wantsLayer                =   true
-        view1.layer!.cornerRadius       =   10
+        //view1.layer!.cornerRadius       =   10
         view1.layer!.backgroundColor    =   NSColor.white.cgColor
        
         view1.layer?.masksToBounds    = false

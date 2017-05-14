@@ -23,8 +23,8 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
         //self.center()/*centers the window, this can also be done via setOrigin and calculating screen size etc*/
         self.isMovableByWindowBackground = false/*This enables you to drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        self.contentView = FlippedView(frame:NSRect(0,0,w,h))
-        visualEffectView = TranslucentView(frame:NSRect(0,0,w,h))
+        self.contentView = FlippedView(frame:contentRect)
+        visualEffectView = TranslucentView(frame:contentRect)
         self.contentView?.addSubview(visualEffectView!)
         //override and add view to contentview. 
     }

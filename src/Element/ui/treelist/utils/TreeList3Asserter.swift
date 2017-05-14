@@ -13,4 +13,10 @@ class TreeList3Asserter {
     static func isOpen(_ treeList:TreeListable3, _ idx3d:[Int]) -> Bool{
         return TreeDPParser.getProp(treeList.treeDP, idx3d, "isOpen") == "true"
     }
+    /**
+     * New
+     */
+    static func hasCHildren(_ treeList:TreeListable3,_ idx3d:[Int]) -> Bool{
+        return TreeAsserter.hasChildren(treeList.treeDP.tree, idx3d)
+    }
 }

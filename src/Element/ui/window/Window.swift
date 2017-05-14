@@ -23,6 +23,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.isReleasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically, true for panels, false for unique docwin etc*/
         self.isMovableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
+        
         resolveSkin()
     }
     /**
@@ -37,6 +38,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      */
     func resolveSkin(){
         _ = contentView
+        self.display()
     }
     /**
      * I think this serves as a block for closing, i.e: prompt the user to save etc

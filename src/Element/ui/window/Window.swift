@@ -36,7 +36,12 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.isMovableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         //resolveSkin()
-        view1 = NSView()
+        self.contentView                 =   view1
+        view1.wantsLayer                =   true
+        view1.layer!.cornerRadius       =   10
+        view1.layer!.backgroundColor    =   NSColor.white.cgColor
+        //self.invalidateShadow()
+        
     }
     let view1   =   NSView()
     override var isKeyWindow: Bool {return true}

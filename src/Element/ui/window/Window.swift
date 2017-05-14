@@ -19,12 +19,16 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.backgroundColor = NSColor.clear/*Sets the window background color*/
         self.isOpaque = false
         self.makeKeyAndOrderFront(self)/*This moves the window to front and makes it key, should also be settable from within the win itself, test this*/
-        self.hasShadow = false/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
+        self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         self.invalidateShadow()
         
         self.titlebarAppearsTransparent  =   true
         self.titleVisibility             =   .hidden
         self.showsToolbarButton          =   false
+        self.standardWindowButton(NSWindowButton.fullScreenButton)?.isHidden   =   true
+        self.standardWindowButton(NSWindowButton.miniaturizeButton)?.isHidden  =   true
+        self.standardWindowButton(NSWindowButton.closeButton)?.isHidden        =   true
+        self.standardWindowButton(NSWindowButton.zoomButton)?.isHidden         =   true
         
         //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
         self.isReleasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically, true for panels, false for unique docwin etc*/

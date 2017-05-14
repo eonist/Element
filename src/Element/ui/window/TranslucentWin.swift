@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Element
 @testable import Utils
 /**
  * Used for Translucent look
@@ -26,8 +25,7 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
         self.contentView = FlippedView(frame:NSRect(0,0,w,h))
         visualEffectView = TranslucentView(frame:NSRect(0,0,w,h))
         self.contentView?.addSubview(visualEffectView!)
-        let view = ViewType.view(.basic,CGSize(w,h))/*Sets the mainview of the window*/
-        self.contentView?.addSubview(view)
+        //override and add view to contentview. 
     }
     func windowDidResize(_ notification: Notification) {
         //Swift.print("CustomWin.windowDidResize " + "\(self.frame.size)")

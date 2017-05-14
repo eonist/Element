@@ -20,7 +20,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.isOpaque = false
         self.makeKeyAndOrderFront(self)/*This moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = false/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
-        //self.invalidateShadow()
+        //
         
         /*self.titlebarAppearsTransparent  =   true
          self.titleVisibility             =   .visible
@@ -40,8 +40,14 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         view1.wantsLayer                =   true
         view1.layer!.cornerRadius       =   10
         view1.layer!.backgroundColor    =   NSColor.white.cgColor
+        view1.wantsLayer             = true;
+        view1.layer?.masksToBounds    = false
+        view1.layer?.shadowColor      = NSColor.shadowColor.cgColor;
+        view1.layer?.shadowOpacity    = 0.5;
+        view1.layer?.shadowOffset     = CGSizeMake(0, -3);
+        view1.layer?.shadowRadius     = 5.0;
+        view1.layer?.shouldRasterize  = true;
         //self.invalidateShadow()
-        
     }
     let view1   =   NSView()
     override var isKeyWindow: Bool {return true}

@@ -5,7 +5,7 @@ import Cocoa
  */
 class VolumeSlider:Slider{
     lazy var volumeGraphic:Element = {
-        self.addSubViewAt(Element(1,1,self/*,"volumeGraphic"*/),self.indexOf(self.thumb))
+        self.addSubViewAt(Element(1,1,self,"volumeGraphic"),self.indexOf(self.thumb))
     }()//lazy so that its only created once
     override func resolveSkin() {
         super.resolveSkin()

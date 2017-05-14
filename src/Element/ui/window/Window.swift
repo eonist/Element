@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     lazy var view:NSView = {WindowView(self.frame.width,self.frame.height)}()/*Sets the mainview of the window*/
@@ -40,12 +41,12 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         view1.wantsLayer                =   true
         view1.layer!.cornerRadius       =   10
         view1.layer!.backgroundColor    =   NSColor.white.cgColor
-        view1.wantsLayer             = true;
+       
         view1.layer?.masksToBounds    = false
-        view1.layer?.shadowColor      = NSColor.shadowColor.cgColor;
-        view1.layer?.shadowOpacity    = 0.5;
-        view1.layer?.shadowOffset     = CGSizeMake(0, -3);
-        view1.layer?.shadowRadius     = 5.0;
+        view1.layer?.shadowColor      = NSColor.red.cgColor;
+        view1.layer?.shadowOpacity    = 1;
+        view1.layer?.shadowOffset     = CGSize(10, -3);
+        view1.layer?.shadowRadius     = 15.0;
         view1.layer?.shouldRasterize  = true;
         //self.invalidateShadow()
     }

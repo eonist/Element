@@ -17,8 +17,8 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         let styleMask:NSWindowStyleMask = [.borderless, .resizable/*,.titled*/]/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: true)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
-        self.backgroundColor = .clear/*Sets the window background color*/
-        self.isOpaque = false
+        self.backgroundColor = .white/*Sets the window background color*/
+        //self.isOpaque = false
         self.makeKeyAndOrderFront(self)/*This moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = false/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         //

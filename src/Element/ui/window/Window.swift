@@ -38,16 +38,16 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         //resolveSkin()
         self.contentView                 =   view1
-        view1.wantsLayer                =   true
+        view1.wantsLayer                =   false
         //view1.layer!.cornerRadius       =   10
-        view1.layer!.backgroundColor    =   NSColor.white.cgColor
-       
-        view1.layer?.masksToBounds    = false
-        view1.layer?.shadowColor      = NSColor.red.cgColor;
-        view1.layer?.shadowOpacity    = 1;
-        view1.layer?.shadowOffset     = CGSize(10, -3);
-        view1.layer?.shadowRadius     = 15.0;
-        view1.layer?.shouldRasterize  = true;
+        /*view1.layer!.backgroundColor    =   NSColor.white.cgColor
+         
+         view1.layer?.masksToBounds    = false
+         view1.layer?.shadowColor      = NSColor.red.cgColor;
+         view1.layer?.shadowOpacity    = 1;
+         view1.layer?.shadowOffset     = CGSize(10, -3);
+         view1.layer?.shadowRadius     = 15.0;
+         view1.layer?.shouldRasterize  = true;*/
         //self.invalidateShadow()
     }
     let view1   =   NSView()

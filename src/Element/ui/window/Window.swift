@@ -16,7 +16,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
         let styleMask:NSWindowStyleMask = [.borderless, .resizable/*,.titled*/]/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(0, 0, width, height)
-        super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: true)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
+        super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: false)
         self.backgroundColor = .white/*Sets the window background color*/
         //self.isOpaque = false
         self.makeKeyAndOrderFront(self)/*This moves the window to front and makes it key, should also be settable from within the win itself, test this*/

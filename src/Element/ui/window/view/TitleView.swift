@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * NOTE: the titleView has a working model for centering things in css
+ * NOTE: the title must be set after the init of the Window instance
  */
 class TitleView:CustomView{
     lazy var textArea:TextArea = {self.addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))}()

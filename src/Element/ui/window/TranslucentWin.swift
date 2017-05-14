@@ -66,6 +66,7 @@ extension TranslucentView{
 }
 /*
  //just createa custom win and add content bellow super.init ✨
+ //override and add view to contentview.
  
 convenience init(_ w:CGFloat,_ h:CGFloat){
     self.init(contentRect:NSRect(0,0,w,h), styleMask: [.borderless,.resizable], backing:NSBackingStoreType.buffered, defer: false)

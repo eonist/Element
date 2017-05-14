@@ -38,6 +38,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         resolveSkin()
     }
     override var isKeyWindow: Bool {return true}
+    override var isMainWindow: Bool{return true}
     /**
      * Override this to add custom window resize code
      */

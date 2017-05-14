@@ -22,4 +22,14 @@ class TreeList3Utils {
         }
         return nil
     }
+    /**
+     * New
+     */
+    static func hasCHildren(_ treeList:TreeListable3,_ idx3d:[Int]) -> Bool{
+        if let tree = treeList.treeDP.tree[idx3d] {
+            return tree.children.isEmpty
+        }else{
+            return false
+        }
+    }
 }

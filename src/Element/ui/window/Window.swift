@@ -1,5 +1,4 @@
 import Cocoa
-@testable import Utils
 
 class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     lazy var view:NSView = {WindowView(self.frame.width,self.frame.height)}()/*Sets the mainview of the window*/
@@ -14,44 +13,18 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
-        let styleMask:NSWindowStyleMask = [.borderless, .resizable/*,.titled*/]/*represents the window attributes*/
+        let styleMask:NSWindowStyleMask = [.borderless, .resizable]/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(0, 0, width, height)
-        super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: false)
-        self.backgroundColor = .white/*Sets the window background color*/
-        //self.isOpaque = false
+        super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
+        self.backgroundColor = NSColor.clear/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*This moves the window to front and makes it key, should also be settable from within the win itself, test this*/
-        self.hasShadow = false/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
-        //
-        
-        /*self.titlebarAppearsTransparent  =   true
-         self.titleVisibility             =   .visible
-         self.showsToolbarButton          =   false
-         self.standardWindowButton(NSWindowButton.fullScreenButton)?.isHidden   =   true
-         self.standardWindowButton(NSWindowButton.miniaturizeButton)?.isHidden  =   true
-         self.standardWindowButton(NSWindowButton.closeButton)?.isHidden        =   true
-         self.standardWindowButton(NSWindowButton.zoomButton)?.isHidden         =   true*/
-        //self.tit
-        
+        self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
         //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
         self.isReleasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically, true for panels, false for unique docwin etc*/
         self.isMovableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        //resolveSkin()
-        self.contentView                 =   view1
-        view1.wantsLayer                =   false
-        //view1.layer!.cornerRadius       =   10
-        /*view1.layer!.backgroundColor    =   NSColor.white.cgColor
-         
-         view1.layer?.masksToBounds    = false
-         view1.layer?.shadowColor      = NSColor.red.cgColor;
-         view1.layer?.shadowOpacity    = 1;
-         view1.layer?.shadowOffset     = CGSize(10, -3);
-         view1.layer?.shadowRadius     = 15.0;
-         view1.layer?.shouldRasterize  = true;*/
-        //self.invalidateShadow()
+        resolveSkin()
     }
-    let view1   =   NSView()
-
     /**
      * Override this to add custom window resize code
      */

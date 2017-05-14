@@ -8,9 +8,7 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
     override var canBecomeKey:Bool{return true}/*If you want a titleless window to be able to become a key window, you need to create a subclass of NSWindow and override -canBecomeKeyWindow*/
     override var acceptsFirstResponder:Bool{return true}
     var visualEffectView:TranslucentView?/*We set the to the background*/
-    convenience init(_ w:CGFloat,_ h:CGFloat){
-        self.init(contentRect:NSRect(0,0,w,h), styleMask: [.borderless,.resizable], backing:NSBackingStoreType.buffered, defer: false)
-    }
+    
     override init(contentRect:NSRect, styleMask style:NSWindowStyleMask, backing bufferingType:NSBackingStoreType, defer flag: Bool) {
         super.init(contentRect:contentRect, styleMask: [.borderless,.resizable], backing:NSBackingStoreType.buffered, defer: false)
         WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
@@ -66,3 +64,11 @@ extension TranslucentView{
         return maskImage
     }
 }
+/*
+ //just createa custom win and add content bellow super.init ✨
+ 
+convenience init(_ w:CGFloat,_ h:CGFloat){
+    self.init(contentRect:NSRect(0,0,w,h), styleMask: [.borderless,.resizable], backing:NSBackingStoreType.buffered, defer: false)
+}
+ 
+*/

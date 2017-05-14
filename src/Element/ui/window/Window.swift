@@ -35,8 +35,10 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         self.isReleasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically, true for panels, false for unique docwin etc*/
         self.isMovableByWindowBackground = false/*This enables you do drag the window around via the background*/
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
-        resolveSkin()
+        //resolveSkin()
+        view1 = NSView()
     }
+    let view1   =   NSView()
     override var isKeyWindow: Bool {return true}
     override var isMainWindow: Bool{return true}
     /**

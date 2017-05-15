@@ -67,8 +67,8 @@ extension Tree{//maybe treekind isn't needed. Just use Tree?
     func getProps(_ idx3d:[Int]) -> [String:String]? {
         return self[idx3d]?.props
     }
-    func describe(_ tree:Tree,_ key:String, _ level:Int = 0){
-        TreeUtils.describe(tree, key, level)
+    func describe(_ key:String, _ level:Int = 0){
+        TreeUtils.describe(self, key, level)
     }
     var xml:XML {return TreeConverter.xml(self)}
 }

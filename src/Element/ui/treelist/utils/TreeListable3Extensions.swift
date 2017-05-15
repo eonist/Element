@@ -58,7 +58,7 @@ extension TreeListable3 {
     /**
      * New
      */
-    static func hasChildren(_ idx3d:[Int])-> Bool{
+    func hasChildren(_ idx3d:[Int])-> Bool{
         return TreeList3Asserter.hasChildren(self,idx3d)
     }
 }

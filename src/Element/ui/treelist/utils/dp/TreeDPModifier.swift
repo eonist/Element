@@ -26,7 +26,7 @@ class TreeDPModifier {
      * TODO: ⚠️️ A more efficient way of doing this would be to insert pathIndecies only for the affected items
      */
     static func insert(_ dp: TreeDP, _ idx3d:[Int], _ tree:Tree){
-        //Swift.print("insert \(tree.name) at \(idx3d)")
+        Swift.print("insert \(tree.name) at \(idx3d)")
         if let idx2d:Int = dp[idx3d] {/*makes sure it exists*/
             TreeModifier.insert(&dp.tree, idx3d, tree)
             //tree.describe(dp.tree, "title")
@@ -40,7 +40,7 @@ class TreeDPModifier {
      * TODO: ⚠️️ A more efficient way of doing this would be to insert pathIndecies only for the affected items
      */
     static func remove(_ dp: TreeDP, _ idx3d:[Int]){
-        //Swift.print("TreeDP2Modifier.remove at: \(idx3d)")
+        Swift.print("TreeDP2Modifier.remove at: \(idx3d)")
         if let idx2d:Int = dp[idx3d] {/*makes sure it exists*/
             //Swift.print("idx2d: " + "\(idx2d)")
             TreeModifier.remove(&dp.tree, idx3d)

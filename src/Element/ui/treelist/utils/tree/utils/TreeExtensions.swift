@@ -70,6 +70,15 @@ extension Tree{//maybe treekind isn't needed. Just use Tree?
     func describe(_ key:String, _ level:Int = 0){
         TreeUtils.describe(self, key, level)
     }
+    /**
+     * Temp low tech solutiion
+     */
+    func describe(){
+        Swift.print("tree.name: " + "\(self.name)")
+        Swift.print("tree.content: " + "\(self.content)")
+        Swift.print("tree.children: " + "\(self.children)")
+        Swift.print("tree.props: " + "\(self.props)")
+    }
     var xml:XML {return TreeConverter.xml(self)}
 }
 

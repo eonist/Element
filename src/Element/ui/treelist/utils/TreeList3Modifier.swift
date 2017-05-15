@@ -76,5 +76,29 @@ class TreeList3Modifier {
 }
 
 extension TreeList3Modifier{
-    
+    /**
+     *
+     */
+    static func moveUp(_ treeList:TreeListable3, _ idx3d:[Int]){
+        let above = TreeParser.above(treeList.tree, idx3d)
+        
+    }
+    /**
+     *
+     */
+    static func moveDown(_ treeList:TreeListable3, _ idx3d:[Int]){
+        
+    }
+    /**
+     *
+     */
+    static func moveTop(_ treeList:TreeListable3, _ idx3d:[Int]){
+        
+    }
+    /**
+     *
+     */
+    static func moveBottom(_ treeList:TreeListable3, _ idx3d:[Int]){
+        
+    }
 }

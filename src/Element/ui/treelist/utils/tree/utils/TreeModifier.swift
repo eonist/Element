@@ -125,7 +125,7 @@ class TreeModifier {
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if idx3d.last! > 0 {_ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,0)}
-        return parentTreeIdx3d + [idx3d.last!]
+        return parentTreeIdx3d + [0]
     }
     /**
      * Moves the child at PARAM: idx3d to the bottom
@@ -135,7 +135,9 @@ class TreeModifier {
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if let childrenCount:Int = tree[parentTreeIdx3d]?.children.count, idx3d.last! < childrenCount {
             _ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,childrenCount)
-        }
-        return parentTreeIdx3d + 
+            return parentTreeIdx3d + [childrenCount]
+        }else{
+            return idx3d/*just return it self as its already at the bottom*/
+        }   
     }
 }

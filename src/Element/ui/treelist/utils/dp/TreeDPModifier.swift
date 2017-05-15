@@ -33,6 +33,9 @@ class TreeDPModifier {
             dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
             dp.onEvent(DataProviderEvent(DataProviderEvent.add, idx2d, idx2d+1, dp))/*updates fastlist UI*/
         }else{
+            dp.hashList.forEach{
+                Swift.print("$0: " + "\($0)")
+            }
             fatalError("error no idx2d at: \(idx3d)")
         }
     }

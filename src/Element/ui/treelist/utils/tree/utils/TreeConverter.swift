@@ -4,9 +4,8 @@ import Foundation
 class TreeConverter {
     /**
      * Convert xml to Tree-struture
-     * Example: "<item title=\"New folder\" isOpen=\"false\" hasChildren=\"true\"></item>".xml
-     * EXAMPLE: 
-     * EXAMPLE: Output: ["isOpen": "false", "title": "New folder", "hasChildren": "true"]
+     * EXAMPLE: "<item title=\"New folder\" isOpen=\"false\" hasChildren=\"true\"></item>".xml
+     * EXAMPLE: TreeConverter.tree(a.xml) Output: Tree("item", nil, [], ["isOpen": "false", "title": "New folder", "hasChildren": "true"])
      */
     static func tree(_ xml:XML) -> Tree{
         var tree:Tree = Tree()

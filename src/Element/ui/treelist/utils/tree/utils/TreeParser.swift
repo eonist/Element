@@ -38,7 +38,7 @@ class TreeParser {
         /*_ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,idxAbove)*/
     }
     /**
-     * Moves the child at PARAM: idx3d down 1 integer
+     * idx3d bellow PARAM: idx3d
      */
     static func bellow(_ tree:Tree,_ idx3d:[Int]) -> [Int]?{
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
@@ -52,7 +52,7 @@ class TreeParser {
         }
     }
     /**
-     * Moves the child at PARAM: idx3d to the top
+     * idx3d top of at parent of PARAM: idx3d
      */
     static func top(_ tree:  Tree,_ idx3d:[Int]) -> [Int]?{
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
@@ -61,19 +61,18 @@ class TreeParser {
         return idx3d.last! > 0 ? parentTreeIdx3d + [0] : nil
     }
     /**
-     * Moves the child at PARAM: idx3d to the bottom
+     * idx3d bottom of at parent of PARAM: idx3d
      */
-    static func bottom(_ tree:  Tree,_ idx3d:[Int]) -> [Int]{
+    static func bottom(_ tree:  Tree,_ idx3d:[Int]) -> [Int]?{
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if let childrenCount:Int = tree[parentTreeIdx3d]?.children.count, idx3d.last! < childrenCount {
             /*_ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,childrenCount)*/
             return parentTreeIdx3d + [childrenCount]
         }else{
-            return idx3d/*just return it self as its already at the bottom*/
+            return nil
         }
     }
-    
 }
 private class Utils{
     /**

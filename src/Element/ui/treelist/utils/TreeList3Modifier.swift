@@ -90,8 +90,9 @@ extension TreeList3Modifier{
      */
     static func moveDown(_ treeList:TreeListable3, _ idx3d:[Int]){
         if let bellow = TreeParser.bellow(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
+           treeList.remove(idx3d)
             treeList.insert(bellow, tree)
-            treeList.remove(idx3d)
+            
         }
     }
     /**

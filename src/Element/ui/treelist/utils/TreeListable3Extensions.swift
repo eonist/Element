@@ -55,4 +55,10 @@ extension TreeListable3 {
     subscript(idx3d:[Int])->Tree?{
         return self.tree.child(idx3d)
     }
+    /**
+     *
+     */
+    static func hasChildren(_ idx3d:[Int])-> Bool{
+        return 
+    }
 }

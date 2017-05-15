@@ -71,7 +71,7 @@ extension Tree{//maybe treekind isn't needed. Just use Tree?
         TreeUtils.describe(self, key, level)
     }
     /**
-     * Temp low tech solutiion
+     * Temp low tech solution
      */
     func describe(){
         Swift.print("tree.name: " + "\(self.name)")

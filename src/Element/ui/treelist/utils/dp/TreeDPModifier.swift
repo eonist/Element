@@ -27,17 +27,17 @@ class TreeDPModifier {
      */
     static func insert(_ dp:TreeDP, _ idx3d:[Int], _ tree:Tree){
         Swift.print("insert \(tree.name) at \(idx3d)")
-        //if let idx2d:Int = dp[idx3d] {/*makes sure it exists*/
+        if let idx2d:Int = dp[idx3d] {/*makes sure it exists*/
             TreeModifier.insert(&dp.tree, idx3d, tree)
             //tree.describe(dp.tree, "title")
             dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
             dp.onEvent(DataProviderEvent(DataProviderEvent.add, idx2d, idx2d+1, dp))/*updates fastlist UI*/
-        /*}else{
+        }else{
             dp.hashList.forEach{
-            Swift.print("$0: " + "\($0)")
-         }
+                Swift.print("$0: " + "\($0)")
+            }
             fatalError("error no idx2d at: \(idx3d)")
-         }*/
+        }
     }
     /**
      * New

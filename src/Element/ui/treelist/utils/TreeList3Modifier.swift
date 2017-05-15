@@ -80,7 +80,7 @@ extension TreeList3Modifier{
      * Moves the child at PARAM: idx3d up 1 integer
      */
     static func moveUp(_ treeList:TreeListable3, _ idx3d:[Int]){
-        if var above = TreeParser.above(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
+        if let above = TreeParser.above(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
             treeList.remove(idx3d)
             treeList.insert(above, tree)
         }
@@ -90,8 +90,8 @@ extension TreeList3Modifier{
      */
     static func moveDown(_ treeList:TreeListable3, _ idx3d:[Int]){
         if let bellow = TreeParser.bellow(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
-            treeList.remove(idx3d)
             treeList.insert(bellow, tree)
+            treeList.remove(idx3d)
         }
     }
     /**

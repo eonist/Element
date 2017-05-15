@@ -108,7 +108,7 @@ extension TreeList3Modifier{
      * Moves the child at PARAM: idx3d to the bottom
      */
     static func moveBottom(_ treeList:TreeListable3, _ idx3d:[Int]){
-        if let bottom = TreeParser.top(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
+        if let bottom = TreeParser.bottom(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
             treeList.remove(idx3d)
             treeList.insert(bottom, tree)
         }

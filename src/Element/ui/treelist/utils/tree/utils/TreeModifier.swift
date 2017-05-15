@@ -115,7 +115,7 @@ class TreeModifier {
             _ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,idxBellow)
             return idxBellow
         }else{
-            
+            return idx3d.last!
         }
     }
     /**

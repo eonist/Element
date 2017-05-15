@@ -81,7 +81,7 @@ extension TreeList3Modifier{
      */
     static func moveUp(_ treeList:TreeListable3, _ idx3d:[Int]){
         if let above = TreeParser.above(treeList.tree, idx3d) {
-            
+            let tree = treeList.tree.child(idx3d)
         }
     }
     /**

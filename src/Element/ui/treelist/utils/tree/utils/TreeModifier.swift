@@ -97,12 +97,12 @@ class TreeModifier {
     /**
      * Moves the child at PARAM: idx3d up 1 integer
      */
-    static func moveUp(_ tree: inout Tree,_ idx3d:[Int]) -> Int{
+    static func moveUp(_ tree: inout Tree,_ idx3d:[Int]) -> [Int]{
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
-        let idxAbove:Int  = idx3d.last! > 0 ? idx3d.last!-1:0/*idx above*/
+        let idxAbove:Int = idx3d.last! > 0 ? idx3d.last!-1:0/*idx above*/
         _ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,idxAbove)
-        return idxAbove
+        return parentTreeIdx3d + [idxAbove]
     }
     /**
      * Moves the child at PARAM: idx3d down 1 integer

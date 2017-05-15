@@ -92,7 +92,10 @@ class TreeModifier {
     static func remove(_ tree: inout Tree,_ idx3d:[Int]){
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
-        tree[parentTreeIdx3d]?.children.remove(at: idx3d.last!)
+        if let parent:Tree = tree[parentTreeIdx3d], tree {
+            
+        }
+        ?.children.remove(at: idx3d.last!)
     }
     
 }

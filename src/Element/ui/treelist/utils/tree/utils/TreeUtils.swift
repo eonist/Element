@@ -52,6 +52,9 @@ class TreeUtils{
         }
         return true
     }
+    static func parentIndex(_ idx3d:[Int]) -> [Int]{
+        return idx3d.count > 1 ? Array(idx3d[0...(idx3d.count-1)]) : []
+    }
 }
 private class Utils{
     /**

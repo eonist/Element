@@ -46,4 +46,10 @@ extension TreeListable3 {
     subscript(idx3d:[Int],key:String) -> String? {
         return TreeDPParser.getProp(self.treeDP, idx3d, key)
     }
+    /**
+     * New
+     */
+    subscript(idx3d:[Int])->Tree?{
+        return self.tree.child(idx3d)
+    }
 }

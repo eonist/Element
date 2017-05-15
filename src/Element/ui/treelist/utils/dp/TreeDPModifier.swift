@@ -49,14 +49,14 @@ class TreeDPModifier {
         if let idx2d:Int = dp[idx3d] {/*makes sure it exists*/
             //Swift.print("idx2d: " + "\(idx2d)")
             TreeModifier.remove(&dp.tree, idx3d)
-            dp.tree.children.forEach {
-                Swift.print("$0.name: " + "\($0.props?["title"])")
-             }
+            /*dp.tree.children.forEach {
+             Swift.print("$0.name: " + "\($0.props?["title"])")
+             }*/
             dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
             //Swift.print("dp.hashList: " + "\(dp.hashList)")
-            dp.hashList.forEach {
-                Swift.print("$0: " + "\($0)")
-            }
+            /*dp.hashList.forEach {
+             Swift.print("$0: " + "\($0)")
+             }*/
             dp.onEvent(DataProviderEvent(DataProviderEvent.remove, idx2d, idx2d+1, dp))
         }
     }

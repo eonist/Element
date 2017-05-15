@@ -99,7 +99,7 @@ class TreeModifier {
      */
     static func moveUp(_ tree: inout Tree,_ idx3d:[Int]) -> Int{
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
-        let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(<#T##idx3d: [Int]##[Int]#>)
+        let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         let idxAbove:Int  = idx3d.last! > 0 ? idx3d.last!-1:0/*idx above*/
         _ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,idxAbove)
         return idxAbove
@@ -109,7 +109,7 @@ class TreeModifier {
      */
     static func moveDown(_ tree: inout Tree,_ idx3d:[Int]) -> Int{
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
-        let parentTreeIdx3d:[Int] = idx3d.count > 1 ? Array(idx3d[0...(idx3d.count-1)]) : []
+        let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if let childrenCount:Int = tree[parentTreeIdx3d]?.children.count{
             let idxBellow:Int = idx3d.last! < childrenCount ? idx3d.last!+1:childrenCount
             _ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,idxBellow)
@@ -123,7 +123,7 @@ class TreeModifier {
      */
     static func moveToTop(_ tree: inout Tree,_ idx3d:[Int]) {
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
-        let parentTreeIdx3d:[Int] = idx3d.count > 1 ? Array(idx3d[0...(idx3d.count-1)]) : []
+        let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if idx3d.last! > 0 {_ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,0)}
     }
     /**
@@ -131,7 +131,7 @@ class TreeModifier {
      */
     static func moveToBottom(_ tree: inout Tree,_ idx3d:[Int]){
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
-        let parentTreeIdx3d:[Int] = idx3d.count > 1 ? Array(idx3d[0...(idx3d.count-1)]) : []
+        let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if let childrenCount:Int = tree[parentTreeIdx3d]?.children.count, idx3d.last! < childrenCount {
             _ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,childrenCount)
         }

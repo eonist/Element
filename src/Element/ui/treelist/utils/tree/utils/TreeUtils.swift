@@ -35,6 +35,7 @@ class TreeUtils{
     
     /**
      * Used to debug Trees
+     * TODO: make a describe method that prints the entire tree with tabbing
      */
     static func describe(_ tree:Tree,_ key:String, _ level:Int = 0){
         if let props = tree.props, let value:String = props[key]{

@@ -53,7 +53,7 @@ class TreeUtils{
         return true
     }
     /**
-     * EXAMPLE: TreeUtils.parentIndex([2,1,1,2])//[2, 1, 1]
+     * EXAMPLE: TreeUtils.parentIndex([2,1,3,4])//[2, 1, 3]
      */
     static func parentIndex(_ idx3d:[Int]) -> [Int]{
         return idx3d.count > 1 ? Array(idx3d[0..<(idx3d.count-1)]) : []

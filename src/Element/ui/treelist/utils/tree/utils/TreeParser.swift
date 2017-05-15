@@ -31,12 +31,16 @@ class TreeParser {
     /**
      * idx3d above PARAM: idx3d
      */
-    static func above(_ tree: Tree,_ idx3d:[Int]) -> [Int]{
+    static func above(_ tree: Tree,_ idx3d:[Int]) -> [Int]? {
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
-        let idxAbove:Int = idx3d.last! > 0 ? idx3d.last!-1:0/*idx above*/
+        if idx3d.last! > 0 {
+            let idxAbove:Int = idx3d.last!-1
+            return parentTreeIdx3d + [idxAbove]
+        };return nil
+        /*idx above*/
         /*_ = tree[parentTreeIdx3d]?.children.displace(idx3d.last!,idxAbove)*/
-        return parentTreeIdx3d + [idxAbove]
+        return
     }
     /**
      * Moves the child at PARAM: idx3d down 1 integer

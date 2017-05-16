@@ -19,15 +19,6 @@ class Text:Element,IText {
         (skin as! TextSkin).setText(text)
     }
     /**
-     * Returns the textField text and 
-     */
-    func getText()->String{
-        return getTextField().stringValue
-    }
-    func getTextField()->TextField{
-        return (skin as! ITextSkin).textField
-    }
-    /**
      * Returns "Text"
      * NOTE: This function is used to find the correct class type when synthezing the element cascade, in the event that a class subclasses this class
      */
@@ -35,4 +26,15 @@ class Text:Element,IText {
         return "\(Text.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension Text{
+    /**
+     * Returns the textField text and
+     */
+    func getText()->String{
+        return getTextField().stringValue
+    }
+    func getTextField()->TextField{
+        return (skin as! ITextSkin).textField
+    }
 }

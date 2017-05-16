@@ -1,6 +1,8 @@
 import Foundation
 @testable import Utils
-
+/**
+ * TODO: ⚠️️ Through extension you should add a way to set inputTextArea text value. 
+ */
 class TextInput:Element{
     lazy var text:Text = {self.addSubView(Text(self.width,self.height,self.textString,self))}()
     lazy var inputTextArea:TextArea = {self.addSubView(TextArea(self.width,self.height,self.inputString,self))}()

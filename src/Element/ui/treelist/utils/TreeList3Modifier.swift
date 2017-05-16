@@ -110,8 +110,9 @@ extension TreeList3Modifier{
     static func moveBottom(_ treeList:TreeListable3, _ idx3d:[Int]){
         if let bottom = TreeParser.bottom(treeList.tree, idx3d), let tree = treeList.tree.child(idx3d) {
             Swift.print("bottom: " + "\(bottom)")
-            treeList.remove(idx3d)
             treeList.insert(bottom, tree)
+            treeList.remove(idx3d)
+            
         }
     }
 }

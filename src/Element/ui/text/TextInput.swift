@@ -33,5 +33,5 @@ extension TextInput{
     func setInputText(_ text:String){/*Convenience*/
         inputTextArea.setTextValue(text)
     }
-    var inputText:String {inputTextArea.text.getText()}
+    var inputText:String {return inputTextArea.text.getText()}
 }

@@ -4,8 +4,8 @@ import Foundation
  * TODO: ⚠️️ Through extension you should add a way to set inputTextArea text value. 
  */
 class TextInput:Element{
-    lazy var text:Text = {return self.addSubView(Text(self.width,self.height,self.textString,self))}()
-    lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.width,self.height,self.inputString,self))}()
+    lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
+    lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.inputString,self))}()
     private var textString:String
     var inputString:String
     init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:IElement? = nil,  _ id:String? = nil) {

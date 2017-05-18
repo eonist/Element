@@ -5,7 +5,7 @@ import Foundation
  * :TODO: Add support for setting size via css for the TextArea. Its currently not working
  */
 class TextArea:Element {
-    lazy var text:Text = {self.addSubView(Text(self.width,self.height,self.textString,self))}()
+    lazy var text:Text = {self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
     private var textString:String/*Interim value*/
     init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:IElement? = nil, _ id:String? = nil) {
         self.textString = text

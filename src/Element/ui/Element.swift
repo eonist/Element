@@ -18,7 +18,7 @@ class Element:InteractiveView2,IElement {
     var isDisabled:Bool = false
     var isFocused:Bool = false
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */
-    init(_ width: CGFloat, _ height: CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
+    init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil,_ id:String? = nil){
         self.parent = parent
         self.id = id
         self.width = width

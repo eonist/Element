@@ -57,7 +57,7 @@ class Skin:InteractiveView2,ISkin{
     }
     /**
      * Sets the width and height of skin also forces a redraw.
-     * NOTE: similar to setStyle, this does not querry the styleManger when called
+     * IMPORTANT: ⚠️️ Similar to setStyle, this does not querry the styleManger when called
      */
     func setSize(_ width:CGFloat, _ height:CGFloat) {
         if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)

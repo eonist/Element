@@ -12,6 +12,7 @@ class TreeUtils{
     static var defaultAssert:AssertMethod = {_ in return true}//returns true as default
     /**
      * Recusivly flattens the the treeStructure into a column structure array of tree items
+     * TODO: ⚠️️ Use reduce!
      */
     static func flattened(_ tree:Tree) -> [Tree] {
         var results:[Tree] = []

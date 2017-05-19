@@ -23,7 +23,7 @@ class CustomView:WindowView{
     }
     override func setSize(_ width:CGFloat,_ height:CGFloat){
         super.setSize(width, height)
-        section.setSize(width, section.height)
+        //section.setSize(width, section.height)
     }
     /**
      * NOTE: for re-usable panels etc, override and use the orderOut and makeKeyandOrderInfront combo. Use visible to assert between the modes

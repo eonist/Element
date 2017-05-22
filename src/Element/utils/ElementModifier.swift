@@ -48,10 +48,8 @@ class ElementModifier {
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none.rawValue else{return}/*Skip refreshing*/
         method(element)/*apply the method*/
-        guard let container:NSView = element as? NSView else{//element is Window ? Window(element).view : element as NSView;
-            fatalError("element is not NSView")
-        }
-        container.subviews.lazy.flatMap{$0 as? IElement}.
+        guard let container:NSView = element as? NSView else{fatalError("element is not NSView")}//element is Window ? Window(element).view : element as NSView;
+        container.subviews.lazy.flatMap{$0 as? IElement}.forEach{refresh($0,method)}/*<--this line makes it recursive*/
     }
     /**
      * Resizes many elements in PARAM: view

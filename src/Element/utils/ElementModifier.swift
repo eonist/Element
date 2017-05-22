@@ -73,11 +73,13 @@ class ElementModifier {
      * NOTE: i.e: after hideing of an element, or changing the depth order etc
      */
     static func floatChildren(_ view:NSView) {
-        view.subviews.lazy.flatMap{ view in
-            return view as? IElement
-            }.forEach{ element in
-                if let skin = element.skin { SkinModifier.float(skin) }
-        }
+        view.subviews.lazy.flatMap{$0 as? IElement}.forEach{float($0)}
+    }
+    /**
+     * New
+     */
+    static func float(_ element:IElement){
+        if let skin = element.skin { SkinModifier.float(skin) }
     }
 }
 private class Utils{

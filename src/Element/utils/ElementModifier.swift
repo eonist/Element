@@ -13,6 +13,7 @@ class ElementModifier {
      * TODO: Also make a method that uses the actualy StyleProperty class
      */
     static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
+        guard let skin = element.skin, let style = skin.style
         element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty(key) {
             styleProperty.value = value/*prop already exists just add value*/

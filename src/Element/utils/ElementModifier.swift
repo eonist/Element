@@ -84,7 +84,7 @@ class ElementModifier {
 }
 private class Utils{
     static func setStyle(_ element:IElement){
-        element.skin!.setStyle(element.skin!.style!)/*Uses the setStyle since its faster than setSkin*/
+        if let skin = element.skin, let style = skin.style { skin.setStyle(style) }/*Uses the setStyle since its faster than setSkin*/
     }
     /**
      * This operated directly on the skin before as the element.setSkinState may be removed in the future

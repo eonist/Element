@@ -48,21 +48,22 @@ class ElementModifier {
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
         guard let display:String = element.skin!.style!.getStyleProperty("display") as? String, display == CSSConstants.none.rawValue else{return}/*Skip refreshing*/
         method(element)/*apply the method*/
-        if let container:NSView = element as? NSView{//element is Window ? Window(element).view : element as NSView;
-            container.subviews.forEach{
-                if let child = $0 as? IElement{
-                    refresh(child,method)/*<--this line makes it recursive*/
-                }
+        guard let container:NSView = element as? NSView else{//element is Window ? Window(element).view : element as NSView;
+            fatalError("element is not NSView")
+        }
+        container.subviews.forEach{
+            if let child = $0 as? IElement{
+                refresh(child,method)/*<--this line makes it recursive*/
             }
-        }else{fatalError("element is not NSView")}
+        }
     }
     /**
      * Resizes many elements in PARAM: view
      * // :TODO: rename to Resize, its less ambigiouse
      */
     static func size(_ view:NSView,_ size:CGPoint) {
-        view.subviews.forEach{
-            if let element = $0 as? IElement {element.setSize(size.x, size.y)}
+        view.subviews.forEach{ view in
+            if let element = view as? IElement {element.setSize(size.x, size.y)}
         }
     }
     /**
@@ -70,8 +71,8 @@ class ElementModifier {
      * NOTE: i.e: after hideing of an element, or changing the depth order etc
      */
     static func floatChildren(_ view:NSView) {
-        view.subviews.forEach{
-            if let element = $0 as? IElement {SkinModifier.float(element.skin!)}
+        view.subviews.forEach{ view in
+            if let element = view as? IElement {SkinModifier.float(element.skin!)}
         }
     }
 }

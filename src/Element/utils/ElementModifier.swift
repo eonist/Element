@@ -9,8 +9,8 @@ class ElementModifier {
         applyStyleProperty(element, "display", display)
     }
     /**
-     * TODO: what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
-     * TODO: Also make a method that uses the actualy StyleProperty class
+     * TODO: ⚠️️ what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
+     * TODO: ⚠️️ Also make a method that uses the actualy StyleProperty class
      */
     static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
         guard let skin = element.skin, var style = skin.style else{fatalError("skin or style is nil")}
@@ -43,7 +43,7 @@ class ElementModifier {
     }
     /**
      * Refreshes many elements in PARAM: displayObjectContainer
-     * // :TODO: skin should have a dedicated redraw method or a simple workaround
+     * TODO: skin should have a dedicated redraw method or a simple workaround
      * NOTE: keep in mind that this can be Window
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method

@@ -136,9 +136,11 @@ private class Utils{
      *  PARAM: right the x value to align against
      */
     static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, _ right:CGFloat){
-        var right = right
-        if(rightSiblingSkin != nil && (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue)) {right = rightSiblingSkin!.element!.x}/*a previous element-sibling floats right*/
-        skin.element!.x = right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
+        skin.element!.x = {
+            if let rightSiblingSkin = rightSiblingSkin , (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue) {/*a previous element-sibling floats right*/
+                return right + rightSiblingSkin.element!.x
+            };return right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
+        }()
     }
     /**
      * NOTE:-1 -> Not found

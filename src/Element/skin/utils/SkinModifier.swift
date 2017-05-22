@@ -40,8 +40,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      */
     static func float(_ skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
-        let parent:NSView = skin.element!.getParent() as! NSView
-        let elementParent:IElement = skin.element!.getParent() as! IElement
+        guard let parent:NSView = skin.element?.getParent() as? NSView else{ fatalError("skin has no parent")}
+        guard let elementParent:IElement = skin.element?.getParent() as? IElement else{fatalError("skin has no elementParent")}
         let elements:[IElement] = ElementParser.children(parent,IElement.self)
         let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element! as! Element) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!)/*the top-left-corner of the parent*/

@@ -40,17 +40,18 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      */
     static func float(_ skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
         if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
-        guard let element:IElement = skin.element else{fatalError("skin has no element")}
+        guard let view:NSView = skin.element as? NSView else {fatalError("skin element is not NSView")}
+        guard let element:Element = skin.element as? Element else{fatalError("skin has no element")}
         guard let parent:NSView = element.getParent() as? NSView else{ fatalError("skin has no parent")}
         guard let elementParent:IElement = element.getParent() as? IElement else{fatalError("skin has no elementParent")}
-        let elements:[IElement] = ElementParser.children(parent,IElement.self)
-        let index:Int = parent.contains(skin.element as! NSView) ? Utils.elementIndex(parent, skin.element! as! Element) : elements.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
+        let siblings:[IElement] = ElementParser.children(parent,IElement.self)
+        let index:Int = parent.contains(view) ? Utils.elementIndex(parent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!)/*the top-left-corner of the parent*/
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
-        let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(elements, index)/*the last left floating element-sibling skin*/
+        let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(siblings, index)/*the last left floating element-sibling skin*/
         //if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}//<--this is how you debug the floating system
         //if(skin is TextSkin){Swift.print("float() leftSiblingSkin.height:" + "\(leftSiblingSkin?.height)" + " clearType: " + "\(clearType)")}//<- or you can debug like this
-        let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(elements, index)/*the last right floating element-sibling-skin*/
+        let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(siblings, index)/*the last right floating element-sibling-skin*/
         let clearType:String? = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
         let floatType:String? = SkinParser.float(skin)
         Utils.float(skin, clearType, floatType, leftSiblingSkin, rightSiblingSkin, parentTopLeft.x, parentTopRight.x)

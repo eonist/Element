@@ -6,7 +6,7 @@ class SkinParser {
         let margin:Margin = self.margin(skin)
         let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
-        return margin.left + border.left + padding.left + width(skin) + padding.right + border.right +  margin.right
+        return width(skin) 
     }
     static func totalHeight(_ skin:ISkin)->CGFloat {
         let margin:Margin = self.margin(skin)

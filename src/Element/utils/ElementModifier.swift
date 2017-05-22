@@ -62,10 +62,10 @@ class ElementModifier {
      * TODO: ⚠️️ Rename to Resize, its less ambigiouse
      */
     static func size(_ view:NSView,_ size:CGPoint) {
-        view.subviews.filter{ -> [IElement]
-            return $0 is IElement
+        view.subviews.lazy.flatMap{ view in
+            return view as? IElement
             }.forEach{ element in
-                element.setSize(size.x, size.y)
+                 element.setSize(size.x, size.y)
         }
     }
     /**
@@ -73,8 +73,10 @@ class ElementModifier {
      * NOTE: i.e: after hideing of an element, or changing the depth order etc
      */
     static func floatChildren(_ view:NSView) {
-        view.subviews.forEach{ view in
-            if let element = view as? IElement {SkinModifier.float(element.skin!)}
+        view.subviews.lazy.flatMap{ view in
+            return view as? IElement
+            }.forEach{ element in
+                if let skin = element.skin { SkinModifier.float(skin) }
         }
     }
 }

@@ -46,7 +46,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         guard let elementParent:IElement = element.getParent() as? IElement else{fatalError("skin has no elementParent")}
         let siblings:[IElement] = ElementParser.children(parent,IElement.self)
         let index:Int = parent.contains(view) ? Utils.elementIndex(parent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
-        let parentTopLeft:CGPoint = SkinParser.relativePosition(elementParent.skin!)/*the top-left-corner of the parent*/
+        guard let parentSkin:ISkin = elementParent.skin as? 
+        let parentTopLeft:CGPoint = SkinParser.relativePosition(parentSkin)/*the top-left-corner of the parent*/
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(siblings, index)/*the last left floating element-sibling skin*/
         //if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}//<--this is how you debug the floating system

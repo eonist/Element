@@ -122,10 +122,15 @@ private class Utils{
      *  PARAM: leftSiblingSkin the skin that is left of skin.element
      *  PARAM: left the x value to align against
      */
+    static func floatLeft2(_ skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  _ left:CGFloat){
+        var left = left
+        if(leftSiblingSkin != nil && (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue)) {left = leftSiblingSkin!.element!.x + SkinParser.totalWidth(leftSiblingSkin!)} /*a previous element-sibling floats left*/
+        skin.element!.x = left/*Sets the position of the skin.element*/
+    }
     static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  _ left:CGFloat){
         skin.element!.x = {
             if let leftSiblingSkin = leftSiblingSkin, (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue) {/*Sets the position of the skin.element*/
-                return left + leftSiblingSkin.element!.x + SkinParser.totalWidth(leftSiblingSkin)
+                return  leftSiblingSkin.element!.x + SkinParser.totalWidth(leftSiblingSkin)
             };return left/*a previous element-sibling floats left*/
         }()
     }

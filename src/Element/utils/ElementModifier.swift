@@ -13,14 +13,14 @@ class ElementModifier {
      * TODO: Also make a method that uses the actualy StyleProperty class
      */
     static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
-        guard let skin = element.skin, let style = skin.style
-        element.skin!.setStyle(StyleModifier.clone(element.skin!.style!))/*This is a temp fix, an unique reference must be applied to every skin*/
-        if var styleProperty:IStyleProperty = element.skin!.style!.getStyleProperty(key) {
+        guard let skin = element.skin, var style = skin.style else{fatalError("skin or style is nil")}
+        skin.setStyle(StyleModifier.clone(style))/*This is a temp fix, an unique reference must be applied to every skin*/
+        if var styleProperty:IStyleProperty = style.getStyleProperty(key) {
             styleProperty.value = value/*prop already exists just add value*/
         }else{
-            element.skin!.style!.addStyleProperty(StyleProperty(key, value))/*prop doesnt exist add StyleProp to style*/
+            style.addStyleProperty(StyleProperty(key, value))/*prop doesnt exist add StyleProp to style*/
         }
-        element.skin!.setStyle(element.skin!.style!)/*Apply the altered style*/
+        skin.setStyle(style)/*Apply the altered style*/
     }
     static func hideAll(_ elements:[IElement],_ exception:IElement) {
         elements.forEach{ElementModifier.hide($0, ($0 === exception))}

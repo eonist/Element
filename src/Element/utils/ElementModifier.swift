@@ -51,11 +51,7 @@ class ElementModifier {
         guard let container:NSView = element as? NSView else{//element is Window ? Window(element).view : element as NSView;
             fatalError("element is not NSView")
         }
-        container.subviews.forEach{//TODO: ⚠️️ do lazy flatmap.foreach here
-            if let child = $0 as? IElement{
-                refresh(child,method)/*<--this line makes it recursive*/
-            }
-        }
+        container.subviews.lazy.flatMap{$0 as? IElement}.
     }
     /**
      * Resizes many elements in PARAM: view
@@ -63,7 +59,7 @@ class ElementModifier {
      */
     static func size(_ view:NSView,_ size:CGPoint) {
         view.subviews.lazy.flatMap{ view in
-            return view as? IElement
+                view as? IElement
             }.forEach{ element in
                  element.setSize(size.x, size.y)
         }

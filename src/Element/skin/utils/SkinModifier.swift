@@ -46,12 +46,10 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         guard let elementParent:IElement = element.getParent() as? IElement else{fatalError("skin has no elementParent")}
         let siblings:[IElement] = ElementParser.children(parent,IElement.self)
         let index:Int = parent.contains(view) ? Utils.elementIndex(parent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
-        guard let parentSkin:ISkin = elementParent.skin as? 
+        guard let parentSkin:ISkin = elementParent.skin else{fatalError("parent has no skin")}
         let parentTopLeft:CGPoint = SkinParser.relativePosition(parentSkin)/*the top-left-corner of the parent*/
-        let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(elementParent.skin!)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
+        let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(parentSkin)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:ISkin? = Utils.leftFloatingElementSkin(siblings, index)/*the last left floating element-sibling skin*/
-        //if(skin.element!.id == "box2"){/*Swift.print("leftSiblingSkin: " + "\(leftSiblingSkin)")*/}//<--this is how you debug the floating system
-        //if(skin is TextSkin){Swift.print("float() leftSiblingSkin.height:" + "\(leftSiblingSkin?.height)" + " clearType: " + "\(clearType)")}//<- or you can debug like this
         let rightSiblingSkin:ISkin? = Utils.rightFloatingElementSkin(siblings, index)/*the last right floating element-sibling-skin*/
         let clearType:String? = SkinParser.clear(skin)//TODO:this should be optional as not all Elements will have a clear value in the future
         let floatType:String? = SkinParser.float(skin)

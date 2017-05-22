@@ -62,7 +62,7 @@ class ElementModifier {
      * TODO: ⚠️️ Rename to Resize, its less ambigiouse
      */
     static func size(_ view:NSView,_ size:CGPoint) {
-        view.subviews.filter{ -> IElement in
+        view.subviews.filter{ -> [IElement]
             return $0 is IElement
             }.forEach{ element in
                 element.setSize(size.x, size.y)

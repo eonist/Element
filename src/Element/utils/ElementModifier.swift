@@ -51,7 +51,7 @@ class ElementModifier {
         guard let container:NSView = element as? NSView else{//element is Window ? Window(element).view : element as NSView;
             fatalError("element is not NSView")
         }
-        container.subviews.forEach{
+        container.subviews.forEach{//TODO: ⚠️️ do lazy flatmap.foreach here
             if let child = $0 as? IElement{
                 refresh(child,method)/*<--this line makes it recursive*/
             }
@@ -90,6 +90,6 @@ private class Utils{
      * This operated directly on the skin before as the element.setSkinState may be removed in the future
      */
     static func setSkinState(_ element:IElement){
-        element.skin!.setSkinState(element.skin!.state)/*<-- was SkinStates.none but re-applying the same skinState is a better option*/
+        if let skin = element.skin{skin.setSkinState(skin.state)}/*<-- was SkinStates.none but re-applying the same skinState is a better option*/
     }
 }

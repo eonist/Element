@@ -59,7 +59,7 @@ class ElementModifier {
     }
     /**
      * Resizes many elements in PARAM: view
-     * // :TODO: rename to Resize, its less ambigiouse
+     * TODO: ⚠️️ Rename to Resize, its less ambigiouse
      */
     static func size(_ view:NSView,_ size:CGPoint) {
         view.subviews.forEach{ view in

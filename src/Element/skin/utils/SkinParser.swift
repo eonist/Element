@@ -3,16 +3,10 @@ import Foundation
 
 class SkinParser {
     static func totalWidth(_ skin:ISkin)->CGFloat {
-        let margin:Margin = self.margin(skin)
-        let border:Border = self.border(skin)
-        let padding:Padding = self.padding(skin)
-        return width(skin) + margin.hor + border.hor// + padding.hor
+        return width(skin) + self.margin(skin).hor + self.border(skin).hor// + self.padding(skin).hor
     }
     static func totalHeight(_ skin:ISkin)->CGFloat {
-        let margin:Margin = self.margin(skin)
-        let border:Border = self.border(skin)
-        let padding:Padding = self.padding(skin)
-        return margin.top + border.top + padding.top + height(skin) + padding.bottom + border.bottom + margin.bottom
+        return height(skin) + self.margin(skin).ver + self.border(skin).ver + self.padding(skin).ver
      }
     /**
      * Returns width

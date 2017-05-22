@@ -56,11 +56,7 @@ class ElementModifier {
      * TODO: ⚠️️ Rename to Resize, its less ambigiouse
      */
     static func size(_ view:NSView,_ size:CGPoint) {
-        view.subviews.lazy.flatMap{ view in
-                view as? IElement
-            }.forEach{ element in
-                 element.setSize(size.x, size.y)
-        }
+        view.subviews.lazy.flatMap{$0 as? IElement}.forEach{$0.setSize(size.x, size.y)}
     }
     /**
      * NOTE: refloats PARAM: view children that are of type IElement

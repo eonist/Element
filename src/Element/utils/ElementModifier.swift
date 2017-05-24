@@ -6,6 +6,7 @@ class ElementModifier {
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none.rawValue//defines the dispaly param to be set
+        Swift.print("hide.display: " + "\(display)")
         applyStyleProperty(element, CSSConstants.display.rawValue, display)
     }
     /**
@@ -13,6 +14,7 @@ class ElementModifier {
      * TODO: ⚠️️ Also make a method that uses the actualy StyleProperty class
      */
     static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
+        Swift.print("applyStyleProperty: key: \(key) value: \(value)")
         guard let skin = element.skin, var style = skin.style else{fatalError("skin or style is nil")}
         skin.setStyle(StyleModifier.clone(style))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = style.getStyleProperty(key) {

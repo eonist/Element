@@ -22,6 +22,7 @@ class ElementModifier {
         }else{
             style.addStyleProperty(StyleProperty(key, value))/*prop doesn't exist add StyleProp to style*/
         }
+        Swift.print("applyStyleProp: style.display \(style.getStyleProperty(CSSConstants.display.rawValue))")
         skin.setStyle(style)/*Apply the altered style*/
     }
     static func hideAll(_ elements:[IElement],_ exception:IElement) {

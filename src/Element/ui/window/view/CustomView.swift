@@ -54,8 +54,8 @@ class CustomView:WindowView{
     }
     override func onEvent(_ event:Event) {
         if(event === (ButtonEvent.upInside,closeButton)){onCloseButtonReleaseInside()}
-        else if(event === minimizeButton && event.type == ButtonEvent.upInside){onMinimizeButtonReleaseInside()}
-        else if(event.origin === maximizeButton && event.type == ButtonEvent.upInside){onMaximizeButtonReleaseInside()}
+        else if(event === (ButtonEvent.upInside,minimizeButton)){onMinimizeButtonReleaseInside()}
+        else if(event === (ButtonEvent.upInside,maximizeButton)){onMaximizeButtonReleaseInside()}
         //super.onEvent(event)//<--beta
     }
 }

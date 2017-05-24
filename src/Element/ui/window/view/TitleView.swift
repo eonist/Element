@@ -16,6 +16,8 @@ class TitleView:CustomView{
     }
     override func createTitleBar() {
         super.createTitleBar()
+    }
+    func createTextArea(){
         textArea.text.isInteractive = false/*Disable interactivity on the text*/
     }
     override func mouseDown(_ event:MouseEvent) {

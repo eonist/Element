@@ -48,7 +48,7 @@ class CustomView:WindowView{
         //self.window?.zoom(self)//<--alt + click is the default behaviour to launch zoom
         //NSWindowCollectionBehaviorFullScreenAuxiliary or NSWindowCollectionBehaviorFullScreenPrimary
         self.window!.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
-        window!.setFrame(NSScreen.main()!.visibleFrame, display: true, animate: true)
+        window!.setFrame(NSScreen.main()!.visibleFrame, display:true, animate:true)
         //[self.window setFrame:screenFrame display:YES];
         self.window?.toggleFullScreen(self.window)
     }

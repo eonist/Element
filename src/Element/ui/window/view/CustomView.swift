@@ -5,8 +5,8 @@ import Cocoa
     //add a container where that you can use to hide all the menubar items
 
 class CustomView:WindowView{
-    lazy var titleIconSection:Section = {self.addSubView(Section(75,22,self,"titleBar"))}()
-    lazy var titleIconSection:Section = {self.addSubView(Section(75,22,self,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
+    lazy var headerSection:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()
+    lazy var titleIconSection:Section = {self.addSubView(Section(NaN,NaN,self,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
     lazy var closeButton:Button = {self.titleIconSection.addSubView(Button(NaN,NaN,self.titleIconSection,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
     lazy var minimizeButton:Button = {self.titleIconSection.addSubView(Button(NaN,NaN,self.titleIconSection,"minimize"))}()
     lazy var maximizeButton:Button = {self.titleIconSection.addSubView(Button(NaN,NaN,self.titleIconSection,"maximize"))}()

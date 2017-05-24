@@ -1,6 +1,9 @@
 import Cocoa
 @testable import Utils
 
+//Continue here:
+    //
+
 class CustomView:WindowView{
     lazy var section:Section = {self.addSubView(Section(75,22,self,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
     lazy var closeButton:Button = {self.section.addSubView(Button(NaN,NaN,self.section,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/

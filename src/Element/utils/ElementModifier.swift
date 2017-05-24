@@ -18,7 +18,7 @@ class ElementModifier {
         if var styleProperty:IStyleProperty = style.getStyleProperty(key) {
             styleProperty.value = value/*prop already exists just add value*/
         }else{
-            style.addStyleProperty(StyleProperty(key, value))/*prop doesnt exist add StyleProp to style*/
+            style.addStyleProperty(StyleProperty(key, value))/*prop doesn't exist add StyleProp to style*/
         }
         skin.setStyle(style)/*Apply the altered style*/
     }

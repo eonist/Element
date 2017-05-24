@@ -1,8 +1,8 @@
 import Cocoa
 @testable import Utils
 
-//Continue here:
-    //
+//Continue here: 🏀
+    //add a container where that you can use to hide all the menubar items
 
 class CustomView:WindowView{
     lazy var section:Section = {self.addSubView(Section(75,22,self,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/

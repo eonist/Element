@@ -15,12 +15,12 @@ class ElementModifier {
      */
     static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
         Swift.print("applyStyleProperty: key: \(key) value: \(value)")
-        guard let skin = element.skin, var style = skin.style else{fatalError("skin or style is nil")}
+        guard let skin = element.skin, var style:Style = skin.style as? Style else{fatalError("skin or style is nil")}
         skin.setStyle(StyleModifier.clone(style))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = style.getStyleProperty(key) {
             Swift.print("prop already exists just add value")
             styleProperty.value = value/*prop already exists just add value*/
-            StyleModifier.overrideStyleProperty(&style, v)
+            StyleModifier.overrideStyleProperty(&style, styleProperty)
         }else{
             Swift.print("prop doesn't exist add StyleProp to style")
             style.addStyleProperty(StyleProperty(key, value))/*prop doesn't exist add StyleProp to style*/

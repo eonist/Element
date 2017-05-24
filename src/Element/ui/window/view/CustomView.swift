@@ -1,15 +1,12 @@
 import Cocoa
 @testable import Utils
 
-//Continue here: 🏀
-    //add a container where that you can use to hide all the menubar items
-
 class CustomView:WindowView{
-    lazy var headerSection:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()
-    lazy var titleIconSection:Section = {self.headerSection.addSubView(Section(NaN,NaN,self.headerSection,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
-    lazy var closeButton:Button = {self.titleIconSection.addSubView(Button(NaN,NaN,self.titleIconSection,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
-    lazy var minimizeButton:Button = {self.titleIconSection.addSubView(Button(NaN,NaN,self.titleIconSection,"minimize"))}()
-    lazy var maximizeButton:Button = {self.titleIconSection.addSubView(Button(NaN,NaN,self.titleIconSection,"maximize"))}()
+    lazy var header:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()
+    lazy var iconSection:Section = {self.header.addSubView(Section(NaN,NaN,self.header,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
+    lazy var closeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
+    lazy var minimizeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"minimize"))}()
+    lazy var maximizeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"maximize"))}()
     /**
      * Add content here
      */

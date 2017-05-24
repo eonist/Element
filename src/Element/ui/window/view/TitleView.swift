@@ -13,12 +13,6 @@ class TitleView:CustomView{
     }
     override func resolveSkin() {
         super.resolveSkin()
-    }
-    /**
-     * 
-     */
-    override func createTitleBar() {
-        super.createTitleBar()
         textArea.text.isInteractive = false/*Disable interactivity on the text*/
     }
     override func mouseDown(_ event:MouseEvent) {

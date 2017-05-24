@@ -6,7 +6,7 @@ class ElementModifier {
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none.rawValue//defines the dispaly param to be set
-        applyStyleProperty(element, "display", display)
+        applyStyleProperty(element, CSSConstants.display.rawValue, display)
     }
     /**
      * TODO: ⚠️️ what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.

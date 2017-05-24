@@ -32,29 +32,24 @@ class CustomView:WindowView{
         //Swift.print("onCloseButtonReleaseInside")
         self.window?.close()/*this closes the window*/
     }
+    /**
+     * Minimizes the window
+     */
     func onMinimizeButtonReleaseInside(){
-        //Swift.print("onMinimizeButtonReleaseInside")
-        //minimize the window here
         //NSApp.miniaturizeAll(self)//minimizes all windows in the app
         self.window?.miniaturize(self)
     }
     /**
-     * TODO: Add support for fullscreen mode aswell: window.setFrame(NSScreen.mainScreen()!.visibleFrame, display: true, animate: true)
-     * TODO: add support for zooming back to normal size
+     * Maximize the window
+     * TODO: ⚠️️ Add support for fullscreen mode aswell: window.setFrame(NSScreen.mainScreen()!.visibleFrame, display: true, animate: true)
+     * TODO: ⚠️️ Add support for zooming back to normal size
      */
     func onMaximizeButtonReleaseInside(){
-        //Swift.print("onMaximizeButtonReleaseInside")
-        //maximize the window here
         //self.window?.zoom(self)//<--alt + click is the default behaviour to launch zoom
-        
-        //screenFrame = [[NSScreen mainScreen] frame];
-        
         //NSWindowCollectionBehaviorFullScreenAuxiliary or NSWindowCollectionBehaviorFullScreenPrimary
-        
         self.window!.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
         window!.setFrame(NSScreen.main()!.visibleFrame, display: true, animate: true)
         //[self.window setFrame:screenFrame display:YES];
-
         self.window?.toggleFullScreen(self.window)
     }
     func onTestButtonDown(){

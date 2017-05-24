@@ -18,8 +18,10 @@ class ElementModifier {
         guard let skin = element.skin, var style = skin.style else{fatalError("skin or style is nil")}
         skin.setStyle(StyleModifier.clone(style))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = style.getStyleProperty(key) {
+            Swift.print("prop already exists just add value")
             styleProperty.value = value/*prop already exists just add value*/
         }else{
+            Swift.print("prop doesn't exist add StyleProp to style")
             style.addStyleProperty(StyleProperty(key, value))/*prop doesn't exist add StyleProp to style*/
         }
         Swift.print("applyStyleProp: style.display \(style.getStyleProperty(CSSConstants.display.rawValue))")

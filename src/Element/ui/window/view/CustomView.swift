@@ -52,14 +52,9 @@ class CustomView:WindowView{
         //[self.window setFrame:screenFrame display:YES];
         self.window?.toggleFullScreen(self.window)
     }
-    func onTestButtonDown(){
-        //Swift.print("onTestButtonDown")
-    }
     override func onEvent(_ event:Event) {
-        //Swift.print( "CustomView.onEvent() event:" + "\(event)")
-        //Swift.print("CustomView.onEvent: " + "\(event)" + " event.origin: " + "\(event.origin)")
-        if(event.origin === closeButton && event.type == ButtonEvent.upInside){onCloseButtonReleaseInside()}
-        else if(event.origin === minimizeButton && event.type == ButtonEvent.upInside){onMinimizeButtonReleaseInside()}
+        if(event === (ButtonEvent.upInside,closeButton)){onCloseButtonReleaseInside()}
+        else if(event === minimizeButton && event.type == ButtonEvent.upInside){onMinimizeButtonReleaseInside()}
         else if(event.origin === maximizeButton && event.type == ButtonEvent.upInside){onMaximizeButtonReleaseInside()}
         //super.onEvent(event)//<--beta
     }

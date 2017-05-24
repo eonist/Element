@@ -20,7 +20,7 @@ class ElementModifier {
         if var styleProperty:IStyleProperty = style.getStyleProperty(key) {
             Swift.print("prop already exists just add value")
             styleProperty.value = value/*prop already exists just add value*/
-            
+            StyleModifier.overrideStyleProperty(&style, v)
         }else{
             Swift.print("prop doesn't exist add StyleProp to style")
             style.addStyleProperty(StyleProperty(key, value))/*prop doesn't exist add StyleProp to style*/

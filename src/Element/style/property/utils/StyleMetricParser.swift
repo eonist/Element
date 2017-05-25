@@ -111,7 +111,16 @@ private class Utils{
                     let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
                     let valNum:CGFloat = valStr.cgFloat
                     if(suffix == "%") {
-                        let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
+                        
+                        let val:CGFloat = {
+                            if let parent = skin.element!.getParent(){
+                                
+                            }else{
+                                
+                            }
+                            let totalWidth = (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)
+                            valNum / 100 * /*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
+                        }()
                         //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
                         //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
                         return val

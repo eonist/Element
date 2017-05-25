@@ -49,10 +49,10 @@ class StyleMetricParser {
             };return Margin(value)
         }()
         let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin.rawValue,depth)
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft.rawValue,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginRight.rawValue,depth) : Utils.metric(margin.right, skin))!
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginTop.rawValue,depth) : Utils.metric(margin.top, skin))!
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom.rawValue,depth)! : Utils.metric(margin.bottom, skin)!
+        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft.rawValue,depth,.hor) : Utils.metric(margin.left, skin, .hor))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginRight.rawValue,depth,.hor) : Utils.metric(margin.right, skin, .hor))!
+        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginTop.rawValue,depth,.ver) : Utils.metric(margin.top, skin, .ver))!
+        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom.rawValue,depth,.ver)! : Utils.metric(margin.bottom, skin, .ver)!
         return margin
     }
     /**
@@ -97,7 +97,7 @@ private class Utils{
      * TODO: Explain what this method is doing
      * TODO: ⚠️️ Needs some Functional programming 🤖
      */
-    static func metric(_ value:Any?,_ skin:ISkin,_ propertyName:String = "", _ dir:Dir)->CGFloat? {
+    static func metric(_ value:Any?,_ skin:ISkin, _ dir:Dir)->CGFloat? {
         switch value{
             case is Int:/*<-- int really? shouldn't you use something with decimals?*/
                 return CGFloat(value as! Int)

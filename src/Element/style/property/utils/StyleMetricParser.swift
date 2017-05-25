@@ -147,9 +147,9 @@ private class Utils{
             let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
-            let width:CGFloat = element.getWidth()
-            let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
+            let height:CGFloat = element.getHeight()
+            let tot:CGFloat = margin.top + border.top + height - padding.top - padding.bottom - border.bottom - margin.bottom
             return tot/*Note used to be + padding.right + border.right + margin.right*/
-        };return element.getWidth()
+        };return element.getHeight()
     }
 }

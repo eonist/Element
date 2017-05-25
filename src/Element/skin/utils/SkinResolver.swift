@@ -12,13 +12,7 @@ class SkinResolver{
     static func skin(_ element:IElement)->Skin?{
         let style:IStyle = StyleResolver.style(element)
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element)
-        return SkinManager.getSkinInstance(skinName,element,style) ?? resolveError(style,element)
-    }
-    /**
-     * Throws an error message if a skin cant be resolved (with usefull information for debugging)
-     */
-    static func resolveError(_ style:IStyle, _ element:IElement)->ISkin {
-        fatalError("SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: "/* + element.id*/)
+        return SkinManager.getSkinInstance(skinName,element,style) ?? {fatalError("SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: ")}()/*Throws an error message if a skin cant be resolved (with usefull information for debugging)*/
     }
 }
 private class Utils{

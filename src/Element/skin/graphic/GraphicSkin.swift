@@ -51,7 +51,7 @@ extension GraphicSkin{
     /**
      * Refreshes the look of the "decoratable"
      */
-    func updateAppearance(_ decoratable: IGraphicDecoratable,_ depth:Int){
+    func updateAppearance(_ decoratable:IGraphicDecoratable,_ depth:Int){
         Modifier.applyStyle(decoratable,self,depth)/*derives and applies style to the decoratable*/
         decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
         decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/

@@ -139,4 +139,10 @@ private class Utils{
             return tot/*Note used to be + padding.right + border.right + margin.right*/
         }else {return element.getWidth()}
     }
+    /**
+     *
+     */
+    static func totalHeight(_ element:IElement) -> CGFloat {
+        
+    }
 }

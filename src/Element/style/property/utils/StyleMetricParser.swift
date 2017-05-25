@@ -137,14 +137,19 @@ private class Utils{
             let width:CGFloat = element.getWidth()
             let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
             return tot/*Note used to be + padding.right + border.right + margin.right*/
-        }else {
-            return element.getWidth()
-        }
+        };return element.getWidth()
     }
     /**
-     *
+     * New
      */
     static func totalHeight(_ element:IElement) -> CGFloat {
-        return 0
+        if let skin = element.skin {
+            let margin:Margin = SkinParser.margin(skin)
+            let border:Border = SkinParser.border(skin)
+            let padding:Padding = SkinParser.padding(skin)
+            let width:CGFloat = element.getWidth()
+            let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
+            return tot/*Note used to be + padding.right + border.right + margin.right*/
+        };return element.getWidth()
     }
 }

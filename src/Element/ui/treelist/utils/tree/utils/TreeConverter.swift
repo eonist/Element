@@ -91,6 +91,7 @@ class TreeConverter {
                         }
                     }
                     //child.props?[key] = items//add items
+                    //I guess you have to create a Tree with Tree children for this one. and add each itme to content
                     fatalError("not supported at this time, figure it out")
                 }else{
                     fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")

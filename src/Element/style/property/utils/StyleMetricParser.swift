@@ -32,10 +32,10 @@ class StyleMetricParser {
             };return Padding(value)
         }()
         let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding.rawValue, depth)
-        padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingLeft.rawValue, depth) : Utils.metric(padding.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingRight.rawValue, depth) : Utils.metric(padding.right, skin))!
-        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingTop.rawValue, depth) : Utils.metric(padding.top, skin))!
-        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom.rawValue,depth) > paddingIndex) ? StyleMetricParser.metric(skin, CSSConstants.paddingBottom.rawValue, depth) : Utils.metric(padding.bottom, skin))!
+        padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingLeft.rawValue, depth,.hor) : Utils.metric(padding.left, skin, .hor))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingRight.rawValue, depth,.hor) : Utils.metric(padding.right, skin, .hor))!
+        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingTop.rawValue, depth,.ver) : Utils.metric(padding.top, skin,.ver))!
+        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom.rawValue,depth) > paddingIndex) ? StyleMetricParser.metric(skin, CSSConstants.paddingBottom.rawValue, depth,.ver) : Utils.metric(padding.bottom, skin,.ver))!
         return padding
     }
     /**

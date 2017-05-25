@@ -58,8 +58,8 @@ extension TextSkin{
     }
     func applyProperties(_ textField:TextField){
         let padding:Padding = StyleMetricParser.padding(self)
-        let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
-        let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
+        let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
+        let height:CGFloat = (StyleMetricParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         textField.frame.w = width/*SkinParser.width(this)*/
         textField.frame.h = height/*SkinParser.height(this)*/
         super.frame.w = width//quick fix

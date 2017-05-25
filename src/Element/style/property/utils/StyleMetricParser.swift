@@ -62,6 +62,12 @@ class StyleMetricParser {
         let value = StylePropertyParser.value(skin,propertyName,depth)
         return Utils.metric(value,skin)
     }
+    static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
+        return metric(skin,CSSConstants.width.rawValue,depth)
+    }
+    static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
+        return metric(skin,CSSConstants.height.rawValue,depth)
+    }
 }
 private class Utils{
     private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"

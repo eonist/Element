@@ -99,25 +99,13 @@ class StylePropertyParser{
         return textFormat
     }
    
-    static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.width.rawValue,depth)
-    }
-    static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.height.rawValue,depth)
-    }
     /**
      * New
      */
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
         return value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
     }
-    /**
-     * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
-     */
-    static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
-        let value = StylePropertyParser.value(skin,propertyName,depth)
-        return Utils.metric(value,skin)
-    }
+    
     /**
      * Returns assert url
      */

@@ -98,25 +98,7 @@ class StylePropertyParser{
         }
         return textFormat
     }
-    
-    
-    /**
-     * TODO: Should this have a failsafe if there is no Margin property in the style?
-     * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
-     */
-    static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
-        var margin:Margin = {
-            guard let value = self.value(skin, CSSConstants.margin.rawValue,depth) else{
-                return Margin()
-            };return Margin(value)
-        }()
-        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin.rawValue,depth)
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft.rawValue,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginRight.rawValue,depth) : Utils.metric(margin.right, skin))!
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginTop.rawValue,depth) : Utils.metric(margin.top, skin))!
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom.rawValue,depth)! : Utils.metric(margin.bottom, skin)!
-        return margin
-    }
+   
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.width.rawValue,depth)
     }

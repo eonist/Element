@@ -13,7 +13,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
     static func align(_ skin:ISkin, _ positional:IPositional,_ depth:Int = 0)->IPositional {
         let offset:CGPoint = StyleMetricParser.offset(skin,depth)
         let padding:Padding = StyleMetricParser.padding(skin,depth)
-        let margin:Margin = StylePropertyParser.margin(skin,depth)
+        let margin:Margin = StyleMetricParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
         let pos:CGPoint = {
             if(floatType == CSSConstants.left.rawValue || floatType == "" || floatType == nil) {

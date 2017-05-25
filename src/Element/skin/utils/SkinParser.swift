@@ -34,7 +34,7 @@ class SkinParser {
      * Returns margin
      */
     static func margin(_ skin:ISkin)->Margin{// :TODO: ⚠️️ possibly rename to relativeMargin
-        return StylePropertyParser.margin(skin)
+        return StyleMetricParser.margin(skin)
     }
     /**
      * Returns border

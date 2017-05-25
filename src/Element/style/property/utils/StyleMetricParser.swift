@@ -111,15 +111,13 @@ private class Utils{
                     let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
                     let valNum:CGFloat = valStr.cgFloat
                     if(suffix == "%") {
-                        
                         let val:CGFloat = {
-                            if let parent = skin.element!.getParent(){
-                                
-                            }else{
-                                
-                            }
-                            let totalWidth = (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)
-                            valNum / 100 * /*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
+                            let totWidth:CGFloat = {
+                                if let parent:IElement = skin.element?.getParent() as? IElement{
+                                    return totalWidth(parent)
+                                };return 0
+                            }()
+                            return valNum / 100 * totWidth
                         }()
                         //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
                         //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)

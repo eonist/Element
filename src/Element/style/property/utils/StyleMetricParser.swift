@@ -118,7 +118,7 @@ private class Utils{
                     }else {
                         return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
                     }
-            }
+                }
             default:
                 break;
         }

@@ -119,8 +119,6 @@ private class Utils{
                             }()
                             return valNum / 100 * totWidth
                         }()
-                        //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
-                        //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
                         return val
                     }else {
                         return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/

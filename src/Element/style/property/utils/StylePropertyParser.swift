@@ -98,7 +98,6 @@ class StylePropertyParser{
         }
         return textFormat
     }
-   
     /**
      * Returns assert url
      */

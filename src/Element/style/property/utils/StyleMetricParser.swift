@@ -68,6 +68,12 @@ class StyleMetricParser {
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height.rawValue,depth)
     }
+    /**
+     * New
+     */
+    static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
+        return StylePropertyParser.value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
+    }
 }
 private class Utils{
     private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
@@ -112,4 +118,5 @@ private class Utils{
             return tot/*Note used to be + padding.right + border.right + margin.right*/
         }else {return element.getWidth()}
     }
+    
 }

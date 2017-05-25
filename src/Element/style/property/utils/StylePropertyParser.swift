@@ -98,14 +98,12 @@ class StylePropertyParser{
         }
         return textFormat
     }
-   
     /**
      * New
      */
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
         return value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
     }
-    
     /**
      * Returns assert url
      */

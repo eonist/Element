@@ -66,8 +66,8 @@ extension GraphicSkin{
  */
 private class Parser{
     /**
-     * TODO: should just use the instance setSize function
-     * TODO: should only be called if the size has actually changed
+     * TODO: ⚠️️ Should just use the instance setSize function
+     * TODO: ⚠️️ Should only be called if the size has actually changed
      */
     static func size(_ skin:ISkin,_ depth:Int)->CGSize{
         let padding:Padding = Padding()//StylePropertyParser.padding(self,depth) //StylePropertyParser.padding(self,depth);// :TODO: what about margin?<----not sure this is needed, the padding
@@ -76,10 +76,10 @@ private class Parser{
         return CGSize(width,height)
     }
     static func width(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
-        return (StylePropertyParser.width(skin,depth) ?? skin.width!) + padding.hor// :TODO: only querry this if the size has changed?
+        return (StyleMetricParser.width(skin,depth) ?? skin.width!) + padding.hor// :TODO: only querry this if the size has changed?
     }
     static func height(_ skin:ISkin,_ depth:Int, _ padding:Padding) -> CGFloat {
-        return (StylePropertyParser.height(skin,depth) ?? skin.height!) + padding.ver// :TODO: only querry this if the size has changed?
+        return (StyleMetricParser.height(skin,depth) ?? skin.height!) + padding.ver// :TODO: only querry this if the size has changed?
     }
 }
 private class Modifier{

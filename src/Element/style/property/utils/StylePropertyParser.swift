@@ -119,13 +119,13 @@ extension StylePropertyParser{
      * Convenince method for deriving CGFloat values
      */
     static func number(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->CGFloat{
-        return string(skin, propertyName,depth).cgFloat//was cast like this-> CGFloat(Double()!)
+        return string(skin, propertyName, depth).cgFloat//was cast like this-> CGFloat(Double()!)
     }
     /**
      * Convenince method for deriving String values
      */
     static func string(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
-        return "\(value(skin, propertyName,depth))"
+        return "\(value(skin, propertyName, depth))"
     }
 }
 //private

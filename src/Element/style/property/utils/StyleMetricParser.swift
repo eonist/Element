@@ -97,28 +97,33 @@ private class Utils{
      * TODO: Explain what this method is doing
      * TODO: ⚠️️ Needs some Functional programming 🤖
      */
-    static func metric(_ value:Any?,_ skin:ISkin)->CGFloat? {
-        if(value is Int){ return CGFloat(value as! Int)}/*<-- int really? shouldnt you use something with decimals?*/
-        else if(value is CGFloat){return value as? CGFloat}
-        else if(value is String){/*value is String*/
-            let stringValue:String = value as! String
-            let matches = stringValue.matches(metricPattern)
-            for match:NSTextCheckingResult in matches {
-                let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
-                let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
-                let valNum:CGFloat = valStr.cgFloat
-                if(suffix == "%") {
-                    let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
-                    //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
-                    //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
-                    return val
-                }else {
-                    return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
-                }
+    static func metric(_ value:Any?,_ skin:ISkin,_ propertyName:String = "")->CGFloat? {
+        switch value{
+            case is Int:/*<-- int really? shouldn't you use something with decimals?*/
+                return CGFloat(value as! Int)
+            case is CGFloat:
+                return value as? CGFloat
+            case is String:/*value is String*/
+                let stringValue:String = value as! String
+                let matches = stringValue.matches(metricPattern)
+                for match:NSTextCheckingResult in matches {
+                    let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
+                    let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
+                    let valNum:CGFloat = valStr.cgFloat
+                    if(suffix == "%") {
+                        let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
+                        //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
+                        //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
+                        return val
+                    }else {
+                        return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
+                    }
             }
+            default:
+                break;
         }
-        //⚠️️ be warned this method is far from complete
         return nil//<---this should be 0, it will require some reprograming
+        //⚠️️ be warned this method is far from complete
     }
     /**
      * Returns the total width

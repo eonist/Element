@@ -1,6 +1,10 @@
 import Foundation
 @testable import Utils
-
+/**
+ * Tree -> XML
+ * XML -> Tree
+ * JSON -> Tree
+ */
 class TreeConverter {
     /**
      * Convert xml to Tree-struture
@@ -53,5 +57,47 @@ class TreeConverter {
             xml += childXML
         }
         return xml
+    }
+    /**
+     * Converts json to tree stucture
+     */
+    static func tree(_ json:Any?) -> Tree {
+        //Swift.print("CustomTree.tree")
+        var child = Tree()
+        if let dict = JSONParser.dict(json) {
+            //Swift.print("Dict.count: " + "\(dict.count)")
+            dict.forEach { key,value in
+                if let str = JSONParser.str(value){
+                    child.props?[key] = str
+                }else if let int = JSONParser.int(value){
+                    child.props?[key] = int.string
+                }else if let dictArr = JSONParser.dictArr(value) {//array with dict
+                    dictArr.forEach{
+                        if let dict = JSONParser.dict($0){
+                            child.children.append(tree(dict))
+                        }else{
+                            fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
+                        }
+                    }
+                }else if let arr = JSONParser.arr(value) {//array with any
+                    var items:[String] = []
+                    arr.forEach{
+                        if let str = JSONParser.str($0){
+                            items.append(str)
+                        }else if let int = JSONParser.int($0){
+                            items.append(int.string)
+                        }else{
+                            fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
+                        }
+                    }
+                    child.attribs[key] = items//add items
+                }else{
+                    fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
+                }
+            }
+        }else{
+            fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
+        }
+        return child
     }
 }

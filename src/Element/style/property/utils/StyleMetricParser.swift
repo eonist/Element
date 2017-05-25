@@ -1,4 +1,5 @@
-import Foundation
+import Cocoa
+@testable import Element
 
 class StyleMetricParser {
     /**

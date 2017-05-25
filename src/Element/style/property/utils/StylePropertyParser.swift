@@ -100,42 +100,6 @@ class StylePropertyParser{
     }
     
     /**
-     * TODO: Should this have a failsafe if there is no Margin property in the style?
-     * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
-     */
-    static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
-        var margin:Margin = {
-            guard let value = self.value(skin, CSSConstants.margin.rawValue,depth) else{
-                return Margin()
-            };return Margin(value)
-        }()
-        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin.rawValue,depth)
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft.rawValue,depth) : Utils.metric(margin.left, skin))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginRight.rawValue,depth) : Utils.metric(margin.right, skin))!
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginTop.rawValue,depth) : Utils.metric(margin.top, skin))!
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom.rawValue,depth)! : Utils.metric(margin.bottom, skin)!
-        return margin
-    }
-    static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.width.rawValue,depth)
-    }
-    static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.height.rawValue,depth)
-    }
-    /**
-     * New
-     */
-    static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
-        return value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
-    }
-    /**
-     * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
-     */
-    static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
-        let value = StylePropertyParser.value(skin,propertyName,depth)
-        return Utils.metric(value,skin)
-    }
-    /**
      * Returns assert url
      */
     static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {

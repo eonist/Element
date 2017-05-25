@@ -49,7 +49,7 @@ class SkinParser {
         return StylePropertyParser.padding(skin)
     }
     static func offset(_ skin:ISkin)->CGPoint{// :TODO: possibly rename to relativeOffset
-        return StylePropertyParser.offset(skin)
+        return StyleMetricParser.offset(skin)
     }
     static func float(_ skin:ISkin,_ depth:Int = 0)->String?{
         return StylePropertyParser.value(skin,CSSConstants.float.rawValue,depth) as? String

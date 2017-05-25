@@ -58,15 +58,15 @@ class StyleMetricParser {
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
      */
-    static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0)->CGFloat? {
+    static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0, _ dir:Dir)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)
-        return Utils.metric(value,skin)
+        return Utils.metric(value,skin,dir)
     }
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.width.rawValue,depth)
+        return metric(skin,CSSConstants.width.rawValue,depth,.hor)
     }
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.height.rawValue,depth)
+        return metric(skin,CSSConstants.height.rawValue,depth,.ver)
     }
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
         return StylePropertyParser.value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
@@ -97,7 +97,7 @@ private class Utils{
      * TODO: Explain what this method is doing
      * TODO: ⚠️️ Needs some Functional programming 🤖
      */
-    static func metric(_ value:Any?,_ skin:ISkin,_ propertyName:String = "")->CGFloat? {
+    static func metric(_ value:Any?,_ skin:ISkin,_ propertyName:String = "", _ dir:Dir)->CGFloat? {
         switch value{
             case is Int:/*<-- int really? shouldn't you use something with decimals?*/
                 return CGFloat(value as! Int)
@@ -127,7 +127,7 @@ private class Utils{
     }
     /**
      * Returns the total width
-     * TODO: ⚠️️Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
+     * TODO: ⚠️️ Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
      */
     static func totalWidth(_ element:IElement)->CGFloat {
         if(element.skin != nil){

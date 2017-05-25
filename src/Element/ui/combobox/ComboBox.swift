@@ -82,7 +82,7 @@ class ComboBox:Element{
 	}
 	override func setSize(_ width:CGFloat, _ height:CGFloat)  {
 		super.setSize(width, height)
-		headerButton.setSize(width, StylePropertyParser.height(headerButton.skin!)!)/*temp solution*/
+		headerButton.setSize(width, StyleMetricParser.height(headerButton.skin!)!)/*temp solution*/
 	}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

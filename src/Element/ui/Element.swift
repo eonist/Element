@@ -30,7 +30,7 @@ class Element:InteractiveView2,IElement {
      * Draws the graphics
      */
     func resolveSkin() {
-        self.skin = addSubView(SkinResolver.skin(self) as! Skin)
+        self.skin = addSubView(SkinResolver.skin(self))
     }
     /**
      * NOTE: This is the function that we need to toggle between css style sheets and have them applied to all Element instances

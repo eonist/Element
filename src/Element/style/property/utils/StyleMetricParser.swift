@@ -130,10 +130,10 @@ private class Utils{
      * TODO: ⚠️️ Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
      */
     static func totalWidth(_ element:IElement) -> CGFloat {
-        if(element.skin != nil){
-            let margin:Margin = SkinParser.margin(element.skin!)
-            let border:Border = SkinParser.border(element.skin!)
-            let padding:Padding = SkinParser.padding(element.skin!)
+        if let skin = element.skin {
+            let margin:Margin = SkinParser.margin(skin)
+            let border:Border = SkinParser.border(skin)
+            let padding:Padding = SkinParser.padding(skin)
             let width:CGFloat = element.getWidth()/*StylePropertyParser.height(element.skin);*/
             let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
             return tot/*Note used to be + padding.right + border.right + margin.right*/
@@ -143,6 +143,6 @@ private class Utils{
      *
      */
     static func totalHeight(_ element:IElement) -> CGFloat {
-        
+        return 0
     }
 }

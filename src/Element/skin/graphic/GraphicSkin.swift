@@ -54,7 +54,7 @@ extension GraphicSkin{
     func updateAppearance(_ decoratable:IGraphicDecoratable,_ depth:Int){
         Modifier.applyStyle(decoratable,self,depth)/*derives and applies style to the decoratable*/
         decoratable.get(RectGraphic.self)?.setSizeValue(Parser.size(self,depth))
-        decoratable.get(RoundRectGraphic.self)?.fillet = StylePropertyParser.fillet(self,depth)/*fillet*/
+        decoratable.get(RoundRectGraphic.self)?.fillet = StyleMetricParser.fillet(self,depth)/*fillet*/
         decoratable.get(AssetDecorator.self)?.assetURL = StylePropertyParser.asset(self,depth)/*Svg*/
         decoratable.get(DropShadowDecorator.self)?.dropShadow = StylePropertyParser.dropShadow(self,depth)/*dropshadow*/
         Modifier.rotate(decoratable, self, depth)

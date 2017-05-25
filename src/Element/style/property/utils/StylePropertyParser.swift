@@ -53,25 +53,6 @@ class StylePropertyParser{
         if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom.rawValue,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom.rawValue,depth)}
         return offsetType
     }
-    /**
-     * Returns a Fillet instance
-     * TODO: probably upgrade to TRBL
-     * TODO: needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc. 
-     */
-    static func fillet(_ skin:ISkin, _ depth:Int = 0) -> Fillet {
-        let val:Any? = value(skin, CSSConstants.cornerRadius.rawValue,depth)
-        let fillet:Fillet = {
-            if (val is CGFloat) || (val is [Any]) {
-                return LayoutUtils.instance(val!, Fillet.self) as! Fillet
-            };return Fillet()
-        }()
-        let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSSConstants.cornerRadius.rawValue, depth);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft.rawValue, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, CSSConstants.cornerRadiusTopLeft.rawValue, depth) }//TODO: replace this with the constant: cornerRadiusIndex
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight.rawValue, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, CSSConstants.cornerRadiusTopRight.rawValue, depth) }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft.rawValue, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, CSSConstants.cornerRadiusBottomLeft.rawValue, depth) }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight.rawValue, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, CSSConstants.cornerRadiusBottomRight.rawValue, depth) }
-        return fillet
-    }
     private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * Returns TextFormat

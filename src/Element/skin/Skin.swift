@@ -72,10 +72,10 @@ class Skin:InteractiveView2,ISkin{
      * NOTE: these methods are an important part of the float system
      */
     func getWidth()->CGFloat{
-        return StylePropertyParser.width(self) ?? self.width!//!isNaN(skin.width) ? skin.width : StylePropertyParser.width(skin)
+        return StylePropertyParser.width(self) ?? self.width ?? {fatalError("getWidth not avilable")}()
     }
     func getHeight()->CGFloat{
-        return StylePropertyParser.height(self) ?? self.height!//!isNaN(skin.height) ? skin.height : StylePropertyParser.height(skin)
+        return StylePropertyParser.height(self) ?? self.height ?? {fatalError("getHeight not avilable")}()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }

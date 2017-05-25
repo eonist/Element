@@ -90,7 +90,7 @@ class TreeConverter {
                             fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
                         }
                     }
-                    child.attribs[key] = items//add items
+                    child.props = items//add items
                 }else{
                     fatalError("type not supported: \(type(of:json)) type \(JSONType.type(json))")
                 }

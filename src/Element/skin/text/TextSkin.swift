@@ -26,7 +26,7 @@ class TextSkin:Skin,ITextSkin{
         if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
             SkinModifier.float(self)
             if(hasSizeChanged) {
-                let padding:Padding = StylePropertyParser.padding(self);
+                let padding:Padding = StyleMetricParser.padding(self);
                 TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom)
             }
             if(hasStateChanged || hasStyleChanged || hasTextChanged) {applyProperties(textField)}
@@ -40,7 +40,7 @@ class TextSkin:Skin,ITextSkin{
      */
     override func getWidth() -> CGFloat {
         if((StylePropertyParser.value(self, TextFormatConstants.wordWrap.rawValue) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
-            let padding:Padding = StylePropertyParser.padding(self)
+            let padding:Padding = StyleMetricParser.padding(self)
             return textField.frame.size.width + padding.left + padding.right//swift 3 update happened
         }else {return super.getWidth()}
     }
@@ -57,7 +57,7 @@ extension TextSkin{
         draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
     }
     func applyProperties(_ textField:TextField){
-        let padding:Padding = StylePropertyParser.padding(self)
+        let padding:Padding = StyleMetricParser.padding(self)
         let width:CGFloat = (StylePropertyParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         let height:CGFloat = (StylePropertyParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         textField.frame.w = width/*SkinParser.width(this)*/

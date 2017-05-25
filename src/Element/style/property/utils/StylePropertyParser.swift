@@ -152,50 +152,6 @@ class StylePropertyParser{
         return value(skin, CSSConstants.drop_shadow.rawValue,depth) as? DropShadow
     }
 }
-private class Utils{
-    private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
-    /**
-     * TODO: Explain what this method is doing
-     * TODO: ⚠️️ Needs some Functional programming 🤖
-     */
-    static func metric(_ value:Any?,_ skin:ISkin)->CGFloat? {
-        if(value is Int){ return CGFloat(value as! Int)}/*<-- int really? shouldnt you use something with decimals?*/
-        else if(value is CGFloat){return value as? CGFloat}
-        else if(value is String){/*value is String*/
-            let stringValue:String = value as! String
-            let matches = stringValue.matches(metricPattern)
-            for match:NSTextCheckingResult in matches {
-                let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
-                let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
-                let valNum:CGFloat = valStr.cgFloat
-                if(suffix == "%") {
-                    let val:CGFloat = valNum / 100 * (skin.element!.getParent() != nil ? (totalWidth(skin.element!.getParent() as! IElement)/*(skin.element.parent as IElement).getWidth()*/) : 0);/*we use the width of the parent if the value is percentage, in accordance to how css works*/
-                    //Swift.print("skin.element.parent != null: " + skin.element.parent != null)
-                    //Swift.print("(skin.element.parent as IElement).skin: " + (skin.element.parent as IElement).skin)
-                    return val
-                }else {
-                    return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
-                }
-            }
-        }
-        //⚠️️ be warned this method is far from complete
-        return nil//<---this should be 0, it will require some reprograming
-    }
-    /**
-     * Returns the total width
-     * TODO: ⚠️️Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
-     */
-    static func totalWidth(_ element:IElement)->CGFloat {
-        if(element.skin != nil){
-            let margin:Margin = SkinParser.margin(element.skin!)
-            let border:Border = SkinParser.border(element.skin!)
-            let padding:Padding = SkinParser.padding(element.skin!)
-            let width:CGFloat = element.getWidth()/*StylePropertyParser.height(element.skin);*/
-            let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
-            return tot/*Note used to be + padding.right + border.right + margin.right*/
-        }else {return element.getWidth()}
-    }
-}
 extension StylePropertyParser{
     /*
      * Convenince method for deriving CGFloat values

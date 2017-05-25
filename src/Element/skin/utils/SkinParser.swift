@@ -46,7 +46,7 @@ class SkinParser {
         return Border([lineOffsetType.top == OffsetType.outside ? lineThickness : 0, lineOffsetType.right == OffsetType.outside ? lineThickness : 0,lineOffsetType.bottom == OffsetType.outside ? lineThickness : 0,lineOffsetType.left == OffsetType.outside ? lineThickness : 0])
     }
     static func padding(_ skin:ISkin)->Padding{// :TODO: possibly rename to relativePadding
-        return StylePropertyParser.padding(skin)
+        return StyleMetricParser.padding(skin)
     }
     static func offset(_ skin:ISkin)->CGPoint{// :TODO: possibly rename to relativeOffset
         return StyleMetricParser.offset(skin)

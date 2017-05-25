@@ -97,7 +97,7 @@ private class Utils{
      * TODO: Explain what this method is doing
      * TODO: ⚠️️ Needs some Functional programming 🤖
      */
-    static func metric(_ value:Any?,_ skin:ISkin, _ dir:Dir)->CGFloat? {
+    static func metric(_ value:Any?, _ skin:ISkin, _ dir:Dir)->CGFloat? {
         switch value{
             case is Int:/*<-- int really? shouldn't you use something with decimals?*/
                 return CGFloat(value as! Int)

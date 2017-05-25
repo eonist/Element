@@ -14,6 +14,7 @@ class StylePropertyParser{
     }
     /**
      * Returns an IFillStyle instance based on the Style attached to the skin
+     * TODO: ⚠️️ Should return nil as well
      */
     static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
         let val = value(skin,CSSConstants.fill.rawValue,depth)

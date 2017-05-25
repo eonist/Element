@@ -42,7 +42,7 @@ extension GraphicSkin{
             Modifier.reSize(decoratables[depth], Parser.size(self,depth))
         }/*Do sizing of the sizable here*/
         if(hasStateChanged || hasStyleChanged) {
-            updateAppearance(decoratables[depth],depth)
+            updateAppearance(decoratables[depth], depth)
         }
         if(hasSizeChanged || hasStateChanged || hasStyleChanged){
             decoratables[depth].draw()/*<--Init the actual draw call, you only want to draw once bc performance*/

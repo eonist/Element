@@ -106,7 +106,7 @@ private class Utils{
             case is String:/*value is String*/
                 let stringValue:String = value as! String
                 let matches = stringValue.matches(metricPattern)
-                for match:NSTextCheckingResult in matches {
+                if let match:NSTextCheckingResult = matches.first {
                     let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
                     let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
                     let valNum:CGFloat = valStr.cgFloat
@@ -123,7 +123,7 @@ private class Utils{
                     }else {
                         return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
                     }
-                }
+                }//maybe error here
             default:
                 break;
         }

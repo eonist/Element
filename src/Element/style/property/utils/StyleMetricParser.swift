@@ -94,8 +94,7 @@ class StyleMetricParser {
 private class Utils{
     private static var metricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
-     * TODO: Explain what this method is doing
-     * TODO: ⚠️️ Needs some Functional programming 🤖
+     * Returns size amount, sometimes based on parents size, sometimes on ems, sometimes on the value it has it self
      */
     static func metric(_ value:Any?, _ skin:ISkin, _ dir:Dir)->CGFloat? {
         switch value{
@@ -111,15 +110,14 @@ private class Utils{
                     let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
                     let valNum:CGFloat = valStr.cgFloat
                     if(suffix == "%") {
-                        let val:CGFloat = {
+                        return {
                             let totWidth:CGFloat = {
                                 if let parent:IElement = skin.element?.getParent() as? IElement{
-                                    return dir == .hor ? totalWidth(parent) : totalHeight(parent)
+                                    return dir == .hor ? totalWidth(parent) : totalHeight(parent)/*totHeight support is new*/
                                 };return 0
                             }()
                             return valNum / 100 * totWidth
                         }()
-                        return val
                     }else {
                         return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
                     }

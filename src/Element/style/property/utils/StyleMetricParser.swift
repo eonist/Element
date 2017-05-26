@@ -114,7 +114,7 @@ private class Utils{
                         let val:CGFloat = {
                             let totWidth:CGFloat = {
                                 if let parent:IElement = skin.element?.getParent() as? IElement{
-                                    return totalWidth(parent)
+                                    return dir == .hor ? totalWidth(parent) : totalHeight(parent)
                                 };return 0
                             }()
                             return valNum / 100 * totWidth
@@ -140,8 +140,7 @@ private class Utils{
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let width:CGFloat = element.getWidth()
-            let tot:CGFloat = margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
-            return tot/*Note used to be + padding.right + border.right + margin.right*/
+            return margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
         };return element.getWidth()
     }
     /**
@@ -153,8 +152,7 @@ private class Utils{
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let height:CGFloat = element.getHeight()
-            let tot:CGFloat = margin.top + border.top + height - padding.top - padding.bottom - border.bottom - margin.bottom
-            return tot/*Note used to be + padding.right + border.right + margin.right*/
+            return margin.top + border.top + height - padding.top - padding.bottom - border.bottom - margin.bottom
         };return element.getHeight()
     }
 }

@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: Add for toutch as well: toutchUp,Down,upOutSide,upInside,out,over etc
+ * TODO: ⚠️️ Add for toutch as well: toutchUp,Down,upOutSide,upInside,out,over etc
  */
 class ButtonEvent:Event{
     static var down:String = "buttonEventDown"

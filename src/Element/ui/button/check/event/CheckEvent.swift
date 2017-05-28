@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 /**
- * // :TODO: include isCheckable? what use would it have?, you could add that via an extension
+ * TODO: ⚠️️ Include isCheckable? what use would it have?, you could add that via an extension
  */
 class CheckEvent:Event{
     var isChecked:Bool

@@ -1,10 +1,10 @@
 import Foundation
 @testable import Utils
 /**
- * TODO: Implement a way to also include the text in being in a checked status
+ * TODO: ⚠️️ Implement a way to also include the text in being in a checked status
  */
 class CheckBoxButton:Button,ICheckable,LableKind{
-    private var isChecked:Bool//TODO: This should be initChecked, and then we should use only checkBox as a state holder
+    private var isChecked:Bool//TODO: ⚠️️ This should be initChecked, and then we should use only checkBox as a state holder
     var textString:String
     lazy var checkBox:CheckBox = {self.addSubView(CheckBox(13,13,self.isChecked,self))}()
     lazy var text:Text = {

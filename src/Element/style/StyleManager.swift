@@ -3,7 +3,7 @@ import Foundation
 /**
  * NOTE: The reason we use array instead of object: a problem may be that the order will be different every time you read this object, random
  * EXAMPLE: print("StyleManager.getInstance().getStyle(Button): " + StyleManager.getInstance().getStyle("someText").getPropertyNames());//prints style names
- * TODO:  Could potentially extend StyleCollection and just implimnet the extra functions in this class?!?
+ * TODO: ⚠️️ Could potentially extend StyleCollection and just implimnet the extra functions in this class?!?
  * TODO: This class can be a struct
  * TODO: the tail trick could possibly be even faster if you sorted the hashed styles and used a halfed algo when querrying (but its a dictionary so maybe not, maybe if you stored it in an array etc)
  */
@@ -48,7 +48,7 @@ extension StyleManager{
     }
     /**
      * Adds styles by parsing PARAM string (the string must comply to the Element CSS syntax)
-     * // :TODO: add support for CSS import statement in the PARAM: string
+     * TODO: ⚠️️ add support for CSS import statement in the PARAM: string
      */
     static func addStyle(_ cssString:String){
         let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
@@ -59,7 +59,7 @@ extension StyleManager{
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
      * PARAM: liveEdit enables you to see css changes while an app is running
-     * IMPORTANT: LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple approach)
+     * IMPORTANT: ⚠️️ LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple approach)
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      * TODO: Implement support for subFile watching aka watch children files that are imported into a parent css file
      * TODO: Implement running the css resolve process on a background thread

@@ -6,26 +6,21 @@ class ElementModifier {
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
         let display:String = isVisible ? "" : CSSConstants.none.rawValue//defines the dispaly param to be set
-        //Swift.print("hide.display: " + "\(display)")
         applyStyleProperty(element, CSSConstants.display.rawValue, display)
     }
     /**
-     * TODO: ⚠️️ what if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
+     * TODO: ⚠️️ What if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
      * TODO: ⚠️️ Also make a method that uses the actualy StyleProperty class
      */
     static func applyStyleProperty(_ element:IElement,_ key:String,_ value:Any){
-        //Swift.print("applyStyleProperty: key: \(key) value: \(value)")
         guard let skin = element.skin, var style:Style = skin.style as? Style else{fatalError("skin or style is nil")}
         skin.setStyle(StyleModifier.clone(style))/*This is a temp fix, an unique reference must be applied to every skin*/
         if var styleProperty:IStyleProperty = style.getStyleProperty(key) {
-            //Swift.print("prop already exists just add value")
             styleProperty.value = value/*prop already exists just add value*/
             StyleModifier.overrideStyleProperty(&style, styleProperty)
         }else{
-            //Swift.print("prop doesn't exist add StyleProp to style")
             style.addStyleProperty(StyleProperty(key, value))/*prop doesn't exist add StyleProp to style*/
         }
-        //Swift.print("applyStyleProp: style.display \(style.getStyleProperty(CSSConstants.display.rawValue))")
         skin.setStyle(style)/*Apply the altered style*/
     }
     static func hideAll(_ elements:[IElement],_ exception:IElement) {

@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-protocol ElasticScrollable3:Elastic3,Scrollable3 {}
+protocol ElasticScrollable3:Elastic3,Scrollable3 {}//TODO: ⚠️️ you might even be able to use just typealias here
 extension ElasticScrollable3{
     /**
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad

@@ -4,7 +4,6 @@ import Foundation
  * Rename to ElementKind?
  * TODO: ⚠️️ Move getWidth, size etc to Another protocol
  */
-
 protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
     func resolveSkin()
@@ -26,7 +25,6 @@ protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes 
     var height:CGFloat{get /*set*/}
     var x:CGFloat{get set}
     var y:CGFloat{get set}
-    
 }
 /**
  * NOTE: some of these methods will probably be moved back into the class
@@ -50,5 +48,4 @@ extension IElement {
         frame.x = point.x
         frame.y = point.y
     }
-    
 }

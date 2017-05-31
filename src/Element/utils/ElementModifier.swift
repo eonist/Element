@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class ElementModifier {
     /**
@@ -102,13 +103,12 @@ private class Utils{
             let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
             let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
             
-            //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
-            //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
-            //let getSize = CGSize(element.getWidth,element.getHeight)
-            let w = element.getWidth()
-            let h = element.getHeight()
-            //let size = getsize.clip(minSize,maxSize)
-            
+            let w:CGFloat = element.getWidth()
+            let h:CGFloat = element.getHeight()
+            let minSize:CGSize = CGSize(minWidth ?? w,minHeight ?? h)
+            let maxSize:CGSize = CGSize(maxWidth ?? w,maxHeight ?? h)
+            /*Clip*/
+            let size = CGSize(w,h).clip(minSize,maxSize)
             skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
             
         }

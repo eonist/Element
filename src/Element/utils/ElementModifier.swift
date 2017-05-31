@@ -120,6 +120,7 @@ private class Utils{
             
             //I don't think you need all the above 🏀
                 //if you add min and max to the totW calculation in StyleMetricParser
+                //simply do getWidth and getHeight 👌
             
             skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
         }

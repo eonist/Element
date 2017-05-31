@@ -96,4 +96,10 @@ private class Utils{
     static func setSkinState(_ element:IElement){
         if let skin = element.skin{skin.setSkinState(skin.state)}/*<-- was SkinStates.none but re-applying the same skinState is a better option*/
     }
+    /**
+     *
+     */
+    static func setSize(_ element:IElement){
+        
+    }
 }

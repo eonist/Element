@@ -47,6 +47,7 @@ class ElementModifier {
      * New
      */
     static func refreshSize(_ element:IElement){
+        Swift.print("refreshSize")
         refresh(element, Utils.setSize)
     }
     /**
@@ -55,7 +56,9 @@ class ElementModifier {
      * TODO: ⚠️️ Skin should have a dedicated redraw method or a simple workaround
      */
     private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
+        Swift.print("refresh")
         guard let display:String = element.skin!.style!.getStyleProperty(CSSConstants.display.rawValue) as? String, display == CSSConstants.none.rawValue else{return}/*Skip refreshing*/
+        Swift.print("apply method")
         method(element)/*apply the method*/
         guard let container:NSView = element as? NSView else{fatalError("element is not NSView")}//element is Window ? Window(element).view : element as NSView;
         container.subviews.lazy.flatMap{$0 as? IElement}.forEach{refresh($0,method)}/*<--this line makes it recursive*/
@@ -96,6 +99,7 @@ private class Utils{
      * New
      */
     static func setSize(_ element:IElement){
+        Swift.print("Utils.setSize " + ElementParser.stackString(element))
         if let skin = element.skin{
             /*min and max vals*/
             let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)

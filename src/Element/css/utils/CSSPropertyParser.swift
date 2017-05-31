@@ -45,7 +45,10 @@ class CSSPropertyParser {
      * EXAMPLE: width:calc(100% - 20px)
      */
     private static func calc(_ string:String){
-        
+        if let propertyString:String = string.match(calcPattern).first{
+            Swift.print("calc.propertyString: " + "\(propertyString)")
+            _ = ""
+        }
     }
     /**
      * EXAMPLE: transform:rotation(90deg)

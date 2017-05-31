@@ -57,8 +57,8 @@ class ElementModifier {
      * Resizes many elements in PARAM: view
      * TODO: ⚠️️ Rename to Resize, its less ambigiouse
      */
-    static func size(_ view:NSView,_ size:CGPoint) {
-        view.subviews.lazy.flatMap{$0 as? IElement}.forEach{$0.setSize(size.x, size.y)}
+    static func size(_ view:NSView,_ size:CGSize) {
+        view.subviews.lazy.flatMap{$0 as? IElement}.forEach{$0.setSize(size.width, size.height)}
     }
     /**
      * NOTE: refloats PARAM: view children that are of type IElement

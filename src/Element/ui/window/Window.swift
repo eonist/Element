@@ -28,7 +28,7 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
     /**
      * Override this to add custom window resize code
      */
-    func windowDidResize(_ notification: Notification) {
+    func windowDidResize(_ notification:Notification) {
         //Swift.print("Window.windowDidResize")
         if let contentView = (self.contentView as? Element) {contentView.setSize(self.frame.size.width,self.frame.size.height)}
     }

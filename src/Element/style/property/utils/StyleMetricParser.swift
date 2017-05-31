@@ -129,7 +129,7 @@ private class Utils{
             }else if StringAsserter.digit($1){
                 Swift.print("isDigit")
                 return $0! + StringParser.digit($1)
-            }
+            }else{fatalError("type not supported: \($1)")}
         }
     }
     /**

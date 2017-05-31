@@ -42,8 +42,9 @@ class CSSPropertyParser {
         }
     }
     /**
-     * EXAMPLE: width:calc(100% - 20px)
-     * NOTE: ⚠️️ Array CssProps cant have calc. BC we seperate on space
+     * EXAMPLE: width:calc(100% -20px)
+     * IMPORTANT: Signs must come right before the number (only minus is supported)
+     * NOTE: ⚠️️ Array CssProps cant have calc. BC we seperate on space, so if you want to use padding, use padding-left,padding-right etc. same goes for fillet,margin etc
      */
     private static func calc(_ string:String) ->String{
         if let propertyString:String = string.match(calcPattern).first{

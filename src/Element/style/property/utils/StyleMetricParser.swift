@@ -107,9 +107,8 @@ private class Utils{
                 if StringAsserter.metric(stringValue){
                     return stringMetric(stringValue,skin,dir)
                 }else{//calc
-                    
+                    return calcMetric(stringValue,skin,dir)
                 }
-            
             default:
                 break;
         }
@@ -117,6 +116,7 @@ private class Utils{
         //⚠️️ be warned this method is far from complete
     }
     /**
+     * New
      * Example: "100% -20px 20px"
      * IMPORTANT: dont use + or space infront of min sign
      */

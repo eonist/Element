@@ -30,12 +30,12 @@ class CSSPropertyParser {
             case StringAsserter.boolean(string):return string.bool/*true or false*/
             case StringAsserter.color(string):return string.nsColor/*#00ff00 or 00ff00*/
             case StringAsserter.webColor(string):return StringParser.nsColor(string)/*green red etc*/
+            case string.test("^calc\\b"):return calc(string)//new
             case string.test("^linear-gradient\\b"):return linearGradient(string)/*linear-gradient*/// :TODO: create a more complte exprrison for this test
             case string.test("^radial-gradient\\b"):return radialGradient(string)/*radial-gradient*/// :TODO: create a more complte exprrison for this test
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
             case string.test("^rotate\\b"):return rotate(string)
-            case string.test("^calc\\b"):return calc(string)//new
             case string.test(arrayPattern):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
             case string.test(stringPattern):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
@@ -45,11 +45,11 @@ class CSSPropertyParser {
      * EXAMPLE: width:calc(100% - 20px)
      * NOTE: ⚠️️ Array CssProps cant have calc. BC we seperate on space
      */
-    private static func calc(_ string:String){
+    private static func calc(_ string:String) ->String{
         if let propertyString:String = string.match(calcPattern).first{
-            Swift.print("calc.propertyString: " + "\(propertyString)")
-            _ = ""
+            return propertyString
         }
+        fatalError("illegal syntax \(string)")
     }
     /**
      * EXAMPLE: transform:rotation(90deg)

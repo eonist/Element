@@ -96,14 +96,20 @@ private class Utils{
      */
     static func setSize(_ element:IElement){
         if let skin = element.skin,let style = skin.style{
-            let minWidth:CGFloat = style.getValue(CSSConstants.minWidth.rawValue)
+            
+            let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)
+            let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,0,.hor)
+            let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
+            let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
             
             //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
             //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
             //let getSize = CGSize(element.getWidth,element.getHeight)
+            let w = element.getWidth()
+            let h = element.getHeight()
             //let size = getsize.clip(minSize,maxSize)
-            skin.setSize(element.getWidth(), element.getHeight())
-            //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
+            
+            skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
             
         }
     }

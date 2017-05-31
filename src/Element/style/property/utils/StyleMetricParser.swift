@@ -167,6 +167,9 @@ private class Utils{
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let width:CGFloat = element.getWidth()
+            
+            //try to add min and max width here and clip 🏀
+            
             return margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
         };return element.getWidth()
     }

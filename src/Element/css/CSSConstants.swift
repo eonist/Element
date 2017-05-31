@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * TODO: ⚠️️ Move cases into sub cases like: CSSType.Layout.display etc
+ */
 enum CSSConstants:String{
     /*Font*/
     case ems = "ems"
@@ -34,9 +36,13 @@ enum CSSConstants:String{
     case lineOffsetTypeRight = "line-offset-type-right"
     case lineOffsetTypeTop = "line-offset-type-top"
     case lineOffsetTypeBottom = "line-offset-type-bottom"
-    /*These property names are inheritable, they are originally from textformat and textfieldconstants sans width and height since these should not inherit*/
+    /*Size*/
     case width = "width"
     case height = "height"
+    case minWidth = "min-width"
+    case maxWidth = "max-width"
+    case minHeight = "min-height"
+    case maxHeight = "max-height"
     /*Other*/
     case rotation = "rotation"
     case transform = "transform"

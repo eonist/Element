@@ -95,14 +95,16 @@ private class Utils{
      * New
      */
     static func setSize(_ element:IElement){
-        if let skin = element.skin{
-            skin.setSize(element.getWidth(), element.getHeight())
+        if let skin = element.skin,let style = skin.style{
+            style.get
+            
             //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
             //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
             //let getSize = CGSize(element.getWidth,element.getHeight)
             //let size = getsize.clip(minSize,maxSize)
+            skin.setSize(element.getWidth(), element.getHeight())
             //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
-            //element.subViews.filter{$0 is IElement}.forEach{/*.call.*/}
+            
         }
     }
 }

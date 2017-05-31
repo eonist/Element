@@ -57,6 +57,7 @@ class StyleMetricParser {
     }
     /**
      * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
+     * PARAM: dir is to get the correct totW or totH
      */
     static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0, _ dir:Dir)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)

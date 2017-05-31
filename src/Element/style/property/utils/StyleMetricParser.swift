@@ -120,32 +120,17 @@ private class Utils{
      * Example: "100% -20px 20px"
      * IMPORTANT: dont use + or space infront of min sign
      */
-    private static func calcMetric(_ stringValue:String) -> CGFloat?{
-        
-        
-        
-        //seperate on space
-        
+    private static func calcMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
         let components:[String] = stringValue.split(" ")
-        components.forEach{
-            Swift.print("$0: " + "\($0)")
-            if StringAsserter.metric($0) {
+        return components.reduce(0){//sum the amounts
+            if StringAsserter.metric($1) {
                 Swift.print("isMetric")
-            }else if StringAsserter.digit($0){
+                return $0 + stringMetric($1,skin,dir)
+            }else if StringAsserter.digit($1){
                 Swift.print("isDigit")
+                return $0 +
             }
         }
-        
-        let result = [2,4,1,2].reduce(0) {$0 + $1}//sum some test amounts
-        Swift.print("result: " + "\(result)")
-        
-        
-        //seperate items with -  + 
-        //if item is numeric its fixed. if its string, then its stringMetric
-        //Sum method:
-            //group the items together with their front sign. 
-            //then you do return array.sum
-        return 0
     }
     /**
      * New

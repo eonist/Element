@@ -43,16 +43,10 @@ class ElementModifier {
         refresh(element, Utils.setStyle)
     }
     /**
-     *
+     * New
      */
     static func refreshSize(_ element:IElement){
-        //A recursive resize method
-            //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
-            //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
-            //let getSize = CGSize(element.getWidth,element.getHeight)
-            //let size = getsize.clip(minSize,maxSize)
-            //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
-            //element.subViews.filter{$0 is IElement}.forEach{/*.call.*/}
+        refresh(element, Utils.setSize)
     }
     /**
      * Refreshes many elements in PARAM: displayObjectContainer
@@ -101,6 +95,14 @@ private class Utils{
      * New
      */
     static func setSize(_ element:IElement){
-        if let skin = element.skin{skin.setSize(element.getWidth(), element.getHeight())}
+        if let skin = element.skin{
+            skin.setSize(element.getWidth(), element.getHeight())
+            //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
+            //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
+            //let getSize = CGSize(element.getWidth,element.getHeight)
+            //let size = getsize.clip(minSize,maxSize)
+            //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
+            //element.subViews.filter{$0 is IElement}.forEach{/*.call.*/}
+        }
     }
 }

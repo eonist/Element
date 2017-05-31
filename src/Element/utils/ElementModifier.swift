@@ -61,6 +61,18 @@ class ElementModifier {
         view.subviews.lazy.flatMap{$0 as? IElement}.forEach{$0.setSize(size.width, size.height)}
     }
     /**
+     *
+     */
+    static func updateSize(){
+        //A recursive resize method
+            //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
+            //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
+            //let getSize = CGSize(element.getWidth,element.getHeight)
+            //let size = getsize.clip(minSize,maxSize)
+            //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
+            //element.subViews.filter{$0 is IElement}.forEach{/*.call.*/}
+    }
+    /**
      * NOTE: refloats PARAM: view children that are of type IElement
      * NOTE: i.e: after hideing of an element, or changing the depth order etc
      */

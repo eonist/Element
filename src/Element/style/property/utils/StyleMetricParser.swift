@@ -123,7 +123,8 @@ private class Utils{
         //seperate items with -  + 
         //if item is numeric its fixed. if its string, then its stringMetric
         //Sum method:
-            //group the 
+            //group the items together with their front sign. 
+            //then you do return array.sum
         return 0
     }
     /**

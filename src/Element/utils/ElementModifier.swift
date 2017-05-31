@@ -96,7 +96,7 @@ private class Utils{
      */
     static func setSize(_ element:IElement){
         if let skin = element.skin,let style = skin.style{
-            style.getValue(<#T##name: String##String#>)
+            let minWidth:CGFloat = style.getValue(CSSConstants.minWidth.rawValue)
             
             //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
             //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])

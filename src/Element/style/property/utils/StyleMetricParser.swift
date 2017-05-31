@@ -105,7 +105,7 @@ private class Utils{
             case is String:/*value is String*/
                 let stringValue:String = value as! String
                 if StringAsserter.metric(stringValue){
-                    
+                    return sringMetric(stringValue,skin,dir)
                 }else{//calc
                     
                 }
@@ -117,9 +117,15 @@ private class Utils{
         //⚠️️ be warned this method is far from complete
     }
     /**
+     *
+     */
+    private static func calcMetric() -> CGFloat?{
+        return 0
+    }
+    /**
      * New
      */
-    private static func strMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
+    private static func sringMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
         let matches = stringValue.matches(metricPattern)
         if let match:NSTextCheckingResult = matches.first {
             let valStr:String = match.value(stringValue, 1)/*capturing group 1*/

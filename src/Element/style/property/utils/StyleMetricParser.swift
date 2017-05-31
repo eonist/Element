@@ -118,7 +118,7 @@ private class Utils{
     /**
      * New
      * Example: "100% -20px 20px"
-     * IMPORTANT: dont use + or space infront of min sign
+     * IMPORTANT: ⚠️️ Using + or space infront of min sign wont work
      */
     private static func calcMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
         let components:[String] = stringValue.split(" ")

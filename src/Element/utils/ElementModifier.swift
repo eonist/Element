@@ -34,13 +34,25 @@ class ElementModifier {
      * NOTE: Sometimes its better to use element.setSkin(element.getSkin()) 
      */
     static func refreshSkin(_ element:IElement){
-        ElementModifier.refresh(element, Utils.setSkinState)
+        refresh(element, Utils.setSkinState)
     }
     /**
      * IMPORTANT: ⚠️️ Refreshing style is cheaper than calling refresh skin
      */
     static func refreshStyle(_ element:IElement){
-        ElementModifier.refresh(element, Utils.setStyle)
+        refresh(element, Utils.setStyle)
+    }
+    /**
+     *
+     */
+    static func refreshSize(_ element:IElement){
+        //A recursive resize method
+            //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
+            //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
+            //let getSize = CGSize(element.getWidth,element.getHeight)
+            //let size = getsize.clip(minSize,maxSize)
+            //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
+            //element.subViews.filter{$0 is IElement}.forEach{/*.call.*/}
     }
     /**
      * Refreshes many elements in PARAM: displayObjectContainer
@@ -60,18 +72,7 @@ class ElementModifier {
     static func size(_ view:NSView,_ size:CGSize) {
         view.subviews.lazy.flatMap{$0 as? IElement}.forEach{$0.setSize(size.width, size.height)}
     }
-    /**
-     *
-     */
-    static func updateSize(){
-        //A recursive resize method
-            //let minSize = CGSize(element.style["min-width"],element.style["min-height"])
-            //let maxSize = CGSize(element.style["max-width"],element.style["max-height"])
-            //let getSize = CGSize(element.getWidth,element.getHeight)
-            //let size = getsize.clip(minSize,maxSize)
-            //element.skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
-            //element.subViews.filter{$0 is IElement}.forEach{/*.call.*/}
-    }
+
     /**
      * NOTE: refloats PARAM: view children that are of type IElement
      * NOTE: i.e: after hideing of an element, or changing the depth order etc
@@ -97,9 +98,9 @@ private class Utils{
         if let skin = element.skin{skin.setSkinState(skin.state)}/*<-- was SkinStates.none but re-applying the same skinState is a better option*/
     }
     /**
-     *
+     * New
      */
     static func setSize(_ element:IElement){
-        
+        if let skin = element.skin{skin.setSize(element.getWidth(), element.getHeight())}
     }
 }

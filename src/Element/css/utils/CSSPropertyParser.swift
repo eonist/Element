@@ -14,6 +14,7 @@ extension CSSPropertyParser{
     static var dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
     static var textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
     static var transformRotatePattern:String = "(?<=rotate\\().+?(?=\\);?)"
+    static var calcPattern:String = "(?<=calc\\().+?(?=\\);?)"
 }
 class CSSPropertyParser {
     /**
@@ -34,16 +35,23 @@ class CSSPropertyParser {
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
             case string.test("^rotate\\b"):return rotate(string)
+            case string.test("^calc\\b"):return calc(string)//new
             case string.test(arrayPattern):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
             case string.test(stringPattern):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
     }
     /**
+     * EXAMPLE: width:calc(100% - 20px)
+     */
+    private static func calc(_ string:String){
+        
+    }
+    /**
      * EXAMPLE: transform:rotation(90deg)
      * NOTE: in the future we will add more transforms
      */
-    static func rotate(_ string:String)->CGFloat{
+    private static func rotate(_ string:String)->CGFloat{
         if let propertyString = string.match(transformRotatePattern).first{
             let rotation:CGFloat = Utils.rotation(propertyString)
             return rotation
@@ -55,7 +63,7 @@ class CSSPropertyParser {
      * NOTE: setting the gradientType isn't necessary since its the default setting
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
-    static func linearGradient(_ string:String)->IGradient{
+    private static func linearGradient(_ string:String)->IGradient{
         if let propertyString:String = string.match(linearGradientPattern).first{
             var properties:[String] = propertyString.split(",")
             let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
@@ -87,7 +95,7 @@ class CSSPropertyParser {
      * TODO: create a small app that generates the radial-gradient from an svg
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
-     static func radialGradient(_ string:String)->IGradient{
+     private static func radialGradient(_ string:String)->IGradient{
         if let propertyString:String = string.match(radialGradientPattern).first{
             var properties:[String] = propertyString.split(",")
             let setupString:String = properties.shift()
@@ -112,7 +120,7 @@ class CSSPropertyParser {
      * EXAMPLE: a corner-radius "10 20 10 20"
      * TODO: does this support comma delimited lists?
      */
-    static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
+    private static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
         let matches:[String] = StringModifier.split(string, " ")
         return matches.map { str in
             if(StringAsserter.digit(str)){
@@ -128,7 +136,7 @@ class CSSPropertyParser {
      * TextFormat
      * RETURNS a TextFormat class instance
      */
-    static func textFormat(_ input:String) -> TextFormat {
+    private static func textFormat(_ input:String) -> TextFormat {
         if let propertyString:String = input.match(textFormatPattern).first{
             let properties:[String] = propertyString.split(",")
             return properties.mapReduce(TextFormat()){
@@ -152,7 +160,7 @@ class CSSPropertyParser {
     /**
      * Returns a DropShadowFilter instance
      */
-    static func dropShadow(_ string:String)->DropShadow {
+    private static func dropShadow(_ string:String)->DropShadow {
         if let propertyString:String = string.match(dropShadowPattern).first{
             var properties:[String] = propertyString.split(" ")
             let distance:CGFloat = StringParser.digit(properties[0])

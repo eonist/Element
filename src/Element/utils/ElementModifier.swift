@@ -117,6 +117,7 @@ private class Utils{
             Swift.print("minSize: " + "\(minSize)")
             let maxSize:CGSize = CGSize(maxWidth ?? w,maxHeight ?? h)
             let size = CGSize(w,h).clip(minSize,maxSize)
+            
             skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
         }
     }

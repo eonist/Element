@@ -106,6 +106,7 @@ private class Utils{
         if let skin = element.skin{
             /*min and max vals*/
             let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)
+            //Swift.print("minWidth: " + "\(minWidth)")
             let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,0,.hor)
             let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
             let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
@@ -113,6 +114,7 @@ private class Utils{
             let w:CGFloat = element.getWidth()
             let h:CGFloat = element.getHeight()
             let minSize:CGSize = CGSize(minWidth ?? w,minHeight ?? h)
+            Swift.print("minSize: " + "\(minSize)")
             let maxSize:CGSize = CGSize(maxWidth ?? w,maxHeight ?? h)
             let size = CGSize(w,h).clip(minSize,maxSize)
             skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/

@@ -43,6 +43,7 @@ class CSSPropertyParser {
     }
     /**
      * EXAMPLE: width:calc(100% - 20px)
+     * NOTE: ⚠️️ Array CssProps cant have calc. BC we seperate on space
      */
     private static func calc(_ string:String){
         if let propertyString:String = string.match(calcPattern).first{

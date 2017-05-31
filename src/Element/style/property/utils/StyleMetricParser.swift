@@ -104,29 +104,41 @@ private class Utils{
                 return value as? CGFloat
             case is String:/*value is String*/
                 let stringValue:String = value as! String
-                let matches = stringValue.matches(metricPattern)
-                if let match:NSTextCheckingResult = matches.first {
-                    let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
-                    let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
-                    let valNum:CGFloat = valStr.cgFloat
-                    if(suffix == "%") {
-                        return {
-                            let totWidth:CGFloat = {
-                                if let parent:IElement = skin.element?.getParent() as? IElement{
-                                    return dir == .hor ? totalWidth(parent) : totalHeight(parent)/*totHeight support is new*/
-                                };return 0
-                            }()
-                            return valNum / 100 * totWidth
-                        }()
-                    }else {
-                        return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
-                    }
-                }//maybe error here
+                if StringAsserter.metric(stringValue){
+                    
+                }else{//calc
+                    
+                }
+            
             default:
                 break;
         }
         return nil//<---this should be 0, it will require some reprograming
         //⚠️️ be warned this method is far from complete
+    }
+    /**
+     * New
+     */
+    private static func strMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
+        let matches = stringValue.matches(metricPattern)
+        if let match:NSTextCheckingResult = matches.first {
+            let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
+            let suffix:String = match.value(stringValue, 2)/*capturing group 1*/
+            let valNum:CGFloat = valStr.cgFloat
+            if(suffix == "%") {
+                return {
+                    let totWidth:CGFloat = {
+                        if let parent:IElement = skin.element?.getParent() as? IElement{
+                            return dir == .hor ? totalWidth(parent) : totalHeight(parent)/*totHeight support is new*/
+                        };return 0
+                    }()
+                    return valNum / 100 * totWidth
+                    }()
+            }else {
+                return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
+            }
+        }//maybe error here
+        return nil
     }
     /**
      * Returns the total width

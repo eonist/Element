@@ -118,6 +118,9 @@ private class Utils{
             let maxSize:CGSize = CGSize(maxWidth ?? w,maxHeight ?? h)
             let size = CGSize(w,h).clip(minSize,maxSize)
             
+            //I don't think you need all the above 🏀
+                //if you add min and max to the totW calculation in StyleMetricParser
+            
             skin.setSize(size.w,size.h)/*We use the skin and work directly on that*/
         }
     }

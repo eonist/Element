@@ -56,7 +56,7 @@ class StyleMetricParser {
         return margin
     }
     /**
-     * Returns a Number derived from eigther a percentage value or ems value (20% or 1.125 ems == 18)
+     * Returns a Number derived from eigther a fixed value, a percentage value or ems value (20% or 1.125 ems == 18)
      * PARAM: dir is to get the correct totW or totH
      */
     static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0, _ dir:Dir)->CGFloat? {
@@ -120,10 +120,11 @@ private class Utils{
      * New
      * Example: "100% -20px 20px"
      * IMPORTANT: ⚠️️ Using + or space infront of min sign wont work
+     * Does not support * or / chars yet
      */
     private static func calcMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
         let components:[String] = stringValue.split(" ")
-        return components.reduce(0){//sum the amounts
+        return components.reduce(0){/*sum the amounts*/
             if StringAsserter.metric($1) {
                 Swift.print("isMetric")
                 return $0! + stringMetric($1,skin,dir)!

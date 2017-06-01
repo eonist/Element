@@ -136,6 +136,7 @@ private class Utils{
     /**
      * New
      * Returns a size value based on percentage based on the parent
+     * NOTE: In a way this method is recursive, as totW and totH calls the getW and getH again which in turn can call this method again etc
      */
     private static func stringMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
         let matches = stringValue.matches(metricPattern)

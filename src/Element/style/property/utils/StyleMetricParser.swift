@@ -135,6 +135,7 @@ private class Utils{
     }
     /**
      * New
+     * Returns a size value based on percentage based on the parent
      */
     private static func stringMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
         let matches = stringValue.matches(metricPattern)
@@ -161,22 +162,19 @@ private class Utils{
      * Returns the total width
      * TODO: ⚠️️ Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
      */
-    static func totalWidth(_ element:IElement) -> CGFloat {
+    private static func totalWidth(_ element:IElement) -> CGFloat {
         if let skin = element.skin {
             let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let width:CGFloat = element.getWidth()
-            
-            //try to add min and max width here and clip 🏀
-            
             return margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
         };return element.getWidth()
     }
     /**
      * New
      */
-    static func totalHeight(_ element:IElement) -> CGFloat {
+    private static func totalHeight(_ element:IElement) -> CGFloat {
         if let skin = element.skin {
             let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)

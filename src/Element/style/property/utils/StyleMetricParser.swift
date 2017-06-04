@@ -20,7 +20,7 @@ class StyleMetricParser {
     }
     /**
      * NOTE: TRBL
-     * NOTE: if this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
+     * NOTE: If this method is buggy refer to the legacy code as you changed a couple of method calls : value is now metric
      * TODO: ⚠️️ Should this have a failsafe if there is no Padding property in the style?
      * TODO: ⚠️️ Try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      * TODO: ⚠️️ You may want to copy margin on this
@@ -74,8 +74,8 @@ class StyleMetricParser {
     }
     /**
      * Returns a Fillet instance
-     * TODO: ⚠️️ probably upgrade to TRBL
-     * TODO: ⚠️️ needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc.
+     * TODO: ⚠️️ Probably upgrade to TRBL
+     * TODO: ⚠️️ Needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc.
      */
     static func fillet(_ skin:ISkin, _ depth:Int = 0) -> Fillet {
         let val:Any? = StylePropertyParser.value(skin, CSSConstants.cornerRadius.rawValue,depth)

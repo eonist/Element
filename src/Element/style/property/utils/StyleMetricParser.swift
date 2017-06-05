@@ -135,6 +135,8 @@ private class Utils{
      * New
      * Example: "100% -20px 20px"
      * IMPORTANT: ⚠️️ Using + or space infront of min sign wont work
+     * NOTE: not for advance interactive UI adjustments, use setSize in these cases!
+     * NOTE: you can also do padding:calc(50%-20px) and you have effectivly centered something
      * NOTE: Does not support * or / chars yet
      */
     private static func calcMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{

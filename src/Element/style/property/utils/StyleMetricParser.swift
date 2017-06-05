@@ -63,6 +63,9 @@ class StyleMetricParser {
         let value = StylePropertyParser.value(skin,propertyName,depth)
         return Utils.metric(value,skin,dir)
     }
+    /**
+     * Returns width (clips to min max height)
+     */
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         guard let width:CGFloat = metric(skin,CSSConstants.width.rawValue,depth,.hor) else{
             return nil
@@ -71,8 +74,16 @@ class StyleMetricParser {
         let maxWidth:CGFloat = Utils.maxWidth(skin) ?? width
         return width.clip(minWidth,maxWidth)
     }
+    /**
+     * Returns height (clips to min max height)
+     */
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.height.rawValue,depth,.ver)
+        guard let height:CGFloat = metric(skin,CSSConstants.height.rawValue,depth,.ver) else{
+            return nil
+        }
+        let minHeight:CGFloat = Utils.minHeight(skin) ?? height
+        let maxHeight:CGFloat = Utils.maxHeight(skin) ?? height
+        return height.clip(minHeight,maxHeight)
     }
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
         return StylePropertyParser.value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat

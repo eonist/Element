@@ -3,7 +3,7 @@ import Cocoa
 
 class CustomView:WindowView{
     //lazy var header:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()
-    lazy var iconSection:Section = {self.addSubView(Section(NaN,NaN,self,"titleBar"))}()/*height was 26 but we added 4px as padding-top*/
+    lazy var iconSection:Section = {self.addSubView(Section(NaN,NaN,self,"titleBar"))}()
     lazy var closeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
     lazy var minimizeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"minimize"))}()
     lazy var maximizeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"maximize"))}()

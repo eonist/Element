@@ -169,7 +169,7 @@ private class Utils{
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let width:CGFloat = element.getWidth()
-            return margin.left + border.left + width - padding.left - padding.right - border.right - margin.right
+            return margin.left + border.left + width - padding.hor - border.right - margin.right
         };return element.getWidth()
     }
     /**
@@ -181,7 +181,13 @@ private class Utils{
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let height:CGFloat = element.getHeight()
-            return margin.top + border.top + height - padding.top - padding.bottom - border.bottom - margin.bottom
+            return margin.top + border.top + height - padding.ver - border.bottom - margin.bottom
         };return element.getHeight()
     }
+    
+    let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)
+    //Swift.print("minWidth: " + "\(minWidth)")
+    let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,0,.hor)
+    let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
+    let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
 }

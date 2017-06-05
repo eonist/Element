@@ -65,7 +65,7 @@ class StyleMetricParser {
     }
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         let w:CGFloat? = metric(skin,CSSConstants.width.rawValue,depth,.hor)
-        let minWidth:CGFloat? = 
+        let minWidth:CGFloat? = Utils.minWidth(skin)
         let minSize:CGFloat? = minWidth ?? w
         Swift.print("minSize: " + "\(minSize)")
         let maxSize:CGFloat? = maxWidth ?? w
@@ -194,29 +194,29 @@ private class Utils{
     /**
      * New
      */
-    static func minWidth(_ skin:ISkin)->CGFloat?{
-        let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)
+    static func minWidth(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+        let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,depth,.hor)
         return minWidth
     }
     /**
      * New
      */
-    static func minHeight(_ skin:ISkin)->CGFloat?{
-        let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,0,.hor)
+    static func minHeight(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+        let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,depth,.hor)
         return minHeight
     }
     /**
      * New
      */
-    static func maxWidth(_ skin:ISkin)->CGFloat?{
-        let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
+    static func maxWidth(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+        let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,depth,.hor)
         return maxWidth
     }
     /**
      * New
      */
-    static func maxHeight(_ skin:ISkin)->CGFloat?{
-        let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
+    static func maxHeight(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+        let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,depth,.hor)
         return maxHeight
     }
 }

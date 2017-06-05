@@ -44,7 +44,7 @@ class ElementModifier {
         refresh(element, Utils.setStyle)
     }
     /**
-     * New
+     * New (calls skin.setSize)
      */
     static func refreshSize(_ element:IElement){
         Swift.print("refreshSize")
@@ -99,7 +99,7 @@ private class Utils{
         if let skin = element.skin{skin.setSkinState(skin.state)}/*<-- was SkinStates.none but re-applying the same skinState is a better option*/
     }
     /**
-     * New
+     * New (calls skin.setSize)
      */
     static func setSize(_ element:IElement){
         Swift.print("Utils.setSize " + ElementParser.stackString(element))

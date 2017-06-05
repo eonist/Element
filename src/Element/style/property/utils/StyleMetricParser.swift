@@ -184,10 +184,32 @@ private class Utils{
             return margin.top + border.top + height - padding.ver - border.bottom - margin.bottom
         };return element.getHeight()
     }
-    
-    let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)
-    //Swift.print("minWidth: " + "\(minWidth)")
-    let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,0,.hor)
-    let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
-    let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
+    /**
+     * New
+     */
+    static func minWidth(_ skin:ISkin)->CGFloat?{
+        let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,0,.hor)
+        return minWidth
+    }
+    /**
+     * New
+     */
+    static func minHeight(_ skin:ISkin)->CGFloat?{
+        let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,0,.hor)
+        return minHeight
+    }
+    /**
+     * New
+     */
+    static func maxWidth(_ skin:ISkin)->CGFloat?{
+        let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,0,.hor)
+        return maxWidth
+    }
+    /**
+     * New
+     */
+    static func maxHeight(_ skin:ISkin)->CGFloat?{
+        let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,0,.hor)
+        return maxHeight
+    }
 }

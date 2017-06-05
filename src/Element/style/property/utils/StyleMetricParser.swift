@@ -64,7 +64,14 @@ class StyleMetricParser {
         return Utils.metric(value,skin,dir)
     }
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        return metric(skin,CSSConstants.width.rawValue,depth,.hor)
+        let w:CGFloat? = metric(skin,CSSConstants.width.rawValue,depth,.hor)
+        let minWidth:CGFloat? = 
+        let minSize:CGFloat? = minWidth ?? w
+        Swift.print("minSize: " + "\(minSize)")
+        let maxSize:CGFloat? = maxWidth ?? w
+        let size:CGFloat = w.clip(minSize,maxSize)
+        
+        return size
     }
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
         return metric(skin,CSSConstants.height.rawValue,depth,.ver)

@@ -25,6 +25,12 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
         //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
         self.isReleasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically, true for panels, false for unique docwin etc*/
         self.isMovableByWindowBackground = false/*This enables you do drag the window around via the background*/
+        /*[[window standardWindowButton:NSWindowCloseButton] setHidden:YES];
+         [[window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+         [[window standardWindowButton:NSWindowZoomButton] setHidden:YES];*/
+        self.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        self.standardWindowButton(.zoomButton)?.isHidden = true
+        self.standardWindowButton(.closeButton)?.isHidden = true
         self.delegate = self/*So that we can use this class as the Window controller aswell*/
         resolveSkin()
     }

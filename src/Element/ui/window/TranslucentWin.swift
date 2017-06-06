@@ -29,7 +29,7 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
         self.standardWindowButton(.zoomButton)?.isHidden = true
         self.standardWindowButton(.closeButton)?.isHidden = true
         
-        self.contentView = FlippedView(frame:contentRect)
+        self.contentView = InteractiveView2() //FlippedView(frame:contentRect)
         visualEffectView = TranslucentView(frame:contentRect)
         self.contentView?.addSubview(visualEffectView!)
         //override and add view to contentview. 

@@ -37,7 +37,9 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
     func windowDidResize(_ notification: Notification) {
         //Swift.print("CustomWin.windowDidResize " + "\(self.frame.size)")
         visualEffectView!.setFrameSize(self.frame.size)
+        if let contentView = (self.contentView as? Element) {contentView.setSize(self.frame.size.width,self.frame.size.height)}
     }
+   
 }
 
 class TranslucentView:NSVisualEffectView{

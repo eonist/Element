@@ -13,13 +13,14 @@ class Window:NSWindow, NSApplicationDelegate, NSWindowDelegate/*,IElement*/ {
      * TODO: Implement x and y for the win on init (This is tricky to get right, carefull)
      */
     required init(_ width:CGFloat = 600,_ height:CGFloat = 400){/*required prefix in the init is so that instances can be created via factory design patterns*/
-        let styleMask:NSWindowStyleMask = [.titled, .resizable]/*represents the window attributes*/
+        let styleMask:NSWindowStyleMask = [.titled, .resizable,.fullSizeContentView]/*represents the window attributes*/
         let rect:NSRect = NSMakeRect(0, 0, width, height)
         super.init(contentRect: rect, styleMask:styleMask , backing: NSBackingStoreType.buffered, defer: false)//NSTitledWindowMask|NSResizableWindowMask|NSMiniaturizableWindowMask|NSClosableWindowMask
         self.backgroundColor = NSColor.clear/*Sets the window background color*/
         self.makeKeyAndOrderFront(self)/*This moves the window to front and makes it key, should also be settable from within the win itself, test this*/
         self.hasShadow = true/*you have to set this to true if you want a shadow when using the borderlessmask setting*/
-        self.titleVisibility = .hidden
+        /*self.titleVisibility = .hidden*/
+        
         self.titlebarAppearsTransparent = true
         //self.center()/*centers the window, this can also be done via WinModifier.align right after the init, carefull with self.center() as it overrides other alignment methods*/
         self.isReleasedWhenClosed = false/*<--This makes it possible to close and open the same window programtically, true for panels, false for unique docwin etc*/

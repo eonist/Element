@@ -35,11 +35,9 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
         //override and add view to contentview. 
     }
     func windowDidResize(_ notification: Notification) {
-        //Swift.print("CustomWin.windowDidResize " + "\(self.frame.size)")
+        Swift.print("CustomWin.windowDidResize " + "\(self.frame.size)")
         visualEffectView!.setFrameSize(self.frame.size)
-        if let contentView = (self.contentView as? Element) {contentView.setSize(self.frame.size.width,self.frame.size.height)}
     }
-   
 }
 
 class TranslucentView:NSVisualEffectView{

@@ -14,7 +14,7 @@ class Element:InteractiveView2,IElement {
     var state:String = SkinStates.none
     var skin:ISkin?//TODO: ⚠️️ make this lazy
     var parent:IElement?
-    var id:String?/*css selector id*/// TODO: ⚠️️ Should only be able to be "" not nil
+    var id:String?/*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
     var isDisabled:Bool = false
     var isFocused:Bool = false
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */

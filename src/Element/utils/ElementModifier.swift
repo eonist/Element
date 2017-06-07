@@ -47,7 +47,7 @@ class ElementModifier {
      * New (calls skin.setSize)
      */
     static func refreshSize(_ element:IElement){
-        Swift.print("refreshSize")
+        //Swift.print("refreshSize")
         refresh(element, Utils.setSize)
     }
     /**

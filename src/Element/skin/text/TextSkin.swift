@@ -60,7 +60,7 @@ extension TextSkin{
         let padding:Padding = StyleMetricParser.padding(self)
         let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         Swift.print("width: " + "\(width)")
-        Swift.print("superview.frame.width: " + "\(superview.frame.width)")
+        Swift.print("superview.frame.width: " + "\(superview?.frame.width)")
         let height:CGFloat = (StyleMetricParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         textField.frame.w = width/*SkinParser.width(this)*/
         textField.frame.h = height/*SkinParser.height(this)*/

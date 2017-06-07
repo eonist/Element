@@ -39,7 +39,7 @@ class List3:ContainerView3,Listable3{
         return item
     }
     override func getClassType() -> String {
-        return dir == .ver ? "List" : "VList"
+        return dir == .ver ? "List" : "VList"//<--this is actually wrong, use HList instead. and correct the css name
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

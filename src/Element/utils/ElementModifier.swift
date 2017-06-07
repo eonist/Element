@@ -105,7 +105,7 @@ private class Utils{
         Swift.print("Utils.setSize " + ElementParser.stackString(element))
         let w:CGFloat = element.getWidth()
         let h:CGFloat = element.getHeight()
-        element.setSize(w, h)
+        element.setSize(w, h)//targeting element is better because it allows you to override
         /*if let skin = element.skin{
          /*Clip*/
          

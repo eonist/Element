@@ -103,11 +103,13 @@ private class Utils{
      */
     static func setSize(_ element:IElement){
         Swift.print("Utils.setSize " + ElementParser.stackString(element))
-        if let skin = element.skin{
-            /*Clip*/
-            let w:CGFloat = element.getWidth()
-            let h:CGFloat = element.getHeight()
-            skin.setSize(w,h)/*We use the skin and work directly on that*/
-        }
+        let w:CGFloat = element.getWidth()
+        let h:CGFloat = element.getHeight()
+        element.setSize(w, h)
+        /*if let skin = element.skin{
+         /*Clip*/
+         
+         skin.setSize(w,h)/*We use the skin and work directly on that*/
+         }*/
     }
 }

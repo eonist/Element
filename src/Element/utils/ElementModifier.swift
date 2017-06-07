@@ -102,7 +102,7 @@ private class Utils{
      * New (calls skin.setSize)
      */
     static func setSize(_ element:IElement){
-        Swift.print("Utils.setSize " + ElementParser.stackString(element))
+        //Swift.print("Utils.setSize " + ElementParser.stackString(element))
         let w:CGFloat = element.getWidth()
         let h:CGFloat = element.getHeight()
         element.setSize(w, h)//targeting element is better because it allows you to override

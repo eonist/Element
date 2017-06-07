@@ -3,7 +3,7 @@ import Foundation
 
 class ElasticScrollFastList3:FastList3,ElasticScrollableFastListable3 {
     lazy var moverGroup:MoverGroup? = MoverGroup(self.setProgressVal,self.maskSize,self.contentSize)
-    lazy var rbContainer:Container? = self.rubberBandContainer/*needed for the overshot animation*/
+    lazy var rbContainer:Container? = {return self.rubberBandContainer}()/*needed for the overshot animation*/
 }
 extension Elastic3 where Self:FastList3{
     var rubberBandContainer:Container {

@@ -143,10 +143,10 @@ private class Utils{
         let components:[String] = stringValue.split(" ")
         return components.reduce(0){/*sum the amounts*/
             if StringAsserter.metric($1) {
-                Swift.print("isMetric")
+                //Swift.print("isMetric")
                 return $0! + stringMetric($1,skin,dir)!
             }else if StringAsserter.digit($1){
-                Swift.print("isDigit")
+                //Swift.print("isDigit")
                 return $0! + StringParser.digit($1)
             }else{fatalError("type not supported: \($1)")}
         }

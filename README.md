@@ -7,6 +7,9 @@ Independent UI framework with zero AppKit dependencies. Element lets you add ric
 
 <img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
 
+## How does it work?
+Swift handles app logic and CSS/SVG handles design and alignment. 
+
 ## Installation:
 - Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager.
 - Add this to your Package.swift file

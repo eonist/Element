@@ -1,18 +1,20 @@
 ![MIT Status](https://img.shields.io/badge/License-MIT-lightgrey.svg?maxAge=2592000) ![platform](https://img.shields.io/badge/os-macOS-blue.svg) ![Lang](https://img.shields.io/badge/Swift-3.0.1-orange.svg) [![SPM  compatible](https://img.shields.io/badge/SPM-compatible-orange.svg)](https://github.com/apple/swift-package-manager) [![codebeat](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) [![Build Status](https://travis-ci.org/stylekit/Element-tests.svg?branch=master)](https://travis-ci.org/stylekit/Element-tests)
 
+# Element
 <img width="200" alt="img" src="https://rawgit.com/stylekit/img/master/Element3_1-01.svg">
 
-## What is it?
-Independent UI framework with zero AppKit dependencies. Element lets you add rich UI interaction to your app.
+### What is it?
+Independent UI framework with zero AppKit dependencies. Swift handles app logic and CSS/SVG handles design and alignment. 
 
 <img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
 
-## How does it work?
-Swift handles app logic and CSS/SVG handles design and alignment. 
-
-## Installation:
+### Installation:
 - Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager.
 - Add this to your Package.swift file
+
+### Motivation:
+
+The goal of Element is to have an OpenSource UI framework that can be used interchangeably on all Apple platforms. 
 
 ```swift
 import PackageDescription
@@ -38,40 +40,17 @@ btn.event = { event in
   
 You can also compile Element as a regular .framework instructions [here](https://github.com/eonist/Element/wiki/framework-instructions) 
 
-## Resources: 
+### Resources: 
 - Simple example app made with Element: [Stash](https://github.com/stylekit/stash) 
 - Library of example code for each component in Element: [Explorer](https://github.com/stylekit/explorer)  
 - Default macOS styles to get you started: [ElCapitan](https://github.com/stylekit/ElCapitan)  
 
-## iOS:
+### iOS:
 Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)   
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
-## Progress:
-**2017-apr**
-- FastTreeList is introduced
-
-**2017-mar** 
-- List UI's are now POP (aka Protocol Oriented Programming)
-- Elastic, Slidable and Scrollable protocols are introduced
-- Converting from OOP to POP (aka shared inheritance) Aka no duplicate code!  
-
-**2017-feb**  
-- Improvements to SliderTreeList 
-- Fixed slider positioning in sliderTreeList  
-- Fixed margin error in TreeList  
-- Significant improvements to RBSliderFastList, SliderFastList and FastList
-
-## MileStones:
-- FlexBox support
-- FastTreeList component ✅
-- Faster CSS caching algorithm 
-
 ## More...
 More about Element 👉 [wiki](https://github.com/eonist/Element/wiki) 
-
-## Support
-Please, don't hesitate to file an issue if you have questions.
 
 ## Sponsors:
 [<img width="150" alt="img" src="https://rawgit.com/stylekit/img/master/appcode-logo.svg">

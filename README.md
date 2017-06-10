@@ -40,7 +40,7 @@ You can also compile Element as a regular .framework instructions [here](https:/
 - Default macOS styles to get you started: [ElCapitan](https://github.com/stylekit/ElCapitan)  
 
 ### iOS:
-Element for 📱 is in the works [here](https://github.com/eonist/Element-iOS)   
+Element for 📱 is in the works [here](https://github.com/stylekit/Element-iOS)   
 <img width="186" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/switch8crop20fps.gif">  
 
 ## More...

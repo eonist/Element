@@ -3,18 +3,17 @@
 # Element
 <img width="200" alt="img" src="https://rawgit.com/stylekit/img/master/Element3_1-01.svg">
 
-### What is it?
-Independent UI framework with zero AppKit dependencies. Swift handles app logic and CSS/SVG handles design and alignment. 
+### What?
+Programmatic UI Framework for macOS
 
 <img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
+
+### How does it work?
+Swift handles app logic and CSS/SVG handles design. 
 
 ### Installation:
 - Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager.
 - Add this to your Package.swift file
-
-### Motivation:
-
-The goal of Element is to have an OpenSource UI framework that can be used interchangeably on all Apple platforms. 
 
 ```swift
 import PackageDescription

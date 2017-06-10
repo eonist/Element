@@ -3,13 +3,9 @@
 # Element
 <img width="200" alt="img" src="https://rawgit.com/stylekit/img/master/Element3_1-01.svg">
 
-### What?
-Programmatic UI Framework for macOS
+Programmatic UI Framework for macOS. Swift handles app logic and CSS/SVG handles design. 
 
 <img width="608" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/progressindicator2_trim.mp4.gif">
-
-### How does it work?
-Swift handles app logic and CSS/SVG handles design. 
 
 ### Installation:
 **Step 1:** Add this to your Package.swift [Tutorial](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)

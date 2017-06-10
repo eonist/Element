@@ -12,8 +12,7 @@ Programmatic UI Framework for macOS
 Swift handles app logic and CSS/SVG handles design. 
 
 ### Installation:
-- Read  [This](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)  tutorial on how to start a new App project from Swift Package Manager.
-- Add this to your Package.swift file
+**Step 1:** Add this to your Package.swift [Tutorial](http://stylekit.org/blog/2017/02/05/Xcode-and-spm/)
 
 ```swift
 import PackageDescription
@@ -25,7 +24,7 @@ let package = Package(
 )
 ```
 
-- In AppDelegate.swift add this to the top ``@testable import Element`` and this inside the ``applicationDidFinishLaunching`` method:
+**Step 2:** In AppDelegate.swift add this to the top ``@testable import Element`` and this inside the ``applicationDidFinishLaunching`` method:
 
 ```swift
 StyleManager.addStyle("Button{fill:blue;}")
@@ -36,7 +35,7 @@ btn.event = { event in
    if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
 }
 ```
-  
+
 You can also compile Element as a regular .framework instructions [here](https://github.com/eonist/Element/wiki/framework-instructions) 
 
 ### Resources: 

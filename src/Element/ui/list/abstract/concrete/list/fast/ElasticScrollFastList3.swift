@@ -9,8 +9,8 @@ extension Elastic3 where Self:FastList3{
     var rubberBandContainer:Container {
         /*Swift.print("create rbContainer")*/
         let rbContainer = addSubView(Container(self.width,self.height,self,"rb"))//⚠️️TODO: move to lazy var later
-        rbContainer.addSubview(contentContainer)/*adds content Container inside rbContainer*/
-        contentContainer.parent = rbContainer/*set the correct parent*/
+        rbContainer.addSubview(contentContainer)/*Adds content Container inside rbContainer*/
+        contentContainer.parent = rbContainer/*Set the correct parent*/
         return rbContainer
     }
 }

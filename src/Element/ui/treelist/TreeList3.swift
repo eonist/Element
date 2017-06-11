@@ -13,7 +13,7 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
         let idx3d:[Int] = treeDP.hashList[listItem.idx]
         //Swift.print("idx3d: " + "\(idx3d)")
         listItem.item.id = idx3d.count.string/*the indentation level (from 1 and up), should use classID*/
-        disableAnim{listItem.item.setSkinState(listItem.item.getSkinState())}/*Sets correct indent*/
+        //disableAnim{listItem.item.setSkinState(listItem.item.getSkinState())}/*Sets correct indent*/
         let isOpenStr = TreeDPParser.getProp(treeDP, idx3d, "isOpen")
         if let checkable = listItem.item as? CheckBoxButton{
             let isChecked = isOpenStr == "true"

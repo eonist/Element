@@ -53,8 +53,8 @@ class Skin:InteractiveView2,ISkin{
         hasStateChanged = true
         self.state = state
         style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
-        let w = StyleMetricParser.width(self)
-        Swift.print("w: " + "\(w)")
+        /*let w = StyleMetricParser.width(self)
+         Swift.print("w: " + "\(w)")*/
         draw()
     }
     /**

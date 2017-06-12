@@ -24,6 +24,7 @@ class Element:InteractiveView2,IElement {
         self.width = width
         self.height = height
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
+        Swift.print("after frame init")
         resolveSkin()
     }
     /**

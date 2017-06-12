@@ -14,6 +14,7 @@ class TextInput:Element{
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
+        Swift.print("resolveSkin")
         super.resolveSkin()
         //isInteractive = true//<-- only the textField should be interactive
         _ = text

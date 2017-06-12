@@ -31,6 +31,7 @@ class Element:InteractiveView2,IElement {
      * Draws the graphics
      */
     func resolveSkin() {
+        Swift.print("Element.resolveSkin()")
         self.skin = addSubView(SkinResolver.skin(self))
     }
     /**

@@ -7,6 +7,9 @@ import Cocoa
  * TODO: Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research): This has the answer but its very complicated to setup: http://stackoverflow.com/questions/11182735/nstextfield-add-line-spacing
  */
 class TextSkin:Skin,ITextSkin{
+    lazy var textFormat:TextFormat = {
+        return StylePropertyParser.textFormat(self)/*creates the textFormat*/
+    }()
     var textField:TextField
     /*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
@@ -69,7 +72,7 @@ extension TextSkin{
         textField.frame.h = height/*SkinParser.height(this)*/
         super.frame.w = width//quick fix
         super.frame.h = height//quick fix
-        let textFormat:TextFormat = StylePropertyParser.textFormat(self)/*creates the textFormat*/
+        
         TextFieldModifier.applyTextFormat(textField,textFormat)/*applies the textFormat*/
         /*
          let temp = textField.stringValue/*<--temp fix until you find a way to refresh TextField*/

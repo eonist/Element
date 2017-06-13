@@ -10,15 +10,17 @@ class TextSkin:Skin,ITextSkin{
     lazy var textFormat:TextFormat = {
         return StylePropertyParser.textFormat(self)/*creates the textFormat*/
     }()
-    var textField:TextField
+    lazy var textField:TextField = {
+        
+        return TextField(frame: NSRect())//<- this might be the problem with hit testing etc, not setting the correct frame
+    }()
     /*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
-        textField = TextField(frame: NSRect())
+        super.init(style, state, element)
         //textField.sizeToFit()
         textField.stringValue = text
-        super.init(style, state, element)
         addSubview(textField)
         applyProperties(textField)
         SkinModifier.float(self)

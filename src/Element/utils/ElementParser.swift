@@ -48,7 +48,7 @@ class ElementParser{
     /**
      * New
      */
-    static func element<T:IElement>(_ parent:NSView, _ id:String, _ type:T.Type) -> T?{
+    static func element<T:IElement>(_ parent:NSView, _ id:String, _ type:T.Type? = nil) -> T?{
         return parent.subviews.lazy.flatMap{$0 as? T}.first(where: {$0.id! == id})
     }
 }

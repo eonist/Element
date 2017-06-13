@@ -10,7 +10,7 @@ class TextSkin:Skin,ITextSkin{
     lazy var textFormat:TextFormat = {
         return StylePropertyParser.textFormat(self)/*creates the textFormat*/
     }()
-    lazy var textField:TextField = {
+    lazy var textField:NSTextField = {
         let textFormat:TextFormat = self.textFormat
         if textFormat.password {return SecureTextField(frame: NSRect(0,0,100,100))}//<- this might be the problem with hit testing etc, not setting the correct frame
         else {return TextField(frame: NSRect(0,0,100,100))}
@@ -65,7 +65,7 @@ extension TextSkin{
         hasTextChanged = true
         draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
     }
-    func applyProperties(_ textField:TextField){
+    func applyProperties(_ textField:NSTextField){
         let padding:Padding = StyleMetricParser.padding(self)
         let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         /*Swift.print("width: " + "\(width)")

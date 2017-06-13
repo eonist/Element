@@ -45,4 +45,10 @@ class ElementParser{
     static func stackString(_ element:IElement)->String{
         return SelectorParser.string(selectors(element))
     }
+    /**
+     * New
+     */
+    static func element<T:IElement>(_ parent:NSView, _ id:String, _ type:T.Type) -> T?{
+        return parent.subviews.lazy.flatMap{$0 as? T}.first(where: {$0.id! == id})
+    }
 }

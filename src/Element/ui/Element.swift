@@ -72,20 +72,4 @@ class Element:InteractiveView2,IElement {
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
-extension Element{
-    /**
-     * Convenience
-     */
-    convenience init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool, _ isFocused:Bool = false, _ parent:IElement? = nil,_ id:String? = nil){
-        self.init(width,height,parent,id)
-        self.isDisabled = isDisabled
-        self.isFocused = isFocused
-    }
-    /**
-     * Convenience
-     */
-    convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
-        self.init(width,height,parent,id)
-        setPosition(CGPoint(x,y))
-    }
-}
+

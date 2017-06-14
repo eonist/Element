@@ -26,8 +26,8 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
         return Utils.createTreeListItem(itemSize,contentContainer)
     }
     override func onEvent(_ event:Event) {
-        if(event.type == CheckEvent.check /*&& event.immediate === itemContainer*/){onItemCheck(event as! CheckEvent)}
-        else if(event.type == SelectEvent.select /*&& event.immediate === itemContainer*/){onItemSelect(event as! SelectEvent)}
+        if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}
+        else if(event.type == SelectEvent.select){onItemSelect(event as! SelectEvent)}
         super.onEvent(event)
     }
     override func getClassType() -> String {
@@ -39,8 +39,6 @@ extension TreeList3{
      * NOTE: This method gets all CheckEvent's from all decending ICheckable instances
      */
     func onItemCheck(_ event:CheckEvent) {
-        //Swift.print("TreeList3.onItemCheck")
-        //Swift.print("TreeList3.event.origin: " + "\(event.origin)")
         let idx2d:Int = FastList3Parser.idx(self, (event.origin as! NSView).superview!)!
         if(TreeList3Asserter.isOpen(self, idx2d)){
             Swift.print("close 🚫 idx2d: \(idx2d)")

@@ -12,7 +12,7 @@ class TextSkin:Skin,ITextSkin{
     }()
     lazy var textField:NSTextField = {
         let textFormat:TextFormat = self.textFormat
-        if !textFormat.password {return SecureTextField(frame: NSRect(0,0,100,100))}//<- this might be the problem with hit testing etc, not setting the correct frame
+        if textFormat.password {return SecureTextField(frame: NSRect(0,0,100,100))}//<- this might be the problem with hit testing etc, not setting the correct frame
         else {return TextField(frame: NSRect(0,0,100,100))}
     }()
     /*the bellow variable is a little more complex in the legacy code*/
@@ -22,7 +22,7 @@ class TextSkin:Skin,ITextSkin{
         super.init(style, state, element)
         //textField.sizeToFit()
         textField.stringValue = text
-        addSubview(textField)
+        
         applyProperties(textField)
         SkinModifier.float(self)
         _ = SkinModifier.align(self, textField)

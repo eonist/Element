@@ -7,7 +7,7 @@ class StyleWatcher {
      */
     static func watch(_ folderURL:String,_ fileURL:String, _ view:NSView) {
         let fileWatcher = FileWatcher([folderURL.tildePath])
-        fileWatcher.event = { event in
+        fileWatcher.callback = { event in
             if(event.fileChange && FilePathParser.fileExtension(event.path) == "css") {//assert for .css file changes, so that .ds etc doesnt trigger events etc
                 Swift.print(event.description)
                 Swift.print("update to the file happened: " + "\(event.path)")

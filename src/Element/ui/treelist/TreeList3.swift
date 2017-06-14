@@ -52,7 +52,7 @@ extension TreeList3{
         //onEvent(TreeListEvent(TreeListEvent.change,self))
     }
     func onItemSelect(_ event:SelectEvent){
-        Swift.print("onItemSelect")
+        Swift.print("TreeList3.onItemSelect")
     }
 }
 private class Utils{

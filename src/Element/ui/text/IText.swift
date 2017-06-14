@@ -3,7 +3,7 @@ import Cocoa
 
 protocol IText:IElement {
     func setText(_ text:String)
-    func getTextField()->TextField
+    func getTextField()->NSTextField
     var initText:String{get}
 }
 extension IText{

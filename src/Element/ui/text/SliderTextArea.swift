@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 /**
  * 13.05.21 15:00 - Added support for mousewheel, and replaced scrollbars with sliders
@@ -95,11 +95,11 @@ class SliderTextArea:TextArea{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
 private class Utils{
-	static func vSliderinterval(_ textField:TextField) -> Int {
+	static func vSliderinterval(_ textField:NSTextField) -> Int {
 		let verticalInterval:Int = /*textField.maxScrollV*/ -1
 		return verticalInterval
 	}
-	static func vSliderThumbHeight(_ textField:TextField, _ slider:Slider, _ linesPerScroll:UInt = 1) -> CGFloat {
+	static func vSliderThumbHeight(_ textField:NSTextField, _ slider:Slider, _ linesPerScroll:UInt = 1) -> CGFloat {
 		let numOfVisibleLines:Int = 0//(textField.numLines-textField.maxScrollV)
         _ = numOfVisibleLines
 		let verticalScalar:CGFloat = 0//textField.maxScrollV == 1 ? 1:numOfVisibleLines/textField.numLines
@@ -107,10 +107,10 @@ private class Utils{
 		let verticalThumbSize:CGFloat = SliderParser.thumbSize(verticalScalar, slider.height)
 		return min(slider.height,verticalThumbSize)/*the Math.min is a temp fix*/
 	}
-	static func hScrollBarInterpolation(_ textField:TextField, _ scrollDistance:CGFloat = 50) -> Int{
+	static func hScrollBarInterpolation(_ textField:NSTextField, _ scrollDistance:CGFloat = 50) -> Int{
 		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance
 	}
-	static func hSliderThumbWidth(_ textField:TextField, _ slider:Slider) -> CGFloat {
+	static func hSliderThumbWidth(_ textField:NSTextField, _ slider:Slider) -> CGFloat {
 		let horizontalScalar:CGFloat = 0//textField.maxScrollH == 0 ? 1:textField.width/textField.maxScroll
         _ = horizontalScalar
 //		var horizontalInterval:int = ScrollTextAreaUtil.hScrollBarInterpolation(textField);

@@ -11,9 +11,13 @@ class TextSkin:Skin,ITextSkin{
         return StylePropertyParser.textFormat(self)/*creates the textFormat*/
     }()
     lazy var textField:NSTextField = {
+        Swift.print("created textField")
         let textFormat:TextFormat = self.textFormat
-        if textFormat.password {return SecureTextField(frame: NSRect(0,0,100,100))}//<- this might be the problem with hit testing etc, not setting the correct frame
-        else {return TextField(frame: NSRect(0,0,100,100))}
+        let textField:NSTextField = {
+            if textFormat.password {return SecureTextField(frame: NSRect())}
+            else {return TextField(frame: NSRect())}
+        }()
+        return self.addSubView(textField)
     }()
     /*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield

@@ -1,17 +1,16 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: For the sake of optiomization, TextSkin should not extend Skin, but rather extend NSText. Less views means better speed
- * TODO: Probably disable ineteractivity when using TextSkin ?
- * TODO: Add support for disabling interactivty via css: mouseEnabled:true; or alike
- * TODO: Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research): This has the answer but its very complicated to setup: http://stackoverflow.com/questions/11182735/nstextfield-add-line-spacing
+ * TODO: ⚠️️ For the sake of optiomization, TextSkin should not extend Skin, but rather extend NSText. Less views means better speed
+ * TODO: ⚠️️ Probably disable ineteractivity when using TextSkin ?
+ * TODO: ⚠️️ Add support for disabling interactivty via css: mouseEnabled:true; or alike
+ * TODO: ⚠️️ Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research): This has the answer but its very complicated to setup: http://stackoverflow.com/questions/11182735/nstextfield-add-line-spacing
  */
 class TextSkin:Skin,ITextSkin{
     lazy var textFormat:TextFormat = {
         return StylePropertyParser.textFormat(self)/*creates the textFormat*/
     }()
     lazy var textField:NSTextField = {
-        Swift.print("created textField")
         let textFormat:TextFormat = self.textFormat
         let textField:NSTextField = {
             if textFormat.password {return SecureTextField(frame: NSRect())}

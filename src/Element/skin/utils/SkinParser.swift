@@ -24,11 +24,11 @@ class SkinParser {
      * Returns the position when margin and padding is taken into account
      */
     static func relativePosition(_ skin:ISkin)->CGPoint {
-        //let margin:Margin = self.margin(skin)
-        let border:Border = self.border(skin)//Keep in mind this may be inside, centered or outer
+        let margin:Margin = self.margin(skin)
+        let border:Border = self.border(skin)
         let padding:Padding = self.padding(skin)
         let offset:CGPoint = self.offset(skin)
-        return CGPoint(/*(skin.element as NSView).x*/ /*margin.left +*/ border.left + padding.left + offset.x, /*(skin.element as NSView).y*/ /*margin.top +*/ border.top + padding.top + offset.y)
+        return CGPoint(/*(skin.element as NSView).x*/ margin.left + border.left + padding.left + offset.x, /*(skin.element as NSView).y*/ margin.top + border.top + padding.top + offset.y)
     }
     /**
      * Returns margin

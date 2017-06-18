@@ -3,7 +3,6 @@ import Cocoa
 
 class Text:Element,IText {
     var initText:String;//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
-    //var text:String{get{return textField.string!} set{fatalError("NOT SUPPORTED YET")}}
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
         //Swift.print("Text.init()")
         initText = text

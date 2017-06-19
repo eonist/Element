@@ -98,6 +98,9 @@ private class Utils{
      * PARAM: top is the y value of the skins parent to align against
      */
     static func clearRight(_ skin:ISkin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
+        
+        //see clearLeft for how to fix this
+        
         skin.element!.y = rightSiblingSkin != nil ? rightSiblingSkin!.element!.y + SkinParser.totalHeight(rightSiblingSkin!) : top
     }
     /**

@@ -99,7 +99,7 @@ private class Utils{
      */
     static func clearRight(_ skin:ISkin,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
         
-        Swift.print("see clearLeft for how to fix this")
+        Swift.print("⚠️️⚠️️⚠️️ see clearLeft for how to fix this")
         
         skin.element!.y = rightSiblingSkin != nil ? rightSiblingSkin!.element!.y + SkinParser.totalHeight(rightSiblingSkin!) : top
     }
@@ -122,7 +122,7 @@ private class Utils{
      */
     static func clearBoth(_ skin:ISkin,_ prevSiblingSkin:ISkin?,_ top:CGFloat){
         
-        Swift.print("see clearLeft for how to fix this")
+        Swift.print("⚠️️⚠️️⚠️️ see clearLeft for how to fix this")
         
         skin.element!.y = prevSiblingSkin != nil ? prevSiblingSkin!.element!.y + SkinParser.totalHeight(prevSiblingSkin!) : top
     }
@@ -147,7 +147,7 @@ private class Utils{
      */
     static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSibling:ISkin?, _ right:CGFloat){
         
-        Swift.print("see floatLeft for how to fix this")
+        Swift.print("⚠️️⚠️️⚠️️ see floatLeft for how to fix this")
         
         skin.element!.x = {
             if let rightSibling = rightSibling , (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue) {/*a previous element-sibling floats right*/

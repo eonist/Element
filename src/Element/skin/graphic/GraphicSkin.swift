@@ -10,7 +10,7 @@ import Cocoa
 class GraphicSkin:Skin{
     override init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
         super.init(style, state, element)
-        SkinModifier.float(self)/*Floats the entire skin*/
+        SkinModifier.float(self)/*Floats the entire element*/
         let depthCount:Int = StyleParser.depthCount(style!)
         decoratables = (0..<depthCount).indices.map{ depth -> IGraphicDecoratable in
             let decoratable = GraphicSkinParser.configure(self,depth)/*this call is here because CGContext is only accessible after drawRect is called*/

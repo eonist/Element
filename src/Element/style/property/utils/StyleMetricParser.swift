@@ -183,11 +183,11 @@ private class Utils{
      */
     private static func totalWidth(_ element:IElement) -> CGFloat {
         if let skin = element.skin {
-            let margin:Margin = SkinParser.margin(skin)
+            //let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let width:CGFloat = element.getWidth()
-            return margin.left + border.left + width - padding.hor - border.right - margin.right
+            return /*margin.left +*/ border.left + width - padding.hor - border.right /*- margin.right*/
         };return element.getWidth()
     }
     /**
@@ -195,11 +195,11 @@ private class Utils{
      */
     private static func totalHeight(_ element:IElement) -> CGFloat {
         if let skin = element.skin {
-            let margin:Margin = SkinParser.margin(skin)
+            //let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)
             let padding:Padding = SkinParser.padding(skin)
             let height:CGFloat = element.getHeight()
-            return margin.top + border.top + height - padding.ver - border.bottom - margin.bottom
+            return /*margin.top +*/ border.top + height - padding.ver - border.bottom /*- margin.bottom*/
         };return element.getHeight()
     }
     /**

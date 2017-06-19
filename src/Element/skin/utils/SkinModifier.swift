@@ -125,10 +125,10 @@ private class Utils{
      *  PARAM: leftSiblingSkin the skin that is left of skin.element
      *  PARAM: left the x value to align against
      */
-    static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  _ left:CGFloat){
+    static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSibling:ISkin?,  _ left:CGFloat){
         skin.element?.x = {
-            if let leftSiblingSkin = leftSiblingSkin, (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue) {/*Sets the position of the skin.element*/
-                return leftSiblingSkin.element!.x + SkinParser.margin(leftSiblingSkin).left + SkinParser.width(leftSiblingSkin)
+            if let leftSibling = leftSibling, (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue) {/*Sets the position of the skin.element*/
+                return leftSibling.element!.x + SkinParser.margin(leftSibling).hor + SkinParser.width(leftSibling)
             };return left/*a previous element-sibling floats left*/
         }()
     }
@@ -138,10 +138,10 @@ private class Utils{
      *  PARAM: rightSiblingSkin the skin that is right of skin.element
      *  PARAM: right the x value to align against
      */
-    static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSiblingSkin:ISkin?, _ right:CGFloat){
+    static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSibling:ISkin?, _ right:CGFloat){
         skin.element!.x = {
-            if let rightSiblingSkin = rightSiblingSkin , (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue) {/*a previous element-sibling floats right*/
-                return rightSiblingSkin.element!.x
+            if let rightSibling = rightSibling , (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue) {/*a previous element-sibling floats right*/
+                return rightSibling.element!.x
             };return right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
         }()
     }

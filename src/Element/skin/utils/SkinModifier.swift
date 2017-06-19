@@ -126,7 +126,7 @@ private class Utils{
      *  PARAM: left the x value to align against
      */
     static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSiblingSkin:ISkin?,  _ left:CGFloat){
-        skin.element!.x = {
+        skin.element?.x = {
             if let leftSiblingSkin = leftSiblingSkin, (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue) {/*Sets the position of the skin.element*/
                 return leftSiblingSkin.element!.x + SkinParser.totalWidth(leftSiblingSkin)
             };return left/*a previous element-sibling floats left*/

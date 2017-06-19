@@ -39,14 +39,11 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * TODO: ⚠️️ possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
      */
     static func float(_ skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
-        guard let elementParent = skin.element!.getParent() as? IElement else {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
-        
-        guard let view:NSView = skin.element as? NSView else {fatalError("skin element is not NSView")}
         guard let element:Element = skin.element as? Element else{fatalError("skin has no element")}
+        guard let elementParent = element.getParent() as? IElement else {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
         guard let parent:NSView = element.getParent() as? NSView else{ fatalError("skin has no parent")}
-        guard let elementParent:IElement = element.getParent() as? IElement else{fatalError("skin has no elementParent")}
         let siblings:[IElement] = ElementParser.children(parent,IElement.self)
-        let index:Int = parent.contains(view) ? Utils.elementIndex(parent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
+        let index:Int = parent.contains(element) ? Utils.elementIndex(parent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         guard let parentSkin:ISkin = elementParent.skin else{fatalError("parent has no skin")}
         let parentTopLeft:CGPoint = SkinParser.relativePosition(parentSkin)/*the top-left-corner of the parent*/
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(parentSkin)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);

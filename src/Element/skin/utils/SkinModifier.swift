@@ -73,9 +73,12 @@ private class Utils{
     /**
      * Floats PARAM: skin to the left or right or none
      */
-    static func float(_ skin:ISkin, _ clearType:String?, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ left:CGFloat,_ right:CGFloat) {
-        if(floatType == CSSConstants.left.rawValue) { floatLeft(skin, clearType, leftSiblingSkin, left)}/*Float left*/
-        else if(floatType == CSSConstants.right.rawValue) { floatRight(skin, clearType, rightSiblingSkin, right)}/*Float right*/
+    static func float(_ skin:ISkin, _ clearType:String?, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ leftX:CGFloat,_ rightX:CGFloat) {
+        if(floatType == CSSConstants.left.rawValue) {
+            floatLeft(skin, clearType, leftSiblingSkin, leftX)/*Float left*/
+        }else if(floatType == CSSConstants.right.rawValue) {
+            floatRight(skin, clearType, rightSiblingSkin, rightX)/*Float right*/
+        }
     }
     /**
      * Positions PARAM: skin by way of clearing it left

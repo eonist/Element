@@ -84,8 +84,8 @@ private class Utils{
      * PARAM: leftSiblingSkin the skin that is left of skin.element
      * PARAM: top is the y value of the skins parent to align against
      */
-    static func clearLeft(_ skin:ISkin,_ leftSiblingSkin:ISkin?,_ top:CGFloat) {
-        let y:CGFloat = leftSiblingSkin != nil ? leftSiblingSkin!.element!.y + SkinParser.totalHeight(leftSiblingSkin!) : top
+    static func clearLeft(_ skin:ISkin,_ leftSibling:ISkin?,_ top:CGFloat) {
+        let y:CGFloat = leftSibling != nil ? leftSibling!.element!.y + SkinParser.margin(leftSibling).ver + SkinParser.height(leftSibling!) : top
         skin.element!.y = y
     }
     /**

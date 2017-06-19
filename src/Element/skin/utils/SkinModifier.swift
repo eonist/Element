@@ -39,7 +39,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * TODO: ⚠️️ possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
      */
     static func float(_ skin:ISkin){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
-        if(skin.element!.getParent() is IElement == false) {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
+        guard let elementParent = skin.element!.getParent() as? IElement else {return}/*if the skin.element doesnt have a parent that is IElement skip the code bellow*/// :TODO: this should be done by the caller
+        
         guard let view:NSView = skin.element as? NSView else {fatalError("skin element is not NSView")}
         guard let element:Element = skin.element as? Element else{fatalError("skin has no element")}
         guard let parent:NSView = element.getParent() as? NSView else{ fatalError("skin has no parent")}

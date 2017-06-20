@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * TODO: ⚠️️ Add subScripts to get prop
+ */
 extension IStyle{
     /**
      * Returns a style property by the name given

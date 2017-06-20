@@ -32,7 +32,7 @@ class ElementModifier {
     }
     /**
      * IMPORTANT: ⚠️️ Refreshing the skin also calls StyleResolver.resolve which is an expensive call. because it have to parse through StyleManger for the correct Style
-     * NOTE: Sometimes its better to use element.setSkin(element.getSkin()) 
+     * NOTE: Sometimes it's better to use element.setSkin(element.getSkin()) 
      */
     static func refreshSkin(_ element:IElement){
         refresh(element, Utils.setSkinState)
@@ -55,7 +55,8 @@ class ElementModifier {
      * NOTE: keep in mind that this can be Window
      * TODO: ⚠️️ Skin should have a dedicated redraw method or a simple workaround
      */
-    private static func refresh(_ element:IElement, _ method: (IElement)->Void = Utils.setStyle) {//<--setStyle is the default param method
+    typealias RefreshMethod = (IElement)->Void
+    private static func refresh(_ element:IElement, _ method:RefreshMethod = Utils.setStyle) {//<--setStyle is the default param method
         //Swift.print("refresh")
         if (element.skin?.style?.getStyleProperty(CSSConstants.display.rawValue) as? String) == CSSConstants.none.rawValue {
             //Swift.print("display: " + "\(element.skin!.style!.getStyleProperty(CSSConstants.display.rawValue))")

@@ -29,6 +29,7 @@ class GraphicSkin:Skin{
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}
+            (element as? NSView)?.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
         }
         super.draw()/*Sets flags etc*/
     }
@@ -60,7 +61,6 @@ extension GraphicSkin{
         decoratable.get(DropShadowDecorator.self)?.dropShadow = StylePropertyParser.dropShadow(self,depth)/*dropshadow*/
         Modifier.rotate(decoratable, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
-        self.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
     }
 }
 /**

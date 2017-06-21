@@ -183,7 +183,7 @@ private class Utils{
     }
     /**
      * NOTE: Loops backwards
-     * PARAM: Tange is the range within the possible rightfloating skin can be in
+     * PARAM: Range is the range within the possible rightfloating skin can be in
      * CAUTION: ⚠️️ The reason we dont use range or for in range {} is because the methods that call this doesnt assert for empty arrays. Fix this later. for now the code is clumpsy but works
      */
     static func lastIndex(_ elements:[IElement],_ rangeStart:Int,_ rangeEnd:Int,_ floatType:String,_ exception:((ISkin)->Bool)? = nil)->Int {

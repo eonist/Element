@@ -20,6 +20,7 @@ class GraphicSkin:Skin{
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
             return decoratable
         }
+        self.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
     }
     /**
      * Draws Skin (aka each "decoratable" in the skin)
@@ -59,6 +60,7 @@ extension GraphicSkin{
         decoratable.get(DropShadowDecorator.self)?.dropShadow = StylePropertyParser.dropShadow(self,depth)/*dropshadow*/
         Modifier.rotate(decoratable, self, depth)
         _ = SkinModifier.align(self,decoratables[depth] as! IPositional,depth)
+        self.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
     }
 }
 /**

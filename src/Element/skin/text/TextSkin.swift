@@ -29,7 +29,7 @@ class TextSkin:Skin,ITextSkin{
         applyProperties(textField)
         SkinModifier.float(self)
         _ = SkinModifier.align(self, textField)
-        textField.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
+        textField.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue//TODO: might need to add this to when you setSkinState as well.
     }
     /**
      * TODO: ⚠️️ This method needs some refactoring

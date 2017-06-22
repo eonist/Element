@@ -21,7 +21,8 @@ private extension ElasticSlideScrollList3{
     }
 }
 
-/*override open func scrollWheel(with event: NSEvent) {
+/*
+override open func scrollWheel(with event: NSEvent) {
  Swift.print("SlideView3.scrollWheel() \(event.type)")
  super.scrollWheel(with: event)
  if(event.phase == NSEventPhase.mayBegin || event.phase == NSEventPhase.began){
@@ -30,4 +31,5 @@ private extension ElasticSlideScrollList3{
  /*else if(event.phase == NSEventPhase.ended || event.phase == NSEventPhase.cancelled){
  //hideSlider()
  }*/
- }*/
+ }
+ */

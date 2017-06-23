@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * CustomView is a WindowView with close,min,max buttons
+ */
 class CustomView:WindowView{
     //lazy var header:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()
     lazy var iconSection:Section = {self.addSubView(Section(NaN,NaN,self,"titleBar"))}()

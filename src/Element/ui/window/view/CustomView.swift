@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * CustomView is a WindowView with close,min,max buttons
+ * TODO: Turn This class into a json component?
  */
 class CustomView:WindowView{
     //lazy var header:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()

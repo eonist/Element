@@ -121,7 +121,7 @@ extension StyleManager{
      * New
      */
     func overrideStylePropertyValue(_ styleName:String, _ stylePropertyName:String, _ value:Any, _ depth:Int = 0){
-        if let i = StyleManager.index(name), let style:IStyle = StyleManager.styles[safe:i], let e:Int = StyleParser.idx(style, stylePropertyName) {
+        if let i = StyleManager.index(styleName), let style:IStyle = StyleManager.styles[safe:i], let e:Int = StyleParser.idx(style, stylePropertyName) {
             StyleManager.styles[i].styleProperties[e].value = value
         }
     }

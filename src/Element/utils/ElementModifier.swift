@@ -38,7 +38,7 @@ class ElementModifier {
         refresh(element, Utils.setSkinState)
     }
     /**
-     * IMPORTANT: ⚠️️ Refreshing style is cheaper than calling refresh skin
+     * IMPORTANT: ⚠️️ Refreshing style is cheaper than calling refresh skin (Because it does not call StyleResolver)
      */
     static func refreshStyle(_ element:IElement){
         refresh(element, Utils.setStyle)

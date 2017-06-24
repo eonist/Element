@@ -120,7 +120,7 @@ extension StyleManager{
     /**
      * New
      */
-    static func overrideStyleProperty(){
+    func overrideStyleProperty(_ name:String, ){
         
     }
 }

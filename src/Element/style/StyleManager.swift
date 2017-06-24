@@ -4,8 +4,8 @@ import Foundation
  * NOTE: The reason we use array instead of object: a problem may be that the order will be different every time you read this object, random
  * EXAMPLE: print("StyleManager.getInstance().getStyle(Button): " + StyleManager.getInstance().getStyle("someText").getPropertyNames());//prints style names
  * TODO: ⚠️️ Could potentially extend StyleCollection and just implimnet the extra functions in this class?!?
- * TODO: This class can be a struct
- * TODO: the tail trick could possibly be even faster if you sorted the hashed styles and used a halfed algo when querrying (but its a dictionary so maybe not, maybe if you stored it in an array etc)
+ * TODO: ⚠️️ This class can be a struct
+ * TODO: ⚠️️ The tail trick could possibly be even faster if you sorted the hashed styles and used a halfed algo when querrying (but its a dictionary so maybe not, maybe if you stored it in an array etc)
  */
 class StyleManager{
     static var cssFiles:[String:String] = [:]
@@ -13,7 +13,7 @@ class StyleManager{
     static var styles:[IStyle] = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
 }
-//convenince methods
+/*Modifier*/
 extension StyleManager{
     /**
      * Adds a style to the styleManager class
@@ -99,6 +99,7 @@ extension StyleManager{
         }
     }
 }
+/*Parser*/
 extension StyleManager{
     /**
      * Locates and returns a Style by the PARAM: name.

@@ -108,13 +108,13 @@ extension StyleManager{
     static func getStyle(_ name:String)->IStyle?{
         return self.styles.first(where:{$0.name == name})
     }
-    static func getStyleAt(_ index:Int)->IStyle{
-        return styles[index]
+    static func getStyleAt(_ index:Int)->IStyle?{
+        return styles[safe:index]//<-⚠️️ just added safe
     }
     /**
-     * 
+     * New
      */
-    static func index(_ name:String) ->Int?{
+    static func index(_ name:String) -> Int?{
         return styles.index(where: {$0.name == name})
     }
 }

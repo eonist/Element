@@ -13,6 +13,25 @@ class StyleManager{
     static var styles:[IStyle] = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
 }
+/*Parser*/
+extension StyleManager{
+    /**
+     * Locates and returns a Style by the PARAM: name.
+     * RETURN: a Style
+     */
+    static func getStyle(_ name:String)->IStyle?{
+        return self.styles.first(where:{$0.name == name})
+    }
+    static func getStyleAt(_ index:Int)->IStyle?{
+        return styles[safe:index]//<-⚠️️ just added safe
+    }
+    /**
+     * New
+     */
+    static func index(_ name:String) -> Int?{
+        return styles.index(where: {$0.name == name})
+    }
+}
 /*Modifier*/
 extension StyleManager{
     /**
@@ -97,24 +116,5 @@ extension StyleManager{
                 StyleCache.writeStylesToDisk()
             }
         }
-    }
-}
-/*Parser*/
-extension StyleManager{
-    /**
-     * Locates and returns a Style by the PARAM: name.
-     * RETURN: a Style
-     */
-    static func getStyle(_ name:String)->IStyle?{
-        return self.styles.first(where:{$0.name == name})
-    }
-    static func getStyleAt(_ index:Int)->IStyle?{
-        return styles[safe:index]//<-⚠️️ just added safe
-    }
-    /**
-     * New
-     */
-    static func index(_ name:String) -> Int?{
-        return styles.index(where: {$0.name == name})
     }
 }

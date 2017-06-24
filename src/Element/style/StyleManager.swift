@@ -117,4 +117,10 @@ extension StyleManager{
             }
         }
     }
+    /**
+     * New
+     */
+    static func overrideStyleProperty(){
+        
+    }
 }

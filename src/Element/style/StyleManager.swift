@@ -26,10 +26,10 @@ extension StyleManager{
         return styles[safe:index]//<-⚠️️ just added safe
     }
     /**
-     *
+     * New
      */
-    static func getStyleProperty(_ styleName:String, _ stylePropertyName:String, _ newValue:Any, _ depth:Int = 0){
-        
+    static func getStylePropVal(_ styleName:String, _ stylePropertyName:String, _ depth:Int = 0) -> Any?{
+        return StyleManager.getStyle(styleName)?.getStyleProperty(stylePropertyName)?.value
     }
     /**
      * New

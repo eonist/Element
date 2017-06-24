@@ -22,8 +22,14 @@ extension StyleManager{
     static func getStyle(_ name:String)->IStyle?{
         return self.styles.first(where:{$0.name == name})
     }
-    static func getStyleAt(_ index:Int)->IStyle?{
+    static func getStyle(_ index:Int)->IStyle?{
         return styles[safe:index]//<-⚠️️ just added safe
+    }
+    /**
+     *
+     */
+    static func getStyleProperty(_ styleName:String, _ stylePropertyName:String, _ newValue:Any, _ depth:Int = 0){
+        
     }
     /**
      * New

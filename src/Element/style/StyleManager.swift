@@ -112,9 +112,9 @@ extension StyleManager{
         return styles[index]
     }
     /**
-     *
+     * 
      */
-    static func index(_ name:String) ->IStyle?{
-        return styles.index(where: {$0.name == name}){
+    static func index(_ name:String) ->Int?{
+        return styles.index(where: {$0.name == name})
     }
 }

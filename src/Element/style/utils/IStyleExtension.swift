@@ -7,14 +7,14 @@ extension IStyle{
      * Returns a style property by the name given
      * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?
      */
-    func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
-        return styleProperties.first(where: {$0.name == name && $0.depth == depth})
+    func getStyleProperty(_ stylePropName:String,_ depth:Int = 0)->IStyleProperty?{
+        return styleProperties.first(where: {$0.name == stylePropName && $0.depth == depth})
     }
     /**
      * NOTE: this function is not redundant, it's usefull for qucik access in some methods
      */
-    func getValue(_ name:String,_ depth:Int = 0)->Any?{
-        return getStyleProperty(name,depth)?.value
+    func getValue(_ stylePropName:String,_ depth:Int = 0) -> Any?{
+        return getStyleProperty(stylePropName,depth)?.value
     }
     /**
      * Add styleProperty

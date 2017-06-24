@@ -38,6 +38,7 @@ class StyleParser {// ⚠️️ TODO: rename to StyleResolver, it doesnt feel li
         return style.styleProperties.map{$0.name}
     }
     /**
+     * Returns the index of the styleProperty with PARAM: name, and PARAM: depth
      * PARAM: name the propertyname
      */
     static func index(_ style:IStyle, _ name:String, _ depth:Int = 0) -> Int {

@@ -92,6 +92,9 @@ extension StyleManager{
             /*1. Assert if the styles.xml exists and if it has content*/
             let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
             Swift.print("xmlExists: " + "\(stylesXMLExists)")
+            
+            //TODO: ⚠️️ Create a new styles.xml if non exists
+            
             let xml:XML = FileParser.xml("~/Desktop/styles.xml".tildePath)//this should not be hardwired like this. use resource files or alike
             let cssFileDateList = StyleCache.cssFileDateList(xml)
             /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/

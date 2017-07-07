@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * TODO: ⚠️️ It could be possible to merge the two skin lines in every event handler some how
- * TODO: ⚠️️ Impliment IFocusable and IDisablble in this class, the argument that the button must be super simple doesn't hold, if you want a simpler button you can just make an alternate Button class
+ * TODO: ⚠️️ Impliment Focusable and Disablble in this class, the argument that the button must be super simple doesn't hold, if you want a simpler button you can just make an alternate Button class
  * TODO: ⚠️️ If the mouse gets stuck and wont fire the mouseUp after a mouseDown call, then the app should not fail when clicking down again somewhere else, this means we need to centralize the eventListner for mouseUp/mouseDown using global instead of locla could work
  */
 class Button:Element {

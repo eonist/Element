@@ -79,5 +79,6 @@ class GraphUtils{
          values.append(val)
          }
          return values*/
+        return (0..<GraphX.config.tCount).map{_ in IntParser.random(0, 40).cgFloat}
     }
 }

@@ -34,7 +34,7 @@ class GraphUtils{
             p.y = p.y.isNaN ? size.height - (topMargin) : p.y//⚠️️ quick fix, for when vValue is 0
             points.append(p)
         }
-        //Swift.print("points: " + "\(points)")
+        Swift.print("GraphUtils.points: " + "\(points)")
         return points
     }
     /**

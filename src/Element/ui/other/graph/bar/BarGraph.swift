@@ -15,7 +15,7 @@ class BarGraph:Graph {
     /*Debugging*/
     var gestureHUD:GestureHUD?
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement?, _ id: String? = nil) {
-        tempVValues = Utils.vValues()//random data is set on init
+        tempVValues = GraphUtils.vValues()//random data is set on init
         super.init(width, height, parent, id)
         self.acceptsTouchEvents = true/*Enables gestures*/
         self.wantsRestingTouches = true/*Makes sure all touches are registered. Doesn't register when used in playground*/
@@ -61,7 +61,7 @@ class BarGraph:Graph {
      *
      */
     func updateGraph(){
-        tempVValues = Utils.vValues()//random data is set
+        tempVValues = GraphUtils.vValues()//random data is set
         Swift.print("tempVValues: " + "\(tempVValues)")
         //recalc the maxValue
         maxValue = GraphUtils.maxValue(vValues)//NumberParser.max(vValues)//Finds the largest number in among vValues

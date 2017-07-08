@@ -72,13 +72,15 @@ class GraphUtils{
     /**
      * Generates random y-axis values
      */
-    static func randomVerticalValues()->[CGFloat]{
+    static func randomVerticalValues(_ count:Int = 7) -> [CGFloat]{
         /*var values:[CGFloat] = []/*commits in a single day*/
          for _ in (0..<7).reversed() {
          let val:CGFloat = IntParser.random(4, 24).cgFloat/*generate vValues via random, as we use faux data for now*/
          values.append(val)
          }
          return values*/
-        return (0..<GraphX.config.tCount).map{_ in IntParser.random(0, 40).cgFloat}
+        return (0..<count.map{_ in
+            IntParser.random(0, 40).cgFloat
+        }
     }
 }

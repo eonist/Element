@@ -69,4 +69,15 @@ class GraphUtils{
         }
         return maxValue
     }
+    /**
+     * Generates random y-axis values
+     */
+    static func randomVerticalValues()->[CGFloat]{
+        /*var values:[CGFloat] = []/*commits in a single day*/
+         for _ in (0..<7).reversed() {
+         let val:CGFloat = IntParser.random(4, 24).cgFloat/*generate vValues via random, as we use faux data for now*/
+         values.append(val)
+         }
+         return values*/
+    }
 }

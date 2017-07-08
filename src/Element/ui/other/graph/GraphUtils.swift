@@ -79,8 +79,6 @@ class GraphUtils{
          values.append(val)
          }
          return values*/
-        return (0..<count.map{_ in
-            IntParser.random(0, 40).cgFloat
-        }
+        return (0..<count).map{_ in IntParser.random(0, 40).cgFloat}
     }
 }

@@ -8,7 +8,7 @@ class GraphUtils{
      * PARAM: vValues: y-axis values
      * PARAM: maxValue: (the max value among the y-axis values)
      * PARAM: spacing: (itemSpacing for both axis)
-     * PARAM: position: Supposedly its the topLeft anchor of the graph (⚠️️ out of service)
+     * PARAM: position: Supposedly it's the topLeft anchor of the graph (⚠️️ out of service)
      * PARAM: size: represents the width and height of the graph
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, _ leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{

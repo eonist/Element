@@ -18,9 +18,9 @@ class GraphUtils{
         let x:CGFloat = /*position.x*/ leftMargin//spacing.width
         let y:CGFloat = /*position.y +*/ size.height - (topMargin)//the y point to start from, basically bottom
         let h:CGFloat = size.height-(topMargin*2)//the height to work within
-        //Swift.print("h: " + "\(h)")
-        //Swift.print("maxValue: " + "\(maxValue)")
-        //Swift.print("vValues: " + "\(vValues)")
+        Swift.print("h: " + "\(h)")
+        Swift.print("maxValue: " + "\(maxValue)")
+        Swift.print("vValues: " + "\(vValues)")
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             let value:CGFloat = vValues[i]

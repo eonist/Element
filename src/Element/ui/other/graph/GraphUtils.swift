@@ -12,8 +12,8 @@ class GraphUtils{
      * PARAM: size: represents the width and height of the graph
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, _ leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{
-        //Swift.print("size.height: " + "\(size.height)")
-        //Swift.print("spacing.height: " + "\(spacing.height)")
+        Swift.print("size.height: " + "\(size.height)")
+        Swift.print("spacing.height: " + "\(spacing.height)")
         var points:[CGPoint] = []
         let x:CGFloat = /*position.x*/ leftMargin//spacing.width
         let y:CGFloat = /*position.y +*/ size.height - (topMargin)//the y point to start from, basically bottom

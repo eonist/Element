@@ -72,7 +72,7 @@ class GraphUtils{
         return maxValue
     }
     /**
-     * Generates random y-axis values
+     * Generates random y-axis values (used for debug purpouses)
      */
     static func randomVerticalValues(_ count:Int = 7) -> [CGFloat]{
         /*var values:[CGFloat] = []/*commits in a single day*/

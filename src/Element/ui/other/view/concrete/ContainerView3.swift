@@ -4,7 +4,7 @@ import Cocoa
 class ContainerView3:Element,Containable3 {
     var maskSize:CGSize {return CGSize(super.width,super.height)}/*Represents the visible part of the content *///TODO: could be ranmed to maskRect, say if you need x and y aswell
     var contentSize:CGSize {return CGSize(super.width,super.height)}
-    lazy var contentContainer:Element = {self.addSubView(Container(self.width,self.height,self,"lable"))}() //was content, but we want to use old css
+    lazy var contentContainer:Element = {self.addSubView(Container(100,100,self,"lable"))}() //was content, but we want to use old css
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
         super.init(width,height,parent,id)
     }

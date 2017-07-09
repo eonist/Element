@@ -12,31 +12,31 @@ class GraphUtils{
      * PARAM: size: represents the width and height of the graph
      */
     static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, _ leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{
-        Swift.print("size.height: " + "\(size.height)")
-        Swift.print("spacing.height: " + "\(spacing.height)")
+        //Swift.print("size.height: " + "\(size.height)")
+        //Swift.print("spacing.height: " + "\(spacing.height)")
         var points:[CGPoint] = []
         let x:CGFloat = /*position.x*/ leftMargin//spacing.width
         let y:CGFloat = /*position.y +*/ size.height - (topMargin)//the y point to start from, basically bottom
-        Swift.print("y: " + "\(y)")
+        //Swift.print("y: " + "\(y)")
         let h:CGFloat = size.height-(topMargin*2)//the height to work within
-        Swift.print("h: " + "\(h)")
-        Swift.print("h: " + "\(h)")
-        Swift.print("maxValue: " + "\(maxValue)")
-        Swift.print("vValues: " + "\(vValues)")
+        //Swift.print("h: " + "\(h)")
+        //Swift.print("h: " + "\(h)")
+        //Swift.print("maxValue: " + "\(maxValue)")
+        //Swift.print("vValues: " + "\(vValues)")
         for i in 0..<vValues.count{//calc the graphPoints:
             var p = CGPoint()
             let value:CGFloat = vValues[i]
             let ratio:CGFloat = value/maxValue/*a value between 0-1*/
             //ratio = ratio.isNaN ? 0 : ratio//cases can be
-            Swift.print("ratio: " + "\(ratio)")
+            //Swift.print("ratio: " + "\(ratio)")
             let dist:CGFloat = h*ratio
-            Swift.print("dist: " + "\(dist)")
+            //Swift.print("dist: " + "\(dist)")
             p.x = x + (i * spacing.width)
             p.y = y - dist
             p.y = p.y.isNaN ? size.height - topMargin : p.y//⚠️️ quick fix, for when vValue is 0
             points.append(p)
         }
-        Swift.print("GraphUtils.points: " + "\(points)")
+        //Swift.print("GraphUtils.points: " + "\(points)")
         return points
     }
     /**

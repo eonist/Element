@@ -20,6 +20,7 @@ class GraphUtils{
         Swift.print("y: " + "\(y)")
         let h:CGFloat = size.height-(topMargin*2)//the height to work within
         Swift.print("h: " + "\(h)")
+        Swift.print("h: " + "\(h)")
         Swift.print("maxValue: " + "\(maxValue)")
         Swift.print("vValues: " + "\(vValues)")
         for i in 0..<vValues.count{//calc the graphPoints:

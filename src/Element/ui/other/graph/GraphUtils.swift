@@ -17,6 +17,7 @@ class GraphUtils{
         var points:[CGPoint] = []
         let x:CGFloat = /*position.x*/ leftMargin//spacing.width
         let y:CGFloat = /*position.y +*/ size.height - (topMargin)//the y point to start from, basically bottom
+        Swift.print("y: " + "\(y)")
         let h:CGFloat = size.height-(topMargin*2)//the height to work within
         Swift.print("h: " + "\(h)")
         Swift.print("maxValue: " + "\(maxValue)")
@@ -26,12 +27,12 @@ class GraphUtils{
             let value:CGFloat = vValues[i]
             let ratio:CGFloat = value/maxValue/*a value between 0-1*/
             //ratio = ratio.isNaN ? 0 : ratio//cases can be
-            //Swift.print("ratio: " + "\(ratio)")
+            Swift.print("ratio: " + "\(ratio)")
             let dist:CGFloat = h*ratio
-            //Swift.print("dist: " + "\(dist)")
+            Swift.print("dist: " + "\(dist)")
             p.x = x + (i * spacing.width)
             p.y = y - dist
-            p.y = p.y.isNaN ? size.height - (topMargin) : p.y//⚠️️ quick fix, for when vValue is 0
+            p.y = p.y.isNaN ? size.height - topMargin : p.y//⚠️️ quick fix, for when vValue is 0
             points.append(p)
         }
         Swift.print("GraphUtils.points: " + "\(points)")

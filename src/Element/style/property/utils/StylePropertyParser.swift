@@ -65,8 +65,8 @@ class StylePropertyParser{
         strings.forEach { textFormatKey in//TODO: Use flatMap here
             var value:Any? = StylePropertyParser.value(skin, textFormatKey)
             if(value != nil) {
-                if(StringAsserter.metric("\(value)")){
-                    let stringValue:String = "\(value)"
+                if(StringAsserter.metric("\(String(describing: value))")){
+                    let stringValue:String = "\(String(describing: value))"
                     let matches = stringValue.matches(textMetricPattern)
                     matches.forEach { match in
                         let val:Any = match.value(stringValue, 1)/*Capturing group 1*/
@@ -163,7 +163,7 @@ extension StylePropertyParser{
                         fatalError("type not supported, must be nsColor or string that is equal to CSSConstants.none")
                     }
                 }else{
-                    fatalError("colorValue not supported: " + "\(colorVal)")
+                    fatalError("colorValue not supported: " + "\(String(describing: colorVal))")
                 }
             }else{
                 return nil

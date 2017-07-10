@@ -26,7 +26,7 @@ class TreeDPModifier {
      * TODO: ⚠️️ A more efficient way of doing this would be to insert pathIndecies only for the affected items
      */
     static func insert(_ dp:TreeDP, _ idx3d:[Int], _ tree:Tree){
-        Swift.print("insert \(tree.name) at \(idx3d)")
+        Swift.print("insert \(tree.name!) at \(idx3d.string)")
         TreeModifier.insert(&dp.tree, idx3d, tree)
         dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
         if let idx2d:Int = dp[idx3d]{//now the idx2d exists ✨

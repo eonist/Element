@@ -36,7 +36,7 @@ class ComboBoxView:PopupView{
         Swift.print("height: " + "\(height)")
         super.resolveSkin()
         list = addSubView(List3(width, height, CGSize(itemHeight,itemHeight), dataProvider,.ver, self))
-        List3Modifier.selectAt(list as! Listable3, initSelectedIndex)
+        List3Modifier.selectAt(list!, initSelectedIndex)
     }
     /**
      * override func onEvent(event: Event) {}

@@ -93,10 +93,10 @@ class TreeModifier {
         if idx3d.isEmpty {fatalError("Index not supported: \(idx3d)")}
         let parentTreeIdx3d:[Int] = TreeUtils.parentIndex(idx3d)
         if let parent:Tree = tree[parentTreeIdx3d], let last:Int = idx3d.last,  parent.children[safe:last] != nil {//use <- contains here instead
-            Swift.print("parent.children.count: \(tree[parentTreeIdx3d]?.count) last: \(idx3d.last)")
+            Swift.print("parent.children.count: \(tree[parentTreeIdx3d]!.count.string) last: \(idx3d.last!.string)")
             tree[parentTreeIdx3d]!.children.remove(at: idx3d.last!)
         }else{
-            fatalError("parent.children.count: \(tree[parentTreeIdx3d]?.count) last: \(idx3d.last)")
+            fatalError("parent.children.count: \(tree[parentTreeIdx3d]!.count.string) last: \(idx3d.last!.string)")
         }
     }
     

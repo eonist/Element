@@ -74,10 +74,10 @@ extension Tree{//maybe treekind isn't needed. Just use Tree?
      * Temp low tech solution
      */
     func describe(){
-        Swift.print("tree.name: " + "\(self.name)")
-        Swift.print("tree.content: " + "\(self.content)")
+        Swift.print("tree.name: " + "\(self.name!)")
+        Swift.print("tree.content: " + "\(self.content!)")
         Swift.print("tree.children: " + "\(self.children)")
-        Swift.print("tree.props: " + "\(self.props)")
+        Swift.print("tree.props: " + "\(self.props!)")
     }
     var xml:XML {return TreeConverter.xml(self)}
 }

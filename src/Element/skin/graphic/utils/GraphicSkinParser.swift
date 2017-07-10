@@ -34,7 +34,7 @@ private class Utils{
             }else if !skin.width!.isNaN{
                 return skin.width! + padding
             }
-            fatalError("not allowed: styleWidth: \(StyleMetricParser.width(skin,depth)) skinWidth: \(skin.width)")
+            fatalError("not allowed: styleWidth: \(StyleMetricParser.width(skin,depth)!) skinWidth: \(skin.width!)")
         }()
         let height:CGFloat = (StyleMetricParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?

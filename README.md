@@ -18,12 +18,13 @@ let package = Package(
 )
 ```
 
-**Step 2:** In AppDelegate.swift add this to the top ``@testable import Element`` and this inside the ``applicationDidFinishLaunching`` method:
+**Step 2:** In AppDelegate.swift add this to the top ``@testable import Element`` and ``@testable import Utils``and this inside the ``applicationDidFinishLaunching`` method:
 
 ```swift
 StyleManager.addStyle("Button{fill:blue;}")
 let btn = Button(100,20)
-window.contentView = FlippedView()/*TopLeft orientation*/
+let window = NSApp.windows[0]
+window.contentView = InteractiveView()/*TopLeft orientation*/
 window.contentView?.addSubview(btn)
 btn.event = { event in
    if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 

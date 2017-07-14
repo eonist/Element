@@ -35,6 +35,9 @@ extension Progressable3{
     }
 }
 private extension ScrollableUtils{//temp migration fix
+    /**
+     * NOTE: I'm unsure if disabling anim on the container.y pos is needed 
+     */
     static func scrollTo(_ containable:Containable3, _ progress:CGFloat, _ dir:Dir = .ver){
         let val:CGFloat = ScrollableUtils.scrollTo(progress, containable.maskSize[dir], containable.contentSize[dir])
         disableAnim {(containable.contentContainer as! Container).layerPos(val,dir)}/*we offset the y position of the lableContainer*/

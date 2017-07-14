@@ -23,7 +23,7 @@ class GraphUtils{
         //Swift.print("h: " + "\(h)")
         //Swift.print("maxValue: " + "\(maxValue)")
         //Swift.print("vValues: " + "\(vValues)")
-        for i in 0..<vValues.count{//calc the graphPoints:
+        for i in 0..<vValues.count{//calc the graphPoints://TODO: ⚠️️ Use functional programming
             var p = CGPoint()
             let value:CGFloat = vValues[i]
             let ratio:CGFloat = value/maxValue/*a value between 0-1*/

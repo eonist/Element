@@ -1,9 +1,10 @@
 import Foundation
 @testable import Utils
 /**
- * Rename to ElementKind?
+ * TODO: ⚠️️ Rename to ElementKind?
  * TODO: ⚠️️ Move getWidth, size etc to Another protocol
  */
+typealias ElementKind = IElement
 protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
     func resolveSkin()

@@ -18,3 +18,9 @@ class ButtonEvent:Event{
         super.init(type, origin)
     }
 }
+/**
+ * TODO: Make a protocol that bboth MouseEvent and ButtonEvent adheres to, that way you only need one extension for both MouseEvent and ButtonEvent
+ */
+extension ButtonEvent{
+    var loc:CGPoint{return event!.locationInWindow}
+}

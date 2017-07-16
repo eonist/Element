@@ -13,7 +13,7 @@ class Button:Element {
         if(NSEvent.pressedMouseButtons() == 0){/*Don't call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             setSkinState(getSkinState())
-            super.onEvent(ButtonEvent(ButtonEvent.over,self))
+            super.onEvent(ButtonEvent(ButtonEvent.over,self,event.event))
         }
     }
     /**
@@ -23,7 +23,7 @@ class Button:Element {
         if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons, 0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
             state = SkinStates.none
             setSkinState(getSkinState())
-            super.onEvent(ButtonEvent(ButtonEvent.out,self))
+            super.onEvent(ButtonEvent(ButtonEvent.out,self,event.event))
         }
     }
     /**
@@ -33,7 +33,7 @@ class Button:Element {
         state = SkinStates.down+" "+SkinStates.over
         setSkinState(getSkinState())
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
-        super.onEvent(ButtonEvent(ButtonEvent.down,self))
+        super.onEvent(ButtonEvent(ButtonEvent.down,self,event.event))
     }
     /**
      * Handles actions and drawing states for the release event
@@ -42,7 +42,7 @@ class Button:Element {
     override func mouseUpInside(_ event:MouseEvent){
         state = SkinStates.over// :TODO: why in two lines like this?
         setSkinState(getSkinState())
-        super.onEvent(ButtonEvent(ButtonEvent.upInside,self))
+        super.onEvent(ButtonEvent(ButtonEvent.upInside,self,event.event))
     }
     /**
      * Handles actions and drawing states for the mouseUpOutside event
@@ -51,7 +51,7 @@ class Button:Element {
     override func mouseUpOutside(_ event:MouseEvent){
         state = SkinStates.none
         setSkinState(getSkinState())
-        super.onEvent(ButtonEvent(ButtonEvent.upOutside,self))
+        super.onEvent(ButtonEvent(ButtonEvent.upOutside,self,event.event))
     }
     /**
      * Convenince
@@ -59,7 +59,7 @@ class Button:Element {
      * LEGACY NOTE: This method was turned off temporarily, because it could fire after, this could be resolved by moving the mouseUp call in INteractiveView2 to before the mouseUpInside and mouseUpOutside calls.
      */
     override func mouseUp(_ event:MouseEvent) {
-        super.onEvent(ButtonEvent(ButtonEvent.up,self))
+        super.onEvent(ButtonEvent(ButtonEvent.up,self,event.event))
     }
     /**
      * New

@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 /**
  * TODO: ⚠️️ Add for toutch as well: toutchUp,Down,upOutSide,upInside,out,over etc
+ * NOTE: Reading the event.location can be done by reading the localPos from the button it self
  */
 class ButtonEvent:Event{
     static var down:String = "buttonEventDown"
@@ -17,10 +18,4 @@ class ButtonEvent:Event{
         self.event = event
         super.init(type, origin)
     }
-}
-/**
- * TODO: Make a protocol that bboth MouseEvent and ButtonEvent adheres to, that way you only need one extension for both MouseEvent and ButtonEvent
- */
-extension ButtonEvent{
-    var loc:CGPoint{return event!.locationInWindow}
 }

@@ -1,6 +1,7 @@
 /**
- * TODO: ⚠️️ Rename to SelectorKind (Also remember to check out NSHipster CSS example)
+ * TODO: ⚠️️ Remember to check out NSHipster CSS example
  */
+typealias ISelector = SelectorKind
 protocol ISelector{
     var element:String{get}
     var classIds:[String]{get}

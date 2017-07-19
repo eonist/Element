@@ -1,12 +1,13 @@
 import Cocoa
 @testable import Utils
 
-protocol IText:IElement {
+typealias IText = TextKind
+protocol TextKind:IElement {
     func setText(_ text:String)
     func getTextField()->NSTextField
     var initText:String{get}
 }
-extension IText{
+extension TextKind{
     var textField:NSTextField{get{return (skin as! ITextSkin).textField}}
     /**
      * Sets text to the textfield, remember to set textformat after

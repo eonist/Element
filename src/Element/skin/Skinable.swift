@@ -3,7 +3,8 @@ import Foundation
 /**
  * TODO: ⚠️️ Rename to Skinable or SkinKind
  */
-protocol ISkin:class{
+typealias ISkin = Skinable
+protocol Skinable:class{
     /*Implicit getters / setters*/
     func setStyle(_ style:IStyle)
     func setSkinState(_ state:String)

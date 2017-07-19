@@ -1,7 +1,8 @@
 import Cocoa
 @testable import Utils
 
-protocol ITextSkin:class,ISkin {
+typealias ITextSkin = TextSkinable
+protocol TextSkinable:class,Skinable {
     var textField:NSTextField{get}
     func setText(_ text:String)
 }

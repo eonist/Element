@@ -1,6 +1,7 @@
 import Foundation
 
-protocol IStyleCollection {
+typealias IStyleCollection = StyleCollectionKind
+protocol StyleCollectionKind {
     var styles:[IStyle] {get set}
 }
 /*func addStyle(_ style:IStyle)

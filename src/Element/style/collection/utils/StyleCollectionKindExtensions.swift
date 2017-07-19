@@ -1,19 +1,19 @@
 import Foundation
 @testable import Utils
 
-extension IStyleCollection{
+extension StyleCollectionKind{
     /**
      * Adds every style in an array to the_styles array (uses the addStyle method to do it so that it checks for duplicates)
      * NOTE: the reason we dont move the following core methods into StyleCollectionModifier is because they are used alot and are not that complex
      */
-    mutating func addStyles(_ styles:[IStyle]){
+    mutating func addStyles(_ styles:[Stylable]){
         styles.forEach{style in addStyle(style)}
     }
     /**
      * Adds a style to the StyleCollection instance
      * PARAM: style: IStyle
      */
-    mutating func addStyle(_ style:IStyle){
+    mutating func addStyle(_ style:Stylable){
         if let matchIdx = styles.index(where: {$0.name == style.name}){
             StyleModifier.combine(&styles[matchIdx], style)/*<--was merge, but styles that comes later in the array with the same name should hard-override properties, not soft-override like it was previously*/
         }
@@ -23,7 +23,7 @@ extension IStyleCollection{
      * TODO: One Could change this to return nothing
      * RETURNS: the removed Style
      */
-    mutating func removeStyle(_ name:String)->IStyle?{
+    mutating func removeStyle(_ name:String)->Stylable?{
         if let idx = styles.index(where: {$0.name == name}){
             return ArrayModifier.splice2(&styles,idx,1).first
         }
@@ -32,13 +32,13 @@ extension IStyleCollection{
     /**
      * NOTE: We can't use a for each loop here since it returns inside the loop clause, and forEach doesn't allow for that
      */
-    func getStyle(_ name:String)->IStyle?{
+    func getStyle(_ name:String)->Stylable?{
         return styles.first(where: {$0.name == name})
     }
     /**
      * Convenience
      */
-    func getStyleAt(_ index:Int)->IStyle?{
+    func getStyleAt(_ index:Int)->Stylable?{
         return styles[index]
     }
 }

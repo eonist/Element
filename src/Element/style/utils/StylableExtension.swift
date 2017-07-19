@@ -2,7 +2,7 @@ import Foundation
 /**
  * TODO: ⚠️️ Add subScripts to get prop
  */
-extension IStyle{
+extension Stylable{
     /**
      * Returns a style property by the name given
      * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?

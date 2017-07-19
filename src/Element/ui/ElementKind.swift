@@ -4,8 +4,8 @@ import Foundation
  * TODO: ⚠️️ Rename to ElementKind?
  * TODO: ⚠️️ Move getWidth, size etc to Another protocol
  */
-typealias ElementKind = IElement
-protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
+typealias IElement = ElementKind
+protocol ElementKind:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
     func resolveSkin()
     /*Implicit getters / setters*/
@@ -31,7 +31,7 @@ protocol IElement:IView,Disableable,Focusable{/*:class <--- derive only classes 
  * NOTE: some of these methods will probably be moved back into the class
  * TODO: add convenince methods for setting x and y independently?
  */
-extension IElement {
+extension ElementKind {
     var x:CGFloat {get{return self.frame.x}set{self.frame.x = newValue}}
     var y:CGFloat {get{return self.frame.y}set{self.frame.y = newValue}}
     /**

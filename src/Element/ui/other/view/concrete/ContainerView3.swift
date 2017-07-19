@@ -11,7 +11,7 @@ class ContainerView3:Element,Containable3 {
     override func resolveSkin() {
         super.resolveSkin()
         _ = contentContainer/*Inits the lazy instance*/
-        //layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍*/
+        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now 👍, Works!*/
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

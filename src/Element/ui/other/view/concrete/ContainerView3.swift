@@ -28,7 +28,7 @@ extension ContainerView3 {//private maybe?
         }else if(self is Scrollable3){
             (self as! Scrollable3).scroll(event)
         }else{
-            fatalError("type not supported")
+            fatalError("type not supported: \(self)")
         }
         super.scrollWheel(with: event)
     }

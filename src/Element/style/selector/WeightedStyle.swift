@@ -1,22 +1,21 @@
 import Foundation
-struct WeightedStyle:IStyle/*,Comparable*/{
-    /*private(set) internal */var styleWeight: StyleWeight
-    var style:IStyle
-    init(_ style:IStyle, _ styleWeight:StyleWeight) {
+struct WeightedStyle:Stylable/*,Comparable*/{
+    /*private(set) internal */var styleWeight:StyleWeight
+    var style:Stylable
+    init(_ style:Stylable, _ styleWeight:StyleWeight) {
         self.styleWeight = styleWeight;
         self.style = style//super.init(style.name,style.selectors,style.styleProperties);
     }
 }
 extension WeightedStyle{
     var name:String {return style.name}
-    var selectors:[ISelector] {return style.selectors}
+    var selectors:[SelectorKind] {return style.selectors}
     var styleProperties:[IStyleProperty] {get{return style.styleProperties}set{style.styleProperties = newValue}}
 }
 /*
 func < (lhs: WeightedStyle, rhs: WeightedStyle) -> Bool {
     return lhs.someNumber < rhs.someNumber
 }
-
 func == (lhs: WeightedStyle, rhs: WeightedStyle) -> Bool {
     return lhs.someNumber == rhs.someNumber
 }

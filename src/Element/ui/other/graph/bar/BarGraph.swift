@@ -70,7 +70,7 @@ class BarGraph:Graph {
         graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)
        
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        animator = Animator(AnimProxy.sharedInstance,0.5,0,1,interpolateValue,Quad.easeIn)
+        animator = Animator(AnimProxy.shared,0.5,0,1,interpolateValue,Quad.easeIn)
         animator!.start()
     }
     /**

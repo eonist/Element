@@ -73,7 +73,7 @@ extension Thumb{
      */
     func fadeIn(){
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        animator = Animator(AnimProxy.sharedInstance,0.2,alpha,1,interpolateAlpha,Sine.easeOut)
+        animator = Animator(AnimProxy.shared,0.2,alpha,1,interpolateAlpha,Sine.easeOut)
         animator?.event = {(event:Event) -> Void in }
         animator?.start()
     }
@@ -82,7 +82,7 @@ extension Thumb{
      */
     func fadeOut(){
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
-        animator = Animator(AnimProxy.sharedInstance,0.5,alpha,0,interpolateAlpha,Quad.easeIn)
+        animator = Animator(AnimProxy.shared,0.5,alpha,0,interpolateAlpha,Quad.easeIn)
         animator?.event = {(event:Event) -> Void in }
         animator?.start()
     }

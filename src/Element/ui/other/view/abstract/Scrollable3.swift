@@ -40,15 +40,28 @@ extension Scrollable3{
         //super.scrollWheel(with:event)
     }
     func onScrollWheelChange(_ event:NSEvent){
-        //Swift.print("Scrollable3.onScrollWheelChange()")
+        Swift.print("Scrollable3.onScrollWheelChange()")
         let progressVal:CGPoint = SliderListUtils.progress(event.delta, interval, progress)//let progress:CGFloat = SliderParser.progress(event.delta, maskSize, contentSize).y
         setProgress(progressVal)
     }
     func onInDirectScrollWheelChange(_ event:NSEvent){
         onScrollWheelChange(event)//is this really needed?
     }
-    func onScrollWheelEnter(){Swift.print("Scrollable3.onScrollWheelEnter()")}
-    func onScrollWheelExit(){Swift.print("Scrollable3.onScrollWheelExit()")}
+    func onScrollWheelEnter(){
+        ScrollFastList3.startTime = NSDate()
+        ScrollFastList3.numOfEvents = 0//reset
+        Swift.print("Scrollable3.onScrollWheelEnter()")
+    }
+    func onScrollWheelExit(){
+        let secs:CGFloat = abs(ScrollFastList3.startTime!.timeIntervalSinceNow).cgFloat
+        Swift.print("secs: " + "\(secs)")
+        let numOfEvents:CGFloat = ScrollFastList3.numOfEvents!.cgFloat
+        Swift.print("numOfEvents: " + "\(numOfEvents)")
+        let eventsPerSeconds:CGFloat = numOfEvents/secs
+        Swift.print("eventsPerSeconds: " + "\(eventsPerSeconds)")
+        
+        Swift.print("Scrollable3.onScrollWheelExit()")
+    }
     func onScrollWheelMomentumEnded(){Swift.print("Scrollable3.onScrollWheelMomentumEnded")}
     func onScrollWheelCancelled(){Swift.print("Scrollable3.onScrollWheelCancelled")}
     func onScrollWheelMomentumBegan(_ event:NSEvent){Swift.print("Scrollable3.onScrollWheelMomentumBegan")}

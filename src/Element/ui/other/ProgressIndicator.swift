@@ -6,7 +6,7 @@ import Foundation
 class ProgressIndicator:Element {
     var lines:[LineGraphic] = []
     var lineStyle:ILineStyle = LineStyle()
-    lazy var animator:Animator = {LoopingAnimator(Animation.sharedInstance,Int.max,1,0,1,self.progress,Linear.ease)}()
+    lazy var animator:Animator = {LoopingAnimator(AnimProxy.sharedInstance,Int.max,1,0,1,self.progress,Linear.ease)}()
     var revealProgress:CGFloat = 0
     override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement? = nil, _ id:String? = nil) {
         super.init(width, height, parent, id)

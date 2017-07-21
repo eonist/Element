@@ -4,13 +4,12 @@ import Foundation
  * TODO: ⚠️️ make this a struct?
  */
 struct MoverGroup{//rename to ElasticMoverGroup
-    var xMover:RubberBand
-    var yMover:RubberBand
+    var xMover:RubberBand, yMover:RubberBand
     typealias FrameTick = (CGFloat,Dir)->Void
     
     init(_ callBack:@escaping FrameTick, _ maskSize:CGSize,_ contentSize:CGSize){
-        self.xMover = RubberBand(Animation.sharedInstance,{val in callBack(val,.hor)}/*👈important*/,(0,maskSize.width),(0,contentSize.width))
-        self.yMover = RubberBand(Animation.sharedInstance,{val in callBack(val,.ver)}/*👈important*/,(0,maskSize.height),(0,contentSize.height))
+        self.xMover = RubberBand(AnimProxy.sharedInstance,{val in callBack(val,.hor)}/*👈important*/,(0,maskSize.width),(0,contentSize.width))
+        self.yMover = RubberBand(AnimProxy.sharedInstance,{val in callBack(val,.ver)}/*👈important*/,(0,maskSize.height),(0,contentSize.height))
     }
 }
 extension MoverGroup{

@@ -20,6 +20,18 @@ class StyleModifier {
         }
     }
     /**
+     *
+     */
+    static func overrideStylePropVal(_ style:inout Style, stylePropName:String, stylePropDepth:Int, value:Any){
+        var style:Style = btn.skin!.style! as! Style
+        var widthProp = style.getStyleProperty("width")
+        widthProp!.value = newSize.w
+        StyleModifier.overrideStyleProperty(&style, widthProp!)
+        var heightProp = style.getStyleProperty("height")
+        heightProp!.value = newSize.h
+        StyleModifier.overrideStyleProperty(&style, heightProp!)
+    }
+    /**
      * Combines PARAM: a and PARAM: b
      * NOTE: if similar styleProperties are found PARAM: b takes precedence
      * TODO: ⚠️️ You can speed this method up by looping with a  better algo. dont check already checked b's etc

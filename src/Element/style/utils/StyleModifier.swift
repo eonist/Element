@@ -14,9 +14,9 @@ class StyleModifier {
      * Overrides styleProperty if one exists with the same name
      * IMPORTANT: ⚠️️ You apperantly have to use Style, protocols are not mutable apperantly
      */
-    static func overrideStyleProperty(_ style:inout Style, _ styleProperty:IStyleProperty){// :TODO: argument should only be a styleProperty
-        if let idx = style.styleProperties.index(where:{$0.name == styleProperty.name && $0.depth == styleProperty.depth}){
-            style.styleProperties[idx] = styleProperty
+    static func overrideStyleProperty(_ style:inout Style, _ styleProp:IStyleProperty){// :TODO: argument should only be a styleProperty
+        if let idx = style.styleProperties.index(where:{$0.name == styleProp.name && $0.depth == styleProp.depth}){
+            style.styleProperties[idx] = styleProp
         }
     }
     /**

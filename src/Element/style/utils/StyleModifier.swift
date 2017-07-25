@@ -21,11 +21,13 @@ class StyleModifier {
     }
     /**
      * New
+     * NOTE: Compliments overrideStyleProperty
      */
-    static func overrideStylePropVal(_ style:inout Style, _ stylePropName:String, _ stylePropDepth:Int, _ value:Any){
-        var prop = style.getStyleProperty(stylePropName)
-        prop!.value = value
-        StyleModifier.overrideStyleProperty(&style, prop!)
+    static func overrideStylePropVal(_ style:inout Style, _ styleProp:(name:String,depth:Int), _ value:Any){
+        if var prop = style.getStyleProperty(styleProp.name,styleProp.depth) {
+            prop.value = value
+            StyleModifier.overrideStyleProperty(&style, prop)
+        }
     }
     /**
      * Combines PARAM: a and PARAM: b

@@ -34,7 +34,7 @@ class LeverStepper:Element{
     }
     func onPlusButtonDown() {
         onMouseDownMouseY = plusButton.localPos().y
-        onMouseDownValue = self.value
+        onMouseDownValue = value
         if(leftMouseDraggedEventListener == nil) {leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDragged], handler: self.onPlusButtonMove)}//we add a global mouse move event listener
         else {fatalError("This shouldn't be possible, if it throws this error then you need to remove he eventListener before you add it")}
     }

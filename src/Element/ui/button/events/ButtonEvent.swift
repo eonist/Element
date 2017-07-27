@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: ⚠️️ Add for touch as well: toutchUp,Down,upOutSide,upInside,out,over etc
+ * TODO: ⚠️️ Add for touch as well: touchUp,Down,upOutSide,upInside,out,over etc
  * NOTE: Reading the event.location can be done by reading the localPos from the button it self
  */
 class ButtonEvent:Event{
@@ -10,7 +10,7 @@ class ButtonEvent:Event{
     static var upInside:String = "buttonEventUpInside"
     static var upOutside:String = "buttonEventUpOutside"
     static var out:String = "buttonEventOut"
-    static var over:String = "buttonEventOut"
+    static var over:String = "buttonEventOver"
     /*Right*/
     static var rightMouseDown:String = "buttonEventRightMouseDown"
     weak var event:NSEvent?

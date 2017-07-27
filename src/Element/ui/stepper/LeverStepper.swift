@@ -60,7 +60,7 @@ class LeverStepper:Element{
             leftMouseDraggedEventListener = nil//<--this part may not be needed
         }/*We remove a global mouse move event listener*/
     }
-    func onPlusButtonMove(event:NSEvent)-> NSEvent?{//wuic
+    func onPlusButtonMove(event:NSEvent)-> NSEvent?{
         return onButtonMove(event,plusButton)
     }
     func onMinusButtonMove(event:NSEvent)-> NSEvent?{

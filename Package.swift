@@ -6,4 +6,4 @@ let package = Package(
 		.Package(url: "https://github.com/eonist/swift-utils.git", Version(0, 0, 0, prereleaseIdentifiers: ["alpha", "4"]))
     ],
 	exclude: ["README.md"]
-)
+) 

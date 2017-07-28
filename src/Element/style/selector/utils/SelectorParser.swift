@@ -39,6 +39,8 @@ class SelectorParser{
         //let classIds:String = selector.classIds.reduce(string) { $0 + ("."+$1) }
         let id:String = selector.id != "" ? "#"+selector.id : ""
         let states:String = selector.states.reduce("") { $0 + (":"+$1) }
+        
+        
         return element + /*classIds +*/ id + states
     }
     /**

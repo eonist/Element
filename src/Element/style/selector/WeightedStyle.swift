@@ -9,7 +9,7 @@ struct WeightedStyle:Stylable/*,Comparable*/{
 }
 extension WeightedStyle{
     var name:String {return style.name}
-    var selectors:[SelectorKind] {return style.selectors}
+    var selectors:[SelectorKind] {get {return style.selectors}}
     var styleProperties:[IStyleProperty] {get{return style.styleProperties}set{style.styleProperties = newValue}}
 }
 /*

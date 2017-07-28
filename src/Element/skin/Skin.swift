@@ -50,9 +50,11 @@ class Skin:InteractiveView2,ISkin{
      * ⚠️️ IMPORTANT: ⚠️️ This is an expensive call: "loops through the entire styleManager" (Use setStyle for light-weight call)
      */
     func setSkinState(_ state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
+        Swift.print("setSkinState: " + "\(setSkinState)")
         hasStateChanged = true
         self.state = state
         style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
+        style?.describe()
         draw()
     }
     /**

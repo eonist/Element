@@ -128,8 +128,10 @@ extension StyleManager{
      * New
      */
     static func overrideStyle(_ style:Style){
+        Swift.print("overrideStyle")
+        Swift.print("StyleManager.index(style.name): " + "\(StyleManager.index(style.name))")
         if let i:Int = StyleManager.index(style.name) {
-            StyleManager.styles[i].styleProperties = style.styleProperties
+            StyleManager.styles[i] = style
         }
     }
     /**

@@ -129,7 +129,7 @@ extension StyleManager{
      */
     static func overrideStyle(_ style:Style){
         if let i:Int = StyleManager.index(style.name) {
-            StyleManager.styles[i] = style
+            StyleManager.styles[i].styleProperties = style.styleProperties
         }
     }
     /**

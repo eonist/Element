@@ -30,7 +30,6 @@ class Element:InteractiveView2,IElement {
      * Draws the graphics
      */
     func resolveSkin() {
-        NSColor.green.blended(withFraction: 0.5, of: .blue)
         self.skin = addSubView(SkinResolver.skin(self))
     }
     /**

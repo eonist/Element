@@ -124,12 +124,7 @@ extension StyleManager{
                 StyleManager.styles[i].styleProperties[e].value = newValue
         }
     }
-    /**
-     *
-     */
-    static func overrideStyle(_ styleName:String, ){
-        
-    }
+    
     /**
      * New
      */

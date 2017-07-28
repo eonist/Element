@@ -124,7 +124,14 @@ extension StyleManager{
                 StyleManager.styles[i].styleProperties[e].value = newValue
         }
     }
-    
+    static func overrideStyle(_ style:Style){
+        if let i:Int = StyleManager.index(style.name) {
+            Swift.print("i: " + "\(i)")
+            StyleManager.styles[i].styleProperties = style.styleProperties
+            StyleManager.styles[i].describe()
+            //StyleManager.styles[i].selectors = style.selectors
+        }
+    }
     /**
      * New
      */

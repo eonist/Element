@@ -40,7 +40,7 @@ class SelectorParser{
         let id:String = selector.id != "" ? "#"+selector.id : ""
         let states:String = {
             if selector.states.isEmpty {return ""}//TODO: ⚠️️ this could also bbe done by subRaning the arr, do that later
-            return selector.states.reduce("") { $0 + (":"+$1) }.trim(<#T##leftAndRight: Character##Character#>)
+            return selector.states.reduce("") { $0 + (":"+$1) }
         }()
         return element + /*classIds +*/ id + states
     }

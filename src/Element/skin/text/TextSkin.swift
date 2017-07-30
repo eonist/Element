@@ -70,8 +70,11 @@ extension TextSkin{
         let height:CGFloat = (StyleMetricParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         textField.frame.w = width/*SkinParser.width(this)*/
         textField.frame.h = height/*SkinParser.height(this)*/
+        
         super.frame.w = width//quick fix
         super.frame.h = height//quick fix
+        
+        Swift.print("textField.frame.h: " + "\(textField.frame.h)")
         
         TextFieldModifier.applyTextFormat(textField,textFormat)/*applies the textFormat*/
         /*

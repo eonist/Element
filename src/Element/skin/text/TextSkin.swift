@@ -74,7 +74,7 @@ extension TextSkin{
         super.frame.w = width//quick fix
         super.frame.h = height//quick fix
         
-        Swift.print("textField.frame.h: " + "\(textField.frame.h)")
+        
         
         TextFieldModifier.applyTextFormat(textField,textFormat)/*applies the textFormat*/
         /*
@@ -85,6 +85,7 @@ extension TextSkin{
         let temp = textFormat.attributedStringValue(textField.stringValue)
         //textField.stringValue = " "
         textField.attributedStringValue = temp
+        
     }
 }
 extension TextSkin{

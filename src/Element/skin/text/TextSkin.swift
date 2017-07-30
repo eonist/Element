@@ -10,15 +10,7 @@ class TextSkin:Skin,ITextSkin{
     lazy var textFormat:TextFormat = {
         return StylePropertyParser.textFormat(self)/*creates the textFormat*/
     }()
-    lazy var textField:NSTextField = {
-        let textFormat:TextFormat = self.textFormat
-        let textField:NSTextField = {
-            if textFormat.password {return SecureTextField(frame: NSRect())}
-            else {return TextField(frame: NSRect())}
-        }()
-        return self.addSubView(textField)
-    }()
-    /*the bellow variable is a little more complex in the legacy code*/
+    lazy var textField:NSTextField =  self.createTextField()   /*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
     init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:IElement? = nil){
@@ -89,4 +81,16 @@ extension TextSkin{
         //textField.stringValue = " "
         textField.attributedStringValue = temp
     }
+}
+extension TextSkin{
+    func createTextField() -> NSTextField{
+        let textFormat:TextFormat = self.textFormat
+        let textField:NSTextField = {
+            if textFormat.password {return SecureTextField(frame: NSRect())}
+            else {return TextField(frame: NSRect())}
+        }()
+        return self.addSubView(textField)
+    }
+    
+    
 }

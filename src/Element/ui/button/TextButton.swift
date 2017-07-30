@@ -39,7 +39,7 @@ class TextButton:Button,LableKind {
 }
 extension TextButton {
     /**
-     * New, makes lazy var more organized
+     * Makes lazy var more organized
      */
     func createText()->Text{
         let text = self.addSubView(Text(self.width,self.height,self.textString,self))

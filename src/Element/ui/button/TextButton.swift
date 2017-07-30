@@ -14,6 +14,10 @@ class TextButton:Button,LableKind {
         super.resolveSkin()
         _ = text
     }
+    override func mouseDown(_ event:MouseEvent) {
+        super.mouseDown(event)
+        Swift.print(ElementParser.stackString(text))
+    }
     override func setSkinState(_ skinState:String) {
         super.setSkinState(skinState)
         text.setSkinState(skinState)/*Why is this set directly to the skin and not to the element?, Text doesnt have a setSkin method so i guess thats why?, well it does actually, through it super class Element, so fix this*/

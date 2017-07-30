@@ -59,6 +59,9 @@ extension TextSkin{
         hasTextChanged = true
         draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
     }
+    /**
+     *
+     */
     func applyProperties(_ textField:NSTextField){
         let padding:Padding = StyleMetricParser.padding(self)
         let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?

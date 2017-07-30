@@ -17,7 +17,6 @@ class TextSkin:Skin,ITextSkin{
         super.init(style, state, element)
         //textField.sizeToFit()
         textField.stringValue = text
-        
         applyProperties(textField)
         SkinModifier.float(self)
         _ = SkinModifier.align(self, textField)
@@ -27,14 +26,14 @@ class TextSkin:Skin,ITextSkin{
      * TODO: ⚠️️ This method needs some refactoring
      */
     override func draw() {
-        if (hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged) {
+        if hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged {
             SkinModifier.float(self)
-            if(hasSizeChanged) {
+            if hasSizeChanged {
                 let padding:Padding = StyleMetricParser.padding(self);
                 TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom)
             }
-            if(hasStateChanged || hasStyleChanged || hasTextChanged || hasSizeChanged/*<--recently added*/) {applyProperties(textField)}
-            if(hasTextChanged) {hasTextChanged = false}
+            if hasStateChanged || hasStyleChanged || hasTextChanged || hasSizeChanged/*<--recently added*/ {applyProperties(textField)}
+            if hasTextChanged {hasTextChanged = false}
             _ = SkinModifier.align(self, textField)
         }
         super.draw()
@@ -91,6 +90,4 @@ extension TextSkin{
         }()
         return self.addSubView(textField)
     }
-    
-    
 }

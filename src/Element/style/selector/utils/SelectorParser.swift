@@ -28,8 +28,8 @@ class SelectorParser{
      */
     static func selectorsString(_ selectors:[ISelector])->String{
         return selectors.reduce(""){
-            $0 + " " + selectorString($1)
-        }
+            $0 + selectorString($1) + " "
+        }.trimRight(" ")
     }
     /**
      * Returns a single selector (ie: Button#first:over)

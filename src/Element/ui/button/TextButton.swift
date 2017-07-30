@@ -1,14 +1,10 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: get rid of LableKind
+ * TODO: ⚠️️ get rid of LableKind
  */
 class TextButton:Button,LableKind {
-    lazy var text:Text = {
-        let text = self.addSubView(Text(self.width,self.height,self.textString,self))
-        text.isInteractive = false
-        return text
-    }()
+    lazy var text:Text = self.createText()
     var textString:String/*Interim value*/
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:IElement?, _ id:String? = nil) {
         textString = text
@@ -40,4 +36,14 @@ class TextButton:Button,LableKind {
         self.text.setText(text)
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+}
+extension TextButton {
+    /**
+     * New, makes lazy var more organized
+     */
+    func createText()->Text{
+        let text = self.addSubView(Text(self.width,self.height,self.textString,self))
+        text.isInteractive = false
+        return text
+    }
 }

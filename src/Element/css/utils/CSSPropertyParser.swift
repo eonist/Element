@@ -133,11 +133,11 @@ class CSSPropertyParser {
                 return StringParser.digit(str)
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
                 return str.nsColor
-            }else if(StringAsserter){
-                
-            }else{
+            }else if(StringAsserter.isFilePath(string)){
+                return str
+            }else{/*font name, because font names sometimes has spaces in them*/
 //                Swift.print("Asset str: " + "\(str)")
-                return str/*can be asset or font name*/
+                return str
             }
         }
     }

@@ -4,6 +4,27 @@ import Foundation
  * NOTE: it may be tempting to move this into CSSFIle class as an internal class since noone else uses this class but CSSFile is simpler to understand as a standalone class (Number of classes != ease of use)
  */
 class CSSFileParser {
+    enum Pattern{
+        /**
+         * //was: \\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*
+         */
+        static let styleImportSeperation:String = {
+            let styleCharSet:String = "[^$]"//all possible chars that can be found in a stylesheet, except the end. the capture all dot variable didnt work so this is the alternate wway of doing it
+            var pattern:String = ""
+            pattern += "^"
+            pattern += "("
+            pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
+            pattern +=      "(?="
+            pattern +=          "(?:"
+            pattern +=              "\\n[\\w\\s\\[\\]\\,\\#\\:\\.]+?\\{"
+            pattern +=          ")|$"
+            pattern +=      ")"
+            pattern +=  ")?"
+            pattern +=  "(" + styleCharSet + "+?$)?"
+            return pattern
+        }()
+        static let importString:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
+    }
     /**
      * Returns a string containing css styles (including styles from imports and sub imports)
      * NOTE: this method is recursive
@@ -34,8 +55,7 @@ class CSSFileParser {
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
     static func importStrings(_ string:String)->[String]{
-        let importStrings:[String] = string.matches(importStringPattern).map {$0.value(string, 1)}/*capturing group 1*/
-        return importStrings
+        return string.matches(Pattern.importString).map {$0.value(string, 1)}/*capturing group 1*/
     }
     /**
      * Returns an Object with an import property and a style property from PARAM: cssString
@@ -44,7 +64,7 @@ class CSSFileParser {
      * Example: "@import url(\"mainContent.css\");"
      */
     static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
-        let matches = cssString.matches(styleImportSeperationPattern)
+        let matches = cssString.matches(Pattern.styleImportSeperation)
         if let match = matches[safe:0] {
             let imports:String = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
             let style:String = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
@@ -52,24 +72,4 @@ class CSSFileParser {
         };return ("","")/*else*/
     }
 }
-extension CSSFileParser{
-    /**
-     * //was: \\d\\s\\w\\W\\{\\}\\:\\;\\n\\%\\-\\.~\\/\\*
-     */
-    static var styleImportSeperationPattern:String = {
-        let styleCharSet:String = "[^$]"//all possible chars that can be found in a stylesheet, except the end. the capture all dot variable didnt work so this is the alternate wway of doing it
-        var pattern:String = ""
-        pattern += "^"
-        pattern += "("
-        pattern +=      "[@\\(\\)\\w\\s\\.\\/\";\\n]*?"//importChars
-        pattern +=      "(?="
-        pattern +=          "(?:"
-        pattern +=              "\\n[\\w\\s\\[\\]\\,\\#\\:\\.]+?\\{"
-        pattern +=          ")|$"
-        pattern +=      ")"
-        pattern +=  ")?"
-        pattern +=  "(" + styleCharSet + "+?$)?"
-        return pattern
-    }()
-    static var importStringPattern:String = "(?:@import (?:url)?\\(\")(.*?)(?=\"\\)\\;)"/*assigns the name and value to an object (Associative)  :TODO: (the dot in the end part could possibly be replaced by [.^\;] test this)*/
-}
+

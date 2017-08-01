@@ -7,14 +7,14 @@ import Cocoa
  */
 extension CSSPropertyParser{
     enum Pattern{
-        static let arrayPattern:String = "^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"
-        static let stringPattern:String = "(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"
-        static let linearGradientPattern:String = "(?<=linear-gradient\\().+?(?=\\);?)"
-        static let radialGradientPattern:String = "(?<=radial-gradient\\().+?(?=\\);?)"
-        static let textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
-        static let dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
-        static let textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
-        static let transformRotatePattern:String = "(?<=rotate\\().+?(?=\\);?)"
+        static let array:String = "^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"
+        static let string:String = "(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"
+        static let linearGradient:String = "(?<=linear-gradient\\().+?(?=\\);?)"
+        static let radialGradient:String = "(?<=radial-gradient\\().+?(?=\\);?)"
+        static let textFormat:String = "(?<=textFormat\\().+?(?=\\);?)"
+        static let dropShadow:String = "(?<=drop-shadow\\().+?(?=\\);?)"
+        static let textFormatItem:String = "^(\\w+?)\\:(.+?)$"
+        static let transformRotate:String = "(?<=rotate\\().+?(?=\\);?)"
         static let calcPattern:String = "(?<=calc\\().+?(?=\\);?)"
     }
 }
@@ -38,8 +38,8 @@ class CSSPropertyParser {
             case string.test("^drop-shadow\\b"):return dropShadow(string)/*drop-shadow*/
             case string.test("^textFormat\\b"):return textFormat(string)
             case string.test("^rotate\\b"):return rotate(string)
-            case string.test(arrayPattern):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
-            case string.test(stringPattern):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
+            case string.test(Pattern.array):return array(string)/*corner-radius, line-offset-type, margin, padding, offset, svg asset, font names*/// :TODO: shouldnt the \040 be optional? added ~ char for relative path support
+            case string.test(Pattern.string):return string/* string (Condition: someName1 | someName | but not just a number by it self);*/ //:TODO: this needs to also test if it is a contining word. ^pattern$ so not to match linear-gradient or you can test that its nothing els than words or number? // :TODO: what does it do?
             default : fatalError("CSSPropertyParser.property() THE: " + string + " PROPERTY IS NOT SUPPORTED")
         }
     }
@@ -49,7 +49,7 @@ class CSSPropertyParser {
      * NOTE: ⚠️️ Array CssProps cant have calc. BC we seperate on space, so if you want to use padding, use padding-left,padding-right etc. same goes for fillet,margin etc
      */
     private static func calc(_ string:String) ->String{
-        if let propertyString:String = string.match(calcPattern).first{
+        if let propertyString:String = string.match(Pattern.calc).first{
             return propertyString
         }
         fatalError("illegal syntax \(string)")
@@ -59,7 +59,7 @@ class CSSPropertyParser {
      * NOTE: in the future we will add more transforms
      */
     private static func rotate(_ string:String)->CGFloat{
-        if let propertyString = string.match(transformRotatePattern).first{
+        if let propertyString = string.match(Pattern.transformRotate).first{
             let rotation:CGFloat = Utils.rotation(propertyString)
             return rotation
         }

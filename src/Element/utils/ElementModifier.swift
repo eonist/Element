@@ -6,8 +6,8 @@ class ElementModifier {
      * Changes the visibility of PARAM: element by PARAM: isVisible
      */
     static func hide(_ element:IElement,_ isVisible:Bool) {
-        let display:String = isVisible ? "" : CSSConstants.none.rawValue//defines the dispaly param to be set
-        applyStyleProperty(element, CSSConstants.display.rawValue, display)
+        let display:String = isVisible ? "" : CSS.Align.none//defines the dispaly param to be set
+        applyStyleProperty(element, CSS.Align.display, display)
     }
     /**
      * TODO: ⚠️️ What if the state changes? then the StyleManager is queried again and the current display state won't work, a fix would be add the same style to the StyleManger, if you need granularity then add the custom style to a id that only matches the case etc.
@@ -58,7 +58,7 @@ class ElementModifier {
     typealias RefreshMethod = (IElement)->Void
     private static func refresh(_ element:IElement, _ method:RefreshMethod = Utils.setStyle) {//<--setStyle is the default param method
         //Swift.print("refresh")
-        if (element.skin?.style?.getStyleProperty(CSSConstants.display.rawValue) as? String) == CSSConstants.none.rawValue {
+        if (element.skin?.style?.getStyleProperty(CSS.Align.display) as? String) == CSS.Align.none {
             //Swift.print("display: " + "\(element.skin!.style!.getStyleProperty(CSSConstants.display.rawValue))")
             return
         }/*Skip refreshing*/

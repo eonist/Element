@@ -144,7 +144,7 @@ extension StylePropertyParser{
      */
     fileprivate static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
-        return color == nil || (color as? String) == CSSConstants.none.rawValue ? nil : color as? NSColor
+        return color == nil || (color as? String) == CSS.Align.none ? nil : color as? NSColor
     }
     /**
      * Returns a FillStyle instance
@@ -157,7 +157,7 @@ extension StylePropertyParser{
                 return colorVal
             }else if let colorVals = colorVal as? [Any] {
                 if let colorVal = colorVals[safe:1]{
-                    if let colorValStr = colorVal as? String, colorValStr == CSSConstants.none.rawValue{
+                    if let colorValStr = colorVal as? String, colorValStr == CSS.Align.none{
                         return nil
                     }else if let colorValNSColor = colorVal as? NSColor{
                         return colorValNSColor

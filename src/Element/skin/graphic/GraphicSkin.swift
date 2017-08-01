@@ -20,7 +20,7 @@ class GraphicSkin:Skin{
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
             return decoratable
         }
-        (element as? NSView)?.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
+        (element as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
     }
     /**
      * Draws Skin (aka each "decoratable" in the skin)
@@ -29,7 +29,7 @@ class GraphicSkin:Skin{
         if(hasStateChanged || hasSizeChanged || hasStyleChanged){
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}
-            (element as? NSView)?.isHidden = SkinParser.display(self) == CSSConstants.none.rawValue
+            (element as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
         }
         super.draw()/*Sets flags etc*/
     }

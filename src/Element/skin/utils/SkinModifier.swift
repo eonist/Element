@@ -63,18 +63,18 @@ private class Utils{
      * Clear PARAM: skin to the left, right , both or none
      */
     static func clear(_ skin:ISkin,_ clearType:String?,_ floatType:String?,_ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ top:CGFloat){
-        if(clearType == CSSConstants.left.rawValue) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
-        else if(clearType == CSSConstants.right.rawValue) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
-        else if(clearType == CSSConstants.both.rawValue && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin ?? rightSiblingSkin,top)}/*Clear left & right*/
-        else if(clearType == CSSConstants.none.rawValue || clearType == nil) {clearNone(skin, floatType,leftSiblingSkin,rightSiblingSkin, top)}/*Clear is none or null*/
+        if(clearType == CSS.Align.left) {clearLeft(skin,leftSiblingSkin,top)}/*Clear is left*/
+        else if(clearType == CSS.Align.right) {clearRight(skin,rightSiblingSkin,top)}/*Clear is right*/
+        else if(clearType == CSS.Align.both && (leftSiblingSkin != nil)) {clearBoth(skin,leftSiblingSkin ?? rightSiblingSkin,top)}/*Clear left & right*/
+        else if(clearType == CSS.Align.none || clearType == nil) {clearNone(skin, floatType,leftSiblingSkin,rightSiblingSkin, top)}/*Clear is none or null*/
     }
     /**
      * Floats PARAM: skin to the left or right or none
      */
     static func float(_ skin:ISkin, _ clearType:String?, _ floatType:String?, _ leftSiblingSkin:ISkin?,_ rightSiblingSkin:ISkin?,_ leftX:CGFloat,_ rightX:CGFloat) {
-        if(floatType == CSSConstants.left.rawValue) {
+        if(floatType == CSS.Align.left) {
             floatLeft(skin, clearType, leftSiblingSkin, leftX)/*Float left*/
-        }else if(floatType == CSSConstants.right.rawValue) {
+        }else if(floatType == CSS.Align.right) {
             floatRight(skin, clearType, rightSiblingSkin, rightX)/*Float right*/
         }
     }

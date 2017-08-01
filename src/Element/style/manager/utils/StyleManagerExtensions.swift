@@ -90,11 +90,13 @@ extension StyleManager{
             addStyle(cssString)
         }else{/*not live*/
             /*1. Assert if the styles.xml exists and if it has content*/
-            let stylesXMLExists:Bool = FileAsserter.exists("~/Desktop/styles.xml".tildePath)
+            let theUrl:String  = FilePathParser.resourcePath() + "/temp.bundle/styles/styles.xml"//"~/Desktop/styles.xml".tildePath
+            
+            let stylesXMLExists:Bool = FileAsserter.exists(theUrl)
             Swift.print("xmlExists: " + "\(stylesXMLExists)")
             
             //TODO: ⚠️️ Create a new styles.xml if non exists
-            let theUrl:String  = FilePathParser.resourcePath() + "/temp.bundle/styles/styles.xml"//"~/Desktop/styles.xml".tildePath
+            
             
             let xml:XML = FileParser.xml(theUrl)//this should not be hardwired like this. use resource files or alike
             let cssFileDateList = StyleCache.cssFileDateList(xml)

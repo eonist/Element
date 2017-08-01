@@ -41,17 +41,17 @@ class StylePropertyParser{
      * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
     static func lineOffsetType(_ skin:ISkin, _ depth:Int = 0) -> OffsetType {
-        let val:Any? = value(skin, CSSConstants.lineOffsetType.rawValue,depth)
+        let val:Any? = value(skin, CSS.LineOffsetType.lineOffsetType,depth)
         var offsetType:OffsetType = {
             if (val is String) || (val is [String]) {
                 return LayoutUtils.instance(val!, OffsetType.self) as! OffsetType
             };return OffsetType()
         }()
-        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSSConstants.lineOffsetType.rawValue,depth)
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeLeft.rawValue,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeLeft.rawValue)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeRight.rawValue,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeRight.rawValue,depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeTop.rawValue,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeTop.rawValue,depth)}
-        if(StyleParser.index(skin.style!, CSSConstants.lineOffsetTypeBottom.rawValue,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSSConstants.lineOffsetTypeBottom.rawValue,depth)}
+        let lineOffsetTypeIndex:Int = StyleParser.index(skin.style!, CSS.LineOffsetType.lineOffsetType,depth)
+        if(StyleParser.index(skin.style!, CSS.LineOffsetType.left,depth) > lineOffsetTypeIndex){ offsetType.left = StylePropertyParser.string(skin, CSS.LineOffsetType.left)}
+        if(StyleParser.index(skin.style!, CSS.LineOffsetType.right,depth) > lineOffsetTypeIndex){ offsetType.right = StylePropertyParser.string(skin, CSS.LineOffsetType.right,depth)}
+        if(StyleParser.index(skin.style!, CSS.LineOffsetType.top,depth) > lineOffsetTypeIndex){ offsetType.top = StylePropertyParser.string(skin, CSS.LineOffsetType.top,depth)}
+        if(StyleParser.index(skin.style!, CSS.LineOffsetType.bottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSS.LineOffsetType.bottom,depth)}
         return offsetType
     }
     private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"

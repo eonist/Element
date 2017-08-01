@@ -1,6 +1,6 @@
 import Foundation
 /**
- * TODO: ⚠️️ Move cases into sub cases like: CSSType.Layout.display etc
+ * TODO: ⚠️️ Move cases into sub cases like: CSSType.Layout.display etc and dont use case, use static let
  */
 enum CSSConstants:String{
     /*Font*/

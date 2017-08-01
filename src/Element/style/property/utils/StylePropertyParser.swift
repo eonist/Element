@@ -20,7 +20,7 @@ class StylePropertyParser{
         let val = value(skin,CSS.Other.fill,depth)
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
-        }else{
+        }else{//colors
             return colorFillStyle(val,skin,depth)
         }
     }

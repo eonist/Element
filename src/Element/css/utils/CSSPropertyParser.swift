@@ -134,8 +134,8 @@ class CSSPropertyParser {
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
                 return str.nsColor
             }else{
-                Swift.print("Asset str: " + "\(str)")
-                return str//asset?
+//                Swift.print("Asset str: " + "\(str)")
+                return str/*can be asset or font name*/
             }
         }
     }

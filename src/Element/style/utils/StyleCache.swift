@@ -78,10 +78,10 @@ extension StyleCache{
         Swift.print("cacheURL: " + "\(cacheURL)")
         let xmlFileExists:Bool = FileAsserter.exists(cacheURL)
         //Swift.print("xmlExists: " + "\(stylesXMLExists)")
-//        if !xmlFileExists {/*Create a new styles.xml if non exists*/
+        if !xmlFileExists {/*Create a new styles.xml if non exists*/
             let xmlStr:String = "<data><cssFileDates></cssFileDates><styles></styles></data>"
             _ = FileModifier.write(cacheURL, xmlStr)
-//        }
+        }
         let xml:XML = FileParser.xml(cacheURL)
         let cssFilesAndDates = StyleCache.cssFilesAndDates(xml)
         /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/

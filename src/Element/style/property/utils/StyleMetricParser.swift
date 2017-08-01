@@ -67,7 +67,7 @@ class StyleMetricParser {
      * Returns width (clips to min max height)
      */
     static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        guard let width:CGFloat = metric(skin,CSSConstants.width.rawValue,depth,.hor) else{
+        guard let width:CGFloat = metric(skin,CSS.Size.width,depth,.hor) else{
             return nil
         }
         let minWidth:CGFloat = Utils.minWidth(skin) ?? width
@@ -78,7 +78,7 @@ class StyleMetricParser {
      * Returns height (clips to min max height)
      */
     static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
-        guard let height:CGFloat = metric(skin,CSSConstants.height.rawValue,depth,.ver) else{
+        guard let height:CGFloat = metric(skin,CSS.Size.height,depth,.ver) else{
             return nil
         }
         let minHeight:CGFloat = Utils.minHeight(skin) ?? height
@@ -206,28 +206,28 @@ private class Utils{
      * New
      */
     static func minWidth(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
-        let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minWidth.rawValue,depth,.hor)
+        let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.minWidth,depth,.hor)
         return minWidth
     }
     /**
      * New
      */
     static func minHeight(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
-        let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.minHeight.rawValue,depth,.hor)
+        let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.minHeight,depth,.hor)
         return minHeight
     }
     /**
      * New
      */
     static func maxWidth(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
-        let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxWidth.rawValue,depth,.hor)
+        let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.maxWidth,depth,.hor)
         return maxWidth
     }
     /**
      * New
      */
     static func maxHeight(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
-        let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSSConstants.maxHeight.rawValue,depth,.hor)
+        let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.maxHeight,depth,.hor)
         return maxHeight
     }
 }

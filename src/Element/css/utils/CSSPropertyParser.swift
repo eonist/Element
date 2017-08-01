@@ -7,17 +7,16 @@ import Cocoa
  */
 extension CSSPropertyParser{
     enum Pattern{
-        
+        static let arrayPattern:String = "^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"
+        static let stringPattern:String = "(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"
+        static let linearGradientPattern:String = "(?<=linear-gradient\\().+?(?=\\);?)"
+        static let radialGradientPattern:String = "(?<=radial-gradient\\().+?(?=\\);?)"
+        static let textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
+        static let dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
+        static let textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
+        static let transformRotatePattern:String = "(?<=rotate\\().+?(?=\\);?)"
+        static let calcPattern:String = "(?<=calc\\().+?(?=\\);?)"
     }
-    static var arrayPattern:String = "^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"
-    static var stringPattern:String = "(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"
-    static var linearGradientPattern:String = "(?<=linear-gradient\\().+?(?=\\);?)"
-    static var radialGradientPattern:String = "(?<=radial-gradient\\().+?(?=\\);?)"
-    static var textFormatPattern:String = "(?<=textFormat\\().+?(?=\\);?)"
-    static var dropShadowPattern:String = "(?<=drop-shadow\\().+?(?=\\);?)"
-    static var textFormatItemPattern:String = "^(\\w+?)\\:(.+?)$"
-    static var transformRotatePattern:String = "(?<=rotate\\().+?(?=\\);?)"
-    static var calcPattern:String = "(?<=calc\\().+?(?=\\);?)"
 }
 class CSSPropertyParser {
     /**

@@ -11,7 +11,7 @@ class GraphicSkinParser{
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
         graphic = Utils.rectGraphic(skin,graphic,depth)
         
-        switch (skin,depth){
+        switch true{
         case StylePropertyAsserter.hasFillet(skin,depth):
             print("cur is 0, prev is 1")
         case (1,0):

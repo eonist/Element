@@ -101,10 +101,10 @@ class StyleMetricParser {
             };return Fillet()
         }()
         let cornerRadiusIndex:Int = StyleParser.index(skin.style!, CSS.CornerRadius.cornerRadius, depth);//returns -1 if it doesnt exist
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopLeft.rawValue, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, CSSConstants.cornerRadiusTopLeft.rawValue, depth) }//TODO: replace this with the constant: cornerRadiusIndex
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusTopRight.rawValue, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, CSSConstants.cornerRadiusTopRight.rawValue, depth) }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomLeft.rawValue, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, CSSConstants.cornerRadiusBottomLeft.rawValue, depth) }
-        if(StyleParser.index(skin.style!, CSSConstants.cornerRadiusBottomRight.rawValue, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, CSSConstants.cornerRadiusBottomRight.rawValue, depth) }
+        if(StyleParser.index(skin.style!, CSS.CornerRadius.topLeft, depth) > cornerRadiusIndex) { fillet.topLeft = StylePropertyParser.number(skin, CSS.CornerRadius.topLeft, depth) }//TODO: replace this with the constant: cornerRadiusIndex
+        if(StyleParser.index(skin.style!, CSS.CornerRadius.topRight, depth) > cornerRadiusIndex) { fillet.topRight = StylePropertyParser.number(skin, CSS.CornerRadius.topRight, depth) }
+        if(StyleParser.index(skin.style!, CSS.CornerRadius.bottomLeft, depth) > cornerRadiusIndex) { fillet.bottomLeft = StylePropertyParser.number(skin, CSS.CornerRadius.bottomLeft, depth) }
+        if(StyleParser.index(skin.style!, CSS.CornerRadius.bottomRight, depth) > cornerRadiusIndex) { fillet.bottomRight = StylePropertyParser.number(skin, CSS.CornerRadius.bottomRight, depth) }
         return fillet
     }
 }

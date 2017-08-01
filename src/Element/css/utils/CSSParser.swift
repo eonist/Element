@@ -25,7 +25,7 @@ class CSSParser{
      * NOTE: We can't sanitize the cssString for whitespace becuase whitespace is needed to sepereate some variables (i.e: linear-gradient)
      * TODO: ⚠️️ Try to use lazy.map.reduce on the bellow
      */
-    static func styleCollection(_ cssString:String)->IStyleCollection{
+    static func styleCollection(_ cssString:String) -> StyleCollectionKind{
         let matches = RegExp.matches(cssString, CSSElement.pattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         return matches.mapReduce(StyleCollection()) {/*Loops through the pattern*/
             var styleCollection:StyleCollection = $0

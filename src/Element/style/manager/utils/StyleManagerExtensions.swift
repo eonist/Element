@@ -113,7 +113,7 @@ extension StyleManager{
                 let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/
                 addStyle(cssString)
                 Swift.print("Adding css styles time: " + "\(abs(startTime.timeIntervalSinceNow))")
-                StyleCache.writeStylesToDisk()
+                StyleCache.writeStylesToDisk(theUrl)
             }
         }
     }

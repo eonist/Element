@@ -77,8 +77,9 @@ extension StyleCache{
 extension StyleCache{
     /**
      * Store the styles as xml for faster load times
+     * PARAM: filePath: "~/Desktop/styles.xml".tildePath
      */
-    static func writeStylesToDisk(){
+    static func writeStylesToDisk(_ filePath:String){
         let data:XML = "<data></data>".xml
         let cssFileDates:XML = StyleCache.cssFileDates()
         data.appendChild(cssFileDates)
@@ -89,6 +90,6 @@ extension StyleCache{
         }
         data.appendChild(styles)
         let contentToWriteToDisk = data.xmlString
-        _ = FileModifier.write("~/Desktop/styles.xml".tildePath, contentToWriteToDisk)
+        _ = FileModifier.write(filePath, contentToWriteToDisk)
     }
 }

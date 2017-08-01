@@ -27,15 +27,15 @@ class StyleMetricParser {
      */
     static func padding(_ skin:ISkin,_ depth:Int = 0) -> Padding {
         var padding:Padding = {
-            guard let value = StylePropertyParser.value(skin, CSSConstants.padding.rawValue,depth) else{
+            guard let value = StylePropertyParser.value(skin, CSS.Padding.padding,depth) else{
                 return Padding()
             };return Padding(value)
         }()
-        let paddingIndex:Int = StyleParser.index(skin.style!, CSSConstants.padding.rawValue, depth)
-        padding.left = (StyleParser.index(skin.style!, CSSConstants.paddingLeft.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingLeft.rawValue, depth,.hor) : Utils.metric(padding.left, skin, .hor))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        padding.right = (StyleParser.index(skin.style!, CSSConstants.paddingRight.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingRight.rawValue, depth,.hor) : Utils.metric(padding.right, skin, .hor))!
-        padding.top = (StyleParser.index(skin.style!, CSSConstants.paddingTop.rawValue,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSSConstants.paddingTop.rawValue, depth,.ver) : Utils.metric(padding.top, skin,.ver))!
-        padding.bottom = ((StyleParser.index(skin.style!, CSSConstants.paddingBottom.rawValue,depth) > paddingIndex) ? StyleMetricParser.metric(skin, CSSConstants.paddingBottom.rawValue, depth,.ver) : Utils.metric(padding.bottom, skin,.ver))!
+        let paddingIndex:Int = StyleParser.index(skin.style!, CSS.Padding.padding, depth)
+        padding.left = (StyleParser.index(skin.style!, CSS.Padding.left,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSS.Padding.left, depth,.hor) : Utils.metric(padding.left, skin, .hor))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        padding.right = (StyleParser.index(skin.style!, CSS.Padding.right,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSS.Padding.right, depth,.hor) : Utils.metric(padding.right, skin, .hor))!
+        padding.top = (StyleParser.index(skin.style!, CSS.Padding.top,depth) > paddingIndex ? StyleMetricParser.metric(skin, CSS.Padding.top, depth,.ver) : Utils.metric(padding.top, skin,.ver))!
+        padding.bottom = ((StyleParser.index(skin.style!, CSS.Padding.bottom,depth) > paddingIndex) ? StyleMetricParser.metric(skin, CSS.Padding.bottom, depth,.ver) : Utils.metric(padding.bottom, skin,.ver))!
         return padding
     }
     /**

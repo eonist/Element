@@ -4,7 +4,6 @@ import Foundation
  */
 
 enum CSSConstants:String{
-    
     /*Font*/
     case ems = "ems"
     /*Layout*/

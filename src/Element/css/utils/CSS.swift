@@ -4,6 +4,12 @@ enum CSS{
     enum Layout{
         
     }
+    enum Sizes{
+        
+    }
+    enum Other{
+        
+    }
     enum CornerRadius{
         
     }
@@ -61,7 +67,7 @@ enum CSS{
             static let userichtextclipboard:String = "userichtextclipboard"
             static let wordwrap:String = "wordwrap"
         }
-        static let textPropertyNames:[String] {
+        static let textPropertyNames:[String] = {
             return [Property.align,Property.blockindent,Property.bold,Property.bullet,Property.color,Property.font,Property.indent,Property.italic,Property.kerning,Property.leading,Property.leftmargin,Property.letterspacing,Property.rightmargin,Property.size,Property.tabstops,Property.target,Property.underline,Property.url,Property.alwaysshowselection,Property.antialiastype,Property.autosize,Property.alpha,Property.background,Property.backgroundcolor,Property.border,Property.bordercolor,Property.condensewhite,Property.displayaspassword,Property.embedfonts,Property.gridfittype,Property.htmltext,Property.maxchars,Property.mousewheelenabled,Property.mouseenabled,Property.multiline,Property.restrict,Property.sharpness,Property.selectable,Property.thickness,Property.type,Property.textcolor,Property.userichtextclipboard,Property.wordwrap]
         }()
     }

@@ -2,10 +2,44 @@ import Foundation
 
 enum CSS{
     enum Layout{
-        
+        static let display = "display"
+        static let float = "float"
+        static let inline = "inline"
+        static let block = "block"
+        static let inline_block = "inlineblock"
+        static let right = "right"
+        static let left = "left"
+        static let none = "none"
+        static let clear = "clear"
+        static let both = "both"
+        static let margin = "margin"
+        static let marginLeft = "margin-left"
+        static let marginRight = "margin-right"
+        static let marginTop = "margin-top"
+        static let marginBottom = "margin-bottom"
+        static let padding = "padding"
+        static let paddingLeft = "padding-left"
+        static let paddingRight = "padding-right"
+        static let paddingTop = "padding-top"
+        static let paddingBottom = "padding-bottom"
+        static let cornerRadius = "corner-radius"
+        static let cornerRadiusTopLeft = "corner-radius-top-left"
+        static let cornerRadiusTopRight = "corner-radius-top-right"
+        static let cornerRadiusBottomLeft = "corner-radius-bottom-left"
+        static let cornerRadiusBottomRight = "corner-radius-bottom-right"
+        static let lineOffsetType = "line-offset-type"
+        static let lineOffsetTypeLeft = "line-offset-type-left"
+        static let lineOffsetTypeRight = "line-offset-type-right"
+        static let lineOffsetTypeTop = "line-offset-type-top"
+        static let lineOffsetTypeBottom = "line-offset-type-bottom"
     }
     enum Sizes{
-        
+        static let width = "width"
+        static let height = "height"
+        static let minWidth = "min-width"
+        static let maxWidth = "max-width"
+        static let minHeight = "min-height"
+        static let maxHeight = "max-height"
     }
     enum Other{
         

@@ -16,9 +16,9 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
         let margin:Margin = StyleMetricParser.margin(skin,depth)
         let floatType:String? = SkinParser.float(skin,depth)
         let pos:CGPoint = {
-            if(floatType == CSSConstants.left.rawValue || floatType == "" || floatType == nil) {
+            if(floatType == CSS.Align.left || floatType == "" || floatType == nil) {
                 return CGPoint(margin.left + offset.x, margin.top + offset.y)
-            }else if(floatType == CSSConstants.right.rawValue) {
+            }else if(floatType == CSS.Align.right) {
                 let x:CGFloat = padding.right + margin.right + offset.x
                 let y:CGFloat = margin.top + padding.top + offset.y
                 return CGPoint(x,y)
@@ -179,7 +179,7 @@ private class Utils{
      * Exception method used to fix a problem where Elements would not float correctly to the right if a leftfloating Element that also cleared to the right or both, came before a Right floating Element
      */
     static func exception(_ skin:ISkin) -> Bool{
-        return (SkinParser.float(skin) == CSS.Align.left && (SkinParser.clear(skin) == CSS.Align.right || SkinParser.clear(skin) == CSSConstants.both.rawValue))
+        return (SkinParser.float(skin) == CSS.Align.left && (SkinParser.clear(skin) == CSS.Align.right || SkinParser.clear(skin) == CSS.Align.both))
     }
     /**
      * NOTE: Loops backwards

@@ -1,7 +1,7 @@
 import Foundation
 
 enum CSS{
-    enum Layout{
+    enum Align{
         static let display = "display"
         static let float = "float"
         static let inline = "inline"
@@ -12,28 +12,36 @@ enum CSS{
         static let none = "none"
         static let clear = "clear"
         static let both = "both"
-        static let margin = "margin"
-        static let marginLeft = "margin-left"
-        static let marginRight = "margin-right"
-        static let marginTop = "margin-top"
-        static let marginBottom = "margin-bottom"
-        static let padding = "padding"
-        static let paddingLeft = "padding-left"
-        static let paddingRight = "padding-right"
-        static let paddingTop = "padding-top"
-        static let paddingBottom = "padding-bottom"
+    }
+    enum CornerRadius{
         static let cornerRadius = "corner-radius"
         static let cornerRadiusTopLeft = "corner-radius-top-left"
         static let cornerRadiusTopRight = "corner-radius-top-right"
         static let cornerRadiusBottomLeft = "corner-radius-bottom-left"
         static let cornerRadiusBottomRight = "corner-radius-bottom-right"
-        static let lineOffsetType = "line-offset-type"
-        static let lineOffsetTypeLeft = "line-offset-type-left"
-        static let lineOffsetTypeRight = "line-offset-type-right"
-        static let lineOffsetTypeTop = "line-offset-type-top"
-        static let lineOffsetTypeBottom = "line-offset-type-bottom"
     }
-    enum Sizes{
+    enum Margin{
+        static let margin = "margin"
+        static let left = "margin-left"
+        static let right = "margin-right"
+        static let top = "margin-top"
+        static let bottom = "margin-bottom"
+    }
+    enum Padding{
+        static let padding = "padding"
+        static let left = "padding-left"
+        static let right = "padding-right"
+        static let top = "padding-top"
+        static let bottom = "padding-bottom"
+    }
+    enum LineOffsetType{
+        static let lineOffsetType = "line-offset-type"
+        static let left = "line-offset-type-left"
+        static let right = "line-offset-type-right"
+        static let top = "line-offset-type-top"
+        static let bottom = "line-offset-type-bottom"
+    }
+    enum Size{
         static let width = "width"
         static let height = "height"
         static let minWidth = "min-width"
@@ -42,16 +50,15 @@ enum CSS{
         static let maxHeight = "max-height"
     }
     enum Other{
-        
-    }
-    enum CornerRadius{
-        
-    }
-    enum Margin{
-        
-    }
-    enum LineOffsetType{
-        
+        static let rotation = "rotation"
+        static let transform = "transform"
+        static let drop_shadow = "drop-shadow"
+        static let offset = "offset"
+        static let fill = "fill"
+        static let line = "line"
+        static let lineAlpha = "line-alpha"
+        static let fillAlpha = "fill-alpha"
+        static let lineThickness = "line-thickness"
     }
     enum Text{
         static let ems = "ems"

@@ -139,6 +139,7 @@ class CSSPropertyParser {
             }
         }
     }
+    private static func
 //    let normalizedURL:String = {
 //        if FilePathAsserter.isAbsolute(path: assetURL) {
 //            return assetURL

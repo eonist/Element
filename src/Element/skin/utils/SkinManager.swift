@@ -3,7 +3,7 @@ class SkinManager{
     /**
      * Returns a new SkinClass instance
      */
-    static func skin(_ skinName:String, _ element:IElement, _ style:IStyle)->Skin?{
+    static func skin(by skinName:String, for element:IElement, with style:IStyle)->Skin?{
         switch skinName{
             case SkinFactory.graphicsSkin :
                 return GraphicSkin(style, element.getSkinState(), element)

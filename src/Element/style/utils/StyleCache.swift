@@ -89,6 +89,7 @@ extension StyleCache{
             return $0
         }
         data.appendChild(styles)
+        Swift.print("data.xmlString: " + "\(data.xmlString)")
         let contentToWriteToDisk = data.xmlString
         _ = FileModifier.write(filePath, contentToWriteToDisk)
     }

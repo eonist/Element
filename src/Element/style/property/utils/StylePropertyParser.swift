@@ -81,7 +81,8 @@ class StylePropertyParser{
         return textFormat
     }
     /**
-     * Returns assert url
+     * Returns asset url
+     * TODO: ⚠️️ this should be improved by using an AssetType struct or something, or aybe tuple?
      */
     static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {
         guard let val = value(skin, CSS.Other.fill,depth),

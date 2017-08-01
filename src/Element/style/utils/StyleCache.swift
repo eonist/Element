@@ -78,7 +78,7 @@ extension StyleCache{
         Swift.print("cacheURL: " + "\(cacheURL)")
         let xmlFileExists:Bool = FileAsserter.exists(cacheURL)
         //Swift.print("xmlExists: " + "\(stylesXMLExists)")
-        if !xmlFileExists {/*Create a new styles.xml if non exists*/
+        if false || !xmlFileExists {/*Create a new styles.xml if non exists*/
             let xmlStr:String = "<data><cssFileDates></cssFileDates><styles></styles></data>"
             _ = FileModifier.write(cacheURL, xmlStr)
         }

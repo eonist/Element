@@ -13,4 +13,5 @@ class StyleManager{
     static var cssFileURLS:[String] = []//store only relative paths
     static var styles:[Stylable] = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
+    static let cacheURL:String = FilePathParser.resourcePath() + "/assets.bundle/styles/styles.xml"//"~/Desktop/styles.xml".tildePath
 }

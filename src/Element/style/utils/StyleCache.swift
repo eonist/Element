@@ -75,7 +75,7 @@ extension StyleCache{
      */
     static func cacheXML(cacheURL:String,stylesURL:String) -> XML?{
         /*1. Assert if the styles.xml exists and if it has content*/
-        //Swift.print("cacheURL: " + "\(cacheURL)")
+        Swift.print("cacheURL: " + "\(cacheURL)")
         let xmlFileExists:Bool = FileAsserter.exists(cacheURL)
         //Swift.print("xmlExists: " + "\(stylesXMLExists)")
         if !xmlFileExists {/*Create a new styles.xml if non exists*/

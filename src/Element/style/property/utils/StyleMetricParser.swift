@@ -8,7 +8,7 @@ class StyleMetricParser {
      * TODO: ⚠️️ Add support for % as it isn't implemented yet, see the margin implementation for guidance
      */
     static func offset(_ skin:ISkin,_ depth:Int = 0)->CGPoint {
-        guard let value:Any = StylePropertyParser.value(skin, CSSConstants.offset.rawValue, depth) else{
+        guard let value:Any = StylePropertyParser.value(skin, CSS.Other.offset, depth) else{
             return CGPoint(0,0)//<---temp solution
         }
         let array:[CGFloat] = {
@@ -86,7 +86,7 @@ class StyleMetricParser {
         return height.clip(minHeight,maxHeight)
     }
     static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
-        return StylePropertyParser.value(skin, CSSConstants.transform.rawValue, depth) as? CGFloat
+        return StylePropertyParser.value(skin, CSS.Other.transform, depth) as? CGFloat
     }
     /**
      * Returns a Fillet instance

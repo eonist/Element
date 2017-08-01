@@ -17,7 +17,7 @@ class StylePropertyParser{
      * TODO: ⚠️️ Should return nil as well
      */
     static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
-        let val = value(skin,CSSConstants.fill.rawValue,depth)
+        let val = value(skin,CSS.Other.fill,depth)
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
         }else{
@@ -28,7 +28,7 @@ class StylePropertyParser{
      * Returns an ILineStyle instance based on the Style attached to the skin
      */
     static func lineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
-        let val:Any? = value(skin,CSSConstants.line.rawValue,depth)
+        let val:Any? = value(skin,CSS.Other.line,depth)
         if let gradient = val as? IGradient {
             return gradientLineStyle(gradient,skin,depth)
         }else if let color = val as? NSColor{
@@ -84,7 +84,7 @@ class StylePropertyParser{
      * Returns assert url
      */
     static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {
-        guard let val = value(skin, CSSConstants.fill.rawValue,depth),
+        guard let val = value(skin, CSS.Other.fill,depth),
             let arr = val as? [Any],
             let str = arr[0] as? String else {
                 fatalError("no asset in \(skin) at depth: \(depth)")
@@ -95,7 +95,7 @@ class StylePropertyParser{
      * TODO: ⚠️️ This method is asserted before its used, so you may ommit the optionality
      */
     static func dropShadow(_ skin:ISkin, _ depth:Int = 0)->DropShadow? {
-        return value(skin, CSSConstants.drop_shadow.rawValue,depth) as? DropShadow
+        return value(skin, CSS.Other.drop_shadow,depth) as? DropShadow
     }
 }
 extension StylePropertyParser{
@@ -125,7 +125,7 @@ extension StylePropertyParser{
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
     fileprivate static func gradientLineStyle(_ gradient:IGradient, _ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle {
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness.rawValue,depth) as! CGFloat
+        let lineThickness:CGFloat = value(skin, CSS.Other.lineThickness,depth) as! CGFloat
         return GradientLineStyle(gradient, lineThickness, NSColor.clear)
     }
     /**
@@ -134,8 +134,8 @@ extension StylePropertyParser{
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
     fileprivate static func colorLineStyle(_ colorValue:NSColor?, _ skin:ISkin, _ depth:Int = 0) -> ILineStyle {
-        let lineThickness:CGFloat = value(skin, CSSConstants.lineThickness.rawValue,depth) as? CGFloat ?? CGFloat.nan
-        let lineAlpha:CGFloat = value(skin, CSSConstants.lineAlpha.rawValue,depth) as? CGFloat ?? 1
+        let lineThickness:CGFloat = value(skin, CSS.Other.lineThickness,depth) as? CGFloat ?? CGFloat.nan
+        let lineAlpha:CGFloat = value(skin, CSS.Other.lineAlpha,depth) as? CGFloat ?? 1
         let nsColor:NSColor = colorValue != nil ? colorValue!.alpha(lineAlpha) : NSColor.clear
         return LineStyle(lineThickness, nsColor)
     }
@@ -171,7 +171,7 @@ extension StylePropertyParser{
                 return nil
             }
         }()
-        let alpha:Any? = StylePropertyParser.value(skin,CSSConstants.fillAlpha.rawValue,depth)
+        let alpha:Any? = StylePropertyParser.value(skin,CSS.Other.fillAlpha,depth)
         let alphaValue:CGFloat = alpha as? CGFloat ?? 1
         nsColor = nsColor != nil ? nsColor!.alpha(alphaValue) : NSColor.clear/*<-- if color is NaN, then the color should be set to clear, or should it?, could we instad use nil, but then we would need to assert all fill.color values etc, we could create a custom NSColor class, like NSEmptyColor that extends NSCOlor, since we may want NSColor.clear in the future, like clear the fill color etc? clear is white with alpha 0.0*/
         return FillStyle(nsColor!)

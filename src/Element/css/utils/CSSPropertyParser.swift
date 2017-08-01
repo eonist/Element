@@ -6,6 +6,9 @@ import Cocoa
  * TODO: Make a pattern for all the w3c color shortcuts svg colors 116 colors
  */
 extension CSSPropertyParser{
+    enum Pattern{
+        
+    }
     static var arrayPattern:String = "^([\\w\\d\\/\\%\\-\\.~]+?\\040)+?(\\b|\\B|$)"
     static var stringPattern:String = "(?=[a-zA-z]*\\d*[a-zA-z]*\\d*)[a-zA-z]+"
     static var linearGradientPattern:String = "(?<=linear-gradient\\().+?(?=\\);?)"

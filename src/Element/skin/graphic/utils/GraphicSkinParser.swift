@@ -43,10 +43,11 @@ private class Utils{
    
     /**
      * NOTE: asset is svg for now but in the future it should support png
-     * TODO: ⚠️️ this solution isnt perfect but it works for now
+     * TODO: ⚠️️ this solution isn't perfect but it works for now
      */
-    static func asset(_ decoratable:IGraphicDecoratable,_ asset:String)->IGraphicDecoratable {
-        return AssetDecorator(decoratable, asset)
+    static func asset(_ decoratable:IGraphicDecoratable,_ assetURL:String)->IGraphicDecoratable {
+        
+        return AssetDecorator(decoratable, assetURL)
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance

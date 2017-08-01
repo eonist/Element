@@ -134,10 +134,17 @@ class CSSPropertyParser {
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
                 return str.nsColor
             }else{
-                return str
+                return str//asset?
             }
         }
     }
+//    let normalizedURL:String = {
+//        if FilePathAsserter.isAbsolute(path: assetURL) {
+//            return assetURL
+//        }else {
+//            return
+//        }
+//    }()
     /**
      * TextFormat
      * RETURNS a TextFormat class instance

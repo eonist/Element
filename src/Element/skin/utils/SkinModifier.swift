@@ -108,9 +108,9 @@ private class Utils{
      */
     static func clearNone(_ skin:ISkin, _ floatType:String?, _ leftSibling:ISkin?,_ rightSibling:ISkin?, _ top:CGFloat){
         skin.element!.y = {
-            if(floatType == CSSConstants.left.rawValue && leftSibling != nil) { return leftSibling!.element!.y }
-            else if(floatType == CSSConstants.right.rawValue && rightSibling != nil) { return rightSibling!.element!.y}
-            else if(floatType == CSSConstants.none.rawValue) { return skin.element!.y}
+            if(floatType == CSS.Align.left && leftSibling != nil) { return leftSibling!.element!.y }
+            else if(floatType == CSS.Align.right && rightSibling != nil) { return rightSibling!.element!.y}
+            else if(floatType == CSS.Align.none) { return skin.element!.y}
             else {return top}
         }()
     }
@@ -134,7 +134,7 @@ private class Utils{
      */
     static func floatLeft(_ skin:ISkin, _ clearType:String?, _ leftSibling:ISkin?,  _ left:CGFloat){
         skin.element?.x = {
-            if let leftSibling = leftSibling, (clearType != CSSConstants.left.rawValue && clearType != CSSConstants.both.rawValue) {/*Sets the position of the skin.element*/
+            if let leftSibling = leftSibling, (clearType != CSS.Align.left && clearType != CSS.Align.both) {/*Sets the position of the skin.element*/
                 return leftSibling.element!.x + SkinParser.margin(leftSibling).hor + SkinParser.width(leftSibling)
             };return left/*a previous element-sibling floats left*/
         }()

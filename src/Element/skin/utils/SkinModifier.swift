@@ -150,7 +150,7 @@ private class Utils{
         Swift.print("⚠️️⚠️️⚠️️ see floatLeft for how to fix this")
         
         skin.element!.x = {
-            if let rightSibling = rightSibling , (clearType != CSSConstants.right.rawValue && clearType != CSSConstants.both.rawValue) {/*a previous element-sibling floats right*/
+            if let rightSibling = rightSibling , (clearType != CSS.Align.right && clearType != CSS.Align.both) {/*a previous element-sibling floats right*/
                 return rightSibling.element!.x
             };return right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
         }()
@@ -165,21 +165,21 @@ private class Utils{
      *
      */
     static func leftFloatingElementSkin(_ elements:[IElement],_ index:Int)->ISkin? {
-        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.left.rawValue)
+        let lastIndexOfLeftFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSS.Align.left)
         return lastIndexOfLeftFloatingElement != -1 ? elements[lastIndexOfLeftFloatingElement].skin : nil/*the left element-sibling*/
     }
     /**
      * PARAM: index is the index of the skin being floated
      */
     static func rightFloatingElementSkin(_ elements:[IElement],_ index:Int)->ISkin? {
-        let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSSConstants.right.rawValue,exception)
+        let lastIndexOfRightFloatingElement:Int = Utils.lastIndex(elements, 0,index-1, CSS.Align.right,exception)
         return lastIndexOfRightFloatingElement != -1 ? elements[lastIndexOfRightFloatingElement].skin! : nil/*the right-sibling-skin*/
     }
     /**
      * Exception method used to fix a problem where Elements would not float correctly to the right if a leftfloating Element that also cleared to the right or both, came before a Right floating Element
      */
     static func exception(_ skin:ISkin) -> Bool{
-        return (SkinParser.float(skin) == CSSConstants.left.rawValue && (SkinParser.clear(skin) == CSSConstants.right.rawValue || SkinParser.clear(skin) == CSSConstants.both.rawValue))
+        return (SkinParser.float(skin) == CSS.Align.left && (SkinParser.clear(skin) == CSS.Align.right || SkinParser.clear(skin) == CSSConstants.both.rawValue))
     }
     /**
      * NOTE: Loops backwards
@@ -191,7 +191,7 @@ private class Utils{
         while(i >= rangeStart){
             let skin:ISkin = elements[i].skin!
             if(exception != nil && exception!(skin)) {return -1}
-            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSSConstants.none.rawValue) {return i}
+            if(SkinParser.float(skin) == floatType && SkinParser.display(skin) != CSS.Align.none) {return i}
             i -= 1
         }
         return -1

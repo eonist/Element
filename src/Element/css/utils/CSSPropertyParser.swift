@@ -135,8 +135,7 @@ class CSSPropertyParser {
                 return str.nsColor
             }else if StringAsserter.isFilePath(string) {
                 return str
-            }else{/*font name, because font names sometimes has spaces in them*/
-//                Swift.print("Asset str: " + "\(str)")
+            }else{/*Font name, because font names sometimes has spaces in them, TODO: ⚠️️ this shouls be taken care of by asserting the key*/
                 return str
             }
         }

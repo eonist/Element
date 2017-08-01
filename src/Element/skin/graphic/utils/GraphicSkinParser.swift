@@ -10,10 +10,21 @@ class GraphicSkinParser{
         let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth)
         var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
         graphic = Utils.rectGraphic(skin,graphic,depth)
-        if(StylePropertyAsserter.hasFillet(skin,depth)) {graphic = Utils.fillet(graphic, StyleMetricParser.fillet(skin,depth)) }
-        if(StylePropertyAsserter.hasGradient(skin,depth)) {graphic = Utils.gradient(graphic) }
-        if(StylePropertyAsserter.hasAsset(skin,depth)) {graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }
-        if(StylePropertyAsserter.hasDropShadow(skin,depth)) {graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin,depth))}
+        
+        switch (skin,depth){
+        case StylePropertyAsserter.hasFillet(skin,depth):
+            print("cur is 0, prev is 1")
+        case (1,0):
+            print("cur is 1, prev is 0")
+        default:
+            print("uh-ho")
+            break;
+        }
+
+        if StylePropertyAsserter.hasFillet(skin,depth) {graphic = Utils.fillet(graphic, StyleMetricParser.fillet(skin,depth)) }
+        if StylePropertyAsserter.hasGradient(skin,depth) {graphic = Utils.gradient(graphic) }
+        if StylePropertyAsserter.hasAsset(skin,depth) {graphic = Utils.asset(graphic, StylePropertyParser.asset(skin,depth)) }
+        if StylePropertyAsserter.hasDropShadow(skin,depth) {graphic = Utils.dropShadow(graphic, StylePropertyParser.dropShadow(skin,depth))}
         return graphic
     }
 }

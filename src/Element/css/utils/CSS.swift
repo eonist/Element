@@ -1,7 +1,7 @@
 import Foundation
 
 enum CSS{
-    enum Align{
+    enum Align{//TODO: ⚠️️ consider renaming this to Layout
         static let display = "display"
         static let float = "float"
         static let inline = "inline"

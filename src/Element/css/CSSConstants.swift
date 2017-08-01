@@ -15,6 +15,16 @@ enum CSS{
     enum LineOffsetType{
         
     }
+    enum Text{
+        static let ems = "ems"
+        static var emsFontSize:CGFloat {return 16}/*emsFontSize*/
+        enum Property{
+            
+        }
+        static var textPropertyNames:[String] {
+            return 
+        }
+    }
 }
 enum CSSConstants:String{
     

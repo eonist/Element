@@ -46,14 +46,7 @@ private class Utils{
      * TODO: ⚠️️ this solution isn't perfect but it works for now
      */
     static func asset(_ decoratable:IGraphicDecoratable,_ assetURL:String)->IGraphicDecoratable {
-        let normalizedURL:String = {
-            if FilePathAsserter.isAbsolute(path: assetURL) {
-                return assetURL
-            }else {
-                return
-            }
-        }()
-        return AssetDecorator(decoratable, normalizedURL)
+        return AssetDecorator(decoratable, assetURL)
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance

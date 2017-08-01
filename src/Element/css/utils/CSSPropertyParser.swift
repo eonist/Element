@@ -125,7 +125,6 @@ class CSSPropertyParser {
     /**
      * Returns an array comprised of values if the individual value is a digit then it is processed as a digit if its not a digit then its just processed as a string
      * EXAMPLE: a corner-radius "10 20 10 20"
-     * TODO: does this support comma delimited lists?
      */
     private static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
         let matches:[String] = StringModifier.split(string, " ")

@@ -5,14 +5,18 @@ import Foundation
  */
 class CSSParser{
     enum CSSElement {
-        static let precedingWith:String = "(?<=^|\\})"
-        static let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
-        static let valueGroup:String = "((?:.|\\n)*?)"
+        private static let precedingWith:String = "(?<=^|\\})"
+        private static let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
+        private static let valueGroup:String = "((?:.|\\n)*?)"
         static let pattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
     }
     enum CSSStyle{
         static let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
-        static let propertyValuePattern:String = "\\w\\.\\-%#\\040<>\\/~"
+        enum Property{
+            private static let value:String = "\\w\\.\\-%#\\040<>\\/~"/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
+            static let values:String = "(["+value+"]+?|["+value+"]+?\\(["+value+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
+        }
+        
     }
     enum CSSElementType:Int{case name = 1, value}
     /**
@@ -66,9 +70,7 @@ class CSSParser{
         let names = propertyName.contains(",") ? propertyName.split(propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         return names.lazy.map { name -> [IStyleProperty] in
             let name:String = RegExpModifier.removeWrappingWhitespace(name)
-            let valExp:String = CSSStyle.propertyValuePattern/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
-            let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
-            var values:[String] = propertyValue.match(pattern)
+            var values:[String] = propertyValue.match(CSSStyle.Property.values)
             return (0..<values.count).indices.map{ i -> IStyleProperty in
                 let value = RegExpModifier.removeWrappingWhitespace(values[i])
                 let propertyValue:Any = CSSPropertyParser.property(value)

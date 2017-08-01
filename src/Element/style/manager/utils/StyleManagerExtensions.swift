@@ -53,7 +53,7 @@ extension StyleManager{
     /**
      * Adds every style in a styleCollection to the stylemanager
      */
-    static func addStyle(_ styles:[IStyle]){
+    static func addStyle(_ styles:[IStyle], isHasingStyles:Bool = StyleManager.isHashingStyles){
         if isHashingStyles {
             styles.lazy.filter{$0.selectors.count > 0}.forEach{StyleManagerUtils.hashStyle($0)}
         }
@@ -64,57 +64,33 @@ extension StyleManager{
      * TODO: ⚠️️ add support for CSS import statement in the PARAM: string
      */
     static func addStyle(_ cssString:String){
-        let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
-        let removedCommentsCSS = RegExpModifier.removeComments(resolvedLinksCSS)
-        let styles = CSSParser.styleCollection(removedCommentsCSS).styles
-        addStyle(styles)
+        addStyle(StyleManagerUtils.styles(from: cssString))
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
      * PARAM: liveEdit enables you to see css changes while an app is running
      * IMPORTANT: ⚠️️ LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple approach)
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
-     * TODO: ⚠️️ Implement support for subFile watching aka watch children files that are imported into a parent css file
      * TODO: ⚠️️ Implement running the css resolve process on a background thread
      */
-    static func addStylesByURL(_ url:String,_ liveEdit:Bool = false) {
-        if(liveEdit){
-            let cssString:String = CSSFileParser.cssString(url)
-            if(cssFiles[url] != nil){/*check if the url already exists in the dictionary*/
-                let cssString:String = CSSLinkResolver.resolveLinks(cssFiles[url]!)
-                let styles:[IStyle] = CSSParser.styleCollection(cssString).styles
-                removeStyle(styles)/*if url exists then remove the styles that it represents*/
-            }else{/*If the url wasn't in the dictionary, then add it*/
-                cssFiles[url] = cssString//<--I'm not sure how this works, but it works
-            }
-            addStyle(cssString)
-        }else{/*not live*/
-            /*1. Assert if the styles.xml exists and if it has content*/
-            let theUrl:String  = FilePathParser.resourcePath() + "/temp.bundle/styles/styles.xml"//"~/Desktop/styles.xml".tildePath
-            
-            let stylesXMLExists:Bool = FileAsserter.exists(theUrl)
-            Swift.print("xmlExists: " + "\(stylesXMLExists)")
-            
-            //TODO: ⚠️️ Create a new styles.xml if non exists
-            
-            
-            let xml:XML = FileParser.xml(theUrl)//this should not be hardwired like this. use resource files or alike
-            let cssFileDateList = StyleCache.cssFileDateList(xml)
-            /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
-            let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, url)
-            Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached ? "✅" : "🚫")")
-            let isUpToDate = StyleCache.isUpToDate(cssFileDateList)
-            Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
-            /*if true then: read the styles from the xml*/
-            if(hasURLBeenCached && isUpToDate){
-                StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
-            }else{/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
-                let startTime = NSDate()
-                let cssString:String = CSSFileParser.cssString(url)/*This takes a few secs, basic.css takes around 4sec*/
-                addStyle(cssString)
-                Swift.print("Adding css styles time: " + "\(abs(startTime.timeIntervalSinceNow))")
-                StyleCache.writeStylesToDisk(theUrl)
-            }
+    static func addStyle(url stylesURL:String,liveEdit:Bool = false) {
+        if liveEdit {/*liveEdit, don't read from cache*/
+            let cssString:String = CSSFileParser.cssString(stylesURL)
+            let styles:[IStyle] = {
+                if let cssFile = cssFiles[stylesURL]{/*check if the url already exists in the dictionary*/
+                    let cssString:String = CSSLinkResolver.resolveLinks(cssFile)
+                    let styles:[IStyle] = StyleManagerUtils.styles(from: cssString)//was CSSParser.styleCollection(cssString).styles
+                    removeStyle(styles)/*if url exists then remove the styles that it represents*/
+                    return styles
+                }else{/*If the url wasn't in the dictionary, then add it*/
+                    cssFiles[stylesURL] = cssString//<--I'm not sure how this works, but it works
+                    return StyleManagerUtils.styles(from: cssString)
+                }
+            }()
+            addStyle(styles)
+        }else{/*not live, try and read from cache*/
+            let styles = StyleCache.styles(stylesURL: stylesURL)
+            addStyle(styles)
         }
     }
     /**
@@ -141,5 +117,11 @@ extension StyleManager{
     static func reset(){
         StyleManager.styles = []/*Reset*/
         StyleResolver.cachedStyles = [:]//Reset the cache aswell
+    }
+}
+//DEPRECATED
+extension StyleManager{
+    static func addStylesByURL(_ url:String,_ liveEdit:Bool = false) {//legacy support
+        addStyle(url:url,liveEdit:liveEdit)
     }
 }

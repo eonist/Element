@@ -1,4 +1,5 @@
 import Foundation
+@testable import Utils
 
 class StyleManagerUtils{
     static var stylesByElement:[String:[IStyle]] = [:]
@@ -39,5 +40,13 @@ class StyleManagerUtils{
                 stylesByState[style.selectors.last!.states.first!] = [style]
             }
         }    
+    }
+    /**
+     * 
+     */
+    static func styles(from cssString:String) -> [IStyle]{
+        let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
+        let removedCommentsCSS = RegExpModifier.removeComments(resolvedLinksCSS)
+        return CSSParser.styleCollection(removedCommentsCSS).styles
     }
 }

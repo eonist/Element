@@ -38,18 +38,15 @@ extension StyleCache{
     /**
      * Read pre-parsed styles
      */
-    static func readStylesFromXML(_ xml:XML){
+    static func readStylesFromXML(_ xml:XML) -> [IStyle]{
         //Swift.print("💾 StyleCache.readStylesFromDisk()")
-        let startTime = NSDate()
-        let stylesXML:XML = xml.firstNode("styles")!
-        let styles:[IStyle] = stylesXML.children?.lazy.map{ child -> IStyle? in
-            Style.unWrap(child as! XML)
-        }.flatMap{$0} ?? []
-        Swift.print("parse xml styles time: " + "\(abs(startTime.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
-        let startTime2 = NSDate()
-        Swift.print("styles.count: " + "\(styles.count)")
-        StyleManager.addStyle(styles)
-        Swift.print("addStyle time: " + "\(abs(startTime2.timeIntervalSinceNow))")//then try to measure the time of resolving all selectors
+        return testPerformance("parse xml styles time") {//then try to measure the time of resolving all selectors
+            let stylesXML:XML = xml.firstNode("styles")!
+            let styles:[IStyle] = stylesXML.children?.lazy.map{ child -> IStyle? in
+                Style.unWrap(child as! XML)
+                }.flatMap{$0} ?? []
+            return styles
+        }
     }
 }
 /*Asserter*/
@@ -72,6 +69,53 @@ extension StyleCache{
     static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
         return cssFileDateList.first(where: {$0.0 == filePath}) != nil//functional programming 🎉
     }
+    /**
+     *
+     */
+    static func cacheXML(cacheURL:String,stylesURL:String) -> XML?{
+        /*1. Assert if the styles.xml exists and if it has content*/
+        
+        //Swift.print("cacheURL: " + "\(cacheURL)")
+        let stylesXMLExists:Bool = FileAsserter.exists(cacheURL)
+        //Swift.print("xmlExists: " + "\(stylesXMLExists)")
+        if !stylesXMLExists {/*Create a new styles.xml if non exists*/
+            let xmlStr:String = "<data><cssFileDates></cssFileDates><styles></styles></data>"
+            _ = FileModifier.write(cacheURL, xmlStr)
+        }
+        let xml:XML = FileParser.xml(cacheURL)
+        let cssFileDateList = StyleCache.cssFileDateList(xml)
+        /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
+        let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFileDateList, stylesURL)
+        Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached ? "✅" : "🚫")")
+        let isUpToDate = StyleCache.isUpToDate(cssFileDateList)
+        Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
+        if hasURLBeenCached && isUpToDate {/*if true then: read the styles from the xml*/
+            return xml
+        }else {
+            return nil
+        }
+    }
+    /**
+     * a. Reads styles from cache
+     * b. or creates new cache and reads from css and stores it in cache
+     */
+    static func styles(stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [IStyle]{
+        if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
+            let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
+            return testPerformance("StyleManager.addStyle time:") {//then try to measure the time of resolving all selectors
+                Swift.print("styles.count: " + "\(styles.count)")
+                return styles
+            }
+        }else {/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
+            let styles:[IStyle] = testPerformance ("Adding css styles time: "){/*performance test*/
+                let cssString:String = CSSFileParser.cssString(stylesURL)/*This takes a few secs, basic.css takes around 4sec*/
+                //addStyle(cssString)
+                return StyleManagerUtils.styles(from: cssString)
+            }
+            StyleCache.save(styles,to:cacheURL)
+            return styles
+        }
+    }
 }
 /*Modifier*/
 extension StyleCache{
@@ -79,11 +123,12 @@ extension StyleCache{
      * Store the styles as xml for faster load times
      * PARAM: filePath: "~/Desktop/styles.xml".tildePath
      */
-    static func writeStylesToDisk(_ filePath:String){
+    static func save(_ styles:[IStyle],to filePath:String){
+        Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
         let data:XML = "<data></data>".xml
         let cssFileDates:XML = StyleCache.cssFileDates()
         data.appendChild(cssFileDates)
-        let styles:XML = StyleManager.styles.reduce("<styles></styles>".xml){
+        let styles:XML = styles.reduce("<styles></styles>".xml){
             let xml = Reflection.toXML($1)
             $0.appendChild(xml)
             return $0
@@ -94,3 +139,5 @@ extension StyleCache{
         _ = FileModifier.write(filePath, contentToWriteToDisk)
     }
 }
+
+

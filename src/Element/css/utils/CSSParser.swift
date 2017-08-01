@@ -1,17 +1,19 @@
 import Foundation
 @testable import Utils
 /**
- * TODO: if you strip the inital css data for spaces then you won't need to removeWrappingWhiteSpace all the time
+ * TODO: ⚠️️ if you strip the inital css data for spaces then you won't need to removeWrappingWhiteSpace all the time
  */
 class CSSParser{
-    static let CSSElementPattern:String = {
-        let precedingWith:String = "(?<=^|\\})"
-        let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
-        let valueGroup:String = "((?:.|\\n)*?)"
-        return precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
-    }()
-    static var stylePattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
-    static var stylePropertyValuePattern:String = "\\w\\.\\-%#\\040<>\\/~"
+    enum CSSElement {
+        static let precedingWith:String = "(?<=^|\\})"
+        static let nameGroup:String = "([\\w\\s\\,\\[\\]\\.\\#\\:]*?)"
+        static let valueGroup:String = "((?:.|\\n)*?)"
+        static let pattern:String = precedingWith + nameGroup + "\\{" + valueGroup + "\\}"/*this pattern is here so that its not recrated every time*/
+    }
+    enum CSSStyle{
+        static let pattern:String = "([\\w\\s\\,\\-]*?)\\:(.*?)\\;"
+        static let propertyValuePattern:String = "\\w\\.\\-%#\\040<>\\/~"
+    }
     enum CSSElementType:Int{case name = 1, value}
     /**
      * Returns a StyleCollection populated with Style instances, by converting a css string and assigning each style to a Styleclass and then adding these to the StyleCollection
@@ -21,7 +23,7 @@ class CSSParser{
      * TODO: ⚠️️ Try to use lazy.map.reduce on the bellow
      */
     static func styleCollection(_ cssString:String)->IStyleCollection{
-        let matches = RegExp.matches(cssString, CSSElementPattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
+        let matches = RegExp.matches(cssString, CSSElement.pattern)/*Finds and seperates the name of the style and the content of the style*/// :TODO: name should be +? value also?;
         return matches.mapReduce(StyleCollection()) {/*Loops through the pattern*/
             var styleCollection:StyleCollection = $0
             let match:NSTextCheckingResult = $1
@@ -46,7 +48,7 @@ class CSSParser{
     static func style(_ name:String,_ value:String)->IStyle{
         let name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
         let selectors:[ISelector] = SelectorParser.selectors(name)
-        let matches = value.matches(stylePattern)
+        let matches = value.matches(CSSStyle.pattern)
         let styleProps:[IStyleProperty] = matches.lazy.map{ match -> [IStyleProperty] in
             let propName:String = match.value(value, 1)/*name*/
             let propValue:String = match.value(value, 2)/*value*/
@@ -64,7 +66,7 @@ class CSSParser{
         let names = propertyName.contains(",") ? propertyName.split(propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
         return names.lazy.map { name -> [IStyleProperty] in
             let name:String = RegExpModifier.removeWrappingWhitespace(name)
-            let valExp:String = stylePropertyValuePattern/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
+            let valExp:String = CSSStyle.propertyValuePattern/*expression for a single value, added the tilde char to support relative paths while in debug, could be usefull for production aswell*/
             let pattern:String = "(["+valExp+"]+?|["+valExp+"]+?\\(["+valExp+",]+?\\))(?=,|$)"/*find each value that is seperated with the "," character (value can by itself contain commas, if so thous commas are somewhere within a "(" and a ")" character)*/
             var values:[String] = propertyValue.match(pattern)
             return (0..<values.count).indices.map{ i -> IStyleProperty in
@@ -77,18 +79,18 @@ class CSSParser{
     }
 }
 private class Utils{
-    static var siblingPattern:String = {
-        let precedingWith:String = "(?<=\\,|^)"
-        let prefixGroup:String = "([\\w\\d\\s\\:\\#]*?)?"
-        let group:String = "(\\[[\\w\\s\\,\\.\\#\\:]*?\\])?"
-        let suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
-        return precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
-    }()
-    static var bracketPattern:String = {
-        let precedingWith:String = "(?<=\\[)"
-        let endingWith:String = "(?=\\])"
-        return precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
-    }()
+    enum Sibling{
+        static let precedingWith:String = "(?<=\\,|^)"
+        static let prefixGroup:String = "([\\w\\d\\s\\:\\#]*?)?"
+        static let group:String = "(\\[[\\w\\s\\,\\.\\#\\:]*?\\])?"
+        static let suffix:String = "([\\w\\d\\s\\:\\#]*?)?(?=\\,|$)"//the *? was recently changed from +?
+        static let pattern = precedingWith + prefixGroup + group + suffix/*this pattern is here so that its not recrated every time*/
+    }
+    enum Bracket {
+        static let precedingWith:String = "(?<=\\[)"
+        static let endingWith:String = "(?=\\])"
+        static let pattern = precedingWith + "[\\w\\s\\,\\.\\#\\:]*?" + endingWith
+    }
     enum styleNameParts:Int{case prefix = 1, group, suffix}
     /**
      * Returns an array of style instances derived from PARAM: style (that has a name with 1 or more comma signs, or in combination with a group [])
@@ -100,9 +102,9 @@ private class Utils{
      * TODO: ⚠️️ You can use functional programming here 🤖: use lazy map and flatMap to flatten to 1 depth
      */
     static func siblingStyles(_ styleName:String,_ value:String)->[IStyle] {
-        var sibblingStyles:[IStyle] = []
+        var siblingStyles:[IStyle] = []
         let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
-        let matches = styleName.matches(siblingPattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
+        let matches = styleName.matches(Sibling.pattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         matches.forEach { match in
             if(match.numberOfRanges > 0){
                 let prefix:String = {
@@ -115,19 +117,19 @@ private class Utils{
                     return suffix != "" ? RegExpModifier.removeWrappingWhitespace(suffix):suffix
                 }()
                 if(group == "") {
-                    sibblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
+                    siblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{
-                    let namesInsideBrackets:String = RegExp.match(group, bracketPattern)[0]
+                    let namesInsideBrackets:String = RegExp.match(group, Bracket.pattern)[0]
                     let names:[String] = StringModifier.split(namesInsideBrackets, ",")
                     names.forEach {  name in
                         let condiditonalPrefix:String = prefix != "" ? prefix + " " : ""
                         let conditionalSuffix:String = suffix != "" ? " " + suffix : ""
                         let fullName:String =  condiditonalPrefix + name + conditionalSuffix
-                        sibblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)))
+                        siblingStyles.append(StyleModifier.clone(style, fullName, SelectorParser.selectors(fullName)))
                     }
                 }
             }
         }
-        return sibblingStyles
+        return siblingStyles
     }
 }

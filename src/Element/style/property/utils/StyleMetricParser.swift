@@ -44,15 +44,15 @@ class StyleMetricParser {
      */
     static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
         var margin:Margin = {
-            guard let value = StylePropertyParser.value(skin, CSSConstants.margin.rawValue,depth) else{
+            guard let value = StylePropertyParser.value(skin, CSS.Margin.margin,depth) else{
                 return Margin()
             };return Margin(value)
         }()
-        let marginIndex:Int = StyleParser.index(skin.style!, CSSConstants.margin.rawValue,depth)
-        margin.left = (StyleParser.index(skin.style!, CSSConstants.marginLeft.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginLeft.rawValue,depth,.hor) : Utils.metric(margin.left, skin, .hor))!/*if margin-left has a later index than margin then it overrides margin.left*/
-        margin.right = (StyleParser.index(skin.style!, CSSConstants.marginRight.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginRight.rawValue,depth,.hor) : Utils.metric(margin.right, skin, .hor))!
-        margin.top = (StyleParser.index(skin.style!, CSSConstants.marginTop.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginTop.rawValue,depth,.ver) : Utils.metric(margin.top, skin, .ver))!
-        margin.bottom = StyleParser.index(skin.style!, CSSConstants.marginBottom.rawValue,depth) > marginIndex ? metric(skin, CSSConstants.marginBottom.rawValue,depth,.ver)! : Utils.metric(margin.bottom, skin, .ver)!
+        let marginIndex:Int = StyleParser.index(skin.style!, CSS.Margin.margin,depth)
+        margin.left = (StyleParser.index(skin.style!, CSS.Margin.left,depth) > marginIndex ? metric(skin, CSS.Margin.left,depth,.hor) : Utils.metric(margin.left, skin, .hor))!/*if margin-left has a later index than margin then it overrides margin.left*/
+        margin.right = (StyleParser.index(skin.style!, CSS.Margin.right,depth) > marginIndex ? metric(skin, CSS.Margin.right,depth,.hor) : Utils.metric(margin.right, skin, .hor))!
+        margin.top = (StyleParser.index(skin.style!, CSS.Margin.top,depth) > marginIndex ? metric(skin, CSS.Margin.top,depth,.ver) : Utils.metric(margin.top, skin, .ver))!
+        margin.bottom = StyleParser.index(skin.style!, CSS.Margin.bottom,depth) > marginIndex ? metric(skin, CSS.Margin.bottom,depth,.ver)! : Utils.metric(margin.bottom, skin, .ver)!
         return margin
     }
     /**

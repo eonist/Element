@@ -69,29 +69,17 @@ extension StyleManager{
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)
      * PARAM: liveEdit enables you to see css changes while an app is running
+     * PARAM: stylesURL: full path: (/User/James/Desktop/styles/test.css)
      * IMPORTANT: ⚠️️ LiveEdit only removes styles that are updated, and then adds these new styles. (It's a simple approach)
      * NOTE: to access files within the project bin folder use: File.applicationDirectory.url + "assets/temp/main.css" as the url
      * TODO: ⚠️️ Implement running the css resolve process on a background thread
      */
     static func addStyle(url stylesURL:String,liveEdit:Bool = false) {
-        if liveEdit {/*liveEdit, don't read from cache*/
-            let cssString:String = CSSFileParser.cssString(stylesURL)
-            let styles:[IStyle] = {
-                if let cssFile = cssFiles[stylesURL]{/*check if the url already exists in the dictionary*/
-                    let cssString:String = CSSLinkResolver.resolveLinks(cssFile)
-                    let styles:[IStyle] = StyleManagerUtils.styles(from: cssString)//was CSSParser.styleCollection(cssString).styles
-                    removeStyle(styles)/*if url exists then remove the styles that it represents*/
-                    return styles
-                }else{/*If the url wasn't in the dictionary, then add it*/
-                    cssFiles[stylesURL] = cssString//<--I'm not sure how this works, but it works
-                    return StyleManagerUtils.styles(from: cssString)
-                }
-            }()
-            addStyle(styles)
-        }else{/*not live, try and read from cache*/
-            let styles = StyleCache.styles(stylesURL: stylesURL)
-            addStyle(styles)
-        }
+        let styles:[IStyle] = {
+            if liveEdit { return LiveEdit.styles(stylesURL:stylesURL) }/*liveEdit, don't read from cache*/
+            else {return StyleCache.styles(stylesURL:stylesURL)}/*not live, try and read from cache*/
+        }()
+        addStyle(styles)
     }
     /**
      * New

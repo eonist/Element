@@ -9,12 +9,13 @@ class CSSFileParser {
      * NOTE: this method is recursive
      * NOTE: this method also removes any comments (the reason it must be located within the recursive method is because comments may be among the import statements aswell)
      * NOTE: alternative method name: cssStringByURL
-     * PARAM: url The url to load the css file from (must include the path + file-name + file-extension)
+     * PARAM: url: The url to load the css file from (must include the path + file-name + file-extension)
      * PARAM: cssString the recursive string passed down the hierarchy
      * TODO: ⚠️️ Make an if clause that makes sure it doesn't import it self like path+import != url
+     Æ TODO: ⚠️️ Rename to expandHierarchy?
      */
-    static func cssString(_ url:String)->String {
-        StyleManager.cssFileURLS.append(url)//<--new
+    static func cssString(_ url:String) -> String {
+        StyleManager.cssFileURLS.append(url.tildify)//<--new
         guard let content:String = FileParser.content(url.tildePath) else{fatalError("No file at: \(url)")}//TODO: you need to make a tilePath assert
         let string:String = RegExpModifier.removeComments(content)
         let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)

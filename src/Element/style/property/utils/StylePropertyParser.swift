@@ -71,7 +71,7 @@ class StylePropertyParser{
                     matches.forEach { match in
                         let val:Any = match.value(stringValue, 1)/*Capturing group 1*/
                         let suffix:String = match.value(stringValue, 2)/*Capturing group 2*/
-                        if(suffix == CSSConstants.ems.rawValue) {value = "\(val)".cgFloat * CSSConstants.emsFontSize }
+                        if(suffix == CSS.Text.ems) {value = "\(val)".cgFloat * CSS.Text.emsFontSize }
                     }
                 }
                 if(value is [String]) { value = StringModifier.combine(value as! [String], " ") }/*Some fonts are seperated by a space and thus are converted to an array*/

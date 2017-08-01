@@ -15,10 +15,10 @@ enum CSS{
     }
     enum CornerRadius{
         static let cornerRadius = "corner-radius"
-        static let cornerRadiusTopLeft = "corner-radius-top-left"
-        static let cornerRadiusTopRight = "corner-radius-top-right"
-        static let cornerRadiusBottomLeft = "corner-radius-bottom-left"
-        static let cornerRadiusBottomRight = "corner-radius-bottom-right"
+        static let topLeft = "corner-radius-top-left"
+        static let topRight = "corner-radius-top-right"
+        static let bottomLeft = "corner-radius-bottom-left"
+        static let bottomRight = "corner-radius-bottom-right"
     }
     enum Margin{
         static let margin = "margin"

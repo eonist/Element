@@ -84,8 +84,10 @@ class StylePropertyParser{
      * Returns assert url
      */
     static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {
-        guard let val = value(skin, CSSConstants.fill.rawValue,depth), let arr = val as? [Any], let str = arr[0] as? String else {
-            fatalError("no asset in \(skin) at depth: \(depth)")
+        guard let val = value(skin, CSSConstants.fill.rawValue,depth),
+            let arr = val as? [Any],
+            let str = arr[0] as? String else {
+                fatalError("no asset in \(skin) at depth: \(depth)")
         }
         return str
     }

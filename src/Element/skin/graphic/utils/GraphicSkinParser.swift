@@ -50,7 +50,7 @@ private class Utils{
             if FilePathAsserter.isAbsolute(path: assetURL) {
                 return assetURL
             }else {
-                return 
+                return
             }
         }()
         return AssetDecorator(decoratable, normalizedURL)

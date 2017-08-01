@@ -2,30 +2,7 @@ import Foundation
 /**
  * TODO: ⚠️️ Move cases into sub cases like: CSSType.Layout.display etc and dont use case, use static let
  */
-enum CSS{
-    enum Layout{
-        
-    }
-    enum CornerRadius{
-        
-    }
-    enum Margin{
-        
-    }
-    enum LineOffsetType{
-        
-    }
-    enum Text{
-        static let ems = "ems"
-        static var emsFontSize:CGFloat {return 16}/*emsFontSize*/
-        enum Property{
-            
-        }
-        static var textPropertyNames:[String] {
-            return 
-        }
-    }
-}
+
 enum CSSConstants:String{
     
     /*Font*/

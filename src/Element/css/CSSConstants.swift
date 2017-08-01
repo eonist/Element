@@ -56,9 +56,9 @@ enum CSSConstants:String{
 //    case fillAlpha = "fill-alpha"
 //    case lineThickness = "line-thickness"
 }
-extension CSSConstants{
-    static var emsFontSize:CGFloat {return 16}
-    static var textPropertyNames:[String] {
-        return ["align","blockindent","bold","bullet","color","font","indent","italic","kerning","leading","leftmargin","letterspacing","rightmargin","size","tabstops","target","underline","url","alwaysshowselection","antialiastype","autosize","alpha","background","backgroundcolor","border","bordercolor","condensewhite","displayaspassword","embedfonts","gridfittype","htmltext","maxchars","mousewheelenabled","mouseenabled","multiline","restrict","sharpness","selectable","thickness","type","textcolor","userichtextclipboard","wordwrap"]
-    }
-}
+//extension CSSConstants{
+//    static var emsFontSize:CGFloat {return 16}
+//    static var textPropertyNames:[String] {
+//        return ["align","blockindent","bold","bullet","color","font","indent","italic","kerning","leading","leftmargin","letterspacing","rightmargin","size","tabstops","target","underline","url","alwaysshowselection","antialiastype","autosize","alpha","background","backgroundcolor","border","bordercolor","condensewhite","displayaspassword","embedfonts","gridfittype","htmltext","maxchars","mousewheelenabled","mouseenabled","multiline","restrict","sharpness","selectable","thickness","type","textcolor","userichtextclipboard","wordwrap"]
+//    }
+//}

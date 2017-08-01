@@ -39,7 +39,7 @@ class StyleResolver{
         }.flatMap{$0}.sorted(by: WeightedStyleAsserter.priority) /*Sorts each weightedStyle by its weight, the styles with most specificity has a lower index*/
         var finalStyle:IStyle = StyleManager.getStyle(styleName) ?? Style(styleName,querySelectors,[])/*find the exact styleName in the stylemanager or if that doesn't exist then create a new style to merge partily matched styles*/
         weightedStyles.forEach{ weightStyle in /*compiles the finalStyle by making sure the last selector matches the last selector in the weightstyle, this works different for font etc. which are inheritable*/
-            StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSSConstants.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
+            StyleModifier.merge(&finalStyle, StyleAsserter.direct(querySelectors, weightStyle) ? weightStyle : StyleModifier.filter(weightStyle, CSS.Text.textPropertyNames))/*direct styles will be appart of the final style and  you inherit from indirect styles, fonts,*or properties marked inherit*/
         }
         return finalStyle
     }
@@ -55,15 +55,11 @@ private class Utils{
                 styles += stylesByElement
             }
         }
-        if(selector.id != ""){
-            if let stylesByID = StyleManagerUtils.stylesByID[selector.id]{
-                styles += stylesByID
-            }
+        if selector.id != "", let stylesByID = StyleManagerUtils.stylesByID[selector.id] {
+            styles += stylesByID
         }
-        if(selector.classIds.count > 0){
-            if let stylesByClassId = StyleManagerUtils.stylesByClassId[selector.classIds.first!]{
-                styles += stylesByClassId
-            }
+        if selector.classIds.count > 0, let stylesByClassId = StyleManagerUtils.stylesByClassId[selector.classIds.first!]{
+            styles += stylesByClassId
         }
         if(selector.states.count > 0){
             if let stylesByState = StyleManagerUtils.stylesByState[selector.states.first!]{

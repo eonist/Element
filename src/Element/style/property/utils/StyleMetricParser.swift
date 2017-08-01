@@ -172,7 +172,7 @@ private class Utils{
                     return valNum / 100 * totWidth
                     }()
             }else {
-                return valNum * CSSConstants.emsFontSize/*["suffix"] == "ems"*/
+                return valNum * CSS.Text.emsFontSize/*["suffix"] == "ems"*/
             }
         }//maybe error here
         return nil

@@ -129,11 +129,11 @@ class CSSPropertyParser {
     private static func array(_ string:String)->[Any]{//<--Any because type can be CGFloat, String or NSColor
         let matches:[String] = StringModifier.split(string, " ")
         return matches.map { str in
-            if(StringAsserter.digit(str)){
+            if StringAsserter.digit(str) {
                 return StringParser.digit(str)
-            }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
+            }else if StringAsserter.color(str) || StringAsserter.webColor(str) {
                 return str.nsColor
-            }else if(StringAsserter.isFilePath(string)){
+            }else if StringAsserter.isFilePath(string) {
                 return str
             }else{/*font name, because font names sometimes has spaces in them*/
 //                Swift.print("Asset str: " + "\(str)")
@@ -141,14 +141,6 @@ class CSSPropertyParser {
             }
         }
     }
-//    private static func
-//    let normalizedURL:String = {
-//        if FilePathAsserter.isAbsolute(path: assetURL) {
-//            return assetURL
-//        }else {
-//            return
-//        }
-//    }()
     /**
      * TextFormat
      * RETURNS a TextFormat class instance

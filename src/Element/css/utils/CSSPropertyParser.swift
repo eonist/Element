@@ -15,7 +15,7 @@ extension CSSPropertyParser{
         static let dropShadow:String = "(?<=drop-shadow\\().+?(?=\\);?)"
         static let textFormatItem:String = "^(\\w+?)\\:(.+?)$"
         static let transformRotate:String = "(?<=rotate\\().+?(?=\\);?)"
-        static let calcPattern:String = "(?<=calc\\().+?(?=\\);?)"
+        static let calc:String = "(?<=calc\\().+?(?=\\);?)"
     }
 }
 class CSSPropertyParser {
@@ -71,7 +71,7 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
     private static func linearGradient(_ string:String)->IGradient{
-        if let propertyString:String = string.match(linearGradientPattern).first{
+        if let propertyString:String = string.match(Pattern.linearGradient).first{
             var properties:[String] = propertyString.split(",")
             let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
             var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
@@ -103,7 +103,7 @@ class CSSPropertyParser {
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
      private static func radialGradient(_ string:String)->IGradient{
-        if let propertyString:String = string.match(radialGradientPattern).first{
+        if let propertyString:String = string.match(Pattern.radialGradient).first{
             var properties:[String] = propertyString.split(",")
             let setupString:String = properties.shift()
             var gradient:RadialGradient = RadialGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
@@ -144,11 +144,11 @@ class CSSPropertyParser {
      * RETURNS a TextFormat class instance
      */
     private static func textFormat(_ input:String) -> TextFormat {
-        if let propertyString:String = input.match(textFormatPattern).first{
+        if let propertyString:String = input.match(Pattern.textFormat).first{
             let properties:[String] = propertyString.split(",")
             return properties.mapReduce(TextFormat()){
                 let property:String = $1
-                let matches:[NSTextCheckingResult] = property.matches(textFormatItemPattern)
+                let matches:[NSTextCheckingResult] = property.matches(Pattern.textFormatItem)
                 var textFormat:TextFormat = $0
                 matches.forEach{ match in
                     let name:String = match.value(property, 1)/*Capturing group 1*/
@@ -168,7 +168,7 @@ class CSSPropertyParser {
      * Returns a DropShadowFilter instance
      */
     private static func dropShadow(_ string:String)->DropShadow {
-        if let propertyString:String = string.match(dropShadowPattern).first{
+        if let propertyString:String = string.match(Pattern.dropShadow).first{
             var properties:[String] = propertyString.split(" ")
             let distance:CGFloat = StringParser.digit(properties[0])
             let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
@@ -190,10 +190,12 @@ class CSSPropertyParser {
     }
 }
 private class Utils{
-    static var gradientPattern:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
-    static var directionPattern:String = "left|right|top|bottom|top left|top right|bottom right|bottom left"
-    static var rotationTestPattern:String = "^\\d+?deg|\\d+$"
-    static var rotationMatchPattern:String = "^\\d+?$|^\\d+?(?=deg$)"
+    enum Pattern{
+        static var gradient:String = "^\\s?([a-zA-z0-9#]*)\\s?([0-9%\\.]*)?\\s?([0-9%\\.]*)?$"
+        static var direction:String = "left|right|top|bottom|top left|top right|bottom right|bottom left"
+        static var rotationTest:String = "^\\d+?deg|\\d+$"
+        static var rotationMatch:String = "^\\d+?$|^\\d+?(?=deg$)"
+    }
     /**
      * Returns a Gradient instance derived from PARAM: properties
      * NOTE: adds colors, opacities and ratios
@@ -203,7 +205,7 @@ private class Utils{
         let gradient:Gradient = properties.enumerated().reduce(Gradient()) { gradient, val in
             let i:Int = val.offset
             let property:String = val.element
-            let matches:[NSTextCheckingResult] = property.matches(gradientPattern)
+            let matches:[NSTextCheckingResult] = property.matches(Pattern.gradient)
             return matches.reduce(gradient) { grad,match in //for match:NSTextCheckingResult in
                 var grad = grad
                 let color:String = match.value(property,1)
@@ -224,10 +226,10 @@ private class Utils{
      * TODO: ⚠️️ support for tl tr br bk l r t b?
      */
     static func rotation(_ rotationMatch:String)->CGFloat{//td move to internal utils class?or maybe not?
-        if(rotationMatch.test(rotationTestPattern)) {
-            return rotationMatch.match(rotationMatchPattern)[0].cgFloat
-        }else if(rotationMatch.test(directionPattern)){
-            let angleType:String = rotationMatch.match(directionPattern)[0]
+        if(rotationMatch.test(Pattern.rotationTest)) {
+            return rotationMatch.match(Pattern.rotationMatch)[0].cgFloat
+        }else if(rotationMatch.test(Pattern.direction)){
+            let angleType:String = rotationMatch.match(Pattern.direction)[0]
             return Trig.angleType(angleType)-180.0// :TODO: Create support for top left and other corners
         }
         fatalError("Error")

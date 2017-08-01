@@ -133,13 +133,15 @@ class CSSPropertyParser {
                 return StringParser.digit(str)
             }else if(StringAsserter.color(str) || StringAsserter.webColor(str)){
                 return str.nsColor
+            }else if(StringAsserter){
+                
             }else{
 //                Swift.print("Asset str: " + "\(str)")
                 return str/*can be asset or font name*/
             }
         }
     }
-    private static func
+//    private static func
 //    let normalizedURL:String = {
 //        if FilePathAsserter.isAbsolute(path: assetURL) {
 //            return assetURL

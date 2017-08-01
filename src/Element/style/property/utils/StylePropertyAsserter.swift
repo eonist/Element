@@ -14,7 +14,7 @@ class StylePropertyAsserter {
         return value is Gradient/*|| StylePropertyParser.value(skin, "line", depth) is Gradient*/
     }
     static func hasAsset(_ skin:ISkin,_ depth:Int = 0)->Bool {
-        return StylePropertyParser.value(skin, CSS.Other.fill,depth) is [Any]
+        return StylePropertyParser.value(skin, CSS.Other.fill,depth) is [Any]//TODO: ⚠️️ I think you can do is Array here
     }
     static func hasDropShadow(_ skin:ISkin,_ depth:Int = 0)->Bool {
         let value = StylePropertyParser.value(skin, CSS.Other.drop_shadow,depth)

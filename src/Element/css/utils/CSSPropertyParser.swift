@@ -135,6 +135,7 @@ class CSSPropertyParser {
                 return str.nsColor
             }else if FilePathAsserter.isFilePath(string) {
                 guard FilePathAsserter.isAbsolute(path: string) else {
+                    //if path is relative aka ../../ etc then normalize the path with resource folder
                     return str
                 }
                 return str

@@ -64,7 +64,8 @@ extension StyleManager{
      * TODO: ⚠️️ add support for CSS import statement in the PARAM: string
      */
     static func addStyle(_ cssString:String){
-        addStyle(StyleManagerUtils.styles(from: cssString))
+        let styles = StyleManagerUtils.styles(from: cssString)
+        addStyle(styles)
     }
     /**
      * Adds styles by parsing a .css file (the css file can have import statements which recursivly are also parsed)

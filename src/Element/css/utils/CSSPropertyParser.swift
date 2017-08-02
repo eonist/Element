@@ -136,6 +136,7 @@ class CSSPropertyParser {
             }else if FilePathAsserter.isFilePath(string) {
                 guard FilePathAsserter.isAbsolute(path: string) else {
                     //if path is relative aka ../../ etc then normalize the path with resource folder
+                    FilePathParser.resourcePath()
                     return str
                 }
                 return str

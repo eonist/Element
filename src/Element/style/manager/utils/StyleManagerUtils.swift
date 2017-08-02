@@ -13,7 +13,7 @@ class StyleManagerUtils{
      */
     static func hashStyle(_ style:IStyle){
         if(style.selectors.last!.element != ""){
-            if (stylesByElement[style.selectors.last!.element] != nil){
+            if let selector = stylesByElement[style.selectors.last!.element]{
                 stylesByElement[style.selectors.last!.element]!.append(style)
             }else{
                 stylesByElement[style.selectors.last!.element] = [style]

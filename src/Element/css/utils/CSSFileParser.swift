@@ -40,7 +40,7 @@ class CSSFileParser {
         guard let content:String = FileParser.content(url.tildePath) else{fatalError("No file at: \(url)")}//TODO: you need to make a tilePath assert
         let string:String = RegExpModifier.removeComments(content)
         let importsAndStyles = CSSFileParser.importsAndStyles(string)
-        let importStrings:[String] = CSSFileParser.importStrings(importsAndStyles.imports)
+        let importStrings:[String] = CSSFileParser.importURLS(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         let cssString:String = importStrings.reduce(""){ cssString, importString in
             cssString + CSSFileParser.cssString(path + importString)/*<--imports css from other css files*/
@@ -48,13 +48,13 @@ class CSSFileParser {
         return cssString + importsAndStyles.style/*<--Add the styles in the current css file*/
     }
     /**
-     * Returns import urls in an array (only the path part)
+     * Returns clean urls in an array (only the path part)
      * NOTE: Supports both syntax styles: @import url("style.css") and @import "style.css"
      * NOTE: this function used to just be a one line match function but it seemd imposible to use match and be able to have the syntax url as an optional syntax
      * TODO: ⚠️️ this can probably be written a little better
      * Example: CSSFileParser.importStrings("@import url(\"mainContent.css\");")//mainContent.css
      */
-    static func importStrings(_ string:String)->[String]{
+    static func importURLS(_ string:String)->[String]{
         return string.matches(Pattern.importString).map {$0.value(string, 1)}/*capturing group 1*/
     }
     /**

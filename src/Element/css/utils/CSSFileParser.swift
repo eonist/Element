@@ -43,6 +43,10 @@ class CSSFileParser {
         //write url expander RegEx in appdelegate and add it here 🏀
         returnRelative
         
+        let relativeURLPattern = "(?=[,: ]?)([\\w/~]+.svg)(?=[,; ]?)"
+        let result = css.replace(relativeURLPattern, "👉$1👈")
+        
+        
         let importsAndStyles = CSSFileParser.importsAndStyles(cssContent)
         let importStrings:[String] = CSSFileParser.importURLS(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/

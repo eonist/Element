@@ -133,17 +133,7 @@ class CSSPropertyParser {
                 return StringParser.digit(str)
             }else if StringAsserter.color(str) || StringAsserter.webColor(str) {
                 return str.nsColor
-            }/*else if FilePathAsserter.isFilePath(string) {
-                guard FilePathAsserter.isAbsolute(path: string) else {
-                    //Continue here: 🏀
-                        //this wont work. You need normalize the url when you find it not here. you could pass the url down but thats bad design
-                        //because base url for css may be different than asset bundle etc. 
-                        //use similar code as remove comments, import url and isRelative asserter
-                    //this is a quick fix, you should propegate the base url from the css all thw way down and not hardcode to resourcePath like bellow
-                    return FilePathModifier.normalize(FilePathParser.resourcePath + "/assets.bundle/" + string)//if path is relative aka ../../ etc then normalize the path with resource folder
-                }
-                return str//abolute filePath
-            }*/else{/*Font name, because font names sometimes has spaces in them, TODO: ⚠️️ this shouls be taken care of by asserting the key*/
+            }else{/*can be URL or Font name, because font names sometimes has spaces in them, TODO: ⚠️️ this shouls be taken care of by asserting the key*/
                 return str
             }
         }

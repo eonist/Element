@@ -64,7 +64,7 @@ extension StyleManager{
      * TODO: ⚠️️ add support for CSS import statement in the PARAM: string
      */
     static func addStyle(_ cssString:String){
-        let styles = StyleManagerUtils.styles(from: cssString)
+        let styles = StyleManagerUtils.styles(cssString)
         addStyle(styles)
     }
     /**
@@ -77,8 +77,8 @@ extension StyleManager{
      */
     static func addStyle(url stylesURL:String,liveEdit:Bool = false) {
         let styles:[IStyle] = {
-            if liveEdit { return LiveEdit.styles(stylesURL:stylesURL) }/*liveEdit, don't read from cache*/
-            else {return StyleCache.styles(stylesURL:stylesURL)}/*not live, try and read from cache*/
+            if liveEdit { return LiveEdit.styles(stylesURL) }/*liveEdit, don't read from cache*/
+            else {return StyleCache.styles(stylesURL)}/*not live, try and read from cache*/
         }()
         addStyle(styles)
     }

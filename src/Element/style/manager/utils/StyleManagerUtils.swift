@@ -44,9 +44,9 @@ class StyleManagerUtils{
     /**
      * New
      */
-    static func styles(from cssString:String) -> [IStyle]{
+    static func styles(_ cssString:String, removeComments:Bool = true) -> [IStyle]{
         let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
-        let removedCommentsCSS = RegExpModifier.removeComments(resolvedLinksCSS)
+        let removedCommentsCSS =  removeComments ? RegExpModifier.removeComments(resolvedLinksCSS) : resolvedLinksCSS
         return CSSParser.styleCollection(removedCommentsCSS).styles
     }
 }

@@ -58,9 +58,10 @@ extension StyleCache{
     static func isUpToDate(_ cssFileDateList:[String:String])->Bool{
         for (filePath,date) in cssFileDateList{
             let filePath:String = filePath
+            guard FileAsserter.exists(filePath.tildePath) else {return false}//if the file doesnt exist anymore, then its not upToDate
             let modificationDate:String = String(FileParser.modificationDate(filePath.tildePath).timeIntervalSince1970)
             let cachedModificationDate:String = date
-            if(cachedModificationDate != modificationDate){return false}
+            if cachedModificationDate != modificationDate {return false}
         }
         return true
     }
@@ -99,7 +100,7 @@ extension StyleCache{
      * A. Reads styles from cache
      * B. or creates new cache and reads from css and stores it in cache
      */
-    static func styles(stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [IStyle]{
+    static func styles(_ stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [IStyle]{
         Swift.print("cacheURL: " + "\(cacheURL)")
         if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
@@ -110,7 +111,7 @@ extension StyleCache{
         }else {/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
             let styles:[IStyle] = testPerformance ("Adding css styles time: "){/*performance test*/
                 let cssString:String = CSSFileParser.cssString(stylesURL)/*This takes a few secs, basic.css takes around 4sec*/
-                return StyleManagerUtils.styles(from:cssString)
+                return StyleManagerUtils.styles(cssString,removeComments:false)/*<--we already removed comments so no need to do it again*/
             }
             StyleCache.save(styles,to:cacheURL)
             return styles

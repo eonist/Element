@@ -38,14 +38,14 @@ class CSSFileParser {
     static func cssString(_ url:String) -> String {
         StyleManager.cssFileURLS.append(url.tildify)//<--new, btw you shouldnt add things to stylemanager in this method as its only for parsing
         guard let content:String = FileParser.content(url.tildePath) else{fatalError("No file at: \(url)")}//TODO: you need to make a tilePath assert
-        let string:String = RegExpModifier.removeComments(content)
-        let importsAndStyles = CSSFileParser.importsAndStyles(string)
+        let cssContent:String = RegExpModifier.removeComments(content)
+        let importsAndStyles = CSSFileParser.importsAndStyles(cssContent)
         let importStrings:[String] = CSSFileParser.importURLS(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         let cssString:String = importStrings.reduce(""){ cssString, importString in
             cssString + CSSFileParser.cssString(path + importString)/*<--imports css from other css files*/
         }
-        return cssString + importsAndStyles.style/*<--Add the styles in the current css file*/
+        return cssString + importsAndStyles.style/*<--Append the styles in the current css file*/
     }
     /**
      * Returns clean urls in an array (only the path part)

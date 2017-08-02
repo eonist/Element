@@ -41,11 +41,11 @@ class CSSFileParser {
         let cssContent:String = RegExpModifier.removeComments(content)
         
         //write url expander RegEx in appdelegate and add it here 🏀
-        returnRelative
-        
-        let relativeURLPattern = "(?=[,: ]?)([\\w/~]+.svg)(?=[,; ]?)"
-        let result = css.replace(relativeURLPattern, "👉$1👈")
-        
+//        
+//        
+//        let relativeURLPattern = "(?=[,: ]?)([\\w/~]+.svg)(?=[,; ]?)"
+//        let result = css.replace(relativeURLPattern, "👉$1👈")
+
         
         let importsAndStyles = CSSFileParser.importsAndStyles(cssContent)
         let importStrings:[String] = CSSFileParser.importURLS(importsAndStyles.imports)

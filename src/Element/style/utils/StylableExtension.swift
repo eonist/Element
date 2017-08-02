@@ -55,30 +55,3 @@ extension Stylable{
         return StyleModifier.clone(self)
     }
 }
-
-
-/**
- * Adds styleProperties
- */
-/*func addStyleProperties(_ styleProperties:[IStyleProperty]){
- for styleProperty in styleProperties {
- addStyleProperty(styleProperty)
- }
- }*/
-
-/**
- * Convenience method since apple doesnt support default values in protocols
- * NOTE: Default argument not permitted in a protocol method
- */
-/*func getValue(_ name:String,_ depth:Int = 0)->Any?{
- return getValue(name, depth)
- }*/
-
-
-/**
- * Convenience method since apple doesn't support default values in protocols
- * NOTE: Default argument not permitted in a protocol method
- */
-/*func getStyleProperty(_ name:String,_ depth:Int = 0)->IStyleProperty?{
- return getStyleProperty(name, depth)
- }*/

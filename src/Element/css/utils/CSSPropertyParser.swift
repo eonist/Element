@@ -136,8 +136,8 @@ class CSSPropertyParser {
             }else if FilePathAsserter.isFilePath(string) {
                 guard FilePathAsserter.isAbsolute(path: string) else {
                     //if path is relative aka ../../ etc then normalize the path with resource folder
-                    FilePathParser.resourcePath()
-                    return str
+                    //this is a quick fix, you should propegate the base url from the css all thw way down 
+                    return FilePathModifier.normalize(FilePathParser.resourcePath() + "/" + string)
                 }
                 return str
             }else{/*Font name, because font names sometimes has spaces in them, TODO: ⚠️️ this shouls be taken care of by asserting the key*/

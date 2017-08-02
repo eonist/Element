@@ -7,8 +7,8 @@ class LiveEdit {
     static func styles(stylesURL:String) -> [IStyle]{
         let cssString:String = CSSFileParser.cssString(stylesURL)
         let styles = StyleManagerUtils.styles(from: cssString)
-        if let cssFile = StyleManager.cssFiles[stylesURL]{/*check if the url already exists in the dictionary*/
-//            let cssStr:String = CSSLinkResolver.resolveLinks(cssFile)
+        if let cssStr = StyleManager.cssFiles[stylesURL]{/*check if the url already exists in the dictionary*/
+//            cssStr = CSSLinkResolver.resolveLinks(cssFile)
             let styles:[IStyle] = StyleManagerUtils.styles(from: cssStr)
             StyleManager.removeStyle(styles)/*if url exists then remove the styles that it represents*/
         }else{/*If the url wasn't in the dictionary, then add it*/

@@ -17,7 +17,7 @@ class CSSLinkResolver {
      * NOTE: this method is recursive and traverses down through all its decendants. Think of a tree diagram
      * NOTE: also resolves the weight of each style and merges styles according to the CSS methodology
      * NOTE: you could also do a forward for loop and then offset the range as your traverse the matches
-     * TODO: the replaceRange method may slow things down research a better replace method
+     * TODO: ⚠️️ the replaceRange method may slow things down research a better replace method
      * EXAMPLE: resolveLinks("CustomButton{fill:yellow;} CustomButton:down{fill:green;}")//This is the log if you log the name and values: Name: fill, Value: yellow, Name: fill,Value: green
      */
     static func resolveLinks(_ string:String)->String{

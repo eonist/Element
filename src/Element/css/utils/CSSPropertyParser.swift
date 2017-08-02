@@ -134,7 +134,9 @@ class CSSPropertyParser {
             }else if StringAsserter.color(str) || StringAsserter.webColor(str) {
                 return str.nsColor
             }else if FilePathAsserter.isFilePath(string) {
-                guard FilePathAsserter.isAbsolute(path: string) else {return str}
+                guard FilePathAsserter.isAbsolute(path: string) else {
+                    return str
+                }
                 return str
             }else{/*Font name, because font names sometimes has spaces in them, TODO: ⚠️️ this shouls be taken care of by asserting the key*/
                 return str
@@ -170,25 +172,23 @@ class CSSPropertyParser {
      * Returns a DropShadowFilter instance
      */
     private static func dropShadow(_ string:String)->DropShadow {
-        if let propertyString:String = string.match(Pattern.dropShadow).first{
-            var properties:[String] = propertyString.split(" ")
-            let distance:CGFloat = StringParser.digit(properties[0])
-            let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
-            let colorValue:UInt = StringParser.color(properties[2])/*hex color*/
-            let alpha:CGFloat = StringParser.digit(properties[3])
-            let blurX:CGFloat = StringParser.digit(properties[4])
-            let blurY:CGFloat = StringParser.digit(properties[5])
-            let inner:Bool = StringParser.boolean(properties[8])/*isInnerShadow,isInsetShadowType etc*/
-            let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
-            let blur:CGFloat = max(blurX,blurY)
-            let angleInRadians = Trig.radians(angle)
-            let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
-            let offsetX:CGFloat = polarPoint.x
-            let offsetY:CGFloat = polarPoint.y
-            let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
-            return dropShadow
-        }
-        fatalError("illegal syntax \(string)")
+        guard let propertyString:String = string.match(Pattern.dropShadow).first else{fatalError("illegal syntax \(string)")}
+        var properties:[String] = propertyString.split(" ")
+        let distance:CGFloat = StringParser.digit(properties[0])
+        let angle:CGFloat = StringParser.digit(properties[1])/*In degrees*/
+        let colorValue:UInt = StringParser.color(properties[2])/*hex color*/
+        let alpha:CGFloat = StringParser.digit(properties[3])
+        let blurX:CGFloat = StringParser.digit(properties[4])
+        let blurY:CGFloat = StringParser.digit(properties[5])
+        let inner:Bool = StringParser.boolean(properties[8])/*isInnerShadow,isInsetShadowType etc*/
+        let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
+        let blur:CGFloat = max(blurX,blurY)
+        let angleInRadians = Trig.radians(angle)
+        let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
+        let offsetX:CGFloat = polarPoint.x
+        let offsetY:CGFloat = polarPoint.y
+        let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)
+        return dropShadow
     }
 }
 private class Utils{

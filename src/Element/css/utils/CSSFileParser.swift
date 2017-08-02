@@ -41,6 +41,7 @@ class CSSFileParser {
         let cssContent:String = RegExpModifier.removeComments(content)
         
         //write url expander RegEx in appdelegate and add it here 🏀
+        returnRelative
         
         let importsAndStyles = CSSFileParser.importsAndStyles(cssContent)
         let importStrings:[String] = CSSFileParser.importURLS(importsAndStyles.imports)

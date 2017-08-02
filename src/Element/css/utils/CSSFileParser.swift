@@ -36,7 +36,7 @@ class CSSFileParser {
      Æ TODO: ⚠️️ Rename to expandHierarchy?
      */
     static func cssString(_ url:String) -> String {
-        StyleManager.cssFileURLS.append(url.tildify)//<--new
+        StyleManager.cssFileURLS.append(url.tildify)//<--new, btw you shouldnt add things to stylemanager in this method as its only for parsing
         guard let content:String = FileParser.content(url.tildePath) else{fatalError("No file at: \(url)")}//TODO: you need to make a tilePath assert
         let string:String = RegExpModifier.removeComments(content)
         let importsAndStyles = CSSFileParser.importsAndStyles(string)

@@ -133,7 +133,7 @@ class CSSPropertyParser {
                 return StringParser.digit(str)
             }else if StringAsserter.color(str) || StringAsserter.webColor(str) {
                 return str.nsColor
-            }else if StringAsserter.isFilePath(string) {
+            }else if FilePathAsserter.isFilePath(string) {
                 return str
             }else{/*Font name, because font names sometimes has spaces in them, TODO: ⚠️️ this shouls be taken care of by asserting the key*/
                 return str

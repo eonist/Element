@@ -120,6 +120,7 @@ private class Utils{
                 if(group == "") {
                     siblingStyles.append(StyleModifier.clone(style, suffix, SelectorParser.selectors(suffix)))
                 }else{
+                    //⚠️️⚠️️⚠️️⚠️️TODO: use native firstMatch instead of the bellow line, its way faster⚠️️⚠️️⚠️️⚠️️
                     let namesInsideBrackets:String = RegExp.match(group, Bracket.pattern)[0]
                     let names:[String] = StringModifier.split(namesInsideBrackets, ",")
                     names.forEach {  name in

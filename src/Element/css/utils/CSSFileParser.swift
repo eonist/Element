@@ -39,7 +39,7 @@ class CSSFileParser {
         StyleManager.cssFileURLS.append(url.tildify)//<--new
         guard let content:String = FileParser.content(url.tildePath) else{fatalError("No file at: \(url)")}//TODO: you need to make a tilePath assert
         let string:String = RegExpModifier.removeComments(content)
-        let importsAndStyles = CSSFileParser.separateImportsAndStyles(string)
+        let importsAndStyles = CSSFileParser.importsAndStyles(string)
         let importStrings:[String] = CSSFileParser.importStrings(importsAndStyles.imports)
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         let cssString:String = importStrings.reduce(""){ cssString, importString in
@@ -63,11 +63,11 @@ class CSSFileParser {
      * NOTE: supports cssString that has only import or style or both
      * Example: "@import url(\"mainContent.css\");"
      */
-    static func separateImportsAndStyles(_ cssString:String)->(imports:String,style:String){// :TODO: rename to filter or split maybe?
+    static func importsAndStyles(_ cssString:String)->(imports:String,style:String){
         let matches = cssString.matches(Pattern.styleImportSeperation)
         if let match = matches[safe:0] {
-            let imports:String = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""//capturing group 1
-            let style:String = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""//capturing group 2
+            let imports:String = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""/*capturing group 1*/
+            let style:String = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""/*capturing group 2*/
             return (imports,style)
         };return ("","")/*else*/
     }

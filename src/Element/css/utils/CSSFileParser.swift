@@ -47,7 +47,7 @@ class CSSFileParser {
         
         let relativeURLPattern = "(?=[,: ]?)([\\w/~]+.svg)(?=[,; ]?)"
         let result = cssContent.replace(relativeURLPattern){
-            FilePathModifier.expand(<#T##filePath: String##String#>, baseURL: path)
+            FilePathModifier.expand(url, baseURL: path)
         }
         
         

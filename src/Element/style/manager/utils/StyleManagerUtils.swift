@@ -49,4 +49,15 @@ class StyleManagerUtils{
         let removedCommentsCSS =  removeComments ? RegExpModifier.removeComments(resolvedLinksCSS) : resolvedLinksCSS
         return CSSParser.styleCollection(removedCommentsCSS).styles
     }
+    static let relativeURLPattern = "(?=[,: ]?)([\\w/~]+.svg)(?=[,; ]?)"
+    /**
+     *
+     */
+    static func expandURLS(_ cssStr:String, baseURL:String) -> String{
+        let result = cssStr.replace(relativeURLPattern){
+            let expandedURL:String = FilePathModifier.expand($0, baseURL: baseURL)
+            return expandedURL
+        }
+        return result
+    }
 }

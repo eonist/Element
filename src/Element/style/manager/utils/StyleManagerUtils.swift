@@ -55,11 +55,11 @@ class StyleManagerUtils{
      */
     static func expandURLS(_ cssStr:String, baseURL:String) -> String{
         let result = cssStr.replace(relativeURLPattern){
-            Swift.print("$0: " + "\($0)")
+//            Swift.print("$0: " + "\($0)")
             let expandedURL:String = FilePathModifier.expand($0, baseURL: baseURL)//returns a filepath that is absolute
-            Swift.print("expandedURL: " + "\(expandedURL)")
+//            Swift.print("expandedURL: " + "\(expandedURL)")
             let userAgnosticFilePath:String = expandedURL.tildify//makes the filePath user agnostic
-            Swift.print("userAgnosticFilePath: " + "\(userAgnosticFilePath)")
+//            Swift.print("userAgnosticFilePath: " + "\(userAgnosticFilePath)")
             return userAgnosticFilePath
         }
         return result

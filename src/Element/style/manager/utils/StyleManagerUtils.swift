@@ -55,8 +55,9 @@ class StyleManagerUtils{
      */
     static func expandURLS(_ cssStr:String, baseURL:String) -> String{
         let result = cssStr.replace(relativeURLPattern){
-            let expandedURL:String = FilePathModifier.expand($0, baseURL: baseURL)
-            return expandedURL
+            let expandedURL:String = FilePathModifier.expand($0, baseURL: baseURL)//returns a filepath that is absolute
+            let normalized:String = FilePathModifier.normalize(expandedURL)//makes the filePath user agnostic
+            return normalized
         }
         return result
     }

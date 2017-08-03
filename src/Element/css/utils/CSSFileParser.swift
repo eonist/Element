@@ -41,6 +41,7 @@ class CSSFileParser {
         let cssContent:String = RegExpModifier.removeComments(content)
         
         //write url expander RegEx in appdelegate and add it here 🏀
+        StyleManagerUtils.expandURLS(cssContent, baseURL: <#T##String#>)
 //        
 //        
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/

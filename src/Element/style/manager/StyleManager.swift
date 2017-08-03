@@ -15,3 +15,6 @@ class StyleManager{
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
     static let cacheURL:String = FilePathParser.resourcePath + "/assets.bundle/styles/styles.xml"//"~/Desktop/styles.xml".tildePath
 }
+
+
+//TODO: ⚠️️ stylemanager must be able to have multiple styleCollections, stylecollection can be decorated to have cssFileURLS cached urls etc

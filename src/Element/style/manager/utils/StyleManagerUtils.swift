@@ -51,7 +51,7 @@ class StyleManagerUtils{
     }
     static let relativeURLPattern = "(?=[,: ]?)([\\w/~]+.svg)(?=[,; ]?)"
     /**
-     *
+     * New
      */
     static func expandURLS(_ cssStr:String, baseURL:String) -> String{
         let result = cssStr.replace(relativeURLPattern){

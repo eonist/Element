@@ -1,9 +1,6 @@
 import Cocoa
 @testable import Utils
 
-
-
-/*Parser*/
 extension StyleManager{
     /**
      * Locates and returns a Style by the PARAM: name.

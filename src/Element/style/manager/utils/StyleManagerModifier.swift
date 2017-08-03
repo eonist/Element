@@ -1,9 +1,6 @@
 import Cocoa
 @testable import Utils
 
-
-
-
 /*Modifier*/
 extension StyleManager{
     /**

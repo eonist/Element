@@ -4,6 +4,7 @@ import Foundation
 class StyleCache {}
 /*Parser*/
 extension StyleCache{
+    static let defaultXML:String = "<data><cssFileDates></cssFileDates><styles></styles></data>"
     /**
      * Compiles a list of css files derived from an xml
      * TODO: ⚠️️ return tuple instead
@@ -27,11 +28,14 @@ extension StyleCache{
      */
     static func cssFileDates()->XML{
         return StyleManager.cssFileURLS.reduce("<cssFileDates></cssFileDates>".xml){
-            let filePath:String = $1.tildePath//expand relative to absolute paths
-            let modificationDate = FileParser.modificationDate(filePath)
+            let absoluteURL = $1.tildePath//make it absolute: /Users/John/..
+            let normalizedURL = FilePathModifier.normalize(absoluteURL) //no more backlash syntax like ../../
+            let modificationDate = FileParser.modificationDate(normalizedURL)
             let cssFile = "<file></file>".xml
             cssFile["date"] = String(modificationDate.timeIntervalSince1970)
-            cssFile.stringValue = $1
+            let filePath:String = normalizedURL.tildify//make it user agnostic like ~/Desktop...
+//            Swift.print("filePath: " + "\(filePath)")
+            cssFile.stringValue = filePath
             $0.appendChild(cssFile)
             return $0
         }
@@ -72,7 +76,7 @@ extension StyleCache{
         return cssFileDateList.first(where: {$0.0 == filePath}) != nil//functional programming 🎉
     }
     /**
-     * PARAM:stylesURL: abbsolute path to root styles css file
+     * PARAM:stylesURL: absolute path to root styles css file
      */
     static func cacheXML(cacheURL:String,stylesURL:String) -> XML?{
         /*1. Assert if the styles.xml exists and if it has content*/
@@ -80,8 +84,7 @@ extension StyleCache{
         let xmlFileExists:Bool = FileAsserter.exists(cacheURL)
         //Swift.print("xmlExists: " + "\(stylesXMLExists)")
         if !xmlFileExists {/*Create a new styles.xml if non exists*/
-            let xmlStr:String = "<data><cssFileDates></cssFileDates><styles></styles></data>"
-            _ = FileModifier.write(cacheURL, xmlStr)
+            _ = FileModifier.write(cacheURL, defaultXML)
         }
         let xml:XML = FileParser.xml(cacheURL)
         let cssFilesAndDates = StyleCache.cssFilesAndDates(xml)
@@ -99,9 +102,10 @@ extension StyleCache{
     /**
      * A. Reads styles from cache
      * B. or creates new cache and reads from css and stores it in cache
+     * IMPORTANT: ⚠️️ the styles.xml file in bundle isn't written to, it's the styles.xml inside the .app file that is beeing written to
      */
     static func styles(_ stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [IStyle]{
-        Swift.print("cacheURL: " + "\(cacheURL)")
+        Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL)")
         if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
             return testPerformance("StyleManager.addStyle time:") {//then try to measure the time of resolving all selectors

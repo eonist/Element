@@ -47,15 +47,15 @@ class CSSFileParser {
         let path:String = StringParser.path(url)/*<--extracts the path and excludes the file-name and extension*/
         
         
-        StyleManagerUtils.expandURLS(cssContent, baseURL: path)
+        let cssContentWithExpandedURLS:String = StyleManagerUtils.expandURLS(cssContent, baseURL: path)
         
-        let importsAndStyles = CSSFileParser.importsAndStyles(cssContent)
+        let importsAndStyles = CSSFileParser.importsAndStyles(cssContentWithExpandedURLS)
         let importStrings:[String] = CSSFileParser.importURLS(importsAndStyles.imports)
         
-        let cssString:String = importStrings.reduce(""){ cssString, importString in
+        let retVal:String = importStrings.reduce(""){ cssString, importString in
             cssString + CSSFileParser.cssString(path + importString)/*<--imports css from other css files*/
         }
-        return cssString + importsAndStyles.style/*<--Append the styles in the current css file*/
+        return retVal + importsAndStyles.style/*<--Append the styles in the current css file*/
     }
     /**
      * Returns clean urls in an array (only the path part)

@@ -147,7 +147,7 @@ private class Utils{
      */
     static func floatRight(_ skin:ISkin, _ clearType:String?, _ rightSibling:ISkin?, _ right:CGFloat){
         
-        Swift.print("⚠️️⚠️️⚠️️ see floatLeft for how to fix this")
+        //Swift.print("⚠️️⚠️️⚠️️ see floatLeft for how to fix this")
         
         skin.element!.x = {
             if let rightSibling = rightSibling , (clearType != CSS.Align.right && clearType != CSS.Align.both) {/*a previous element-sibling floats right*/

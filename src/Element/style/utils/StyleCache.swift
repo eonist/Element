@@ -92,7 +92,7 @@ extension StyleCache{
         /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
         let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFilesAndDates, stylesURL.tildify)
         Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached ? "✅" : "🚫")")
-        let isUpToDate = hasURLBeenCached && StyleCache.isUpToDate(cssFilesAndDates)//something must have been cached in order for 
+        let isUpToDate = hasURLBeenCached && StyleCache.isUpToDate(cssFilesAndDates)//something must have been cached in order to check against cache
         Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
         if hasURLBeenCached && isUpToDate {/*if true then: read the styles from the xml*/
             return xml

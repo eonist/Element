@@ -60,6 +60,7 @@ extension StyleCache{
      * Asserts if the cssFiles that are cached have the same modified date as the cssFile that are querried
      */
     static func isUpToDate(_ cssFileDateList:[String:String])->Bool{
+//        Swift.print("isUpToDate count" + "\(cssFileDateList.count)")
         for (filePath,date) in cssFileDateList{
             let filePath:String = filePath
             guard FileAsserter.exists(filePath.tildePath) else {return false}//if the file doesnt exist anymore, then its not upToDate
@@ -91,7 +92,7 @@ extension StyleCache{
         /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
         let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFilesAndDates, stylesURL.tildify)
         Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached ? "✅" : "🚫")")
-        let isUpToDate = StyleCache.isUpToDate(cssFilesAndDates)
+        let isUpToDate = hasURLBeenCached && StyleCache.isUpToDate(cssFilesAndDates)//something must have been cached in order for 
         Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
         if hasURLBeenCached && isUpToDate {/*if true then: read the styles from the xml*/
             return xml

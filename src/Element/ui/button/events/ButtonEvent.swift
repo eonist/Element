@@ -22,3 +22,8 @@ class ButtonEvent:Event{
 enum ButtonEventType{
     case down,up,upInside,upOutside,out,over,rightMouseDown
 }
+extension Event{
+    func assert(_ type:ButtonEventType, id:String) -> Bool{
+        return self.type == type && (self.origin as? ElementKind)?.id == id
+    }
+}

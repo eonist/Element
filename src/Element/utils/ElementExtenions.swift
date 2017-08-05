@@ -29,6 +29,6 @@ extension Event{
      * new
      */
     func assert(_ type:String, id:String) -> Bool{
-        return self.type == type && (self.origin as? IElement)?.id == id
+        return self.type == type && (self.origin as? ElementKind)?.id == id
     }
 }

@@ -24,3 +24,11 @@ extension Element{
         return ElementParser.element(self, id, type)
     }
 }
+extension Event{
+    /**
+     * new
+     */
+    func assert(_ type:String, id:String) -> Bool{
+        return self.type == type && (self.origin as? IElement)?.id == id
+    }
+}

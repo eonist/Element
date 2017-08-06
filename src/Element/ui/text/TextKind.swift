@@ -8,7 +8,7 @@ protocol TextKind:IElement {
     var initText:String{get}
 }
 extension TextKind{
-    var textField:NSTextField{get{return (skin as! ITextSkin).textField}}
+    var textField:NSTextField{get{return (skin as! TextKind).textField}}
     /**
      * Sets text to the textfield, remember to set textformat after
      * NOTE: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;
@@ -24,6 +24,6 @@ extension TextKind{
         return getTextField().stringValue
     }
     func getTextField()->NSTextField{
-        return (skin as! ITextSkin).textField
+        return (skin as! TextSkinKind).textField
     }
 }

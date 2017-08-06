@@ -81,7 +81,7 @@ extension StyleCache{
      */
     static func cacheXML(cacheURL:String,stylesURL:String) -> XML?{
         /*1. Assert if the styles.xml exists and if it has content*/
-        Swift.print("cacheURL: " + "\(cacheURL)")
+//        Swift.print("cacheURL: " + "\(cacheURL)")
         let xmlFileExists:Bool = FileAsserter.exists(cacheURL)
         //Swift.print("xmlExists: " + "\(stylesXMLExists)")
         if !xmlFileExists {/*Create a new styles.xml if non exists*/
@@ -106,7 +106,7 @@ extension StyleCache{
      * IMPORTANT: ⚠️️ the styles.xml file in bundle isn't written to, it's the styles.xml inside the .app file that is beeing written to
      */
     static func styles(_ stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [IStyle]{
-        Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL)")
+//        Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL.tildify)")
         if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
             return testPerformance("StyleManager.addStyle time:") {//then try to measure the time of resolving all selectors
@@ -130,7 +130,7 @@ extension StyleCache{
      * PARAM: filePath: "~/Desktop/styles.xml".tildePath
      */
     static func save(_ styles:[IStyle],to filePath:String){
-        Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
+//        Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
         let data:XML = "<data></data>".xml
         
         let cssFileDates:XML = StyleCache.cssFileDates()

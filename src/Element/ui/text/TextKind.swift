@@ -24,6 +24,6 @@ extension TextKind{
         return getTextField().stringValue
     }
     func getTextField()->NSTextField{
-        return (skin as! TextSkinKind).textField
+        return (skin as! TextSkinable).textField
     }
 }

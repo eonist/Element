@@ -3,7 +3,7 @@ import Foundation
 /**
  * TODO: ⚠️️ Impliment IDisableable also and extend DisableTextButton
  */
-class RadioButton:TextButton,ISelectable{
+class RadioButton:TextButton,Selectable{
     lazy var radioBullet:RadioBullet = self.createRadioBullet()
     fileprivate var isSelected:Bool
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isSelected:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {

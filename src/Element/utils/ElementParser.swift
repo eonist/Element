@@ -6,7 +6,7 @@ class ElementParser{
      * Returns all children in PARAM: element that is of type IElement
      * NOTE: If this doesnt work just use the array casting technique with the NSParser.children method
      */
-    static func children<T>(_ view:NSView,_ type:T.Type)->[T] {
+    static func children<T>(_ view:NSView,_ type:T.Type? = nil)->[T] {
         return NSViewParser.childrenOfType(view, type)
     }
     /**

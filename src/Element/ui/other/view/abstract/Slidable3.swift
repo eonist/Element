@@ -37,12 +37,12 @@ extension Slidable3 {
         */
     }
     func hideSlider(){//convenience
-        Swift.print("hide")
+//        Swift.print("hide")
         hideSlider(.ver)
         hideSlider(.hor)
     }
     func showSlider(){//convenience
-        Swift.print("show")
+//        Swift.print("show")
         showSlider(.ver)
         showSlider(.hor)
     }

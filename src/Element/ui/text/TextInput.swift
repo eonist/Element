@@ -6,7 +6,7 @@ import Foundation
  */
 class TextInput:Element{
     lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
-    lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.inputString,self))}()
+    lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.inputString,self,"inputText"))}()
     private var textString:String
     var inputString:String/*interim use only, use inputText to get data*/
     init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:IElement? = nil,  _ id:String? = nil) {

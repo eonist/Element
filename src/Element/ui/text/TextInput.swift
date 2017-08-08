@@ -5,7 +5,7 @@ import Foundation
  * TODO: Rename inputTextArea to inputText
  */
 class TextInput:Element{
-    lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
+    lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self,"text"))}()
     lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.inputString,self,"inputText"))}()
     private var textString:String
     var inputString:String/*interim use only, use inputText to get data*/

@@ -3,7 +3,6 @@ import Foundation
 /**
  * :TODO: ⚠️️ Maybe rename text to defaultText and _text to _text
  * :TODO: Add support for setting size via css for the TextArea. Its currently not working
- * TODO: maybe add getText?
  */
 class TextArea:Element {
     lazy var text:Text = {self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
@@ -22,6 +21,9 @@ class TextArea:Element {
     }
     func setTextValue(_ textStr:String) {
         text.setText(textStr)
+    }
+    func getTextValue() -> String {
+        text.getText()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

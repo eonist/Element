@@ -26,8 +26,8 @@ let btn = Button(100,20)
 let window = NSApp.windows[0]
 window.contentView = InteractiveView()/*TopLeft orientation*/
 window.contentView?.addSubview(btn)
-btn.event = { event in
-   if(event.type == ButtonEvent.upInside){Swift.print("hello world")} 
+btn.addHandler(.upInside) = { (event:ButtonEvent) in
+   Swift.print("hello world")
 }
 ```
 

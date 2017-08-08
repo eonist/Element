@@ -23,6 +23,7 @@ class TextArea:Element {
         text.setText(textStr)
     }
     func getTextValue() -> String {
+        Swift.print("getTextValue() \(text.getText())")
         return text.getText()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

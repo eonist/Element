@@ -26,7 +26,7 @@ class TextSkin:Skin,ITextSkin{
      * TODO: ⚠️️ This method needs some refactoring
      */
     override func draw() {
-        Swift.print("draw")
+        Swift.print("TextSkin.draw")
         if hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged {
             SkinModifier.float(self)
             if hasSizeChanged {

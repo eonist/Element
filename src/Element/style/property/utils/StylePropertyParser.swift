@@ -63,8 +63,7 @@ class StylePropertyParser{
         var textFormat:TextFormat = TextFormat()
         let strings:[String] = TextFormatConstants.textFormatPropertyNames
         strings.forEach { textFormatKey in//TODO: Use flatMap here
-            var value:Any? = StylePropertyParser.value(skin, textFormatKey)
-            if(value != nil) {
+            if var value:Any = StylePropertyParser.value(skin, textFormatKey){
                 if(StringAsserter.metric("\(String(describing: value))")){
                     let stringValue:String = "\(String(describing: value))"
                     let matches = stringValue.matches(textMetricPattern)
@@ -74,8 +73,8 @@ class StylePropertyParser{
                         if(suffix == CSS.Text.ems) {value = "\(val)".cgFloat * CSS.Text.emsFontSize }
                     }
                 }
-                if(value is [String]) { value = StringModifier.combine(value as! [String], " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
-                textFormat[textFormatKey] = value!
+                if let strArr = value as? [String] { value = StringModifier.combine(strArr, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
+                textFormat[textFormatKey] = value
             }
         }
         return textFormat

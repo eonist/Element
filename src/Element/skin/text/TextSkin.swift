@@ -26,6 +26,7 @@ class TextSkin:Skin,ITextSkin{
      * TODO: ⚠️️ This method needs some refactoring
      */
     override func draw() {
+        Swift.print("draw")
         if hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged {
             SkinModifier.float(self)
             if hasSizeChanged {
@@ -55,6 +56,7 @@ extension TextSkin{
      * TODO: Add more advance setText features like start and end etc
      */
     func setText(_ text:String){
+        Swift.print("TextSkin.setText")
         textField.stringValue = text
         hasTextChanged = true
         draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
@@ -63,6 +65,7 @@ extension TextSkin{
      *
      */
     func applyProperties(_ textField:NSTextField){
+        Swift.print("TextSkin.applyProperties")
         let padding:Padding = StyleMetricParser.padding(self)
         let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         /*Swift.print("width: " + "\(width)")

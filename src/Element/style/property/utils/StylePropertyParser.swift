@@ -57,14 +57,14 @@ class StylePropertyParser{
     private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * Returns TextFormat
-     * TODO: Needs more refactoring
+     * TODO: Needs more refactoring, use functional programing and reduce
      */
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
         let strings:[String] = TextFormatConstants.textFormatPropertyNames
         strings.forEach { textFormatKey in//TODO: Use flatMap here
             if var value:Any = StylePropertyParser.value(skin, textFormatKey){
-                if(StringAsserter.metric("\(String(describing: value))")){
+                if StringAsserter.metric("\(String(describing: value))") {
                     let stringValue:String = "\(String(describing: value))"
                     let matches = stringValue.matches(textMetricPattern)
                     matches.forEach { match in

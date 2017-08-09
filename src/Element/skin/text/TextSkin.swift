@@ -6,7 +6,7 @@ import Cocoa
  * TODO: ⚠️️ Add support for disabling interactivty via css: mouseEnabled:true; or alike
  * TODO: ⚠️️ Add support for leading via css like: leading:2px;<--This requires some research effort as an atempt to solve this before yielded nothing (2-3H research): This has the answer but its very complicated to setup: http://stackoverflow.com/questions/11182735/nstextfield-add-line-spacing
  */
-class TextSkin:Skin,ITextSkin{
+class TextSkin:Skin,TextSkinable{
     lazy var textFormat:TextFormat = {
         return StylePropertyParser.textFormat(self)/*creates the textFormat*/
     }()
@@ -43,6 +43,7 @@ class TextSkin:Skin,ITextSkin{
      * // :TODO: Make a similar funciton for getHeight, based on needed space for the height of the textfield
      */
     override func getWidth() -> CGFloat {
+        Swift.print("TextSkin.getWidth")
         if((StylePropertyParser.value(self, TextFormatConstants.wordWrap.rawValue) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
             let padding:Padding = StyleMetricParser.padding(self)
             return textField.frame.size.width + padding.left + padding.right//swift 3 update happened

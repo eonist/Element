@@ -20,6 +20,7 @@ class TextArea:Element {
         text.setSize(width, height)
     }
     func setTextValue(_ textStr:String) {
+        Swift.print("TextArea.setTextValue")
         text.setText(textStr)
     }
     func getTextValue() -> String {

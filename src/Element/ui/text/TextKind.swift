@@ -15,7 +15,7 @@ extension TextKind{
      * NOTE: Apperently setText() is occupied by obj-c, use var text {get set} in the future
      */
     func setText(_ text:String){//<--- rename to setText, figure out away to either rename the text or rename setText, like setTheText or alike, setTextValue
-//        Swift.print("Text.setText")
+//        Swift.print("Thext.setText")
         (skin as! TextSkin).setText(text)
     }
     /**

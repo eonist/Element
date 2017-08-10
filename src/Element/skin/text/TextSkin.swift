@@ -26,7 +26,7 @@ class TextSkin:Skin,TextSkinable{
      * TODO: ⚠️️ This method needs some refactoring
      */
     override func draw() {
-        Swift.print("TextSkin.draw")
+//        Swift.print("TextSkin.draw")
         if hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged {
             SkinModifier.float(self)
             if hasSizeChanged {
@@ -43,7 +43,7 @@ class TextSkin:Skin,TextSkinable{
      * // :TODO: Make a similar funciton for getHeight, based on needed space for the height of the textfield
      */
     override func getWidth() -> CGFloat {
-        Swift.print("TextSkin.getWidth")
+//        Swift.print("TextSkin.getWidth")
         if((StylePropertyParser.value(self, TextFormatConstants.wordWrap.rawValue) == nil)){/*if the wordWrap is false the the width of the skin is equal to the width of the textfield (based on needed space for the text)*/
             let padding:Padding = StyleMetricParser.padding(self)
             return textField.frame.size.width + padding.left + padding.right//swift 3 update happened
@@ -57,7 +57,7 @@ extension TextSkin{
      * TODO: Add more advance setText features like start and end etc
      */
     func setText(_ text:String){
-        Swift.print("TextSkin.setText")
+//        Swift.print("TextSkin.setText")
         textField.stringValue = text
         hasTextChanged = true
         draw()//<---this must be uncommented, it was commented just for a test to be completed. Very imp. Debug the problem with it. its probaly simple, Now its uncommented again!
@@ -66,7 +66,7 @@ extension TextSkin{
      *
      */
     func applyProperties(_ textField:NSTextField){
-        Swift.print("TextSkin.applyProperties")
+//        Swift.print("TextSkin.applyProperties")
         let padding:Padding = StyleMetricParser.padding(self)
         let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         /*Swift.print("width: " + "\(width)")

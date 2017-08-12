@@ -110,7 +110,7 @@ extension StyleCache{
         if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
             return testPerformance("StyleManager.addStyle time:") {//then try to measure the time of resolving all selectors
-                Swift.print("styles.count: " + "\(styles.count)")
+//                Swift.print("StyleCache.styles.count: " + "\(styles.count)")
                 return styles
             }
         }else {/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
@@ -130,9 +130,8 @@ extension StyleCache{
      * PARAM: filePath: "~/Desktop/styles.xml".tildePath
      */
     static func save(_ styles:[IStyle],to filePath:String){
-//        Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
+//      Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
         let data:XML = "<data></data>".xml
-        
         let cssFileDates:XML = StyleCache.cssFileDates()
         data.appendChild(cssFileDates)
         let styles:XML = styles.reduce("<styles></styles>".xml){
@@ -146,5 +145,3 @@ extension StyleCache{
         _ = FileModifier.write(filePath, contentToWriteToDisk)
     }
 }
-
-

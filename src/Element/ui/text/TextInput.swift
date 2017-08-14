@@ -11,13 +11,7 @@ extension TextInput{
         var text:String = ""
         var input:String = ""
         var initial:Initiable = Initial()
-//        init(text:String,input:String,initial:Initiable){
-//            self.text = text
-//            self.input = input
-//            self.initial = initial
-//        }
     }
-    
 }
 
 class TextInput:Element{
@@ -30,9 +24,11 @@ class TextInput:Element{
     init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:ElementKind? = nil,  _ id:String? = nil) {
 //        self.textString = textString
 //        self.inputString = inputString
-        super.init(initial:Initial(size: CGSize(width, height), parent: parent, id: id))
+        let initial = Initial(size: CGSize(width, height), parent: parent, id: id)
+        super.init(initial:TextInputInitial(text:textString,input:inputString,initial:initial))
     }
     override init(initial: Initiable) {
+        
         super.init(initial: initial)
     }
     override func resolveSkin() {

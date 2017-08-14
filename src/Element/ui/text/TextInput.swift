@@ -16,7 +16,6 @@ class TextInput:Element{
     }
     override func resolveSkin() {
         super.resolveSkin()
-        //isInteractive = true//<-- only the textField should be interactive
         _ = text
         _ = inputTextArea
     }
@@ -38,4 +37,8 @@ extension TextInput{
         inputTextArea.setTextValue(text)
     }
     var inputText:String {return inputTextArea.text.getText()}
+    //New
+    convenience init(size:CGSize = CGSize(NaN,NaN), text:String = "", _ input:String = "", parent:ElementKind? = nil, id:String? = nil){
+        self.init(size.width, size.height, text, input,parent,id)
+    }
 }

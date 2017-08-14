@@ -1,8 +1,11 @@
 import Foundation
 @testable import Utils
-
+/**
+ * When you need to browse for files or urls
+ * NOTE: this is a Composition of other UI components
+ * TODO: ⚠️️ Add some event logic to this class, and modal popup
+ */
 class FilePicker:Element{
-    //size:self.initData.size,text:self.initData.text,input:self.initData.input,parent:self.initData.parent,id:self.initData.id
     lazy var textInput:TextInput = .init(initial:self.textInputInitial)
     lazy var button:TextButton = .init(initial:self.buttonInitial)
     override init(initial: Initiable) {

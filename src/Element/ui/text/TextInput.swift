@@ -13,7 +13,6 @@ extension TextInput{
         var initial:Initiable = Initial()
     }
 }
-
 class TextInput:Element{
     lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.initData.text,self,"text"))}()
     lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText"))}()

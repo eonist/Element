@@ -8,31 +8,48 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  * TODO: ⚠️️ The width,height,x,y could be stored in a deeper super class. As it's not related to Styling per se
  */
-class Element:InteractiveView2,IElement {
-    var width:CGFloat
-    var height:CGFloat
+protocol Initiable{//consider renaming to Configurable
+    var size:CGSize {get set}//eventual size should be let not var
+    var parent:ElementKind? {get set}
+    var id:String? {get set}
+}
+protocol InitDecoratable:Initiable{
+    var initial:Initiable {get set}
+}
+extension InitDecoratable{
+    var size:CGSize {get{return initial.size}set{initial.size = newValue}}
+    var parent:ElementKind? {get{return initial.parent}set{initial.parent = newValue}}
+    var id:String? {get{return initial.id}set{initial.id = newValue}}
+}
+struct Initial:Initiable {var size:CGSize = CGSize(NaN,NaN),parent:ElementKind? = nil,id:String? = nil}
+class Element:InteractiveView,ElementKind {
+    
+    var initial:Initiable//this doesnt need to be exposes subclass will already have it from their init
+    //TODO: ⚠️️ move bellow to a deprecated extension
+    var width:CGFloat {get{return self.initial.size.width}set{self.initial.size.width = newValue}}
+    var height:CGFloat {get{return self.initial.size.height}set{self.initial.size.height = newValue}}
+    var parent:IElement? {get{return self.initial.parent}set{self.initial.parent = newValue}}
+    var id:String? {get{return self.initial.id}set{self.initial.id = newValue}}/*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
+    /*State */
     var state:String = SkinStates.none
     var skin:ISkin?//TODO: ⚠️️ make this lazy
-    var parent:IElement?
-    var id:String?/*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
     var isDisabled:Bool = false
     var isFocused:Bool = false
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */
+    //⚠️️ TODO: deprecate this init
     init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil,_ id:String? = nil){
-        self.parent = parent
-        self.id = id
-        self.width = width
-        self.height = height
+//        self.parent = parent
+        initial = Initial.init(size: CGSize(width,height),parent: parent,id: id)
+//        self.id = id
+//        self.width = width
+//        self.height = height
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
         resolveSkin()
     }
-    //new
-    init(size:CGSize = CGSize(NaN,NaN), parent:ElementKind? = nil, id:String? = nil){
-        self.parent = parent
-        self.id = id
-        self.width = size.width
-        self.height = size.height
-        super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
+    //new,this must be in class because if not subclasses cant reach it
+    init(initial:Initiable){
+        self.initial = initial
+        super.init(frame: NSRect(0,0,initial.size.width.isNaN ? 0 : initial.size.width,initial.size.height.isNaN ? 0 : initial.size.height))
         resolveSkin()
     }
     /**
@@ -54,7 +71,7 @@ class Element:InteractiveView2,IElement {
      * NOTE: You cant name this method to setSkinState because this name will be occupied if you have a variable named skinState
      */
     func setSkinState(_ state:String) {
-        skin!.setSkinState(state)
+        skin?.setSkinState(state)
     }
     /**
      * Sets the width and height of the skin and this instance.
@@ -62,7 +79,7 @@ class Element:InteractiveView2,IElement {
     func setSize(_ width:CGFloat, _ height:CGFloat) {// :TODO: should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
         self.width = width//<--I'm not sure these are correct? i get that we have to store size somewhere but frame is such a central variable fro appkit
         self.height = height
-        self.skin!.setSize(width, height)
+        self.skin?.setSize(width, height)
     }
     func getWidth()->CGFloat{
         return skin != nil ? skin!.getWidth() : NaN

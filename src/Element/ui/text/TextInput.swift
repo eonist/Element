@@ -3,16 +3,37 @@ import Foundation
 /**
  * TODO: ⚠️️ Through extension you should add a way to set inputTextArea text value.
  * TODO: Rename inputTextArea to inputText
+ * TODO: ⚠️️ Store ids as Enum Keys, so unfold can reuse these
  */
+
+extension TextInput{
+    struct TextInputInitial:InitDecoratable{
+        var text:String = ""
+        var input:String = ""
+        var initial:Initiable = Initial()
+//        init(text:String,input:String,initial:Initiable){
+//            self.text = text
+//            self.input = input
+//            self.initial = initial
+//        }
+    }
+    
+}
+
 class TextInput:Element{
-    lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self,"text"))}()
-    lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.inputString,self,"inputText"))}()
-    private var textString:String
-    var inputString:String/*interim use only, use inputText to get data*/
-    init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:IElement? = nil,  _ id:String? = nil) {
-        self.textString = textString
-        self.inputString = inputString
-        super.init(width, height, parent, id)
+    lazy var text:Text = {return self.addSubView(Text(self.getWidth(),self.getHeight(),self.initData.text,self,"text"))}()
+    lazy var inputTextArea:TextArea = {return self.addSubView(TextArea(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText"))}()
+    
+//    private var textString:String/*interim use only, use inputText to get data*/
+//    private var inputString:String/*interim use only, use inputText to get data*/
+    var initData:TextInputInitial {return super.initial as? TextInputInitial ?? {fatalError("initial not avaiable")}()}
+    init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:ElementKind? = nil,  _ id:String? = nil) {
+//        self.textString = textString
+//        self.inputString = inputString
+        super.init(initial:Initial(size: CGSize(width, height), parent: parent, id: id))
+    }
+    override init(initial: Initiable) {
+        super.init(initial: initial)
     }
     override func resolveSkin() {
         super.resolveSkin()

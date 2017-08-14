@@ -26,6 +26,15 @@ class Element:InteractiveView2,IElement {
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
         resolveSkin()
     }
+    //new
+    init(size:CGSize = CGSize(NaN,NaN), parent:ElementKind? = nil, id:String? = nil){
+        self.parent = parent
+        self.id = id
+        self.width = size.width
+        self.height = size.height
+        super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
+        resolveSkin()
+    }
     /**
      * Draws the graphics
      */
@@ -73,7 +82,5 @@ class Element:InteractiveView2,IElement {
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
 }
 extension Element{
-    convenience init(size:CGSize = CGSize(NaN,NaN), parent:ElementKind? = nil, id:String? = nil){
-        self.init(size.width, size.height, parent, id)
-    }
+//    convenience 
 }

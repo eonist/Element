@@ -67,8 +67,8 @@ class CSSFileParser {
     static func importsAndStyles(_ cssString:String)->(imports:String,style:String){
         let matches = cssString.matches(Pattern.styleImportSeperation)
         if let match = matches[safe:0] {
-            let imports:String = match.rangeAt(1).length > 0 ? match.value(cssString, 1) : ""/*capturing group 1*/
-            let style:String = match.rangeAt(2).length > 0 ? match.value(cssString, 2) : ""/*capturing group 2*/
+            let imports:String = match.range(at: 1).length > 0 ? match.value(cssString, 1) : ""/*capturing group 1*/
+            let style:String = match.range(at:2).length > 0 ? match.value(cssString, 2) : ""/*capturing group 2*/
             return (imports,style)
         };return ("","")/*else*/
     }

@@ -20,21 +20,21 @@ extension Scrollable3{
         //Swift.print("event.phase: " + "\(event.phase)")
         //Swift.print("Scrollable3.scroll() \(event.phase.type) scrollDeltaX: \(event.scrollingDeltaX) deltaX: \(event.deltaX)")
         switch event.phase{
-            case NSEventPhase.changed/*4*/:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
-            case NSEventPhase.mayBegin/*32*/:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
-            case NSEventPhase.began/*1*/:onScrollWheelEnter()/*The mayBegin phase doesn't fire if you begin the scrollWheel gesture very quickly*/
-            case NSEventPhase.ended/*8*/:onScrollWheelExit()//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
-            case NSEventPhase.cancelled/*16*/:onScrollWheelCancelled()/*this trigers if the scrollWhell gestures goes off the trackpad etc, and also if there was no movement and you release again*/
+        case NSEvent.Phase.changed/*4*/:onScrollWheelChange(event)/*Fires everytime there is direct scrollWheel gesture movment and momentum, the momentum fades.*/
+        case NSEvent.Phase.mayBegin/*32*/:onScrollWheelEnter()/*Can be used to detect if two fingers are touching the trackpad*/
+        case NSEvent.Phase.began/*1*/:onScrollWheelEnter()/*The mayBegin phase doesn't fire if you begin the scrollWheel gesture very quickly*/
+        case NSEvent.Phase.ended/*8*/:onScrollWheelExit()//Swift.print("ended")/*if you release your touch-gesture and the momentum of the gesture has stopped.*/
+        case NSEvent.Phase.cancelled/*16*/:onScrollWheelCancelled()/*this trigers if the scrollWhell gestures goes off the trackpad etc, and also if there was no movement and you release again*/
             //case NSEventPhase(rawValue:0):onInDirectScrollWheelChange(event);/**//*onScrollWheelChange(event)*/_ = "";/*this is the same as momentum aka inDirect scroll, Toggeling this on and off can break things*/
             /*case NSEventPhase.stationary: 2*/
             default:break;
         }
         switch event.momentumPhase{
-            case NSEventPhase.began:
+        case NSEvent.Phase.began:
                 //Swift.print("⚠️️ NSMomentumEventPhase.began event.scrollingDelta: " + "\(event.scrollingDelta)")
                 onScrollWheelMomentumBegan(event);//this happens when the momentum starts
-            case NSEventPhase.changed:onInDirectScrollWheelChange(event);
-            case NSEventPhase.ended:onScrollWheelMomentumEnded();
+        case NSEvent.Phase.changed:onInDirectScrollWheelChange(event);
+        case NSEvent.Phase.ended:onScrollWheelMomentumEnded();
             default:break;
         } 
         //super.scrollWheel(with:event)

@@ -11,7 +11,7 @@ class Button:Element {
      */
     override func mouseOver(_ event:MouseEvent) {
 //        Swift.print("Button.mouseOver")
-        if(NSEvent.pressedMouseButtons() == 0){/*Don't call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
+        if(NSEvent.pressedMouseButtons == 0){/*Don't call triggerRollOver if primary mouse button has been pressed, this is to avoid stuck buttons*/
             state = SkinStates.over
             setSkinState(getSkinState())
             super.onEvent(ButtonEvent(ButtonEvent.over,self,event.event))
@@ -22,7 +22,7 @@ class Button:Element {
      */
     override func mouseOut(_ event:MouseEvent) {
         //Swift.print("Button.mouseOut")
-        if(NSEvent.pressedMouseButtons() == 0){/*This is to avoid stuck buttons, 0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
+        if(NSEvent.pressedMouseButtons == 0){/*This is to avoid stuck buttons, 0 == no mouse button, 1 == left mouse button, 2 == right mouseButton*/
             state = SkinStates.none
             setSkinState(getSkinState())
             super.onEvent(ButtonEvent(ButtonEvent.out,self,event.event))

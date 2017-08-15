@@ -27,7 +27,7 @@ class CSSLinkResolver {
             let name = match.value(string, CSSElementType.name.rawValue)
             let value = match.value(string, CSSElementType.value.rawValue)
             let replacementString:String = Utils.replaceLinks(value,name,string)
-            let range:NSRange = match.rangeAt(2)/*The range of the value*/
+            let range:NSRange = match.range(at: 2)/*The range of the value*/
             return (string as NSString).replacingCharacters(in: range, with: replacementString)
         }
     }
@@ -56,7 +56,7 @@ private class Utils {
         let result:(difference:Int,string:String) = matches.filter{ match in/*<--the diff from each replace, replace 4 char with 6 then diff is += 2 etc, replace less then substract*/
                 match.numberOfRanges > 0/*match = the link name>*/
             }.reduce((difference:0,string:string)){ result,match in/*Loops through the pattern*/
-                var range:NSRange = match.rangeAt(0)//StringRangeParser.stringRange(string, start, end)
+                var range:NSRange = match.range(at: 0)//StringRangeParser.stringRange(string, start, end)
                 range.location = range.location + result.difference//difference
                 let linkNameSansBrackets:String = (string as NSString).substring(with: range)/*the link name>*/
                 let linkedStyleProperty:String = propertyValue(cssString,linkNameSansBrackets,linkPropName)/*replacementString*/

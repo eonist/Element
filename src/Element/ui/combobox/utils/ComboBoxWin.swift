@@ -10,7 +10,7 @@ class ComboBoxWin:Window{
         self.itemHeight = itemHeight
         self.dataProvider = dataProvider
         super.init(width,height)
-        self.animationBehavior = NSWindowAnimationBehavior.utilityWindow/*Fades the window in and out slightly*/
+        self.animationBehavior = NSWindow.AnimationBehavior.utilityWindow/*Fades the window in and out slightly*/
     }
     override func resolveSkin() {
         super.resolveSkin()

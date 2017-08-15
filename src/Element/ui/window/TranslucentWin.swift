@@ -9,8 +9,8 @@ class TranslucentWin:NSWindow, NSApplicationDelegate, NSWindowDelegate{
     override var acceptsFirstResponder:Bool{return true}
     var visualEffectView:TranslucentView?/*We set the to the background*/
     
-    override init(contentRect:NSRect, styleMask style:NSWindowStyleMask, backing bufferingType:NSBackingStoreType, defer flag: Bool) {
-        super.init(contentRect:contentRect, styleMask: [.titled, .resizable,.fullSizeContentView], backing:NSBackingStoreType.buffered, defer: false)
+    override init(contentRect:NSRect, styleMask style:NSWindow.StyleMask, backing bufferingType:NSWindow.BackingStoreType, defer flag: Bool) {
+        super.init(contentRect:contentRect, styleMask: [.titled, .resizable,.fullSizeContentView], backing:NSWindow.BackingStoreType.buffered, defer: false)
         WinModifier.align(self, Alignment.centerCenter, Alignment.centerCenter)
         Swift.print("frame.origin: " + "\(frame.origin)")
         self.contentView!.wantsLayer = true/*this can and is set in the view*/
@@ -46,7 +46,7 @@ class TranslucentView:NSVisualEffectView{
     override init(frame frameRect: NSRect) {
         super.init(frame:frameRect)
         if #available(OSX 10.11, *) {
-            self.material = NSVisualEffectMaterial.ultraDark
+            self.material = NSVisualEffectView.Material.ultraDark
         } else {
             // Fallback on earlier versions
         }/*AppearanceBased,Dark,MediumLight,PopOver,UltraDark,AppearanceBased,Titlebar,Menu*/
@@ -71,7 +71,7 @@ extension TranslucentView{
             bezierPath.fill()
             return true
         }
-        maskImage.capInsets = EdgeInsets(top: cornerRadius, left: cornerRadius, bottom: cornerRadius, right: cornerRadius)
+        maskImage.capInsets = NSEdgeInsets(top: cornerRadius, left: cornerRadius, bottom: cornerRadius, right: cornerRadius)
         maskImage.resizingMode = .stretch
         return maskImage
     }

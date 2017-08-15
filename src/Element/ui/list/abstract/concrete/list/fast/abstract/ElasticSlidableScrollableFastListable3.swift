@@ -13,16 +13,16 @@ extension ElasticSlidableScrollableFastListable3{
         //Swift.print("ElasticSlidableScrollableFastListable3.scroll")
         (self as Scrollable3).scroll(event)//forward the event
         switch event.phase{
-            case NSEventPhase.changed://Direct scroll, ⚠️️That you need a hock here is not that great
+        case NSEvent.Phase.changed://Direct scroll, ⚠️️That you need a hock here is not that great
                 let sliderProgress:CGPoint = ElasticUtils.progress(moverGroup!.result,contentSize,maskSize)
                 (self as Slidable3).setProgress(sliderProgress)/*moves the sliders*/
-            case NSEventPhase.mayBegin, NSEventPhase.began:/*same as onScrollWheelEnter()*/
+        case NSEvent.Phase.mayBegin, NSEvent.Phase.began:/*same as onScrollWheelEnter()*/
                 showSlider()
-            case NSEventPhase.ended://same as onScrollWheelExit()
+        case NSEvent.Phase.ended://same as onScrollWheelExit()
                 hideSlider()
             default:break;
         }
-        if(event.momentumPhase == NSEventPhase.began){//simulates: onScrollWheelMomentumBegan()
+        if(event.momentumPhase == NSEvent.Phase.began){//simulates: onScrollWheelMomentumBegan()
             showSlider()//cancels out the hide call when onScrollWheelExit is called when you release after pan gesture
         }
     }

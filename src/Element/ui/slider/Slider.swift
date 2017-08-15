@@ -54,11 +54,11 @@ class Slider:Element{
 }
 /*Event handlers*/
 extension Slider{
-    func onThumbDown(){
+    @objc func onThumbDown(){
         tempThumbMousePos = thumb.localPos()[dir]
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove)/*we add a global mouse move event listener*/
     }
-    func onThumbMove(event:NSEvent)-> NSEvent?{
+    @objc func onThumbMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self)[dir], tempThumbMousePos, size[dir], thumbSize[dir])
         thumb.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
@@ -67,7 +67,7 @@ extension Slider{
     func onThumbUp(){
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}/*we remove a global mouse move event listener*/
     }
-    func onMouseMove(event:NSEvent)-> NSEvent?{
+    @objc func onMouseMove(event:NSEvent)-> NSEvent?{
         progress = Utils.progress(event.localPos(self)[dir], thumbSize[dir]/2, size[dir], thumbSize[dir])
         thumb.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
@@ -87,7 +87,7 @@ extension Slider{
     /**
      * PARAM: progress (scalar, but unclipped so can be: -0.5 to 1.5 etc)
      */
-    func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
+    @objc func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = progress.clip(0,1)/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
         thumb.point[dir] = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize[dir])
         thumb.applyOvershot(progress,dir)/*<--we use the unclipped scalar value*/

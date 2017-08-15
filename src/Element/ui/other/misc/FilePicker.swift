@@ -20,8 +20,14 @@ class FilePicker:Element{
 }
 extension FilePicker{
     var initData:FilePickerInitial {return super.initial as? FilePickerInitial ?? {fatalError("initial not avaiable")}()}
-    var textInputInitial:TextInput.TextInputInitial {return .init(text: self.initData.text, input: self.initData.input, initial: self.initData)}
-    var buttonInitial:TextButton.TextButtonInitial {return .init(initial:self.initData,text:self.initData.buttonText)}
+    var textInputInitial:TextInput.TextInputInitial {
+        let initial = Initial(size:self.initData.size,parent:self,id:nil)
+        return .init(text: self.initData.text, input: self.initData.input, initial: initial)
+    }
+    var buttonInitial:TextButton.TextButtonInitial {
+        let initial = Initial(size:self.initData.size,parent:self,id:nil)
+        return .init(initial:initial,text:self.initData.buttonText)
+    }
     struct FilePickerInitial:InitDecoratable {
         var text:String = "",input:String = "",buttonText:String = ""
         var initial:Initiable

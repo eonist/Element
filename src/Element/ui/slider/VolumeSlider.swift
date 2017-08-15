@@ -11,15 +11,15 @@ class VolumeSlider:Slider{
         super.resolveSkin()
         _ = volumeGraphic//TODO: add the volume graphic bellow the thumb
     }
-    override func onMouseMove(event:NSEvent) -> NSEvent? {
+    @objc override func onMouseMove(event:NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())//TODO: this should be set after super
         return super.onMouseMove(event: event)
     }
-    override func onThumbMove(event:NSEvent) -> NSEvent? {
+    @objc override func onThumbMove(event:NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())//TODO: this should be set after super
         return super.onThumbMove(event:event)
     }
-    override func setProgressValue(_ progress:CGFloat) {
+    @objc override func setProgressValue(_ progress:CGFloat) {
         super.setProgressValue(progress)
         volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())
     }
@@ -31,3 +31,4 @@ class VolumeSlider:Slider{
         return "\(VolumeSlider.self)"
     }
 }
+

@@ -58,9 +58,9 @@ class SelectorParser{
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         var selectorElement:String = ""
         for match:NSTextCheckingResult in matches {
-            selectorElement = (match.rangeAt(1).location != NSNotFound) ? match.value(string, 1) : ""
+            selectorElement = (match.range(at: 1).location != NSNotFound) ? match.value(string, 1) : ""
             let selectorClassIds:[String] = SelectorUtils.classIds(match,string)
-            let selectorId = (match.rangeAt(3).location != NSNotFound) ? match.value(string, 3) : ""
+            let selectorId = (match.range(at: 3).location != NSNotFound) ? match.value(string, 3) : ""
             let selectorStates:[String] = SelectorUtils.states(match,string)
             return Selector(selectorElement,selectorClassIds,selectorId,selectorStates)
         }
@@ -141,7 +141,7 @@ class SelectorPattern {
 }
 private class SelectorUtils{
     static func classIds(_ match:NSTextCheckingResult,_ string:String)->[String]{
-        if match.rangeAt(2).location != NSNotFound {
+        if match.range(at: 2).location != NSNotFound {
             let classIds:String = match.value(string, 2)
             return classIds.contains(" ") ? StringModifier.split(classIds, " ") : [classIds]
         }else{
@@ -149,7 +149,7 @@ private class SelectorUtils{
         }
     }
     static func states(_ match:NSTextCheckingResult,_ string:String)->[String]{
-        if match.rangeAt(4).location != NSNotFound {
+        if match.range(at: 4).location != NSNotFound {
             let states:String = RegExp.value(string, match, 4)
             return states.contains(":") ? StringModifier.split(states, ":") : [states]
         }else{

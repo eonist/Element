@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 /**
  * When you need to browse for files or urls
@@ -16,6 +16,11 @@ class FilePicker:Element{
         addSubview(textInput)
         addSubview(button)
     }
+    override func onEvent(_ event: Event) {
+        if event.assert(.upInside) {
+            onBrowseButtonClick()
+        }
+    }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
 }
 extension FilePicker{
@@ -31,5 +36,20 @@ extension FilePicker{
     struct FilePickerInitial:InitDecoratable {
         var text:String = "",input:String = "",buttonText:String = ""
         var initial:Initiable
+    }
+    func onBrowseButtonClick(){
+        Swift.print("onBrowseButtonClick")
+        //prompt the file viewer
+        let myFileDialog:NSOpenPanel = NSOpenPanel()
+        myFileDialog.canCreateDirectories = true
+        myFileDialog.title = "Select path"
+        myFileDialog.canChooseDirectories = true
+        myFileDialog.canChooseFiles = true
+        myFileDialog.runModal()
+        
+         /*Get the path to the file chosen in the NSOpenPanel*/
+        if let thePath =  myFileDialog.url?.path {/*Make sure that a path was chosen*/
+            textInput.setInputText(thePath.tildify)
+        }
     }
 }

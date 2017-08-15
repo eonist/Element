@@ -29,7 +29,7 @@ enum ButtonEventType:String{
     case rightMouseDown = "buttonEventRightMouseDown"
 }
 extension Event{
-    func assert(_ type:ButtonEventType, id:String) -> Bool{
+    func assert(_ type:ButtonEventType, id:String? = nil) -> Bool{
         return self.type == type.rawValue && (self.origin as? ElementKind)?.id == id
     }
 }

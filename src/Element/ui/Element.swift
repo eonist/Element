@@ -23,7 +23,6 @@ extension InitDecoratable{
 }
 struct Initial:Initiable {var size:CGSize = CGSize(NaN,NaN),parent:ElementKind? = nil,id:String? = nil}
 class Element:InteractiveView,ElementKind {
-    
     var initial:Initiable//this doesnt need to be exposes subclass will already have it from their init
     //TODO: ⚠️️ move bellow to a deprecated extension
     var width:CGFloat {get{return self.initial.size.width}set{self.initial.size.width = newValue}}

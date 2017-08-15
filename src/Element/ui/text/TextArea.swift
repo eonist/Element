@@ -7,7 +7,7 @@ import Foundation
 class TextArea:Element {
     lazy var text:Text = {self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
     private var textString:String/*Interim value*/
-    init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:IElement? = nil, _ id:String? = nil) {
+    init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind? = nil, _ id:String? = nil) {
         self.textString = text
         super.init(width, height, parent, id)
     }

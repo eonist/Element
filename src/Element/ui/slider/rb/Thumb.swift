@@ -58,7 +58,10 @@ extension Thumb{
     }
     var alpha:CGFloat{/*Convenience*/
         get{return self.skin!.decoratables[0].getGraphic().fillStyle!.color.alphaComponent}
-        set{skin?.decoratables[0].getGraphic().fillStyle?.color = (skin?.decoratables[0].getGraphic().fillStyle!.color.alpha(newValue))!}
+        set{
+            let color = skin?.decoratables[0].getGraphic().fillStyle!.color
+            self.skin?.decoratables[0].getGraphic().fillStyle?.color = color!.alpha(newValue)
+        }
     }
     /**
      * Animator method that interpolates the alpha between 0 and 1

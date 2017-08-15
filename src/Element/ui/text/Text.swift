@@ -2,8 +2,8 @@ import Cocoa
 @testable import Utils
 
 class Text:Element,TextKind {
-    var initText:String;//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
-    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "dafaultText", _ parent:IElement? = nil, _ id:String? = nil){
+    var initText:String//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind? = nil, _ id:String? = nil){
         initText = text
         super.init(width, height, parent, id)
     }

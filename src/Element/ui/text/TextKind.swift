@@ -16,7 +16,7 @@ extension TextKind{
      */
     func setText(_ text:String){//<--- rename to setText, figure out away to either rename the text or rename setText, like setTheText or alike, setTextValue
 //        Swift.print("Thext.setText")
-        (skin as! TextSkin).setText(text)
+        (skin as? TextSkinable)?.setText(text)
     }
     /**
      * Returns the textField text and

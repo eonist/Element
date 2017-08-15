@@ -38,15 +38,13 @@ extension FilePicker{
         var initial:Initiable
     }
     func onBrowseButtonClick(){
-        Swift.print("onBrowseButtonClick")
-        //prompt the file viewer
-        let myFileDialog:NSOpenPanel = NSOpenPanel()
+        //Swift.print("onBrowseButtonClick")
+        let myFileDialog:NSOpenPanel = NSOpenPanel()//prompt the file viewer
         myFileDialog.canCreateDirectories = true
         myFileDialog.title = "Select path"
         myFileDialog.canChooseDirectories = true
         myFileDialog.canChooseFiles = true
         myFileDialog.runModal()
-        
          /*Get the path to the file chosen in the NSOpenPanel*/
         if let thePath =  myFileDialog.url?.path {/*Make sure that a path was chosen*/
             textInput.setInputText(thePath.tildify)

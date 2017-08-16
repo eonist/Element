@@ -6,10 +6,12 @@ import Cocoa
  * TODO: ⚠️️ Add some event logic to this class, and modal popup
  */
 class FilePicker:Element{
-    lazy var textInput:TextInput = .init(initial:self.textInputInitial)
-    lazy var button:TextButton = .init(initial:self.buttonInitial)
-    override init(initial: Initiable) {
-        super.init(initial: initial)
+    lazy var textInput:TextInput = .init(self.getWidth(),self.getHeight(),initData.text,initData.input,self)
+    lazy var button:TextButton = .init(self.getWidth(), self.getHeight(), initData.buttonText, self)
+    private let initData:(text:String,input:String,buttonText:String)
+    init(text: String, input: String, buttonText: String, size:CGSize = CGSize(NaN,NaN), parent:ElementKind? = nil, id:String? = nil) {
+        initData = (text,input,buttonText)
+        super.init(size.width, size.height, parent, id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -24,30 +26,20 @@ class FilePicker:Element{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
 }
 extension FilePicker{
-    var initData:FilePickerInitial {return super.initial as? FilePickerInitial ?? {fatalError("initial not avaiable")}()}
-    var textInputInitial:TextInput.TextInputInitial {
-        let initial = Initial(size:self.initData.size,parent:self,id:nil)
-        return .init(text: self.initData.text, input: self.initData.input, initial: initial)
-    }
-    var buttonInitial:TextButton.TextButtonInitial {
-        let initial = Initial(size:self.initData.size,parent:self,id:nil)
-        return .init(initial:initial,text:self.initData.buttonText)
-    }
-    struct FilePickerInitial:InitDecoratable {
-        var text:String = "",input:String = "",buttonText:String = ""
-        var initial:Initiable
-    }
     func onBrowseButtonClick(){
         //Swift.print("onBrowseButtonClick")
-        let myFileDialog:NSOpenPanel = NSOpenPanel()//prompt the file viewer
-        myFileDialog.canCreateDirectories = true
-        myFileDialog.title = "Select path"
-        myFileDialog.canChooseDirectories = true
-        myFileDialog.canChooseFiles = true
-        myFileDialog.runModal()
-         /*Get the path to the file chosen in the NSOpenPanel*/
-        if let thePath =  myFileDialog.url?.path {/*Make sure that a path was chosen*/
-            textInput.setInputText(thePath.tildify)
+        let dialog:NSOpenPanel = NSOpenPanel()//prompt the file viewer
+        dialog.canCreateDirectories = true
+        dialog.title = "Select path"
+        dialog.canChooseDirectories = true
+        dialog.canChooseFiles = true
+        dialog.directoryURL = {
+            let dirURLStr:String = textInput.inputText
+            return dirURLStr.tildePath.url
+        }()
+        let respons = dialog.runModal()
+        if let url = dialog.url,respons == NSApplication.ModalResponse.OK{
+            textInput.setInputText(url.path.tildify)
         }
     }
 }

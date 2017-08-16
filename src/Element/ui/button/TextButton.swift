@@ -3,23 +3,12 @@ import Cocoa
 /**
  * TODO: ⚠️️ get rid of LableKind
  */
-extension TextButton{
-    struct TextButtonInitial:InitDecoratable{
-        var initial: Initiable = Initial()
-        var text:String = ""
-    }
-}
 class TextButton:Button,LableKind {
     lazy var text:Text = self.createText()
-    var textString:String {get{return self.initData.text}}/*Interim value*/
-    var initData:TextButtonInitial {return super.initial as? TextButtonInitial ?? {fatalError("initial not aviable")}()}
+    var textString:String/*Interim value*/
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:IElement?, _ id:String? = nil) {
-//        textString = text
-        let initial = TextButtonInitial.init(initial:Initial(size:CGSize(width,height),parent:parent,id:id), text: text)
-        super.init(initial:initial)
-    }
-    override init(initial: Initiable) {//temp
-        super.init(initial: initial)
+        textString = text
+        super.init(width, height, parent, id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -62,3 +51,4 @@ extension TextButton {
         return text
     }
 }
+

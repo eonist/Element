@@ -26,7 +26,7 @@ class GraphicSkin:Skin{
      * Draws Skin (aka each "decoratable" in the skin)
      */
     override func draw(){
-        if(hasStateChanged || hasSizeChanged || hasStyleChanged){
+        if hasStateChanged || hasSizeChanged || hasStyleChanged {
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}
             (element as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
@@ -40,13 +40,19 @@ extension GraphicSkin{
      * Draws decoratable
      */
     func drawDecoratable(_ depth:Int){
-        if(hasSizeChanged){
+        if hasSizeChanged {
             Modifier.reSize(decoratables[depth], Parser.size(self,depth))
         }/*Do sizing of the sizable here*/
-        if(hasStateChanged || hasStyleChanged) {
+        if hasStateChanged || hasStyleChanged {
             updateAppearance(decoratables[depth], depth)
         }
-        if(hasSizeChanged || hasStateChanged || hasStyleChanged){
+        if hasSizeChanged || hasStateChanged || hasStyleChanged {
+//            let item = decoratables[depth]
+//            let parents = NSViewParser.parents((item).graphic)
+//            parents.forEach{
+//                let width = ($0 as? ElementKind)?.getWidth()
+//                Swift.print("width: " + "\(width) view: \($0)  parent: \(($0 as? ElementKind)?.parent)")
+//            }
             decoratables[depth].draw()/*<--Init the actual draw call, you only want to draw once bc performance*/
         }
     }

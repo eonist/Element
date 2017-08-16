@@ -165,7 +165,7 @@ private class Utils{
             if(suffix == "%") {
                 return {
                     let totWidth:CGFloat = {
-                        if let parent:IElement = skin.element?.getParent() as? IElement{
+                        if let parent:ElementKind = skin.element?.getParent() as? ElementKind{
                             return dir == .hor ? totalWidth(parent) : totalHeight(parent)/*totHeight support is new*/
                         };return 0
                     }()
@@ -181,7 +181,7 @@ private class Utils{
      * Returns the total width
      * TODO: ⚠️️ Should margin be added to total width? check google for the box model specs (a work around is too add equal amount of margin-right)
      */
-    private static func totalWidth(_ element:IElement) -> CGFloat {
+    private static func totalWidth(_ element:ElementKind) -> CGFloat {
         if let skin = element.skin {
             //let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)
@@ -193,7 +193,7 @@ private class Utils{
     /**
      * New
      */
-    private static func totalHeight(_ element:IElement) -> CGFloat {
+    private static func totalHeight(_ element:ElementKind) -> CGFloat {
         if let skin = element.skin {
             //let margin:Margin = SkinParser.margin(skin)
             let border:Border = SkinParser.border(skin)

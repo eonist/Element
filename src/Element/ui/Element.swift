@@ -8,48 +8,28 @@ import Cocoa
  * NOTE: w,h,x,y are stored in the frame instance
  * TODO: ⚠️️ The width,height,x,y could be stored in a deeper super class. As it's not related to Styling per se
  */
-//protocol Initiable{//consider renaming to Configurable
-//    var size:CGSize {get set}//eventual size should be let not var
-//    var parent:ElementKind? {get set}
-//    var id:String? {get set}
-//}
-//protocol InitDecoratable:Initiable{
-//    var initial:Initiable {get set}
-//}
-//extension InitDecoratable{
-//    var size:CGSize {get{return initial.size}set{initial.size = newValue}}
-//    var parent:ElementKind? {get{return initial.parent}set{initial.parent = newValue}}
-//    var id:String? {get{return initial.id}set{initial.id = newValue}}
-//}
-//struct Initial:Initiable {var size:CGSize = CGSize(NaN,NaN),parent:ElementKind? = nil,id:String? = nil}
 class Element:InteractiveView,ElementKind {
-//    var initial:Initiable//this doesnt need to be exposes subclass will already have it from their init
+//    var initial:Initiable//this doesn't need to be exposes subclass will already have it from their init
     //TODO: ⚠️️ move bellow to a deprecated extension
-    var width:CGFloat //{get{return self.initial.size.width}set{self.initial.size.width = newValue}}
-    var height:CGFloat //{get{return self.initial.size.height}set{self.initial.size.height = newValue}}
-    var parent:ElementKind? //{get{return self.initial.parent}set{self.initial.parent = newValue}}
-    var id:String? //{get{return self.initial.id}set{self.initial.id = newValue}}/*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
+    var width:CGFloat
+    var height:CGFloat
+    var parent:ElementKind?
+    var id:String? /*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
     /*State */
     var state:String = SkinStates.none
     var skin:Skinable?//TODO: ⚠️️ make this lazy
     var isDisabled:Bool = false
     var isFocused:Bool = false
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */
-    //⚠️️ TODO: deprecate this init
+    //⚠️️ TODO: deprecate this init eventually
     init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil,_ id:String? = nil){
         self.parent = parent
         self.id = id
         self.width = width
         self.height = height
-        super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))
+        super.init(frame: NSRect(0,0,width/*.isNaN ? 0 : width*/,height/*.isNaN ? 0 : height*/))
         resolveSkin()
     }
-    //new,this must be in class because if not subclasses cant reach it
-//    init(initial:Initiable){
-//        self.initial = initial
-//        super.init(frame: NSRect(0,0,initial.size.width.isNaN ? 0 : initial.size.width,initial.size.height.isNaN ? 0 : initial.size.height))
-//        resolveSkin()
-//    }
     /**
      * Draws the graphics
      */

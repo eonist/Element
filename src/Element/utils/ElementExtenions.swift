@@ -5,7 +5,7 @@ extension Element{
     /**
      * Convenience
      */
-    convenience init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool, _ isFocused:Bool = false, _ parent:IElement? = nil,_ id:String? = nil){
+    convenience init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool, _ isFocused:Bool = false, _ parent:ElementKind? = nil,_ id:String? = nil){
         self.init(width,height,parent,id)
         self.isDisabled = isDisabled
         self.isFocused = isFocused
@@ -13,14 +13,14 @@ extension Element{
     /**
      * Convenience
      */
-    convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:IElement? = nil,_ id:String? = nil){
+    convenience init(_ width: CGFloat , _ height: CGFloat , _ x:CGFloat , _ y:CGFloat , _ parent:ElementKind? = nil,_ id:String? = nil){
         self.init(width,height,parent,id)
         setPosition(CGPoint(x,y))
     }
     /**
      * New
      */
-    func element<T:IElement>(_ id:String,_ type:T.Type? = nil) -> T?{
+    func element<T:ElementKind>(_ id:String,_ type:T.Type? = nil) -> T?{
         return ElementParser.element(self, id, type)
     }
 }

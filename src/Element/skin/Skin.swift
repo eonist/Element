@@ -6,17 +6,17 @@ import Cocoa
  * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
  * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
-class Skin:InteractiveView2,ISkin{
-    var decoratables:[IGraphicDecoratable] = []/*The layers in the skin*/
-    var style:IStyle?
+class Skin:InteractiveView,Skinable{
+    var decoratables:[GraphicDecoratableKind] = []/*The layers in the skin*/
+    var style:Stylable?
     var state:String
     var width:CGFloat?
     var height:CGFloat?
-    var element:IElement?
+    var element:ElementKind?
     var hasStyleChanged:Bool = false
     var hasStateChanged:Bool = false
     var hasSizeChanged:Bool = false
-    init(_ style:IStyle? = nil, _ state:String = "", _ element:IElement? = nil){
+    init(_ style:Stylable? = nil, _ state:String = "", _ element:ElementKind? = nil){
         self.style = style
         self.state = state
         self.element = element
@@ -37,7 +37,7 @@ class Skin:InteractiveView2,ISkin{
      * Sets the style instance to apply to the skin also forces a redraw.
      * NOTE: this is a great way to update an skin without querying StyleManager
      */
-    func setStyle(_ style:IStyle){
+    func setStyle(_ style:Stylable){
         hasStyleChanged = true
         self.style = style
         draw()

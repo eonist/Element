@@ -9,7 +9,7 @@ import Cocoa
 class Thumb:Button{
     var animator:Animator?
     //var isDisabled:Bool
-    init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: ElementKind? = nil, _ id: String? = nil) {
         super.init(width, height, parent, id)
         self.isDisabled = isDisabled
     }

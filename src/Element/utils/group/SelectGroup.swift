@@ -8,27 +8,27 @@ import Cocoa
  * EXAMPLE: See BasicView in Explorer
  */
 class SelectGroup:EventSender{
-    var selectables:[ISelectable] = []
-    var selected:ISelectable?
-    init(_ selectables:[ISelectable], _ selected:ISelectable? = nil){
+    var selectables:[Selectable] = []
+    var selected:Selectable?
+    init(_ selectables:[Selectable], _ selected:Selectable? = nil){
         super.init()
         self.selected = selected
         addSelectables(selectables)
     }
-    func addSelectables(_ selectables:[ISelectable]){
+    func addSelectables(_ selectables:[Selectable]){
         selectables.forEach{addSelectable($0)}
     }
     /**
      * NOTE: use a weak ref so that we dont have to remove the event if the selectable is removed from the SelectGroup or view
      */
-    func addSelectable(_ selectable:ISelectable) {
-        if(selectable is IEventSender){ (selectable as! IEventSender).event = onEvent }
+    func addSelectable(_ selectable:Selectable) {
+        if(selectable is EventSendable){ (selectable as! EventSendable).event = onEvent }
         selectables.append(selectable)
     }
     override func onEvent(_ event:Event){
         if(event.type == SelectEvent.select){
             self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self))
-            selected = event.immediate as? ISelectable
+            selected = event.immediate as? Selectable
             SelectModifier.unSelectAllExcept(selected!, selectables)
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self))
         }

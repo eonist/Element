@@ -7,8 +7,8 @@ import Foundation
  */
 class GraphLine:Element{
     var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
-    var path:IPath
-    init(_ width:CGFloat, _ height:CGFloat,_ path:IPath, _ parent:IElement? = nil, _ id:String? = nil) {
+    var path:PathKind
+    init(_ width:CGFloat, _ height:CGFloat,_ path:PathKind, _ parent:ElementKind? = nil, _ id:String? = nil) {
         self.path = path
         super.init(width, height, parent, id)
     }
@@ -17,7 +17,7 @@ class GraphLine:Element{
         skin = SkinResolver.skin(self)//you could use let style:IStyle = StyleResolver.style(element), but i think skin has to be created to not cause bugs
         //I think the most apropriate way is to make a custom skin and add it as a subView wich would implement :ISkin etc, see TextSkin for details
         //Somehow derive the style data and make a basegraphic with it
-        let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
+        let lineStyle:LineStylable = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         //LineStyleParser.describe(lineStyle)
         line = PathGraphic(path,nil,lineStyle)
         _ = addSubView(line!.graphic)

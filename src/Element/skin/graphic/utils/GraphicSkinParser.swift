@@ -5,10 +5,10 @@ class GraphicSkinParser{
     /**
      * Configures a GraphicDecoratable instance based on what stylePropertyValues is found in PARAM: skin at PARAM: depth
      */
-    static func configure(_ skin:ISkin,_ depth:Int)->IGraphicDecoratable{
-        let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin,depth)//<--TODO:this should be optional like lineStyle
-        let lineStyle:ILineStyle? = StylePropertyParser.lineStyle(skin,depth)
-        var graphic:IGraphicDecoratable = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
+    static func configure(_ skin:Skinable,_ depth:Int)->GraphicDecoratableKind{
+        let fillStyle:FillStyleKind = StylePropertyParser.fillStyle(skin,depth)//<--TODO:this should be optional like lineStyle
+        let lineStyle:LineStylable? = StylePropertyParser.lineStyle(skin,depth)
+        var graphic:GraphicDecoratableKind = Utils.baseGraphic(skin,fillStyle,lineStyle,depth)
         graphic = Utils.rectGraphic(skin,graphic,depth)
         if StylePropertyAsserter.hasFillet(skin,depth) {graphic = Utils.fillet(graphic, StyleMetricParser.fillet(skin,depth)) }
         if StylePropertyAsserter.hasGradient(skin,depth) {graphic = Utils.gradient(graphic) }
@@ -18,14 +18,14 @@ class GraphicSkinParser{
     }
 }
 private class Utils{
-    static func baseGraphic(_ skin:ISkin, _ fillStyle:IFillStyle,_ lineStyle:ILineStyle?,_ depth:Int = 0)->IGraphicDecoratable {
+    static func baseGraphic(_ skin:Skinable, _ fillStyle:FillStyleKind,_ lineStyle:LineStylable?,_ depth:Int = 0)->GraphicDecoratableKind {
         let lineOffsetType:OffsetType = StylePropertyParser.lineOffsetType(skin,depth)
         return BaseGraphic(fillStyle,lineStyle,lineOffsetType)
     }
     /**
      * Returns a "GraphicRect instance"
      */
-    static func rectGraphic(_ skin:ISkin, _ decoratable:IGraphicDecoratable,_ depth:Int = 0)->IGraphicDecoratable {
+    static func rectGraphic(_ skin:Skinable, _ decoratable:GraphicDecoratableKind,_ depth:Int = 0)->GraphicDecoratableKind {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
         let width:CGFloat = {
             var padding:CGFloat {return padding.left + padding.right}
@@ -45,14 +45,14 @@ private class Utils{
      * NOTE: asset is svg for now but in the future it should support png
      * TODO: ⚠️️ this solution isn't perfect but it works for now
      */
-    static func asset(_ decoratable:IGraphicDecoratable,_ assetURL:String)->IGraphicDecoratable {
+    static func asset(_ decoratable:GraphicDecoratableKind,_ assetURL:String)->GraphicDecoratableKind {
         return AssetDecorator(decoratable, assetURL)
     }
     /**
      * Returns a "RoundRectGraphic instance" wrapped around a Rect instance
      * TODO: ⚠️️ Future feature: support for fillOffset, and cornerradius and fillet should have the same nameing scheme
      */
-    static func fillet(_ decoratable:IGraphicDecoratable,_ fillet:Fillet)->IGraphicDecoratable {
+    static func fillet(_ decoratable:GraphicDecoratableKind,_ fillet:Fillet)->GraphicDecoratableKind {
         return RoundRectGraphic(decoratable, fillet)
     }
     /**
@@ -61,13 +61,13 @@ private class Utils{
      * NOTE: doesnt drawLine by default, pass a Gradient instance with PARAM: lineGradient to draw a gradientLine
      * TODO: ⚠️️ support for GradientLineStyle, GradientFillStyle
      */
-    static func gradient(_ decoratable:IGraphicDecoratable)->IGraphicDecoratable{
+    static func gradient(_ decoratable:GraphicDecoratableKind)->GraphicDecoratableKind{
         return GradientGraphic(decoratable)
     }
     /**
      * Wraps a DropShadowDecorator instance on PARAM: decoratable
      */
-    static func dropShadow(_ decoratable:IGraphicDecoratable, _ dropShadow:DropShadow?)->IGraphicDecoratable {
+    static func dropShadow(_ decoratable:GraphicDecoratableKind, _ dropShadow:DropShadow?)->GraphicDecoratableKind {
         return DropShadowDecorator(decoratable,dropShadow)
     }
 }

@@ -7,7 +7,7 @@ class StyleMetricParser {
      * TODO: ⚠️️ Merge ver/hor Offset into this one like you did with cornerRadius
      * TODO: ⚠️️ Add support for % as it isn't implemented yet, see the margin implementation for guidance
      */
-    static func offset(_ skin:ISkin,_ depth:Int = 0)->CGPoint {
+    static func offset(_ skin:Skinable,_ depth:Int = 0)->CGPoint {
         guard let value:Any = StylePropertyParser.value(skin, CSS.Other.offset, depth) else{
             return CGPoint(0,0)//<---temp solution
         }
@@ -25,7 +25,7 @@ class StyleMetricParser {
      * TODO: ⚠️️ Try to figure out a way to do the padding-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      * TODO: ⚠️️ You may want to copy margin on this
      */
-    static func padding(_ skin:ISkin,_ depth:Int = 0) -> Padding {
+    static func padding(_ skin:Skinable,_ depth:Int = 0) -> Padding {
         var padding:Padding = {
             guard let value = StylePropertyParser.value(skin, CSS.Padding.padding,depth) else{
                 return Padding()
@@ -42,7 +42,7 @@ class StyleMetricParser {
      * TODO: Should this have a failsafe if there is no Margin property in the style?
      * TODO: Try to figure out a way to do the margin-left right top bottom stuff in the css resolvment not here it looks so cognativly taxing
      */
-    static func margin(_ skin:ISkin, _ depth:Int = 0)->Margin {
+    static func margin(_ skin:Skinable, _ depth:Int = 0)->Margin {
         var margin:Margin = {
             guard let value = StylePropertyParser.value(skin, CSS.Margin.margin,depth) else{
                 return Margin()
@@ -59,14 +59,14 @@ class StyleMetricParser {
      * Returns a Number derived from eigther a fixed value, a percentage value or ems value (20% or 1.125 ems == 18)
      * PARAM: dir is to get the correct totW or totH
      */
-    static func metric(_ skin:ISkin,_ propertyName:String, _ depth:Int = 0, _ dir:Dir)->CGFloat? {
+    static func metric(_ skin:Skinable,_ propertyName:String, _ depth:Int = 0, _ dir:Dir)->CGFloat? {
         let value = StylePropertyParser.value(skin,propertyName,depth)
         return Utils.metric(value,skin,dir)
     }
     /**
      * Returns width (clips to min max height)
      */
-    static func width(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
+    static func width(_ skin:Skinable, _ depth:Int = 0) -> CGFloat? {
         guard let width:CGFloat = metric(skin,CSS.Size.width,depth,.hor) else{
             return nil
         }
@@ -77,7 +77,7 @@ class StyleMetricParser {
     /**
      * Returns height (clips to min max height)
      */
-    static func height(_ skin:ISkin, _ depth:Int = 0) -> CGFloat? {
+    static func height(_ skin:Skinable, _ depth:Int = 0) -> CGFloat? {
         guard let height:CGFloat = metric(skin,CSS.Size.height,depth,.ver) else{
             return nil
         }
@@ -85,7 +85,7 @@ class StyleMetricParser {
         let maxHeight:CGFloat = Utils.maxHeight(skin) ?? height
         return height.clip(minHeight,maxHeight)
     }
-    static func rotation(_ skin:ISkin, _ depth:Int = 0) -> CGFloat?{
+    static func rotation(_ skin:Skinable, _ depth:Int = 0) -> CGFloat?{
         return StylePropertyParser.value(skin, CSS.Other.transform, depth) as? CGFloat
     }
     /**
@@ -93,7 +93,7 @@ class StyleMetricParser {
      * TODO: ⚠️️ Probably upgrade to TRBL
      * TODO: ⚠️️ Needs to return nil aswell. Since we need to test if a fillet doesnt exist. if a fillet has just 0 values it should still be a fillet etc.
      */
-    static func fillet(_ skin:ISkin, _ depth:Int = 0) -> Fillet {
+    static func fillet(_ skin:Skinable, _ depth:Int = 0) -> Fillet {
         let val:Any? = StylePropertyParser.value(skin, CSS.CornerRadius.cornerRadius,depth)
         let fillet:Fillet = {
             if (val is CGFloat) || (val is [Any]) {
@@ -113,7 +113,7 @@ private class Utils{
     /**
      * Returns size amount, sometimes based on parents size, sometimes on ems, sometimes on the value it has it self
      */
-    static func metric(_ value:Any?, _ skin:ISkin, _ dir:Dir)->CGFloat? {
+    static func metric(_ value:Any?, _ skin:Skinable, _ dir:Dir)->CGFloat? {
         switch value{
             case is Int:/*<-- int really? shouldn't you use something with decimals?*/
                 return CGFloat(value as! Int)
@@ -139,7 +139,7 @@ private class Utils{
      * NOTE: you can also do padding:calc(50%-20px) and you have effectivly centered something
      * NOTE: Does not support * or / chars yet
      */
-    private static func calcMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
+    private static func calcMetric(_ stringValue:String,_ skin:Skinable, _ dir:Dir) -> CGFloat?{
         let components:[String] = stringValue.split(" ")
         return components.reduce(0){/*sum the amounts*/
             if StringAsserter.metric($1) {
@@ -156,7 +156,7 @@ private class Utils{
      * Returns a size value based on percentage based on the parent
      * NOTE: In a way this method is recursive, as totW and totH calls the getW and getH again which in turn can call this method again etc
      */
-    private static func stringMetric(_ stringValue:String,_ skin:ISkin, _ dir:Dir) -> CGFloat?{
+    private static func stringMetric(_ stringValue:String,_ skin:Skinable, _ dir:Dir) -> CGFloat?{
         let matches = stringValue.matches(metricPattern)
         if let match:NSTextCheckingResult = matches.first {
             let valStr:String = match.value(stringValue, 1)/*capturing group 1*/
@@ -205,28 +205,28 @@ private class Utils{
     /**
      * New
      */
-    static func minWidth(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+    static func minWidth(_ skin:Skinable, _ depth:Int = 0)->CGFloat?{
         let minWidth:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.minWidth,depth,.hor)
         return minWidth
     }
     /**
      * New
      */
-    static func minHeight(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+    static func minHeight(_ skin:Skinable, _ depth:Int = 0)->CGFloat?{
         let minHeight:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.minHeight,depth,.hor)
         return minHeight
     }
     /**
      * New
      */
-    static func maxWidth(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+    static func maxWidth(_ skin:Skinable, _ depth:Int = 0)->CGFloat?{
         let maxWidth:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.maxWidth,depth,.hor)
         return maxWidth
     }
     /**
      * New
      */
-    static func maxHeight(_ skin:ISkin, _ depth:Int = 0)->CGFloat?{
+    static func maxHeight(_ skin:Skinable, _ depth:Int = 0)->CGFloat?{
         let maxHeight:CGFloat? = StyleMetricParser.metric(skin,CSS.Size.maxHeight,depth,.hor)
         return maxHeight
     }

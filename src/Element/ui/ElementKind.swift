@@ -1,11 +1,9 @@
 import Foundation
 @testable import Utils
 /**
- * TODO: ⚠️️ Rename to ElementKind?
  * TODO: ⚠️️ Move getWidth, size etc to Another protocol
  */
-typealias IElement = ElementKind
-protocol ElementKind:IView,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
+protocol ElementKind:ViewKind,Disableable,Focusable{/*:class <--- derive only classes for the protocol, not structs, this enables === operator of protocol, because struct can never be a ref*/
     /*Core methods*/
     func resolveSkin()
     /*Implicit getters / setters*/
@@ -18,9 +16,9 @@ protocol ElementKind:IView,Disableable,Focusable{/*:class <--- derive only class
     func getWidth()->CGFloat
     func getHeight()->CGFloat
     /*Getters / Setters*/
-    var parent:IElement?{get}
+    var parent:ElementKind?{get}
     //var state:String{get set}/*skinState is renamed to state because objc won't allow implicit setter with the same name*/
-    var skin:ISkin?{get set}
+    var skin:Skinable?{get set}
     var id:String?{get}
     var width:CGFloat{get /*set*/}
     var height:CGFloat{get /*set*/}

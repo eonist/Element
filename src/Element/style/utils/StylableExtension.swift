@@ -7,7 +7,7 @@ extension Stylable{
      * Returns a style property by the name given
      * NOTE: returning nil is fine, no need to make a EmptyStyleProperty class, or is there?
      */
-    func getStyleProperty(_ stylePropName:String,_ depth:Int = 0)->IStyleProperty?{
+    func getStyleProperty(_ stylePropName:String,_ depth:Int = 0)->StylePropertyKind?{
         return styleProperties.first(where: {$0.name == stylePropName && $0.depth == depth})
     }
     /**
@@ -19,19 +19,19 @@ extension Stylable{
     /**
      * Add styleProperty
      */
-    mutating func addStyleProperty(_ styleProperty:IStyleProperty) {
+    mutating func addStyleProperty(_ styleProperty:StylePropertyKind) {
         styleProperties.append(styleProperty)//TODO: ⚠️️ this method was more elaborate, it checks if the item is original, if its not throw error, implement this when its time
     }
     /**
      * Adds styleProperties
      */
-    mutating func addStyleProperty(_ styleProperties:[IStyleProperty]){
+    mutating func addStyleProperty(_ styleProperties:[StylePropertyKind]){
         self.styleProperties = styleProperties.map{$0}
     }
     /**
      * NOTE: StyleParser.depthCount() uses this method
      */
-    func getStyleProperties(_ name:String)->[IStyleProperty]{
+    func getStyleProperties(_ name:String)->[StylePropertyKind]{
         return self.styleProperties.filter(){ styleProperty in
             styleProperty.name == name
         }
@@ -39,7 +39,7 @@ extension Stylable{
     /**
      * NOTE: a benefit of having this method is that when used you can use the interface of the return type instantly
      */
-    func getStylePropertyAt(_ index:Int)->IStyleProperty{
+    func getStylePropertyAt(_ index:Int)->StylePropertyKind{
         return styleProperties[index]
     }
     /**
@@ -51,7 +51,7 @@ extension Stylable{
     func describe(){
         StyleParser.describe(self)
     }
-    var clone:IStyle {
+    var clone:Stylable {
         return StyleModifier.clone(self)
     }
 }

@@ -9,14 +9,14 @@ class StylePropertyParser{
      * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
      * TODO: ⚠️️ Should probably also support when state is know and depth is defaulted to 0 ?!?!?
      */
-    static func value(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <-- Try to remove the ! char here
+    static func value(_ skin:Skinable, _ propertyName:String, _ depth:Int = 0)->Any!{//TODO: <-- Try to remove the ! char here
         return skin.style!.getValue(propertyName,depth)
     }
     /**
      * Returns an IFillStyle instance based on the Style attached to the skin
      * TODO: ⚠️️ Should return nil as well
      */
-    static func fillStyle(_ skin:ISkin,_ depth:Int = 0)->IFillStyle {
+    static func fillStyle(_ skin:Skinable,_ depth:Int = 0)->FillStyleKind {
         let val = value(skin,CSS.Other.fill,depth)
         if let gradient = val as? IGradient {
             return gradientFillStyle(gradient)
@@ -27,7 +27,7 @@ class StylePropertyParser{
     /**
      * Returns an ILineStyle instance based on the Style attached to the skin
      */
-    static func lineStyle(_ skin:ISkin, _ depth:Int = 0) -> ILineStyle? {
+    static func lineStyle(_ skin:Skinable, _ depth:Int = 0) -> LineStylable? {
         let val:Any? = value(skin,CSS.Other.line,depth)
         if let gradient = val as? IGradient {
             return gradientLineStyle(gradient,skin,depth)
@@ -40,7 +40,7 @@ class StylePropertyParser{
      * TODO: probably upgrade to TRBL
      * NOTE: the way you let the index in the css list decide if something should be included in the final offsetType is probably a bad convention. Im not sure. Just write a note why, if you figure out why its like this.
      */
-    static func lineOffsetType(_ skin:ISkin, _ depth:Int = 0) -> OffsetType {
+    static func lineOffsetType(_ skin:Skinable, _ depth:Int = 0) -> OffsetType {
         let val:Any? = value(skin, CSS.LineOffsetType.lineOffsetType,depth)
         var offsetType:OffsetType = {
             if (val is String) || (val is [String]) {
@@ -83,7 +83,7 @@ class StylePropertyParser{
      * Returns asset url
      * TODO: ⚠️️ this should be improved by using an AssetType struct or something, or aybe tuple?
      */
-    static func asset(_ skin:ISkin, _ depth:Int = 0) -> String {
+    static func asset(_ skin:Skinable, _ depth:Int = 0) -> String {
         guard let val = value(skin, CSS.Other.fill,depth),
             let arr = val as? [Any],
             let str = arr[0] as? String else {
@@ -94,7 +94,7 @@ class StylePropertyParser{
     /**
      * TODO: ⚠️️ This method is asserted before its used, so you may ommit the optionality
      */
-    static func dropShadow(_ skin:ISkin, _ depth:Int = 0)->DropShadow? {
+    static func dropShadow(_ skin:Skinable, _ depth:Int = 0)->DropShadow? {
         return value(skin, CSS.Other.drop_shadow,depth) as? DropShadow
     }
 }
@@ -102,13 +102,13 @@ extension StylePropertyParser{
     /*
      * Convenince method for deriving CGFloat values
      */
-    static func number(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->CGFloat{
+    static func number(_ skin:Skinable, _ propertyName:String, _ depth:Int = 0)->CGFloat{
         return string(skin, propertyName, depth).cgFloat//was cast like this-> CGFloat(Double()!)
     }
     /**
      * Convenince method for deriving String values
      */
-    static func string(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0)->String{
+    static func string(_ skin:Skinable, _ propertyName:String, _ depth:Int = 0)->String{
         return "\(value(skin, propertyName, depth))"
     }
 }
@@ -124,7 +124,7 @@ extension StylePropertyParser{
      * Returns a GradientLineStyle
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    fileprivate static func gradientLineStyle(_ gradient:IGradient, _ skin:ISkin, _ depth:Int = 0) -> GradientLineStyle {
+    fileprivate static func gradientLineStyle(_ gradient:IGradient, _ skin:Skinable, _ depth:Int = 0) -> GradientLineStyle {
         let lineThickness:CGFloat = value(skin, CSS.Other.lineThickness,depth) as! CGFloat
         return GradientLineStyle(gradient, lineThickness, NSColor.clear)
     }
@@ -133,7 +133,7 @@ extension StylePropertyParser{
      * TODO: this is wrong the style property named line-color doesnt exist anymore, its just line now
      * NOTE: we use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    fileprivate static func colorLineStyle(_ colorValue:NSColor?, _ skin:ISkin, _ depth:Int = 0) -> ILineStyle {
+    fileprivate static func colorLineStyle(_ colorValue:NSColor?, _ skin:Skinable, _ depth:Int = 0) -> LineStylable {
         let lineThickness:CGFloat = value(skin, CSS.Other.lineThickness,depth) as? CGFloat ?? CGFloat.nan
         let lineAlpha:CGFloat = value(skin, CSS.Other.lineAlpha,depth) as? CGFloat ?? 1
         let nsColor:NSColor = colorValue != nil ? colorValue!.alpha(lineAlpha) : NSColor.clear
@@ -142,7 +142,7 @@ extension StylePropertyParser{
     /**
      * NOTE: makes sure that if the value is set to "none" or doesnt exsist then NaN is returned (NaN is interpreted as do not draw or apply style)
      */
-    fileprivate static func color(_ skin:ISkin, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
+    fileprivate static func color(_ skin:Skinable, _ propertyName:String, _ depth:Int = 0) -> NSColor? {
         let color:Any? = value(skin, propertyName,depth)
         return color == nil || (color as? String) == CSS.Align.none ? nil : color as? NSColor
     }
@@ -151,7 +151,7 @@ extension StylePropertyParser{
      * TODO: add support for the css: fill:none; (the current work-around is to set fill-alpha:0)
      * TODO: ⚠️️ I don't think we need support for array anymore, consider removing it
      */
-    fileprivate static func colorFillStyle(_ colorVal:Any?,_ skin:ISkin, _ depth:Int = 0)->IFillStyle {
+    fileprivate static func colorFillStyle(_ colorVal:Any?,_ skin:Skinable, _ depth:Int = 0)->FillStyleKind {
         var nsColor:NSColor? = {
             if let colorVal = colorVal as? NSColor {
                 return colorVal

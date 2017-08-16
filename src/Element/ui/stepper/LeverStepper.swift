@@ -17,7 +17,7 @@ class LeverStepper:Element{
     var leftMouseDraggedEventListener:Any?
     lazy var plusButton:Button = {return self.addSubView(Button(self.height,self.height,self,"plus"))}()
     lazy var minusButton:Button = {return self.addSubView(Button(self.height,self.height,self, "minus"))}()
-    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: ElementKind? = nil, _ id: String? = nil) {
         self.value = value
         self.minVal = min
         self.maxVal = max

@@ -12,7 +12,7 @@ class StyleWatcher {
                 Swift.print(event.description)
                 Swift.print("update to the file happened: " + "\(event.path)")
                 StyleManager.addStylesByURL(fileURL,true)
-                ElementModifier.refreshSkin(view as! IElement)
+                ElementModifier.refreshSkin(view as! ElementKind)
                 ElementModifier.floatChildren(view)
             }
         }

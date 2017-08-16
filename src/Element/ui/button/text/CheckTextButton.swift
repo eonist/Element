@@ -1,9 +1,9 @@
 import Cocoa
 @testable import Utils
 
-class CheckTextButton:TextButton,ICheckable {
+class CheckTextButton:TextButton,Checkable {
     var isChecked:Bool
-    init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isChecked : Bool = false, _ parent : IElement? = nil, _ id : String? = nil){
+    init(_ width : CGFloat, _ height : CGFloat, _ text : String = "defaultText", _ isChecked : Bool = false, _ parent : ElementKind? = nil, _ id : String? = nil){
         self.isChecked = isChecked;
         super.init(width, height, text, parent, id)
     }

@@ -43,11 +43,11 @@ extension StyleCache{
     /**
      * Read pre-parsed styles
      */
-    static func readStylesFromXML(_ xml:XML) -> [IStyle]{
+    static func readStylesFromXML(_ xml:XML) -> [Stylable]{
         //Swift.print("💾 StyleCache.readStylesFromDisk()")
         return testPerformance("parse xml styles time") {//then try to measure the time of resolving all selectors
             let stylesXML:XML = xml.firstNode("styles")!
-            let styles:[IStyle] = stylesXML.children?.lazy.map{ child -> IStyle? in
+            let styles:[Stylable] = stylesXML.children?.lazy.map{ child -> Stylable? in
                 Style.unWrap(child as! XML)
                 }.flatMap{$0} ?? []
             return styles
@@ -105,7 +105,7 @@ extension StyleCache{
      * B. or creates new cache and reads from css and stores it in cache
      * IMPORTANT: ⚠️️ the styles.xml file in bundle isn't written to, it's the styles.xml inside the .app file that is beeing written to
      */
-    static func styles(_ stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [IStyle]{
+    static func styles(_ stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [Stylable]{
 //        Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL.tildify)")
         if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
@@ -114,7 +114,7 @@ extension StyleCache{
                 return styles
             }
         }else {/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
-            let styles:[IStyle] = testPerformance ("Adding css styles time: "){/*performance test*/
+            let styles:[Stylable] = testPerformance ("Adding css styles time: "){/*performance test*/
                 let cssString:String = CSSFileParser.cssString(stylesURL)/*This takes a few secs, basic.css takes around 4sec*/
                 return StyleManagerUtils.styles(cssString,removeComments:false)/*<--we already removed comments so no need to do it again*/
             }
@@ -129,7 +129,7 @@ extension StyleCache{
      * Store the styles as xml for faster load times
      * PARAM: filePath: "~/Desktop/styles.xml".tildePath
      */
-    static func save(_ styles:[IStyle],to filePath:String){
+    static func save(_ styles:[Stylable],to filePath:String){
 //      Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
         let data:XML = "<data></data>".xml
         let cssFileDates:XML = StyleCache.cssFileDates()

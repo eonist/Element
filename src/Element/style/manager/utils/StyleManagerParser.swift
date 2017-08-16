@@ -6,10 +6,10 @@ extension StyleManager{
      * Locates and returns a Style by the PARAM: name.
      * RETURN: a Style
      */
-    static func getStyle(_ name:String)->IStyle?{
+    static func getStyle(_ name:String)->Stylable?{
         return self.styles.first(where:{$0.name == name})
     }
-    static func getStyle(_ index:Int)->IStyle?{
+    static func getStyle(_ index:Int)->Stylable?{
         return styles[safe:index]//<-⚠️️ just added safe
     }
     /**

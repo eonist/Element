@@ -6,7 +6,7 @@ import Cocoa
 class TextButton:Button,LableKind {
     lazy var text:Text = self.createText()
     var textString:String/*Interim value*/
-    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:IElement?, _ id:String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind?, _ id:String? = nil) {
         textString = text
         super.init(width, height, parent, id)
     }

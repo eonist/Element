@@ -19,7 +19,7 @@ extension ComboBoxEvent{
      * NOTE: Keeps the event light-weight by not referencing the item directly
      * NOTE: you may have to reconsider this as the selected item may have de-selected before the event arrives (think cpu threads etc)
      */
-    var selected:ISelectable{
+    var selected:Selectable{
         //continue here: index from where? See similar event class in list
         //you could even just grab the index from the list it self
         fatalError("not supported yet")

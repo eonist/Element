@@ -14,7 +14,7 @@ class BarGraph:Graph {
     var initGraphPts:[CGPoint] = []/*Animates from these points*/
     /*Debugging*/
     var gestureHUD:GestureHUD?
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:IElement?, _ id: String? = nil) {
+    override init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind?, _ id: String? = nil) {
         tempVValues = GraphUtils.randomVerticalValues()//random data is set on init
         super.init(width, height, parent, id)
         self.acceptsTouchEvents = true/*Enables gestures*/
@@ -147,7 +147,7 @@ class Bar:Element{
         //I think the most apropriate way is to make a custom skin and add it as a subView wich would implement :ISkin etc, see TextSkin for details
         //Somehow derive the style data and make a basegraphic with it
         //let lineStyle:ILineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
-        let fillStyle:IFillStyle = StylePropertyParser.fillStyle(skin!)
+        let fillStyle:FillStyleKind = StylePropertyParser.fillStyle(skin!)
         //LineStyleParser.describe(lineStyle)
         graphic = RoundRectGraphic(-getWidth()/2,0,getWidth(),getHeight(),Fillet(getWidth()/2),fillStyle,nil)
         _ = addSubView(graphic!.graphic)

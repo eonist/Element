@@ -13,7 +13,7 @@ class TextSkin:Skin,TextSkinable{
     lazy var textField:NSTextField =  self.createTextField()/*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
-    init(_ style:IStyle, _ text:String, _ state:String = SkinStates.none, _ element:ElementKind? = nil){
+    init(_ style:Stylable, _ text:String, _ state:String = SkinStates.none, _ element:ElementKind? = nil){
         super.init(style, state, element)
         //textField.sizeToFit()
         textField.stringValue = text

@@ -9,8 +9,8 @@ class SkinResolver{
      * TODO: future additions? //resolveSkinFromStylabaleParents(stylable) || resolveSkinByClass(stylable) || resolveSkinBySuperClass(stylable) || resolveSkinByDeafultStyling(stylable)
      * TODO: enable these additions when you have more controll over the Element FrameWork for now you need to throw error to debug
      */
-    static func skin(_ element:IElement)->Skin{
-        let style:IStyle = StyleResolver.style(element)
+    static func skin(_ element:ElementKind)->Skin{
+        let style:Stylable = StyleResolver.style(element)
         let skinName:String = style.getValue("skin") as? String ?? Utils.skinName(element)
         return SkinManager.skin(by:skinName,for:element,with:style) ?? {fatalError("SKINRESOLVER: NO SKIN COULD BE RESOLVED FOR ELEMENT BY THE ID: ")}()/*Throws an error message if a skin cant be resolved (with usefull information for debugging)*/
     }
@@ -19,7 +19,7 @@ private class Utils{
     /**
      * Returns a skin name based on what class type the element parent is
      */
-    static func skinName(_ element:IElement)->String {
+    static func skinName(_ element:ElementKind)->String {
         var skinName:String;
         switch element.getClassType(){
             case "Text":skinName = SkinFactory.textSkin

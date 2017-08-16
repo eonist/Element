@@ -14,7 +14,7 @@ class List3Modifier {
      * Selects an item in the itemContainer
      */
     static func selectAt(_ list:Listable3, _ index:Int) {
-        let selectable:ISelectable = list.contentContainer.subviews[index] as! ISelectable
+        let selectable:Selectable = list.contentContainer.subviews[index] as! Selectable
         if(!selectable.getSelected()) {selectable.setSelected(true)}
         SelectModifier.unSelectAllExcept(selectable, list.contentContainer)
     }

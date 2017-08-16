@@ -21,7 +21,7 @@ class FastList3:ContainerView3,FastListable3{
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
     override var contentSize:CGSize {get{return dir == .hor ? CGSize(dp.count * itemSize.width ,height) : CGSize(width ,dp.count * itemSize.height) } set{_ = newValue;fatalError("not supported");}}
-    init(_ width:CGFloat, _ height:CGFloat, _ itemSize:CGSize = CGSize(NaN,NaN), _ dp:DataProvider? = nil,_ parent:IElement? = nil, _ id:String? = nil, _ dir:Dir = .ver) {
+    init(_ width:CGFloat, _ height:CGFloat, _ itemSize:CGSize = CGSize(NaN,NaN), _ dp:DataProvider? = nil,_ parent:ElementKind? = nil, _ id:String? = nil, _ dir:Dir = .ver) {
         self.itemSize = itemSize
         self.dp = dp ?? DataProvider()/*<--if it's nil then a DB is created*/
         self.dir = dir
@@ -41,7 +41,7 @@ class FastList3:ContainerView3,FastListable3{
      */
     func reUse(_ listItem:FastListItem){
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
-        if let selectable = listItem.item as? ISelectable {
+        if let selectable = listItem.item as? Selectable {
             let selected:Bool = idx == selectedIdx
             if selectable.selected != selected{
                 selectable.setSelected(selected)//only set this if the selected state is different from the current selected state in the ISelectable

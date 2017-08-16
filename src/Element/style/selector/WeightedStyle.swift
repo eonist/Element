@@ -10,7 +10,7 @@ struct WeightedStyle:Stylable/*,Comparable*/{
 extension WeightedStyle{
     var name:String {return style.name}
     var selectors:[SelectorKind] {get {return style.selectors}}
-    var styleProperties:[IStyleProperty] {get{return style.styleProperties}set{style.styleProperties = newValue}}
+    var styleProperties:[StylePropertyKind] {get{return style.styleProperties}set{style.styleProperties = newValue}}
 }
 /*
 func < (lhs: WeightedStyle, rhs: WeightedStyle) -> Bool {

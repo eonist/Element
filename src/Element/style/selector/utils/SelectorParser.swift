@@ -12,10 +12,10 @@ class SelectorParser{
      * TODO: this the sub method of this class could still need some refactoring, and clearafication
      * TODO: somehow you need to have a flag when a selector has a state that cascade doesnt have
      */
-    static func selectorWeights(_ style:IStyle,_ querrySelectors:[ISelector])->[SelectorWeight]? {//
+    static func selectorWeights(_ style:Stylable,_ querrySelectors:[SelectorKind])->[SelectorWeight]? {//
         var selectorWeights:[SelectorWeight] = []
         cursor = 0/*so that we skip testing the same selector again*/
-        for styleSel:ISelector in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
+        for styleSel:SelectorKind in style.selectors {/*loops through each selector in the style*///Item Item Item Button Text
             let selectorWeight:SelectorWeight? = Utils.selectorWeight(styleSel,querrySelectors)
             if(selectorWeight == nil) {return nil}
             else {selectorWeights.append(selectorWeight!)}
@@ -26,7 +26,7 @@ class SelectorParser{
      * Returns the absolute ancestry as a space delimited string in this format: elementId:classIds#id:states
      * NOTE: this method can also be used for debuging purposes
      */
-    static func selectorsString(_ selectors:[ISelector])->String{
+    static func selectorsString(_ selectors:[SelectorKind])->String{
         return selectors.reduce(""){
             $0 + selectorString($1) + " "
         }.trimRight(" ")
@@ -34,7 +34,7 @@ class SelectorParser{
     /**
      * Returns a single selector (ie: Button#first:over)
      */
-    static func selectorString(_ selector:ISelector)->String{// :TODO: rename to selectorString
+    static func selectorString(_ selector:SelectorKind)->String{// :TODO: rename to selectorString
         let element:String = selector.element != "" ? selector.element : ""
         //let classIds:String = selector.classIds.reduce(string) { $0 + ("."+$1) }
         let id:String = selector.id != "" ? "#"+selector.id : ""
@@ -44,9 +44,9 @@ class SelectorParser{
     /**
      * Returns an array of Selector instances from PARAM: string (which is usually from the CSSParser.style function)
      */
-    static func selectors(_ string:String)->[ISelector] {
+    static func selectors(_ string:String)->[SelectorKind] {
         let selectorNames:[String] = StringAsserter.contains(string, " ") ? StringModifier.split(string," ") : [string]
-        let styleSelectors:[ISelector] = selectorNames.map{ return selector($0) }
+        let styleSelectors:[SelectorKind] = selectorNames.map{ return selector($0) }
         return styleSelectors
     }
     /**
@@ -54,7 +54,7 @@ class SelectorParser{
      * NOTE: a Selector is a data container that contains element,classIds,ids and states
      * EXAMPLE: SelectorParser.selector("Button.tab#arrow:down")//element: >Button<classIds: >["tab"]<id: >arrow<states: >["down"]<
      */
-    static func selector(_ string:String)->ISelector {
+    static func selector(_ string:String)->SelectorKind {
         let matches = RegExp.matches(string, SelectorPattern.pattern)
         var selectorElement:String = ""
         for match:NSTextCheckingResult in matches {
@@ -66,16 +66,16 @@ class SelectorParser{
         }
         return Selector()
     }
-    static func numOfSimilarStates(_ a:ISelector,_ b:ISelector)->Int {
+    static func numOfSimilarStates(_ a:SelectorKind,_ b:SelectorKind)->Int {
         return SelectorAsserter.hasBothSelectorsStates(a, b) ? ArrayParser.similar(a.states, b.states).count : 0
     }
-    static func numOfSimilarClassIds(_ a:ISelector,_ b:ISelector)->Int {
+    static func numOfSimilarClassIds(_ a:SelectorKind,_ b:SelectorKind)->Int {
         return SelectorAsserter.hasBothSelectorsClassIds(a, b) ? ArrayParser.similar(a.classIds, b.classIds).count : 0
     }
     /**
      * Returns a Selector instance
      */
-    static func compileSelectorWeight(_ styleSel:ISelector,_ querrySelector:ISelector,_ weight:Int)->SelectorWeight{
+    static func compileSelectorWeight(_ styleSel:SelectorKind,_ querrySelector:SelectorKind,_ weight:Int)->SelectorWeight{
         let hasElement:Bool = SelectorAsserter.hasElement( styleSel) && SelectorAsserter.hasMatchingElement(styleSel,querrySelector)
         let hasId:Bool = SelectorAsserter.hasId(styleSel) && SelectorAsserter.hasMatchingId(styleSel,querrySelector)
         let numOfSimilarClassIds:Int = SelectorParser.numOfSimilarClassIds(styleSel,querrySelector)
@@ -89,8 +89,8 @@ class SelectorParser{
 }
 //deprecated
 extension SelectorParser{
-    static func selectorToString(_ selector:ISelector)->String{return selectorString(selector)}
-    static func string(_ selectors:[ISelector])->String{return selectorsString(selectors)}
+    static func selectorToString(_ selector:SelectorKind)->String{return selectorString(selector)}
+    static func string(_ selectors:[SelectorKind])->String{return selectorsString(selectors)}
 }
 private class Utils{
     /**
@@ -98,13 +98,13 @@ private class Utils{
      * PARAM: styleSel an Selector instance from styleSelectors
      * PARAM: querrySelectors: an array comprised of Selectors (from the element stack)
      */
-    static func selectorWeight(_ styleSel:ISelector,_ querrySelectors:[ISelector])->SelectorWeight?{
+    static func selectorWeight(_ styleSel:SelectorKind,_ querrySelectors:[SelectorKind])->SelectorWeight?{
         //swift 3 update
         
         //TODO: ⚠️️ Do .lazy.flatMap.first on the bellow:  
         
         for i in 0..<querrySelectors.count{/*loops through each selector in the stack*///Item Container Item Container Button Text
-            let querrySelector:ISelector = querrySelectors[i]
+            let querrySelector:SelectorKind = querrySelectors[i]
             if(SelectorAsserter.hasCommonality(styleSel, querrySelector)){/*Asserts if the selector in the style should influence the style of the element*/
                 let selectorWeight = SelectorParser.compileSelectorWeight(styleSel,querrySelector, i+1)
                 SelectorParser.cursor = i+1//TODO: this could possibly also be solved by looping the style inside the stack, but this was a faster fix

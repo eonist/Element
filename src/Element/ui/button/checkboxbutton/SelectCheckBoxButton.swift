@@ -4,9 +4,9 @@ import Cocoa
  * EXAMPLE: see TestCheckBoxButton
  * NOTE: Remember to use the setChecked(true) if you want to change the state and skin after initiating the instance, since it wont do this itself on initiate
  */
-class SelectCheckBoxButton:CheckBoxButton,ISelectable {
+class SelectCheckBoxButton:CheckBoxButton,Selectable {
     private var isSelected:Bool
-    init(_ width:CGFloat, _ height:CGFloat,  _ text:String = "defaultText", _ isSelected : Bool = false, _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String = ""){
+    init(_ width:CGFloat, _ height:CGFloat,  _ text:String = "defaultText", _ isSelected : Bool = false, _ isChecked:Bool = false, _ parent:ElementKind? = nil, _ id:String = ""){
         self.isSelected = isSelected
         super.init(width, height, text, isChecked, parent, id)
     }

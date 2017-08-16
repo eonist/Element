@@ -2,16 +2,16 @@ import Foundation
 @testable import Utils
 
 class StyleManagerUtils{
-    static var stylesByElement:[String:[IStyle]] = [:]
-    static var stylesByID:[String:[IStyle]] = [:]
-    static var stylesByClassId:[String:[IStyle]] = [:]
-    static var stylesByState:[String:[IStyle]] = [:]
+    static var stylesByElement:[String:[Stylable]] = [:]
+    static var stylesByID:[String:[Stylable]] = [:]
+    static var stylesByClassId:[String:[Stylable]] = [:]
+    static var stylesByState:[String:[Stylable]] = [:]
     /**
      * We hash the tail of the style selectors
      * NOTE: Using if let won't work on the code bellow
      * TODO: Tail trick is nice, but it complicates the code, try to pursue other avenues in optimization, bisect search comes to mind.
      */
-    static func hashStyle(_ style:IStyle){
+    static func hashStyle(_ style:Stylable){
         if style.selectors.last!.element != "" {
             if stylesByElement[style.selectors.last!.element] != nil {
                 stylesByElement[style.selectors.last!.element]!.append(style)
@@ -44,7 +44,7 @@ class StyleManagerUtils{
     /**
      * New
      */
-    static func styles(_ cssString:String, removeComments:Bool = true) -> [IStyle]{
+    static func styles(_ cssString:String, removeComments:Bool = true) -> [Stylable]{
         let resolvedLinksCSS = CSSLinkResolver.resolveLinks(cssString)
         let removedCommentsCSS =  removeComments ? RegExpModifier.removeComments(resolvedLinksCSS) : resolvedLinksCSS
         return CSSParser.styleCollection(removedCommentsCSS).styles

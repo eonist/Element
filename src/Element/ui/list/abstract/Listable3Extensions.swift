@@ -5,7 +5,7 @@ import Cocoa
  */
 extension Listable3 {
     /*Parsers*/
-    var selected:ISelectable?{fatalError("not implemented yet")}/*Convenience*/
+    var selected:Selectable?{fatalError("not implemented yet")}/*Convenience*/
     var selectedIndex:Int{return 0}/*Convenience*/
     //var itemsHeight:CGFloat {fatalError("not implemented yet")}/*Convenience*/
     /*Modifiers*/

@@ -179,7 +179,7 @@ class CSSPropertyParser {
         let color:NSColor = NSColorParser.nsColor(colorValue, alpha)
         let blur:CGFloat = max(blurX,blurY)
         let angleInRadians = Trig.radians(angle)
-        let polarPoint:CGPoint = PointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
+        let polarPoint:CGPoint = CGPointParser.polar(distance, angleInRadians)/*finds the point from x:0,y:0*/
         let offsetX:CGFloat = polarPoint.x
         let offsetY:CGFloat = polarPoint.y
         let dropShadow:DropShadow = DropShadow(color,offsetX,offsetY,blur,inner)

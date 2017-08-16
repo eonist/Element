@@ -5,5 +5,5 @@ import Foundation
  * TODO: get rid of name?!?
  */
 struct StyleCollection:IStyleCollection{
-    var styles:[IStyle] = []//use dict instead?
+    var styles:[Stylable] = []//use dict instead?
 }

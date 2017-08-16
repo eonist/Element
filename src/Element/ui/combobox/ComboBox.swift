@@ -23,7 +23,7 @@ class ComboBox:Element{
     var isOpen:Bool = false
     var selectedIndex:Int
     var popupWindow:ComboBoxWin?
-	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ selectedIndex:Int = 0, _ parent:IElement? = nil, _ id:String? = nil){
+	init(_ width:CGFloat = NaN, _ height:CGFloat = NaN, _ itemHeight:CGFloat = NaN ,_ dataProvider:DataProvider? = nil, _ isOpen:Bool = false, _ selectedIndex:Int = 0, _ parent:ElementKind? = nil, _ id:String? = nil){
 		self.itemHeight = itemHeight
 		self.dataProvider = dataProvider
 		self.isOpen = isOpen

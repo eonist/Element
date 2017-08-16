@@ -7,13 +7,13 @@ extension StyleManager{
      * Adds a style to the styleManager class
      * PARAM: style: IStyle
      */
-    static func addStyle(_ style:IStyle){
+    static func addStyle(_ style:Stylable){
         styles.append(style)
     }
     /**
      * Removes the first style that has PARAM: name
      */
-    static func removeStyle(_ name:String) -> IStyle? {
+    static func removeStyle(_ name:String) -> Stylable? {
         if let i:Int = styles.index(where: {$0.name == name}){
             return styles.splice2(i,1)[0]
         }
@@ -22,13 +22,13 @@ extension StyleManager{
     /**
      * Removes styles
      */
-    static func removeStyle(_ styles:[IStyle]){
+    static func removeStyle(_ styles:[Stylable]){
         _ = styles.map{removeStyle($0.name)}
     }
     /**
      * Adds every style in a styleCollection to the stylemanager
      */
-    static func addStyle(_ styles:[IStyle], isHasingStyles:Bool = StyleManager.isHashingStyles){
+    static func addStyle(_ styles:[Stylable], isHasingStyles:Bool = StyleManager.isHashingStyles){
         if isHashingStyles {
             styles.lazy.filter{$0.selectors.count > 0}.forEach{StyleManagerUtils.hashStyle($0)}
         }
@@ -51,7 +51,7 @@ extension StyleManager{
      * TODO: ⚠️️ Implement running the css resolve process on a background thread
      */
     static func addStyle(url stylesURL:String,liveEdit:Bool = false) {
-        let styles:[IStyle] = {
+        let styles:[Stylable] = {
             if liveEdit { return LiveEdit.styles(stylesURL) }/*liveEdit, don't read from cache*/
             else {return StyleCache.styles(stylesURL)}/*not live, try and read from cache*/
         }()
@@ -62,7 +62,7 @@ extension StyleManager{
      */
     static func overrideStylePropertyValue(_ styleName:String, _ stylePropertyName:String, _ newValue:Any, _ depth:Int = 0){
         if  let i = StyleManager.index(styleName),
-            let style:IStyle = StyleManager.styles[safe:i],
+            let style:Stylable = StyleManager.styles[safe:i],
             let e:Int = StyleParser.idx(style, stylePropertyName) {
             StyleManager.styles[i].styleProperties[e].value = newValue
         }

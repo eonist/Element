@@ -1,7 +1,6 @@
 import Cocoa
 @testable import Utils
 
-typealias IText = TextKind
 protocol TextKind:ElementKind {
     func setText(_ text:String)
     func getTextField()->NSTextField

@@ -27,11 +27,11 @@ class Element:InteractiveView,ElementKind {
     //TODO: ⚠️️ move bellow to a deprecated extension
     var width:CGFloat //{get{return self.initial.size.width}set{self.initial.size.width = newValue}}
     var height:CGFloat //{get{return self.initial.size.height}set{self.initial.size.height = newValue}}
-    var parent:IElement? //{get{return self.initial.parent}set{self.initial.parent = newValue}}
+    var parent:ElementKind? //{get{return self.initial.parent}set{self.initial.parent = newValue}}
     var id:String? //{get{return self.initial.id}set{self.initial.id = newValue}}/*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
     /*State */
     var state:String = SkinStates.none
-    var skin:ISkin?//TODO: ⚠️️ make this lazy
+    var skin:Skinable?//TODO: ⚠️️ make this lazy
     var isDisabled:Bool = false
     var isFocused:Bool = false
     override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,width.isNaN ? 0 : width,height.isNaN ? 0 : height)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */

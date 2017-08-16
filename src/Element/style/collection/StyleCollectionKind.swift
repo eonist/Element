@@ -2,7 +2,7 @@ import Foundation
 
 typealias IStyleCollection = StyleCollectionKind
 protocol StyleCollectionKind {
-    var styles:[IStyle] {get set}
+    var styles:[Stylable] {get set}
 }
 /*func addStyle(_ style:IStyle)
  func addStyles(_ styles:[IStyle])

@@ -33,10 +33,10 @@ class CSSParser{
             let styleName:String = match.value(cssString, 1)/*name*/
             let value:String = match.value(cssString, 2)/*value*/
             if(StringAsserter.contains(styleName, ",")){/*Sibling styles*/
-                let siblingStyles:[IStyle] = Utils.siblingStyles(styleName, value)
+                let siblingStyles:[Stylable] = Utils.siblingStyles(styleName, value)
                 styleCollection.addStyles(siblingStyles)/*If the styleName has multiple comma-seperated names*/
             }else{/*Single style*/
-                let style:IStyle = CSSParser.style(styleName,value)
+                let style:Stylable = CSSParser.style(styleName,value)
                 styleCollection.addStyle(style)/*If the styleName has 1 name*/
             }
             return styleCollection
@@ -48,11 +48,11 @@ class CSSParser{
      * PARAM: name: the name of the style
      * PARAM: value: a string comprised of a css style syntax (everything between { and } i.e: color:blue;border:true;)
      */
-    static func style(_ name:String,_ value:String)->IStyle{
+    static func style(_ name:String,_ value:String)->Stylable{
         let name = name != "" ? RegExpModifier.removeWrappingWhitespace(name) : ""/*removes space from left and right*/
-        let selectors:[ISelector] = SelectorParser.selectors(name)
+        let selectors:[SelectorKind] = SelectorParser.selectors(name)
         let matches = value.matches(CSSStyle.pattern)
-        let styleProps:[IStyleProperty] = matches.lazy.map{ match -> [IStyleProperty] in
+        let styleProps:[StylePropertyKind] = matches.lazy.map{ match -> [StylePropertyKind] in
             let propName:String = match.value(value, 1)/*name*/
             let propValue:String = match.value(value, 2)/*value*/
             return CSSParser.styleProperties(propName,propValue)
@@ -65,15 +65,15 @@ class CSSParser{
      * Returns an array of StyleProperty items (if a name is comma delimited it will create a new styleProperty instance for each match)
      * NOTE: now supports StyleProperty2 that can have many property values
      */
-    static func styleProperties(_ propertyName:String, _ propertyValue:String) -> [IStyleProperty]{
+    static func styleProperties(_ propertyName:String, _ propertyValue:String) -> [StylePropertyKind]{
         let names = propertyName.contains(",") ? propertyName.split(propertyValue) : [propertyName]//Converts a css property to a swift compliant property that can be read by the swift api
-        return names.lazy.map { name -> [IStyleProperty] in
+        return names.lazy.map { name -> [StylePropertyKind] in
             let name:String = RegExpModifier.removeWrappingWhitespace(name)
             var values:[String] = propertyValue.match(CSSStyle.Property.values)
-            return (0..<values.count).indices.map{ i -> IStyleProperty in
+            return (0..<values.count).indices.map{ i -> StylePropertyKind in
                 let value = RegExpModifier.removeWrappingWhitespace(values[i])
                 let propertyValue:Any = CSSPropertyParser.property(value)
-                let styleProperty:IStyleProperty = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/
+                let styleProperty:StylePropertyKind = StyleProperty(name,propertyValue,i)/*values that are of a strict type, boolean, number, uint, string or int*/
                 return styleProperty
             }
         }.flatMap{$0}/*flattens 2 deep arr into 1 deep arr*/
@@ -102,9 +102,9 @@ private class Utils{
      * TODO: add support for syntax like this: [Panel,Slider][Button,CheckBox]
      * TODO: ⚠️️ You can use functional programming here 🤖: use lazy map and flatMap to flatten to 1 depth
      */
-    static func siblingStyles(_ styleName:String,_ value:String)->[IStyle] {
-        var siblingStyles:[IStyle] = []
-        let style:IStyle = CSSParser.style("", value)/*creates an empty style i guess?*/
+    static func siblingStyles(_ styleName:String,_ value:String)->[Stylable] {
+        var siblingStyles:[Stylable] = []
+        let style:Stylable = CSSParser.style("", value)/*creates an empty style i guess?*/
         let matches = styleName.matches(Sibling.pattern)/*TODO: Use associate regexp here for identifying the group the subseeding name and if possible the preceding names*/
         matches.forEach { match in
             if(match.numberOfRanges > 0){

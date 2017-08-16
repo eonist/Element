@@ -67,7 +67,7 @@ class WeightedStyleAsserter {
     /**
      * Returns num of elements that are not empty
      */
-    private static func elementCount(_ selectors:[ISelector])->Int{
+    private static func elementCount(_ selectors:[SelectorKind])->Int{
         return selectors.reduce(0){ elementCount,selector in
             elementCount + (selector.element != "" ? 1 : 0)
         }

@@ -15,7 +15,7 @@ class StyleCollectionParser {
      * Note can you use the ObjectDescriber in place of this class?
      */
     static func describe(_ styleCollection:IStyleCollection) {
-        func printStyleProperties(_ style:IStyle) {
+        func printStyleProperties(_ style:Stylable) {
             Swift.print("<style.name>:"+style.name)
             var propertyNames:[String] = StyleParser.stylePropertyNames(style)
             (0..<style.styleProperties.count).indices.forEach{ e in

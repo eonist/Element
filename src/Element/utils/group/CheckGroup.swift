@@ -8,28 +8,28 @@ import Foundation
  * TODO: fix the bubbling stuff this should need to be added to the view or be a sprite.
  */
 class CheckGroup:EventSender {
-    var checkables:[ICheckable] = []
-    var checked:ICheckable?
-    init(_ checkables:[ICheckable], _ checked:ICheckable? = nil){
+    var checkables:[Checkable] = []
+    var checked:Checkable?
+    init(_ checkables:[Checkable], _ checked:Checkable? = nil){
         super.init()
         addCheckables(checkables)
         self.checked = checked!
     }
-    func addCheckables(_ checkables:[ICheckable]) {
-        for checkable:ICheckable in checkables{ addCheckable(checkable)}
+    func addCheckables(_ checkables:[Checkable]) {
+        for checkable:Checkable in checkables{ addCheckable(checkable)}
     }
     /**
      * NOTE: Use a weak ref so that we don't have to remove the event if the selectable is removed from the SelectGroup or view
      */
-    func addCheckable(_ checkable:ICheckable) {
-        if(checkable is IEventSender){(checkable as! IEventSender).event = onEvent}
+    func addCheckable(_ checkable:Checkable) {
+        if(checkable is EventSendable){(checkable as! EventSendable).event = onEvent}
         checkables.append(checkable);
     }
     override func onEvent(_ event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == CheckEvent.check){
             //Swift.print("CheckGroup.onEvent() immediate: " + "\(event.immediate)" + " type: " + "\(event.type)")
             self.event!(CheckGroupEvent(CheckGroupEvent.check,checked,self))
-            checked = event.immediate as? ICheckable
+            checked = event.immediate as? Checkable
             CheckModifier.unCheckAllExcept(checked!, checkables)
             super.onEvent(CheckGroupEvent(CheckGroupEvent.change,checked,self))
         }

@@ -24,7 +24,7 @@ class ComboBoxView:PopupView{
     var list:List3?
     var initSelectedIndex:Int
     var itemHeight:CGFloat//TODO:this should be set in the css?
-    init(_ width:CGFloat, _ height:CGFloat, _ dataProvider:DataProvider,_ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ dataProvider:DataProvider,_ initSelectedIndex:Int, _ itemHeight:CGFloat, _ parent: ElementKind? = nil, _ id: String? = nil) {
         self.dataProvider = dataProvider
         self.initSelectedIndex = initSelectedIndex
         self.itemHeight = itemHeight

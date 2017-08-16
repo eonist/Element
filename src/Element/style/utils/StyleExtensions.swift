@@ -2,8 +2,8 @@ import Foundation
 @testable import Utils
 
 extension Style:UnWrappable{
-    static var clear:IStyle = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this won't work since it doesnt have any selectors
-    init(_ id:String,_ styleProperty:IStyleProperty){/*Convenience*/
+    static var clear:Stylable = Style("clear",[],[StyleProperty("idleColor",0x000000),StyleProperty("idleOpacity",0)])//this won't work since it doesnt have any selectors
+    init(_ id:String,_ styleProperty:StylePropertyKind){/*Convenience*/
         self.init(id,[],[styleProperty])
     }
 }
@@ -22,7 +22,7 @@ extension Style{
      * New
      * IMPORTANT: ⚠️️ You aperantly have to use Style, protocols are not mutable apperantly
      */
-    mutating func setStyleProperty(_ styleProp:IStyleProperty){
+    mutating func setStyleProperty(_ styleProp:StylePropertyKind){
         StyleModifier.overrideStyleProperty(&self, styleProp)
     }
 }

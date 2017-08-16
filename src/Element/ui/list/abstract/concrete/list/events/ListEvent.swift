@@ -15,7 +15,7 @@ extension ListEvent{
      * NOTE: Keeps the event light-weight by not referencing the item directly
      * NOTE: You may have to reconsider this as the selected item may have de-selected before the event arrives (think cpu threads etc)
      */
-    var selected:ISelectable{
-        return (origin as! Listable3).contentContainer.subviews[index] as! ISelectable
+    var selected:Selectable{
+        return (origin as! Listable3).contentContainer.subviews[index] as! Selectable
     }
 }

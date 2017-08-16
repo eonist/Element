@@ -133,7 +133,7 @@ class Graph:Element {
      */
     func createGraphLine(){
         Swift.print("createGraphLine graphPts: \(graphPts)" )
-        let graphPath:IPath = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
+        let graphPath:PathKind = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
         graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {

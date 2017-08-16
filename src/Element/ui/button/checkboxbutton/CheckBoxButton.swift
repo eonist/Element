@@ -12,7 +12,7 @@ class CheckBoxButton:Button,Checkable,LableKind{//TODO: ⚠️️⚠️️     e
         text.isInteractive = false
         return text
     }()
-    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:IElement? = nil, _ id:String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil) {
         self.textString = text
         self.isChecked = isChecked
         super.init(width,height,parent,id)

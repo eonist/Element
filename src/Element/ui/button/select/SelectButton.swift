@@ -1,9 +1,9 @@
 import Cocoa
 @testable import Utils
 
-class SelectButton:Button,ISelectable {
+class SelectButton:Button,Selectable {
     private var isSelected:Bool
-    init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: IElement? = nil, _ id: String? = nil) {
+    init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: ElementKind? = nil, _ id: String? = nil) {
         self.isSelected = isSelected
         super.init(width, height, parent, id)
     }

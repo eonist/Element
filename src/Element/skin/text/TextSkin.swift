@@ -11,7 +11,7 @@ class TextSkin:Skin,TextSkinable{
         return StylePropertyParser.textFormat(self)/*Creates the textFormat*/
     }()
     lazy var textField:NSTextField =  self.createTextField()/*the bellow variable is a little more complex in the legacy code*/
-    override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
+    override var skinSize:CGSize? {get{return CGSize(textField.frame.size.width,super.skinSize!.height)} set{textField.frame.size.width = newValue!.width;super.skinSize?.height = newValue!.height}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
     init(_ style:Stylable, _ text:String, _ state:String = SkinStates.none, _ element:ElementKind? = nil){
         super.init(style, state, element)
@@ -31,7 +31,7 @@ class TextSkin:Skin,TextSkinable{
             SkinModifier.float(self)
             if hasChanged.size {
                 let padding:Padding = StyleMetricParser.padding(self);
-                TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom)
+                TextFieldModifier.size(textField, skinSize!.width + padding.left + padding.right, skinSize!.height + padding.top + padding.bottom)
             }
             if hasChanged.size || hasChanged.state || hasChanged.style || hasTextChanged/*<--recently added*/ {applyProperties(textField)}
             if hasTextChanged {hasTextChanged = false}
@@ -68,10 +68,10 @@ extension TextSkin{
     func applyProperties(_ textField:NSTextField){
 //        Swift.print("TextSkin.applyProperties")
         let padding:Padding = StyleMetricParser.padding(self)
-        let width:CGFloat = (StyleMetricParser.width(self) ?? super.width!) + padding.left + padding.right// :TODO: only querry this if the size has changed?
+        let width:CGFloat = (StyleMetricParser.width(self) ?? super.skinSize!.width) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         /*Swift.print("width: " + "\(width)")
          Swift.print("superview.frame.width: " + "\(superview?.frame.width)")*/
-        let height:CGFloat = (StyleMetricParser.height(self) ?? super.height!) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
+        let height:CGFloat = (StyleMetricParser.height(self) ?? super.skinSize!.height) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         textField.frame.w = width/*SkinParser.width(this)*/
         textField.frame.h = height/*SkinParser.height(this)*/
         

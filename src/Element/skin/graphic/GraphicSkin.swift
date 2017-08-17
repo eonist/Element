@@ -84,10 +84,10 @@ private class Parser{
         return CGSize(width,height)
     }
     static func width(_ skin:Skinable,_ depth:Int, _ padding:Padding) -> CGFloat {
-        return (StyleMetricParser.width(skin,depth) ?? skin.width!) + padding.hor// :TODO: only querry this if the size has changed?
+        return (StyleMetricParser.width(skin,depth) ?? skin.skinSize!.width) + padding.hor// :TODO: only querry this if the size has changed?
     }
     static func height(_ skin:Skinable,_ depth:Int, _ padding:Padding) -> CGFloat {
-        return (StyleMetricParser.height(skin,depth) ?? skin.height!) + padding.ver// :TODO: only querry this if the size has changed?
+        return (StyleMetricParser.height(skin,depth) ?? skin.skinSize!.height) + padding.ver// :TODO: only querry this if the size has changed?
     }
 }
 private class Modifier{

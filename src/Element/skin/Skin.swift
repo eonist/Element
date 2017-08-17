@@ -10,8 +10,9 @@ class Skin:InteractiveView,Skinable{
     var decoratables:[GraphicDecoratableKind] = []/*The layers in the skin*/
     var style:Stylable?
     var state:String
-    var width:CGFloat?
-    var height:CGFloat?
+    var skinSize:CGSize?
+//    var width:CGFloat?
+//    var height:CGFloat?
     var element:ElementKind?
     var hasChanged:HasChanged = (false,false,false)
 
@@ -19,8 +20,9 @@ class Skin:InteractiveView,Skinable{
         self.style = style
         self.state = state
         self.element = element
-        width = element!.width//TODO: is this necessary?
-        height = element!.height//TODO: is this necessary?
+        skinSize = CGSize(element!.width,element!.height)
+//        skinSize.width = //TODO: is this necessary?
+//        skinSize.height = //TODO: is this necessary?
         super.init(frame:NSRect())/*<-this doesnt need a size*/
     }
     /**
@@ -56,10 +58,11 @@ class Skin:InteractiveView,Skinable{
      * IMPORTANT: ⚠️️ Similar to setStyle, this does not querry the styleManger when called
      */
     func setSize(_ width:CGFloat, _ height:CGFloat) {
-        if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
+        if(self.skinSize?.width != width || self.skinSize?.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
             hasChanged.size = true
-            self.width = width
-            self.height = height
+            skinSize = CGSize(width,height)
+//            self.width = width
+//            self.height = height
             draw()
         }
     }
@@ -68,10 +71,10 @@ class Skin:InteractiveView,Skinable{
      * NOTE: these methods are an important part of the float system
      */
     func getWidth()->CGFloat{
-        return StyleMetricParser.width(self) ?? self.width ?? {fatalError("getWidth not available")}()
+        return StyleMetricParser.width(self) ?? self.skinSize?.width ?? {fatalError("getWidth not available")}()
     }
     func getHeight()->CGFloat{
-        return StyleMetricParser.height(self) ?? self.height ?? {fatalError("getHeight not available")}()
+        return StyleMetricParser.height(self) ?? self.skinSize?.height ?? {fatalError("getHeight not available")}()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by super class*/
 }

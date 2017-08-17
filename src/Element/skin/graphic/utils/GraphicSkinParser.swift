@@ -31,12 +31,12 @@ private class Utils{
             var padding:CGFloat {return padding.left + padding.right}
             if let styleWidth:CGFloat = StyleMetricParser.width(skin,depth){
                 return styleWidth + padding
-            }else if !skin.width!.isNaN{
-                return skin.width! + padding
+            }else if !skin.skinSize!.width.isNaN{
+                return skin.skinSize!.width + padding
             }
-            fatalError("not allowed: styleWidth: \(StyleMetricParser.width(skin,depth)!) skinWidth: \(skin.width!)")
+            fatalError("not allowed: styleWidth: \(StyleMetricParser.width(skin,depth)!) skinWidth: \(skin.skinSize!.width)")
         }()
-        let height:CGFloat = (StyleMetricParser.height(skin,depth) ?? skin.height!) + padding.top + padding.bottom
+        let height:CGFloat = (StyleMetricParser.height(skin,depth) ?? skin.skinSize!.height) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
         return RectGraphic(width,height,decoratable)
     }

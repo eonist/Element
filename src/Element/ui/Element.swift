@@ -30,6 +30,15 @@ class Element:InteractiveView,ElementKind {
         super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))/*<--this check is vital, don't change it if your not planing a big refactor*/
         resolveSkin()
     }
+    
+    //Continue here: 🏀
+        //create a variable in Element.init, isResolvable must be in init as it has to be ready in the init scope
+        //create init args with explicity keys,deperecate old init methods
+        //call resolveskin recursivly after Decode
+        //try decode on Text, not Element
+        //TextInput will need to use NaN values not getWidth values etc
+        //look into
+    
     /**
      * Draws the graphics
      */

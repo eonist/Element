@@ -4,6 +4,7 @@ import Foundation
  * TODO: ⚠️️ Rename to Skinable or SkinKind
  */
 protocol Skinable:class{
+    typealias HasChanged = (style:Bool,state:Bool,size:Bool)
     /*Implicit getters / setters*/
     func setStyle(_ style:Stylable)
     func setSkinState(_ state:String)
@@ -17,7 +18,8 @@ protocol Skinable:class{
     var element:ElementKind?{get}/*We use IElement here instead of Element because sometimes we need to use Window which is not an Element but impliments IElement*/
     var width:CGFloat?{get}
     var height:CGFloat?{get}
-    var hasStyleChanged:Bool{get}
-    var hasStateChanged:Bool{get}
-    var hasSizeChanged:Bool{get}
+    var hasChanged:HasChanged {get}
+//    var hasStyleChanged:Bool{get}
+//    var hasStateChanged:Bool{get}
+//    var hasSizeChanged:Bool{get}
 }

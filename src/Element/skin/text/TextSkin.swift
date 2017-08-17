@@ -8,7 +8,7 @@ import Cocoa
  */
 class TextSkin:Skin,TextSkinable{
     lazy var textFormat:TextFormat = {
-        return StylePropertyParser.textFormat(self)/*creates the textFormat*/
+        return StylePropertyParser.textFormat(self)/*Creates the textFormat*/
     }()
     lazy var textField:NSTextField =  self.createTextField()/*the bellow variable is a little more complex in the legacy code*/
     override var width:CGFloat? {get{return textField.frame.size.width} set{textField.frame.size.width = newValue!}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
@@ -27,13 +27,13 @@ class TextSkin:Skin,TextSkinable{
      */
     override func draw() {
         //Swift.print("TextSkin.draw")
-        if hasStyleChanged || hasSizeChanged || hasStateChanged || hasTextChanged {
+        if hasChanged.size || hasChanged.state || hasChanged.style || hasTextChanged {
             SkinModifier.float(self)
-            if hasSizeChanged {
+            if hasChanged.size {
                 let padding:Padding = StyleMetricParser.padding(self);
                 TextFieldModifier.size(textField, width! + padding.left + padding.right, height! + padding.top + padding.bottom)
             }
-            if hasStateChanged || hasStyleChanged || hasTextChanged || hasSizeChanged/*<--recently added*/ {applyProperties(textField)}
+            if hasChanged.size || hasChanged.state || hasChanged.style || hasTextChanged/*<--recently added*/ {applyProperties(textField)}
             if hasTextChanged {hasTextChanged = false}
             _ = SkinModifier.align(self, textField)
         }

@@ -13,9 +13,8 @@ class Skin:InteractiveView,Skinable{
     var width:CGFloat?
     var height:CGFloat?
     var element:ElementKind?
-    var hasStyleChanged:Bool = false
-    var hasStateChanged:Bool = false
-    var hasSizeChanged:Bool = false
+    var hasChanged:HasChanged = (false,false,false)
+
     init(_ style:Stylable? = nil, _ state:String = "", _ element:ElementKind? = nil){
         self.style = style
         self.state = state
@@ -28,29 +27,26 @@ class Skin:InteractiveView,Skinable{
      * Resets skinState
      */
     func draw(){
-        hasStyleChanged = false
-        hasSizeChanged = false
-        hasStateChanged = false
-        //needsDisplay = true//Refereshes the graphics , THIS IS NEW!!!
+        hasChanged = (false,false,false)
     }
     /**
      * Sets the style instance to apply to the skin also forces a redraw.
      * NOTE: this is a great way to update an skin without querying StyleManager
      */
     func setStyle(_ style:Stylable){
-        hasStyleChanged = true
+        hasChanged.style = true
         self.style = style
         draw()
     }
     /**
      * Sets the skin state and forces a redraw
      * NOTE: forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
-     * TODO: rename to set_skinState() and blame swift for the underscore
-     * TODO: Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
+     * TODO: ⚠️️ rename to set_skinState() and blame swift for the underscore
+     * TODO: ⚠️️ Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
      * ⚠️️ IMPORTANT: ⚠️️ This is an expensive call: "loops through the entire styleManager" (Use setStyle for light-weight call)
      */
     func setSkinState(_ state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
-        hasStateChanged = true
+        hasChanged.state = true
         self.state = state
         style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
         draw()
@@ -61,7 +57,7 @@ class Skin:InteractiveView,Skinable{
      */
     func setSize(_ width:CGFloat, _ height:CGFloat) {
         if(self.width != width || self.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
-            hasSizeChanged = true
+            hasChanged.size = true
             self.width = width
             self.height = height
             draw()

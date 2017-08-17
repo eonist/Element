@@ -8,7 +8,7 @@ import Foundation
 extension StyleProperty:UnWrappable{
     static func unWrap<T>(_ xml:XML) -> T? {
         let name:String = unWrap(xml, "name")!
-        let value:Any = UnWrapUtils.any(xml,"value")
+        let value:Any = UnWrap.any(xml,"value")
         let depth:Int = unWrap(xml, "depth")!
         return StyleProperty(name,value,depth) as? T
     }

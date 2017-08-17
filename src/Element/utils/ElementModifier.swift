@@ -2,6 +2,7 @@ import Cocoa
 @testable import Utils
 
 class ElementModifier {
+    typealias RefreshMethod = (ElementKind)->Void
     /**
      * Changes the visibility of PARAM: element by PARAM: isVisible
      */
@@ -55,7 +56,6 @@ class ElementModifier {
      * NOTE: keep in mind that this can be Window
      * TODO: ⚠️️ Skin should have a dedicated redraw method or a simple workaround
      */
-    typealias RefreshMethod = (ElementKind)->Void
     private static func refresh(_ element:ElementKind, _ method:RefreshMethod = Utils.setStyle) {//<--setStyle is the default param method
         //Swift.print("refresh")
         if (element.skin?.style?.getStyleProperty(CSS.Align.display) as? String) == CSS.Align.none {

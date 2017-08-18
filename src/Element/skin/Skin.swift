@@ -2,27 +2,19 @@ import Cocoa
 @testable import Utils
 /*
  * NOTE:  having seperate values: hasStyleChanged and :hasSizeChanged and hasSkinState changed is usefull for optimization
- * TODO: possibly add setPosition();
- * TODO: a sleeker way to refresh the skin is needed for now we use setState(SkinStates.NONE)
- * TODO: look to cssedit which takes priority the htm set width or the css set width?
  */
 class Skin:InteractiveView,Skinable{
     var decoratables:[GraphicDecoratableKind] = []/*The layers in the skin*/
     var style:Stylable?
     var state:String
     var skinSize:CGSize?
-//    var width:CGFloat?
-//    var height:CGFloat?
-    var element:ElementKind?
-    var hasChanged:HasChanged = (false,false,false)
-
+    let element:ElementKind?//parent element sort of.
+    var hasChanged:HasChanged = (style:false,state:false,size:false)
     init(_ style:Stylable? = nil, _ state:String = "", _ element:ElementKind? = nil){
         self.style = style
         self.state = state
         self.element = element
         skinSize = CGSize(element!.width,element!.height)
-//        skinSize.width = //TODO: is this necessary?
-//        skinSize.height = //TODO: is this necessary?
         super.init(frame:NSRect())/*<-this doesnt need a size*/
     }
     /**
@@ -43,14 +35,13 @@ class Skin:InteractiveView,Skinable{
     /**
      * Sets the skin state and forces a redraw
      * NOTE: forces a lookup of the style in the StyleManager, since it has to look for the correct state of the style
-     * TODO: ⚠️️ rename to set_skinState() and blame swift for the underscore
      * TODO: ⚠️️ Optionally rename state to skin_state since state may be used when implementing the NSEffectview for Translucency support
      * ⚠️️ IMPORTANT: ⚠️️ This is an expensive call: "loops through the entire styleManager" (Use setStyle for light-weight call)
      */
     func setSkinState(_ state:String){//TODO: I think this method is save to rename back to setState now since ISKin etends class this problem is gone, or is it because skinState is named state?
         hasChanged.state = true
         self.state = state
-        style = StyleResolver.style(element!)/*TODO: looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
+        style = StyleResolver.style(element!)/*TODO: ⚠️️looping through the entire styleManager isn't a good idea for just a state change, you need some caching system to handle this better*/
         draw()
     }
     /**
@@ -58,11 +49,9 @@ class Skin:InteractiveView,Skinable{
      * IMPORTANT: ⚠️️ Similar to setStyle, this does not querry the styleManger when called
      */
     func setSize(_ width:CGFloat, _ height:CGFloat) {
-        if(self.skinSize?.width != width || self.skinSize?.height != height){// :TODO: this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
+        if self.skinSize?.width != width || self.skinSize?.height != height {// :TODO: ⚠️️ this is probably wrong, since we get width and height from SkinParser.width and SkinParser.height now (since wee need margin and padding in the tot calculation of the sizes)
             hasChanged.size = true
             skinSize = CGSize(width,height)
-//            self.width = width
-//            self.height = height
             draw()
         }
     }

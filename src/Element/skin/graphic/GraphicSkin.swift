@@ -1,11 +1,11 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: You can't set the frame after you have called the display call on a layer. so you have to set it before.
- * TODO: See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
- * TODO: Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol. 
- * TODO: there needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there. they are done thorugh the size call. and then it calls fill and line basically!?!?
- * NOTE: Why do we add tracking areas to the parent: because all mouseenter / exit mousemoved should be handled by the element not the skin
+ * TODO: ⚠️️ You can't set the frame after you have called the display call on a layer. so you have to set it before.
+ * TODO: ⚠️️ See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
+ * TODO: ⚠️️ Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol.
+ * TODO: ⚠️️ There needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there. they are done thorugh the size call. and then it calls fill and line basically!?!?
+ * NOTE: ⚠️️ Why do we add tracking areas to the parent: because all mouseenter / exit mousemoved should be handled by the element not the skin
  */
 class GraphicSkin:Skin{
     override init(_ style:Stylable? = nil, _ state:String = "", _ element:ElementKind? = nil){
@@ -47,12 +47,6 @@ extension GraphicSkin{
             updateAppearance(decoratables[depth], depth)
         }
         if hasChanged.size || hasChanged.state || hasChanged.style {
-//            let item = decoratables[depth]
-//            let parents = NSViewParser.parents((item).graphic)
-//            parents.forEach{
-//                let width = ($0 as? ElementKind)?.getWidth()
-//                Swift.print("width: " + "\(width) view: \($0)  parent: \(($0 as? ElementKind)?.parent)")
-//            }
             decoratables[depth].draw()/*<--Init the actual draw call, you only want to draw once bc performance*/
         }
     }

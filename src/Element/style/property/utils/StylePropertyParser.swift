@@ -18,7 +18,7 @@ class StylePropertyParser{
      */
     static func fillStyle(_ skin:Skinable,_ depth:Int = 0)->FillStyleKind {
         let val = value(skin,CSS.Other.fill,depth)
-        if let gradient = val as? IGradient {
+        if let gradient = val as? GradientKind {
             return gradientFillStyle(gradient)
         }else{//colors
             return colorFillStyle(val,skin,depth)
@@ -29,7 +29,7 @@ class StylePropertyParser{
      */
     static func lineStyle(_ skin:Skinable, _ depth:Int = 0) -> LineStylable? {
         let val:Any? = value(skin,CSS.Other.line,depth)
-        if let gradient = val as? IGradient {
+        if let gradient = val as? GradientKind {
             return gradientLineStyle(gradient,skin,depth)
         }else if let color = val as? NSColor{
             return colorLineStyle(color,skin,depth)
@@ -117,14 +117,14 @@ extension StylePropertyParser{
     /**
      * Returns a GradientFillStyle
      */
-    fileprivate static func gradientFillStyle(_ gradient:IGradient) -> GradientFillStyle {
+    fileprivate static func gradientFillStyle(_ gradient:GradientKind) -> GradientFillStyle {
         return GradientFillStyle(gradient,NSColor.clear)
     }
     /**
      * Returns a GradientLineStyle
      * NOTE: We use line-thickness because the property thickness is occupid by textfield.thickness
      */
-    fileprivate static func gradientLineStyle(_ gradient:IGradient, _ skin:Skinable, _ depth:Int = 0) -> GradientLineStyle {
+    fileprivate static func gradientLineStyle(_ gradient:GradientKind, _ skin:Skinable, _ depth:Int = 0) -> GradientLineStyle {
         let lineThickness:CGFloat = value(skin, CSS.Other.lineThickness,depth) as! CGFloat
         return GradientLineStyle(gradient, lineThickness, NSColor.clear)
     }

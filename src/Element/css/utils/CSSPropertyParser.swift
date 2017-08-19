@@ -70,11 +70,11 @@ class CSSPropertyParser {
      * NOTE: setting the gradientType isn't necessary since its the default setting
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
-    private static func linearGradient(_ string:String)->IGradient{
+    private static func linearGradient(_ string:String)->GradientKind{
         if let propertyString:String = string.match(Pattern.linearGradient).first{
             var properties:[String] = propertyString.split(",")
             let rotation:CGFloat = Utils.rotation(properties.shift())/*the first item is always the rotation, top or left or top left etc*/
-            var gradient:IGradient = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
+            var gradient:GradientKind = LinearGradient(Utils.gradient(properties))/*add colors, opacities and ratios*/
             gradient.rotation = Trig.normalize2(rotation * ㎭)/*should pin the angle between -π and +π*///TODO: rotations should be applied in the matrix
             return gradient
         }
@@ -102,7 +102,7 @@ class CSSPropertyParser {
      * TODO: create a small app that generates the radial-gradient from an svg
      * TODO: possibly use the RegExp.exec to loop the properties!!
      */
-     private static func radialGradient(_ string:String)->IGradient{
+     private static func radialGradient(_ string:String)->GradientKind{
         if let propertyString:String = string.match(Pattern.radialGradient).first{
             var properties:[String] = propertyString.split(",")
             let setupString:String = properties.shift()
@@ -198,7 +198,7 @@ private class Utils{
      * NOTE: adds colors, opacities and ratios
      * TODO: ⚠️️ add support for all Written Color. find list on w3c
      */
-    static func gradient(_ properties:[String])->IGradient {
+    static func gradient(_ properties:[String])->GradientKind {
         let gradient:Gradient = properties.enumerated().reduce(Gradient()) { gradient, val in
             let i:Int = val.offset
             let property:String = val.element

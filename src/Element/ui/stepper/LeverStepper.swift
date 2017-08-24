@@ -1,7 +1,8 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: ⚠️️ Shouldn't this class extend Stepper?
+ * TODO: ⚠️️ Shouldn't this class extend Stepper? 👈
+ * TODO: make things private, and maybe remove some methods
  * TODO: ⚠️️ Rename leverHeight to something less ambiguous
  * PARAM: Decimal places
  * PARAM: increment: The amount of incrementation for each stepping

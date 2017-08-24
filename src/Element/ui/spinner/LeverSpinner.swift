@@ -7,6 +7,10 @@ import Foundation
  * TODO: ⚠️️ This should maybe be a decorator style pattern that wraps Stepper, then also make RepeatStepper ?
  * TODO: ⚠️️ You may need to convert CGFloat to an Int if decimal is set to 0, do this in the LeverSpinner class
  */
+
+//Continue here: 🏀
+    //improve this class
+
 class LeverSpinner:Element{
     var maxVal:CGFloat
     var minVal:CGFloat

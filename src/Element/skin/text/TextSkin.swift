@@ -12,7 +12,7 @@ class TextSkin:Skin,TextSkinable{
     }()
     lazy var textField:NSTextField =  self.createTextField()/*the bellow variable is a little more complex in the legacy code*/
     override var skinSize:CGSize? {
-        get{return CGSize(textField.frame.size.width,super.skinSize!.height)}
+        get{return CGSize(textField.frame.size.width,super.skinSize?.height ?? 0)}
         set{
             guard var _size = newValue else {fatalError("err")}//bug in Skin
             textField.frame.size.width = _size.w.isNaN ? 0 : _size.w
@@ -84,10 +84,10 @@ extension TextSkin{
     func applyProperties(_ textField:NSTextField){
 //        Swift.print("TextSkin.applyProperties")
         let padding:Padding = StyleMetricParser.padding(self)
-        let width:CGFloat = (StyleMetricParser.width(self) ?? super.skinSize!.width) + padding.left + padding.right// :TODO: only querry this if the size has changed?
+        let width:CGFloat = (StyleMetricParser.width(self) ?? super.skinSize?.width ?? 0) + padding.left + padding.right// :TODO: only querry this if the size has changed?
         /*Swift.print("width: " + "\(width)")
          Swift.print("superview.frame.width: " + "\(superview?.frame.width)")*/
-        let height:CGFloat = (StyleMetricParser.height(self) ?? super.skinSize!.height) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
+        let height:CGFloat = (StyleMetricParser.height(self) ?? super.skinSize?.height ?? 0) + padding.top + padding.bottom// :TODO: only querry this if the size has changed?
         textField.frame.w = width/*SkinParser.width(this)*/
         textField.frame.h = height/*SkinParser.height(this)*/
         

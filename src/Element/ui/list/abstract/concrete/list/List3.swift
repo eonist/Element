@@ -1,11 +1,15 @@
 import Foundation
 @testable import Utils
-
+class List4:Element{
+    override func getClassType() -> String {
+        return "List"
+    }
+}
 class List3:ContainerView3,Listable3{
     var dp:DataProvider
     var dir:Dir
     var itemSize:CGSize
-    override var contentSize:CGSize { get{return dir == .hor ? CGSize(dp.count * itemSize.width ,height) : CGSize(width ,dp.count * itemSize.height) } set{_ = newValue}}
+    override var contentSize:CGSize { get{return dir == .hor ? CGSize(dp.count * itemSize.width ,skinSize.h) : CGSize(skinSize.w ,dp.count * itemSize.height) } set{_ = newValue}}
     
     init(_ width: CGFloat, _ height: CGFloat, _ itemSize:CGSize = CGSize(NaN,NaN), _ dataProvider:DataProvider? = nil, _ dir:Dir = .ver, _ parent: ElementKind? = nil, _ id: String? = "") {
         self.itemSize = itemSize
@@ -20,7 +24,10 @@ class List3:ContainerView3,Listable3{
      */
     override func resolveSkin() {
         super.resolveSkin()
+        Swift.print("before merge")
+//        Swift.print("dp.items: " + "\(dp.items)")
         mergeAt(dp.items, 0)
+        Swift.print("after merge")
     }
     /**
      * Creates and adds items to the _lableContainer
@@ -34,12 +41,21 @@ class List3:ContainerView3,Listable3{
         }
     }
     func createItem(_ dict:[String:String], _ i:Int) -> Element{
-        let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,dict["title"]!, false, contentContainer)
-        contentContainer.addSubviewAt(item, i)/*the first index is reserved for the List skin, what?*/
+        let dictItem:String = dict["title"] ?? {fatalError("err")}()
+        Swift.print("dictItem: " + "\(dictItem)")
+        Swift.print("itemSize: " + "\(itemSize)")
+        let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,dictItem, false, contentContainer)
+        Swift.print("item: " + "\(item)")
+        Swift.print("contentContainer.numSubViews: " + "\(contentContainer.numSubViews)")
+        Swift.print("contentContainer.subviews: " + "\(contentContainer.subviews)")
+        contentContainer.addSubviewAt(item, i+1)/*the first index is reserved for the List skin, what?*/
+        
+        Swift.print("after add")
         return item
     }
     override func getClassType() -> String {
         return dir == .ver ? "List" : "VList"//<--this is actually wrong, use HList instead. and correct the css name
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    
 }

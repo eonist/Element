@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 /**
  * CSS: line-alpha:0.5;line:Gray;line-thickness:2px;width:60px;height:60px;
@@ -12,7 +12,9 @@ class ProgressIndicator:Element {
         super.init(width, height, parent, id)
     }
     override func resolveSkin() {
-        skin = SkinResolver.skin(self)
+        //skin = EmptySkin.init(parent:self)////   SkinResolver.skin(self)
+        super.resolveSkin()
+        (skin as! NSView).isHidden = true
         lineStyle = StylePropertyParser.lineStyle(skin!)!//<--grab the style from that was resolved to this component
         lineStyle.lineCap = CGLineCap.round//add round end style
         let center:CGPoint = CGRect(CGPoint(),CGSize(w,h)).center//center of element
@@ -29,6 +31,7 @@ class ProgressIndicator:Element {
             _ = addSubView(line.graphic)
             line.draw()
         }
+//        fatalError("err")
     }
     /**
      * Modulate the progress indicator (For iterative progress or looping animation)
@@ -102,4 +105,5 @@ class ProgressIndicator:Element {
         animator.stop()/*stop animator*/
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

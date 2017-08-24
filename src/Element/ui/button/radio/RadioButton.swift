@@ -6,9 +6,9 @@ import Foundation
 class RadioButton:TextButton,Selectable{
     lazy var radioBullet:RadioBullet = self.createRadioBullet()
     fileprivate var isSelected:Bool
-    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isSelected:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil) {
+    init(text:String = "defaultText",isSelected:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
         self.isSelected = isSelected
-        super.init(width,height,text,parent,id)
+        super.init(text:text, size: size, id: id)
     }
     /**
      * NOTE: When added to stage and if RadioBullet dispatches selct event it will bubble up and through this class (so no need for extra eventlistners and dispatchers in this class)
@@ -28,6 +28,11 @@ class RadioButton:TextButton,Selectable{
         return radioBullet.getSelected()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    //DEPRECATED
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isSelected:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil) {
+        self.isSelected = isSelected
+        super.init(width,height,text,parent,id)
+    }
 }
 class RadioBullet:SelectButton{}/*RadioBullet is targeted in CSS, but is essentially the same as a SelectButton*/
 extension RadioButton{

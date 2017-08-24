@@ -35,7 +35,7 @@ class Graph:Element {
      */
     func createUI(){
         newSize = Resizer.fit(CGSize(w,h),ratio)
-        newPosition = Align.alignmentPoint(newSize!, CGSize(width,height), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        newPosition = Align.alignmentPoint(newSize!, CGSize(skinSize.w,skinSize.h), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         createGraphArea()
         
         itemYSpace = newSize!.height/(vCount.cgFloat + 1.0)
@@ -134,7 +134,7 @@ class Graph:Element {
     func createGraphLine(){
         Swift.print("createGraphLine graphPts: \(graphPts)" )
         let graphPath:PathKind = PolyLineGraphicUtils.path(graphPts)/*convert points to a Path*/
-        graphLine = graphArea!.addSubView(GraphLine(width,height,graphPath,graphArea))
+        graphLine = graphArea!.addSubView(GraphLine(skinSize.w,skinSize.h,graphPath,graphArea))
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         //update different UI elements
@@ -150,7 +150,7 @@ extension Graph{
     func alignUI(){//this method is not in use
         let newSize:CGSize = Resizer.fit(CGSize(w,h),4/3)
         graphArea!.setSize(newSize.width,newSize.height)//Scale to ratio:
-        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.size.width,graphArea!.frame.size.height), CGSize(width/**/,height/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
+        let alignmentPoint:CGPoint = Align.alignmentPoint(CGSize(graphArea!.frame.size.width,graphArea!.frame.size.height), CGSize(skinSize.w/**/,skinSize.h/**/), Alignment.centerCenter, Alignment.centerCenter,CGPoint(0,0))
         graphArea?.setPosition(alignmentPoint)
     }
 }

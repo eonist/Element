@@ -38,7 +38,8 @@ private class Utils{
         }()
         let height:CGFloat = (StyleMetricParser.height(skin,depth) ?? skin.skinSize!.height) + padding.top + padding.bottom
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
-        return RectGraphic(width,height,decoratable)
+//        Swift.print(CGSize(width,height))
+        return RectGraphic.init(CGPoint(), CGSize(width,height), decoratable)
     }
    
     /**

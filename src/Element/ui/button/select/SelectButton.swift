@@ -20,11 +20,12 @@ class SelectButton:Button,Selectable {
      */
     func setSelected(_ isSelected:Bool){
         self.isSelected = isSelected
-        setSkinState(getSkinState())
+        self.skinState = {self.skinState}()
     }
     func getSelected()->Bool{return isSelected}
-    override func getSkinState() -> String {
-        return isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState()
+    override var skinState:String {
+        get {return self.isSelected ? SkinStates.selected + " " + super.skinState : super.skinState}
+        set {super.skinState = newValue}
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

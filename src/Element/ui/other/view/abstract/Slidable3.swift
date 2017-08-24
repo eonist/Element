@@ -51,7 +51,7 @@ extension Slidable3 {
         //self.slider!.thumb!.setSkinState("inActive")
         //if(slider(dir).thumb!.getSkinState() == SkinStates.none){slider(dir).thumb!.fadeOut()}/*only fade out if the state is none, aka not over*/
         //Swift.print("slider(dir).thumb!.getSkinState(): " + "\(slider(dir).thumb!.getSkinState())")
-        if(slider(dir).thumb.getSkinState() == SkinStates.none){
+        if slider(dir).thumb.skinState == SkinStates.none {
             slider(dir).thumb.fadeOut()
         }
         /*slider(dir).thumb!.alpha = 0

@@ -12,20 +12,20 @@ class VolumeSlider:Slider{
         _ = volumeGraphic//TODO: add the volume graphic bellow the thumb
     }
     @objc override func onMouseMove(event:NSEvent) -> NSEvent? {
-        volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())//TODO: this should be set after super
+        volumeGraphic.setSize(thumb.x+thumb.skinSize.w/2, getHeight())//TODO: this should be set after super
         return super.onMouseMove(event: event)
     }
     @objc override func onThumbMove(event:NSEvent) -> NSEvent? {
-        volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())//TODO: this should be set after super
+        volumeGraphic.setSize(thumb.x+thumb.skinSize.w/2, getHeight())//TODO: this should be set after super
         return super.onThumbMove(event:event)
     }
     @objc override func setProgressValue(_ progress:CGFloat) {
         super.setProgressValue(progress)
-        volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())
+        volumeGraphic.setSize(thumb.x+thumb.skinSize.w/2, getHeight())
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         super.setSize(width,height)
-        volumeGraphic.setSize(thumb.x+thumb.width/2, getHeight())
+        volumeGraphic.setSize(thumb.x+thumb.skinSize.w/2, getHeight())
     }
     override func getClassType() -> String {
         return "\(VolumeSlider.self)"

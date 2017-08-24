@@ -11,16 +11,32 @@ class TextSkin:Skin,TextSkinable{
         return StylePropertyParser.textFormat(self)/*Creates the textFormat*/
     }()
     lazy var textField:NSTextField =  self.createTextField()/*the bellow variable is a little more complex in the legacy code*/
-    override var skinSize:CGSize? {get{return CGSize(textField.frame.size.width,super.skinSize!.height)} set{textField.frame.size.width = newValue!.width;super.skinSize?.height = newValue!.height}}// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
+    override var skinSize:CGSize? {
+        get{return CGSize(textField.frame.size.width,super.skinSize!.height)}
+        set{
+            guard var _size = newValue else {fatalError("err")}//bug in Skin
+            textField.frame.size.width = _size.w.isNaN ? 0 : _size.w
+            super.skinSize?.height = _size.h.isNaN ? 0 : _size.h
+        }
+        
+    }// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
-    init(_ style:Stylable, _ text:String, _ state:String = SkinStates.none, _ element:ElementKind? = nil){
-        super.init(style, state, element)
+    let initText:String
+    init(_ style:Stylable, _ text:String, _ state:String = SkinStates.none){
+        self.initText = text
+        super.init(style, state)
         //textField.sizeToFit()
-        textField.stringValue = text
+    }
+    override func resolveSkin() {
+//        Swift.print("TextSkin.resolveSkin")
+        super.resolveSkin()
+        
+        textField.stringValue = initText
         applyProperties(textField)
         SkinModifier.float(self)
         _ = SkinModifier.align(self, textField)
         textField.isHidden = SkinParser.display(self) == CSS.Align.none//TODO: might need to add this to when you setSkinState as well.
+//        Swift.print("TextSkin.resolveSkin.after")
     }
     /**
      * TODO: ⚠️️ This method needs some refactoring

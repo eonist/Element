@@ -21,8 +21,10 @@ extension FastListable3{
      */
     func setProgress(_ progress:CGFloat){
         //Swift.print("🐎 FastListable3.setProgress(\(progress)) ")
+//        Swift.print("visibleItemRange: " + "\(visibleItemRange)")
+//        Swift.print("dp.count: " + "\(dp.count)")
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
-        if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
+        if currentVisibleItemRange != range {/*Optimization: only set if it's not the same as prev range*/
             renderItems(range)
         }
     }

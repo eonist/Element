@@ -9,9 +9,10 @@ class TextInput:Element{
     lazy var text:Text = {return (Text(self.getWidth(),self.getHeight(),self.initData.text,self,"text"))}()
     lazy var inputTextArea:TextArea = {return (TextArea(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText"))}()
     private let initData:(text:String,input:String)/*interim use only, use inputText  etc to get data*/
-    init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:ElementKind? = nil,  _ id:String? = nil) {
-        self.initData = (textString,inputString)
-        super.init(width,height,parent,id)
+    
+    init(text:String,inputText:String,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+        self.initData = (text,inputText)
+        super.init(size: size, id: id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -23,12 +24,20 @@ class TextInput:Element{
         inputTextArea.setSize(width, height)//⚠️️ shouldn't this be setSkin rather?
         text.setSize(width, height)//⚠️️ shouldn't this be setSkin rather?
     }
-    override func setSkinState(_ state:String) {
-        super.setSkinState(state)
-        inputTextArea.setSkinState(state)
-        text.setSkinState(state)
+    override var skinState:String {
+        get {return super.skinState}
+        set {
+            super.skinState = newValue
+            inputTextArea.skinState = (newValue)
+            text.skinState = (newValue)
+        }
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    //DEPRECATE
+    init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:ElementKind? = nil,  _ id:String? = nil) {
+        self.initData = (textString,inputString)
+        super.init(width,height,parent,id)
+    }
 }
 extension TextInput{
     func setInputText(_ text:String){/*Convenience*/
@@ -36,8 +45,5 @@ extension TextInput{
         inputTextArea.setTextValue(text)
     }
     var inputText:String {return inputTextArea.text.getText()}
-//    //New
-//    convenience init(size:CGSize = CGSize(NaN,NaN), text:String = "", _ input:String = "", parent:ElementKind? = nil, id:String? = nil){
-//        self.init(size.width, size.height, text, input,parent,id)
-//    }
+
 }

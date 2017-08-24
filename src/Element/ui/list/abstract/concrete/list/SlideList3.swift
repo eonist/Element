@@ -15,14 +15,14 @@ class SlideList3:List3,Slidable3 {
 extension Slidable3{
     var hSlider:Slider {
         let horSlider:Slider = (self as! NSView).addSubView(Slider(self.width,self.itemSize.height,.hor,self.itemSize,0,(self as! ElementKind)))
-        let thumbWidth:CGFloat = SliderParser.thumbSize(width/itemSize.width, horSlider.width)
+        let thumbWidth:CGFloat = SliderParser.thumbSize(width/itemSize.width, horSlider.skinSize.w)
         horSlider.setThumbSide(thumbWidth)
         horSlider.thumb.fadeOut()//inits fade out anim on init
         return horSlider
     }
     var vSlider:Slider{
         let verSlider:Slider = (self as! NSView).addSubView(Slider(self.itemSize.width,self.height,.ver,self.itemSize,0,(self as! ElementKind)))
-        let thumbHeight:CGFloat = SliderParser.thumbSize(height/contentSize.height, verSlider.height)
+        let thumbHeight:CGFloat = SliderParser.thumbSize(height/contentSize.height, verSlider.skinSize.h)
         verSlider.setThumbSide(thumbHeight)
         verSlider.thumb.fadeOut()//inits fade out anim on init
         return verSlider

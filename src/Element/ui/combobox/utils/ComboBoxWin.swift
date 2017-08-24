@@ -32,14 +32,15 @@ class ComboBoxView:PopupView{
     }
     override func resolveSkin() {
         Swift.print("ComboBoxView.resolveSkin()")
-        Swift.print("width: " + "\(width)")
-        Swift.print("height: " + "\(height)")
+        Swift.print("width: " + "\(skinSize.w)")
+        Swift.print("height: " + "\(skinSize.h)")
         super.resolveSkin()
-        list = addSubView(List3(width, height, CGSize(itemHeight,itemHeight), dataProvider,.ver, self))
+        list = addSubView(List3(skinSize.w, skinSize.h, CGSize(itemHeight,itemHeight), dataProvider,.ver, self))
         List3Modifier.selectAt(list!, initSelectedIndex)
     }
     /**
      * override func onEvent(event: Event) {}
      */
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

@@ -13,7 +13,7 @@ import Cocoa
  */
 class ComboBox:Element{
     lazy var headerButton:TextButton = {
-        let headerButton = self.addSubView(TextButton(self.width, self.itemHeight,"", self))//TODO: - _itemHeight should be something else
+        let headerButton = self.addSubView(TextButton(self.skinSize.w, self.itemHeight,"", self))//TODO: - _itemHeight should be something else
         let selectedTitle:String = self.dataProvider!.getItemAt(self.selectedIndex)!["title"]!
         headerButton.setTextValue(selectedTitle)
         return headerButton
@@ -68,7 +68,7 @@ class ComboBox:Element{
 	func setOpen(_ isOpen:Bool) {
         Swift.print("setOpen: " + "\(isOpen)")
         if(isOpen){
-            popupWindow = ComboBoxWin(width,height, dataProvider!, selectedIndex,itemHeight)
+            popupWindow = ComboBoxWin(skinSize.w,skinSize.h, dataProvider!, selectedIndex,itemHeight)
             //🔶 swift 3 update on the bellow line
             var comboBoxPos:CGPoint = convert(NSPoint(0,0), to: self.window!.contentView)/*POV of the window*/
             comboBoxPos += CGPoint(0 , itemHeight)/*BottomRight corner pos of the header button in the POV of the window*/
@@ -85,6 +85,7 @@ class ComboBox:Element{
 		headerButton.setSize(width, StyleMetricParser.height(headerButton.skin!)!)/*temp solution*/
 	}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension ComboBox{
     var selectedProperty:String{/*convenience*/

@@ -1,15 +1,17 @@
 import Cocoa
 @testable import Utils
 /**
- * TODO: ⚠️️ You can't set the frame after you have called the display call on a layer. so you have to set it before.
- * TODO: ⚠️️ See if you cant add drawLayer in the LineShape class after all. doesnt delegate work then?
- * TODO: ⚠️️ Graphic is currently an NSVIew, it doesnt have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol.
+ * TODO: ⚠️️ Graphic is currently an NSVIew, it doesn't have to be. it can be a CALAyer that you attach to skin, SKin it self could be a CALayer, then Text skin would need its own subclass that extends NSView, but they could have a common protocol.
  * TODO: ⚠️️ There needs to be a call to decoratable.initialize() when the skin is updated, check the old project how it was done there. they are done thorugh the size call. and then it calls fill and line basically!?!?
  * NOTE: ⚠️️ Why do we add tracking areas to the parent: because all mouseenter / exit mousemoved should be handled by the element not the skin
  */
 class GraphicSkin:Skin{
-    override init(_ style:Stylable? = nil, _ state:String = "", _ element:ElementKind? = nil){
-        super.init(style, state, element)
+    override init(_ style:Stylable? = nil, _ state:String = ""){
+        super.init(style, state)
+    }
+    override func resolveSkin() {
+        Swift.print("GraphicSkin.resolve")
+        super.resolveSkin()
         SkinModifier.float(self)/*Floats the entire element*/
         let depthCount:Int = StyleParser.depthCount(style!)
         decoratables = (0..<depthCount).indices.map{ depth -> GraphicDecoratableKind in
@@ -20,7 +22,8 @@ class GraphicSkin:Skin{
             decoratable.draw()/*Setup the geometry and init the display process of fill and line*/
             return decoratable
         }
-        (element as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
+        (parent as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
+        
     }
     /**
      * Draws Skin (aka each "decoratable" in the skin)
@@ -29,7 +32,7 @@ class GraphicSkin:Skin{
         if hasChanged.size || hasChanged.state || hasChanged.style {
             let depthCount:Int = StyleParser.depthCount(style!)
             for depth in (0..<depthCount){drawDecoratable(depth)}
-            (element as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
+            (parent as? NSView)?.isHidden = SkinParser.display(self) == CSS.Align.none
         }
         super.draw()/*Sets flags etc*/
     }

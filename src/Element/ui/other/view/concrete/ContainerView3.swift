@@ -2,9 +2,9 @@ import Cocoa
 @testable import Utils
 
 class ContainerView3:Element,Containable3 {
-    var maskSize:CGSize {return CGSize(super.width,super.height)}/*Represents the visible part of the content *///TODO: could be ranmed to maskRect, say if you need x and y aswell
-    var contentSize:CGSize {return CGSize(super.width,super.height)}
-    lazy var contentContainer:Element = {self.addSubView(Container(self.width,self.height,self,"lable"))}() //was content, but we want to use old css
+    var maskSize:CGSize {return CGSize(super.skinSize.w,super.skinSize.h)}/*Represents the visible part of the content *///TODO: could be ranmed to maskRect, say if you need x and y aswell
+    var contentSize:CGSize {return CGSize(super.skinSize.w,super.skinSize.h)}
+    lazy var contentContainer:Element = self.createContentContainer() //was content, but we want to use old css
     override init(_ width: CGFloat, _ height: CGFloat, _ parent: ElementKind? = nil, _ id: String? = nil) {
         super.init(width,height,parent,id)
     }
@@ -31,5 +31,8 @@ extension ContainerView3 {//private maybe?
             fatalError("type not supported: \(self)")
         }
         super.scrollWheel(with: event)
+    }
+    func createContentContainer() -> Container {
+        return self.addSubView(Container(size:self.skinSize,id:"lable"))//<-- ⚠️️ misspelled
     }
 }

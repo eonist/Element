@@ -23,23 +23,27 @@ class Thumb:Button{
     override func mouseUp(_ event:MouseEvent) {if(!isDisabled){super.mouseUp(event)}}
     override func mouseUpOutside(_ event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
     override func mouseUpInside(_ event:MouseEvent) {if(!isDisabled){super.mouseUpOutside(event)}}
-    override func getSkinState() -> String {//may not work
-        var state:String = ""
-        if(isDisabled) {state += SkinStates.disabled + " "}
-        return state + super.getSkinState()
+    override var skinState:String {
+        get {//may not work
+            var state:String = ""
+            if isDisabled {state += SkinStates.disabled + " "}
+            return state + super.skinState
+        }
+        set {super.skinState = newValue}
     }
     /**
      * Sets the _isDisabled variable (Toggles between two states)
      */
     func setDisabled(_ isDisabled:Bool) {
         self.isDisabled = isDisabled
-        super.setSkinState(getSkinState())
+        super.skinState = skinState
         //TODO: ⚠️️ Set button mode to not hand here
     }
     override func getClassType() -> String {
         return "\(Button.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension Thumb{
     /**
@@ -47,13 +51,13 @@ extension Thumb{
      */
     func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
         if(progress < 0){/*Top overshot*/
-            let size:CGSize = dir == .ver ? CGSize(width, height-(height*progress.positive)) : CGSize(width - (width*progress.positive),height)
+            let size:CGSize = dir == .ver ? CGSize(skinSize.w, skinSize.h-(skinSize.h*progress.positive)) : CGSize(skinSize.w - (skinSize.w*progress.positive),skinSize.h)
             self.skin!.setSize(size.w,size.h)
         }else if(progress > 1){/*Bottom overshot*/
-            let overshot = self.size[dir] * (progress-1)
-            let size:CGSize = dir == .ver ? CGSize(width, height - overshot) : CGSize(width - overshot, height)
+            let overshot = self.frame.size[dir] * (progress-1)
+            let size:CGSize = dir == .ver ? CGSize(skinSize.w, skinSize.h - overshot) : CGSize(skinSize.w - overshot, skinSize.h)
             self.skin!.setSize(size.w,size.h)
-            (self.skin! as! Skin).point[dir] = overshot
+            (self.skin! as! Skin).frame.origin[dir] = overshot
         }
     }
     var alpha:CGFloat{/*Convenience*/

@@ -20,13 +20,14 @@ class CheckButton:Button,Checkable{
      */
     func setChecked(_ isChecked:Bool) {
         self.isChecked = isChecked
-        setSkinState(getSkinState())
+        skinState = {self.skinState}()
     }
     func getChecked() -> Bool {
        return isChecked
     }
-    override func getSkinState() -> String {
-        return isChecked ? SkinStates.checked + " " + super.getSkinState() : super.getSkinState()
+    override var skinState:String {
+        get {return isChecked ? SkinStates.checked + " " + super.skinState : super.skinState}
+        set {super.skinState = newValue}
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

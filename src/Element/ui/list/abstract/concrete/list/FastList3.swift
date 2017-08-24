@@ -20,7 +20,7 @@ class FastList3:ContainerView3,FastListable3{
     var dir:Dir
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
-    override var contentSize:CGSize {get{return dir == .hor ? CGSize(dp.count * itemSize.width ,height) : CGSize(width ,dp.count * itemSize.height) } set{_ = newValue;fatalError("not supported");}}
+    override var contentSize:CGSize {get{return dir == .hor ? CGSize(dp.count * itemSize.width ,skinSize.h) : CGSize(skinSize.w ,dp.count * itemSize.height) } set{_ = newValue;fatalError("not supported");}}
     init(_ width:CGFloat, _ height:CGFloat, _ itemSize:CGSize = CGSize(NaN,NaN), _ dp:DataProvider? = nil,_ parent:ElementKind? = nil, _ id:String? = nil, _ dir:Dir = .ver) {
         self.itemSize = itemSize
         self.dp = dp ?? DataProvider()/*<--if it's nil then a DB is created*/
@@ -81,6 +81,7 @@ class FastList3:ContainerView3,FastListable3{
         return dir == .ver ? "List" : "VList"//<--VList really? isn't it more like HList atleast?
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension FastList3{
     /**

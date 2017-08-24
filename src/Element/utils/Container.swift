@@ -8,7 +8,11 @@ import Cocoa
  */
 class Container:Element{
     override func resolveSkin() {
-        skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/   
+//        Swift.print("Container.b")
+        super.resolveSkin()
+        (skin as! NSView).isHidden = true
+//        Swift.print("Container.a")
+        //skin = SkinResolver.skin(self)/*We still need to generate the skin, why? I can't recall*/
     }
     /**
      * New

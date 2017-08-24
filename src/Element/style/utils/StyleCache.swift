@@ -135,7 +135,7 @@ extension StyleCache{
         let cssFileDates:XML = StyleCache.cssFileDates()
         data.appendChild(cssFileDates)
         let styles:XML = styles.reduce("<styles></styles>".xml){
-            let xml = Reflection.toXML($1)
+            let xml = Reflect.toXML($1)
             $0.appendChild(xml)
             return $0
         }

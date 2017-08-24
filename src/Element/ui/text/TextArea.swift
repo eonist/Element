@@ -7,9 +7,10 @@ import Foundation
 class TextArea:Element {
     lazy var text:Text = {self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))}()
     private var textString:String/*Interim value*/
-    init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind? = nil, _ id:String? = nil) {
+    
+    init(text:String,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
         self.textString = text
-        super.init(width, height, parent, id)
+        super.init(size: size, id: id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -28,4 +29,9 @@ class TextArea:Element {
         return text.getText()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    //DEPRECATED
+    init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind? = nil, _ id:String? = nil) {
+        self.textString = text
+        super.init(width, height, parent, id)
+    }
 }

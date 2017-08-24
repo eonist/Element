@@ -165,7 +165,7 @@ private class Utils{
             if(suffix == "%") {
                 return {
                     let totWidth:CGFloat = {
-                        if let parent:ElementKind = skin.element?.getParent() as? ElementKind{
+                        if let parent:ElementKind = skin.parent?.getParent() as? ElementKind{
                             return dir == .hor ? totalWidth(parent) : totalHeight(parent)/*totHeight support is new*/
                         };return 0
                     }()

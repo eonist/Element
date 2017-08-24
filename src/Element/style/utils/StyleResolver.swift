@@ -68,7 +68,7 @@ private class Utils{
 private class Debug {
     static func appendQuerySelectors(_ querySelectors:[SelectorKind] ) {
         var selectorsXMLString:String = ""
-        querySelectors.forEach{selectorsXMLString += Reflection.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
+        querySelectors.forEach{selectorsXMLString += Reflect.toXML($0).string}//you need to collect all selectors in one string, and then after the app has initialized, you need to save this string to disk
         StyleResolver.selectorsString += "<Selectors>" + selectorsXMLString + "</Selectors>"
     }
 }

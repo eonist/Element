@@ -17,5 +17,5 @@ extension Listable3 {
     
     /*new/temp TODO: maybe use where Self:IList && Self:Scrollable*/
     var interval:CGFloat{return floor(contentSize[dir] - maskSize[dir])/itemSize[dir]}
-    var progress:CGFloat{return SliderParser.progress(contentContainer.point[dir], maskSize[dir], contentSize[dir])}
+    var progress:CGFloat{return SliderParser.progress(contentContainer.frame.origin[dir], maskSize[dir], contentSize[dir])}
 }

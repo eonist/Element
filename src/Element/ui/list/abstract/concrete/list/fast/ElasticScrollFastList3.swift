@@ -8,9 +8,11 @@ class ElasticScrollFastList3:FastList3,ElasticScrollableFastListable3 {
 extension Elastic3 where Self:FastList3{
     var rubberBandContainer:Container {
         /*Swift.print("create rbContainer")*/
-        let rbContainer = addSubView(Container(self.width,self.height,self,"rb"))//⚠️️TODO: move to lazy var later
+        let rbContainer = addSubView(Container(self.skinSize.w,self.skinSize.h,self,"rb"))//⚠️️TODO: move to lazy var later
         rbContainer.addSubview(contentContainer)/*Adds content Container inside rbContainer*/
-        contentContainer.parent = rbContainer/*Set the correct parent*/
+//        fatalError("the bellow must be fixed")
+        Swift.print("ElasticScrollFastList3. the bellow must be fixed")
+        //contentContainer.parent = rbContainer/*Set the correct parent*/
         return rbContainer
     }
 }

@@ -49,9 +49,9 @@ class LeverSpinner:Element{
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     override func onEvent(_ event: Event) {
-        if(event.assert(StepperEvent.change, stepper)){
+        if event.assert(StepperEvent.change, stepper){
             onStepperChange(event as! StepperEvent)
-        }else if(event.assert(Event.update, textInput.inputTextArea.text.textField)){//You could use immediate here to shorten the if statement
+        }else if event.assert(Event.update, textInput.inputTextArea.text.textField){//You could use immediate here to shorten the if statement
             onInputTextChange(event)
         }
     }
@@ -61,11 +61,20 @@ class LeverSpinner:Element{
         textInput.inputTextArea.setTextValue(String(self.val))
         stepper.value = self.val
     }
-    override func setSkinState(_ skinState:String) {
-        super.setSkinState(skinState)
-        textInput.setSkinState(skinState)
-        stepper.setSkinState(skinState)
+    
+    override var skinState:String {
+        get {return super.skinState}
+        set {
+            super.skinState = newValue
+            textInput.skinState = newValue
+            stepper.skinState = newValue
+        }
     }
+    
+//    override func setSkinState(_ skinState:String) {
+//        super.setSkinState(skinState)
+//
+//    }
     /**
      * Returns "Spinner"
      * NOTE: This function is used to find the correct class type when synthezing the element stack
@@ -74,4 +83,5 @@ class LeverSpinner:Element{
         return "\(Spinner.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

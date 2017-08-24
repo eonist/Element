@@ -12,15 +12,16 @@ protocol Skinable:class{
     func getWidth()->CGFloat
     func getHeight()->CGFloat
     /*Getters / Setters*/
-    var decoratables:[GraphicDecoratableKind]{get set}
-    var style:Stylable?{get set}
-    var state:String{get set}
-    var element:ElementKind?{get}/*We use IElement here instead of Element because sometimes we need to use Window which is not an Element but impliments IElement*/
+    var decoratables:[GraphicDecoratableKind]{get}
+    var style:Stylable?{get}
+    var state:String{get}
+    var parent:ElementKind?{get}/*We use IElement here instead of Element because sometimes we need to use Window which is not an Element but impliments IElement*/
 //    var width:CGFloat?{get}
 //    var height:CGFloat?{get}
     var hasChanged:HasChanged {get}
-    var skinSize:CGSize?{get}
+    var skinSize:CGSize?{get set}
 //    var hasStyleChanged:Bool{get}
 //    var hasStateChanged:Bool{get}
 //    var hasSizeChanged:Bool{get}
 }
+

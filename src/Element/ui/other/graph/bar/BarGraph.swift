@@ -135,6 +135,7 @@ class BarGraph:Graph {
     }
     override func getClassType() -> String {return "\(Graph.self)"}
     required init(coder:NSCoder) { fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 class Bar:Element{
     //Use Graphics lib instead of the skin framework to draw the bars.
@@ -153,9 +154,9 @@ class Bar:Element{
         _ = addSubView(graphic!.graphic)
         graphic!.draw()
     }
-    override func setSkinState(_ skinState:String) {
+    //override func setSkinState(_ skinState:String) {
         //update the line, implement this if you want to be able to set the theme of this component
-    }
+    //}
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
         //update the line, implement this if you need win resize support for this component
     }

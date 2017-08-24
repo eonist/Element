@@ -7,7 +7,11 @@ protocol TextKind:ElementKind {
     var initText:String{get}
 }
 extension TextKind{
-    var textField:NSTextField{return (skin as! TextKind).textField}
+    var textField:NSTextField{
+        Swift.print("textField")
+        return (skin as! TextKind).textField
+        
+    }
     /**
      * Sets text to the textfield, remember to set textformat after
      * NOTE: to access htmlText: ITextSkin2(_skin).textField.htmlText = htmlText;

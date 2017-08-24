@@ -1,12 +1,12 @@
 import Foundation
 
-protocol Focusable:StateChangeable{
+protocol Focusable:SkinStateChangeable{
     var isFocused:Bool {get set}
 }
 extension Focusable{
     func setFocused(_ focused:Bool){
         self.isFocused = focused
-        setSkinState(getSkinState())
+        self.skinState = {return skinState}()
     }
     func getFocused()->Bool{
         return self.isFocused

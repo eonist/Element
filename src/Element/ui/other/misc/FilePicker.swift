@@ -6,12 +6,13 @@ import Cocoa
  * TODO: ⚠️️ Add some event logic to this class, and modal popup
  */
 class FilePicker:Element{
-    lazy var textInput:TextInput = .init(self.getWidth(),self.getHeight(),initData.text,initData.input,self)
-    lazy var button:TextButton = .init(self.getWidth(), self.getHeight(), initData.buttonText, self)
-    private let initData:(text:String,input:String,buttonText:String)
-    init(text: String, input: String, buttonText: String, size:CGSize = CGSize(NaN,NaN), parent:ElementKind? = nil, id:String? = nil) {
-        initData = (text,input,buttonText)
-        super.init(size.width, size.height, parent, id)
+    typealias InitText = (text:String,input:String,button:String)
+    lazy var textInput:TextInput = .init(self.getWidth(),self.getHeight(),text.text,text.input,self)
+    lazy var button:TextButton = .init(self.getWidth(), self.getHeight(), text.button, self)
+    private let text:InitText
+    init(text:InitText, size:CGSize = CGSize(NaN,NaN), id:String? = nil) {
+        self.text = text
+        super.init(size:size, id:id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -24,6 +25,7 @@ class FilePicker:Element{
         }
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension FilePicker{
     func onBrowseButtonClick(){

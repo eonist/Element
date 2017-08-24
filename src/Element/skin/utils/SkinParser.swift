@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 
 class SkinParser {
@@ -12,13 +12,19 @@ class SkinParser {
      * Returns width
      */
     static func width(_ skin:Skinable)->CGFloat {
-        return !skin.element!.getWidth().isNaN ? skin.element!.getWidth() : skin.getWidth()
+        guard let element = skin.parent else{
+            let parents = NSViewParser.parents(skin as! NSView)
+            Swift.print("parents: " + "\(parents)")
+            fatalError("element not available: skin: \(skin)")
+            
+        }
+        return !element.getWidth().isNaN ? element.getWidth() : skin.getWidth()
     }
     /**
      * Returns height
      */
     static func height(_ skin:Skinable)->CGFloat {
-        return !skin.element!.getHeight().isNaN ? skin.element!.getHeight() : skin.getHeight()
+        return !skin.parent!.getHeight().isNaN ? skin.parent!.getHeight() : skin.getHeight()
     }
     /**
      * Returns the position when margin and padding is taken into account

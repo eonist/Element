@@ -20,11 +20,13 @@ class SelectCheckBoxButton:CheckBoxButton,Selectable {
      */
     func setSelected(_ isSelected:Bool) {
         self.isSelected = isSelected
-        setSkinState(getSkinState())
+        skinState = {skinState}()
     }
     func getSelected()->Bool{return isSelected}
-    override func getSkinState() -> String {
-        return self.isSelected ? SkinStates.selected + " " + super.getSkinState() : super.getSkinState()
+    override var skinState:String {
+        get {return isSelected ? SkinStates.selected + " " + super.skinState : super.skinState}
+        set {super.skinState = newValue}
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

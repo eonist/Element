@@ -13,7 +13,7 @@ class SliderTextArea:TextArea{
 	var scrollBarSize:CGFloat
     lazy var vSlider:Slider = {
         self.vSliderInterval = Utils.vSliderinterval(self.text.getTextField())
-        let vSlider:Slider = self.addSubView(Slider(6/*_scrollBarSize*/,self.height,.ver,CGSize(6,24),0,self))
+        let vSlider:Slider = self.addSubView(Slider(6/*_scrollBarSize*/,self.skinSize.h,.ver,CGSize(6,24),0,self))
         let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text.getTextField(), vSlider, self.linesPerScroll)
         _ = vSliderThumbHeight
         vSlider.setThumbSide(45)
@@ -93,6 +93,7 @@ class SliderTextArea:TextArea{
 		updateScrollBarThumbSizes()
 	}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 private class Utils{
 	static func vSliderinterval(_ textField:NSTextField) -> Int {
@@ -104,8 +105,8 @@ private class Utils{
         _ = numOfVisibleLines
 		let verticalScalar:CGFloat = 0//textField.maxScrollV == 1 ? 1:numOfVisibleLines/textField.numLines
 //		var tempInterval:Int = textField.maxScrollV == 1 ? 1:textField.maxScrollV / linesPerScroll
-		let verticalThumbSize:CGFloat = SliderParser.thumbSize(verticalScalar, slider.height)
-		return min(slider.height,verticalThumbSize)/*the Math.min is a temp fix*/
+		let verticalThumbSize:CGFloat = SliderParser.thumbSize(verticalScalar, slider.skinSize.h)
+		return min(slider.skinSize.h,verticalThumbSize)/*the Math.min is a temp fix*/
 	}
 	static func hScrollBarInterpolation(_ textField:NSTextField, _ scrollDistance:CGFloat = 50) -> Int{
 		return 0//textField.width >= textField.maxScrollH ? 0:textField.maxScrollH / scrollDistance
@@ -115,6 +116,6 @@ private class Utils{
         _ = horizontalScalar
 //		var horizontalInterval:int = ScrollTextAreaUtil.hScrollBarInterpolation(textField);
 		let horizontalThumbSize:CGFloat = 0//SliderParser.thumbSize(horizontalScalar, slider.width
-		return min(slider.width,horizontalThumbSize)/*the Math.min is a temp fix*/
+		return min(slider.skinSize.w,horizontalThumbSize)/*the Math.min is a temp fix*/
 	}
 }

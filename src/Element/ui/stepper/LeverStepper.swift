@@ -15,8 +15,8 @@ class LeverStepper:Element{
     var leverHeight:CGFloat//TODO: Write a description about this value
     var leverRange:CGFloat
     var leftMouseDraggedEventListener:Any?
-    lazy var plusButton:Button = {return self.addSubView(Button(self.height,self.height,self,"plus"))}()
-    lazy var minusButton:Button = {return self.addSubView(Button(self.height,self.height,self, "minus"))}()
+    lazy var plusButton:Button = {return self.addSubView(Button(self.skinSize.h,self.skinSize.h,self,"plus"))}()
+    lazy var minusButton:Button = {return self.addSubView(Button(self.skinSize.h,self.skinSize.h,self, "minus"))}()
     init(_ width: CGFloat, _ height: CGFloat, _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent: ElementKind? = nil, _ id: String? = nil) {
         self.value = value
         self.minVal = min
@@ -100,4 +100,5 @@ class LeverStepper:Element{
         return "\(Stepper.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

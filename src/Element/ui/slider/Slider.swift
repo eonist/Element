@@ -27,8 +27,8 @@ class Slider:Element{
      * Handles actions and drawing states for the down event.
      */
     override func mouseDown(_ event:MouseEvent) {/*onSkinDown*/
-        progress = Utils.progress(event.event!.localPos(self)[dir], thumbSize[dir]/2, size[dir], thumbSize[dir])
-        thumb.y = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
+        progress = Utils.progress(event.event!.localPos(self)[dir], thumbSize[dir]/2, frame.size[dir], thumbSize[dir])
+        thumb.y = Utils.thumbPosition(progress, frame.size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove)//we add a global mouse move event listener
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
@@ -45,12 +45,13 @@ class Slider:Element{
         super.setSize(width,height)
         let thumbSize:CGSize = dir == .hor ? CGSize(thumb.w,height) : CGSize(width,thumb.h)
         thumb.setSize(thumbSize.w, thumbSize.h)
-        thumb.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
+        thumb.frame.origin[dir] = Utils.thumbPosition(progress, frame.size[dir], thumbSize[dir])
     }
     override func getClassType() -> String {
         return dir == .ver ? "VSlider" : "HSlider"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 /*Event handlers*/
 extension Slider{
@@ -59,8 +60,8 @@ extension Slider{
         leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onThumbMove)/*we add a global mouse move event listener*/
     }
     @objc func onThumbMove(event:NSEvent)-> NSEvent?{
-        progress = Utils.progress(event.localPos(self)[dir], tempThumbMousePos, size[dir], thumbSize[dir])
-        thumb.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
+        progress = Utils.progress(event.localPos(self)[dir], tempThumbMousePos, frame.size[dir], thumbSize[dir])
+        thumb.frame.origin[dir] = Utils.thumbPosition(progress, frame.size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -68,8 +69,8 @@ extension Slider{
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}/*we remove a global mouse move event listener*/
     }
     @objc func onMouseMove(event:NSEvent)-> NSEvent?{
-        progress = Utils.progress(event.localPos(self)[dir], thumbSize[dir]/2, size[dir], thumbSize[dir])
-        thumb.point[dir] = Utils.thumbPosition(progress, size[dir], thumbSize[dir])
+        progress = Utils.progress(event.localPos(self)[dir], thumbSize[dir]/2, frame.size[dir], thumbSize[dir])
+        thumb.frame.origin[dir] = Utils.thumbPosition(progress, frame.size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
         return event
     }
@@ -82,14 +83,14 @@ extension Slider{
         self.thumbSize[dir] = thumbSide
         let thumbSize:CGSize = dir == .hor ? CGSize(self.thumbSize.width,thumb.getHeight()) : CGSize(thumb.getWidth(), self.thumbSize.height)
         thumb.setSize(thumbSize.w,thumbSize.h)
-        thumb.point[dir] = Utils.thumbPosition(progress, height, self.thumbSize[dir])
+        thumb.frame.origin[dir] = Utils.thumbPosition(progress, skinSize.h, self.thumbSize[dir])
     }
     /**
      * PARAM: progress (scalar, but unclipped so can be: -0.5 to 1.5 etc)
      */
     @objc func setProgressValue(_ progress:CGFloat){/*Can't be named setProgress because of objc*/
         self.progress = progress.clip(0,1)/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
-        thumb.point[dir] = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize[dir])
+        thumb.frame.origin[dir] = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize[dir])
         thumb.applyOvershot(progress,dir)/*<--we use the unclipped scalar value*/
     }
 }

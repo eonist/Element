@@ -39,7 +39,7 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * TODO: ⚠️️ possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
      */
     static func float(_ skin:Skinable){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
-        guard let element = skin.element as? Element else{fatalError("skin has no element")}
+        guard let element = skin.parent as? Element else{fatalError("skin has no element")}
         guard let elementParent = element.getParent() as? ElementKind else {return}/*if the skin.element doesnt have a parent that is ElementKind skip the code bellow*/// :TODO: this should be done by the caller
         guard let viewParent = element.getParent() as? NSView else{ fatalError("skin has no NSView parent")}
         let siblings:[ElementKind] = ElementParser.children(viewParent,ElementKind.self)//⚠️️ this could clean up this class ⚠️️ -> if ArrayAsserter.has(siblings, element) { _ = ArrayModifier.delete(&siblings, &element) }
@@ -86,9 +86,9 @@ private class Utils{
      */
     static func clearLeft(_ skin:Skinable,_ leftSibling:Skinable?,_ top:CGFloat) {
         if let leftSibling = leftSibling {
-            skin.element!.y = leftSibling.element!.y + SkinParser.margin(leftSibling).ver + SkinParser.height(leftSibling)
+            skin.parent!.y = leftSibling.parent!.y + SkinParser.margin(leftSibling).ver + SkinParser.height(leftSibling)
         }else {
-            skin.element!.y = top
+            skin.parent!.y = top
         }
     }
     /**
@@ -99,16 +99,16 @@ private class Utils{
      */
     static func clearRight(_ skin:Skinable,_ rightSiblingSkin:Skinable?,_ top:CGFloat){
 //      Swift.print("⚠️️⚠️️⚠️️ see clearLeft for how to fix this")
-        skin.element!.y = rightSiblingSkin != nil ? rightSiblingSkin!.element!.y + SkinParser.totalHeight(rightSiblingSkin!) : top
+        skin.parent!.y = rightSiblingSkin != nil ? rightSiblingSkin!.parent!.y + SkinParser.totalHeight(rightSiblingSkin!) : top
     }
     /**
      *
      */
     static func clearNone(_ skin:Skinable, _ floatType:String?, _ leftSibling:Skinable?,_ rightSibling:Skinable?, _ top:CGFloat){
-        skin.element!.y = {
-            if(floatType == CSS.Align.left && leftSibling != nil) { return leftSibling!.element!.y }
-            else if(floatType == CSS.Align.right && rightSibling != nil) { return rightSibling!.element!.y}
-            else if(floatType == CSS.Align.none) { return skin.element!.y}
+        skin.parent!.y = {
+            if(floatType == CSS.Align.left && leftSibling != nil) { return leftSibling!.parent!.y }
+            else if(floatType == CSS.Align.right && rightSibling != nil) { return rightSibling!.parent!.y}
+            else if(floatType == CSS.Align.none) { return skin.parent!.y}
             else {return top}
         }()
     }
@@ -122,7 +122,7 @@ private class Utils{
         
         Swift.print("⚠️️⚠️️⚠️️ see clearLeft for how to fix this")
         
-        skin.element!.y = prevSiblingSkin != nil ? prevSiblingSkin!.element!.y + SkinParser.totalHeight(prevSiblingSkin!) : top
+        skin.parent!.y = prevSiblingSkin != nil ? prevSiblingSkin!.parent!.y + SkinParser.totalHeight(prevSiblingSkin!) : top
     }
     /**
      *  Positions PARAM: skin by way of floating it left
@@ -131,9 +131,9 @@ private class Utils{
      *  PARAM: left the x value to align against
      */
     static func floatLeft(_ skin:Skinable, _ clearType:String?, _ leftSibling:Skinable?,  _ left:CGFloat){
-        skin.element?.x = {
+        skin.parent?.x = {
             if let leftSibling = leftSibling, (clearType != CSS.Align.left && clearType != CSS.Align.both) {/*Sets the position of the skin.element*/
-                return leftSibling.element!.x + SkinParser.margin(leftSibling).hor + SkinParser.width(leftSibling)
+                return leftSibling.parent!.x + SkinParser.margin(leftSibling).hor + SkinParser.width(leftSibling)
             };return left/*a previous element-sibling floats left*/
         }()
     }
@@ -147,9 +147,9 @@ private class Utils{
         
         //Swift.print("⚠️️⚠️️⚠️️ see floatLeft for how to fix this")
         
-        skin.element!.x = {
+        skin.parent!.x = {
             if let rightSibling = rightSibling , (clearType != CSS.Align.right && clearType != CSS.Align.both) {/*a previous element-sibling floats right*/
-                return rightSibling.element!.x
+                return rightSibling.parent!.x
             };return right - SkinParser.totalWidth(skin)/*Sets the position of the skin.element*/
         }()
     }

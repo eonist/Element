@@ -14,11 +14,10 @@ class TextSkin:Skin,TextSkinable{
     override var skinSize:CGSize? {
         get{return CGSize(textField.frame.size.width,super.skinSize?.height ?? 0)}
         set{
-            guard var _size = newValue else {fatalError("err")}//bug in Skin
+            guard var _size = newValue else {fatalError("err")}//quick fix for bug in Skin
             textField.frame.size.width = _size.w.isNaN ? 0 : _size.w
             super.skinSize?.height = _size.h.isNaN ? 0 : _size.h
         }
-        
     }// :TODO: make a similar funciton for getHeight, based on needed space for the height of the textfield
     var hasTextChanged:Bool = true/*<-Why is is this true by default?*/
     let initText:String

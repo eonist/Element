@@ -10,30 +10,15 @@ import Cocoa
  */
 class SliderTextArea:TextArea{
     let linesPerScroll:UInt = 1/*The number of lines the scroller scrolls at every scroll up or down*/// :TODO: this cant be set higher unless you add code to the eventhandlers that allow it
-	var scrollBarSize:CGFloat
-    lazy var vSlider:Slider = {
-        self.vSliderInterval = Utils.vSliderinterval(self.text.getTextField())
-        let vSlider:Slider = self.addSubView(Slider(6/*_scrollBarSize*/,self.skinSize.h,.ver,CGSize(6,24),0,self))
-        let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text.getTextField(), vSlider, self.linesPerScroll)
-        _ = vSliderThumbHeight
-        vSlider.setThumbSide(45)
-        return vSlider
-        //vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
-    }()
-    lazy var hSlider:Slider? = {
-        //hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
-        //hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
-        //let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
-        //hSlider!.setThumbWidthValue(hSliderThumbWidth)
-        //hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
-        return nil
-    }()
+    var scrollBarSize:CGFloat//TODO: ⚠️️ rename to: scrollBarThickness
+    lazy var vSlider:Slider = createVSlider()
+    lazy var hSlider:Slider? = createHSlider()
 	var vSliderInterval:Int?
 	var hInterval:Int?
-	init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ scrollBarSize:CGFloat = 24, _ parent:ElementKind? = nil, _ id:String? = nil){
-		self.scrollBarSize = scrollBarSize
-		super.init(width,height,text,parent,id)
-	}
+    init(text:String = "defaultText", scrollBarThickness:CGFloat = 24,size:CGSize,id:String? = nil) {
+        self.scrollBarSize = scrollBarThickness
+        super.init(text: text, size: size, id: id)
+    }
 	override func resolveSkin() {
 		super.resolveSkin()
 		_ = vSlider
@@ -41,7 +26,7 @@ class SliderTextArea:TextArea{
 	}
 	/**
 	 * Updates the sizes of the h and v sliders
-	 * // :TODO: can be further refactored
+	 * TODO: ⚠️️ Can be further refactored
 	 */
 	func updateScrollBarThumbSizes() {
 		let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text.getTextField(), hSlider!)
@@ -80,7 +65,7 @@ class SliderTextArea:TextArea{
 	/**
 	 * Sets the size of the ScrollTextArea
 	 * NOTE: Horizontatal must be set first because of an unknown bug, if you do not use the maxScrollH before maxScrollV the maxScrollV gives old values (Adobe bug)
-	 * TODO: this may not work since thumbsizes is updated in sliders and in this class
+	 * TODO: ⚠️️ this may not work since thumbsizes is updated in sliders and in this class
 	 */
 	override func setSize(_ width:CGFloat, _ height:CGFloat) {
 		super.setSize(width, height)
@@ -93,7 +78,11 @@ class SliderTextArea:TextArea{
 		updateScrollBarThumbSizes()
 	}
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
+    //dep
+    init(_ width:CGFloat,_ height:CGFloat, _ text:String = "defaultText", _ scrollBarSize:CGFloat = 24, _ parent:ElementKind? = nil, _ id:String? = nil){
+        self.scrollBarSize = scrollBarSize
+        super.init(width,height,text,parent,id)
+    }
 }
 private class Utils{
 	static func vSliderinterval(_ textField:NSTextField) -> Int {
@@ -118,4 +107,25 @@ private class Utils{
 		let horizontalThumbSize:CGFloat = 0//SliderParser.thumbSize(horizontalScalar, slider.width
 		return min(slider.skinSize.w,horizontalThumbSize)/*the Math.min is a temp fix*/
 	}
+}
+extension SliderTextArea{
+    func createVSlider()->Slider{
+        self.vSliderInterval = Utils.vSliderinterval(self.text.getTextField())
+        let vSlider:Slider = self.addSubView(Slider(6/*_scrollBarSize*/,self.skinSize.h,.ver,CGSize(6,24),0,self))
+        let vSliderThumbHeight:CGFloat = Utils.vSliderThumbHeight(self.text.getTextField(), vSlider, self.linesPerScroll)
+        _ = vSliderThumbHeight
+        vSlider.setThumbSide(45)
+        return vSlider
+        //vSlider.thumb.visible = SliderParser.assertSliderVisibility(vSliderThumbHeight/text.height)/*isVSliderVisible*/
+    }
+    func createHSlider() -> Slider?{
+        
+            //hInterval = Utils.hScrollBarInterpolation(text!.getTextField())
+            //hSlider = addSubView(HSlider(width/*_scrollBarSize*/,24,24,0,self))
+            //let hSliderThumbWidth:CGFloat = Utils.hSliderThumbWidth(text!.getTextField(), hSlider!)
+            //hSlider!.setThumbWidthValue(hSliderThumbWidth)
+            //hSlider.thumb.visible = SliderParser.assertSliderVisibility(hSliderThumbWidth/text.width)/*isHSliderVisible*/
+            return nil
+        
+    }
 }

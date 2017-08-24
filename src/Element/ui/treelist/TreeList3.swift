@@ -29,8 +29,8 @@ class TreeList3:ElasticScrollFastList3,TreeListable3{//ElasticSlideScrollFastLis
      * TODO: Use Switch
      */
     override func onEvent(_ event:Event) {
-        if(event.type == CheckEvent.check){onItemCheck(event as! CheckEvent)}
-        else if(event.type == SelectEvent.select){onItemSelect(event as! SelectEvent)}
+        if event.type == CheckEvent.check {onItemCheck(event as! CheckEvent) }
+        else if event.type == SelectEvent.select {onItemSelect(event as! SelectEvent)}
         super.onEvent(event)
     }
     override func getClassType() -> String {

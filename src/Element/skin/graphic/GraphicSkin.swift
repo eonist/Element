@@ -10,7 +10,7 @@ class GraphicSkin:Skin{
         super.init(style, state)
     }
     override func resolveSkin() {
-        Swift.print("GraphicSkin.resolve")
+//        Swift.print("GraphicSkin.resolve")
         super.resolveSkin()
         SkinModifier.float(self)/*Floats the entire element*/
         let depthCount:Int = StyleParser.depthCount(style!)

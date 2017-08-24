@@ -32,4 +32,9 @@ extension Event{
     func assert(_ type:ButtonEventType, id:String? = nil) -> Bool{
         return self.type == type.rawValue && (self.origin as? ElementKind)?.id == id
     }
+    func assert(_ type:ButtonEventType, _ origin:AnyObject?) -> Bool{
+        return self.type == type.rawValue && self.origin === origin
+    }
+ 
+    
 }

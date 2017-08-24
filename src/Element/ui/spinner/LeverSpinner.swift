@@ -45,7 +45,7 @@ class LeverSpinner:Element{
     func onInputTextChange(_ event:Event) {
         let valStr:String = textInput.inputTextArea.text.getText()
         val = NumberParser.minMax(valStr.cgFloat, minVal, maxVal)
-        stepper.value = val
+        stepper.initData.value = val
         self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
     }
     override func onEvent(_ event: Event) {
@@ -59,7 +59,7 @@ class LeverSpinner:Element{
         let value:CGFloat = NumberParser.minMax(value, minVal, maxVal)
         self.val = CGFloatModifier.toFixed(value,decimals)
         textInput.inputTextArea.setTextValue(String(self.val))
-        stepper.value = self.val
+        stepper.initData.value = self.val
     }
     
     override var skinState:String {

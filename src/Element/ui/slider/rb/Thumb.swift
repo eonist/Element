@@ -36,24 +36,23 @@ class Thumb:Button{
      */
     func setDisabled(_ isDisabled:Bool) {
         self.isDisabled = isDisabled
-        super.skinState = skinState
+        self.skinState = {self.skinState}()//changed, may not work
         //TODO: ⚠️️ Set button mode to not hand here
     }
     override func getClassType() -> String {
         return "\(Button.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension Thumb{
     /**
      * This method facilitates the illusion that the sliderThumb overshoots. As apart of the rubberBand motion effect
      */
     func applyOvershot(_ progress:CGFloat, _ dir:Dir = .ver){
-        if(progress < 0){/*Top overshot*/
+        if progress < 0 {/*Top overshot*/
             let size:CGSize = dir == .ver ? CGSize(skinSize.w, skinSize.h-(skinSize.h*progress.positive)) : CGSize(skinSize.w - (skinSize.w*progress.positive),skinSize.h)
             self.skin!.setSize(size.w,size.h)
-        }else if(progress > 1){/*Bottom overshot*/
+        }else if progress > 1 {/*Bottom overshot*/
             let overshot = self.frame.size[dir] * (progress-1)
             let size:CGSize = dir == .ver ? CGSize(skinSize.w, skinSize.h - overshot) : CGSize(skinSize.w - overshot, skinSize.h)
             self.skin!.setSize(size.w,size.h)
@@ -79,7 +78,7 @@ extension Thumb{
      * IMPORTANT:⚠️️ Use fadeIn as oppose to setting alpha your self. Because then animation doesnt stutter etc. Set time low if you need the instantaniouse feel
      */
     func fadeIn(){
-        if(animator != nil){animator!.stop()}/*stop any previous running animation*/
+        if animator != nil {animator!.stop()}/*stop any previous running animation*/
         animator = Animator(AnimProxy.shared,0.2,alpha,1,interpolateAlpha,Sine.easeOut)
         animator?.event = {(event:Event) -> Void in }
         animator?.start()
@@ -88,7 +87,7 @@ extension Thumb{
      * Call this when you want to fade-out the thumb
      */
     func fadeOut(){
-        if(animator != nil){animator!.stop()}/*stop any previous running animation*/
+        if animator != nil {animator!.stop()}/*stop any previous running animation*/
         animator = Animator(AnimProxy.shared,0.5,alpha,0,interpolateAlpha,Quad.easeIn)
         animator?.event = {(event:Event) -> Void in }
         animator?.start()

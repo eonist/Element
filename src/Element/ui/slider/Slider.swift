@@ -4,17 +4,17 @@ import Cocoa
  * Slider works in both the horizontal and vertical axis
  */
 class Slider:Element{
-    lazy var thumb:Thumb = {self.addSubView(Thumb(self.thumbSize.width, self.thumbSize.height,false,self))}()
+    lazy var thumb:Thumb = createThumb()
     var progress:CGFloat
     var thumbSize:CGSize
     var dir:Dir
     var leftMouseDraggedEventListener:Any?
     var tempThumbMousePos:CGFloat = 0
-    init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ thumbSize:CGSize? = nil,_ progress:CGFloat = 0,  _ parent:ElementKind? = nil, id:String? = nil){
+    init(dir:Dir = .ver,   thumbSize:CGSize? = nil, progress:CGFloat = 0, size:CGSize = CGSize(NaN,NaN),id:String? = nil){
         self.progress = progress
-        self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(width,width) : CGSize(height,height))
+        self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(size.width,size.width) : CGSize(size.height,size.height))
         self.dir = dir
-        super.init(width,height,parent,id)
+        super.init(size: size, id: id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -30,15 +30,15 @@ class Slider:Element{
         progress = Utils.progress(event.event!.localPos(self)[dir], thumbSize[dir]/2, frame.size[dir], thumbSize[dir])
         thumb.y = Utils.thumbPosition(progress, frame.size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))/*sends the event*/
-        leftMouseDraggedEventListener = NSEvent.addLocalMonitorForEvents(matching:[.leftMouseDragged], handler:onMouseMove)//we add a global mouse move event listener
+        NSEvent.addMonitor(&leftMouseDraggedEventListener,.leftMouseDragged,onMouseMove)
         //super.mouseDown(event)/*passes on the event to the nextResponder, NSView parents etc*/
     }
     override func mouseUp(_ event:MouseEvent) {
-        if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}//we remove a global mouse move event listener
+        NSEvent.removeMonitor(&leftMouseDraggedEventListener)//we remove a global mouse move event listener
     }
     override func onEvent(_ event:Event) {
-        if(event.origin === thumb && event.type == ButtonEvent.down){onThumbDown()}//if thumbButton is down call onThumbDown
-        else if(event.origin === thumb && event.type == ButtonEvent.up){onThumbUp()}//if thumbButton is down call onThumbUp
+        if event.assert(ButtonEvent.down,thumb) {onThumbDown()}//if thumbButton is down call onThumbDown
+        else if event.assert(ButtonEvent.up,thumb) {onThumbUp()}//if thumbButton is down call onThumbUp
         //super.onEvent(event)/*forward events, or stop the bubbeling of events by commenting this line out*/
     }
     override func setSize(_ width:CGFloat, _ height:CGFloat) {
@@ -51,7 +51,13 @@ class Slider:Element{
         return dir == .ver ? "VSlider" : "HSlider"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
+    //dep
+    init(_ width:CGFloat, _ height:CGFloat,_ dir:Dir = .ver,  _ thumbSize:CGSize? = nil,_ progress:CGFloat = 0,  _ parent:ElementKind? = nil, id:String? = nil){
+        self.progress = progress
+        self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(width,width) : CGSize(height,height))
+        self.dir = dir
+        super.init(width,height,parent,id)
+    }
 }
 /*Event handlers*/
 extension Slider{
@@ -68,11 +74,11 @@ extension Slider{
     func onThumbUp(){
         if(leftMouseDraggedEventListener != nil){NSEvent.removeMonitor(leftMouseDraggedEventListener!)}/*we remove a global mouse move event listener*/
     }
-    @objc func onMouseMove(event:NSEvent)-> NSEvent?{
+    @objc func onMouseMove(event:NSEvent)-> Void{//NSEvent?
         progress = Utils.progress(event.localPos(self)[dir], thumbSize[dir]/2, frame.size[dir], thumbSize[dir])
         thumb.frame.origin[dir] = Utils.thumbPosition(progress, frame.size[dir], thumbSize[dir])
         super.onEvent(SliderEvent(SliderEvent.change,progress,self))
-        return event
+//        return event
     }
 }
 extension Slider{
@@ -92,6 +98,9 @@ extension Slider{
         self.progress = progress.clip(0,1)/*if the progress is more than 0 and less than 1 use progress, else use 0 if progress is less than 0 and 1 if its more than 1*/
         thumb.frame.origin[dir] = Utils.thumbPosition(self.progress, frame.size[dir], thumbSize[dir])
         thumb.applyOvershot(progress,dir)/*<--we use the unclipped scalar value*/
+    }
+    func createThumb()->Thumb{
+        return self.addSubView(Thumb(self.thumbSize.width, self.thumbSize.height,false,self))
     }
 }
 private class Utils{//TODO:rename to VSliderUtils and make it not private

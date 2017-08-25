@@ -11,9 +11,9 @@ class VolumeSlider:Slider{
         super.resolveSkin()
         _ = volumeGraphic//TODO: add the volume graphic bellow the thumb
     }
-    @objc override func onMouseMove(event:NSEvent) -> NSEvent? {
+    @objc override func onMouseMove(event:NSEvent) -> Void { //NSEvent?
         volumeGraphic.setSize(thumb.x+thumb.skinSize.w/2, getHeight())//TODO: this should be set after super
-        return super.onMouseMove(event: event)
+         super.onMouseMove(event: event)
     }
     @objc override func onThumbMove(event:NSEvent) -> NSEvent? {
         volumeGraphic.setSize(thumb.x+thumb.skinSize.w/2, getHeight())//TODO: this should be set after super

@@ -88,3 +88,5 @@ extension LeverSpinner{
         return self.addSubView(LeverStepper.init(initData: initData, size: CGSize(100,24)))
     }
 }
+
+class Spinner:Element{}//TODO: write an alias instead? Does that work?

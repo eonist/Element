@@ -21,11 +21,11 @@ class TextArea:Element {
         text.setSize(width, height)
     }
     func setTextValue(_ textStr:String) {
-        Swift.print("TextArea.setTextValue")
+//        Swift.print("TextArea.setTextValue")
         text.setText(textStr)
     }
     func getTextValue() -> String {
-        Swift.print("getTextValue() \(text.getText())")
+//        Swift.print("getTextValue() \(text.getText())")
         return text.getText()
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}

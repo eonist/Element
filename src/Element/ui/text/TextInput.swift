@@ -2,12 +2,11 @@ import Foundation
 @testable import Utils
 /**
  * TODO: ⚠️️ Through extension you should add a way to set inputTextArea text value.
- * TODO: Rename inputTextArea to inputText
- * TODO: ⚠️️ Store ids as Enum Keys, so unfold can reuse these
+ * TODO: ⚠️️ Rename inputTextArea to inputText
  */
 class TextInput:Element{
-    lazy var text:Text = {return (Text(self.getWidth(),self.getHeight(),self.initData.text,self,"text"))}()
-    lazy var inputTextArea:TextArea = {return (TextArea(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText"))}()
+    lazy var text:Text = createText()
+    lazy var inputTextArea:TextArea = createInputTextArea()
     private let initData:(text:String,input:String)/*interim use only, use inputText  etc to get data*/
     
     init(text:String,inputText:String,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
@@ -28,7 +27,7 @@ class TextInput:Element{
         get {return super.skinState}
         set {
             super.skinState = newValue
-            inputTextArea.skinState = (newValue)
+            inputTextArea.skinState = (newValue)//I'm not sure about these anymore. The skinState works different now
             text.skinState = (newValue)
         }
     }
@@ -45,5 +44,10 @@ extension TextInput{
         inputTextArea.setTextValue(text)
     }
     var inputText:String {return inputTextArea.text.getText()}
-
+    func createText() -> Text{
+        return (Text(self.getWidth(),self.getHeight(),self.initData.text,self,"text"))
+    }
+    func createInputTextArea()->TextArea{
+        return (TextArea(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText"))
+    }
 }

@@ -6,7 +6,7 @@ import Foundation
 class CheckBoxButton:Button,Checkable,LableKind{//TODO: ⚠️️⚠️️     extend TextButton likeRadioButton does it. it means less code
     private var isChecked:Bool//TODO: ⚠️️ This should be initChecked, and then we should use only checkBox as a state holder
     var textString:String
-    lazy var checkBox:CheckBox = {self.addSubView(CheckBox(13,13,self.isChecked,self))}()
+    lazy var checkBox:CheckBox = createCheckBox()
     lazy var text:Text = createText()
     init(text:String = "defaultText",isChecked:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
         self.textString = text
@@ -52,9 +52,9 @@ class CheckBox:CheckButton{}/*CheckBox purly exists to differentiate between typ
 extension CheckBoxButton{
     func getText()->String{return text.getText()}
     func setTextValue(_ text:String){self.text.setText(text)}
-    /**
-     *
-     */
+    func createCheckBox()->CheckBox{
+        return self.addSubView(CheckBox(13,13,self.isChecked,self))
+    }
     func createText() -> Text {
         let text = self.addSubView(Text(self.getWidth(),self.getHeight(),self.textString,self))
         text.isInteractive = false

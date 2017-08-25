@@ -3,7 +3,7 @@ import Foundation
  * We could do selected instead of getSelected, but var getters confuse people. functions are easier to grasp. Its also easier to override functions conceptually than variables. Functions can also do method overloading.
  * NOTE: Using isSelceted could be the wrong way to go about this -> getSelected would work better->*//*var isSelected:Bool{get}*//*This is named isSelected because selected is ocupied by obc and using selected() as a method seems inconsistent
  */
-//TODO: ⚠️️ do selected and _selected
+//TODO: ⚠️️ do selected and _selected, call it Selectable2 and replace all Selectables
 protocol Selectable:class/*Derive only classes for the protocol, not structs, this enables === operator of protocol and also enables inout support for protocols*/{
     func setSelected(_ isSelected:Bool)
     func getSelected()->Bool/*<--Shouldn't this be isSelected? :TODO: this should be getSelected since composite classes can impliment ICHeckable and they will need to access a sub instance via a implimcit getter method, same for IDisableable, ISelectable, IFocusable etc*/

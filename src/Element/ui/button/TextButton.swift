@@ -11,11 +11,11 @@ class TextButton:Button,LableKind {
         super.init(size: size, id: id)
     }
     override func resolveSkin() {
-        Swift.print("TextButton.resolveSkin before")
+//        Swift.print("TextButton.resolveSkin before")
         super.resolveSkin()
-        Swift.print("TextButton.resolveSkin before text")
+//        Swift.print("TextButton.resolveSkin before text")
         _ = text
-        Swift.print("TextButton.resolveSkin after")
+//        Swift.print("TextButton.resolveSkin after")
     }
     override func mouseDown(_ event:MouseEvent) {
         super.mouseDown(event)
@@ -57,11 +57,11 @@ extension TextButton {
      * Makes lazy var more organized
      */
     func createText()->Text{
-        Swift.print("createText")
-        Swift.print("self.skinSize: " + "\(self.skinSize)")
+//        Swift.print("createText")
+//        Swift.print("self.skinSize: " + "\(self.skinSize)")
         let text = self.addSubView(Text.init(text: self.textString, size: self.skinSize, id: nil))//(text;,size:)
         text.isInteractive = false
-        Swift.print("before return createText")
+//        Swift.print("before return createText")
         return text
     }
 }

@@ -7,31 +7,15 @@ import Foundation
  * TODO: ⚠️️ This should maybe be a decorator style pattern that wraps Stepper, then also make RepeatStepper ?
  * TODO: ⚠️️ You may need to convert CGFloat to an Int if decimal is set to 0, do this in the LeverSpinner class
  */
-
-//Continue here: 🏀
-    //improve this class
-
 class LeverSpinner:Element{
-    var maxVal:CGFloat
-    var minVal:CGFloat
-    var val:CGFloat
-    var	increment:CGFloat/*<--The amount of incrementation for each stepping*/
-    var decimals:Int/*<--Decimal places*/
+    lazy var textInput:TextInput = createTextInput()
+    lazy var stepper:LeverStepper = createStepper()
+    var initData:LeverStepper.InitData
     var text:String
-    var leverHeight:CGFloat//TODO: write a description about this value
-    var leverRange:CGFloat
-    lazy var textInput:TextInput = {self.addSubView(TextInput(100,20,self.text,self.val.string,self))}()
-    lazy var stepper:LeverStepper = {self.addSubView(LeverStepper(100,24,self.val,self.increment,self.minVal,self.maxVal,self.decimals,self.leverRange,self.leverHeight,self))}()
-    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent:ElementKind? = nil, _ id:String? = nil) {
-        self.val = value
+    init(initData:InitData = defaultData, text:String = "", size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+        self.initData = initData
         self.text = text
-        self.minVal = min
-        self.maxVal = max
-        self.increment = increment
-        self.decimals = decimals
-        self.leverHeight = leverHeight//TODO: ⚠️️ Rename to something less ambiguous
-        self.leverRange = leverRange
-        super.init(width, height, parent, id)
+        super.init(size:size,id:id)
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -39,18 +23,18 @@ class LeverSpinner:Element{
         _ = stepper
     }
     func onStepperChange(_ event:StepperEvent) {
-        val = event.value
-        textInput.inputTextArea.setTextValue(String(val))
-        self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
+        initData.value = event.value
+        textInput.inputTextArea.setTextValue(String(initData.value))
+        self.event!(SpinnerEvent(SpinnerEvent.change,self.initData.value,self,self))
     }
     /**
      * TODO: ⚠️️ Also resolve decimal here?
      */
     func onInputTextChange(_ event:Event) {
         let valStr:String = textInput.inputTextArea.text.getText()
-        val = NumberParser.minMax(valStr.cgFloat, minVal, maxVal)
-        stepper.initData.value = val
-        self.event!(SpinnerEvent(SpinnerEvent.change,self.val,self,self))
+        initData.value = NumberParser.minMax(valStr.cgFloat, initData.min, initData.max)
+        stepper.initData.value = initData.value
+        self.event!(SpinnerEvent(SpinnerEvent.change,initData.value,self,self))
     }
     override func onEvent(_ event: Event) {
         if event.assert(StepperEvent.change, stepper){
@@ -60,25 +44,19 @@ class LeverSpinner:Element{
         }
     }
     func setValue(_ value:CGFloat) {
-        let value:CGFloat = NumberParser.minMax(value, minVal, maxVal)
-        self.val = CGFloatModifier.toFixed(value,decimals)
-        textInput.inputTextArea.setTextValue(String(self.val))
-        stepper.initData.value = self.val
+        let value:CGFloat = NumberParser.minMax(value, initData.min, initData.max)
+        initData.value = CGFloatModifier.toFixed(value,initData.decimals)
+        textInput.inputTextArea.setTextValue(String(initData.value))
+        stepper.initData.value = initData.value
     }
-    
     override var skinState:String {
         get {return super.skinState}
         set {
             super.skinState = newValue
-            textInput.skinState = newValue
-            stepper.skinState = newValue
+            textInput.skinState = newValue//⚠️️ I dont think this is correct
+            stepper.skinState = newValue//⚠️️ I dont think this is correct
         }
     }
-    
-//    override func setSkinState(_ skinState:String) {
-//        super.setSkinState(skinState)
-//
-//    }
     /**
      * Returns "Spinner"
      * NOTE: This function is used to find the correct class type when synthezing the element stack
@@ -87,5 +65,26 @@ class LeverSpinner:Element{
         return "\(Spinner.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
+    //dep
+    init(_ width:CGFloat, _ height:CGFloat, _ text:String = "", _ value:CGFloat = 0, _ increment:CGFloat = 1, _ min:CGFloat = Int.min.cgFloat , _ max:CGFloat = Int.max.cgFloat, _ decimals:Int = 0, _ leverRange:CGFloat = 100, _ leverHeight:CGFloat = 200, _ parent:ElementKind? = nil, _ id:String? = nil) {
+        self.text = text
+        self.initData.value = value
+        self.initData.min = min
+        self.initData.max = max
+        self.initData.increment = increment
+        self.initData.decimals = decimals
+        self.initData.leverHeight = leverHeight
+        self.initData.leverRange = leverRange
+        super.init(width, height, parent, id)
+    }
+}
+extension LeverSpinner{
+    static let defaultData:InitData = LeverStepper.defaultData
+    typealias InitData = LeverStepper.InitData
+    func createTextInput()-> TextInput{
+        return self.addSubView(TextInput.init(text: text, inputText: initData.value.string, size: CGSize(100,20)))
+    }
+    func createStepper() -> LeverStepper{
+        return self.addSubView(LeverStepper.init(initData: initData, size: CGSize(100,24)))
+    }
 }

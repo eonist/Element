@@ -15,9 +15,10 @@ class ContainerView3:Element,Containable3 {
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }
+
 extension ContainerView3 {//private maybe?
     /**
-     * TODO: Try to override with generics ContainerView<VerticalScrollable>  etc
+     * TODO: ⚠️️ Try to override with generics ContainerView<VerticalScrollable>  etc, in swift 4 this could probably be done with where Self:...
      */
     override open func scrollWheel(with event: NSEvent) {
         //Swift.print("ContainerView3.scrollWheel")

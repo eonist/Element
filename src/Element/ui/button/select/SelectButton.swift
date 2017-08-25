@@ -1,11 +1,11 @@
 import Cocoa
 @testable import Utils
-
+//TODO: ⚠️️ do selected and _selected
 class SelectButton:Button,Selectable {
     private var isSelected:Bool
-    init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: ElementKind? = nil, _ id: String? = nil) {
+    init(isSelected : Bool = false ,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
         self.isSelected = isSelected
-        super.init(width, height, parent, id)
+        super.init(size: size, id: id)
     }
     /**
      * Select state should only take place when there is a mouseUpInside event
@@ -28,4 +28,9 @@ class SelectButton:Button,Selectable {
         set {super.skinState = newValue}
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    //dep
+    init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: ElementKind? = nil, _ id: String? = nil) {
+        self.isSelected = isSelected
+        super.init(width, height, parent, id)
+    }
 }

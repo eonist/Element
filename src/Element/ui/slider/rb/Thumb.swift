@@ -9,8 +9,8 @@ import Cocoa
 class Thumb:Button{
     var animator:Animator?
     //var isDisabled:Bool
-    init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: ElementKind? = nil, _ id: String? = nil) {
-        super.init(width, height, parent, id)
+    init(isDisabled:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+        super.init(size: size, id: id)
         self.isDisabled = isDisabled
     }
     override func resolveSkin() {
@@ -43,6 +43,11 @@ class Thumb:Button{
         return "\(Button.self)"
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    //dep
+    init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: ElementKind? = nil, _ id: String? = nil) {
+        super.init(width, height, parent, id)
+        self.isDisabled = isDisabled
+    }
 }
 extension Thumb{
     /**

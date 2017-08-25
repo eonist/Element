@@ -6,9 +6,9 @@ import Foundation
  */
 class CheckButton:Button,Checkable{
     var isChecked:Bool
-    init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil){
+    init(isChecked:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
         self.isChecked = isChecked
-        super.init(width,height,parent,id);
+        super.init(size: size, id: id)
     }
     override func mouseUpInside(_ event:MouseEvent) {
         isChecked = !isChecked
@@ -30,4 +30,9 @@ class CheckButton:Button,Checkable{
         set {super.skinState = newValue}
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    //
+    init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil){
+        self.isChecked = isChecked
+        super.init(width,height,parent,id);
+    }
 }

@@ -4,6 +4,7 @@ import Cocoa
  * When you need to browse for files or urls
  * NOTE: this is a Composition of other UI components
  * TODO: ⚠️️ Add some event logic to this class, and modal popup
+ * TODO: ⚠️️ Add data accessorts to this class
  */
 class FilePicker:Element{
     typealias InitText = (text:String,input:String,button:String)

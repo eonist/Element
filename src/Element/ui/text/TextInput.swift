@@ -40,7 +40,7 @@ class TextInput:Element{
 }
 extension TextInput{
     func setInputText(_ text:String){/*Convenience*/
-        Swift.print("TextInput.setInputText")
+//        Swift.print("TextInput.setInputText")
         inputTextArea.setTextValue(text)
     }
     var inputText:String {return inputTextArea.text.getText()}

@@ -81,7 +81,6 @@ class FastList3:ContainerView3,FastListable3{
         return dir == .ver ? "List" : "VList"//<--VList really? isn't it more like HList atleast?
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension FastList3{
     /**

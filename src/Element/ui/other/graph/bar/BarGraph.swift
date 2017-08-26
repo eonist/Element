@@ -135,7 +135,6 @@ class BarGraph:Graph {
     }
     override func getClassType() -> String {return "\(Graph.self)"}
     required init(coder:NSCoder) { fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 class Bar:Element{
     //Use Graphics lib instead of the skin framework to draw the bars.

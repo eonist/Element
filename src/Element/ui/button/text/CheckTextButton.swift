@@ -26,5 +26,4 @@ class CheckTextButton:TextButton,Checkable {
         set {super.skinState = newValue}
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

@@ -7,8 +7,8 @@ import Cocoa
  */
 class FilePicker:Element{
     typealias InitText = (text:String,input:String,button:String)
-    lazy var textInput:TextInput = .init(self.getWidth(),self.getHeight(),text.text,text.input,self)
-    lazy var button:TextButton = .init(self.getWidth(), self.getHeight(), text.button, self)
+    lazy var textInput:TextInput = createTextInput()
+    lazy var button:TextButton = createButton()
     private let text:InitText
     init(text:InitText, size:CGSize = CGSize(NaN,NaN), id:String? = nil) {
         self.text = text
@@ -25,7 +25,6 @@ class FilePicker:Element{
         }
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented") }
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }
 extension FilePicker{
     func onBrowseButtonClick(){
@@ -43,5 +42,11 @@ extension FilePicker{
         if let url = dialog.url,respons == NSApplication.ModalResponse.OK{
             textInput.setInputText(url.path.tildify)
         }
+    }
+    func createTextInput()->TextInput{
+        return .init(self.getWidth(),self.getHeight(),text.text,text.input,self,"inputText")
+    }
+    func createButton()->TextButton{
+        return .init(self.getWidth(), self.getHeight(), text.button, self)
     }
 }

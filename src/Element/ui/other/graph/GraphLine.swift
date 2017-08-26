@@ -30,5 +30,4 @@ class GraphLine:Element{
         //update the line, implement this if you need win resize support for this component
     }
     required init(coder:NSCoder) {fatalError("init(coder:) has not been implemented") }
-    required init(from decoder: Decoder) throws {fatalError("init(from:) has not been implemented")}
 }

@@ -44,8 +44,8 @@ extension Event{//TODO: ⚠️️ rename to Element+Event.swift
      */
     func isChildOf(parentID:String) -> Bool{
         let matchMethod:NSViewAsserter.MatchMethod = {(a,_) in
-            guard let element = (a as? ElementKind) else {return false}
-            return element.id == parentID
+            guard let elementParent = (a as? ElementKind) else {return false}
+            return elementParent.id == parentID
         }
         return NSViewAsserter.hasParent(self.origin as? NSView, nil,matchMethod:matchMethod)
     }

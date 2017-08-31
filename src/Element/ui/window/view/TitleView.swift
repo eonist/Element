@@ -8,9 +8,9 @@ class TitleView:CustomView{
     lazy var textArea:TextArea = {self.addSubView(TextArea(NaN,24,"Title goes here",self,"winTitle"))}()
     var leftMouseDraggedEventListener:Any?
     var mouseDownPos:CGPoint?/*Store the mouseDown offset, when moving the window*/
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil, _ id:String? = "") {
-        super.init(width, height, parent, id)
-    }
+//    override init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil, _ id:String? = "") {
+//        super.init(size:CGSize(width,height),id:id)
+//    }
     override func resolveSkin() {
         super.resolveSkin()
         textArea.text.isInteractive = false/*Disable interactivity on the text*/

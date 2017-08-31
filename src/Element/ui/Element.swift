@@ -11,39 +11,39 @@ import Cocoa
  * PARAM state get: you need to access the skinstate before the skin is created or initiated in the element.
  * PARAM state set: This is used by subclasses to change their apperance when the user hover over an ui etc.
  * PARAM state set: Sets the current state of the button, which determins the current drawing of the skin
+ * PARAM frame: you can set size manually or via css, if css is percentage you it looks to parent for size
  * IMPORTANT: ⚠️️ If you want to set a custom parent, you must create the Element,set the parent value, then add the element
  */
 class Element:InteractiveView,ElementKind {
-    var parent:ElementKind? {return self.superview is ElementKind ? self.superview as? ElementKind : nil}//TODO: ⚠️️ get rid of parent
     var id:String? /*css selector id, TODO: ⚠️️ Should only be able to be "" not nil*/
-    var skinState:String {//TODO: ⚠️️ this should be an array, and rename to skinState, and try to get rid of the default none state
-        get {return ""}
-        set {skin?.setSkinState(newValue)}
-    }
-    var skinSize:CGSize
+    var skinState:String {get {return ""}set {skin?.setSkinState(newValue)}}/*Enables overriding of skinState*///TODO: ⚠️️ this should be an array, and rename to skinState, and try to get rid of the default none state
     var skin:Skinable?
     var uiState:UIState = (isDisabled:false,isFocused:false)
-    override var frame:CGRect {get{return CGRect(super.frame.x,super.frame.y,skinSize.w.isNaN ? 0 : skinSize.w,skinSize.h.isNaN ? 0 : skinSize.h)}set{super.frame = newValue}}/*this allows you to store NaN values in the frame, TODO: ⚠️️ Should probably be removed */
     
-    init(size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(size:CGSize = CGSize(0,0),id:String? = nil){
         self.id = id
-        self.skinSize = size
-        super.init(frame: NSRect(0,0,size.width.isNaN ? 0 : size.width,size.height.isNaN ? 0 : size.height))/*<--This check is vital, don't change it if your not planing a big refactor*/
+        var size = size//temp fix, until you remove NaN initializers
+        if size.w.isNaN {size.w = 0}//temp fix, until you remove NaN initializers
+        if size.h.isNaN {size.h = 0}//temp fix, until you remove NaN initializers
+        super.init(frame: NSRect.init(CGPoint(), size))/*<--This check is vital, don't change it if your not planing a big refactor*/
     }
     /**
      * NOTE: default implementation of viewDidMoveToSuperview does nothing, so its safe to override
-     * Delays the skin resolving to after its added to the parent. This enables you to not pass the partent on init
+     * Delays the skin resolving to after it's added to the parent. This enables you to not pass the parent on init
      * NOTE: this method is fired when you remove a view as well. So to only check for adding you have this assert
+     * TODO: ⚠️️ remove resolveSkin and just override viewDidMoveToSuperView with guard
      */
     override func viewDidMoveToSuperview() {
 //        Swift.print("viewDidMoveToSuperview superview: \(superview)")
-        if superview != nil {resolveSkin()}
+        guard superview != nil else {return}
+        resolveSkin()
     }
     /**
      * Draws the skin (aka graphics)
      */
     func resolveSkin() {
-        self.skin = self.addSubView(SkinResolver.skin(self))
+        self.skin = SkinResolver.skin(self)//don't inline these 2 lines, as you need the ref to skin in the addSubView excecution
+        self.addSubview(self.skin as! Skin)
     }
     func setSize(_ width:CGFloat, _ height:CGFloat) {// :TODO: ⚠️️ should probably be set to an abstract fuction returning an error. Maybe not. abstract classes confuses people
         self.skinSize.w = width//<--I'm not sure these are correct? I get that we have to store size somewhere but frame is such a central variable fro appkit
@@ -61,9 +61,10 @@ class Element:InteractiveView,ElementKind {
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}/*Required by NSView*/
     //DEPRECATE
-    init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil,_ id:String? = nil){//⚠️️ TODO: deprecate this init eventually
-        self.id = id
-        self.skinSize = CGSize(width,height)
-        super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))/*<--This check is vital, don't change it if your not planing a big refactor*/
+    convenience init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil,_ id:String? = nil){//⚠️️ TODO: deprecate this init eventually
+//        self.id = id
+//        self.skinSize = CGSize(width,height)
+        self.init(size: CGSize(width,height), id: id)
+        //super.init(frame: NSRect(0,0,width.isNaN ? 0 : width,height.isNaN ? 0 : height))/*<--This check is vital, don't change it if your not planing a big refactor*/
     }
 }

@@ -45,7 +45,7 @@ class Thumb:Button{
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     //dep
     init(_ width: CGFloat, _ height: CGFloat, _ isDisabled:Bool = false ,_ parent: ElementKind? = nil, _ id: String? = nil) {
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
         self.isDisabled = isDisabled
     }
 }

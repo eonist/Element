@@ -9,12 +9,13 @@ class TextInput:Element{
     lazy var inputTextArea:TextArea = createInputTextArea()
     private let initData:(text:String,input:String)/*interim use only, use inputText  etc to get data*/
     
-    init(text:String,inputText:String,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(text:String,inputText:String,size:CGSize = CGSize(0,0),id:String? = nil){
         self.initData = (text,inputText)
         super.init(size: size, id: id)
     }
     override func resolveSkin() {
         super.resolveSkin()
+        
         addSubview(text)
         addSubview(inputTextArea)
     }
@@ -35,7 +36,7 @@ class TextInput:Element{
     //DEPRECATE
     init(_ width:CGFloat, _ height:CGFloat, _ textString:String, _ inputString:String, _ parent:ElementKind? = nil,  _ id:String? = nil) {
         self.initData = (textString,inputString)
-        super.init(width,height,parent,id)
+       super.init(size:CGSize(width,height),id:id)
     }
 }
 extension TextInput{
@@ -45,9 +46,10 @@ extension TextInput{
     }
     var inputText:String {return inputTextArea.text.getText()}
     func createText() -> Text{
-        return (Text(self.getWidth(),self.getHeight(),self.initData.text,self,"text"))
+        return Text.init(text: self.initData.text, id: "text")//(self.getWidth(),self.getHeight(),)
     }
     func createInputTextArea()->TextArea{
-        return (TextArea(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText"))
+        //(self.getWidth(),self.getHeight(),self.initData.input,self,"inputText")
+        return TextArea.init(text: self.initData.input, id: "inputText")
     }
 }

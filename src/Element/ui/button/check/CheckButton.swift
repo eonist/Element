@@ -33,6 +33,6 @@ class CheckButton:Button,Checkable{
     //
     init(_ width:CGFloat, _ height:CGFloat, _ isChecked:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil){
         self.isChecked = isChecked
-        super.init(width,height,parent,id);
+        super.init(size:CGSize(width,height),id:id)
     }
 }

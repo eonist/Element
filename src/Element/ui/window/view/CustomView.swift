@@ -6,10 +6,10 @@ import Cocoa
  */
 class CustomView:WindowView{
     //lazy var header:Section = {self.addSubView(Section(NaN,NaN,self,"header"))}()
-    lazy var iconSection:Section = {self.addSubView(Section(NaN,NaN,self,"titleBar"))}()
-    lazy var closeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
-    lazy var minimizeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"minimize"))}()
-    lazy var maximizeButton:Button = {self.iconSection.addSubView(Button(NaN,NaN,self.iconSection,"maximize"))}()
+    lazy var iconSection:Section = {self.addSubView(Section.init(id:"titleBar"))}()
+    lazy var closeButton:Button = {self.iconSection.addSubView(Button.init(id:"close"))}() /*<--TODO: the w and h should be NaN, test if it supports this*/
+    lazy var minimizeButton:Button = {self.iconSection.addSubView(Button.init(id:"minimize"))}()
+    lazy var maximizeButton:Button = {self.iconSection.addSubView(Button.init(id:"maximize"))}()
     /**
      * Add content here
      */
@@ -57,9 +57,9 @@ class CustomView:WindowView{
         self.window?.toggleFullScreen(self.window)
     }
     override func onEvent(_ event:Event) {
-        if(event === (ButtonEvent.upInside,closeButton)){onCloseButtonReleaseInside()}
-        else if(event === (ButtonEvent.upInside,minimizeButton)){onMinimizeButtonReleaseInside()}
-        else if(event === (ButtonEvent.upInside,maximizeButton)){onMaximizeButtonReleaseInside()}
+        if event.assert(.upInside,closeButton){onCloseButtonReleaseInside()}
+        else if event.assert(.upInside,minimizeButton) {onMinimizeButtonReleaseInside()}
+        else if event.assert(.upInside,maximizeButton) {onMaximizeButtonReleaseInside()}
         //super.onEvent(event)//<--beta
     }
 }

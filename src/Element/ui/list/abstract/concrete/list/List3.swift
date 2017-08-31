@@ -15,7 +15,7 @@ class List3:ContainerView3,Listable3{
         self.itemSize = itemSize
         self.dp = dataProvider ?? DataProvider()/*<--if it's nil then a DB is created*/
         self.dir = dir
-        super.init(width,height,parent,id)
+        super.init(size:CGSize(width,height), id:id)
         self.dp.event = onEvent/*Add event handler for the dataProvider*/
         layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }

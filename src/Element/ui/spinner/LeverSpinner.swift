@@ -75,7 +75,7 @@ class LeverSpinner:Element{
         self.initData.decimals = decimals
         self.initData.leverHeight = leverHeight
         self.initData.leverRange = leverRange
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }
 extension LeverSpinner{

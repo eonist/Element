@@ -6,7 +6,7 @@ import Foundation
 class RadioButton:TextButton,Selectable{
     lazy var radioBullet:RadioBullet = self.createRadioBullet()
     fileprivate var isSelected:Bool
-    init(text:String = "defaultText",isSelected:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(text:String = "defaultText",isSelected:Bool = false,size:CGSize = CGSize(0,0),id:String? = nil){
         self.isSelected = isSelected
         super.init(text:text, size: size, id: id)
     }
@@ -40,6 +40,6 @@ extension RadioButton{
      * Makes lazy var more organized
      */
     func createRadioBullet()->RadioBullet{
-        return self.addSubView(RadioBullet(NaN,NaN,self.isSelected,self))
+        return self.addSubView(RadioBullet.init(isSelected: self.isSelected))
     }
 }

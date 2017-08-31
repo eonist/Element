@@ -40,8 +40,8 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      */
     static func float(_ skin:Skinable){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
         guard let element = skin.parent as? Element else{fatalError("skin has no element")}
-        guard let elementParent = element.getParent() as? ElementKind else {return}/*if the skin.element doesnt have a parent that is ElementKind skip the code bellow*/// :TODO: this should be done by the caller
-        guard let viewParent = element.getParent() as? NSView else{ fatalError("skin has no NSView parent")}
+        guard let elementParent = element.superview as? ElementKind else {return}/*if the skin.element doesnt have a parent that is ElementKind skip the code bellow*/// :TODO: this should be done by the caller
+        guard let viewParent = element.superview  else{ fatalError("skin has no NSView parent")}
         let siblings:[ElementKind] = ElementParser.children(viewParent,ElementKind.self)//⚠️️ this could clean up this class ⚠️️ -> if ArrayAsserter.has(siblings, element) { _ = ArrayModifier.delete(&siblings, &element) }
         let index:Int = viewParent.contains(element) ? Utils.elementIndex(viewParent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
         guard let parentSkin:Skinable = elementParent.skin else{fatalError("parent has no skin")}

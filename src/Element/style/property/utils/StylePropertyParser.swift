@@ -4,6 +4,7 @@ import Cocoa
  * NOTE: We query with skin because we need to access element in the metrics method
  */
 class StylePropertyParser{
+    private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * Returns a property from PARAM: skin and PARAM: property
      * NOTE: the reason that depth defaults to 0 is because if the exact depth isnt found there should only be depth 0, if you have more than 1 depth in a property then you must supply at all depths or just the 1 that will work for all depths
@@ -54,14 +55,13 @@ class StylePropertyParser{
         if(StyleParser.index(skin.style!, CSS.LineOffsetType.bottom,depth) > lineOffsetTypeIndex){ offsetType.bottom = StylePropertyParser.string(skin, CSS.LineOffsetType.bottom,depth)}
         return offsetType
     }
-    private static var textMetricPattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
     /**
      * Returns TextFormat
      * TODO: Needs more refactoring, use functional programing and reduce
      */
     static func textFormat(_ skin:TextSkin)->TextFormat {
         var textFormat:TextFormat = TextFormat()
-        let strings:[String] = TextFormatConstants.textFormatPropertyNames
+        let strings:[String] = TextFormat.Key.textFormatPropertyNames
         strings.forEach { textFormatKey in//TODO: Use flatMap here
             if var value:Any = StylePropertyParser.value(skin, textFormatKey){
                 if StringAsserter.metric("\(String(describing: value))") {
@@ -70,7 +70,7 @@ class StylePropertyParser{
                     matches.forEach { match in
                         let val:Any = match.value(stringValue, 1)/*Capturing group 1*/
                         let suffix:String = match.value(stringValue, 2)/*Capturing group 2*/
-                        if(suffix == CSS.Text.ems) {value = "\(val)".cgFloat * CSS.Text.emsFontSize }
+                        if suffix == CSS.Text.ems {value = "\(val)".cgFloat * CSS.Text.emsFontSize }
                     }
                 }
                 if let strArr = value as? [String] { value = StringModifier.combine(strArr, " ") }/*Some fonts are seperated by a space and thus are converted to an array*/
@@ -178,31 +178,3 @@ extension StylePropertyParser{
     }
 }
 
-//Deprecate
-
-/**
- * NOTE: this is really a modifier method
- * TODO: add support for % (this is the percentage of the inherited font-size value, if none is present i think its 12px)
- */
-/*static func textField(_ skin:TextSkin) {
-    for textFieldKey:String in TextFieldConstants.textFieldPropertyNames {
-        let value:Any? = StylePropertyParser.value(skin,textFieldKey)
-        if(value != nil) {
-            if(StringAsserter.metric(value as! String)){
-                //TODO: You may need to set one of the inner groups to be non-catchable
-                let pattern:String = "^(-?\\d*?\\.?\\d*?)((%|ems)|$)"
-                let stringValue:String = "\(value)"//swift 3 update
-                let matches = stringValue.matches(pattern)
-                for match:NSTextCheckingResult in matches {
-                    var value:Any = match.value(stringValue,1)/*Capturing group 1*/
-                    let suffix:String = match.value(stringValue,2)/*Capturing group 2*/
-                    if(suffix == CSSConstants.ems) {value = "\(value)".cgFloat * CSSConstants.emsFontSize }
-                }
-            }
-            //TODO: this needs to be done via subscript probably, see that other code where you used subscripting recently
-            fatalError("Not implemented yet")
-            //skin.textField[textFieldKey] = value
-        }
-    }
-    fatalError("out of order")
-}*/

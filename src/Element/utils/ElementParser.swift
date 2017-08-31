@@ -30,10 +30,10 @@ class ElementParser{
      */
     static func parents(_ element:ElementKind)->[ElementKind] {
         var parents:[ElementKind] = []
-        var parent:ElementKind? = element.getParent() as? ElementKind// :TODO: seperate this into a check if its DO then that, if its Window then do that
-        while(parent != nil) {/*loops up the object hierarchy as long as the parent is a Element supertype*/
+        var parent:ElementKind? = (element as? NSView)?.superview as? ElementKind// :TODO: seperate this into a check if its DO then that, if its Window then do that
+        while parent != nil {/*loops up the object hierarchy as long as the parent is a Element supertype*/
             parents.append(parent!)
-            parent = parent!.getParent() as? ElementKind
+            parent = (parent as? NSView)?.superview as? ElementKind
         }
         return parents.reversed()
     }

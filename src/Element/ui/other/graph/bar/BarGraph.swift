@@ -14,9 +14,9 @@ class BarGraph:Graph {
     var initGraphPts:[CGPoint] = []/*Animates from these points*/
     /*Debugging*/
     var gestureHUD:GestureHUD?
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind?, _ id: String? = nil) {
+    init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind?, _ id: String? = nil) {
         tempVValues = GraphUtils.randomVerticalValues()//random data is set on init
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
         self.acceptsTouchEvents = true/*Enables gestures*/
         self.wantsRestingTouches = true/*Makes sure all touches are registered. Doesn't register when used in playground*/
         gestureHUD = GestureHUD(self)

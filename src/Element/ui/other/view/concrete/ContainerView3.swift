@@ -5,8 +5,8 @@ class ContainerView3:Element,Containable3 {
     var maskSize:CGSize {return CGSize(super.skinSize.w,super.skinSize.h)}/*Represents the visible part of the content *///TODO: could be ranmed to maskRect, say if you need x and y aswell
     var contentSize:CGSize {return CGSize(super.skinSize.w,super.skinSize.h)}
     lazy var contentContainer:Element = self.createContentContainer() //was content, but we want to use old css
-    override init(_ width: CGFloat, _ height: CGFloat, _ parent: ElementKind? = nil, _ id: String? = nil) {
-        super.init(width,height,parent,id)
+   override init(size:CGSize = CGSize(0,0),id:String? = nil){
+        super.init(size:CGSize(size.width,size.height),id:id)
     }
     override func resolveSkin() {
         super.resolveSkin()

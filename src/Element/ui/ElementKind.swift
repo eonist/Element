@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 /**
  * TODO: ⚠️️ Move getWidth, size etc to Another protocol
@@ -8,18 +8,19 @@ protocol ElementKind:ViewKind,Disableable,Focusable{/*:class <--- derive only cl
     /*Core methods*/
     func resolveSkin()
     /*Implicit getters / setters*/
-    func getParent()->Any?//TODO: maybe use weak?
+//    func getParent()->Any?//TODO: maybe use weak?
     func setSize(_ width:CGFloat, _ height:CGFloat)
     //func getParent(isAbsoltuteParent:Bool = false)->Any
     func getClassType()->String
     func getWidth()->CGFloat
     func getHeight()->CGFloat
+    
     /*Getters / Setters*/
-    var parent:ElementKind?{get}
+//    var parent:ElementKind?{get}
     //var state:String{get set}/*skinState is renamed to state because objc won't allow implicit setter with the same name*/
     var skin:Skinable?{get set}
     var id:String?{get}
-    var skinSize:CGSize {get}
+    var skinSize:CGSize {get set}
     var x:CGFloat{get set}
     var y:CGFloat{get set}
     var uiState:UIState {get set}
@@ -29,15 +30,25 @@ protocol ElementKind:ViewKind,Disableable,Focusable{/*:class <--- derive only cl
  * TODO: add convenince methods for setting x and y independently?
  */
 extension ElementKind {
+    /**
+     * TODO: ⚠️️ remove this, point to frame instead
+     */
+    var skinSize:CGSize {
+        get{
+            return (self as! NSView).frame.size
+        }set{
+            (self as! NSView).frame.size = newValue
+        }
+    }
     var x:CGFloat {get{return self.frame.x}set{self.frame.x = newValue}}
     var y:CGFloat {get{return self.frame.y}set{self.frame.y = newValue}}
     /**
      * NOTE: This isn't fully implemented, see notes on the blog, see legacy code
      * NOTE: This method will always return an NSView or nil if isAbsolute is set to true, and either NSView or NSWindow or nil if isAbosulte is set to false
      */
-    func getParent()->Any? {// :TODO: beta
-        return self.parent
-    }
+//    func getParent()->Any? {// :TODO: beta
+//        return self.parent
+//    }
     /**
      * Positions the Element instance to PARAM: point,
      * TODO: ⚠️️ This could also be move to an utils class
@@ -47,10 +58,14 @@ extension ElementKind {
         frame.y = point.y
     }
     func getWidth()->CGFloat{
-        return skin != nil ? skin!.getWidth() : NaN
+         // ?? skin.parent?.frame.width ?? {()->CGFloat in fatalError("err")}()
+        
+        return skin != nil ? StyleMetricParser.width(skin!) ?? frame.width : {()-> CGFloat in fatalError("err")}()
+        //return skin != nil ? skin!.getWidth() : {()-> CGFloat in fatalError("err")}()/*NaN*/
     }
     func getHeight()->CGFloat{
-        return skin != nil ? skin!.getHeight() : NaN
+        return skin != nil ? StyleMetricParser.height(skin!) ?? frame.height : {()-> CGFloat in fatalError("err")}()
+        //return skin != nil ? skin!.getHeight() : {()-> CGFloat in fatalError("err")}()/*NaN*/
     }
     var isDisabled:Bool {get{return uiState.isDisabled} set{uiState.isDisabled = newValue}}
     var isFocused:Bool  {get{return uiState.isFocused} set{uiState.isFocused = newValue}}

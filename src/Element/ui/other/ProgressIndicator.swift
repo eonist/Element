@@ -8,8 +8,8 @@ class ProgressIndicator:Element {
     var lineStyle:LineStylable = LineStyle()
     lazy var animator:Animator = {LoopingAnimator(AnimProxy.shared,Int.max,1,0,1,self.progress,Linear.ease)}()
     var revealProgress:CGFloat = 0
-    override init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil, _ id:String? = nil) {
-        super.init(width, height, parent, id)
+    init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind? = nil, _ id:String? = nil) {
+        super.init(size:CGSize(width,height),id:id)
     }
     override func resolveSkin() {
         //skin = EmptySkin.init(parent:self)////   SkinResolver.skin(self)

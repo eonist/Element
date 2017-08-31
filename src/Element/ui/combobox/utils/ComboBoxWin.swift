@@ -28,7 +28,7 @@ class ComboBoxView:PopupView{
         self.dataProvider = dataProvider
         self.initSelectedIndex = initSelectedIndex
         self.itemHeight = itemHeight
-        super.init(width,height,parent,id)
+        super.init(size:CGSize(width,height),id:id)
     }
     override func resolveSkin() {
         Swift.print("ComboBoxView.resolveSkin()")

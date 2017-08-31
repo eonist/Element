@@ -3,7 +3,7 @@ import Cocoa
 //TODO: ⚠️️ do selected and _selected
 class SelectButton:Button,Selectable {
     private var isSelected:Bool
-    init(isSelected : Bool = false ,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(isSelected : Bool = false ,size:CGSize = CGSize(0,0),id:String? = nil){
         self.isSelected = isSelected
         super.init(size: size, id: id)
     }
@@ -31,6 +31,6 @@ class SelectButton:Button,Selectable {
     //dep
     init(_ width: CGFloat, _ height: CGFloat, _ isSelected : Bool = false, _ parent: ElementKind? = nil, _ id: String? = nil) {
         self.isSelected = isSelected
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }

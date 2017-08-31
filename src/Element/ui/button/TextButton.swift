@@ -6,7 +6,7 @@ import Cocoa
 class TextButton:Button,LableKind {
     lazy var text:Text = self.createText()
     var textString:String/*Interim value*/
-    init(text:String = "defaultText" ,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(text:String = "defaultText" ,size:CGSize = CGSize(0,0),id:String? = nil){
         textString = text
         super.init(size: size, id: id)
     }
@@ -49,7 +49,7 @@ class TextButton:Button,LableKind {
     //DEPRECATED
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind?, _ id:String? = nil) {
         textString = text
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }
 extension TextButton {

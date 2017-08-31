@@ -10,7 +10,7 @@ class GraphLine:Element{
     var path:PathKind
     init(_ width:CGFloat, _ height:CGFloat,_ path:PathKind, _ parent:ElementKind? = nil, _ id:String? = nil) {
         self.path = path
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
     }
     override func resolveSkin() {
         //Swift.print("GraphLine.resolveSkin")

@@ -3,7 +3,17 @@ import Cocoa
 
 class Text:Element,TextKind{
     let initText:String//this value is accessed by the TextSkin (It is not meant for external accessing from other classes)
-    init(text:String,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+//    override var skinSize: CGSize {
+//        get {
+//            if let skin = skin {
+//                return CGSize(skin.getWidth(),getHeight())
+//            }
+//            return super.skinSize
+//
+//        }
+//        set {super.skinSize = newValue}
+//    }
+    init(text:String,size:CGSize = CGSize(0,0),id:String? = nil){
         initText = text
         super.init(size: size, id: id)
     }
@@ -22,6 +32,6 @@ class Text:Element,TextKind{
     //DEPRECATED:
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ parent:ElementKind? = nil, _ id:String? = nil){
         initText = text
-        super.init(width, height, parent, id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }

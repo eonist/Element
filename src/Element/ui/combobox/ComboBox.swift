@@ -86,7 +86,7 @@ class ComboBox:Element{
         self.dataProvider = dataProvider
         self.isOpen = isOpen
         self.selectedIndex = selectedIndex
-        super.init(width,height,parent,id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }
 extension ComboBox{

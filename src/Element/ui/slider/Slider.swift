@@ -56,7 +56,7 @@ class Slider:Element{
         self.progress = progress
         self.thumbSize = thumbSize ?? (dir == .ver ? CGSize(width,width) : CGSize(height,height))
         self.dir = dir
-        super.init(width,height,parent,id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }
 /*Event handlers*/

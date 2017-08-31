@@ -67,9 +67,7 @@ class StyleMetricParser {
      * Returns width (clips to min max height)
      */
     static func width(_ skin:Skinable, _ depth:Int = 0) -> CGFloat? {
-        guard let width:CGFloat = metric(skin,CSS.Size.width,depth,.hor) else{
-            return nil
-        }
+        guard let width:CGFloat = metric(skin,CSS.Size.width,depth,.hor) else{return nil}
         let minWidth:CGFloat = Utils.minWidth(skin) ?? width
         let maxWidth:CGFloat = Utils.maxWidth(skin) ?? width
         return width.clip(minWidth,maxWidth)
@@ -78,9 +76,7 @@ class StyleMetricParser {
      * Returns height (clips to min max height)
      */
     static func height(_ skin:Skinable, _ depth:Int = 0) -> CGFloat? {
-        guard let height:CGFloat = metric(skin,CSS.Size.height,depth,.ver) else{
-            return nil
-        }
+        guard let height:CGFloat = metric(skin,CSS.Size.height,depth,.ver) else{return nil}
         let minHeight:CGFloat = Utils.minHeight(skin) ?? height
         let maxHeight:CGFloat = Utils.maxHeight(skin) ?? height
         return height.clip(minHeight,maxHeight)
@@ -165,7 +161,7 @@ private class Utils{
             if(suffix == "%") {
                 return {
                     let totWidth:CGFloat = {
-                        if let parent:ElementKind = skin.parent?.getParent() as? ElementKind{
+                        if let parent:ElementKind = (skin.parent as? NSView)?.superview as? ElementKind{
                             return dir == .hor ? totalWidth(parent) : totalHeight(parent)/*totHeight support is new*/
                         };return 0
                     }()

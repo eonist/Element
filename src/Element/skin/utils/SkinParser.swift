@@ -12,19 +12,24 @@ class SkinParser {
      * Returns width
      */
     static func width(_ skin:Skinable)->CGFloat {
-        guard let element = skin.parent else{
-            let parents = NSViewParser.parents(skin as! NSView)
-            Swift.print("parents: " + "\(parents)")
-            fatalError("element not available: skin: \(skin)")
-            
-        }
-        return !element.getWidth().isNaN ? element.getWidth() : skin.getWidth()
+//        guard let element = skin.parent else{
+//            let parents = NSViewParser.parents(skin as! NSView)
+//            Swift.print("parents: " + "\(parents)")
+//            fatalError("element not available: skin: \(skin)")
+//
+//        }
+        return StyleMetricParser.width(skin) ?? skin.parent?.frame.width ?? {()->CGFloat in fatalError("err")}()//  !element.getWidth().isNaN ? element.getWidth() : skin.getWidth()
     }
     /**
      * Returns height
      */
     static func height(_ skin:Skinable)->CGFloat {
-        return !skin.parent!.getHeight().isNaN ? skin.parent!.getHeight() : skin.getHeight()
+//        guard let element = skin.parent else{
+//            let parents = NSViewParser.parents(skin as! NSView)
+//            Swift.print("parents: " + "\(parents)")
+//            fatalError("element not available: skin: \(skin)")
+//        }
+        return StyleMetricParser.height(skin) ?? skin.parent?.frame.height ?? {()->CGFloat in fatalError("err")}()// !skin.parent!.getHeight().isNaN ? skin.parent!.getHeight() : skin.getHeight()
     }
     /**
      * Returns the position when margin and padding is taken into account

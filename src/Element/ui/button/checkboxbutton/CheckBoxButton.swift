@@ -45,7 +45,7 @@ class CheckBoxButton:Button,Checkable,LableKind{//TODO: ⚠️️⚠️️     e
     init(_ width:CGFloat, _ height:CGFloat, _ text:String = "defaultText", _ isChecked:Bool = false, _ parent:ElementKind? = nil, _ id:String? = nil) {
         self.textString = text
         self.isChecked = isChecked
-        super.init(width,height,parent,id)
+        super.init(size:CGSize(width,height),id:id)
     }
 }
 class CheckBox:CheckButton{}/*CheckBox purly exists to differentiate between types in CSS*/

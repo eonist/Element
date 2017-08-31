@@ -24,19 +24,28 @@ private class Utils{
     }
     /**
      * Returns a "GraphicRect instance"
+     * TODO: ⚠️️ These can be inlined like: (StyleMetricParser.height(skin,depth)  ?? {fatalError("err")}()) + padding.top + padding.bottom   do this when the code is more stable
      */
-    static func rectGraphic(_ skin:Skinable, _ decoratable:GraphicDecoratableKind,_ depth:Int = 0)->GraphicDecoratableKind {
+    static func rectGraphic(_ skin:Skinable, _ decoratable:GraphicDecoratableKind,_ depth:Int = 0) -> GraphicDecoratableKind {
         let padding:Padding = Padding()//StylePropertyParser.padding(skin,depth)
         let width:CGFloat = {
             var padding:CGFloat {return padding.left + padding.right}
             if let styleWidth:CGFloat = StyleMetricParser.width(skin,depth){
                 return styleWidth + padding
-            }/*else if !skin.skinSize!.width.isNaN{
-                return skin.skinSize!.width + padding
-            }*/
-            fatalError("not allowed: styleWidth: \(StyleMetricParser.width(skin,depth)!) ")
+            }else if let width = skin.parent?.frame.size.width/* , width != 0*/{
+                return width + padding
+            }
+            fatalError("not allowed  ")
         }()
-        let height:CGFloat = (StyleMetricParser.height(skin,depth)  ?? {fatalError("err")}()) + padding.top + padding.bottom
+        let height:CGFloat = {
+            var padding:CGFloat {return padding.top + padding.bottom}
+            if let styleHeight:CGFloat = StyleMetricParser.height(skin,depth){
+                return styleHeight + padding
+            }else if let height = skin.parent?.frame.size.height/* , height != 0*/{
+                return height + padding
+            }
+            fatalError("not allowed ")
+        }()
         /*var lineOffset:OffsetType = StylePropertyParser.lineOffsetType(skin,depth);*///I guess this wasnt needed anymore since the line offset is a bit simpler than legacy code?
 //        Swift.print(CGSize(width,height))
         return RectGraphic.init(CGPoint(), CGSize(width,height), decoratable)

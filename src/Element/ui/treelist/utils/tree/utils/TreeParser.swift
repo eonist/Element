@@ -27,7 +27,13 @@ class TreeParser {
         var i:Int = 0
         return Utils.descendants(tree, at, &i)
     }
-    
+    /**
+     *
+     */
+//    static func descendants(tree:Tree, idx3d:[Int]) -> Tree?{
+//        let child:Tree = TreeParser.child(tree, idx3d)
+//        
+//    }
     /**
      * idx3d above PARAM: idx3d
      */
@@ -85,7 +91,7 @@ private class Utils{
                 i += 1
                 if(item.children.count > 0){
                     let match:Tree? = Utils.descendants(item,at,&i)
-                    if(match != nil){return match}
+                    if match != nil {return match}
                 }
             }
         }

@@ -1,23 +1,24 @@
 import Foundation
 @testable import Utils
 
-/*class PathIdx{
- var idx:[Int]
- init(_ idx:[Int]){
- self.idx = idx
- }
- }*/
 class TreeUtils{
+    /*struct PathIdx{
+     var idx:[Int]
+     init(_ idx:[Int]){
+     self.idx = idx
+     }
+     }*/
     typealias AssertMethod = (_ tree:Tree)->Bool
     static var defaultAssert:AssertMethod = {_ in return true}//returns true as default
     /**
      * Recusivly flattens the the treeStructure into a column structure array of tree items
      * TODO: ⚠️️ Use reduce!
+     * TODO: ⚠️️ move to TreeParser?
      */
     static func flattened(_ tree:Tree) -> [Tree] {
         var results:[Tree] = []
         tree.children.forEach { child in
-            if(child.children.count > 0) {/*Array*/
+            if !child.children.isEmpty {/*Array*/
                 results += TreeUtils.flattened(child)
             }else{/*Item*/
                 results.append(child)

@@ -55,6 +55,7 @@ class Element:InteractiveView,ElementKind {
      * NOTE: if a class subclasses Element that sub-class will be the class type
      * NOTE: override this function in the first subClass and that subclass will be the class type for other sub-classes
      * NOTE: to return a specific class type: String(TextEditor)
+     * TODO: ⚠️️ rename to classType and use a var
      */
     func getClassType()->String{
         return "\(type(of: self))"

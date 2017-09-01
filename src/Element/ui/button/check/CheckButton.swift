@@ -6,7 +6,7 @@ import Foundation
  */
 class CheckButton:Button,Checkable{
     var isChecked:Bool
-    init(isChecked:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(isChecked:Bool = false,size:CGSize = CGSize(0,0),id:String? = nil){
         self.isChecked = isChecked
         super.init(size: size, id: id)
     }

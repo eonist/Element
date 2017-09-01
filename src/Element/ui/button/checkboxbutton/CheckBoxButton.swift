@@ -8,7 +8,7 @@ class CheckBoxButton:Button,Checkable,LableKind{//TODO: ⚠️️⚠️️     e
     var textString:String
     lazy var checkBox:CheckBox = createCheckBox()
     lazy var text:Text = createText()
-    init(text:String = "defaultText",isChecked:Bool = false,size:CGSize = CGSize(NaN,NaN),id:String? = nil){
+    init(text:String = "defaultText",isChecked:Bool = false,size:CGSize = CGSize(0,0),id:String? = nil){
         self.textString = text
         self.isChecked = isChecked
         super.init(size: size, id: id)
@@ -18,9 +18,6 @@ class CheckBoxButton:Button,Checkable,LableKind{//TODO: ⚠️️⚠️️     e
         _ = checkBox/*Init the UI*/
         _ = text/*Init the UI*/
     }
-//    override func onEvent(_ event:Event) {//TODO: You could remove this method, as it doesn't add any functionality
-//        super.onEvent(event)/*Forwards the event*/
-//    }
     func setChecked(_ isChecked:Bool) {
         checkBox.setChecked(isChecked)
     }

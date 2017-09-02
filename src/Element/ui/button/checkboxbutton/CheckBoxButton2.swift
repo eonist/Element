@@ -6,15 +6,15 @@ import Foundation
  */
 class CheckBoxButton2:TextButton,Checkable2{
     lazy var checkBox:CheckBox2 = createCheckBox()
-    private let initState:CheckedState
-    var state:CheckedState {/*we  only checkBox as a state holder*/
-        get{return checkBox.state}
+    private let initCheckedState:CheckedState
+    var checkedState:CheckedState {/*we  only checkBox as a state holder*/
+        get{return checkBox.checkedState}
         set{/*Sets the self.isChecked variable (Toggles between two states)*/
-            checkBox.state = newValue
+            checkBox.checkedState = newValue
         }
     }
     init(text:String = "defaultText", checkedState:CheckedState = .none,size:CGSize = CGSize(0,0),id:String? = nil){
-        self.initState = checkedState
+        self.initCheckedState = checkedState
         super.init(text:text, size: size, id: id)
         //text.isInteractive = false
     }
@@ -46,6 +46,6 @@ extension CheckBoxButton2{
 //    func getText()->String{return text.getText()}
 //    func setTextValue(_ text:String){self.text.setText(text)}
     func createCheckBox()->CheckBox2{
-        return self.addSubView(CheckBox2.init(state: self.initState, size: CGSize(13,13)))
+        return self.addSubView(CheckBox2.init(state: self.initCheckedState, size: CGSize(13,13)))
     }
 }

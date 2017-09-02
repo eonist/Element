@@ -39,13 +39,16 @@ extension Tree{//maybe treekind isn't needed. Just use Tree?
     func child(_ idx3d:[Int])-> Tree?{
         return TreeParser.child(self, idx3d)
     }
-    func descendants(_ at:Int)->Tree?{
+    func descendants(_ at:Int)->Tree?{//hmm?
         return TreeParser.descendants(self, at)
     }
     subscript(at:Int) -> Tree? {
         get {return self.children[at]}
         set {self.children[at] = newValue!}
     }
+    /**
+     * Set values at idx, or get tree at idx
+     */
     subscript(at:[Int]) -> Tree? {
         get {return self.child(at)}
         set {
@@ -58,8 +61,9 @@ extension Tree{//maybe treekind isn't needed. Just use Tree?
             TreeModifier.apply(&self, at, apply)
         }
     }
+   
     /**
-     * TODO: This could even be a subscript
+     * TODO: ⚠️️ This could even be a subscript
      */
     mutating func setProp(_ at:[Int], _ prop:(key:String,val:String)) {
         TreeModifier.setProp(&self,at,prop)

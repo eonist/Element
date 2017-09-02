@@ -1,7 +1,10 @@
 import Foundation
 /**
  * NOTE: Check regexident forest code. and lorentey [Element] ? etc?
- * TODO: maybe rearrange arguments to: name,content,props,children?
+ * TODO: ⚠️️ maybe rearrange arguments to: name,content,props,children?
+ * EXAMPLE: let tree = Tree("a",[Tree("a.1"),Tree("a.2",[Tree("a.2.1")])]);
+ * EXAMPLE: TreeUtils.applyAll(tree:tree:,idx3d:[1],{$0.name = $0.name.capitalize});
+ * EXAMPLE: TreeParser.child(tree,[1,0]) //A.2.1
  */
 //typealias Element = T
 struct Tree{

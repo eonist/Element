@@ -28,7 +28,7 @@ class TreeDPModifier {
     static func insert(_ dp:TreeDP, _ idx3d:[Int], _ tree:Tree){
         Swift.print("insert \(tree.name!) at \(idx3d.string)")
         TreeModifier.insert(&dp.tree, idx3d, tree)
-        dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
+        dp.hashList = TreeUtils.pathIndecies(dp.tree,at:[],with:TreeUtils.isOpen)/*flattens 3d to 2d*/
         if let idx2d:Int = dp[idx3d]{//now the idx2d exists ✨
             dp.onEvent(DataProviderEvent(DataProviderEvent.add, idx2d, idx2d+1, dp))/*updates fastlist UI*/
         }else{
@@ -51,7 +51,7 @@ class TreeDPModifier {
             /*dp.tree.children.forEach {
              Swift.print("$0.name: " + "\($0.props?["title"])")
              }*/
-            dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
+            dp.hashList = TreeUtils.pathIndecies(dp.tree,at:[],with:TreeUtils.isOpen)/*flattens 3d to 2d*/
             //Swift.print("dp.hashList: " + "\(dp.hashList)")
             /*dp.hashList.forEach {
              Swift.print("$0: " + "\($0)")
@@ -66,7 +66,7 @@ class TreeDPModifier {
     static func append(_ dp: TreeDP, _ idx3d:[Int], _ child:Tree){
         if let idx2d:Int = dp[idx3d] {/*makes sure it exists*/
             TreeModifier.append(&dp.tree, idx3d, child)
-            dp.hashList = TreeUtils.pathIndecies(dp.tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
+            dp.hashList = TreeUtils.pathIndecies(dp.tree,at:[],with:TreeUtils.isOpen)/*flattens 3d to 2d*/
             dp.onEvent(DataProviderEvent(DataProviderEvent.add, idx2d, idx2d+1, dp))
         }
     }

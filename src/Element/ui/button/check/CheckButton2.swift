@@ -6,24 +6,22 @@ import Foundation
  * NOTE: isChecked is not priv because setting it manually and then setting style is cheaper than using setSkinState. TreeList uses this scheme
  */
 class CheckButton2:Button {
-    private var _state:CheckedState = .none
-    var state:CheckedState {
-        get{return _state}
-        set{/*Sets the self.isChecked variable (Toggles between two states)*/
-            self._state = newValue
+    var state:CheckedState = .none{
+        didSet{/*Sets the self.isChecked variable (Toggles between two states)*/
             skinState = {self.skinState}()//refresh skinState
         }
     }
     init(state:CheckedState, size: CGSize, id: String? = nil) {
+        self.state = state
         super.init(size: size, id: id)
     }
     override func mouseUpInside(_ event:MouseEvent) {
         state = state == .none ? .checked : .none
         super.mouseUpInside(event)
-        super.onEvent(CheckEvent2(state:_state, origin:self))
+        super.onEvent(CheckEvent2(state:state, origin:self))
     }
     override var skinState:String {
-        get {return _state == .none ? super.skinState : _state.rawValue + " " + super.skinState }
+        get {return state == .none ? super.skinState : state.rawValue + " " + super.skinState }
         set {super.skinState = newValue}
     }
     override func getClassType() -> String {
@@ -33,7 +31,7 @@ class CheckButton2:Button {
 }
 
 protocol Checkable2{
-    var state:CheckedState {get set}
+    var state:CheckedState {get set}//rename to checkedState or checkState
 }
 /**
  * Mix state can only be set from outside

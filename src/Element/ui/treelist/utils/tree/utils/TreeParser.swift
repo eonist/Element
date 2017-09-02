@@ -3,16 +3,27 @@ import Foundation
 
 class TreeParser {
     /**
+     * New, does not include the value of root tree
+     */
+    static func values(tree:Tree, idx:[Int], key:String) -> [String]{
+        let indecies:[[Int]] = TreeUtils.pathIndecies(tree,at:idx,with:TreeUtils.isOpen)/*flattens 3d to 2d*/
+        //Swift.print("indecies: " + "\(indecies)")
+        return indecies.lazy.map{ idx -> String? in
+            guard let child = tree[idx],let props:[String:String] = child.props,let value = props[key] else {return nil}
+            return value
+            }.flatMap{$0}/*removes nil*/
+    }
+    /**
      * Returns a child at PARAM: idx3d
      * NOTE: this function is recursive
      * NOTE: to find the children of the root use an empty array as the index value
      */
-    static func child(_ tree:Tree?,_ idx3d:[Int])->Tree?{
+    static func child(_ tree:Tree?,_ idx3d:[Int])->Tree?{//TODO: ⚠️️ why is tree optional?
         if(idx3d.count == 0 && tree != nil) {
             return tree
         }else if(idx3d.count == 1 && tree != nil && tree![idx3d.first!] != nil) {//XMLParser.childAt(xml!.children!, index[0])
             return tree![idx3d[0]]
-        }// :TODO: if index.length is 1 you can just ref index
+        }// :TODO: ⚠️️ if index.length is 1 you can just ref index
         else if(idx3d.count > 1 && tree!.children.count > 0) {
             return TreeParser.child(tree![idx3d.first!], idx3d.slice2(1,idx3d.count))
         }

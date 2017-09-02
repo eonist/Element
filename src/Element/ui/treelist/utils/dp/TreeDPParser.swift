@@ -32,13 +32,12 @@ class TreeDPParser {
      * TODO: Use .filte instead
      */
     static func values(_ dp: TreeDP, _ idx:[Int], _ key:String)->[String]{
-        var indecies:[[Int]] = TreeUtils.pathIndecies(dp.tree,idx,TreeUtils.isOpen)/*flattens 3d to 2d*/
+        var indecies:[[Int]] = TreeUtils.pathIndecies(dp.tree,at:idx,with:TreeUtils.isOpen)/*flattens 3d to 2d*/
         //Swift.print("indecies: " + "\(indecies)")
         indecies = indecies.map{idx + $0}//prepend the parent pathIdx to get complete pathIndecies
         return indecies.lazy.map{ idx -> String? in
-            if let tree = dp.tree[idx],let props:[String:String] = tree.props,let value = props[key]{
-                return value
-            };return nil
+            guard let tree = dp.tree[idx],let props:[String:String] = tree.props,let value = props[key] else {return nil}
+            return value
             }.flatMap{$0}/*removes nil*/
     }
 }

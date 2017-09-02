@@ -36,7 +36,13 @@ extension Event{//TODO: ⚠️️ rename to Element+Event.swift
      * new
      */
     func assert(_ type:String, parentID:String) -> Bool{
-        return self.type == type && isChildOf(parentID:parentID)
+        return self.type == type && assert(parentID:parentID)
+    }
+    /**
+     * New
+     */
+    func assert(parentID:String) -> Bool{
+        return isChildOf(parentID:parentID)
     }
     /**
      * New

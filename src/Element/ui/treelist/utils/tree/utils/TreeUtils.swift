@@ -28,22 +28,38 @@ class TreeUtils{
     }
     /**
      * New
-     * Returns an Array of idx3d that passes the PARAM: assert
+     * Returns an Array of idx3d that asserts to the PARAM: assert
+     * EXAMPLE: var tree = Tree("a",[Tree("a.1"),Tree("a.2",[Tree("a.2.1")])])
+     * EXAMPLE: let descendant3dIndicies = TreeUtils.pathIndecies(tree,[])
+     * EXAMPLE: descendant3dIndicies.forEach{Swift.print($0)}
+     * OUTPUT: [0]
+     * OUTPUT: [1]
+     * OUTPUT: [1, 0]
+     * IMPORTANT: ⚠️️ Tree root will never be included in the result. Append it if you need to use root as well
+     * IMPORTANT: ⚠️️ The 3dIdx is from the perspective of the child. Append idx3d to the pathIndecies to get the full idx3d
      */
-    static func pathIndecies(_ tree:Tree,_ idx:[Int] = [], _ assert:AssertMethod = defaultAssert) -> [[Int]] {
-        let child:Tree = TreeParser.child(tree, idx)!
-        return Utils.pathIndecies(child, [], assert)
+    static func pathIndecies(_ tree:Tree, at idx3d:[Int] = [], with assert:AssertMethod = defaultAssert) -> [[Int]] {
+        let child:Tree = TreeParser.child(tree, idx3d)!
+        return Utils.pathIndecies(child, [], assert)//TODO:  ⚠️️ we could probably pass the idx3d here and drop the child?!?
     }
-    
     /**
      * Used to debug Trees
-     * TODO: make a describe method that prints the entire tree with tabbing
+     * TODO: ⚠️️ make a describe method that prints the entire tree with tabbing, and include name in the tree, and content
      */
     static func describe(_ tree:Tree,_ key:String, _ level:Int = 0){
         if let props = tree.props, let value:String = props[key]{
             Swift.print(("\t" * level) +  value)
         }
         tree.children.forEach{describe($0, key, level + 1)}
+    }
+    /**
+     * New
+     */
+    static func describe(_ tree:Tree,_ level:Int = 0){
+        if let name = tree.name{
+            Swift.print(("\t" * level) +  name)
+        }
+        tree.children.forEach{describe($0, level + 1)}
     }
     /**
      * Assert method for Utils.pathIndecies, Other methods also use this method
@@ -71,7 +87,7 @@ private class Utils{
         var results:[[Int]] = []
         tree.children.forEach{
             results.append(depth)
-            if($0.children.count > 0 && assert($0)) {/*Array*/
+            if $0.children.count > 0 && assert($0) {/*Array*/
                 results += Utils.pathIndecies($0,depth, assert)//dive deeper
             }
             depth.end = depth.end! + 1//increment cur level

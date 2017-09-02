@@ -11,7 +11,7 @@ class TreeDP:DataProvider {
     var hashList:[[Int]]/*Stores the idx3d indecies*/
     init(_ tree:Tree){
         self.tree = tree
-        self.hashList = TreeUtils.pathIndecies(tree,[],TreeUtils.isOpen)/*flattens 3d to 2d*/
+        self.hashList = TreeUtils.pathIndecies(tree,at:[],with:TreeUtils.isOpen)/*flattens 3d to 2d*/
         super.init([])
     }
     /**
@@ -36,17 +36,4 @@ class TreeDP:DataProvider {
         self.init(tree)
     }
 }
-extension TreeDP {
-    /**
-     * Returns idx3d for idx2d
-     */
-    subscript(_ idx2d:Int) -> [Int] {
-        return hashList[idx2d]
-    }
-    /**
-     * Returns idx2d for idx3d
-     */
-    subscript(_ idx3d:[Int]) -> Int? {
-        return hashList.index(where: {$0 == idx3d})
-    }
-}
+

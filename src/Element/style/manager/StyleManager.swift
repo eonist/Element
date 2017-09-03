@@ -7,6 +7,7 @@ import Foundation
  * TODO: ⚠️️⚠️️⚠️️ This class can be a struct maybe?
  * TODO: ⚠️️ Use singleton pattern instead
  * TODO: ⚠️️ The tail trick could possibly be even faster if you sorted the hashed styles and used a halfed algo when querrying (but its a dictionary so maybe not, maybe if you stored it in an array etc)
+ * TODO: ⚠️️ stylemanager must be able to have multiple styleCollections, stylecollection can be decorated to have cssFileURLS cached urls etc
  */
 class StyleManager{
     static var cssFiles:[String:String] = [:]
@@ -16,8 +17,7 @@ class StyleManager{
     //TODO: ⚠️️ rename bellow to defaultCacheURL
     
     static let cacheBaseURL:String = FilePathParser.resourcePath + "/styles.bundle/styles/"
-    static let cacheURL:String = cacheBaseURL + "styles.xml"//"~/Desktop/styles.xml".tildePath
+//    static let cacheURL:String = cacheBaseURL + "styles.xml"//"~/Desktop/styles.xml".tildePath
 }
 
 
-//TODO: ⚠️️ stylemanager must be able to have multiple styleCollections, stylecollection can be decorated to have cssFileURLS cached urls etc

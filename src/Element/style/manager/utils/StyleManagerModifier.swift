@@ -97,7 +97,7 @@ private class Utils{
     /**
      * Read and parse styles from the .css files and write a new cache to styles.xml
      */
-    static func readStylesFromCSSFiles(stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [Stylable] {
+    static func readStylesFromCSSFiles(stylesURL:String,cacheURL:String) -> [Stylable] {
         let styles:[Stylable] = testPerformance ("Adding css styles time: "){/*performance test*/
             let cssString:String = CSSFileParser.cssString(stylesURL)/*This takes a few secs, basic.css takes around 4sec*/
             return StyleManagerUtils.styles(cssString,removeComments:false)/*<--we already removed comments so no need to do it again*/

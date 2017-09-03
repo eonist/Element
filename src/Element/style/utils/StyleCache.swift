@@ -4,7 +4,11 @@ import Foundation
 class StyleCache {}
 /*Parser*/
 extension StyleCache{
-    static let defaultXML:String = "<data><cssFileDates></cssFileDates><styles></styles></data>"
+    static let defaultXML:String = {
+        let xmlString = "<data><cssFileDates></cssFileDates><styles></styles></data>"
+        let prettyXMLString = XMLParser.prettyString(xmlString.xml)
+        return prettyXMLString
+    }()
     /**
      * Compiles a list of css files derived from an xml
      * TODO: ⚠️️ return tuple instead
@@ -21,7 +25,6 @@ extension StyleCache{
             return cssFileDates
         }
         return filesAndDates
-        
     }
     /**
      * Compiles an xml of css files and its modified date
@@ -73,7 +76,7 @@ extension StyleCache{
     /**
      * Asserts if files has been caches
      */
-    static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
+    private static func hasFileBeenCached(_ cssFileDateList:[String:String], _ filePath:String)->Bool{
         return cssFileDateList.first(where: {$0.0 == filePath}) != nil//functional programming 🎉
     }
     /**
@@ -81,15 +84,18 @@ extension StyleCache{
      */
     static func cacheXML(cacheURL:String,stylesURL:String) throws -> XML{
         let xmlFileExists:Bool = FileAsserter.exists(cacheURL)/*Assert if the styles.xml exists and if it has content*/
+        debug("xmlFileExists", xmlFileExists)
         if !xmlFileExists {/*Create a new styles.xml if non exists*/
             _ = FileModifier.write(cacheURL, defaultXML)
         }
-        let xml:XML = FileParser.xml(cacheURL)
+        let xml:XML = FileParser.xml(cacheURL)//load the xml
         let cssFilesAndDates:[String:String] = StyleCache.cssFilesAndDates(xml)//file urls + date of last refresh of the file
+        Swift.print("cssFilesAndDates.count: " + "\(cssFilesAndDates.count)")
+        Swift.print("stylesURL.tildify: " + "\(stylesURL.tildify)")
         let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFilesAndDates, stylesURL.tildify)/*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
-        Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached ? "✅" : "🚫")")
+        debug("hasURLBeenCached",hasURLBeenCached)
         let isUpToDate = hasURLBeenCached && StyleCache.isUpToDate(cssFilesAndDates)//something must have been cached in order to check against cache
-        Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
+        debug("isUpToDate",isUpToDate)
         guard hasURLBeenCached && isUpToDate else {/*if true then: read the styles from the xml*/
             throw "hasURLBeenCached : \(hasURLBeenCached) isUpToDate: \(isUpToDate)"
         }
@@ -100,7 +106,7 @@ extension StyleCache{
      * B. or creates new cache and reads from css and stores it in cache
      * IMPORTANT: ⚠️️ the styles.xml file in bundle isn't written to, it's the styles.xml inside the .app file that is beeing written to
      */
-    static func styles(stylesURL:String,cacheURL:String = StyleManager.cacheURL)  -> [Stylable]?{
+    static func styles(stylesURL:String,cacheURL:String)  -> [Stylable]?{
 //       Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL.tildify)")
         if let xml:XML = try? StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
@@ -120,17 +126,17 @@ extension StyleCache{
      */
     static func save(_ styles:[Stylable],to filePath:String){
 //      Swift.print("writeStylesToDisk filePath: " + "\(filePath)")
-        let data:XML = "<data></data>".xml
+        let xml:XML = "<data></data>".xml
         let cssFileDates:XML = StyleCache.cssFileDates()
-        data.appendChild(cssFileDates)
+        xml.appendChild(cssFileDates)
         let styles:XML = styles.reduce("<styles></styles>".xml){
             let xml = Reflect.toXML($1)
             $0.appendChild(xml)
             return $0
         }
-        data.appendChild(styles)
+        xml.appendChild(styles)
         //Swift.print("data.xmlString: " + "\(data.xmlString)")
-        let contentToWriteToDisk = data.xmlString
+        let contentToWriteToDisk = xml.prettyStr
         _ = FileModifier.write(filePath, contentToWriteToDisk)
     }
 }

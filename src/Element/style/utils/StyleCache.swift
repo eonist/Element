@@ -79,48 +79,37 @@ extension StyleCache{
     /**
      * PARAM:stylesURL: absolute path to root styles css file
      */
-    static func cacheXML(cacheURL:String,stylesURL:String) -> XML?{
-        /*1. Assert if the styles.xml exists and if it has content*/
-//        Swift.print("cacheURL: " + "\(cacheURL)")
-        let xmlFileExists:Bool = FileAsserter.exists(cacheURL)
-        //Swift.print("xmlExists: " + "\(stylesXMLExists)")
+    static func cacheXML(cacheURL:String,stylesURL:String) throws -> XML{
+        let xmlFileExists:Bool = FileAsserter.exists(cacheURL)/*Assert if the styles.xml exists and if it has content*/
         if !xmlFileExists {/*Create a new styles.xml if non exists*/
             _ = FileModifier.write(cacheURL, defaultXML)
         }
         let xml:XML = FileParser.xml(cacheURL)
-        let cssFilesAndDates = StyleCache.cssFilesAndDates(xml)
-        /*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
-        let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFilesAndDates, stylesURL.tildify)
+        let cssFilesAndDates:[String:String] = StyleCache.cssFilesAndDates(xml)//file urls + date of last refresh of the file
+        let hasURLBeenCached:Bool = StyleCache.hasFileBeenCached(cssFilesAndDates, stylesURL.tildify)/*2. assert if the query url has been cached and assert if the cached css files are all up to date*/
         Swift.print("hasURLBeenCached: " + "\(hasURLBeenCached ? "✅" : "🚫")")
         let isUpToDate = hasURLBeenCached && StyleCache.isUpToDate(cssFilesAndDates)//something must have been cached in order to check against cache
         Swift.print("isUpToDate: " + "\(isUpToDate ?  "✅" : "🚫" )")
-        if hasURLBeenCached && isUpToDate {/*if true then: read the styles from the xml*/
-            return xml
-        }else {
-            return nil
+        guard hasURLBeenCached && isUpToDate else {/*if true then: read the styles from the xml*/
+            throw "hasURLBeenCached : \(hasURLBeenCached) isUpToDate: \(isUpToDate)"
         }
+        return xml
     }
     /**
      * A. Reads styles from cache
      * B. or creates new cache and reads from css and stores it in cache
      * IMPORTANT: ⚠️️ the styles.xml file in bundle isn't written to, it's the styles.xml inside the .app file that is beeing written to
      */
-    static func styles(_ stylesURL:String,cacheURL:String = StyleManager.cacheURL) -> [Stylable]{
-//        Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL.tildify)")
-        if let xml:XML = StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
+    static func styles(stylesURL:String,cacheURL:String = StyleManager.cacheURL)  -> [Stylable]?{
+//       Swift.print("StyleCache.styles() cacheURL: " + "\(cacheURL.tildify)")
+        if let xml:XML = try? StyleCache.cacheXML(cacheURL:cacheURL, stylesURL:stylesURL) {
             let styles = StyleCache.readStylesFromXML(xml)/*Super fast loading of cached styles*/
             return testPerformance("StyleManager.addStyle time:") {//then try to measure the time of resolving all selectors
 //                Swift.print("StyleCache.styles.count: " + "\(styles.count)")
                 return styles
             }
-        }else {/*Else read and parse styles from the .css files and write a new cache to styles.xml*/
-            let styles:[Stylable] = testPerformance ("Adding css styles time: "){/*performance test*/
-                let cssString:String = CSSFileParser.cssString(stylesURL)/*This takes a few secs, basic.css takes around 4sec*/
-                return StyleManagerUtils.styles(cssString,removeComments:false)/*<--we already removed comments so no need to do it again*/
-            }
-            StyleCache.save(styles,to:cacheURL)
-            return styles
         }
+        return nil
     }
 }
 /*Modifier*/

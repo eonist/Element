@@ -11,7 +11,7 @@ class StyleWatcher {
             if(event.fileChange && FilePathParser.fileExtension(event.path) == "css") {//assert for .css file changes, so that .ds etc doesnt trigger events etc
                 Swift.print(event.description)
                 Swift.print("update to the file happened: " + "\(event.path)")
-                StyleManager.addStylesByURL(fileURL,true)
+                StyleManager.addStyle(url:fileURL,liveEdit:true)
                 ElementModifier.refreshSkin(view as! ElementKind)
                 ElementModifier.floatChildren(view)
             }

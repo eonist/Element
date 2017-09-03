@@ -14,7 +14,9 @@ class StyleManager{
     static var styles:[Stylable] = []
     static var isHashingStyles:Bool = true/*enable this if you want to hash the styles (beta)*/
     //TODO: ⚠️️ rename bellow to defaultCacheURL
-    static let cacheURL:String = FilePathParser.resourcePath + "/styles.bundle/styles/styles.xml"//"~/Desktop/styles.xml".tildePath
+    
+    static let cacheBaseURL:String = FilePathParser.resourcePath + "/styles.bundle/styles/"
+    static let cacheURL:String = cacheBaseURL + "styles.xml"//"~/Desktop/styles.xml".tildePath
 }
 
 

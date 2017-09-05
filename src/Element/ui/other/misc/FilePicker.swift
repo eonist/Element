@@ -5,6 +5,7 @@ import Cocoa
  * NOTE: this is a Composition of other UI components
  * TODO: ⚠️️ Add some event logic to this class, and modal popup
  * TODO: ⚠️️ Add data accessorts to this class
+ * TODO: ⚠️️ add FilePickerEvent eventually
  */
 class FilePicker:Element{
     typealias InitText = (text:String,input:String,button:String)
@@ -43,6 +44,7 @@ extension FilePicker{
         let respons = dialog.runModal()
         if let url = dialog.url,respons == NSApplication.ModalResponse.OK{
             textInput.setInputText(url.path.tildify)
+            onEvent(Event.init(Event.update, self))
         }
     }
     func createTextInput()->TextInput{

@@ -4,13 +4,8 @@ import Cocoa
 /**
  * ⚠️️ IMPORTANT: Slidable does not override scroll because a SlideView can't detect scroll. SlideScrollView however can access scroll and call hide and show slider. And then use protocol ambiguity to call scroll on the Scrollable after
  */
-class SliderScrollerHandler:ScrollHandler,Slidable5 {//Continue here: implements Slidable5 🏀
-    var vSlider:Slider {get{return slidable.vSlider}}
-    var hSlider:Slider {get{return slidable.hSlider}}
-    var slidable:Slidable5 {return progressable as! Slidable5}
+class SliderScrollerHandler:ScrollHandler,SlidableDecorater {
     
-    /*NOTE: If you need only one slider, then override both hor and ver with this slider*/
-    func slider(_ dir:Dir) -> Slider { return dir == .ver ? vSlider : hSlider}/*Convenience*/
     
     /**
      * TODO: you could also override scroll and hock after the forward scroll call and then retrive the progress from the var. less code, but the value must be written in Displaceview, it could mess up Elastic, because it needs different progress. etc, do later
@@ -66,46 +61,4 @@ class SliderScrollerHandler:ScrollHandler,Slidable5 {//Continue here: implements
         slider(.ver).setProgressValue(point.y)
     }
 }
-extension SliderScrollerHandler {
-    /**
-     * Updates the slider interval and the sliderThumbSize (after DP events: add/remove etc)
-     */
-    func updateSlider(){
-        fatalError("not implemented yet")
-        /*
-         sliderInterval = floor(self.itemsHeight - height)/itemHeight
-         let thumbHeight:CGFloat = SliderParser.thumbSize(height/itemsHeight, slider!.height/*<--this should probably be .getHeight()*/);
-         slider!.setThumbHeightValue(thumbHeight)
-         let progress:CGFloat = SliderParser.progress(lableContainer!.y, height, itemsHeight)//TODO: use getHeight() instead of height
-         slider!.setProgressValue(progress)
-         */
-    }
-    func hideSlider(){//convenience
-        //        Swift.print("hide")
-        hideSlider(.ver)
-        hideSlider(.hor)
-    }
-    func showSlider(){//convenience
-        //        Swift.print("show")
-        showSlider(.ver)
-        showSlider(.hor)
-    }
-    func hideSlider(_ dir:Dir){
-        //Swift.print("🏂 hide slider dir: \(dir)")
-        //self.slider!.thumb!.setSkinState("inActive")
-        //if(slider(dir).thumb!.getSkinState() == SkinStates.none){slider(dir).thumb!.fadeOut()}/*only fade out if the state is none, aka not over*/
-        //Swift.print("slider(dir).thumb!.getSkinState(): " + "\(slider(dir).thumb!.getSkinState())")
-        if slider(dir).thumb.skinState == SkinStates.none {
-            slider(dir).thumb.fadeOut()
-        }
-        /*slider(dir).thumb!.alpha = 0
-         slider(dir).thumb!.skin?.decoratables[0].draw()*/
-    }
-    func showSlider(_ dir:Dir){
-        //Swift.print("🏂 show slider dir: \(dir)")
-        //slider(dir).thumb!.setSkinState(SkinStates.none)
-        slider(dir).thumb.fadeIn()
-        /*slider(dir).thumb!.alpha = 1
-         slider(dir).thumb!.skin?.decoratables[0].draw()*/
-    }
-}
+

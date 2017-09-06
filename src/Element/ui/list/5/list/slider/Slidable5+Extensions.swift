@@ -71,3 +71,5 @@ extension Slidable5 {
          slider(dir).thumb!.skin?.decoratables[0].draw()*/
     }
 }
+
+

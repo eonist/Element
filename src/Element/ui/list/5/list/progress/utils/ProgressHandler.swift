@@ -1,11 +1,9 @@
 import Foundation
 @testable import Utils
 
-class ProgressHandler:Progressable5 {
-    var contentContainer:Element {get{return progressable.contentContainer}/*set{list.contentContainer = newValue}*/}
-    var maskSize:CGSize {get{return progressable.maskSize}/*set{list.maskSize = newValue}*/}
-    var contentSize:CGSize {get{return progressable.contentSize}/*set{list.contentSize = newValue}*/}
-    var itemSize:CGSize {return progressable.itemSize/*fatalError("must be overriden in subclass")*//*return CGSize(24,24)*/}//temp, use a static interval like 4 or 8, then use itemsize only for listable etc
+class ProgressHandler:ProgressableDecorator {
+   
+    
     //
     var progressable:Progressable5
     init(progressable:Progressable5){

@@ -4,7 +4,7 @@ import Cocoa
 class ElasticScrollerFastListHandler:ScrollerFastListHandler,ElasticDecorator {
     
     override func onScrollWheelChange(_ event:NSEvent){/*Direct scroll*/
-        Swift.print("onScrollWheelChange")
+//        Swift.print("onScrollWheelChange")
         //Swift.print("event.type: " + "\(event.phase)")
         //Swift.print("ElasticScrollableFastListable3.onScrollWheelChange : \(event.type) event.delta: \(event.delta)")
 //        super.onScrollWheelChange(event)//new

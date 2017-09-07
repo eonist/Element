@@ -13,7 +13,7 @@ extension FastListable5 {
      * Stage.2: stack items to cover the visible area
      */
     func setProgress(_ progress:CGFloat){
-        Swift.print("🐎 FastListable5.setProgress(\(progress)) ")
+//        Swift.print("🐎 FastListable5.setProgress(\(progress)) ")
         //        Swift.print("visibleItemRange: " + "\(visibleItemRange)")
         //        Swift.print("dp.count: " + "\(dp.count)")
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)
@@ -33,18 +33,18 @@ extension FastListable5 {
         /*⚠️️⚠️️⚠️️Figure out which items to remove from pool⚠️️⚠️️⚠️️*/
         let diff = RangeParser.difference(range, old)//may return 1 or 2 ranges
         //Swift.print("diff: " + "\(diff)")
-        if(diff.1 != nil){
+        if diff.1 != nil {
             //Swift.print("remove.1: \(diff.1)")
             let start = diff.1!.start - firstOldIdx
             inActive += pool.splice2(start, diff.1!.length)
         }
-        if(diff.0 != nil){
+        if diff.0 != nil {
             //Swift.print("remove.0: \(diff.0)")
             let start = diff.0!.start - firstOldIdx
             inActive += pool.splice2(start, diff.0!.length)
         }
         
-        if(contentContainer.numSubViews > dp.count){//removes items if items dont fill the view anymore
+        if contentContainer.numSubViews > dp.count {//removes items if items dont fill the view anymore
             //Swift.print("⚠️️ Clear out items ⚠️️")
             inActive.forEach{$0.item.removeFromSuperview()}
             inActive.removeAll()
@@ -53,7 +53,7 @@ extension FastListable5 {
         /*⚠️️⚠️️⚠️️Figure out which items to add to pool⚠️️⚠️️⚠️️*/
         let diff2 = RangeParser.difference(old,range)
         //Swift.print("diff2: " + "\(diff2)")
-        if(diff2.1 != nil){
+        if diff2.1 != nil {
             //Swift.print("add.1: \(diff2.1)")
             let startIdx = diff2.1!.start
             let endIdx = diff2.1!.end
@@ -64,14 +64,14 @@ extension FastListable5 {
                 reUse(fastListItem)/*applies data and position*/
                 items.append(fastListItem)
             }
-            if(items.count > 0){
+            if items.count > 0 {
                 //Swift.print("add.0: \(diff2.0)")
                 var idx:Int = items.first!.idx - firstOldIdx//index in pool
                 idx = idx.clip(0, pool.count)
                 _ = ArrayModifier.mergeInPlaceAt(&pool, &items, idx)
             }
         }
-        if(diff2.0 != nil){
+        if diff2.0 != nil {
             let startIdx = diff2.0!.start
             let endIdx = diff2.0!.end
             var items:[FastListItem] = []
@@ -81,7 +81,7 @@ extension FastListable5 {
                 reUse(fastListItem)//applies data and position
                 items.append(fastListItem)
             }
-            if(items.count > 0){
+            if items.count > 0 {
                 var idx:Int = items.first!.idx - firstOldIdx//index in pool
                 idx = idx.clip(0, pool.count)
                 _ = ArrayModifier.mergeInPlaceAt(&pool, &items, idx)

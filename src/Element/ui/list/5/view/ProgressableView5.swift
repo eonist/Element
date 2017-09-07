@@ -6,7 +6,7 @@ class ProgressableView5:ContainerView5,Progressable5 {
     func progress(_ dir:Dir) -> CGFloat {return handler.progress(dir)}
     func interval(_ dir:Dir) -> CGFloat {return handler.interval(dir)}/*describes the speed when scrolling (distance per scroll tick)*/
     func setProgress(_ progress:CGFloat,_ dir:Dir) {
-        Swift.print("ProgressableView5.setProgress")
+//        Swift.print("ProgressableView5.setProgress")
         handler.setProgress(progress, dir)
     }
     //func setProgress(_ point:CGPoint)

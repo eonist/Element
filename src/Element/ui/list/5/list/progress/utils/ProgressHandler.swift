@@ -2,9 +2,6 @@ import Foundation
 @testable import Utils
 
 class ProgressHandler:ProgressableDecorator {
-   
-    
-    //
     var progressable:Progressable5
     init(progressable:Progressable5){
         self.progressable = progressable
@@ -19,7 +16,7 @@ class ProgressHandler:ProgressableDecorator {
      * PARAM: progress: 0-1
      */
     func setProgress(_ p:CGPoint){
-        Swift.print("ProgressHandler.setProgress: " + "\(p)")
+//        Swift.print("ProgressHandler.setProgress: " + "\(p)")
         setProgress(p.x,.hor)
         setProgress(p.y,.ver)
     }
@@ -27,7 +24,7 @@ class ProgressHandler:ProgressableDecorator {
      * PARAM: progress: 0-1
      */
     func setProgress(_ progress:CGFloat,_ dir:Dir){
-        Swift.print("ProgressHandler.setProgress: " + " progress: \(progress) dir: \(dir)")
+//        Swift.print("ProgressHandler.setProgress: " + " progress: \(progress) dir: \(dir)")
         let progressValue = contentSize[dir] < maskSize[dir] ? 0 : progress/*pins the lableContainer to the top if itemsHeight is less than height*/
         ScrollableUtils.scrollTo(progressable,progressValue,dir)
     }

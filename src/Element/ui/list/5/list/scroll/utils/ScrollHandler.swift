@@ -7,7 +7,7 @@ class ScrollHandler:ProgressHandler,Scrollable5{
      * NOTE: if the prev Change event only had -1 or 1 or 0. Then you released with no momentum and so no anim should be initiated
      */
     func scroll(_ event:NSEvent){
-        Swift.print("ScrollHandler.scroll")
+//        Swift.print("ScrollHandler.scroll")
         //Swift.print("event.momentumPhase: " + "\(event.momentumPhase)")
         //Swift.print("event.phase: " + "\(event.phase)")
 //        Swift.print("ScrollHandler.scroll() \(event.phase.type) scrollDeltaX: \(event.scrollingDeltaX) deltaX: \(event.deltaX)")
@@ -32,7 +32,7 @@ class ScrollHandler:ProgressHandler,Scrollable5{
         //super.scrollWheel(with:event)
     }
     func onScrollWheelChange(_ event:NSEvent){
-        Swift.print("ScrollHandler.onScrollWheelChange()")
+//        Swift.print("ScrollHandler.onScrollWheelChange()")
         let progressVal:CGPoint = SliderListUtils.progress(event.delta, interval, progress)//let progress:CGFloat = SliderParser.progress(event.delta, maskSize, contentSize).y
         setProgress(progressVal)
     }

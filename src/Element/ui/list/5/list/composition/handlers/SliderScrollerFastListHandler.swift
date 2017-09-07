@@ -41,7 +41,7 @@ class SliderScrollerFastListHandler:ScrollerFastListHandler,SlidableDecorater {
      * (0-1)
      */
     override func setProgress(_ point:CGPoint){
-        Swift.print("SliderScrollerHandler.setProgress")
+//        Swift.print("SliderScrollerHandler.setProgress")
         super.setProgress(point)
         //Swift.print("🏂 Slidable3.setProgress: " + "\(point)")
         slider(.hor).setProgressValue(point.x)

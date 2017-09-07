@@ -7,9 +7,9 @@ extension FastListable5 {
      * NOTE: This is the offset index
      */
     var firstVisibleItem:Int{
-        let a = abs(contentContainer.layer!.position[dir])//force positive value with abs
-        let b = a/itemSize[dir]//how many items fit into "a"
-        let c = floor(b)//Continue here
+        let a:CGFloat = abs(contentContainer.layer!.position[dir])//force positive value with abs
+        let b:CGFloat = a/itemSize[dir]//how many items fit into "a"
+        let c:CGFloat = floor(b)
         let firstVisibleItem:Int = c.int
         return firstVisibleItem
     }

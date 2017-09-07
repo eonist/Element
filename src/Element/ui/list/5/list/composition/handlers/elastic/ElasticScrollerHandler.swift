@@ -6,7 +6,7 @@ class ElasticScrollerHandler5:ScrollHandler,ElasticDecorator{
      * NOTE: Basically when you perform a scroll-gesture on the touch-pad
      */
     override func onScrollWheelChange(_ event:NSEvent){/*Direct scroll*/
-        Swift.print("ElasticScrollerHandler5.onScrollWheelChange")
+//        Swift.print("ElasticScrollerHandler5.onScrollWheelChange")
         //Swift.print("👻📜 (ElasticScrollable3).onScrollWheelChange : \(event.type) ")
         moverGroup.value += event.scrollingDelta/*directly manipulate the value 1 to 1 control*/
         moverGroup.updatePosition(true)/*the mover still governs the resulting value, in order to get the displacement friction working*/

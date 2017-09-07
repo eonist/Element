@@ -8,7 +8,7 @@ extension Elastic5 where Self:FastListable5/*, Self:Scrollable5 */{
      * ⚠️️ Do not use scalar value here (0-1) well you know...
      */
     func setProgressVal(_ value:CGFloat,_ dir:Dir){//TODO: bind to Elastic and fast somehow
-        Swift.print("setProgressVal")
+//        Swift.print("setProgressVal")
         //Swift.print("value: " + "\(value)")
         var progressValue:CGFloat?//new
         let contentSide:CGFloat = contentSize[dir]//TODO: Use a precalculated itemsHeight instead of recalculating it on every setProgress call, what if dp.count changes though?
@@ -22,7 +22,7 @@ extension Elastic5 where Self:FastListable5/*, Self:Scrollable5 */{
             
             //⚠️️🔨the bellow needs refactoring
             (self as Progressable5).setProgress(progress,dir)/*moves the lableContainer up and down*/
-            Swift.print("progress: " + "\(progress)")
+//            Swift.print("progress: " + "\(progress)")
             (self as FastListable5).setProgress(progress)/*Updates the positions of the FastListItems*/
             //
             let sliderProgress = ElasticUtils.progress(value,contentSide,maskSize[dir])//doing some double calculations here

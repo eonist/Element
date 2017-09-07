@@ -1,6 +1,6 @@
 import Cocoa
 @testable import Utils
-
+//⚠️️ rename to ScrollerHandler
 class ScrollHandler:ProgressHandler,Scrollable5{
 //    var scrollable:Scrollable5 {get{return progressable as! Scrollable5}}
     /**

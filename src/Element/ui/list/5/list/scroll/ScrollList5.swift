@@ -1,11 +1,9 @@
 import Cocoa
 @testable import Utils
 class ScrollList5:ProgressableList5,Scrollable5{
-    //map the
+    
     private var scrollHandler:ScrollHandler {return handler as! ScrollHandler}
-    override lazy var handler:ProgressHandler = {
-        return ScrollHandler(progressable:self)
-    }()
+    override lazy var handler:ProgressHandler = ScrollHandler(progressable:self)
     /**
      * TODO: ⚠️️ Try to override with generics ContainerView<VerticalScrollable>  etc, in swift 4 this could probably be done with where Self:... nopp wont work 🚫
      */

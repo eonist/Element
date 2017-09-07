@@ -32,7 +32,7 @@ class ScrollHandler:ProgressHandler,Scrollable5{
         //super.scrollWheel(with:event)
     }
     func onScrollWheelChange(_ event:NSEvent){
-        Swift.print("Scrollable3.onScrollWheelChange()")
+        Swift.print("ScrollHandler.onScrollWheelChange()")
         let progressVal:CGPoint = SliderListUtils.progress(event.delta, interval, progress)//let progress:CGFloat = SliderParser.progress(event.delta, maskSize, contentSize).y
         setProgress(progressVal)
     }
@@ -42,7 +42,7 @@ class ScrollHandler:ProgressHandler,Scrollable5{
     func onScrollWheelEnter(){
         ScrollFastList3.startTime = NSDate()
         ScrollFastList3.numOfEvents = 0//reset
-        Swift.print("Scrollable3.onScrollWheelEnter()")
+        Swift.print("ScrollHandler.onScrollWheelEnter()")
     }
     func onScrollWheelExit(){
         let secs:CGFloat = abs(ScrollFastList3.startTime!.timeIntervalSinceNow).cgFloat
@@ -52,7 +52,7 @@ class ScrollHandler:ProgressHandler,Scrollable5{
         let eventsPerSeconds:CGFloat = numOfEvents/secs
         Swift.print("eventsPerSeconds: " + "\(eventsPerSeconds)")
         
-        Swift.print("Scrollable3.onScrollWheelExit()")
+        Swift.print("ScrollHandler.onScrollWheelExit()")
     }
     func onScrollWheelMomentumEnded(){Swift.print("Scrollable3.onScrollWheelMomentumEnded")}
     func onScrollWheelCancelled(){Swift.print("Scrollable3.onScrollWheelCancelled")}

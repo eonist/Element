@@ -1,7 +1,7 @@
 import Cocoa
 @testable import Utils
 
-extension FastList5 {
+extension FastListable5 {
     /**
      * PARAM: progress (0-1)
      * NOTE: setProgress is in this class because RBFastSliderList doesn't extend SliderList, and both classes needs to extend this method

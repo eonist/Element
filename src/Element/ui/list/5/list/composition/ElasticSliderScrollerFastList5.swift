@@ -5,7 +5,7 @@ class ElasticSliderScrollerFastList5:FastList5,Elastic5,Slidable5 {
     lazy var hSlider:Slider = self.createHSlider
     lazy var vSlider:Slider = self.createVSlider
     lazy var moverGroup:MoverGroup = self.moverGrp
-    lazy var rbContainer:Container = self.rubberBandContainer/*Needed for the overshot animation*/
+    lazy var rbContainer:Container = self.createRBContainer/*Needed for the overshot animation*/
     override func onEvent(_ event:Event) {
         if(event.type == AnimEvent.stopped){
             let dir:Dir = event.origin === moverGroup.yMover ? .ver : .hor
@@ -13,6 +13,9 @@ class ElasticSliderScrollerFastList5:FastList5,Elastic5,Slidable5 {
         }
         super.onEvent(event)
     }
+    
+    //move the bellow into the eventHandler ⚠️️
+    
     
     /**
      * PARAM value: is the final y value for the lableContainer

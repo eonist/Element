@@ -3,7 +3,7 @@ import Cocoa
 
 class ElasticSliderScrollerView5:SliderScrollerView5,Elastic5 {
     lazy var moverGroup:MoverGroup = self.moverGrp
-    lazy var rbContainer:Container = self.rubberBandContainer
+    lazy var rbContainer:Container = self.createRBContainer
     override func resolveSkin() {
         super.resolveSkin()
         moverGroup.xMover.event = onEvent/*Add an eventHandler for the mover object, , this has no functionality in this class, but may have in classes that extends this class, like hide progress-indicator when all animation has stopped*/

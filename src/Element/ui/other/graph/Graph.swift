@@ -26,7 +26,8 @@ class Graph:Element {
         super.resolveSkin()
         createUI()
         //Swift.print("vValues: " + "\(vValues)")
-        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)//creates the init positions of where the points should lay
+        let config:GraphUtils.GraphConfig = GraphUtils.GraphConfig(size: newSize!, position: newPosition!, spacing: spacing!, vValues: vValues, maxValue: maxValue!, leftMargin: 100, topMargin: 100)
+        graphPts = GraphUtils.points(config:config)//creates the init positions of where the points should lay
         createGraph()
     }
     /**

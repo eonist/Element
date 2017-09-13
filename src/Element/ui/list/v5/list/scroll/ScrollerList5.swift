@@ -1,6 +1,6 @@
 import Cocoa
 @testable import Utils
-class ScrollList5:ProgressableList5,Scrollable5{
+class ScrollerList5:ProgressableList5,Scrollable5{
     
     private var scrollHandler:ScrollHandler {return handler as! ScrollHandler}
     override lazy var handler:ProgressHandler = ScrollHandler(progressable:self)

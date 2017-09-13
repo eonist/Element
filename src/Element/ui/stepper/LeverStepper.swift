@@ -36,12 +36,12 @@ class LeverStepper:Element{
     func onPlusButtonUpInside() {
         let val:CGFloat = CGFloatModifier.increment(initData.value, initData.increment);
         initData.value = NumberParser.minMax(val, initData.min, initData.max);// :TODO: Don't set the value
-        self.event!(StepperEvent(StepperEvent.change,initData.value,self,self))
+        self.event(StepperEvent(StepperEvent.change,initData.value,self,self))
     }
     func onMinusButtonUpInside() {
         let val:CGFloat = CGFloatModifier.decrement(initData.value, initData.increment);
         initData.value = NumberParser.minMax(val, initData.min, initData.max);
-        self.event!(StepperEvent(StepperEvent.change,self.initData.value,self,self))
+        self.event(StepperEvent(StepperEvent.change,self.initData.value,self,self))
     }
     func onButtonUp(){
         NSEvent.removeMonitor(&self.leftMouseDraggedEventListener)/*We remove a global mouse move event listener*/
@@ -65,7 +65,7 @@ class LeverStepper:Element{
             return CGFloatModifier.toFixed(b,initData.decimals)/*The value must have no more than the value of the _decimals*/
         }()
         initData.value = val
-        self.event!(StepperEvent(StepperEvent.change,self.initData.value,self,self))//probably use the onEvent here not the event
+        self.event(StepperEvent(StepperEvent.change,self.initData.value,self,self))//probably use the onEvent here not the event
         return event/*this return is required when you listen to the global mouse move event*/
     }
     /**

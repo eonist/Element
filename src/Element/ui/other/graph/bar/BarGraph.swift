@@ -15,7 +15,7 @@ class BarGraph:Graph {
     /*Debugging*/
     var gestureHUD:GestureHUD?
     init(_ width:CGFloat, _ height:CGFloat, _ parent:ElementKind?, _ id: String? = nil) {
-        tempVValues = GraphUtils.randomVerticalValues()//random data is set on init
+        tempVValues = GraphUtils.randomVerticalValues(count:7,min:0,max:40)//random data is set on init
         super.init(size:CGSize(width,height),id:id)
         self.acceptsTouchEvents = true/*Enables gestures*/
         self.wantsRestingTouches = true/*Makes sure all touches are registered. Doesn't register when used in playground*/
@@ -61,13 +61,14 @@ class BarGraph:Graph {
      *
      */
     func updateGraph(){
-        tempVValues = GraphUtils.randomVerticalValues()//random data is set
+        tempVValues = GraphUtils.randomVerticalValues(count:7,min:0,max:40)//random data is set
         Swift.print("tempVValues: " + "\(tempVValues)")
         //recalc the maxValue
         maxValue = GraphUtils.maxValue(vValues)//NumberParser.max(vValues)//Finds the largest number in among vValues
       
         initGraphPts = bars.map{$0.frame.origin}//grabs the location of where the pts are now
-        graphPts = GraphUtils.points(newSize!, newPosition!, spacing!, vValues, maxValue!)
+        let config:GraphUtils.GraphConfig = GraphUtils.GraphConfig(size: newSize!, position: newPosition!, spacing: spacing!, vValues: vValues, maxValue: maxValue!, leftMargin: 100, topMargin: 100)
+        graphPts = GraphUtils.points(config:config)
        
         if(animator != nil){animator!.stop()}/*stop any previous running animation*/
         animator = Animator(AnimProxy.shared,0.5,0,1,interpolateValue,Quad.easeIn)

@@ -3,11 +3,12 @@ import Foundation
 /**
  * GraphLine represents the Visual Graph line int the Graph component.
  * NOTE: GraphLine avoids adding the skin to its view, and then passes on the StyleProperty to the custom PathLine. This enables you to set the style via CSS
- * TODO: Contemplate Adding a new Skin type that you manually add instead of resolve, this way you dont have to add PathGraphic etc
+ * TODO: ⚠️️ Contemplate Adding a new Skin type that you manually add instead of resolve, this way you dont have to add PathGraphic etc
  */
 class GraphLine:Element{
-    var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future
+    var line:PathGraphic?//<--we could also use PolyLineGraphic, but we may support curvey Graphs in the future, TODO: ⚠️️ make it lazy
     var path:PathKind
+    //update the init ⚠️️
     init(_ width:CGFloat, _ height:CGFloat,_ path:PathKind, _ parent:ElementKind? = nil, _ id:String? = nil) {
         self.path = path
         super.init(size:CGSize(width,height),id:id)

@@ -12,7 +12,7 @@ class SelectTextButton:TextButton,Selectable {
     override func mouseUpInside(_ event: MouseEvent) {
         isSelected = true
         super.mouseUpInside(event)
-        self.event!(SelectEvent(SelectEvent.select,self))
+        self.event(SelectEvent(SelectEvent.select,self))
     }
     /**
      * NOTE: Do not add a dispatch event here, that is the responsibility of the caller

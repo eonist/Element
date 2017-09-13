@@ -39,12 +39,12 @@ class SkinModifier {// :TODO: consider renaming to ElementModifier (or a better 
      * TODO: ⚠️️ possibly merge floatLeft and clearLeft? and floatRight and clearRight? or have float left/right call the clear calls
      */
     static func float(_ skin:Skinable){// :TODO: rename since it floats and clears which are two methods, position? // :TODO: move to ElementModifier
-        guard let element = skin.parent as? Element else{fatalError("skin has no element")}
+        guard let element = skin.parent as? Element else{fatalError("skin: \(skin) has no element")}
         guard let elementParent = element.superview as? ElementKind else {return}/*if the skin.element doesnt have a parent that is ElementKind skip the code bellow*/// :TODO: this should be done by the caller
         guard let viewParent = element.superview  else{ fatalError("skin has no NSView parent")}
         let siblings:[ElementKind] = ElementParser.children(viewParent,ElementKind.self)//⚠️️ this could clean up this class ⚠️️ -> if ArrayAsserter.has(siblings, element) { _ = ArrayModifier.delete(&siblings, &element) }
         let index:Int = viewParent.contains(element) ? Utils.elementIndex(viewParent, element) : siblings.count/*The index of skin, This creates the correct index even if its not added to the parent yet*/
-        guard let parentSkin:Skinable = elementParent.skin else{fatalError("parent has no skin")}
+        guard let parentSkin:Skinable = elementParent.skin else{fatalError("parent: \(elementParent) has no skin")}
         let parentTopLeft:CGPoint = SkinParser.relativePosition(parentSkin)/*the top-left-corner of the parent*/
         let parentTopRight:CGPoint = CGPoint(parentTopLeft.x + SkinParser.totalWidth(parentSkin)/*the top-right-corner of the parent*//*was skin.getHeight()*//* - SkinParser.padding(parent.skin).right - SkinParser.margin(parent.skin).right<-these 2 values are beta*/,parentTopLeft.y);
         let leftSiblingSkin:Skinable? = Utils.leftFloatingElementSkin(siblings, index)/*the last left floating element-sibling skin*/

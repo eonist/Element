@@ -25,7 +25,7 @@ class LeverSpinner:Element{
     func onStepperChange(_ event:StepperEvent) {
         initData.value = event.value
         textInput.inputTextArea.setTextValue(String(initData.value))
-        self.event!(SpinnerEvent(SpinnerEvent.change,self.initData.value,self,self))
+        self.event(SpinnerEvent(SpinnerEvent.change,self.initData.value,self,self))
     }
     /**
      * TODO: ⚠️️ Also resolve decimal here?
@@ -34,7 +34,7 @@ class LeverSpinner:Element{
         let valStr:String = textInput.inputTextArea.text.getText()
         initData.value = NumberParser.minMax(valStr.cgFloat, initData.min, initData.max)
         stepper.initData.value = initData.value
-        self.event!(SpinnerEvent(SpinnerEvent.change,initData.value,self,self))
+        self.event(SpinnerEvent(SpinnerEvent.change,initData.value,self,self))
     }
     override func onEvent(_ event: Event) {
         if event.assert(StepperEvent.change, stepper){

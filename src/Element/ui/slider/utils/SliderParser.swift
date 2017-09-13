@@ -29,7 +29,7 @@ class SliderParser {
      * PARAM: height in most cases the list.height
      * PARAM: totalHeight the total height of all visible items (items.count*itemHeight)
      * NOTE: its tempting to just pass a list:IList here but treeList doesn't impliment IList and TreeList uses this method
-     * TODO:move into ScrollableUtils ⚠️️
+     * TODO: ⚠️️ move into ScrollableUtils ⚠️️
      */
     static func progress(_ y:CGFloat,_ height:CGFloat,_ totalHeight:CGFloat) -> CGFloat {
         return (y / -(totalHeight - height)).clip(0,1)

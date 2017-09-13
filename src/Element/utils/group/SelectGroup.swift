@@ -27,7 +27,7 @@ class SelectGroup:EventSender{
     }
     override func onEvent(_ event:Event){
         if(event.type == SelectEvent.select){
-            self.event!(SelectGroupEvent(SelectGroupEvent.select,selected,self))
+            self.event(SelectGroupEvent(SelectGroupEvent.select,selected,self))
             selected = event.immediate as? Selectable
             SelectModifier.unSelectAllExcept(selected!, selectables)
             super.onEvent(SelectGroupEvent(SelectGroupEvent.change,selected,self))

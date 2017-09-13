@@ -16,11 +16,11 @@ class Container:Element{
     }
     /**
      * New
-     * Temp solution, until we figure out a better way to toggle major direction etc. 
+     * Temp solution, until we figure out a better way to toggle major direction etc. revoced ⚠️️
      */
     func layerPos(_ val:CGFloat,_ dir:Dir){
-        if dir == .ver {
+//        if dir == .ver {
             self.layer?.position[dir] = val
-        }
+//        }
     }
 }

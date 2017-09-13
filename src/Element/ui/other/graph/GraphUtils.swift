@@ -2,6 +2,9 @@ import Foundation
 @testable import Utils
 
 class GraphUtils{
+    struct GraphConfig{
+        var size:CGSize, position:CGPoint, spacing:CGSize,  vValues:[CGFloat],  maxValue:CGFloat,  leftMargin:CGFloat,  topMargin:CGFloat
+    }
     /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
      * NOTE: ⚠️️ Modulates the vValues to fit a predefined rect.
@@ -11,48 +14,34 @@ class GraphUtils{
      * PARAM: position: Supposedly it's the topLeft anchor of the graph (⚠️️ out of service)
      * PARAM: size: represents the width and height of the graph
      */
-    static func points(_ size:CGSize,_ position:CGPoint,_ spacing:CGSize, _ vValues:[CGFloat], _ maxValue:CGFloat, _ leftMargin:CGFloat = 100, _ topMargin:CGFloat = 100) -> [CGPoint]{
-        //Swift.print("size.height: " + "\(size.height)")
-        //Swift.print("spacing.height: " + "\(spacing.height)")
+    static func points(config:GraphConfig) -> [CGPoint]{
         var points:[CGPoint] = []
-        let x:CGFloat = /*position.x*/ leftMargin//spacing.width
-        let y:CGFloat = /*position.y +*/ size.height - (topMargin)//the y point to start from, basically bottom
-        //Swift.print("y: " + "\(y)")
-        let h:CGFloat = size.height-(topMargin*2)//the height to work within
-        //Swift.print("h: " + "\(h)")
-        //Swift.print("h: " + "\(h)")
-        //Swift.print("maxValue: " + "\(maxValue)")
-        //Swift.print("vValues: " + "\(vValues)")
-        for i in 0..<vValues.count{//calc the graphPoints://TODO: ⚠️️ Use functional programming
+        let x:CGFloat = /*position.x*/ config.leftMargin//spacing.width
+        let y:CGFloat = /*position.y +*/ config.size.height - (config.topMargin)//the y point to start from, basically bottom
+        let h:CGFloat = config.size.height - (config.topMargin*2)//the height to work within
+        for i in 0..<config.vValues.count{//calc the graphPoints://TODO: ⚠️️ Use functional programming
             var p = CGPoint()
-            let value:CGFloat = vValues[i]
-            let ratio:CGFloat = value/maxValue/*a value between 0-1*/
+            let value:CGFloat = config.vValues[i]
+            let ratio:CGFloat = value/config.maxValue/*a value between 0-1*/
             //ratio = ratio.isNaN ? 0 : ratio//cases can be
             //Swift.print("ratio: " + "\(ratio)")
             let dist:CGFloat = h*ratio
-            //Swift.print("dist: " + "\(dist)")
-            p.x = x + (i * spacing.width)
+            p.x = x + (i * config.spacing.width)
             p.y = y - dist
-            p.y = p.y.isNaN ? size.height - topMargin : p.y//⚠️️ quick fix, for when vValue is 0
+            p.y = p.y.isNaN ? config.size.height - config.topMargin : p.y//⚠️️ quick fix, for when vValue is 0
             points.append(p)
         }
-        //Swift.print("GraphUtils.points: " + "\(points)")
         return points
     }
     /**
      * Generates value indicators that match up with the (data set)
      */
     static func verticalIndicators(_ vCount:Int,_ maxValue:CGFloat)->[String]{
-        //Swift.print("verticalIndicators")
         var strings:[String] = []
         for i in (0..<vCount).reversed() {//swift 3 update
-            //Swift.print("i: " + "\(i)")
-            var num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
-            //Swift.print("num: " + "\(num)")
-            num = num < 1 ? CGFloatModifier.toFixed(num, 2) : round(num)
-            //Swift.print("after round num: " + "\(num)")
-            let str:String = num.string
-            //Swift.print("str: " + "\(str)")
+            let num:CGFloat = (maxValue/(vCount.cgFloat-1))*i
+            let roundedNum:CGFloat = num < 1 ? CGFloatModifier.toFixed(num, 2) : round(num)
+            let str:String = roundedNum.string
             strings.append(str)
             //Tip: use skin.getWidth() if you need to align Element items with Align
         }
@@ -74,13 +63,13 @@ class GraphUtils{
     /**
      * Generates random y-axis values (used for debug purpouses)
      */
-    static func randomVerticalValues(_ count:Int = 7) -> [CGFloat]{
+    static func randomVerticalValues(count:Int,min:Int,max:Int) -> [CGFloat]{
         /*var values:[CGFloat] = []/*commits in a single day*/
          for _ in (0..<7).reversed() {
          let val:CGFloat = IntParser.random(4, 24).cgFloat/*generate vValues via random, as we use faux data for now*/
          values.append(val)
          }
          return values*/
-        return (0..<count).map{_ in IntParser.random(0, 40).cgFloat}
+        return (0..<count).map{_ in IntParser.random(min, max).cgFloat}
     }
 }

@@ -28,7 +28,7 @@ class CheckGroup:EventSender {
     override func onEvent(_ event:Event) {// :TODO: make protected see SelectGroup
         if(event.type == CheckEvent.check){
             //Swift.print("CheckGroup.onEvent() immediate: " + "\(event.immediate)" + " type: " + "\(event.type)")
-            self.event!(CheckGroupEvent(CheckGroupEvent.check,checked,self))
+            self.event(CheckGroupEvent(CheckGroupEvent.check,checked,self))
             checked = event.immediate as? Checkable
             CheckModifier.unCheckAllExcept(checked!, checkables)
             super.onEvent(CheckGroupEvent(CheckGroupEvent.change,checked,self))

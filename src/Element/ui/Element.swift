@@ -31,7 +31,7 @@ class Element:InteractiveView,ElementKind {
      * NOTE: default implementation of viewDidMoveToSuperview does nothing, so its safe to override
      * Delays the skin resolving to after it's added to the parent. This enables you to not pass the parent on init
      * NOTE: this method is fired when you remove a view as well. So to only check for adding you have this assert
-     * TODO: ⚠️️ remove resolveSkin and just override viewDidMoveToSuperView with guard
+     * TODO: ⚠️️ remove resolveSkin and just override viewDidMoveToSuperView with the added guard
      */
     override func viewDidMoveToSuperview() {
 //        Swift.print("viewDidMoveToSuperview superview: \(superview)")
@@ -55,7 +55,7 @@ class Element:InteractiveView,ElementKind {
      * NOTE: if a class subclasses Element that sub-class will be the class type
      * NOTE: override this function in the first subClass and that subclass will be the class type for other sub-classes
      * NOTE: to return a specific class type: String(TextEditor)
-     * TODO: ⚠️️ rename to classType and use a var
+     * TODO: ⚠️️⚠️️⚠️️ rename to classType and use a var ⚠️️⚠️️⚠️️
      */
     func getClassType()->String{
         return "\(type(of: self))"

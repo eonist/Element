@@ -10,7 +10,7 @@ class CheckTextButton:TextButton,Checkable {
     override func mouseUpInside(_ event:MouseEvent) {
         isChecked = !isChecked
         super.mouseUpInside(event)
-        self.event!(CheckEvent(CheckEvent.check,isChecked,self))//TODO:Remove the bool from the event. Similar to SelectEvent
+        self.event(CheckEvent(CheckEvent.check,isChecked,self))//TODO:Remove the bool from the event. Similar to SelectEvent
     }
     /**
      * Sets the isChecked variable (Toggles between two states)

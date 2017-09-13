@@ -1,6 +1,6 @@
 import Cocoa
 @testable import Utils
-
+//rename to ....Accessor
 protocol ElasticDecorator:ProgressableDecorator,Elastic5 {}
 
 extension ElasticDecorator{

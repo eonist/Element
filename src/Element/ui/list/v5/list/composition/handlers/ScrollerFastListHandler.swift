@@ -2,9 +2,8 @@ import Cocoa
 @testable import Utils
 
 class ScrollerFastListHandler:ScrollHandler,FastListableDecorator {
-    
     override func onScrollWheelChange(_ event:NSEvent) {
-        Swift.print("ScrollerFastListHandler.onScrollWheelChange")
+//        Swift.print("ScrollerFastListHandler.onScrollWheelChange")
 //        super.onScrollWheelChange(event)
         //Swift.print("ScrollableFastListable3.onScrollWheelChange()")
         let primaryProgress:CGFloat = SliderListUtils.progress(event, dir, interval(dir), progress(dir))

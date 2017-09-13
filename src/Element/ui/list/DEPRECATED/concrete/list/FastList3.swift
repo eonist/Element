@@ -12,7 +12,7 @@ import Cocoa
  * TODO: ⚠️️ Add resize support (test if resize works, by spawning new items etc)
  * TODO: ⚠️️ Add selectedIdx to the init arg list?
  */
-typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*/
+typealias FastListItem = (item:Element, idx:Int)/*Alias for the Tuple used to store list items and "absolute" indecies*///TODO:⚠️️move into class
 class FastList3:ContainerView3,FastListable3{
     var selectedIdx:Int?/*This cooresponds to the "absolute" index in dp*/
     var dp:DataProvider/*Data storage*/

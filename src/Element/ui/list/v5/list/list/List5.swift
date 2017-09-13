@@ -1,4 +1,4 @@
-import Foundation
+import Cocoa
 @testable import Utils
 
 class List5:ContainerView5,Listable5 {
@@ -8,7 +8,7 @@ class List5:ContainerView5,Listable5 {
     //
     override var contentSize:CGSize { return dir == .hor ? CGSize(dp.count * itemSize.width ,maskSize.h) : CGSize(maskSize.w ,dp.count * itemSize.height) }
   
-    struct Config {
+    struct Config {//TODO: ⚠️️ can this be moved into an extension?
         var itemSize:CGSize,dp:DP,dir:Dir
         static let defaultConfig:Config = .init(itemSize:CGSize(0,0), dp:DP.init(), dir:.ver)
     }
@@ -34,17 +34,17 @@ class List5:ContainerView5,Listable5 {
     func mergeAt(_ dictionaries:[[String:String]], _ index:Int){//TODO: possible rename to something better, placeAt? insertAt?
         var i:Int = index
         for dict:[String:String] in dictionaries {
-            _ = createItem(dict,i)
+            let item = createItem(dict,i)
+            contentContainer.addSubviewAt(item, i+1)/*the first index is reserved for the List skin, what, this is not good! ⚠️️ ⚠️️ ⚠️️?*/
             i += 1
         }
     }
     /**
      * Overridable
      */
-    func createItem(_ dict:[String:String], _ i:Int) -> Element{//TODO: ⚠️️ add throws here
+    func createItem(_ dict:[String:String], _ i:Int) ->  NSView{//TODO: ⚠️️ add throws here
         let dictItem:String = dict["title"] ?? {fatalError("err")}()
-        let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,dictItem, false, contentContainer)
-        contentContainer.addSubviewAt(item, i+1)/*the first index is reserved for the List skin, what?*/
+        let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,dictItem, false)
         return item
     }
     override func getClassType() -> String {

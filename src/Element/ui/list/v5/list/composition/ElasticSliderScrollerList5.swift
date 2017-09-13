@@ -2,7 +2,7 @@ import Cocoa
 @testable import Utils
 
 class ElasticSliderScrollerList5:SliderScrollerList5,Elastic5 {
-    lazy var moverGroup:MoverGroup = self.moverGrp
+    lazy var moverGroup:MoverGroup = self.createMoverGroup
     lazy var rbContainer:Container = self.createRBContainer/*Needed for the overshot animation*/
     
     private var elasticHandler:ElasticSliderScrollerHandler {return handler as! ElasticSliderScrollerHandler}//⚠️️ this can be added to a prtocol and extension, in fact all handlers like this can be

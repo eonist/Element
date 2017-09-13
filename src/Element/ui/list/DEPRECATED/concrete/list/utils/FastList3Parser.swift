@@ -1,4 +1,5 @@
 import Cocoa
+@testable import Utils
 
 class FastList3Parser {
     /**
@@ -16,5 +17,11 @@ class FastList5Parser {
      */
     static func idx(_ fastList:FastListable5, _ item:NSView) -> Int?{
         return fastList.pool.first(where:{$0.item === item})?.idx
+    }
+    /**
+     * New
+     */
+    static func idx(fastList:FastListable5, dpIdx:Int) -> Int?{
+        return ArrayParser.first(fastList.pool, dpIdx, {$0.idx == $1})?.item.idx/*Converts dpIndex to lableContainerIdx*/
     }
 }

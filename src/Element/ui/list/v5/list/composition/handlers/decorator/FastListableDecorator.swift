@@ -1,6 +1,6 @@
 import Cocoa
 @testable import Utils
-
+//rename to ....Accessor
 protocol FastListableDecorator:ProgressableDecorator,FastListable5 {}
 
 extension FastListableDecorator{
@@ -16,7 +16,7 @@ extension FastListableDecorator{
     func createItem(_ index: Int) -> Element {
         return  fastListable.createItem(index)
     }
-    //override scroll i think?, make sure fastlist gets its setporgress 🏀
+    //override scroll I think?, make sure fastlist gets it's setProgress 🏀
     
     var fastListable:FastListable5 {return progressable as! FastListable5}
 }

@@ -1,6 +1,6 @@
 import Foundation
 @testable import Utils
-
+//rename to ....Accessor
 protocol SlidableDecorater:ProgressableDecorator,Slidable5 {}
 
 extension SlidableDecorater{

@@ -40,6 +40,10 @@ extension Elastic5 where Self:FastListable5/*, Self:Scrollable5 */{
         //Swift.print("rbContainer!.point[dir]: " + "\(rbContainer!.point[dir])")
         //Swift.print("contentContainer.point[dir]: " + "\(contentContainer!.point[dir])")
     }
+    private func posContainer(_ rbContainer:Container,_ dir:Dir,_ value:CGFloat){/*Temp*/
+        //        disableAnim {}/*default position*///⚠️️ no need to disable anim anymore, it's taken care of by InteractiveView
+        rbContainer.layerPos(value,dir)
+    }
 }
 
 

@@ -7,4 +7,3 @@ protocol FastListable5:Progressable5,Listable5{
     func createItem(_ index:Int) -> Element
     var inActive:[FastListItem] {get set}
 }
-

@@ -1,13 +1,14 @@
 import Foundation
 @testable import Utils
-
+//rename to ....Accessor
 protocol ProgressableDecorator:Progressable5 {
     var progressable:Progressable5 {get}
 }
 extension ProgressableDecorator{
     func progress(_ dir:Dir) -> CGFloat {return progressable.progress(dir)}
     func interval(_ dir:Dir) -> CGFloat {return progressable.interval(dir)}/*describes the speed when scrolling (distance per scroll tick)*/
-    func setProgress(_ progress:CGFloat,_ dir:Dir) {progressable.setProgress(progress, dir)}
+//    func setProgress(_ progress:CGFloat,_ dir:Dir) {progressable.setProgress(progress, dir)}
+//    func setProgress(_ point:CGPoint) {progressable.setProgress(point)}
     //
     //⚠️️ maybe move to ContainableDecorator?
     var contentContainer:Element {get{return progressable.contentContainer}/*set{list.contentContainer = newValue}*/}

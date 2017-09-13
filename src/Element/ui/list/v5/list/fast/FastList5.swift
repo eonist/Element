@@ -15,12 +15,12 @@ class FastList5:ProgressableView5,FastListable5{
     //
     var pool:[FastListItem] = []/*Stores the FastListItems*/
     var inActive:[FastListItem] = []/*Stores pool item that are not in-use*/
-    
+    //
     init(config:List5.Config = List5.Config.defaultConfig, size: CGSize = CGSize(), id: String? = "") {
         self.config = config
         super.init(size: size, id: id)
         self.dp.event = onEvent/*Add event handler for the dataProvider*/
-        layer!.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
+        layer?.masksToBounds = true/*masks the children to the frame, I don't think this works, seem to work now*/
     }
     override func resolveSkin() {
         super.resolveSkin()
@@ -30,7 +30,7 @@ class FastList5:ProgressableView5,FastListable5{
     }
     /**
      * Apply new data / align items
-     * NOTE: ⚠️️ override this to use custom ItemList items
+     * NOTE: ⚠️️ override this to use custom ItemList items, and remember to  set item position
      */
     func reUse(_ listItem:FastListItem){
         let idx:Int = listItem.idx/*the index of the data in dataProvider*/
@@ -43,21 +43,22 @@ class FastList5:ProgressableView5,FastListable5{
         if let textButton = listItem.item as? LableKind, let dpItem = dp.item(idx), let title:String = dpItem["title"]{
             textButton.setTextValue(title)
         }
-        disableAnim {listItem.item.layer?.position[dir] = listItem.idx * itemSize[dir]/*position the item*/}
+        //disableAnim {}
+        listItem.item.layer?.position[dir] = listItem.idx * itemSize[dir]/*position the item*/
     }
     /**
      * CreatesItem
      * NOTE: override this to create custom ListItems
      */
-    func createItem(_ index:Int) -> Element{
+    func createItem(_ index:Int) -> Element{//TODO:⚠️️ return NSView not Element
         //Swift.print("⚠️️ FastList.createItem index: " + "\(index)")
         let item:SelectTextButton = SelectTextButton(itemSize.width, itemSize.height ,"", false, contentContainer)
-        contentContainer.addSubview(item)
+        contentContainer.addSubview(item)//TODO: ⚠️️ consider not adding views here but in the caller instead
         return item
     }
     override func onEvent(_ event:Event) {
-        if(event.type == ButtonEvent.upInside && event.origin.superview === contentContainer){onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
-        else if(event is DataProviderEvent){onDataProviderEvent(event as! DataProviderEvent)}
+        if event.assert(.upInside, contentContainer) {onListItemUpInside(event as! ButtonEvent)}// :TODO: should listen for SelectEvent here
+        else if event is DataProviderEvent {onDataProviderEvent(event as! DataProviderEvent)}
         super.onEvent(event)// we stop propegation by not forwarding events to super. The ListEvents go directly to super so they wont be stopped.
     }
     /**
@@ -91,7 +92,7 @@ extension FastList5{
         Swift.print("currentVisibleItemRange: " + "\(currentVisibleItemRange)")
         Swift.print("visibleItemRange: " + "\(visibleItemRange)")
         Swift.print("range: " + "\(range)")
-        if(currentVisibleItemRange != range){/*Optimization: only set if it's not the same as prev range*/
+        if currentVisibleItemRange != range {/*Optimization: only set if it's not the same as prev range*/
             Swift.print("🎨 render: \(event.startIndex) ")
             renderItems(range)/*the visible range has changed, render it*/
             pool.forEach{

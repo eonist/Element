@@ -7,9 +7,10 @@ class SliderListUtils{//⚠️️ This can probably be removed, as the same code
      */
     static func progress(_ delta:CGFloat,_ sliderInterval:CGFloat,_ sliderProgress:CGFloat)->CGFloat{
         let scrollAmount:CGFloat = (delta/30)/sliderInterval/*_scrollBar.interval*/
-        var currentScroll:CGFloat = sliderProgress - scrollAmount/*The minus sign makes sure the scroll works like in OSX LION*/
-        currentScroll = currentScroll.clip(0, 1)/*Clamps the num between 0 and 1*/
-        return currentScroll
+//        Swift.print("🍏scrollAmount: " + "\(scrollAmount)")
+        let currentScroll:CGFloat = sliderProgress - scrollAmount/*The minus sign makes sure the scroll works like in OSX LION*/
+//        Swift.print("🍐 currentScroll: " + "\(currentScroll)")
+        return currentScroll.clip(0, 1)/*Clamps the num between 0 and 1*/
     }
     /**
      * new (0-1)

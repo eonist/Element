@@ -78,7 +78,7 @@ extension FastListable5 {
             for i in (startIdx..<endIdx){
                 let item:Element = inActive.count > 0 ? inActive.popLast()!.item : createItem(i)
                 let fastListItem:FastListItem = (item:item,idx:i)
-                reUse(fastListItem)//applies data and position
+                reUse(fastListItem)/*applies data and position*/
                 items.append(fastListItem)
             }
             if items.count > 0 {
@@ -115,7 +115,7 @@ extension FastListable5 {
      * NOTE: this method is called after dp change: add/remove
      */
     func reUseFromIdx(_ idx:Int){
-        if(idx >= firstVisibleItem && idx <= lastVisibleItem){
+        if idx >= firstVisibleItem && idx <= lastVisibleItem {
             let startIdx = idx - firstVisibleItem
             var endIdx = lastVisibleItem - firstVisibleItem
             endIdx = Swift.min(dp.count,endIdx)

@@ -1,6 +1,8 @@
 import Cocoa
 @testable import Utils
-
+/**
+ * TODO: ⚠️️ Investigate the theory: Too bost smmoothness of scrolling: Don’t place views on fractions of pixels x = 34.5, always use ceil 
+ */
 class List5:ContainerView5,Listable5 {
     var dp:DataProvider {get{return config.dp} set{config.dp = newValue}}
     var dir:Dir {get{return config.dir} set{config.dir = newValue}}

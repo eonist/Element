@@ -59,6 +59,7 @@ class ScrollHandler:ProgressHandler,Scrollable5{
         let numOfEvents:CGFloat = ScrollFastList3.numOfEvents!.cgFloat
 //        Swift.print("numOfEvents: " + "\(numOfEvents)")
         let eventsPerSeconds:CGFloat = numOfEvents/secs
+        _ = eventsPerSeconds
 //        Swift.print("eventsPerSeconds: " + "\(eventsPerSeconds)")
 //        Swift.print("ScrollHandler.onScrollWheelExit()")
     }

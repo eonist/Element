@@ -6,6 +6,30 @@ class GraphUtils{
         var size:CGSize, position:CGPoint, spacing:CGSize,  vValues:[CGFloat],  maxValue:CGFloat,  leftMargin:CGFloat,  topMargin:CGFloat
     }
     /**
+     * New
+     * Returns graph points (Basically the coordinates of where to place the visual graph points)
+     */
+    static func points2(rect:CGRect, spacing:CGSize,  vValues:[CGFloat]) -> [CGPoint]{
+        guard let maxValue:CGFloat = vValues.max() else {fatalError("err: \(vValues.count)")}/*Finds the largest number in among vValues*/
+        let x:CGFloat = rect.x//spacing.width
+        let y:CGFloat = rect.height - (rect.y)//the y point to start from, basically bottom
+        let h:CGFloat = rect.height - (rect.y)//the height to work within
+        return vValues.indices.reduce([]) { (acc:[CGPoint],i:Int) in
+            let p:CGPoint = {
+                let value:CGFloat = vValues[i]
+                let ratio:CGFloat = value/maxValue/*a value between 0-1*/
+                //ratio = ratio.isNaN ? 0 : ratio//cases can be
+                //Swift.print("ratio: " + "\(ratio)")
+                let dist:CGFloat = h*ratio
+                let x:CGFloat = x + (i * spacing.width)
+                let y:CGFloat = y - dist
+                let _y:CGFloat = y.isNaN ? rect.height - rect.y : y//⚠️️ quick fix, for when vValue is 0
+                return CGPoint(x,_y)
+            }()
+            return acc + [p]
+        }
+    }
+    /**
      * Returns graph points (Basically the coordinates of where to place the visual graph points)
      * NOTE: ⚠️️ Modulates the vValues to fit a predefined rect.
      * PARAM: vValues: y-axis values

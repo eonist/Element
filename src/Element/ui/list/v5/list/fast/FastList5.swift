@@ -72,7 +72,9 @@ class FastList5:ProgressableView5,FastListable5{
         super.onEvent(ListEvent(ListEvent.select,selectedIdx ?? -1,self))/*if selectedIdx is nil then use -1 in the event*///TODO: probably use FastListEvent here in the future
     }
     override func getClassType() -> String {
-        return dir == .ver ? "List" : "VList"//<--VList really? isn't it more like HList atleast?
+        let type:String = dir == .ver ? "List" : "VList"//<--VList really? that is actually wrong! should be HList
+        Swift.print("getClassType· \(type) ")
+        return type
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 }

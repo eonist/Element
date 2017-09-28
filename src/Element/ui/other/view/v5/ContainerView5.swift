@@ -23,7 +23,7 @@ class ContainerView5:Element,Containable5 {
 
 extension ContainerView5 {//private maybe?
     func createContentContainer() -> Container {
-        Swift.print("self.skinSize: " + "\(self.skinSize)")
+//        Swift.print("self.skinSize: " + "\(self.skinSize)")
         return self.addSubView(Container(size:self.skinSize,id:"lable"))//<-- ⚠️️ misspelled
     }
 }

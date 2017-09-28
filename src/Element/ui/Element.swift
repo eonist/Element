@@ -19,7 +19,6 @@ class Element:InteractiveView,ElementKind {
     var skinState:String {get {return ""}set {skin?.setSkinState(newValue)}}/*Enables overriding of skinState*///TODO: ⚠️️ this should be an array, and rename to skinState, and try to get rid of the default none state
     var skin:Skinable?
     var uiState:UIState = (isDisabled:false,isFocused:false)
-    
     init(size:CGSize = CGSize(0,0),id:String? = nil){
         self.id = id
         var size = size//temp fix, until you remove NaN initializers
@@ -42,6 +41,7 @@ class Element:InteractiveView,ElementKind {
      * Draws the skin (aka graphics)
      */
     func resolveSkin() {
+//        Swift.print("skinSize: " + "\(skinSize)")
         self.skin = SkinResolver.skin(self)//don't inline these 2 lines, as you need the ref to skin in the addSubView excecution
         self.addSubview(self.skin as! Skin)
     }

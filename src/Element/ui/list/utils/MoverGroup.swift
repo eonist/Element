@@ -2,6 +2,7 @@ import Foundation
 @testable import Utils
 /**
  * TODO: ⚠️️ make this a struct?
+ * TODO: ⚠️️ ContentSize and maskSize should be method refs, so that they can be updated from parent 👈
  */
 struct MoverGroup{//rename to ElasticMoverGroup
     var xMover:RubberBand, yMover:RubberBand

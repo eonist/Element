@@ -19,7 +19,7 @@ class ElasticScrollerFastListHandler:ScrollerFastListHandler,ElasticDecorator {
      * NOTE: Basically when you enter your scrollWheel gesture
      */
     override func onScrollWheelEnter(){
-        Swift.print("onScrollWheelEnter")
+//        Swift.print("onScrollWheelEnter")
         //moverGroup.isDirectlyManipulating = true/*Toggle to directManipulationMode*/ //this was moved
         moverGroup.stop()
         moverGroup.hasStopped = true/*set the stop flag to true*/
@@ -29,7 +29,7 @@ class ElasticScrollerFastListHandler:ScrollerFastListHandler,ElasticDecorator {
      * NOTE: Basically when you release your scrollWheel gesture
      */
     override func onScrollWheelExit(){
-        Swift.print("onScrollWheelExit")
+//        Swift.print("onScrollWheelExit")
         //Swift.print("iterimScroll.prevScrollingDelta: " + "\(iterimScroll.prevScrollingDelta)")
         moverGroup.hasStopped = false
         moverGroup.value = moverGroup.result
@@ -39,7 +39,7 @@ class ElasticScrollerFastListHandler:ScrollerFastListHandler,ElasticDecorator {
      * NOTE: Basically when you release your scrollWheel gesture
      */
     override func onScrollWheelMomentumBegan(_ event:NSEvent) {
-        Swift.print("onScrollWheelMomentumBegan")
+//        Swift.print("onScrollWheelMomentumBegan")
         moverGroup.hasStopped = false/*Reset this value to false, so that the FrameAnimatior can start again*/
         //moverGroup.isDirectlyManipulating = false
         moverGroup.value = moverGroup.result/*Copy this back in again, as we used relative friction when above or bellow constraints*/

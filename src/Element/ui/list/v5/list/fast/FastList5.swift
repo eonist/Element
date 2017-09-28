@@ -73,7 +73,7 @@ class FastList5:ProgressableView5,FastListable5{
     }
     override func getClassType() -> String {
         let type:String = dir == .ver ? "List" : "VList"//<--VList really? that is actually wrong! should be HList
-        Swift.print("getClassType· \(type) ")
+//        Swift.print("getClassType· \(type) ")
         return type
     }
     required init(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -87,7 +87,7 @@ extension FastList5{
      * TODO: ⚠️️ It could be that you could make this method more effective. say if only data changes!?!?
      */
     func onDataProviderEvent(_ event:DataProviderEvent){
-        Swift.print("FastList3.onDataProviderEvent: " + "\(event)")
+        Swift.print("FastList5.onDataProviderEvent: " + "\(event)")
         Swift.print("event.startIndex: " + "\(event.startIndex)")
         alignContentContainer(event)/*aligns the container*/
         let range:Range<Int> = visibleItemRange.start..<Swift.min(visibleItemRange.end,dp.count)

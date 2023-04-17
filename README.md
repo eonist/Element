@@ -1,5 +1,7 @@
 ![MIT Status](https://img.shields.io/badge/License-MIT-lightgrey.svg?maxAge=2592000) ![platform](https://img.shields.io/badge/OS-macOS-blue.svg?maxAge=2592000)  ![Lang](https://img.shields.io/badge/Swift-4-orange.svg) [![SPM  compatible](https://img.shields.io/badge/SPM-compatible-orange.svg)](https://github.com/apple/swift-package-manager) [![codebeat badge](https://codebeat.co/badges/2de7a2a5-91d5-401e-8913-8f1993affd55)](https://codebeat.co/projects/github-com-eonist-element) 
 
+<a href="https://www.producthunt.com/posts/stylekit?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stylekit" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=50514&theme=dark" alt="StyleKit - UI&#0032;framework&#0032;for&#0032;OSX | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 ### Description:
 Programmatic UI Framework for macOS. Swift handles app logic, CSS/SVG handles design and JSON handles struture. 
 
